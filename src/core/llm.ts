@@ -110,9 +110,16 @@ export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens =
   return String(content);
 }
 
-/** Author with Claude Haiku regardless of the runtime provider (used by the gate-authoring tool). */
-export async function claudeAuthor(messages: ChatMessage[], maxTokens = 2000): Promise<string> {
-  return claudeComplete(messages, maxTokens);
+// Authoring model. Bulk/default stays cheap (Haiku) per the cost rule, but CURATED authoring of the
+// first nodes uses a frontier model (Opus) for correct maths + phrasing — set MODEL_AUTHOR or pass a
+// model to claudeAuthor(). This is deliberate, small-batch, human-in-the-loop authoring — NOT teaching
+// traffic and NOT a test suite, so it does not violate the "never a test suite on Haiku" rule.
+const AUTHOR_MODEL = process.env.MODEL_AUTHOR || HAIKU_MODEL;
+
+/** Author a JSON completion. Defaults to the configured author model (Haiku); pass a model to override
+ *  (e.g. 'claude-opus-4-8' for curated first-node authoring). */
+export async function claudeAuthor(messages: ChatMessage[], maxTokens = 2000, model: string = AUTHOR_MODEL): Promise<string> {
+  return claudeComplete(messages, maxTokens, model);
 }
 
 /** Claude Haiku VISION: caption/classify an image (base64). Used by the figure-captioning pass. */

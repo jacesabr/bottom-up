@@ -10,6 +10,73 @@ generalised to every math exam in the corpus (cbse10, cbse12, jee).
 
 ---
 
+## ★ The current, PROVEN pipeline (use this — supersedes the Haiku-era notes below)
+
+After a content audit (§8) exposed bad maths and unimproved content from the cheap path, the pipeline
+was upgraded and **proven on cbse10 `manipulate-prime-powers` and cbse12 `relation-definition`** —
+both now correct, in-scope, and well-sourced. The recipe that produces that quality:
+
+```bash
+# ONE curated node, content + gates, NCERT-grounded. USE SONNET (default for scaling):
+node_modules/.bin/tsx tools/generate-gates.ts <exam:subject:chapter:slug> --model claude-sonnet-4-6 --improve-content
+# dry-run first to inspect without writing:  add --dry
+# a whole chapter's first 10 nodes:
+node_modules/.bin/tsx tools/generate-gates.ts <exam:subject:chapter1> --limit 10 --model claude-sonnet-4-6 --improve-content
+```
+
+> **MODEL: use Sonnet 4.6 (`--model claude-sonnet-4-6`), not Opus, for scaling.** Head-to-head on real
+> nodes (2026-06-16): a 3-node Opus vs 3-node Sonnet comparison (cbse10 ends-with-digit, cbse12 function
+> composition, jee union-of-sets) found **Sonnet's output indistinguishable from Opus** — every numeric
+> answer correct, in-scope, clean, with scope-aware sketch-skips — at **~half the cost**. Haiku is the one
+> that fails (wrong arithmetic). So: **Sonnet for all curated authoring/scaling**; `--strong` (Opus) only
+> if a specific hard node proves shaky or for a final verify pass; **never Haiku for authoring**.
+
+What each piece does (all in `tools/generate-gates.ts` + `src/core/llm.ts`):
+
+1. **Strong author model (NOT Haiku) — default `--model claude-sonnet-4-6`.** This is the single biggest
+   quality lever. Haiku mis-evaluated maths (e.g. wrote `2²×3³×5 = 1350`; it's 540) and garbled prompts;
+   Sonnet and Opus do not. **Sonnet is the default for authoring/scaling** (parity with Opus at ~half cost
+   — see the MODEL note above); `--strong` = `claude-opus-4-8` is reserved for a hard node or a verify pass.
+   Implemented via `MODEL_AUTHOR` / the `model` arg of `claudeAuthor()`. This is a **deliberate, sanctioned
+   exception to the Haiku cost rule** — curated, small-batch, human-reviewed authoring is NOT teaching
+   traffic and NOT a test suite. Real-user teaching and any bulk/automated run still use Haiku/NIM (see §7).
+2. **`--improve-content` → the previously-MISSING content pass.** Before authoring gates it rewrites the
+   node's `brief / explanation / keyMoves / misconceptions`, grounded **STRICTLY in the chapter's NCERT
+   OCR text** (`content/<exam>/<subject>/<chapter>/source/*.txt`) + light web research, and updates the
+   `concepts` row. Without this, re-running only ever changed the gates and the teaching content stayed a
+   thin stub. (cbse10 has no OCR on disk → it refines the existing NCERT-derived explanation; cbse12/jee
+   have OCR → stronger grounding.)
+3. **Scope-guard.** The author is given the **already-taught** concepts (lower-order, same chapter) as an
+   allow-list and told every item must be solvable from THIS node's key moves + those — **never a later
+   concept**. This killed the recurring creep (HCF/LCM on a "compare powers" node, proofs on a "what
+   divides means" node, ∪/∩ on a "membership" node).
+4. **Arithmetic self-check + no-false-premise + clean-answer** rules in the prompt: compute and re-verify
+   every numeric answer; never ask a student to justify a false statement; `idealAnswer` is the final
+   clean answer only (no leaked "Wait…" working).
+5. **Honest sketch-skip.** Prefer `skip` for a sketch slot when a drawing would be contrived (logical/
+   notational concept) — but keep genuinely useful visuals (factor tree, arrow/grid diagram). Verified
+   working: it skips on the prime-power node, keeps arrow/grid diagrams on the relations node.
+6. **Authoritative-source search.** `research()` over-fetches 10, **drops video/social** (youtube,
+   instagram, tiktok, …) and **ranks reputable maths-ed domains first** (ncert, cbse, vedantu, byjus,
+   learncbse, toppr, …). Sources are stored on every gate, so provenance is auditable. (Sources are now
+   NCERT-exemplar solution pages, not reels.)
+7. **Clean-slate re-author.** Before writing, the tool **deletes the node's existing `authored` gates**, so
+   a re-run is deterministic and a now-skipped slot is actually removed (no stale rows). Book gates untouched.
+
+### How to continue (the quality loop — do NOT skip the audit)
+
+1. Author **ONE** node with the recipe above; **audit it by eye** (read content + every gate; check §5 +
+   §8 issues; recompute numeric answers; confirm mcq.correct ∈ options).
+2. Once a node is genuinely good, do **one node per section** (cbse10 + cbse12 + jee node-0) and audit all three.
+3. Only when all three hold, scale to the **first 10 nodes per section**:
+   `tsx tools/generate-gates.ts <exam:subject:chapter1> --limit 10 --model claude-sonnet-4-6 --improve-content`.
+4. Record any new failure modes back into §8 and tighten the prompt before scaling further.
+
+**Never declare a batch good from counts alone — read the actual content.** The worst defects (a
+self-contradicting model answer, `1350` vs `540`) passed every structural check and were only caught by reading.
+
+---
+
 ## 0. What "authoring a node" means
 
 A loaded concept node already has its **brain** (brief, explanation, key moves, misconceptions,
@@ -208,11 +275,17 @@ ORDER BY ord;
 - The same holds for any future "beyond-the-book" advanced sections: fill the overlay only from a
   real, approved resource — never invent advanced material.
 
-## 7. Cost rule (HARD — never break)
+## 7. Cost rule (HARD — with one sanctioned exception)
 
-- Authoring → **Claude Haiku** via `claudeAuthor()`. Never a stronger model for bulk authoring.
-- Real-user teaching → Haiku. All automated testing → NVIDIA NIM (free) / `mock`.
-- **Never run a test suite on Haiku.** At most 1-2 Haiku messages for a manual spot-check.
+- **Real-user teaching → Claude Haiku.** All automated testing → NVIDIA NIM (free) / `mock`.
+  **Never run a test suite on Haiku**, and never use a frontier model for teaching traffic or bulk runs.
+- **Sanctioned exception — curated authoring uses a strong model.** Authoring via `generate-gates.ts`
+  (`--model claude-sonnet-4-6`, or `--strong` = Opus) is small-batch, human-reviewed content creation —
+  NOT teaching and NOT a suite — so it uses a strong model on purpose, because Haiku's maths was wrong (§8).
+  **Default to Sonnet** (proven on-par with Opus at ~half cost, §8.8); use Opus only for a hard node or a
+  verify pass. This applies ONLY to the authoring tool when explicitly given a `--model`/`--strong`.
+- Default `claudeAuthor()` (no `--strong`, no `MODEL_AUTHOR`) is still Haiku, so nothing changes for any
+  non-curated path.
 
 ---
 
@@ -273,3 +346,39 @@ true/false + union problem on `use-set-membership`). First-nodes should be gentl
 - Re-author the `cbse12 … empty-relation` equation gate (8.2) — it's the one outright-broken artifact.
 - Fold the 8.1 scope-guard and 8.2 clean-answer rules into `authorPrompt` in `generate-gates.ts` before the next
   authoring batch; re-run the affected first-2 nodes to validate the guardrails hold.
+
+### 8.7 Round 2 (2026-06-16) — root cause found + the fix proven
+**Root cause of the bad maths:** authoring ran on **Haiku** (cheapest model), not a frontier model — the
+hard cost rule forced it. **Root cause of "content never improves":** `generate-gates.ts` only wrote gates;
+it never touched node content. Both are now fixed (see the ★ pipeline at the top).
+
+Fixes applied to `generate-gates.ts` / `llm.ts`:
+- **Opus authoring** (`--strong`) — the decisive lever.
+- **Content-improvement pass** (`--improve-content`) grounded in the NCERT OCR text.
+- **Scope-guard** (already-taught allow-list), **arithmetic self-check**, **no-false-premise**,
+  **clean-answer**, **honest sketch-skip**, **clean-slate re-author**, and **authoritative-source search**.
+
+Re-audited results (Opus + content pass):
+- **cbse10 `manipulate-prime-powers`** — content rewritten correct & concrete; the equation `2²×3³×5`
+  now **540** (was 1350); mcq `2³×3²×5 = 360` (with 1350 demoted to a *distractor*); explain reframed as a
+  true "find the student's error" task; sketches kept as a factor tree + exponent tally. Sources now
+  Vedantu/Byjus **NCERT-exemplar** pages.
+- **cbse12 `relation-definition`** — content NCERT-grounded (cites the Class-XI functions link); arrow
+  diagram + 3×3 grid (flags `(2,3)≠(3,2)`); explain rebuts a real misconception; mcq "which is NOT a
+  relation" with `∅` / all-of-`A×B` distractors; equation `2⁶ = 64`. All in-scope, all correct.
+
+**Verdict:** quality is now genuinely high and consistent across two exams. Borderline-but-acceptable: a
+gate may touch the *named purpose* of a node (e.g. pick-greatest-exponent → LCM value) when the node's own
+key moves include it. Remaining lever if needed later: deepen web-search beyond a single query.
+
+### 8.8 Opus vs Sonnet (2026-06-16) — Sonnet is the default
+Same pipeline, `--model claude-sonnet-4-6` on 3 fresh order-10 nodes (cbse10 `decide-ends-with-digit-via-primes`,
+cbse12 `composition-of-functions`, jee `compute-the-union-of-sets`), audited line-by-line vs the Opus output:
+- **Every numeric answer correct** ($4^n=2^{2n}$ FTA argument; $(g\circ f)(2)=17$; $|\{1..6\}\cup\{4..9\}|=9$),
+  all in-scope, clean answers, good distractors, and **scope-aware sketch-skips** (it noted a union Venn would
+  need intersection = a different node).
+- **No quality drop vs Opus** on this sample, at **~half the cost**.
+
+**Conclusion: author with Sonnet by default.** Opus (`--strong`) only for a node that proves shaky or a final
+verify pass. Haiku remains forbidden for authoring (it's the one that produced wrong maths). Caveat: 3-node
+sample — keep auditing as we scale; if Sonnet slips on a harder node, escalate that node to Opus.
