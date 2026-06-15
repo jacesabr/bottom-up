@@ -114,6 +114,39 @@ GROUP BY concept_id;
 
 ---
 
+## Textbook figures (inline, no cropping) — manual captioning as part of authoring
+
+**Why manual:** captioning must NOT use the Anthropic API (those credits are for live chat only).
+The agent (Claude, in this dev session) views the PNGs directly with the Read tool — **free** — and
+writes the figure→concept mapping. Do this incrementally as nodes are authored/expanded.
+
+**What exists:** 4 visual chapters have extracted figures + a `figures-manifest.json` (page→images):
+`jemh103` (Linear Eq.), `jemh109` (Trig applications), `jemh110` (Circles), `jemh111` (Areas).
+Figures are git-tracked under `content/cbse10/maths/<chapter>/figures/*.png` (~11 MB) and deploy.
+Named figures (`fig_3.1.png`) are clean; `pageNNN_imgM.png` are whole-page images (we serve the whole
+page — no cropping). Other chapters have no figures (they don't need diagrams).
+
+**The mapping lives in `bu_figure`** (`id, chapterId, filename, page, caption, conceptIds[], relevant`).
+Only `relevant = true` rows are served; set it false for logos / page furniture.
+
+**Process to caption a chapter (repeat per chapter):**
+1. List its concepts: `node -e "require('./content/cbse10/maths/jemh103/content.json').nodes.forEach(n=>console.log(n.slug,'::',n.title))"`
+2. View each figure with the Read tool (it renders PNGs): `Read content/cbse10/maths/jemh103/figures/fig_3.1.png`
+3. Write a one-line caption + the concept ids it illustrates, and INSERT into `bu_figure`
+   (see the two seeded rows for `jemh103` — `fig_3.1.png`, `fig_3.2.png` — as the pattern).
+4. That's it — serving + inline display are already wired (below).
+
+**Already wired (don't rebuild):**
+- API serves images: `GET /api/figure/:chapterId/:filename` (path-safe, cached).
+- `GET /api/concept/:conceptId/figures` → the relevant figures for a concept.
+- Teaching: `respond()` passes the concept's figures to the tutor; the model may set `figureRef` to
+  show one inline (Haiku follows this; NIM is flaky). Plus a **deterministic fallback**: if the student
+  asks to "show/see/graph/diagram/draw…" and a figure exists, it's attached regardless of the model.
+- Frontend renders the figure inline in the tutor bubble (`<figure class="tutor-figure">`).
+
+**Seeded sample (verified):** `jemh103` → `solve-graphically` shows `fig_3.1.png` on "show me the graph".
+Remaining: caption the rest of `jemh103` + all of `jemh109/110/111` the same way.
+
 ## Remaining TODOs (not started)
 
 1. **Scale gates to chapters 2–14** (the main job — see above).

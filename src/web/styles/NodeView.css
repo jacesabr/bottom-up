@@ -272,3 +272,9 @@
 .notation-btn.mic.listening { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 .notation-btn.read.on { background: var(--green-soft); border-color: #bcd6c4; color: var(--green); }
+
+.tutor-figure { margin: 8px 0 2px; }
+.tutor-figure img {
+  display: block; max-width: 100%; border-radius: 8px; border: 1px solid var(--rule); background: #fff;
+}
+.tutor-figure figcaption { font-size: 0.78rem; color: var(--dim); margin-top: 4px; }

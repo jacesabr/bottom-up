@@ -17,6 +17,7 @@ interface Msg {
   role: 'tutor' | 'learner';
   text?: string;
   image?: string;
+  figure?: { url: string; caption: string } | null;
 }
 interface Check {
   index: number;
@@ -152,7 +153,7 @@ export default function NodeView({
         body: JSON.stringify({ message: text, lang }),
       });
       const data = await res.json();
-      setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
+      setMessages((m) => [...m, { role: 'tutor', text: data.message, figure: data.figure }]);
       setChecklist(data.checklist ?? []);
       setReadyForGate(!!data.readyForGate);
     } finally {
@@ -286,6 +287,12 @@ export default function NodeView({
                 <div className="bubble-text">
                   {m.image && <img className="bubble-img" src={m.image} alt="handwritten working" />}
                   {m.text && <MathText>{m.text}</MathText>}
+                  {m.figure && (
+                    <figure className="tutor-figure">
+                      <img src={`${apiBase}/${m.figure.url}`} alt={m.figure.caption} loading="lazy" />
+                      <figcaption>📖 {m.figure.caption}</figcaption>
+                    </figure>
+                  )}
                 </div>
               </div>
             ))}

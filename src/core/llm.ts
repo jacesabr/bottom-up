@@ -115,6 +115,39 @@ export async function claudeAuthor(messages: ChatMessage[], maxTokens = 2000): P
   return claudeComplete(messages, maxTokens);
 }
 
+/** Claude Haiku VISION: caption/classify an image (base64). Used by the figure-captioning pass. */
+export async function claudeVision(
+  systemPrompt: string,
+  userText: string,
+  imageBase64: string,
+  mediaType = 'image/png',
+  maxTokens = 400
+): Promise<string> {
+  const key = process.env.ANTHROPIC_API_KEY;
+  if (!key) throw new Error('ANTHROPIC_API_KEY missing');
+  const res = await axios.post(
+    'https://api.anthropic.com/v1/messages',
+    {
+      model: HAIKU_MODEL,
+      max_tokens: maxTokens,
+      system: systemPrompt,
+      messages: [
+        {
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: mediaType, data: imageBase64 } },
+            { type: 'text', text: userText },
+          ],
+        },
+      ],
+    },
+    { headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'Content-Type': 'application/json' }, timeout: 40_000 }
+  );
+  const text = res.data?.content?.[0]?.text;
+  if (!text) throw new Error('Empty Claude vision content');
+  return String(text);
+}
+
 async function claudeComplete(messages: ChatMessage[], maxTokens: number, model: string = HAIKU_MODEL): Promise<string> {
   const key = process.env.ANTHROPIC_API_KEY;
   if (!key) throw new Error('ANTHROPIC_API_KEY missing');

@@ -8,8 +8,9 @@ import {
   buGateAttempt,
   buChatSummary,
   buCorpusGap,
+  buFigure,
 } from '../db/schema.js';
-import { eq, and, asc, gt } from 'drizzle-orm';
+import { eq, and, asc, gt, sql } from 'drizzle-orm';
 import { recomputeAvailabilityAfterPass } from './sequencer.js';
 import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, summarizeConversation, type KeyMove } from './node-agent.js';
 import { languageInstruction } from './languages.js';
@@ -149,6 +150,19 @@ async function markKeyMove(learnerId: string, conceptId: string, chapterId: stri
   });
 }
 
+/** Relevant captioned textbook figures for a concept (served whole-page; no cropping). */
+export async function getConceptFigures(conceptId: string) {
+  const rows = await db
+    .select()
+    .from(buFigure)
+    .where(and(eq(buFigure.relevant, true), sql`${conceptId} = ANY(${buFigure.conceptIds})`));
+  return rows.map((f) => ({
+    id: f.id,
+    caption: f.caption ?? '',
+    url: `figure/${f.chapterId}/${f.filename}`, // relative to apiBase
+  }));
+}
+
 /** Enter a node: emit enter_node, set teaching, bump attempts. Returns concept + whether it's a re-entry. */
 export async function enterNode(learnerId: string, conceptId: string) {
   const c = await loadConcept(conceptId);
@@ -195,6 +209,7 @@ interface TurnResult {
   checklist: Array<{ index: number; text: string; demonstrated: boolean }>;
   readyForGate: boolean;
   provider: string;
+  figure?: { url: string; caption: string } | null;
 }
 
 /** A warm, in-character Socrates opening — instant (no LLM wait), grounded in THIS concept. */
@@ -269,6 +284,7 @@ export async function respond(
   const { summary, recentDialogue } = await buildContext(learnerId, conceptId);
   const isReteach = (await nodeStatus(learnerId, conceptId)) === 'needs_reteach';
   const isOpening = false;
+  const figures = await getConceptFigures(conceptId);
 
   const turn = await teachTurn({
     conceptTitle: c.title,
@@ -280,7 +296,16 @@ export async function respond(
     priorSummary: summary ?? undefined,
     isReteach,
     lang: langCode,
+    figures: figures.map((f) => ({ id: f.id, caption: f.caption })),
   });
+
+  // Resolve a referenced figure to a servable image (shown inline by the client).
+  let figure = turn.figureRef ? figures.find((f) => f.id === turn.figureRef) ?? null : null;
+  // Deterministic safety net: if the student explicitly asks to SEE something and we have a figure,
+  // show it even if the model forgot to set figureRef (so a direct "show me the graph" always works).
+  if (!figure && figures.length && learnerMessage && /\b(show|see|look|picture|graph|diagram|draw|visual|what.*look)\b/i.test(learnerMessage)) {
+    figure = figures[0];
+  }
 
   // Corpus gap: the tutor couldn't answer from our content — log it for review (→ corpus_gap.md).
   if (turn.corpusGap?.missing) {
@@ -338,6 +363,7 @@ export async function respond(
     checklist: updated,
     readyForGate: allShown || turn.readyForGate,
     provider: turn.provider,
+    figure: figure ? { url: figure.url, caption: figure.caption } : null,
   };
 }
 

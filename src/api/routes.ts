@@ -2,7 +2,7 @@ import express from 'express';
 import { db } from '../db/index.js';
 import { buNodePerformance } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
-import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch } from '../core/teach-loop.js';
+import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures } from '../core/teach-loop.js';
 import { LANGUAGES } from '../core/languages.js';
 import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
 
@@ -11,6 +11,37 @@ const router = express.Router();
 // Supported teaching/voice languages (for the UI selector).
 router.get('/languages', (_req, res) => {
   res.json({ languages: Object.values(LANGUAGES) });
+});
+
+// Serve a textbook figure image: chapterId "cbse10:maths:jemh103" → content/cbse10/maths/jemh103/figures/<file>
+router.get('/figure/:chapterId/:filename', async (req, res) => {
+  try {
+    const { chapterId, filename } = req.params;
+    if (filename.includes('..') || filename.includes('/') || filename.includes('\\')) {
+      return res.status(400).end();
+    }
+    const fs = await import('fs');
+    const path = await import('path');
+    const rel = chapterId.replace(/:/g, path.sep);
+    const file = path.join(process.cwd(), 'content', rel, 'figures', filename);
+    if (!fs.existsSync(file)) return res.status(404).end();
+    res.setHeader('Cache-Control', 'public, max-age=86400');
+    fs.createReadStream(file).pipe(res);
+  } catch (err) {
+    console.error('figure serve error:', err);
+    res.status(500).end();
+  }
+});
+
+// Relevant figures for a concept (the captioned mappings).
+router.get('/concept/:conceptId/figures', async (req, res) => {
+  try {
+    const figs = await getConceptFigures(req.params.conceptId);
+    res.json({ figures: figs });
+  } catch (err) {
+    console.error('concept figures error:', err);
+    res.status(500).json({ error: 'Failed to load figures' });
+  }
 });
 
 // List chapters for an exam+subject (strict-linear status). 14 maths chapters.

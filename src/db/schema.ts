@@ -121,6 +121,19 @@ export const buChatSummary = pgTable('bu_chat_summary', {
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().$onUpdate(() => new Date()),
 });
 
+// Textbook figures: a Haiku-vision captioning pass maps each extracted page image to the concept(s)
+// it illustrates, so the tutor can serve the right whole-page figure inline (no cropping needed).
+export const buFigure = pgTable('bu_figure', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  chapterId: text('chapter_id').notNull(),
+  filename: text('filename').notNull(), // e.g. page003_img2.png — served from content/.../figures/
+  page: integer('page'),
+  caption: text('caption'), // one-line description of what the figure shows
+  conceptIds: text('concept_ids').array().notNull().default([]), // concepts it illustrates
+  relevant: boolean('relevant').default(false), // false = logo/decoration/page furniture (don't serve)
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+});
+
 // Corpus gaps: when the tutor can't answer from the concept's material, we log what was missing so
 // we can review occasionally and decide whether to research + add content. Exported to corpus_gap.md.
 export const buCorpusGap = pgTable('bu_corpus_gap', {

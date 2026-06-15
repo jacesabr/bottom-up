@@ -164,6 +164,7 @@ export interface TeachTurnInput {
   isReteach?: boolean;
   lang?: string;
   priorSummary?: string; // running summary of earlier conversation (cold-start resume)
+  figures?: Array<{ id: string; caption: string }>; // textbook figures available for this concept
 }
 
 export interface TeachTurnOutput {
@@ -173,6 +174,7 @@ export interface TeachTurnOutput {
   readyForGate: boolean;
   provider: string;
   corpusGap?: { question: string; missing: string } | null;
+  figureRef?: string | null; // id of a textbook figure to show inline this turn
 }
 
 function buildMessages(input: TeachTurnInput): ChatMessage[] {
@@ -216,7 +218,11 @@ HOW TO TEACH (read carefully — this is the whole job):
 ${input.isReteach ? '- They just missed a check, so re-approach from a completely fresh, even simpler angle — no shame, lots of warmth.' : ''}
 
 If the student asks something you genuinely CANNOT answer from "Your ONLY source of truth" above (the content is missing it), do NOT make facts up — gently keep them on the current concept, and set "corpusGap" to flag what our material was missing.
-
+${
+  input.figures && input.figures.length
+    ? `\nTEXTBOOK FIGURES available for this concept (you may show ONE when it genuinely helps the student SEE what you're explaining — e.g. a graph or diagram). To show one, set "figureRef" to its id. Only when truly useful, not every turn:\n${input.figures.map((f) => `  - ${f.id}: ${f.caption}`).join('\n')}\n`
+    : ''
+}
 Then quietly judge which of your private ideas they've now genuinely demonstrated, and which misunderstandings showed.
 
 Return ONLY a JSON object, no prose around it (write "message" in natural English — it will be translated for the student if needed):
@@ -225,7 +231,8 @@ Return ONLY a JSON object, no prose around it (write "message" in natural Englis
   "keyMovesDemonstrated": [{ "index": <int>, "evidence": "<the learner words that prove it>" }],
   "misconceptionsSeen": ["<short label>"],
   "readyForGate": <true if ALL key moves are now demonstrated>,
-  "corpusGap": null | { "question": "<what they asked>", "missing": "<what our content lacked, one short phrase>" }
+  "corpusGap": null | { "question": "<what they asked>", "missing": "<what our content lacked, one short phrase>" },
+  "figureRef": null | "<id of a figure to show this turn, or null>"
 }`;
 
   const summaryBlock = input.priorSummary
@@ -257,6 +264,7 @@ export async function teachTurn(input: TeachTurnInput): Promise<TeachTurnOutput>
         readyForGate: !!parsed.readyForGate,
         provider: resolveProvider(),
         corpusGap: cg && cg.missing ? { question: String(cg.question ?? ''), missing: String(cg.missing) } : null,
+        figureRef: parsed.figureRef ? String(parsed.figureRef) : null,
       };
     }
   } catch {
