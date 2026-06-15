@@ -88,3 +88,88 @@ export function speak(text: string, speechLang: string) {
 export function stopSpeaking() {
   if (ttsSupported()) window.speechSynthesis.cancel();
 }
+
+// ---- Server-backed voice (Sarvam/ElevenLabs/Deepgram), with browser fallback ----
+
+let currentAudio: HTMLAudioElement | null = null;
+
+/** Read aloud via the server TTS chain (good Indic voices); fall back to the browser if it returns nothing. */
+export async function speakSmart(text: string, langCode: string, speechLang: string, apiBase: string) {
+  stopSpeaking();
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+  }
+  try {
+    const res = await fetch(`${apiBase}/tts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, lang: langCode }),
+    });
+    const d = await res.json();
+    if (d?.audioBase64) {
+      currentAudio = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.audioBase64}`);
+      await currentAudio.play();
+      return;
+    }
+  } catch {
+    /* fall through to browser */
+  }
+  speak(text, speechLang); // browser fallback
+}
+
+/**
+ * Record one utterance from the mic and transcribe via the server STT chain (Deepgram/Sarvam),
+ * falling back to the browser. Returns a stop() that finalises + transcribes. onText gets the result.
+ */
+export async function recordAndTranscribe(
+  langCode: string,
+  speechLang: string,
+  apiBase: string,
+  onText: (text: string) => void,
+  onEnd: () => void
+): Promise<() => void> {
+  // Prefer real audio capture → server STT (accurate for Indian languages).
+  if (typeof navigator !== 'undefined' && navigator.mediaDevices?.getUserMedia && typeof MediaRecorder !== 'undefined') {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const rec = new MediaRecorder(stream);
+      const chunks: BlobPart[] = [];
+      rec.ondataavailable = (e) => e.data.size && chunks.push(e.data);
+      rec.onstop = async () => {
+        stream.getTracks().forEach((t) => t.stop());
+        try {
+          const blob = new Blob(chunks, { type: rec.mimeType || 'audio/webm' });
+          const b64 = await blobToBase64(blob);
+          const res = await fetch(`${apiBase}/transcribe`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ audioBase64: b64, mime: blob.type, lang: langCode }),
+          });
+          const d = await res.json();
+          if (d?.transcript) onText(d.transcript);
+        } catch {
+          /* ignore */
+        } finally {
+          onEnd();
+        }
+      };
+      rec.start();
+      return () => rec.state !== 'inactive' && rec.stop();
+    } catch {
+      /* fall through to browser STT */
+    }
+  }
+  // Browser fallback.
+  const stop = listen(speechLang, onText, onEnd);
+  return stop;
+}
+
+function blobToBase64(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onloadend = () => resolve(String(r.result));
+    r.onerror = reject;
+    r.readAsDataURL(blob);
+  });
+}

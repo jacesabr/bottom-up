@@ -278,3 +278,22 @@
   display: block; max-width: 100%; border-radius: 8px; border: 1px solid var(--rule); background: #fff;
 }
 .tutor-figure figcaption { font-size: 0.78rem; color: var(--dim); margin-top: 4px; }
+
+.lang-prompt-overlay {
+  position: fixed; inset: 0; background: rgba(28,27,25,0.4); z-index: 60;
+  display: flex; align-items: center; justify-content: center; animation: fadeIn 0.2s ease;
+}
+.lang-prompt {
+  background: var(--card); border: 1px solid var(--rule); border-radius: 16px;
+  padding: 22px; max-width: 380px; width: 90%; box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+.lang-prompt h3 { color: var(--accent); margin-bottom: 6px; }
+.lang-prompt p { font-size: 0.9rem; color: var(--dim); margin-bottom: 14px; }
+.lang-prompt-options { display: flex; flex-direction: column; gap: 8px; }
+.lang-opt {
+  padding: 11px 14px; border: 1px solid var(--rule); border-radius: 10px; background: #fff;
+  cursor: pointer; font-size: 1rem; text-align: left;
+}
+.lang-opt:hover { border-color: var(--accent); background: var(--accent-soft); }
+.lang-opt.sel { border-color: var(--accent); background: var(--accent-soft); font-weight: 700; }
+.lang-opt-en { color: var(--dim); font-size: 0.85rem; }

@@ -15,7 +15,7 @@ import { recomputeAvailabilityAfterPass } from './sequencer.js';
 import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, summarizeConversation, type KeyMove } from './node-agent.js';
 import { languageInstruction } from './languages.js';
 import { nimVision } from './llm.js';
-import { examProfile } from './exam-profile.js';
+import { examProfile, type Track } from './exam-profile.js';
 
 /**
  * The per-node teaching loop (bottom_up.md §4).
@@ -243,7 +243,8 @@ export async function respond(
   conceptId: string,
   learnerMessage?: string,
   opening = false,
-  langCode = 'en'
+  langCode = 'en',
+  track: Track = 'foundation'
 ): Promise<TurnResult> {
   const c = await loadConcept(conceptId);
 
@@ -299,6 +300,8 @@ export async function respond(
     lang: langCode,
     figures: figures.map((f) => ({ id: f.id, caption: f.caption })),
     conceptId,
+    track,
+    advancedContent: (c as any).advancedContent ?? null,
   });
 
   // Resolve a referenced figure to a servable image (shown inline by the client).
@@ -408,11 +411,21 @@ Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer 
   return { message };
 }
 
-/** Ordered gate set for a concept: the 5 authored gates if present, else the original 'book' gate. */
-async function gateSet(conceptId: string) {
+/**
+ * Ordered gate set for a concept. Foundation tier (every learner): the 5 authored gates if present,
+ * else the original 'book' gate. On the ADVANCED track, the advanced-tier gates are appended after
+ * the foundation set (so an advanced learner clears both). 'advanced'-tier gates are never shown to
+ * a foundation learner.
+ */
+async function gateSet(conceptId: string, track: Track = 'foundation') {
   const rows = await db.select().from(gates).where(eq(gates.conceptId, conceptId));
-  const authored = rows.filter((g) => g.kind === 'authored').sort((a, b) => (a.ord ?? 0) - (b.ord ?? 0));
-  return authored.length ? authored : rows;
+  const byOrd = (a: any, b: any) => (a.ord ?? 0) - (b.ord ?? 0);
+  const isAdvanced = (g: any) => g.tier === 'advanced';
+  const authoredFoundation = rows.filter((g) => g.kind === 'authored' && !isAdvanced(g)).sort(byOrd);
+  const base = authoredFoundation.length ? authoredFoundation : rows.filter((g) => !isAdvanced(g));
+  if (track !== 'advanced') return base;
+  const advanced = rows.filter(isAdvanced).sort(byOrd);
+  return [...base, ...advanced];
 }
 
 /** Which gateIds the learner has already cleared (a correct attempt exists). */
@@ -425,8 +438,8 @@ async function passedGateIds(learnerId: string, conceptId: string): Promise<Set<
 }
 
 /** Pose the NEXT uncleared gate in the set (expected/answer never serialised). */
-export async function poseGate(learnerId: string, conceptId: string) {
-  const set = await gateSet(conceptId);
+export async function poseGate(learnerId: string, conceptId: string, track: Track = 'foundation') {
+  const set = await gateSet(conceptId, track);
   if (!set.length) throw new Error(`No gate for concept ${conceptId}`);
   const c = await loadConcept(conceptId);
   const passed = await passedGateIds(learnerId, conceptId);
@@ -465,7 +478,7 @@ export async function poseGate(learnerId: string, conceptId: string) {
  * The node PASSES only when every gate in the set is cleared; a wrong answer gives
  * targeted feedback and the same gate is re-posed (seamless, no hard reset).
  */
-export async function answerGate(learnerId: string, conceptId: string, gateId: string, answer: string, langCode = 'en') {
+export async function answerGate(learnerId: string, conceptId: string, gateId: string, answer: string, langCode = 'en', track: Track = 'foundation') {
   const c = await loadConcept(conceptId);
   const grows = await db.select().from(gates).where(eq(gates.id, gateId));
   if (!grows.length) throw new Error(`Gate not found: ${gateId}`);
@@ -487,18 +500,18 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
       feedback = correct ? 'Correct.' : "That doesn't evaluate to the right value — recheck your working.";
     } else {
       gradedBy = 'equivalence';
-      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer, langCode, conceptId);
+      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer, langCode, conceptId, track);
       correct = r.correct;
       feedback = r.feedback;
     }
   } else if (g.grader === 'rubric') {
     gradedBy = 'rubric';
-    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId);
+    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId, track);
     correct = r.correct;
     feedback = r.feedback;
   } else if (g.grader === 'vision') {
     gradedBy = 'vision';
-    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId);
+    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId, track);
     correct = r.correct;
     feedback = r.feedback;
   } else {
@@ -534,8 +547,8 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
     payload: { gateId, slot: g.slot, correct, gradedBy },
   });
 
-  // Node passes only when the WHOLE set is cleared.
-  const set = await gateSet(conceptId);
+  // Node passes only when the WHOLE set is cleared (advanced track must also clear advanced gates).
+  const set = await gateSet(conceptId, track);
   const passed = await passedGateIds(learnerId, conceptId);
   const allPassed = set.every((gg) => passed.has(gg.id));
 

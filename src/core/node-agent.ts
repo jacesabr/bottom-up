@@ -1,6 +1,6 @@
 import { completeJson, parseLooseJson, resolveProvider, nimVision, claudeTranslate, type ChatMessage } from './llm.js';
 import { languageInstruction, lang } from './languages.js';
-import { examProfile } from './exam-profile.js';
+import { examProfile, type Track } from './exam-profile.js';
 
 export interface GradeResult {
   correct: boolean;
@@ -30,6 +30,15 @@ export async function translateText(text: string, langCode?: string): Promise<st
     .replace(/\*\*([^*]+)\*\*/g, (_m, b) => `**${mask(b)}**`);
 
   const unmask = (s: string) => s.replace(/_\s*(\d+)\s*_/g, (_m, i) => masks[+i] ?? '');
+
+  // 0) Sarvam (best Indic quality) — primary when SARVAM_API_KEY is set.
+  try {
+    const { sarvamTranslate } = await import('./voice.js');
+    const sv = await sarvamTranslate(masked, langCode);
+    if (sv && sv.trim()) return unmask(sv);
+  } catch {
+    /* fall through to free Google */
+  }
 
   // 1) Free Google endpoint (no key).
   try {
@@ -69,9 +78,10 @@ export async function gradeWritten(
   ideal: string | null,
   answer: string,
   langCode?: string,
-  conceptId?: string
+  conceptId?: string,
+  track: Track = 'foundation'
 ): Promise<GradeResult> {
-  const prof = examProfile(conceptId ?? 'cbse10');
+  const prof = examProfile(conceptId ?? 'cbse10', track);
   const messages: ChatMessage[] = [
     {
       role: 'system',
@@ -95,8 +105,8 @@ export async function gradeWritten(
 }
 
 /** Grade a maths answer by checking equivalence to the ideal answer (handles fractions, expressions). */
-export async function gradeEquation(prompt: string, ideal: string | null, answer: string, langCode?: string, conceptId?: string): Promise<GradeResult> {
-  const prof = examProfile(conceptId ?? 'cbse10');
+export async function gradeEquation(prompt: string, ideal: string | null, answer: string, langCode?: string, conceptId?: string, track: Track = 'foundation'): Promise<GradeResult> {
+  const prof = examProfile(conceptId ?? 'cbse10', track);
   const messages: ChatMessage[] = [
     {
       role: 'system',
@@ -124,9 +134,10 @@ export async function gradeSketch(
   ideal: string | null,
   imageDataUrl: string,
   langCode?: string,
-  conceptId?: string
+  conceptId?: string,
+  track: Track = 'foundation'
 ): Promise<GradeResult> {
-  const prof = examProfile(conceptId ?? 'cbse10');
+  const prof = examProfile(conceptId ?? 'cbse10', track);
   const visionPrompt = `You are grading a ${prof.studentLabel}'s hand-drawn answer.
 QUESTION: ${prompt}
 WHAT A CORRECT DRAWING MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled diagram'}
@@ -172,6 +183,8 @@ export interface TeachTurnInput {
   priorSummary?: string; // running summary of earlier conversation (cold-start resume)
   figures?: Array<{ id: string; caption: string }>; // textbook figures available for this concept
   conceptId?: string; // exam:subject:chapter:slug — selects the exam-aware persona/level
+  track?: Track; // 'foundation' (default) | 'advanced' (e.g. JEE Advanced)
+  advancedContent?: string | null; // extra depth/reading, surfaced ONLY on the advanced track
 }
 
 export interface TeachTurnOutput {
@@ -192,7 +205,14 @@ function buildMessages(input: TeachTurnInput): ChatMessage[] {
     .map((t) => `${t.role === 'tutor' ? 'TUTOR' : 'LEARNER'}: ${t.content}`)
     .join('\n');
 
-  const prof = examProfile(input.conceptId ?? 'cbse10');
+  const track: Track = input.track ?? 'foundation';
+  const prof = examProfile(input.conceptId ?? 'cbse10', track);
+  // Advanced track: fold the node's advanced overlay into the source-of-truth (extra depth/reading
+  // the exam expects beyond the foundation). Empty for nearly all nodes → behaves exactly as foundation.
+  const advancedBlock =
+    track === 'advanced' && input.advancedContent?.trim()
+      ? `\n\nADVANCED MATERIAL for the ${prof.level} track (also part of your source of truth — go deeper, hold a higher bar, and weave this in where it fits):\n${input.advancedContent.trim()}`
+      : '';
   const system = `You are a real, warm human ${prof.subject} teacher sitting beside ${prof.teacherAudience}, chatting.
 You teach in the Socratic spirit — you draw understanding out with gentle questions rather than lecturing — but
 above all you sound like an actual caring person, not a script. Use natural, everyday language and contractions.
@@ -200,7 +220,7 @@ React genuinely to what they say. Be encouraging and patient. Short messages, li
 
 You are teaching ONE concept only: "${input.conceptTitle}".
 In plain words it's about: ${input.brief}
-Your ONLY source of truth for facts/examples: ${input.explanation}
+Your ONLY source of truth for facts/examples: ${input.explanation}${advancedBlock}
 
 You are quietly guiding the student to eventually grasp these ideas (NEVER list or quote these — they're your private map):
 ${moves}

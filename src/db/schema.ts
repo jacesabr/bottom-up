@@ -31,6 +31,9 @@ export const concepts = pgTable('concepts', {
   keyMoves: text('key_moves').array().notNull(),
   misconceptions: text('misconceptions').array().notNull(),
   prereqs: text('prereqs').array().notNull(), // concept IDs
+  // Advanced-track overlay (e.g. JEE Advanced): extra reading/depth shown ONLY on the advanced track.
+  // Empty for almost all nodes; hand-filled where a higher bar / board-provided extra resources apply.
+  advancedContent: text('advanced_content'),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 
@@ -51,6 +54,8 @@ export const gates = pgTable('gates', {
   why: text('why'),
   rubric: text('rubric'),
   source: text('source'),
+  // Track tier: 'foundation' (every learner) | 'advanced' (only the advanced track, e.g. JEE Advanced).
+  tier: text('tier').default('foundation'),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 

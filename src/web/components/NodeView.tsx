@@ -3,7 +3,7 @@ import { MathText } from '../lib/MathText';
 import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
-import { listen, speak, stopSpeaking, speechSupported, ttsSupported } from '../lib/voice';
+import { speakSmart, recordAndTranscribe, stopSpeaking } from '../lib/voice';
 import '../styles/NodeView.css';
 
 interface LangOpt {
@@ -61,6 +61,7 @@ export default function NodeView({
   const [lang, setLang] = useState<string>(() => localStorage.getItem('lang') || 'en');
   const [listening, setListening] = useState(false);
   const [autoRead, setAutoRead] = useState<boolean>(() => localStorage.getItem('autoRead') === '1');
+  const [showLangPrompt, setShowLangPrompt] = useState(false);
   const stopListenRef = useRef<(() => void) | null>(null);
   const spokenCount = useRef(0);
 
@@ -81,19 +82,29 @@ export default function NodeView({
     localStorage.setItem('lang', code);
   };
 
+  const startRecording = async () => {
+    setListening(true);
+    stopListenRef.current = await recordAndTranscribe(
+      lang,
+      speechCode,
+      apiBase,
+      (text) => setInput(text),
+      () => setListening(false)
+    );
+  };
+
   const toggleMic = () => {
     if (listening) {
       stopListenRef.current?.();
       setListening(false);
       return;
     }
-    if (!speechSupported()) return;
-    setListening(true);
-    stopListenRef.current = listen(
-      speechCode,
-      (text) => setInput(text),
-      () => setListening(false)
-    );
+    // First-ever mic use → ask which language to speak/learn in (saved for all future calls).
+    if (!localStorage.getItem('micLangAsked')) {
+      setShowLangPrompt(true);
+      return;
+    }
+    startRecording();
   };
 
   // Auto-start: AI opens the conversation (no intro screen).
@@ -126,15 +137,15 @@ export default function NodeView({
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
   }, [messages, busy]);
 
-  // Global read-aloud: when on, speak each NEW tutor message as it arrives.
+  // Global read-aloud: when on, speak each NEW tutor message via the server voice chain.
   useEffect(() => {
-    if (!autoRead || !ttsSupported()) {
+    if (!autoRead) {
       spokenCount.current = messages.length;
       return;
     }
     for (let i = spokenCount.current; i < messages.length; i++) {
       const m = messages[i];
-      if (m.role === 'tutor' && m.text) speak(m.text, speechCode);
+      if (m.role === 'tutor' && m.text) speakSmart(m.text, lang, speechCode, apiBase);
     }
     spokenCount.current = messages.length;
   }, [messages, autoRead, speechCode]);
@@ -387,29 +398,25 @@ export default function NodeView({
                   disabled={busy}
                 />
                 <div className="reply-actions">
-                  {ttsSupported() && (
-                    <button
-                      className={autoRead ? 'notation-btn read on' : 'notation-btn read'}
-                      onClick={() => {
-                        const next = !autoRead;
-                        setAutoRead(next);
-                        localStorage.setItem('autoRead', next ? '1' : '0');
-                        if (!next) stopSpeaking();
-                      }}
-                      title="Read every reply aloud automatically"
-                    >
-                      {autoRead ? '🔊 Read aloud: on' : '🔈 Read aloud: off'}
-                    </button>
-                  )}
-                  {speechSupported() && (
-                    <button
-                      className={listening ? 'notation-btn mic listening' : 'notation-btn mic'}
-                      onClick={toggleMic}
-                      title={`Speak your answer (${langs.find((l) => l.code === lang)?.native || 'English'})`}
-                    >
-                      {listening ? '● listening…' : '🎤 Speak'}
-                    </button>
-                  )}
+                  <button
+                    className={autoRead ? 'notation-btn read on' : 'notation-btn read'}
+                    onClick={() => {
+                      const next = !autoRead;
+                      setAutoRead(next);
+                      localStorage.setItem('autoRead', next ? '1' : '0');
+                      if (!next) stopSpeaking();
+                    }}
+                    title="Read every reply aloud automatically"
+                  >
+                    {autoRead ? '🔊 Read aloud: on' : '🔈 Read aloud: off'}
+                  </button>
+                  <button
+                    className={listening ? 'notation-btn mic listening' : 'notation-btn mic'}
+                    onClick={toggleMic}
+                    title={`Speak your answer (${langs.find((l) => l.code === lang)?.native || 'English'})`}
+                  >
+                    {listening ? '● listening…' : '🎤 Speak'}
+                  </button>
                   <button className="notation-btn" onClick={() => setShowEq((s) => !s)} title="Insert equation">∑ Math</button>
                   <button className="btn-primary" onClick={send} disabled={busy || !input.trim()}>Send</button>
                 </div>
@@ -428,6 +435,32 @@ export default function NodeView({
           />
         </section>
       </div>
+
+      {showLangPrompt && (
+        <div className="lang-prompt-overlay" onClick={() => setShowLangPrompt(false)}>
+          <div className="lang-prompt" onClick={(e) => e.stopPropagation()}>
+            <h3>Which language would you like?</h3>
+            <p>You can speak and learn in your language — or stay in English. You can switch anytime.</p>
+            <div className="lang-prompt-options">
+              {langs.map((l) => (
+                <button
+                  key={l.code}
+                  className={l.code === lang ? 'lang-opt sel' : 'lang-opt'}
+                  onClick={() => {
+                    changeLang(l.code);
+                    localStorage.setItem('micLangAsked', '1');
+                    setShowLangPrompt(false);
+                    startRecording();
+                  }}
+                >
+                  {l.native}
+                  {l.code !== 'en' && <span className="lang-opt-en"> · {l.name}</span>}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {showDetails && (
         <NodeDetails learnerId={learnerId} conceptId={conceptId} apiBase={apiBase} onClose={() => setShowDetails(false)} />

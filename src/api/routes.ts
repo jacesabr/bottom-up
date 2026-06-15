@@ -13,6 +13,36 @@ router.get('/languages', (_req, res) => {
   res.json({ languages: Object.values(LANGUAGES) });
 });
 
+// Read-aloud: text → speech (Sarvam → ElevenLabs → Deepgram-Aura → null=browser TTS).
+router.post('/tts', async (req, res) => {
+  try {
+    const { text, lang } = req.body || {};
+    if (!text) return res.status(400).json({ error: 'No text' });
+    const { synthesize } = await import('../core/voice.js');
+    const out = await synthesize(String(text), lang || 'en');
+    res.json(out ?? { audioBase64: null }); // null → client uses browser TTS
+  } catch (err) {
+    console.error('tts error:', err);
+    res.status(500).json({ error: 'tts failed' });
+  }
+});
+
+// Mic: speech → text (Deepgram → Sarvam → null=browser STT). audio is a base64 data URL or raw base64.
+router.post('/transcribe', async (req, res) => {
+  try {
+    const { audioBase64, mime, lang } = req.body || {};
+    if (!audioBase64) return res.status(400).json({ error: 'No audio' });
+    const b64 = String(audioBase64).includes(',') ? String(audioBase64).split(',')[1] : String(audioBase64);
+    const buf = Buffer.from(b64, 'base64');
+    const { transcribe } = await import('../core/voice.js');
+    const out = await transcribe(buf, mime || 'audio/webm', lang || 'en');
+    res.json(out ?? { transcript: null }); // null → client falls back to browser STT
+  } catch (err) {
+    console.error('transcribe error:', err);
+    res.status(500).json({ error: 'transcribe failed' });
+  }
+});
+
 // Serve a textbook figure image: chapterId "cbse10:maths:jemh103" → content/cbse10/maths/jemh103/figures/<file>
 router.get('/figure/:chapterId/:filename', async (req, res) => {
   try {
@@ -99,9 +129,9 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
 router.post('/learner/:learnerId/node/:conceptId/start', async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
-    const { lang } = req.body || {};
+    const { lang, track } = req.body || {};
     await enterNode(learnerId, conceptId);
-    const turn = await respond(learnerId, conceptId, undefined, true, lang || 'en');
+    const turn = await respond(learnerId, conceptId, undefined, true, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation');
     res.json(turn);
   } catch (err) {
     console.error('Error starting node:', err);
@@ -113,8 +143,8 @@ router.post('/learner/:learnerId/node/:conceptId/start', async (req, res) => {
 router.post('/learner/:learnerId/node/:conceptId/reply', async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
-    const { message, lang } = req.body;
-    const turn = await respond(learnerId, conceptId, message, false, lang || 'en');
+    const { message, lang, track } = req.body;
+    const turn = await respond(learnerId, conceptId, message, false, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation');
     res.json(turn);
   } catch (err) {
     console.error('Error in reply:', err);
@@ -140,7 +170,8 @@ router.post('/learner/:learnerId/node/:conceptId/help', async (req, res) => {
 router.post('/learner/:learnerId/node/:conceptId/gate', async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
-    const gate = await poseGate(learnerId, conceptId);
+    const track = req.query.track === 'advanced' ? 'advanced' : 'foundation';
+    const gate = await poseGate(learnerId, conceptId, track);
     res.json(gate);
   } catch (err) {
     console.error('Error posing gate:', err);
@@ -152,8 +183,8 @@ router.post('/learner/:learnerId/node/:conceptId/gate', async (req, res) => {
 router.post('/learner/:learnerId/node/:conceptId/gate-answer', async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
-    const { gateId, answer, lang } = req.body;
-    const result = await answerGate(learnerId, conceptId, gateId, answer, lang || 'en');
+    const { gateId, answer, lang, track } = req.body;
+    const result = await answerGate(learnerId, conceptId, gateId, answer, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation');
     res.json({
       correct: result.correct,
       feedback: result.feedback,
