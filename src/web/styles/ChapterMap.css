@@ -136,21 +136,11 @@
   justify-content: center;
 }
 
-/* Still to do (everything after the current node) → red. */
-.c.future .dot,
-.c.available .dot {
-  background: #fdeceb;
-  border-color: #d64541;
-  color: #c0392b;
-}
-.c.future:hover .dot { transform: scale(1.08); }
-.c.future .nm { color: var(--ink); }
-
-/* Current node in focus / in progress → glowing highlight. */
+/* Current node (where you are) → green + glowing. */
 .c.current .dot {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  color: var(--accent);
+  background: var(--green-soft);
+  border-color: var(--green);
+  color: var(--green);
   cursor: pointer;
   animation: nodeGlow 1.4s ease-in-out infinite;
 }
@@ -159,8 +149,8 @@
   font-weight: 700;
 }
 @keyframes nodeGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 89, 31, 0.45); }
-  50% { box-shadow: 0 0 0 7px rgba(217, 89, 31, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(63, 125, 79, 0.5); }
+  50% { box-shadow: 0 0 16px 4px rgba(63, 125, 79, 0.55); }
 }
 
 .c.locked .dot::after {
@@ -194,12 +184,12 @@
   color: var(--green);
 }
 
-.l-now::before {
-  color: #c0392b;
+.l-cur::before {
+  color: var(--green);
 }
 
-.l-cur::before {
-  color: var(--accent);
+.l-lock::before {
+  color: var(--lock);
 }
 
 .l-lock::before {

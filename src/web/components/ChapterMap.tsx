@@ -82,9 +82,10 @@ export default function ChapterMap({
                   nodes.find((n) => n.status !== 'passed');
                 return nodes.map((node) => {
                   const isCurrent = current && node.id === current.id;
+                  // cleared → green; current → green + glow; everything ahead → locked + faded
                   const visual =
-                    node.status === 'passed' ? 'done' : isCurrent ? 'current' : 'future';
-                  const clickable = node.status !== 'locked';
+                    node.status === 'passed' ? 'done' : isCurrent ? 'current' : 'locked';
+                  const clickable = node.status === 'passed' || isCurrent;
                   return (
                     <div
                       key={node.id}
@@ -102,9 +103,9 @@ export default function ChapterMap({
             <div className="legend">
               <span className="l-done">done</span>
               <span className="l-cur">you're here</span>
-              <span className="l-now">to do</span>
+              <span className="l-lock">locked</span>
             </div>
-            <div className="hint">Green = done, glowing = where you are, red = still to do. Done concepts stay clickable to revisit.</div>
+            <div className="hint">Green = done &amp; where you are (the glowing one), 🔒 faded = still locked. Done concepts stay clickable to revisit.</div>
           </div>
         </div>
       </div>
