@@ -10,3 +10,4 @@ build/
 # Large source PDFs (textbooks + papers) — kept local; app uses the processed JSON in content/cbse10/maths
 content/cbse10/textbooks/
 content/cbse10/papers-pdf/
+pnpm-lock.yaml

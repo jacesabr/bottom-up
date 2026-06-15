@@ -2,7 +2,6 @@
   "name": "bottom-up-exam-prep",
   "version": "0.0.1",
   "type": "module",
-  "packageManager": "pnpm@11.1.2",
   "engines": {
     "node": ">=20"
   },
