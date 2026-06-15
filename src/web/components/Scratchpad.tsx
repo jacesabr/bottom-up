@@ -1,5 +1,9 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import '../styles/Scratchpad.css';
+
+export interface ScratchpadHandle {
+  exportJpeg: () => string | null;
+}
 
 /**
  * Canvas scratchpad (chat | scratchpad split), modelled on Socratic's ScratchpadCanvas:
@@ -14,7 +18,10 @@ interface ScratchpadProps {
   onSend?: (jpegDataUrl: string) => void;
 }
 
-export default function Scratchpad({ onAttach, onHelp, onSend }: ScratchpadProps) {
+const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratchpad(
+  { onAttach, onHelp, onSend },
+  ref
+) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const drawing = useRef(false);
@@ -29,6 +36,7 @@ export default function Scratchpad({ onAttach, onHelp, onSend }: ScratchpadProps
     if (!canvas) return null;
     return canvas.toDataURL('image/jpeg', 0.75);
   };
+  useImperativeHandle(ref, () => ({ exportJpeg }));
   const handOff = (cb?: (s: string) => void) => () => {
     const data = exportJpeg();
     if (data && cb) cb(data);
@@ -143,4 +151,6 @@ export default function Scratchpad({ onAttach, onHelp, onSend }: ScratchpadProps
       <div className="scratchpad-hint">Rough working — sketch, then Attach / ask for Help / Send it to chat.</div>
     </div>
   );
-}
+});
+
+export default Scratchpad;

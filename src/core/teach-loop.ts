@@ -9,7 +9,7 @@ import {
 } from '../db/schema.js';
 import { eq, and, asc } from 'drizzle-orm';
 import { recomputeAvailabilityAfterPass } from './sequencer.js';
-import { teachTurn, type KeyMove } from './node-agent.js';
+import { teachTurn, gradeWritten, gradeSketch, gradeEquation, type KeyMove } from './node-agent.js';
 import { nimVision } from './llm.js';
 
 /**
@@ -241,19 +241,39 @@ Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer 
   return { message };
 }
 
-/** Pose the node's single gate (expected is never serialised to the client). */
-export async function poseGate(learnerId: string, conceptId: string) {
+/** Ordered gate set for a concept: the 5 authored gates if present, else the original 'book' gate. */
+async function gateSet(conceptId: string) {
   const rows = await db.select().from(gates).where(eq(gates.conceptId, conceptId));
-  if (!rows.length) throw new Error(`No gate for concept ${conceptId}`);
-  const g = rows[0];
-  const c = await loadConcept(conceptId);
+  const authored = rows.filter((g) => g.kind === 'authored').sort((a, b) => (a.ord ?? 0) - (b.ord ?? 0));
+  return authored.length ? authored : rows;
+}
 
+/** Which gateIds the learner has already cleared (a correct attempt exists). */
+async function passedGateIds(learnerId: string, conceptId: string): Promise<Set<string>> {
+  const attempts = await db
+    .select()
+    .from(buGateAttempt)
+    .where(and(eq(buGateAttempt.learnerId, learnerId), eq(buGateAttempt.conceptId, conceptId)));
+  return new Set(attempts.filter((a) => a.correct).map((a) => a.gateId));
+}
+
+/** Pose the NEXT uncleared gate in the set (expected/answer never serialised). */
+export async function poseGate(learnerId: string, conceptId: string) {
+  const set = await gateSet(conceptId);
+  if (!set.length) throw new Error(`No gate for concept ${conceptId}`);
+  const c = await loadConcept(conceptId);
+  const passed = await passedGateIds(learnerId, conceptId);
+
+  const remaining = set.filter((g) => !passed.has(g.id));
+  if (!remaining.length) return { allPassed: true, total: set.length, passedCount: set.length };
+
+  const g = remaining[0];
   await db.insert(buEvent).values({
     learnerId,
     conceptId,
     chapterId: c.chapterId,
     type: 'gate_posed',
-    payload: { gateId: g.id, prompt: g.prompt },
+    payload: { gateId: g.id, prompt: g.prompt, slot: g.slot },
   });
   await db
     .update(buNodePerformance)
@@ -263,13 +283,21 @@ export async function poseGate(learnerId: string, conceptId: string) {
   const expected = g.expected as any;
   return {
     gateId: g.id,
+    slot: g.slot,
     prompt: g.prompt,
     answerType: g.answerType,
     options: g.answerType === 'mcq' ? expected.options : null,
+    index: set.length - remaining.length + 1,
+    total: set.length,
+    allPassed: false,
   };
 }
 
-/** Grade an answer, record the attempt, advance (pass) or re-teach (fail). */
+/**
+ * Grade one gate (mcq/cas deterministic, written→rubric, sketch→vision), record it.
+ * The node PASSES only when every gate in the set is cleared; a wrong answer gives
+ * targeted feedback and the same gate is re-posed (seamless, no hard reset).
+ */
 export async function answerGate(learnerId: string, conceptId: string, gateId: string, answer: string) {
   const c = await loadConcept(conceptId);
   const grows = await db.select().from(gates).where(eq(gates.id, gateId));
@@ -278,16 +306,38 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
   const expected = g.expected as any;
 
   let correct = false;
-  const gradedBy = 'deterministic';
+  let feedback = '';
+  let gradedBy = 'deterministic';
   if (g.grader === 'mcq') {
-    correct = norm(answer) === norm(expected.correct);
+    const strip = (s: string) => norm(s).replace(/[^a-z0-9]/g, '');
+    correct = norm(answer) === norm(expected.correct) || strip(answer) === strip(expected.correct);
+    feedback = correct ? 'Correct.' : 'Not the right option — look again.';
   } else if (g.grader === 'cas') {
-    correct = casEquivalent(answer, expected.equivalentTo);
+    const target = expected.equivalentTo ?? '';
+    // Clean integer target → deterministic CAS; otherwise LLM equivalence vs the ideal answer.
+    if (/^\d+$/.test(String(target).trim())) {
+      correct = casEquivalent(answer, target);
+      feedback = correct ? 'Correct.' : "That doesn't evaluate to the right value — recheck your working.";
+    } else {
+      gradedBy = 'equivalence';
+      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer);
+      correct = r.correct;
+      feedback = r.feedback;
+    }
+  } else if (g.grader === 'rubric') {
+    gradedBy = 'rubric';
+    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer);
+    correct = r.correct;
+    feedback = r.feedback;
+  } else if (g.grader === 'vision') {
+    gradedBy = 'vision';
+    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer);
+    correct = r.correct;
+    feedback = r.feedback;
   } else {
     correct = norm(answer) === norm(expected.correct ?? expected.answer ?? '');
   }
 
-  // attempt number = prior attempts + 1
   const prior = await db
     .select()
     .from(buGateAttempt)
@@ -300,7 +350,8 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
     gateId,
     attemptNo,
     prompt: g.prompt,
-    learnerAnswer: answer,
+    // sketch answers are big data URLs — store a marker, not the whole image
+    learnerAnswer: g.grader === 'vision' ? '[sketch]' : answer,
     correct,
     gradedBy,
     ms: 0,
@@ -310,13 +361,32 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
     conceptId,
     chapterId: c.chapterId,
     type: 'gate_answer',
-    payload: { gateId, answer, correct, gradedBy },
+    payload: { gateId, slot: g.slot, correct, gradedBy },
   });
 
-  if (correct) await passNode(learnerId, conceptId, c.chapterId);
-  else await failNode(learnerId, conceptId, c.chapterId);
+  // Node passes only when the WHOLE set is cleared.
+  const set = await gateSet(conceptId);
+  const passed = await passedGateIds(learnerId, conceptId);
+  const allPassed = set.every((gg) => passed.has(gg.id));
 
-  return { correct };
+  if (allPassed) {
+    await passNode(learnerId, conceptId, c.chapterId);
+  } else if (!correct) {
+    // targeted miss → record a fail (re-teach available), but keep the learner in the gate phase
+    await db.insert(buEvent).values({ learnerId, conceptId, chapterId: c.chapterId, type: 'gate_fail', payload: { gateId } });
+    const perf = await db
+      .select()
+      .from(buNodePerformance)
+      .where(and(eq(buNodePerformance.learnerId, learnerId), eq(buNodePerformance.conceptId, conceptId)));
+    if (perf[0]) {
+      await db
+        .update(buNodePerformance)
+        .set({ fails: (perf[0].fails ?? 0) + 1, firstPass: false })
+        .where(eq(buNodePerformance.id, perf[0].id));
+    }
+  }
+
+  return { correct, feedback, allPassed, passedCount: passed.size, total: set.length };
 }
 
 async function passNode(learnerId: string, conceptId: string, chapterId: string) {

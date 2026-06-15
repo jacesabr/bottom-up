@@ -44,16 +44,23 @@ body {
   flex-direction: column;
 }
 
+/* Full-width shell; each view sets its own max-width (doc pages narrow, tutor wide). */
 .app-main {
   flex: 1;
-  max-width: 660px;
-  margin: 0 auto;
-  padding: 28px 16px 70px;
   width: 100%;
+  padding: 24px 24px 60px;
+}
+
+/* Document-style pages stay readable-narrow and centered. */
+.subject-select,
+.chapter-list,
+.chapter-map {
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   .app-main {
-    padding: 16px;
+    padding: 14px;
   }
 }

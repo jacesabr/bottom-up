@@ -119,17 +119,23 @@ router.post('/learner/:learnerId/node/:conceptId/gate', async (req, res) => {
   }
 });
 
-// Grade the gate answer; pass advances, fail re-teaches.
+// Grade one gate in the set. `answer` is text, or a JPEG data URL for sketch gates.
 router.post('/learner/:learnerId/node/:conceptId/gate-answer', async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
     const { gateId, answer } = req.body;
-    const { correct } = await answerGate(learnerId, conceptId, gateId, answer);
+    const result = await answerGate(learnerId, conceptId, gateId, answer);
     res.json({
-      correct,
-      message: correct
-        ? "That's right — concept passed. The next concepts are now open."
-        : "Not quite — let's look at it again from a different angle, then retry.",
+      correct: result.correct,
+      feedback: result.feedback,
+      allPassed: result.allPassed,
+      passedCount: result.passedCount,
+      total: result.total,
+      message: result.allPassed
+        ? "That's the whole set cleared — concept passed! The next concepts are now open."
+        : result.correct
+          ? 'Correct — on to the next check.'
+          : "Not quite — read the feedback and try this one again.",
     });
   } catch (err) {
     console.error('Error grading gate:', err);

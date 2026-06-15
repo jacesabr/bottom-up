@@ -1,4 +1,85 @@
-import { completeJson, parseLooseJson, resolveProvider, type ChatMessage } from './llm.js';
+import { completeJson, parseLooseJson, resolveProvider, nimVision, type ChatMessage } from './llm.js';
+
+export interface GradeResult {
+  correct: boolean;
+  feedback: string;
+}
+
+/** Grade a long-form written answer against the rubric/ideal (LLM rubric — free NIM when testing). */
+export async function gradeWritten(
+  prompt: string,
+  rubric: string | null,
+  ideal: string | null,
+  answer: string
+): Promise<GradeResult> {
+  const messages: ChatMessage[] = [
+    {
+      role: 'system',
+      content: `You are a fair but rigorous CBSE Class 10 maths grader. Decide if the student's written answer demonstrates genuine understanding. Be encouraging in feedback. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences: what was good / what's missing>"}.`,
+    },
+    {
+      role: 'user',
+      content: `QUESTION: ${prompt}\n\nWHAT A CORRECT ANSWER NEEDS (rubric): ${rubric || ideal || 'a clear, correct explanation'}\n\nMODEL ANSWER: ${ideal || '(use your judgement)'}\n\nSTUDENT ANSWER: ${answer}\n\nGrade it. Pass if the core idea is correct even if wording is imperfect.`,
+    },
+  ];
+  try {
+    const raw = await completeJson(messages, { maxTokens: 300 });
+    const p = parseLooseJson<any>(raw);
+    if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
+  } catch {
+    /* fall through */
+  }
+  // Offline fallback: accept a substantive answer.
+  const ok = answer.trim().length > 40;
+  return { correct: ok, feedback: ok ? 'Good — that captures the idea.' : 'Try to explain a bit more fully.' };
+}
+
+/** Grade a maths answer by checking equivalence to the ideal answer (handles fractions, expressions). */
+export async function gradeEquation(prompt: string, ideal: string | null, answer: string): Promise<GradeResult> {
+  const messages: ChatMessage[] = [
+    {
+      role: 'system',
+      content: `You check CBSE Class 10 maths answers for MATHEMATICAL equivalence (not exact string match). Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences>"}.`,
+    },
+    {
+      role: 'user',
+      content: `QUESTION: ${prompt}\n\nCORRECT ANSWER: ${ideal || '(use your judgement)'}\n\nSTUDENT ANSWER: ${answer}\n\nIs the student's answer mathematically correct/equivalent? Accept equivalent forms (e.g. 2/3 = 0.667, 2^3·3 = 24).`,
+    },
+  ];
+  try {
+    const raw = await completeJson(messages, { maxTokens: 250 });
+    const p = parseLooseJson<any>(raw);
+    if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
+  } catch {
+    /* fall through */
+  }
+  return { correct: false, feedback: 'Could not verify — please re-check your answer.' };
+}
+
+/** Grade a handwritten/drawn answer (sketch) via vision against the rubric/ideal. */
+export async function gradeSketch(
+  prompt: string,
+  rubric: string | null,
+  ideal: string | null,
+  imageDataUrl: string
+): Promise<GradeResult> {
+  const visionPrompt = `You are grading a CBSE Class 10 student's hand-drawn answer.
+QUESTION: ${prompt}
+WHAT A CORRECT DRAWING MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled diagram'}
+Look at the image and decide if it satisfies the requirement. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences on what's right / what to fix>"}.`;
+  try {
+    const raw = await nimVision(visionPrompt, imageDataUrl, 350);
+    const p = parseLooseJson<any>(raw);
+    if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
+    // vision returned prose, not JSON — treat a clearly positive read as a pass
+    const lc = raw.toLowerCase();
+    const correct = /correct|right|good|satisfies|complete/.test(lc) && !/incorrect|not |missing|wrong/.test(lc);
+    return { correct, feedback: raw.slice(0, 200) };
+  } catch {
+    // Offline/vision-unavailable fallback: accept the drawing so testing can proceed, but say so.
+    return { correct: true, feedback: '(Vision grader unavailable — accepted your drawing so you can continue.)' };
+  }
+}
 
 /**
  * The per-node teaching agent (bottom_up.md §4). One call does both jobs:

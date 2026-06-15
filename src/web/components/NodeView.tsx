@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { MathText } from '../lib/MathText';
-import Scratchpad from './Scratchpad';
+import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
 import '../styles/NodeView.css';
@@ -14,6 +14,14 @@ interface Check {
   index: number;
   text: string;
   demonstrated: boolean;
+}
+
+function slotLabel(slot?: string, answerType?: string): string {
+  if (slot === 'sketch1' || slot === 'sketch2' || answerType === 'sketch') return 'draw it';
+  if (slot === 'explain' || answerType === 'written') return 'explain in words';
+  if (slot === 'mcq' || answerType === 'mcq') return 'multiple choice';
+  if (slot === 'equation' || answerType === 'symbolic') return 'solve it';
+  return 'check';
 }
 
 export default function NodeView({
@@ -37,9 +45,11 @@ export default function NodeView({
 
   const [gate, setGate] = useState<any>(null);
   const [gateAnswer, setGateAnswer] = useState('');
+  const [gateFeedback, setGateFeedback] = useState<{ ok: boolean; text: string } | null>(null);
   const [done, setDone] = useState(false);
 
   const scroller = useRef<HTMLDivElement>(null);
+  const padRef = useRef<ScratchpadHandle>(null);
   const base = `${apiBase}/learner/${learnerId}/node/${conceptId}`;
 
   // Auto-start: AI opens the conversation (no intro screen).
@@ -126,36 +136,52 @@ export default function NodeView({
     }
   };
 
-  const startGate = async () => {
+  const poseNextGate = async () => {
     setBusy(true);
+    setGateFeedback(null);
+    setGateAnswer('');
     try {
       const res = await fetch(`${base}/gate`, { method: 'POST' });
-      setGate(await res.json());
+      const data = await res.json();
+      if (data.allPassed) {
+        setDone(true);
+        setGate(null);
+      } else {
+        setGate(data);
+      }
     } finally {
       setBusy(false);
     }
   };
 
   const submitGate = async () => {
-    if (!gateAnswer.trim() || busy) return;
+    if (busy || !gate) return;
+    let answer = gateAnswer.trim();
+    if (gate.answerType === 'sketch') {
+      const img = padRef.current?.exportJpeg();
+      if (!img) return;
+      answer = img;
+    } else if (!answer) {
+      return;
+    }
     setBusy(true);
     try {
       const res = await fetch(`${base}/gate-answer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ gateId: gate.gateId, answer: gateAnswer }),
+        body: JSON.stringify({ gateId: gate.gateId, answer }),
       });
       const data = await res.json();
-      setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
-      if (data.correct) {
+      setGateFeedback({ ok: data.correct, text: data.feedback || data.message });
+      if (data.allPassed) {
+        setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
         setDone(true);
         setGate(null);
-      } else {
-        // Re-teach: drop back into chat, same gate will be re-posed when ready again.
-        setGate(null);
-        setGateAnswer('');
-        setReadyForGate(false);
+      } else if (data.correct) {
+        // cleared this gate → advance to the next one after a beat
+        setTimeout(poseNextGate, 900);
       }
+      // incorrect → keep the same gate, feedback shown, allow retry
     } finally {
       setBusy(false);
     }
@@ -200,14 +226,18 @@ export default function NodeView({
 
             {!done && readyForGate && !gate && (
               <div className="gate-cta">
-                You've shown all the key ideas. <button className="btn-primary sm" onClick={startGate}>Take the quick check →</button>
+                You've shown all the key ideas. <button className="btn-primary sm" onClick={poseNextGate}>Take the checks →</button>
               </div>
             )}
 
             {gate && (
               <div className="gate-card">
+                <div className="gate-progress">
+                  Check {gate.index} of {gate.total} · <span className="gate-slot">{slotLabel(gate.slot, gate.answerType)}</span>
+                </div>
                 <div className="gate-q"><MathText>{gate.prompt}</MathText></div>
-                {gate.options ? (
+
+                {gate.answerType === 'mcq' && gate.options && (
                   <div className="gate-opts">
                     {gate.options.map((o: string, i: number) => (
                       <label key={i} className={gateAnswer === o ? 'gate-opt sel' : 'gate-opt'}>
@@ -216,15 +246,39 @@ export default function NodeView({
                       </label>
                     ))}
                   </div>
-                ) : (
+                )}
+
+                {gate.answerType === 'symbolic' && (
                   <input
                     className="gate-input"
-                    placeholder="e.g. 2^3 * 3^2 * 5 * 7 * 13"
+                    placeholder="Type your answer, e.g. 2^3 * 3^2 * 5"
                     value={gateAnswer}
                     onChange={(e) => setGateAnswer(e.target.value)}
                   />
                 )}
-                <button className="btn-primary sm" onClick={submitGate} disabled={busy || !gateAnswer.trim()}>Submit</button>
+
+                {gate.answerType === 'written' && (
+                  <textarea
+                    className="gate-textarea"
+                    placeholder="Write your explanation in full…"
+                    value={gateAnswer}
+                    onChange={(e) => setGateAnswer(e.target.value)}
+                  />
+                )}
+
+                {gate.answerType === 'sketch' && (
+                  <div className="gate-sketch-note">✏️ Draw your answer on the scratchpad (right), then submit — the tutor will look at it.</div>
+                )}
+
+                {gateFeedback && (
+                  <div className={gateFeedback.ok ? 'gate-fb ok' : 'gate-fb no'}>
+                    <MathText>{gateFeedback.text}</MathText>
+                  </div>
+                )}
+
+                <button className="btn-primary sm" onClick={submitGate} disabled={busy}>
+                  {gate.answerType === 'sketch' ? 'Submit drawing' : 'Submit'}
+                </button>
               </div>
             )}
           </div>
@@ -263,6 +317,7 @@ export default function NodeView({
         {/* Scratchpad pane */}
         <section className="pad-pane">
           <Scratchpad
+            ref={padRef}
             onAttach={sketchSend}
             onSend={sketchSend}
             onHelp={sketchHelp}
