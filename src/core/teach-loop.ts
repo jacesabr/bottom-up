@@ -579,6 +579,15 @@ async function failNode(learnerId: string, conceptId: string, chapterId: string)
 export async function getNodeDetail(learnerId: string, conceptId: string) {
   const c = await loadConcept(conceptId);
 
+  // Stored session memory (the running summary) + any content gaps flagged on this node.
+  const summaryRows = await db
+    .select()
+    .from(buChatSummary)
+    .where(and(eq(buChatSummary.learnerId, learnerId), eq(buChatSummary.conceptId, conceptId)));
+  const sessionSummary = summaryRows[0]?.summary ?? null;
+  const corpusGapRows = await db.select().from(buCorpusGap).where(eq(buCorpusGap.conceptId, conceptId));
+  const corpusGaps = corpusGapRows.map((g) => g.missing).filter(Boolean);
+
   // checklist with the evidence line that proved each key move
   const checkRows = await db
     .select()
@@ -680,6 +689,8 @@ export async function getNodeDetail(learnerId: string, conceptId: string) {
     gateAttempts: attempts.map((a) => ({ attemptNo: a.attemptNo, answer: a.learnerAnswer, correct: a.correct })),
     painPoints,
     notes,
+    sessionSummary,
+    corpusGaps,
   };
 }
 

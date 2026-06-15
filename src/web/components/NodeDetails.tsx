@@ -62,6 +62,24 @@ export default function NodeDetails({
               </section>
             )}
 
+            {d.sessionSummary && (
+              <section>
+                <div className="d-label">Session memory — what's been covered so far</div>
+                <div className="d-session"><MathText>{d.sessionSummary}</MathText></div>
+              </section>
+            )}
+
+            {d.corpusGaps && d.corpusGaps.length > 0 && (
+              <section>
+                <div className="d-label">Content gaps flagged on this concept</div>
+                <ul className="d-gaps">
+                  {d.corpusGaps.map((g: string, i: number) => (
+                    <li key={i}>{g}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             <section>
               <div className="d-label">Concept</div>
               <div className="d-title">{d.concept.title}</div>

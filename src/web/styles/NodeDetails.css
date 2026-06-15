@@ -91,3 +91,10 @@
 .d-gate { margin-bottom: 10px; }
 .d-gate-type { font-size: 0.72rem; font-weight: 700; color: var(--accent); margin-bottom: 3px; }
 .d-gate-q { font-size: 0.9rem; background: #faf7f2; border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 8px; padding: 9px 11px; line-height: 1.5; }
+
+.d-session {
+  font-size: 0.88rem; color: var(--ink); line-height: 1.6; white-space: pre-wrap;
+  background: var(--blue-soft); border: 1px solid #cfe0e8; border-radius: 10px; padding: 11px 13px;
+}
+.d-gaps { list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 0.86rem; }
+.d-gaps li::before { content: '⚠ '; color: var(--accent); }
