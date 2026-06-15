@@ -1,10 +1,10 @@
 import express from 'express';
 import { db } from '../db/index.js';
-import { chapters as chaptersTable, concepts as conceptsTable } from '../db/schema.js';
-import { eq, asc } from 'drizzle-orm';
-import { computeAvailability, initializeChapter } from '../core/sequencer.js';
+import { buNodePerformance } from '../db/schema.js';
+import { eq } from 'drizzle-orm';
 import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch } from '../core/teach-loop.js';
 import { LANGUAGES } from '../core/languages.js';
+import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
 
 const router = express.Router();
 
@@ -18,13 +18,8 @@ router.get('/chapters/:exam/:subject', async (req, res) => {
   try {
     const { exam, subject } = req.params;
     const subjectId = `${exam}:${subject}`;
-    const rows = await db
-      .select()
-      .from(chaptersTable)
-      .where(eq(chaptersTable.subjectId, subjectId));
-
-    // textbook order = jemh1NN ascending by id
-    const ordered = rows.sort((a, b) => a.id.localeCompare(b.id));
+    // Served from the in-memory content cache — 0 DB queries on the hot path.
+    const ordered = await getChaptersForSubject(subjectId);
     const list = ordered.map((c, i) => ({
       id: c.id,
       title: c.title,
@@ -40,31 +35,27 @@ router.get('/chapters/:exam/:subject', async (req, res) => {
 });
 
 // Chapter with this learner's node states (the in-chapter node map).
+// Fast path: exactly 3 reads, no loops, no inserts. Status is DERIVED on the fly; performance
+// rows are only created lazily when the learner actually enters a node (enterNode).
 router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
   try {
     const { learnerId, chapterId } = req.params;
-    const chapter = await db.query.chapters.findFirst({
-      where: (c, { eq }) => eq(c.id, chapterId),
-    });
+
+    // Structure from the in-memory cache (0 DB); only the learner's status hits the DB (1 query).
+    const [chapter, concepts] = await Promise.all([getChapter(chapterId), getConceptsForChapter(chapterId)]);
     if (!chapter) return res.status(404).json({ error: 'Chapter not found' });
+    const perfRows = await db.select().from(buNodePerformance).where(eq(buNodePerformance.learnerId, learnerId));
 
-    await initializeChapter(learnerId, chapterId);
-    const states = await computeAvailability(learnerId, chapterId);
+    const statusOf = new Map(perfRows.map((p) => [p.conceptId, p.status]));
+    const passed = new Set(perfRows.filter((p) => p.status === 'passed').map((p) => p.conceptId));
 
-    const concepts = await db
-      .select()
-      .from(conceptsTable)
-      .where(eq(conceptsTable.chapterId, chapterId))
-      .orderBy(asc(conceptsTable.order));
-
-    const nodes = concepts.map((concept) => ({
-      id: concept.id,
-      slug: concept.slug,
-      title: concept.title,
-      role: concept.role,
-      order: concept.order,
-      status: states.find((s) => s.conceptId === concept.id)?.status ?? 'locked',
-    }));
+    const nodes = concepts.map((concept) => {
+      const existing = statusOf.get(concept.id);
+      let status: string;
+      if (existing) status = existing; // passed | teaching | awaiting_gate | needs_reteach
+      else status = concept.prereqs.every((p) => passed.has(p)) ? 'available' : 'locked';
+      return { id: concept.id, slug: concept.slug, title: concept.title, role: concept.role, order: concept.order, status };
+    });
 
     res.json({ chapter: { id: chapter.id, title: chapter.title }, nodes });
   } catch (err) {

@@ -83,7 +83,7 @@ export async function initializeDatabase() {
 
     console.log('Content loaded successfully');
   } catch (error) {
-    console.error('Failed to load content:', error);
-    throw error;
+    // Non-fatal: content is already present in the DB; just log and continue serving.
+    console.error('Failed to load content (non-fatal):', error);
   }
 }

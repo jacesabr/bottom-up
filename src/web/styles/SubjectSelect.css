@@ -157,7 +157,12 @@ h1 {
 
 .doc-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .doc-link {
-  font-size: 0.82rem; font-weight: 600; color: var(--accent); text-decoration: none;
-  border: 1px solid var(--rule); border-radius: 8px; padding: 5px 11px; white-space: nowrap;
+  font-size: 1.02rem; font-weight: 800; color: #fff; text-decoration: none; white-space: nowrap;
+  background: var(--accent); border: none; border-radius: 10px; padding: 11px 20px;
+  animation: docGlow 1.6s ease-in-out infinite;
 }
-.doc-link:hover { border-color: var(--accent); background: var(--accent-soft); }
+.doc-link:hover { background: #b8480f; transform: translateY(-1px); }
+@keyframes docGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 89, 31, 0.5); }
+  50% { box-shadow: 0 0 20px 5px rgba(217, 89, 31, 0.55); }
+}

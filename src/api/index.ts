@@ -21,10 +21,7 @@ app.use((req, res, next) => {
   }
 });
 
-// Initialize database on startup
-await initializeDatabase();
-
-// Routes
+// Routes (mounted FIRST so the server serves even if the seed-load hiccups)
 app.use('/api', routes);
 
 // Health check
@@ -34,4 +31,10 @@ app.get('/health', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`API server running on port ${PORT}`);
+});
+
+// Seed-load is best-effort and NON-fatal: content is already in the DB, so a transient Neon
+// hiccup (ECONNRESET) on boot must never crash the server. Run after listen, swallow errors.
+initializeDatabase().catch((e) => {
+  console.error('initializeDatabase skipped (non-fatal):', e?.message ?? e);
 });
