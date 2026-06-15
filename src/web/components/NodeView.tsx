@@ -3,7 +3,15 @@ import { MathText } from '../lib/MathText';
 import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
+import { listen, speak, speechSupported, ttsSupported } from '../lib/voice';
 import '../styles/NodeView.css';
+
+interface LangOpt {
+  code: string;
+  name: string;
+  native: string;
+  speech: string;
+}
 
 interface Msg {
   role: 'tutor' | 'learner';
@@ -48,9 +56,42 @@ export default function NodeView({
   const [gateFeedback, setGateFeedback] = useState<{ ok: boolean; text: string } | null>(null);
   const [done, setDone] = useState(false);
 
+  const [langs, setLangs] = useState<LangOpt[]>([]);
+  const [lang, setLang] = useState<string>(() => localStorage.getItem('lang') || 'en');
+  const [listening, setListening] = useState(false);
+  const stopListenRef = useRef<(() => void) | null>(null);
+
   const scroller = useRef<HTMLDivElement>(null);
   const padRef = useRef<ScratchpadHandle>(null);
   const base = `${apiBase}/learner/${learnerId}/node/${conceptId}`;
+  const speechCode = langs.find((l) => l.code === lang)?.speech || 'en-IN';
+
+  useEffect(() => {
+    fetch(`${apiBase}/languages`)
+      .then((r) => r.json())
+      .then((d) => setLangs(d.languages || []))
+      .catch(() => setLangs([]));
+  }, [apiBase]);
+
+  const changeLang = (code: string) => {
+    setLang(code);
+    localStorage.setItem('lang', code);
+  };
+
+  const toggleMic = () => {
+    if (listening) {
+      stopListenRef.current?.();
+      setListening(false);
+      return;
+    }
+    if (!speechSupported()) return;
+    setListening(true);
+    stopListenRef.current = listen(
+      speechCode,
+      (text) => setInput(text),
+      () => setListening(false)
+    );
+  };
 
   // Auto-start: AI opens the conversation (no intro screen).
   useEffect(() => {
@@ -58,7 +99,11 @@ export default function NodeView({
     (async () => {
       setBusy(true);
       try {
-        const res = await fetch(`${base}/start`, { method: 'POST' });
+        const res = await fetch(`${base}/start`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lang }),
+        });
         const data = await res.json();
         if (cancelled) return;
         setMessages([{ role: 'tutor', text: data.message }]);
@@ -72,7 +117,7 @@ export default function NodeView({
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [conceptId]);
+  }, [conceptId, lang]);
 
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
@@ -89,7 +134,7 @@ export default function NodeView({
       const res = await fetch(`${base}/reply`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ message: text, lang }),
       });
       const data = await res.json();
       setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
@@ -108,7 +153,7 @@ export default function NodeView({
       const res = await fetch(`${base}/help`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image: img }),
+        body: JSON.stringify({ image: img, lang }),
       });
       const data = await res.json();
       setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
@@ -125,7 +170,7 @@ export default function NodeView({
       const res = await fetch(`${base}/reply`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: '[I shared my handwritten working on the scratchpad.]' }),
+        body: JSON.stringify({ message: '[I shared my handwritten working on the scratchpad.]', lang }),
       });
       const data = await res.json();
       setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
@@ -169,7 +214,7 @@ export default function NodeView({
       const res = await fetch(`${base}/gate-answer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ gateId: gate.gateId, answer }),
+        body: JSON.stringify({ gateId: gate.gateId, answer, lang }),
       });
       const data = await res.json();
       setGateFeedback({ ok: data.correct, text: data.feedback || data.message });
@@ -199,6 +244,20 @@ export default function NodeView({
           ))}
           <span className="checklist-count">{shown}/{checklist.length} ideas</span>
         </div>
+        {langs.length > 0 && (
+          <select
+            className="lang-select"
+            value={lang}
+            onChange={(e) => changeLang(e.target.value)}
+            title="Teach, speak & type in this language"
+          >
+            {langs.map((l) => (
+              <option key={l.code} value={l.code}>
+                {l.native}
+              </option>
+            ))}
+          </select>
+        )}
         <button className="details-btn" onClick={() => setShowDetails(true)}>ⓘ Details</button>
       </div>
 
@@ -208,7 +267,12 @@ export default function NodeView({
           <div className="chat-scroll" ref={scroller}>
             {messages.map((m, i) => (
               <div key={i} className={`bubble ${m.role}`}>
-                <div className="bubble-label">{m.role === 'tutor' ? 'Tutor' : 'You'}</div>
+                <div className="bubble-label">
+                  {m.role === 'tutor' ? 'Tutor' : 'You'}
+                  {m.role === 'tutor' && m.text && ttsSupported() && (
+                    <button className="speak-btn" title="Read aloud" onClick={() => speak(m.text!, speechCode)}>🔊</button>
+                  )}
+                </div>
                 <div className="bubble-text">
                   {m.image && <img className="bubble-img" src={m.image} alt="handwritten working" />}
                   {m.text && <MathText>{m.text}</MathText>}
@@ -306,6 +370,15 @@ export default function NodeView({
                   disabled={busy}
                 />
                 <div className="reply-actions">
+                  {speechSupported() && (
+                    <button
+                      className={listening ? 'notation-btn mic listening' : 'notation-btn mic'}
+                      onClick={toggleMic}
+                      title={`Speak your answer (${langs.find((l) => l.code === lang)?.native || 'English'})`}
+                    >
+                      {listening ? '● listening…' : '🎤 Speak'}
+                    </button>
+                  )}
                   <button className="notation-btn" onClick={() => setShowEq((s) => !s)} title="Insert equation">∑ Math</button>
                   <button className="btn-primary" onClick={send} disabled={busy || !input.trim()}>Send</button>
                 </div>

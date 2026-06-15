@@ -259,3 +259,14 @@
 .gate-fb { padding: 9px 12px; border-radius: 8px; font-size: 0.9rem; }
 .gate-fb.ok { background: var(--green-soft); border: 1px solid #bcd6c4; color: var(--green); }
 .gate-fb.no { background: rgba(217,89,31,0.08); border: 1px solid #f0cdb6; color: var(--accent); }
+
+.lang-select {
+  padding: 5px 8px; border: 1px solid var(--rule); border-radius: 8px;
+  background: var(--card); font-size: 0.85rem; cursor: pointer; color: var(--ink);
+}
+.speak-btn {
+  background: none; border: none; cursor: pointer; font-size: 0.78rem;
+  margin-left: 6px; opacity: 0.7; padding: 0;
+}
+.speak-btn:hover { opacity: 1; }
+.notation-btn.mic.listening { background: var(--accent); color: #fff; border-color: var(--accent); }

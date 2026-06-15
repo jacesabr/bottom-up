@@ -9,7 +9,8 @@ import {
 } from '../db/schema.js';
 import { eq, and, asc } from 'drizzle-orm';
 import { recomputeAvailabilityAfterPass } from './sequencer.js';
-import { teachTurn, gradeWritten, gradeSketch, gradeEquation, type KeyMove } from './node-agent.js';
+import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, type KeyMove } from './node-agent.js';
+import { languageInstruction } from './languages.js';
 import { nimVision } from './llm.js';
 
 /**
@@ -129,8 +130,41 @@ interface TurnResult {
   provider: string;
 }
 
-/** Produce the next tutor turn. If learnerMessage is given, record it first and apply the checklist delta. */
-export async function respond(learnerId: string, conceptId: string, learnerMessage?: string): Promise<TurnResult> {
+/** A warm, in-character Socrates opening — instant (no LLM wait), grounded in THIS concept. */
+function socratesOpening(c: any, nextMoveText?: string, returning = false): string {
+  const q = nextMoveText
+    ? `Tell me first, in your own words — ${nextMoveText.charAt(0).toLowerCase()}${nextMoveText.slice(1)}?`
+    : `What do you already notice about this?`;
+
+  if (returning) {
+    // Gentle reminder for a learner who's been here before — assume they may have forgotten.
+    return (
+      `Welcome back, my friend. 🙂\n\n` +
+      `Quick reminder of what's here for you: **Details** (top-right) shows what we'll cover; the **scratchpad** on the ` +
+      `right is for rough working — **Attach** it or hit **Help me** and I'll look; and you can **🎤 speak** your ideas ` +
+      `instead of typing, plus tap **🔊** to hear me read a reply aloud. Talking a problem through out loud really does help it click.\n\n` +
+      `Now — **${c.title}**. ${q}`
+    );
+  }
+
+  return (
+    `Hello, my friend. 🙂 I am your tutor — think of me as your Socrates: I won't lecture at you, ` +
+    `I'll ask, you'll think, and together we'll arrive at the truth. There's no failing here — we simply keep questioning until it's clear.\n\n` +
+    `💡 A few things that help: tap **Details** (top-right) to see what we'll cover; use the **scratchpad** on the right for rough ` +
+    `working, then **Attach** it or hit **Help me** and I'll look; you can **🎤 speak** your ideas instead of typing (talking a ` +
+    `problem through really helps it click), and tap **🔊** on any of my replies to hear it read aloud.\n\n` +
+    `So, let us begin with **${c.title}**. ${c.brief}\n\n${q}`
+  );
+}
+
+/** Produce the next tutor turn. `opening` forces a fresh warm open every time a node is entered. */
+export async function respond(
+  learnerId: string,
+  conceptId: string,
+  learnerMessage?: string,
+  opening = false,
+  langCode = 'en'
+): Promise<TurnResult> {
   const c = await loadConcept(conceptId);
 
   if (learnerMessage && learnerMessage.trim()) {
@@ -143,10 +177,33 @@ export async function respond(learnerId: string, conceptId: string, learnerMessa
     });
   }
 
-  const dialogue = await reconstructDialogue(learnerId, conceptId);
   const checklist = await loadChecklist(learnerId, conceptId, c.keyMoves);
+
+  // OPENING: instant warm Socrates open (English template); translated for other languages.
+  if (opening) {
+    const nextMove = checklist.find((k) => !k.demonstrated);
+    const enterCount = (
+      await db
+        .select()
+        .from(buEvent)
+        .where(and(eq(buEvent.learnerId, learnerId), eq(buEvent.type, 'enter_node')))
+    ).length;
+    const returning = enterCount > 1; // they've entered some node before → gentle reminder
+    let message = socratesOpening(c, nextMove?.text, returning);
+    if (langCode !== 'en') message = await translateText(message, langCode);
+    await db.insert(buEvent).values({
+      learnerId,
+      conceptId,
+      chapterId: c.chapterId,
+      type: 'tutor_turn',
+      payload: { message },
+    });
+    return { message, checklist, readyForGate: false, provider: 'opening' };
+  }
+
+  const dialogue = await reconstructDialogue(learnerId, conceptId);
   const isReteach = (await nodeStatus(learnerId, conceptId)) === 'needs_reteach';
-  const isOpening = !learnerMessage && dialogue.length === 0;
+  const isOpening = false;
 
   const turn = await teachTurn({
     conceptTitle: c.title,
@@ -156,6 +213,7 @@ export async function respond(learnerId: string, conceptId: string, learnerMessa
     misconceptions: c.misconceptions,
     dialogue,
     isReteach,
+    lang: langCode,
   });
 
   // Apply checklist delta
@@ -213,14 +271,14 @@ async function nodeStatus(learnerId: string, conceptId: string): Promise<string 
 }
 
 /** "Help me": read the learner's handwritten working (sketch) and give a short grounded hint. */
-export async function helpWithSketch(learnerId: string, conceptId: string, imageDataUrl: string): Promise<{ message: string }> {
+export async function helpWithSketch(learnerId: string, conceptId: string, imageDataUrl: string, langCode = 'en'): Promise<{ message: string }> {
   const c = await loadConcept(conceptId);
   const checklist = await loadChecklist(learnerId, conceptId, c.keyMoves);
   const nextMove = checklist.find((k) => !k.demonstrated);
 
   const prompt = `You are a warm CBSE Class 10 maths tutor helping with the concept "${c.title}" (${c.brief}).
 The image is the student's handwritten working. Read it, then give ONE short, encouraging hint (1–2 sentences) that nudges them toward${nextMove ? ` this idea: "${nextMove.text}"` : ' finishing'}.
-Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer — just the next nudge.`;
+Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer — just the next nudge.${languageInstruction(langCode)}`;
 
   let message: string;
   try {
@@ -298,7 +356,7 @@ export async function poseGate(learnerId: string, conceptId: string) {
  * The node PASSES only when every gate in the set is cleared; a wrong answer gives
  * targeted feedback and the same gate is re-posed (seamless, no hard reset).
  */
-export async function answerGate(learnerId: string, conceptId: string, gateId: string, answer: string) {
+export async function answerGate(learnerId: string, conceptId: string, gateId: string, answer: string, langCode = 'en') {
   const c = await loadConcept(conceptId);
   const grows = await db.select().from(gates).where(eq(gates.id, gateId));
   if (!grows.length) throw new Error(`Gate not found: ${gateId}`);
@@ -312,26 +370,28 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
     const strip = (s: string) => norm(s).replace(/[^a-z0-9]/g, '');
     correct = norm(answer) === norm(expected.correct) || strip(answer) === strip(expected.correct);
     feedback = correct ? 'Correct.' : 'Not the right option — look again.';
+    if (langCode !== 'en') feedback = await translateText(feedback, langCode);
   } else if (g.grader === 'cas') {
     const target = expected.equivalentTo ?? '';
     // Clean integer target → deterministic CAS; otherwise LLM equivalence vs the ideal answer.
     if (/^\d+$/.test(String(target).trim())) {
       correct = casEquivalent(answer, target);
       feedback = correct ? 'Correct.' : "That doesn't evaluate to the right value — recheck your working.";
+      if (langCode !== 'en') feedback = await translateText(feedback, langCode);
     } else {
       gradedBy = 'equivalence';
-      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer);
+      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer, langCode);
       correct = r.correct;
       feedback = r.feedback;
     }
   } else if (g.grader === 'rubric') {
     gradedBy = 'rubric';
-    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer);
+    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer, langCode);
     correct = r.correct;
     feedback = r.feedback;
   } else if (g.grader === 'vision') {
     gradedBy = 'vision';
-    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer);
+    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer, langCode);
     correct = r.correct;
     feedback = r.feedback;
   } else {

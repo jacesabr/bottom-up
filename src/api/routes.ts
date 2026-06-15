@@ -4,8 +4,14 @@ import { chapters as chaptersTable, concepts as conceptsTable } from '../db/sche
 import { eq, asc } from 'drizzle-orm';
 import { computeAvailability, initializeChapter } from '../core/sequencer.js';
 import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch } from '../core/teach-loop.js';
+import { LANGUAGES } from '../core/languages.js';
 
 const router = express.Router();
+
+// Supported teaching/voice languages (for the UI selector).
+router.get('/languages', (_req, res) => {
+  res.json({ languages: Object.values(LANGUAGES) });
+});
 
 // List chapters for an exam+subject (strict-linear status). 14 maths chapters.
 router.get('/chapters/:exam/:subject', async (req, res) => {
@@ -71,8 +77,9 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
 router.post('/learner/:learnerId/node/:conceptId/start', async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
+    const { lang } = req.body || {};
     await enterNode(learnerId, conceptId);
-    const turn = await respond(learnerId, conceptId);
+    const turn = await respond(learnerId, conceptId, undefined, true, lang || 'en');
     res.json(turn);
   } catch (err) {
     console.error('Error starting node:', err);
@@ -84,8 +91,8 @@ router.post('/learner/:learnerId/node/:conceptId/start', async (req, res) => {
 router.post('/learner/:learnerId/node/:conceptId/reply', async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
-    const { message } = req.body;
-    const turn = await respond(learnerId, conceptId, message);
+    const { message, lang } = req.body;
+    const turn = await respond(learnerId, conceptId, message, false, lang || 'en');
     res.json(turn);
   } catch (err) {
     console.error('Error in reply:', err);
@@ -97,9 +104,9 @@ router.post('/learner/:learnerId/node/:conceptId/reply', async (req, res) => {
 router.post('/learner/:learnerId/node/:conceptId/help', async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
-    const { image } = req.body;
+    const { image, lang } = req.body;
     if (!image) return res.status(400).json({ error: 'No image' });
-    const { message } = await helpWithSketch(learnerId, conceptId, image);
+    const { message } = await helpWithSketch(learnerId, conceptId, image, lang || 'en');
     res.json({ message });
   } catch (err) {
     console.error('Error in help:', err);
@@ -123,8 +130,8 @@ router.post('/learner/:learnerId/node/:conceptId/gate', async (req, res) => {
 router.post('/learner/:learnerId/node/:conceptId/gate-answer', async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
-    const { gateId, answer } = req.body;
-    const result = await answerGate(learnerId, conceptId, gateId, answer);
+    const { gateId, answer, lang } = req.body;
+    const result = await answerGate(learnerId, conceptId, gateId, answer, lang || 'en');
     res.json({
       correct: result.correct,
       feedback: result.feedback,
