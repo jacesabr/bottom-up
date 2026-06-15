@@ -1,0 +1,789 @@
+{
+  "paperId": "jeeadv-2024-p1",
+  "exam": "jee",
+  "subject": "jee",
+  "session": "2024",
+  "kind": "JEE-Advanced",
+  "title": "JEE Advanced 2024 Paper 1",
+  "source": {
+    "sqp": "https://jeeadv.ac.in/past_qps/2024_1_English.pdf",
+    "ms": "",
+    "_verified": "2026-06-12 HTTP 200 (official JEE Advanced past-paper PDF; no public official key for 2024)"
+  },
+  "_provenance": "Question stems + options below are transcribed VERBATIM from the OCR'd official JEE Advanced 2024 Paper 1 QUESTION PAPER (JEEAdv-2024-Paper1.txt at source.sqp); nothing author-invented in the prompts. The source PDF carries NO answer key (`source.ms` is empty). The `correct` answer keys were filled in a LATER pass — they are NOT from the question-paper PDF; each question records its key and stated origin in its own `_answerNote` (e.g. \"Official answer: A, C, D\"). [Verified 2026-06-12: all 45 question stems + options confirmed verbatim against the official IIT PDF; the keys' upstream source is per-question `_answerNote`, not re-derived here.] The paper has three subjects (Mathematics, Physics, Chemistry), each with: Section 1 = single-correct MCQ (+3), Section 2 = one-or-more-correct MCQ (+4), Section 3 = non-negative-integer numeric (+4), Section 4 = Matching-List single-correct MCQ (+3). `q` is renumbered globally 1..N across the whole paper; the original per-subject question number is preserved in `_origQ`. `type`/`grader` is \"mcq\" for every single- and multiple-correct question (incl. all Match-the-List sets) and \"numeric\" for integer questions. Questions whose stem was figure-only or not cleanly recoverable from the OCR are NOT included and are listed in `_skipped` with the reason. Match-the-List sets that depend on a figure for the List-I/List-II content but whose stem is fully legible are kept with `options` = the four combination choices and an `_ocrNote`.",
+  "_skipped": [
+    {
+      "subject": "Mathematics",
+      "origQ": 16,
+      "reason": "Stem missing in OCR. Only a Match-the-List table (γ, a choice for n̂, OR₁, OR₁·n̂) and the four combination options survive (lines 205-217); the question that defines γ, the vectors and OR₁ was not captured, so the prompt is not recoverable."
+    },
+    {
+      "subject": "Chemistry",
+      "origQ": 3,
+      "reason": "Figure-only. Stem reads 'Aspartame ... The structure of aspartame is' followed by an image; no textual options in the OCR."
+    },
+    {
+      "subject": "Chemistry",
+      "origQ": 12,
+      "reason": "Reaction-scheme/figure-dependent and garbled. The reagent ladder (Hg2+/H3O+, Zn-Hg/HCl, …→P) is broken across OCR lines with no clean stem for the leading reactant; not cleanly recoverable."
+    },
+    {
+      "subject": "Chemistry",
+      "origQ": 14,
+      "reason": "Match-the-List set whose List-I (titrate/titrant combinations) and List-II (conductance-vs-volume graphs) live entirely in a figure (_page_26_Figure_6.jpeg). The four combination options are not present in the OCR; the matching content is not recoverable."
+    },
+    {
+      "subject": "Chemistry",
+      "origQ": 16,
+      "reason": "Match-the-List set whose List-I (reaction sequences on drawn structures) and List-II (drawn product structures) are figures; the structures are not textually recoverable, only the four combination options survive."
+    },
+    {
+      "subject": "Chemistry",
+      "origQ": 17,
+      "reason": "Match-the-List set whose List-I and List-II are entirely figures (_page_29_Figure_3.jpeg); only the four combination options survive — the matching content is not recoverable."
+    }
+  ],
+  "questions": [
+    {
+      "q": 1,
+      "_origQ": 1,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-c12-ch09:solve-linear-de",
+      "prompt": "Let f(x) be a continuously differentiable function on the interval (0,∞) such that f(1) = 2 and lim_(t→x) [ t^10 f(x) − x^10 f(t) ] / ( t^9 − x^9 ) = 1 for each x > 0. Then, for all x > 0, f(x) is equal to",
+      "options": [
+        "(31/(11x)) − (9/11)x^10",
+        "(9/(11x)) + (13/11)x^10",
+        "(−9/(11x)) + (31/11)x^10",
+        "(13/(11x)) + (9/11)x^10"
+      ],
+      "correct": "(9/(11x)) + (13/11)x^10"
+    },
+    {
+      "q": 2,
+      "_origQ": 2,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-c12-ch13:bayes-theorem",
+      "prompt": "A student appears for a quiz consisting of only true-false type questions and answers all the questions. The student knows the answers of some questions and guesses the answers for the remaining questions. Whenever the student knows the answer of a question, he gives the correct answer. Assume that the probability of the student giving the correct answer for a question, given that he has guessed it, is 1/2. Also assume that the probability of the answer for a question being guessed, given that the student's answer is correct, is 1/6. Then the probability that the student knows the answer of a randomly chosen question is",
+      "options": [
+        "1/12",
+        "1/7",
+        "5/7",
+        "5/12"
+      ],
+      "correct": "5/7"
+    },
+    {
+      "q": 3,
+      "_origQ": 3,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-ch03:double-angle-identities",
+      "prompt": "Let π/2 < x < π be such that cot x = −5/√11. Then ( sin(11x/2) )( sin 6x − cos 6x ) + ( cos(11x/2) )( sin 6x + cos 6x ) is equal to",
+      "options": [
+        "(√11 − 1)/(2√3)",
+        "(√11 + 1)/(2√3)",
+        "(√11 + 1)/(3√2)",
+        "(√11 − 1)/(3√2)"
+      ],
+      "correct": "(√11 + 1)/(2√3)"
+    },
+    {
+      "q": 4,
+      "_origQ": 4,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-ch10:ellipse-standard-equation",
+      "prompt": "Consider the ellipse x²/9 + y²/4 = 1. Let S(p,q) be a point in the first quadrant such that p²/9 + q²/4 > 1. Two tangents are drawn from S to the ellipse, of which one meets the ellipse at one end point of the minor axis and the other meets the ellipse at a point T in the fourth quadrant. Let R be the vertex of the ellipse with positive x-coordinate and O be the center of the ellipse. If the area of the triangle ΔORT is 3/2, then which of the following options is correct?",
+      "options": [
+        "q = 2, p = 3√3",
+        "q = 2, p = 4√3",
+        "q = 1, p = 5√3",
+        "q = 1, p = 6√3"
+      ],
+      "correct": "q = 2, p = 3√3"
+    },
+    {
+      "q": 5,
+      "_origQ": 5,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-ch01:compute-the-intersection-of-sets",
+      "prompt": "Let S = { a + b√2 : a, b ∈ ℤ }, T₁ = { (−1 + √2)^n : n ∈ ℕ }, and T₂ = { (1 + √2)^n : n ∈ ℕ }. Then which of the following statements is (are) TRUE?",
+      "options": [
+        "ℤ ∪ T₁ ∪ T₂ ⊂ S",
+        "T₁ ∩ (0, 1/2024) = φ, where φ denotes the empty set.",
+        "T₂ ∩ (2024, ∞) ≠ φ",
+        "For any given a, b ∈ ℤ, cos(π(a + b√2)) + i sin(π(a + b√2)) ∈ ℤ if and only if b = 0, where i = √(−1)."
+      ],
+      "correct": "ℤ ∪ T₁ ∪ T₂ ⊂ S | T₂ ∩ (2024, ∞) ≠ φ | For any given a, b ∈ ℤ, cos(π(a + b√2)) + i sin(π(a + b√2)) ∈ ℤ if and only if b = 0, where i = √(−1).",
+      "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq.",
+      "_answerNote": "Multiple-correct. Official answer: A, C, D. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+    },
+    {
+      "q": 6,
+      "_origQ": 6,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-c12-ch04:consistent-system",
+      "prompt": "Let ℝ² denote ℝ × ℝ. Let S = { (a,b,c) : a,b,c ∈ ℝ and ax² + 2bxy + cy² > 0 for all (x,y) ∈ ℝ² − {(0,0)} }. Then which of the following statements is (are) TRUE? (C) For any given (a,b,c) ∈ S, the system of linear equations ax + by = 1, bx + cy = −1 has a unique solution. (D) For any given (a,b,c) ∈ S, the system of linear equations (a+1)x + by = 0, bx + (c+1)y = 0 has a unique solution.",
+      "options": [
+        "(2, 7/2, 6) ∈ S",
+        "If (3, b, 1/12) ∈ S, then |2b| < 1.",
+        "For any given (a,b,c) ∈ S, the system of linear equations ax + by = 1, bx + cy = −1 has a unique solution.",
+        "For any given (a,b,c) ∈ S, the system of linear equations (a+1)x + by = 0, bx + (c+1)y = 0 has a unique solution."
+      ],
+      "correct": "If (3, b, 1/12) ∈ S, then |2b| < 1. | For any given (a,b,c) ∈ S, the system of linear equations ax + by = 1, bx + cy = −1 has a unique solution. | For any given (a,b,c) ∈ S, the system of linear equations (a+1)x + by = 0, bx + (c+1)y = 0 has a unique solution.",
+      "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq.",
+      "_answerNote": "Multiple-correct. Official answer: B, C, D. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+    },
+    {
+      "q": 7,
+      "_origQ": 7,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-ch11:equation-of-set-of-points",
+      "prompt": "Let ℝ³ denote the three-dimensional space. Take two points P = (1, 2, 3) and Q = (4, 2, 7). Let dist(X, Y) denote the distance between two points X and Y in ℝ³. Let S = { X ∈ ℝ³ : (dist(X, P))² − (dist(X, Q))² = 50 } and T = { Y ∈ ℝ³ : (dist(Y, Q))² − (dist(Y, P))² = 50 }. Then which of the following statements is (are) TRUE?",
+      "options": [
+        "There is a triangle whose area is 1 and all of whose vertices are from S.",
+        "There are two distinct points L and M in T such that each point on the line segment LM is also in T.",
+        "There are infinitely many rectangles of perimeter 48, two of whose vertices are from S and the other two vertices are from T.",
+        "There is a square of perimeter 48, two of whose vertices are from S and the other two vertices are from T."
+      ],
+      "correct": "There is a triangle whose area is 1 and all of whose vertices are from S. | There are two distinct points L and M in T such that each point on the line segment LM is also in T. | There are infinitely many rectangles of perimeter 48, two of whose vertices are from S and the other two vertices are from T. | There is a square of perimeter 48, two of whose vertices are from S and the other two vertices are from T.",
+      "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq.",
+      "_answerNote": "Multiple-correct. Official answer: A, B, C, D (all four). `correct` lists all four correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+    },
+    {
+      "q": 8,
+      "_origQ": 8,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:maths:maths-c12-ch05:logarithm-function",
+      "prompt": "Let a = 3√2 and b = 1/(5^(1/6)√6). If x, y ∈ ℝ are such that 3x + 2y = log_a (18)^(5/4) and 2x − y = log_b (√1080), then 4x + 5y is equal to _____.",
+      "correct": "8"
+    },
+    {
+      "q": 9,
+      "_origQ": 9,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:maths:maths-ch04:modulus",
+      "prompt": "Let f(x) = x⁴ + ax³ + bx² + c be a polynomial with real coefficients such that f(1) = −9. Suppose that i√3 is a root of the equation 4x³ + 3ax² + 2bx = 0, where i = √(−1). If α₁, α₂, α₃, and α₄ are all the roots of the equation f(x) = 0, then |α₁|² + |α₂|² + |α₃|² + |α₄|² is equal to _____.",
+      "correct": "20"
+    },
+    {
+      "q": 10,
+      "_origQ": 10,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:maths:maths-c12-ch04:determinant-order-three",
+      "prompt": "Let S = { A = [[0, 1, c], [1, a, d], [1, b, e]] : a, b, c, d, e ∈ {0, 1} and |A| ∈ {−1, 1} }, where |A| denotes the determinant of A. Then the number of elements in S is _____.",
+      "correct": "16"
+    },
+    {
+      "q": 11,
+      "_origQ": 11,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:maths:maths-ch06:combinations-ncr",
+      "prompt": "A group of 9 students, s₁, s₂, ..., s₉, is to be divided to form three teams X, Y, and Z of sizes 2, 3, and 4, respectively. Suppose that s₁ cannot be selected for the team X, and s₂ cannot be selected for the team Y. Then the number of ways to form such teams, is _____.",
+      "correct": "665"
+    },
+    {
+      "q": 12,
+      "_origQ": 12,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:maths:maths-c12-ch10:vector-product",
+      "prompt": "Let OP⃗ = (α−1)/α î + ĵ + k̂, OQ⃗ = î + (β−1)/β ĵ + k̂ and OR⃗ = î + ĵ + (1/2)k̂ be three vectors, where α, β ∈ ℝ∖{0} and O denotes the origin. If (OP⃗ × OQ⃗) · OR⃗ = 0 and the point (α, β, 2) lies on the plane 3x + 3y − z + l = 0, then the value of l is _____.",
+      "correct": "5",
+      "_ocrNote": "OCR rendered the vector components as 'α1/α' and 'β1/β'; transcribed as (α−1)/α and (β−1)/β, the chemically/mathematically intended forms."
+    },
+    {
+      "q": 13,
+      "_origQ": 13,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:maths:maths-c12-ch13:random-variable",
+      "prompt": "Let X be a random variable, and let P(X = x) denote the probability that X takes the value x. Suppose that the points (x, P(X = x)), x = 0, 1, 2, 3, 4, lie on a fixed straight line in the xy-plane, and P(X = x) = 0 for all x ∈ ℝ − {0, 1, 2, 3, 4}. If the mean of X is 5/2, and the variance of X is α, then the value of 24α is _____.",
+      "correct": "42"
+    },
+    {
+      "q": 14,
+      "_origQ": 14,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-c12-ch04:determinant-order-three",
+      "prompt": "Let α and β be the distinct roots of the equation x² + x − 1 = 0. Consider the set T = {1, α, β}. For a 3×3 matrix M = (a_ij)_{3×3}, define R_i = a_{i1} + a_{i2} + a_{i3} and C_j = a_{1j} + a_{2j} + a_{3j} for i = 1, 2, 3 and j = 1, 2, 3. Match each entry in List-I to the correct entry in List-II. List-I: (P) The number of matrices M = (a_ij)_{3×3} with all entries in T such that R_i = C_j = 0 for all i, j, is; (Q) The number of symmetric matrices M = (a_ij)_{3×3} with all entries in T such that C_j = 0 for all j, is; (R) Let M = (a_ij)_{3×3} be a skew symmetric matrix such that a_ij ∈ T for i > j. Then the number of elements in the set { (x, y, z)ᵀ : x, y, z ∈ ℝ, M(x, y, z)ᵀ = (a_12, 0, −a_23)ᵀ } is; (S) Let M = (a_ij)_{3×3} be a matrix with all entries in T such that R_i = 0 for all i. Then the absolute value of the determinant of M is. List-II: (1) 1; (2) 12; (3) infinite; (4) 6; (5) 0. The correct option is",
+      "options": [
+        "(P)→(4) (Q)→(2) (R)→(5) (S)→(1)",
+        "(P)→(2) (Q)→(4) (R)→(1) (S)→(5)",
+        "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)",
+        "(P)→(1) (Q)→(5) (R)→(3) (S)→(4)"
+      ],
+      "correct": "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)",
+      "_answerNote": "Options + correct answer recovered VERBATIM from the official JEE Advanced 2024 Paper 1 question paper (jeeadv.ac.in/past_qps/2024_1_English.pdf, Section 4 Q14, page 7), eyes-on. Official correct option is (C)."
+    },
+    {
+      "q": 15,
+      "_origQ": 15,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-ch10:circle-find-centre-radius",
+      "prompt": "Let the straight line y = 2x touch a circle with center (0, α), α > 0, and radius r at a point A₁. Let B₁ be the point on the circle such that the line segment A₁B₁ is a diameter of the circle. Let α + r = 5 + √5. Match each entry in List-I to the correct entry in List-II. List-I: (P) α equals; (Q) r equals; (R) A₁ equals; (S) B₁ equals. List-II: (1) (−2,4); (2) √5; (3) (−2,6); (4) 5; (5) (2,4). The correct option is",
+      "options": [
+        "(P)→(4) (Q)→(2) (R)→(1) (S)→(3)",
+        "(P)→(2) (Q)→(4) (R)→(1) (S)→(3)",
+        "(P)→(4) (Q)→(2) (R)→(5) (S)→(3)",
+        "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)"
+      ],
+      "correct": "(P)→(4) (Q)→(2) (R)→(5) (S)→(3)"
+    },
+    {
+      "q": 16,
+      "_origQ": 17,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:maths:maths-c12-ch05:differentiable-at-a-point",
+      "prompt": "Let f : ℝ → ℝ and g : ℝ → ℝ be functions defined by f(x) = { x|x| sin(1/x), x ≠ 0; 0, x = 0 } and g(x) = { 1 − 2x, 0 ≤ x ≤ 1/2; 0, otherwise }. Let a, b, c, d ∈ ℝ. Define the function h : ℝ → ℝ by h(x) = a f(x) + b( g(x) + g(1/2 − x) ) + c( x − g(x) ) + d g(x), x ∈ ℝ. Match each entry in List-I to the correct entry in List-II. List-I: (P) If a = 0, b = 1, c = 0, and d = 0, then; (Q) If a = 1, b = 0, c = 0, and d = 0, then; (R) If a = 0, b = 0, c = 1, and d = 0, then; (S) If a = 0, b = 0, c = 0, and d = 1, then. List-II: (1) h is one-one; (2) h is onto; (3) h is differentiable on ℝ; (4) the range of h is [0,1]; (5) the range of h is {0,1}. The correct option is",
+      "options": [
+        "(P)→(4) (Q)→(3) (R)→(1) (S)→(2)",
+        "(P)→(5) (Q)→(2) (R)→(4) (S)→(3)",
+        "(P)→(5) (Q)→(3) (R)→(2) (S)→(4)",
+        "(P)→(4) (Q)→(2) (R)→(1) (S)→(3)"
+      ],
+      "correct": "(P)→(5) (Q)→(3) (R)→(2) (S)→(4)",
+      "_ocrNote": "Original Mathematics Q.17. (Mathematics Q.16 was skipped — its stem was missing in the OCR.)"
+    },
+    {
+      "q": 17,
+      "_origQ": 1,
+      "section": "Physics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch01:dimensional-formula-and-equation",
+      "prompt": "A dimensionless quantity is constructed in terms of electronic charge e, permittivity of free space ε₀, Planck's constant h, and speed of light c. If the dimensionless quantity is written as e^α ε₀^β h^γ c^δ and n is a non-zero integer, then (α, β, γ, δ) is given by",
+      "options": [
+        "(2n, −n, −n, −n)",
+        "(n, −n, −2n, −n)",
+        "(n, −n, −n, −2n)",
+        "(2n, −n, −2n, −2n)"
+      ],
+      "correct": "(2n, −n, −n, −n)"
+    },
+    {
+      "q": 18,
+      "_origQ": 2,
+      "section": "Physics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-c12-ch04:field-straight-wire",
+      "prompt": "An infinitely long wire, located on the z-axis, carries a current I along the +z-direction and produces the magnetic field B⃗. The magnitude of the line integral ∫ B⃗ · dl⃗ along a straight line from the point (−√3 a, a, 0) to (a, a, 0) is given by [μ₀ is the magnetic permeability of free space.]",
+      "options": [
+        "7μ₀I/24",
+        "7μ₀I/12",
+        "μ₀I/8",
+        "μ₀I/6"
+      ],
+      "correct": "7μ₀I/24"
+    },
+    {
+      "q": 19,
+      "_origQ": 3,
+      "section": "Physics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-c12-ch01:coulombs-law",
+      "prompt": "Two beads, each with charge q and mass m, are on a horizontal, frictionless, non-conducting, circular hoop of radius R. One of the beads is glued to the hoop at some point, while the other one performs small oscillations about its equilibrium position along the hoop. The square of the angular frequency of the small oscillations is given by [ε₀ is the permittivity of free space.]",
+      "options": [
+        "q²/(4πε₀R³m)",
+        "q²/(32πε₀R³m)",
+        "q²/(8πε₀R³m)",
+        "q²/(16πε₀R³m)"
+      ],
+      "correct": "q²/(32πε₀R³m)"
+    },
+    {
+      "q": 20,
+      "_origQ": 4,
+      "section": "Physics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch13:force-law-for-shm",
+      "prompt": "A block of mass 5 kg moves along the x-direction subject to the force F = (−20x + 10) N, with the value of x in metre. At time t = 0 s, it is at rest at position x = 1 m. The position and momentum of the block at t = (π/4) s are",
+      "options": [
+        "−0.5 m, 5 kg m/s",
+        "0.5 m, 0 kg m/s",
+        "0.5 m, −5 kg m/s",
+        "−1 m, 5 kg m/s"
+      ],
+      "correct": "0.5 m, −5 kg m/s"
+    },
+    {
+      "q": 21,
+      "_origQ": 5,
+      "section": "Physics",
+      "marks": 4,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-c12-ch12:bohr-postulates",
+      "prompt": "A particle of mass m is moving in a circular orbit under the influence of the central force F(r) = −kr, corresponding to the potential energy V(r) = kr²/2, where k is a positive force constant and r is the radial distance from the origin. According to the Bohr's quantization rule, the angular momentum of the particle is given by L = nℏ, where ℏ = h/(2π), h is the Planck's constant, and n a positive integer. If v and E are the speed and total energy of the particle, respectively, then which of the following expression(s) is(are) correct?",
+      "options": [
+        "r² = nℏ √(1/(mk))",
+        "v² = nℏ √(k/m³)",
+        "L/(mr²) = √(k/m)",
+        "E = (nℏ/2) √(k/m)"
+      ],
+      "correct": "r² = nℏ √(1/(mk)) | v² = nℏ √(k/m³) | L/(mr²) = √(k/m)",
+      "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq.",
+      "_answerNote": "Multiple-correct. Official answer: A, B, C. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+    },
+    {
+      "q": 22,
+      "_origQ": 6,
+      "section": "Physics",
+      "marks": 4,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch14:normal-modes-string",
+      "prompt": "Two uniform strings of mass per unit length μ and 4μ, and length L and 2L, respectively, are joined at point O, and tied at two fixed ends P and Q, as shown in the figure. The strings are under a uniform tension T. If we define the frequency ν₀ = (1/2L)√(T/μ), which of the following statement(s) is(are) correct?",
+      "options": [
+        "With a node at O, the minimum frequency of vibration of the composite string is ν₀.",
+        "With an antinode at O, the minimum frequency of vibration of the composite string is 2ν₀.",
+        "When the composite string vibrates at the minimum frequency with a node at O, it has 6 nodes, including the end nodes.",
+        "No vibrational mode with an antinode at O is possible for the composite string."
+      ],
+      "correct": "With a node at O, the minimum frequency of vibration of the composite string is ν₀. | When the composite string vibrates at the minimum frequency with a node at O, it has 6 nodes, including the end nodes. | No vibrational mode with an antinode at O is possible for the composite string.",
+      "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq. References figure _page_12_Figure_3.jpeg.",
+      "_answerNote": "Multiple-correct. Official answer: A, C, D. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+    },
+    {
+      "q": 23,
+      "_origQ": 7,
+      "section": "Physics",
+      "marks": 4,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-c12-ch09:refraction-spherical-surface",
+      "prompt": "A glass beaker has a solid, plano-convex base of refractive index 1.60, as shown in the figure. The radius of curvature of the convex surface (SPU) is 9 cm, while the planar surface (STU) acts as a mirror. This beaker is filled with a liquid of refractive index n up to the level QPR. If the image of a point object O at a height of h (OT in the figure) is formed onto itself, then, which of the following option(s) is(are) correct?",
+      "options": [
+        "For n = 1.42, h = 50 cm.",
+        "For n = 1.35, h = 36 cm.",
+        "For n = 1.45, h = 65 cm.",
+        "For n = 1.48, h = 85 cm."
+      ],
+      "correct": "For n = 1.42, h = 50 cm. | For n = 1.35, h = 36 cm.",
+      "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq. References figure _page_12_Figure_8.jpeg.",
+      "_answerNote": "Multiple-correct. Official answer: A, B. `correct` lists the two correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+    },
+    {
+      "q": 24,
+      "_origQ": 8,
+      "section": "Physics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch10:apply-specific-heat-capacity",
+      "prompt": "The specific heat capacity of a substance is temperature dependent and is given by the formula C = kT, where k is a constant of suitable dimensions in SI units, and T is the absolute temperature. If the heat required to raise the temperature of 1 kg of the substance from −73°C to 27°C is nk, the value of n is _____. [Given: 0 K = −273 °C.]",
+      "correct": "25000"
+    },
+    {
+      "q": 25,
+      "_origQ": 9,
+      "section": "Physics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch06:angular-momentum-system-conservation",
+      "prompt": "A disc of mass M and radius R is free to rotate about its vertical axis as shown in the figure. A battery operated motor of negligible mass is fixed to this disc at a point on its circumference. Another disc of the same mass M and radius R/2 is fixed to the motor's thin shaft. Initially, both the discs are at rest. The motor is switched on so that the smaller disc rotates at a uniform angular speed ω. If the angular speed at which the large disc rotates is ω/n, then the value of n is _____.",
+      "correct": "12",
+      "_ocrNote": "References figure _page_13_Figure_11.jpeg."
+    },
+    {
+      "q": 26,
+      "_origQ": 10,
+      "section": "Physics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:physics:physics-c12-ch10:polaroids-malus-law",
+      "prompt": "A point source S emits unpolarized light uniformly in all directions. At two points A and B, the ratio r = I_A/I_B of the intensities of light is 2. If a set of two polaroids having 45° angle between their pass-axes is placed just before point B, then the new value of r will be _____.",
+      "correct": "8"
+    },
+    {
+      "q": 27,
+      "_origQ": 11,
+      "section": "Physics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch14:wave-speed-relation",
+      "prompt": "A source (S) of sound has frequency 240 Hz. When the observer (O) and the source move towards each other at a speed v with respect to the ground (as shown in Case 1 in the figure), the observer measures the frequency of the sound to be 288 Hz. However, when the observer and the source move away from each other at the same speed v with respect to the ground (as shown in Case 2 in the figure), the observer measures the frequency of sound to be n Hz. The value of n is _____.",
+      "correct": "200",
+      "_ocrNote": "References figure _page_14_Figure_3.jpeg."
+    },
+    {
+      "q": 28,
+      "_origQ": 12,
+      "section": "Physics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch09:torricelli-speed-of-efflux",
+      "prompt": "Two large, identical water tanks, 1 and 2, kept on the top of a building of height H, are filled with water up to height h in each tank. Both the tanks contain an identical hole of small radius on their sides, close to their bottom. A pipe of the same internal radius as that of the hole is connected to tank 2, and the pipe ends at the ground level. When the water flows from the tanks 1 and 2 through the holes, the times taken to empty the tanks are t₁ and t₂, respectively. If H = (16/9)h, then the ratio t₁/t₂ is _____.",
+      "correct": "3"
+    },
+    {
+      "q": 29,
+      "_origQ": 13,
+      "section": "Physics",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch06:angular-momentum-particle",
+      "prompt": "A thin uniform rod of length L and certain mass is kept on a frictionless horizontal table with a massless string of length L fixed to one end (top view is shown in the figure). The other end of the string is pivoted to a point O. If a horizontal impulse P is imparted to the rod at a distance x = L/n from the mid-point of the rod (see figure), then the rod and string revolve together around the point O, with the rod remaining aligned with the string. In such a case, the value of n is _____.",
+      "correct": "18",
+      "_ocrNote": "References figure _page_14_Figure_6.jpeg."
+    },
+    {
+      "q": 30,
+      "_origQ": 14,
+      "section": "Physics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch11:cyclic-process",
+      "prompt": "One mole of a monatomic ideal gas undergoes the cyclic process J → K → L → M → J, as shown in the P-T diagram. Match the quantities mentioned in List-I with their values in List-II and choose the correct option. [ℛ is the gas constant.] List-I: (P) Work done in the complete cyclic process; (Q) Change in the internal energy of the gas in the process JK; (R) Heat given to the gas in the process KL; (S) Change in the internal energy of the gas in the process MJ. List-II: (1) ℛT₀ − 4ℛT₀ ln 2; (2) 0; (3) 3ℛT₀; (4) −2ℛT₀ ln 2; (5) −3ℛT₀ ln 2.",
+      "options": [
+        "P→1; Q→3; R→5; S→4",
+        "P→4; Q→3; R→5; S→2",
+        "P→4; Q→1; R→2; S→2",
+        "P→2; Q→5; R→3; S→4"
+      ],
+      "correct": "P→4; Q→3; R→5; S→2",
+      "_ocrNote": "References P-T diagram _page_15_Figure_12.jpeg."
+    },
+    {
+      "q": 31,
+      "_origQ": 15,
+      "section": "Physics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-c12-ch02:parallel-plate-capacitor",
+      "prompt": "Four identical thin, square metal sheets, S₁, S₂, S₃ and S₄, each of side a are kept parallel to each other with equal distance d (≪ a) between them, as shown in the figure. Let C₀ = ε₀a²/d, where ε₀ is the permittivity of free space. Match the quantities mentioned in List-I with their values in List-II and choose the correct option. List-I: (P) The capacitance between S₁ and S₄, with S₂ and S₃ not connected, is; (Q) The capacitance between S₁ and S₄, with S₂ shorted to S₃, is; (R) The capacitance between S₁ and S₃, with S₂ shorted to S₄, is; (S) The capacitance between S₁ and S₂, with S₃ shorted to S₁, and S₂ shorted to S₄, is. List-II: (1) 3C₀; (2) C₀/2; (3) C₀/3; (4) 2C₀/3; (5) 2C₀.",
+      "options": [
+        "P→3; Q→2; R→4; S→5",
+        "P→2; Q→3; R→2; S→1",
+        "P→3; Q→2; R→4; S→1",
+        ""
+      ],
+      "correct": "P→3; Q→2; R→4; S→1",
+      "_ocrNote": "Section 4 Matching-List set; references figure _page_16_Figure_3.jpeg. Option (D) was garbled/unreadable in the OCR."
+    },
+    {
+      "q": 32,
+      "_origQ": 16,
+      "section": "Physics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-c12-ch09:total-internal-reflection",
+      "prompt": "A light ray is incident on the surface of a sphere of refractive index n at an angle of incidence θ₀. The ray partially refracts into the sphere with angle of refraction φ₀ and then partly reflects from the back surface. The reflected ray then emerges out of the sphere after a partial refraction. The total angle of deviation of the emergent ray with respect to the incident ray is α. Match the quantities mentioned in List-I with their values in List-II and choose the correct option. List-I: (P) If n = 2 and α = 180°, then all the possible values of θ₀ will be; (Q) If n = √3 and α = 180°, then all the possible values of θ₀ will be; (R) If n = √3 and α = 180°, then all the possible values of φ₀ will be; (S) If n = √2 and θ₀ = 45°, then all the possible values of α will be. List-II: (1) 30° and 0°; (2) 60° and 0°; (3) 45° and 0°; (4) 150°; (5) 0°.",
+      "options": [
+        "P→5; Q→2; R→1; S→4",
+        "P→5; Q→1; R→2; S→4",
+        "P→3; Q→2; R→1; S→4",
+        "P→3; Q→1; R→2; S→5"
+      ],
+      "correct": "P→5; Q→2; R→1; S→4"
+    },
+    {
+      "q": 33,
+      "_origQ": 17,
+      "section": "Physics",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-c12-ch07:resonance",
+      "prompt": "The circuit shown in the figure contains an inductor L, a capacitor C₀, a resistor R₀ and an ideal battery. The circuit also contains two keys K₁ and K₂. Initially, both the keys are open and there is no charge on the capacitor. At an instant, key K₁ is closed and immediately after this the current in R₀ is found to be I₁. After a long time, the current attains a steady state value I₂. Thereafter, K₂ is closed and simultaneously K₁ is opened and the voltage across C₀ oscillates with amplitude V₀ and angular frequency ω₀. Match the quantities mentioned in List-I with their values in List-II and choose the correct option. List-I: (P) The value of I₁ in Ampere is; (Q) The value of I₂ in Ampere is; (R) The value of ω₀ in kilo-radians/s is; (S) The value of V₀ in Volt is. List-II: (1) 0; (2) 2; (3) 4; (4) 20; (5) 200.",
+      "options": [
+        "P→1; Q→3; R→2; S→5",
+        "P→1; Q→2; R→3; S→5",
+        "P→1; Q→3; R→2; S→4",
+        "P→2; Q→5; R→3; S→4"
+      ],
+      "correct": "P→1; Q→3; R→2; S→5",
+      "_ocrNote": "References circuit figure _page_17_Figure_2.jpeg."
+    },
+    {
+      "q": 34,
+      "_origQ": 1,
+      "section": "Chemistry",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:physics:physics-ch12:rms-speed",
+      "prompt": "A closed vessel contains 10 g of an ideal gas X at 300 K, which exerts 2 atm pressure. At the same temperature, 80 g of another ideal gas Y is added to it and the pressure becomes 6 atm. The ratio of root mean square velocities of X and Y at 300 K is",
+      "options": [
+        "2√2 : √3",
+        "2√2 : 1",
+        "1 : 2",
+        "2 : 1"
+      ],
+      "correct": "2 : 1",
+      "_ocrNote": "Chemistry question on rms velocity; best-matching node is the kinetic-theory rms-speed node (no dedicated chemistry rms node in the index)."
+    },
+    {
+      "q": 35,
+      "_origQ": 2,
+      "section": "Chemistry",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-ch07:disproportionation",
+      "prompt": "At room temperature, disproportionation of an aqueous solution of in situ generated nitrous acid (HNO₂) gives the species",
+      "options": [
+        "H₃O⁺, NO₃⁻ and NO",
+        "H₃O⁺, NO₃⁻ and NO₂",
+        "H₃O⁺, NO⁻ and NO₂",
+        "H₃O⁺, NO₃⁻ and N₂O"
+      ],
+      "correct": "H₃O⁺, NO₃⁻ and NO"
+    },
+    {
+      "q": 36,
+      "_origQ": 4,
+      "section": "Chemistry",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-c12-ch05:geometrical-isomerism",
+      "prompt": "Among the following options, select the option in which each complex in Set-I shows geometrical isomerism and the two complexes in Set-II are ionization isomers of each other. [en = H₂NCH₂CH₂NH₂]",
+      "options": [
+        "Set-I: [Ni(CO)₄] and [PdCl₂(PPh₃)₂]  Set-II: [Co(NH₃)₅Cl]SO₄ and [Co(NH₃)₅(SO₄)]Cl",
+        "Set-I: [Co(en)(NH₃)₂Cl₂] and [PdCl₂(PPh₃)₂]  Set-II: [Co(NH₃)₆][Cr(CN)₆] and [Cr(NH₃)₆][Co(CN)₆]",
+        "Set-I: [Co(NH₃)₃(NO₂)₃] and [Co(en)₂Cl₂]  Set-II: [Co(NH₃)₅Cl]SO₄ and [Co(NH₃)₅(SO₄)]Cl",
+        "Set-I: [Cr(NH₃)₅Cl]Cl₂ and [Co(en)(NH₃)₂Cl₂]  Set-II: [Cr(H₂O)₆]Cl₃ and [Cr(H₂O)₅Cl]Cl₂·H₂O"
+      ],
+      "correct": "Set-I: [Co(NH₃)₃(NO₂)₃] and [Co(en)₂Cl₂]  Set-II: [Co(NH₃)₅Cl]SO₄ and [Co(NH₃)₅(SO₄)]Cl"
+    },
+    {
+      "q": 37,
+      "_origQ": 5,
+      "section": "Chemistry",
+      "marks": 4,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-ch02:bohr-postulates",
+      "prompt": "Among the following, the correct statement(s) for electrons in an atom is(are)",
+      "options": [
+        "Uncertainty principle rules out the existence of definite paths for electrons.",
+        "The energy of an electron in 2s orbital of an atom is lower than the energy of an electron that is infinitely far away from the nucleus.",
+        "According to Bohr's model, the most negative energy value for an electron is given by n = 1, which corresponds to the most stable orbit.",
+        "According to Bohr's model, the magnitude of velocity of electrons increases with increase in values of n."
+      ],
+      "correct": "Uncertainty principle rules out the existence of definite paths for electrons. | The energy of an electron in 2s orbital of an atom is lower than the energy of an electron that is infinitely far away from the nucleus. | According to Bohr's model, the most negative energy value for an electron is given by n = 1, which corresponds to the most stable orbit.",
+      "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq.",
+      "_answerNote": "Multiple-correct. Official answer: A, B, C. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+    },
+    {
+      "q": 38,
+      "_origQ": 6,
+      "section": "Chemistry",
+      "marks": 4,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-c12-ch07:prep-phenols",
+      "prompt": "Reaction of iso-propylbenzene with O₂ followed by the treatment with H₃O⁺ forms phenol and a by-product P. Reaction of P with 3 equivalents of Cl₂ gives compound Q. Treatment of Q with Ca(OH)₂ produces compound R and calcium salt S. The correct statement(s) regarding P, Q, R and S is(are)",
+      "options": [
+        "Reaction of P with R in the presence of KOH followed by acidification gives [a product shown as a structure in the source]",
+        "Reaction of R with O₂ in the presence of light gives phosgene gas",
+        "Q reacts with aqueous NaOH to produce Cl₃CCH₂OH and Cl₃CCOONa",
+        "S on heating gives P"
+      ],
+      "correct": "Reaction of P with R in the presence of KOH followed by acidification gives [a product shown as a structure in the source] | Reaction of R with O₂ in the presence of light gives phosgene gas | S on heating gives P",
+      "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq. Option (A)'s product is given as a drawn structure in the source; described in brackets.",
+      "_answerNote": "Multiple-correct. Official answer: A, B, D. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+    },
+    {
+      "q": 39,
+      "_origQ": 7,
+      "section": "Chemistry",
+      "marks": 4,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-ch04:octet-rule",
+      "prompt": "The option(s) in which at least three molecules follow Octet Rule is(are)",
+      "options": [
+        "CO₂, C₂H₄, NO and HCl",
+        "NO₂, O₃, HCl and H₂SO₄",
+        "BCl₃, NO, NO₂ and H₂SO₄",
+        "CO₂, BCl₃, O₃ and C₂H₄"
+      ],
+      "correct": "CO₂, C₂H₄, NO and HCl | CO₂, BCl₃, O₃ and C₂H₄",
+      "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq.",
+      "_answerNote": "Multiple-correct. Official answer: A, D. `correct` lists the two correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+    },
+    {
+      "q": 40,
+      "_origQ": 8,
+      "section": "Chemistry",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-ch05:enthalpy-internal-energy-relation",
+      "prompt": "Consider the following volume–temperature (V–T) diagram for the expansion of 5 moles of an ideal monoatomic gas. Considering only P-V work is involved, the total change in enthalpy (in Joule) for the transformation of state in the sequence X → Y → Z is _____. [Use the given data: Molar heat capacity of the gas for the given temperature range, C_{V,m} = 12 J K⁻¹ mol⁻¹ and gas constant, R = 8.3 J K⁻¹ mol⁻¹]",
+      "correct": "8120",
+      "_ocrNote": "References V–T diagram _page_22_Figure_9.jpeg."
+    },
+    {
+      "q": 41,
+      "_origQ": 9,
+      "section": "Chemistry",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-c12-ch03:order-of-reaction",
+      "prompt": "Consider the following reaction, 2H₂(g) + 2NO(g) → N₂(g) + 2H₂O(g), which follows the mechanism given below: 2NO(g) ⇌^{k₁} N₂O₂(g) (fast equilibrium); N₂O₂(g) + H₂(g) →^{k₂} N₂O(g) + H₂O(g) (slow reaction); N₂O(g) + H₂(g) →^{k₃} N₂(g) + H₂O(g) (fast reaction). The order of the reaction is _____.",
+      "correct": "3"
+    },
+    {
+      "q": 42,
+      "_origQ": 10,
+      "section": "Chemistry",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-c12-ch08:alpha-hydrogen-aldol",
+      "prompt": "Complete reaction of acetaldehyde with excess formaldehyde, upon heating with conc. NaOH solution, gives P and Q. Compound P does not give Tollens' test, whereas Q on acidification gives positive Tollens' test. Treatment of P with excess cyclohexanone in the presence of catalytic amount of p-toluenesulfonic acid (PTSA) gives product R. Sum of the number of methylene groups (−CH₂−) and oxygen atoms in R is _____.",
+      "correct": "18"
+    },
+    {
+      "q": 43,
+      "_origQ": 11,
+      "section": "Chemistry",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-c12-ch05:metal-carbonyls",
+      "prompt": "Among V(CO)₆, Cr(CO)₅, Cu(CO)₃, Mn(CO)₅, Fe(CO)₅, [Co(CO)₃]³⁻, [Cr(CO)₄]⁴⁻, and Ir(CO)₃, the total number of species isoelectronic with Ni(CO)₄ is _____. [Given, atomic number: V = 23, Cr = 24, Mn = 25, Fe = 26, Co = 27, Ni = 28, Cu = 29, Ir = 77]",
+      "correct": "1"
+    },
+    {
+      "q": 44,
+      "_origQ": 13,
+      "section": "Chemistry",
+      "marks": 4,
+      "type": "numeric",
+      "grader": "numeric",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-c12-ch05:magnetic-properties",
+      "prompt": "Among the following complexes, the total number of diamagnetic species is _____. [Mn(NH₃)₆]³⁺, [MnCl₆]³⁻, [FeF₆]³⁻, [CoF₆]³⁻, [Fe(NH₃)₆]³⁺, and [Co(en)₃]³⁺. [Given, atomic number: Mn = 25, Fe = 26, Co = 27; en = H₂NCH₂CH₂NH₂]",
+      "correct": "1"
+    },
+    {
+      "q": 45,
+      "_origQ": 15,
+      "section": "Chemistry",
+      "marks": 3,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "jee:chemistry:chemistry-ch04:vsepr-shapes",
+      "prompt": "Based on VSEPR model, match the xenon compounds given in List-I with the corresponding geometries and the number of lone pairs on xenon given in List-II and choose the correct option. List-I: (P) XeF₂; (Q) XeF₄; (R) XeO₃; (S) XeO₃F₂. List-II: (1) Trigonal bipyramidal and two lone pair of electrons; (2) Tetrahedral and one lone pair of electrons; (3) Octahedral and two lone pair of electrons; (4) Trigonal bipyramidal and no lone pair of electrons; (5) Trigonal bipyramidal and three lone pair of electrons.",
+      "options": [
+        "P-5, Q-2, R-3, S-1",
+        "P-5, Q-3, R-2, S-4",
+        "P-4, Q-3, R-2, S-1",
+        "P-4, Q-2, R-5, S-3"
+      ],
+      "correct": "P-5, Q-3, R-2, S-4"
+    }
+  ],
+  "contract": {
+    "totalQuestions": 45
+  },
+  "_coverageNote": "Partial transcription: questions whose prompt/options/answer were figure-only or OCR-garbled were omitted; _origQ preserves the original paper number."
+}

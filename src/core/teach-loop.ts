@@ -15,6 +15,7 @@ import { recomputeAvailabilityAfterPass } from './sequencer.js';
 import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, summarizeConversation, type KeyMove } from './node-agent.js';
 import { languageInstruction } from './languages.js';
 import { nimVision } from './llm.js';
+import { examProfile } from './exam-profile.js';
 
 /**
  * The per-node teaching loop (bottom_up.md §4).
@@ -297,6 +298,7 @@ export async function respond(
     isReteach,
     lang: langCode,
     figures: figures.map((f) => ({ id: f.id, caption: f.caption })),
+    conceptId,
   });
 
   // Resolve a referenced figure to a servable image (shown inline by the client).
@@ -381,7 +383,8 @@ export async function helpWithSketch(learnerId: string, conceptId: string, image
   const checklist = await loadChecklist(learnerId, conceptId, c.keyMoves);
   const nextMove = checklist.find((k) => !k.demonstrated);
 
-  const prompt = `You are a warm CBSE Class 10 maths tutor helping with the concept "${c.title}" (${c.brief}).
+  const prof = examProfile(conceptId);
+  const prompt = `You are a warm ${prof.level} ${prof.subject} tutor helping with the concept "${c.title}" (${c.brief}).
 The image is the student's handwritten working. Read it, then give ONE short, encouraging hint (1–2 sentences) that nudges them toward${nextMove ? ` this idea: "${nextMove.text}"` : ' finishing'}.
 Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer — just the next nudge.`;
 
@@ -484,18 +487,18 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
       feedback = correct ? 'Correct.' : "That doesn't evaluate to the right value — recheck your working.";
     } else {
       gradedBy = 'equivalence';
-      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer);
+      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer, langCode, conceptId);
       correct = r.correct;
       feedback = r.feedback;
     }
   } else if (g.grader === 'rubric') {
     gradedBy = 'rubric';
-    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer);
+    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId);
     correct = r.correct;
     feedback = r.feedback;
   } else if (g.grader === 'vision') {
     gradedBy = 'vision';
-    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer);
+    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId);
     correct = r.correct;
     feedback = r.feedback;
   } else {

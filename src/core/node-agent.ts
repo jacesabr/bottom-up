@@ -1,5 +1,6 @@
 import { completeJson, parseLooseJson, resolveProvider, nimVision, claudeTranslate, type ChatMessage } from './llm.js';
 import { languageInstruction, lang } from './languages.js';
+import { examProfile } from './exam-profile.js';
 
 export interface GradeResult {
   correct: boolean;
@@ -67,12 +68,14 @@ export async function gradeWritten(
   rubric: string | null,
   ideal: string | null,
   answer: string,
-  langCode?: string
+  langCode?: string,
+  conceptId?: string
 ): Promise<GradeResult> {
+  const prof = examProfile(conceptId ?? 'cbse10');
   const messages: ChatMessage[] = [
     {
       role: 'system',
-      content: `You are a fair but rigorous CBSE Class 10 maths grader. Decide if the student's written answer demonstrates genuine understanding. Be encouraging in feedback. The student may answer in their own language — judge the meaning. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences: what was good / what's missing>"}`,
+      content: `You are a fair but rigorous ${prof.level} ${prof.subject} grader. Decide if the student's written answer demonstrates genuine understanding. Be encouraging in feedback. The student may answer in their own language — judge the meaning. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences: what was good / what's missing>"}`,
     },
     {
       role: 'user',
@@ -92,11 +95,12 @@ export async function gradeWritten(
 }
 
 /** Grade a maths answer by checking equivalence to the ideal answer (handles fractions, expressions). */
-export async function gradeEquation(prompt: string, ideal: string | null, answer: string, langCode?: string): Promise<GradeResult> {
+export async function gradeEquation(prompt: string, ideal: string | null, answer: string, langCode?: string, conceptId?: string): Promise<GradeResult> {
+  const prof = examProfile(conceptId ?? 'cbse10');
   const messages: ChatMessage[] = [
     {
       role: 'system',
-      content: `You check CBSE Class 10 maths answers for MATHEMATICAL equivalence (not exact string match). Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences>"}`,
+      content: `You check ${prof.level} ${prof.subject} answers for MATHEMATICAL equivalence (not exact string match). Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences>"}`,
     },
     {
       role: 'user',
@@ -119,9 +123,11 @@ export async function gradeSketch(
   rubric: string | null,
   ideal: string | null,
   imageDataUrl: string,
-  langCode?: string
+  langCode?: string,
+  conceptId?: string
 ): Promise<GradeResult> {
-  const visionPrompt = `You are grading a CBSE Class 10 student's hand-drawn answer.
+  const prof = examProfile(conceptId ?? 'cbse10');
+  const visionPrompt = `You are grading a ${prof.studentLabel}'s hand-drawn answer.
 QUESTION: ${prompt}
 WHAT A CORRECT DRAWING MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled diagram'}
 Look at the image and decide if it satisfies the requirement. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences on what's right / what to fix>"}`;
@@ -165,6 +171,7 @@ export interface TeachTurnInput {
   lang?: string;
   priorSummary?: string; // running summary of earlier conversation (cold-start resume)
   figures?: Array<{ id: string; caption: string }>; // textbook figures available for this concept
+  conceptId?: string; // exam:subject:chapter:slug — selects the exam-aware persona/level
 }
 
 export interface TeachTurnOutput {
@@ -185,7 +192,8 @@ function buildMessages(input: TeachTurnInput): ChatMessage[] {
     .map((t) => `${t.role === 'tutor' ? 'TUTOR' : 'LEARNER'}: ${t.content}`)
     .join('\n');
 
-  const system = `You are a real, warm human maths teacher sitting beside a 15-year-old CBSE Class 10 student, chatting.
+  const prof = examProfile(input.conceptId ?? 'cbse10');
+  const system = `You are a real, warm human ${prof.subject} teacher sitting beside ${prof.teacherAudience}, chatting.
 You teach in the Socratic spirit — you draw understanding out with gentle questions rather than lecturing — but
 above all you sound like an actual caring person, not a script. Use natural, everyday language and contractions.
 React genuinely to what they say. Be encouraging and patient. Short messages, like real chat.

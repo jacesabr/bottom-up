@@ -340,3 +340,31 @@ DETAILS panel (any time)  getNodeDetail = concept brain + progress + checklist(+
 Context hygiene: a node sees only its own dialogue; the full story lives in `bu_event`; cross-session memory is the
 compact `bu_chat_summary`, not a replay. This is what makes the experience feel like one patient tutor who
 remembers where *you* are, on *this* concept, without the cost growing unbounded.
+
+---
+
+## 10. Multi-exam, exam-aware AI, papers, and the canonical/overlay plan (added 2026-06-15)
+
+### What's live now (all maths)
+- **Three maths exams loaded:** cbse10 (14 ch), cbse12 (13 ch), jee (27 ch = class-11 `maths-ch*` + class-12 `maths-c12-ch*`). 805 nodes total in the DB.
+- **First-5 nodes per new exam are 5-gate authored** (cbse12 ch1, jee ch1); cbse10 ch1 was already done. Everything else teaches + gates on its single book gate.
+- **The AI is exam-aware.** `src/core/exam-profile.ts` maps a `conceptId`'s exam segment → `{ level, teacherAudience, studentLabel, subject }`. It's threaded through **every** AI-instruction site so a JEE/CBSE-12 learner is no longer taught/graded as "Class 10":
+  - `teachTurn` (teaching persona), `gradeWritten`, `gradeEquation`, `gradeSketch` (graders), `helpWithSketch` (scratchpad hint). cbse10 wording is byte-identical (no regression).
+  - `generate-gates.ts` was already exam-aware (author persona + research tag).
+  - *(Generic, left as-is: `translateText`, `summarizeConversation`.)*
+- **Final-exam papers staged** under `content/<exam>/_papers/` (format `paper.json`, `questions[]`): cbse10 maths-basic/standard, cbse12 mathematics SQP, jee `jeemain-2026-apr02-s1` (Main) + `jeeadv-2024-p1` (Advanced). These are **not yet wired into a runtime exam flow** — that's the final-exam milestone (see below).
+
+### Verified corpus fact (the basis for the canonical plan)
+The same NCERT book appears under multiple exams as **byte-identical copies** (same node slugs, same explanation MD5):
+- CBSE-12 maths ch01 ≡ JEE class-12 maths ch01.
+- (For science, when loaded) JEE physics ch01 ≡ NEET physics ch01.
+**NEET has no maths** (Physics/Chemistry/Biology only, NCERT 11–12) — confirmed against the official NTA syllabus — so it never touches the maths nodes.
+
+### The agreed model (canonical base + node-level advanced overlay) — NOT yet built
+- **One canonical concept = one truth** (NCERT brief/explanation/keyMoves/misconceptions + foundation gates), shared by every exam.
+- Each node optionally carries **`advancedContent` + `advancedGates`** — empty by default, **hand-filled only in the advanced sections** (JEE Advanced, later CBSE "beyond-the-book"). These are *fields on the node*, not a second curriculum.
+- **Exams become pointers/manifests:** an exam = "which canonical courses it includes + which section flag to surface." JEE Main reads the base; **JEE Advanced is a separate selectable track** (decided) that reads base + advanced overlay. Updating advanced content = editing that node's advanced fields — one home, no drift.
+- **The dependency:** this only becomes literal "one truth" once today's **duplicate chapters collapse to canonical nodes** (CBSE-12 ↔ JEE class-12 maths). That's a migration (repoint conceptIds), not re-authoring — the one real cost, deferred.
+
+### Final-exam papers (milestone, not built)
+`paper.json` files are staged per exam. The runtime flow that serves a clean past paper, grades it, and flags weak concepts (bottom_up.md §0) is still a later milestone — the papers are in place for when it's built. JEE has both Main and Advanced papers, matching the advanced-track decision.

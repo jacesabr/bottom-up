@@ -1,0 +1,763 @@
+{
+  "paperId": "cbse12-mathematics-2025-26",
+  "exam": "cbse12",
+  "subject": "Mathematics",
+  "code": "041",
+  "session": "2025-26",
+  "kind": "SQP",
+  "title": "CBSE Class 12 Mathematics — Sample Question Paper 2025-26",
+  "source": {
+    "sqp": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/Maths-SQP.pdf",
+    "ms": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_2025_26/Maths-MS.pdf"
+  },
+  "_provenance": "VERBATIM from the official CBSE Class XII Mathematics (Code 041) Sample Question Paper + Marking Scheme, Session 2025-26 (D-120 — retrieve, don't generate). Read eyes-on from the PDFs (pages rendered for figures and math notation). LaTeX/math notation is preserved in the prompts. For Visually-Impaired (VI) variants printed in the SQP, the VI variant is folded into the same question's prompt in square brackets and its MS answer is noted in msAnswer. Answer keys are from the Marking Scheme and are SERVER-SIDE ONLY.",
+  "labNote": "No physical-lab questions in the theory paper. VSA / SA / LA / case-study items are grader 'llm-rubric' (presented + node-mapped; rubric-graded against the marking scheme), MCQ + assertion-reason are deterministically graded ('mcq') and drive placement. The paper carries 80 marks across 38 questions.",
+  "contract": {
+    "totalQuestions": 38,
+    "maxMarks": 80,
+    "sections": {
+      "A": {
+        "questions": "1-20",
+        "marks": 1,
+        "note": "18 MCQ (1-18) + 2 Assertion-Reason (19-20)"
+      },
+      "B": {
+        "questions": "21-25",
+        "marks": 2,
+        "note": "very short answer (VSA); internal choice in 21, 23"
+      },
+      "C": {
+        "questions": "26-31",
+        "marks": 3,
+        "note": "short answer (SA); internal choice in 26, 28, 29"
+      },
+      "D": {
+        "questions": "32-35",
+        "marks": 5,
+        "note": "long answer (LA); internal choice in 33, 34"
+      },
+      "E": {
+        "questions": "36-38",
+        "marks": 4,
+        "note": "case-study based; 36 and 37 have subparts (1,1,2) with internal choice in the 2-mark subpart, 38 has two 2-mark subparts"
+      }
+    }
+  },
+  "questions": [
+    {
+      "q": 1,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
+      "prompt": "Identify the function shown in the graph (an inverse trigonometric function whose graph is plotted with range from −π/2 to π/2 and the indicated domain). (A) sin⁻¹ x  (B) sin⁻¹(2x)  (C) sin⁻¹(x/2)  (D) 2 sin⁻¹ x. [For Visually Impaired: The inverse trigonometric function whose domain is [−1/3, 1/3] is — (A) cos⁻¹ x (B) cos⁻¹(x/3) (C) cos⁻¹(3x) (D) 3 cos⁻¹ x.]",
+      "options": [
+        "sin⁻¹ x",
+        "sin⁻¹(2x)",
+        "sin⁻¹(x/2)",
+        "2 sin⁻¹ x"
+      ],
+      "correct": "sin⁻¹(2x)",
+      "msAnswer": "B) sin⁻¹(2x). Clearly from the graph the domain is [−1/2, 1/2], so the function is sin⁻¹(2x). (VI: domain [−1/3, 1/3] ⇒ cos⁻¹(3x), answer C.)"
+    },
+    {
+      "q": 2,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+      "prompt": "If for three matrices A = [a_ij]_{m×4}, B = [b_ij]_{n×3} and C = [c_ij]_{p×q}, the products AB and AC are both defined and are square matrices of the same order, then the values of m, n, p and q are: (A) m = q = 3 and n = p = 4  (B) m = 2, q = 3 and n = p = 4  (C) m = q = 4 and n = p = 3  (D) m = 4, p = 2 and n = q = 3.",
+      "options": [
+        "m = q = 3 and n = p = 4",
+        "m = 2, q = 3 and n = p = 4",
+        "m = q = 4 and n = p = 3",
+        "m = 4, p = 2 and n = q = 3"
+      ],
+      "correct": "m = q = 3 and n = p = 4",
+      "msAnswer": "A) m = q = 3 and n = p = 4. AB is defined so n = 4; AC is defined so p = 4. AB and AC are square matrices of the same order, so m × 3 = m × q ⇒ q = 3 = m."
+    },
+    {
+      "q": 3,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix",
+      "prompt": "If the matrix A = [[0, r, −2], [3, p, t], [q, −4, 0]] is skew-symmetric, then the value of (q+t)/(p+r) is …. (A) −2  (B) 0  (C) 1  (D) 2.",
+      "options": [
+        "−2",
+        "0",
+        "1",
+        "2"
+      ],
+      "correct": "−2",
+      "msAnswer": "A) −2. As A is skew-symmetric, p = 0, q = 2, r = −3, t = 4; so (q+t)/(p+r) = 6/(−3) = −2."
+    },
+    {
+      "q": 4,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch04:adjoint-identity",
+      "prompt": "If A is a square matrix of order 4 and |adj A| = 27, then A (adj A) is equal to: (A) 3  (B) 9  (C) 3 I  (D) 9 I.",
+      "options": [
+        "3",
+        "9",
+        "3 I",
+        "9 I"
+      ],
+      "correct": "3 I",
+      "msAnswer": "C) 3 I. |adj A| = |A|^{n−1} = 27 ⇒ |A|^3 = 27 = 3^3 ⇒ |A| = 3; A (adj A) = |A| I = 3 I."
+    },
+    {
+      "q": 5,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "prompt": "The inverse of the matrix [[3, 0, 0], [0, 2, 0], [0, 0, 5]] is … (A) [[0,0,3],[0,2,0],[5,0,0]]  (B) [[1/3,0,0],[0,1/2,0],[0,0,1/5]]  (C) [[−1/3,0,0],[0,−1/2,0],[0,0,−1/5]]  (D) [[−3,0,0],[0,−2,0],[0,0,−5]].",
+      "options": [
+        "[[0,0,3],[0,2,0],[5,0,0]]",
+        "[[1/3,0,0],[0,1/2,0],[0,0,1/5]]",
+        "[[−1/3,0,0],[0,−1/2,0],[0,0,−1/5]]",
+        "[[−3,0,0],[0,−2,0],[0,0,−5]]"
+      ],
+      "correct": "[[1/3,0,0],[0,1/2,0],[0,0,1/5]]",
+      "msAnswer": "B) The inverse of a diagonal matrix is the diagonal matrix of reciprocals: diag(1/3, 1/2, 1/5)."
+    },
+    {
+      "q": 6,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch04:determinant-order-two",
+      "prompt": "Value of the determinant |[cos 67°, sin 67°], [sin 23°, cos 23°]| is (A) 0  (B) 1/2  (C) √3/2  (D) 1.",
+      "options": [
+        "0",
+        "1/2",
+        "√3/2",
+        "1"
+      ],
+      "correct": "0",
+      "msAnswer": "A) 0. The determinant = cos 67° cos 23° − sin 67° sin 23° = cos(67° + 23°) = cos 90° = 0."
+    },
+    {
+      "q": 7,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch05:continuity-at-a-point",
+      "prompt": "If a function defined by f(x) = { kx + 1, x ≤ π ; cos x, x > π } is continuous at x = π, then the value of k is (A) π  (B) −1/π  (C) 0  (D) −2/π.",
+      "options": [
+        "π",
+        "−1/π",
+        "0",
+        "−2/π"
+      ],
+      "correct": "−2/π",
+      "msAnswer": "D) −2/π. Continuity at x = π: lim_{x→π⁻}(kx+1) = lim_{x→π⁺} cos x = f(π) ⇒ kπ + 1 = cos π = −1 ⇒ k = −2/π."
+    },
+    {
+      "q": 8,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives",
+      "prompt": "If f(x) = x tan⁻¹ x, then f′(1) is equal to (A) π/4 − 1/2  (B) π/4 + 1/2  (C) −π/4 − 1/2  (D) −π/4 + 1/2.",
+      "options": [
+        "π/4 − 1/2",
+        "π/4 + 1/2",
+        "−π/4 − 1/2",
+        "−π/4 + 1/2"
+      ],
+      "correct": "π/4 + 1/2",
+      "msAnswer": "B) π/4 + 1/2. f′(x) = 1·tan⁻¹ x + x·1/(1+x²); f′(1) = tan⁻¹ 1 + 1/(1+1) = π/4 + 1/2."
+    },
+    {
+      "q": 9,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test",
+      "prompt": "A function f(x) = 10 − x − 2x² is increasing on the interval (A) (−∞, −1/4)  (B) (−∞, 1/4)  (C) [−1/4, ∞)  (D) [−1/4, 1/4].",
+      "options": [
+        "(−∞, −1/4)",
+        "(−∞, 1/4)",
+        "[−1/4, ∞)",
+        "[−1/4, 1/4]"
+      ],
+      "correct": "(−∞, −1/4)",
+      "msAnswer": "A) (−∞, −1/4]. f′(x) = −1 − 4x; for increasing f′(x) ≥ 0 ⇒ −(1 + 4x) ≥ 0 ⇒ 1 + 4x ≤ 0 ⇒ x ≤ −1/4 ⇒ x ∈ (−∞, −1/4]."
+    },
+    {
+      "q": 10,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch09:variables-separable",
+      "prompt": "The solution of the differential equation x dx + y dy = 0 represents a family of (A) straight lines  (B) parabolas  (C) circles  (D) ellipses.",
+      "options": [
+        "straight lines",
+        "parabolas",
+        "Circles",
+        "Ellipses"
+      ],
+      "correct": "Circles",
+      "msAnswer": "C) Circles. ∫x dx = −∫y dy ⇒ x²/2 = −y²/2 + k ⇒ x² + y² = 2k, k arbitrary — a family of circles."
+    },
+    {
+      "q": 11,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch07:definite-integral",
+      "prompt": "If f(a + b − x) = f(x), then ∫_a^b x f(x) dx is equal to (A) (a+b)/2 ∫_a^b f(b−x) dx  (B) (a+b)/2 ∫_a^b f(a−x) dx  (C) (b−a)/2 ∫_a^b f(x) dx  (D) (a+b)/2 ∫_a^b f(x) dx.",
+      "options": [
+        "(a+b)/2 ∫_a^b f(b−x) dx",
+        "(a+b)/2 ∫_a^b f(a−x) dx",
+        "(b−a)/2 ∫_a^b f(x) dx",
+        "(a+b)/2 ∫_a^b f(x) dx"
+      ],
+      "correct": "(a+b)/2 ∫_a^b f(x) dx",
+      "msAnswer": "D) (a+b)/2 ∫_a^b f(x) dx. Using I = ∫_a^b x f(x) dx = ∫_a^b (a+b−x) f(a+b−x) dx = ∫_a^b (a+b−x) f(x) dx ⇒ 2I = (a+b)∫_a^b f(x) dx ⇒ I = (a+b)/2 ∫_a^b f(x) dx."
+    },
+    {
+      "q": 12,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
+      "prompt": "If ∫ x³ sin⁴(x⁴) cos(x⁴) dx = a sin⁵(x⁴) + C, then a is equal to (A) −1/10  (B) 1/20  (C) 1/4  (D) 1/5.",
+      "options": [
+        "−1/10",
+        "1/20",
+        "1/4",
+        "1/5"
+      ],
+      "correct": "1/20",
+      "msAnswer": "B) 1/20. Let sin(x⁴) = t ⇒ 4x³ cos(x⁴) dx = dt ⇒ x³ cos(x⁴) dx = (1/4) dt; I = ∫ t⁴ (1/4) dt = (1/20) t⁵ + C = (1/20) sin⁵(x⁴) + C, so a = 1/20."
+    },
+    {
+      "q": 13,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch10:scalar-product",
+      "prompt": "A bird flies through a distance in a straight line given by the vector î + 2ĵ + k̂. A man standing beside a straight metro rail track given by r⃗ = (3 + λ)î + (2λ − 1)ĵ + 3λk̂ is observing the bird. The projected length of its flight on the metro track is (A) 6/√14 units  (B) 14/√6 units  (C) 8/√14 units  (D) 5/√6 units.",
+      "options": [
+        "6/√14 units",
+        "14/√6 units",
+        "8/√14 units",
+        "5/√6 units"
+      ],
+      "correct": "8/√14 units",
+      "msAnswer": "C) 8/√14 units. The projection of the vector î + 2ĵ + k̂ on the line direction î + 2ĵ + 3k̂ is (1×1 + 2×2 + 1×3)/√(1² + 2² + 3²) = 8/√14 units."
+    },
+    {
+      "q": 14,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch10:magnitude",
+      "prompt": "The distance of the point with position vector 3î + 4ĵ + 5k̂ from the y-axis is (A) 4 units  (B) √34 units  (C) 5 units  (D) 5√2 units.",
+      "options": [
+        "4 units",
+        "√34 units",
+        "5 units",
+        "5√2 units"
+      ],
+      "correct": "√34 units",
+      "msAnswer": "B) √34 units. The distance of the point (a, b, c) from the y-axis is √(a² + c²) = √(3² + 5²) = √34 units."
+    },
+    {
+      "q": 15,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch10:scalar-product",
+      "prompt": "If a⃗ = 3î + 2ĵ + 4k̂, b⃗ = î + ĵ − 3k̂ and c⃗ = 6î − ĵ + 2k̂ are three given vectors, then (2a⃗·î)î − (b⃗·ĵ)ĵ + (c⃗·k̂)k̂ is the same as the vector (A) a⃗  (B) b⃗ + c⃗  (C) a⃗ − b⃗  (D) c⃗.",
+      "options": [
+        "a⃗",
+        "b⃗ + c⃗",
+        "a⃗ − b⃗",
+        "c⃗"
+      ],
+      "correct": "c⃗",
+      "msAnswer": "D) c⃗. (2a⃗·î)î − (b⃗·ĵ)ĵ + (c⃗·k̂)k̂ = (2×3)î − (1)ĵ + (2)k̂ = 6î − ĵ + 2k̂ = c⃗."
+    },
+    {
+      "q": 16,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch12:constraints",
+      "prompt": "A student of class XII studying Mathematics comes across an incomplete question in a book. Maximise Z = 3x + 2y + 1 subject to the constraints x ≥ 0, y ≥ 0, 3x + 4y ≤ 12. He/She notices the shown graph for the said LPP problem and finds that a constraint is missing in it. Help him/her choose the required constraint from the graph. The missing constraint is (A) x + 2y ≤ 2  (B) 2x + y ≥ 2  (C) 2x + y ≤ 2  (D) x + 2y ≥ 2. [For Visually Impaired: If Z = ax + by + c, where a, b, c > 0, attains its maximum value at two of its corner points (4,0) and (0,3) of the feasible region determined by the system of linear inequalities, then (A) 4a = 3b (B) 3a = 4b (C) 4a + c = 3b (D) 3a + c = 4b.]",
+      "options": [
+        "x + 2y ≤ 2",
+        "2x + y ≥ 2",
+        "2x + y ≤ 2",
+        "x + 2y ≥ 2"
+      ],
+      "correct": "2x + y ≥ 2",
+      "msAnswer": "B) 2x + y ≥ 2. The points (1,0) and (0,2) satisfy 2x + y = 2; the shaded region shows (0,0) does not lie in the feasible region, so the inequality is 2x + y ≥ 2. (VI: (4,0) and (0,3) give max ⇒ Z_{(4,0)} = Z_{(0,3)} ⇒ 4a + c = 3b + c ⇒ 4a = 3b, answer A.)"
+    },
+    {
+      "q": 17,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions",
+      "prompt": "The feasible region of a linear programming problem is bounded but the objective function attains its minimum value at more than one point. One of the points is (5,0). Then one of the other possible points at which the objective function attains its minimum value is (A) (2,9)  (B) (6,6)  (C) (4,7)  (D) (0,0). [For Visually Impaired: The graph of the inequality 3x + 5y < 10 is the (A) Entire XY-plane (B) Open half plane that doesn't contain origin (C) Open half plane that contains origin, but not the points of the line 3x + 5y = 10 (D) Half plane that contains origin and the points of the line 3x + 5y = 10.]",
+      "options": [
+        "(2,9)",
+        "(6,6)",
+        "(4,7)",
+        "(0,0)"
+      ],
+      "correct": "(2,9)",
+      "msAnswer": "A) (2,9). The point (2,9) can be read from the line on the graph; the line 3x + y = 15 joining (5,0) and (0,15) passes through (2,9). (VI: answer C — open half plane containing origin but not the points of the line 3x + 5y = 10.)"
+    },
+    {
+      "q": 18,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch13:independent-events",
+      "prompt": "A person observed the first 4 digits of your 6-digit PIN. What is the probability that the person can guess your PIN? (A) 1/81  (B) 1/100  (C) 1/90  (D) 1.",
+      "options": [
+        "1/81",
+        "1/100",
+        "1/90",
+        "1"
+      ],
+      "correct": "1/100",
+      "msAnswer": "B) 1/100. The person knows the first 4 digits and must guess the remaining two: P = 1×1×1×1×(1/10)×(1/10) = 1/100."
+    },
+    {
+      "q": 19,
+      "section": "A",
+      "marks": 1,
+      "type": "assertion-reason",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch02:principal-value-defn",
+      "prompt": "Assertion (A): Value of the expression sin⁻¹(√3/2) + tan⁻¹ 1 − sec⁻¹(√2) is π/4. Reason (R): Principal value branch of sin⁻¹ x is [−π/2, π/2] and that of sec⁻¹ x is [0, π] − {π/2}. Choose: (A) Both A and R are true and R is the correct explanation of A; (B) Both A and R are true but R is NOT the correct explanation of A; (C) A is true but R is false; (D) A is false but R is true.",
+      "options": [
+        "Both Assertion and Reason are true and Reason is the correct explanation of Assertion.",
+        "Both Assertion and Reason are true but Reason is not the correct explanation of Assertion.",
+        "Assertion is true but Reason is false.",
+        "Assertion is false but Reason is true."
+      ],
+      "correct": "Assertion is false but Reason is true.",
+      "msAnswer": "D) Assertion is false, but Reason is true. sin⁻¹(√3/2) + tan⁻¹ 1 − sec⁻¹(√2) = π/3 + π/4 − π/4 = π/3 ≠ π/4, so A is false; the stated principal value branches are correct, so R is true."
+    },
+    {
+      "q": 20,
+      "section": "A",
+      "marks": 1,
+      "type": "assertion-reason",
+      "grader": "mcq",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "prompt": "Assertion (A): Given two non-zero vectors a⃗ and b⃗. If r⃗ is another non-zero vector such that r⃗ × (a⃗ + b⃗) = 0⃗, then r⃗ is perpendicular to a⃗ × b⃗. Reason (R): The vector (a⃗ + b⃗) is perpendicular to the plane of a⃗ and b⃗. Choose: (A) Both A and R are true and R is the correct explanation of A; (B) Both A and R are true but R is NOT the correct explanation of A; (C) A is true but R is false; (D) A is false but R is true.",
+      "options": [
+        "Both Assertion and Reason are true and Reason is the correct explanation of Assertion.",
+        "Both Assertion and Reason are true but Reason is not the correct explanation of Assertion.",
+        "Assertion is true but Reason is false.",
+        "Assertion is false but Reason is true."
+      ],
+      "correct": "Assertion is true but Reason is false.",
+      "msAnswer": "C) Assertion is true, but Reason is false. r⃗ × (a⃗ + b⃗) = 0⃗ ⇒ r⃗ is parallel to (a⃗ + b⃗), which lies in the plane of a⃗ and b⃗, so r⃗ is perpendicular to a⃗ × b⃗ (A true). But (a⃗ + b⃗) lies in the plane of a⃗ and b⃗, so it is NOT perpendicular to that plane (R false)."
+    },
+    {
+      "q": 21,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+      "prompt": "Evaluate tan(tan⁻¹(−1) + π/3). [OR — see 21B]",
+      "msAnswer": "tan(tan⁻¹(−1) + π/3) = tan(−π/4 + π/3) = (tan(π/3) − tan(π/4))/(1 + tan(π/3)tan(π/4)) = (√3 − 1)/(1 + √3) = 2 − √3.",
+      "variant": "A"
+    },
+    {
+      "q": 21,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+      "prompt": "Find the domain of cos⁻¹(3x − 2). [OR of 21A — internal choice]",
+      "msAnswer": "For the domain, −1 ≤ 3x − 2 ≤ 1 ⇒ 1 ≤ 3x ≤ 3 ⇒ 1/3 ≤ x ≤ 1. So the domain of cos⁻¹(3x − 2) is [1/3, 1].",
+      "variant": "B"
+    },
+    {
+      "q": 22,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch05:chain-rule",
+      "prompt": "If y = log tan(π/4 + x/2), then prove that dy/dx − sec x = 0.",
+      "msAnswer": "dy/dx = (1/tan(π/4 + x/2))·sec²(π/4 + x/2)·(1/2) = [cos(π/4+x/2)/sin(π/4+x/2)]·[1/cos²(π/4+x/2)]·(1/2) = 1/[2 sin(π/4+x/2)cos(π/4+x/2)] = 1/sin(π/2 + x) = 1/cos x = sec x. Hence dy/dx − sec x = 0."
+    },
+    {
+      "q": 23,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch07:integration-by-parts",
+      "prompt": "Find: ∫ (x−3)/(x−1)³ eˣ dx. [OR — see 23B]",
+      "msAnswer": "∫ (x−3)eˣ/(x−1)³ dx = ∫ (x−1−2)eˣ/(x−1)³ dx = ∫ [1/(x−1)² − 2/(x−1)³] eˣ dx = ∫ [1/(x−1)² + d/dx(1/(x−1)²)] eˣ dx = eˣ/(x−1)² + c (using ∫(f(x)+f′(x))eˣ dx = eˣ f(x) + c).",
+      "variant": "A"
+    },
+    {
+      "q": 23,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves",
+      "prompt": "Find out the area of the shaded region in the enclosed figure (region bounded by the curve x² = y, the line y = 4, and the y-axis, between A and B as shown). [OR of 23A — internal choice.] [For Visually Impaired: Find out the area of the region enclosed by the curve y² = x, x = 3 and the x-axis in the first quadrant.]",
+      "msAnswer": "A = ∫_0^4 x dy = ∫_0^4 √y dy = (2/3) y^{3/2} |_{0}^{4} = 16/3 sq. units. (VI: A = ∫_0^3 y dx = ∫_0^3 √x dx = (2/3) x^{3/2} |_0^3 = 2√3 sq. units.)",
+      "variant": "B"
+    },
+    {
+      "q": 24,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch05:derivative-definition",
+      "prompt": "If f(x + y) = f(x)f(y) for all x, y ∈ R and f(5) = 2, f′(0) = 3, then using the definition of derivatives, find f′(5).",
+      "msAnswer": "f(0+5) = f(0)f(5) ⇒ f(0) = 1. f′(5) = lim_{h→0} [f(5+h) − f(5)]/h = lim_{h→0} [f(5)f(h) − f(5)]/h = lim_{h→0} [2f(h) − 2]/h = 2 lim_{h→0} [f(h) − 1]/h = 2 lim_{h→0} [f(h) − f(0)]/h = 2 f′(0) = 2(3) = 6."
+    },
+    {
+      "q": 25,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "prompt": "The two vectors î + ĵ + k̂ and 3î − ĵ + 3k̂ represent the two sides OA and OB respectively of a ΔOAB, where O is the origin. The point P lies on AB such that OP is a median. Find the area of the parallelogram formed by the two adjacent sides as OA and OP.",
+      "msAnswer": "The vector OP = (1/2)(4î + 4k̂) = 2î + 2k̂. Area of the parallelogram with adjacent sides OA and OP = |OA × OP| = |[î, ĵ, k̂; 1, 1, 1; 2, 0, 2]| = |2î − 2k̂| = 2√2 square units."
+    },
+    {
+      "q": 26,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch05:logarithmic-differentiation",
+      "prompt": "If x^y = e^{x−y}, prove that dy/dx = log x / (log(xe))² and hence find its value at x = e. [OR — see 26B]",
+      "msAnswer": "x^y = e^{x−y}; take log: y log x = (x − y) log e ⇒ y log x + y = x (since log e = 1) ⇒ y = x/(1 + log x). Differentiating: dy/dx = [(1 + log x)·1 − x·(1/x)]/(1 + log x)² = log x/(1 + log x)² = log x/(log e + log x)² = log x/(log(xe))². At x = e: dy/dx = log e/(log e²)² = 1/(2 log e)² = 1/2² = 1/4.",
+      "variant": "A"
+    },
+    {
+      "q": 26,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch05:parametric-differentiation",
+      "prompt": "If x = a(θ − sin θ), y = a(1 − cos θ), find d²y/dx². [OR of 26A — internal choice.]",
+      "msAnswer": "dx/dθ = a(1 − cos θ), dy/dθ = a(0 + sin θ); dy/dx = a sin θ/[a(1 − cos θ)] = 2 sin(θ/2)cos(θ/2)/[2 sin²(θ/2)] = cot(θ/2). d²y/dx² = −(1/2) cosec²(θ/2)·(dθ/dx) = −(1/2) cosec²(θ/2)·1/[2 a sin²(θ/2)] = −(1/4a) cosec⁴(θ/2).",
+      "variant": "B"
+    },
+    {
+      "q": 27,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch06:rate-of-change",
+      "prompt": "A spherical ball of ice melts in such a way that the rate at which its volume decreases at any instant is directly proportional to its surface area. Prove that the radius of the ice ball decreases at a constant rate.",
+      "msAnswer": "Let r be the radius at time t. V = (4/3)πr³ … (1), S = 4πr² … (2). Given dV/dt ∝ S ⇒ dV/dt = −kS (k > 0) … (3). Differentiating (1): dV/dt = (4/3)π·3r²·(dr/dt) = 4πr²(dr/dt) … (4). From (3) and (4): −kS = 4πr²(dr/dt); using (2), −kS = S(dr/dt) ⇒ dr/dt = −k, a constant. Hence the radius decreases at a constant rate."
+    },
+    {
+      "q": 28,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves",
+      "prompt": "Sketch the graph y = |x + 1|. Evaluate ∫_{−4}^{2} |x + 1| dx. What does the value of this integral represent on the graph? [OR — see 28B.] [For Visually Impaired: Define the function y = |x + 1|. Evaluate ∫_{−4}^{2} |x + 1| dx. What does the value of this integral represent?]",
+      "msAnswer": "∫_{−4}^{2} |x + 1| dx = ∫_{−4}^{−1} −(x + 1) dx + ∫_{−1}^{2} (x + 1) dx = −[(x+1)²/2]_{−4}^{−1} + [(x+1)²/2]_{−1}^{2} = −(0 − 9/2) + (9/2 − 0) = 9. It represents the area of the region bounded by the curve y = |x + 1|, the x-axis and the lines x = −4 and x = 2.",
+      "variant": "A"
+    },
+    {
+      "q": 28,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves",
+      "prompt": "Using integration find the area of the region {(x, y) : x² − 4y ≤ 0, y − x ≤ 0}. [OR of 28A — internal choice.] [For Visually Impaired: Using integration find the area enclosed within the curve 25x² + 16y² = 400.]",
+      "msAnswer": "Required Area = ∫_0^4 x dx − ∫_0^4 (x²/4) dx = [x²/2]_0^4 − (1/12)[x³]_0^4 = (1/2)(16) − (1/12)(64) = 8 − 16/3 = 8/3 sq. units. (VI: 25x² + 16y² = 400 ⇒ x²/16 + y²/25 = 1; Area = 4 ∫_0^4 (5/4)√(4²−x²) dx = 5[ x√(16−x²)/2 + 8 sin⁻¹(x/4) ]_0^4 = 5[0 + 8·(π/2)] = 20π sq. units.)",
+      "variant": "B"
+    },
+    {
+      "q": 29,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+      "prompt": "Find the distance of the point (2, −1, 3) from the line r⃗ = (2î − ĵ + 2k̂) + μ(3î + 6ĵ + 2k̂) measured parallel to the z-axis. [OR — see 29B]",
+      "msAnswer": "The line through (2, −1, 3) parallel to the z-axis is r⃗ = (2î − ĵ + 3k̂) + λ(k̂); any point on it is P(2, −1, 3 + λ). Any point on the given line is Q(2 + 3μ, −1 + 6μ, 2 + 2μ). For the intersection Q = P: 2 = 2 + 3μ ⇒ μ = 0, so the point of intersection is (2, −1, 2). The distance from (2, −1, 3) to (2, −1, 2) is 1 unit.",
+      "variant": "A"
+    },
+    {
+      "q": 29,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+      "prompt": "Find the point of intersection of the line r⃗ = (3î + k̂) + μ(î + ĵ + k̂) and the line through (2, −1, 1) parallel to the z-axis. How far is this point from the z-axis? [OR of 29A — internal choice.]",
+      "msAnswer": "The line through (2, −1, 1) parallel to the z-axis is r⃗ = (2î − ĵ + k̂) + λ(k̂); any point on it is P(2, −1, 1 + λ). Any point on the given line is A(3 + μ, μ, 1 + μ). Setting A = P: μ = −1, so the point of intersection is (2, −1, 0). The distance of (2, −1, 0) from the z-axis is √(2² + (−1)²) = √5 units.",
+      "variant": "B"
+    },
+    {
+      "q": 30,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch12:corner-point-method",
+      "prompt": "Solve graphically: Maximise Z = 2x + y subject to x + y ≤ 1200, x + y ≥ 600, y ≤ x/2, x ≥ 0, y ≥ 0. [For Visually Impaired: The objective function Z = 3x + 2y of a linear programming problem under some constraints is to be maximized and minimized. The corner points of the feasible region are A(600,0), B(1200,0), C(800,400) and D(400,200). Find the point at which Z is maximum and the point at which Z is minimum. Also find the corresponding maximum and minimum values of Z.]",
+      "msAnswer": "Sketching the graph, the corner points are A(600,0), B(1200,0), C(800,400), D(400,200). Values of Z = 2x + y: Z_A = 1200, Z_B = 2400, Z_C = 2000, Z_D = 1000. Maximum Z = 2400 when x = 1200 and y = 0. (VI: with Z = 3x + 2y, Z_A = 1800, Z_B = 3600, Z_C = 3200, Z_D = 1600; maximum = 3600 at B(1200,0) and minimum = 1600 at D(400,200).)"
+    },
+    {
+      "q": 31,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch13:independent-events",
+      "prompt": "Two students Mehul and Rashi are seeking admission in a college. The probability that Mehul is selected is 0.4 and the probability of selection of exactly one of them is 0.5. Chances of selection of them are independent of each other. Find the chances of selection of Rashi. Also find the probability of selection of at least one of them.",
+      "msAnswer": "Let A: Mehul selected, B: Rashi selected; A and B independent, P(A) = 0.4, P(A ∩ B̄) + P(B ∩ Ā) = 0.5. Let P(B) = x. Then P(A)P(B̄) + P(B)P(Ā) = 0.5 ⇒ 0.4(1 − x) + x(1 − 0.4) = 0.5 ⇒ 0.4 − 0.4x + 0.6x = 0.5 ⇒ 0.2x = 0.1 ⇒ x = 0.5. So P(Rashi) = 0.5. P(at least one) = 1 − P(Ā ∩ B̄) = 1 − P(Ā)P(B̄) = 1 − 0.6 × 0.5 = 1 − 0.3 = 0.7."
+    },
+    {
+      "q": 32,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular",
+      "prompt": "For two matrices A = [[3, −6, −1], [2, −5, −1], [−2, 4, 1]] and B = [[1, −2, −1], [0, −1, −1], [2, 0, 3]], find the product AB and hence solve the system of equations: 3x − 6y − z = 3, 2x − 5y − z + 2 = 0, −2x + 4y + z = 5.",
+      "msAnswer": "AB = [[3,−6,−1],[2,−5,−1],[−2,4,1]]·[[1,−2,−1],[0,−1,−1],[2,0,3]] = [[1,0,0],[0,1,0],[0,0,1]] = I. So A⁻¹ = B and B⁻¹ = A. The system 3x − 6y − z = 3, 2x − 5y − z = −2, −2x + 4y + z = 5 in matrix form AX = C with X = [x; y; z], C = [3; −2; 5]. Here |A| = −1 ≠ 0, so the system is consistent with unique solution X = A⁻¹C = BC = [[1,−2,−1],[0,−1,−1],[2,0,3]]·[3;−2;5] = [2; −3; 21]. Thus x = 2, y = −3, z = 21."
+    },
+    {
+      "q": 33,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch07:definite-integral",
+      "prompt": "Evaluate: ∫_0^1 log(1 + x)/(1 + x²) dx. [OR — see 33B]",
+      "msAnswer": "Let x = tan θ ⇒ dx = sec²θ dθ; I = ∫_0^{π/4} log(1 + tan θ)/(1 + tan²θ)·sec²θ dθ = ∫_0^{π/4} log(1 + tan θ) dθ = ∫_0^{π/4} log[1 + tan(π/4 − θ)] dθ = ∫_0^{π/4} log[1 + (1 − tan θ)/(1 + tan θ)] dθ = ∫_0^{π/4} log[2/(1 + tan θ)] dθ = ∫_0^{π/4} log 2 dθ − ∫_0^{π/4} log(1 + tan θ) dθ = (log 2)(π/4) − I ⇒ 2I = (π/4) log 2 ⇒ I = (π/8) log 2.",
+      "variant": "A"
+    },
+    {
+      "q": 33,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch07:partial-fractions",
+      "prompt": "Find ∫ (3 sin θ − 2) cos θ / (5 − cos²θ − 4 sin θ) dθ. [OR of 33A — internal choice.]",
+      "msAnswer": "I = ∫ (3 sin θ − 2) cos θ/(5 − cos²θ − 4 sin θ) dθ = ∫ (3 sin θ − 2) cos θ/(5 − (1 − sin²θ) − 4 sin θ) dθ. Let sin θ = t ⇒ cos θ dθ = dt; I = ∫ (3t − 2)/(t² − 4t + 4) dt = ∫ (3t − 2)/(t − 2)² dt. Partial fractions: (3t − 2)/(t − 2)² = A/(t − 2) + B/(t − 2)² ⇒ 3t − 2 = A(t − 2) + B; comparing, A = 3, −2A + B = −2 ⇒ B = 4. So I = ∫ 3/(t − 2) dt + ∫ 4/(t − 2)² dt = 3 log|t − 2| − 4/(t − 2) + C = 3 log|sin θ − 2| − 4/(sin θ − 2) + C.",
+      "variant": "B"
+    },
+    {
+      "q": 34,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch09:solve-linear-de",
+      "prompt": "Solve the differential equation: y + d/dx(xy) = x(sin x + x). [OR — see 34B]",
+      "msAnswer": "y + d/dx(xy) = x(sin x + x) ⇒ y + (x dy/dx + y) = x(sin x + x) ⇒ 2y + x dy/dx = x(sin x + x) ⇒ dy/dx + (2/x)y = (sin x + x). This is linear with P = 2/x, Q = (sin x + x). I.F. = e^{∫(2/x)dx} = e^{2 log x} = x². Solution: y·I.F. = ∫ Q·I.F. dx ⇒ yx² = ∫(sin x + x)x² dx = ∫ x² sin x dx + ∫ x³ dx = −x² cos x + 2∫ x cos x dx + x⁴/4 + C = −x² cos x + 2(x sin x + cos x) + x⁴/4 + C, which is the required solution.",
+      "variant": "A"
+    },
+    {
+      "q": 34,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch09:homogeneous-differential-equation",
+      "prompt": "Find the particular solution of the differential equation: 2y e^{x/y} dx + (y − 2x e^{x/y}) dy = 0, given that y(0) = 1.",
+      "msAnswer": "dx/dy = (2x e^{x/y} − y)/(2y e^{x/y}) = (2(x/y)e^{x/y} − 1)/(2 e^{x/y}) — homogeneous. Let x = vy ⇒ dx/dy = v + y dv/dy; v + y dv/dy = (2v e^v − 1)/(2 e^v) ⇒ y dv/dy = (2v e^v − 1)/(2 e^v) − v = −1/(2 e^v) ⇒ 2 e^v dv = −dy/y ⇒ ∫ 2 e^v dv = −∫ dy/y ⇒ 2 e^v = −log|y| + C ⇒ 2 e^{x/y} + log|y| = C. When x = 0, y = 1: 2 e^0 + 0 = C ⇒ C = 2. Required solution: 2 e^{x/y} + log|y| = 2.",
+      "variant": "B"
+    },
+    {
+      "q": 35,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch11:angle-between-lines",
+      "prompt": "The two lines (x − 1)/3 = −y, z + 1 = 0 and −x/2 = (y + 1)/2 = z + 2 intersect at a point whose y-coordinate is 1. Find the co-ordinates of their point of intersection. Find the vector equation of a line perpendicular to both the given lines and passing through this point of intersection.",
+      "msAnswer": "Let (x − 1)/3 = (y − 0)/(−1) = (z + 1)/0 = λ ⇒ any point on it is (3λ + 1, −λ, −1). For the point where y = 1 ⇒ λ = −1 ⇒ the point is (−2, 1, −1). The directions of the two lines are m⃗ = 3î − ĵ and n⃗ = −2î + 2ĵ + k̂. m⃗ × n⃗ = |[î, ĵ, k̂; 3, −1, 0; −2, 2, 1]| = −î − 3ĵ + 4k̂. The required line is r⃗ = (−2î + ĵ − k̂) + μ(−î − 3ĵ + 4k̂)."
+    },
+    {
+      "q": 36,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch01:transitive-relation",
+      "prompt": "Case Study 1: A city's traffic management department is planning to optimize traffic flow by analyzing the connectivity between five major spots labelled A, B, C, D and E. One-way traffic flow data: (1) Traffic flows from A to B, A to C, and A to D. (2) Traffic flows from B to C and B to E. (3) Traffic flows from C to E. (4) Traffic flows from D to E and D to C. Represent and analyze this data using relations and functions.",
+      "parts": [
+        {
+          "part": "(I)",
+          "marks": 1,
+          "prompt": "Is the traffic flow reflexive? Justify.",
+          "msAnswer": "Traffic flow is not reflexive, as (A, A) ∉ R (no major spot is connected with itself)."
+        },
+        {
+          "part": "(II)",
+          "marks": 1,
+          "prompt": "Is the traffic flow transitive? Justify.",
+          "msAnswer": "Traffic flow is not transitive, as (A, B) ∈ R and (B, E) ∈ R, but (A, E) ∉ R."
+        },
+        {
+          "part": "(III A)",
+          "marks": 2,
+          "prompt": "Represent the relation describing the traffic flow as a set of ordered pairs. Also state the domain and range of the relation. [OR — III B.]",
+          "msAnswer": "R = {(A,B), (A,C), (A,D), (B,C), (B,E), (C,E), (D,E), (D,C)}. Domain = {A, B, C, D}; Range = {B, C, D, E}."
+        },
+        {
+          "part": "(III B)",
+          "marks": 2,
+          "prompt": "Does the traffic flow represent a function? Justify your answer. [OR of III A — internal choice.]",
+          "msAnswer": "No, the traffic flow doesn't represent a function as A has three images (B, C and D)."
+        }
+      ],
+      "msAnswer": "I: not reflexive ((A,A) ∉ R). II: not transitive ((A,B), (B,E) ∈ R but (A,E) ∉ R). III A: R = {(A,B),(A,C),(A,D),(B,C),(B,E),(C,E),(D,E),(D,C)}, Domain {A,B,C,D}, Range {B,C,D,E}. III B: not a function (A has three images)."
+    },
+    {
+      "q": 37,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch06:second-derivative-test",
+      "prompt": "Case Study 2: A company manufactures a new type of energy-efficient LED bulb. The cost of production and the revenue generated by selling x bulbs (in an hour) are modelled as C(x) = 0.5x² − 10x + 150 and R(x) = −0.3x² + 20x respectively, where C(x) and R(x) are both in ₹. To maximize the profit, analyze these functions using calculus.",
+      "parts": [
+        {
+          "part": "(I)",
+          "marks": 1,
+          "prompt": "Derive the profit function P(x).",
+          "msAnswer": "P(x) = R(x) − C(x) = −0.3x² + 20x − (0.5x² − 10x + 150) = −0.8x² + 30x − 150."
+        },
+        {
+          "part": "(II)",
+          "marks": 1,
+          "prompt": "Find the critical points of P(x).",
+          "msAnswer": "For critical points P′(x) = 0 ⇒ −1.6x + 30 = 0 ⇒ x = 30/1.6 = 300/16 = 18.75."
+        },
+        {
+          "part": "(III A)",
+          "marks": 2,
+          "prompt": "Determine whether the critical points correspond to a maximum or a minimum profit by using the second derivative test. [OR — III B.]",
+          "msAnswer": "P″(x) = −1.6; in particular P″(18.75) = −1.6 < 0, so the critical value x = 18.75 corresponds to a maximum profit."
+        },
+        {
+          "part": "(III B)",
+          "marks": 2,
+          "prompt": "Identify the possible practical value of x (the number of bulbs that can realistically be produced and sold) that can maximize the profit, if the resources available and the expenditure on machines allows to produce minimum 10 but not more than 18 bulbs per hour. Also calculate the maximum profit. [OR of III A — internal choice.]",
+          "msAnswer": "As x is the number of bulbs, practically 18 bulbs correspond to a maximum profit (on [10, 18]). Maximum profit = P(18) = −0.8 × 18² + 30 × 18 − 150 = −259.2 + 540 − 150 = ₹130.80."
+        }
+      ],
+      "msAnswer": "I: P(x) = −0.8x² + 30x − 150. II: critical point x = 18.75. III A: P″(x) = −1.6 < 0 ⇒ maximum at x = 18.75. III B: on [10,18] max at x = 18, maximum profit P(18) = ₹130.80."
+    },
+    {
+      "q": 38,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "grader": "llm-rubric",
+      "handling": "grade",
+      "node": "cbse12:mathematics:mathematics-ch13:bayes-theorem",
+      "prompt": "Case Study 3: In a class of students of the age group 14 to 17, the students were categorised into three groups by a feedback form. The first group spent more than 4 hours per day on mobile/gaming screens, the second group spent 2 to 4 hours/day, and the third group spent less than 2 hours/day. The first (high screen time) group is 60% of all students, the second (moderate) is 30%, and the third (low) is 10% of the total. It was observed that 80% of the first group faced severe anxiety and low retention issues, with 70% of the second group, and 30% of the third group having the same symptoms.",
+      "parts": [
+        {
+          "part": "(I)",
+          "marks": 2,
+          "prompt": "What is the total percentage of students who suffer from anxiety and low retention issues in the class?",
+          "msAnswer": "Let E₁, E₂, E₃ be the events of being in the first, second, third group; A the event of showing symptoms. P(E₁) = 60/100, P(E₂) = 30/100, P(E₃) = 10/100; P(A|E₁) = 80/100, P(A|E₂) = 70/100, P(A|E₃) = 30/100. P(A) = P(E₁)P(A|E₁) + P(E₂)P(A|E₂) + P(E₃)P(A|E₃) = (60/100)(80/100) + (30/100)(70/100) + (10/100)(30/100) = 72/100 = 72%."
+        },
+        {
+          "part": "(II)",
+          "marks": 2,
+          "prompt": "A student is selected at random, and he is found to suffer from anxiety and low retention issues. What is the probability that he/she spends screen time more than 4 hours per day?",
+          "msAnswer": "P(E₁|A) = P(E₁ ∩ A)/P(A) = [(60/100)(80/100)] / (72/100) = 48/72 = 2/3."
+        }
+      ],
+      "msAnswer": "I: P(A) = 72%. II: P(E₁|A) = 48/72 = 2/3 (Bayes' theorem)."
+    }
+  ]
+}
