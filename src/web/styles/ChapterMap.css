@@ -136,6 +136,17 @@
   justify-content: center;
 }
 
+/* Open / unlocked node (available to work on, not yet passed) → green, clickable, no glow. */
+.c.open .dot {
+  background: var(--green-soft);
+  border-color: #bcd6c4;
+  color: var(--green);
+  cursor: pointer;
+}
+.c.open .nm {
+  color: var(--ink);
+}
+
 /* Current node (where you are) → green + glowing. */
 .c.current .dot {
   background: var(--green-soft);
@@ -181,6 +192,10 @@
 }
 
 .l-done::before {
+  color: var(--green);
+}
+
+.l-open::before {
   color: var(--green);
 }
 

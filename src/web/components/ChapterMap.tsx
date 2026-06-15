@@ -75,17 +75,26 @@ export default function ChapterMap({
             <div className="map">
               {(() => {
                 const inProgress = ['teaching', 'awaiting_gate', 'needs_reteach'];
-                // The ONE "current" node = where the learner is: an in-progress node, else the
-                // furthest-back not-yet-passed node (the natural next step).
+                const isOpen = (n: Node) =>
+                  n.status === 'available' || inProgress.includes(n.status);
+                // The ONE glowing node = where the learner is working: an in-progress node, else
+                // the first open (lowest-order unlocked, not-yet-passed) node — the natural next step.
                 const current =
                   nodes.find((n) => inProgress.includes(n.status)) ??
-                  nodes.find((n) => n.status !== 'passed');
+                  nodes.find((n) => isOpen(n));
                 return nodes.map((node) => {
                   const isCurrent = current && node.id === current.id;
-                  // cleared → green; current → green + glow; everything ahead → locked + faded
+                  // passed → green ✓ ; current open node → green + glow ; other unlocked → green ;
+                  // everything still locked → faded + 🔒
                   const visual =
-                    node.status === 'passed' ? 'done' : isCurrent ? 'current' : 'locked';
-                  const clickable = node.status === 'passed' || isCurrent;
+                    node.status === 'passed'
+                      ? 'done'
+                      : isCurrent
+                        ? 'current'
+                        : isOpen(node)
+                          ? 'open'
+                          : 'locked';
+                  const clickable = node.status === 'passed' || isOpen(node);
                   return (
                     <div
                       key={node.id}
@@ -102,10 +111,11 @@ export default function ChapterMap({
             </div>
             <div className="legend">
               <span className="l-done">done</span>
+              <span className="l-open">open</span>
               <span className="l-cur">you're here</span>
               <span className="l-lock">locked</span>
             </div>
-            <div className="hint">Green = done &amp; where you are (the glowing one), 🔒 faded = still locked. Done concepts stay clickable to revisit.</div>
+            <div className="hint">Green = unlocked (the glowing one is where you are now), 🔒 faded = still locked. Open &amp; done concepts are clickable.</div>
           </div>
         </div>
       </div>
