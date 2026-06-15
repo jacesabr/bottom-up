@@ -213,3 +213,63 @@ ORDER BY ord;
 - Authoring → **Claude Haiku** via `claudeAuthor()`. Never a stronger model for bulk authoring.
 - Real-user teaching → Haiku. All automated testing → NVIDIA NIM (free) / `mock`.
 - **Never run a test suite on Haiku.** At most 1-2 Haiku messages for a manual spot-check.
+
+---
+
+## 8. Content audit — findings from the first 2 nodes of each maths exam (2026-06-16)
+
+A hand audit of the first two authored nodes of cbse10 (`manipulate-prime-powers`, `interpret-divides-relation`),
+cbse12 (`relation-definition`, `empty-relation`), and jee (`define-a-well-defined-set`, `use-set-membership`).
+These are the **recurring failure modes** to fix in the author prompt / a review pass — the single most useful
+thing for raising quality.
+
+### 8.1 The biggest systemic problem: gates over-reach the node's own scope + prereqs
+The author keeps writing gates that test **downstream** concepts the node doesn't own and the learner hasn't met:
+- `manipulate-prime-powers` (scope: *evaluate/compare prime powers*) — **4 of its 5 gates are actually HCF/LCM
+  problems** (the explain, mcq, and equation all compute HCF/LCM). HCF/LCM are separate, later nodes.
+- `interpret-divides-relation` (scope: *read `p|a` as `a = p·k`*) — its **equation gate asks for a full proof of
+  "if `p | a²` then `p | a`"** (Euclid's-lemma / Theorem 1.2), a deep result that is itself a later *goal* node.
+- `use-set-membership` (scope: *`∈` / `∉`*) — its **equation gate uses `A ∩ B` and `A ∪ B`** (union/intersection
+  are later nodes).
+- **Fix:** the author prompt must say *"every gate must be answerable from THIS node's keyMoves alone, using only
+  ideas at or below its bottom-up order — do NOT use any later concept (HCF/LCM, proofs, set operations, etc.)."*
+  Pass the node's `order` and a one-line "you may assume only:" list of already-taught ideas.
+
+### 8.2 Model answers leak chain-of-thought / self-correct / are wrong (worst defect found)
+- **`cbse12 … empty-relation`, equation gate** is broken: prompt asks to test `R = {(a,b): a²−b²=24}` on `{1..5}`.
+  The stored `idealAnswer` **opens with "$R = \emptyset$ (empty relation)", then mid-answer writes "Wait: (5,1)
+  gives 24 ✓. So R = {(5,1)}, non-empty."** So the model answer contradicts itself, starts with a wrong claim,
+  and (for an *empty-relation* node) resolves to a **non-empty** relation. The author's scratch reasoning leaked
+  into the stored answer. This would confuse a learner and fail any review. **Must be re-authored.**
+- **Fix:** instruct *"idealAnswer is the FINAL, clean answer only — no 'Wait', no 'let me reconsider', no working
+  that you then retract."* And add a validator: for a concept about X (e.g. *empty* relation), the worked example's
+  answer should actually exemplify X, or the prompt should be changed.
+
+### 8.3 Difficulty mismatched to a foundational (order 0/1) node
+Proofs and multi-part problems are landing on the very first nodes (the `p|a²⟹p|a` proof above; the 4-part
+true/false + union problem on `use-set-membership`). First-nodes should be gentle. **Fix:** scale difficulty to
+`order` — early nodes get single-step items; save multi-step/proof items for later nodes.
+
+### 8.4 Smaller issues
+- **MCQ with compound (conjunction) options** — `use-set-membership` mcq options are each "`X ∈ M` and `Y ∉ M`",
+  which is harder to parse than a single claim. Prefer one assertion per option.
+- **`equivalentTo` sometimes holds prose, not a value** — the `p|a²` proof gate stores a paragraph in
+  `equivalentTo`; that silently downgrades CAS grading to LLM-equivalence. Proof/derivation items should be
+  authored as `written` (rubric-graded), not `equation`/symbolic.
+- **Rubric format drift** — most rubrics are "✓ …" checklists, but one (`jee define-a-well-defined-set` explain)
+  was stored as a serialized array. Keep rubrics as a single "✓ … ✓ …" string.
+- **Weak source provenance** — research often returns Instagram/YouTube reels rather than real question banks.
+  Bias the Firecrawl query to past papers / official question banks and prefer authoritative domains; the source
+  URLs are stored on every gate, so junk sources are visible.
+
+### 8.5 What's already good (emulate these)
+- **`cbse12 relation-definition`** — every gate stays in-scope; the mcq ("which is NOT a valid relation", with an
+  option whose pairs come from `B×A`) genuinely tests "subset of `A×B`"; the equation ("how many relations? `2⁶`")
+  is elegant and on-concept.
+- **`jee define-a-well-defined-set`** — correctly **skips** both sketch slots (logical concept), and the equation
+  ("how many of these 4 collections are well-defined?") reuses the concept cleanly.
+
+### 8.6 Action
+- Re-author the `cbse12 … empty-relation` equation gate (8.2) — it's the one outright-broken artifact.
+- Fold the 8.1 scope-guard and 8.2 clean-answer rules into `authorPrompt` in `generate-gates.ts` before the next
+  authoring batch; re-run the affected first-2 nodes to validate the guardrails hold.
