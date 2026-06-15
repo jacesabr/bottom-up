@@ -13,7 +13,7 @@
     "build:api": "tsc --project tsconfig.api.json",
     "build:web": "vite build",
     "typecheck": "tsc --noEmit",
-    "start": "node dist/api/index.js",
+    "start": "tsx src/api/index.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
