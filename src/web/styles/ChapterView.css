@@ -1,0 +1,167 @@
+.chapter-view {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.chapter-view h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-blue);
+}
+
+.chapter-subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.chapter-view.loading,
+.chapter-view.error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.chapter-view.error {
+  color: var(--accent-red);
+}
+
+.node-map {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.node-card {
+  padding: 1.5rem;
+  border: 2px solid var(--cream-border);
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.node-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #ccc;
+  transition: background 0.2s ease;
+}
+
+.node-card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.node-card.locked::before {
+  background: #999;
+}
+
+.node-card.available {
+  border-color: var(--accent-green);
+  cursor: pointer;
+}
+
+.node-card.available:hover {
+  box-shadow: 0 4px 12px rgba(74, 124, 92, 0.15);
+  transform: translateY(-2px);
+}
+
+.node-card.available::before {
+  background: var(--accent-green);
+}
+
+.node-card.passed {
+  border-color: var(--accent-green);
+  background: rgba(74, 124, 92, 0.05);
+}
+
+.node-card.passed::before {
+  background: var(--accent-green);
+}
+
+.node-card.teaching,
+.node-card.awaiting_gate {
+  border-color: var(--accent-blue);
+}
+
+.node-card.teaching::before,
+.node-card.awaiting_gate::before {
+  background: var(--accent-blue);
+}
+
+.node-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent-blue);
+  margin-bottom: 0.5rem;
+}
+
+.node-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--cream-text);
+}
+
+.node-role {
+  font-size: 0.875rem;
+  color: #888;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.node-status-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  display: inline-block;
+  background: #f0f0f0;
+}
+
+.node-status-label.available {
+  background: rgba(74, 124, 92, 0.2);
+  color: var(--accent-green);
+}
+
+.node-status-label.passed {
+  background: rgba(74, 124, 92, 0.2);
+  color: var(--accent-green);
+}
+
+.node-status-label.locked {
+  background: #e0e0e0;
+  color: #666;
+}
+
+.node-status-label.teaching {
+  background: rgba(31, 90, 150, 0.2);
+  color: var(--accent-blue);
+}
+
+.chapter-info {
+  padding: 1rem;
+  background: var(--cream-bg);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-blue);
+}
+
+.chapter-info p {
+  font-size: 0.95rem;
+  color: #666;
+}
