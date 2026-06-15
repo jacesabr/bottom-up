@@ -188,10 +188,25 @@ ORDER BY ord;
 
 ## 6. Scope discipline (current milestone)
 
-- **Max 5 nodes authored per exam**, **math only**, while we verify the process + architecture.
+- **First 10 nodes authored per maths exam** (cbse10, cbse12, jee), **math only**. Run:
+  `tsx tools/generate-gates.ts <exam>:<subject>:<chapter1> --limit 10`. (Was 5; raised to 10 once
+  the process held. cbse10 ch1 already has all 17.)
 - Everything else is *loaded* (full content + book gate) but not yet 5-gate authored — those
   nodes still teach and still gate on their single book question.
-- Scale to more nodes/chapters only after the 5-node slices are reviewed and the quality holds.
+- Scale to more nodes/chapters only after these slices are reviewed and the quality holds.
+
+### 6a. Advanced tracks (JEE Advanced) — DO NOT author yet
+
+- The schema supports an **advanced overlay** per node: `concepts.advanced_content` (extra reading/depth)
+  and `gates.tier = 'advanced'` (harder gate questions), surfaced only on the advanced track
+  (`track='advanced'` → `examProfile(conceptId,'advanced')`, `gateSet` appends advanced gates,
+  `teachTurn` folds in `advancedContent`). `generate-gates.ts` authors **foundation tier by default**.
+- **Hard rule:** do **NOT** author any JEE-Advanced content or advanced gates **until explicitly told**.
+  We are waiting to review the **government-recommended resources** for JEE Advanced first, then those
+  resources become the source for the advanced overlay. Until then the advanced fields stay **empty**
+  and JEE Advanced is **not** exposed as a selectable track in the UI.
+- The same holds for any future "beyond-the-book" advanced sections: fill the overlay only from a
+  real, approved resource — never invent advanced material.
 
 ## 7. Cost rule (HARD — never break)
 
