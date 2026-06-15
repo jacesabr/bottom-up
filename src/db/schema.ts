@@ -37,13 +37,20 @@ export const concepts = pgTable('concepts', {
 export const gates = pgTable('gates', {
   id: text('id').primaryKey(),
   conceptId: text('concept_id').notNull(),
-  kind: text('kind').notNull(), // 'book', etc
+  kind: text('kind').notNull(), // 'book' | 'authored'
   prompt: text('prompt').notNull(),
-  answerType: text('answer_type').notNull(), // 'mcq' | 'symbolic' | 'written'
-  grader: text('grader').notNull(), // 'mcq' | 'cas' | 'rubric'
+  answerType: text('answer_type').notNull(), // 'mcq' | 'symbolic' | 'written' | 'sketch'
+  grader: text('grader').notNull(), // 'mcq' | 'cas' | 'rubric' | 'vision'
   expected: jsonb('expected').notNull(), // answer spec (SERVER-ONLY at runtime)
   srcLabel: text('src_label'),
   quote: text('quote'),
+  // Multi-gate authoring (5 slots/concept): sketch1, sketch2, explain, mcq, equation
+  slot: text('slot'),
+  ord: integer('ord').default(0),
+  idealAnswer: text('ideal_answer'),
+  why: text('why'),
+  rubric: text('rubric'),
+  source: text('source'),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 

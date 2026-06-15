@@ -102,6 +102,11 @@ export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens =
   return String(content);
 }
 
+/** Author with Claude Haiku regardless of the runtime provider (used by the gate-authoring tool). */
+export async function claudeAuthor(messages: ChatMessage[], maxTokens = 2000): Promise<string> {
+  return claudeComplete(messages, maxTokens);
+}
+
 async function claudeComplete(messages: ChatMessage[], maxTokens: number): Promise<string> {
   const key = process.env.ANTHROPIC_API_KEY;
   if (!key) throw new Error('ANTHROPIC_API_KEY missing');

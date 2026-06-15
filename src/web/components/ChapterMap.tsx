@@ -73,26 +73,36 @@ export default function ChapterMap({
           <div className="map-wrap">
             <div className="map-title">{chapter?.title}</div>
             <div className="map">
-              {nodes.map((node) => (
-                <div
-                  key={node.id}
-                  className={`c ${node.status}`}
-                  onClick={() => node.status === 'available' && onNodeClick(node.id)}
-                  title={node.title}
-                >
-                  <div className="dot">
-                    {node.status === 'passed' ? '' : node.order}
+              {nodes.map((node) => {
+                const visual =
+                  node.status === 'passed'
+                    ? 'done'
+                    : node.status === 'available'
+                      ? 'available'
+                      : node.status === 'locked'
+                        ? 'locked'
+                        : 'current'; // teaching | awaiting_gate | needs_reteach
+                const clickable = node.status !== 'locked';
+                return (
+                  <div
+                    key={node.id}
+                    className={`c ${visual}`}
+                    onClick={() => clickable && onNodeClick(node.id)}
+                    title={node.title}
+                  >
+                    <div className="dot">{node.status === 'passed' ? '' : node.order}</div>
+                    <div className="nm">{node.title.split('·')[0].trim()}</div>
                   </div>
-                  <div className="nm">{node.title.split('·')[0].trim()}</div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             <div className="legend">
-              <span className="l-done">passed</span>
+              <span className="l-done">passed (revisit)</span>
               <span className="l-now">open now</span>
+              <span className="l-cur">in progress</span>
               <span className="l-lock">locked</span>
             </div>
-            <div className="hint">More than one can be open at once — you choose which to do next.</div>
+            <div className="hint">More than one can be open at once — passed and in-progress concepts stay clickable to revisit.</div>
           </div>
         </div>
       </div>
