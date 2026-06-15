@@ -1,0 +1,396 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "chapter": "mathematics-ch03",
+  "items": [
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:matrix-definition",
+      "kind": "practice",
+      "prompt": "A matrix is best described as:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "an ordered rectangular array of numbers or functions",
+      "expected": {
+        "kind": "mcq",
+        "correct": "an ordered rectangular array of numbers or functions",
+        "options": [
+          "an ordered rectangular array of numbers or functions",
+          "a single real number",
+          "a function from R to R",
+          "an unordered set of numbers"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.2 Definition 1"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:order",
+      "kind": "practice",
+      "prompt": "A matrix has 3 rows and 4 columns. How many elements does it have?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "12",
+      "expected": {
+        "kind": "numeric",
+        "value": 12,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.2.1 Order of a matrix"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:order",
+      "kind": "practice",
+      "prompt": "If a matrix has 8 elements, which of the following is a possible order?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "4 x 2",
+      "expected": {
+        "kind": "mcq",
+        "correct": "4 x 2",
+        "options": [
+          "4 x 2",
+          "3 x 3",
+          "5 x 2",
+          "3 x 2"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Example 2"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:square-matrix",
+      "kind": "practice",
+      "prompt": "A matrix is a square matrix when:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the number of rows equals the number of columns",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the number of rows equals the number of columns",
+        "options": [
+          "the number of rows equals the number of columns",
+          "all its entries are zero",
+          "it has only one row",
+          "it has more rows than columns"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.3 Square matrix"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:diagonal-matrix",
+      "kind": "practice",
+      "prompt": "A square matrix is a diagonal matrix if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "all its non-diagonal elements are zero",
+      "expected": {
+        "kind": "mcq",
+        "correct": "all its non-diagonal elements are zero",
+        "options": [
+          "all its non-diagonal elements are zero",
+          "all its elements are zero",
+          "all its elements are 1",
+          "its diagonal elements are all equal"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.3 Diagonal matrix"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:scalar-matrix",
+      "kind": "practice",
+      "prompt": "A diagonal matrix is a scalar matrix when:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "all its diagonal elements are equal",
+      "expected": {
+        "kind": "mcq",
+        "correct": "all its diagonal elements are equal",
+        "options": [
+          "all its diagonal elements are equal",
+          "all its elements are zero",
+          "its off-diagonal elements are non-zero",
+          "it is not square"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.3 Scalar matrix"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:identity-matrix",
+      "kind": "practice",
+      "prompt": "The identity matrix I has diagonal elements all equal to:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.3 Identity matrix"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:zero-matrix",
+      "kind": "practice",
+      "prompt": "A zero (null) matrix is one in which:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "all its elements are zero",
+      "expected": {
+        "kind": "mcq",
+        "correct": "all its elements are zero",
+        "options": [
+          "all its elements are zero",
+          "all its diagonal elements are zero only",
+          "all its elements are 1",
+          "it is a square matrix"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.3 Zero matrix"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:equality-of-matrices",
+      "kind": "practice",
+      "prompt": "If [x, 5; 7, y] = [2, 5; 7, 9] as 2x2 matrices, find x + y.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "11",
+      "expected": {
+        "kind": "numeric",
+        "value": 11,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.3.1 Equality of matrices"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:equality-of-matrices",
+      "kind": "practice",
+      "prompt": "Two matrices A and B are equal if and only if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "they have the same order and equal corresponding elements",
+      "expected": {
+        "kind": "mcq",
+        "correct": "they have the same order and equal corresponding elements",
+        "options": [
+          "they have the same order and equal corresponding elements",
+          "they have the same number of elements",
+          "they are both square",
+          "they have the same determinant"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.3.1 Definition 2"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:matrix-addition",
+      "kind": "practice",
+      "prompt": "Matrix addition A + B is defined only when:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "A and B have the same order",
+      "expected": {
+        "kind": "mcq",
+        "correct": "A and B have the same order",
+        "options": [
+          "A and B have the same order",
+          "A and B are both square",
+          "columns of A equal rows of B",
+          "A and B are both diagonal"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.4.1 Addition of matrices"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:scalar-multiplication",
+      "kind": "practice",
+      "prompt": "If A = [3, 1; -5, 2], what is the (1,1) entry of 3A?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "9",
+      "expected": {
+        "kind": "numeric",
+        "value": 9,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.4.2 Scalar multiplication"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+      "kind": "practice",
+      "prompt": "If A is a 2 x 3 matrix and B is a 3 x 4 matrix, the product AB has order:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "2 x 4",
+      "expected": {
+        "kind": "mcq",
+        "correct": "2 x 4",
+        "options": [
+          "2 x 4",
+          "3 x 3",
+          "4 x 2",
+          "undefined"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.4.5 Multiplication of matrices"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+      "kind": "practice",
+      "prompt": "Let A = [6, 9; 2, 3] and B = [2; 7] (a 2x1 column). The (1,1) entry of AB is 6(2) + 9(7). Compute it.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "75",
+      "expected": {
+        "kind": "numeric",
+        "value": 75,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Example 12 (row-by-column product)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:non-commutative-multiplication",
+      "kind": "practice",
+      "prompt": "Which statement about matrix multiplication is correct?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "AB need not equal BA",
+      "expected": {
+        "kind": "mcq",
+        "correct": "AB need not equal BA",
+        "options": [
+          "AB need not equal BA",
+          "AB always equals BA",
+          "If AB is defined then BA is always defined",
+          "AB = BA for all matrices of any order"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.4.5 Non-commutativity"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:transpose",
+      "kind": "practice",
+      "prompt": "The transpose of a matrix A is obtained by:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "interchanging its rows and columns",
+      "expected": {
+        "kind": "mcq",
+        "correct": "interchanging its rows and columns",
+        "options": [
+          "interchanging its rows and columns",
+          "changing the sign of every element",
+          "multiplying every element by -1",
+          "swapping the first and last rows only"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.5 Definition 3 (transpose)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:transpose",
+      "kind": "practice",
+      "prompt": "For matrices A and B of suitable orders, (AB)' equals:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "B'A'",
+      "expected": {
+        "kind": "mcq",
+        "correct": "B'A'",
+        "options": [
+          "B'A'",
+          "A'B'",
+          "AB",
+          "(BA)'"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.5.1 Property (iv)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:symmetric-matrix",
+      "kind": "practice",
+      "prompt": "A square matrix A is symmetric if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "A' = A",
+      "expected": {
+        "kind": "mcq",
+        "correct": "A' = A",
+        "options": [
+          "A' = A",
+          "A' = -A",
+          "A = I",
+          "A = O"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.6 Definition 4 (symmetric)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix",
+      "kind": "practice",
+      "prompt": "Every diagonal element of a skew-symmetric matrix equals:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.6 Definition 5 (skew symmetric, zero diagonal)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix",
+      "kind": "practice",
+      "prompt": "A square matrix A is skew-symmetric if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "A' = -A",
+      "expected": {
+        "kind": "mcq",
+        "correct": "A' = -A",
+        "options": [
+          "A' = -A",
+          "A' = A",
+          "A = I",
+          "A = 2A"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.6 Definition 5 (skew symmetric)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "kind": "practice",
+      "prompt": "Square matrices A and B (same order) are inverses of each other if and only if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "AB = BA = I",
+      "expected": {
+        "kind": "mcq",
+        "correct": "AB = BA = I",
+        "options": [
+          "AB = BA = I",
+          "AB = BA = O",
+          "AB = I, BA = O",
+          "AB = BA"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.7 Definition 6 / Exercise 3.4 Q1"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "kind": "practice",
+      "prompt": "Explain why a rectangular (non-square) matrix cannot have an inverse, and what condition B must satisfy to be the inverse of a square matrix A.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "For both products AB and BA to be defined and equal the identity, A and B must be square matrices of the same order; a rectangular matrix cannot satisfy this, so it has no inverse. B is the inverse of square A if AB = BA = I, in which case B = A-inverse (and the inverse, when it exists, is unique).",
+        "markPoints": [
+          "Both AB and BA must be defined and equal I, forcing A and B to be square of the same order",
+          "A rectangular matrix cannot meet this, so has no inverse",
+          "B is the inverse of A iff AB = BA = I (and the inverse is unique)"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch03 Sec 3.7 Note 1 + Theorem 3"
+    }
+  ]
+}

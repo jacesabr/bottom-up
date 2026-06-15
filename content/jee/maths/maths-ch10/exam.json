@@ -1,0 +1,168 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch10",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch10:classify-conic-by-angle",
+      "kind": "practice",
+      "prompt": "A plane cuts a double-napped right circular cone (not through the vertex) of semi-vertical angle alpha. If the plane makes an angle beta with the axis where alpha < beta < 90 degrees, the section is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "an ellipse",
+      "expected": {
+        "kind": "mcq",
+        "correct": "an ellipse",
+        "options": [
+          "an ellipse",
+          "a circle",
+          "a parabola",
+          "a hyperbola"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.2.1 Circle, ellipse, parabola and hyperbola"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:circle-standard-equation",
+      "kind": "practice",
+      "prompt": "Find the equation of the circle with centre (-2, 3) and radius 4.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(x + 2)^2 + (y - 3)^2 = 16",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(x + 2)^2 + (y - 3)^2 = 16",
+        "options": [
+          "(x + 2)^2 + (y - 3)^2 = 16",
+          "(x - 2)^2 + (y + 3)^2 = 16",
+          "(x + 2)^2 + (y - 3)^2 = 4",
+          "(x - 2)^2 + (y - 3)^2 = 16"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.3 Circle, cf. Example 2 / Exercise 10.1 Q2"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:circle-find-centre-radius",
+      "kind": "practice",
+      "prompt": "The circle x^2 + y^2 + 8x + 10y - 8 = 0 is written in standard form by completing the square. Find the radius of this circle.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7",
+      "expected": {
+        "kind": "numeric",
+        "value": 7,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.3 Example 3"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:parabola-standard-equation",
+      "kind": "practice",
+      "prompt": "Find the equation of the parabola with focus (6, 0) and directrix x = -6.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "y^2 = 24x",
+      "expected": {
+        "kind": "mcq",
+        "correct": "y^2 = 24x",
+        "options": [
+          "y^2 = 24x",
+          "y^2 = 12x",
+          "x^2 = 24y",
+          "y^2 = -24x"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.4.1, cf. Exercise 10.2 Q7"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:parabola-latus-rectum",
+      "kind": "practice",
+      "prompt": "For the parabola y^2 = 12x, find the length of the latus rectum.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "12",
+      "expected": {
+        "kind": "numeric",
+        "value": 12,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.4.2, cf. Exercise 10.2 Q1"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:ellipse-eccentricity",
+      "kind": "practice",
+      "prompt": "For the ellipse x^2/25 + y^2/9 = 1, the major axis is along the x-axis. Find its eccentricity e = c/a (give the decimal value).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.8",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.8,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.5.2, cf. Example 9"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:ellipse-latus-rectum",
+      "kind": "practice",
+      "prompt": "For the ellipse x^2/36 + y^2/16 = 1, the latus rectum has length 2b^2/a. Compute its value as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5.33",
+      "expected": {
+        "kind": "numeric",
+        "value": 5.33,
+        "tol": 0.02
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.5.4, cf. Exercise 10.3 Q1"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:hyperbola-standard-equation",
+      "kind": "practice",
+      "prompt": "For the hyperbola x^2/16 - y^2/9 = 1, the foci lie on the x-axis at (+-c, 0). Using c^2 = a^2 + b^2, find c.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5",
+      "expected": {
+        "kind": "numeric",
+        "value": 5,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.6.2, cf. Exercise 10.4 Q1"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:hyperbola-definition",
+      "kind": "practice",
+      "prompt": "State the geometric definition of a hyperbola, and explain how it differs from the definition of an ellipse.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "A hyperbola is the set of all points in a plane the DIFFERENCE of whose distances from two fixed points (the foci) is a constant. An ellipse, by contrast, is the set of points the SUM of whose distances from the two foci is a constant. So both are loci defined by the two focal distances, but the ellipse uses their sum while the hyperbola uses their difference.",
+        "markPoints": [
+          "Hyperbola: difference of distances from the two foci is constant",
+          "Ellipse: sum of distances from the two foci is constant",
+          "Both are focal loci; the distinction is difference (hyperbola) versus sum (ellipse)"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.6 Definition 7 (vs Sec 10.5 Definition 4)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:standard-equations-of-conics",
+      "kind": "practice",
+      "prompt": "Find the length of the latus rectum of the hyperbola x^2/9 - y^2/16 = 1, using latus rectum = 2b^2/a. Give the decimal value.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "10.67",
+      "expected": {
+        "kind": "numeric",
+        "value": 10.67,
+        "tol": 0.02
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.6.3, cf. Example 14(i)"
+    }
+  ]
+}

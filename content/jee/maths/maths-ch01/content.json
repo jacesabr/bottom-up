@@ -1,0 +1,455 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch01",
+  "title": "Sets",
+  "book": "NCERT Class 11 maths — Sets",
+  "goal": "jee:maths:maths-ch01:represent-and-operate-on-sets",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch01:define-a-well-defined-set",
+      "slug": "define-a-well-defined-set",
+      "title": "Decide whether a collection is a well-defined set",
+      "role": "bedrock",
+      "brief": "Test a collection against the well-defined criterion: a set is a collection for which membership of any object can be decided unambiguously.",
+      "sec": 2,
+      "quote": "We shall say that a set is a well-defined collection of objects.",
+      "explanation": "A set is a well-defined collection of objects, meaning that for any given object we can definitely decide whether it belongs to the collection or not. The collection of rivers of India is a set because the river Ganga clearly belongs and the river Nile clearly does not. By contrast, 'the five most renowned mathematicians of the world' is not a set, because the criterion for 'most renowned' varies from person to person, so membership cannot be decided unambiguously. The terms object, element and member are synonymous; sets are denoted by capital letters A, B, C and their elements by small letters a, b, c.",
+      "keyMoves": [
+        "Ask whether membership of any object in the collection can be decided unambiguously",
+        "Classify the collection as a set (well-defined) or not a set (criterion varies)",
+        "Use capital letters for sets and small letters for their elements"
+      ],
+      "misconceptions": [
+        "Treating a vague collection ('ten talented writers') as a set when its membership cannot be decided",
+        "Thinking any collection of objects automatically qualifies as a set"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:use-set-membership",
+      "slug": "use-set-membership",
+      "title": "Use the membership symbols belongs-to and does-not-belong-to",
+      "role": "bedrock",
+      "brief": "Read and write a belongs to A and b does not belong to A using the symbols in and not-in.",
+      "sec": 2,
+      "quote": "the Greek symbol  $\\in$  (epsilon) is used to denote the phrase '*belongs to*'.",
+      "explanation": "If a is an element of a set A we say 'a belongs to A' and write a in A, using the Greek symbol in (epsilon). If b is not an element of A we write b not-in A and read it 'b does not belong to A'. For example, in the set V of vowels in the English alphabet, a in V but b not-in V; in the set P of prime factors of 30, 3 in P but 15 not-in P. Membership is the basic relation that every other set idea (equality, subset, union, intersection) is ultimately built on.",
+      "keyMoves": [
+        "Write a in A when a is an element of A",
+        "Write b not-in A when b is not an element of A",
+        "Read the symbols aloud as 'belongs to' and 'does not belong to'"
+      ],
+      "misconceptions": [
+        "Confusing membership (in, element of a set) with the subset relation (subset of, set inside a set)",
+        "Writing 15 in P for the prime factors of 30 when 15 is not itself a prime factor"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:define-a-well-defined-set"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:write-a-set-in-roster-form",
+      "slug": "write-a-set-in-roster-form",
+      "title": "Represent a set in roster (tabular) form",
+      "role": "bedrock",
+      "brief": "List all the elements of a set inside braces, separated by commas, taking each distinct element once and ignoring order.",
+      "sec": 2,
+      "quote": "In roster form, all the elements of a set are listed, the elements are being separated by commas and are enclosed within braces { }.",
+      "explanation": "In roster (tabular) form a set is written by listing all its elements separated by commas inside braces { }. For example the even positive integers less than 7 form {2, 4, 6}, and the vowels form {a, e, i, o, u}. Two rules apply: the order of listing is immaterial (so {1, 3, 7} = {7, 1, 3}), and each element is taken as distinct and not repeated (the letters of 'SCHOOL' give {S, C, H, O, L}). An infinite set with a clear pattern can be shown with three dots, e.g. the odd natural numbers as {1, 3, 5, ...}.",
+      "keyMoves": [
+        "List every element inside braces, separated by commas",
+        "Drop repeated elements and ignore the order of listing",
+        "Use three dots for a clearly-patterned infinite set, e.g. {1, 3, 5, ...}"
+      ],
+      "misconceptions": [
+        "Repeating elements (e.g. writing {S, C, H, O, O, L}) instead of taking each once",
+        "Thinking the order of elements changes the set"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:use-set-membership"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:write-a-set-in-set-builder-form",
+      "slug": "write-a-set-in-set-builder-form",
+      "title": "Represent a set in set-builder form",
+      "role": "bedrock",
+      "brief": "Describe a set by the common defining property of its elements, written as {x : x has property P}.",
+      "sec": 2,
+      "quote": "In set-builder form, all the elements of a set possess a single common property which is not possessed by any element outside the set.",
+      "explanation": "In set-builder form a set is described by the single common property shared by all its elements and by no object outside the set. We write a variable (say x), a colon ':' meaning 'such that', and then the characteristic property, all inside braces: V = {x : x is a vowel in English alphabet} reads 'the set of all x such that x is a vowel'. The braces stand for 'the set of all'. This form is the natural way to describe sets given by a rule rather than a list, e.g. A = {x : x is a natural number and 3 < x < 10} = {4, 5, 6, 7, 8, 9}, and it converts back and forth with roster form.",
+      "keyMoves": [
+        "Identify the single property common to all elements and no outsiders",
+        "Write {x : property}, reading ':' as 'such that' and braces as 'the set of all'",
+        "Convert between set-builder and roster form for the same set"
+      ],
+      "misconceptions": [
+        "Choosing a property that some outside object also satisfies (so the set is not pinned down)",
+        "Misreading the colon ':' as anything other than 'such that'"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:write-a-set-in-roster-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:identify-the-empty-set",
+      "slug": "identify-the-empty-set",
+      "title": "Identify the empty (null) set",
+      "role": "bedrock",
+      "brief": "Recognise a set that contains no element at all, denoted by the symbol phi or { }.",
+      "sec": 3,
+      "quote": "A set which does not contain any element is called the *empty set* or the *null set* or the *void set*.",
+      "explanation": "A set which does not contain any element is called the empty set (also null set or void set), denoted phi or { }. A set is empty when its defining property is satisfied by no object: {x : 1 < x < 2, x natural} is empty because there is no natural number between 1 and 2, and {x : x^2 = 2 and x rational} is empty because no rational number squares to 2. Deciding whether a described set is empty is a frequent exam task and the key first check before classifying or operating on a set.",
+      "keyMoves": [
+        "Check whether any object satisfies the set's defining property",
+        "Declare the set empty (phi or { }) when no object qualifies",
+        "Distinguish the empty set from a set containing the single element 0, i.e. {0}"
+      ],
+      "misconceptions": [
+        "Treating {0} as the empty set (it has one element, namely 0)",
+        "Calling a set empty when in fact some element does satisfy its property"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:write-a-set-in-set-builder-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:classify-finite-and-infinite-sets",
+      "slug": "classify-finite-and-infinite-sets",
+      "title": "Classify a set as finite or infinite",
+      "role": "bedrock",
+      "brief": "Decide whether a set has a definite (countable) number of elements (finite) or not (infinite), using n(S) for the number of elements.",
+      "sec": 4,
+      "quote": "A set which is empty or consists of a definite number of elements is called *finite* otherwise, the set is called *infinite*.",
+      "explanation": "The number of distinct elements of a set S is written n(S). A set which is empty or consists of a definite number of elements is called finite; otherwise it is infinite. So {1, 2, 3, 4, 5} is finite with n = 5, the set of days of the week is finite, but the set of natural numbers and the set of points on a line are infinite. An infinite set with a pattern can be shown in roster form with three dots (e.g. {1, 2, 3, ...}), but sets like the real numbers cannot be listed at all. Classifying a described set usually means first reducing it to roster form and then counting.",
+      "keyMoves": [
+        "Reduce the described set to its elements (roster form) where possible",
+        "Decide finite (empty or a definite number of elements) versus infinite",
+        "Report n(S) for a finite set"
+      ],
+      "misconceptions": [
+        "Calling a set infinite just because it is written with dots, even when it has finitely many elements",
+        "Thinking every infinite set can be displayed in roster form (the reals cannot)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:identify-the-empty-set"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:decide-when-two-sets-are-equal",
+      "slug": "decide-when-two-sets-are-equal",
+      "title": "Decide whether two sets are equal",
+      "role": "bedrock",
+      "brief": "Two sets are equal exactly when they have the same elements; repetition and order do not matter.",
+      "sec": 5,
+      "quote": "Two sets A and B are said to be *equal* if they have exactly the same elements and we write A = B.",
+      "explanation": "Two sets A and B are equal, written A = B, if every element of A is in B and every element of B is in A, i.e. they have exactly the same elements; otherwise A is not equal to B. Because order and repetition do not matter, {1, 2, 3, 4} = {3, 1, 4, 2} and {1, 2, 3} = {2, 2, 1, 3, 3}. To test equality, reduce both descriptions to their actual elements and compare: the set of prime numbers less than 6 equals the set of prime factors of 30 (both {2, 3, 5}), while {n in Z : n^2 <= 4} = {-2,-1,0,1,2} is not equal to {x in R : x^2 - 3x + 2 = 0} = {1, 2}.",
+      "keyMoves": [
+        "List the actual elements of each set, ignoring order and repetition",
+        "Check that every element of A is in B and every element of B is in A",
+        "Write A = B if they match, otherwise A is not equal to B"
+      ],
+      "misconceptions": [
+        "Thinking repeating or reordering elements produces a different set",
+        "Declaring two sets equal after matching only one direction of inclusion"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:determine-subset-relations",
+      "slug": "determine-subset-relations",
+      "title": "Determine subset and proper-subset relations",
+      "role": "intermediate",
+      "brief": "Test whether A is a subset of B (every element of A is in B), and recognise proper subsets, supersets, and the conventions A subset A and phi subset every set.",
+      "sec": 6,
+      "quote": "A set A is said to be a subset of a set B if every element of A is also an element of B.",
+      "explanation": "A is a subset of B (written A subset B, 'A is contained in B') if every element of A is also an element of B: a in A implies a in B. If A subset B and B subset A then the sets are equal (A subset B and B subset A iff A = B). Every set is a subset of itself (A subset A), and the empty set is a subset of every set. If A subset B but A is not equal to B, then A is a proper subset of B and B is a superset of A; a set with exactly one element is a singleton. Subset is the relation that organises sets by containment, and underlies the universal set and the operations that follow.",
+      "keyMoves": [
+        "Check that every element of A lies in B to confirm A subset B",
+        "Use A subset B and B subset A together to conclude A = B",
+        "Apply the conventions A subset A and phi subset every set; identify proper subsets and supersets"
+      ],
+      "misconceptions": [
+        "Confusing element-of (3 in {3,4}) with subset ({3} subset {3,4})",
+        "Forgetting that the empty set is a subset of every set"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:decide-when-two-sets-are-equal"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:name-subsets-of-the-real-numbers",
+      "slug": "name-subsets-of-the-real-numbers",
+      "title": "Name the standard number-set subsets of the reals",
+      "role": "intermediate",
+      "brief": "Identify N, Z, Q, T as subsets of R and state the containment relations among them.",
+      "sec": 6,
+      "quote": "The set of irrational numbers, denoted by **T**, is composed of all other real numbers.",
+      "explanation": "The real numbers R contain several important subsets: the natural numbers N = {1, 2, 3, ...}, the integers Z = {..., -2, -1, 0, 1, 2, ...}, and the rational numbers Q = {x : x = p/q, p, q in Z, q not 0}. The set of irrational numbers, denoted by T, is composed of all other real numbers, i.e. T = {x : x in R and x not-in Q}; members of T include sqrt(2), sqrt(5) and pi. The standard containments are N subset Z subset Q, Q subset R, T subset R, and N is not a subset of T. Knowing these named subsets lets you place any number and read interval and set-builder descriptions of R.",
+      "keyMoves": [
+        "Recall N, Z, Q, R and the irrationals T and what each contains",
+        "State the containments N subset Z subset Q subset R and T subset R",
+        "Classify a given number (e.g. sqrt(2) is irrational, -5/1 is rational)"
+      ],
+      "misconceptions": [
+        "Thinking every real number is rational (irrationals like sqrt(2) and pi are not)",
+        "Believing N is a subset of the irrationals T"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:determine-subset-relations"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:write-intervals-as-subsets-of-r",
+      "slug": "write-intervals-as-subsets-of-r",
+      "title": "Convert between intervals and set-builder subsets of R",
+      "role": "intermediate",
+      "brief": "Translate open, closed and half-open intervals to and from set-builder form, and find an interval's length.",
+      "sec": 6,
+      "quote": "The interval which contains the end points also is called *closed interval* and is denoted by [a, b].",
+      "explanation": "For a < b, the open interval (a, b) = {y : a < y < b} contains all points strictly between a and b but not the end points. The interval which contains the end points also is called closed interval and is denoted by [a, b] = {x : a <= x <= b}. Half-open intervals [a, b) and (a, b] include just one end point. Special unbounded intervals: [0, infinity) is the non-negative reals, (-infinity, 0) the negative reals, and (-infinity, infinity) all of R. Every interval contains infinitely many points, and the length of (a, b), [a, b], [a, b) or (a, b] is the number (b - a). Intervals are an alternative, compact way of naming subsets of R that converts directly to set-builder form.",
+      "keyMoves": [
+        "Match bracket type to end-point inclusion: ( ) excludes, [ ] includes the end point",
+        "Rewrite an interval as {x : inequality} and vice versa",
+        "Compute the interval length as (b - a)"
+      ],
+      "misconceptions": [
+        "Including an end point of an open interval (a, b) in its set-builder form",
+        "Writing the end points as belonging to an interval that has them as +/- infinity"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:choose-a-universal-set",
+      "slug": "choose-a-universal-set",
+      "title": "Choose a universal set for a given context",
+      "role": "intermediate",
+      "brief": "Identify a basic set U that contains all the sets relevant to a context, so every set under study is a subset of U.",
+      "sec": 7,
+      "quote": "This basic set is called the \"*Universal Set*\".",
+      "explanation": "In any context we work within a basic set that contains all the elements and subsets relevant to that context; this basic set is called the Universal Set, usually denoted U, with its subsets named A, B, C, etc. For studying numbers, U might be Q or R; in human population studies, U is all the people in the world. A universal set is valid for given sets only if it contains all of them: for A = {1,3,5}, B = {2,4,6}, C = {0,2,4,6,8}, the set {0,1,...,10} works but {1,...,8} does not (it omits 0). Fixing U is the prerequisite for defining the complement of a set.",
+      "keyMoves": [
+        "Identify all the sets in play for the context",
+        "Choose U so that every one of those sets is a subset of U",
+        "Reject any candidate U that misses an element of some set under study"
+      ],
+      "misconceptions": [
+        "Picking a universal set that fails to contain every element of the sets being studied",
+        "Thinking there is a single absolute universal set rather than one chosen per context"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:determine-subset-relations"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:represent-sets-with-venn-diagrams",
+      "slug": "represent-sets-with-venn-diagrams",
+      "title": "Represent sets and their relations with Venn diagrams",
+      "role": "intermediate",
+      "brief": "Draw the universal set as a rectangle and its subsets as circles, placing elements and showing subset relations.",
+      "sec": 8,
+      "quote": "Most of the relationships between sets can be represented by means of diagrams which are known as *Venn diagrams*.",
+      "explanation": "Most of the relationships between sets can be represented by Venn diagrams, named after the logician John Venn. The universal set is drawn as a rectangle and its subsets as closed curves (usually circles) inside it, with the elements written in their respective circles. For instance with U = {1, 2, ..., 10}, A = {2,4,6,8,10} is a circle inside the rectangle; if B = {4, 6} then B subset A is shown by drawing B's circle inside A's. Venn diagrams are the standard tool for visualising union, intersection, difference and complement, and for checking set identities.",
+      "keyMoves": [
+        "Draw U as a rectangle and each subset as a circle inside it",
+        "Place each element in the correct region/circle",
+        "Show a subset relation by nesting one circle inside another"
+      ],
+      "misconceptions": [
+        "Drawing a subset's circle outside or overlapping its superset instead of nested inside",
+        "Forgetting that the rectangle (U) bounds all the subset circles"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:choose-a-universal-set"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:compute-the-union-of-sets",
+      "slug": "compute-the-union-of-sets",
+      "title": "Compute the union of two sets",
+      "role": "intermediate",
+      "brief": "Form A union B as the set of all elements in A or in B (common elements taken once), and use its basic properties.",
+      "sec": 9,
+      "quote": "The union of A and B is the set which consists of all the elements of A and all the elements of B, the common elements being taken only once.",
+      "explanation": "The union of A and B, written A union B and read 'A union B', is the set of all elements that are in A or in B (including those in both), with common elements taken only once: A union B = {x : x in A or x in B}. For example {2,4,6,8} union {6,8,10,12} = {2,4,6,8,10,12}. If B subset A then A union B = A. Union obeys the commutative law (A union B = B union A), the associative law ((A union B) union C = A union (B union C)), has identity phi (A union phi = A), is idempotent (A union A = A), and U union A = U.",
+      "keyMoves": [
+        "Collect every element of A together with every element of B",
+        "Write each common element only once",
+        "Apply the union properties (commutative, associative, identity phi, idempotent, U union A = U)"
+      ],
+      "misconceptions": [
+        "Listing common elements twice in the union",
+        "Mixing up union (or) with intersection (and)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:determine-subset-relations"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:compute-the-intersection-of-sets",
+      "slug": "compute-the-intersection-of-sets",
+      "title": "Compute the intersection of two sets",
+      "role": "intermediate",
+      "brief": "Form A intersection B as the elements common to both A and B, recognise disjoint sets, and use intersection's properties including distributivity.",
+      "sec": 9,
+      "quote": "The intersection of sets A and B is the set of all elements which are common to both A and B.",
+      "explanation": "The intersection of A and B, written A intersection B, is the set of all elements common to both: A intersection B = {x : x in A and x in B}. For example {2,4,6,8} intersection {6,8,10,12} = {6,8}; and if B subset A then A intersection B = B. If A intersection B = phi the sets share no element and are called disjoint sets. Intersection is commutative, associative, idempotent (A intersection A = A), satisfies phi intersection A = phi and U intersection A = A, and distributes over union: A intersection (B union C) = (A intersection B) union (A intersection C).",
+      "keyMoves": [
+        "Keep only the elements that lie in both A and B",
+        "Recognise disjoint sets when A intersection B = phi",
+        "Apply the distributive law A intersection (B union C) = (A intersection B) union (A intersection C)"
+      ],
+      "misconceptions": [
+        "Including elements that are in just one of the two sets",
+        "Confusing intersection (common to both, 'and') with union ('or')"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:compute-the-union-of-sets"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:compute-the-difference-of-sets",
+      "slug": "compute-the-difference-of-sets",
+      "title": "Compute the difference of two sets",
+      "role": "intermediate",
+      "brief": "Form A - B as the elements in A but not in B, and note that A - B is generally not equal to B - A.",
+      "sec": 9,
+      "quote": "The difference of the sets A and B in this order is the set of elements which belong to A but not to B.",
+      "explanation": "The difference A - B (read 'A minus B') is the set of elements that belong to A but not to B: A - B = {x : x in A and x not-in B}. For A = {1,2,3,4,5,6}, B = {2,4,6,8} we get A - B = {1,3,5} and B - A = {8}, showing that A - B is generally not equal to B - A (order matters). The three sets A - B, A intersection B and B - A are mutually disjoint. The difference is the operation from which the complement of a set is defined.",
+      "keyMoves": [
+        "Keep the elements of A that are not in B to form A - B",
+        "Note that the order matters: compute B - A separately",
+        "See A - B, A intersection B, B - A as mutually disjoint pieces"
+      ],
+      "misconceptions": [
+        "Assuming A - B equals B - A",
+        "Including in A - B elements that are not in A in the first place"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:find-the-complement-of-a-set",
+      "slug": "find-the-complement-of-a-set",
+      "title": "Find the complement of a set relative to U",
+      "role": "intermediate",
+      "brief": "Form A' = U - A, the elements of the universal set that are not in A, and use the double-complement law (A')' = A.",
+      "sec": 10,
+      "quote": "Then the complement of A is the set of all elements of U which are not the elements of A.",
+      "explanation": "Given a universal set U and a subset A, the complement of A is the set of all elements of U which are not the elements of A, written A' = {x : x in U and x not-in A}; equivalently A' = U - A. For U = {1,...,10} and A = {1,3,5,7,9}, A' = {2,4,6,8,10}. The complement obeys A union A' = U, A intersection A' = phi, the double-complementation law (A')' = A, and the empty/universal laws phi' = U and U' = phi. The complement always depends on the chosen universal set U.",
+      "keyMoves": [
+        "Take every element of U that is not in A to form A'",
+        "Use A' = U - A as an equivalent recipe",
+        "Apply A union A' = U, A intersection A' = phi and (A')' = A"
+      ],
+      "misconceptions": [
+        "Computing a complement without reference to a universal set U",
+        "Forgetting that (A')' returns the original set A"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:compute-the-difference-of-sets",
+        "jee:maths:maths-ch01:choose-a-universal-set"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:apply-de-morgans-laws",
+      "slug": "apply-de-morgans-laws",
+      "title": "Apply De Morgan's laws to complements of union and intersection",
+      "role": "intermediate",
+      "brief": "Use (A union B)' = A' intersection B' and (A intersection B)' = A' union B' to simplify complements of combined sets.",
+      "sec": 10,
+      "quote": "The complement of the union of two sets is the intersection of their complements and the complement of the intersection of two sets is the union of their complements.",
+      "explanation": "De Morgan's laws relate complements to union and intersection: (A union B)' = A' intersection B' and (A intersection B)' = A' union B'. In words, the complement of the union of two sets is the intersection of their complements, and the complement of the intersection of two sets is the union of their complements. For U = {1,...,6}, A = {2,3}, B = {3,4,5}: A' = {1,4,5,6}, B' = {1,2,6}, so A' intersection B' = {1,6}, which equals (A union B)' since A union B = {2,3,4,5}. These laws let you rewrite the complement of a combined set in terms of the individual complements and can be verified with Venn diagrams.",
+      "keyMoves": [
+        "Rewrite (A union B)' as A' intersection B'",
+        "Rewrite (A intersection B)' as A' union B'",
+        "Verify a particular case numerically or with a Venn diagram"
+      ],
+      "misconceptions": [
+        "Writing (A union B)' = A' union B' (failing to swap union to intersection)",
+        "Leaving the operation unchanged when distributing the complement over a union or intersection"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:find-the-complement-of-a-set"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch01:represent-and-operate-on-sets",
+      "slug": "represent-and-operate-on-sets",
+      "title": "Represent sets and solve problems using set operations",
+      "role": "goal",
+      "brief": "Combine set representation, subset and equality reasoning, and the operations of union, intersection, difference and complement (with De Morgan's laws) to solve problems about collections.",
+      "sec": 1,
+      "quote": "This chapter deals with some basic definitions and operations involving sets.",
+      "explanation": "This chapter deals with some basic definitions and operations involving sets. Pulling the pieces together, you can: describe a well-defined collection in roster or set-builder form; classify it as empty, finite or infinite; decide membership, equality and subset relations; fix a universal set and draw Venn diagrams; and combine sets with union, intersection, difference and complement, using De Morgan's laws to handle complements of combined sets. This integrated toolkit is the language in which relations, functions and the rest of mathematics are expressed, and it is what set problems on the exam ultimately test.",
+      "keyMoves": [
+        "Represent a given collection in roster or set-builder form and classify it",
+        "Reason about membership, equality and subset relations, choosing a universal set",
+        "Combine sets with union, intersection, difference and complement, applying De Morgan's laws"
+      ],
+      "misconceptions": [
+        "Treating the operations in isolation rather than combining them to solve a multi-step problem",
+        "Mixing up the logical connectives ('or' for union, 'and' for intersection, 'not' for complement)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:write-a-set-in-set-builder-form",
+        "jee:maths:maths-ch01:identify-the-empty-set",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets",
+        "jee:maths:maths-ch01:decide-when-two-sets-are-equal",
+        "jee:maths:maths-ch01:determine-subset-relations",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers",
+        "jee:maths:maths-ch01:write-intervals-as-subsets-of-r",
+        "jee:maths:maths-ch01:choose-a-universal-set",
+        "jee:maths:maths-ch01:represent-sets-with-venn-diagrams",
+        "jee:maths:maths-ch01:compute-the-union-of-sets",
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets",
+        "jee:maths:maths-ch01:compute-the-difference-of-sets",
+        "jee:maths:maths-ch01:find-the-complement-of-a-set",
+        "jee:maths:maths-ch01:apply-de-morgans-laws"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

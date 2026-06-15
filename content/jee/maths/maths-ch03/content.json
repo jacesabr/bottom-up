@@ -1,0 +1,581 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch03",
+  "title": "Trigonometric Functions",
+  "book": "NCERT Class 11 maths — Trigonometric Functions",
+  "goal": "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch03:measure-angle-by-rotation",
+      "slug": "measure-angle-by-rotation",
+      "title": "Measure an angle by the rotation of a ray and assign its sign",
+      "role": "bedrock",
+      "brief": "Treat an angle as the amount of rotation of a ray about its initial point, with anticlockwise rotation positive and clockwise rotation negative.",
+      "sec": 2,
+      "quote": "If the direction of rotation is anticlockwise, the angle is said to be positive and if the direction of rotation is clockwise, then the angle is *negative*",
+      "explanation": "An angle is a measure of rotation of a given ray about its initial point. The starting ray is the initial side, the final position of the ray after rotation is the terminal side, and the point of rotation is the vertex. The size of the angle is the amount of rotation needed to carry the initial side onto the terminal side, and there is no upper limit (e.g. 420 deg or one revolution per second). The sign records the sense of rotation: anticlockwise rotation gives a positive angle and clockwise rotation gives a negative angle. This rotational picture, rather than a triangle, is what lets angles be arbitrarily large or negative.",
+      "keyMoves": [
+        "Identify the initial side, terminal side and vertex of a rotation",
+        "Read the angle as the amount of rotation from initial to terminal side",
+        "Assign a positive angle to anticlockwise and a negative angle to clockwise rotation"
+      ],
+      "misconceptions": [
+        "Thinking an angle cannot exceed 360 deg or be negative",
+        "Confusing the initial side with the terminal side when reading the sign"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:degree-measure",
+      "slug": "degree-measure",
+      "title": "Express an angle in degrees, minutes and seconds",
+      "role": "bedrock",
+      "brief": "Use the degree as one 360th of a revolution and subdivide it into minutes and seconds (1 deg = 60', 1' = 60'').",
+      "sec": 2,
+      "quote": "A degree is divided into 60 minutes, and a minute is divided into 60 seconds.",
+      "explanation": "In degree measure, a rotation of one 360th of a complete revolution is an angle of one degree, written 1 deg. A degree is divided into 60 minutes and a minute into 60 seconds, so 1 deg = 60' and 1' = 60''. To combine such measures you convert the sexagesimal parts: e.g. 40 deg 20' = 40 + 20/60 deg = 40 1/3 deg. Degree measure is the familiar unit used for naming common angles such as 30 deg, 90 deg, 180 deg, 270 deg and 360 deg.",
+      "keyMoves": [
+        "State that 1 degree is one 360th of one revolution",
+        "Apply 1 deg = 60' and 1' = 60'' to subdivide a degree",
+        "Convert minutes and seconds into a fraction of a degree (e.g. 20' = 1/3 deg)"
+      ],
+      "misconceptions": [
+        "Treating a minute as one 100th of a degree (decimal) instead of one 60th",
+        "Adding degrees and minutes as if both were in the same units"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:measure-angle-by-rotation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:radian-measure",
+      "slug": "radian-measure",
+      "title": "Define the radian as the angle subtended by an arc equal to the radius",
+      "role": "bedrock",
+      "brief": "Define one radian as the angle an arc of length one unit subtends at the centre of a unit circle, and treat radian measures as real numbers.",
+      "sec": 2,
+      "quote": "Angle subtended at the centre by an arc of length 1 unit in a unit circle (circle of radius 1 unit) is said to have a measure of 1 radian.",
+      "explanation": "The radian is a second unit for measuring angles. One radian is the angle subtended at the centre by an arc of length 1 unit in a unit circle (a circle of radius 1 unit); more generally, in a circle of radius r an arc of length r subtends 1 radian. Since the circumference of a unit circle is 2 pi, one complete revolution subtends 2 pi radian. By rolling the real line along the unit circle, every real number corresponds to a radian measure and conversely, so radian measures and real numbers can be treated as one and the same. By convention the word 'radian' is usually omitted, so pi means pi radian = 180 deg.",
+      "keyMoves": [
+        "Define 1 radian via an arc of length 1 in a unit circle (or length r in radius-r circle)",
+        "State that one full revolution is 2 pi radian",
+        "Treat radian measures and real numbers as interchangeable (drop the word 'radian' by convention)"
+      ],
+      "misconceptions": [
+        "Thinking a radian is a fixed number of degrees defined arbitrarily rather than via arc-to-radius",
+        "Believing radians and real numbers are different kinds of quantity"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:measure-angle-by-rotation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:arc-length-formula",
+      "slug": "arc-length-formula",
+      "title": "Relate arc length, radius and central angle by l = r theta",
+      "role": "intermediate",
+      "brief": "Use l = r theta (theta in radians) to find any one of arc length, radius or central angle from the other two.",
+      "sec": 2,
+      "quote": "in a circle of radius r, an arc of length l subtends an angle  $\\theta$  radian at the centre",
+      "explanation": "Because an arc of length r subtends 1 radian in a circle of radius r, an arc of length l subtends an angle of l/r radian. Thus if an arc of length l subtends an angle theta radian at the centre of a circle of radius r, then theta = l/r, or equivalently l = r theta (with theta in radians). This single relation lets you find the arc length from the radius and angle, the radius from the arc and angle, or the angle from the arc and radius. For example, a 60 deg = pi/3 central angle cutting an arc of 37.4 cm gives r = l/theta; and a 1.5 cm minute hand turning through 4 pi/3 in 40 minutes sweeps its tip a distance l = r theta.",
+      "keyMoves": [
+        "Convert the central angle to radians before using the formula",
+        "Apply l = r theta (or theta = l/r, r = l/theta) to find the unknown quantity",
+        "Use equal arcs in two circles to compare radii via l = r1 theta1 = r2 theta2"
+      ],
+      "misconceptions": [
+        "Using the central angle in degrees in l = r theta without converting to radians",
+        "Confusing arc length with chord length"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:radian-measure"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:degree-radian-conversion",
+      "slug": "degree-radian-conversion",
+      "title": "Convert between degree and radian measure",
+      "role": "intermediate",
+      "brief": "Use pi radian = 180 deg to convert any angle between degrees and radians.",
+      "sec": 2,
+      "quote": "a circle subtends at the centre an angle whose radian measure is  $2\\pi$  and its degree measure is  $360^{\\circ}$",
+      "explanation": "A full circle subtends 2 pi radian at the centre, and its degree measure is 360 deg, so 2 pi radian = 360 deg, i.e. pi radian = 180 deg. This single relation converts both ways: Radian measure = (pi/180) x Degree measure and Degree measure = (180/pi) x Radian measure. Using pi approx 22/7 gives 1 radian approx 57 deg 16' and 1 deg approx 0.01746 radian. The common angles convert as 30 deg = pi/6, 45 deg = pi/4, 60 deg = pi/3, 90 deg = pi/2, 180 deg = pi, 270 deg = 3 pi/2, 360 deg = 2 pi.",
+      "keyMoves": [
+        "Start from pi radian = 180 deg",
+        "Multiply a degree measure by pi/180 to get radians",
+        "Multiply a radian measure by 180/pi to get degrees"
+      ],
+      "misconceptions": [
+        "Multiplying by 180/pi to go from degrees to radians (wrong direction)",
+        "Forgetting to convert minutes/seconds to a fractional degree before applying pi/180"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:degree-measure",
+        "jee:maths:maths-ch03:radian-measure"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+      "slug": "define-trig-functions-unit-circle",
+      "title": "Define cos x and sin x as the coordinates of a unit-circle point",
+      "role": "bedrock",
+      "brief": "For a point P(a, b) on the unit circle at angle x, define cos x = a and sin x = b, extending the trig ratios to any angle.",
+      "sec": 3,
+      "quote": "We define  $\\cos x = a$  and  $\\sin x = b$",
+      "explanation": "To extend trigonometric ratios beyond acute angles, take a unit circle centred at the origin and let P(a, b) be the point with angle AOP = x radian (so the arc AP has length x). Then by definition cos x = a and sin x = b - the x- and y-coordinates of P. This works for any real x, positive or negative, so sine and cosine become functions defined for all angles, not just the acute angles of a right triangle. The quadrantal angles give cos 0 = 1, sin 0 = 0; cos(pi/2) = 0, sin(pi/2) = 1; cos pi = -1, sin pi = 0; cos(3 pi/2) = 0, sin(3 pi/2) = -1; cos 2 pi = 1, sin 2 pi = 0.",
+      "keyMoves": [
+        "Place P at angle x on the unit circle centred at the origin",
+        "Read cos x as the x-coordinate a and sin x as the y-coordinate b of P",
+        "Evaluate sin and cos at quadrantal angles 0, pi/2, pi, 3 pi/2, 2 pi from the coordinates of A, B, C, D"
+      ],
+      "misconceptions": [
+        "Swapping the coordinates: taking sin x = a and cos x = b",
+        "Believing sine and cosine are only defined for acute angles in a triangle"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:radian-measure"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:pythagorean-identity",
+      "slug": "pythagorean-identity",
+      "title": "Establish the identity sin^2 x + cos^2 x = 1",
+      "role": "intermediate",
+      "brief": "Use that P(a, b) lies on the unit circle (a^2 + b^2 = 1) to prove cos^2 x + sin^2 x = 1 for every angle x.",
+      "sec": 3,
+      "quote": "or  $\\cos^2 x + \\sin^2 x = 1$",
+      "explanation": "For the unit-circle point P(a, b) at angle x, triangle OMP is right-angled, so OM^2 + MP^2 = OP^2 gives a^2 + b^2 = 1. Since cos x = a and sin x = b, this is the fundamental identity cos^2 x + sin^2 x = 1, holding for every real x. It is the backbone of the subject: it lets you find one of sin x, cos x from the other (up to a sign fixed by the quadrant). Together with the reciprocal definitions it yields the derived identities 1 + tan^2 x = sec^2 x and 1 + cot^2 x = cosec^2 x.",
+      "keyMoves": [
+        "Use a^2 + b^2 = 1 because P lies on the unit circle (Pythagoras in triangle OMP)",
+        "Substitute cos x = a, sin x = b to get sin^2 x + cos^2 x = 1",
+        "Solve for the unknown ratio, choosing the sign from the quadrant"
+      ],
+      "misconceptions": [
+        "Writing (sin x + cos x)^2 = 1 instead of sin^2 x + cos^2 x = 1",
+        "Forgetting the quadrant when taking the square root to fix the sign"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:reciprocal-trig-functions",
+      "slug": "reciprocal-trig-functions",
+      "title": "Define cosec, sec, tan and cot from sin and cos",
+      "role": "intermediate",
+      "brief": "Define the other four trig functions as cosec x = 1/sin x, sec x = 1/cos x, tan x = sin x/cos x, cot x = cos x/sin x, with their exclusions.",
+      "sec": 3,
+      "quote": "We now define other trigonometric functions in terms of sine and cosine functions:",
+      "explanation": "The remaining four trigonometric functions are defined in terms of sine and cosine: cosec x = 1/sin x (x != n pi), sec x = 1/cos x (x != (2n+1) pi/2), tan x = sin x/cos x (x != (2n+1) pi/2), and cot x = cos x/sin x (x != n pi), where n is any integer. The excluded values are exactly where the denominator (sin x or cos x) vanishes - sin x = 0 when x = n pi, cos x = 0 when x = (2n+1) pi/2 - making the function undefined there. The values of cosec, sec and cot are the reciprocals of sin, cos and tan respectively.",
+      "keyMoves": [
+        "Write cosec x = 1/sin x and sec x = 1/cos x as reciprocals",
+        "Write tan x = sin x/cos x and cot x = cos x/sin x as ratios",
+        "Exclude the angles where the denominator is zero (x = n pi or (2n+1) pi/2)"
+      ],
+      "misconceptions": [
+        "Pairing sec with sin and cosec with cos (the reciprocals are crossed)",
+        "Forgetting that tan and sec are undefined at odd multiples of pi/2"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:pythagorean-derived-identities",
+      "slug": "pythagorean-derived-identities",
+      "title": "Derive 1 + tan^2 x = sec^2 x and 1 + cot^2 x = cosec^2 x",
+      "role": "intermediate",
+      "brief": "Divide sin^2 x + cos^2 x = 1 by cos^2 x and by sin^2 x to obtain the two derived Pythagorean identities.",
+      "sec": 3,
+      "quote": "$$1 + \\tan^2 x = \\sec^2 x \\qquad (\\text{why?})$$",
+      "explanation": "From sin^2 x + cos^2 x = 1, dividing throughout by cos^2 x gives tan^2 x + 1 = sec^2 x, i.e. 1 + tan^2 x = sec^2 x; dividing instead by sin^2 x gives 1 + cot^2 x = cosec^2 x. These two follow directly from the fundamental identity together with the reciprocal/ratio definitions, and they are the standard tools for converting between tan and sec, or between cot and cosec, when simplifying expressions or solving equations.",
+      "keyMoves": [
+        "Start from sin^2 x + cos^2 x = 1",
+        "Divide by cos^2 x to get 1 + tan^2 x = sec^2 x",
+        "Divide by sin^2 x to get 1 + cot^2 x = cosec^2 x"
+      ],
+      "misconceptions": [
+        "Writing 1 - tan^2 x = sec^2 x (wrong sign)",
+        "Mixing the pairs, e.g. 1 + tan^2 x = cosec^2 x"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:pythagorean-identity",
+        "jee:maths:maths-ch03:reciprocal-trig-functions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:sign-of-trig-functions",
+      "slug": "sign-of-trig-functions",
+      "title": "Determine the sign of a trig function from its quadrant",
+      "role": "intermediate",
+      "brief": "Use the signs of the coordinates a, b in each quadrant to decide the sign of each trigonometric function there.",
+      "sec": 3,
+      "quote": "in the first quadrant  $(0 < x < \\frac{\\pi}{2}) a$  and *b* are both positive",
+      "explanation": "Because cos x = a and sin x = b, the sign of each function follows the signs of the coordinates in each quadrant. In the first quadrant (0 < x < pi/2) both a and b are positive; in the second (pi/2 < x < pi) a is negative and b positive; in the third (pi < x < 3 pi/2) both are negative; in the fourth (3 pi/2 < x < 2 pi) a is positive and b negative. Hence sin x > 0 for 0 < x < pi and < 0 for pi < x < 2 pi, while cos x > 0 in quadrants I and IV. The signs of tan, cot, sec, cosec follow from those of sin and cos. This is what pins down the sign when an identity gives a value only up to +/-.",
+      "keyMoves": [
+        "Identify the quadrant of the angle",
+        "Read the signs of a = cos x and b = sin x there",
+        "Deduce the sign of tan, cot, sec, cosec from sin and cos"
+      ],
+      "misconceptions": [
+        "Thinking all functions are positive in every quadrant",
+        "Getting the cos sign wrong in the fourth quadrant (cos is positive there)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:reciprocal-trig-functions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:domain-and-range",
+      "slug": "domain-and-range",
+      "title": "State the domain and range of each trigonometric function",
+      "role": "intermediate",
+      "brief": "Give the domain and range of sin, cos, cosec, sec, tan and cot, including the bound -1 <= sin x, cos x <= 1.",
+      "sec": 3,
+      "quote": "Thus, domain of  $y = \\sin x$  and  $y = \\cos x$  is the set of all real numbers and range is the interval [-1, 1]",
+      "explanation": "Since the unit-circle coordinates satisfy -1 <= a <= 1 and -1 <= b <= 1, we have -1 <= cos x <= 1 and -1 <= sin x <= 1 for all x. So y = sin x and y = cos x have domain all real numbers and range [-1, 1]. For the reciprocals: cosec x has domain {x : x != n pi} and range {y : y >= 1 or y <= -1}; sec x has domain {x : x != (2n+1) pi/2} and the same range; tan x has domain {x : x != (2n+1) pi/2} and range all reals; cot x has domain {x : x != n pi} and range all reals. The excluded points are where the defining denominator vanishes.",
+      "keyMoves": [
+        "Use -1 <= sin x <= 1 and -1 <= cos x <= 1 to set the range of sin and cos",
+        "Exclude n pi for cosec and cot, and (2n+1) pi/2 for sec and tan, from the domain",
+        "Give range |y| >= 1 for sec and cosec, and all reals for tan and cot"
+      ],
+      "misconceptions": [
+        "Claiming sin x or cos x can exceed 1 in magnitude",
+        "Giving tan x a bounded range like [-1, 1] instead of all reals"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:reciprocal-trig-functions",
+        "jee:maths:maths-ch03:pythagorean-identity"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:periodicity-and-graphs",
+      "slug": "periodicity-and-graphs",
+      "title": "Use the periodicity of trig functions to reduce and sketch them",
+      "role": "intermediate",
+      "brief": "Apply sin(2n pi + x) = sin x, cos(2n pi + x) = cos x and tan(pi + x) = tan x to reduce large angles and sketch the graphs.",
+      "sec": 3,
+      "quote": "if x increases (or decreases) by any integral multiple of  $2\\pi$ , the values of sine and cosine functions do not change.",
+      "explanation": "Going one full revolution returns P to the same point, so if x changes by any integer multiple of 2 pi the values of sine and cosine are unchanged: sin(2n pi + x) = sin x and cos(2n pi + x) = cos x for n in Z. Hence cosec and sec also repeat after 2 pi, while tan(pi + x) = tan x makes tan and cot repeat after pi. This periodicity is used to evaluate functions of large or negative angles by subtracting full periods (e.g. sin(31 pi/3) = sin(pi/3), cos(-1710 deg) = cos 90 deg = 0), and it dictates the repeating shape of the graphs of these functions.",
+      "keyMoves": [
+        "Reduce a large angle by adding/subtracting multiples of 2 pi for sin, cos, sec, cosec",
+        "Reduce by multiples of pi for tan and cot",
+        "Use the reduced angle to read off the value or to sketch the repeating graph"
+      ],
+      "misconceptions": [
+        "Using period 2 pi for tan and cot instead of pi",
+        "Forgetting that periodicity also lets negative angles be reduced into a standard range"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:domain-and-range"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:find-remaining-trig-values",
+      "slug": "find-remaining-trig-values",
+      "title": "Find all six trig values from one value and the quadrant",
+      "role": "intermediate",
+      "brief": "Given one trig function and the quadrant, use the identities to find the other five, fixing each sign by the quadrant.",
+      "sec": 3,
+      "quote": "find the values of other five trigonometric functions.",
+      "explanation": "Given one trigonometric value and the quadrant of x, the others follow from the identities. For example, if cos x = -3/5 with x in the third quadrant, then sec x = -5/3; sin^2 x = 1 - cos^2 x = 16/25, and since sin is negative in the third quadrant sin x = -4/5, so cosec x = -5/4, tan x = sin x/cos x = 4/3 and cot x = 3/4. The recipe is: use sin^2 + cos^2 = 1 (or 1 + tan^2 = sec^2, etc.) to get a second value up to sign, then fix the sign from the quadrant, then take reciprocals and ratios for the rest.",
+      "keyMoves": [
+        "Use a Pythagorean identity to get a second function up to a sign",
+        "Fix the sign using the quadrant of x",
+        "Take reciprocals and ratios to obtain the remaining functions"
+      ],
+      "misconceptions": [
+        "Reporting a value with the wrong sign by ignoring the quadrant",
+        "Forgetting that cosec, sec, cot are reciprocals of sin, cos, tan"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:pythagorean-derived-identities",
+        "jee:maths:maths-ch03:sign-of-trig-functions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:negative-angle-identities",
+      "slug": "negative-angle-identities",
+      "title": "Apply the even-odd identities cos(-x) = cos x, sin(-x) = -sin x",
+      "role": "intermediate",
+      "brief": "Use that reflecting P across the x-axis sends x to -x and b to -b to get cos(-x) = cos x and sin(-x) = -sin x.",
+      "sec": 3,
+      "quote": "$\\cos\\left(-x\\right) = \\cos x$",
+      "explanation": "If P(a, b) is the point at angle x on the unit circle, then the point Q at angle -x is the reflection (a, -b) across the x-axis. Reading off coordinates gives cos(-x) = a = cos x (cosine is even) and sin(-x) = -b = -sin x (sine is odd). These even-odd properties extend to the other functions (e.g. tan(-x) = -tan x) and are used constantly to simplify expressions involving negative angles before applying the sum and difference formulas.",
+      "keyMoves": [
+        "Reflect P across the x-axis to get the point at angle -x as (a, -b)",
+        "Conclude cos(-x) = cos x (even)",
+        "Conclude sin(-x) = -sin x (odd)"
+      ],
+      "misconceptions": [
+        "Writing cos(-x) = -cos x (cosine is even, not odd)",
+        "Writing sin(-x) = sin x (sine is odd, not even)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:cosine-sum-difference",
+      "slug": "cosine-sum-difference",
+      "title": "Prove and apply cos(x +/- y)",
+      "role": "intermediate",
+      "brief": "Establish cos(x + y) = cos x cos y - sin x sin y and cos(x - y) = cos x cos y + sin x sin y, then use them to evaluate angles.",
+      "sec": 4,
+      "quote": "$\\cos (x + y) = \\cos x \\cos y - \\sin x \\sin y$",
+      "explanation": "Using the unit circle and the distance formula on congruent chords P1P3 and P2P4, one proves the cornerstone identity cos(x + y) = cos x cos y - sin x sin y. Replacing y by -y (and using the even-odd identities) gives cos(x - y) = cos x cos y + sin x sin y. These let you evaluate cosines of non-standard angles by splitting them into standard ones (e.g. cos 15 deg = cos(45 deg - 30 deg)). They are the seed identities from which the sine sum/difference, the cofunction, tan and cot sum formulas, and the multiple-angle formulas are all derived.",
+      "keyMoves": [
+        "Prove cos(x + y) = cos x cos y - sin x sin y from congruent chords on the unit circle",
+        "Replace y by -y to get cos(x - y) = cos x cos y + sin x sin y",
+        "Split a target angle into a sum/difference of standard angles to evaluate its cosine"
+      ],
+      "misconceptions": [
+        "Writing cos(x + y) = cos x cos y + sin x sin y (wrong sign)",
+        "Distributing as cos(x + y) = cos x + cos y"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:negative-angle-identities"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:cofunction-identities",
+      "slug": "cofunction-identities",
+      "title": "Derive the cofunction and allied-angle identities",
+      "role": "intermediate",
+      "brief": "Use the cos(x - y) formula to get cos(pi/2 - x) = sin x, sin(pi/2 - x) = cos x and the related allied-angle reductions.",
+      "sec": 4,
+      "quote": "5.  $\\cos\\left(\\frac{\\pi}{2}-x\\right) = \\sin x$",
+      "explanation": "Putting x = pi/2 and y = x in the cos(x - y) identity gives cos(pi/2 - x) = cos(pi/2) cos x + sin(pi/2) sin x = sin x, and then sin(pi/2 - x) = cos x. By choosing suitable values in the sum/difference identities one similarly gets the allied-angle results: cos(pi/2 + x) = -sin x, sin(pi/2 + x) = cos x, cos(pi - x) = -cos x, sin(pi - x) = sin x, cos(pi + x) = -cos x, sin(pi + x) = -sin x, cos(2 pi - x) = cos x, sin(2 pi - x) = -sin x. These reduce any angle to a related acute angle and are essential for simplifying trigonometric expressions.",
+      "keyMoves": [
+        "Substitute x = pi/2, y = x in cos(x - y) to get cos(pi/2 - x) = sin x",
+        "Deduce sin(pi/2 - x) = cos x from the cofunction relation",
+        "Apply allied-angle reductions for pi/2 +/- x, pi +/- x, 2 pi - x"
+      ],
+      "misconceptions": [
+        "Writing cos(pi/2 + x) = sin x instead of -sin x",
+        "Forgetting the sign change in sin(pi + x) = -sin x"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:cosine-sum-difference"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:sine-sum-difference",
+      "slug": "sine-sum-difference",
+      "title": "Prove and apply sin(x +/- y)",
+      "role": "intermediate",
+      "brief": "Establish sin(x + y) = sin x cos y + cos x sin y and sin(x - y) = sin x cos y - cos x sin y, then use them to evaluate angles.",
+      "sec": 4,
+      "quote": "$\\sin (x + y) = \\sin x \\cos y + \\cos x \\sin y$",
+      "explanation": "Writing sin(x + y) = cos(pi/2 - (x + y)) = cos((pi/2 - x) - y) and applying the cos(x - y) formula gives sin(x + y) = sin x cos y + cos x sin y. Replacing y by -y yields sin(x - y) = sin x cos y - cos x sin y. Like their cosine analogues, these evaluate sines of non-standard angles by decomposition (e.g. sin 15 deg = sin(45 deg - 30 deg) = (sqrt(3) - 1)/(2 sqrt(2))) and feed the double- and triple-angle and sum-to-product identities.",
+      "keyMoves": [
+        "Use the cofunction identity to write sin(x + y) as a cosine of a difference",
+        "Apply cos(x - y) to obtain sin(x + y) = sin x cos y + cos x sin y",
+        "Replace y by -y to get sin(x - y) = sin x cos y - cos x sin y"
+      ],
+      "misconceptions": [
+        "Writing sin(x + y) = sin x cos y - cos x sin y (wrong sign for the sum)",
+        "Distributing as sin(x + y) = sin x + sin y"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:cofunction-identities"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:tangent-sum-difference",
+      "slug": "tangent-sum-difference",
+      "title": "Derive and apply tan(x +/- y) and cot(x +/- y)",
+      "role": "intermediate",
+      "brief": "Obtain tan(x +/- y) and cot(x +/- y) by dividing the sine and cosine sum/difference formulas, with the stated angle restrictions.",
+      "sec": 4,
+      "quote": "$$\\tan (x + y) = \\frac{\\tan x + \\tan y}{1 - \\tan x \\tan y}$$",
+      "explanation": "Provided none of x, y, (x + y) is an odd multiple of pi/2, dividing sin(x + y) by cos(x + y) and then numerator and denominator by cos x cos y gives tan(x + y) = (tan x + tan y)/(1 - tan x tan y); replacing y by -y gives tan(x - y) = (tan x - tan y)/(1 + tan x tan y). Similarly, when none of x, y, (x + y) is a multiple of pi, dividing by sin x sin y gives cot(x + y) = (cot x cot y - 1)/(cot y + cot x), and cot(x - y) = (cot x cot y + 1)/(cot y - cot x). These are used to evaluate tangents of compound angles (e.g. tan(13 pi/12)) and to prove identities such as tan 3x tan 2x tan x = tan 3x - tan 2x - tan x.",
+      "keyMoves": [
+        "Divide sin(x + y) by cos(x + y), then by cos x cos y, to get the tan formula",
+        "Replace y by -y for tan(x - y); divide by sin x sin y for the cot formulas",
+        "Respect the restrictions (no odd multiple of pi/2 for tan; no multiple of pi for cot)"
+      ],
+      "misconceptions": [
+        "Writing tan(x + y) with a plus sign in the denominator",
+        "Ignoring the excluded angles where the formula is undefined"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:sine-sum-difference",
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:reciprocal-trig-functions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:double-angle-identities",
+      "slug": "double-angle-identities",
+      "title": "Derive and apply the double-angle identities",
+      "role": "intermediate",
+      "brief": "Put y = x in the sum formulas to get cos 2x, sin 2x and tan 2x in their several equivalent forms.",
+      "sec": 4,
+      "quote": "$$\\cos 2x = \\cos^2 x - \\sin^2 x = 2 \\cos^2 x - 1 = 1 - 2 \\sin^2 x = \\frac{1 - \\tan^2 x}{1 + \\tan^2 x}$$",
+      "explanation": "Setting y = x in the sum formulas gives the double-angle identities. cos 2x = cos^2 x - sin^2 x = 2 cos^2 x - 1 = 1 - 2 sin^2 x = (1 - tan^2 x)/(1 + tan^2 x). sin 2x = 2 sin x cos x = 2 tan x/(1 + tan^2 x). tan 2x = 2 tan x/(1 - tan^2 x) (for 2x not an odd multiple of pi/2). The several forms of cos 2x are interchangeable via sin^2 + cos^2 = 1 and are the ones used to convert between sin^2 x, cos^2 x and cos 2x (e.g. cos^2 x = (1 + cos 2x)/2), which underlies many proofs and the half-angle results.",
+      "keyMoves": [
+        "Put y = x in cos(x + y), sin(x + y), tan(x + y) to get the double-angle forms",
+        "Use sin^2 + cos^2 = 1 to switch between the three forms of cos 2x",
+        "Apply 2 sin^2 x = 1 - cos 2x and 2 cos^2 x = 1 + cos 2x to reduce squared functions"
+      ],
+      "misconceptions": [
+        "Writing sin 2x = 2 sin x or cos 2x = 2 cos x",
+        "Using the wrong sign form of cos 2x for the quantity you actually need"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:sine-sum-difference",
+        "jee:maths:maths-ch03:tangent-sum-difference"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:triple-angle-identities",
+      "slug": "triple-angle-identities",
+      "title": "Derive and apply the triple-angle identities",
+      "role": "intermediate",
+      "brief": "Use sin 3x = sin(2x + x) etc. to obtain sin 3x, cos 3x and tan 3x in terms of the single angle.",
+      "sec": 4,
+      "quote": "$\\sin 3x = 3 \\sin x - 4 \\sin^3 x$",
+      "explanation": "Writing 3x = 2x + x and applying the sum and double-angle formulas gives the triple-angle identities. sin 3x = 3 sin x - 4 sin^3 x; cos 3x = 4 cos^3 x - 3 cos x; tan 3x = (3 tan x - tan^3 x)/(1 - 3 tan^2 x) (for 3x not an odd multiple of pi/2). These express a function of 3x purely in terms of the single angle x and are used both to evaluate and to prove identities involving tripled angles.",
+      "keyMoves": [
+        "Write 3x = 2x + x and apply the sum formula",
+        "Substitute the double-angle forms of sin 2x, cos 2x (or tan 2x)",
+        "Simplify to sin 3x = 3 sin x - 4 sin^3 x, cos 3x = 4 cos^3 x - 3 cos x, tan 3x form"
+      ],
+      "misconceptions": [
+        "Writing sin 3x = 3 sin x (linear, dropping the cubic term)",
+        "Swapping the coefficients between the sin 3x and cos 3x formulas"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:double-angle-identities"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:sum-to-product-identities",
+      "slug": "sum-to-product-identities",
+      "title": "Apply the sum-to-product identities",
+      "role": "intermediate",
+      "brief": "Use cos x +/- cos y and sin x +/- sin y written as products of cosines/sines of (x+y)/2 and (x-y)/2.",
+      "sec": 4,
+      "quote": "(i)  $\\cos x + \\cos y = 2\\cos \\frac{x+y}{2}\\cos \\frac{x-y}{2}$",
+      "explanation": "Adding and subtracting the cos(x + y), cos(x - y) and sin(x + y), sin(x - y) formulas, then substituting x = (theta + phi)/2, y = (theta - phi)/2, gives the sum-to-product formulas: cos x + cos y = 2 cos((x+y)/2) cos((x-y)/2); cos x - cos y = -2 sin((x+y)/2) sin((x-y)/2); sin x + sin y = 2 sin((x+y)/2) cos((x-y)/2); sin x - sin y = 2 cos((x+y)/2) sin((x-y)/2). They turn a sum or difference of two sines or cosines into a product, which is the key step in simplifying ratios like (cos 7x + cos 5x)/(sin 7x - sin 5x) = cot x.",
+      "keyMoves": [
+        "Identify whether the expression is a sum/difference of two cosines or two sines",
+        "Apply the matching formula with half-sum (x+y)/2 and half-difference (x-y)/2",
+        "Cancel common product factors to simplify the resulting expression"
+      ],
+      "misconceptions": [
+        "Dropping the minus sign in cos x - cos y = -2 sin(...) sin(...)",
+        "Swapping (x+y)/2 and (x-y)/2 between the two factors"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:sine-sum-difference"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:product-to-sum-identities",
+      "slug": "product-to-sum-identities",
+      "title": "Apply the product-to-sum identities",
+      "role": "intermediate",
+      "brief": "Use 2 cos x cos y, -2 sin x sin y, 2 sin x cos y and 2 cos x sin y written as sums/differences of cosines and sines.",
+      "sec": 4,
+      "quote": "As a part of identities given in 20, we can prove the following results:",
+      "explanation": "Reversing the additions used for the sum-to-product formulas gives the product-to-sum identities: 2 cos x cos y = cos(x + y) + cos(x - y); -2 sin x sin y = cos(x + y) - cos(x - y); 2 sin x cos y = sin(x + y) + sin(x - y); 2 cos x sin y = sin(x + y) - sin(x - y). They convert a product of two trig functions into a sum or difference, which linearises products inside proofs and integrals (e.g. expanding 2 cos 2x cos(x/2) before combining terms).",
+      "keyMoves": [
+        "Recognise a product of two sines/cosines to be linearised",
+        "Apply the matching product-to-sum formula to write it as a sum or difference",
+        "Combine the resulting cosines/sines with other terms to simplify"
+      ],
+      "misconceptions": [
+        "Forgetting the leading factor of 2 (or the minus sign in -2 sin x sin y)",
+        "Confusing 2 sin x cos y with 2 cos x sin y (different difference terms)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:sum-to-product-identities"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities",
+      "slug": "prove-and-apply-trigonometric-identities",
+      "title": "Prove and apply trigonometric identities to evaluate and simplify",
+      "role": "goal",
+      "brief": "Combine the unit-circle definitions, the Pythagorean identities and the sum/difference, multiple-angle and product-sum formulas to prove identities and evaluate trigonometric expressions.",
+      "sec": 4,
+      "quote": "The basic results in this connection are called *trigonometric identities*.",
+      "explanation": "The chapter generalises the trigonometric ratios to functions of any real angle and builds the full toolkit of trigonometric identities. Everything rests on cos x and sin x as unit-circle coordinates, the fundamental identity sin^2 x + cos^2 x = 1 with its derived forms, and the cos(x +/- y) seed from which the sine, tangent, cotangent, cofunction, double-angle, triple-angle, sum-to-product and product-to-sum identities all follow. The overall skill is to choose and combine these identities - reducing angles by periodicity and allied-angle rules, fixing signs by quadrant - to evaluate non-standard angles and to prove or simplify trigonometric expressions.",
+      "keyMoves": [
+        "Select the identities that match the structure of the expression",
+        "Reduce angles using periodicity, even-odd and allied-angle rules, fixing signs by quadrant",
+        "Chain sum/difference, multiple-angle and product-sum identities to prove or evaluate"
+      ],
+      "misconceptions": [
+        "Treating trig functions as linear (e.g. sin(x + y) = sin x + sin y)",
+        "Applying an identity outside its stated angle restrictions or with the wrong sign"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch03:arc-length-formula",
+        "jee:maths:maths-ch03:degree-radian-conversion",
+        "jee:maths:maths-ch03:pythagorean-derived-identities",
+        "jee:maths:maths-ch03:domain-and-range",
+        "jee:maths:maths-ch03:periodicity-and-graphs",
+        "jee:maths:maths-ch03:find-remaining-trig-values",
+        "jee:maths:maths-ch03:cofunction-identities",
+        "jee:maths:maths-ch03:tangent-sum-difference",
+        "jee:maths:maths-ch03:triple-angle-identities",
+        "jee:maths:maths-ch03:product-to-sum-identities"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

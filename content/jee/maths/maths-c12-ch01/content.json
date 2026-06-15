@@ -1,0 +1,352 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch01",
+ "title": "Relations and Functions",
+ "book": "NCERT Class 12 Mathematics Part I",
+ "goal": "jee:maths:maths-c12-ch01:invertible-iff-bijective",
+ "nodes": [
+  {
+   "id": "jee:maths:maths-c12-ch01:relation-definition",
+   "slug": "relation-definition",
+   "title": "Define a relation as a subset of A x B",
+   "role": "bedrock",
+   "brief": "Treat a relation R from A to B as an arbitrary subset of the Cartesian product A x B, dropping the everyday idea of a 'recognisable link'.",
+   "sec": 1,
+   "quote": "we define mathematically a relation R from A to B as an arbitrary subset of",
+   "explanation": "In everyday English two objects are related if there is some recognisable connection between them, but mathematics abstracts this away. A relation R from a set A to a set B is defined to be any subset of the Cartesian product A x B - that is, any collection of ordered pairs (a, b) with a in A and b in B. If (a, b) belongs to R we say a is related to b and write a R b; we do not require any intuitive 'link'. A relation in a set A is the special case where B = A, i.e. a subset of A x A. Functions are a special kind of relation.",
+   "keyMoves": [
+    "Identify the Cartesian product A x B as the universe of ordered pairs",
+    "Pick out R as any chosen subset of A x B",
+    "Read (a, b) in R as 'a is related to b' (a R b), with no link required"
+   ],
+   "misconceptions": [
+    "Thinking a relation needs a meaningful real-world connection between the elements",
+    "Confusing the relation R (a set of pairs) with the rule used to describe it"
+   ],
+   "prereqs": [],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:empty-relation",
+   "slug": "empty-relation",
+   "title": "Recognise the empty relation",
+   "role": "bedrock",
+   "brief": "Identify the empty relation: the relation containing no pairs, where no element of A is related to any element of A.",
+   "sec": 2,
+   "quote": "A relation R in a set A is called *empty relation*, if no element of A is related to any element of A",
+   "explanation": "Among all relations in a set A, two are extreme. The empty relation is the relation R in A in which no element of A is related to any element of A, i.e. R is the empty set, a subset of A x A. For example, in the set A = {1, 2, 3, 4} the relation R = {(a, b) : a - b = 10} is empty because no pair satisfies the condition. The empty relation and the universal relation are sometimes called trivial relations.",
+   "keyMoves": [
+    "Check whether ANY pair satisfies the defining condition",
+    "If none does, declare the relation empty (R = the empty set)",
+    "Recognise the empty relation as one of the two trivial extremes"
+   ],
+   "misconceptions": [
+    "Confusing 'empty relation' (no pairs) with a relation that simply has few pairs",
+    "Thinking a relation that holds for no pairs is not a valid relation"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:relation-definition"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:universal-relation",
+   "slug": "universal-relation",
+   "title": "Recognise the universal relation",
+   "role": "bedrock",
+   "brief": "Identify the universal relation: the relation A x A in which every element of A is related to every element of A.",
+   "sec": 2,
+   "quote": "A relation R in a set A is called *universal relation*, if each element of A is related to every element of A",
+   "explanation": "The other extreme relation in a set A is the universal relation: the relation R in which each element of A is related to every element of A, i.e. R = A x A (the whole Cartesian product). For example, in A = {1, 2, 3, 4} the relation R' = {(a, b) : |a - b| >= 0} is universal, since every pair satisfies |a - b| >= 0. Together with the empty relation it forms the two trivial relations.",
+   "keyMoves": [
+    "Check whether EVERY pair of A x A satisfies the defining condition",
+    "If all do, declare the relation universal (R = A x A)",
+    "Recognise the universal relation as the second trivial extreme"
+   ],
+   "misconceptions": [
+    "Thinking 'universal' means a relation across different sets rather than R = A x A",
+    "Forgetting that the universal relation includes pairs (a, a) as well"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:relation-definition"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:reflexive-relation",
+   "slug": "reflexive-relation",
+   "title": "Test a relation for reflexivity",
+   "role": "intermediate",
+   "brief": "Decide whether a relation is reflexive: every element must be related to itself, (a, a) in R for every a in A.",
+   "sec": 2,
+   "quote": "*reflexive*, if  $(a, a) \\in \\mathbb{R}$ , for every  $a \\in \\mathbb{A}$ ,",
+   "explanation": "A relation R in a set A is reflexive if (a, a) belongs to R for every a in A - i.e. every element is related to itself. To test reflexivity, check whether the pair (a, a) lies in R for each element a. For instance R = {(1,1),(2,2),(3,3),(1,2),(2,3)} on {1,2,3} is reflexive because all of (1,1),(2,2),(3,3) are present. A single missing self-pair (e.g. a line is never perpendicular to itself) destroys reflexivity.",
+   "keyMoves": [
+    "List the required self-pairs (a, a) for every element a in A",
+    "Check each (a, a) is present in R",
+    "Conclude reflexive only if NONE is missing"
+   ],
+   "misconceptions": [
+    "Thinking one self-pair (a, a) in R is enough; reflexivity needs ALL of them",
+    "Confusing reflexive (a related to itself) with symmetric"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:relation-definition"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:symmetric-relation",
+   "slug": "symmetric-relation",
+   "title": "Test a relation for symmetry",
+   "role": "intermediate",
+   "brief": "Decide whether a relation is symmetric: whenever (a1, a2) is in R, (a2, a1) must also be in R.",
+   "sec": 2,
+   "quote": "symmetric, if  $(a_1, a_2) \\in \\mathbb{R}$  implies that  $(a_2, a_1) \\in \\mathbb{R}$ , for all",
+   "explanation": "A relation R in a set A is symmetric if (a1, a2) in R implies (a2, a1) in R for all a1, a2 in A - the order of a related pair can be reversed. To test it, take each pair (a, b) in R and check whether (b, a) is also present. 'Perpendicular to' is symmetric (if L1 is perpendicular to L2 then L2 is perpendicular to L1), but 'is brother of' or the relation {(1,2),(2,3)} need not be.",
+   "keyMoves": [
+    "For each pair (a, b) in R, look for its reverse (b, a)",
+    "If any reverse is missing, the relation is not symmetric",
+    "Conclude symmetric only if every reversed pair is present"
+   ],
+   "misconceptions": [
+    "Checking only some pairs instead of all of them",
+    "Confusing symmetry (reverse the pair) with reflexivity (self-pair)"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:relation-definition"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:transitive-relation",
+   "slug": "transitive-relation",
+   "title": "Test a relation for transitivity",
+   "role": "intermediate",
+   "brief": "Decide whether a relation is transitive: if (a1, a2) and (a2, a3) are in R, then (a1, a3) must be in R.",
+   "sec": 2,
+   "quote": "transitive, if  $(a_1, a_2) \\in \\mathbb{R}$  and  $(a_2, a_3) \\in \\mathbb{R}$  implies that  $(a_1, a_3) \\in \\mathbb{R}$",
+   "explanation": "A relation R in a set A is transitive if (a1, a2) in R and (a2, a3) in R together imply (a1, a3) in R, for all a1, a2, a3 in A - relations chain through. To test it, find every pair of links (a, b) and (b, c) in R and check whether the shortcut (a, c) is present. 'Congruent to' is transitive; 'perpendicular to' is not (L1 perp L2 and L2 perp L3 give L1 parallel to L3, not perpendicular).",
+   "keyMoves": [
+    "Find every chain (a, b) and (b, c) inside R",
+    "Check the implied pair (a, c) is in R for each chain",
+    "Conclude transitive only if no implied pair is missing"
+   ],
+   "misconceptions": [
+    "Forgetting to check chains that share a middle element",
+    "Assuming a relation that is reflexive and symmetric is automatically transitive"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:relation-definition"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:equivalence-relation",
+   "slug": "equivalence-relation",
+   "title": "Define and prove an equivalence relation",
+   "role": "intermediate",
+   "brief": "Recognise an equivalence relation as one that is reflexive, symmetric AND transitive, and prove it by checking all three.",
+   "sec": 2,
+   "quote": "A relation R in a set A is said to be an *equivalence relation* if R is reflexive, symmetric and transitive.",
+   "explanation": "An equivalence relation is the most important type of relation: a relation R in a set A that is reflexive, symmetric and transitive all at once. To prove a relation is an equivalence relation you verify the three properties in turn. For example R = {(a, b) : 2 divides a - b} on the integers is reflexive (2 divides a - a), symmetric (2 divides a - b implies 2 divides b - a), and transitive (a - c = (a - b) + (b - c) is even), hence an equivalence relation. 'Congruent to' on triangles is another example.",
+   "keyMoves": [
+    "Prove reflexivity: (a, a) in R for all a",
+    "Prove symmetry: (a, b) in R implies (b, a) in R",
+    "Prove transitivity: (a, b),(b, c) in R imply (a, c) in R; only then declare it an equivalence relation"
+   ],
+   "misconceptions": [
+    "Concluding 'equivalence relation' after checking only one or two of the three properties",
+    "Thinking 'a <= b' or 'perpendicular' are equivalence relations (they fail one property)"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:reflexive-relation",
+    "jee:maths:maths-c12-ch01:symmetric-relation",
+    "jee:maths:maths-c12-ch01:transitive-relation"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:equivalence-class",
+   "slug": "equivalence-class",
+   "title": "Form equivalence classes and partitions",
+   "role": "intermediate",
+   "brief": "Understand how an equivalence relation splits a set into disjoint equivalence classes whose union is the whole set.",
+   "sec": 2,
+   "quote": "The subsets  $A_i$  are called *equivalence classes*.",
+   "explanation": "Every equivalence relation R on a set X divides X into mutually disjoint subsets called equivalence classes: all elements within one class are related to each other, no element of one class is related to an element of another, and the union of all classes is X. The class containing an element a is written [a]. For R = {(a, b) : 2 divides a - b} on the integers there are two classes, [0] (the even integers) and [1] (the odd integers). Conversely, any such partition of X gives back an equivalence relation.",
+   "keyMoves": [
+    "Group together all elements related to a given element to form its class [a]",
+    "Check the classes are disjoint and cover all of X (a partition)",
+    "Use the relation to decide which class an element lands in"
+   ],
+   "misconceptions": [
+    "Thinking equivalence classes can overlap",
+    "Believing [0] and [1] are equal in the mod-2 example; they are distinct classes"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:equivalence-relation"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:one-one-function",
+   "slug": "one-one-function",
+   "title": "Test a function for one-one (injective)",
+   "role": "intermediate",
+   "brief": "Decide whether a function is one-one: distinct inputs give distinct outputs, i.e. f(x1) = f(x2) implies x1 = x2.",
+   "sec": 3,
+   "quote": "A function  $f: X \\to Y$  is defined to be *one-one* (or *injective*), if the images of distinct elements of X under f are distinct",
+   "explanation": "A function f : X -> Y is one-one (injective) if distinct elements of X have distinct images - equivalently, f(x1) = f(x2) implies x1 = x2; otherwise it is many-one. To prove one-one, assume f(x1) = f(x2) and deduce x1 = x2. For example f(x) = 2x on the reals is one-one (2x1 = 2x2 gives x1 = x2), while f(x) = x^2 on the reals is not (f(-1) = f(1) = 1).",
+   "keyMoves": [
+    "Assume f(x1) = f(x2) and try to deduce x1 = x2",
+    "If a deduction succeeds, the function is one-one",
+    "To disprove, exhibit two distinct inputs with the same image (e.g. f(-1) = f(1))"
+   ],
+   "misconceptions": [
+    "Confusing one-one (injective, about inputs) with onto (surjective, about outputs)",
+    "Declaring a function one-one without checking ALL pairs of inputs"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:relation-definition"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:onto-function",
+   "slug": "onto-function",
+   "title": "Test a function for onto (surjective)",
+   "role": "intermediate",
+   "brief": "Decide whether a function is onto: every element of the co-domain Y is the image of some element of X.",
+   "sec": 3,
+   "quote": "A function  $f: X \\to Y$  is said to be *onto* (or *surjective*), if every element of Y is the image of some element of X under f",
+   "explanation": "A function f : X -> Y is onto (surjective) if every element y of the co-domain Y is the image of at least one element x of X - equivalently, the range of f equals Y. To prove onto, take an arbitrary y in Y and produce an x in X with f(x) = y. For example f(x) = 2x on the reals is onto (take x = y/2), but f : N -> N with f(x) = 2x is not onto, since 1 is never an image.",
+   "keyMoves": [
+    "Take an arbitrary y in the co-domain Y",
+    "Find (or fail to find) an x in X with f(x) = y",
+    "Conclude onto iff Range of f = Y"
+   ],
+   "misconceptions": [
+    "Mixing up the co-domain Y with the range when testing onto",
+    "Concluding onto from a few values without covering ALL of Y"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:relation-definition"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:bijective-function",
+   "slug": "bijective-function",
+   "title": "Recognise a bijective (one-one and onto) function",
+   "role": "intermediate",
+   "brief": "Identify a bijection as a function that is both one-one and onto.",
+   "sec": 3,
+   "quote": "A function  $f: X \\to Y$  is said to be *one-one* and *onto* (or *bijective*), if f is both one-one and onto.",
+   "explanation": "A function f : X -> Y is bijective (one-one and onto) when it is simultaneously injective and surjective: distinct inputs give distinct outputs AND every element of Y is hit. To show a function is bijective, prove both properties separately. For finite sets X, a one-one function f : X -> X is automatically onto and vice versa, but this fails for infinite sets (e.g. f(x) = 2x on N is one-one but not onto).",
+   "keyMoves": [
+    "Prove the function is one-one (injective)",
+    "Prove the function is onto (surjective)",
+    "Conclude bijective only when both hold"
+   ],
+   "misconceptions": [
+    "Assuming one-one alone makes a function bijective",
+    "Carrying the finite-set 'one-one iff onto' shortcut over to infinite sets"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:one-one-function",
+    "jee:maths:maths-c12-ch01:onto-function"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:composition-of-functions",
+   "slug": "composition-of-functions",
+   "title": "Compute the composition of two functions",
+   "role": "intermediate",
+   "brief": "Form the composite gof of f : A -> B and g : B -> C by (gof)(x) = g(f(x)).",
+   "sec": 4,
+   "quote": "the composition of f and g, denoted by *gof*, is defined as the function *gof*: A  $\\to C$  given by",
+   "explanation": "Given f : A -> B and g : B -> C, the composition gof : A -> C is defined by (gof)(x) = g(f(x)) for all x in A: first apply f, then apply g to the result. To compute it, push each input through f and feed the output into g. Composition is generally NOT commutative: for f(x) = cos x and g(x) = 3x^2, gof(x) = 3 cos^2 x while fog(x) = cos(3x^2), so gof is not equal to fog.",
+   "keyMoves": [
+    "Apply f to the input first to get f(x)",
+    "Apply g to that result: (gof)(x) = g(f(x))",
+    "Do not assume gof = fog; check the order"
+   ],
+   "misconceptions": [
+    "Applying g before f when computing gof",
+    "Assuming composition is commutative (gof = fog in general)"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:one-one-function",
+    "jee:maths:maths-c12-ch01:onto-function"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:invertible-function",
+   "slug": "invertible-function",
+   "title": "Define an invertible function and its inverse",
+   "role": "intermediate",
+   "brief": "Recognise an invertible function as one with a g satisfying gof = identity on X and fog = identity on Y; g is the inverse f-inverse.",
+   "sec": 4,
+   "quote": "A function  $f: X \\to Y$  is defined to be *invertible*, if there exists a function  $g: Y \\to X$  such that",
+   "explanation": "A function f : X -> Y is invertible if there exists a function g : Y -> X with gof = I_X (the identity on X) and fog = I_Y (the identity on Y). The function g is the inverse of f, written f-inverse. To find an inverse, solve y = f(x) for x in terms of y; that rule is g. For f(x) = 4x + 3 on N (onto its range Y), the inverse is g(y) = (y - 3)/4, and one checks gof and fog are the identities.",
+   "keyMoves": [
+    "Look for g : Y -> X with gof = I_X and fog = I_Y",
+    "Find g by solving y = f(x) for x",
+    "Verify both composite identities to confirm g = f-inverse"
+   ],
+   "misconceptions": [
+    "Checking only gof = I_X and forgetting fog = I_Y (or vice versa)",
+    "Believing every function has an inverse"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:composition-of-functions"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch01:invertible-iff-bijective",
+   "slug": "invertible-iff-bijective",
+   "title": "Prove a function invertible by showing it is one-one and onto",
+   "role": "goal",
+   "brief": "Use the key result: f is invertible if and only if f is one-one and onto, so bijectivity is the test for invertibility.",
+   "sec": 4,
+   "quote": "if f is invertible, then f must be one-one and onto and conversely, if f is one-one and onto, then f must be invertible.",
+   "explanation": "The central result tying the chapter together: a function f is invertible if and only if it is one-one and onto (bijective). So to prove f invertible you need only show it is injective and surjective - you need not actually construct the inverse. This is especially useful when the explicit inverse is awkward to write down. Conversely, an invertible function is necessarily a bijection. This links the relation/equivalence machinery and the function-type definitions into a single criterion.",
+   "keyMoves": [
+    "Show f is one-one (injective)",
+    "Show f is onto (surjective)",
+    "Invoke 'invertible iff bijective' to conclude f is invertible without building the inverse"
+   ],
+   "misconceptions": [
+    "Thinking you must construct the explicit inverse to prove invertibility",
+    "Claiming invertibility from one-one alone, without onto"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch01:bijective-function",
+    "jee:maths:maths-c12-ch01:invertible-function",
+    "jee:maths:maths-c12-ch01:empty-relation",
+    "jee:maths:maths-c12-ch01:universal-relation",
+    "jee:maths:maths-c12-ch01:equivalence-class"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  }
+ ]
+}

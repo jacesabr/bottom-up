@@ -1,0 +1,278 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch10",
+ "items": [
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:vector-definition",
+   "kind": "practice",
+   "prompt": "A vector is a quantity that has:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "magnitude as well as direction",
+   "expected": {
+    "kind": "mcq",
+    "correct": "magnitude as well as direction",
+    "options": [
+     "magnitude as well as direction",
+     "magnitude only",
+     "direction only",
+     "neither magnitude nor direction"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Definition 1"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:magnitude",
+   "kind": "practice",
+   "prompt": "The magnitude of the vector 2 i + 3 j + 6 k is:",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "7",
+   "expected": {
+    "kind": "numeric",
+    "value": 7,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 magnitude (sqrt(4+9+36)=7)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:position-vector",
+   "kind": "practice",
+   "prompt": "The position vector of a point P with respect to the origin O is the vector:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "OP (from O to P)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "OP (from O to P)",
+    "options": [
+     "OP (from O to P)",
+     "PO (from P to O)",
+     "any vector with magnitude |OP|",
+     "the unit vector along OP"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 position vector"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:direction-cosines",
+   "kind": "practice",
+   "prompt": "The direction cosines l, m, n of a vector satisfy:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "l^2 + m^2 + n^2 = 1",
+   "expected": {
+    "kind": "mcq",
+    "correct": "l^2 + m^2 + n^2 = 1",
+    "options": [
+     "l^2 + m^2 + n^2 = 1",
+     "l + m + n = 1",
+     "l^2 + m^2 + n^2 = 0",
+     "l = m = n"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 direction cosines"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:zero-vector",
+   "kind": "practice",
+   "prompt": "A vector whose initial and terminal points coincide is the:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "zero (null) vector",
+   "expected": {
+    "kind": "mcq",
+    "correct": "zero (null) vector",
+    "options": [
+     "zero (null) vector",
+     "unit vector",
+     "position vector",
+     "negative vector"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 zero vector"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:unit-vector",
+   "kind": "practice",
+   "prompt": "A unit vector has magnitude:",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "1",
+   "expected": {
+    "kind": "numeric",
+    "value": 1,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 unit vector"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:collinear-vectors",
+   "kind": "practice",
+   "prompt": "Two vectors are collinear if they are:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "parallel to the same line, regardless of magnitude and direction",
+   "expected": {
+    "kind": "mcq",
+    "correct": "parallel to the same line, regardless of magnitude and direction",
+    "options": [
+     "parallel to the same line, regardless of magnitude and direction",
+     "equal in magnitude only",
+     "perpendicular to each other",
+     "both unit vectors"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 collinear vectors"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:equal-vectors",
+   "kind": "practice",
+   "prompt": "Two vectors are equal if they have:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the same magnitude and the same direction",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the same magnitude and the same direction",
+    "options": [
+     "the same magnitude and the same direction",
+     "the same magnitude only",
+     "the same initial point only",
+     "opposite directions"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 equal vectors"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:parallelogram-law",
+   "kind": "practice",
+   "prompt": "If two vectors are the adjacent sides of a parallelogram, their sum is represented by:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the diagonal of the parallelogram through their common point",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the diagonal of the parallelogram through their common point",
+    "options": [
+     "the diagonal of the parallelogram through their common point",
+     "the other diagonal",
+     "either side extended",
+     "the perimeter"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 parallelogram law"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:component-form",
+   "kind": "practice",
+   "prompt": "In the component form x i + y j + z k, the numbers x, y, z are called the:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "scalar components of the vector",
+   "expected": {
+    "kind": "mcq",
+    "correct": "scalar components of the vector",
+    "options": [
+     "scalar components of the vector",
+     "unit vectors",
+     "direction cosines",
+     "magnitudes of the vector"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 component form"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:section-formula",
+   "kind": "practice",
+   "prompt": "The position vector of the midpoint of the segment joining points with position vectors p and q is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "(p + q)/2",
+   "expected": {
+    "kind": "mcq",
+    "correct": "(p + q)/2",
+    "options": [
+     "(p + q)/2",
+     "p + q",
+     "(p - q)/2",
+     "p q"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 section formula (midpoint)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:scalar-product",
+   "kind": "practice",
+   "prompt": "The scalar (dot) product a.b of two vectors equals:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "|a| |b| cos(theta)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "|a| |b| cos(theta)",
+    "options": [
+     "|a| |b| cos(theta)",
+     "|a| |b| sin(theta)",
+     "|a| |b| tan(theta)",
+     "|a| + |b|"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Definition 2 (scalar product)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:scalar-product",
+   "kind": "practice",
+   "prompt": "Compute the dot product of a = (1, 2, 3) and b = (4, 5, 6), i.e. 1*4 + 2*5 + 3*6.",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "32",
+   "expected": {
+    "kind": "numeric",
+    "value": 32,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.3 component dot product (4+10+18)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:vector-product",
+   "kind": "practice",
+   "prompt": "The vector (cross) product a x b is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "a vector of magnitude |a||b| sin(theta) perpendicular to both a and b",
+   "expected": {
+    "kind": "mcq",
+    "correct": "a vector of magnitude |a||b| sin(theta) perpendicular to both a and b",
+    "options": [
+     "a vector of magnitude |a||b| sin(theta) perpendicular to both a and b",
+     "a scalar equal to |a||b| cos(theta)",
+     "always equal to b x a",
+     "a vector in the plane of a and b"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Definition 3 (vector product)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch10:vector-product",
+   "kind": "practice",
+   "prompt": "Contrast the scalar product and the vector product of two vectors: state what kind of object each produces and one key property of the cross product.",
+   "answerType": "written",
+   "grader": "written",
+   "answer": null,
+   "expected": {
+    "kind": "written",
+    "rubric": "The scalar (dot) product a.b = |a||b| cos(theta) is a scalar (a number). The vector (cross) product a x b = |a||b| sin(theta) n-hat is a vector, perpendicular to both a and b (n-hat a unit normal in a right-handed system). A key property of the cross product is that it is not commutative: a x b = -(b x a) (its magnitude also equals the area of the parallelogram with sides a and b).",
+    "markPoints": [
+     "Dot product is a scalar = |a||b| cos(theta)",
+     "Cross product is a vector = |a||b| sin(theta) n-hat, perpendicular to both",
+     "Cross product is anticommutative: a x b = -(b x a)"
+    ],
+    "total": 3,
+    "passMark": 2
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch10 Definitions 2 and 3"
+  }
+ ]
+}

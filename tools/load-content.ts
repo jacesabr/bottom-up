@@ -1,14 +1,18 @@
 /**
- * Load the full cloned CBSE10 Maths corpus into the DB.
+ * Load every math corpus under content/ into the DB.
  *
- * Source: content/cbse10/maths/jemhNNN/{content.json, exam.json}
+ * Source layout: content/<exam>/<subject>/<chapterDir>/{content.json, exam.json}
+ *   currently: cbse10/maths/jemhNNN, cbse12/mathematics/mathematics-chNN, jee/maths/maths-(c12-)chNN
  *  - content.json → chapter + concept nodes (each node carries its own `prereqs`)
  *  - exam.json    → items[] gates keyed by nodeId (we take ONE gate per node — spec: one gate per concept)
  *
- * Bottom-up `order` is a topological sort (prereqs first), tie-broken by `sec` then title.
- * Idempotent: upserts by primary key.
+ * Chapter dirs are discovered from each content.json's {exam, subject, chapter} fields (not the folder name),
+ * so the loader is corpus-agnostic. Bottom-up `order` is a topological sort (prereqs first), tie-broken by
+ * `sec` then title. Idempotent: upserts by primary key.
  *
- * Display layer for all 14 chapters; teaching quality is only validated on the 3 seed nodes (spec §1).
+ * Usage:  tsx tools/load-content.ts            # load every exam/subject under content/
+ *         tsx tools/load-content.ts cbse12     # only chapters whose path starts content/cbse12/...
+ *         tsx tools/load-content.ts jee:maths  # only that exam:subject
  */
 import 'dotenv/config';
 import { promises as fs } from 'fs';
@@ -17,7 +21,9 @@ import { db } from '../src/db/index.js';
 import { chapters, concepts, gates } from '../src/db/schema.js';
 import { sql } from 'drizzle-orm';
 
-const MATHS_DIR = path.join(process.cwd(), 'content', 'cbse10', 'maths');
+const CONTENT_DIR = path.join(process.cwd(), 'content');
+// Folders under content/ that are NOT exam corpora (PDFs, papers, etc.)
+const SKIP_SUBDIRS = new Set(['textbooks', 'papers-pdf', '_papers']);
 
 interface Node {
   id: string;
@@ -163,23 +169,49 @@ async function loadChapter(dir: string) {
   return { chapterId, title: content.title, nodes: nodes.length, gates: gateCount };
 }
 
-async function main() {
-  const entries = await fs.readdir(MATHS_DIR, { withFileTypes: true });
-  const chapterDirs = entries
-    .filter((e) => e.isDirectory() && /^jemh\d+$/.test(e.name))
-    .map((e) => e.name)
-    .sort();
+/** Recursively find every directory under content/ that holds a content.json (a chapter dir). */
+async function findChapterDirs(root: string): Promise<string[]> {
+  const out: string[] = [];
+  async function walk(dir: string) {
+    let entries;
+    try {
+      entries = await fs.readdir(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    if (entries.some((e) => e.isFile() && e.name === 'content.json')) {
+      out.push(dir);
+      return; // a chapter dir is a leaf — don't descend into its figures/source
+    }
+    for (const e of entries) {
+      if (e.isDirectory() && !SKIP_SUBDIRS.has(e.name) && !e.name.startsWith('.')) {
+        await walk(path.join(dir, e.name));
+      }
+    }
+  }
+  await walk(root);
+  return out.sort();
+}
 
-  console.log(`Loading ${chapterDirs.length} chapters from ${MATHS_DIR}\n`);
+async function main() {
+  const filter = process.argv[2]; // e.g. "cbse12" or "jee:maths" — matches the chapterId prefix
+  const dirs = await findChapterDirs(CONTENT_DIR);
+
+  console.log(`Found ${dirs.length} chapter dirs under ${CONTENT_DIR}${filter ? ` (filter: ${filter})` : ''}\n`);
   let totalNodes = 0;
   let totalGates = 0;
-  for (const name of chapterDirs) {
-    const r = await loadChapter(path.join(MATHS_DIR, name));
+  let loaded = 0;
+  for (const dir of dirs) {
+    const content = JSON.parse(await fs.readFile(path.join(dir, 'content.json'), 'utf8'));
+    const chapterId = `${content.exam}:${content.subject}:${content.chapter}`;
+    if (filter && !chapterId.startsWith(filter)) continue;
+    const r = await loadChapter(dir);
     totalNodes += r.nodes;
     totalGates += r.gates;
-    console.log(`  ${name}  ${r.title.padEnd(28)} ${String(r.nodes).padStart(3)} nodes  ${String(r.gates).padStart(3)} gates`);
+    loaded++;
+    console.log(`  ${r.chapterId.padEnd(40)} ${r.title.slice(0, 28).padEnd(28)} ${String(r.nodes).padStart(3)} nodes  ${String(r.gates).padStart(3)} gates`);
   }
-  console.log(`\nDone: ${chapterDirs.length} chapters, ${totalNodes} nodes, ${totalGates} gates.`);
+  console.log(`\nDone: ${loaded} chapters, ${totalNodes} nodes, ${totalGates} gates.`);
   process.exit(0);
 }
 

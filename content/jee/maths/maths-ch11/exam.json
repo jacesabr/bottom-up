@@ -1,0 +1,174 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch11",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch11:coordinate-axes-and-planes",
+      "kind": "practice",
+      "prompt": "The three coordinate planes (XY, YZ and ZX) divide all of space into how many octants?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "8",
+      "expected": {
+        "kind": "numeric",
+        "value": 8,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Sec 11.2 Coordinate axes and planes / Exercise 11.1 Q4(iii)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch11:points-on-axes-and-planes",
+      "kind": "practice",
+      "prompt": "A point lies on the x-axis. What can you say about its y- and z-coordinates?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Both its y-coordinate and z-coordinate are zero",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Both its y-coordinate and z-coordinate are zero",
+        "options": [
+          "Both its y-coordinate and z-coordinate are zero",
+          "Only its y-coordinate is zero",
+          "Only its z-coordinate is zero",
+          "Both its x-coordinate and y-coordinate are zero"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Sec 11.3 Note / Exercise 11.1 Q1"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch11:determine-octant-from-signs",
+      "kind": "practice",
+      "prompt": "In which octant does the point (-3, 1, -2) lie? (Use the sign table; answer with the octant number in Roman numerals.)",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "VI",
+      "expected": {
+        "kind": "mcq",
+        "correct": "VI",
+        "options": [
+          "VI",
+          "II",
+          "III",
+          "VIII"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Sec 11.3 Remark, Table 11.1 / Example 2"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch11:distance-between-two-points",
+      "kind": "practice",
+      "prompt": "Find the distance between the points (2, 3, 5) and (4, 3, 1). Give the answer as a decimal (units).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4.47",
+      "expected": {
+        "kind": "numeric",
+        "value": 4.472,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Sec 11.4 Distance formula / Exercise 11.2 Q1(i)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch11:distance-from-origin",
+      "kind": "practice",
+      "prompt": "Find the distance of the point (1, 2, 2) from the origin, using OQ = sqrt(x^2 + y^2 + z^2). Give the numerical value (units).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Sec 11.4 Distance from the origin"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch11:test-collinearity",
+      "kind": "practice",
+      "prompt": "For the points P(-2, 3, 5), Q(1, 2, 3) and R(7, 0, -1) the distances are PQ = sqrt(14), QR = 2 sqrt(14) and PR = 3 sqrt(14). Show, using these distances, that P, Q and R are collinear, and state the distance condition you used.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "Three points are collinear if the largest pairwise distance equals the sum of the other two. Here PQ + QR = sqrt(14) + 2 sqrt(14) = 3 sqrt(14) = PR, so the condition PQ + QR = PR holds and therefore P, Q and R are collinear (Q lies between P and R on the line).",
+        "markPoints": [
+          "States the collinearity condition: the largest distance equals the sum of the other two",
+          "Computes PQ + QR = sqrt(14) + 2 sqrt(14) = 3 sqrt(14)",
+          "Concludes PQ + QR = PR, hence the points are collinear"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Sec 11.4 Example 4 / Exercise 11.2 Q2"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch11:classify-triangle-by-distances",
+      "kind": "practice",
+      "prompt": "For A(3, 6, 9), B(10, 20, 30), C(25, -41, 5) the squared side lengths are AB^2 = 686, BC^2 = 4571, CA^2 = 2709. Is triangle ABC right-angled?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "No, because no side's square equals the sum of the squares of the other two",
+      "expected": {
+        "kind": "mcq",
+        "correct": "No, because no side's square equals the sum of the squares of the other two",
+        "options": [
+          "No, because no side's square equals the sum of the squares of the other two",
+          "Yes, because CA^2 + AB^2 = BC^2",
+          "Yes, because all three sides are equal",
+          "Yes, because two sides are equal"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Sec 11.4 Example 5"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch11:equation-of-set-of-points",
+      "kind": "practice",
+      "prompt": "Let P(x, y, z) be equidistant from A(3, 4, -5) and B(-2, 1, 4). Set PA = PB, square both sides, expand and simplify to obtain the equation of the set of points P.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "From PA = PB, square to get (x-3)^2 + (y-4)^2 + (z+5)^2 = (x+2)^2 + (y-1)^2 + (z-4)^2. Expanding and cancelling the x^2, y^2, z^2 terms leaves the linear equation 10x + 6y - 18z - 29 = 0, which is the required set of points (a plane, the perpendicular bisector of AB).",
+        "markPoints": [
+          "Sets PA = PB and squares to remove the square roots",
+          "Writes (x-3)^2 + (y-4)^2 + (z+5)^2 = (x+2)^2 + (y-1)^2 + (z-4)^2",
+          "Simplifies correctly to 10x + 6y - 18z - 29 = 0"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Miscellaneous Example 8"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch11:centroid-coordinates",
+      "kind": "practice",
+      "prompt": "The centroid of triangle ABC is at (1, 1, 1). If A is (3, -5, 7) and B is (-1, 7, -6), find the z-coordinate of vertex C. (Use that each centroid coordinate is the average of the three vertices' coordinates.)",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Miscellaneous Example 9"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch11:locate-and-measure-points-in-3d-space",
+      "kind": "practice",
+      "prompt": "A triangle has vertices A(0, 0, 6), B(0, 4, 0) and C(6, 0, 0). Find the length of the median drawn from A to the midpoint of BC.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7",
+      "expected": {
+        "kind": "numeric",
+        "value": 7,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch11 Miscellaneous Exercise Q2 (median length via distance formula)"
+    }
+  ]
+}

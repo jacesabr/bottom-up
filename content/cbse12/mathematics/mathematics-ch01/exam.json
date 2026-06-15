@@ -1,0 +1,384 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "chapter": "mathematics-ch01",
+  "items": [
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:relation-definition",
+      "kind": "practice",
+      "prompt": "Mathematically, a relation R from a set A to a set B is defined to be:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "an arbitrary subset of A x B",
+      "expected": {
+        "kind": "mcq",
+        "correct": "an arbitrary subset of A x B",
+        "options": [
+          "an arbitrary subset of A x B",
+          "a recognisable real-world link between A and B",
+          "the whole Cartesian product A x B only",
+          "a function from A to B"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.1 Definition of a relation"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:empty-relation",
+      "kind": "practice",
+      "prompt": "In the set A = {1, 2, 3, 4}, the relation R = {(a, b) : a - b = 10} is the empty relation. How many ordered pairs does R contain?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.2 Empty relation"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:empty-relation",
+      "kind": "practice",
+      "prompt": "A relation R in a set A in which no element of A is related to any element of A is called:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the empty relation",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the empty relation",
+        "options": [
+          "the empty relation",
+          "the universal relation",
+          "the identity relation",
+          "an equivalence relation"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.2 Empty relation"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:universal-relation",
+      "kind": "practice",
+      "prompt": "A relation R in a set A in which each element of A is related to every element of A (so R = A x A) is called:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the universal relation",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the universal relation",
+        "options": [
+          "the universal relation",
+          "the empty relation",
+          "a reflexive relation only",
+          "a symmetric relation only"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.2 Universal relation"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:reflexive-relation",
+      "kind": "practice",
+      "prompt": "For a relation R in a set A to be reflexive, which pairs must belong to R?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(a, a) for every a in A",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(a, a) for every a in A",
+        "options": [
+          "(a, a) for every a in A",
+          "(a, a) for at least one a in A",
+          "(a, b) and (b, a) for all a, b",
+          "no pairs at all"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.2 Reflexive relation"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:symmetric-relation",
+      "kind": "practice",
+      "prompt": "A relation R is symmetric if, whenever (a1, a2) is in R, which pair must also be in R?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(a2, a1)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(a2, a1)",
+        "options": [
+          "(a2, a1)",
+          "(a1, a1)",
+          "(a2, a2)",
+          "(a1, a3)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.2 Symmetric relation"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:transitive-relation",
+      "kind": "practice",
+      "prompt": "A relation R is transitive if, whenever (a1, a2) and (a2, a3) are in R, which pair must also be in R?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(a1, a3)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(a1, a3)",
+        "options": [
+          "(a1, a3)",
+          "(a3, a1)",
+          "(a2, a2)",
+          "(a1, a1)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.2 Transitive relation"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:equivalence-relation",
+      "kind": "practice",
+      "prompt": "A relation R in a set A is an equivalence relation if and only if it is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "reflexive, symmetric and transitive",
+      "expected": {
+        "kind": "mcq",
+        "correct": "reflexive, symmetric and transitive",
+        "options": [
+          "reflexive, symmetric and transitive",
+          "reflexive and symmetric only",
+          "symmetric and transitive only",
+          "one-one and onto"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.2 Equivalence relation"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:equivalence-relation",
+      "kind": "practice",
+      "prompt": "Show that R = {(a, b) : 2 divides a - b} on the set Z of integers is an equivalence relation.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "R is reflexive since 2 divides a - a = 0 for all a. R is symmetric since if 2 divides a - b then 2 divides b - a. R is transitive since if 2 divides a - b and 2 divides b - c, then a - c = (a - b) + (b - c) is even, so 2 divides a - c. Being reflexive, symmetric and transitive, R is an equivalence relation.",
+        "markPoints": [
+          "Reflexive: 2 divides a - a for all a",
+          "Symmetric: 2 divides a - b implies 2 divides b - a",
+          "Transitive: a - c = (a - b) + (b - c) is even, so 2 divides a - c; hence equivalence relation"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Example 5"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:equivalence-class",
+      "kind": "practice",
+      "prompt": "For the relation R = {(a, b) : 2 divides a - b} on the integers Z, how many distinct equivalence classes are there?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.2 Equivalence classes [0] and [1]"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:one-one-function",
+      "kind": "practice",
+      "prompt": "Which function from R to R is one-one (injective)?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "f(x) = 2x",
+      "expected": {
+        "kind": "mcq",
+        "correct": "f(x) = 2x",
+        "options": [
+          "f(x) = 2x",
+          "f(x) = x^2",
+          "f(x) = |x|",
+          "f(x) = constant"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Examples 9 and 11 (one-one test)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:one-one-function",
+      "kind": "practice",
+      "prompt": "Show that f : R -> R given by f(x) = 2x is one-one.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "Assume f(x1) = f(x2). Then 2x1 = 2x2, which gives x1 = x2. Since equal images force equal inputs, distinct elements have distinct images, so f is one-one (injective).",
+        "markPoints": [
+          "Assume f(x1) = f(x2), i.e. 2x1 = 2x2",
+          "Deduce x1 = x2",
+          "Conclude f is one-one"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Example 9"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:onto-function",
+      "kind": "practice",
+      "prompt": "The function f : N -> N given by f(x) = 2x is NOT onto. Which element of the co-domain N is not the image of any element?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Example 8"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:onto-function",
+      "kind": "practice",
+      "prompt": "A function f : X -> Y is onto if and only if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the range of f equals Y",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the range of f equals Y",
+        "options": [
+          "the range of f equals Y",
+          "f is one-one",
+          "distinct inputs give distinct outputs",
+          "X and Y have the same number of elements"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.3 Remark: onto iff Range of f = Y"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:bijective-function",
+      "kind": "practice",
+      "prompt": "A function is bijective if and only if it is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "both one-one and onto",
+      "expected": {
+        "kind": "mcq",
+        "correct": "both one-one and onto",
+        "options": [
+          "both one-one and onto",
+          "one-one but not onto",
+          "onto but not one-one",
+          "neither one-one nor onto"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.3 Bijective"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:composition-of-functions",
+      "kind": "practice",
+      "prompt": "Let f : {2,3,4,5} -> {3,4,5,9} and g : {3,4,5,9} -> {7,11,15} with f(2)=3 and g(3)=7. What is (gof)(2)?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7",
+      "expected": {
+        "kind": "numeric",
+        "value": 7,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Example 15"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:composition-of-functions",
+      "kind": "practice",
+      "prompt": "For two functions f and g, the composition gof is defined by:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(gof)(x) = g(f(x))",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(gof)(x) = g(f(x))",
+        "options": [
+          "(gof)(x) = g(f(x))",
+          "(gof)(x) = f(g(x))",
+          "(gof)(x) = g(x) f(x)",
+          "(gof)(x) = g(x) + f(x)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.4 Definition 8 (composition)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:invertible-function",
+      "kind": "practice",
+      "prompt": "f : N -> Y given by f(x) = 4x + 3 is invertible with inverse g(y) = (y - 3)/4. Find g(11).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Example 17"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:invertible-function",
+      "kind": "practice",
+      "prompt": "A function f : X -> Y is invertible if there exists g : Y -> X such that:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "gof = I_X and fog = I_Y",
+      "expected": {
+        "kind": "mcq",
+        "correct": "gof = I_X and fog = I_Y",
+        "options": [
+          "gof = I_X and fog = I_Y",
+          "gof = I_X only",
+          "fog = I_Y only",
+          "g(x) = 1/f(x)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.4 Definition 9 (invertible)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective",
+      "kind": "practice",
+      "prompt": "A function f is invertible if and only if it is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "one-one and onto",
+      "expected": {
+        "kind": "mcq",
+        "correct": "one-one and onto",
+        "options": [
+          "one-one and onto",
+          "one-one only",
+          "onto only",
+          "reflexive and symmetric"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.4 (invertible iff bijective)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective",
+      "kind": "practice",
+      "prompt": "Explain how the result 'f is invertible if and only if f is one-one and onto' lets you prove a function invertible without constructing its inverse.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "Since invertibility is equivalent to being one-one and onto (bijective), it suffices to prove f is injective and surjective. If both hold, the theorem guarantees an inverse exists, so there is no need to write the inverse explicitly - useful when the actual inverse is hard to determine.",
+        "markPoints": [
+          "Invertible is equivalent to one-one and onto (bijective)",
+          "So prove injectivity and surjectivity",
+          "The theorem then guarantees the inverse exists, without constructing it"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch01 Sec 1.4 (use of invertible iff bijective)"
+    }
+  ]
+}

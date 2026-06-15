@@ -1,0 +1,306 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch12",
+ "items": [
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:optimisation-problem",
+   "kind": "practice",
+   "prompt": "A problem that seeks to maximise or minimise a quantity such as profit or cost belongs to the general class called:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "optimisation problems",
+   "expected": {
+    "kind": "mcq",
+    "correct": "optimisation problems",
+    "options": [
+     "optimisation problems",
+     "differential equations",
+     "probability problems",
+     "matrix problems"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.1 Optimisation problems"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:objective-function",
+   "kind": "practice",
+   "prompt": "The linear function Z = ax + by (with a, b constants) that has to be maximised or minimised is called the:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "objective function",
+   "expected": {
+    "kind": "mcq",
+    "correct": "objective function",
+    "options": [
+     "objective function",
+     "constraint",
+     "feasible region",
+     "corner point"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Objective function"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:decision-variables",
+   "kind": "practice",
+   "prompt": "In the objective function Z = ax + by, the variables x and y are called the:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "decision variables",
+   "expected": {
+    "kind": "mcq",
+    "correct": "decision variables",
+    "options": [
+     "decision variables",
+     "constants",
+     "constraints",
+     "corner points"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Decision variables"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:constraints",
+   "kind": "practice",
+   "prompt": "The linear inequalities or restrictions on the variables of a linear programming problem are called:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "constraints",
+   "expected": {
+    "kind": "mcq",
+    "correct": "constraints",
+    "options": [
+     "constraints",
+     "objective functions",
+     "optimal solutions",
+     "decision variables"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Constraints"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:non-negative-restrictions",
+   "kind": "practice",
+   "prompt": "The conditions x >= 0 and y >= 0 imposed on the decision variables are called the:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "non-negative restrictions",
+   "expected": {
+    "kind": "mcq",
+    "correct": "non-negative restrictions",
+    "options": [
+     "non-negative restrictions",
+     "objective conditions",
+     "optimality conditions",
+     "boundedness conditions"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Non-negative restrictions"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:linear-programming-problem",
+   "kind": "practice",
+   "prompt": "A linear programming problem requires the decision variables to be non-negative and to satisfy a set of:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "linear constraints",
+   "expected": {
+    "kind": "mcq",
+    "correct": "linear constraints",
+    "options": [
+     "linear constraints",
+     "quadratic equations",
+     "non-linear inequalities",
+     "trigonometric identities"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Definition of LPP"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:feasible-region",
+   "kind": "practice",
+   "prompt": "The common region determined by all the constraints, including the non-negative constraints, of an LPP is called the:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "feasible region",
+   "expected": {
+    "kind": "mcq",
+    "correct": "feasible region",
+    "options": [
+     "feasible region",
+     "infeasible region",
+     "objective region",
+     "corner region"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Feasible region"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:feasible-solution",
+   "kind": "practice",
+   "prompt": "Points within and on the boundary of the feasible region of an LPP represent:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "feasible solutions",
+   "expected": {
+    "kind": "mcq",
+    "correct": "feasible solutions",
+    "options": [
+     "feasible solutions",
+     "infeasible solutions",
+     "optimal solutions only",
+     "corner points only"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Feasible solutions"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:optimal-solution",
+   "kind": "practice",
+   "prompt": "A point in the feasible region that gives the optimal (maximum or minimum) value of the objective function is called an:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "optimal solution",
+   "expected": {
+    "kind": "mcq",
+    "correct": "optimal solution",
+    "options": [
+     "optimal solution",
+     "infeasible solution",
+     "feasible region",
+     "decision variable"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Optimal solution"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:bounded-unbounded-region",
+   "kind": "practice",
+   "prompt": "A feasible region of a system of linear inequalities is said to be bounded if:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "it can be enclosed within a circle",
+   "expected": {
+    "kind": "mcq",
+    "correct": "it can be enclosed within a circle",
+    "options": [
+     "it can be enclosed within a circle",
+     "it extends indefinitely in some direction",
+     "it lies in the first quadrant",
+     "it has exactly four corner points"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Bounded vs unbounded"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:corner-point",
+   "kind": "practice",
+   "prompt": "A corner point of a feasible region is a point in the region which is the intersection of:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "two boundary lines",
+   "expected": {
+    "kind": "mcq",
+    "correct": "two boundary lines",
+    "options": [
+     "two boundary lines",
+     "the two coordinate axes only",
+     "the objective function and a constraint",
+     "two feasible solutions in the interior"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2 Corner point (footnote)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:optimal-at-corner-theorem",
+   "kind": "practice",
+   "prompt": "By Theorem 1, when the objective function Z has an optimal value, that value must occur at:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "a corner point (vertex) of the feasible region",
+   "expected": {
+    "kind": "mcq",
+    "correct": "a corner point (vertex) of the feasible region",
+    "options": [
+     "a corner point (vertex) of the feasible region",
+     "the centre of the feasible region",
+     "any interior point of the feasible region",
+     "the origin"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Theorem 1"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:bounded-max-min-theorem",
+   "kind": "practice",
+   "prompt": "By Theorem 2, if the feasible region R is bounded, then the objective function Z has:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "both a maximum and a minimum value, each at a corner point",
+   "expected": {
+    "kind": "mcq",
+    "correct": "both a maximum and a minimum value, each at a corner point",
+    "options": [
+     "both a maximum and a minimum value, each at a corner point",
+     "a maximum value only",
+     "a minimum value only",
+     "no optimal value at all"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Theorem 2"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:multiple-optimal-solutions",
+   "kind": "practice",
+   "prompt": "When two corner points give the same maximum value of Z, which other points also give that maximum value?",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "every point on the line segment joining the two corner points",
+   "expected": {
+    "kind": "mcq",
+    "correct": "every point on the line segment joining the two corner points",
+    "options": [
+     "every point on the line segment joining the two corner points",
+     "only the two corner points themselves",
+     "no other points",
+     "every point in the whole feasible region"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Example 3 Remark (multiple optimal solutions)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:corner-point-method",
+   "kind": "practice",
+   "prompt": "In Example 1, Z = 4x + y is evaluated at the corner points (0,0), (30,0), (20,30), (0,50). The maximum value of Z is 120; at which corner point does it occur (give the x-coordinate)?",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "30",
+   "expected": {
+    "kind": "numeric",
+    "value": 30,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Example 1"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch12:corner-point-method",
+   "kind": "practice",
+   "prompt": "By the Corner Point Method, to find the optimum of an LPP you evaluate the objective function Z = ax + by at:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "each corner point of the feasible region",
+   "expected": {
+    "kind": "mcq",
+    "correct": "each corner point of the feasible region",
+    "options": [
+     "each corner point of the feasible region",
+     "the centre of the feasible region",
+     "every interior point of the feasible region",
+     "only the origin"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch12 Sec 12.2.2 Corner Point Method"
+  }
+ ]
+}

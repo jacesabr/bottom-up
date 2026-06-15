@@ -1,0 +1,203 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch08",
+ "title": "Application of Integrals",
+ "book": "NCERT Class 12 Mathematics Part I",
+ "goal": "jee:maths:maths-c12-ch08:area-bounded-by-curves",
+ "narrative": "This NCERT chapter is short and largely worked through examples; the discrete examinable concepts are few. The node set below covers every concept that has a clean verbatim prose statement in the source. Sub-skills that appear only inside worked computations (e.g. the closed-form integral of sqrt(a^2 - x^2)) are taught within the relevant area nodes rather than split out, to avoid fabricating quotes.",
+ "nodes": [
+  {
+   "id": "jee:maths:maths-c12-ch08:elementary-area",
+   "slug": "elementary-area",
+   "title": "Form the elementary area of a thin strip",
+   "role": "bedrock",
+   "brief": "Treat the area under a curve as built from thin vertical strips of area dA = y dx.",
+   "sec": 2,
+   "quote": "(area of the elementary strip)",
+   "explanation": "To find the area bounded by a curve y = f(x), the x-axis and the ordinates x = a and x = b, picture the region as composed of a large number of very thin vertical strips. An arbitrary strip of height y and width dx has elementary area dA = y dx (with y = f(x)). The total area is obtained by adding up (integrating) these elementary areas across the region. This strip idea is the foundation for every area computation in the chapter.",
+   "keyMoves": [
+    "Slice the region into thin vertical strips of width dx",
+    "Write the elementary area of a strip as dA = y dx with y = f(x)",
+    "Prepare to sum the strips by integration"
+   ],
+   "misconceptions": [
+    "Forgetting that the strip height is the curve value y = f(x)",
+    "Using a finite width instead of the infinitesimal dx"
+   ],
+   "prereqs": [],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch08:area-under-curve-x-axis",
+   "slug": "area-under-curve-x-axis",
+   "title": "Find the area under a curve with respect to the x-axis",
+   "role": "intermediate",
+   "brief": "Compute area bounded by y = f(x), the x-axis and x = a, x = b as the integral of y dx from a to b.",
+   "sec": 2,
+   "quote": "the result of adding up the elementary areas of thin strips across the region",
+   "explanation": "The total area A of the region between the x-axis, the ordinates x = a and x = b, and the curve y = f(x) is the result of adding up the elementary areas of the thin strips across the region. Symbolically A = integral from a to b of dA = integral from a to b of y dx = integral from a to b of f(x) dx. So you integrate the curve's equation (solved for y) between the two x-limits.",
+   "keyMoves": [
+    "Express y = f(x) for the curve",
+    "Integrate y dx from x = a to x = b",
+    "Report A = integral from a to b of f(x) dx"
+   ],
+   "misconceptions": [
+    "Integrating with respect to the wrong variable",
+    "Using the wrong limits a and b for the region"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch08:elementary-area"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch08:area-with-respect-to-y-axis",
+   "slug": "area-with-respect-to-y-axis",
+   "title": "Find the area with respect to the y-axis",
+   "role": "intermediate",
+   "brief": "Compute area bounded by x = g(y), the y-axis and y = c, y = d as the integral of x dy from c to d.",
+   "sec": 2,
+   "quote": "The area A of the region bounded by the curve x = g(y), y-axis and the lines y = c, y = d is given by",
+   "explanation": "When it is convenient to integrate along the y-direction, the area A of the region bounded by the curve x = g(y), the y-axis and the lines y = c and y = d is given by A = integral from c to d of x dy = integral from c to d of g(y) dy. Here you use horizontal strips of width dy and height x. This is the mirror image of the x-axis case and is chosen when the curve is more naturally written as x = g(y).",
+   "keyMoves": [
+    "Write the curve as x = g(y)",
+    "Use horizontal strips of width dy",
+    "Integrate x dy from y = c to y = d"
+   ],
+   "misconceptions": [
+    "Integrating y dx when horizontal strips (x dy) are intended",
+    "Mixing the x-limits with the y-limits"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch08:area-under-curve-x-axis"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch08:area-below-axis-numerical",
+   "slug": "area-below-axis-numerical",
+   "title": "Take the numerical value of area below the x-axis",
+   "role": "intermediate",
+   "brief": "When the curve dips below the x-axis the integral is negative; take its numerical (absolute) value as the area.",
+   "sec": 2,
+   "quote": "it is only the numerical value of the area which is taken into consideration.",
+   "explanation": "If the curve lies below the x-axis between x = a and x = b, then f(x) < 0 there and the definite integral comes out negative. Since area is a positive quantity, it is only the numerical value of the area which is taken into consideration - you take the absolute value of the negative integral. This matters whenever part of the region sits beneath the axis.",
+   "keyMoves": [
+    "Detect where the curve lies below the x-axis (f(x) < 0)",
+    "Compute the (negative) integral there",
+    "Take its absolute / numerical value as the area"
+   ],
+   "misconceptions": [
+    "Reporting a negative number as the area",
+    "Assuming the integral always equals the area without checking the sign"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch08:area-under-curve-x-axis"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch08:area-above-and-below-axis",
+   "slug": "area-above-and-below-axis",
+   "title": "Combine areas above and below the x-axis",
+   "role": "intermediate",
+   "brief": "When a curve is partly above and partly below the axis, add the absolute pieces: A = |A1| + A2.",
+   "sec": 2,
+   "quote": "the area A bounded by the curve y = f(x), *x*-axis and the ordinates x = a and x = b is given by  $A = |A_1| + A_2$ .",
+   "explanation": "It often happens that some portion of the curve is above the x-axis and some is below. If A1 (below) is negative and A2 (above) is positive, the area A bounded by the curve y = f(x), the x-axis and the ordinates x = a and x = b is given by A = |A1| + A2. So you split the interval at the points where the curve crosses the axis, integrate over each piece, and add the absolute values - never just integrate straight across (which would cancel the pieces).",
+   "keyMoves": [
+    "Find where the curve crosses the x-axis and split the interval there",
+    "Integrate over each sub-interval separately",
+    "Add the absolute values: A = |A1| + A2"
+   ],
+   "misconceptions": [
+    "Integrating straight across so positive and negative parts cancel",
+    "Forgetting to take the absolute value of the below-axis piece"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch08:area-below-axis-numerical"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch08:area-of-circle",
+   "slug": "area-of-circle",
+   "title": "Find the area enclosed by a circle using integration",
+   "role": "intermediate",
+   "brief": "Use symmetry and integration of sqrt(a^2 - x^2) to recover the circle's area pi a^2.",
+   "sec": 2,
+   "quote": "$$x^2 + y^2 = a^2$$",
+   "explanation": "For the circle x^2 + y^2 = a^2, solving gives y = +/- sqrt(a^2 - x^2). Using symmetry, the whole area is 4 times the first-quadrant area (where y is positive): A = 4 times the integral from 0 to a of sqrt(a^2 - x^2) dx. Evaluating the standard integral gives 4 times (a^2/2)(pi/2) = pi a^2, the familiar area of a circle - now derived by integration rather than quoted as a formula.",
+   "keyMoves": [
+    "Solve the circle equation for y = sqrt(a^2 - x^2) in the first quadrant",
+    "Use symmetry: total area = 4 times the first-quadrant area",
+    "Integrate to obtain A = pi a^2"
+   ],
+   "misconceptions": [
+    "Forgetting the symmetry factor of 4",
+    "Keeping the negative root for y in the first quadrant"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch08:area-under-curve-x-axis"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch08:area-of-ellipse",
+   "slug": "area-of-ellipse",
+   "title": "Find the area enclosed by an ellipse using integration",
+   "role": "intermediate",
+   "brief": "Use symmetry and integration to get the area pi a b enclosed by an ellipse.",
+   "sec": 2,
+   "quote": "Find the area enclosed by the ellipse",
+   "explanation": "For the ellipse with equation x^2/a^2 + y^2/b^2 = 1, solving gives y = +/- (b/a) sqrt(a^2 - x^2). By the ellipse's symmetry about both axes, the total area is 4 times the first-quadrant region: A = 4 times the integral from 0 to a of (b/a) sqrt(a^2 - x^2) dx, which evaluates to pi a b. The method mirrors the circle but carries the factor b/a, and the circle is the special case a = b.",
+   "keyMoves": [
+    "Solve the ellipse equation for y in the first quadrant",
+    "Use symmetry: total area = 4 times the first-quadrant area",
+    "Integrate to get A = pi a b"
+   ],
+   "misconceptions": [
+    "Dropping the factor b/a from the ellipse's y",
+    "Forgetting the symmetry factor of 4"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch08:area-of-circle"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch08:area-bounded-by-curves",
+   "slug": "area-bounded-by-curves",
+   "title": "Find the area of a region bounded by curves and lines",
+   "role": "goal",
+   "brief": "Set up and evaluate the definite integral(s) for the area of a region bounded by given curves, axes and lines.",
+   "sec": 8,
+   "quote": "the area under simple curves, area between lines and arcs of circles, parabolas and ellipses",
+   "explanation": "The chapter's goal is to find the area under simple curves, and the area between lines and arcs of circles, parabolas and ellipses (standard forms only). The general method: sketch the region; decide whether vertical strips (integrate y dx) or horizontal strips (integrate x dy) are simpler; split the interval where the curve crosses an axis or where two curves intersect; integrate each piece; and add the pieces (taking absolute values for parts below the axis) to get the total bounded area. This capstone draws together the strip idea, both orientations, the sign handling, and the standard circle/ellipse results.",
+   "keyMoves": [
+    "Sketch the region and find intersection / crossing points for the limits",
+    "Choose vertical (y dx) or horizontal (x dy) strips",
+    "Integrate over each piece and add, using absolute values for below-axis parts"
+   ],
+   "misconceptions": [
+    "Integrating without sketching, so the limits or sign are wrong",
+    "Letting above- and below-axis parts cancel instead of adding their magnitudes"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch08:area-above-and-below-axis",
+    "jee:maths:maths-c12-ch08:area-with-respect-to-y-axis",
+    "jee:maths:maths-c12-ch08:area-of-ellipse"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  }
+ ]
+}

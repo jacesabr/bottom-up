@@ -1,0 +1,327 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "chapter": "mathematics-ch02",
+  "title": "Inverse Trigonometric Functions",
+  "book": "NCERT Class 12 Mathematics Part I",
+  "goal": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+  "nodes": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
+      "slug": "inverse-needs-bijective",
+      "title": "Recall that an inverse exists only for a one-one and onto function",
+      "role": "bedrock",
+      "brief": "Recall from Chapter 1 that f has an inverse only if it is one-one and onto; trig functions are not, over their natural domains.",
+      "sec": 1,
+      "quote": "There are many functions which are not one-one, onto or both and hence we can not talk of their inverses.",
+      "explanation": "The inverse of a function f, written f-inverse, exists only when f is one-one and onto (bijective). Many functions - including the ordinary trigonometric functions over their natural domains - are not one-one and onto, so their inverses do not exist as stated. The whole chapter is about restricting the domains and ranges of the trig functions so that the restricted functions become bijective and can be inverted.",
+      "keyMoves": [
+        "State that f-inverse exists only if f is one-one and onto",
+        "Note that trig functions are not bijective over their natural domains",
+        "Set up the need to restrict domains/ranges before inverting"
+      ],
+      "misconceptions": [
+        "Thinking every function automatically has an inverse",
+        "Believing sin, cos, tan are invertible over all of R"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
+      "slug": "inverse-of-bijective",
+      "title": "Define the inverse g of a bijective function f",
+      "role": "bedrock",
+      "brief": "For a one-one onto f : X -> Y, define the unique inverse g : Y -> X with domain of g = range of f and range of g = domain of f.",
+      "sec": 2,
+      "quote": "if  $f: X \\rightarrow Y$  such that f(x) = y is one-one and onto, then we can define a unique function  $g: Y \\rightarrow X$",
+      "explanation": "If f : X -> Y with f(x) = y is one-one and onto, then we can define a unique function g : Y -> X such that g(y) = x. The domain of g is the range of f and the range of g is the domain of f. This g is the inverse of f, denoted f-inverse; it too is one-one and onto, and its inverse is f again. We also have (f-inverse o f)(x) = x and (f o f-inverse)(y) = y - composing a function with its inverse returns the identity.",
+      "keyMoves": [
+        "Require f to be one-one and onto first",
+        "Swap roles: domain of g = range of f, range of g = domain of f",
+        "Check (f-inverse o f)(x) = x and (f o f-inverse)(y) = y"
+      ],
+      "misconceptions": [
+        "Forgetting that the inverse swaps domain and range",
+        "Treating f-inverse as 1/f"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:branch",
+      "slug": "branch",
+      "title": "Understand a branch of an inverse trig function",
+      "role": "intermediate",
+      "brief": "Recognise that each interval over which a trig function is bijective gives a different branch of its inverse.",
+      "sec": 2,
+      "quote": "Corresponding to each such interval, we get a *branch* of the function sin",
+      "explanation": "The sine function is one-one and onto on each of several intervals (for example [-3pi/2, -pi/2], [-pi/2, pi/2], [pi/2, 3pi/2]), and on each we can invert it. Corresponding to each such interval we get a branch of sin-inverse, all with domain [-1, 1] but different ranges. The branches arise because the trig functions are periodic, so many restricted pieces are each invertible.",
+      "keyMoves": [
+        "Find intervals on which the trig function is bijective",
+        "Associate one branch of the inverse to each such interval",
+        "Note all branches share the same domain but differ in range"
+      ],
+      "misconceptions": [
+        "Thinking an inverse trig function has only one possible range",
+        "Confusing different branches with different functions entirely"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
+      "slug": "sin-inverse-principal",
+      "title": "State the principal value branch of sin-inverse",
+      "role": "intermediate",
+      "brief": "Take sin-inverse with domain [-1, 1] and principal range [-pi/2, pi/2].",
+      "sec": 2,
+      "quote": "The branch with range  $\\left[\\frac{-\\pi}{2}, \\frac{\\pi}{2}\\right]$  is called the *principal value branch*",
+      "explanation": "Restricting sine to [-pi/2, pi/2] makes it one-one and onto with range [-1, 1], so we can invert it. The branch of sin-inverse with range [-pi/2, pi/2] is called the principal value branch. Thus the standard sin-inverse is the function with domain [-1, 1] and range [-pi/2, pi/2]: sin-inverse : [-1, 1] -> [-pi/2, pi/2]. If y = sin-inverse x then sin y = x.",
+      "keyMoves": [
+        "Restrict sine to [-pi/2, pi/2] to make it bijective",
+        "Take sin-inverse : [-1, 1] -> [-pi/2, pi/2] as the principal branch",
+        "Use y = sin-inverse x iff sin y = x with y in [-pi/2, pi/2]"
+      ],
+      "misconceptions": [
+        "Using [0, pi] (the cos-inverse range) for sin-inverse",
+        "Allowing sin-inverse values outside [-pi/2, pi/2]"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:branch"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:cos-inverse-principal",
+      "slug": "cos-inverse-principal",
+      "title": "State the principal value branch of cos-inverse",
+      "role": "intermediate",
+      "brief": "Take cos-inverse with domain [-1, 1] and principal range [0, pi].",
+      "sec": 2,
+      "quote": "The branch with range  $[0, \\pi]$  is called the *principal value branch* of the function  $\\cos^{-1}$ .",
+      "explanation": "Restricting cosine to [0, pi] makes it one-one and onto with range [-1, 1]. The branch of cos-inverse with range [0, pi] is the principal value branch, so cos-inverse : [-1, 1] -> [0, pi]. To evaluate cos-inverse of a value, find the angle in [0, pi] whose cosine is that value.",
+      "keyMoves": [
+        "Restrict cosine to [0, pi] to make it bijective",
+        "Take cos-inverse : [-1, 1] -> [0, pi] as the principal branch",
+        "Find the angle in [0, pi] with the given cosine"
+      ],
+      "misconceptions": [
+        "Using [-pi/2, pi/2] for cos-inverse instead of [0, pi]",
+        "Returning a negative cos-inverse value"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:branch"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:tan-inverse-principal",
+      "slug": "tan-inverse-principal",
+      "title": "State the principal value branch of tan-inverse",
+      "role": "intermediate",
+      "brief": "Take tan-inverse with domain R and principal range (-pi/2, pi/2).",
+      "sec": 2,
+      "quote": "The branch with range  $\\left(\\frac{-\\pi}{2}, \\frac{\\pi}{2}\\right)$  is called the *principal value branch* of the function tan",
+      "explanation": "Restricting tangent to the open interval (-pi/2, pi/2) makes it one-one and onto with range R, so it can be inverted there. The branch of tan-inverse with range (-pi/2, pi/2) is the principal value branch, giving tan-inverse : R -> (-pi/2, pi/2). To evaluate tan-inverse of a value, find the angle in (-pi/2, pi/2) whose tangent is that value.",
+      "keyMoves": [
+        "Restrict tangent to (-pi/2, pi/2) to make it bijective",
+        "Take tan-inverse : R -> (-pi/2, pi/2) as the principal branch",
+        "Find the angle in (-pi/2, pi/2) with the given tangent"
+      ],
+      "misconceptions": [
+        "Using closed endpoints; the tan-inverse range is the OPEN interval (-pi/2, pi/2)",
+        "Confusing the tan-inverse range with the cot-inverse range (0, pi)"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:branch"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:cot-inverse-principal",
+      "slug": "cot-inverse-principal",
+      "title": "State the principal value branch of cot-inverse",
+      "role": "intermediate",
+      "brief": "Take cot-inverse with domain R and principal range (0, pi).",
+      "sec": 2,
+      "quote": "The function with range  $(0, \\pi)$  is called the *principal value branch* of the function  $\\cot^{-1}$ .",
+      "explanation": "Restricting cotangent to the open interval (0, pi) makes it bijective with range R. The function with range (0, pi) is the principal value branch of cot-inverse, giving cot-inverse : R -> (0, pi). To evaluate cot-inverse of a value, find the angle in (0, pi) whose cotangent is that value.",
+      "keyMoves": [
+        "Restrict cotangent to (0, pi) to make it bijective",
+        "Take cot-inverse : R -> (0, pi) as the principal branch",
+        "Find the angle in (0, pi) with the given cotangent"
+      ],
+      "misconceptions": [
+        "Using (-pi/2, pi/2) for cot-inverse instead of (0, pi)",
+        "Returning a negative cot-inverse value"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:branch"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:cosec-inverse-principal",
+      "slug": "cosec-inverse-principal",
+      "title": "State the principal value branch of cosec-inverse",
+      "role": "intermediate",
+      "brief": "Take cosec-inverse with domain R - (-1, 1) and principal range [-pi/2, pi/2] minus {0}.",
+      "sec": 2,
+      "quote": "The function corresponding to the range  $\\left[\\frac{-\\pi}{2}, \\frac{\\pi}{2}\\right] - \\{0\\}$  is called the *principal value branch* of cosec",
+      "explanation": "Since cosec x = 1/sin x, its domain excludes integral multiples of pi and its range is R - (-1, 1). Restricting cosec to [-pi/2, pi/2] minus {0} makes it bijective with range R - (-1, 1). The function corresponding to the range [-pi/2, pi/2] minus {0} is the principal value branch of cosec-inverse, so cosec-inverse : R - (-1, 1) -> [-pi/2, pi/2] minus {0}.",
+      "keyMoves": [
+        "Note cosec-inverse has domain R - (-1, 1)",
+        "Take the principal range as [-pi/2, pi/2] excluding 0",
+        "Find the angle in that range with the given cosecant"
+      ],
+      "misconceptions": [
+        "Forgetting that 0 is excluded from the cosec-inverse range",
+        "Allowing inputs in (-1, 1), which are outside the domain"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:branch"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:sec-inverse-principal",
+      "slug": "sec-inverse-principal",
+      "title": "State the principal value branch of sec-inverse",
+      "role": "intermediate",
+      "brief": "Take sec-inverse with domain R - (-1, 1) and principal range [0, pi] minus {pi/2}.",
+      "sec": 2,
+      "quote": "The branch with range  $[0, \\pi] - \\{\\frac{\\pi}{2}\\}$  is called the *principal value branch* of the function sec",
+      "explanation": "Since sec x = 1/cos x, its domain excludes odd multiples of pi/2 and its range is R - (-1, 1). Restricting sec to [0, pi] minus {pi/2} makes it bijective with range R - (-1, 1). The branch with range [0, pi] minus {pi/2} is the principal value branch of sec-inverse, so sec-inverse : R - (-1, 1) -> [0, pi] minus {pi/2}.",
+      "keyMoves": [
+        "Note sec-inverse has domain R - (-1, 1)",
+        "Take the principal range as [0, pi] excluding pi/2",
+        "Find the angle in that range with the given secant"
+      ],
+      "misconceptions": [
+        "Forgetting that pi/2 is excluded from the sec-inverse range",
+        "Allowing inputs in (-1, 1), which are outside the domain"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:branch"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:not-reciprocal",
+      "slug": "not-reciprocal",
+      "title": "Distinguish sin-inverse x from (sin x) to the power -1",
+      "role": "bedrock",
+      "brief": "Avoid the classic trap: sin-inverse x is an angle, NOT the reciprocal 1/sin x.",
+      "sec": 2,
+      "quote": "$\\sin^{-1}x$  should not be confused with  $(\\sin x)^{-1}$ .",
+      "explanation": "The notation sin-inverse x must not be confused with (sin x) raised to the power -1. The superscript -1 in sin-inverse denotes the inverse function (an angle whose sine is x), whereas (sin x)^-1 = 1/sin x is the reciprocal of sin x. The same warning applies to all the inverse trig functions. Mixing these up is one of the most common errors in the topic.",
+      "keyMoves": [
+        "Read sin-inverse x as the angle whose sine is x",
+        "Read (sin x)^-1 as 1/sin x",
+        "Never replace sin-inverse x with 1/sin x"
+      ],
+      "misconceptions": [
+        "Treating sin-inverse x as 1/sin x",
+        "Carrying the same confusion into cos-inverse, tan-inverse, etc."
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:sin-inverse-principal"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:principal-value-defn",
+      "slug": "principal-value-defn",
+      "title": "Define the principal value of an inverse trig function",
+      "role": "intermediate",
+      "brief": "Define the principal value as the value of the inverse function that lies in the principal branch range.",
+      "sec": 2,
+      "quote": "The value of an inverse trigonometric functions which lies in the range of principal branch is called the *principal value* of that inverse trigonometric functions.",
+      "explanation": "When no branch is mentioned, an inverse trig function means its principal value branch. The value of an inverse trigonometric function that lies in the range of the principal branch is called the principal value of that inverse trig function. So the principal value of sin-inverse x lies in [-pi/2, pi/2], of cos-inverse x in [0, pi], and so on. Finding a principal value means returning the unique angle inside the correct principal range.",
+      "keyMoves": [
+        "Use the principal branch unless another branch is stated",
+        "Return the angle within the principal range",
+        "Pick the unique such angle as the principal value"
+      ],
+      "misconceptions": [
+        "Returning any angle with the right ratio instead of the one in the principal range",
+        "Forgetting which principal range applies to which function"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:cos-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:tan-inverse-principal"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:composition-identities",
+      "slug": "composition-identities",
+      "title": "Apply sin(sin-inverse x) = x and sin-inverse(sin x) = x on the right domains",
+      "role": "intermediate",
+      "brief": "Use the cancellation identities, valid only when x lies in the correct domain.",
+      "sec": 3,
+      "quote": "$\\sin(\\sin^{-1} x) = x, x \\in [-1, 1] \\text{ and } \\sin^{-1}(\\sin x) = x, x \\in \\left[\\frac{-\\pi}{2}, \\frac{\\pi}{2}\\right]$",
+      "explanation": "If y = sin-inverse x then x = sin y, and if x = sin y then y = sin-inverse x. This gives the cancellation identities sin(sin-inverse x) = x for x in [-1, 1], and sin-inverse(sin x) = x for x in [-pi/2, pi/2]. The domain restriction matters: sin-inverse(sin x) returns x only when x is already in the principal range; otherwise you must first reduce the angle into [-pi/2, pi/2] using sin(pi - t) = sin t etc. Similar results hold for the other inverse trig functions on their suitable domains.",
+      "keyMoves": [
+        "Apply sin(sin-inverse x) = x for any x in [-1, 1]",
+        "Apply sin-inverse(sin x) = x only when x is in [-pi/2, pi/2]",
+        "If x is outside the principal range, reduce the angle first"
+      ],
+      "misconceptions": [
+        "Using sin-inverse(sin x) = x for all x, ignoring the principal-range restriction",
+        "Forgetting to reduce an out-of-range angle before applying the identity"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:principal-value-defn"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+      "slug": "principal-value-evaluation",
+      "title": "Evaluate principal values of inverse trig expressions",
+      "role": "goal",
+      "brief": "Combine the principal-branch ranges and cancellation identities to evaluate inverse trig expressions correctly.",
+      "sec": 3,
+      "quote": "We know that  $\\sin^{-1}(\\sin x) = x$ . Therefore,  $\\sin^{-1}(\\sin \\frac{3\\pi}{5}) = \\frac{3\\pi}{5}$",
+      "explanation": "Evaluating an inverse trig expression means returning the unique value inside the correct principal range. For a plain value (e.g. find the principal value of sin-inverse(1/sqrt2)), set the expression equal to y, write the trig equation (sin y = 1/sqrt2), and pick the y in the principal range (pi/4). For nested forms like sin-inverse(sin(3pi/5)): 3pi/5 is NOT in [-pi/2, pi/2], so use sin(3pi/5) = sin(pi - 3pi/5) = sin(2pi/5) with 2pi/5 in [-pi/2, pi/2], giving 2pi/5. The whole skill is choosing the representative angle that lands in the principal branch.",
+      "keyMoves": [
+        "Set the inverse expression equal to y and write the corresponding trig equation",
+        "Select the unique angle y in the function's principal range",
+        "For nested forms, first reduce the inner angle into the principal range, then cancel"
+      ],
+      "misconceptions": [
+        "Reporting an angle outside the principal range as the principal value",
+        "Naively cancelling sin-inverse(sin x) = x without checking x is in [-pi/2, pi/2]"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:composition-identities",
+        "cbse12:mathematics:mathematics-ch02:not-reciprocal",
+        "cbse12:mathematics:mathematics-ch02:cot-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:cosec-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:sec-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

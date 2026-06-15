@@ -1,0 +1,206 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch09",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch09:slope-as-tan-inclination",
+      "kind": "practice",
+      "prompt": "A line makes an inclination of 60 degrees with the positive direction of the x-axis. Find its slope (m = tan theta), to 3 decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1.732",
+      "expected": {
+        "kind": "numeric",
+        "value": 1.732,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.2, Example 1(d)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:slope-from-two-points",
+      "kind": "practice",
+      "prompt": "Find the slope of the line passing through the points (3, -2) and (-1, 4). Give the answer as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-1.5",
+      "expected": {
+        "kind": "numeric",
+        "value": -1.5,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.2.1, Example 1(a)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:parallel-lines-equal-slopes",
+      "kind": "practice",
+      "prompt": "Two non-vertical lines in a plane are parallel if and only if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "their slopes are equal",
+      "expected": {
+        "kind": "mcq",
+        "correct": "their slopes are equal",
+        "options": [
+          "their slopes are equal",
+          "the product of their slopes is -1",
+          "their slopes are negative reciprocals",
+          "the sum of their slopes is zero"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.2.2 Conditions for parallelism"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:perpendicular-lines-slope-product",
+      "kind": "practice",
+      "prompt": "A line has slope 1/3. Using the perpendicularity condition m1 m2 = -1, find the slope of any line perpendicular to it. Give the answer as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-3",
+      "expected": {
+        "kind": "numeric",
+        "value": -3,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.2.2, cf. Example 3"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:angle-between-two-lines",
+      "kind": "practice",
+      "prompt": "The acute angle theta between two lines with slopes m1 and m2 is given by which formula?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "tan theta = |(m2 - m1)/(1 + m1 m2)|",
+      "expected": {
+        "kind": "mcq",
+        "correct": "tan theta = |(m2 - m1)/(1 + m1 m2)|",
+        "options": [
+          "tan theta = |(m2 - m1)/(1 + m1 m2)|",
+          "tan theta = |(m1 m2)/(m2 - m1)|",
+          "tan theta = |(1 + m1 m2)/(m2 - m1)|",
+          "tan theta = |m2 - m1|"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.2.3 Angle between two lines"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:collinearity-by-slope",
+      "kind": "practice",
+      "prompt": "Using slopes, three points A, B and C are collinear if and only if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "slope of AB = slope of BC",
+      "expected": {
+        "kind": "mcq",
+        "correct": "slope of AB = slope of BC",
+        "options": [
+          "slope of AB = slope of BC",
+          "slope of AB = -slope of BC",
+          "slope of AB times slope of BC = -1",
+          "slope of AB = 1/slope of BC"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Summary, Collinearity (cf. Misc. Ex. Q19)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:point-slope-form",
+      "kind": "practice",
+      "prompt": "Find the equation of the line through (-2, 3) with slope -4. Using point-slope form, write it in the form Ax + By + C = 0, and explain each step.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "Use point-slope form y - y0 = m(x - x0) with (x0, y0) = (-2, 3) and m = -4: y - 3 = -4(x + 2). Expand the right side to y - 3 = -4x - 8, then collect all terms on one side to get 4x + y + 5 = 0.",
+        "markPoints": [
+          "Substitutes correctly into y - y0 = m(x - x0): y - 3 = -4(x + 2)",
+          "Expands -4(x + 2) = -4x - 8 correctly",
+          "Rearranges to the general form 4x + y + 5 = 0"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.3.2, Example 5"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:slope-intercept-form",
+      "kind": "practice",
+      "prompt": "Reduce the equation 6x + 3y - 5 = 0 to slope-intercept form y = mx + c and find its slope m. Give m as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-2",
+      "expected": {
+        "kind": "numeric",
+        "value": -2,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.3.4, cf. Exercise 9.3 Q1(ii)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:intercept-form",
+      "kind": "practice",
+      "prompt": "A line makes an x-intercept of -3 and a y-intercept of 2. Using intercept form x/a + y/b = 1, its equation simplifies to:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "2x - 3y + 6 = 0",
+      "expected": {
+        "kind": "mcq",
+        "correct": "2x - 3y + 6 = 0",
+        "options": [
+          "2x - 3y + 6 = 0",
+          "3x - 2y + 6 = 0",
+          "2x + 3y - 6 = 0",
+          "3x + 2y + 6 = 0"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.3.5, Example 8"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:distance-of-point-from-line",
+      "kind": "practice",
+      "prompt": "Find the perpendicular distance of the point (3, -5) from the line 3x - 4y - 26 = 0, using d = |A x1 + B y1 + C| / sqrt(A^2 + B^2). Give the answer as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.6",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.6,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.4, Example 9"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:distance-between-parallel-lines",
+      "kind": "practice",
+      "prompt": "Find the distance between the parallel lines 3x - 4y + 7 = 0 and 3x - 4y + 5 = 0, using d = |C1 - C2| / sqrt(A^2 + B^2). Give the answer as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.4",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.4,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.4.1, Example 10"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:horizontal-and-vertical-lines",
+      "kind": "practice",
+      "prompt": "The equation of a vertical line passing through the point (-2, 3) is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "x = -2",
+      "expected": {
+        "kind": "mcq",
+        "correct": "x = -2",
+        "options": [
+          "x = -2",
+          "y = 3",
+          "x = 3",
+          "y = -2"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.3.1, Example 4"
+    }
+  ]
+}

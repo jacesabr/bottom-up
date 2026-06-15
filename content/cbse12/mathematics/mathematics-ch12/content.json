@@ -1,0 +1,373 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "chapter": "mathematics-ch12",
+  "title": "Linear Programming",
+  "book": "NCERT Class 12 Mathematics Part II",
+  "goal": "cbse12:mathematics:mathematics-ch12:corner-point-method",
+  "narrative": "This rationalised NCERT chapter develops linear programming problems (LPP) and their solution by the graphical Corner Point Method only. Nodes build from the optimisation idea and the formulation vocabulary (objective function, decision variables, constraints, non-negative restrictions) through the feasible region and its solutions, the bounded/unbounded distinction and the two fundamental theorems, to the capstone Corner Point Method that solves an LPP. Every node carries a clean verbatim source statement.",
+  "nodes": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:optimisation-problem",
+      "slug": "optimisation-problem",
+      "title": "Recognise an optimisation problem",
+      "role": "bedrock",
+      "brief": "Identify an optimisation problem as one that seeks to maximise or minimise a quantity such as profit or cost.",
+      "sec": 1,
+      "quote": "Such type of problems which seek to maximise (or, minimise) profit (or, cost) form a general class of problems called",
+      "explanation": "Problems that seek to maximise (or minimise) profit (or cost) form a general class called optimisation problems. An optimisation problem may involve finding maximum profit, minimum cost, or minimum use of resources. The furniture dealer who wants to choose how many tables and chairs to buy so as to maximise his total profit is a typical example. Linear programming problems are a special, very important class of optimisation problems.",
+      "keyMoves": [
+        "Spot the quantity to be made as large or as small as possible (profit, cost, resources)",
+        "Recognise this maximise/minimise goal as the hallmark of an optimisation problem",
+        "Note that linear programming problems are a special class of optimisation problems"
+      ],
+      "misconceptions": [
+        "Thinking optimisation only ever means maximising (it also covers minimising)",
+        "Confusing the quantity to optimise with the limits placed on the choices"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:objective-function",
+      "slug": "objective-function",
+      "title": "Write the objective function",
+      "role": "bedrock",
+      "brief": "Form the linear objective function Z = ax + by that must be maximised or minimised.",
+      "sec": 2,
+      "quote": "Linear function Z = ax + by, where *a*, *b* are constants, which has to be maximised or minimized is called a linear **objective function**.",
+      "explanation": "The objective function is the linear function Z = ax + by, where a and b are constants, that has to be maximised or minimised. In the furniture example Z = 250x + 75y (the total profit) is the objective function. It encodes exactly the quantity the optimisation problem is trying to make as large (or small) as possible, written as a linear expression in the variables.",
+      "keyMoves": [
+        "Identify the quantity to optimise (e.g. total profit or cost)",
+        "Express it as a linear function Z = ax + by with constant coefficients",
+        "Label this Z the objective function"
+      ],
+      "misconceptions": [
+        "Including non-linear terms (like xy or x^2) in the objective function",
+        "Confusing the objective function with a constraint inequality"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:optimisation-problem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:decision-variables",
+      "slug": "decision-variables",
+      "title": "Identify the decision variables",
+      "role": "bedrock",
+      "brief": "Recognise the variables x and y in the objective function as the decision variables.",
+      "sec": 2,
+      "quote": "Variables x and y are called **decision variables**.",
+      "explanation": "The variables x and y appearing in the objective function are called the decision variables: they represent the choices the problem must decide on (for example, the number of tables x and chairs y to buy). Choosing their values determines the value of the objective function, subject to the constraints.",
+      "keyMoves": [
+        "Read off the unknown quantities the problem must choose",
+        "Name them x and y",
+        "Recognise these as the decision variables of the LPP"
+      ],
+      "misconceptions": [
+        "Treating the constants a, b in Z = ax + by as the decision variables",
+        "Forgetting that the decision variables are restricted to be non-negative"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:objective-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:constraints",
+      "slug": "constraints",
+      "title": "Write the linear constraints",
+      "role": "intermediate",
+      "brief": "Express the restrictions on the variables as linear inequalities called constraints.",
+      "sec": 2,
+      "quote": "The linear inequalities or equations or restrictions on the variables of a linear programming problem are called **constraints**.",
+      "explanation": "The linear inequalities or equations or restrictions on the variables of a linear programming problem are called constraints. In the furniture example the limited investment (5x + y <= 100) and the limited storage (x + y <= 60) are the constraints. They restrict which combinations of decision-variable values are allowed.",
+      "keyMoves": [
+        "Translate each real limit (money, storage, time) into a linear inequality in x and y",
+        "Collect these inequalities as the constraints of the problem",
+        "Keep all relations linear"
+      ],
+      "misconceptions": [
+        "Writing a constraint as an equation when the limit is really an inequality (or vice versa)",
+        "Confusing the constraints with the objective function"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:decision-variables"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:non-negative-restrictions",
+      "slug": "non-negative-restrictions",
+      "title": "Apply the non-negative restrictions",
+      "role": "bedrock",
+      "brief": "Recognise the conditions x >= 0, y >= 0 as the non-negative restrictions on the decision variables.",
+      "sec": 2,
+      "quote": "The conditions  $x \\ge 0$ ,  $y \\ge 0$  are called non-negative restrictions.",
+      "explanation": "The conditions x >= 0 and y >= 0 are called non-negative restrictions. They are part of the constraints of every LPP in this chapter: the decision variables (such as numbers of tables and chairs) cannot be negative. They confine the feasible region to the first quadrant.",
+      "keyMoves": [
+        "Add x >= 0 and y >= 0 to every LPP",
+        "Recognise these as the non-negative restrictions",
+        "Use them to confine the feasible region to the first quadrant"
+      ],
+      "misconceptions": [
+        "Forgetting to include x >= 0, y >= 0 among the constraints",
+        "Thinking the non-negative restrictions are optional extras rather than part of the problem"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:constraints"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:linear-programming-problem",
+      "slug": "linear-programming-problem",
+      "title": "Define a linear programming problem",
+      "role": "intermediate",
+      "brief": "State an LPP as finding the optimal value of a linear objective function subject to linear constraints and non-negativity.",
+      "sec": 2,
+      "quote": "subject to the conditions that the variables are **non-negative** and satisfy a set of linear inequalities (called **linear constraints**).",
+      "explanation": "A Linear Programming Problem is one concerned with finding the optimal value (maximum or minimum) of a linear function (the objective function) of several variables, subject to the conditions that the variables are non-negative and satisfy a set of linear inequalities (called linear constraints). The word linear means all the relations used are linear; programming refers to determining a particular plan of action. The standard form is: maximise/minimise Z = ax + by subject to the linear constraints and x, y >= 0.",
+      "keyMoves": [
+        "State the objective function to be optimised",
+        "List the linear constraints",
+        "Add the non-negativity conditions to complete the LPP"
+      ],
+      "misconceptions": [
+        "Calling a problem an LPP when the objective or a constraint is non-linear",
+        "Omitting the non-negativity conditions from the formulation"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:objective-function",
+        "cbse12:mathematics:mathematics-ch12:non-negative-restrictions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:feasible-region",
+      "slug": "feasible-region",
+      "title": "Identify the feasible region",
+      "role": "intermediate",
+      "brief": "Recognise the feasible region as the common region determined by all the constraints including non-negativity.",
+      "sec": 2,
+      "quote": "The common region determined by all the constraints including non-negative constraints",
+      "explanation": "The feasible region (or solution region) is the common region determined by all the constraints including the non-negative constraints x, y >= 0 of a linear programming problem. It is the intersection of all the half-planes the inequalities define. The region other than the feasible region is the infeasible region. Graphically it is found by shading the region common to all constraints.",
+      "keyMoves": [
+        "Graph each constraint as a half-plane",
+        "Take the region common to all the half-planes (including x,y >= 0)",
+        "Call this common region the feasible region"
+      ],
+      "misconceptions": [
+        "Shading the region of a single constraint instead of the common region of all",
+        "Forgetting the non-negative constraints when finding the common region"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:linear-programming-problem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:feasible-solution",
+      "slug": "feasible-solution",
+      "title": "Recognise feasible and infeasible solutions",
+      "role": "intermediate",
+      "brief": "Identify points within and on the boundary of the feasible region as feasible solutions, others as infeasible.",
+      "sec": 2,
+      "quote": "Points within and on the boundary of the feasible region represent feasible solutions of the constraints.",
+      "explanation": "Points within and on the boundary of the feasible region represent feasible solutions of the constraints. For example (10, 50), (0, 60) and (20, 0) are feasible solutions of the furniture problem. Any point outside the feasible region is an infeasible solution; for instance (25, 40) is infeasible. Every feasible solution satisfies all the constraints simultaneously.",
+      "keyMoves": [
+        "Check whether a point lies within or on the boundary of the feasible region",
+        "If so, call it a feasible solution",
+        "If it lies outside, call it an infeasible solution"
+      ],
+      "misconceptions": [
+        "Excluding boundary points from the feasible solutions (the boundary is included)",
+        "Calling a point feasible without checking every constraint"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:feasible-region"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:optimal-solution",
+      "slug": "optimal-solution",
+      "title": "Recognise an optimal solution",
+      "role": "intermediate",
+      "brief": "Identify an optimal solution as a feasible point that gives the optimal (max or min) value of the objective function.",
+      "sec": 2,
+      "quote": "Any point in the feasible region that gives the optimal value (maximum or minimum) of the objective function is called an **optimal solution**.",
+      "explanation": "Any point in the feasible region that gives the optimal value (maximum or minimum) of the objective function is called an optimal solution. In the furniture problem the optimal solution is (10, 50), giving the maximum profit Rs 6250. An optimal solution is always a feasible solution; it is the one (or ones) achieving the best objective value.",
+      "keyMoves": [
+        "Restrict attention to feasible points",
+        "Find the one(s) giving the largest (or smallest) value of Z",
+        "Call such a point an optimal solution"
+      ],
+      "misconceptions": [
+        "Looking for the optimal value outside the feasible region",
+        "Assuming an optimal solution must be unique"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:feasible-solution"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:bounded-unbounded-region",
+      "slug": "bounded-unbounded-region",
+      "title": "Decide if a feasible region is bounded or unbounded",
+      "role": "intermediate",
+      "brief": "Classify a feasible region as bounded if it can be enclosed within a circle, otherwise unbounded.",
+      "sec": 2,
+      "quote": "A feasible region of a system of linear inequalities is said to be bounded if it can be enclosed within a circle. Otherwise, it is called unbounded.",
+      "explanation": "A feasible region of a system of linear inequalities is said to be bounded if it can be enclosed within a circle; otherwise it is unbounded. Unbounded means the feasible region extends indefinitely in some direction. This distinction matters because for a bounded region the objective function attains both a maximum and a minimum, while for an unbounded region a max or min may fail to exist.",
+      "keyMoves": [
+        "Sketch the feasible region",
+        "Check whether some circle can enclose the whole region",
+        "If yes it is bounded; if it runs off to infinity it is unbounded"
+      ],
+      "misconceptions": [
+        "Calling a large region unbounded just because it looks big (it must extend indefinitely)",
+        "Assuming an unbounded region always lacks an optimum (it may still have one)"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:feasible-region"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:corner-point",
+      "slug": "corner-point",
+      "title": "Find the corner points of the feasible region",
+      "role": "intermediate",
+      "brief": "Identify corner points (vertices) as intersections of two boundary lines of the feasible region.",
+      "sec": 2,
+      "quote": "A corner point of a feasible region is a point in the region which is the intersection of two boundary lines.",
+      "explanation": "A corner point (vertex) of a feasible region is a point in the region that is the intersection of two boundary lines. The corner points are found either by inspection or by solving the two line equations meeting there. For the furniture problem they are O(0,0), A(20,0), B(10,50) and C(0,60). Corner points are central because the optimal value of an LPP occurs at one of them.",
+      "keyMoves": [
+        "Find where the boundary lines of the feasible region intersect",
+        "Solve the two line equations meeting at each vertex (or read off by inspection)",
+        "List these intersection points as the corner points"
+      ],
+      "misconceptions": [
+        "Taking an interior point as a corner point",
+        "Missing a vertex by not intersecting every relevant pair of boundary lines"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:feasible-region"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:optimal-at-corner-theorem",
+      "slug": "optimal-at-corner-theorem",
+      "title": "Apply Theorem 1: optimum at a corner point",
+      "role": "intermediate",
+      "brief": "Use Theorem 1: when Z has an optimal value it must occur at a corner point of the feasible region.",
+      "sec": 2,
+      "quote": "this optimal value must occur at a corner point",
+      "explanation": "Theorem 1 states that for a feasible region R (a convex polygon) and objective function Z = ax + by, when Z has an optimal value (maximum or minimum), this optimal value must occur at a corner point (vertex) of the feasible region. This is what justifies only testing the finitely many vertices instead of the infinitely many feasible points.",
+      "keyMoves": [
+        "Recall that the feasible region has finitely many corner points",
+        "Invoke Theorem 1: any optimal value of Z occurs at a corner point",
+        "Therefore restrict the search for the optimum to the vertices"
+      ],
+      "misconceptions": [
+        "Searching the interior of the region for the optimum",
+        "Forgetting that Theorem 1 only locates the optimum WHEN one exists"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:corner-point",
+        "cbse12:mathematics:mathematics-ch12:optimal-solution"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem",
+      "slug": "bounded-max-min-theorem",
+      "title": "Apply Theorem 2: bounded region has both max and min",
+      "role": "intermediate",
+      "brief": "Use Theorem 2: if R is bounded, Z has both a maximum and a minimum, each at a corner point.",
+      "sec": 2,
+      "quote": "If R is **bounded**\\*\\*, then the objective function Z has both a **maximum** and a **minimum** value on R and each of these occurs at a corner point",
+      "explanation": "Theorem 2 states that if the feasible region R is bounded, then the objective function Z has both a maximum and a minimum value on R, and each of these occurs at a corner point (vertex) of R. If R is unbounded a maximum or minimum may not exist; but if it does, it must occur at a corner point. So boundedness guarantees that simply comparing the values of Z at the vertices gives both extremes.",
+      "keyMoves": [
+        "Check whether the feasible region is bounded",
+        "If bounded, conclude Z attains both a max and a min, each at a vertex",
+        "If unbounded, test further whether the extremum exists before claiming it"
+      ],
+      "misconceptions": [
+        "Assuming an unbounded region always has both a max and a min",
+        "Concluding the smallest vertex value is the minimum without checking boundedness"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:optimal-at-corner-theorem",
+        "cbse12:mathematics:mathematics-ch12:bounded-unbounded-region"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions",
+      "slug": "multiple-optimal-solutions",
+      "title": "Recognise multiple optimal solutions",
+      "role": "intermediate",
+      "brief": "Detect that when two corner points give the same optimal value, every point on the segment joining them is also optimal.",
+      "sec": 2,
+      "quote": "every point on the line segment joining these points will also give the same maximum (or minimum) value.",
+      "explanation": "If two corner points produce the same maximum (or minimum) value of the objective function, then every point on the line segment joining these points will also give the same maximum (or minimum) value. For example, in one problem Z = 3x + 9y attains its maximum 180 at both C(15,15) and D(0,20), and hence at every point of segment CD. This is the case of multiple optimal solutions.",
+      "keyMoves": [
+        "Notice when two distinct corner points share the same optimal Z value",
+        "Conclude every point on the segment joining them is also optimal",
+        "Report multiple optimal solutions rather than a single one"
+      ],
+      "misconceptions": [
+        "Reporting only one corner point when the optimum is attained at two",
+        "Thinking the shared value differs along the joining segment (it stays the same)"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:corner-point-method",
+      "slug": "corner-point-method",
+      "title": "Solve an LPP by the Corner Point Method",
+      "role": "goal",
+      "brief": "Solve a linear programming problem graphically by evaluating Z at the corner points of the feasible region.",
+      "sec": 2,
+      "quote": "Evaluate the objective function Z = ax + by at each corner point.",
+      "explanation": "The Corner Point Method solves an LPP graphically: (1) find the feasible region and determine its corner points (vertices) by inspection or by solving the intersecting line equations; (2) evaluate the objective function Z = ax + by at each corner point, letting M and m be the largest and smallest values; (3) if the region is bounded, M and m are the maximum and minimum of Z; if unbounded, an extra open-half-plane check decides whether M or m is actually attained. This capstone combines the formulation, the feasible region, its corner points and the two theorems into the complete solution procedure.",
+      "keyMoves": [
+        "Find the feasible region and its corner points",
+        "Evaluate Z = ax + by at every corner point and take the largest M and smallest m",
+        "Read off the optimum (using the bounded/unbounded rule) and report the optimal point(s)"
+      ],
+      "misconceptions": [
+        "Reading off the optimum from an interior point instead of the vertices",
+        "Treating the largest vertex value as the maximum on an unbounded region without the half-plane check"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem",
+        "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch04",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch04:imaginary-unit-i",
+      "kind": "practice",
+      "prompt": "The imaginary unit i is defined so that:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "i^2 = -1",
+      "expected": {
+        "kind": "mcq",
+        "correct": "i^2 = -1",
+        "options": [
+          "i^2 = -1",
+          "i^2 = 1",
+          "i^2 = 0",
+          "i = -1"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.2 Complex Numbers (definition of i)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch04:real-imaginary-parts",
+      "kind": "practice",
+      "prompt": "For the complex number z = 2 + i5, the imaginary part Im z equals (give the number, not including i):",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5",
+      "expected": {
+        "kind": "numeric",
+        "value": 5,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.2 Real and imaginary parts (z = 2 + i5)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch04:equality-of-complex-numbers",
+      "kind": "practice",
+      "prompt": "If 4x + i(3x - y) = 3 + i(-6), where x and y are real, find x by equating real and imaginary parts.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.75",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.75,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.2 Example 1 (equality of complex numbers)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch04:multiply-complex",
+      "kind": "practice",
+      "prompt": "Using z1 z2 = (ac - bd) + i(ad + bc), find the real part of the product (3 + i5)(2 + i6).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-24",
+      "expected": {
+        "kind": "numeric",
+        "value": -24,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.3.3 Multiplication of complex numbers"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch04:powers-of-i",
+      "kind": "practice",
+      "prompt": "Evaluate i^9 + i^19 and give its value as a real number (the imaginary part cancels).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.3.5 Power of i (cf. Exercise 4.1 Q2)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch04:divide-complex",
+      "kind": "practice",
+      "prompt": "To divide one complex number by another, z1/z2 with z2 not 0, the standard method is to:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "multiply numerator and denominator by the conjugate of the denominator",
+      "expected": {
+        "kind": "mcq",
+        "correct": "multiply numerator and denominator by the conjugate of the denominator",
+        "options": [
+          "multiply numerator and denominator by the conjugate of the denominator",
+          "divide the real parts and the imaginary parts separately",
+          "multiply numerator and denominator by i",
+          "take the reciprocal of each part"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.3.4 Division of two complex numbers"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch04:modulus",
+      "kind": "practice",
+      "prompt": "Compute the modulus |2 - 5i| = sqrt(a^2 + b^2). Give the decimal value to two places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5.39",
+      "expected": {
+        "kind": "numeric",
+        "value": 5.385,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.4 Modulus (|2 - 5i| = sqrt(29))"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch04:algebraic-identities",
+      "kind": "practice",
+      "prompt": "Using the cube identity, expand (5 - 3i)^3 and give its real part.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-10",
+      "expected": {
+        "kind": "numeric",
+        "value": -10,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.3.7 Identities, Example 3 ((5 - 3i)^3 = -10 - 198i)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch04:sqrt-product-pitfall",
+      "kind": "practice",
+      "prompt": "Evaluate sqrt(-2) x sqrt(-3) correctly by first writing each root in i-form. Give the decimal value to two places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-2.45",
+      "expected": {
+        "kind": "numeric",
+        "value": -2.449,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.3.6 sqrt(a)sqrt(b) not= sqrt(ab) for negatives"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch04:conjugate-geometry",
+      "kind": "practice",
+      "prompt": "Explain geometrically, in the Argand plane, where the conjugate z-bar = x - iy of a complex number z = x + iy lies relative to z, and why z and z-bar have the same modulus.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "z = x + iy is the point P(x, y); its conjugate z-bar = x - iy is the point Q(x, -y), the mirror image of P in the real axis (the x-axis). Reflection across the real axis does not change the distance from the origin, so |z| = |z-bar| = sqrt(x^2 + y^2).",
+        "markPoints": [
+          "z plots at (x, y) and z-bar at (x, -y)",
+          "z-bar is the mirror image of z in the real axis",
+          "Reflection preserves distance to the origin, so |z| = |z-bar|"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.5 Conjugate as mirror image (Fig 4.3)"
+    }
+  ]
+}

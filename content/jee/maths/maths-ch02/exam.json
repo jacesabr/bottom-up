@@ -1,0 +1,173 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch02",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch02:ordered-pair",
+      "kind": "practice",
+      "prompt": "If (x + 1, y - 2) = (3, 1), then the value of x + y is:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5",
+      "expected": {
+        "kind": "numeric",
+        "value": 5,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Sec 2.2 Example 1 (equality of ordered pairs)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch02:count-cartesian-product",
+      "kind": "practice",
+      "prompt": "Set A has 3 elements and set B = {3, 4, 5}. Using n(A x B) = n(A) x n(B), the number of elements in A x B is:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "9",
+      "expected": {
+        "kind": "numeric",
+        "value": 9,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Exercise 2.1 Q2 (count of A x B)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch02:cartesian-product",
+      "kind": "practice",
+      "prompt": "For non-empty sets A and B, which statement is correct about the cartesian product?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "In general, A x B is not equal to B x A",
+      "expected": {
+        "kind": "mcq",
+        "correct": "In general, A x B is not equal to B x A",
+        "options": [
+          "In general, A x B is not equal to B x A",
+          "A x B always equals B x A",
+          "A x B is a single ordered pair",
+          "A x B is empty whenever A and B are non-empty"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Sec 2.2 Example 2 / Summary (A x B is not B x A)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch02:domain-range-codomain",
+      "kind": "practice",
+      "prompt": "For a relation R from set A to set B, the codomain of R is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the whole set B",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the whole set B",
+        "options": [
+          "the whole set B",
+          "the set of all first elements of the pairs",
+          "the set of all second elements of the pairs",
+          "always equal to the range"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Sec 2.3 Definition 4 (range subset of codomain)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch02:count-relations",
+      "kind": "practice",
+      "prompt": "Let A = {1, 2} and B = {3, 4}. The number of relations from A to B is:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "16",
+      "expected": {
+        "kind": "numeric",
+        "value": 16,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Sec 2.3 Example 9 (2^(pq) relations)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch02:function",
+      "kind": "practice",
+      "prompt": "Which of the following relations is a function?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "{(2,1), (3,1), (4,2)}",
+      "expected": {
+        "kind": "mcq",
+        "correct": "{(2,1), (3,1), (4,2)}",
+        "options": [
+          "{(2,1), (3,1), (4,2)}",
+          "{(2,2), (2,4), (3,3), (4,4)}",
+          "{(1,3), (1,5), (2,5)}",
+          "{(9,3), (9,-3), (4,2), (4,-2)}"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Sec 2.4 Example 11 / Exercise 2.3 Q1 (function test)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch02:real-function",
+      "kind": "practice",
+      "prompt": "A function f is defined by f(x) = 2x - 5. The value of f(7) is:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "9",
+      "expected": {
+        "kind": "numeric",
+        "value": 9,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Exercise 2.3 Q3 (evaluate f(x) = 2x - 5)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch02:rational-function",
+      "kind": "practice",
+      "prompt": "Find the domain of the rational function f(x) = (x^2 + 3x + 5)/(x^2 - 5x + 4). Explain how you decide which real numbers to exclude.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "A rational function f(x)/g(x) is defined wherever the denominator g(x) is not zero, so the domain excludes the zeros of the denominator. Here x^2 - 5x + 4 = (x - 4)(x - 1), which is zero at x = 1 and x = 4. Hence the domain is R minus {1, 4} (all real numbers except 1 and 4).",
+        "markPoints": [
+          "A rational function is undefined where the denominator is zero",
+          "Factor x^2 - 5x + 4 = (x - 4)(x - 1), giving zeros x = 1 and x = 4",
+          "Domain is R minus {1, 4}"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Example 21 (domain of a rational function)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch02:algebra-of-functions",
+      "kind": "practice",
+      "prompt": "Let f(x) = x^2 and g(x) = 2x + 1. Then (f - g)(2) equals:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-1",
+      "expected": {
+        "kind": "numeric",
+        "value": -1,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Example 16 ((f-g)(x) = x^2 - 2x - 1)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch02:identity-function",
+      "kind": "practice",
+      "prompt": "The graph of the identity function f(x) = x is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "a straight line passing through the origin",
+      "expected": {
+        "kind": "mcq",
+        "correct": "a straight line passing through the origin",
+        "options": [
+          "a straight line passing through the origin",
+          "a line parallel to the x-axis",
+          "a parabola",
+          "a line parallel to the y-axis"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch02 Sec 2.4.1(i) (identity function graph)"
+    }
+  ]
+}

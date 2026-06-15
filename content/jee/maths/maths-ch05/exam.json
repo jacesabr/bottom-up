@@ -1,0 +1,179 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch05",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch05:inequality-meaning",
+      "kind": "practice",
+      "prompt": "Which of the following statements is an inequality (not an equation)?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "40x + 20y < 120",
+      "expected": {
+        "kind": "mcq",
+        "correct": "40x + 20y < 120",
+        "options": [
+          "40x + 20y < 120",
+          "40x + 20y = 120",
+          "62 + 48 + x = 180",
+          "3 + 5 = 8"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Sec 5.2 Inequalities / Definition 1"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch05:classify-inequalities",
+      "kind": "practice",
+      "prompt": "The statement 3 less-than-or-equal x < 5 is best described as a:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "double inequality",
+      "expected": {
+        "kind": "mcq",
+        "correct": "double inequality",
+        "options": [
+          "double inequality",
+          "numerical inequality",
+          "quadratic inequality",
+          "linear equation"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Sec 5.2 numerical/literal/double inequalities"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch05:recognise-linear-inequality",
+      "kind": "practice",
+      "prompt": "Which inequality is NOT a linear inequality?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "ax^2 + bx + c less-than-or-equal 0",
+      "expected": {
+        "kind": "mcq",
+        "correct": "ax^2 + bx + c less-than-or-equal 0",
+        "options": [
+          "ax^2 + bx + c less-than-or-equal 0",
+          "ax + b < 0 (a not zero)",
+          "ax + by < c (a, b not zero)",
+          "ax + b greater-than-or-equal 0 (a not zero)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Sec 5.2 linear vs quadratic inequalities"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch05:apply-rules-for-solving",
+      "kind": "practice",
+      "prompt": "When both sides of an inequality are divided by the same NEGATIVE number, the sign of the inequality:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "is reversed",
+      "expected": {
+        "kind": "mcq",
+        "correct": "is reversed",
+        "options": [
+          "is reversed",
+          "stays the same",
+          "becomes an equals sign",
+          "becomes undefined"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Sec 5.3 Rule 2 (multiply/divide by a negative)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch05:solve-linear-one-variable",
+      "kind": "practice",
+      "prompt": "Solve 24x < 100 when x is a natural number. What is the largest natural number x that satisfies it?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4",
+      "expected": {
+        "kind": "numeric",
+        "value": 4,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Exercise 5.1 Q1 (24x < 100, natural x)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch05:solve-linear-one-variable",
+      "kind": "practice",
+      "prompt": "Solve the inequality 4x + 3 < 6x + 7 for real x and write the solution set in interval form.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "Subtract 6x from both sides to get 4x - 6x + 3 < 7, i.e. -2x < 4. Dividing both sides by -2 reverses the sign, giving x > -2. So the solution set is the open interval (-2, infinity): all real numbers greater than -2.",
+        "markPoints": [
+          "Collect terms to reach -2x < 4 (or equivalent)",
+          "Reverse the inequality sign when dividing by -2 to get x > -2",
+          "State the solution set as the interval (-2, infinity)"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Example 3 (Solve 4x + 3 < 6x + 7)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch05:solve-word-problems",
+      "kind": "practice",
+      "prompt": "A student scored 62 and 48 in two terminal exams. Find the minimum marks needed in the annual exam so that the average of all three is at least 60.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "70",
+      "expected": {
+        "kind": "numeric",
+        "value": 70,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Example 7 (average of at least 60 marks)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch05:solve-double-inequality",
+      "kind": "practice",
+      "prompt": "Solve the double inequality -8 less-than-or-equal 5x - 3 < 7. The solution set is -1 less-than-or-equal x < k. Find k.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Example 9 (Solve -8 <= 5x - 3 < 7)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch05:solve-system-of-inequalities",
+      "kind": "practice",
+      "prompt": "Solve the system 3x - 7 < 5 + x and 11 - 5x less-than-or-equal 1, then state the common solution on the number line and explain how you obtained it.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "From 3x - 7 < 5 + x: 2x < 12, so x < 6. From 11 - 5x less-or-equal 1: -5x less-or-equal -10, and dividing by -5 (reverse the sign) gives x greater-or-equal 2. The common solution is the overlap of x < 6 and x greater-or-equal 2, namely 2 less-or-equal x < 6 (a filled circle at 2, open circle at 6, shading between).",
+        "markPoints": [
+          "Solve the first inequality to x < 6",
+          "Solve the second to x greater-or-equal 2, reversing the sign on dividing by -5",
+          "Take the common (overlap) solution 2 less-or-equal x < 6"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Example 11 (system of inequalities)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch05:solve-and-apply-linear-inequalities",
+      "kind": "practice",
+      "prompt": "Sunita's marks in the first four of five 100-mark exams are 87, 92, 94 and 95. To get Grade 'A' she needs an average of at least 90. Find the minimum mark she must score in the fifth exam.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "82",
+      "expected": {
+        "kind": "numeric",
+        "value": 82,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch05 Exercise 5.1 Q22 (average of 90 or more for Grade A)"
+    }
+  ]
+}

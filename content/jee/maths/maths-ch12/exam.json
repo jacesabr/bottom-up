@@ -1,0 +1,163 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch12",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch12:limits-of-polynomials",
+      "kind": "practice",
+      "prompt": "Evaluate lim x->1 [x^3 - x^2 + 1] by substitution.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Example 1(i) - limit of a polynomial"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch12:limits-of-rational-functions",
+      "kind": "practice",
+      "prompt": "Evaluate lim x->2 (x^3 - 4x^2 + 4x)/(x^2 - 4). (It is the 0/0 form; cancel the common factor first.)",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Example 2(ii) - rational-function limit, 0/0 cancellation"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch12:standard-limit-xn-minus-an",
+      "kind": "practice",
+      "prompt": "Using the standard limit (x^n - a^n)/(x - a) -> n a^(n-1), evaluate lim x->1 (x^15 - 1)/(x^10 - 1).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1.5",
+      "expected": {
+        "kind": "numeric",
+        "value": 1.5,
+        "tol": 0.001
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Example 3(i) - standard limit (x^n - a^n)/(x - a)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch12:trigonometric-limits",
+      "kind": "practice",
+      "prompt": "Using lim x->0 (sin x)/x = 1, evaluate lim x->0 (sin 4x)/(sin 2x).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0.001
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Example 4(i) - trigonometric limit"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch12:derivative-first-principle",
+      "kind": "practice",
+      "prompt": "Using the first-principle definition f'(a) = lim h->0 [f(a+h) - f(a)]/h, find the derivative of f(x) = 3x at x = 2.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Example 5 - derivative from first principle"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch12:power-rule",
+      "kind": "practice",
+      "prompt": "By the power rule, the derivative of f(x) = x^n is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "n x^(n-1)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "n x^(n-1)",
+        "options": [
+          "n x^(n-1)",
+          "n x^n",
+          "x^(n-1)",
+          "(n-1) x^n"
+        ]
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Theorem 6 - power rule"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch12:algebra-of-derivatives",
+      "kind": "practice",
+      "prompt": "Using the quotient rule, the derivative of f(x) = (x + 1)/x is -1/x^2. Find its value at x = 1.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-1",
+      "expected": {
+        "kind": "numeric",
+        "value": -1,
+        "tol": 0
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Example 15 - quotient rule"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch12:derivative-of-polynomials",
+      "kind": "practice",
+      "prompt": "For f(x) = 1 + x + x^2 + x^3 + ... + x^50, differentiate term by term and evaluate f'(1).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1275",
+      "expected": {
+        "kind": "numeric",
+        "value": 1275,
+        "tol": 0
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Example 14 - derivative of a polynomial at a point"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch12:derivatives-of-trig-functions",
+      "kind": "practice",
+      "prompt": "The derivative of sin x with respect to x is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "cos x",
+      "expected": {
+        "kind": "mcq",
+        "correct": "cos x",
+        "options": [
+          "cos x",
+          "-cos x",
+          "-sin x",
+          "sec^2 x"
+        ]
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Example 16 / Summary - d/dx(sin x) = cos x"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch12:one-sided-limits-and-existence",
+      "kind": "practice",
+      "prompt": "For f(x) = 1 if x <= 0 and f(x) = 2 if x > 0, state the left-hand and right-hand limits at x = 0 and explain whether lim x->0 f(x) exists.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "The left-hand limit lim x->0^- f(x) = 1 (dictated by x <= 0) and the right-hand limit lim x->0^+ f(x) = 2 (dictated by x > 0). Since the two one-sided limits do not coincide, lim x->0 f(x) does not exist, even though f(0) is defined.",
+        "markPoints": [
+          "Left-hand limit at 0 is 1",
+          "Right-hand limit at 0 is 2",
+          "Limit does not exist because the one-sided limits differ"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "NCERT Class 11 Maths Ch.12 Sec 12.3 - one-sided limits and existence (step function)"
+    }
+  ]
+}

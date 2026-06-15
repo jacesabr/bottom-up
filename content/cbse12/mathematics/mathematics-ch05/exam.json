@@ -1,0 +1,341 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "chapter": "mathematics-ch05",
+  "items": [
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:continuity-at-a-point",
+      "kind": "practice",
+      "prompt": "A function f is continuous at a point c if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the limit of f(x) as x tends to c equals f(c)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the limit of f(x) as x tends to c equals f(c)",
+        "options": [
+          "the limit of f(x) as x tends to c equals f(c)",
+          "f(c) is defined",
+          "the left-hand limit exists only",
+          "f is increasing at c"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Definition 1"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:continuous-function",
+      "kind": "practice",
+      "prompt": "A real function f is called continuous if it is continuous at:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "every point in the domain of f",
+      "expected": {
+        "kind": "mcq",
+        "correct": "every point in the domain of f",
+        "options": [
+          "every point in the domain of f",
+          "at least one point",
+          "the origin only",
+          "every integer point"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Definition 2"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:algebra-of-continuous-functions",
+      "kind": "practice",
+      "prompt": "If f and g are continuous at c, the quotient f/g is continuous at c provided:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "g(c) is not zero",
+      "expected": {
+        "kind": "mcq",
+        "correct": "g(c) is not zero",
+        "options": [
+          "g(c) is not zero",
+          "f(c) is not zero",
+          "f and g are equal",
+          "always, with no condition"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Theorem 1 (4)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:composite-continuity",
+      "kind": "practice",
+      "prompt": "The composite f o g is continuous at c if g is continuous at c and f is continuous at:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "g(c)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "g(c)",
+        "options": [
+          "g(c)",
+          "c",
+          "f(c)",
+          "0"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Theorem 2"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:derivative-definition",
+      "kind": "practice",
+      "prompt": "The derivative of f at c is defined as the limit, as h tends to 0, of:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "[f(c + h) - f(c)] / h",
+      "expected": {
+        "kind": "mcq",
+        "correct": "[f(c + h) - f(c)] / h",
+        "options": [
+          "[f(c + h) - f(c)] / h",
+          "[f(c + h) + f(c)] / h",
+          "f(c) / h",
+          "[f(c) - f(c - h)] / c"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.3 derivative definition"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
+      "kind": "practice",
+      "prompt": "At how many points is f(x) = |x| not differentiable?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.3 (|x| not differentiable at 0)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous",
+      "kind": "practice",
+      "prompt": "Which statement is correct?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Every differentiable function is continuous",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Every differentiable function is continuous",
+        "options": [
+          "Every differentiable function is continuous",
+          "Every continuous function is differentiable",
+          "Differentiability and continuity are unrelated",
+          "No differentiable function is continuous"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Corollary 1"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous",
+      "kind": "practice",
+      "prompt": "Give an example showing a continuous function need not be differentiable, and state the correct one-way relationship between differentiability and continuity.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "f(x) = |x| is continuous everywhere but not differentiable at x = 0 (the left and right derivatives are -1 and +1). The correct relationship is one-way: every differentiable function is continuous, but a continuous function need not be differentiable.",
+        "markPoints": [
+          "Example: |x| is continuous everywhere but not differentiable at 0",
+          "Reason: the one-sided derivatives at 0 differ (-1 and +1)",
+          "Differentiable implies continuous, but not the converse"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Corollary 1 + |x| example"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:chain-rule",
+      "kind": "practice",
+      "prompt": "Using the chain rule, the derivative of f(x) = sin(x^2) is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "2x cos(x^2)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "2x cos(x^2)",
+        "options": [
+          "2x cos(x^2)",
+          "cos(x^2)",
+          "2x sin(x^2)",
+          "cos(2x)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Example 21 (chain rule)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:implicit-differentiation",
+      "kind": "practice",
+      "prompt": "When differentiating an implicit relation in x and y with respect to x, each term in y must be differentiated using:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the chain rule, introducing a factor dy/dx",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the chain rule, introducing a factor dy/dx",
+        "options": [
+          "the chain rule, introducing a factor dy/dx",
+          "the product rule only",
+          "no special rule; treat y as a constant",
+          "logarithmic differentiation always"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.3.2 implicit functions"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives",
+      "kind": "practice",
+      "prompt": "The derivative of sin-inverse x with respect to x is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "1 / sqrt(1 - x^2)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "1 / sqrt(1 - x^2)",
+        "options": [
+          "1 / sqrt(1 - x^2)",
+          "1 / (1 + x^2)",
+          "1 / cos x",
+          "-1 / sqrt(1 - x^2)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.3.3 inverse trig derivatives"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:exponential-function",
+      "kind": "practice",
+      "prompt": "The range of the exponential function y = b^x (b > 1) is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the set of all positive real numbers",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the set of all positive real numbers",
+        "options": [
+          "the set of all positive real numbers",
+          "all real numbers",
+          "the interval [-1, 1]",
+          "the negative reals"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.4 Definition 3 / features"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:logarithm-function",
+      "kind": "practice",
+      "prompt": "Since 2^3 = 8, the value of log_2 8 is:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Definition 4 (log_2 8 = 3)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log",
+      "kind": "practice",
+      "prompt": "The derivative of log x (natural log) with respect to x is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "1/x",
+      "expected": {
+        "kind": "mcq",
+        "correct": "1/x",
+        "options": [
+          "1/x",
+          "x",
+          "e^x",
+          "log x"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Theorem 6 (2)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:logarithmic-differentiation",
+      "kind": "practice",
+      "prompt": "Logarithmic differentiation is most useful for differentiating functions of the form:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "y = (f(x))^(g(x)) with variable base and exponent",
+      "expected": {
+        "kind": "mcq",
+        "correct": "y = (f(x))^(g(x)) with variable base and exponent",
+        "options": [
+          "y = (f(x))^(g(x)) with variable base and exponent",
+          "linear functions y = mx + c",
+          "constant functions",
+          "y = sin x"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.5 Logarithmic differentiation"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:parametric-differentiation",
+      "kind": "practice",
+      "prompt": "For a curve given parametrically by x = f(t), y = g(t), dy/dx equals:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(dy/dt) / (dx/dt)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(dy/dt) / (dx/dt)",
+        "options": [
+          "(dy/dt) / (dx/dt)",
+          "(dx/dt) / (dy/dt)",
+          "(dy/dt)(dx/dt)",
+          "dy/dt - dx/dt"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.6 parametric form"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "kind": "practice",
+      "prompt": "If y = x^3, then the second order derivative d2y/dx2 equals:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "6x",
+      "expected": {
+        "kind": "mcq",
+        "correct": "6x",
+        "options": [
+          "6x",
+          "3x^2",
+          "x^2",
+          "6"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.7 second order derivative"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "kind": "practice",
+      "prompt": "Explain what the second order derivative of y with respect to x is and how you compute it for y = f(x).",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "The second order derivative is the derivative of the first derivative: d/dx(dy/dx), denoted d2y/dx2 or f''(x). To compute it, first find the first derivative dy/dx (using whatever rule applies - chain, implicit, parametric, etc.), then differentiate that result again with respect to x.",
+        "markPoints": [
+          "It is the derivative of the first derivative, d/dx(dy/dx) = d2y/dx2 = f''(x)",
+          "Step 1: find dy/dx",
+          "Step 2: differentiate dy/dx again with respect to x"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.7 second order derivative"
+    }
+  ]
+}

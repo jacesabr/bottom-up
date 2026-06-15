@@ -1,0 +1,303 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch11",
+  "title": "Introduction to Three Dimensional Geometry",
+  "book": "NCERT Class 11 maths — Introduction to Three Dimensional Geometry",
+  "goal": "jee:maths:maths-ch11:locate-and-measure-points-in-3d-space",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch11:coordinate-axes-and-planes",
+      "slug": "coordinate-axes-and-planes",
+      "title": "Set up the three coordinate axes and three coordinate planes in space",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Recognise the rectangular coordinate system in space: three mutually perpendicular axes (x, y, z) meeting at the origin, and the three coordinate planes (XY, YZ, ZX) they determine.",
+      "quote": "These three planes intersect along the lines X'OX, Y'OY and Z'OZ, called the *x*, *y* and *z*-axes, respectively.",
+      "explanation": "To work in space we fix a rectangular coordinate system. Three planes are taken intersecting at a single point O so that the three planes are mutually perpendicular to each other. They intersect in pairs along three mutually perpendicular lines X'OX, Y'OY and Z'OZ, called the x, y and z-axes respectively; together these lines constitute the rectangular coordinate system. Taken in pairs the axes determine three coordinate planes: the planes XOY, YOZ and ZOX, called respectively the XY-plane, YZ-plane and ZX-plane. The point O where the axes meet is the origin. By convention the XOY plane is the plane of the paper and Z'OZ is perpendicular to it (vertical when the paper is horizontal); distances up along OZ are positive, down along OZ' negative, and similarly for the other axes. This frame is the stage on which every point in this chapter is located.",
+      "keyMoves": [
+        "Name the three mutually perpendicular lines X'OX, Y'OY, Z'OZ as the x, y and z-axes meeting at the origin O",
+        "Identify the three coordinate planes XY (XOY), YZ (YOZ) and ZX (ZOX) determined by the axes taken in pairs",
+        "Fix the sign convention along each axis (e.g. up along OZ positive, down along OZ' negative)"
+      ],
+      "misconceptions": [
+        "Thinking two axes (as in the plane) are enough to locate a point in space",
+        "Confusing an axis (a line) with a coordinate plane (determined by a pair of axes)"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:octants",
+      "slug": "octants",
+      "title": "Identify the eight octants the coordinate planes divide space into",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Recognise that the three coordinate planes cut space into eight regions called octants, numbered I to VIII.",
+      "quote": "The three coordinate planes divide the space into eight parts known as *octants*.",
+      "explanation": "The three coordinate planes (XY, YZ, ZX) cut all of space into eight parts known as octants - the three-dimensional analogue of the four quadrants of a plane. They are named XOYZ, X'OYZ, X'OY'Z, XOY'Z, XOYZ', X'OYZ', X'OY'Z' and XOY'Z', and denoted I, II, III, ..., VIII respectively. Each octant corresponds to one combination of signs of the three coordinates: the first octant XOYZ is where x, y and z are all positive. Knowing the octants lets you place a point qualitatively before computing, and is the basis for reading off a point's location from the signs of its coordinates.",
+      "keyMoves": [
+        "State that the three coordinate planes divide space into eight octants (denoted I to VIII)",
+        "Associate the first octant (XOYZ) with all three coordinates positive",
+        "Recognise each octant as one combination of the signs of x, y and z"
+      ],
+      "misconceptions": [
+        "Saying the coordinate planes divide space into four parts (confusing octants with the plane's quadrants)",
+        "Treating the octant numbering as arbitrary rather than tied to the signs of the coordinates"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:coordinate-axes-and-planes"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:coordinates-of-a-point",
+      "slug": "coordinates-of-a-point",
+      "title": "Associate a point in space with an ordered triplet (x, y, z)",
+      "role": "bedrock",
+      "sec": 3,
+      "brief": "Read off the three coordinates of a point as its perpendicular distances from the three coordinate planes, giving a one-to-one correspondence between points and triplets (x, y, z).",
+      "quote": "Thus, to each point P in the space there corresponds an ordered triplet (x, y, z) of real numbers.",
+      "explanation": "Given a point P in space, drop a perpendicular PM onto the XY-plane, then a perpendicular ML from M to the x-axis at L; then OL = x, LM = y and MP = z are the x, y and z coordinates of P, written P(x, y, z). Equivalently, drawing through P three planes parallel to the coordinate planes meeting the axes at A, B, C gives OA = x, OB = y, OC = z. The key geometric meaning: if P(x, y, z) is any point in space, then x, y and z are the perpendicular distances of P from the YZ, ZX and XY planes respectively. Conversely, any triplet (x, y, z) locates exactly one point, so there is a one-to-one correspondence between points in space and ordered triplets of real numbers.",
+      "keyMoves": [
+        "Drop perpendiculars to obtain x, y, z as the coordinates of P (write P(x, y, z))",
+        "Interpret x, y, z as the perpendicular distances of P from the YZ, ZX and XY planes respectively",
+        "Use the one-to-one correspondence: each triplet (x, y, z) locates exactly one point and vice versa"
+      ],
+      "misconceptions": [
+        "Pairing each coordinate with the wrong plane (e.g. taking x as the distance from the XY-plane instead of the YZ-plane)",
+        "Treating (x, y, z) as an unordered set, so that e.g. (1, 2, 3) and (3, 2, 1) name the same point"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:coordinate-axes-and-planes"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:points-on-axes-and-planes",
+      "slug": "points-on-axes-and-planes",
+      "title": "Write the coordinate form of points lying on an axis or a coordinate plane",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use the special forms of coordinates for points that lie on a coordinate axis (one nonzero coordinate) or in a coordinate plane (one zero coordinate).",
+      "quote": "The coordinates of any point on the *x*-axis will be as (x,0,0) and the coordinates of any point in the YZ-plane will be as (0, y, z).",
+      "explanation": "Special positions have special coordinate forms, all following from coordinates being perpendicular distances from the coordinate planes. The origin O is (0, 0, 0). A point on an axis has its two other coordinates zero: any point on the x-axis is (x, 0, 0), on the y-axis (0, y, 0), and on the z-axis (0, 0, z). A point in a coordinate plane has the remaining coordinate zero: a point in the XY-plane is (x, y, 0), and a point in the YZ-plane is (0, y, z). These forms let you answer 'what can you say about a coordinate' questions and check which axis or plane a given point sits on. (e.g. a point on the x-axis has both its y- and z-coordinates equal to zero.)",
+      "keyMoves": [
+        "Write a point on the x-, y-, z-axis as (x,0,0), (0,y,0), (0,0,z) respectively",
+        "Write a point in the XY-, YZ-, ZX-plane with the remaining coordinate zero (e.g. XY-plane: (x, y, 0))",
+        "Use these forms to decide which axis or plane a given point lies on"
+      ],
+      "misconceptions": [
+        "Setting only one coordinate to zero for an axis point, when a point on an axis needs two zero coordinates",
+        "Confusing a point in a plane (one zero coordinate) with a point on an axis (two zero coordinates)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:coordinates-of-a-point"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:determine-octant-from-signs",
+      "slug": "determine-octant-from-signs",
+      "title": "Determine the octant of a point from the signs of its coordinates",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use the sign of each coordinate, together with the octant sign table, to name the octant in which a given point lies.",
+      "quote": "The sign of the coordinates of a point determine the octant in which the point lies.",
+      "explanation": "Because each octant corresponds to one fixed combination of signs of (x, y, z), the sign of the coordinates of a point determines the octant in which the point lies. Table 11.1 lists these sign combinations: octant I has (+, +, +); octant II has (-, +, +); octant VI has (-, +, -); and so on. To find the octant of a point, read off the sign of each coordinate and match it to the table. For example, (-3, 1, 2) has signs (-, +, +) and lies in octant II, while (-3, 1, -2) has signs (-, +, -) and lies in octant VI. A point with any zero coordinate lies on a coordinate plane (a boundary between octants), not strictly inside one octant.",
+      "keyMoves": [
+        "Read off the sign (+ or -) of each of x, y, z for the given point",
+        "Match the sign pattern to Table 11.1 to name the octant (e.g. (-, +, +) is octant II)",
+        "Recognise that a zero coordinate puts the point on a coordinate plane, not inside a single octant"
+      ],
+      "misconceptions": [
+        "Reading the wrong octant by mixing up the order of the coordinate signs",
+        "Assuming a point with a zero coordinate still lies strictly inside one octant"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:octants",
+        "jee:maths:maths-ch11:coordinates-of-a-point"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:distance-between-two-points",
+      "slug": "distance-between-two-points",
+      "title": "Compute the distance between two points using the 3D distance formula",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Apply PQ = sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2) to find the distance between two points in space.",
+      "quote": "This gives us the distance between two points  $(x_1, y_1, z_1)$  and  $(x_2, y_2, z_2)$ .",
+      "explanation": "The distance between two points in space extends the plane distance formula by adding the z-term. For P(x1, y1, z1) and Q(x2, y2, z2), forming a rectangular parallelopiped with diagonal PQ and applying the Pythagoras theorem twice gives PQ^2 = (x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2, so PQ = sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2). To use it, subtract corresponding coordinates, square each difference, add the three squares, and take the positive square root. The order of the two points does not matter since each difference is squared. For example the distance between P(1, -3, 4) and Q(-4, 1, 2) is sqrt(25 + 16 + 4) = sqrt(45) = 3 sqrt(5) units. This formula underlies collinearity tests, triangle classification and locus equations later in the chapter.",
+      "keyMoves": [
+        "Subtract corresponding coordinates to get (x2-x1), (y2-y1), (z2-z1)",
+        "Square each difference, add the three squares, and take the positive square root",
+        "Simplify the surd (e.g. sqrt(45) = 3 sqrt(5))"
+      ],
+      "misconceptions": [
+        "Dropping the z-term and using only the two-dimensional distance formula",
+        "Forgetting to square the coordinate differences, or taking a negative square root"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:coordinates-of-a-point"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:distance-from-origin",
+      "slug": "distance-from-origin",
+      "title": "Find the distance of a point from the origin",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Specialise the distance formula to the origin: OQ = sqrt(x2^2 + y2^2 + z2^2).",
+      "quote": "which gives the distance between the origin O and any point Q",
+      "explanation": "The distance of a point from the origin is the special case of the distance formula in which the first point is O(0, 0, 0). Setting x1 = y1 = z1 = 0 in PQ = sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2) gives OQ = sqrt(x2^2 + y2^2 + z2^2), which gives the distance between the origin O and any point Q(x2, y2, z2). So you simply square the three coordinates of the point, add them, and take the square root - no subtraction is needed because the origin's coordinates are all zero. For instance the point (1, 2, 2) is at distance sqrt(1 + 4 + 4) = 3 from the origin.",
+      "keyMoves": [
+        "Recognise the origin as O(0, 0, 0) and set the first point to O in the distance formula",
+        "Compute OQ = sqrt(x^2 + y^2 + z^2) by squaring the point's coordinates and adding",
+        "Take the positive square root to get the distance"
+      ],
+      "misconceptions": [
+        "Still subtracting coordinates when one point is the origin (the origin contributes zeros)",
+        "Summing the coordinates instead of summing their squares"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:distance-between-two-points"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:test-collinearity",
+      "slug": "test-collinearity",
+      "title": "Test whether three points are collinear using distances",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Decide if three points lie on a line by checking whether the largest pairwise distance equals the sum of the other two.",
+      "quote": "We know that points are said to be collinear if they lie on a line.",
+      "explanation": "Three points are collinear if they lie on a single straight line. Using only the distance formula, compute the three pairwise distances; the points are collinear exactly when the largest of them equals the sum of the other two, because the middle point then lies between the outer two on the line. For P(-2, 3, 5), Q(1, 2, 3), R(7, 0, -1) the distances are PQ = sqrt(14), QR = 2 sqrt(14), PR = 3 sqrt(14); since PQ + QR = PR, the points P, Q and R are collinear. If instead the sum of the two shorter distances exceeds the longest, the three points form a genuine triangle and are not collinear.",
+      "keyMoves": [
+        "Compute the three pairwise distances PQ, QR, PR with the distance formula",
+        "Check whether the largest distance equals the sum of the other two",
+        "Conclude collinear if PQ + QR = PR (else they form a triangle)"
+      ],
+      "misconceptions": [
+        "Adding the wrong pair of distances (not putting the largest distance on its own side)",
+        "Concluding collinearity from equal distances alone rather than from the sum condition"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:distance-between-two-points"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:classify-triangle-by-distances",
+      "slug": "classify-triangle-by-distances",
+      "title": "Classify a triangle (right-angled, isosceles) from its side lengths",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Use the three side lengths from the distance formula to decide whether a triangle is right-angled (Pythagoras) or isosceles (two equal sides).",
+      "quote": "Hence, the triangle ABC is not a right angled triangle.",
+      "explanation": "Given three points, compute the squared lengths of the three sides with the distance formula, then test for a right angle or equal sides. A triangle is right-angled if the square of one side equals the sum of the squares of the other two (the converse of Pythagoras). For A(3, 6, 9), B(10, 20, 30), C(25, -41, 5) the squared sides are AB^2 = 686, BC^2 = 4571, CA^2 = 2709; since CA^2 + AB^2 does not equal BC^2 (and no other pairing works), the triangle ABC is not a right-angled triangle. A triangle is isosceles if two of its side lengths are equal. So the workflow is: find the side lengths (or their squares), then apply the appropriate equality test for the property in question.",
+      "keyMoves": [
+        "Compute the squared side lengths AB^2, BC^2, CA^2 from the distance formula",
+        "Test for a right angle: does the largest squared side equal the sum of the other two (converse of Pythagoras)?",
+        "Test for isosceles: are two of the side lengths equal?"
+      ],
+      "misconceptions": [
+        "Checking only one pairing for Pythagoras instead of testing the largest side against the other two",
+        "Confusing the isosceles test (two equal sides) with the right-angle test (Pythagoras relation)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:distance-between-two-points"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:equation-of-set-of-points",
+      "slug": "equation-of-set-of-points",
+      "title": "Find the equation of a set of points (locus) from a distance condition",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Let P be (x, y, z), translate a given distance condition into an equation using the distance formula, and simplify to the equation of the set of points.",
+      "quote": "Find the equation of the set of the points P such that its distances from the points A (3, 4, -5) and B (-2, 1, 4) are equal.",
+      "explanation": "To find the equation of a set of points (a locus) defined by a distance condition, let P be a general point (x, y, z), write the stated distances using the distance formula, impose the condition, and simplify. For points equidistant from A(3, 4, -5) and B(-2, 1, 4), set PA = PB; squaring removes the square roots, giving (x-3)^2 + (y-4)^2 + (z+5)^2 = (x+2)^2 + (y-1)^2 + (z-4)^2, which simplifies to the linear equation 10x + 6y - 18z - 29 = 0. For a condition like PA^2 + PB^2 = 2k^2 you instead add the squared distances and simplify, obtaining 2x^2 + 2y^2 + 2z^2 - 4x - 14y + 4z = 2k^2 - 109. The standard method - take P = (x, y, z), express each distance, impose the condition, expand and collect terms - turns any such description into an equation in x, y and z.",
+      "keyMoves": [
+        "Let the variable point be P(x, y, z) and write each required distance with the distance formula",
+        "Impose the given condition (e.g. PA = PB, or PA^2 + PB^2 = 2k^2) and square to remove roots",
+        "Expand and collect terms to get the equation of the set of points"
+      ],
+      "misconceptions": [
+        "Setting the distances themselves equal without squaring, leaving awkward square roots",
+        "Algebra slips when expanding (x +/- a)^2 terms, e.g. mishandling the sign of the cross term"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:distance-between-two-points"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:centroid-coordinates",
+      "slug": "centroid-coordinates",
+      "title": "Relate a triangle's centroid to its vertices' coordinates",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Use that each centroid coordinate is the average of the corresponding coordinates of the three vertices to find a missing vertex or the centroid.",
+      "quote": "The centroid of a triangle ABC is at the point (1, 1, 1).",
+      "explanation": "The centroid G of a triangle ABC has each coordinate equal to the average of that coordinate over the three vertices: G = ((x1 + x2 + x3)/3, (y1 + y2 + y3)/3, (z1 + z2 + z3)/3). This single relation, applied coordinate by coordinate, lets you find a missing vertex when the centroid and the other two vertices are known. For instance, with centroid (1, 1, 1) and A(3, -5, 7), B(-1, 7, -6), solving (x + 3 - 1)/3 = 1, (y - 5 + 7)/3 = 1, (z + 7 - 6)/3 = 1 gives C = (1, 1, 2). The same averaging, used in reverse, gives the centroid directly from the three vertices.",
+      "keyMoves": [
+        "Write each centroid coordinate as the average of that coordinate over the three vertices",
+        "Set up one equation per coordinate (e.g. (x1 + x2 + x3)/3 = Gx)",
+        "Solve the three equations for the unknown vertex (or evaluate them to get the centroid)"
+      ],
+      "misconceptions": [
+        "Averaging only two of the three vertices, or forgetting to divide by 3",
+        "Mixing coordinates across axes instead of averaging x with x, y with y, z with z"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:coordinates-of-a-point"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:locate-and-measure-points-in-3d-space",
+      "slug": "locate-and-measure-points-in-3d-space",
+      "title": "Locate points in space and solve distance problems in three dimensional geometry",
+      "role": "goal",
+      "sec": 4,
+      "brief": "Combine the coordinate frame, octants and the distance formula to locate any point in space and to solve problems on collinearity, triangles, loci and centroids.",
+      "quote": "In this Chapter, we shall study the basic concepts of geometry in three dimensional space.",
+      "explanation": "This chapter builds the basic geometry of three dimensional space on two pillars. First, the rectangular coordinate system (three perpendicular axes, three coordinate planes, eight octants) lets every point in space be named by an ordered triplet (x, y, z) whose entries are perpendicular distances from the coordinate planes, with special forms on the axes and planes and an octant fixed by the signs of the coordinates. Second, the distance formula PQ = sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2) measures separations, and from it follow the distance from the origin, tests for collinearity, classification of triangles (right-angled, isosceles), equations of sets of points from distance conditions, and the centroid relation. Mastery means: place a point in the right octant from its coordinates, and turn any distance-based description into computation or an equation.",
+      "keyMoves": [
+        "Locate a point from its coordinates: octant from the signs, special form if it lies on an axis or plane",
+        "Apply the distance formula to get separations, distance from the origin, collinearity and triangle type",
+        "Translate a distance condition into the equation of a set of points, and use the centroid averaging relation"
+      ],
+      "misconceptions": [
+        "Reverting to two-dimensional reasoning (two coordinates, plane distance) when the problem is in space",
+        "Treating each result (octant, distance, collinearity, locus, centroid) as a separate trick rather than as one coordinate-plus-distance framework"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch11:points-on-axes-and-planes",
+        "jee:maths:maths-ch11:determine-octant-from-signs",
+        "jee:maths:maths-ch11:distance-from-origin",
+        "jee:maths:maths-ch11:test-collinearity",
+        "jee:maths:maths-ch11:classify-triangle-by-distances",
+        "jee:maths:maths-ch11:equation-of-set-of-points",
+        "jee:maths:maths-ch11:centroid-coordinates"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

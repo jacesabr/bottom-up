@@ -1,0 +1,284 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch02",
+ "items": [
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:inverse-needs-bijective",
+   "kind": "practice",
+   "prompt": "The inverse of a function f exists if and only if f is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "one-one and onto",
+   "expected": {
+    "kind": "mcq",
+    "correct": "one-one and onto",
+    "options": [
+     "one-one and onto",
+     "one-one only",
+     "onto only",
+     "periodic"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.1 Introduction"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:inverse-of-bijective",
+   "kind": "practice",
+   "prompt": "For a bijective f : X -> Y with inverse g : Y -> X, the domain of g equals:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the range of f",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the range of f",
+    "options": [
+     "the range of f",
+     "the domain of f",
+     "the whole set Y minus the range of f",
+     "the empty set"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.2 Basic concepts"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:branch",
+   "slug": "branch",
+   "kind": "practice",
+   "prompt": "Why does an inverse trigonometric function have several branches?",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the trig function is bijective on several different intervals",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the trig function is bijective on several different intervals",
+    "options": [
+     "the trig function is bijective on several different intervals",
+     "the trig function has several different formulas",
+     "the domain is empty",
+     "the trig function is not periodic"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.2 Branches"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:sin-inverse-principal",
+   "kind": "practice",
+   "prompt": "The principal value branch of sin-inverse has range:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "[-pi/2, pi/2]",
+   "expected": {
+    "kind": "mcq",
+    "correct": "[-pi/2, pi/2]",
+    "options": [
+     "[-pi/2, pi/2]",
+     "[0, pi]",
+     "(-pi/2, pi/2)",
+     "(0, pi)"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.2 sin-inverse principal branch"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:sin-inverse-principal",
+   "kind": "practice",
+   "prompt": "Find the principal value of sin-inverse(1/sqrt2). Give your answer as a multiple of pi: enter the numerical coefficient when the angle is written as (coefficient) x pi. (Hint: pi/4 has coefficient 0.25.)",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "0.25",
+   "expected": {
+    "kind": "numeric",
+    "value": 0.25,
+    "tol": 0.001
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Example 1 (principal value of sin-inverse(1/sqrt2) = pi/4)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:cos-inverse-principal",
+   "kind": "practice",
+   "prompt": "The principal value branch of cos-inverse has range:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "[0, pi]",
+   "expected": {
+    "kind": "mcq",
+    "correct": "[0, pi]",
+    "options": [
+     "[0, pi]",
+     "[-pi/2, pi/2]",
+     "(-pi/2, pi/2)",
+     "(0, pi)"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.2 cos-inverse principal branch"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:tan-inverse-principal",
+   "kind": "practice",
+   "prompt": "The principal value branch of tan-inverse has range:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "(-pi/2, pi/2)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "(-pi/2, pi/2)",
+    "options": [
+     "(-pi/2, pi/2)",
+     "[-pi/2, pi/2]",
+     "[0, pi]",
+     "(0, pi)"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.2 tan-inverse principal branch"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:cot-inverse-principal",
+   "kind": "practice",
+   "prompt": "The principal value branch of cot-inverse has range:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "(0, pi)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "(0, pi)",
+    "options": [
+     "(0, pi)",
+     "(-pi/2, pi/2)",
+     "[0, pi]",
+     "[-pi/2, pi/2]"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.2 cot-inverse principal branch"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:cosec-inverse-principal",
+   "kind": "practice",
+   "prompt": "The domain of cosec-inverse is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "R - (-1, 1)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "R - (-1, 1)",
+    "options": [
+     "R - (-1, 1)",
+     "[-1, 1]",
+     "R",
+     "(0, pi)"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.2 cosec-inverse principal branch"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:sec-inverse-principal",
+   "kind": "practice",
+   "prompt": "The principal value branch of sec-inverse has range:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "[0, pi] minus {pi/2}",
+   "expected": {
+    "kind": "mcq",
+    "correct": "[0, pi] minus {pi/2}",
+    "options": [
+     "[0, pi] minus {pi/2}",
+     "[0, pi]",
+     "[-pi/2, pi/2] minus {0}",
+     "(-pi/2, pi/2)"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.2 sec-inverse principal branch"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:not-reciprocal",
+   "kind": "practice",
+   "prompt": "Which statement is correct about the notation sin-inverse x?",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "sin-inverse x is an angle, not 1/sin x",
+   "expected": {
+    "kind": "mcq",
+    "correct": "sin-inverse x is an angle, not 1/sin x",
+    "options": [
+     "sin-inverse x is an angle, not 1/sin x",
+     "sin-inverse x equals 1/sin x",
+     "sin-inverse x equals sin(1/x)",
+     "sin-inverse x is undefined for all x"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Note 1 (sin-inverse vs reciprocal)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:principal-value-defn",
+   "kind": "practice",
+   "prompt": "The value of an inverse trigonometric function that lies in the range of its principal branch is called its:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "principal value",
+   "expected": {
+    "kind": "mcq",
+    "correct": "principal value",
+    "options": [
+     "principal value",
+     "reciprocal value",
+     "range value",
+     "domain value"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Note 3 (principal value)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:composition-identities",
+   "kind": "practice",
+   "prompt": "For which values of x is the identity sin-inverse(sin x) = x valid?",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "x in [-pi/2, pi/2]",
+   "expected": {
+    "kind": "mcq",
+    "correct": "x in [-pi/2, pi/2]",
+    "options": [
+     "x in [-pi/2, pi/2]",
+     "all real x",
+     "x in [-1, 1]",
+     "x in [0, pi]"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Sec 2.3 cancellation identity"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:principal-value-evaluation",
+   "kind": "practice",
+   "prompt": "Find sin-inverse(sin(3pi/5)). Write the answer as (coefficient) x pi and enter the coefficient. (Hint: reduce 3pi/5 into the principal range first.)",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "0.4",
+   "expected": {
+    "kind": "numeric",
+    "value": 0.4,
+    "tol": 0.001
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Example 6 (sin-inverse(sin 3pi/5) = 2pi/5)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch02:principal-value-evaluation",
+   "kind": "practice",
+   "prompt": "Evaluate the principal value of cot-inverse(-1/sqrt3), explaining which principal range you use and how you choose the angle.",
+   "answerType": "written",
+   "grader": "written",
+   "answer": null,
+   "expected": {
+    "kind": "written",
+    "rubric": "Let cot-inverse(-1/sqrt3) = y, so cot y = -1/sqrt3. The principal value branch of cot-inverse has range (0, pi). Since cot(2pi/3) = -1/sqrt3 and 2pi/3 lies in (0, pi), the principal value is 2pi/3.",
+    "markPoints": [
+     "Set cot y = -1/sqrt3 and use the principal range (0, pi)",
+     "Identify the angle 2pi/3 with cot(2pi/3) = -1/sqrt3",
+     "Conclude the principal value is 2pi/3"
+    ],
+    "total": 3,
+    "passMark": 2
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch02 Example 2 (principal value of cot-inverse(-1/sqrt3) = 2pi/3)"
+  }
+ ]
+}

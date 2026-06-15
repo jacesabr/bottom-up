@@ -1,0 +1,405 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch09",
+  "title": "Straight Lines",
+  "book": "NCERT Class 11 maths — Straight Lines",
+  "goal": "jee:maths:maths-ch09:represent-a-line-algebraically",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch09:inclination-of-a-line",
+      "slug": "inclination-of-a-line",
+      "title": "Identify the inclination of a line with the x-axis",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Recognise the inclination as the anticlockwise angle a line makes with the positive x-axis, lying between 0 and 180 degrees.",
+      "quote": "The angle (say)  $\\theta$  made by the line *l* with positive direction of *x*-axis and measured anti clockwise is called the *inclination of the line*.",
+      "explanation": "A line in the coordinate plane makes two supplementary angles with the x-axis. The inclination theta is the one measured anticlockwise from the positive direction of the x-axis, so it always satisfies 0 <= theta <= 180 degrees. Lines parallel to (or coinciding with) the x-axis have inclination 0 degrees, while a vertical line (parallel to or coinciding with the y-axis) has inclination 90 degrees. The inclination is the single angular quantity from which the slope of the line is later defined.",
+      "keyMoves": [
+        "Measure the angle anticlockwise from the positive x-axis to the line",
+        "Restrict the inclination to the range 0 <= theta <= 180 degrees",
+        "Assign 0 degrees to a horizontal line and 90 degrees to a vertical line"
+      ],
+      "misconceptions": [
+        "Measuring the angle clockwise or from the y-axis instead of anticlockwise from the positive x-axis",
+        "Allowing inclinations greater than 180 degrees"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:slope-as-tan-inclination",
+      "slug": "slope-as-tan-inclination",
+      "title": "Define the slope of a line as tan of its inclination",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Define slope m = tan(theta) from the inclination, and recognise when it is zero or undefined.",
+      "quote": "If  $\\theta$  is the inclination of a line *l*, then tan  $\\theta$  is called the *slope* or *gradient* of the line *l*.",
+      "explanation": "The slope (or gradient) m of a line is the tangent of its inclination: m = tan(theta), provided theta is not 90 degrees. The slope of a line whose inclination is 90 degrees is not defined, because tan(90 degrees) does not exist. As a consequence the slope of the x-axis is zero (inclination 0, tan 0 = 0) and the slope of the y-axis is not defined (inclination 90 degrees). The slope is the single number that captures the steepness and direction of a non-vertical line.",
+      "keyMoves": [
+        "Compute the slope as m = tan(theta) from the inclination theta",
+        "State that the slope is undefined when theta = 90 degrees (vertical line)",
+        "Recall the slope of the x-axis is zero and the slope of the y-axis is undefined"
+      ],
+      "misconceptions": [
+        "Assigning a numerical slope to a vertical line instead of calling it undefined",
+        "Confusing the inclination angle itself with the slope (forgetting to take the tangent)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:inclination-of-a-line"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:slope-from-two-points",
+      "slug": "slope-from-two-points",
+      "title": "Compute the slope from the coordinates of two points",
+      "role": "intermediate",
+      "sec": 2,
+      "brief": "Find the slope of a non-vertical line through two given points as the ratio of differences of their coordinates.",
+      "quote": "Consequently, we see that in both the cases the slope m of the line through the points",
+      "explanation": "A line is completely determined by two points on it, so its slope can be written in terms of their coordinates. For two points P(x1, y1) and Q(x2, y2) on a non-vertical line (so x1 is not equal to x2), the slope is m = (y2 - y1)/(x2 - x1). This is obtained from the right triangle formed by the horizontal and vertical separations of the two points: tan(theta) = (rise)/(run) = (y2 - y1)/(x2 - x1), and the same result holds whether the inclination is acute or obtuse. If x1 = x2 the line is vertical and the slope is undefined.",
+      "keyMoves": [
+        "Apply m = (y2 - y1)/(x2 - x1) for two points on the line",
+        "Identify the rise (difference in y) over the run (difference in x)",
+        "Recognise the slope is undefined when x1 = x2 (a vertical line)"
+      ],
+      "misconceptions": [
+        "Writing the difference of x over the difference of y (inverting the ratio)",
+        "Being inconsistent about the order of the points in the numerator and denominator"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-as-tan-inclination"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:parallel-lines-equal-slopes",
+      "slug": "parallel-lines-equal-slopes",
+      "title": "Test two lines for parallelism using their slopes",
+      "role": "intermediate",
+      "sec": 2,
+      "brief": "Use the rule that two non-vertical lines are parallel if and only if their slopes are equal.",
+      "quote": "two non vertical lines  $l_1$  and  $l_2$  are parallel if and only if their slopes are equal.",
+      "explanation": "If two non-vertical lines l1 and l2 are parallel, their inclinations are equal (alpha = beta), so tan(alpha) = tan(beta) and hence m1 = m2. Conversely, if their slopes are equal then by the property of the tangent function between 0 and 180 degrees their inclinations are equal, so the lines are parallel. Therefore two non-vertical lines are parallel if and only if their slopes are equal. This gives an immediate algebraic test for parallelism: just compare the two slopes.",
+      "keyMoves": [
+        "Compute the slope of each line",
+        "Conclude the lines are parallel exactly when m1 = m2",
+        "Remember the test applies to non-vertical lines (both vertical lines are also parallel)"
+      ],
+      "misconceptions": [
+        "Thinking equal slopes only suggest, rather than guarantee, parallelism",
+        "Applying the slope test to vertical lines whose slope is undefined"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-from-two-points"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:perpendicular-lines-slope-product",
+      "slug": "perpendicular-lines-slope-product",
+      "title": "Test two lines for perpendicularity using their slopes",
+      "role": "intermediate",
+      "sec": 2,
+      "brief": "Use the rule that two non-vertical lines are perpendicular if and only if the product of their slopes is -1.",
+      "quote": "two non-vertical lines are perpendicular to each other if and only if their slopes are negative reciprocals of each other,",
+      "explanation": "If two non-vertical lines are perpendicular, their inclinations differ by 90 degrees (beta = alpha + 90 degrees), so tan(beta) = -cot(alpha) = -1/tan(alpha), giving m2 = -1/m1, i.e. m1 m2 = -1. Conversely, if m1 m2 = -1 then the inclinations differ by 90 degrees and the lines are perpendicular. Hence two non-vertical lines are perpendicular if and only if their slopes are negative reciprocals of each other, equivalently m1 m2 = -1. To test perpendicularity, multiply the two slopes and check whether the product equals -1.",
+      "keyMoves": [
+        "Compute the slope of each line",
+        "Conclude the lines are perpendicular exactly when m1 m2 = -1",
+        "Equivalently, check that one slope is the negative reciprocal of the other"
+      ],
+      "misconceptions": [
+        "Using m1 m2 = 1 (equal product instead of -1) for perpendicularity",
+        "Taking the reciprocal without the negative sign"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-from-two-points"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:angle-between-two-lines",
+      "slug": "angle-between-two-lines",
+      "title": "Find the acute angle between two lines from their slopes",
+      "role": "intermediate",
+      "sec": 2,
+      "brief": "Compute the acute angle between two intersecting non-vertical lines using the tangent formula in their slopes.",
+      "quote": "the acute angle (say  $\\theta$ ) between lines L<sub>1</sub> and L<sub>2</sub> with slopes  $m_1$  and  $m_2$ , respectively, is given by",
+      "explanation": "When two non-vertical lines L1 and L2 with slopes m1 and m2 intersect, the two adjacent angles theta and phi between them satisfy theta + phi = 180 degrees. Using theta = alpha2 - alpha1 and the tangent-subtraction formula gives tan(theta) = (m2 - m1)/(1 + m1 m2). Taking the absolute value picks out the acute angle: tan(theta) = |(m2 - m1)/(1 + m1 m2)|, valid as long as 1 + m1 m2 is not zero. The obtuse angle is then phi = 180 degrees - theta. The formula fails (denominator zero) exactly when the lines are perpendicular.",
+      "keyMoves": [
+        "Apply tan(theta) = |(m2 - m1)/(1 + m1 m2)| with the two slopes",
+        "Take the absolute value to obtain the acute angle theta",
+        "Get the obtuse angle as phi = 180 degrees - theta"
+      ],
+      "misconceptions": [
+        "Dropping the absolute value and reporting a negative tangent or the wrong (obtuse) angle",
+        "Using the formula when 1 + m1 m2 = 0 (perpendicular lines), where it is undefined"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-from-two-points"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:collinearity-by-slope",
+      "slug": "collinearity-by-slope",
+      "title": "Test three points for collinearity using equal slopes",
+      "role": "intermediate",
+      "sec": 2,
+      "brief": "Decide whether three points lie on one line by checking that the slope of one segment equals the slope of an adjacent segment.",
+      "quote": "Three points A, B and C are collinear, if and only if slope of AB = slope of BC.",
+      "explanation": "Three points A, B and C lie on a single straight line if and only if the slope of AB equals the slope of BC. The idea is that two segments sharing the point B can only form one straight line when they have the same direction, i.e. the same slope. Computing slope of AB = (yB - yA)/(xB - xA) and slope of BC = (yC - yB)/(xC - xB) and checking equality is therefore a direct test for collinearity. (Equivalently, three points are collinear when the area of the triangle they form is zero.)",
+      "keyMoves": [
+        "Compute the slope of AB and the slope of BC from the coordinates",
+        "Conclude the points are collinear exactly when these two slopes are equal",
+        "Recognise this is equivalent to the triangle ABC having zero area"
+      ],
+      "misconceptions": [
+        "Comparing non-adjacent segments without a shared point and mishandling the common vertex",
+        "Concluding collinearity from a near-equality without exact equality of slopes"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-from-two-points"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:horizontal-and-vertical-lines",
+      "slug": "horizontal-and-vertical-lines",
+      "title": "Write the equations of horizontal and vertical lines",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Give the equation y = a or y = -a for a horizontal line and x = b or x = -b for a vertical line at a fixed distance from an axis.",
+      "quote": "If a horizontal line L is at a distance *a* from the *x*-axis then ordinate of every point lying on the line is either *a* or -a",
+      "explanation": "For a horizontal line at distance a from the x-axis, every point on it has the same y-coordinate (ordinate), so the equation of the line is either y = a or y = -a, the sign depending on whether the line is above or below the x-axis. Similarly, the equation of a vertical line at distance b from the y-axis is either x = b or x = -b. For example, the line through (-2, 3) parallel to the x-axis is y = 3, and the line through (-2, 3) parallel to the y-axis is x = -2. These are the simplest line equations and the base cases for the general forms.",
+      "keyMoves": [
+        "Write a horizontal line as y = constant (y = a or y = -a)",
+        "Write a vertical line as x = constant (x = b or x = -b)",
+        "Choose the sign from whether the line is above/below or left/right of the axis"
+      ],
+      "misconceptions": [
+        "Swapping the forms: writing x = a for a horizontal line or y = b for a vertical line",
+        "Picking the wrong sign for the constant relative to the axis"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-as-tan-inclination"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:point-slope-form",
+      "slug": "point-slope-form",
+      "title": "Write a line's equation in point-slope form",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Derive and apply y - y0 = m(x - x0) for a line of slope m through a fixed point (x0, y0).",
+      "quote": "the point (x, y) lies on the line with slope *m* through the fixed point  $(x_0, y_0)$ , if and only if, its coordinates satisfy the equation",
+      "explanation": "Let P0(x0, y0) be a fixed point on a non-vertical line L of slope m, and P(x, y) any other point on L. By the definition of slope, m = (y - y0)/(x - x0), which rearranges to y - y0 = m(x - x0). Every point of L satisfies this equation and no other point in the plane does, so it is the equation of L. This point-slope form is the workhorse for writing a line's equation when one point and the slope are known; for example, the line through (-2, 3) with slope -4 is y - 3 = -4(x + 2), i.e. 4x + y + 5 = 0.",
+      "keyMoves": [
+        "Identify the known point (x0, y0) and the slope m",
+        "Substitute into y - y0 = m(x - x0)",
+        "Simplify to the form Ax + By + C = 0 if required"
+      ],
+      "misconceptions": [
+        "Writing y - x0 = m(x - y0), mixing up coordinates and the point",
+        "Dropping the subtraction and writing y = m(x - x0) when y0 is non-zero"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-as-tan-inclination"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:two-point-form",
+      "slug": "two-point-form",
+      "title": "Write a line's equation in two-point form",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Derive and apply the equation of a line through two given points using the slope between them.",
+      "quote": "Thus, equation of the line passing through the points  $(x_1, y_1)$  and  $(x_2, y_2)$  is given by",
+      "explanation": "A line L through two points P1(x1, y1) and P2(x2, y2) can be found by noting that any point P(x, y) on L makes P1, P2 and P collinear, so slope of P1P equals slope of P1P2: (y - y1)/(x - x1) = (y2 - y1)/(x2 - x1). Rearranging gives the two-point form y - y1 = ((y2 - y1)/(x2 - x1))(x - x1). For example, the line through (1, -1) and (3, 5) is y + 1 = ((5 + 1)/(3 - 1))(x - 1), which simplifies to -3x + y + 4 = 0. This is just the point-slope form with the slope computed from the two points.",
+      "keyMoves": [
+        "Compute the slope (y2 - y1)/(x2 - x1) from the two points",
+        "Substitute into y - y1 = ((y2 - y1)/(x2 - x1))(x - x1)",
+        "Clear the fraction and simplify to a linear equation"
+      ],
+      "misconceptions": [
+        "Mismatching which point supplies (x1, y1) in the slope versus the (x - x1) factor",
+        "Inverting the slope ratio while writing the two-point form"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:point-slope-form",
+        "jee:maths:maths-ch09:slope-from-two-points"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:slope-intercept-form",
+      "slug": "slope-intercept-form",
+      "title": "Write a line's equation in slope-intercept form",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use y = mx + c for a line with slope m and y-intercept c, and the variant y = m(x - d) for a given x-intercept.",
+      "quote": "Thus, the point (x, y) on the line with slope *m* and *y*-intercept *c* lies on the line if and only if",
+      "explanation": "If a line of slope m cuts the y-axis at a distance c from the origin (its y-intercept), it passes through (0, c), so by point-slope form y - c = m(x - 0), giving y = mx + c. The value of c is positive or negative according as the intercept is on the positive or negative side of the y-axis. A companion form uses the x-intercept d: a line of slope m with x-intercept d has equation y = m(x - d). For example, with m = 1/2 and y-intercept -3/2 the line is y = (1/2)x - 3/2, i.e. 2y - x + 3 = 0.",
+      "keyMoves": [
+        "Use y = mx + c when the slope m and y-intercept c are known",
+        "Use y = m(x - d) when the slope m and x-intercept d are known",
+        "Read off slope and intercept by rearranging a given equation into y = mx + c"
+      ],
+      "misconceptions": [
+        "Treating c as the x-intercept rather than the y-intercept",
+        "Forgetting the sign of c when the line cuts the negative y-axis"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:point-slope-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:intercept-form",
+      "slug": "intercept-form",
+      "title": "Write a line's equation in intercept form",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use x/a + y/b = 1 for a line with x-intercept a and y-intercept b on the axes.",
+      "quote": "Thus, equation of the line making intercepts a and b on x-and y-axis, respectively, is",
+      "explanation": "Suppose a line L makes an x-intercept a and a y-intercept b, meeting the axes at (a, 0) and (0, b). Applying the two-point form to these two points and simplifying gives ay = -bx + ab, which rearranges to the intercept form x/a + y/b = 1. For example, a line with intercepts -3 and 2 on the x- and y-axes is x/(-3) + y/2 = 1, i.e. 2x - 3y + 6 = 0. This form is convenient whenever the two axis intercepts are known or constrained.",
+      "keyMoves": [
+        "Identify the x-intercept a and the y-intercept b",
+        "Substitute into x/a + y/b = 1",
+        "Clear denominators to get a linear equation"
+      ],
+      "misconceptions": [
+        "Writing x/b + y/a = 1, swapping the two intercepts",
+        "Setting the right-hand side to 0 instead of 1"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:two-point-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:general-equation-of-a-line",
+      "slug": "general-equation-of-a-line",
+      "title": "Recognise the general equation of a line Ax + By + C = 0",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Recognise that every line is Ax + By + C = 0 with A, B not both zero, and convert between this and the other forms.",
+      "quote": "Any equation of the form Ax + By + C = 0, where A and B are not zero simultaneously is called general linear equation or general equation of a line.",
+      "explanation": "Any first-degree equation Ax + By + C = 0, where A and B are not both zero, represents a straight line and is called the general linear equation (or general equation) of a line. Every line - whether expressed in point-slope, two-point, slope-intercept or intercept form - can be rearranged into this single standard form, and conversely any such equation can be reduced back to slope-intercept form y = mx + c (slope -A/B, y-intercept -C/B when B is not zero) or to intercept form. This common form is what later distance formulas are written in terms of A, B and C.",
+      "keyMoves": [
+        "Rearrange any line equation into Ax + By + C = 0",
+        "Read the slope as -A/B and y-intercept as -C/B (when B is not zero)",
+        "Reduce a general equation to slope-intercept or intercept form to find slopes and intercepts"
+      ],
+      "misconceptions": [
+        "Allowing both A and B to be zero (which gives no line)",
+        "Misreading the slope as A/B instead of -A/B"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-intercept-form",
+        "jee:maths:maths-ch09:intercept-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:distance-of-point-from-line",
+      "slug": "distance-of-point-from-line",
+      "title": "Compute the perpendicular distance of a point from a line",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Apply d = |A x1 + B y1 + C| / sqrt(A^2 + B^2) for the distance of a point from a line in general form.",
+      "quote": "Thus, the perpendicular distance (d) of a line Ax + By + C = 0 from a point  $(x_1, y_1)$  is given by",
+      "explanation": "The distance of a point from a line is the length of the perpendicular drawn from the point to the line. For a line Ax + By + C = 0 and a point (x1, y1), this perpendicular distance is d = |A x1 + B y1 + C| / sqrt(A^2 + B^2). You substitute the point's coordinates into the left side of the line equation, take the absolute value, and divide by sqrt(A^2 + B^2). For example, the distance of (3, -5) from 3x - 4y - 26 = 0 is |3(3) + (-4)(-5) - 26| / sqrt(9 + 16) = 3/5. The line must be in general form Ax + By + C = 0 before applying the formula.",
+      "keyMoves": [
+        "Put the line in general form Ax + By + C = 0 and read off A, B, C",
+        "Substitute the point into A x1 + B y1 + C and take the absolute value",
+        "Divide by sqrt(A^2 + B^2) to get the distance d"
+      ],
+      "misconceptions": [
+        "Forgetting the absolute value, which can give a negative distance",
+        "Dividing by A^2 + B^2 instead of its square root, or applying the formula without first putting the line in general form"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:general-equation-of-a-line"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:distance-between-parallel-lines",
+      "slug": "distance-between-parallel-lines",
+      "title": "Compute the distance between two parallel lines",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Apply d = |C1 - C2| / sqrt(A^2 + B^2) for two parallel lines written with the same A and B.",
+      "quote": "Thus, the distance d between two parallel lines  $y = mx + c_1$  and  $y = mx + c_2$  is given by",
+      "explanation": "Two parallel lines have equal slopes, so they can be written y = mx + c1 and y = mx + c2. The distance between them equals the perpendicular distance from a point on one line to the other; carrying this out gives d = |c1 - c2| / sqrt(1 + m^2). When the lines are given in general form Ax + By + C1 = 0 and Ax + By + C2 = 0 (same A and B), the formula becomes d = |C1 - C2| / sqrt(A^2 + B^2). For example, the distance between 3x - 4y + 7 = 0 and 3x - 4y + 5 = 0 is |7 - 5| / sqrt(9 + 16) = 2/5. The two equations must first be written with identical A and B coefficients.",
+      "keyMoves": [
+        "Write both parallel lines with the same A and B coefficients",
+        "Apply d = |C1 - C2| / sqrt(A^2 + B^2) (or |c1 - c2| / sqrt(1 + m^2) in slope form)",
+        "Take the absolute difference of the constant terms"
+      ],
+      "misconceptions": [
+        "Using the formula before making the coefficients of x and y identical in both equations",
+        "Adding C1 and C2 instead of taking their difference"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:distance-of-point-from-line",
+        "jee:maths:maths-ch09:parallel-lines-equal-slopes"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:represent-a-line-algebraically",
+      "slug": "represent-a-line-algebraically",
+      "title": "Represent a straight line algebraically and solve line problems",
+      "role": "goal",
+      "sec": 1,
+      "brief": "Combine slope, the various forms of a line's equation, and the distance formulas to represent any straight line algebraically and solve problems about lines.",
+      "quote": "Main focus is on representing the line algebraically, for which *slope* is most essential.",
+      "explanation": "The chapter studies the straight line by representing it algebraically, and slope is the central idea that makes this possible. Starting from the inclination and slope of a line, one can write its equation in whichever form suits the given data - point-slope, two-point, slope-intercept, intercept, or the general form Ax + By + C = 0 - and use slopes to test parallelism, perpendicularity, the angle between lines, and collinearity. Together with the perpendicular-distance formulas (point-to-line and between parallel lines), these tools let you set up and solve essentially any problem about straight lines: finding equations, intersections, distances, images in a line, and conditions such as concurrency.",
+      "keyMoves": [
+        "Choose the equation form (point-slope, two-point, slope-intercept, intercept, or general) that matches the given data",
+        "Use slopes to handle parallelism, perpendicularity, angle, and collinearity conditions",
+        "Apply the perpendicular-distance formulas to compute point-to-line and parallel-line distances"
+      ],
+      "misconceptions": [
+        "Reaching for one fixed form regardless of what data is given, instead of choosing the convenient form",
+        "Treating slope, equation forms and distance as unrelated tricks rather than one connected toolkit"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:parallel-lines-equal-slopes",
+        "jee:maths:maths-ch09:perpendicular-lines-slope-product",
+        "jee:maths:maths-ch09:angle-between-two-lines",
+        "jee:maths:maths-ch09:collinearity-by-slope",
+        "jee:maths:maths-ch09:horizontal-and-vertical-lines",
+        "jee:maths:maths-ch09:two-point-form",
+        "jee:maths:maths-ch09:slope-intercept-form",
+        "jee:maths:maths-ch09:intercept-form",
+        "jee:maths:maths-ch09:general-equation-of-a-line",
+        "jee:maths:maths-ch09:distance-of-point-from-line",
+        "jee:maths:maths-ch09:distance-between-parallel-lines"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

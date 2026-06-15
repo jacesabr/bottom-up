@@ -1,0 +1,399 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch12",
+  "title": "Limits and Derivatives",
+  "book": "NCERT Class 11 maths — Limits and Derivatives",
+  "goal": "jee:maths:maths-ch12:differentiate-functions-via-limits",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch12:instantaneous-rate-as-slope-of-tangent",
+      "slug": "instantaneous-rate-as-slope-of-tangent",
+      "title": "Interpret the derivative as an instantaneous rate and the slope of the tangent",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Build the intuitive idea of a derivative: shrink the averaging interval until the average rate of change becomes the instantaneous rate, equal to the slope of the tangent to the curve.",
+      "quote": "the instantaneous velocity v(t) of a body at time t = 2 is equal to the slope of the tangent of the curve",
+      "explanation": "For a body falling with s = 4.9t^2, the average velocity over an interval is the distance covered divided by the time, [s(t2) - s(t1)]/(t2 - t1). Computing this for intervals that end (and start) closer and closer to t = 2 from both sides, the average velocities close in on a single value (about 19.6 m/s). This common limiting value is the instantaneous velocity at t = 2 - the rate of change of distance at that instant. Geometrically, each average velocity is the slope of a chord, and as the interval shrinks to zero the chord approaches the tangent at the point, so the instantaneous rate equals the slope of the tangent to the s-t curve. This is the intuitive picture of the derivative before it is defined precisely.",
+      "keyMoves": [
+        "Form the average rate of change [s(t2) - s(t1)]/(t2 - t1) over an interval",
+        "Shrink the interval from both sides and watch the averages approach one value",
+        "Identify that limiting value as the instantaneous rate = slope of the tangent at the point"
+      ],
+      "misconceptions": [
+        "Treating the average velocity over a finite interval as the velocity at a single instant",
+        "Thinking only one side (left or right) of the instant matters when closing in"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:intuitive-limit",
+      "slug": "intuitive-limit",
+      "title": "State the limit of a function as the value it should assume at a point",
+      "role": "bedrock",
+      "sec": 3,
+      "brief": "Understand a limit intuitively: as x is taken closer and closer to a, f(x) settles toward a value l, written lim x->a f(x) = l - the value f(x) should assume at x = a.",
+      "quote": "The limit of f(x) as x tends to zero is to be thought of as the value f(x) should assume at x = 0.",
+      "explanation": "To find lim x->a f(x), tabulate or imagine the values of f(x) for x taken very near a (but not equal to a). If those values cluster toward a single number l, then l is the limit, written lim x->a f(x) = l. The limit is the value f(x) should assume at x = a as dictated by nearby points - it need not equal f(a), and indeed f(a) may not even be defined (as for h(x) = (x^2-4)/(x-2) at x = 2, whose limit is 4 though h(2) is undefined). The limit describes the behaviour of f around a, not its value at a.",
+      "keyMoves": [
+        "Evaluate f(x) at points approaching a (not at a itself)",
+        "Read off the single value l those f(x) cluster toward",
+        "Distinguish the limit l from the actual value f(a), which may differ or be undefined"
+      ],
+      "misconceptions": [
+        "Assuming lim x->a f(x) must equal f(a)",
+        "Concluding no limit exists merely because f(a) is undefined"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:one-sided-limits-and-existence",
+      "slug": "one-sided-limits-and-existence",
+      "title": "Use left- and right-hand limits to decide whether a limit exists",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Compute the left-hand and right-hand limits separately and conclude the (two-sided) limit exists only when they coincide.",
+      "quote": "If the right and left hand limits coincide, we call that common value as the limit",
+      "explanation": "x can approach a from two sides. The left-hand limit lim x->a^- f(x) is the value dictated by x slightly less than a; the right-hand limit lim x->a^+ f(x) is dictated by x slightly greater than a. The ordinary (two-sided) limit at a exists, and equals their common value, exactly when the two one-sided limits coincide. If they differ - for example the step function equal to 1 for x <= 0 and 2 for x > 0 has left limit 1 and right limit 2 at 0 - then the limit does not exist, even if f(a) itself is defined. Always test both sides before declaring a limit.",
+      "keyMoves": [
+        "Compute lim x->a^- f(x) using values just left of a",
+        "Compute lim x->a^+ f(x) using values just right of a",
+        "Declare the limit to exist (= common value) iff the two one-sided limits are equal"
+      ],
+      "misconceptions": [
+        "Reporting a limit from only one side without checking the other",
+        "Assuming the limit exists because f(a) is defined, even when the one-sided limits differ"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:intuitive-limit"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:algebra-of-limits",
+      "slug": "algebra-of-limits",
+      "title": "Apply the algebra of limits to sums, differences, products and quotients",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use Theorem 1: when the limits of f and g both exist, the limit distributes over sum, difference, product and quotient (denominator non-zero), with a constant pulling out.",
+      "quote": "the limiting process respects addition, subtraction, multiplication and division as long as the limits and functions under consideration are well defined",
+      "explanation": "If lim x->a f(x) and lim x->a g(x) both exist, then the limit of a combination is the same combination of the limits: limit of a sum is the sum of the limits, of a difference the difference, of a product the product, and of a quotient the quotient provided the denominator's limit is non-zero. As a special case, a constant multiple pulls out: lim x->a [lambda f(x)] = lambda lim x->a f(x). These rules let you break a complicated limit into the limits of its simple pieces and recombine them, and they are the workhorse for evaluating polynomial, rational and trigonometric limits.",
+      "keyMoves": [
+        "Split lim [f +/- g] into lim f +/- lim g and lim [f.g] into (lim f)(lim g)",
+        "Use lim [f/g] = (lim f)/(lim g) only when lim g is non-zero",
+        "Pull a constant factor lambda outside the limit"
+      ],
+      "misconceptions": [
+        "Applying the quotient rule when the denominator's limit is zero",
+        "Using the algebra rules when one of the individual limits does not exist"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:intuitive-limit"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:limits-of-polynomials",
+      "slug": "limits-of-polynomials",
+      "title": "Evaluate the limit of a polynomial by substitution",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use the fact that lim x->a x^n = a^n with the algebra of limits to show a polynomial's limit at a is just its value f(a).",
+      "quote": "Hence the limits are the values of the function at the prescribed points",
+      "explanation": "Starting from lim x->a x = a, the product rule gives lim x->a x^2 = a^2, and induction extends this to lim x->a x^n = a^n. Writing a polynomial f(x) = a_0 + a_1 x + ... + a_n x^n as a sum of such terms and applying the sum and constant-multiple rules, lim x->a f(x) = a_0 + a_1 a + ... + a_n a^n = f(a). So the limit of any polynomial at a point is simply obtained by direct substitution of that point. For example lim x->1 [x^3 - x^2 + 1] = 1, and lim x->3 [x(x+1)] = 12.",
+      "keyMoves": [
+        "Use lim x->a x^n = a^n term by term",
+        "Combine terms with the sum and constant-multiple limit rules",
+        "Conclude lim x->a f(x) = f(a) for any polynomial - just substitute"
+      ],
+      "misconceptions": [
+        "Believing a polynomial limit needs special manipulation rather than plain substitution",
+        "Mishandling negative or zero powers when substituting"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:algebra-of-limits"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:limits-of-rational-functions",
+      "slug": "limits-of-rational-functions",
+      "title": "Evaluate limits of rational functions, resolving the 0/0 form by cancelling factors",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Evaluate a rational function by substitution; if the result is 0/0, cancel the common (x - a) factors first, and recognise the non-zero-over-zero case where the limit does not exist.",
+      "quote": "If this is of the form  $\\frac{0}{0}$ , we try to rewrite the function cancelling the factors which are causing the limit to be of the form  $\\frac{0}{0}$ .",
+      "explanation": "For a rational function f(x) = g(x)/h(x), first substitute x = a. If h(a) != 0 the limit is g(a)/h(a). If h(a) = 0 there are two cases: when g(a) != 0 the limit does not exist; when g(a) = 0 the expression is the indeterminate form 0/0, and you factor out the common (x - a) powers from numerator and denominator, cancel them (valid since x != a in the limit), and re-evaluate. For instance lim x->2 (x^3 - 4x^2 + 4x)/(x^2 - 4) is 0/0; factoring to x(x-2)^2 / [(x+2)(x-2)] and cancelling gives x(x-2)/(x+2), whose value at 2 is 0.",
+      "keyMoves": [
+        "Substitute x = a; if h(a) != 0 the limit is g(a)/h(a)",
+        "If 0/0, factor numerator and denominator and cancel the common (x - a) factors",
+        "If g(a) != 0 but h(a) = 0, state that the limit does not exist"
+      ],
+      "misconceptions": [
+        "Declaring the limit non-existent at a 0/0 form instead of cancelling factors",
+        "Cancelling a factor without noting it is the cause of the 0/0, or treating non-zero/0 as 0/0"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:limits-of-polynomials"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:standard-limit-xn-minus-an",
+      "slug": "standard-limit-xn-minus-an",
+      "title": "Apply the standard limit (x^n - a^n)/(x - a) = n a^(n-1)",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use Theorem 2: lim x->a (x^n - a^n)/(x - a) = n a^(n-1) (true for any rational n, a > 0) to evaluate limits of difference-quotient type.",
+      "quote": "An easy exercise in induction on *n* tells us that",
+      "explanation": "Dividing x^n - a^n by x - a gives x^n - a^n = (x - a)(x^(n-1) + x^(n-2) a + ... + a^(n-1)), a sum of n terms. Taking the limit as x -> a, each term tends to a^(n-1), so lim x->a (x^n - a^n)/(x - a) = n a^(n-1). This holds for any positive integer n, and the remark extends it to any rational n with a positive. It is the key tool for difference-quotient limits: e.g. lim x->1 (x^15 - 1)/(x^10 - 1) = [15(1)^14] / [10(1)^9] = 3/2, and lim x->0 (sqrt(1+x) - 1)/x = 1/2 via the n = 1/2 case.",
+      "keyMoves": [
+        "Recognise the (x^n - a^n)/(x - a) pattern in a limit",
+        "Apply lim = n a^(n-1) directly (including rational n with a > 0)",
+        "Split a ratio of two such forms into a quotient of n a^(n-1) values"
+      ],
+      "misconceptions": [
+        "Writing the answer as a^(n-1) and forgetting the factor n",
+        "Using the formula when a is not positive for non-integer n"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:limits-of-rational-functions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:sandwich-theorem",
+      "slug": "sandwich-theorem",
+      "title": "Use the Sandwich Theorem to evaluate a squeezed limit",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Apply Theorem 4: if f(x) <= g(x) <= h(x) near a and f and h share the same limit l at a, then g also has limit l at a.",
+      "quote": "come in handy in calculating limits of some trigonometric functions",
+      "explanation": "The Sandwich (Squeeze) Theorem says: if f(x) <= g(x) <= h(x) for all x in a common domain and, for some a, lim x->a f(x) = l = lim x->a h(x), then lim x->a g(x) = l - the middle function is trapped and forced to the same limit. A companion comparison theorem says f(x) <= g(x) implies lim f <= lim g when both limits exist. This is the device used to nail down trigonometric limits: from the geometric inequality cos x < (sin x)/x < 1 for 0 < |x| < pi/2, sandwiching (sin x)/x between cos x (limit 1) and the constant 1 forces lim x->0 (sin x)/x = 1.",
+      "keyMoves": [
+        "Bound the target g(x) above and below by functions f and h",
+        "Check f and h have a common limit l at the point",
+        "Conclude g has the same limit l"
+      ],
+      "misconceptions": [
+        "Concluding the squeeze when the bounding functions have different limits",
+        "Forgetting the inequality must hold throughout a neighbourhood of the point"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:algebra-of-limits"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:trigonometric-limits",
+      "slug": "trigonometric-limits",
+      "title": "Apply the standard trigonometric limits (sin x)/x -> 1 and (1 - cos x)/x -> 0",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Use Theorem 5: lim x->0 (sin x)/x = 1 and lim x->0 (1 - cos x)/x = 0, with the algebra of limits, to evaluate trigonometric limits.",
+      "quote": "**Theorem 5** The following are two important limits.",
+      "explanation": "Two standard limits, both at x = 0 (x in radians): lim x->0 (sin x)/x = 1 (proved by sandwiching between cos x and 1), and lim x->0 (1 - cos x)/x = 0 (using 1 - cos x = 2 sin^2(x/2) and the first limit). With the algebra of limits and the substitution that x -> 0 is equivalent to (cx) -> 0, these resolve many trigonometric limits: e.g. lim x->0 (tan x)/x = 1 (since tan x = sin x / cos x), and lim x->0 (sin 4x)/(sin 2x) = 2 by writing each factor as (sin u)/u. The radian measure is essential - the value 1 for (sin x)/x relies on it.",
+      "keyMoves": [
+        "Use lim x->0 (sin x)/x = 1 and lim x->0 (1 - cos x)/x = 0",
+        "Rewrite a trig ratio into (sin u)/u pieces, scaling the argument as needed",
+        "Combine the pieces with the product/quotient limit rules"
+      ],
+      "misconceptions": [
+        "Applying (sin x)/x -> 1 with x measured in degrees rather than radians",
+        "Forgetting to match the argument scaling, e.g. treating (sin 4x)/x as 1 instead of 4"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:sandwich-theorem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:derivative-first-principle",
+      "slug": "derivative-first-principle",
+      "title": "Compute a derivative from the first-principle limit definition",
+      "role": "intermediate",
+      "sec": 5,
+      "brief": "Apply the definition f'(a) = lim h->0 [f(a+h) - f(a)]/h (and f'(x) = lim h->0 [f(x+h) - f(x)]/h) to find derivatives from first principles.",
+      "quote": "This definition of derivative is also called the first principle of derivative.",
+      "explanation": "The derivative of a real-valued function f at a point a is f'(a) = lim h->0 [f(a+h) - f(a)]/h, provided this limit exists; it quantifies the rate of change of f at a. Letting the point vary defines the derivative function f'(x) = lim h->0 [f(x+h) - f(x)]/h wherever the limit exists - this is the first principle of derivative. To use it: form f(x+h), subtract f(x), divide by h, simplify so the h in the denominator cancels, then take h -> 0. For instance, for f(x) = x^2, [(x+h)^2 - x^2]/h = 2x + h -> 2x; for f(x) = sin x at 0, [sin h]/h -> 1. Notations: f'(x), d/dx f(x), dy/dx.",
+      "keyMoves": [
+        "Write the difference quotient [f(x+h) - f(x)]/h",
+        "Simplify so the factor of h cancels from the denominator",
+        "Take the limit h -> 0 to get f'(x) (or f'(a) at a point)"
+      ],
+      "misconceptions": [
+        "Setting h = 0 before cancelling, producing 0/0",
+        "Confusing f'(a) (a number) with f'(x) (the derivative function)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:one-sided-limits-and-existence",
+        "jee:maths:maths-ch12:limits-of-rational-functions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:derivative-as-slope-of-tangent",
+      "slug": "derivative-as-slope-of-tangent",
+      "title": "Interpret f'(a) geometrically as the slope of the tangent",
+      "role": "intermediate",
+      "sec": 5,
+      "brief": "Read the first-principle difference quotient as the slope of a chord, and its limit f'(a) as the slope of the tangent to y = f(x) at the point.",
+      "quote": "Thus the limit turns out to be equal to the slope of the tangent.",
+      "explanation": "Take two points P = (a, f(a)) and Q = (a+h, f(a+h)) on the graph of y = f(x). The difference quotient [f(a+h) - f(a)]/h is exactly tan(angle QPR), the slope of the chord PQ. As h -> 0, Q slides toward P and the chord PQ approaches the tangent line at P, so the limiting value f'(a) equals the slope of the tangent to the curve at P, written f'(a) = tan(psi). This geometric reading ties the analytic derivative back to the intuitive picture from Section 12.2 and lets you find the slope (and hence the tangent line) of a curve at any point.",
+      "keyMoves": [
+        "Identify [f(a+h) - f(a)]/h as the slope of the chord through P and Q",
+        "Let h -> 0 so the chord becomes the tangent at P",
+        "Read f'(a) as the slope of that tangent, f'(a) = tan(psi)"
+      ],
+      "misconceptions": [
+        "Confusing the slope of the chord (a finite-h secant) with the tangent slope (the limit)",
+        "Thinking the tangent slope depends on the choice of the second point Q"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:derivative-first-principle",
+        "jee:maths:maths-ch12:instantaneous-rate-as-slope-of-tangent"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:algebra-of-derivatives",
+      "slug": "algebra-of-derivatives",
+      "title": "Differentiate combinations using the sum, difference, product and quotient rules",
+      "role": "intermediate",
+      "sec": 5,
+      "brief": "Apply the derivative rules: (u +/- v)' = u' +/- v', the product rule (uv)' = u'v + uv', and the quotient rule (u/v)' = (u'v - uv')/v^2.",
+      "quote": "we expect the rules for derivatives to follow closely that of limits",
+      "explanation": "Because derivatives are built from limits, the limit rules carry over. For functions f and g differentiable on a common domain: the derivative of a sum (or difference) is the sum (or difference) of the derivatives, d/dx[f +/- g] = f' +/- g'. The product rule (Leibnitz rule): d/dx[f.g] = f'.g + f.g', i.e. (uv)' = u'v + uv'. The quotient rule (denominator non-zero): d/dx[f/g] = (f'g - f g')/g^2, i.e. (u/v)' = (u'v - uv')/v^2. For example, with u = x+1, v = x, d/dx[(x+1)/x] = [1.x - (x+1).1]/x^2 = -1/x^2. These let you differentiate any combination once you know the pieces' derivatives.",
+      "keyMoves": [
+        "Differentiate sums/differences termwise: (u +/- v)' = u' +/- v'",
+        "Apply the product rule (uv)' = u'v + uv'",
+        "Apply the quotient rule (u/v)' = (u'v - uv')/v^2 (v != 0)"
+      ],
+      "misconceptions": [
+        "Writing (uv)' = u'v' (differentiating factors separately) instead of u'v + uv'",
+        "Getting the sign or order wrong in the quotient rule numerator (u'v - uv')"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:derivative-first-principle"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:power-rule",
+      "slug": "power-rule",
+      "title": "Differentiate a power x^n using the power rule n x^(n-1)",
+      "role": "intermediate",
+      "sec": 5,
+      "brief": "Apply Theorem 6: the derivative of f(x) = x^n is n x^(n-1) (true for any real power n), derived from first principles via the binomial expansion or induction with the product rule.",
+      "quote": "**Remark** The above theorem is true for all powers of *x*, i.e., *n* can be any real number (but we will not prove it here).",
+      "explanation": "For f(x) = x^n with n a positive integer, the binomial theorem gives (x+h)^n - x^n = h(n x^(n-1) + ... + h^(n-1)); dividing by h and taking h -> 0 leaves f'(x) = n x^(n-1). The same result follows by induction using the product rule. The remark extends it to all real powers n. So d/dx x = 1, d/dx x^2 = 2x, d/dx x^(-1) = -x^(-2), and so on. This single rule, with the algebra of derivatives, differentiates every power term you will meet.",
+      "keyMoves": [
+        "Apply d/dx x^n = n x^(n-1) for any real n",
+        "Handle negative and fractional powers by the same rule (e.g. d/dx x^(-1) = -x^(-2))",
+        "Recover special cases d/dx x = 1 and d/dx (constant) = 0"
+      ],
+      "misconceptions": [
+        "Forgetting to reduce the exponent by 1 (writing n x^n)",
+        "Restricting the rule to positive integers when it holds for all real n"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:derivative-first-principle",
+        "jee:maths:maths-ch12:algebra-of-derivatives"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:derivative-of-polynomials",
+      "slug": "derivative-of-polynomials",
+      "title": "Differentiate a polynomial term by term",
+      "role": "intermediate",
+      "sec": 5,
+      "brief": "Use Theorem 7: differentiate a_n x^n + ... + a_1 x + a_0 term by term to get n a_n x^(n-1) + (n-1) a_(n-1) x^(n-2) + ... + a_1.",
+      "quote": "We start with the following theorem which tells us the derivative of a polynomial function.",
+      "explanation": "Combining the sum rule with the power rule, the derivative of a polynomial f(x) = a_n x^n + a_(n-1) x^(n-1) + ... + a_1 x + a_0 is f'(x) = n a_n x^(n-1) + (n-1) a_(n-1) x^(n-2) + ... + 2 a_2 x + a_1 - differentiate each term and drop the constant. For example d/dx (6x^100 - x^55 + x) = 600 x^99 - 55 x^54 + 1. Evaluating the derivative at a point then gives a number, e.g. for f(x) = 1 + x + x^2 + ... + x^50, f'(x) = 1 + 2x + 3x^2 + ... + 50 x^49, so f'(1) = 1 + 2 + ... + 50 = 1275.",
+      "keyMoves": [
+        "Differentiate each term a_k x^k to k a_k x^(k-1)",
+        "Drop the constant term and sum the results",
+        "Substitute a value if a numerical derivative f'(a) is wanted"
+      ],
+      "misconceptions": [
+        "Leaving the constant term in the derivative",
+        "Differentiating only the leading term instead of every term"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:power-rule",
+        "jee:maths:maths-ch12:limits-of-polynomials"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:derivatives-of-trig-functions",
+      "slug": "derivatives-of-trig-functions",
+      "title": "Differentiate trigonometric functions using first principles and the rules",
+      "role": "intermediate",
+      "sec": 5,
+      "brief": "Establish d/dx(sin x) = cos x and d/dx(tan x) = sec^2 x from first principles, then differentiate other trig functions with the product and quotient rules.",
+      "quote": "**Example 16** Compute the derivative of sin *x*.",
+      "explanation": "Using the first principle and the standard trig limits, d/dx(sin x) = cos x (via sin(x+h) - sin x = 2 cos(x + h/2) sin(h/2) and (sin(h/2))/(h/2) -> 1), and similarly d/dx(cos x) = -sin x. For tan x = sin x / cos x the first principle gives d/dx(tan x) = sec^2 x. With the product and quotient rules these spread to the rest: d/dx(sin^2 x) = 2 sin x cos x = sin 2x; cot x = cos x / sin x gives d/dx(cot x) = -cosec^2 x; and quotient combinations such as d/dx[(x^5 - cos x)/sin x] follow directly. The radian-based trig limits underpin every one of these.",
+      "keyMoves": [
+        "Derive d/dx(sin x) = cos x and d/dx(cos x) = -sin x from first principles + trig limits",
+        "Get d/dx(tan x) = sec^2 x and d/dx(cot x) = -cosec^2 x",
+        "Differentiate products/quotients of trig functions with the product and quotient rules"
+      ],
+      "misconceptions": [
+        "Writing d/dx(cos x) = sin x, dropping the minus sign",
+        "Applying the trig derivatives with the angle in degrees (they assume radians)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:trigonometric-limits",
+        "jee:maths:maths-ch12:derivative-first-principle",
+        "jee:maths:maths-ch12:algebra-of-derivatives"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch12:differentiate-functions-via-limits",
+      "slug": "differentiate-functions-via-limits",
+      "title": "Differentiate polynomial and trigonometric functions by combining limits and derivative rules",
+      "role": "goal",
+      "sec": 5,
+      "brief": "Tie the chapter together: from the limit machinery and the first-principle definition, differentiate any polynomial, rational or trigonometric combination using the power, sum, product and quotient rules.",
+      "quote": "The heart of the matter is derivative of a function at a given point in its domain of definition.",
+      "explanation": "The whole chapter builds one capability: finding the rate at which a function changes - its derivative. Limits (intuitive idea, one-sided existence, the algebra of limits, the standard limits (x^n - a^n)/(x-a), (sin x)/x and (1-cos x)/x) supply the foundation. The first-principle definition f'(x) = lim h->0 [f(x+h) - f(x)]/h turns those limits into a derivative, interpreted geometrically as the slope of the tangent. From there the power rule, the sum/difference rule, the Leibnitz product rule and the quotient rule, together with the trig derivatives d/dx(sin x) = cos x and d/dx(tan x) = sec^2 x, let you differentiate any polynomial, rational or trigonometric function and evaluate the derivative at a point - the central skill of the chapter.",
+      "keyMoves": [
+        "Choose the method: first principle for a new function, or the standard rules for known pieces",
+        "Apply the power, sum, product and quotient rules (and trig derivatives) to a combination",
+        "Evaluate f'(a) at a point when a numerical rate or tangent slope is asked"
+      ],
+      "misconceptions": [
+        "Reaching for first principles when the standard rules already apply (and vice versa)",
+        "Combining the rules incorrectly (e.g. product rule as u'v' or wrong quotient-rule sign)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:derivative-as-slope-of-tangent",
+        "jee:maths:maths-ch12:derivative-of-polynomials",
+        "jee:maths:maths-ch12:derivatives-of-trig-functions",
+        "jee:maths:maths-ch12:standard-limit-xn-minus-an"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

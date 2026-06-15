@@ -8,11 +8,16 @@
  *   - equation         : a harder symbolic/numeric problem
  * (Leeway: a concept where a slot doesn't fit may omit it — we record why.)
  *
- * Grounding: Firecrawl web research (real CBSE/professional question banks) + the concept's own
+ * Grounding: Firecrawl web research (real exam / professional question banks) + the concept's own
  * textbook content. Authored by Claude Haiku (cheap). Each gate stores idealAnswer + why + rubric + source.
  *
- * Usage:  tsx tools/generate-gates.ts <chapterId|conceptId> [--dry]
+ * Exam-aware: the research query and the author's persona/level adapt to the concept's exam
+ * (cbse10 → CBSE Class 10, cbse12 → CBSE Class 12, jee → JEE Main/Advanced). Works for any loaded exam.
+ *
+ * Usage:  tsx tools/generate-gates.ts <chapterId|conceptId> [--dry] [--limit N]
  *   e.g.  tsx tools/generate-gates.ts cbse10:maths:jemh101
+ *         tsx tools/generate-gates.ts cbse12:mathematics:mathematics-ch01 --limit 5
+ *         tsx tools/generate-gates.ts jee:maths:maths-ch01 --limit 5
  *         tsx tools/generate-gates.ts cbse10:maths:jemh101:know-prime-composite-coprime --dry
  */
 import 'dotenv/config';
@@ -24,6 +29,41 @@ import { claudeAuthor, parseLooseJson, type ChatMessage } from '../src/core/llm.
 
 const FIRECRAWL_KEY = process.env.FIRECRAWL_API_KEY;
 const DRY = process.argv.includes('--dry');
+const LIMIT = (() => {
+  const i = process.argv.indexOf('--limit');
+  return i >= 0 ? parseInt(process.argv[i + 1], 10) : Infinity;
+})();
+
+/** Exam → author persona + level + the phrase used to find real exam question banks. */
+interface ExamProfile {
+  persona: string; // the assessment author's identity in the system prompt
+  level: string; // how to describe the difficulty/level inside the prompt
+  searchTag: string; // appended to the Firecrawl query
+}
+function examProfile(conceptId: string): ExamProfile {
+  const exam = conceptId.split(':')[0];
+  switch (exam) {
+    case 'cbse12':
+      return {
+        persona: 'an expert CBSE Class 12 Mathematics assessment author',
+        level: 'CBSE Class 12 (NCERT) level',
+        searchTag: 'CBSE class 12 maths board exam questions with solutions',
+      };
+    case 'jee':
+      return {
+        persona: 'an expert JEE (Main & Advanced) Mathematics problem author',
+        level: 'JEE Main/Advanced level (NCERT Class 11–12 foundation, exam-grade rigour)',
+        searchTag: 'JEE main advanced maths problems with solutions',
+      };
+    case 'cbse10':
+    default:
+      return {
+        persona: 'an expert CBSE Class 10 Maths assessment author',
+        level: 'CBSE Class 10 (NCERT) level',
+        searchTag: 'CBSE class 10 maths exam questions with solutions',
+      };
+  }
+}
 
 interface ResearchHit {
   title: string;
@@ -31,12 +71,12 @@ interface ResearchHit {
   snippet: string;
 }
 
-async function research(topic: string): Promise<ResearchHit[]> {
+async function research(topic: string, profile: ExamProfile): Promise<ResearchHit[]> {
   if (!FIRECRAWL_KEY) return [];
   try {
     const res = await axios.post(
       'https://api.firecrawl.dev/v1/search',
-      { query: `${topic} CBSE class 10 maths exam questions with solutions`, limit: 4 },
+      { query: `${topic} ${profile.searchTag}`, limit: 4 },
       { headers: { Authorization: `Bearer ${FIRECRAWL_KEY}`, 'Content-Type': 'application/json' }, timeout: 40_000 }
     );
     const data = res.data?.data ?? [];
@@ -59,12 +99,12 @@ const SLOTS = [
   { slot: 'equation', answerType: 'symbolic', grader: 'cas', note: 'a harder compute/prove problem with an exact answer' },
 ];
 
-function authorPrompt(concept: any, hits: ResearchHit[]): ChatMessage[] {
+function authorPrompt(concept: any, hits: ResearchHit[], profile: ExamProfile): ChatMessage[] {
   const researchBlock = hits.length
     ? hits.map((h, i) => `[${i + 1}] ${h.title} (${h.url})\n${h.snippet}`).join('\n\n')
     : '(no external research available — rely on the textbook content below)';
 
-  const system = `You are an expert CBSE Class 10 Maths assessment author. You write genuine, exam-quality questions for ONE concept, grounded in the official NCERT textbook content and informed by real question banks. Never invent facts outside the concept. Output STRICT JSON only.`;
+  const system = `You are ${profile.persona}. You write genuine, exam-quality questions for ONE concept, grounded in the official NCERT textbook content and informed by real question banks. Never invent facts outside the concept. Output STRICT JSON only.`;
 
   const user = `CONCEPT
 title: ${concept.title}
@@ -77,7 +117,7 @@ common misconceptions: ${(concept.misconceptions || []).join('; ')}
 REAL-WORLD RESEARCH (for inspiration on what professionals ask — adapt, don't copy verbatim):
 ${researchBlock}
 
-TASK: Write FIVE assessment items for this concept, one per slot below. Each must be answerable from THIS concept (CBSE Class 10 level), professional quality, and unambiguous.
+TASK: Write FIVE assessment items for this concept, one per slot below. Each must be answerable from THIS concept (${profile.level}), professional quality, and unambiguous.
 
 SLOTS (produce exactly these keys; if a slot genuinely does not fit this concept, set "skip": true with a short "skipReason"):
 - "sketch1": ${SLOTS[0].note}
@@ -107,8 +147,9 @@ Return ONLY this JSON object:
 }
 
 async function authorGates(concept: any) {
-  const hits = await research(concept.title);
-  const raw = await claudeAuthor(authorPrompt(concept, hits), 2600);
+  const profile = examProfile(concept.id);
+  const hits = await research(concept.title, profile);
+  const raw = await claudeAuthor(authorPrompt(concept, hits, profile), 2600);
   const parsed = parseLooseJson<any>(raw);
   if (!parsed) throw new Error('author returned unparseable JSON');
   return { parsed, source: hits.map((h) => h.url).filter(Boolean).join(' | ') };
@@ -185,6 +226,7 @@ async function main() {
   }
 
   targets.sort((a, b) => a.order - b.order);
+  if (Number.isFinite(LIMIT)) targets.splice(LIMIT); // --limit N → only the first N in bottom-up order
   console.log(`Authoring ${SLOTS.length}-gate sets for ${targets.length} concept(s)${DRY ? ' [DRY RUN]' : ''}\n`);
 
   for (const concept of targets) {

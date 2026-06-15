@@ -1,0 +1,455 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch04",
+  "title": "Complex Numbers and Quadratic Equations",
+  "book": "NCERT Class 11 maths — Complex Numbers and Quadratic Equations",
+  "goal": "jee:maths:maths-ch04:reduce-expressions-to-a-plus-ib",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch04:imaginary-unit-i",
+      "slug": "imaginary-unit-i",
+      "title": "Use the imaginary unit i with i^2 = -1",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Introduce i as a symbol for the square root of -1 satisfying i^2 = -1, the device that lets the equation x^2 + 1 = 0 have a solution.",
+      "quote": "Let us denote  $\\sqrt{-1}$  by the symbol *i*.",
+      "explanation": "The real number system has no solution to x^2 + 1 = 0, because x^2 = -1 and the square of every real number is non-negative. To get past this we introduce a new symbol i, defined by i = sqrt(-1), so that i^2 = -1. With this single rule, i becomes a solution of x^2 + 1 = 0. Everything else about complex numbers is built on top of this one fact: wherever i^2 appears in a calculation, it is replaced by -1.",
+      "keyMoves": [
+        "Write i = sqrt(-1) and hence i^2 = -1",
+        "Recognise i as a solution of x^2 + 1 = 0",
+        "Replace i^2 by -1 whenever it occurs in a calculation"
+      ],
+      "misconceptions": [
+        "Treating i as just another real number whose square is positive",
+        "Forgetting to substitute i^2 = -1 and leaving i^2 in an answer"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:complex-number-form",
+      "slug": "complex-number-form",
+      "title": "Define a complex number as a + ib",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Recognise any number of the form a + ib, with a and b real, as a complex number.",
+      "quote": "A number of the form a + ib, where a and b are real numbers, is defined to be a",
+      "explanation": "A complex number is any number of the form a + ib, where a and b are real numbers and i is the imaginary unit. For example 2 + i3, (-1) + i*sqrt(3) and 4 + i(-1/11) are all complex numbers. This form is the standard shape into which every complex quantity is eventually written; a is the part with no i and b is the coefficient of i. Real numbers are the special case b = 0 (a + i0), and purely imaginary numbers are the case a = 0 (0 + ib).",
+      "keyMoves": [
+        "Write a complex number in the standard form a + ib with a, b real",
+        "Identify a as the term without i and b as the coefficient of i",
+        "See real numbers (b = 0) and purely imaginary numbers (a = 0) as special cases"
+      ],
+      "misconceptions": [
+        "Thinking a or b may themselves be complex rather than real",
+        "Confusing the imaginary part with ib instead of the real coefficient b"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:imaginary-unit-i"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:real-imaginary-parts",
+      "slug": "real-imaginary-parts",
+      "title": "Identify the real part Re z and imaginary part Im z",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Read off the real part and imaginary part of z = a + ib as the real numbers a and b.",
+      "quote": "*a* is called the *real part*, denoted by Re *z* and *b* is called the *imaginary part* denoted by Im *z* of the complex number *z*",
+      "explanation": "For z = a + ib, a is the real part, written Re z, and b is the imaginary part, written Im z. Both Re z and Im z are real numbers. For example, if z = 2 + i5 then Re z = 2 and Im z = 5. Note that the imaginary part is the real coefficient b itself, not ib: Im(2 + i5) = 5, not 5i. Splitting a complex number into Re z and Im z is the first step in almost every problem.",
+      "keyMoves": [
+        "Read off Re z = a and Im z = b from z = a + ib",
+        "Report Im z as the real coefficient b, not ib",
+        "Apply to examples, e.g. Re(2 + i5) = 2, Im(2 + i5) = 5"
+      ],
+      "misconceptions": [
+        "Taking the imaginary part of a + ib to be ib instead of b",
+        "Thinking Re z or Im z can be complex rather than real numbers"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:complex-number-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:equality-of-complex-numbers",
+      "slug": "equality-of-complex-numbers",
+      "title": "Apply the equality condition for two complex numbers",
+      "role": "intermediate",
+      "sec": 2,
+      "brief": "Use the rule that two complex numbers are equal exactly when their real parts and imaginary parts separately agree, to solve for unknown reals.",
+      "quote": "Two complex numbers  $z_1 = a + ib$  and  $z_2 = c + id$  are equal if a = c and b = d.",
+      "explanation": "Two complex numbers z1 = a + ib and z2 = c + id are equal precisely when a = c and b = d, that is, when their real parts are equal and their imaginary parts are equal. A single complex equation therefore splits into two real equations. For instance, in Example 1, 4x + i(3x - y) = 3 + i(-6) gives 4x = 3 and 3x - y = -6, which solve to x = 3/4 and y = 33/4. Equating real and imaginary parts is the standard technique for finding unknown real numbers hidden in a complex equation.",
+      "keyMoves": [
+        "Set the real parts equal and the imaginary parts equal separately",
+        "Turn one complex equation into two real equations",
+        "Solve the resulting real equations simultaneously for the unknowns"
+      ],
+      "misconceptions": [
+        "Equating the whole expressions without separating real and imaginary parts",
+        "Matching the real part of one side with the imaginary part of the other"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:real-imaginary-parts"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:add-subtract-complex",
+      "slug": "add-subtract-complex",
+      "title": "Add and subtract complex numbers component-wise",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Add (and subtract) complex numbers by combining real parts with real parts and imaginary parts with imaginary parts.",
+      "quote": "which is again a complex number.",
+      "explanation": "For z1 = a + ib and z2 = c + id, the sum is z1 + z2 = (a + c) + i(b + d): you add the real parts and add the imaginary parts, and the result is again a complex number. For example (2 + i3) + (-6 + i5) = (2 - 6) + i(3 + 5) = -4 + i8. Subtraction is defined through the additive inverse: z1 - z2 = z1 + (-z2), where -z2 = -c + i(-d). For example (6 + 3i) - (2 - i) = (6 + 3i) + (-2 + i) = 4 + 4i. Addition obeys the closure, commutative and associative laws, has the identity 0 + i0, and every z has an additive inverse -z.",
+      "keyMoves": [
+        "Compute z1 + z2 = (a + c) + i(b + d) by adding parts separately",
+        "Subtract via z1 - z2 = z1 + (-z2) with -z2 = -c + i(-d)",
+        "Use that the sum/difference of two complex numbers is again complex"
+      ],
+      "misconceptions": [
+        "Mixing real and imaginary parts when combining (adding a to d, etc.)",
+        "Mishandling signs when negating z2 in a subtraction"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:complex-number-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:multiply-complex",
+      "slug": "multiply-complex",
+      "title": "Multiply two complex numbers using i^2 = -1",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Multiply complex numbers by expanding the product and replacing i^2 by -1, giving (ac - bd) + i(ad + bc).",
+      "quote": "The multiplication of complex numbers possesses the following properties, which we state without proofs.",
+      "explanation": "For z1 = a + ib and z2 = c + id, the product is z1 z2 = (ac - bd) + i(ad + bc). This comes from multiplying out (a + ib)(c + id) like ordinary binomials and using i^2 = -1: the i^2 bd term becomes -bd, which is why the real part is ac - bd. For example (3 + i5)(2 + i6) = (3*2 - 5*6) + i(3*6 + 5*2) = -24 + i28. Multiplication is closed, commutative, associative, has identity 1 + i0, distributes over addition, and every non-zero z has a multiplicative inverse.",
+      "keyMoves": [
+        "Expand (a + ib)(c + id) as binomials and replace i^2 by -1",
+        "Apply the formula z1 z2 = (ac - bd) + i(ad + bc)",
+        "Collect into standard real-plus-imaginary form"
+      ],
+      "misconceptions": [
+        "Forgetting i^2 = -1 and leaving the real part as ac + (something) bd",
+        "Multiplying only the real parts and only the imaginary parts separately"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:imaginary-unit-i"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:powers-of-i",
+      "slug": "powers-of-i",
+      "title": "Evaluate powers of i using the cycle of four",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Reduce any integer power of i (positive or negative) using the four-step cycle 1, i, -1, -i.",
+      "quote": "where the integer  $k, i^{4k} = 1, i^{4k+1} = i, i^{4k+2} = -1, i^{4k+3} = -i$",
+      "explanation": "The powers of i cycle with period four: i^1 = i, i^2 = -1, i^3 = -i, i^4 = 1, and then they repeat. In general, for any integer k, i^(4k) = 1, i^(4k+1) = i, i^(4k+2) = -1, i^(4k+3) = -i. So to evaluate i^n, reduce the exponent n modulo 4 and read off the value. Negative powers follow the same cycle: i^(-1) = -i, i^(-2) = -1, i^(-3) = i, i^(-4) = 1. For example i^(-35) = 1/i^35 = 1/(i^2)^17 * (1/i) ... reduces to i, since -35 = 4(-9) + 1.",
+      "keyMoves": [
+        "Use i^1 = i, i^2 = -1, i^3 = -i, i^4 = 1 as the base cycle",
+        "Reduce the exponent modulo 4 to pick the value",
+        "Handle negative exponents with i^(-1) = -i (same four-cycle)"
+      ],
+      "misconceptions": [
+        "Thinking the powers of i grow without repeating",
+        "Reducing the exponent modulo 2 instead of modulo 4"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:imaginary-unit-i"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:multiplicative-inverse",
+      "slug": "multiplicative-inverse",
+      "title": "Find the multiplicative inverse of a non-zero complex number",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Compute 1/z for a non-zero z = a + ib using the formula a/(a^2+b^2) + i(-b)/(a^2+b^2).",
+      "quote": "For every non-zero complex number z = a + ib or",
+      "explanation": "Every non-zero complex number z = a + ib has a multiplicative inverse, denoted 1/z or z^(-1), given by z^(-1) = a/(a^2 + b^2) + i(-b)/(a^2 + b^2), which satisfies z * (1/z) = 1. This is the complex number you multiply z by to get the multiplicative identity 1 + i0. In practice the inverse is found by multiplying numerator and denominator of 1/z by the conjugate: 1/(a + ib) = (a - ib)/((a + ib)(a - ib)) = (a - ib)/(a^2 + b^2), so z^(-1) = conjugate(z)/|z|^2. For example the inverse of 2 - 3i is (2 + 3i)/13 = 2/13 + (3/13)i.",
+      "keyMoves": [
+        "Apply z^(-1) = a/(a^2+b^2) + i(-b)/(a^2+b^2) for z = a + ib (z not 0)",
+        "Equivalently compute conjugate(z)/|z|^2",
+        "Check the result by verifying z * z^(-1) = 1 + i0"
+      ],
+      "misconceptions": [
+        "Writing 1/(a + ib) = 1/a + 1/(ib) as if the parts invert separately",
+        "Omitting the sign change on the imaginary part (-b in the numerator)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:multiply-complex"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:divide-complex",
+      "slug": "divide-complex",
+      "title": "Divide one complex number by another",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Compute the quotient z1/z2 (z2 not zero) as z1 times the inverse of z2, equivalently by multiplying by the conjugate of the denominator.",
+      "quote": "Division of two complex numbers",
+      "explanation": "For complex numbers z1 and z2 with z2 not equal to 0, the quotient z1/z2 is defined as z1 * (1/z2): you divide by multiplying by the multiplicative inverse of the denominator. In practice you multiply numerator and denominator by the conjugate of z2, which makes the denominator the real number |z2|^2. For example with z1 = 6 + 3i and z2 = 2 - i, z1/z2 = (6 + 3i)(2 + i)/5 = (1/5)(9 + 12i). The result is always reduced to standard a + ib form.",
+      "keyMoves": [
+        "Write z1/z2 = z1 * (1/z2) for z2 not equal to 0",
+        "Multiply numerator and denominator by the conjugate of the denominator",
+        "Simplify to the standard form a + ib"
+      ],
+      "misconceptions": [
+        "Dividing real parts and imaginary parts separately",
+        "Forgetting to rationalise by the conjugate, leaving i in the denominator"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:multiplicative-inverse"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:square-root-negative-real",
+      "slug": "square-root-negative-real",
+      "title": "Express the square root of a negative real number",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Write the square root of a negative real number using i: for a > 0, sqrt(-a) = sqrt(a) i, and identify both square roots.",
+      "quote": "Therefore, the square roots of -1 are i, -i. However, by the symbol  $\\sqrt{-1}$ , we would mean *i* only.",
+      "explanation": "Since i^2 = -1 and (-i)^2 = -1, the square roots of -1 are i and -i; by convention the symbol sqrt(-1) means i only. More generally, for a positive real number a, sqrt(-a) = sqrt(a)*sqrt(-1) = sqrt(a) i. For example the square roots of -3 are sqrt(3) i and -sqrt(3) i, and sqrt(-3) means sqrt(3) i. This lets us handle expressions such as sqrt(-2) = sqrt(2) i, the step needed before multiplying or adding complex numbers that contain roots of negatives.",
+      "keyMoves": [
+        "Use sqrt(-1) = i (the two square roots of -1 are i and -i)",
+        "Write sqrt(-a) = sqrt(a) i for a > 0",
+        "Convert roots of negatives to i-form before combining, e.g. sqrt(-2) = sqrt(2) i"
+      ],
+      "misconceptions": [
+        "Leaving sqrt(-a) as a real number instead of introducing i",
+        "Taking sqrt(-1) to mean -i rather than the conventional value i"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:imaginary-unit-i"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:sqrt-product-pitfall",
+      "slug": "sqrt-product-pitfall",
+      "title": "Avoid the sqrt(a)·sqrt(b) = sqrt(ab) pitfall for negatives",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Recognise that the identity sqrt(a)·sqrt(b) = sqrt(ab) fails when both a and b are negative, and convert to i-form first.",
+      "quote": "if both *a* and *b* are negative real numbers.",
+      "explanation": "The familiar rule sqrt(a) * sqrt(b) = sqrt(ab) holds for non-negative a and b, and also when exactly one of them is negative, but it fails when both a and b are negative. If it held for all reals we would get i^2 = sqrt(-1)*sqrt(-1) = sqrt((-1)(-1)) = sqrt(1) = 1, contradicting i^2 = -1. So sqrt(a)*sqrt(b) is not equal to sqrt(ab) when both a and b are negative. The safe procedure is always to convert each square root of a negative to i-form first, e.g. sqrt(-2)*sqrt(-3) = (sqrt(2) i)(sqrt(3) i) = sqrt(6) i^2 = -sqrt(6). If either a or b is zero, then sqrt(a)*sqrt(b) = sqrt(ab) = 0.",
+      "keyMoves": [
+        "State that sqrt(a)*sqrt(b) = sqrt(ab) fails when both a and b are negative",
+        "Convert each root of a negative to i-form before multiplying",
+        "See that applying the rule blindly would force the contradiction i^2 = 1"
+      ],
+      "misconceptions": [
+        "Applying sqrt(a)*sqrt(b) = sqrt(ab) to two negative numbers",
+        "Concluding sqrt(-2)*sqrt(-3) = sqrt(6) instead of -sqrt(6)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:square-root-negative-real"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:algebraic-identities",
+      "slug": "algebraic-identities",
+      "title": "Apply algebraic identities to complex numbers",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use the standard algebraic identities, such as (z1 + z2)^2 and (z1 - z2)^3, which hold for all complex numbers, to expand powers.",
+      "quote": "We prove the following identity",
+      "explanation": "The standard algebraic identities valid for real numbers also hold for all complex numbers, because they follow only from the distributive and commutative laws, which complex numbers obey. In particular (z1 + z2)^2 = z1^2 + 2 z1 z2 + z2^2; and similarly (z1 - z2)^2 = z1^2 - 2 z1 z2 + z2^2, (z1 + z2)^3 = z1^3 + 3 z1^2 z2 + 3 z1 z2^2 + z2^3, (z1 - z2)^3 = z1^3 - 3 z1^2 z2 + 3 z1 z2^2 - z2^3, and z1^2 - z2^2 = (z1 + z2)(z1 - z2). These let you expand powers like (5 - 3i)^3 directly: (5 - 3i)^3 = 125 - 225i - 135 + 27i = -10 - 198i, remembering to replace i^2 by -1 in each term.",
+      "keyMoves": [
+        "Use that real-number algebraic identities hold for all complex numbers",
+        "Apply (z1 +/- z2)^2 and (z1 +/- z2)^3 to expand powers of complex numbers",
+        "Substitute i^2 = -1 (and i^3 = -i) while simplifying each term"
+      ],
+      "misconceptions": [
+        "Doubting the identities hold for complex numbers and expanding term-by-term incorrectly",
+        "Forgetting to reduce powers of i (i^2, i^3) after expanding"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:multiply-complex",
+        "jee:maths:maths-ch04:powers-of-i"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:modulus",
+      "slug": "modulus",
+      "title": "Compute the modulus |z| of a complex number",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Compute the modulus of z = a + ib as the non-negative real number sqrt(a^2 + b^2).",
+      "quote": "the modulus of z, denoted by |z|, is defined to be the non-negative real number",
+      "explanation": "For z = a + ib, the modulus, written |z|, is the non-negative real number sqrt(a^2 + b^2). It measures the 'size' of the complex number. For example |3 + i| = sqrt(3^2 + 1^2) = sqrt(10) and |2 - 5i| = sqrt(2^2 + (-5)^2) = sqrt(29). The modulus is always real and non-negative, and |z| = 0 only when z = 0. It also satisfies z * conjugate(z) = |z|^2, which is the key link used when finding inverses and quotients.",
+      "keyMoves": [
+        "Apply |z| = sqrt(a^2 + b^2) for z = a + ib",
+        "Use that |z| is always real and non-negative",
+        "Use the relation z * conjugate(z) = |z|^2"
+      ],
+      "misconceptions": [
+        "Taking the modulus as a + b instead of sqrt(a^2 + b^2)",
+        "Forgetting to square the imaginary coefficient (using b instead of b^2)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:complex-number-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:conjugate",
+      "slug": "conjugate",
+      "title": "Form the conjugate of a complex number",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Form the conjugate of z = a + ib by negating the imaginary part, giving a - ib.",
+      "quote": "the conjugate of z, denoted as",
+      "explanation": "The conjugate of z = a + ib, written z-bar, is the complex number a - ib: you keep the real part and flip the sign of the imaginary part. For example the conjugate of 3 + i is 3 - i, of 2 - 5i is 2 + 5i, and of -3i - 5 is 3i - 5. The conjugate is central to division and inverses, because z * z-bar = |z|^2 is real, which is exactly what lets you clear i out of a denominator. The multiplicative inverse can be written z^(-1) = z-bar/|z|^2.",
+      "keyMoves": [
+        "Form z-bar = a - ib by negating the imaginary part of z = a + ib",
+        "Use that z * z-bar = |z|^2 is real",
+        "Multiply by the conjugate to rationalise a complex denominator"
+      ],
+      "misconceptions": [
+        "Negating the real part as well as the imaginary part",
+        "Thinking the conjugate changes the modulus (|z-bar| = |z|)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:complex-number-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:modulus-conjugate-properties",
+      "slug": "modulus-conjugate-properties",
+      "title": "Use properties of modulus and conjugate over products and quotients",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Apply the rules |z1 z2| = |z1||z2|, |z1/z2| = |z1|/|z2|, conjugate of a product/quotient/sum distributes, to simplify expressions.",
+      "quote": "For any two compex numbers",
+      "explanation": "Modulus and conjugate behave simply under the arithmetic operations. For any two complex numbers z1, z2: |z1 z2| = |z1| |z2|; |z1/z2| = |z1|/|z2| provided |z2| not 0; the conjugate of a product is the product of conjugates, conjugate(z1 z2) = conjugate(z1) conjugate(z2); the conjugate of a sum or difference splits, conjugate(z1 +/- z2) = conjugate(z1) +/- conjugate(z2); and conjugate(z1/z2) = conjugate(z1)/conjugate(z2) provided z2 not 0. These properties let you compute the modulus of a complicated quotient by taking the modulus of each factor, and the conjugate of a complicated expression term by term, without first reducing to a + ib.",
+      "keyMoves": [
+        "Use |z1 z2| = |z1||z2| and |z1/z2| = |z1|/|z2| to split a modulus over factors",
+        "Distribute conjugation over products, quotients and sums",
+        "Combine these to find the modulus or conjugate of a complicated expression directly"
+      ],
+      "misconceptions": [
+        "Thinking |z1 + z2| = |z1| + |z2| (modulus does not split over a sum)",
+        "Failing to conjugate every factor in a product or quotient"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:modulus",
+        "jee:maths:maths-ch04:conjugate"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:argand-plane",
+      "slug": "argand-plane",
+      "title": "Represent a complex number as a point in the Argand plane",
+      "role": "intermediate",
+      "sec": 5,
+      "brief": "Plot z = x + iy as the point (x, y) in the complex (Argand) plane, with the modulus as its distance from the origin.",
+      "quote": "The plane having a complex number assigned to each of its point is called the *complex plane* or the *Argand plane*.",
+      "explanation": "Each complex number x + iy corresponds to the ordered pair (x, y) and so can be plotted as a unique point P(x, y) in the XY-plane. The plane with a complex number assigned to each of its points is called the complex plane or the Argand plane. The x-axis (points a + i0) is the real axis and the y-axis (points 0 + ib) is the imaginary axis. The modulus |x + iy| = sqrt(x^2 + y^2) is precisely the distance of the point P(x, y) from the origin O(0, 0). This geometric picture turns algebraic statements about complex numbers into statements about points and distances in a plane.",
+      "keyMoves": [
+        "Plot x + iy as the point (x, y) in the Argand plane",
+        "Identify the real axis (b = 0) and the imaginary axis (a = 0)",
+        "Read |z| = sqrt(x^2 + y^2) as the distance of the point from the origin"
+      ],
+      "misconceptions": [
+        "Swapping the axes and plotting the imaginary part on the x-axis",
+        "Thinking the modulus is a coordinate rather than the distance to the origin"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:modulus"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:conjugate-geometry",
+      "slug": "conjugate-geometry",
+      "title": "Locate the conjugate as the mirror image across the real axis",
+      "role": "intermediate",
+      "sec": 5,
+      "brief": "See that the conjugate z = x - iy is the mirror image of z = x + iy in the real axis of the Argand plane.",
+      "quote": "Geometrically, the point (x, -y) is the mirror image of the point (x, y) on the real axis (Fig 4.3).",
+      "explanation": "In the Argand plane, z = x + iy is the point P(x, y) and its conjugate z-bar = x - iy is the point Q(x, -y). Geometrically, (x, -y) is the mirror image of (x, y) in the real axis: conjugation reflects a point across the x-axis. This is the geometric meaning of conjugation and explains why a number and its conjugate have the same modulus (equal distance from the origin) and why z + z-bar (twice the real part) is real while z - z-bar (twice i times the imaginary part) is purely imaginary.",
+      "keyMoves": [
+        "Plot z = x + iy at (x, y) and z-bar = x - iy at (x, -y)",
+        "Recognise conjugation as reflection across the real axis",
+        "Use that |z| = |z-bar| since the reflection preserves distance to the origin"
+      ],
+      "misconceptions": [
+        "Reflecting across the imaginary axis instead of the real axis",
+        "Thinking the conjugate lies at a different distance from the origin than z"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:argand-plane",
+        "jee:maths:maths-ch04:conjugate"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch04:reduce-expressions-to-a-plus-ib",
+      "slug": "reduce-expressions-to-a-plus-ib",
+      "title": "Reduce any complex expression to the standard form a + ib",
+      "role": "goal",
+      "sec": 3,
+      "brief": "Combine the algebra of complex numbers (add, multiply, powers of i, inverse, division, conjugate) to reduce any given expression to the standard form a + ib.",
+      "quote": "Equating the real and the imaginary parts of (1), we get",
+      "explanation": "The overarching skill of the chapter is to take any complex expression - a product, a power, a quotient, a root of a negative, a conjugate - and reduce it to the single standard form a + ib, then read off its real and imaginary parts. You do this by applying the algebra developed in the chapter: add and subtract component-wise, multiply with i^2 = -1, evaluate powers of i by the four-cycle, invert and divide by multiplying by the conjugate of the denominator, and convert roots of negatives to i-form (taking care that sqrt(a)sqrt(b) is not sqrt(ab) for two negatives). Once an expression is in a + ib form, equating real and imaginary parts solves equations for unknown reals, and the modulus and conjugate can be read off. This is the form every answer in the chapter is expressed in.",
+      "keyMoves": [
+        "Apply add/subtract, multiply (i^2 = -1) and powers-of-i to expand the expression",
+        "Rationalise any quotient by multiplying by the conjugate of the denominator",
+        "Collect into a + ib and, if needed, equate real and imaginary parts or read off |z| and the conjugate"
+      ],
+      "misconceptions": [
+        "Leaving i in a denominator instead of rationalising to a + ib",
+        "Stopping before separating the result cleanly into real part a and imaginary part b"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:add-subtract-complex",
+        "jee:maths:maths-ch04:multiply-complex",
+        "jee:maths:maths-ch04:powers-of-i",
+        "jee:maths:maths-ch04:multiplicative-inverse",
+        "jee:maths:maths-ch04:divide-complex",
+        "jee:maths:maths-ch04:square-root-negative-real",
+        "jee:maths:maths-ch04:sqrt-product-pitfall",
+        "jee:maths:maths-ch04:algebraic-identities",
+        "jee:maths:maths-ch04:equality-of-complex-numbers",
+        "jee:maths:maths-ch04:modulus-conjugate-properties",
+        "jee:maths:maths-ch04:argand-plane",
+        "jee:maths:maths-ch04:conjugate-geometry"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

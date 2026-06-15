@@ -1,0 +1,281 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch11",
+ "items": [
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:direction-cosines",
+   "kind": "practice",
+   "prompt": "The direction cosines of a directed line L are defined as the cosines of the angles that L makes with which reference?",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the x, y and z-axes",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the x, y and z-axes",
+    "options": [
+     "the x, y and z-axes",
+     "the three coordinate planes",
+     "another given line",
+     "the origin"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.2 Direction cosines"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:direction-cosines",
+   "kind": "practice",
+   "prompt": "If a line makes angles 90, 60 and 30 degrees with the x, y and z-axes, its direction cosine n = cos 30 degrees has what value (give sqrt(3)/2 as a decimal to 3 places)?",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "0.866",
+   "expected": {
+    "kind": "numeric",
+    "value": 0.866,
+    "tol": 0.005
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Example 1"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:direction-ratios",
+   "kind": "practice",
+   "prompt": "Any three numbers proportional to the direction cosines of a line are called:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the direction ratios of the line",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the direction ratios of the line",
+    "options": [
+     "the direction ratios of the line",
+     "the direction cosines of the line",
+     "the direction angles of the line",
+     "the position vector of the line"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.2 Direction ratios"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:direction-ratios",
+   "kind": "practice",
+   "prompt": "A line has direction ratios 2, -1, -2. Its first direction cosine is 2/sqrt(2^2+(-1)^2+(-2)^2). What is the value of that denominator sqrt(4+1+4)?",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "3",
+   "expected": {
+    "kind": "numeric",
+    "value": 3,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Example 2"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:direction-cosines-two-points",
+   "kind": "practice",
+   "prompt": "For the line through P(-2,4,-5) and Q(1,2,3), the distance PQ = sqrt(3^2+(-2)^2+8^2). What is the value under the square root?",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "77",
+   "expected": {
+    "kind": "numeric",
+    "value": 77,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Example 3"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:direction-cosines-two-points",
+   "kind": "practice",
+   "prompt": "To get the direction cosines of the line through two points P and Q from the coordinate differences, you must:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "divide each difference by the distance PQ",
+   "expected": {
+    "kind": "mcq",
+    "correct": "divide each difference by the distance PQ",
+    "options": [
+     "divide each difference by the distance PQ",
+     "leave the differences as they are",
+     "multiply each difference by PQ",
+     "square each difference"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.2.1"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:vector-equation-line",
+   "kind": "practice",
+   "prompt": "The vector equation of a line through point with position vector a and parallel to vector b is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "r = a + lambda b",
+   "expected": {
+    "kind": "mcq",
+    "correct": "r = a + lambda b",
+    "options": [
+     "r = a + lambda b",
+     "r = a . b",
+     "r = a x b",
+     "r = lambda (a + b)"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.3.1 Vector equation"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:cartesian-equation-line",
+   "kind": "practice",
+   "prompt": "The Cartesian equation of a line through (x1,y1,z1) with direction ratios a,b,c is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "(x-x1)/a = (y-y1)/b = (z-z1)/c",
+   "expected": {
+    "kind": "mcq",
+    "correct": "(x-x1)/a = (y-y1)/b = (z-z1)/c",
+    "options": [
+     "(x-x1)/a = (y-y1)/b = (z-z1)/c",
+     "(x-x1)*a = (y-y1)*b = (z-z1)*c",
+     "a/(x-x1) = b/(y-y1) = c/(z-z1)",
+     "(x-a)/x1 = (y-b)/y1 = (z-c)/z1"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.3 Cartesian equation"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:angle-between-lines",
+   "kind": "practice",
+   "prompt": "The angle theta between two lines is found from their direction vectors using:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "cos(theta) = |b1.b2| / (|b1||b2|)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "cos(theta) = |b1.b2| / (|b1||b2|)",
+    "options": [
+     "cos(theta) = |b1.b2| / (|b1||b2|)",
+     "cos(theta) = |b1 x b2| / (|b1||b2|)",
+     "cos(theta) = b1 + b2",
+     "cos(theta) = |b1| |b2|"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.4 Angle between lines"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:angle-between-lines",
+   "kind": "practice",
+   "prompt": "For lines with direction ratios 3,5,4 and 1,1,2, the numerator |a1a2+b1b2+c1c2| = |3*1+5*1+4*2|. What is its value?",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "16",
+   "expected": {
+    "kind": "numeric",
+    "value": 16,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Example 8"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:perpendicular-parallel-lines",
+   "kind": "practice",
+   "prompt": "Two lines with direction ratios a1,b1,c1 and a2,b2,c2 are perpendicular if:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "a1a2 + b1b2 + c1c2 = 0",
+   "expected": {
+    "kind": "mcq",
+    "correct": "a1a2 + b1b2 + c1c2 = 0",
+    "options": [
+     "a1a2 + b1b2 + c1c2 = 0",
+     "a1/a2 = b1/b2 = c1/c2",
+     "a1 + a2 = b1 + b2 = c1 + c2",
+     "a1a2 + b1b2 + c1c2 = 1"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.4 Perpendicular condition"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:skew-lines",
+   "kind": "practice",
+   "prompt": "Lines in space which are neither intersecting nor parallel (and hence non-coplanar) are called:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "skew lines",
+   "expected": {
+    "kind": "mcq",
+    "correct": "skew lines",
+    "options": [
+     "skew lines",
+     "parallel lines",
+     "concurrent lines",
+     "coincident lines"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.5 Skew lines"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:shortest-distance-definition",
+   "kind": "practice",
+   "prompt": "If two lines in space intersect, the shortest distance between them is:",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "0",
+   "expected": {
+    "kind": "numeric",
+    "value": 0,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.5 Intersecting lines case"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:shortest-distance-definition",
+   "kind": "practice",
+   "prompt": "The shortest distance between two lines is defined as the smallest length among segments that:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "join a point on one line with a point on the other line",
+   "expected": {
+    "kind": "mcq",
+    "correct": "join a point on one line with a point on the other line",
+    "options": [
+     "join a point on one line with a point on the other line",
+     "lie entirely along the first line",
+     "join the origin to each line",
+     "are parallel to both lines"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.5 Definition"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:shortest-distance-skew-lines",
+   "kind": "practice",
+   "prompt": "For skew lines r = a1 + lambda b1 and r = a2 + mu b2, the shortest distance is given by:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "|(a2 - a1).(b1 x b2)| / |b1 x b2|",
+   "expected": {
+    "kind": "mcq",
+    "correct": "|(a2 - a1).(b1 x b2)| / |b1 x b2|",
+    "options": [
+     "|(a2 - a1).(b1 x b2)| / |b1 x b2|",
+     "|(a2 - a1).(b1 . b2)| / |b1 . b2|",
+     "|a2 - a1| / |b1 x b2|",
+     "|b1 x b2| / |a2 - a1|"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.5.1 Distance between skew lines"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch11:shortest-distance-skew-lines",
+   "kind": "practice",
+   "prompt": "In Example 9, b1 x b2 = 3i - j - 7k, so |b1 x b2| = sqrt(9+1+49). What is the value under the square root?",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "59",
+   "expected": {
+    "kind": "numeric",
+    "value": 59,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch11 Example 9"
+  }
+ ]
+}

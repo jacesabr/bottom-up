@@ -1,0 +1,306 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch04",
+ "items": [
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:determinant-definition",
+   "kind": "practice",
+   "prompt": "Which matrices have a determinant?",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "only square matrices",
+   "expected": {
+    "kind": "mcq",
+    "correct": "only square matrices",
+    "options": [
+     "only square matrices",
+     "all matrices",
+     "only row matrices",
+     "only diagonal matrices"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Sec 4.2 Remark (ii)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:determinant-order-two",
+   "kind": "practice",
+   "prompt": "Evaluate the determinant of [2, 4; -1, 2].",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "8",
+   "expected": {
+    "kind": "numeric",
+    "value": 8,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Example 1"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:determinant-order-two",
+   "kind": "practice",
+   "prompt": "The determinant of a 2 x 2 matrix [a11, a12; a21, a22] is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "a11 a22 - a21 a12",
+   "expected": {
+    "kind": "mcq",
+    "correct": "a11 a22 - a21 a12",
+    "options": [
+     "a11 a22 - a21 a12",
+     "a11 a22 + a21 a12",
+     "a11 a12 - a21 a22",
+     "a11 + a22"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Sec 4.2.2"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:minor",
+   "kind": "practice",
+   "prompt": "The minor M_ij of an element a_ij is obtained by:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "deleting the i-th row and j-th column and taking the remaining determinant",
+   "expected": {
+    "kind": "mcq",
+    "correct": "deleting the i-th row and j-th column and taking the remaining determinant",
+    "options": [
+     "deleting the i-th row and j-th column and taking the remaining determinant",
+     "deleting only the element a_ij",
+     "multiplying a_ij by (-1)^(i+j)",
+     "transposing the matrix"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Definition 1 (Minor)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:cofactor",
+   "kind": "practice",
+   "prompt": "If the minor M_23 of an element equals 13, its cofactor A_23 = (-1)^(2+3) M_23 equals:",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "-13",
+   "expected": {
+    "kind": "numeric",
+    "value": -13,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Example 11 (A_23 = -13)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:cofactor",
+   "kind": "practice",
+   "prompt": "The cofactor A_ij of an element a_ij is defined as:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "(-1)^(i+j) times the minor M_ij",
+   "expected": {
+    "kind": "mcq",
+    "correct": "(-1)^(i+j) times the minor M_ij",
+    "options": [
+     "(-1)^(i+j) times the minor M_ij",
+     "the minor M_ij itself",
+     "(-1)^(i*j) times the minor M_ij",
+     "the element a_ij"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Definition 2 (Cofactor)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:determinant-order-three",
+   "kind": "practice",
+   "prompt": "Expanding a 3 x 3 determinant along different rows or columns gives:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the same value every time",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the same value every time",
+    "options": [
+     "the same value every time",
+     "a different value for each row or column",
+     "a value only when expanded along the first row",
+     "zero unless the matrix is symmetric"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Sec 4.2.3"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:determinant-order-three",
+   "kind": "practice",
+   "prompt": "Evaluate the 3x3 determinant with rows (1,2,4), (-1,3,0), (4,1,0) by expanding along the third column. (Answer is a single integer.)",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "-52",
+   "expected": {
+    "kind": "numeric",
+    "value": -52,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Example 3 (value -52)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:area-of-triangle",
+   "kind": "practice",
+   "prompt": "If three points are collinear, the determinant used in the triangle-area formula gives an area of:",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "0",
+   "expected": {
+    "kind": "numeric",
+    "value": 0,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Sec 4.3 Remark (iii)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:adjoint",
+   "kind": "practice",
+   "prompt": "The adjoint of a square matrix A is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the transpose of its matrix of cofactors",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the transpose of its matrix of cofactors",
+    "options": [
+     "the transpose of its matrix of cofactors",
+     "the matrix of cofactors itself",
+     "the transpose of A",
+     "the inverse of A"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Definition 3 (adjoint)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:adjoint-identity",
+   "kind": "practice",
+   "prompt": "For any square matrix A of order n, A(adj A) equals:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "|A| I",
+   "expected": {
+    "kind": "mcq",
+    "correct": "|A| I",
+    "options": [
+     "|A| I",
+     "I",
+     "A",
+     "the zero matrix"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Theorem 1"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:singular-matrix",
+   "kind": "practice",
+   "prompt": "A square matrix A is singular if:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "|A| = 0",
+   "expected": {
+    "kind": "mcq",
+    "correct": "|A| = 0",
+    "options": [
+     "|A| = 0",
+     "|A| is not 0",
+     "A is symmetric",
+     "A is the identity"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Definition 4 (singular)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:non-singular-matrix",
+   "kind": "practice",
+   "prompt": "A square matrix A is non-singular if:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "|A| is not equal to 0",
+   "expected": {
+    "kind": "mcq",
+    "correct": "|A| is not equal to 0",
+    "options": [
+     "|A| is not equal to 0",
+     "|A| = 0",
+     "A has no diagonal",
+     "A is rectangular"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Definition 5 (non-singular)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:determinant-of-product",
+   "kind": "practice",
+   "prompt": "If |A| = 3 and |B| = 4 for square matrices of the same order, then |AB| equals:",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "12",
+   "expected": {
+    "kind": "numeric",
+    "value": 12,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Theorem 3 (|AB| = |A||B|)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:consistent-system",
+   "kind": "practice",
+   "prompt": "A system of linear equations is called consistent if:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "its solution (one or more) exists",
+   "expected": {
+    "kind": "mcq",
+    "correct": "its solution (one or more) exists",
+    "options": [
+     "its solution (one or more) exists",
+     "it has no solution",
+     "the coefficient matrix is singular",
+     "it has exactly two solutions"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Sec 4.6 Consistent system"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:invertible-iff-nonsingular",
+   "kind": "practice",
+   "prompt": "A square matrix A is invertible if and only if:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "A is non-singular (|A| is not 0)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "A is non-singular (|A| is not 0)",
+    "options": [
+     "A is non-singular (|A| is not 0)",
+     "A is singular (|A| = 0)",
+     "A is symmetric",
+     "A is a zero matrix"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Theorem 4"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch04:invertible-iff-nonsingular",
+   "kind": "practice",
+   "prompt": "Explain how to find the inverse of a non-singular square matrix A, and why the inverse fails to exist when A is singular.",
+   "answerType": "written",
+   "grader": "written",
+   "answer": null,
+   "expected": {
+    "kind": "written",
+    "rubric": "A is invertible if and only if it is non-singular, i.e. |A| is not 0. Using A(adj A) = |A| I, divide by |A| to get A-inverse = (1/|A|) adj A: compute the cofactors, form adj A as their transpose, and divide by the determinant. If A is singular (|A| = 0) the division by |A| is impossible, so the inverse does not exist.",
+    "markPoints": [
+     "A is invertible iff non-singular (|A| not 0)",
+     "Use A(adj A) = |A| I to get A-inverse = (1/|A|) adj A (cofactors, transpose, divide by |A|)",
+     "If |A| = 0 the inverse does not exist (cannot divide by zero)"
+    ],
+    "total": 3,
+    "passMark": 2
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch04 Theorem 4 + inverse formula"
+  }
+ ]
+}

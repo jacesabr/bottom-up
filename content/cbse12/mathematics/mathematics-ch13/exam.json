@@ -1,0 +1,248 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "chapter": "mathematics-ch13",
+  "items": [
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:conditional-probability",
+      "kind": "practice",
+      "prompt": "The conditional probability P(E|F), provided P(F) is not 0, is given by:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "P(E intersect F) / P(F)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "P(E intersect F) / P(F)",
+        "options": [
+          "P(E intersect F) / P(F)",
+          "P(E intersect F) / P(E)",
+          "P(E) / P(F)",
+          "P(E) P(F)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Definition 1 (conditional probability)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:conditional-probability",
+      "kind": "practice",
+      "prompt": "If P(A) = 7/13, P(B) = 9/13 and P(A intersect B) = 4/13, then P(A|B) = (4/13)/(9/13). Give P(A|B) as a decimal to 3 places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.444",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.444,
+        "tol": 0.005
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Example 1"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:conditional-probability-complement",
+      "kind": "practice",
+      "prompt": "By the complement property of conditional probability, P(E'|F) equals:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "1 - P(E|F)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "1 - P(E|F)",
+        "options": [
+          "1 - P(E|F)",
+          "1 - P(F|E)",
+          "P(E|F) - 1",
+          "1 + P(E|F)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Property 3"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:multiplication-rule",
+      "kind": "practice",
+      "prompt": "By the multiplication rule of probability, P(E intersect F) equals:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "P(E) P(F|E)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "P(E) P(F|E)",
+        "options": [
+          "P(E) P(F|E)",
+          "P(E) + P(F|E)",
+          "P(E|F) / P(F)",
+          "P(E) - P(F|E)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Sec 13.3 Multiplication rule"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:multiplication-rule",
+      "kind": "practice",
+      "prompt": "An urn has 10 black and 5 white balls. Two are drawn without replacement. P(both black) = (10/15)(9/14). Give this probability as a decimal to 3 places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.429",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.429,
+        "tol": 0.005
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Example 8"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:independent-events",
+      "kind": "practice",
+      "prompt": "Two events E and F are independent if and only if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "P(E intersect F) = P(E) P(F)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "P(E intersect F) = P(E) P(F)",
+        "options": [
+          "P(E intersect F) = P(E) P(F)",
+          "P(E intersect F) = 0",
+          "P(E intersect F) = P(E) + P(F)",
+          "P(E) = P(F)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Definition 3 (independent events)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:mutually-independent-events",
+      "kind": "practice",
+      "prompt": "For three events A, B, C to be mutually independent, in addition to the three pairwise product conditions one also requires:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "P(A intersect B intersect C) = P(A) P(B) P(C)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "P(A intersect B intersect C) = P(A) P(B) P(C)",
+        "options": [
+          "P(A intersect B intersect C) = P(A) P(B) P(C)",
+          "P(A intersect B intersect C) = 0",
+          "P(A) = P(B) = P(C)",
+          "P(A) + P(B) + P(C) = 1"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Sec 13.4 Remark (iv) mutual independence"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:partition-sample-space",
+      "kind": "practice",
+      "prompt": "Events E1, E2, ..., En form a partition of the sample space S if they are pairwise disjoint, exhaustive and have:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "non-zero probabilities",
+      "expected": {
+        "kind": "mcq",
+        "correct": "non-zero probabilities",
+        "options": [
+          "non-zero probabilities",
+          "equal probabilities",
+          "zero probabilities",
+          "probabilities summing to less than 1"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Sec 13.5.1 Partition of a sample space"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:total-probability-theorem",
+      "kind": "practice",
+      "prompt": "For a partition {E1,...,En}, the theorem of total probability gives P(A) as:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the sum of P(Ej) P(A|Ej) over all j",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the sum of P(Ej) P(A|Ej) over all j",
+        "options": [
+          "the sum of P(Ej) P(A|Ej) over all j",
+          "the product of all P(Ej)",
+          "the sum of P(Ej|A) over all j",
+          "the maximum of P(A|Ej)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Sec 13.5.2 Theorem of total probability"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:total-probability-theorem",
+      "kind": "practice",
+      "prompt": "With P(B)=0.65, P(B')=0.35, P(A|B)=0.32 and P(A|B')=0.80, the total probability P(A) = 0.65*0.32 + 0.35*0.80. Give P(A) to 3 decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.488",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.488,
+        "tol": 0.001
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Example 15"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:random-variable",
+      "kind": "practice",
+      "prompt": "A random variable is a real valued function whose domain is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the sample space of a random experiment",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the sample space of a random experiment",
+        "options": [
+          "the sample space of a random experiment",
+          "the set of real numbers",
+          "a single outcome of the experiment",
+          "the probability of an event"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Remark (random variable)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:random-variable",
+      "kind": "practice",
+      "prompt": "A coin is tossed twice; X = number of heads. For the outcome HT, what is the value X(HT)?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 (random variable example X(HT)=1)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:bayes-theorem",
+      "kind": "practice",
+      "prompt": "By Bayes' theorem, P(Ei|A) equals:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "P(Ei) P(A|Ei) / sum_j P(Ej) P(A|Ej)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "P(Ei) P(A|Ei) / sum_j P(Ej) P(A|Ej)",
+        "options": [
+          "P(Ei) P(A|Ei) / sum_j P(Ej) P(A|Ej)",
+          "P(A|Ei) / P(Ei)",
+          "P(Ei) P(A|Ei)",
+          "sum_j P(Ej) P(A|Ej)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Bayes' Theorem statement"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch13:bayes-theorem",
+      "kind": "practice",
+      "prompt": "Bag I has 3 red, 4 black; Bag II has 5 red, 6 black; a bag is chosen at random and a red ball drawn. By Bayes' theorem P(Bag II | red) = (1/2 * 5/11) / (1/2 * 3/7 + 1/2 * 5/11) = 35/68. Give 35/68 as a decimal to 3 places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.515",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.515,
+        "tol": 0.005
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch13 Example 16"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch06",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch06:multiplication-principle",
+      "kind": "practice",
+      "prompt": "How many 3-digit numbers can be formed from the digits 1, 2, 3, 4 and 5 if repetition of the digits is allowed?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "125",
+      "expected": {
+        "kind": "mcq",
+        "correct": "125",
+        "options": [
+          "125",
+          "60",
+          "15",
+          "243"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.2 Fundamental principle of counting (cf. Exercise 6.1 Q1(i))"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch06:permutations-distinct-npr",
+      "kind": "practice",
+      "prompt": "How many 4-digit numbers can be formed by using the digits 1 to 9 if repetition of digits is not allowed? Compute 9P4.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3024",
+      "expected": {
+        "kind": "numeric",
+        "value": 3024,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.3 Example 10 (9P4 = 9!/5!)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch06:permutations-with-repetition",
+      "kind": "practice",
+      "prompt": "How many 4-letter words, with or without meaning, can be formed from the letters of the word ROSE if the repetition of the letters IS allowed? Compute the count.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "256",
+      "expected": {
+        "kind": "numeric",
+        "value": 256,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.3 (4^4 = 256, repetition allowed)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch06:permutations-not-all-distinct",
+      "kind": "practice",
+      "prompt": "Find the number of permutations of the letters of the word ALLAHABAD (9 letters, with 4 A's and 2 L's).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7560",
+      "expected": {
+        "kind": "numeric",
+        "value": 7560,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.3.4 Example 9 (9!/(4!2!) = 7560)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch06:combination-definition",
+      "kind": "practice",
+      "prompt": "A team of 2 players is to be formed from 3 lawn tennis players X, Y, Z. Is the team {X, Y} different from the team {Y, X}?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "No - they are the same team, because in a combination the order is not important",
+      "expected": {
+        "kind": "mcq",
+        "correct": "No - they are the same team, because in a combination the order is not important",
+        "options": [
+          "No - they are the same team, because in a combination the order is not important",
+          "Yes - they are different, because the order of the players matters",
+          "Yes - because each ordering is a separate permutation that must be counted",
+          "It cannot be decided without knowing the players' ranks"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.4 Combinations (order not important)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch06:combinations-ncr",
+      "kind": "practice",
+      "prompt": "A committee of 3 persons is to be constituted from a group of 5 persons. In how many ways can this be done? Compute 5C3.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "10",
+      "expected": {
+        "kind": "numeric",
+        "value": 10,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.4 Example 18 (5C3 = 5!/(3!2!) = 10)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch06:relate-permutations-combinations",
+      "kind": "practice",
+      "prompt": "Explain why the number of permutations of n different things taken r at a time is related to the number of combinations by nPr = nCr x r!. Illustrate with n = 4, r = 2.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "Each unordered combination of r objects can itself be arranged (ordered) in r! ways, so the r! orderings of every combination together produce all the ordered permutations; hence nPr = nCr x r!. For n = 4, r = 2: there are 4C2 = 6 combinations, each pair orders in 2! = 2 ways, so 4P2 = 6 x 2! = 12.",
+        "markPoints": [
+          "Each combination of r objects gives r! orderings (arrangements)",
+          "Therefore nPr = nCr x r!",
+          "Illustration: 4C2 = 6, times 2! = 12 = 4P2"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.4 Theorem 5 (nPr = nCr r!)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch06:combination-symmetry",
+      "kind": "practice",
+      "prompt": "If nC9 = nC8, use the symmetry of combinations to find the value of n.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "17",
+      "expected": {
+        "kind": "numeric",
+        "value": 17,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.4 Example 17 (nC9 = nC8 => 9 + 8 = n = 17)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch06:pascal-identity",
+      "kind": "practice",
+      "prompt": "Using Pascal's rule nCr + nC(r-1) = (n+1)Cr, evaluate 5C2 + 5C1.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "15",
+      "expected": {
+        "kind": "numeric",
+        "value": 15,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.4 Theorem 6 (5C2 + 5C1 = 6C2 = 15)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch06:solve-counting-problems",
+      "kind": "practice",
+      "prompt": "You are asked: 'In how many ways can a committee of 3 be chosen from 6 people?' and 'How many 3-letter words can be made from 6 distinct letters with no repetition?'. State which is a permutation and which is a combination, and explain the deciding test.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "The deciding test is whether order matters. Choosing a committee of 3 is a combination (the committee {A,B,C} is the same regardless of order), so use 6C3 = 20. Forming 3-letter words is a permutation (different orders give different words), so use 6P3 = 120. The key step is to ask whether reordering the chosen objects produces a new outcome: if no, combination (nCr); if yes, permutation (nPr).",
+        "markPoints": [
+          "Deciding test stated: does order matter?",
+          "Committee = combination (order irrelevant), 6C3 = 20",
+          "Words = permutation (order matters), 6P3 = 120"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.3-6.4 (choosing permutation vs combination)"
+    }
+  ]
+}

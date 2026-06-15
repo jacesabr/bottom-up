@@ -1,0 +1,303 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch07",
+  "title": "Binomial Theorem",
+  "book": "NCERT Class 11 maths — Binomial Theorem",
+  "goal": "jee:maths:maths-ch07:apply-binomial-theorem",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch07:binomial-expansions-pattern",
+      "slug": "binomial-expansions-pattern",
+      "title": "Read off the term, power and coefficient patterns in a binomial expansion",
+      "role": "bedrock",
+      "brief": "From the worked-out expansions of (a+b)^0 through (a+b)^4, recognise the three governing patterns: term count, how the powers of a and b change, and the constant index sum.",
+      "sec": 2,
+      "quote": "The total number of terms in the expansion is one more than the index.",
+      "explanation": "Looking at the known identities (a+b)^0 = 1, (a+b)^1 = a+b, (a+b)^2 = a^2+2ab+b^2, (a+b)^3 = a^3+3a^2b+3ab^2+b^3 and (a+b)^4, three patterns emerge that hold for every expansion. (i) The total number of terms is one more than the index n, so (a+b)^2 has 3 terms. (ii) The power of the first quantity 'a' decreases by 1 from term to term while the power of the second quantity 'b' increases by 1. (iii) In each term the sum of the indices of a and b is the same and equals n, the index of (a+b). These observations are the skeleton onto which the binomial coefficients are later attached.",
+      "keyMoves": [
+        "Count the terms as n+1, one more than the index",
+        "Make the power of a fall by 1 and the power of b rise by 1 across successive terms",
+        "Check that the indices of a and b sum to n in every term"
+      ],
+      "misconceptions": [
+        "Thinking the expansion of (a+b)^n has n terms rather than n+1",
+        "Letting the exponents of a and b vary independently instead of keeping their sum equal to n"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:binomial-coefficients-ncr",
+      "slug": "binomial-coefficients-ncr",
+      "title": "Compute the binomial coefficients nCr that fill Pascal's triangle",
+      "role": "bedrock",
+      "brief": "Rewrite the numbers in Pascal's triangle as combinations nCr = n!/(r!(n-r)!), so any coefficient can be found directly without building earlier rows.",
+      "sec": 2,
+      "quote": "For this, we make use of the concept of combinations studied earlier to rewrite",
+      "explanation": "Rather than reading coefficients off Pascal's triangle row by row, each entry is rewritten using combinations. The coefficient in the row for index n at position r is nCr = n!/(r!(n-r)!), valid for 0 <= r <= n with n a non-negative integer, and the end entries are nC0 = 1 = nCn. So the row for index 7 is 7C0, 7C1, ..., 7C7 without writing any earlier rows. These nCr are precisely the binomial coefficients that multiply each term of the expansion. A key identity used later in the proof is the Pascal rule kCr + kC(r-1) = (k+1)Cr.",
+      "keyMoves": [
+        "Evaluate any coefficient as nCr = n!/(r!(n-r)!)",
+        "Use nC0 = 1 = nCn for the first and last coefficients",
+        "Write the whole row for index n directly as nC0, nC1, ..., nCn"
+      ],
+      "misconceptions": [
+        "Computing nCr with the wrong factorial denominator r!(n-r)!",
+        "Believing you must build every earlier Pascal row to get a coefficient"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:binomial-expansions-pattern"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:pascals-triangle-expand",
+      "slug": "pascals-triangle-expand",
+      "title": "Build Pascal's triangle and use a row to expand a binomial",
+      "role": "intermediate",
+      "brief": "Generate successive rows of Pascal's triangle by adding adjacent entries, then use the required row together with the power patterns to expand a binomial.",
+      "sec": 2,
+      "quote": "Expansions for the higher powers of a binomial are also possible by using Pascal's triangle.",
+      "explanation": "Pascal's triangle arranges the expansion coefficients as a triangle with 1 at the top vertex and 1s running down both slanting sides. Each interior entry is the sum of the two entries diagonally above it in the previous row, so the addition of 1s in the index-1 row gives 2 in the index-2 row, and so on; this can be continued to any index. To expand, take the row for the required index and combine it with the patterns (powers of a decreasing, powers of b increasing, indices summing to n). For example the index-5 row 1 5 10 10 5 1 expands (2x + 3y)^5 = 32x^5 + 240x^4y + 720x^3y^2 + 1080x^2y^3 + 810xy^4 + 243y^5. For large indices building all the earlier rows is lengthy, which motivates the nCr coefficients and the binomial theorem.",
+      "keyMoves": [
+        "Build each new row by adding adjacent entries of the row above, with 1s at both ends",
+        "Pick the row matching the required index",
+        "Combine that row with the power patterns to write the full expansion"
+      ],
+      "misconceptions": [
+        "Forgetting to substitute the whole term (e.g. using x instead of 2x) into each power",
+        "Misaligning the row entries with the wrong powers of a and b"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:binomial-expansions-pattern"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:state-binomial-theorem",
+      "slug": "state-binomial-theorem",
+      "title": "State the binomial theorem for a positive integral index n",
+      "role": "intermediate",
+      "brief": "Write the general expansion of (a+b)^n with binomial coefficients, in both the term-by-term and sigma-notation forms, and know it is proved by induction.",
+      "sec": 2,
+      "quote": "An expansion of a binomial to any positive integral index say *n* can now be visualised using these observations.",
+      "explanation": "The binomial theorem states that for any positive integer n, (a+b)^n = nC0 a^n + nC1 a^(n-1) b + nC2 a^(n-2) b^2 + ... + nC(n-1) a b^(n-1) + nCn b^n. It is proved by the principle of mathematical induction: P(1) holds, and assuming P(k) one shows P(k+1) using the Pascal identity kCr + kC(r-1) = (k+1)Cr together with kC0 = 1 and kCk = 1. Equivalently it is written compactly as (a+b)^n = sum over k from 0 to n of nCk a^(n-k) b^k. There are (n+1) terms; the index of a falls from n to 0 while the index of b rises from 0 to n, and the two indices always sum to n.",
+      "keyMoves": [
+        "Write (a+b)^n = nC0 a^n + nC1 a^(n-1) b + ... + nCn b^n",
+        "Express it in sigma form as the sum of nCk a^(n-k) b^k for k = 0 to n",
+        "Recall it is established by mathematical induction using the Pascal identity"
+      ],
+      "misconceptions": [
+        "Omitting the binomial coefficients nCr and writing only the powers",
+        "Letting the powers of a and b fail to sum to n in the general term"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:binomial-coefficients-ncr",
+        "jee:maths:maths-ch07:pascals-triangle-expand"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:expand-binomial",
+      "slug": "expand-binomial",
+      "title": "Expand a given binomial power using the binomial theorem",
+      "role": "intermediate",
+      "brief": "Apply the theorem to a concrete binomial, substituting each part (including fractions or powers of x) carefully and simplifying every term.",
+      "sec": 2,
+      "quote": "We illustrate this theorem by expanding  $(x + 2)^6$ :",
+      "explanation": "To expand a specific binomial, match its two parts to a and b and apply the theorem term by term. For (x + 2)^6 the coefficients are 6C0,...,6C6 and the result simplifies to x^6 + 12x^5 + 60x^4 + 160x^3 + 240x^2 + 192x + 64. The same method handles parts that are themselves powers or fractions: for (x^2 + 3/x)^4, treating a = x^2 and b = 3/x gives x^8 + 12x^5 + 54x^2 + 108/x + 81/x^4 (Example 1). The discipline is to raise the entire bracketed quantity to its power - (x^2)^3, (3/x)^2 and so on - and then simplify, rather than just the variable.",
+      "keyMoves": [
+        "Identify the two parts as a and b, including any coefficient, fraction or power",
+        "Write each term nCr a^(n-r) b^r and raise the whole part to its power",
+        "Simplify every term to lowest form to get the final expansion"
+      ],
+      "misconceptions": [
+        "Raising only the variable and dropping the numerical coefficient of a part (e.g. forgetting the 3 in (3/x)^2)",
+        "Mishandling negative or fractional parts when squaring or cubing them"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:state-binomial-theorem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:expand-x-minus-y",
+      "slug": "expand-x-minus-y",
+      "title": "Expand a difference (x - y)^n with alternating signs",
+      "role": "intermediate",
+      "brief": "Specialise the theorem to b = -y so that the terms alternate in sign, the general term carrying a factor (-1)^r.",
+      "sec": 2,
+      "quote": "Some special cases In the expansion of",
+      "explanation": "Taking a = x and b = -y in the theorem gives (x - y)^n = [x + (-y)]^n = nC0 x^n - nC1 x^(n-1) y + nC2 x^(n-2) y^2 - ... + (-1)^n nCn y^n. The only new feature is the sign: because each b is -y, the term in y^r carries (-1)^r, so the signs alternate +, -, +, - across the expansion. For instance (x - 2y)^5 = x^5 - 10x^4 y + 40x^3 y^2 - 80x^2 y^3 + 80x y^4 - 32 y^5. The magnitudes are exactly the binomial-theorem coefficients; only the alternating sign is added.",
+      "keyMoves": [
+        "Substitute b = -y into the binomial theorem",
+        "Attach the factor (-1)^r so that signs alternate +, -, +, ...",
+        "Keep the coefficient magnitudes equal to the ordinary binomial coefficients"
+      ],
+      "misconceptions": [
+        "Making every term negative instead of alternating the signs",
+        "Forgetting that an even power of (-y) is positive, so (-1)^r flips only on odd r"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:state-binomial-theorem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:special-case-one-plus-x",
+      "slug": "special-case-one-plus-x",
+      "title": "Expand (1 + x)^n and derive the sum of all binomial coefficients",
+      "role": "intermediate",
+      "brief": "Set a = 1, b = x to expand (1+x)^n in terms of nCr, then put x = 1 to show the coefficients add to 2^n.",
+      "sec": 2,
+      "quote": "In particular, for x = 1, we have",
+      "explanation": "Taking a = 1 and b = x in the theorem gives (1 + x)^n = nC0 + nC1 x + nC2 x^2 + nC3 x^3 + ... + nCn x^n, since every power of 1 is 1. This is the standard form used when one part is unity. Substituting x = 1 collapses every power to 1 and yields 2^n = nC0 + nC1 + nC2 + ... + nCn, i.e. the sum of all the binomial coefficients in the n-th row equals 2^n. This identity is a frequent tool for evaluating coefficient sums.",
+      "keyMoves": [
+        "Set a = 1, b = x to get (1+x)^n = nC0 + nC1 x + ... + nCn x^n",
+        "Substitute x = 1 to collapse the powers",
+        "Conclude 2^n = nC0 + nC1 + ... + nCn"
+      ],
+      "misconceptions": [
+        "Keeping powers of 1 in the expansion instead of simplifying them to 1",
+        "Forgetting nC0 (the 1 term) when summing the coefficients"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:state-binomial-theorem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:special-case-one-minus-x",
+      "slug": "special-case-one-minus-x",
+      "title": "Expand (1 - x)^n and derive the alternating sum of coefficients",
+      "role": "intermediate",
+      "brief": "Set a = 1, b = -x to expand (1-x)^n with alternating signs, then put x = 1 to show the alternating coefficient sum is zero.",
+      "sec": 2,
+      "quote": "In particular, for x = 1, we get",
+      "explanation": "Taking a = 1 and b = -x gives (1 - x)^n = nC0 - nC1 x + nC2 x^2 - ... + (-1)^n nCn x^n, the alternating-sign companion of the (1+x)^n expansion. Substituting x = 1 then gives 0 = nC0 - nC1 + nC2 - ... + (-1)^n nCn, so the alternating sum of the binomial coefficients vanishes. Together with the 2^n result, this pair of substitutions lets you evaluate sums of binomial coefficients quickly.",
+      "keyMoves": [
+        "Set a = 1, b = -x to get (1-x)^n = nC0 - nC1 x + ... + (-1)^n nCn x^n",
+        "Substitute x = 1",
+        "Conclude 0 = nC0 - nC1 + nC2 - ... + (-1)^n nCn"
+      ],
+      "misconceptions": [
+        "Dropping the alternating signs when setting x = 1",
+        "Confusing this zero alternating sum with the 2^n total sum from (1+x)^n"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:special-case-one-plus-x"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:evaluate-numerical-power",
+      "slug": "evaluate-numerical-power",
+      "title": "Evaluate a numerical power by splitting the base for the binomial theorem",
+      "role": "intermediate",
+      "brief": "Write a number as a convenient sum or difference (e.g. 98 = 100 - 2) and expand its power by the binomial theorem to compute it exactly.",
+      "sec": 2,
+      "quote": "We express 98 as the sum or difference of two numbers whose powers are easier to calculate, and then use Binomial Theorem.",
+      "explanation": "To evaluate a high power of a number, split the base into two parts whose powers are easy, usually a round number plus or minus a small number, then apply the binomial theorem. For (98)^5, write 98 = 100 - 2, so (98)^5 = (100 - 2)^5 = 5C0 (100)^5 - 5C1 (100)^4 (2) + 5C2 (100)^3 2^2 - 5C3 (100)^2 2^3 + 5C4 (100) 2^4 - 5C5 2^5 = 9039207968. The signs alternate because the second part is negative. Choosing the split so one part is a power of ten keeps the arithmetic simple.",
+      "keyMoves": [
+        "Rewrite the base as a round number plus or minus a small number",
+        "Apply the binomial theorem to the split form, watching the alternating signs for a difference",
+        "Add the computed terms to get the exact value"
+      ],
+      "misconceptions": [
+        "Choosing a split whose parts are no easier to raise to powers than the original",
+        "Losing the alternating signs when the second part is negative"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:expand-x-minus-y"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:compare-by-first-terms",
+      "slug": "compare-by-first-terms",
+      "title": "Compare or approximate a power using the first few binomial terms",
+      "role": "intermediate",
+      "brief": "Expand a power like (1.01)^1000000 with the binomial theorem and keep only the leading terms (all remaining terms positive) to bound or approximate it.",
+      "sec": 2,
+      "quote": "Splitting 1.01 and using binomial theorem to write the first few terms we have",
+      "explanation": "When a number is close to 1, split it as 1 + a small quantity and expand by the binomial theorem; the first few terms already settle a comparison because the omitted terms are all positive. To compare (1.01)^1000000 with 10000, write 1.01 = 1 + 0.01, so (1.01)^1000000 = 1000000C0 + 1000000C1 (0.01) + (other positive terms) = 1 + 1000000 x 0.01 + (other positive terms) = 1 + 10000 + (positive terms) > 10000. Keeping the first two terms and noting the rest are positive proves the inequality without computing the whole expansion; the same idea gives approximations by truncating after a few terms.",
+      "keyMoves": [
+        "Split the base as 1 + (small quantity) and expand by the binomial theorem",
+        "Keep the first few terms and note the remaining terms are all positive",
+        "Use the partial sum to bound (greater than) or approximate the value"
+      ],
+      "misconceptions": [
+        "Dropping later terms without checking they are positive (so the inequality direction is justified)",
+        "Treating a truncated sum as exact rather than as a bound or approximation"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:special-case-one-plus-x"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:divisibility-proof",
+      "slug": "divisibility-proof",
+      "title": "Prove divisibility or remainder results using the binomial theorem",
+      "role": "intermediate",
+      "brief": "Expand a power of the form (1 + a)^n, factor out a power of a from the higher terms, and read off the divisibility or remainder.",
+      "sec": 2,
+      "quote": "in order to show that  $6^n - 5n$  leaves remainder 1 when divided by 25, we prove that",
+      "explanation": "Many divisibility and remainder results follow by expanding (1 + a)^n = nC0 + nC1 a + nC2 a^2 + ... + nCn a^n and grouping. To show 6^n - 5n leaves remainder 1 on division by 25, set a = 5: 6^n = (1 + 5)^n = 1 + 5n + 5^2 nC2 + 5^3 nC3 + ... + 5^n. Subtracting 5n gives 6^n - 5n = 1 + 25(nC2 + 5 nC3 + ... + 5^(n-2)) = 25k + 1, where k is a natural number, so the remainder is 1. The technique is to isolate the first one or two terms and factor the common power of a (here 5^2 = 25) out of all the rest.",
+      "keyMoves": [
+        "Expand the relevant power as (1 + a)^n by the binomial theorem",
+        "Separate the low-order terms and factor a power of a out of the remaining terms",
+        "Write the result as (divisor) x k + remainder to read off divisibility or remainder"
+      ],
+      "misconceptions": [
+        "Failing to factor the common power of a out of every higher term, so the divisor is not clean",
+        "Mis-identifying which low-order terms stay outside the factored bracket"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:special-case-one-plus-x"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch07:apply-binomial-theorem",
+      "slug": "apply-binomial-theorem",
+      "title": "Apply the binomial theorem to expand, evaluate and prove",
+      "role": "goal",
+      "brief": "Use the binomial theorem and its special cases as a single toolkit: expand any binomial power, evaluate numerical powers, compare or approximate, and prove divisibility results.",
+      "sec": 1,
+      "quote": "It gives an easier way to expand  $(a + b)^n$ , where *n* is an integer or a rational number.",
+      "explanation": "The binomial theorem gives an easier way to expand (a+b)^n for a positive integral index, replacing repeated multiplication and the lengthy building of Pascal's triangle. Mastery means choosing the right form for the task: the general theorem to expand any binomial (including fractional or signed parts); the (x-y)^n and (1+/-x)^n special cases for alternating signs and coefficient sums (2^n and the zero alternating sum); splitting a base to evaluate numerical powers like (98)^5; keeping the leading terms to compare or approximate values like (1.01)^1000000; and expanding (1+a)^n then factoring to prove divisibility and remainder results. All of these rest on the same expansion with its (n+1) terms and nCr binomial coefficients.",
+      "keyMoves": [
+        "Select the appropriate form (general theorem or a special case) for the problem at hand",
+        "Carry out the expansion correctly: nCr coefficients, decreasing/increasing powers, correct signs",
+        "Apply it to evaluate numerical powers, compare/approximate, or prove divisibility and coefficient-sum results"
+      ],
+      "misconceptions": [
+        "Reaching for repeated multiplication or full Pascal's triangle instead of the theorem",
+        "Using the wrong specialisation (e.g. ignoring the alternating signs of a difference)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch07:expand-binomial",
+        "jee:maths:maths-ch07:expand-x-minus-y",
+        "jee:maths:maths-ch07:special-case-one-plus-x",
+        "jee:maths:maths-ch07:special-case-one-minus-x",
+        "jee:maths:maths-ch07:evaluate-numerical-power",
+        "jee:maths:maths-ch07:compare-by-first-terms",
+        "jee:maths:maths-ch07:divisibility-proof"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

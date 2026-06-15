@@ -1,0 +1,169 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch03",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch03:degree-radian-conversion",
+      "kind": "practice",
+      "prompt": "Convert 25 degrees into radian measure. Give the answer as a decimal (radians), using pi = 3.14159.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.4363",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.4363,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Sec 3.2 Exercise 3.1 Q1(i)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch03:arc-length-formula",
+      "kind": "practice",
+      "prompt": "A pendulum 75 cm long swings so that its tip describes an arc of length 10 cm. Using l = r*theta, find the angle in radians through which it swings. Give a decimal answer.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.1333",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.1333,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Sec 3.2 Exercise 3.1 Q7(i)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch03:pythagorean-identity",
+      "kind": "practice",
+      "prompt": "Given cos x = -3/5 and that x lies in the third quadrant, find sin x. Give the answer as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-0.8",
+      "expected": {
+        "kind": "numeric",
+        "value": -0.8,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Example 6 (sin^2 x + cos^2 x = 1, sign by quadrant)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch03:periodicity-and-graphs",
+      "kind": "practice",
+      "prompt": "Using the fact that sin repeats after 2*pi, evaluate sin(31*pi/3). Give a decimal value.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.8660",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.866,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Example 8 (periodicity of sine)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch03:sine-sum-difference",
+      "kind": "practice",
+      "prompt": "Using sin(45 deg - 30 deg), find the value of sin 15 degrees. Give a decimal value.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.2588",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.2588,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Example 11 (sin(x - y) formula)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch03:cosine-sum-difference",
+      "kind": "practice",
+      "prompt": "State the identity for cos(x + y) and prove that cos(x - y) = cos x cos y + sin x sin y follows from it.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "cos(x + y) = cos x cos y - sin x sin y. To get cos(x - y), replace y by -y: cos(x + (-y)) = cos x cos(-y) - sin x sin(-y). Using cos(-y) = cos y and sin(-y) = -sin y, this becomes cos x cos y + sin x sin y, which is cos(x - y).",
+        "markPoints": [
+          "States cos(x + y) = cos x cos y - sin x sin y correctly",
+          "Replaces y by -y in that identity",
+          "Uses cos(-y) = cos y and sin(-y) = -sin y to reach cos(x - y) = cos x cos y + sin x sin y"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Sec 3.4 Identities 3 and 4"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch03:tangent-sum-difference",
+      "kind": "practice",
+      "prompt": "Using tan(pi + x) = tan x and the difference formula, find the value of tan(13*pi/12). Give a decimal value.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.2679",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.2679,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Example 12 (tan(x - y) formula)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch03:triple-angle-identities",
+      "kind": "practice",
+      "prompt": "The identity sin 3x expressed in terms of sin x is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "3 sin x - 4 sin^3 x",
+      "expected": {
+        "kind": "mcq",
+        "correct": "3 sin x - 4 sin^3 x",
+        "options": [
+          "3 sin x - 4 sin^3 x",
+          "4 sin^3 x - 3 sin x",
+          "3 sin x + 4 sin^3 x",
+          "4 cos^3 x - 3 cos x"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Sec 3.4 Identity 17 (sin 3x)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch03:sum-to-product-identities",
+      "kind": "practice",
+      "prompt": "Using the sum-to-product identities, the numerator cos 7x + cos 5x simplifies to:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "2 cos 6x cos x",
+      "expected": {
+        "kind": "mcq",
+        "correct": "2 cos 6x cos x",
+        "options": [
+          "2 cos 6x cos x",
+          "2 sin 6x sin x",
+          "2 cos 6x sin x",
+          "-2 sin 6x sin x"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Example 16 (sum-to-product identity 20(i))"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities",
+      "kind": "practice",
+      "prompt": "Prove that cos(pi/4 + x) + cos(pi/4 - x) = sqrt(2) cos x.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "Apply cos A + cos B = 2 cos((A+B)/2) cos((A-B)/2) with A = pi/4 + x, B = pi/4 - x. Then (A+B)/2 = pi/4 and (A-B)/2 = x, so the sum is 2 cos(pi/4) cos x = 2 (1/sqrt(2)) cos x = sqrt(2) cos x.",
+        "markPoints": [
+          "Uses cos A + cos B = 2 cos((A+B)/2) cos((A-B)/2)",
+          "Computes (A+B)/2 = pi/4 and (A-B)/2 = x",
+          "Substitutes cos(pi/4) = 1/sqrt(2) to get sqrt(2) cos x"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch03 Example 15 (combining identities)"
+    }
+  ]
+}

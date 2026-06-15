@@ -1,0 +1,227 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch13",
+ "title": "Probability",
+ "book": "NCERT Class 12 Mathematics Part II",
+ "goal": "jee:maths:maths-c12-ch13:bayes-theorem",
+ "narrative": "This rationalised NCERT chapter builds from conditional probability through the multiplication theorem, independence of events, the partition of a sample space and the theorem of total probability up to the capstone Bayes' theorem (reverse / a posteriori probability). The notion of a random variable is also introduced. Every node carries a clean verbatim source statement; the deterministic gates use the worked numeric examples of the chapter.",
+ "nodes": [
+  {
+   "id": "jee:maths:maths-c12-ch13:conditional-probability",
+   "slug": "conditional-probability",
+   "title": "Compute a conditional probability",
+   "role": "bedrock",
+   "brief": "Find P(E|F), the probability of E given that F has occurred, as P(E and F) / P(F).",
+   "sec": 2,
+   "quote": "the conditional probability of the event E given that F has occurred, i.e. P (EIF) is given by",
+   "explanation": "If E and F are two events of the same sample space, the conditional probability of E given that F has occurred, P(E|F), is P(E intersect F) / P(F), provided P(F) is not 0. It re-scopes the sample space to the outcomes favourable to F. For example, if P(A)=7/13, P(B)=9/13 and P(A and B)=4/13, then P(A|B) = (4/13)/(9/13) = 4/9.",
+   "keyMoves": [
+    "Identify the conditioning event F and check P(F) is not 0",
+    "Compute P(E intersect F) and P(F)",
+    "Divide: P(E|F) = P(E intersect F) / P(F)"
+   ],
+   "misconceptions": [
+    "Dividing by P(E) instead of P(F)",
+    "Applying the formula when P(F) = 0"
+   ],
+   "prereqs": [],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch13:conditional-probability-complement",
+   "slug": "conditional-probability-complement",
+   "title": "Use the complement property of conditional probability",
+   "role": "intermediate",
+   "brief": "Apply P(E'|F) = 1 - P(E|F).",
+   "sec": 2,
+   "quote": "Property 3 P(E'|F) = 1 - P(E|F)",
+   "explanation": "Among the properties of conditional probability, Property 3 states that P(E'|F) = 1 - P(E|F): conditioning on F, the event E and its complement E' still have conditional probabilities summing to 1. This follows because P(S|F) = 1 and E, E' are disjoint with union S. It lets you find the conditional probability of a complement without recomputing from scratch.",
+   "keyMoves": [
+    "Compute or recall P(E|F)",
+    "Subtract from 1 to get P(E'|F)",
+    "Use the fact that P(S|F) = 1 to justify it"
+   ],
+   "misconceptions": [
+    "Writing P(E'|F) = 1 - P(F|E) (wrong conditioning order)",
+    "Forgetting the conditioning event F stays the same on both sides"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch13:conditional-probability"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch13:multiplication-rule",
+   "slug": "multiplication-rule",
+   "title": "Apply the multiplication rule of probability",
+   "role": "intermediate",
+   "brief": "Use P(E and F) = P(E) P(F|E) = P(F) P(E|F) to find the probability of a simultaneous occurrence.",
+   "sec": 3,
+   "quote": "The above result is known as the multiplication rule of probability.",
+   "explanation": "Rearranging the conditional-probability formula gives the multiplication rule of probability: P(E intersect F) = P(E) P(F|E) = P(F) P(E|F), provided P(E) and P(F) are non-zero. It finds the probability that both events occur. For three events it extends to P(E intersect F intersect G) = P(E) P(F|E) P(G|EF). For example, drawing two black balls without replacement from 10 black and 5 white gives (10/15)(9/14) = 3/7.",
+   "keyMoves": [
+    "Identify the order in which the events occur",
+    "Multiply P(first) by the conditional probability of the next given the first",
+    "Extend the product for three or more events"
+   ],
+   "misconceptions": [
+    "Multiplying unconditional probabilities when the events are dependent",
+    "Forgetting to update the conditional probability after the first event (e.g. without replacement)"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch13:conditional-probability"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch13:independent-events",
+   "slug": "independent-events",
+   "title": "Test two events for independence",
+   "role": "intermediate",
+   "brief": "Recognise E and F as independent when P(E and F) = P(E) P(F).",
+   "sec": 4,
+   "quote": "Let E and F be two events associated with the same random experiment, then E and F are said to be independent if",
+   "explanation": "Two events E and F associated with the same random experiment are independent if P(E intersect F) = P(E) P(F); equivalently P(E|F) = P(E) and P(F|E) = P(F), so the occurrence of one does not affect the probability of the other. To test independence, compute P(E intersect F) and compare it with the product P(E) P(F). They are dependent if these differ. Independence is not the same as being mutually exclusive.",
+   "keyMoves": [
+    "Compute P(E), P(F) and P(E intersect F)",
+    "Check whether P(E intersect F) = P(E) P(F)",
+    "Conclude independent if equal, dependent if not"
+   ],
+   "misconceptions": [
+    "Confusing independent events with mutually exclusive events",
+    "Concluding independence from P(E|F) alone without checking the product rule"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch13:multiplication-rule"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch13:mutually-independent-events",
+   "slug": "mutually-independent-events",
+   "title": "Test three events for mutual independence",
+   "role": "intermediate",
+   "brief": "Check that all pairwise products and the triple product equal the corresponding intersection probabilities.",
+   "sec": 4,
+   "quote": "Three events A, B and C are said to be mutually independent, if",
+   "explanation": "Three events A, B and C are said to be mutually independent if all four conditions hold: P(A intersect B) = P(A)P(B), P(A intersect C) = P(A)P(C), P(B intersect C) = P(B)P(C), and P(A intersect B intersect C) = P(A)P(B)P(C). If at least one of these is not true, the events are not (mutually) independent. Pairwise independence alone is not enough; the triple-product condition must also hold.",
+   "keyMoves": [
+    "Verify each of the three pairwise product conditions",
+    "Verify the triple-product condition P(A and B and C) = P(A)P(B)P(C)",
+    "Declare mutual independence only if all four hold"
+   ],
+   "misconceptions": [
+    "Concluding mutual independence from pairwise independence alone",
+    "Forgetting the triple-product condition"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch13:independent-events"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch13:partition-sample-space",
+   "slug": "partition-sample-space",
+   "title": "Recognise a partition of the sample space",
+   "role": "intermediate",
+   "brief": "Identify events E1..En as a partition: pairwise disjoint, exhaustive, with non-zero probability.",
+   "sec": 5,
+   "quote": "the events  $E_1, E_2, ..., E_n$  represent a partition of the sample space S if they are pairwise disjoint, exhaustive and have nonzero probabilities.",
+   "explanation": "A set of events E1, E2, ..., En represents a partition of the sample space S if they are pairwise disjoint (Ei intersect Ej = empty for i not equal j), exhaustive (their union is S) and have non-zero probabilities. For example, any non-empty event E and its complement E' form a partition. Partitions are the setting for the theorem of total probability and Bayes' theorem.",
+   "keyMoves": [
+    "Check the events are pairwise disjoint",
+    "Check their union is the whole sample space S",
+    "Check each has non-zero probability"
+   ],
+   "misconceptions": [
+    "Allowing overlapping events in a partition",
+    "Forgetting the events must cover the entire sample space"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch13:conditional-probability"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch13:total-probability-theorem",
+   "slug": "total-probability-theorem",
+   "title": "Apply the theorem of total probability",
+   "role": "intermediate",
+   "brief": "Compute P(A) as the sum of P(Ej) P(A|Ej) over a partition E1..En.",
+   "sec": 5,
+   "quote": "Let A be any event associated with S, then",
+   "explanation": "If {E1, E2, ..., En} is a partition of the sample space S, each with non-zero probability, and A is any event associated with S, then by the theorem of total probability P(A) = P(E1)P(A|E1) + P(E2)P(A|E2) + ... + P(En)P(A|En) = sum over j of P(Ej)P(A|Ej). It assembles P(A) by conditioning on which part of the partition occurs. For example, with P(B)=0.65, P(A|B)=0.32, P(A|B')=0.80, P(A) = 0.65*0.32 + 0.35*0.80 = 0.488.",
+   "keyMoves": [
+    "Identify a partition E1..En of the sample space",
+    "Find P(Ej) and the conditional P(A|Ej) for each part",
+    "Sum the products P(Ej)P(A|Ej) to get P(A)"
+   ],
+   "misconceptions": [
+    "Forgetting one part of the partition (sum no longer equals P(A))",
+    "Using P(Ej|A) instead of P(A|Ej) in the sum"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch13:multiplication-rule",
+    "jee:maths:maths-c12-ch13:partition-sample-space"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch13:random-variable",
+   "slug": "random-variable",
+   "title": "Define a random variable",
+   "role": "bedrock",
+   "brief": "Recognise a random variable as a real valued function on the sample space of a random experiment.",
+   "sec": 5,
+   "quote": "A random variable is a real valued function whose domain is the sample space of a random experiment.",
+   "explanation": "A random variable is a real valued function whose domain is the sample space of a random experiment: it assigns a real number to each outcome. For tossing a coin twice, S = {HH, HT, TH, TT}, and X = number of heads gives X(HH)=2, X(HT)=1, X(TH)=1, X(TT)=0. More than one random variable can be defined on the same sample space (e.g. Y = heads minus tails).",
+   "keyMoves": [
+    "Take the sample space of the experiment as the domain",
+    "Assign a real number to each outcome by a rule",
+    "Recognise this rule as a random variable"
+   ],
+   "misconceptions": [
+    "Thinking a random variable is itself a probability (it is a function on outcomes)",
+    "Believing only one random variable can be defined on a sample space"
+   ],
+   "prereqs": [],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch13:bayes-theorem",
+   "slug": "bayes-theorem",
+   "title": "Apply Bayes' theorem to find a reverse probability",
+   "role": "goal",
+   "brief": "Use Bayes' theorem to find P(Ei|A) from the priors P(Ei) and the likelihoods P(A|Ei).",
+   "sec": 5,
+   "quote": "Bayes' theorem is also called the formula for the probability of",
+   "explanation": "Bayes' theorem solves the reverse-probability problem: given a partition E1..En of S and an event A of non-zero probability, P(Ei|A) = P(Ei)P(A|Ei) / sum over j of P(Ej)P(A|Ej). The Ei are the hypotheses, P(Ei) the prior (priori) probabilities and P(Ei|A) the posterior (a posteriori) probabilities; Bayes' theorem is also called the formula for the probability of causes. Its denominator is exactly the theorem of total probability. For example, with two bags it gives the chance a red ball came from Bag II; in the HIV-test example it gives P(actually HIV | tested positive) = 90/1089 ≈ 0.083.",
+   "keyMoves": [
+    "Set up the partition (hypotheses) and their prior probabilities P(Ei)",
+    "Find the likelihoods P(A|Ei) and form the denominator by total probability",
+    "Apply P(Ei|A) = P(Ei)P(A|Ei) / sum P(Ej)P(A|Ej)"
+   ],
+   "misconceptions": [
+    "Confusing the prior P(Ei) with the posterior P(Ei|A)",
+    "Swapping P(A|Ei) and P(Ei|A) in the formula"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch13:total-probability-theorem",
+    "jee:maths:maths-c12-ch13:conditional-probability-complement",
+    "jee:maths:maths-c12-ch13:mutually-independent-events",
+    "jee:maths:maths-c12-ch13:random-variable"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  }
+ ]
+}

@@ -1,0 +1,304 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch13",
+  "title": "Statistics",
+  "book": "NCERT Class 11 maths — Statistics",
+  "goal": "jee:maths:maths-ch13:analyse-dispersion",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch13:why-dispersion",
+      "slug": "why-dispersion",
+      "title": "Explain why a measure of dispersion is needed beyond central tendency",
+      "role": "bedrock",
+      "brief": "Recognise that two data sets can share the same mean and median yet differ greatly in spread, so a single number describing scatter — a measure of dispersion — is required.",
+      "sec": 1,
+      "quote": "the measures of central tendency are not sufficient to give complete information about a given data.",
+      "explanation": "A measure of central tendency (mean, median, mode) only tells us roughly where the data are centred; it says nothing about how scattered the values are. The classic example is two batsmen whose ten scores have identical mean 53 and median 53, yet batsman A's scores run from 0 to 117 while batsman B's stay between 46 and 60 — clearly their performances are not the same. Because variability is a separate feature of data, we want a single number to describe it, and this single number is called a measure of dispersion. The chapter studies four such measures (range, quartile deviation, mean deviation, standard deviation), all but quartile deviation in detail.",
+      "keyMoves": [
+        "State that mean and median locate the centre but not the spread of data",
+        "Show by example that equal mean/median can hide very different scatter (batsman A vs B)",
+        "Name the single number describing variability as a 'measure of dispersion'"
+      ],
+      "misconceptions": [
+        "Believing two data sets with the same mean must be equally spread",
+        "Thinking central tendency alone fully summarises a data set"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:range",
+      "slug": "range",
+      "title": "Compute the range of a data set as maximum minus minimum",
+      "role": "bedrock",
+      "brief": "Find the range, the simplest measure of dispersion, as the difference between the largest and smallest observation, and note its limitation.",
+      "sec": 3,
+      "quote": "Thus, Range of a series = Maximum value – Minimum value.",
+      "explanation": "The range is the crudest measure of dispersion: Range = Maximum value − Minimum value. For batsman A the range is 117 − 0 = 117 and for batsman B it is 60 − 46 = 14, so A's scores are far more dispersed than B's. The range is easy to compute and gives a rough idea of scatter, but it uses only the two extreme values and ignores how the rest of the data are distributed about the centre. It therefore does not measure dispersion from a central tendency, which is why finer measures (mean deviation, standard deviation) that depend on the deviations of every observation are needed.",
+      "keyMoves": [
+        "Identify the maximum and minimum observations in the data",
+        "Compute Range = Maximum value − Minimum value",
+        "State the limitation: it uses only the extremes, not scatter about the centre"
+      ],
+      "misconceptions": [
+        "Adding the extreme values instead of subtracting them",
+        "Treating the range as a full description of dispersion rather than a rough one"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:why-dispersion"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:mean-deviation-definition",
+      "slug": "mean-deviation-definition",
+      "title": "Define mean deviation about a central value as the mean of absolute deviations",
+      "role": "intermediate",
+      "brief": "Define mean deviation about a value 'a' as the average of the absolute deviations |x_i − a|, and explain why absolute values are used.",
+      "sec": 4,
+      "quote": "Thus mean deviation about a central value 'a' is the mean of the absolute values of the deviations of the observations from 'a'.",
+      "explanation": "The deviation of an observation x from a fixed value 'a' is x − a. If we simply averaged the signed deviations about the mean they would cancel and sum to zero, which is useless for measuring spread. So we take the absolute values |x_i − a|, which measure the distance of each observation from 'a' on the number line, and average them. Mean deviation about 'a' is the mean of the absolute values of the deviations of the observations from 'a', denoted M.D.(a) = (sum of |x_i − a|) / (number of observations). It can be taken about any central value, but mean deviation about the mean (using a = x̄) and about the median (using a = M) are the ones commonly used.",
+      "keyMoves": [
+        "Form each deviation x_i − a from the chosen central value 'a'",
+        "Take absolute values |x_i − a| (so positives and negatives do not cancel)",
+        "Average them: M.D.(a) = (sum of |x_i − a|) / n"
+      ],
+      "misconceptions": [
+        "Averaging signed deviations (which sum to zero about the mean) instead of absolute ones",
+        "Thinking mean deviation can only be measured about the mean, not the median"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:why-dispersion"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:mean-deviation-ungrouped",
+      "slug": "mean-deviation-ungrouped",
+      "title": "Compute mean deviation about mean and median for ungrouped data",
+      "role": "intermediate",
+      "brief": "Carry out the step-wise calculation of M.D.(x̄) and M.D.(M) for a raw list of observations.",
+      "sec": 4,
+      "quote": "The following steps are involved in the calculation of mean deviation about mean or median:",
+      "explanation": "For n raw observations the procedure is: (1) find the central value 'a' — the mean x̄ = (1/n)Σx_i, or the median M (arrange in order; for odd n the median is the ((n+1)/2)-th value, for even n the mean of the (n/2)-th and (n/2 + 1)-th values); (2) form the deviations x_i − a; (3) drop the signs to get |x_i − a|; (4) average them. So M.D.(x̄) = (1/n)Σ|x_i − x̄| and M.D.(M) = (1/n)Σ|x_i − M|. For example, the data 6, 7, 10, 12, 13, 4, 8, 12 have mean 9 and absolute deviations 3, 2, 1, 3, 4, 5, 1, 3 summing to 22, giving M.D.(x̄) = 22/8 = 2.75.",
+      "keyMoves": [
+        "Compute the mean, or sort and take the median, as the central value",
+        "Form the absolute deviations |x_i − a| of every observation",
+        "Average them: M.D.(x̄) = (1/n)Σ|x_i − x̄| or M.D.(M) = (1/n)Σ|x_i − M|"
+      ],
+      "misconceptions": [
+        "Forgetting to sort the data before reading off the median",
+        "Dividing the summed absolute deviations by something other than the count n"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:mean-deviation-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:mean-deviation-discrete",
+      "slug": "mean-deviation-discrete",
+      "title": "Compute mean deviation for a discrete frequency distribution",
+      "role": "intermediate",
+      "brief": "Weight each distinct value by its frequency to find M.D. about mean or median for a discrete frequency distribution.",
+      "sec": 4,
+      "quote": "and is called *discrete frequency distribution*:",
+      "explanation": "When distinct values x_1,...,x_n occur with frequencies f_1,...,f_n, the data form a discrete frequency distribution. The mean is x̄ = (Σf_i x_i)/N with N = Σf_i. For mean deviation about the mean, weight each absolute deviation by its frequency: M.D.(x̄) = (1/N)Σf_i|x_i − x̄|. For mean deviation about the median, first arrange the values in ascending order, build the cumulative frequencies, and take as the median the value whose cumulative frequency is equal to or just greater than N/2; then M.D.(M) = (1/N)Σf_i|x_i − M|. The frequency f_i acts as a multiplier counting how many observations share each value.",
+      "keyMoves": [
+        "Find x̄ = (Σf_i x_i)/N, or locate the median via cumulative frequency ≥ N/2",
+        "Form frequency-weighted absolute deviations f_i|x_i − a|",
+        "Divide their sum by N = Σf_i to get M.D.(x̄) or M.D.(M)"
+      ],
+      "misconceptions": [
+        "Averaging the absolute deviations over the number of distinct values instead of over N = Σf_i",
+        "Reading the median straight off the values without using cumulative frequencies"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:mean-deviation-ungrouped"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:mean-deviation-continuous",
+      "slug": "mean-deviation-continuous",
+      "title": "Compute mean deviation for a continuous frequency distribution",
+      "role": "intermediate",
+      "brief": "Replace each class by its mid-point (and find the median by the class formula) to compute mean deviation for grouped continuous data.",
+      "sec": 4,
+      "quote": "A continuous frequency distribution is a series in which the data are classified into different class-intervals without gaps alongwith their respective frequencies.",
+      "explanation": "In a continuous frequency distribution the data are grouped into class-intervals (e.g. 10–20, 20–30, ...) with frequencies. We assume the frequency of each class is centred at its mid-point x_i, then proceed exactly as for a discrete distribution. For mean deviation about the mean: x̄ = (1/N)Σf_i x_i and M.D.(x̄) = (1/N)Σf_i|x_i − x̄|. For mean deviation about the median, the median is found from the class formula M = l + ((N/2 − C)/f) × h, where l, f, h are the lower limit, frequency and width of the median class (the class whose cumulative frequency first reaches N/2) and C is the cumulative frequency of the preceding class; then M.D.(M) = (1/N)Σf_i|x_i − M|.",
+      "keyMoves": [
+        "Take the mid-point x_i of each class as its representative value",
+        "Use x̄ = (1/N)Σf_i x_i, or the median formula M = l + ((N/2 − C)/f)·h",
+        "Compute M.D. = (1/N)Σf_i|x_i − (mean or median)|"
+      ],
+      "misconceptions": [
+        "Using a class limit instead of the class mid-point for x_i",
+        "Treating grouped data like a discrete list and skipping the median-class formula"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:mean-deviation-discrete"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:variance",
+      "slug": "variance",
+      "title": "Define variance as the mean of the squared deviations from the mean",
+      "role": "intermediate",
+      "brief": "Define variance σ² = (1/n)Σ(x_i − x̄)², explaining why squaring deviations and then averaging gives a proper measure of dispersion.",
+      "sec": 5,
+      "quote": "Another way to overcome this difficulty which arose due to the signs of deviations, is to take squares of all the deviations.",
+      "explanation": "Instead of taking absolute values, we can remove the signs of the deviations by squaring them; all squared deviations (x_i − x̄)² are non-negative. The sum Σ(x_i − x̄)² alone is not a fair measure because it grows with the number of observations — a more scattered set of 6 values can give a smaller sum than a tighter set of 31. To fix this we take the mean of the squared deviations, and this number is called the variance, denoted σ². For n observations, σ² = (1/n)Σ(x_i − x̄)². A small variance means the observations cluster near the mean; a large variance means they are widely scattered.",
+      "keyMoves": [
+        "Square each deviation (x_i − x̄)² to make it non-negative",
+        "Average the squared deviations rather than just summing them",
+        "Write σ² = (1/n)Σ(x_i − x̄)² as the variance"
+      ],
+      "misconceptions": [
+        "Using the raw sum Σ(x_i − x̄)² as the measure, ignoring the number of observations",
+        "Forgetting that squaring makes the cancellation of signs impossible (all terms non-negative)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:mean-deviation-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:standard-deviation",
+      "slug": "standard-deviation",
+      "title": "Define standard deviation as the positive square root of the variance",
+      "role": "intermediate",
+      "brief": "Define σ = √(variance) and explain why taking the square root restores the original units of the data.",
+      "sec": 5,
+      "quote": "the proper measure of dispersion about the mean of a set of observations is expressed as positive square-root of the variance and is called *standard deviation*.",
+      "explanation": "Variance has the squared units of the observations (because it sums squared deviations), so it is not directly comparable with the data or the mean. To restore the original units we take the positive square root of the variance, giving the standard deviation σ = √[(1/n)Σ(x_i − x̄)²]. It is the standard, most-used measure of dispersion about the mean. For example, the data 6, 8, 10, ..., 24 (n = 10) have mean 15, variance σ² = 330/10 = 33, and standard deviation σ = √33 ≈ 5.74.",
+      "keyMoves": [
+        "Compute the variance σ² = (1/n)Σ(x_i − x̄)² first",
+        "Take the positive square root: σ = √(σ²)",
+        "Note σ carries the same units as the original data, unlike variance"
+      ],
+      "misconceptions": [
+        "Reporting the variance as if it were the standard deviation (forgetting the square root)",
+        "Taking the negative root, or treating σ as having squared units"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:variance"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:sd-frequency-distribution",
+      "slug": "sd-frequency-distribution",
+      "title": "Compute variance and standard deviation for frequency distributions",
+      "role": "intermediate",
+      "brief": "Apply the frequency-weighted variance/SD formulas to discrete and continuous (mid-point) frequency distributions, including the computational formula via Σf_i x_i².",
+      "sec": 5,
+      "quote": "the deviations from mean",
+      "explanation": "For a frequency distribution with values (or class mid-points) x_i and frequencies f_i, N = Σf_i, the standard deviation is σ = √[(1/N)Σf_i(x_i − x̄)²], where x̄ = (1/N)Σf_i x_i; a continuous distribution is handled by first replacing each class by its mid-point. Expanding the square gives the equivalent computational formula σ = (1/N)√[N·Σf_i x_i² − (Σf_i x_i)²], which avoids computing each deviation: just tabulate f_i x_i and f_i x_i². For example, x_i = 3,8,13,18,23 with f_i = 7,10,15,10,6 give N = 48, Σf_i x_i = 614, Σf_i x_i² = 9652, so σ = (1/48)√(48·9652 − 614²) ≈ 6.12.",
+      "keyMoves": [
+        "Use mid-points for continuous classes, then x̄ = (1/N)Σf_i x_i",
+        "Compute σ² = (1/N)Σf_i(x_i − x̄)², σ = √(σ²)",
+        "Or use the computational form σ = (1/N)√[N·Σf_i x_i² − (Σf_i x_i)²]"
+      ],
+      "misconceptions": [
+        "Dropping the factor N inside the root in the computational formula",
+        "Forgetting to weight each squared deviation by its frequency f_i"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:standard-deviation",
+        "jee:maths:maths-ch13:mean-deviation-continuous"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:sd-shortcut-method",
+      "slug": "sd-shortcut-method",
+      "title": "Find variance and SD by the step-deviation (short-cut) method",
+      "role": "intermediate",
+      "brief": "Use the change of origin and scale y_i = (x_i − A)/h to simplify large x_i, then recover σ via σ_x = h·σ_y.",
+      "sec": 5,
+      "quote": "By using step-deviation method, it is possible to simplify the procedure.",
+      "explanation": "When the x_i (or class mid-points) are large, computing the mean and variance directly is tedious. Choose an assumed mean A and scale the deviations by the class width h, setting y_i = (x_i − A)/h, so x_i = A + h·y_i. Then the mean is x̄ = A + h·ȳ, and crucially the variance is unchanged by shifting the origin and scales by h² under the change of scale: σ_x² = h²·σ_y², i.e. σ_x = h·σ_y. In computational form σ_x = (h/N)√[N·Σf_i y_i² − (Σf_i y_i)²]. Because the y_i are small integers (e.g. −3, −2, −1, 0, 1, 2, 3) the arithmetic is far easier, yet the answer is identical — for the 30–100 distribution this gives σ² = 201, σ = 14.18, matching the direct method.",
+      "keyMoves": [
+        "Pick an assumed mean A and form y_i = (x_i − A)/h",
+        "Compute σ_y from the small y-values, then σ_x = h·σ_y",
+        "Equivalently σ_x = (h/N)√[N·Σf_i y_i² − (Σf_i y_i)²]"
+      ],
+      "misconceptions": [
+        "Forgetting to multiply back by h (reporting σ_y instead of σ_x = h·σ_y)",
+        "Thinking the shift of origin by A changes the variance (it does not)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:sd-frequency-distribution"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:variance-under-transformation",
+      "slug": "variance-under-transformation",
+      "title": "Predict how variance changes when observations are scaled or shifted",
+      "role": "intermediate",
+      "brief": "Use the rules that adding a constant leaves the variance unchanged and multiplying by k multiplies the variance by k².",
+      "sec": 6,
+      "quote": "the variance of the resulting observations becomes  $k^2$  times the original variance.",
+      "explanation": "Two transformation rules follow directly from the definition of variance. Multiplying every observation by a constant k multiplies each deviation by k and each squared deviation by k², so the variance of the resulting observations becomes k² times the original variance (and the standard deviation becomes |k| times the original). Adding (or subtracting) a constant 'a' to every observation shifts both the values and the mean by 'a', leaving every deviation x_i − x̄ unchanged, so the variance of the new observations is the same as that of the original observations. These rules underlie the short-cut method (scaling by 1/h) and many exam problems about correcting or transforming data.",
+      "keyMoves": [
+        "If each x_i is multiplied by k, multiply the variance by k² (SD by |k|)",
+        "If a constant a is added to each x_i, leave the variance unchanged",
+        "Combine the rules for a linear change y = kx + a (variance → k²·variance)"
+      ],
+      "misconceptions": [
+        "Multiplying the variance by k instead of k² when scaling the data",
+        "Thinking adding a constant changes the variance (it changes only the mean)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:variance"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:analyse-dispersion",
+      "slug": "analyse-dispersion",
+      "title": "Choose and compute the right measure of dispersion to compare data sets",
+      "role": "goal",
+      "brief": "Given any data set (ungrouped, discrete or continuous), select and compute range, mean deviation, variance or standard deviation to quantify and compare scatter.",
+      "sec": 5,
+      "quote": "Range, Quartile deviation, mean deviation, variance, standard deviation are measures of dispersion.",
+      "explanation": "Statistics on dispersion gives a toolbox for turning the spread of data into a single number. Range (max − min) is the quickest but crudest. Mean deviation, (1/N)Σf_i|x_i − a| about the mean or median, averages absolute distances from a centre. Variance σ² = (1/N)Σf_i(x_i − x̄)² and standard deviation σ = √(σ²) average squared deviations and are the standard, algebra-friendly measures, with σ in the data's own units. Each works for ungrouped data, discrete frequency distributions, and continuous distributions (via class mid-points), and the step-deviation short-cut plus the scale/shift rules speed the arithmetic. With these you can quantify how scattered a data set is and decide which of two sets — even with the same mean — is more consistent.",
+      "keyMoves": [
+        "Identify the data type (ungrouped, discrete, continuous) and pick a suitable measure",
+        "Compute range, mean deviation, variance or standard deviation as appropriate",
+        "Compare two data sets by their dispersion, and use scale/shift or step-deviation rules to simplify"
+      ],
+      "misconceptions": [
+        "Comparing only means/medians and ignoring dispersion when judging consistency",
+        "Mixing up the per-data-type formulas (weighting by f_i, using mid-points, N vs n)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:range",
+        "jee:maths:maths-ch13:mean-deviation-ungrouped",
+        "jee:maths:maths-ch13:mean-deviation-discrete",
+        "jee:maths:maths-ch13:mean-deviation-continuous",
+        "jee:maths:maths-ch13:standard-deviation",
+        "jee:maths:maths-ch13:sd-frequency-distribution",
+        "jee:maths:maths-ch13:sd-shortcut-method",
+        "jee:maths:maths-ch13:variance-under-transformation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

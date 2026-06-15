@@ -1,0 +1,169 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch08",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch08:classify-finite-and-infinite-sequences",
+      "kind": "practice",
+      "prompt": "A sequence that contains a fixed, finite number of terms is called:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "a finite sequence",
+      "expected": {
+        "kind": "mcq",
+        "correct": "a finite sequence",
+        "options": [
+          "a finite sequence",
+          "an infinite sequence",
+          "a geometric progression",
+          "a series"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Sec 8.2 Sequences (finite vs infinite)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch08:find-the-general-term",
+      "kind": "practice",
+      "prompt": "A sequence has nth term a_n = 2n + 5. Find its third term a_3.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "11",
+      "expected": {
+        "kind": "numeric",
+        "value": 11,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Example 1(i)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch08:form-a-series-with-sigma-notation",
+      "kind": "practice",
+      "prompt": "When we speak of the 'series' associated with a sequence, the word series refers to:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the indicated sum of the terms, not the resulting number",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the indicated sum of the terms, not the resulting number",
+        "options": [
+          "the indicated sum of the terms, not the resulting number",
+          "the ordered list of terms itself",
+          "only the first term of the sequence",
+          "the common ratio of the sequence"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Sec 8.3 Series (Remark on sigma notation)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch08:identify-first-term-and-common-ratio",
+      "kind": "practice",
+      "prompt": "For the G.P. 2, 8, 32, 128, ..., the common ratio r is:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4",
+      "expected": {
+        "kind": "numeric",
+        "value": 4,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Sec 8.4 (cf. Example 5, a=2 r=4)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch08:find-the-nth-term-of-a-gp",
+      "kind": "practice",
+      "prompt": "The 8th term of a G.P. is 192 and its common ratio is 2. Using a_n = ar^(n-1), find the 12th term.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3072",
+      "expected": {
+        "kind": "numeric",
+        "value": 3072,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Exercise 8.2 Q2"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch08:sum-n-terms-of-a-gp",
+      "kind": "practice",
+      "prompt": "A person has 2 parents, 4 grandparents, 8 great grandparents, and so on (a = 2, r = 2). Using S_n = a(r^n - 1)/(r - 1), find the number of ancestors during the ten generations preceding his own.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2046",
+      "expected": {
+        "kind": "numeric",
+        "value": 2046,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Example 11 (sum of a G.P.)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch08:compute-the-geometric-mean",
+      "kind": "practice",
+      "prompt": "Find the geometric mean (G.M.) of the two positive numbers 4 and 9. (G.M. = sqrt(ab))",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6",
+      "expected": {
+        "kind": "numeric",
+        "value": 6,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Sec 8.4.3 Geometric Mean"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch08:insert-geometric-means",
+      "kind": "practice",
+      "prompt": "Insert three numbers between 1 and 256 so that the resulting sequence is a G.P. Treating 256 as the 5th term gives 256 = r^4. Explain how you find the common ratio and list the three numbers (taking real, positive values).",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "With a = 1 and three means inserted, 256 is the 5th term, so 256 = a r^4 = r^4, giving r = 4 (taking the real positive root). The inserted means are then G_1 = ar = 4, G_2 = ar^2 = 16, G_3 = ar^3 = 64. Hence the three numbers are 4, 16 and 64.",
+        "markPoints": [
+          "256 is the 5th term, so 256 = r^4 (b = a r^(n+1) with n = 3)",
+          "Solve for the common ratio r = 4 (real positive root)",
+          "Inserted means are 4, 16, 64"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Example 12 (insert geometric means)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch08:relate-am-and-gm",
+      "kind": "practice",
+      "prompt": "The A.M. and G.M. of two positive numbers a and b are 10 and 8 respectively. Using a + b = 2A, ab = G^2 and (a - b)^2 = (a + b)^2 - 4ab, find the larger of the two numbers.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "16",
+      "expected": {
+        "kind": "numeric",
+        "value": 16,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Example 13 (relationship between A.M. and G.M.)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch08:solve-geometric-progression-problems",
+      "kind": "practice",
+      "prompt": "State what makes a sequence a geometric progression, and outline the steps you would take to find a required term of a given G.P.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "A sequence is a G.P. if every term except the first bears a constant (non-zero) ratio to the term immediately preceding it; that constant is the common ratio r. To find a required term: identify the first term a and the common ratio r (e.g. r = a_2/a_1), then apply the nth-term formula a_n = ar^(n-1) with the required value of n.",
+        "markPoints": [
+          "G.P. = constant ratio between each term and the preceding one (common ratio r)",
+          "Identify the first term a and the common ratio r",
+          "Apply a_n = ar^(n-1) for the required term"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch08 Sec 8.4 General term of a G.P."
+    }
+  ]
+}

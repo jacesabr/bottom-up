@@ -1,0 +1,276 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch07",
+ "title": "Integrals",
+ "book": "NCERT Class 12 Mathematics Part I",
+ "goal": "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
+ "nodes": [
+  {
+   "id": "jee:maths:maths-c12-ch07:antiderivative",
+   "slug": "antiderivative",
+   "title": "Define an antiderivative (primitive)",
+   "role": "bedrock",
+   "brief": "Recognise an antiderivative of f as a function whose derivative is f.",
+   "sec": 1,
+   "quote": "The functions that could possibly have given function as a derivative are called anti derivatives (or primitive) of the function.",
+   "explanation": "Given a function f, the functions that could possibly have f as their derivative are called antiderivatives (or primitives) of f. So F is an antiderivative of f if F'(x) = f(x). Because the derivative of a constant is zero, antiderivatives are not unique: if F is one antiderivative, so is F + C for any constant C. This is the basic object that integration produces.",
+   "keyMoves": [
+    "Ask which function differentiates to the given f",
+    "Recognise F is an antiderivative when F'(x) = f(x)",
+    "Add an arbitrary constant C, since it differentiates to 0"
+   ],
+   "misconceptions": [
+    "Thinking the antiderivative is unique (forgetting + C)",
+    "Confusing the antiderivative with the derivative"
+   ],
+   "prereqs": [],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:integration-inverse-of-differentiation",
+   "slug": "integration-inverse-of-differentiation",
+   "title": "Recognise integration as the inverse of differentiation",
+   "role": "bedrock",
+   "brief": "Understand integration (antidifferentiation) as the reverse of differentiation.",
+   "sec": 1,
+   "quote": "Integration is the inverse process of differentiation.",
+   "explanation": "Integration is the inverse process of differentiation: instead of differentiating a function, you are given the derivative and asked to recover the original function (its primitive). This process is also called antidifferentiation. Knowing the standard derivatives therefore immediately gives the standard integrals (read in reverse), and every differentiation rule has an integration counterpart.",
+   "keyMoves": [
+    "Read each derivative rule backwards to get an integral",
+    "Recover the original function from its derivative",
+    "Treat integration and differentiation as inverse operations"
+   ],
+   "misconceptions": [
+    "Believing integration is unrelated to differentiation",
+    "Forgetting the constant of integration when reversing"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:antiderivative"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:indefinite-integral",
+   "slug": "indefinite-integral",
+   "title": "Interpret the indefinite integral symbol",
+   "role": "intermediate",
+   "brief": "Read the integral sign of f dx as the whole family of antiderivatives F(x) + C.",
+   "sec": 2,
+   "quote": "which will represent the entire class of anti derivatives read as the indefinite integral of *f* with respect to *x*.",
+   "explanation": "The symbol consisting of the integral sign with f(x) dx represents the entire class of antiderivatives, read as the indefinite integral of f with respect to x. Symbolically the integral of f(x) dx = F(x) + C, where F is any one antiderivative and C is the arbitrary constant of integration. So the indefinite integral is a whole family of functions, not a single one.",
+   "keyMoves": [
+    "Read the integral of f dx as 'all antiderivatives of f'",
+    "Write the answer as F(x) + C",
+    "Always include the constant of integration C"
+   ],
+   "misconceptions": [
+    "Dropping the constant of integration C",
+    "Treating the indefinite integral as a single number"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:antiderivative"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:same-derivative-same-family",
+   "slug": "same-derivative-same-family",
+   "title": "Use that equal derivatives give the same integral family",
+   "role": "intermediate",
+   "brief": "Two indefinite integrals with the same derivative differ only by a constant.",
+   "sec": 2,
+   "quote": "Two indefinite integrals with the same derivative lead to the same family of curves and so they are equivalent.",
+   "explanation": "Two indefinite integrals with the same derivative lead to the same family of curves and so they are equivalent. This is why the same integral can sometimes be written in apparently different forms that differ only by a constant. It justifies the single arbitrary constant C and underlies the linearity property: the integral of (f + g) is the sum of the integrals, and constants factor out.",
+   "keyMoves": [
+    "Compare two answers by differentiating them",
+    "If their derivatives match, the answers differ only by a constant",
+    "Use linearity: split sums and pull out constant multipliers"
+   ],
+   "misconceptions": [
+    "Thinking two correct integrals must look identical",
+    "Treating differently-constant answers as contradictory"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:indefinite-integral"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:integration-by-substitution",
+   "slug": "integration-by-substitution",
+   "title": "Integrate by substitution (change of variable)",
+   "role": "intermediate",
+   "brief": "Substitute a new variable whose derivative occurs in the integrand to simplify the integral.",
+   "sec": 3,
+   "quote": "This change of variable formula is one of the important tools available to us in the name of integration by substitution.",
+   "explanation": "Integration by substitution is a change-of-variable technique: you substitute a new variable t for part of the integrand (typically a function whose derivative also appears in the integrand), so that dt absorbs that derivative and the integral becomes a standard one. For example, for the integral involving x^2 + 1, put t = x^2 + 1 so 2x dx = dt. After integrating in t you substitute back. Guessing the right substitution is the key skill.",
+   "keyMoves": [
+    "Spot a function whose derivative also appears in the integrand",
+    "Set t equal to that function; replace its derivative dx by dt",
+    "Integrate in t, then substitute back to x"
+   ],
+   "misconceptions": [
+    "Forgetting to convert dx into dt (or vice versa)",
+    "Not substituting the original variable back at the end"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:integration-inverse-of-differentiation"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:proper-improper-rational",
+   "slug": "proper-improper-rational",
+   "title": "Classify a rational function as proper or improper",
+   "role": "intermediate",
+   "brief": "Call a rational function proper if degree of numerator < degree of denominator, otherwise improper.",
+   "sec": 5,
+   "quote": "then the rational function is called proper, otherwise, it is called improper.",
+   "explanation": "A rational function is the ratio P(x)/Q(x) of polynomials with Q(x) not zero. If the degree of P(x) is less than the degree of Q(x), then the rational function is called proper; otherwise it is called improper. An improper rational function can first be reduced (by polynomial division) to a polynomial plus a proper rational function before integrating. Recognising proper vs improper is the gateway to partial fractions.",
+   "keyMoves": [
+    "Compare the degree of the numerator with that of the denominator",
+    "Proper if numerator degree is smaller; improper otherwise",
+    "Reduce an improper one by division before applying partial fractions"
+   ],
+   "misconceptions": [
+    "Comparing leading coefficients instead of degrees",
+    "Applying partial fractions to an improper fraction without dividing first"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:integration-inverse-of-differentiation"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:partial-fractions",
+   "slug": "partial-fractions",
+   "title": "Integrate by partial fraction decomposition",
+   "role": "intermediate",
+   "brief": "Split a proper rational function into simpler fractions, then integrate each piece.",
+   "sec": 5,
+   "quote": "It is always possible to write the integrand as a sum of simpler rational functions by a method called partial fraction decomposition.",
+   "explanation": "For a proper rational function it is always possible to write the integrand as a sum of simpler rational functions by a method called partial fraction decomposition. You match the denominator's factor structure to the standard table of partial fraction forms, solve for the unknown numerators, and then integrate each simple fraction (each giving a log or arctan-type term). This converts a hard rational integral into several easy ones.",
+   "keyMoves": [
+    "Confirm the rational function is proper (reduce first if not)",
+    "Write it as a sum of standard partial fractions and solve for the constants",
+    "Integrate each simple fraction separately"
+   ],
+   "misconceptions": [
+    "Decomposing an improper fraction without dividing first",
+    "Using the wrong partial-fraction form for a repeated or quadratic factor"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:proper-improper-rational"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:integration-by-parts",
+   "slug": "integration-by-parts",
+   "title": "Integrate a product by parts",
+   "role": "intermediate",
+   "brief": "Use the integration-by-parts formula: integral of first x (integral of second) minus integral of (derivative of first x integral of second).",
+   "sec": 6,
+   "quote": "If we take f as the first function and g as the second function",
+   "explanation": "Integration by parts handles integrals of a product of two functions. If we take f as the first function and g as the second function, then the integral of the product equals (first function) times (integral of the second function) minus the integral of [(derivative of the first function) times (integral of the second function)]. For example, the integral of x cos x is x sin x minus the integral of sin x, giving x sin x + cos x + C. Choosing which factor is 'first' (often by the ILATE order) is the key decision; the method does not work for every product.",
+   "keyMoves": [
+    "Choose a first function (to differentiate) and a second (to integrate)",
+    "Apply: integral = (first)(integral of second) - integral of [(derivative of first)(integral of second)]",
+    "Integrate the remaining (often simpler) integral"
+   ],
+   "misconceptions": [
+    "Choosing the first and second functions in a way that complicates the integral",
+    "Assuming integration by parts works for every product of functions"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:integration-inverse-of-differentiation"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:definite-integral",
+   "slug": "definite-integral",
+   "title": "Define the definite integral",
+   "role": "intermediate",
+   "brief": "Recognise the definite integral as a unique number, with lower limit a and upper limit b.",
+   "sec": 7,
+   "quote": "The definite integral is introduced either as the limit of a sum or if it has an anti derivative F in the interval [a, b], then its value is the difference between the values of F at the end points, i.e., F(b) - F(a).",
+   "explanation": "The definite integral of f from a to b has a unique value; a is the lower limit and b the upper limit. It is introduced either as the limit of a sum, or - if f has an antiderivative F on [a, b] - as the difference between the values of F at the end points, F(b) - F(a). The first description connects it to area under the curve; the second is what makes it practical to compute.",
+   "keyMoves": [
+    "Identify the lower limit a and upper limit b",
+    "Recognise the definite integral as a single number (an area)",
+    "Anticipate evaluating it as F(b) - F(a) using an antiderivative"
+   ],
+   "misconceptions": [
+    "Adding a constant of integration to a definite integral",
+    "Swapping the lower and upper limits without changing sign"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:antiderivative"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:ftc-area-function",
+   "slug": "ftc-area-function",
+   "title": "Use the first Fundamental Theorem (A'(x) = f(x))",
+   "role": "intermediate",
+   "brief": "Apply Theorem 1: the derivative of the area function equals the integrand.",
+   "sec": 8,
+   "quote": "Then A'(x) = f(x), for all  $x \\in [a, b]$ .",
+   "explanation": "First Fundamental Theorem of Calculus (Theorem 1): let f be continuous on [a, b] and let A(x) be the area function (the definite integral of f from a to x). Then A'(x) = f(x) for all x in [a, b]. In words, differentiating the area-so-far function gives back the integrand - integration and differentiation undo each other. This is what links the limit-of-a-sum view of the integral to antiderivatives.",
+   "keyMoves": [
+    "Form the area function A(x) = integral of f from a to x",
+    "Differentiate it: A'(x) = f(x)",
+    "Read this as differentiation undoing integration"
+   ],
+   "misconceptions": [
+    "Thinking A'(x) gives f(a) or a constant rather than f(x)",
+    "Dropping the continuity hypothesis on f"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:definite-integral"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
+   "slug": "fundamental-theorem-evaluation",
+   "title": "Evaluate a definite integral via the Fundamental Theorem (F(b) - F(a))",
+   "role": "goal",
+   "brief": "Apply Theorem 2: the definite integral equals F(b) - F(a) for any antiderivative F of f.",
+   "sec": 8,
+   "quote": "Let f be continuous function defined on the closed interval [a, b] and F be",
+   "explanation": "Second Fundamental Theorem of Calculus (Theorem 2): let f be a continuous function defined on the closed interval [a, b] and let F be an antiderivative of f. Then the definite integral of f from a to b equals F(b) - F(a). So to evaluate any definite integral you find an antiderivative F (using substitution, parts, partial fractions, or standard integrals - no constant of integration needed) and subtract its value at the lower limit from its value at the upper limit. This is the capstone that turns the whole chapter's antiderivative techniques into a tool for evaluating definite integrals.",
+   "keyMoves": [
+    "Find any one antiderivative F of the integrand f (constant C not needed)",
+    "Evaluate F at the upper limit b and the lower limit a",
+    "Compute the definite integral as F(b) - F(a)"
+   ],
+   "misconceptions": [
+    "Computing F(a) - F(b) instead of F(b) - F(a)",
+    "Carrying a constant of integration into a definite integral"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch07:ftc-area-function",
+    "jee:maths:maths-c12-ch07:integration-by-substitution",
+    "jee:maths:maths-c12-ch07:integration-by-parts",
+    "jee:maths:maths-c12-ch07:partial-fractions",
+    "jee:maths:maths-c12-ch07:same-derivative-same-family"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  }
+ ]
+}

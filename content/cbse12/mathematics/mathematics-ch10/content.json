@@ -1,0 +1,327 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "chapter": "mathematics-ch10",
+  "title": "Vector Algebra",
+  "book": "NCERT Class 12 Mathematics Part II",
+  "goal": "cbse12:mathematics:mathematics-ch10:vector-product",
+  "nodes": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:vector-definition",
+      "slug": "vector-definition",
+      "title": "Define a vector",
+      "role": "bedrock",
+      "brief": "Recognise a vector as a quantity having both magnitude and direction.",
+      "sec": 2,
+      "quote": "A quantity that has magnitude as well as direction is called a vector.",
+      "explanation": "A quantity that has magnitude as well as direction is called a vector. It is represented by a directed line segment: the point it starts from is the initial point and the point it ends at is the terminal point, with the arrow giving the direction. This distinguishes a vector from a scalar, which has magnitude only.",
+      "keyMoves": [
+        "Check the quantity has both a size and a direction",
+        "Represent it as a directed line segment (arrow)",
+        "Distinguish it from a scalar (magnitude only)"
+      ],
+      "misconceptions": [
+        "Treating a scalar (e.g. mass) as a vector",
+        "Confusing the initial and terminal points"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:magnitude",
+      "slug": "magnitude",
+      "title": "Find the magnitude (length) of a vector",
+      "role": "bedrock",
+      "brief": "Define the magnitude as the distance between the initial and terminal points.",
+      "sec": 2,
+      "quote": "The distance between initial and terminal points of a vector is called the *magnitude* (or length) of the vector",
+      "explanation": "The distance between the initial and terminal points of a vector is called the magnitude (or length) of the vector, written |a|. For a vector given in component form x i + y j + z k, the magnitude is sqrt(x^2 + y^2 + z^2) by the distance formula. The magnitude is always non-negative.",
+      "keyMoves": [
+        "Identify the components x, y, z of the vector",
+        "Apply the distance formula |a| = sqrt(x^2 + y^2 + z^2)",
+        "Report a non-negative length"
+      ],
+      "misconceptions": [
+        "Reporting a negative magnitude",
+        "Forgetting to square and add all components"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:vector-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:position-vector",
+      "slug": "position-vector",
+      "title": "Define the position vector of a point",
+      "role": "intermediate",
+      "brief": "Recognise the position vector of P as the vector OP from the origin to P.",
+      "sec": 2,
+      "quote": "is called the *position vector* of the point P with respect to O.",
+      "explanation": "For a point P(x, y, z), the vector OP having the origin O and the point P as its initial and terminal points is called the position vector of the point P with respect to O. Its magnitude is sqrt(x^2 + y^2 + z^2). Position vectors of points A, B, C are usually written a, b, c. They let geometric points be handled with vector algebra.",
+      "keyMoves": [
+        "Take the origin O as the initial point and P as the terminal point",
+        "Write the position vector as OP = x i + y j + z k",
+        "Compute its magnitude by the distance formula"
+      ],
+      "misconceptions": [
+        "Starting the position vector somewhere other than the origin",
+        "Confusing a position vector with a free vector between two arbitrary points"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:magnitude"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:direction-cosines",
+      "slug": "direction-cosines",
+      "title": "Find the direction cosines of a vector",
+      "role": "intermediate",
+      "brief": "Identify the direction cosines l, m, n as the cosines of the angles with the axes.",
+      "sec": 2,
+      "quote": "are called *direction cosines* of the vector",
+      "explanation": "The angles alpha, beta, gamma made by a vector with the positive directions of the x, y and z axes are its direction angles, and their cosines cos alpha, cos beta, cos gamma are called the direction cosines of the vector, usually denoted l, m, n. They satisfy l^2 + m^2 + n^2 = 1, and the unit vector in the direction is l i + m j + n k. The components themselves are the direction ratios.",
+      "keyMoves": [
+        "Identify the angles the vector makes with the x, y, z axes",
+        "Take their cosines l, m, n (= components divided by magnitude)",
+        "Check l^2 + m^2 + n^2 = 1"
+      ],
+      "misconceptions": [
+        "Confusing direction cosines (normalised) with direction ratios (the raw components)",
+        "Forgetting to divide each component by the magnitude"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:position-vector"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:zero-vector",
+      "slug": "zero-vector",
+      "title": "Recognise the zero (null) vector",
+      "role": "bedrock",
+      "brief": "Identify the zero vector as one whose initial and terminal points coincide.",
+      "sec": 2,
+      "quote": "A vector whose initial and terminal points coincide, is called a zero vector (or null vector)",
+      "explanation": "A vector whose initial and terminal points coincide is called a zero vector (or null vector), denoted by the bold 0. It has zero magnitude and cannot be assigned a definite direction (it may be regarded as having any direction). The zero vector is the additive identity for vector addition: adding it to any vector leaves the vector unchanged.",
+      "keyMoves": [
+        "Check the initial and terminal points are the same",
+        "Recognise the magnitude is zero, direction indeterminate",
+        "Use it as the additive identity in vector addition"
+      ],
+      "misconceptions": [
+        "Assigning a fixed direction to the zero vector",
+        "Confusing the zero vector with a unit vector"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:vector-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:unit-vector",
+      "slug": "unit-vector",
+      "title": "Find the unit vector in a direction",
+      "role": "intermediate",
+      "brief": "Recognise a unit vector as one of magnitude 1, and form it as a / |a|.",
+      "sec": 2,
+      "quote": "A vector whose magnitude is unity (i.e., 1 unit) is called a unit vector.",
+      "explanation": "A vector whose magnitude is unity (i.e. 1 unit) is called a unit vector. The unit vector in the direction of a given non-zero vector a is denoted a-hat and obtained by dividing a by its magnitude: a-hat = (1/|a|) a. The unit vectors along the coordinate axes are i, j, k. Unit vectors carry direction information without magnitude.",
+      "keyMoves": [
+        "Compute the magnitude |a| of the given vector",
+        "Divide the vector by its magnitude: a-hat = a / |a|",
+        "Check the result has magnitude 1"
+      ],
+      "misconceptions": [
+        "Forgetting to divide by the magnitude when forming a unit vector",
+        "Thinking a unit vector has no direction"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:magnitude"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:collinear-vectors",
+      "slug": "collinear-vectors",
+      "title": "Recognise collinear vectors",
+      "role": "intermediate",
+      "brief": "Identify collinear vectors as those parallel to the same line.",
+      "sec": 2,
+      "quote": "Two or more vectors are said to be collinear if they are parallel to the same line, irrespective of their magnitudes and directions.",
+      "explanation": "Two or more vectors are said to be collinear if they are parallel to the same line, irrespective of their magnitudes and directions. Equivalently, a is collinear with b (b not zero) if a = lambda b for some scalar lambda. A vector and its negative are collinear. Collinearity does NOT require equal magnitude or the same direction.",
+      "keyMoves": [
+        "Check whether the vectors are parallel to one common line",
+        "Equivalently test a = lambda b for some scalar lambda",
+        "Ignore magnitude and sense when judging collinearity"
+      ],
+      "misconceptions": [
+        "Requiring collinear vectors to have equal magnitude or the same direction",
+        "Confusing collinear (parallel) with equal vectors"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:vector-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:equal-vectors",
+      "slug": "equal-vectors",
+      "title": "Recognise equal vectors",
+      "role": "intermediate",
+      "brief": "Identify equal vectors as those with the same magnitude AND direction, regardless of position.",
+      "sec": 2,
+      "quote": "Two vectors  $\\vec{a}$  and  $\\vec{b}$  are said to be equal, if they have the same magnitude and direction regardless of the positions of their initial points",
+      "explanation": "Two vectors a and b are said to be equal if they have the same magnitude and direction, regardless of the positions of their initial points, written a = b. Because we treat free vectors, a vector may be moved parallel to itself without changing it, so two arrows anywhere in space represent the same vector if their length and direction match.",
+      "keyMoves": [
+        "Compare both magnitude and direction of the two vectors",
+        "Ignore where their initial points sit (free vectors)",
+        "Declare them equal only if both match"
+      ],
+      "misconceptions": [
+        "Calling vectors equal just because they have equal magnitude",
+        "Thinking equal vectors must share the same initial point"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:magnitude"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:parallelogram-law",
+      "slug": "parallelogram-law",
+      "title": "Add vectors by the triangle and parallelogram laws",
+      "role": "intermediate",
+      "brief": "Add two vectors head-to-tail (triangle law) or as adjacent sides of a parallelogram.",
+      "sec": 2,
+      "quote": "This is known as the *parallelogram law of vector addition*.",
+      "explanation": "To add vectors a and b, place the initial point of b at the terminal point of a; the vector from a's start to b's end is the sum a + b (triangle law). Equivalently, if a and b are the two adjacent sides of a parallelogram, their sum is the diagonal through their common point - this is known as the parallelogram law of vector addition. Vector addition is commutative and associative, with the zero vector as identity.",
+      "keyMoves": [
+        "Join the vectors head-to-tail for the triangle law",
+        "Or take them as adjacent sides; the diagonal is the sum",
+        "Use commutativity/associativity to simplify"
+      ],
+      "misconceptions": [
+        "Adding the magnitudes instead of the vectors",
+        "Joining the vectors tail-to-tail when applying the triangle law"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:vector-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:component-form",
+      "slug": "component-form",
+      "title": "Write a vector in component form",
+      "role": "intermediate",
+      "brief": "Express a vector as x i + y j + z k with scalar components x, y, z.",
+      "sec": 2,
+      "quote": "This form of any vector is called its *component form*.",
+      "explanation": "The position vector of P(x, y, z) can be written x i + y j + z k using the unit vectors i, j, k along the axes; this form of any vector is called its component form. Here x, y, z are the scalar components and x i, y j, z k the vector components. In component form, vectors add componentwise and a scalar multiplies each component, which makes all the vector operations concrete arithmetic.",
+      "keyMoves": [
+        "Resolve the vector along the i, j, k directions",
+        "Write it as x i + y j + z k",
+        "Operate componentwise for addition and scalar multiplication"
+      ],
+      "misconceptions": [
+        "Confusing the scalar components (x, y, z) with the vector components (x i, y j, z k)",
+        "Forgetting the unit vectors i, j, k when writing component form"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:unit-vector",
+        "cbse12:mathematics:mathematics-ch10:parallelogram-law"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:section-formula",
+      "slug": "section-formula",
+      "title": "Apply the section formula for a dividing point",
+      "role": "intermediate",
+      "brief": "Find the position vector of a point dividing a segment in a given ratio, internally or externally.",
+      "sec": 2,
+      "quote": "the position vector of the point R which divides P and Q internally in the ratio of *m* : *n* is given by",
+      "explanation": "Given points P and Q with position vectors p and q, the position vector of the point R which divides PQ internally in the ratio m : n is (m q + n p)/(m + n). For external division the formula is (m q - n p)/(m - n). When R is the midpoint (m = n) the position vector is (p + q)/2. This is the vector form of the section formula from coordinate geometry.",
+      "keyMoves": [
+        "Identify the ratio m : n and whether division is internal or external",
+        "Apply (m q + n p)/(m + n) internally, (m q - n p)/(m - n) externally",
+        "Use (p + q)/2 for the midpoint"
+      ],
+      "misconceptions": [
+        "Swapping which point goes with m and which with n",
+        "Using the internal formula for external division"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:component-form",
+        "cbse12:mathematics:mathematics-ch10:position-vector"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:scalar-product",
+      "slug": "scalar-product",
+      "title": "Compute the scalar (dot) product",
+      "role": "intermediate",
+      "brief": "Use a.b = |a||b|cos(theta); equivalently a1 b1 + a2 b2 + a3 b3.",
+      "sec": 3,
+      "quote": "The scalar product of two nonzero vectors  $\\vec{a}$  and  $\\vec{b}$ , denoted by  $\\vec{a} \\cdot \\vec{b}$ , is",
+      "explanation": "The scalar product (dot product) of two non-zero vectors a and b, denoted a.b, is a.b = |a||b| cos(theta), where theta is the angle between them (0 to pi); if either vector is zero, a.b = 0. In component form a.b = a1 b1 + a2 b2 + a3 b3. The dot product is a scalar, is commutative, distributes over addition, and is zero exactly when the vectors are perpendicular. It also gives the angle between vectors and the projection of one on another.",
+      "keyMoves": [
+        "Use a.b = |a||b| cos(theta) or a1 b1 + a2 b2 + a3 b3",
+        "Note the result is a scalar (a number)",
+        "Use a.b = 0 to test perpendicularity, and cos(theta) = a.b/(|a||b|) for the angle"
+      ],
+      "misconceptions": [
+        "Expecting the dot product to be a vector",
+        "Forgetting the cos(theta) factor or summing only some component products"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:component-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "slug": "vector-product",
+      "title": "Compute the vector (cross) product",
+      "role": "goal",
+      "brief": "Use a x b = |a||b| sin(theta) n-hat; it is a vector perpendicular to both, anticommutative.",
+      "sec": 4,
+      "quote": "The vector product of two nonzero vectors  $\\vec{a}$  and  $\\vec{b}$ , is denoted by  $\\vec{a} \\times \\vec{b}$  and defined as",
+      "explanation": "The vector product (cross product) of two non-zero vectors a and b, denoted a x b, is defined as a x b = |a||b| sin(theta) n-hat, where theta is the angle between them (0 to pi) and n-hat is the unit vector perpendicular to both a and b such that a, b, n-hat form a right-handed system. Unlike the dot product, the cross product is a VECTOR, perpendicular to the plane of a and b; it is not commutative (a x b = -(b x a)); its magnitude |a x b| = |a||b| sin(theta) equals the area of the parallelogram with sides a and b. In component form it is the determinant expansion with rows i, j, k; a1, a2, a3; b1, b2, b3. This capstone draws on magnitude, unit vectors, component form and the dot product to complete the algebra of vectors.",
+      "keyMoves": [
+        "Use a x b = |a||b| sin(theta) n-hat (a vector perpendicular to both)",
+        "Compute it as the i, j, k determinant in component form",
+        "Apply anticommutativity a x b = -(b x a) and |a x b| = parallelogram area"
+      ],
+      "misconceptions": [
+        "Treating the cross product as a scalar like the dot product",
+        "Assuming a x b = b x a (it is anticommutative)"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:scalar-product",
+        "cbse12:mathematics:mathematics-ch10:section-formula",
+        "cbse12:mathematics:mathematics-ch10:direction-cosines",
+        "cbse12:mathematics:mathematics-ch10:zero-vector",
+        "cbse12:mathematics:mathematics-ch10:collinear-vectors",
+        "cbse12:mathematics:mathematics-ch10:equal-vectors"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

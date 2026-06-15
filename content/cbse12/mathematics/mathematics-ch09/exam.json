@@ -1,0 +1,221 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "chapter": "mathematics-ch09",
+  "items": [
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:differential-equation",
+      "kind": "practice",
+      "prompt": "A differential equation is an equation that involves:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "derivatives of the dependent variable with respect to the independent variable",
+      "expected": {
+        "kind": "mcq",
+        "correct": "derivatives of the dependent variable with respect to the independent variable",
+        "options": [
+          "derivatives of the dependent variable with respect to the independent variable",
+          "only the dependent and independent variables, no derivatives",
+          "only constants",
+          "integrals only"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.2 definition"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:order",
+      "kind": "practice",
+      "prompt": "The order of the differential equation whose highest order derivative is the second derivative y'' is:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.2.1 order"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:degree",
+      "kind": "practice",
+      "prompt": "The degree of a differential equation is defined only when the equation is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "a polynomial equation in the derivatives",
+      "expected": {
+        "kind": "mcq",
+        "correct": "a polynomial equation in the derivatives",
+        "options": [
+          "a polynomial equation in the derivatives",
+          "of first order",
+          "homogeneous",
+          "linear"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.2.2 degree"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:general-solution",
+      "kind": "practice",
+      "prompt": "The solution of a differential equation that contains arbitrary constants is called the:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "general solution (primitive)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "general solution (primitive)",
+        "options": [
+          "general solution (primitive)",
+          "particular solution",
+          "trivial solution",
+          "integrating factor"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.3 general solution"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:particular-solution",
+      "kind": "practice",
+      "prompt": "How many arbitrary constants are in the particular solution of a third order differential equation?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Exercise 9.3 Q12 (particular solution has 0 constants)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:variables-separable",
+      "kind": "practice",
+      "prompt": "A first order equation is of variables-separable type when dy/dx can be written as:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "a product g(x) h(y)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "a product g(x) h(y)",
+        "options": [
+          "a product g(x) h(y)",
+          "Py + Q",
+          "a homogeneous function of degree zero",
+          "e^(integral of P dx)"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.4.1 variables separable"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:homogeneous-function",
+      "kind": "practice",
+      "prompt": "The function F(x, y) = x^2 + xy is a homogeneous function of degree:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.4.2 homogeneous function (degree 2)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:homogeneous-differential-equation",
+      "kind": "practice",
+      "prompt": "To solve a homogeneous differential equation dy/dx = F(x, y) (F of degree zero), the standard substitution is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "y = vx",
+      "expected": {
+        "kind": "mcq",
+        "correct": "y = vx",
+        "options": [
+          "y = vx",
+          "y = x + v",
+          "y = e^x",
+          "x = y^2"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.4.2 substitution y = vx"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:linear-differential-equation",
+      "kind": "practice",
+      "prompt": "The standard form of a first order linear differential equation is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "dy/dx + Py = Q, with P, Q functions of x only",
+      "expected": {
+        "kind": "mcq",
+        "correct": "dy/dx + Py = Q, with P, Q functions of x only",
+        "options": [
+          "dy/dx + Py = Q, with P, Q functions of x only",
+          "dy/dx = g(x) h(y)",
+          "F(x, y) = 0 with F homogeneous",
+          "dy/dx = y^2"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.4.3 linear DE"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:integrating-factor",
+      "kind": "practice",
+      "prompt": "For dy/dx + Py = Q, the integrating factor is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "e^(integral of P dx)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "e^(integral of P dx)",
+        "options": [
+          "e^(integral of P dx)",
+          "e^(integral of Q dx)",
+          "integral of P dx",
+          "P times Q"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.4.3 integrating factor"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:solve-linear-de",
+      "kind": "practice",
+      "prompt": "After finding the integrating factor (I.F.) of dy/dx + Py = Q, the solution is given by:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "y(I.F.) = integral of (Q x I.F.) dx + C",
+      "expected": {
+        "kind": "mcq",
+        "correct": "y(I.F.) = integral of (Q x I.F.) dx + C",
+        "options": [
+          "y(I.F.) = integral of (Q x I.F.) dx + C",
+          "y = integral of Q dx + C",
+          "y(I.F.) = integral of P dx + C",
+          "y = (I.F.) Q + C"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.4.3 solution steps"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch09:solve-linear-de",
+      "kind": "practice",
+      "prompt": "List the steps to solve a first order linear differential equation of the form dy/dx + Py = Q.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "(1) Write the equation in standard form dy/dx + Py = Q and identify P and Q (functions of x only). (2) Find the integrating factor I.F. = e^(integral of P dx). (3) Write the solution as y(I.F.) = integral of (Q times I.F.) dx + C, and apply any given condition to find a particular solution.",
+        "markPoints": [
+          "Write in standard form dy/dx + Py = Q and identify P, Q",
+          "Compute the integrating factor I.F. = e^(integral of P dx)",
+          "Solution: y(I.F.) = integral of (Q x I.F.) dx + C"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch09 Sec 9.4.3 steps"
+    }
+  ]
+}

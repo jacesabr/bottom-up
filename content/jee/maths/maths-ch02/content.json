@@ -1,0 +1,354 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch02",
+  "title": "Relations and Functions",
+  "book": "NCERT Class 11 maths — Relations and Functions",
+  "goal": "jee:maths:maths-ch02:model-and-classify-relations-as-functions",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch02:ordered-pair",
+      "slug": "ordered-pair",
+      "title": "Identify an ordered pair and when two ordered pairs are equal",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Recognise an ordered pair (p, q) as two elements written in a fixed order, and apply the rule that two ordered pairs are equal only when both corresponding entries match.",
+      "quote": "an ordered pair of elements taken from any two sets P and Q is a pair of elements written in small",
+      "explanation": "An ordered pair (p, q) is a pair of elements taken from two sets P and Q, written in small brackets and grouped together in a particular order, with p the first element and q the second. The order is essential: (p, q) is generally not the same as (q, p). Two ordered pairs are equal if and only if their corresponding first elements are equal and their corresponding second elements are also equal. This equality rule is what lets you solve for unknowns inside a pair: from (x + 1, y - 2) = (3, 1) you read off x + 1 = 3 and y - 2 = 1, giving x = 2, y = 3.",
+      "keyMoves": [
+        "Write a pair as (first element, second element) keeping the order fixed",
+        "Apply equality: (a, b) = (x, y) means a = x AND b = y",
+        "Solve componentwise for unknowns by matching first-to-first and second-to-second"
+      ],
+      "misconceptions": [
+        "Treating (p, q) and (q, p) as the same pair",
+        "Matching the entries in the wrong order, or equating only one component"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:cartesian-product",
+      "slug": "cartesian-product",
+      "title": "Form the cartesian product A x B of two sets",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Construct P x Q as the set of all ordered pairs (p, q) with p from P and q from Q, and handle the empty-set case.",
+      "quote": "is the set of all ordered pairs of elements from P and Q",
+      "explanation": "Given two non-empty sets P and Q, the cartesian product P x Q is the set of all ordered pairs (p, q) where p is taken from P and q is taken from Q: P x Q = {(p, q) : p in P, q in Q}. For example, with A = {red, blue} and B = {b, c, s} every colour is paired with every object, giving the 6 pairs (red, b), (red, c), (red, s), (blue, b), (blue, c), (blue, s). If either P or Q is the null set, then P x Q is also the empty set. Order matters at the level of the product too: in general A x B is not equal to B x A, since the pair (a, r) is not the pair (r, a). The product can be extended to three factors: A x A x A is the set of ordered triplets (a, b, c).",
+      "keyMoves": [
+        "Pair every element of the first set with every element of the second to list all (p, q)",
+        "State A x B = empty set whenever A or B is empty",
+        "Recognise A x B is not equal to B x A in general (order of the factors matters)"
+      ],
+      "misconceptions": [
+        "Assuming A x B equals B x A",
+        "Forgetting that if one factor is the null set the whole product is empty"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:ordered-pair"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:count-cartesian-product",
+      "slug": "count-cartesian-product",
+      "title": "Count the elements of a cartesian product as n(A) x n(B)",
+      "role": "intermediate",
+      "sec": 2,
+      "brief": "Use the rule that if A has p elements and B has q elements then A x B has pq elements, and apply it to count pairs.",
+      "quote": "If there are *p* elements in A and *q* elements in B, then there will be pq elements in A × B",
+      "explanation": "If there are p elements in A and q elements in B, then A x B has pq elements; that is, if n(A) = p and n(B) = q then n(A x B) = pq. This is because each of the p first-elements is paired with each of the q second-elements. For instance, with A = {DL, MP, KA} (3 elements) and B = {01, 02, 03} (3 elements), there are 3 x 3 = 9 ordered pairs in A x B. The same counting rule underlies later counting of relations. A related fact: if A and B are non-empty and either is infinite, then A x B is infinite too.",
+      "keyMoves": [
+        "Read off n(A) = p and n(B) = q",
+        "Multiply to get n(A x B) = pq",
+        "Use this count to predict how many ordered pairs a product contains"
+      ],
+      "misconceptions": [
+        "Adding p + q instead of multiplying p x q",
+        "Thinking the count depends on the order of the factors (it is pq either way)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:cartesian-product"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:relation",
+      "slug": "relation",
+      "title": "Define a relation R from A to B as a subset of A x B",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Recognise a relation as a subset of the cartesian product picked out by a relationship between first and second elements, and write it in roster or set-builder form.",
+      "quote": "A relation R from a non-empty set A to a non-empty set B is a subset of the cartesian product",
+      "explanation": "A relation R from a non-empty set A to a non-empty set B is a subset of the cartesian product A x B. The subset is obtained by describing a relationship between the first element and the second element of the ordered pairs in A x B; the second element is called the image of the first element. For example, with P = {a, b, c} and a set Q of names, the relation 'x is the first letter of the name y' picks out R = {(a, Ali), (b, Bhanu), (b, Binoy), (c, Chandra)} from P x Q. A relation may be represented algebraically by the roster method (listing the pairs) or by the set-builder method, and pictured by an arrow diagram. A relation from A to A is also called a relation on A.",
+      "keyMoves": [
+        "Start from A x B and keep only the pairs satisfying the stated relationship",
+        "Write the relation in roster form (list the pairs) or set-builder form",
+        "Identify the image of an element x as the y with (x, y) in R"
+      ],
+      "misconceptions": [
+        "Treating a relation as needing every element of A to be paired (it can be any subset of A x B)",
+        "Confusing the relation (a subset) with the whole cartesian product"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:cartesian-product"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:domain-range-codomain",
+      "slug": "domain-range-codomain",
+      "title": "Find the domain, range and codomain of a relation",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Read off the domain (all first elements), the range (all second elements) and the codomain (the whole second set) of a relation, noting range is a subset of codomain.",
+      "quote": "The set of all first elements of the ordered pairs in a relation R from a set A to a set B is called the *domain* of the relation R.",
+      "explanation": "For a relation R from a set A to a set B: the domain is the set of all first elements of the ordered pairs in R; the range is the set of all second elements of the ordered pairs in R; and the whole set B is the codomain. The range is always a subset of the codomain (range is contained in codomain). For example, for R = {(x, y) : y = x + 1} on A = {1, 2, 3, 4, 5, 6}, R = {(1,2),(2,3),(3,4),(4,5),(5,6)}, so the domain is {1,2,3,4,5}, the range is {2,3,4,5,6} and the codomain is {1,2,3,4,5,6}. Only elements that actually appear as a first element belong to the domain; elements of B that are never used as images are in the codomain but not in the range.",
+      "keyMoves": [
+        "Collect all first elements of the pairs to get the domain",
+        "Collect all second elements of the pairs to get the range",
+        "Take the whole target set B as the codomain, and check range is a subset of codomain"
+      ],
+      "misconceptions": [
+        "Confusing the codomain (all of B) with the range (only the images actually attained)",
+        "Including in the domain elements of A that are not the first element of any pair"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:relation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:count-relations",
+      "slug": "count-relations",
+      "title": "Count the number of relations from A to B as 2^(pq)",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use the fact that a relation is any subset of A x B to count the relations from A to B as 2 raised to the power n(A x B) = pq.",
+      "quote": "The total number of relations that can be defined from a set A to a set B is the number of possible subsets of",
+      "explanation": "The total number of relations that can be defined from a set A to a set B is the number of possible subsets of A x B, because a relation is by definition a subset of A x B. If n(A) = p and n(B) = q, then n(A x B) = pq, and a set with pq elements has 2^(pq) subsets, so there are 2^(pq) relations from A to B. For example, with A = {1, 2} and B = {3, 4}, A x B has 4 elements, so there are 2^4 = 16 relations from A to B.",
+      "keyMoves": [
+        "Compute n(A x B) = pq",
+        "Use that a set of m elements has 2^m subsets",
+        "Conclude the number of relations from A to B is 2^(pq)"
+      ],
+      "misconceptions": [
+        "Using pq itself as the number of relations instead of 2^(pq)",
+        "Forgetting that the empty relation and the full product both count as relations"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:relation",
+        "jee:maths:maths-ch02:count-cartesian-product"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:function",
+      "slug": "function",
+      "title": "Decide whether a relation is a function",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Apply the test that a relation is a function when every element of the domain set A has one and only one image, so no two distinct pairs share a first element.",
+      "quote": "A relation f from a set A to a set B is said to be a *function* if every element of set A has one and only one image in set B.",
+      "explanation": "A relation f from a set A to a set B is a function if every element of set A has one and only one image in set B. Equivalently, f is a function from non-empty A to non-empty B whose domain is all of A and in which no two distinct ordered pairs have the same first element. If (a, b) is in f we write f(a) = b, where b is the image of a and a is the preimage of b, and the function is denoted f : A -> B. A relation fails to be a function in two ways: an element of A has no image (e.g. y = x + 1 on {1,...,6} leaves 6 with no image), or an element of A has more than one image (e.g. when the same first element 2 corresponds to two different images). So R = {(2,1),(3,1),(4,2)} is a function (each first element unique), but R = {(2,2),(2,4),(3,3),(4,4)} is not (2 has two images).",
+      "keyMoves": [
+        "Check the domain is the whole set A (every element of A has an image)",
+        "Check no first element is repeated with two different images",
+        "If both hold, declare it a function and write f(a) = b for each pair"
+      ],
+      "misconceptions": [
+        "Allowing one input to map to two outputs and still calling it a function",
+        "Accepting a relation as a function when some element of A has no image"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:relation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:real-function",
+      "slug": "real-function",
+      "title": "Identify a real valued function and a real function",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Classify a function as real valued (range in R) and as a real function (domain and range both in R), and evaluate it at given inputs.",
+      "quote": "A function which has either R or one of its subsets as its range is called a *real valued function*.",
+      "explanation": "A function whose range is R or a subset of R is called a real valued function. If, in addition, its domain is also R or a subset of R, it is called a real function. Most functions met in this chapter are real functions, e.g. f : N -> N defined by f(x) = 2x + 1 (so f(1) = 3, f(2) = 5, f(3) = 7, ...), or f(x) = 2x - 5 evaluated as f(0) = -5, f(7) = 9, f(-3) = -11. Finding the domain of a real function often means excluding inputs that make it undefined: for f(x) = (x^2 + 3x + 5)/(x^2 - 5x + 4), since x^2 - 5x + 4 = (x - 4)(x - 1), the domain is R minus {1, 4}.",
+      "keyMoves": [
+        "Call a function real valued when its range lies in R",
+        "Call it a real function when both its domain and range lie in R",
+        "Evaluate f at given inputs and exclude inputs that make it undefined to get the domain"
+      ],
+      "misconceptions": [
+        "Confusing 'real valued' (range in R) with 'real function' (both domain and range in R)",
+        "Forgetting to exclude values that make a denominator zero when finding the domain"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:identity-function",
+      "slug": "identity-function",
+      "title": "Recognise and graph the identity function",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Identify f(x) = x as the identity function, with domain and range R and a straight-line graph through the origin.",
+      "quote": "by y = f(x) = x for each  $x \\in \\mathbf{R}$ . Such a function is called the *identity function*.",
+      "explanation": "The identity function is the real valued function f : R -> R defined by y = f(x) = x for each x in R. It sends every real number to itself, so its domain and range are both R. Its graph is a straight line passing through the origin (the line y = x). It is the simplest building block among the standard functions and serves as a reference when comparing graphs of other functions.",
+      "keyMoves": [
+        "Recognise f(x) = x as the identity function",
+        "State its domain and range are both R",
+        "Sketch its graph as the straight line y = x through the origin"
+      ],
+      "misconceptions": [
+        "Confusing the identity function f(x) = x with a constant function",
+        "Drawing the line so that it does not pass through the origin"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:real-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:constant-function",
+      "slug": "constant-function",
+      "title": "Recognise and graph the constant function",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Identify f(x) = c as the constant function, with domain R and range the single value {c}, graphed as a line parallel to the x-axis.",
+      "quote": "The graph is a line parallel to *x*-axis.",
+      "explanation": "The constant function f : R -> R is defined by y = f(x) = c, where c is a fixed constant and x ranges over R. Every input maps to the same output c, so its domain is R and its range is the single-element set {c}. Its graph is a line parallel to the x-axis at height c; for example f(x) = 3 graphs as the horizontal line y = 3. Because the output never changes, no input is distinguished by its image.",
+      "keyMoves": [
+        "Recognise f(x) = c (a fixed number) as a constant function",
+        "State its domain is R and its range is the single value {c}",
+        "Sketch its graph as a horizontal line parallel to the x-axis at height c"
+      ],
+      "misconceptions": [
+        "Giving the range as all of R instead of the single value {c}",
+        "Drawing the constant-function graph as a slanted line rather than horizontal"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:real-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:polynomial-function",
+      "slug": "polynomial-function",
+      "title": "Identify a polynomial function",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Recognise f(x) = a0 + a1 x + ... + an x^n with non-negative integer powers as a polynomial function, and tell polynomial from non-polynomial expressions.",
+      "quote": "is said to be *polynomial function* if for each x in",
+      "explanation": "A function f : R -> R is a polynomial function if for each x in R, y = f(x) = a0 + a1 x + a2 x^2 + ... + an x^n, where n is a non-negative integer and the coefficients a0, a1, ..., an are real numbers. The defining feature is that every power of x is a non-negative integer. So f(x) = x^3 - x^2 + 2 and g(x) = x^4 + (root 2) x are polynomial functions, whereas h(x) = x^(2/3) + 2x is not a polynomial function because it contains a fractional power of x. Identity and constant functions are special cases of polynomial functions.",
+      "keyMoves": [
+        "Write the candidate as a sum of terms (coefficient) x (power of x)",
+        "Check every exponent of x is a non-negative integer",
+        "Reject expressions with fractional or negative powers as non-polynomial"
+      ],
+      "misconceptions": [
+        "Accepting fractional-power terms like x^(2/3) as part of a polynomial",
+        "Thinking the coefficients must be integers (they may be any real numbers)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:real-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:rational-function",
+      "slug": "rational-function",
+      "title": "Identify a rational function and its domain",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Recognise a rational function as a ratio f(x)/g(x) of polynomials defined where g(x) is not zero, and exclude the zeros of the denominator from its domain.",
+      "quote": "are functions of the type",
+      "explanation": "Rational functions are functions of the type f(x)/g(x), where f(x) and g(x) are polynomial functions of x defined in a domain where g(x) is not equal to 0. The function is undefined wherever the denominator vanishes, so those points are removed from the domain. For example f(x) = 1/x is a rational function with domain R minus {0} and range R minus {0}; its values run -0.5, -0.67, -1, -2, ... 4, 2, 1, ... as x varies. More generally, to find the domain of a rational function, factor the denominator and exclude the values that make it zero.",
+      "keyMoves": [
+        "Recognise the function as a ratio f(x)/g(x) of two polynomials",
+        "Find the zeros of the denominator g(x)",
+        "Exclude those zeros from the domain (the function is defined where g(x) is not 0)"
+      ],
+      "misconceptions": [
+        "Including the zeros of the denominator in the domain",
+        "Thinking a rational function is defined for every real number"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:polynomial-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:algebra-of-functions",
+      "slug": "algebra-of-functions",
+      "title": "Combine real functions by sum, difference, product, scalar and quotient",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Form new real functions pointwise: (f+g), (f-g), (fg), a scalar multiple (alpha f) and the quotient (f/g), the last only where g is non-zero.",
+      "quote": "(f+g)(x) = f(x) + g(x)",
+      "explanation": "For two real functions f : X -> R and g : X -> R (with X a subset of R), we build new functions pointwise. Addition: (f + g)(x) = f(x) + g(x). Subtraction: (f - g)(x) = f(x) - g(x). Multiplication by a scalar alpha (a real number): (alpha f)(x) = alpha f(x). Product (pointwise multiplication): (fg)(x) = f(x) g(x). Quotient: (f/g)(x) = f(x)/g(x), provided g(x) is not 0. For example, with f(x) = x^2 and g(x) = 2x + 1: (f + g)(x) = x^2 + 2x + 1, (f - g)(x) = x^2 - 2x - 1, (fg)(x) = 2x^3 + x^2, and (f/g)(x) = x^2/(2x + 1) for x not equal to -1. Each combined function is defined on the common domain X (with the extra restriction g(x) not 0 for the quotient).",
+      "keyMoves": [
+        "Add, subtract or multiply value-by-value: (f op g)(x) = f(x) op g(x)",
+        "Scale by a real number: (alpha f)(x) = alpha f(x)",
+        "Form the quotient (f/g)(x) = f(x)/g(x) only where g(x) is not 0"
+      ],
+      "misconceptions": [
+        "Forgetting to exclude points where g(x) = 0 when forming f/g",
+        "Combining functions whose domains differ without restricting to the common domain X"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:real-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch02:model-and-classify-relations-as-functions",
+      "slug": "model-and-classify-relations-as-functions",
+      "title": "Link sets by relations and decide which relations qualify as functions",
+      "role": "goal",
+      "sec": 1,
+      "brief": "Pair elements of two sets via the cartesian product, carve out a relation, read its domain, range and codomain, and decide whether it qualifies as a function.",
+      "quote": "Finally, we will learn about special relations which will qualify to be functions.",
+      "explanation": "The chapter builds one chain of ideas: order pairs of objects into ordered pairs, collect all such pairs as the cartesian product A x B, carve out a relation as a subset of A x B that satisfies a stated rule, and then test which relations qualify to be functions. Given any pairing problem you can therefore: form A x B (and count it as pq), describe the relation R picking out the pairs you want, read off its domain, range and codomain, and finally decide whether R is a function by checking that every element of A has exactly one image. If it is a function you can classify it further (real valued, identity, constant, polynomial, rational) and combine it with others through the algebra of functions. This captures the chapter's aim of a mathematically precise correspondence between one quantity and another.",
+      "keyMoves": [
+        "Form the cartesian product and pick out the relation that satisfies the stated rule",
+        "Read off the domain, range and codomain of that relation",
+        "Decide whether it is a function (each input has exactly one image), then classify and combine functions"
+      ],
+      "misconceptions": [
+        "Treating every relation as a function without checking the one-image-per-input condition",
+        "Stopping at listing pairs without identifying domain, range and codomain or the function type"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch02:count-cartesian-product",
+        "jee:maths:maths-ch02:domain-range-codomain",
+        "jee:maths:maths-ch02:count-relations",
+        "jee:maths:maths-ch02:function",
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch02:identity-function",
+        "jee:maths:maths-ch02:constant-function",
+        "jee:maths:maths-ch02:polynomial-function",
+        "jee:maths:maths-ch02:rational-function",
+        "jee:maths:maths-ch02:algebra-of-functions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

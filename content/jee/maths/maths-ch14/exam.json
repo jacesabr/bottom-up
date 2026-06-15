@@ -1,0 +1,164 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch14",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch14:equally-likely-outcomes",
+      "kind": "practice",
+      "prompt": "One card is drawn from a well shuffled deck of 52 cards, each outcome equally likely. Using P(A) = n(A)/n(S), find the probability that the card is a diamond. Give the answer as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.25",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.25,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch14 Sec 14.2.2 Equally likely outcomes (cf. Example 5(i): P(diamond) = 13/52 = 1/4)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch14:probability-not-a",
+      "kind": "practice",
+      "prompt": "If 2/11 is the probability of an event A, use the complement rule P(not A) = 1 - P(A) to find the probability of the event 'not A'. Give the answer as a decimal (3 places).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.818",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.818,
+        "tol": 0.002
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch14 Sec 14.2.4 Probability of 'not A' (cf. Exercise 14.2 Q9)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch14:probability-a-or-b",
+      "kind": "practice",
+      "prompt": "Two students Anil and Ashima take an exam. P(Anil qualifies) = 0.05, P(Ashima qualifies) = 0.10 and P(both qualify) = 0.02. Using P(A or B) = P(A) + P(B) - P(A and B), find the probability that at least one of them qualifies. Give the answer as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.13",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.13,
+        "tol": 0.005
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch14 Sec 14.2.3 Addition theorem (cf. Example 7: P(E or F) = 0.13)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch14:mutually-exclusive-events",
+      "kind": "practice",
+      "prompt": "A die is rolled. Let E be the event 'die shows 4' and F be the event 'die shows an even number'. Are E and F mutually exclusive?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "No, because 4 is in both E and F, so their intersection is not empty",
+      "expected": {
+        "kind": "mcq",
+        "correct": "No, because 4 is in both E and F, so their intersection is not empty",
+        "options": [
+          "No, because 4 is in both E and F, so their intersection is not empty",
+          "Yes, because they have different descriptions",
+          "Yes, because E has one outcome and F has three",
+          "It cannot be decided without knowing the probabilities"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch14 Sec 14.1.4 Mutually exclusive events (cf. Exercise 14.1 Q1)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch14:complementary-event",
+      "kind": "practice",
+      "prompt": "The complementary event A' (the event 'not A') is given by:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "S - A, the outcomes of S that are not in A",
+      "expected": {
+        "kind": "mcq",
+        "correct": "S - A, the outcomes of S that are not in A",
+        "options": [
+          "S - A, the outcomes of S that are not in A",
+          "A intersect S, the outcomes common to A and S",
+          "A union S, all outcomes in A or in S",
+          "the empty set phi"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch14 Sec 14.1.3 Complementary event (A' = S - A)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch14:event-a-or-b",
+      "kind": "practice",
+      "prompt": "A die is rolled. Let A = 'getting a prime number' = {2, 3, 5} and B = 'getting an odd number' = {1, 3, 5}. The event 'A or B' (the union A union B) is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "{1, 2, 3, 5}",
+      "expected": {
+        "kind": "mcq",
+        "correct": "{1, 2, 3, 5}",
+        "options": [
+          "{1, 2, 3, 5}",
+          "{3, 5}",
+          "{2}",
+          "{1, 4, 6}"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch14 Sec 14.1.3 Event 'A or B' (cf. Example 1(i))"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch14:event-a-and-b",
+      "kind": "practice",
+      "prompt": "For the same die experiment with A = 'prime' = {2, 3, 5} and B = 'odd' = {1, 3, 5}, the event 'A and B' (the intersection A intersect B) is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "{3, 5}",
+      "expected": {
+        "kind": "mcq",
+        "correct": "{3, 5}",
+        "options": [
+          "{3, 5}",
+          "{1, 2, 3, 5}",
+          "{2}",
+          "{1, 3, 5}"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch14 Sec 14.1.3 Event 'A and B' (cf. Example 1(ii))"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch14:axioms-of-probability",
+      "kind": "practice",
+      "prompt": "Which assignment of probabilities to the six outcomes of a sample space is NOT valid under the axioms of probability?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "0.1, 0.2, 0.3, 0.4, 0.5, 0.6 (they sum to 2.1)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "0.1, 0.2, 0.3, 0.4, 0.5, 0.6 (they sum to 2.1)",
+        "options": [
+          "0.1, 0.2, 0.3, 0.4, 0.5, 0.6 (they sum to 2.1)",
+          "1/6, 1/6, 1/6, 1/6, 1/6, 1/6",
+          "1, 0, 0, 0, 0, 0",
+          "any assignment where each value is in [0,1] and the total is 1"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch14 Sec 14.2 Axiomatic approach (cf. Example 4(e): sum = 2.1, invalid)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch14:exhaustive-events",
+      "kind": "practice",
+      "prompt": "A coin is tossed three times with A: 'no head appears', B: 'exactly one head appears', C: 'at least two heads appear'. Explain how you check whether A, B and C form a set of mutually exclusive and exhaustive events.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "Write the subsets: A = {TTT}, B = {HTT, THT, TTH}, C = {HHT, HTH, THH, HHH}. They are exhaustive because A union B union C = S (the whole sample space of eight outcomes). They are mutually exclusive because the events are pairwise disjoint (A intersect B = A intersect C = B intersect C = phi). Being both, they form a set of mutually exclusive and exhaustive events.",
+        "markPoints": [
+          "List the subsets of S for A, B and C",
+          "Show the union A union B union C equals S, so they are exhaustive",
+          "Show the events are pairwise disjoint (intersections empty), so they are mutually exclusive"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch14 Sec 14.1.5 Exhaustive events (cf. Example 3)"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "chapter": "mathematics-ch07",
+  "items": [
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:antiderivative",
+      "kind": "practice",
+      "prompt": "F is an antiderivative (primitive) of f if:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "F'(x) = f(x)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "F'(x) = f(x)",
+        "options": [
+          "F'(x) = f(x)",
+          "f'(x) = F(x)",
+          "F(x) = 1/f(x)",
+          "F(x) = f(x) + 1"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Sec 7.1 antiderivatives"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation",
+      "kind": "practice",
+      "prompt": "Integration is best described as:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the inverse process of differentiation",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the inverse process of differentiation",
+        "options": [
+          "the inverse process of differentiation",
+          "the same as differentiation",
+          "squaring a function",
+          "finding the limit of a function"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Sec 7.1"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:indefinite-integral",
+      "kind": "practice",
+      "prompt": "The indefinite integral of f represents:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the entire class of antiderivatives F(x) + C",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the entire class of antiderivatives F(x) + C",
+        "options": [
+          "the entire class of antiderivatives F(x) + C",
+          "a single fixed function",
+          "the derivative of f",
+          "the area under f from a to b"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Sec 7.2"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:same-derivative-same-family",
+      "kind": "practice",
+      "prompt": "Two indefinite integrals having the same derivative:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "differ only by a constant (same family of curves)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "differ only by a constant (same family of curves)",
+        "options": [
+          "differ only by a constant (same family of curves)",
+          "must be identical expressions",
+          "are unrelated",
+          "differ by a factor of x"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Sec 7.2.1 property (II)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
+      "kind": "practice",
+      "prompt": "To integrate an expression containing x^2 + 1 and a factor of x, a useful substitution is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "t = x^2 + 1, so 2x dx = dt",
+      "expected": {
+        "kind": "mcq",
+        "correct": "t = x^2 + 1, so 2x dx = dt",
+        "options": [
+          "t = x^2 + 1, so 2x dx = dt",
+          "t = x, so dx = dt",
+          "t = 1/x, so dt = -1/x^2 dx",
+          "no substitution is possible"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Sec 7.3.1 Example (ii)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:proper-improper-rational",
+      "kind": "practice",
+      "prompt": "A rational function P(x)/Q(x) is called proper when:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the degree of P(x) is less than the degree of Q(x)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the degree of P(x) is less than the degree of Q(x)",
+        "options": [
+          "the degree of P(x) is less than the degree of Q(x)",
+          "the degree of P(x) is greater than the degree of Q(x)",
+          "P(x) = Q(x)",
+          "Q(x) = 0"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Sec 7.5 proper/improper"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:partial-fractions",
+      "kind": "practice",
+      "prompt": "Partial fraction decomposition is applied to a proper rational function in order to:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "write it as a sum of simpler fractions that are easy to integrate",
+      "expected": {
+        "kind": "mcq",
+        "correct": "write it as a sum of simpler fractions that are easy to integrate",
+        "options": [
+          "write it as a sum of simpler fractions that are easy to integrate",
+          "differentiate it",
+          "convert it to a polynomial",
+          "find its maximum value"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Sec 7.5 partial fractions"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:integration-by-parts",
+      "kind": "practice",
+      "prompt": "Using integration by parts, the integral of x cos x dx equals:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "x sin x + cos x + C",
+      "expected": {
+        "kind": "mcq",
+        "correct": "x sin x + cos x + C",
+        "options": [
+          "x sin x + cos x + C",
+          "x sin x - cos x + C",
+          "x cos x + sin x + C",
+          "x^2 sin x / 2 + C"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Example 17"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:definite-integral",
+      "kind": "practice",
+      "prompt": "In the definite integral of f from a to b, the number b is called the:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "upper limit of the integral",
+      "expected": {
+        "kind": "mcq",
+        "correct": "upper limit of the integral",
+        "options": [
+          "upper limit of the integral",
+          "lower limit of the integral",
+          "constant of integration",
+          "integrand"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Sec 7.7 definite integral"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:ftc-area-function",
+      "kind": "practice",
+      "prompt": "By the first Fundamental Theorem of Calculus, if A(x) is the area function of a continuous f, then A'(x) equals:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "f(x)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "f(x)",
+        "options": [
+          "f(x)",
+          "f(a)",
+          "F(b) - F(a)",
+          "0"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Theorem 1"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+      "kind": "practice",
+      "prompt": "By the Fundamental Theorem of Calculus, the definite integral of 2x dx from 0 to 3 (an antiderivative is x^2) equals:",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "9",
+      "expected": {
+        "kind": "numeric",
+        "value": 9,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Theorem 2 (F(3) - F(0) = 9 - 0)"
+    },
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+      "kind": "practice",
+      "prompt": "State the Fundamental Theorem of Calculus (Theorem 2) and outline how you use it to evaluate a definite integral of a continuous function f on [a, b].",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "If f is continuous on [a, b] and F is an antiderivative of f, then the definite integral of f from a to b equals F(b) - F(a). To use it: find any one antiderivative F of f (no constant of integration needed), evaluate F at the upper limit b and the lower limit a, and subtract: F(b) - F(a).",
+        "markPoints": [
+          "Integral of f from a to b = F(b) - F(a) for an antiderivative F",
+          "Find any antiderivative F of f (constant not needed)",
+          "Evaluate F(b) and F(a) and subtract"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - mathematics-ch07 Theorem 2"
+    }
+  ]
+}

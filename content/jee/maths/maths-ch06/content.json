@@ -1,0 +1,301 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch06",
+  "title": "Permutations and Combinations",
+  "book": "NCERT Class 11 maths — Permutations and Combinations",
+  "goal": "jee:maths:maths-ch06:solve-counting-problems",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch06:multiplication-principle",
+      "slug": "multiplication-principle",
+      "title": "Apply the fundamental principle of counting (multiplication principle)",
+      "role": "bedrock",
+      "sec": 2,
+      "brief": "Count the ways a sequence of independent choices can be made by multiplying the number of ways for each choice.",
+      "quote": "If an event can occur in m different ways, following which another event can occur in n different ways, then the total number of occurrence of the events in the given order is",
+      "explanation": "The fundamental principle of counting (the multiplication principle) says that if one event can occur in m different ways, following which a second event can occur in n different ways, then the two events in that order can occur in m x n ways. It generalises to any finite number of events: for three events occurring in m, n and p ways the total is m x n x p, and so on. For example, with 3 pants and 2 shirts there are 3 x 2 = 6 pant-shirt pairs; with 2 bags, 3 tiffin boxes and 2 bottles there are 2 x 3 x 2 = 12 ways to carry one of each. The key requirement is that you fix one order of the choices and count the number of ways each successive choice can be made (the later counts may shrink, e.g. when repetition is not allowed).",
+      "keyMoves": [
+        "Break the task into a sequence of successive choices (events)",
+        "Count the number of ways each choice can be made in the chosen order",
+        "Multiply those counts together (m x n x p ...) to get the total"
+      ],
+      "misconceptions": [
+        "Adding the counts (m + n) instead of multiplying them",
+        "Keeping the count fixed when repetition is not allowed, instead of reducing it at each step"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:permutation-definition",
+      "slug": "permutation-definition",
+      "title": "Recognise a permutation as an ordered arrangement",
+      "role": "bedrock",
+      "sec": 3,
+      "brief": "Identify when a counting problem is a permutation: the objects are arranged in a definite order, so the order of writing them matters.",
+      "quote": "A permutation is an arrangement in a definite order of a number of objects taken some or all at a time.",
+      "explanation": "A permutation is an arrangement, in a definite order, of a number of objects taken some or all at a time. The defining feature is that order matters: the arrangements ROSE, REOS, ... are all different permutations of the same four letters, because the order of writing the letters is important. Likewise the 3-letter words formed from NUMBER (NUM, NMU, MUN, ...) are counted as distinct permutations. So whenever rearranging the same objects into a different sequence produces a new outcome you should count, you are dealing with permutations rather than combinations.",
+      "keyMoves": [
+        "Ask whether changing the order of the chosen objects gives a different outcome",
+        "If yes, treat the problem as counting permutations (ordered arrangements)",
+        "Distinguish 'taken all at a time' from 'taken r at a time' arrangements"
+      ],
+      "misconceptions": [
+        "Treating arrangements like AB and BA as the same when order actually matters",
+        "Confusing an arrangement (order matters) with a selection (order does not)"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:factorial-notation",
+      "slug": "factorial-notation",
+      "title": "Evaluate and simplify factorial expressions",
+      "role": "bedrock",
+      "sec": 3,
+      "brief": "Use n! as the product of the first n natural numbers, the convention 0! = 1, and the recursion n! = n(n-1)! to evaluate and cancel factorials.",
+      "quote": "The notation n! represents the product of first n natural numbers",
+      "explanation": "The factorial notation n! represents the product of the first n natural numbers, 1 x 2 x 3 x ... x (n-1) x n. So 5! = 1x2x3x4x5 = 120 and 7! = 5040. By convention we define 0! = 1. A factorial can be peeled apart using n! = n(n-1)! = n(n-1)(n-2)! and so on, which is exactly what makes ratios of factorials easy to simplify: for instance 7!/5! = (7 x 6 x 5!)/5! = 42, and 12!/(10! 2!) = (12 x 11)/2 = 66. This cancelling of common factorial blocks is the workhorse for evaluating nPr and nCr.",
+      "keyMoves": [
+        "Expand n! = 1 x 2 x ... x n, and use 0! = 1",
+        "Rewrite n! = n(n-1)! to expose a common factorial block",
+        "Cancel the common block to simplify a ratio of factorials"
+      ],
+      "misconceptions": [
+        "Taking 0! = 0 instead of 0! = 1",
+        "Treating (a+b)! as a! + b! or a!b! instead of leaving factorials of sums unsimplified"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:permutations-distinct-npr",
+      "slug": "permutations-distinct-npr",
+      "title": "Count permutations of distinct objects with nPr = n!/(n-r)!",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use the formula nPr = n!/(n-r)! for the number of ordered arrangements of n distinct objects taken r at a time (no repetition).",
+      "quote": "This is a much more convenient expression for",
+      "explanation": "The number of permutations of n different objects taken r at a time, with no repetition and 0 < r <= n, is nPr = n(n-1)(n-2)...(n-r+1), obtained from the multiplication principle by filling r places: the first in n ways, the next in (n-1) ways, and so on down to (n-r+1) ways for the rth place. Multiplying numerator and denominator by (n-r)! gives the convenient form nPr = n!/(n-r)!, which is also valid for r = 0 (since nP0 = 1) and gives nPn = n!/0! = n! when r = n. For example the 3-letter words from NUMBER number 6P3 = 6!/3! = 120, and choosing a Chairman and Vice-Chairman from 12 people gives 12P2 = 132.",
+      "keyMoves": [
+        "Identify n (total distinct objects) and r (number of ordered places)",
+        "Apply nPr = n!/(n-r)!, equivalently n(n-1)...(n-r+1)",
+        "Check special cases: nP0 = 1 and nPn = n!"
+      ],
+      "misconceptions": [
+        "Using nPr when order does not matter (it is then a combination)",
+        "Writing n!/r! instead of n!/(n-r)! for nPr"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch06:permutation-definition",
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:multiplication-principle"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:permutations-with-repetition",
+      "slug": "permutations-with-repetition",
+      "title": "Count permutations when repetition is allowed (n^r)",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use n^r for the number of ordered arrangements of n distinct objects taken r at a time when each object may be reused.",
+      "quote": "The number of permutations of *n* different objects taken *r* at a time, where repetition is allowed, is",
+      "explanation": "When repetition is allowed, each of the r places to be filled can independently be filled in n ways (the count does not shrink, because used objects are available again). By the multiplication principle the number of such permutations of n different objects taken r at a time is n x n x ... x n (r times) = n^r. For example, the number of 4-letter words from ROSE with repetition allowed is 4^4 = 256, and the 3-letter words from NUMBER with repetition allowed is 6^3 = 216. Contrast this with the no-repetition case nPr = n!/(n-r)!, where each successive place has one fewer object available.",
+      "keyMoves": [
+        "Check whether each object may be reused (repetition allowed)",
+        "If so, give every one of the r places n choices",
+        "Multiply to get n^r (not nPr)"
+      ],
+      "misconceptions": [
+        "Using nPr = n!/(n-r)! even though repetition is allowed",
+        "Writing r^n instead of n^r"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch06:permutation-definition",
+        "jee:maths:maths-ch06:multiplication-principle"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:permutations-not-all-distinct",
+      "slug": "permutations-not-all-distinct",
+      "title": "Count permutations when some objects are identical (n!/(p1!p2!...pk!))",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Divide n! by the factorials of the repeat counts to count arrangements of n objects in which some objects are indistinguishable.",
+      "quote": "the letters of the word are not all different",
+      "explanation": "When some of the n objects are identical, the n! arrangements of 'all-distinct' objects over-count, because permuting the identical objects among themselves gives the same arrangement. If one kind is repeated p times the count is n!/p!; more generally, if there are p1 objects of one kind, p2 of a second kind, ..., pk of a kth kind (and the rest all different), the number of distinct permutations is n!/(p1! p2! ... pk!). For example ROOT (two O's) gives 4!/2! = 12; ALLAHABAD (4 A's, 2 L's) gives 9!/(4! 2!) = 7560; and INDEPENDENCE (3 N's, 4 E's, 2 D's) gives 12!/(3! 4! 2!) = 1663200.",
+      "keyMoves": [
+        "Count n and the repeat count of each kind of identical object",
+        "Apply n!/(p1! p2! ... pk!), dividing out each group's internal arrangements",
+        "Combine with the multiplication principle for added constraints (fixed positions, blocks)"
+      ],
+      "misconceptions": [
+        "Using n! and forgetting to divide by the factorials of the repeated letters",
+        "Dividing by the number of repeats p instead of by p!"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch06:permutations-distinct-npr"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:combination-definition",
+      "slug": "combination-definition",
+      "title": "Recognise a combination as an unordered selection",
+      "role": "bedrock",
+      "sec": 4,
+      "brief": "Identify when a counting problem is a combination: objects are selected without regard to order, so AB and BA are the same.",
+      "quote": "In a combination, the order is not important.",
+      "explanation": "A combination is a selection of objects in which the order is not important. Forming a 2-player team from {X, Y, Z} gives only the selections XY, YZ, ZX - the team of X and Y is the same as the team of Y and X. Similarly, when twelve people shake hands, X shaking with Y is not a different handshake from Y shaking with X, so the number of handshakes is the number of combinations of 12 things taken 2 at a time. The test for a combination is exactly the opposite of the test for a permutation: if swapping the order of the chosen objects does NOT create a new outcome, it is a combination.",
+      "keyMoves": [
+        "Ask whether reordering the chosen objects gives a genuinely new outcome",
+        "If reordering does not matter (teams, handshakes, chords, committees), it is a combination",
+        "Avoid double-counting selections that differ only in order"
+      ],
+      "misconceptions": [
+        "Counting AB and BA as two outcomes when order is irrelevant",
+        "Treating a selection (combination) as if it were an arrangement (permutation)"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:relate-permutations-combinations",
+      "slug": "relate-permutations-combinations",
+      "title": "Relate permutations and combinations by nPr = nCr x r!",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Use the fact that each combination of r objects yields r! permutations to connect nPr and nCr.",
+      "quote": "There are as many as 6 combinations of 4 different objects taken 2 at a time",
+      "explanation": "Permutations and combinations are linked because each unordered combination of r objects can itself be arranged in r! ways. So the r! arrangements of every combination account for all the ordered permutations: the number of permutations of n different things taken r at a time equals the number of combinations times r!, i.e. nPr = nCr x r! for 0 < r <= n. For instance 4C2 = 6 combinations of 4 objects taken 2 at a time, and since each pair can be ordered in 2! ways, 4P2 = 6 x 2! = 12. This relation is what converts the permutation formula into the combination formula.",
+      "keyMoves": [
+        "Note each combination of r objects gives r! ordered arrangements",
+        "Write nPr = nCr x r!",
+        "Rearrange to nCr = nPr / r! when a count of selections is needed"
+      ],
+      "misconceptions": [
+        "Forgetting the r! factor and equating nPr with nCr",
+        "Multiplying by r instead of r! when going from combinations to permutations"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch06:combination-definition",
+        "jee:maths:maths-ch06:permutations-distinct-npr"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:combinations-ncr",
+      "slug": "combinations-ncr",
+      "title": "Count combinations with nCr = n!/(r!(n-r)!)",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Use nCr = n!/(r!(n-r)!) to count the number of unordered selections of r objects from n, including nC0 = nCn = 1.",
+      "quote": "Now, we obtain the formula for finding the number of combinations of *n* different objects taken *r* at a time, denoted by",
+      "explanation": "From nPr = nCr x r! and nPr = n!/(n-r)!, the number of combinations of n different things taken r at a time is nCr = n!/(r!(n-r)!), valid for 0 <= r <= n. Special cases: nCn = 1 (one way to choose them all) and nC0 = 1 (one way to choose nothing). For example, choosing a 3-person committee from 5 people is 5C3 = 5!/(3!2!) = 10; choosing 4 cards from 52 is 52C4 = 270725. Selection problems with constraints are handled by splitting into cases and combining nCr factors with the multiplication and addition principles - e.g. 1 man from 2 and 2 women from 3 gives 2C1 x 3C2 = 6 committees.",
+      "keyMoves": [
+        "Apply nCr = n!/(r!(n-r)!) for an unordered selection of r from n",
+        "Use nC0 = nCn = 1 for the boundary cases",
+        "For constraints, multiply nCr factors for joint choices and add over disjoint cases"
+      ],
+      "misconceptions": [
+        "Using nPr (order matters) where a selection nCr is required",
+        "Dropping the r! in the denominator and writing n!/(n-r)! for a combination"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch06:relate-permutations-combinations",
+        "jee:maths:maths-ch06:factorial-notation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:combination-symmetry",
+      "slug": "combination-symmetry",
+      "title": "Use the symmetry nCr = nC(n-r)",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Apply nC(n-r) = nCr and the consequence that nCa = nCb implies a = b or a + b = n.",
+      "quote": "selecting r objects out of n objects is same as rejecting (n - r) objects.",
+      "explanation": "Because choosing which r objects to take is the same as choosing which (n-r) objects to reject, the combination count is symmetric: nC(n-r) = n!/((n-r)! r!) = nCr. This often simplifies arithmetic - e.g. nC8 = nC2 can be read off using the symmetry. A useful corollary is that nCa = nCb forces either a = b or a = n - b (i.e. n = a + b); for instance from nC9 = nC8 the second option gives n - 8 = 9, so n = 17, and then nC17 = 17C17 = 1.",
+      "keyMoves": [
+        "Replace nCr by nC(n-r) (or vice versa) to use the easier subscript",
+        "From nCa = nCb, conclude a = b or a + b = n",
+        "Solve for the unknown n or r using that conclusion"
+      ],
+      "misconceptions": [
+        "Concluding only a = b from nCa = nCb and missing the a + b = n solution",
+        "Believing rejecting (n-r) objects gives a different count from selecting r"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch06:combinations-ncr"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:pascal-identity",
+      "slug": "pascal-identity",
+      "title": "Apply Pascal's rule nCr + nC(r-1) = (n+1)Cr",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Use the identity nCr + nC(r-1) = (n+1)Cr that combines two adjacent combinations into one of the next row.",
+      "quote": "selecting r objects out of n objects is same as rejecting",
+      "explanation": "Adjacent combination counts add by Pascal's rule: nCr + nC(r-1) = (n+1)Cr. It is proved by putting the two terms over a common denominator: nCr + nC(r-1) = n!/(r!(n-r)!) + n!/((r-1)!(n-r+1)!), and factoring out n!/((r-1)!(n-r)!) leaves the bracket [1/r + 1/(n-r+1)] = (n+1)/(r(n-r+1)), which collapses to (n+1)!/(r!(n+1-r)!) = (n+1)Cr. This is the rule that generates each entry of Pascal's triangle from the two above it, and it underlies the binomial coefficients.",
+      "keyMoves": [
+        "Recognise two combinations with the same top n and subscripts r and r-1",
+        "Add them using nCr + nC(r-1) = (n+1)Cr",
+        "Verify by reducing both sides over a common factorial denominator"
+      ],
+      "misconceptions": [
+        "Writing nCr + nC(r-1) = nCr or (n+1)C(r-1) with the wrong top/subscript",
+        "Adding the combinations as if the formula were a simple sum of fractions without combining over a common denominator"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch06:combinations-ncr"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch06:solve-counting-problems",
+      "slug": "solve-counting-problems",
+      "title": "Solve counting problems by choosing arrangement vs selection and combining the rules",
+      "role": "goal",
+      "sec": 4,
+      "brief": "Model any counting problem by deciding whether order matters (permutation) or not (combination), then combine nPr, n^r, n!/(p1!...), nCr with the multiplication and addition principles.",
+      "quote": "these techniques will be useful in determining the number of different ways of arranging and selecting objects without actually listing them",
+      "explanation": "The whole chapter is a toolkit for counting arrangements and selections without listing them. To solve a problem: first decide whether order matters - an arrangement (permutation) or a selection (combination). For ordered counts use nPr = n!/(n-r)! (no repetition), n^r (repetition allowed), or n!/(p1! p2! ... pk!) (some objects identical). For unordered counts use nCr = n!/(r!(n-r)!), simplified where helpful by nCr = nC(n-r) and built up by Pascal's rule. Then assemble the answer with the fundamental principle of counting: multiply the counts of independent successive choices, and add the counts of mutually exclusive cases. Treating blocks of objects that must stay together as single objects, fixing objects in special positions, and subtracting the 'together' cases from the total handle the standard constraint problems (e.g. all vowels together, words starting with a given letter, at least / at most conditions).",
+      "keyMoves": [
+        "Decide order matters (permutation) or not (combination)",
+        "Pick the right formula: nPr, n^r, n!/(p1!...pk!), or nCr",
+        "Assemble with the multiplication principle (joint choices) and addition (disjoint cases), using blocks/fixed positions/complement for constraints"
+      ],
+      "misconceptions": [
+        "Reaching for a formula before deciding whether order matters",
+        "Adding case counts that overlap, or multiplying counts of mutually exclusive cases"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch06:multiplication-principle",
+        "jee:maths:maths-ch06:permutations-distinct-npr",
+        "jee:maths:maths-ch06:permutations-with-repetition",
+        "jee:maths:maths-ch06:permutations-not-all-distinct",
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:combination-symmetry",
+        "jee:maths:maths-ch06:pascal-identity"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

@@ -7,7 +7,9 @@ build/
 *.log
 .DS_Store
 
-# Large source PDFs (textbooks + papers) — kept local; app uses the processed JSON in content/cbse10/maths
+# Large source PDFs (textbooks + papers) — kept local; app uses the processed JSON in content/<exam>/<subject>
 content/cbse10/textbooks/
 content/cbse10/papers-pdf/
+content/cbse12/textbooks/
+content/jee/textbooks/
 pnpm-lock.yaml

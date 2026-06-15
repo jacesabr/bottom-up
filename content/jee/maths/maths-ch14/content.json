@@ -1,0 +1,429 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch14",
+  "title": "Probability",
+  "book": "NCERT Class 11 maths — Probability",
+  "goal": "jee:maths:maths-ch14:solve-probability-problems",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-ch14:event-as-subset",
+      "slug": "event-as-subset",
+      "title": "Define an event as a subset of the sample space",
+      "role": "bedrock",
+      "brief": "Recognise that any subset of the sample space of a random experiment is an event, and translate a described happening into the matching subset of S.",
+      "sec": 1,
+      "quote": "Any subset E of a sample space S is called *an event*.",
+      "explanation": "The sample space S of a random experiment is the set of all possible outcomes; it acts as a universal set for every question about that experiment. Any subset E of S is called an event. So a described happening (for example 'exactly one head appears' when a coin is tossed twice) corresponds to the subset of S whose elements are the outcomes that realise that happening, e.g. E = {HT, TH} inside S = {HH, HT, TH, TT}. Building events therefore reduces to reading a verbal description and listing the outcomes that satisfy it.",
+      "keyMoves": [
+        "Write the sample space S of the experiment as the set of all outcomes",
+        "Translate a described happening into the subset of S whose outcomes realise it",
+        "State that this subset is the event"
+      ],
+      "misconceptions": [
+        "Confusing the event (a subset) with a single outcome (a sample point)",
+        "Listing outcomes that do not actually satisfy the described condition"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:occurrence-of-an-event",
+      "slug": "occurrence-of-an-event",
+      "title": "Decide whether an event has occurred from the outcome",
+      "role": "intermediate",
+      "brief": "Use the rule that an event E occurs exactly when the actual outcome of the experiment belongs to E, and does not occur when the outcome lies outside E.",
+      "sec": 1,
+      "quote": "the event E of a sample space S is said to have occurred if the outcome  $\\omega$  of the experiment is such that  $\\omega \\in E$ .",
+      "explanation": "Once an experiment is performed it yields one actual outcome (omega). The event E has occurred if that outcome belongs to E, i.e. omega in E; it has not occurred if omega lies outside E, i.e. omega not in E. For instance, with E = 'a number less than 4 appears' on a die, if 2 or 3 turns up then E has occurred. This membership test is the bridge between the abstract subset and what physically happened.",
+      "keyMoves": [
+        "Identify the actual outcome omega produced by the experiment",
+        "Check whether omega belongs to the event subset E",
+        "Conclude E occurred if omega in E, and did not occur if omega not in E"
+      ],
+      "misconceptions": [
+        "Thinking an event occurs only if every outcome in E happens, rather than the single observed outcome lying in E",
+        "Judging occurrence from the description in words instead of testing membership in the subset"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-as-subset"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:impossible-and-sure-events",
+      "slug": "impossible-and-sure-events",
+      "title": "Identify impossible and sure events",
+      "role": "intermediate",
+      "brief": "Recognise the empty set as the impossible event and the whole sample space as the sure event, and classify a described event as one of these when appropriate.",
+      "sec": 1,
+      "quote": "is called an *impossible event* and S, i.e., the whole sample space is called the *sure event*.",
+      "explanation": "Two extreme subsets of S are themselves events. The empty set phi, which no outcome can satisfy, is the impossible event: e.g. 'a multiple of 7 appears' on an ordinary die corresponds to phi and can never happen. The whole sample space S, which every outcome satisfies, is the sure event: e.g. 'the number that turns up is odd or even' equals S and is certain to occur. Recognising when a described event collapses to phi or to S lets you assign it probability 0 or 1 immediately.",
+      "keyMoves": [
+        "List the subset associated with the described event",
+        "If no outcome satisfies it, identify it as the impossible event phi",
+        "If every outcome satisfies it, identify it as the sure event S"
+      ],
+      "misconceptions": [
+        "Treating an unlikely-but-possible event as impossible",
+        "Forgetting that the sure event is the entire sample space, not just a large subset"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-as-subset"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:simple-event",
+      "slug": "simple-event",
+      "title": "Identify a simple (elementary) event",
+      "role": "intermediate",
+      "brief": "Recognise an event with exactly one sample point as a simple event, and count that a space of n outcomes has exactly n simple events.",
+      "sec": 1,
+      "quote": "If an event E has only one sample point of a sample space, it is called a *simple* (or *elementary*) *event*.",
+      "explanation": "An event that contains exactly one sample point is a simple (or elementary) event. In a sample space with n distinct elements there are exactly n simple events, one per outcome. For example, tossing two coins gives S = {HH, HT, TH, TT} and the four simple events {HH}, {HT}, {TH}, {TT}. Simple events are the indivisible building blocks: any event is a union of the simple events it contains, and (as noted later) simple events are always mutually exclusive.",
+      "keyMoves": [
+        "Count the sample points in the event",
+        "Classify it as simple precisely when it has exactly one sample point",
+        "Note a space of n outcomes has exactly n simple events"
+      ],
+      "misconceptions": [
+        "Thinking a simple event is just any small or likely event rather than a singleton",
+        "Confusing the number of simple events with the number of events (subsets) of S"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-as-subset"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:compound-event",
+      "slug": "compound-event",
+      "title": "Identify a compound event",
+      "role": "intermediate",
+      "brief": "Recognise an event with more than one sample point as a compound event, and write the subset of S it corresponds to.",
+      "sec": 1,
+      "quote": "If an event has more than one sample point, it is called a *Compound event*.",
+      "explanation": "An event that contains more than one sample point is a compound event. For example, tossing a coin thrice with E = 'exactly one head appeared' gives E = {HTT, THT, TTH}, which has three sample points and so is compound. Most events of interest ('at least one head', 'at most one head') are compound. Recognising an event as compound tells you it is a union of two or more simple events, which matters when you compute its probability by summing the probabilities of its sample points.",
+      "keyMoves": [
+        "Write out the subset of S for the described event",
+        "Count its sample points",
+        "Classify it as compound when it has more than one sample point"
+      ],
+      "misconceptions": [
+        "Calling a singleton event compound",
+        "Failing to list every outcome that satisfies the description, undercounting the sample points"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:simple-event"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:complementary-event",
+      "slug": "complementary-event",
+      "title": "Form the complementary event 'not A'",
+      "role": "intermediate",
+      "brief": "Construct the complement A' of an event A as the set of outcomes of S not in A, i.e. A' = S - A, the event 'not A'.",
+      "sec": 1,
+      "quote": "A' = \\{\\omega : \\omega \\in S \\text{ and } \\omega \\notin A\\} = S - A.",
+      "explanation": "For every event A there is a complementary event A', also called 'not A'. It consists of exactly those outcomes of the sample space that are not in A: A' = {omega : omega in S and omega not in A} = S - A. For 'tossing three coins' with A = {HTH, HHT, THH} ('only one tail appears'), the outcome HTT is not in A so 'not A' has occurred there, and A' = {HHH, HTT, THT, TTH, TTT}. The complement is the set-theoretic backbone of the later rule P(not A) = 1 - P(A).",
+      "keyMoves": [
+        "Take the whole sample space S and remove the outcomes that lie in A",
+        "Write A' = S - A = {omega in S : omega not in A}",
+        "Read A' as the event 'not A'"
+      ],
+      "misconceptions": [
+        "Including some outcomes of A in the complement",
+        "Forgetting that the complement is taken relative to the full sample space S"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-as-subset"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:event-a-or-b",
+      "slug": "event-a-or-b",
+      "title": "Form the event 'A or B' as the union",
+      "role": "intermediate",
+      "brief": "Build the event 'A or B' as the union A union B, containing every outcome in A, in B, or in both.",
+      "sec": 1,
+      "quote": "When the sets A and B are two events associated with a sample space, then 'A  $\\cup$  B' is the event 'either A or B or both'.",
+      "explanation": "The union of two events A and B, written A union B, is the event 'either A or B or both'; it contains every outcome that lies in A, in B, or in both. Formally A union B = {omega : omega in A or omega in B}. For a die with A = {2, 3, 5} (prime) and B = {1, 3, 5} (odd), 'A or B' = {1, 2, 3, 5}. The union is one of the two basic ways of combining events and is exactly the event whose probability the addition rule computes.",
+      "keyMoves": [
+        "Collect every outcome that is in A or in B (or both) into one set",
+        "Write the result as A union B",
+        "Interpret A union B as the event 'either A or B or both'"
+      ],
+      "misconceptions": [
+        "Treating 'or' as exclusive and dropping the outcomes common to A and B",
+        "Listing an outcome that is in neither A nor B"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-as-subset"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:event-a-and-b",
+      "slug": "event-a-and-b",
+      "title": "Form the event 'A and B' as the intersection",
+      "role": "intermediate",
+      "brief": "Build the event 'A and B' as the intersection A intersect B, containing exactly the outcomes common to both events.",
+      "sec": 1,
+      "quote": "If A and B are two events, then the set  $A \\cap B$  denotes the event 'A and B'.",
+      "explanation": "The intersection of two events A and B, written A intersect B, is the event 'A and B'; it contains exactly the outcomes common to both. Formally A intersect B = {omega : omega in A and omega in B}. For two throws of a die with A = 'first throw is six' and B = 'sum is at least 11', A intersect B = {(6,5), (6,6)}, the outcomes for which both happen. The intersection is the second basic combining operation and is the correction term subtracted in the addition rule.",
+      "keyMoves": [
+        "Find the outcomes that lie in A and also in B",
+        "Collect just those common outcomes into one set",
+        "Write the result as A intersect B, the event 'A and B'"
+      ],
+      "misconceptions": [
+        "Including outcomes that lie in only one of A or B",
+        "Confusing the intersection (and) with the union (or)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-as-subset"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:event-a-but-not-b",
+      "slug": "event-a-but-not-b",
+      "title": "Form the event 'A but not B' as the difference",
+      "role": "intermediate",
+      "brief": "Build the event 'A but not B' as the set difference A - B, equal to A intersect B', the outcomes in A that are excluded from B.",
+      "sec": 1,
+      "quote": "the set A–B may denote the event 'A but not B'.",
+      "explanation": "The difference A - B is the set of outcomes that are in A but not in B, so it denotes the event 'A but not B'. Equivalently A - B = A intersect B' (the outcomes in A that also lie in the complement of B). For a die with A = {2, 3, 5} (prime) and B = {1, 3, 5} (odd), 'A but not B' = A - B = {2}. This difference lets you express compound 'only A', 'exactly one of them' style events in terms of unions and complements.",
+      "keyMoves": [
+        "Start from the outcomes in A",
+        "Remove any of them that also lie in B",
+        "Write the result as A - B = A intersect B', the event 'A but not B'"
+      ],
+      "misconceptions": [
+        "Computing B - A instead of A - B (the difference is not symmetric)",
+        "Forgetting that A - B keeps only outcomes that are in A"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-a-and-b",
+        "jee:maths:maths-ch14:complementary-event"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:mutually-exclusive-events",
+      "slug": "mutually-exclusive-events",
+      "title": "Test whether two events are mutually exclusive",
+      "role": "intermediate",
+      "brief": "Decide that two events are mutually exclusive exactly when they cannot occur together, i.e. when their intersection is empty (disjoint sets).",
+      "sec": 1,
+      "quote": "two events A and B are called *mutually exclusive* events if the occurrence of any one of them excludes the occurrence of the other event, i.e., if they can not occur simultaneously.",
+      "explanation": "Two events A and B are mutually exclusive if the occurrence of one excludes the other, i.e. they cannot occur simultaneously; as sets this means A intersect B = phi, so they are disjoint. For a die, A = 'an odd number' = {1,3,5} and B = 'an even number' = {2,4,6} are mutually exclusive because A intersect B = phi. But A = {1,3,5} and B = 'less than 4' = {1,2,3} are not, since 3 lies in both. Mutual exclusivity is the condition under which the simple addition rule P(A or B) = P(A) + P(B) holds.",
+      "keyMoves": [
+        "Write the subsets for both events",
+        "Form their intersection A intersect B",
+        "Declare them mutually exclusive precisely when A intersect B = phi (disjoint)"
+      ],
+      "misconceptions": [
+        "Calling events mutually exclusive when they merely look different but actually share an outcome",
+        "Thinking mutually exclusive is the same as exhaustive"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-a-and-b"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:exhaustive-events",
+      "slug": "exhaustive-events",
+      "title": "Test whether events are exhaustive (and mutually exclusive)",
+      "role": "intermediate",
+      "brief": "Decide that events are exhaustive when their union is the whole sample space, and mutually exclusive and exhaustive when they are also pairwise disjoint.",
+      "sec": 1,
+      "quote": "events  $E_1, E_2, ..., E_n$  are said to be exhaustive if atleast one of them necessarily occurs whenever the experiment is performed.",
+      "explanation": "Events E1, E2, ..., En are exhaustive if at least one of them necessarily occurs whenever the experiment is performed; as sets this means their union is the whole sample space, E1 union ... union En = S. If, in addition, they are pairwise disjoint (Ei intersect Ej = phi for i != j), they are mutually exclusive and exhaustive: they partition S. For a die, A = {1,2,3}, B = {3,4}, C = {5,6} are exhaustive since their union is S; while A = {TTT}, B = {HTT,THT,TTH}, C = {HHT,HTH,THH,HHH} from three tosses are both exhaustive and pairwise disjoint, hence mutually exclusive and exhaustive.",
+      "keyMoves": [
+        "Form the union of all the events",
+        "Call them exhaustive when that union equals the sample space S",
+        "Call them mutually exclusive and exhaustive when they are also pairwise disjoint (Ei intersect Ej = phi)"
+      ],
+      "misconceptions": [
+        "Thinking exhaustive requires the events to be disjoint (it only requires their union to be S)",
+        "Forgetting to check the pairwise-disjoint condition before claiming mutually exclusive and exhaustive"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-a-or-b",
+        "jee:maths:maths-ch14:mutually-exclusive-events"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:axioms-of-probability",
+      "slug": "axioms-of-probability",
+      "title": "State the axioms of probability",
+      "role": "bedrock",
+      "brief": "State the axiomatic definition of probability as a function on the power set of S into [0,1] satisfying non-negativity, P(S)=1, and additivity for mutually exclusive events.",
+      "sec": 2,
+      "quote": "The probability P is a real valued function whose domain is the power set of S and range is the interval [0,1]",
+      "explanation": "In the axiomatic approach, probability P is a real-valued function whose domain is the power set of S (the set of all events) and whose range lies in the interval [0,1], satisfying three axioms: (i) for any event E, P(E) >= 0; (ii) P(S) = 1; and (iii) if E and F are mutually exclusive events then P(E union F) = P(E) + P(F). From these it follows that P(phi) = 0 (take F = phi). For each sample point one assigns P(omega_i) with 0 <= P(omega_i) <= 1 and the sum over all outcomes equal to 1; many such assignments are valid as long as these conditions hold.",
+      "keyMoves": [
+        "State axiom (i): P(E) >= 0 for every event E",
+        "State axiom (ii): P(S) = 1",
+        "State axiom (iii): mutually exclusive E, F give P(E union F) = P(E) + P(F), and deduce P(phi) = 0"
+      ],
+      "misconceptions": [
+        "Allowing a probability greater than 1 or a negative probability",
+        "Applying the additivity axiom to events that are not mutually exclusive"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:mutually-exclusive-events"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:probability-of-an-event",
+      "slug": "probability-of-an-event",
+      "title": "Compute P(A) by summing the probabilities of its outcomes",
+      "role": "intermediate",
+      "brief": "Find the probability of any event by adding the assigned probabilities of the sample points it contains: P(A) = sum of P(omega_i) over omega_i in A.",
+      "sec": 2,
+      "quote": "For any event A,  $P(A) = \\sum P(\\omega_i), \\omega_i \\in A$ .",
+      "explanation": "Once each sample point omega_i has an assigned probability P(omega_i) (with each in [0,1] and the total equal to 1), the probability of any event A is the sum of the probabilities of the outcomes it contains: P(A) = sum P(omega_i) over omega_i in A. For three pens each outcome having probability 1/8, the event A = {BGG, GBG, GGB} has P(A) = 1/8 + 1/8 + 1/8 = 3/8. This works even when the outcomes are not equally likely, e.g. P(HH) = 1/4, P(HT) = 1/7, P(TH) = 2/7, P(TT) = 9/28 gives P({HH,TT}) = 1/4 + 9/28 = 4/7.",
+      "keyMoves": [
+        "List the sample points that belong to the event A",
+        "Add their assigned probabilities P(omega_i)",
+        "Report the sum as P(A), valid even when outcomes are not equally likely"
+      ],
+      "misconceptions": [
+        "Assuming every outcome has probability 1/n even when the assignment is unequal",
+        "Summing probabilities of outcomes that are not in A"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:axioms-of-probability",
+        "jee:maths:maths-ch14:event-as-subset"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:equally-likely-outcomes",
+      "slug": "equally-likely-outcomes",
+      "title": "Compute probability for equally likely outcomes as n(A)/n(S)",
+      "role": "intermediate",
+      "brief": "When all outcomes are equally likely, compute the probability of an event as the ratio of favourable outcomes to total outcomes, P(A) = n(A)/n(S).",
+      "sec": 2,
+      "quote": "Probability of an event  $P(A) = \\frac{n(A)}{n(S)}$ , where n(A) = number of elements in",
+      "explanation": "If a sample space has n equally likely outcomes, each outcome must have probability p = 1/n (since the n equal probabilities sum to 1, np = 1). Then for an event A with m favourable outcomes, P(A) = m/n = n(A)/n(S) = (number of outcomes favourable to E)/(total possible outcomes). For example, drawing one card from 52, the probability of a diamond is 13/52 = 1/4, and of a black card is 26/52 = 1/2. This counting formula is the workhorse for equally likely models and is built on permutations and combinations for the counting.",
+      "keyMoves": [
+        "Confirm the outcomes are equally likely, so each has probability 1/n",
+        "Count n(A), the favourable outcomes, and n(S), the total outcomes",
+        "Compute P(A) = n(A)/n(S)"
+      ],
+      "misconceptions": [
+        "Using n(A)/n(S) when the outcomes are not equally likely",
+        "Miscounting n(A) or n(S), e.g. by double counting or missing arrangements"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:probability-of-an-event"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:probability-a-or-b",
+      "slug": "probability-a-or-b",
+      "title": "Apply the addition theorem P(A or B) = P(A) + P(B) - P(A and B)",
+      "role": "intermediate",
+      "brief": "Compute the probability of a union with the addition theorem, subtracting the overlap, and reduce it to P(A) + P(B) when the events are mutually exclusive.",
+      "sec": 2,
+      "quote": "Thus we observe that,  $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$",
+      "explanation": "When you add P(A) and P(B) you count the outcomes common to both (those in A intersect B) twice, so you must subtract them once: P(A union B) = P(A) + P(B) - P(A intersect B). This is the addition theorem, equivalently P(A or B) = P(A) + P(B) - P(A and B). If A and B are mutually exclusive then A intersect B = phi and P(A intersect B) = 0, so the rule collapses to P(A union B) = P(A) + P(B), recovering axiom (iii). Example: P(E) = 0.05, P(F) = 0.10, P(E intersect F) = 0.02 give P(E union F) = 0.05 + 0.10 - 0.02 = 0.13.",
+      "keyMoves": [
+        "Compute P(A), P(B) and the overlap P(A intersect B)",
+        "Apply P(A union B) = P(A) + P(B) - P(A intersect B)",
+        "Drop the overlap term to P(A) + P(B) when A and B are mutually exclusive"
+      ],
+      "misconceptions": [
+        "Adding P(A) + P(B) without subtracting the overlap when the events are not mutually exclusive",
+        "Subtracting an overlap for mutually exclusive events (where it is zero) or getting its sign wrong"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:event-a-or-b",
+        "jee:maths:maths-ch14:event-a-and-b",
+        "jee:maths:maths-ch14:probability-of-an-event"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:probability-not-a",
+      "slug": "probability-not-a",
+      "title": "Apply the complement rule P(not A) = 1 - P(A)",
+      "role": "intermediate",
+      "brief": "Use the complement rule to find the probability of 'not A' from P(A), exploiting that A and A' are mutually exclusive and exhaustive.",
+      "sec": 2,
+      "quote": "P(not A) = 1 - P(A)",
+      "explanation": "An event A and its complement A' are mutually exclusive (A intersect A' = phi) and exhaustive (A union A' = S). By the axioms, P(A) + P(A') = P(S) = 1, so P(A') = P(not A) = 1 - P(A). This makes the 'not' probability immediate from P(A): if drawing a card gives P(A) = 2/5 for some event, then P(not A) = 3/5; if P(B) = 1/13 for an ace, then P(not ace) = 12/13. The complement rule is often the quickest route to 'at least one' probabilities via 1 - P(none).",
+      "keyMoves": [
+        "Recognise A and A' are mutually exclusive and exhaustive, so P(A) + P(A') = 1",
+        "Compute P(not A) = 1 - P(A)",
+        "Use it to turn an awkward event into 1 minus its complement (e.g. 'at least one' = 1 - P(none))"
+      ],
+      "misconceptions": [
+        "Writing P(not A) = P(A) - 1 or otherwise getting the subtraction backwards",
+        "Applying the complement rule to two events that are not actually complementary"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:complementary-event",
+        "jee:maths:maths-ch14:axioms-of-probability"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch14:solve-probability-problems",
+      "slug": "solve-probability-problems",
+      "title": "Solve probability problems using events and the axiomatic rules",
+      "role": "goal",
+      "brief": "Combine event algebra with the axiomatic rules — equally likely counting, the addition theorem and the complement rule — to compute the probability of any event in a random experiment.",
+      "sec": 2,
+      "quote": "In this Chapter, we studied about the axiomatic approach of probability.",
+      "explanation": "The whole chapter assembles into a problem-solving method. Read a described happening as a subset of the sample space (event algebra: complement, union, intersection, difference; mutually exclusive and exhaustive). Then apply the axiomatic rules: for equally likely models P(A) = n(A)/n(S) via permutations and combinations; for unions the addition theorem P(A or B) = P(A) + P(B) - P(A and B), reducing to P(A) + P(B) when the events are mutually exclusive; and for 'not' events the complement rule P(not A) = 1 - P(A). Worked problems (cards, committees, relay races, qualifying examinations) all reduce to choosing the right event combination and the right rule.",
+      "keyMoves": [
+        "Translate the described event into set operations on the sample space",
+        "Choose the right rule: equally likely counting n(A)/n(S), addition theorem, or complement rule",
+        "Combine them (e.g. 1 - P(none), or P(A or B) with overlap subtracted) to get the final probability"
+      ],
+      "misconceptions": [
+        "Reaching for a counting ratio n(A)/n(S) when outcomes are not equally likely",
+        "Adding probabilities of overlapping events without subtracting the intersection"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch14:occurrence-of-an-event",
+        "jee:maths:maths-ch14:impossible-and-sure-events",
+        "jee:maths:maths-ch14:compound-event",
+        "jee:maths:maths-ch14:event-a-but-not-b",
+        "jee:maths:maths-ch14:exhaustive-events",
+        "jee:maths:maths-ch14:equally-likely-outcomes",
+        "jee:maths:maths-ch14:probability-a-or-b",
+        "jee:maths:maths-ch14:probability-not-a"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
+}

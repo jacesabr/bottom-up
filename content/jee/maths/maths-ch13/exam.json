@@ -1,0 +1,188 @@
+{
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-ch13",
+  "items": [
+    {
+      "nodeId": "jee:maths:maths-ch13:range",
+      "kind": "practice",
+      "prompt": "Batsman A scored 30, 91, 0, 64, 42, 80, 30, 5, 117, 71 in ten matches. Find the range of his scores.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "117",
+      "expected": {
+        "kind": "numeric",
+        "value": 117,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.3 Range (batsman A example)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:why-dispersion",
+      "kind": "practice",
+      "prompt": "Two batsmen have exactly the same mean and median score of 53, but A's scores range from 0 to 117 while B's range from 46 to 60. What does this show?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Measures of central tendency alone do not describe the spread of the data",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Measures of central tendency alone do not describe the spread of the data",
+        "options": [
+          "Measures of central tendency alone do not describe the spread of the data",
+          "The two batsmen performed identically",
+          "The mean is always equal to the median",
+          "Dispersion can be read off from the mean"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.1 Need for a measure of dispersion"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:mean-deviation-ungrouped",
+      "kind": "practice",
+      "prompt": "Find the mean deviation about the mean for the data 6, 7, 10, 12, 13, 4, 8, 12.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2.75",
+      "expected": {
+        "kind": "numeric",
+        "value": 2.75,
+        "tol": 0.01
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.4.1 Example 1 (M.D. about mean, ungrouped)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:mean-deviation-definition",
+      "kind": "practice",
+      "prompt": "When computing mean deviation about the mean, why do we take the absolute values of the deviations rather than the signed deviations?",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "The signed deviations from the mean always add up to zero (positives cancel negatives), so their mean is 0 and useless as a measure of spread. Taking absolute values |x_i − x̄| measures each observation's distance from the centre without cancellation, so their mean is a genuine measure of dispersion.",
+        "markPoints": [
+          "Signed deviations from the mean sum to zero (cancel out)",
+          "Absolute values give the distance of each observation from the centre",
+          "Averaging the absolute deviations therefore gives a meaningful measure of spread"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.4 Why absolute deviations"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:mean-deviation-discrete",
+      "kind": "practice",
+      "prompt": "For the discrete distribution x_i = 2, 5, 6, 8, 10, 12 with frequencies f_i = 2, 8, 10, 7, 8, 5 (mean = 7.5, Σf_i|x_i − x̄| = 92, N = 40), find the mean deviation about the mean.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2.3",
+      "expected": {
+        "kind": "numeric",
+        "value": 2.3,
+        "tol": 0.02
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.4.2 Example 4 (M.D. about mean, discrete)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:variance",
+      "kind": "practice",
+      "prompt": "The variance of n observations is defined as:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the mean of the squares of the deviations from the mean",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the mean of the squares of the deviations from the mean",
+        "options": [
+          "the mean of the squares of the deviations from the mean",
+          "the sum of the squares of the deviations from the mean",
+          "the mean of the absolute deviations from the mean",
+          "the square root of the mean deviation"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.5 Definition of variance"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:standard-deviation",
+      "kind": "practice",
+      "prompt": "The data 6, 8, 10, 12, 14, 16, 18, 20, 22, 24 have mean 15 and Σ(x_i − x̄)² = 330 (n = 10). Find the standard deviation, to two decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5.74",
+      "expected": {
+        "kind": "numeric",
+        "value": 5.74,
+        "tol": 0.02
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.5.1 Example 8 (variance/SD, ungrouped)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:sd-frequency-distribution",
+      "kind": "practice",
+      "prompt": "For a frequency distribution N = 48, Σf_i x_i = 614 and Σf_i x_i² = 9652. Using σ = (1/N)√[N·Σf_i x_i² − (Σf_i x_i)²], find the standard deviation, to two decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6.12",
+      "expected": {
+        "kind": "numeric",
+        "value": 6.12,
+        "tol": 0.03
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.5.2 Example 11 (SD via computational formula)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:variance-under-transformation",
+      "kind": "practice",
+      "prompt": "The variance of 20 observations is 5. If each observation is multiplied by 2, find the new variance of the resulting observations.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "20",
+      "expected": {
+        "kind": "numeric",
+        "value": 20,
+        "tol": 0
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Miscellaneous Example 13 (variance under scaling)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:variance-under-transformation",
+      "kind": "practice",
+      "prompt": "If a positive number a is added to each observation of a data set, the variance of the resulting observations:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "remains unchanged",
+      "expected": {
+        "kind": "mcq",
+        "correct": "remains unchanged",
+        "options": [
+          "remains unchanged",
+          "increases by a",
+          "increases by a^2",
+          "is multiplied by a^2"
+        ]
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Miscellaneous Example 15 (adding a constant)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch13:sd-shortcut-method",
+      "kind": "practice",
+      "prompt": "In the step-deviation method one sets y_i = (x_i − A)/h with assumed mean A and class width h. Explain how the variance and standard deviation of x are recovered from those of y, and why this method simplifies the arithmetic.",
+      "answerType": "written",
+      "grader": "written",
+      "answer": null,
+      "expected": {
+        "kind": "written",
+        "rubric": "Shifting the origin by A does not change the variance, and scaling by 1/h scales the variance by 1/h², so σ_x² = h²·σ_y² and σ_x = h·σ_y; equivalently σ_x = (h/N)√[N·Σf_i y_i² − (Σf_i y_i)²]. It simplifies the arithmetic because the y_i are small integers, far easier to square and sum than large x_i values.",
+        "markPoints": [
+          "Shift of origin by A leaves the variance unchanged",
+          "Scaling gives σ_x = h·σ_y (variance σ_x² = h²·σ_y²)",
+          "y_i are small integers, so the multiplications and sums are much easier"
+        ],
+        "total": 3,
+        "passMark": 2
+      },
+      "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.5.4 Short-cut (step-deviation) method"
+    }
+  ]
+}

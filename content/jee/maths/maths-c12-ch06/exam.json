@@ -1,0 +1,270 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch06",
+ "items": [
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:rate-of-change",
+   "kind": "practice",
+   "prompt": "The area of a circle is A = pi r^2. The rate of change of area with respect to the radius r, dA/dr, when r = 5 is k pi. Find k.",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "10",
+   "expected": {
+    "kind": "numeric",
+    "value": 10,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Example 1 (dA/dr = 2 pi r = 10 pi)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:increasing-decreasing-definition",
+   "kind": "practice",
+   "prompt": "A function f is increasing on an interval I if, for all x1 < x2 in I:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "f(x1) <= f(x2)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "f(x1) <= f(x2)",
+    "options": [
+     "f(x1) <= f(x2)",
+     "f(x1) >= f(x2)",
+     "f(x1) = f(x2)",
+     "f(x1) f(x2) > 0"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Definition 1"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:monotonicity-derivative-test",
+   "kind": "practice",
+   "prompt": "On (a, b), a differentiable function f is increasing if:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "f'(x) >= 0 for each x in (a, b)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "f'(x) >= 0 for each x in (a, b)",
+    "options": [
+     "f'(x) >= 0 for each x in (a, b)",
+     "f'(x) <= 0 for each x in (a, b)",
+     "f(x) > 0 for each x",
+     "f''(x) > 0 for each x"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Theorem 1(a)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:maximum-minimum-value",
+   "kind": "practice",
+   "prompt": "f has a maximum value in I at a point c if:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "f(c) > f(x) for all x in I",
+   "expected": {
+    "kind": "mcq",
+    "correct": "f(c) > f(x) for all x in I",
+    "options": [
+     "f(c) > f(x) for all x in I",
+     "f(c) < f(x) for all x in I",
+     "f'(c) = 0 only",
+     "f(c) = 0"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Definition 3(a)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:local-maxima-minima",
+   "kind": "practice",
+   "prompt": "A local maximum value of f at an interior point c means f(c) is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "greater than the values of f at all points near c",
+   "expected": {
+    "kind": "mcq",
+    "correct": "greater than the values of f at all points near c",
+    "options": [
+     "greater than the values of f at all points near c",
+     "greater than f at every point of the domain",
+     "equal to zero",
+     "the value at an end point"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Definition 4"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:fermat-stationary",
+   "kind": "practice",
+   "prompt": "For f(x) = x^3, f'(0) = 0, yet x = 0 is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "neither a local maximum nor a local minimum (a point of inflexion)",
+   "expected": {
+    "kind": "mcq",
+    "correct": "neither a local maximum nor a local minimum (a point of inflexion)",
+    "options": [
+     "neither a local maximum nor a local minimum (a point of inflexion)",
+     "a local maximum",
+     "a local minimum",
+     "an absolute maximum"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Remark after Theorem 2 (x^3)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:critical-point",
+   "kind": "practice",
+   "prompt": "A critical point of f is a point c where:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "f'(c) = 0 or f is not differentiable at c",
+   "expected": {
+    "kind": "mcq",
+    "correct": "f'(c) = 0 or f is not differentiable at c",
+    "options": [
+     "f'(c) = 0 or f is not differentiable at c",
+     "f(c) = 0",
+     "f''(c) = 0 only",
+     "c is an end point of the domain"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Summary (critical point)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:first-derivative-test",
+   "kind": "practice",
+   "prompt": "By the first derivative test, a critical point c is a point of local maxima if f'(x) changes:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "from positive to negative as x increases through c",
+   "expected": {
+    "kind": "mcq",
+    "correct": "from positive to negative as x increases through c",
+    "options": [
+     "from positive to negative as x increases through c",
+     "from negative to positive as x increases through c",
+     "sign never (stays positive)",
+     "from zero to positive"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Theorem 3 (First Derivative Test)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:second-derivative-test",
+   "kind": "practice",
+   "prompt": "By the second derivative test, x = c is a point of local maxima if f'(c) = 0 and:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "f''(c) < 0",
+   "expected": {
+    "kind": "mcq",
+    "correct": "f''(c) < 0",
+    "options": [
+     "f''(c) < 0",
+     "f''(c) > 0",
+     "f''(c) = 0",
+     "f(c) < 0"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Theorem 4 (Second Derivative Test)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:second-derivative-test",
+   "kind": "practice",
+   "prompt": "State the second derivative test for a twice-differentiable function f at a point c, and say what to do when f''(c) = 0.",
+   "answerType": "written",
+   "grader": "written",
+   "answer": null,
+   "expected": {
+    "kind": "written",
+    "rubric": "If f'(c) = 0 and f''(c) < 0, then c is a point of local maxima; if f'(c) = 0 and f''(c) > 0, then c is a point of local minima. If f''(c) = 0 the test fails (is inconclusive), and one falls back on the first derivative test to classify c.",
+    "markPoints": [
+     "f'(c) = 0 and f''(c) < 0 gives a local maximum",
+     "f'(c) = 0 and f''(c) > 0 gives a local minimum",
+     "f''(c) = 0: test fails, use the first derivative test"
+    ],
+    "total": 3,
+    "passMark": 2
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Theorem 4"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:absolute-extrema-definition",
+   "kind": "practice",
+   "prompt": "The absolute maximum value of f on an interval is also called its:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "global maximum or greatest value",
+   "expected": {
+    "kind": "mcq",
+    "correct": "global maximum or greatest value",
+    "options": [
+     "global maximum or greatest value",
+     "local maximum value",
+     "critical value",
+     "point of inflexion"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Sec 6.3 absolute maximum"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:extreme-value-theorem",
+   "kind": "practice",
+   "prompt": "A continuous function on a closed interval [a, b]:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "attains both an absolute maximum and an absolute minimum value",
+   "expected": {
+    "kind": "mcq",
+    "correct": "attains both an absolute maximum and an absolute minimum value",
+    "options": [
+     "attains both an absolute maximum and an absolute minimum value",
+     "need not attain any extreme value",
+     "attains a maximum but never a minimum",
+     "is always increasing"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Theorem 5"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:absolute-extrema-closed-interval",
+   "kind": "practice",
+   "prompt": "When finding absolute extrema of f on [a, b], besides the critical points you must also evaluate f at:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the end points a and b",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the end points a and b",
+    "options": [
+     "the end points a and b",
+     "the midpoint only",
+     "points where f''(x) = 0 only",
+     "no other points"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Sec 6.3 working rule (Steps 1-4)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch06:absolute-extrema-closed-interval",
+   "kind": "practice",
+   "prompt": "Describe the working rule for finding the absolute maximum and absolute minimum values of a continuous function f on a closed interval [a, b].",
+   "answerType": "written",
+   "grader": "written",
+   "answer": null,
+   "expected": {
+    "kind": "written",
+    "rubric": "Step 1: find all critical points of f in [a, b] (where f'(x) = 0 or f is not differentiable). Step 2/3: evaluate f at each critical point and at the end points a and b. Step 4: the greatest of these values is the absolute maximum value and the least is the absolute minimum value.",
+    "markPoints": [
+     "Find the critical points in the interval (f'(x) = 0 or not differentiable)",
+     "Evaluate f at the critical points AND the end points a, b",
+     "The largest value is the absolute maximum, the smallest the absolute minimum"
+    ],
+    "total": 3,
+    "passMark": 2
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch06 Sec 6.3 working rule"
+  }
+ ]
+}

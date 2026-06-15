@@ -1,0 +1,253 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch11",
+ "title": "Three Dimensional Geometry",
+ "book": "NCERT Class 12 Mathematics Part II",
+ "goal": "jee:maths:maths-c12-ch11:shortest-distance-skew-lines",
+ "narrative": "This rationalised NCERT chapter covers the geometry of LINES in space (direction cosines/ratios, the vector and Cartesian equations of a line, the angle between lines, skew lines and the shortest distance). Planes are not part of this chapter's source, so no plane nodes are authored. Every node below has a clean verbatim source statement.",
+ "nodes": [
+  {
+   "id": "jee:maths:maths-c12-ch11:direction-cosines",
+   "slug": "direction-cosines",
+   "title": "Find the direction cosines of a line",
+   "role": "bedrock",
+   "brief": "Recognise direction cosines as the cosines of the angles a directed line makes with the axes.",
+   "sec": 2,
+   "quote": "are called direction cosines of the directed line L.",
+   "explanation": "If a directed line L through the origin makes angles alpha, beta, gamma with the x, y and z axes, then cos alpha, cos beta, cos gamma are called the direction cosines of the directed line L, denoted l, m, n. Reversing the direction of L replaces the angles by their supplements, reversing the signs. A line has a unique set of direction cosines only when taken as a directed line, and they satisfy l^2 + m^2 + n^2 = 1.",
+   "keyMoves": [
+    "Find the angles the directed line makes with each axis",
+    "Take the cosines as l, m, n",
+    "Note reversing the line flips the signs of l, m, n"
+   ],
+   "misconceptions": [
+    "Forgetting that reversing the line direction reverses the signs",
+    "Ignoring the constraint l^2 + m^2 + n^2 = 1"
+   ],
+   "prereqs": [],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch11:direction-ratios",
+   "slug": "direction-ratios",
+   "title": "Find the direction ratios of a line",
+   "role": "bedrock",
+   "brief": "Recognise direction ratios as any three numbers proportional to the direction cosines.",
+   "sec": 2,
+   "quote": "Any three numbers which are proportional to the direction cosines of a line are called the *direction ratios* of the line.",
+   "explanation": "Any three numbers which are proportional to the direction cosines of a line are called the direction ratios of the line. If l, m, n are direction cosines and a, b, c are direction ratios, then a = lambda l, b = lambda m, c = lambda n for some non-zero lambda. A line has infinitely many sets of direction ratios (any non-zero multiple works), and they are obtained from the components of a vector along the line.",
+   "keyMoves": [
+    "Take any three numbers proportional to l, m, n",
+    "Recognise a, b, c = lambda(l, m, n)",
+    "Normalise (divide by sqrt(a^2 + b^2 + c^2)) to recover the direction cosines"
+   ],
+   "misconceptions": [
+    "Treating direction ratios as unique (they are only up to a non-zero multiple)",
+    "Confusing direction ratios with direction cosines (which are normalised)"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch11:direction-cosines"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch11:direction-cosines-two-points",
+   "slug": "direction-cosines-two-points",
+   "title": "Find direction cosines of a line through two points",
+   "role": "intermediate",
+   "brief": "Get direction ratios from coordinate differences, then normalise to direction cosines.",
+   "sec": 2,
+   "quote": "we can determine the direction cosines of a line passing through the given points",
+   "explanation": "Since exactly one line passes through two given points, we can determine the direction cosines of a line passing through the given points P(x1, y1, z1) and Q(x2, y2, z2). The direction ratios are the coordinate differences x2 - x1, y2 - y1, z2 - z1; dividing each by the distance PQ gives the direction cosines. This is how a concrete line gets its direction cosines.",
+   "keyMoves": [
+    "Take direction ratios as x2 - x1, y2 - y1, z2 - z1",
+    "Compute the distance PQ = sqrt of the sum of their squares",
+    "Divide each difference by PQ to get the direction cosines"
+   ],
+   "misconceptions": [
+    "Forgetting to divide by the distance (leaving direction ratios, not cosines)",
+    "Subtracting the coordinates in inconsistent order"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch11:direction-ratios"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch11:vector-equation-line",
+   "slug": "vector-equation-line",
+   "title": "Write the vector equation of a line",
+   "role": "intermediate",
+   "brief": "Express a line through point a parallel to b as r = a + lambda b.",
+   "sec": 3,
+   "quote": "the vector equation of the line is given by",
+   "explanation": "For a line through a point with position vector a and parallel to a vector b, an arbitrary point P with position vector r satisfies AP = lambda b, i.e. r - a = lambda b. Hence the vector equation of the line is given by r = a + lambda b, where lambda is a real parameter. Here b is a direction vector of the line (its components are direction ratios), not a magnitude.",
+   "keyMoves": [
+    "Identify a (a point on the line) and b (a direction vector)",
+    "Write r = a + lambda b",
+    "Let lambda range over the reals to trace the whole line"
+   ],
+   "misconceptions": [
+    "Confusing the direction vector b with its magnitude |b|",
+    "Using a position vector of the wrong point for a"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch11:direction-ratios"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch11:cartesian-equation-line",
+   "slug": "cartesian-equation-line",
+   "title": "Write the Cartesian equation of a line",
+   "role": "intermediate",
+   "brief": "Express the line through (x1,y1,z1) with direction ratios a,b,c as (x-x1)/a = (y-y1)/b = (z-z1)/c.",
+   "sec": 3,
+   "quote": "This is the Cartesian equation of the line.",
+   "explanation": "Starting from the vector equation r = a + lambda b with point (x1, y1, z1) and direction ratios a, b, c, the parametric equations are x = x1 + lambda a, y = y1 + lambda b, z = z1 + lambda c. Eliminating the parameter lambda gives (x - x1)/a = (y - y1)/b = (z - z1)/c. This is the Cartesian equation of the line. If l, m, n are the direction cosines, the line is (x - x1)/l = (y - y1)/m = (z - z1)/n.",
+   "keyMoves": [
+    "Write the parametric equations x = x1 + lambda a, etc.",
+    "Eliminate lambda to get (x - x1)/a = (y - y1)/b = (z - z1)/c",
+    "Use direction cosines l, m, n in place of a, b, c if given"
+   ],
+   "misconceptions": [
+    "Putting the point coordinates in the denominators instead of the direction ratios",
+    "Failing to keep all three ratios equal"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch11:vector-equation-line",
+    "jee:maths:maths-c12-ch11:direction-cosines-two-points"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch11:angle-between-lines",
+   "slug": "angle-between-lines",
+   "title": "Find the angle between two lines",
+   "role": "intermediate",
+   "brief": "Get the angle from the direction vectors using cos(theta) = (b1.b2)/(|b1||b2|).",
+   "sec": 4,
+   "quote": "Now, we find the angle between two lines when their equations are given.",
+   "explanation": "The angle between two lines is the angle between their direction vectors. If b1 and b2 are the direction vectors (with direction ratios a1,b1,c1 and a2,b2,c2), then cos(theta) = (b1.b2)/(|b1||b2|) = |a1 a2 + b1 b2 + c1 c2| / (sqrt(a1^2+b1^2+c1^2) sqrt(a2^2+b2^2+c2^2)). When direction cosines are given the formula uses l, m, n directly. The acute angle is taken by using the absolute value.",
+   "keyMoves": [
+    "Take the direction vectors (direction ratios) of the two lines",
+    "Apply cos(theta) = |a1 a2 + b1 b2 + c1 c2| / (|b1| |b2|)",
+    "Take the acute angle via the absolute value"
+   ],
+   "misconceptions": [
+    "Using the points on the lines instead of the direction vectors",
+    "Forgetting the absolute value, giving an obtuse angle"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch11:vector-equation-line"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch11:perpendicular-parallel-lines",
+   "slug": "perpendicular-parallel-lines",
+   "title": "Test two lines for perpendicularity or parallelism",
+   "role": "intermediate",
+   "brief": "Lines are perpendicular if a1a2 + b1b2 + c1c2 = 0, parallel if the direction ratios are proportional.",
+   "sec": 4,
+   "quote": "$$a_1a_2 + b_1b_2 + c_1c_2 = 0$$",
+   "explanation": "Two lines with direction ratios a1,b1,c1 and a2,b2,c2 are perpendicular (theta = 90 degrees) if a1 a2 + b1 b2 + c1 c2 = 0 - the dot product of the direction vectors is zero. They are parallel (theta = 0) if their direction ratios are proportional: a1/a2 = b1/b2 = c1/c2. These are the special cases of the angle formula and are used to test the relative orientation of two lines.",
+   "keyMoves": [
+    "Form a1 a2 + b1 b2 + c1 c2 from the direction ratios",
+    "If it equals 0, the lines are perpendicular",
+    "If a1/a2 = b1/b2 = c1/c2, the lines are parallel"
+   ],
+   "misconceptions": [
+    "Swapping the perpendicular (dot product 0) and parallel (proportional) conditions",
+    "Testing the points instead of the direction ratios"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch11:angle-between-lines"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch11:skew-lines",
+   "slug": "skew-lines",
+   "title": "Recognise skew lines",
+   "role": "intermediate",
+   "brief": "Identify skew lines as non-coplanar lines that are neither intersecting nor parallel.",
+   "sec": 5,
+   "quote": "such pair of lines are *non coplanar* and are called *skew lines*.",
+   "explanation": "In space there are lines which are neither intersecting nor parallel; such a pair of lines are non-coplanar and are called skew lines (e.g. an edge along the floor and a non-meeting edge up a wall of a room). For intersecting lines the shortest distance is zero, and for parallel lines it is the perpendicular distance; skew lines are the genuinely 3-dimensional case requiring the shortest-distance formula.",
+   "keyMoves": [
+    "Check the two lines neither intersect nor are parallel",
+    "Confirm they do not lie in a common plane (non-coplanar)",
+    "Classify such a pair as skew lines"
+   ],
+   "misconceptions": [
+    "Calling parallel or intersecting lines skew",
+    "Thinking any two non-parallel lines must intersect (true in 2D, not 3D)"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch11:perpendicular-parallel-lines"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch11:shortest-distance-definition",
+   "slug": "shortest-distance-definition",
+   "title": "Define the shortest distance between two lines",
+   "role": "intermediate",
+   "brief": "Recognise the shortest distance as the smallest length of a segment joining a point on each line.",
+   "sec": 5,
+   "quote": "By the shortest distance between two lines we mean the join of a point in one line with one point on the other line so that the length of the segment so obtained is the smallest.",
+   "explanation": "By the shortest distance between two lines we mean the join of a point on one line with a point on the other line so that the length of the segment obtained is the smallest. For two skew lines the line of shortest distance is perpendicular to both lines. This length is zero if the lines intersect, and is the perpendicular distance if they are parallel.",
+   "keyMoves": [
+    "Consider segments joining a point on each line",
+    "Take the one of smallest length as the shortest distance",
+    "Note it is zero for intersecting lines, perpendicular distance for parallel lines"
+   ],
+   "misconceptions": [
+    "Measuring the distance between arbitrary chosen points rather than the minimum",
+    "Assuming the shortest-distance segment is along either line"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch11:skew-lines"
+   ],
+   "sameConcept": [],
+   "teachingInsights": []
+  },
+  {
+   "id": "jee:maths:maths-c12-ch11:shortest-distance-skew-lines",
+   "slug": "shortest-distance-skew-lines",
+   "title": "Compute the shortest distance between two skew lines",
+   "role": "goal",
+   "brief": "Use the formula |(a2 - a1).(b1 x b2)| / |b1 x b2| for the shortest distance between skew lines.",
+   "sec": 5,
+   "quote": "the line of the shortest distance will be perpendicular to both the lines.",
+   "explanation": "For two skew lines r = a1 + lambda b1 and r = a2 + mu b2, the line of the shortest distance will be perpendicular to both the lines, so its direction is b1 x b2. The shortest distance is the magnitude of the projection of (a2 - a1) onto this common perpendicular: d = |(a2 - a1).(b1 x b2)| / |b1 x b2|. This capstone combines the line equations, direction vectors, the cross product (perpendicular direction) and the dot product (projection) to solve the central 3D problem of the chapter.",
+   "keyMoves": [
+    "Write both lines as a + (parameter) b and read off a1, a2, b1, b2",
+    "Compute the common perpendicular direction b1 x b2",
+    "Apply d = |(a2 - a1).(b1 x b2)| / |b1 x b2|"
+   ],
+   "misconceptions": [
+    "Using the formula for parallel lines on skew lines (or vice versa)",
+    "Forgetting to take the absolute value / dividing by the wrong magnitude"
+   ],
+   "prereqs": [
+    "jee:maths:maths-c12-ch11:shortest-distance-definition",
+    "jee:maths:maths-c12-ch11:cartesian-equation-line"
+   ],
+   "sameConcept": [
+    "cbse12:mathematics:mathematics-ch10:vector-product"
+   ],
+   "teachingInsights": []
+  }
+ ]
+}

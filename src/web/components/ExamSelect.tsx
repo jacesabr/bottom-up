@@ -27,17 +27,23 @@ export default function ExamSelect({ onSelect }: { onSelect: (exam: string) => v
                 <div className="exam-note">Live now</div>
               </button>
 
-              <div className="exam-card disabled">
+              <button className="exam-card" onClick={() => onSelect('cbse12')}>
                 <div className="exam-label">Board</div>
-                <div className="exam-subject muted">CBSE Class 12</div>
-                <div className="exam-note">Coming soon</div>
-              </div>
+                <div className="exam-subject">CBSE Class 12</div>
+                <div className="exam-note">Live now · Mathematics</div>
+              </button>
+
+              <button className="exam-card" onClick={() => onSelect('jee')}>
+                <div className="exam-label">Entrance</div>
+                <div className="exam-subject">JEE (Main &amp; Advanced)</div>
+                <div className="exam-note">Live now · Mathematics</div>
+              </button>
             </div>
           </div>
         </div>
 
         <div className="track">
-          <h3>How this differs from the Socratic tutor</h3>
+          <h3>How this differs from the A.I tutor cheaper than the price of a tiffin</h3>
           <p>The tutor jumps <em>into</em> a hard question and digs down to the gap. This builds you up <em>before</em> the exam instead — so they stay two separate tools, each doing one job well.</p>
         </div>
       </div>

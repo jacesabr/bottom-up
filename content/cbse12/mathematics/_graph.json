@@ -1,0 +1,1848 @@
+{
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "nodes": [
+    "cbse12:mathematics:mathematics-ch01:relation-definition",
+    "cbse12:mathematics:mathematics-ch01:empty-relation",
+    "cbse12:mathematics:mathematics-ch01:universal-relation",
+    "cbse12:mathematics:mathematics-ch01:reflexive-relation",
+    "cbse12:mathematics:mathematics-ch01:symmetric-relation",
+    "cbse12:mathematics:mathematics-ch01:transitive-relation",
+    "cbse12:mathematics:mathematics-ch01:equivalence-relation",
+    "cbse12:mathematics:mathematics-ch01:equivalence-class",
+    "cbse12:mathematics:mathematics-ch01:one-one-function",
+    "cbse12:mathematics:mathematics-ch01:onto-function",
+    "cbse12:mathematics:mathematics-ch01:bijective-function",
+    "cbse12:mathematics:mathematics-ch01:composition-of-functions",
+    "cbse12:mathematics:mathematics-ch01:invertible-function",
+    "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective",
+    "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
+    "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
+    "cbse12:mathematics:mathematics-ch02:branch",
+    "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
+    "cbse12:mathematics:mathematics-ch02:cos-inverse-principal",
+    "cbse12:mathematics:mathematics-ch02:tan-inverse-principal",
+    "cbse12:mathematics:mathematics-ch02:cot-inverse-principal",
+    "cbse12:mathematics:mathematics-ch02:cosec-inverse-principal",
+    "cbse12:mathematics:mathematics-ch02:sec-inverse-principal",
+    "cbse12:mathematics:mathematics-ch02:not-reciprocal",
+    "cbse12:mathematics:mathematics-ch02:principal-value-defn",
+    "cbse12:mathematics:mathematics-ch02:composition-identities",
+    "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+    "cbse12:mathematics:mathematics-ch03:matrix-definition",
+    "cbse12:mathematics:mathematics-ch03:order",
+    "cbse12:mathematics:mathematics-ch03:square-matrix",
+    "cbse12:mathematics:mathematics-ch03:diagonal-matrix",
+    "cbse12:mathematics:mathematics-ch03:scalar-matrix",
+    "cbse12:mathematics:mathematics-ch03:identity-matrix",
+    "cbse12:mathematics:mathematics-ch03:zero-matrix",
+    "cbse12:mathematics:mathematics-ch03:equality-of-matrices",
+    "cbse12:mathematics:mathematics-ch03:matrix-addition",
+    "cbse12:mathematics:mathematics-ch03:scalar-multiplication",
+    "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+    "cbse12:mathematics:mathematics-ch03:non-commutative-multiplication",
+    "cbse12:mathematics:mathematics-ch03:transpose",
+    "cbse12:mathematics:mathematics-ch03:symmetric-matrix",
+    "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix",
+    "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+    "cbse12:mathematics:mathematics-ch04:determinant-definition",
+    "cbse12:mathematics:mathematics-ch04:determinant-order-two",
+    "cbse12:mathematics:mathematics-ch04:minor",
+    "cbse12:mathematics:mathematics-ch04:cofactor",
+    "cbse12:mathematics:mathematics-ch04:determinant-order-three",
+    "cbse12:mathematics:mathematics-ch04:area-of-triangle",
+    "cbse12:mathematics:mathematics-ch04:adjoint",
+    "cbse12:mathematics:mathematics-ch04:adjoint-identity",
+    "cbse12:mathematics:mathematics-ch04:singular-matrix",
+    "cbse12:mathematics:mathematics-ch04:non-singular-matrix",
+    "cbse12:mathematics:mathematics-ch04:determinant-of-product",
+    "cbse12:mathematics:mathematics-ch04:consistent-system",
+    "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular",
+    "cbse12:mathematics:mathematics-ch05:continuity-at-a-point",
+    "cbse12:mathematics:mathematics-ch05:continuous-function",
+    "cbse12:mathematics:mathematics-ch05:algebra-of-continuous-functions",
+    "cbse12:mathematics:mathematics-ch05:composite-continuity",
+    "cbse12:mathematics:mathematics-ch05:derivative-definition",
+    "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
+    "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous",
+    "cbse12:mathematics:mathematics-ch05:chain-rule",
+    "cbse12:mathematics:mathematics-ch05:implicit-differentiation",
+    "cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives",
+    "cbse12:mathematics:mathematics-ch05:exponential-function",
+    "cbse12:mathematics:mathematics-ch05:logarithm-function",
+    "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log",
+    "cbse12:mathematics:mathematics-ch05:logarithmic-differentiation",
+    "cbse12:mathematics:mathematics-ch05:parametric-differentiation",
+    "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+    "cbse12:mathematics:mathematics-ch06:rate-of-change",
+    "cbse12:mathematics:mathematics-ch06:increasing-decreasing-definition",
+    "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test",
+    "cbse12:mathematics:mathematics-ch06:maximum-minimum-value",
+    "cbse12:mathematics:mathematics-ch06:local-maxima-minima",
+    "cbse12:mathematics:mathematics-ch06:fermat-stationary",
+    "cbse12:mathematics:mathematics-ch06:critical-point",
+    "cbse12:mathematics:mathematics-ch06:first-derivative-test",
+    "cbse12:mathematics:mathematics-ch06:second-derivative-test",
+    "cbse12:mathematics:mathematics-ch06:absolute-extrema-definition",
+    "cbse12:mathematics:mathematics-ch06:extreme-value-theorem",
+    "cbse12:mathematics:mathematics-ch06:absolute-extrema-closed-interval",
+    "cbse12:mathematics:mathematics-ch07:antiderivative",
+    "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation",
+    "cbse12:mathematics:mathematics-ch07:indefinite-integral",
+    "cbse12:mathematics:mathematics-ch07:same-derivative-same-family",
+    "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
+    "cbse12:mathematics:mathematics-ch07:proper-improper-rational",
+    "cbse12:mathematics:mathematics-ch07:partial-fractions",
+    "cbse12:mathematics:mathematics-ch07:integration-by-parts",
+    "cbse12:mathematics:mathematics-ch07:definite-integral",
+    "cbse12:mathematics:mathematics-ch07:ftc-area-function",
+    "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+    "cbse12:mathematics:mathematics-ch08:elementary-area",
+    "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis",
+    "cbse12:mathematics:mathematics-ch08:area-with-respect-to-y-axis",
+    "cbse12:mathematics:mathematics-ch08:area-below-axis-numerical",
+    "cbse12:mathematics:mathematics-ch08:area-above-and-below-axis",
+    "cbse12:mathematics:mathematics-ch08:area-of-circle",
+    "cbse12:mathematics:mathematics-ch08:area-of-ellipse",
+    "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves",
+    "cbse12:mathematics:mathematics-ch09:differential-equation",
+    "cbse12:mathematics:mathematics-ch09:order",
+    "cbse12:mathematics:mathematics-ch09:degree",
+    "cbse12:mathematics:mathematics-ch09:general-solution",
+    "cbse12:mathematics:mathematics-ch09:particular-solution",
+    "cbse12:mathematics:mathematics-ch09:variables-separable",
+    "cbse12:mathematics:mathematics-ch09:homogeneous-function",
+    "cbse12:mathematics:mathematics-ch09:homogeneous-differential-equation",
+    "cbse12:mathematics:mathematics-ch09:linear-differential-equation",
+    "cbse12:mathematics:mathematics-ch09:integrating-factor",
+    "cbse12:mathematics:mathematics-ch09:solve-linear-de",
+    "cbse12:mathematics:mathematics-ch10:vector-definition",
+    "cbse12:mathematics:mathematics-ch10:magnitude",
+    "cbse12:mathematics:mathematics-ch10:position-vector",
+    "cbse12:mathematics:mathematics-ch10:direction-cosines",
+    "cbse12:mathematics:mathematics-ch10:zero-vector",
+    "cbse12:mathematics:mathematics-ch10:unit-vector",
+    "cbse12:mathematics:mathematics-ch10:collinear-vectors",
+    "cbse12:mathematics:mathematics-ch10:equal-vectors",
+    "cbse12:mathematics:mathematics-ch10:parallelogram-law",
+    "cbse12:mathematics:mathematics-ch10:component-form",
+    "cbse12:mathematics:mathematics-ch10:section-formula",
+    "cbse12:mathematics:mathematics-ch10:scalar-product",
+    "cbse12:mathematics:mathematics-ch10:vector-product",
+    "cbse12:mathematics:mathematics-ch11:direction-cosines",
+    "cbse12:mathematics:mathematics-ch11:direction-ratios",
+    "cbse12:mathematics:mathematics-ch11:direction-cosines-two-points",
+    "cbse12:mathematics:mathematics-ch11:vector-equation-line",
+    "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+    "cbse12:mathematics:mathematics-ch11:angle-between-lines",
+    "cbse12:mathematics:mathematics-ch11:perpendicular-parallel-lines",
+    "cbse12:mathematics:mathematics-ch11:skew-lines",
+    "cbse12:mathematics:mathematics-ch11:shortest-distance-definition",
+    "cbse12:mathematics:mathematics-ch11:shortest-distance-skew-lines",
+    "cbse12:mathematics:mathematics-ch12:optimisation-problem",
+    "cbse12:mathematics:mathematics-ch12:objective-function",
+    "cbse12:mathematics:mathematics-ch12:decision-variables",
+    "cbse12:mathematics:mathematics-ch12:constraints",
+    "cbse12:mathematics:mathematics-ch12:non-negative-restrictions",
+    "cbse12:mathematics:mathematics-ch12:linear-programming-problem",
+    "cbse12:mathematics:mathematics-ch12:feasible-region",
+    "cbse12:mathematics:mathematics-ch12:feasible-solution",
+    "cbse12:mathematics:mathematics-ch12:optimal-solution",
+    "cbse12:mathematics:mathematics-ch12:bounded-unbounded-region",
+    "cbse12:mathematics:mathematics-ch12:corner-point",
+    "cbse12:mathematics:mathematics-ch12:optimal-at-corner-theorem",
+    "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem",
+    "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions",
+    "cbse12:mathematics:mathematics-ch12:corner-point-method",
+    "cbse12:mathematics:mathematics-ch13:conditional-probability",
+    "cbse12:mathematics:mathematics-ch13:conditional-probability-complement",
+    "cbse12:mathematics:mathematics-ch13:multiplication-rule",
+    "cbse12:mathematics:mathematics-ch13:independent-events",
+    "cbse12:mathematics:mathematics-ch13:mutually-independent-events",
+    "cbse12:mathematics:mathematics-ch13:partition-sample-space",
+    "cbse12:mathematics:mathematics-ch13:total-probability-theorem",
+    "cbse12:mathematics:mathematics-ch13:random-variable",
+    "cbse12:mathematics:mathematics-ch13:bayes-theorem"
+  ],
+  "edges": [
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:empty-relation",
+      "child": "cbse12:mathematics:mathematics-ch01:relation-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:universal-relation",
+      "child": "cbse12:mathematics:mathematics-ch01:relation-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:reflexive-relation",
+      "child": "cbse12:mathematics:mathematics-ch01:relation-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:symmetric-relation",
+      "child": "cbse12:mathematics:mathematics-ch01:relation-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:transitive-relation",
+      "child": "cbse12:mathematics:mathematics-ch01:relation-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:equivalence-relation",
+      "child": "cbse12:mathematics:mathematics-ch01:reflexive-relation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:equivalence-relation",
+      "child": "cbse12:mathematics:mathematics-ch01:symmetric-relation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:equivalence-relation",
+      "child": "cbse12:mathematics:mathematics-ch01:transitive-relation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:equivalence-class",
+      "child": "cbse12:mathematics:mathematics-ch01:equivalence-relation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:one-one-function",
+      "child": "cbse12:mathematics:mathematics-ch01:relation-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:onto-function",
+      "child": "cbse12:mathematics:mathematics-ch01:relation-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:bijective-function",
+      "child": "cbse12:mathematics:mathematics-ch01:one-one-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:bijective-function",
+      "child": "cbse12:mathematics:mathematics-ch01:onto-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:composition-of-functions",
+      "child": "cbse12:mathematics:mathematics-ch01:one-one-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:composition-of-functions",
+      "child": "cbse12:mathematics:mathematics-ch01:onto-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:invertible-function",
+      "child": "cbse12:mathematics:mathematics-ch01:composition-of-functions"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective",
+      "child": "cbse12:mathematics:mathematics-ch01:bijective-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective",
+      "child": "cbse12:mathematics:mathematics-ch01:invertible-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective",
+      "child": "cbse12:mathematics:mathematics-ch01:empty-relation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective",
+      "child": "cbse12:mathematics:mathematics-ch01:universal-relation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective",
+      "child": "cbse12:mathematics:mathematics-ch01:equivalence-class"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
+      "child": "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:branch",
+      "child": "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
+      "child": "cbse12:mathematics:mathematics-ch02:branch"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:cos-inverse-principal",
+      "child": "cbse12:mathematics:mathematics-ch02:branch"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:tan-inverse-principal",
+      "child": "cbse12:mathematics:mathematics-ch02:branch"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:cot-inverse-principal",
+      "child": "cbse12:mathematics:mathematics-ch02:branch"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:cosec-inverse-principal",
+      "child": "cbse12:mathematics:mathematics-ch02:branch"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:sec-inverse-principal",
+      "child": "cbse12:mathematics:mathematics-ch02:branch"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:not-reciprocal",
+      "child": "cbse12:mathematics:mathematics-ch02:sin-inverse-principal"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:principal-value-defn",
+      "child": "cbse12:mathematics:mathematics-ch02:sin-inverse-principal"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:principal-value-defn",
+      "child": "cbse12:mathematics:mathematics-ch02:cos-inverse-principal"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:principal-value-defn",
+      "child": "cbse12:mathematics:mathematics-ch02:tan-inverse-principal"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:composition-identities",
+      "child": "cbse12:mathematics:mathematics-ch02:principal-value-defn"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch02:composition-identities"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch02:not-reciprocal"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch02:cot-inverse-principal"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch02:cosec-inverse-principal"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch02:sec-inverse-principal"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:order",
+      "child": "cbse12:mathematics:mathematics-ch03:matrix-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:square-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:order"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:diagonal-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:square-matrix"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:scalar-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:diagonal-matrix"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:identity-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:scalar-matrix"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:zero-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:matrix-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:equality-of-matrices",
+      "child": "cbse12:mathematics:mathematics-ch03:order"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:matrix-addition",
+      "child": "cbse12:mathematics:mathematics-ch03:order"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:scalar-multiplication",
+      "child": "cbse12:mathematics:mathematics-ch03:matrix-addition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+      "child": "cbse12:mathematics:mathematics-ch03:scalar-multiplication"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:non-commutative-multiplication",
+      "child": "cbse12:mathematics:mathematics-ch03:matrix-multiplication"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:transpose",
+      "child": "cbse12:mathematics:mathematics-ch03:matrix-multiplication"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:symmetric-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:transpose"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:transpose"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:matrix-multiplication"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:identity-matrix"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:equality-of-matrices"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:non-commutative-multiplication"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:zero-matrix"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:symmetric-matrix"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+      "child": "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:determinant-order-two",
+      "child": "cbse12:mathematics:mathematics-ch04:determinant-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:minor",
+      "child": "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:cofactor",
+      "child": "cbse12:mathematics:mathematics-ch04:minor"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:determinant-order-three",
+      "child": "cbse12:mathematics:mathematics-ch04:cofactor"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:area-of-triangle",
+      "child": "cbse12:mathematics:mathematics-ch04:determinant-order-three"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:adjoint",
+      "child": "cbse12:mathematics:mathematics-ch04:cofactor"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:adjoint-identity",
+      "child": "cbse12:mathematics:mathematics-ch04:adjoint"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:singular-matrix",
+      "child": "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:non-singular-matrix",
+      "child": "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:determinant-of-product",
+      "child": "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:consistent-system",
+      "child": "cbse12:mathematics:mathematics-ch04:adjoint-identity"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular",
+      "child": "cbse12:mathematics:mathematics-ch04:adjoint-identity"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular",
+      "child": "cbse12:mathematics:mathematics-ch04:non-singular-matrix"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular",
+      "child": "cbse12:mathematics:mathematics-ch04:singular-matrix"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular",
+      "child": "cbse12:mathematics:mathematics-ch04:determinant-of-product"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular",
+      "child": "cbse12:mathematics:mathematics-ch04:area-of-triangle"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular",
+      "child": "cbse12:mathematics:mathematics-ch04:consistent-system"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:continuous-function",
+      "child": "cbse12:mathematics:mathematics-ch05:continuity-at-a-point"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:algebra-of-continuous-functions",
+      "child": "cbse12:mathematics:mathematics-ch05:continuous-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:composite-continuity",
+      "child": "cbse12:mathematics:mathematics-ch05:continuous-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
+      "child": "cbse12:mathematics:mathematics-ch05:derivative-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous",
+      "child": "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous",
+      "child": "cbse12:mathematics:mathematics-ch05:continuity-at-a-point"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:chain-rule",
+      "child": "cbse12:mathematics:mathematics-ch05:derivative-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:implicit-differentiation",
+      "child": "cbse12:mathematics:mathematics-ch05:chain-rule"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives",
+      "child": "cbse12:mathematics:mathematics-ch05:chain-rule"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:exponential-function",
+      "child": "cbse12:mathematics:mathematics-ch05:continuous-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:logarithm-function",
+      "child": "cbse12:mathematics:mathematics-ch05:exponential-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log",
+      "child": "cbse12:mathematics:mathematics-ch05:logarithm-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log",
+      "child": "cbse12:mathematics:mathematics-ch05:chain-rule"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:logarithmic-differentiation",
+      "child": "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:parametric-differentiation",
+      "child": "cbse12:mathematics:mathematics-ch05:chain-rule"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "child": "cbse12:mathematics:mathematics-ch05:implicit-differentiation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "child": "cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "child": "cbse12:mathematics:mathematics-ch05:logarithmic-differentiation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "child": "cbse12:mathematics:mathematics-ch05:parametric-differentiation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "child": "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "child": "cbse12:mathematics:mathematics-ch05:algebra-of-continuous-functions"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "child": "cbse12:mathematics:mathematics-ch05:composite-continuity"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test",
+      "child": "cbse12:mathematics:mathematics-ch06:increasing-decreasing-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test",
+      "child": "cbse12:mathematics:mathematics-ch06:rate-of-change"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:local-maxima-minima",
+      "child": "cbse12:mathematics:mathematics-ch06:maximum-minimum-value"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:fermat-stationary",
+      "child": "cbse12:mathematics:mathematics-ch06:local-maxima-minima"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:fermat-stationary",
+      "child": "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:critical-point",
+      "child": "cbse12:mathematics:mathematics-ch06:fermat-stationary"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:first-derivative-test",
+      "child": "cbse12:mathematics:mathematics-ch06:critical-point"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:second-derivative-test",
+      "child": "cbse12:mathematics:mathematics-ch06:critical-point"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:absolute-extrema-definition",
+      "child": "cbse12:mathematics:mathematics-ch06:maximum-minimum-value"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:extreme-value-theorem",
+      "child": "cbse12:mathematics:mathematics-ch06:absolute-extrema-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:absolute-extrema-closed-interval",
+      "child": "cbse12:mathematics:mathematics-ch06:extreme-value-theorem"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:absolute-extrema-closed-interval",
+      "child": "cbse12:mathematics:mathematics-ch06:first-derivative-test"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:absolute-extrema-closed-interval",
+      "child": "cbse12:mathematics:mathematics-ch06:second-derivative-test"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch06:absolute-extrema-closed-interval",
+      "child": "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation",
+      "child": "cbse12:mathematics:mathematics-ch07:antiderivative"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:indefinite-integral",
+      "child": "cbse12:mathematics:mathematics-ch07:antiderivative"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:same-derivative-same-family",
+      "child": "cbse12:mathematics:mathematics-ch07:indefinite-integral"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
+      "child": "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:proper-improper-rational",
+      "child": "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:partial-fractions",
+      "child": "cbse12:mathematics:mathematics-ch07:proper-improper-rational"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:integration-by-parts",
+      "child": "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:definite-integral",
+      "child": "cbse12:mathematics:mathematics-ch07:antiderivative"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:ftc-area-function",
+      "child": "cbse12:mathematics:mathematics-ch07:definite-integral"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch07:ftc-area-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch07:integration-by-substitution"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch07:integration-by-parts"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch07:partial-fractions"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+      "child": "cbse12:mathematics:mathematics-ch07:same-derivative-same-family"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis",
+      "child": "cbse12:mathematics:mathematics-ch08:elementary-area"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch08:area-with-respect-to-y-axis",
+      "child": "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch08:area-below-axis-numerical",
+      "child": "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch08:area-above-and-below-axis",
+      "child": "cbse12:mathematics:mathematics-ch08:area-below-axis-numerical"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch08:area-of-circle",
+      "child": "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch08:area-of-ellipse",
+      "child": "cbse12:mathematics:mathematics-ch08:area-of-circle"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves",
+      "child": "cbse12:mathematics:mathematics-ch08:area-above-and-below-axis"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves",
+      "child": "cbse12:mathematics:mathematics-ch08:area-with-respect-to-y-axis"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves",
+      "child": "cbse12:mathematics:mathematics-ch08:area-of-ellipse"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:order",
+      "child": "cbse12:mathematics:mathematics-ch09:differential-equation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:degree",
+      "child": "cbse12:mathematics:mathematics-ch09:order"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:general-solution",
+      "child": "cbse12:mathematics:mathematics-ch09:order"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:particular-solution",
+      "child": "cbse12:mathematics:mathematics-ch09:general-solution"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:variables-separable",
+      "child": "cbse12:mathematics:mathematics-ch09:general-solution"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:homogeneous-function",
+      "child": "cbse12:mathematics:mathematics-ch09:differential-equation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:homogeneous-differential-equation",
+      "child": "cbse12:mathematics:mathematics-ch09:homogeneous-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:homogeneous-differential-equation",
+      "child": "cbse12:mathematics:mathematics-ch09:variables-separable"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:linear-differential-equation",
+      "child": "cbse12:mathematics:mathematics-ch09:differential-equation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:integrating-factor",
+      "child": "cbse12:mathematics:mathematics-ch09:linear-differential-equation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:solve-linear-de",
+      "child": "cbse12:mathematics:mathematics-ch09:integrating-factor"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:solve-linear-de",
+      "child": "cbse12:mathematics:mathematics-ch09:homogeneous-differential-equation"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:solve-linear-de",
+      "child": "cbse12:mathematics:mathematics-ch09:particular-solution"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch09:solve-linear-de",
+      "child": "cbse12:mathematics:mathematics-ch09:degree"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:magnitude",
+      "child": "cbse12:mathematics:mathematics-ch10:vector-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:position-vector",
+      "child": "cbse12:mathematics:mathematics-ch10:magnitude"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:direction-cosines",
+      "child": "cbse12:mathematics:mathematics-ch10:position-vector"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:zero-vector",
+      "child": "cbse12:mathematics:mathematics-ch10:vector-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:unit-vector",
+      "child": "cbse12:mathematics:mathematics-ch10:magnitude"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:collinear-vectors",
+      "child": "cbse12:mathematics:mathematics-ch10:vector-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:equal-vectors",
+      "child": "cbse12:mathematics:mathematics-ch10:magnitude"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:parallelogram-law",
+      "child": "cbse12:mathematics:mathematics-ch10:vector-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:component-form",
+      "child": "cbse12:mathematics:mathematics-ch10:unit-vector"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:component-form",
+      "child": "cbse12:mathematics:mathematics-ch10:parallelogram-law"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:section-formula",
+      "child": "cbse12:mathematics:mathematics-ch10:component-form"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:section-formula",
+      "child": "cbse12:mathematics:mathematics-ch10:position-vector"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:scalar-product",
+      "child": "cbse12:mathematics:mathematics-ch10:component-form"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "child": "cbse12:mathematics:mathematics-ch10:scalar-product"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "child": "cbse12:mathematics:mathematics-ch10:section-formula"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "child": "cbse12:mathematics:mathematics-ch10:direction-cosines"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "child": "cbse12:mathematics:mathematics-ch10:zero-vector"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "child": "cbse12:mathematics:mathematics-ch10:collinear-vectors"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "child": "cbse12:mathematics:mathematics-ch10:equal-vectors"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:direction-ratios",
+      "child": "cbse12:mathematics:mathematics-ch11:direction-cosines"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:direction-cosines-two-points",
+      "child": "cbse12:mathematics:mathematics-ch11:direction-ratios"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:vector-equation-line",
+      "child": "cbse12:mathematics:mathematics-ch11:direction-ratios"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+      "child": "cbse12:mathematics:mathematics-ch11:vector-equation-line"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+      "child": "cbse12:mathematics:mathematics-ch11:direction-cosines-two-points"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:angle-between-lines",
+      "child": "cbse12:mathematics:mathematics-ch11:vector-equation-line"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:perpendicular-parallel-lines",
+      "child": "cbse12:mathematics:mathematics-ch11:angle-between-lines"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:skew-lines",
+      "child": "cbse12:mathematics:mathematics-ch11:perpendicular-parallel-lines"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:shortest-distance-definition",
+      "child": "cbse12:mathematics:mathematics-ch11:skew-lines"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:shortest-distance-skew-lines",
+      "child": "cbse12:mathematics:mathematics-ch11:shortest-distance-definition"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch11:shortest-distance-skew-lines",
+      "child": "cbse12:mathematics:mathematics-ch11:cartesian-equation-line"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:objective-function",
+      "child": "cbse12:mathematics:mathematics-ch12:optimisation-problem"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:decision-variables",
+      "child": "cbse12:mathematics:mathematics-ch12:objective-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:constraints",
+      "child": "cbse12:mathematics:mathematics-ch12:decision-variables"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:non-negative-restrictions",
+      "child": "cbse12:mathematics:mathematics-ch12:constraints"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:linear-programming-problem",
+      "child": "cbse12:mathematics:mathematics-ch12:objective-function"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:linear-programming-problem",
+      "child": "cbse12:mathematics:mathematics-ch12:non-negative-restrictions"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:feasible-region",
+      "child": "cbse12:mathematics:mathematics-ch12:linear-programming-problem"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:feasible-solution",
+      "child": "cbse12:mathematics:mathematics-ch12:feasible-region"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:optimal-solution",
+      "child": "cbse12:mathematics:mathematics-ch12:feasible-solution"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:bounded-unbounded-region",
+      "child": "cbse12:mathematics:mathematics-ch12:feasible-region"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:corner-point",
+      "child": "cbse12:mathematics:mathematics-ch12:feasible-region"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:optimal-at-corner-theorem",
+      "child": "cbse12:mathematics:mathematics-ch12:corner-point"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:optimal-at-corner-theorem",
+      "child": "cbse12:mathematics:mathematics-ch12:optimal-solution"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem",
+      "child": "cbse12:mathematics:mathematics-ch12:optimal-at-corner-theorem"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem",
+      "child": "cbse12:mathematics:mathematics-ch12:bounded-unbounded-region"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions",
+      "child": "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:corner-point-method",
+      "child": "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch12:corner-point-method",
+      "child": "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:conditional-probability-complement",
+      "child": "cbse12:mathematics:mathematics-ch13:conditional-probability"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:multiplication-rule",
+      "child": "cbse12:mathematics:mathematics-ch13:conditional-probability"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:independent-events",
+      "child": "cbse12:mathematics:mathematics-ch13:multiplication-rule"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:mutually-independent-events",
+      "child": "cbse12:mathematics:mathematics-ch13:independent-events"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:partition-sample-space",
+      "child": "cbse12:mathematics:mathematics-ch13:conditional-probability"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:total-probability-theorem",
+      "child": "cbse12:mathematics:mathematics-ch13:multiplication-rule"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:total-probability-theorem",
+      "child": "cbse12:mathematics:mathematics-ch13:partition-sample-space"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:bayes-theorem",
+      "child": "cbse12:mathematics:mathematics-ch13:total-probability-theorem"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:bayes-theorem",
+      "child": "cbse12:mathematics:mathematics-ch13:conditional-probability-complement"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:bayes-theorem",
+      "child": "cbse12:mathematics:mathematics-ch13:mutually-independent-events"
+    },
+    {
+      "parent": "cbse12:mathematics:mathematics-ch13:bayes-theorem",
+      "child": "cbse12:mathematics:mathematics-ch13:random-variable"
+    }
+  ],
+  "examAttach": [
+    {
+      "ref": "mathematics-ch01#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:relation-definition"
+    },
+    {
+      "ref": "mathematics-ch01#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:empty-relation"
+    },
+    {
+      "ref": "mathematics-ch01#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:empty-relation"
+    },
+    {
+      "ref": "mathematics-ch01#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:universal-relation"
+    },
+    {
+      "ref": "mathematics-ch01#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:reflexive-relation"
+    },
+    {
+      "ref": "mathematics-ch01#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:symmetric-relation"
+    },
+    {
+      "ref": "mathematics-ch01#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:transitive-relation"
+    },
+    {
+      "ref": "mathematics-ch01#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:equivalence-relation"
+    },
+    {
+      "ref": "mathematics-ch01#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:equivalence-relation"
+    },
+    {
+      "ref": "mathematics-ch01#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:equivalence-class"
+    },
+    {
+      "ref": "mathematics-ch01#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:one-one-function"
+    },
+    {
+      "ref": "mathematics-ch01#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:one-one-function"
+    },
+    {
+      "ref": "mathematics-ch01#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:onto-function"
+    },
+    {
+      "ref": "mathematics-ch01#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:onto-function"
+    },
+    {
+      "ref": "mathematics-ch01#14",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:bijective-function"
+    },
+    {
+      "ref": "mathematics-ch01#15",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:composition-of-functions"
+    },
+    {
+      "ref": "mathematics-ch01#16",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:composition-of-functions"
+    },
+    {
+      "ref": "mathematics-ch01#17",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:invertible-function"
+    },
+    {
+      "ref": "mathematics-ch01#18",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:invertible-function"
+    },
+    {
+      "ref": "mathematics-ch01#19",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective"
+    },
+    {
+      "ref": "mathematics-ch01#20",
+      "nodeId": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective"
+    },
+    {
+      "ref": "mathematics-ch02#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective"
+    },
+    {
+      "ref": "mathematics-ch02#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
+    },
+    {
+      "ref": "mathematics-ch02#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:branch"
+    },
+    {
+      "ref": "mathematics-ch02#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:sin-inverse-principal"
+    },
+    {
+      "ref": "mathematics-ch02#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:sin-inverse-principal"
+    },
+    {
+      "ref": "mathematics-ch02#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:cos-inverse-principal"
+    },
+    {
+      "ref": "mathematics-ch02#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:tan-inverse-principal"
+    },
+    {
+      "ref": "mathematics-ch02#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:cot-inverse-principal"
+    },
+    {
+      "ref": "mathematics-ch02#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:cosec-inverse-principal"
+    },
+    {
+      "ref": "mathematics-ch02#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:sec-inverse-principal"
+    },
+    {
+      "ref": "mathematics-ch02#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:not-reciprocal"
+    },
+    {
+      "ref": "mathematics-ch02#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:principal-value-defn"
+    },
+    {
+      "ref": "mathematics-ch02#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:composition-identities"
+    },
+    {
+      "ref": "mathematics-ch02#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation"
+    },
+    {
+      "ref": "mathematics-ch02#14",
+      "nodeId": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation"
+    },
+    {
+      "ref": "mathematics-ch03#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:matrix-definition"
+    },
+    {
+      "ref": "mathematics-ch03#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:order"
+    },
+    {
+      "ref": "mathematics-ch03#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:order"
+    },
+    {
+      "ref": "mathematics-ch03#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:square-matrix"
+    },
+    {
+      "ref": "mathematics-ch03#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:diagonal-matrix"
+    },
+    {
+      "ref": "mathematics-ch03#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:scalar-matrix"
+    },
+    {
+      "ref": "mathematics-ch03#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:identity-matrix"
+    },
+    {
+      "ref": "mathematics-ch03#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:zero-matrix"
+    },
+    {
+      "ref": "mathematics-ch03#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:equality-of-matrices"
+    },
+    {
+      "ref": "mathematics-ch03#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:equality-of-matrices"
+    },
+    {
+      "ref": "mathematics-ch03#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:matrix-addition"
+    },
+    {
+      "ref": "mathematics-ch03#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:scalar-multiplication"
+    },
+    {
+      "ref": "mathematics-ch03#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:matrix-multiplication"
+    },
+    {
+      "ref": "mathematics-ch03#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:matrix-multiplication"
+    },
+    {
+      "ref": "mathematics-ch03#14",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:non-commutative-multiplication"
+    },
+    {
+      "ref": "mathematics-ch03#15",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:transpose"
+    },
+    {
+      "ref": "mathematics-ch03#16",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:transpose"
+    },
+    {
+      "ref": "mathematics-ch03#17",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:symmetric-matrix"
+    },
+    {
+      "ref": "mathematics-ch03#18",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix"
+    },
+    {
+      "ref": "mathematics-ch03#19",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix"
+    },
+    {
+      "ref": "mathematics-ch03#20",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:invertible-matrix"
+    },
+    {
+      "ref": "mathematics-ch03#21",
+      "nodeId": "cbse12:mathematics:mathematics-ch03:invertible-matrix"
+    },
+    {
+      "ref": "mathematics-ch04#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:determinant-definition"
+    },
+    {
+      "ref": "mathematics-ch04#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+    },
+    {
+      "ref": "mathematics-ch04#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+    },
+    {
+      "ref": "mathematics-ch04#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:minor"
+    },
+    {
+      "ref": "mathematics-ch04#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:cofactor"
+    },
+    {
+      "ref": "mathematics-ch04#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:cofactor"
+    },
+    {
+      "ref": "mathematics-ch04#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:determinant-order-three"
+    },
+    {
+      "ref": "mathematics-ch04#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:determinant-order-three"
+    },
+    {
+      "ref": "mathematics-ch04#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:area-of-triangle"
+    },
+    {
+      "ref": "mathematics-ch04#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:adjoint"
+    },
+    {
+      "ref": "mathematics-ch04#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:adjoint-identity"
+    },
+    {
+      "ref": "mathematics-ch04#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:singular-matrix"
+    },
+    {
+      "ref": "mathematics-ch04#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:non-singular-matrix"
+    },
+    {
+      "ref": "mathematics-ch04#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:determinant-of-product"
+    },
+    {
+      "ref": "mathematics-ch04#14",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:consistent-system"
+    },
+    {
+      "ref": "mathematics-ch04#15",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular"
+    },
+    {
+      "ref": "mathematics-ch04#16",
+      "nodeId": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular"
+    },
+    {
+      "ref": "mathematics-ch05#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:continuity-at-a-point"
+    },
+    {
+      "ref": "mathematics-ch05#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:continuous-function"
+    },
+    {
+      "ref": "mathematics-ch05#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:algebra-of-continuous-functions"
+    },
+    {
+      "ref": "mathematics-ch05#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:composite-continuity"
+    },
+    {
+      "ref": "mathematics-ch05#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:derivative-definition"
+    },
+    {
+      "ref": "mathematics-ch05#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point"
+    },
+    {
+      "ref": "mathematics-ch05#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous"
+    },
+    {
+      "ref": "mathematics-ch05#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous"
+    },
+    {
+      "ref": "mathematics-ch05#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:chain-rule"
+    },
+    {
+      "ref": "mathematics-ch05#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:implicit-differentiation"
+    },
+    {
+      "ref": "mathematics-ch05#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives"
+    },
+    {
+      "ref": "mathematics-ch05#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:exponential-function"
+    },
+    {
+      "ref": "mathematics-ch05#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:logarithm-function"
+    },
+    {
+      "ref": "mathematics-ch05#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log"
+    },
+    {
+      "ref": "mathematics-ch05#14",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:logarithmic-differentiation"
+    },
+    {
+      "ref": "mathematics-ch05#15",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:parametric-differentiation"
+    },
+    {
+      "ref": "mathematics-ch05#16",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:second-order-derivative"
+    },
+    {
+      "ref": "mathematics-ch05#17",
+      "nodeId": "cbse12:mathematics:mathematics-ch05:second-order-derivative"
+    },
+    {
+      "ref": "mathematics-ch06#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:rate-of-change"
+    },
+    {
+      "ref": "mathematics-ch06#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:increasing-decreasing-definition"
+    },
+    {
+      "ref": "mathematics-ch06#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test"
+    },
+    {
+      "ref": "mathematics-ch06#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:maximum-minimum-value"
+    },
+    {
+      "ref": "mathematics-ch06#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:local-maxima-minima"
+    },
+    {
+      "ref": "mathematics-ch06#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:fermat-stationary"
+    },
+    {
+      "ref": "mathematics-ch06#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:critical-point"
+    },
+    {
+      "ref": "mathematics-ch06#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:first-derivative-test"
+    },
+    {
+      "ref": "mathematics-ch06#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:second-derivative-test"
+    },
+    {
+      "ref": "mathematics-ch06#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:second-derivative-test"
+    },
+    {
+      "ref": "mathematics-ch06#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:absolute-extrema-definition"
+    },
+    {
+      "ref": "mathematics-ch06#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:extreme-value-theorem"
+    },
+    {
+      "ref": "mathematics-ch06#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:absolute-extrema-closed-interval"
+    },
+    {
+      "ref": "mathematics-ch06#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch06:absolute-extrema-closed-interval"
+    },
+    {
+      "ref": "mathematics-ch07#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:antiderivative"
+    },
+    {
+      "ref": "mathematics-ch07#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation"
+    },
+    {
+      "ref": "mathematics-ch07#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:indefinite-integral"
+    },
+    {
+      "ref": "mathematics-ch07#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:same-derivative-same-family"
+    },
+    {
+      "ref": "mathematics-ch07#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:integration-by-substitution"
+    },
+    {
+      "ref": "mathematics-ch07#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:proper-improper-rational"
+    },
+    {
+      "ref": "mathematics-ch07#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:partial-fractions"
+    },
+    {
+      "ref": "mathematics-ch07#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:integration-by-parts"
+    },
+    {
+      "ref": "mathematics-ch07#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:definite-integral"
+    },
+    {
+      "ref": "mathematics-ch07#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:ftc-area-function"
+    },
+    {
+      "ref": "mathematics-ch07#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation"
+    },
+    {
+      "ref": "mathematics-ch07#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation"
+    },
+    {
+      "ref": "mathematics-ch08#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:elementary-area"
+    },
+    {
+      "ref": "mathematics-ch08#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis"
+    },
+    {
+      "ref": "mathematics-ch08#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis"
+    },
+    {
+      "ref": "mathematics-ch08#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:area-with-respect-to-y-axis"
+    },
+    {
+      "ref": "mathematics-ch08#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:area-below-axis-numerical"
+    },
+    {
+      "ref": "mathematics-ch08#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:area-above-and-below-axis"
+    },
+    {
+      "ref": "mathematics-ch08#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:area-of-circle"
+    },
+    {
+      "ref": "mathematics-ch08#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:area-of-ellipse"
+    },
+    {
+      "ref": "mathematics-ch08#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves"
+    },
+    {
+      "ref": "mathematics-ch08#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves"
+    },
+    {
+      "ref": "mathematics-ch09#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:differential-equation"
+    },
+    {
+      "ref": "mathematics-ch09#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:order"
+    },
+    {
+      "ref": "mathematics-ch09#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:degree"
+    },
+    {
+      "ref": "mathematics-ch09#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:general-solution"
+    },
+    {
+      "ref": "mathematics-ch09#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:particular-solution"
+    },
+    {
+      "ref": "mathematics-ch09#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:variables-separable"
+    },
+    {
+      "ref": "mathematics-ch09#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:homogeneous-function"
+    },
+    {
+      "ref": "mathematics-ch09#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:homogeneous-differential-equation"
+    },
+    {
+      "ref": "mathematics-ch09#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:linear-differential-equation"
+    },
+    {
+      "ref": "mathematics-ch09#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:integrating-factor"
+    },
+    {
+      "ref": "mathematics-ch09#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:solve-linear-de"
+    },
+    {
+      "ref": "mathematics-ch09#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch09:solve-linear-de"
+    },
+    {
+      "ref": "mathematics-ch10#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:vector-definition"
+    },
+    {
+      "ref": "mathematics-ch10#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:magnitude"
+    },
+    {
+      "ref": "mathematics-ch10#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:position-vector"
+    },
+    {
+      "ref": "mathematics-ch10#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:direction-cosines"
+    },
+    {
+      "ref": "mathematics-ch10#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:zero-vector"
+    },
+    {
+      "ref": "mathematics-ch10#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:unit-vector"
+    },
+    {
+      "ref": "mathematics-ch10#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:collinear-vectors"
+    },
+    {
+      "ref": "mathematics-ch10#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:equal-vectors"
+    },
+    {
+      "ref": "mathematics-ch10#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:parallelogram-law"
+    },
+    {
+      "ref": "mathematics-ch10#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:component-form"
+    },
+    {
+      "ref": "mathematics-ch10#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:section-formula"
+    },
+    {
+      "ref": "mathematics-ch10#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:scalar-product"
+    },
+    {
+      "ref": "mathematics-ch10#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:scalar-product"
+    },
+    {
+      "ref": "mathematics-ch10#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:vector-product"
+    },
+    {
+      "ref": "mathematics-ch10#14",
+      "nodeId": "cbse12:mathematics:mathematics-ch10:vector-product"
+    },
+    {
+      "ref": "mathematics-ch11#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:direction-cosines"
+    },
+    {
+      "ref": "mathematics-ch11#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:direction-cosines"
+    },
+    {
+      "ref": "mathematics-ch11#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:direction-ratios"
+    },
+    {
+      "ref": "mathematics-ch11#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:direction-ratios"
+    },
+    {
+      "ref": "mathematics-ch11#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:direction-cosines-two-points"
+    },
+    {
+      "ref": "mathematics-ch11#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:direction-cosines-two-points"
+    },
+    {
+      "ref": "mathematics-ch11#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:vector-equation-line"
+    },
+    {
+      "ref": "mathematics-ch11#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:cartesian-equation-line"
+    },
+    {
+      "ref": "mathematics-ch11#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:angle-between-lines"
+    },
+    {
+      "ref": "mathematics-ch11#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:angle-between-lines"
+    },
+    {
+      "ref": "mathematics-ch11#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:perpendicular-parallel-lines"
+    },
+    {
+      "ref": "mathematics-ch11#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:skew-lines"
+    },
+    {
+      "ref": "mathematics-ch11#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:shortest-distance-definition"
+    },
+    {
+      "ref": "mathematics-ch11#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:shortest-distance-definition"
+    },
+    {
+      "ref": "mathematics-ch11#14",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:shortest-distance-skew-lines"
+    },
+    {
+      "ref": "mathematics-ch11#15",
+      "nodeId": "cbse12:mathematics:mathematics-ch11:shortest-distance-skew-lines"
+    },
+    {
+      "ref": "mathematics-ch12#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:optimisation-problem"
+    },
+    {
+      "ref": "mathematics-ch12#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:objective-function"
+    },
+    {
+      "ref": "mathematics-ch12#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:decision-variables"
+    },
+    {
+      "ref": "mathematics-ch12#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:constraints"
+    },
+    {
+      "ref": "mathematics-ch12#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:non-negative-restrictions"
+    },
+    {
+      "ref": "mathematics-ch12#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:linear-programming-problem"
+    },
+    {
+      "ref": "mathematics-ch12#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:feasible-region"
+    },
+    {
+      "ref": "mathematics-ch12#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:feasible-solution"
+    },
+    {
+      "ref": "mathematics-ch12#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:optimal-solution"
+    },
+    {
+      "ref": "mathematics-ch12#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:bounded-unbounded-region"
+    },
+    {
+      "ref": "mathematics-ch12#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:corner-point"
+    },
+    {
+      "ref": "mathematics-ch12#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:optimal-at-corner-theorem"
+    },
+    {
+      "ref": "mathematics-ch12#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem"
+    },
+    {
+      "ref": "mathematics-ch12#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions"
+    },
+    {
+      "ref": "mathematics-ch12#14",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:corner-point-method"
+    },
+    {
+      "ref": "mathematics-ch12#15",
+      "nodeId": "cbse12:mathematics:mathematics-ch12:corner-point-method"
+    },
+    {
+      "ref": "mathematics-ch13#0",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:conditional-probability"
+    },
+    {
+      "ref": "mathematics-ch13#1",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:conditional-probability"
+    },
+    {
+      "ref": "mathematics-ch13#2",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:conditional-probability-complement"
+    },
+    {
+      "ref": "mathematics-ch13#3",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:multiplication-rule"
+    },
+    {
+      "ref": "mathematics-ch13#4",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:multiplication-rule"
+    },
+    {
+      "ref": "mathematics-ch13#5",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:independent-events"
+    },
+    {
+      "ref": "mathematics-ch13#6",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:mutually-independent-events"
+    },
+    {
+      "ref": "mathematics-ch13#7",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:partition-sample-space"
+    },
+    {
+      "ref": "mathematics-ch13#8",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:total-probability-theorem"
+    },
+    {
+      "ref": "mathematics-ch13#9",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:total-probability-theorem"
+    },
+    {
+      "ref": "mathematics-ch13#10",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:random-variable"
+    },
+    {
+      "ref": "mathematics-ch13#11",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:random-variable"
+    },
+    {
+      "ref": "mathematics-ch13#12",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:bayes-theorem"
+    },
+    {
+      "ref": "mathematics-ch13#13",
+      "nodeId": "cbse12:mathematics:mathematics-ch13:bayes-theorem"
+    }
+  ],
+  "sameConcept": [
+    [
+      "cbse12:mathematics:mathematics-ch11:shortest-distance-skew-lines",
+      "cbse12:mathematics:mathematics-ch10:vector-product"
+    ],
+    [
+      "cbse12:mathematics:mathematics-ch03:order",
+      "cbse12:mathematics:mathematics-ch09:order"
+    ],
+    [
+      "cbse12:mathematics:mathematics-ch10:direction-cosines",
+      "cbse12:mathematics:mathematics-ch11:direction-cosines"
+    ]
+  ],
+  "generatedFrom": [
+    "mathematics-ch01",
+    "mathematics-ch02",
+    "mathematics-ch03",
+    "mathematics-ch04",
+    "mathematics-ch05",
+    "mathematics-ch06",
+    "mathematics-ch07",
+    "mathematics-ch08",
+    "mathematics-ch09",
+    "mathematics-ch10",
+    "mathematics-ch11",
+    "mathematics-ch12",
+    "mathematics-ch13"
+  ]
+}

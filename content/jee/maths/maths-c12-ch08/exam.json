@@ -1,0 +1,183 @@
+{
+ "exam": "jee",
+ "subject": "maths",
+ "chapter": "maths-c12-ch08",
+ "items": [
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:elementary-area",
+   "kind": "practice",
+   "prompt": "A thin vertical strip of height y and width dx under a curve has elementary area dA equal to:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "y dx",
+   "expected": {
+    "kind": "mcq",
+    "correct": "y dx",
+    "options": [
+     "y dx",
+     "x dy",
+     "y dy",
+     "x y"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Sec 8.2 elementary area"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:area-under-curve-x-axis",
+   "kind": "practice",
+   "prompt": "The area bounded by y = f(x), the x-axis and the ordinates x = a, x = b equals:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the integral of f(x) dx from a to b",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the integral of f(x) dx from a to b",
+    "options": [
+     "the integral of f(x) dx from a to b",
+     "the integral of f(x) dy from a to b",
+     "f(b) - f(a)",
+     "f'(x) at x = b"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Sec 8.2 area under a curve"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:area-under-curve-x-axis",
+   "kind": "practice",
+   "prompt": "Find the area bounded by y = x^2, the x-axis and the ordinates x = 1 and x = 2 (integral of x^2 from 1 to 2). Give the answer as a decimal.",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "2.333",
+   "expected": {
+    "kind": "numeric",
+    "value": 2.333,
+    "tol": 0.01
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Misc Ex Q1(i) (7/3)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:area-with-respect-to-y-axis",
+   "kind": "practice",
+   "prompt": "The area bounded by x = g(y), the y-axis and the lines y = c, y = d equals:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "the integral of g(y) dy from c to d",
+   "expected": {
+    "kind": "mcq",
+    "correct": "the integral of g(y) dy from c to d",
+    "options": [
+     "the integral of g(y) dy from c to d",
+     "the integral of g(y) dx from c to d",
+     "g(d) - g(c)",
+     "the integral of f(x) dx from a to b"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Sec 8.2 area w.r.t y-axis"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:area-below-axis-numerical",
+   "kind": "practice",
+   "prompt": "If a definite integral for an area below the x-axis comes out as -5, the area of that region is:",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "5",
+   "expected": {
+    "kind": "numeric",
+    "value": 5,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Sec 8.2 Remark (numerical value)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:area-above-and-below-axis",
+   "kind": "practice",
+   "prompt": "When part of a curve is above the x-axis (area A2 > 0) and part below (A1 < 0), the total bounded area is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "|A1| + A2",
+   "expected": {
+    "kind": "mcq",
+    "correct": "|A1| + A2",
+    "options": [
+     "|A1| + A2",
+     "A1 + A2",
+     "A2 - A1 with signs kept",
+     "A1 - A2"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Sec 8.2 (A = |A1| + A2)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:area-of-circle",
+   "kind": "practice",
+   "prompt": "Integrating to find the area enclosed by the circle x^2 + y^2 = a^2 gives:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "pi a^2",
+   "expected": {
+    "kind": "mcq",
+    "correct": "pi a^2",
+    "options": [
+     "pi a^2",
+     "2 pi a",
+     "pi a",
+     "4 pi a^2"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Example 1 (area = pi a^2)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:area-of-ellipse",
+   "kind": "practice",
+   "prompt": "The area enclosed by the ellipse x^2/a^2 + y^2/b^2 = 1, found by integration, is:",
+   "answerType": "mcq",
+   "grader": "mcq",
+   "answer": "pi a b",
+   "expected": {
+    "kind": "mcq",
+    "correct": "pi a b",
+    "options": [
+     "pi a b",
+     "pi a^2",
+     "pi (a + b)",
+     "2 pi a b"
+    ]
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Example 2 (area = pi a b)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:area-bounded-by-curves",
+   "kind": "practice",
+   "prompt": "Find the area bounded by y = sin x and the x-axis between x = 0 and x = 2 pi. (Take absolute values of the parts below the axis.)",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "4",
+   "expected": {
+    "kind": "numeric",
+    "value": 4,
+    "tol": 0
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Misc Ex (area of |sin x| / cos x analogue = 4)"
+  },
+  {
+   "nodeId": "jee:maths:maths-c12-ch08:area-bounded-by-curves",
+   "kind": "practice",
+   "prompt": "Describe the general method for finding the area of a region bounded by curves, axes and lines, including how you handle parts of the region below the x-axis.",
+   "answerType": "written",
+   "grader": "written",
+   "answer": null,
+   "expected": {
+    "kind": "written",
+    "rubric": "Sketch the region and find the intersection / axis-crossing points to fix the limits. Choose vertical strips (integrate y dx) or horizontal strips (integrate x dy), whichever is simpler. Split the interval where the curve crosses an axis or where curves intersect, integrate each piece, and add the results - taking the absolute (numerical) value of any piece below the x-axis so positive and negative parts do not cancel.",
+    "markPoints": [
+     "Sketch the region; find limits from intersections / axis crossings",
+     "Choose vertical (y dx) or horizontal (x dy) strips and integrate each piece",
+     "Add the pieces, taking absolute values of below-axis parts"
+    ],
+    "total": 3,
+    "passMark": 2
+   },
+   "srcLabel": "Authored practice (Opus) - mathematics-ch08 Sec 8.1/8.2 general method"
+  }
+ ]
+}

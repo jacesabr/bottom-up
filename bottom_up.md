@@ -234,3 +234,109 @@ choices wholesale**:
 The only genuinely new UI is the **chapter circles + the in-chapter node map**, and even those follow the
 explainer's visual style (`docs/exam-prep-overview.html`). That explainer also seeds the in-app **"How it works"**
 documentation page.
+
+---
+
+## 9. Per-node data model — every structure we store, and how it powers the Socratic loop
+
+> Added 2026-06-15 while loading **all math exams** (cbse10 + cbse12 + jee) and authoring the first
+> 5 nodes per exam. This is the **definitive, eyes-on** description of what a node *is* in the database,
+> what each field means, and how the pieces combine into a teaching experience. Schema lives in
+> `src/db/schema.ts`; the loop that consumes it in `src/core/teach-loop.ts`. Authoring → `how_to_author_nodes.md`.
+
+A "node" = one **concept**. Its data splits into **three layers**: (A) static content (imported, shared by
+all learners), (B) the gate set (the objective check), and (C) per-learner state (append-only truth + derived
+reads). Together they let the tutor open warm, teach Socratically, track understanding move-by-move, gate on
+five authored questions, and unlock the next node — all auditable.
+
+### Layer A — Static content (imported from the corpus; one row per node)
+
+Source: `content/<exam>/<subject>/<chapter>/content.json` → loaded by `tools/load-content.ts` into the
+`concepts` table. Read-mostly; cached in memory (`content-cache.ts`) so the hot paths hit 0–1 DB queries.
+
+| field | what it holds | how it's used in the Socratic loop |
+|---|---|---|
+| `id` | `exam:subject:chapter:slug` (stable global key) | every event / gate / perf row references it |
+| `chapterId`, `slug`, `title` | placement + display | node map labels; the opening names the `title` |
+| `role` | `goal` / `bedrock` / `intermediate` | node-map colouring; bedrock = entry points |
+| `sec`, `order` | textbook section; **bottom-up topological order** | `order` is the teach sequence (prereqs first); ties broken by `sec` |
+| `brief` | one-line essence | fed to `teachTurn` and the "Help me" vision prompt as quick grounding |
+| `explanation` | the full "brain" — the prose the tutor teaches *from* | the tutor's source of truth each turn; it never invents beyond this (gaps → `bu_corpus_gap`) |
+| `keyMoves: string[]` | the **checklist** — the discrete skills that prove understanding | initialised undemonstrated on entry; the tutor elicits them one at a time; **all demonstrated → ready for the gate** |
+| `misconceptions: string[]` | known traps | handed to the tutor so it watches for them; a hit is logged as `misconception_seen` → "pain points" |
+| `prereqs: id[]` | in-chapter dependencies | the **sequencer** unlocks a node only when every prereq is `passed` (DAG → a frontier of available nodes) |
+
+The `chapters` row stores `conceptOrder: id[]` (the whole bottom-up walk) + `title`, `subjectId`, `examId`.
+
+### Layer B — The gate set (the objective mastery check; one or many rows per node)
+
+Source: `exam.json` (the single **book** gate) and `tools/generate-gates.ts` (the **authored** 5-gate set).
+Stored in `gates`. **`expected` is server-only — never serialised to the client.** A node now carries either:
+- its **book gate** (`kind='book'`, id `…:g1`) — every loaded node has this; or
+- a **5-slot authored set** (`kind='authored'`) for the first-5 authored nodes — `gateSet()` prefers this.
+
+| field | meaning |
+|---|---|
+| `id` (`<conceptId>:<slot>`), `conceptId`, `kind` | identity; `book` vs `authored` |
+| `slot`, `ord` | `sketch1 \| sketch2 \| explain \| mcq \| equation`; `ord` orders posing |
+| `prompt` | the question shown to the learner (`$…$` maths) |
+| `answerType` | `mcq \| symbolic \| written \| sketch` → drives the NodeView input widget |
+| `grader` | `mcq \| cas \| rubric \| vision` → which grader runs |
+| `expected` (jsonb) | per-type answer spec: mcq `{correct, options}`; symbolic `{equivalentTo, ideal}`; sketch/explain `{ideal, rubric}` |
+| `idealAnswer`, `why`, `rubric`, `source` | model answer; what it tests; grading checklist (sketch/explain); research provenance URLs |
+
+**Grading paths** (`answerGate`): mcq = normalised exact match; symbolic = integer CAS (`casEquivalent`) or LLM
+equivalence vs `idealAnswer`; written = `gradeWritten` against the rubric; sketch = `gradeSketch` (vision) against
+the rubric. The node **passes only when every gate in the set is cleared**; a miss gives targeted feedback and
+**re-poses the same gate** (no hard reset).
+
+### Layer C — Per-learner state (append-only truth + derived fast-reads)
+
+**Truth = `bu_event`** (never updated; everything else is rebuildable from it). One row per thing-that-happened,
+each with `learnerId, conceptId, chapterId, ts, type, payload`. Types: `enter_node, tutor_turn, learner_turn,
+keymove_demonstrated, misconception_seen, corpus_gap, gate_posed, gate_answer, gate_pass, gate_fail,
+reteach_enter, node_complete, chapter_complete`. The **current dialogue is reconstructed** from the tutor/learner
+turns since the last `enter_node`.
+
+Derived views (fast reads for UI + analytics):
+
+| table | one row per | carries | powers |
+|---|---|---|---|
+| `bu_node_performance` | learner × concept | `status, firstPass, attempts, passes, fails, nudges, timeOnNodeMs, enteredAt, passedAt` | node-map status; Details "progress"; analytics (hardest nodes, first-pass %) |
+| `bu_node_checklist` | learner × concept × keyMove | `demonstrated, demonstratedAt, evidence` (**the line that proved it**) | the live checklist + evidence in Details |
+| `bu_gate_attempt` | each gate try | `gateId, attemptNo, prompt, learnerAnswer, correct, gradedBy, ms` | which gate is cleared; per-question history; gate fail-rates |
+| `bu_chat_summary` | learner × concept | rolling `summary` + `watermark` + `turnsSummarized` | resume from **summary + recent turns** (bounds context growth across sessions) |
+| `bu_corpus_gap` | gap occurrence | `question, missing, resolved` | review queue: what our content couldn't answer → exported to `corpus_gap.md` |
+| `bu_chapter_progress` | learner × chapter | `status, conceptsPassed, conceptsTotal` | chapter circles; strict-linear chapter unlock |
+
+`status` on a node is **derived** if no perf row exists yet: `available` when all in-chapter prereqs are passed,
+else `locked` (no rows written just to view the map — lazy).
+
+### How it all combines — one node, start to finish
+
+```
+ENTER (learner taps an AVAILABLE node)
+  load concept (Layer A) → emit enter_node → perf.status = teaching
+  init checklist from keyMoves (all undemonstrated) → fold any prior-session turns into bu_chat_summary
+OPEN
+  instant warm Socrates opening (names the title, asks prior knowledge) — no LLM wait → tutor_turn
+TEACH (loop)
+  context = running summary + turns since watermark (NOT the whole transcript)
+  teachTurn(brief, explanation, keyMoves, misconceptions, dialogue) →
+     short Socratic turn + a CHECKLIST DELTA in the SAME JSON (keyMovesDemonstrated[] w/ evidence,
+     misconceptionsSeen[]) — no extra AI call. We write keymove_demonstrated / misconception_seen,
+     and corpus_gap if it couldn't answer from our content.
+  repeat until ALL keyMoves demonstrated → readyForGate
+GATE (Layer B)
+  poseGate → next uncleared gate in slot order (expected withheld) → gate_posed, status = awaiting_gate
+  answerGate → grade by type → bu_gate_attempt + gate_answer
+     all gates cleared → passNode: gate_pass + node_complete, perf.passed, recompute availability
+                          (last in chapter → chapter_complete → next chapter unlocks)
+     else miss        → gate_fail (+fails, firstPass=false), targeted feedback, SAME gate re-posed; re-teach in place
+DETAILS panel (any time)  getNodeDetail = concept brain + progress + checklist(+evidence) + the gate set
+  (questions only) + gate attempts + pain points + a derived "tutor's notes" + session summary + corpus gaps.
+```
+
+Context hygiene: a node sees only its own dialogue; the full story lives in `bu_event`; cross-session memory is the
+compact `bu_chat_summary`, not a replay. This is what makes the experience feel like one patient tutor who
+remembers where *you* are, on *this* concept, without the cost growing unbounded.
