@@ -73,36 +73,38 @@ export default function ChapterMap({
           <div className="map-wrap">
             <div className="map-title">{chapter?.title}</div>
             <div className="map">
-              {nodes.map((node) => {
-                const visual =
-                  node.status === 'passed'
-                    ? 'done'
-                    : node.status === 'available'
-                      ? 'available'
-                      : node.status === 'locked'
-                        ? 'locked'
-                        : 'current'; // teaching | awaiting_gate | needs_reteach
-                const clickable = node.status !== 'locked';
-                return (
-                  <div
-                    key={node.id}
-                    className={`c ${visual}`}
-                    onClick={() => clickable && onNodeClick(node.id)}
-                    title={node.title}
-                  >
-                    <div className="dot">{node.status === 'passed' ? '' : node.order}</div>
-                    <div className="nm">{node.title.split('·')[0].trim()}</div>
-                  </div>
-                );
-              })}
+              {(() => {
+                const inProgress = ['teaching', 'awaiting_gate', 'needs_reteach'];
+                // The ONE "current" node = where the learner is: an in-progress node, else the
+                // furthest-back not-yet-passed node (the natural next step).
+                const current =
+                  nodes.find((n) => inProgress.includes(n.status)) ??
+                  nodes.find((n) => n.status !== 'passed');
+                return nodes.map((node) => {
+                  const isCurrent = current && node.id === current.id;
+                  const visual =
+                    node.status === 'passed' ? 'done' : isCurrent ? 'current' : 'future';
+                  const clickable = node.status !== 'locked';
+                  return (
+                    <div
+                      key={node.id}
+                      className={`c ${visual}`}
+                      onClick={() => clickable && onNodeClick(node.id)}
+                      title={node.title}
+                    >
+                      <div className="dot">{node.status === 'passed' ? '' : node.order}</div>
+                      <div className="nm">{node.title.split('·')[0].trim()}</div>
+                    </div>
+                  );
+                });
+              })()}
             </div>
             <div className="legend">
-              <span className="l-done">passed (revisit)</span>
-              <span className="l-now">open now</span>
-              <span className="l-cur">in progress</span>
-              <span className="l-lock">locked</span>
+              <span className="l-done">done</span>
+              <span className="l-cur">you're here</span>
+              <span className="l-now">to do</span>
             </div>
-            <div className="hint">More than one can be open at once — passed and in-progress concepts stay clickable to revisit.</div>
+            <div className="hint">Green = done, glowing = where you are, red = still to do. Done concepts stay clickable to revisit.</div>
           </div>
         </div>
       </div>

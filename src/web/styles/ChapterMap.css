@@ -136,22 +136,15 @@
   justify-content: center;
 }
 
-/* Incomplete / open-now → red (do these next). */
+/* Still to do (everything after the current node) → red. */
+.c.future .dot,
 .c.available .dot {
   background: #fdeceb;
   border-color: #d64541;
   color: #c0392b;
-  cursor: pointer;
 }
-
-.c.available:hover .dot {
-  transform: scale(1.08);
-}
-
-.c.available .nm {
-  color: var(--ink);
-  font-weight: 600;
-}
+.c.future:hover .dot { transform: scale(1.08); }
+.c.future .nm { color: var(--ink); }
 
 /* Current node in focus / in progress → glowing highlight. */
 .c.current .dot {

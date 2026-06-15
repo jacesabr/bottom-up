@@ -132,10 +132,9 @@ interface TurnResult {
 
 /** A warm, in-character Socrates opening — instant (no LLM wait), grounded in THIS concept. */
 function socratesOpening(c: any, _nextMoveText?: string, returning = false): string {
-  // Open like a real teacher meeting a student: never dump the internal node title or the lesson
-  // goal as a question, never assume terms. Just find out where they're starting from, warmly.
-  // (The AI introduces the actual topic naturally on the first real turn.)
-  const q = `Before we dive in — how are you feeling about this topic so far? Have you come across it before, or is it pretty new? Either way is completely fine, we'll take it nice and slow.`;
+  // Name the topic ONCE, cleanly, then a gentle prior-knowledge question (don't dump it as a goal,
+  // don't assume they know the terms). The AI builds the actual idea up on the first real turn.
+  const q = `Today's topic is **${c.title}**. Before we dive in — how are you feeling about it? Have you come across it before, or is it pretty new? Either way is completely fine, we'll take it nice and slow.`;
 
   if (returning) {
     // Gentle reminder for a learner who's been here before — assume they may have forgotten.
