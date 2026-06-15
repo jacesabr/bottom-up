@@ -21,7 +21,7 @@
   box-sizing: border-box;
 }
 
-html, body {
+html {
   color-scheme: light;
 }
 
@@ -30,16 +30,26 @@ body {
   background-color: var(--bg);
   color: var(--ink);
   line-height: 1.55;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 .app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-main {
+  flex: 1;
   max-width: 660px;
   margin: 0 auto;
   padding: 28px 16px 70px;
+  width: 100%;
 }
 
 @media (max-width: 768px) {

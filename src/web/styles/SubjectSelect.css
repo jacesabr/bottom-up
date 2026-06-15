@@ -7,6 +7,10 @@
   to { opacity: 1; }
 }
 
+.page-content {
+  width: 100%;
+}
+
 .kick {
   font-size: 0.72rem;
   letter-spacing: 0.18em;
@@ -21,39 +25,84 @@ h1 {
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.12;
-  margin: 0 0 10px;
+  margin: 8px 0 10px;
 }
 
 .sub {
   font-size: 1.02rem;
   color: var(--dim);
   margin-bottom: 30px;
+  line-height: 1.55;
 }
 
-.exams {
+.steps {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 14px;
   margin-bottom: 30px;
 }
 
+.step {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 18px 18px;
+}
+
+.num {
+  flex: 0 0 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step h2 {
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.step p {
+  font-size: 0.94rem;
+  color: var(--dim);
+  margin-bottom: 16px;
+}
+
+.grow {
+  flex: 1;
+}
+
 .exam-card {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background: var(--card);
+  background: white;
   border: 1px solid var(--rule);
-  border-radius: 16px;
-  padding: 18px;
+  border-radius: 12px;
+  padding: 16px 16px;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: left;
+  margin-top: 13px;
 }
 
 .exam-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 12px rgba(217, 89, 31, 0.1);
+  box-shadow: 0 4px 12px rgba(217, 89, 31, 0.15);
   transform: translateY(-2px);
+  background: #faf7f2;
 }
 
 .exam-label {
@@ -67,7 +116,7 @@ h1 {
 .exam-subject {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--ink);
+  color: var(--accent);
 }
 
 .exam-note {
@@ -76,18 +125,23 @@ h1 {
   margin-top: 4px;
 }
 
-.info {
-  background: var(--green-soft);
-  border: 1px solid #cfe0d4;
+.track {
+  margin-top: 24px;
+  background: var(--blue-soft);
+  border: 1px solid #cfe0e8;
   border-radius: 14px;
-  padding: 15px 17px;
-  font-size: 0.92rem;
+  padding: 16px 17px;
 }
 
-.info p {
+.track h3 {
+  font-size: 0.95rem;
+  color: var(--blue);
+  margin-bottom: 5px;
+  font-weight: 800;
+}
+
+.track p {
+  font-size: 0.9rem;
+  color: var(--dim);
   margin: 0;
-}
-
-.info b {
-  color: var(--green);
 }
