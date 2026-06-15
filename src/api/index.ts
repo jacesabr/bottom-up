@@ -1,11 +1,13 @@
+import 'dotenv/config';
 import express from 'express';
 import { initializeDatabase } from '../db/index.js';
 import routes from './routes.js';
 
 const app = express();
-const PORT = process.env.API_PORT || 3030;
+// Render injects PORT; fall back to API_PORT / 3030 locally.
+const PORT = process.env.PORT || process.env.API_PORT || 3030;
 
-app.use(express.json());
+app.use(express.json({ limit: '8mb' })); // scratchpad images arrive as base64 data URLs
 
 // CORS for development
 app.use((req, res, next) => {

@@ -145,3 +145,12 @@ h1 {
   color: var(--dim);
   margin: 0;
 }
+
+.exam-card.disabled { cursor: not-allowed; opacity: 0.55; }
+.exam-card.disabled:hover { transform: none; box-shadow: none; border-color: var(--rule); background: #fff; }
+.exam-subject.muted { color: var(--dim); }
+.subject-select .back-btn {
+  padding: 6px 12px; background: var(--card); border: 1px solid var(--rule);
+  border-radius: 8px; cursor: pointer; font-size: 0.9rem;
+}
+.subject-select .back-btn:hover { background: var(--bg); }

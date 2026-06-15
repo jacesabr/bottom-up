@@ -1,0 +1,534 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh106",
+  "title": "Triangles",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "slug": "prove-and-apply-triangle-similarity",
+      "title": "Prove triangles similar and apply similarity to solve problems",
+      "role": "goal",
+      "brief": "Use similarity criteria (AAA/AA, SSS, SAS) to prove two triangles similar, then use the proportional sides / equal angles to find unknown lengths, angles, or prove further results.",
+      "sec": 4,
+      "quote": "We now take some examples to illustrate the use of these criteria.",
+      "explanation": "This is the chapter's top skill: given a configuration, select and apply a similarity criterion to establish a similarity, then exploit the consequences (equal corresponding angles and proportional corresponding sides) to answer the question. Every other skill in the chapter is a sub-skill or prerequisite of doing this correctly.",
+      "keyMoves": [
+        "Identify the two candidate triangles and their correct vertex correspondence",
+        "Choose the applicable criterion (AA/AAA, SSS, SAS) from the available data",
+        "State the similarity symbolically with correct correspondence",
+        "Read off equal angles / proportional sides to finish the problem"
+      ],
+      "misconceptions": [
+        "Believing one condition (only angles equal OR only sides proportional) suffices for general polygons",
+        "Writing the similarity with the wrong correspondence of vertices"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:apply-aaa-aa-criterion",
+        "cbse10:maths:jemh106:apply-sss-similarity-criterion",
+        "cbse10:maths:jemh106:apply-sas-similarity-criterion",
+        "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
+        "cbse10:maths:jemh106:find-unknown-angle-via-similarity",
+        "cbse10:maths:jemh106:find-unknown-length-via-proportion",
+        "cbse10:maths:jemh106:model-real-world-with-similar-triangles",
+        "cbse10:maths:jemh106:use-medians-in-similar-triangles",
+        "cbse10:maths:jemh106:apply-basic-proportionality-theorem",
+        "cbse10:maths:jemh106:apply-converse-bpt"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:define-similar-figures",
+      "slug": "define-similar-figures",
+      "title": "Recognise similar figures (same shape, not necessarily same size)",
+      "role": "bedrock",
+      "brief": "State that two figures are similar if they have the same shape but not necessarily the same size, and that all congruent figures are similar but not conversely.",
+      "sec": 1,
+      "quote": "Two similar figures have the same shape but not necessarily the same size.",
+      "explanation": "The foundational concept the whole chapter rests on. A student must distinguish 'same shape' (similar) from 'same shape AND size' (congruent). All circles, all squares, all equilateral triangles are similar.",
+      "keyMoves": [
+        "Check whether two figures have the same shape",
+        "Recognise congruent figures are a special case of similar"
+      ],
+      "misconceptions": [
+        "Thinking similar figures must also be the same size",
+        "Thinking similar figures must be congruent"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:state-polygon-similarity-conditions",
+      "slug": "state-polygon-similarity-conditions",
+      "title": "State the two conditions for two polygons to be similar",
+      "role": "intermediate",
+      "brief": "Two polygons of the same number of sides are similar iff (i) corresponding angles are equal AND (ii) corresponding sides are in the same ratio.",
+      "sec": 1,
+      "quote": "Two polygons of the same number of sides are similar, if (i) their corresponding angles are equal and (ii) their corresponding sides are in the same ratio (or proportion).",
+      "explanation": "The general definition of similarity for polygons. Both conditions are needed for polygons in general; the chapter later shows that for triangles either one implies the other.",
+      "keyMoves": [
+        "Verify all corresponding angles are equal",
+        "Verify all corresponding sides are in the same ratio"
+      ],
+      "misconceptions": [
+        "Assuming equal corresponding angles alone makes polygons similar (square vs rectangle counterexample)",
+        "Assuming proportional sides alone makes polygons similar (square vs rhombus counterexample)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:define-similar-figures",
+        "cbse10:maths:jemh106:know-one-condition-insufficient-for-polygons",
+        "cbse10:maths:jemh106:identify-corresponding-parts"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:know-one-condition-insufficient-for-polygons",
+      "slug": "know-one-condition-insufficient-for-polygons",
+      "title": "Know that one condition alone is insufficient for polygon similarity",
+      "role": "intermediate",
+      "brief": "Recognise via the square/rectangle and square/rhombus counterexamples that neither equal angles alone nor proportional sides alone make two polygons similar.",
+      "sec": 2,
+      "quote": "Thus, either of the above two conditions (i) and (ii) of similarity of two polygons is not sufficient for them to be similar.",
+      "explanation": "Guards against the common error of declaring polygons similar from a single condition. A square and a rectangle have equal angles but unequal side ratios; a square and a rhombus have proportional sides but unequal angles.",
+      "keyMoves": [
+        "Test BOTH conditions before concluding similarity for general polygons",
+        "Use a counterexample to reject a one-condition claim"
+      ],
+      "misconceptions": [
+        "Declaring two polygons similar after checking only angles or only sides"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:define-similar-figures"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:identify-corresponding-parts",
+      "slug": "identify-corresponding-parts",
+      "title": "Identify corresponding vertices, angles and sides between two figures",
+      "role": "bedrock",
+      "brief": "Match up vertices \\(A' \\leftrightarrow A, B' \\leftrightarrow B,\\) etc. and then the corresponding angles and corresponding sides so ratios and equalities are written between matching parts.",
+      "sec": 2,
+      "quote": "vertex A′ corresponds to vertex A, vertex B′ corresponds to vertex B, vertex C′ corresponds to vertex C and vertex D′ corresponds to vertex D",
+      "explanation": "Before any ratio or angle comparison can be written, a student must establish which part matches which. Getting correspondence wrong corrupts every later equation.",
+      "keyMoves": [
+        "List the vertex-to-vertex correspondence",
+        "Pair corresponding sides and corresponding angles from that correspondence"
+      ],
+      "misconceptions": [
+        "Pairing sides/angles that are not actually corresponding"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:write-similarity-symbolically",
+      "slug": "write-similarity-symbolically",
+      "title": "Write a triangle similarity statement with correct vertex correspondence",
+      "role": "intermediate",
+      "brief": "Use the ~ symbol and order the vertices so that corresponding vertices match (Δ ABC ~ Δ DEF means A↔D, B↔E, C↔F).",
+      "sec": 4,
+      "quote": "we cannot write Δ ABC ~ Δ EDF or Δ ABC ~ Δ FED. However, we can write Δ BAC ~ Δ EDF.",
+      "explanation": "The order of letters in a similarity statement encodes the correspondence. Writing \\(\\Delta ABC \\sim \\Delta EDF\\) when \\(A \\leftrightarrow D\\) is wrong, even though it is 'the same two triangles'. This skill is constantly used to then read off correct side ratios.",
+      "keyMoves": [
+        "Use '~' for 'is similar to'",
+        "Order vertices so matching vertices line up in both names"
+      ],
+      "misconceptions": [
+        "Writing the second triangle's vertices in any order rather than matched order"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:apply-basic-proportionality-theorem",
+      "slug": "apply-basic-proportionality-theorem",
+      "title": "Apply the Basic Proportionality (Thales) Theorem to set up AD/DB = AE/EC",
+      "role": "intermediate",
+      "brief": "When a line is parallel to one side of a triangle and meets the other two sides, conclude the two sides are divided in the same ratio.",
+      "sec": 3,
+      "quote": "Theorem 6.1 : If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, the other two sides are divided in the same ratio.",
+      "explanation": "BPT is the workhorse for ratio problems. Given DE ‖ BC in Δ ABC, immediately write AD/DB = AE/EC. Used in Examples 1 and 2.",
+      "keyMoves": [
+        "Spot a line parallel to one side cutting the other two",
+        "Write the equal ratio of the two divided sides"
+      ],
+      "misconceptions": [
+        "Writing AD/AB = AE/EC instead of AD/DB = AE/EC",
+        "Applying BPT when the line is not parallel to a side"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:prove-bpt-with-areas",
+        "cbse10:maths:jemh106:identify-corresponding-parts",
+        "cbse10:maths:jemh106:manipulate-ratio-add-one"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:prove-bpt-with-areas",
+      "slug": "prove-bpt-with-areas",
+      "title": "Prove BPT using the equal-area argument",
+      "role": "intermediate",
+      "brief": "Join BE, CD, drop perpendiculars, express area ratios as AD/DB and AE/EC, and use that ar(BDE)=ar(DEC) (same base, same parallels) to conclude AD/DB = AE/EC.",
+      "sec": 3,
+      "quote": "Note that Δ BDE and DEC are on the same base DE and between the same parallels BC and DE.",
+      "explanation": "The chapter's proof of Theorem 6.1. The crucial step is recognising two triangles on the same base and between the same parallels have equal area, which links the two area-ratio equations. (Using the notation: ar(BDE) = ar(DEC))",
+      "keyMoves": [
+        "Express triangle areas as ½ base × height",
+        "Form the two ratio equations (1) and (2)",
+        "Use equal-area of same-base-same-parallels triangles to combine them"
+      ],
+      "misconceptions": [
+        "Not recognising ar(BDE) = ar(DEC)",
+        "Mixing up which base/height pairs give which ratio"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:identify-corresponding-parts"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:apply-converse-bpt",
+      "slug": "apply-converse-bpt",
+      "title": "Apply the converse of BPT to conclude a line is parallel to a side",
+      "role": "intermediate",
+      "brief": "If a line divides two sides of a triangle in the same ratio, conclude that the line is parallel to the third side.",
+      "sec": 3,
+      "quote": "Theorem 6.2 : If a line divides any two sides of a triangle in the same ratio, then the line is parallel to the third side.",
+      "explanation": "The reverse direction of BPT. Given AD/DB = AE/EC (or PS/SQ = PT/TR), conclude the line is parallel to the third side. Used in Example 3 and Exercise 6.2 Q2.",
+      "keyMoves": [
+        "Compute the two division ratios",
+        "If equal, declare the line parallel to the third side"
+      ],
+      "misconceptions": [
+        "Confusing the converse with the direct theorem",
+        "Comparing the wrong pair of ratios"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:test-parallel-by-ratio",
+        "cbse10:maths:jemh106:compute-side-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:test-parallel-by-ratio",
+      "slug": "test-parallel-by-ratio",
+      "title": "Decide whether a line is parallel to a side by comparing computed ratios",
+      "role": "intermediate",
+      "brief": "Given numeric segment lengths, compute PE/EQ and PF/FR; if equal the segment is parallel to the third side, otherwise it is not.",
+      "sec": 3,
+      "quote": "For each of the following cases, state whether EF ‖ QR :",
+      "explanation": "The numerical application of the converse of BPT (Exercise 6.2 Q2). The student divides given lengths and compares the two fractions to decide parallelism.",
+      "keyMoves": [
+        "Compute PE/EQ and PF/FR as numbers",
+        "Compare; equal ⇒ parallel, unequal ⇒ not parallel"
+      ],
+      "misconceptions": [
+        "Comparing PE/PQ with PF/PR instead of the part-to-part ratios when that is not intended",
+        "Arithmetic slip in dividing the lengths"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:manipulate-ratio-add-one",
+      "slug": "manipulate-ratio-add-one",
+      "title": "Transform a ratio equation by inverting and adding 1",
+      "role": "shared",
+      "brief": "From AD/DB = AE/EC, invert to DB/AD = EC/AE, add 1 to both sides to get AB/AD = AC/AE, hence AD/AB = AE/AC.",
+      "sec": 3,
+      "quote": "or, DB/AD + 1 = EC/AE + 1",
+      "explanation": "A generic algebraic manipulation of proportions used to convert part-to-part ratios into part-to-whole ratios (Example 1). Adding 1 merges DB/AD into AB/AD because DB+AD = AB.",
+      "keyMoves": [
+        "Invert both sides of the proportion",
+        "Add 1 to both sides",
+        "Recombine the sum into a single whole-segment fraction"
+      ],
+      "misconceptions": [
+        "Adding 1 to only one side",
+        "Forgetting DB + AD = AB when recombining"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:apply-aaa-aa-criterion",
+      "slug": "apply-aaa-aa-criterion",
+      "title": "Apply the AAA / AA similarity criterion",
+      "role": "intermediate",
+      "brief": "If corresponding angles of two triangles are equal (or just two angles each), conclude the triangles are similar.",
+      "sec": 4,
+      "quote": "Theorem 6.3 : If in two triangles, corresponding angles are equal, then their corresponding sides are in the same ratio (or proportion) and hence the two triangles are similar.",
+      "explanation": "The angle-based criterion. By the angle-sum property, two equal angle pairs (AA) already force the third, so AA suffices. Used in Examples 4 and 7. Requires sourcing angles from alternate/vertically-opposite/common angle facts.",
+      "keyMoves": [
+        "Find two pairs of equal corresponding angles",
+        "Invoke AA (or AAA) to declare similarity"
+      ],
+      "misconceptions": [
+        "Pairing angles that are not corresponding",
+        "Thinking all three angle pairs must be checked when two suffice"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:state-polygon-similarity-conditions",
+        "cbse10:maths:jemh106:source-equal-angles",
+        "cbse10:maths:jemh106:write-similarity-symbolically"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:source-equal-angles",
+      "slug": "source-equal-angles",
+      "title": "Justify equal angles from parallel lines, vertically opposite, or common angles",
+      "role": "shared",
+      "brief": "Produce the equal-angle facts an AA proof needs: alternate angles and corresponding angles from parallels, vertically opposite angles, and a shared/common angle. (Using notation: ∠ P = ∠ S for alternate angles)",
+      "sec": 4,
+      "quote": "So, ∠ P = ∠ S     (Alternate angles)",
+      "explanation": "AA similarity proofs depend on supplying valid reasons for each angle equality. Example 4 uses alternate angles (\\(PQ \\parallel RS\\)) and vertically opposite angles; Example 7 uses a common angle \\(\\angle E = \\angle E\\) and two right angles.",
+      "keyMoves": [
+        "Use alternate/corresponding angles when lines are parallel",
+        "Use vertically opposite angles at an intersection",
+        "Reuse a shared angle as equal to itself"
+      ],
+      "misconceptions": [
+        "Calling angles 'alternate' when the lines are not parallel",
+        "Missing the common angle shared by two triangles"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:apply-sss-similarity-criterion",
+      "slug": "apply-sss-similarity-criterion",
+      "title": "Apply the SSS similarity criterion",
+      "role": "intermediate",
+      "brief": "If the three pairs of corresponding sides are in the same ratio, conclude the triangles are similar.",
+      "sec": 4,
+      "quote": "Theorem 6.4 : If in two triangles, sides of one triangle are proportional to (i.e., in the same ratio of) the sides of the other triangle, then their corresponding angles are equal and hence the two triangles are similar.",
+      "explanation": "The side-based criterion. Match each side with its corresponding side, form the three ratios, and if all equal declare similarity. Used in Example 5 and Example 8(iii).",
+      "keyMoves": [
+        "Order sides by correspondence (smallest-to-smallest etc.)",
+        "Form all three side ratios",
+        "Confirm they are equal, then declare similarity"
+      ],
+      "misconceptions": [
+        "Pairing sides incorrectly so the ratios appear unequal",
+        "Concluding similarity from only two equal ratios"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:compute-side-ratios",
+        "cbse10:maths:jemh106:write-similarity-symbolically"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:compute-side-ratios",
+      "slug": "compute-side-ratios",
+      "title": "Compute and compare the ratios of corresponding sides",
+      "role": "shared",
+      "brief": "Divide each pair of corresponding sides and simplify to check whether all the ratios are equal (e.g. \\(\\frac{3.8}{7.6} = \\frac{1}{2}\\)).",
+      "sec": 4,
+      "quote": "AB/RQ = 3.8/7.6 = 1/2 , BC/QP = 6/12 = 1/2 and CA/PR = 3√3/6√3 = 1/2",
+      "explanation": "The arithmetic backbone of SSS and SAS. Example 5 computes three ratios and finds each equals 1/2. The student must simplify fractions, including surd ratios like \\(\\frac{3\\sqrt{3}}{6\\sqrt{3}}\\).",
+      "keyMoves": [
+        "Form each corresponding-side fraction",
+        "Simplify to lowest terms (including surds)",
+        "Check all the simplified ratios match"
+      ],
+      "misconceptions": [
+        "Arithmetic/simplification errors",
+        "Not cancelling common surd factors"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:apply-sas-similarity-criterion",
+      "slug": "apply-sas-similarity-criterion",
+      "title": "Apply the SAS similarity criterion",
+      "role": "intermediate",
+      "brief": "If one angle of a triangle equals one angle of another and the sides including those angles are proportional, conclude the triangles are similar.",
+      "sec": 4,
+      "quote": "Theorem 6.5 : If one angle of a triangle is equal to one angle of the other triangle and the sides including these angles are proportional, then the two triangles are similar.",
+      "explanation": "The mixed criterion. The equal angle must be the INCLUDED angle between the two proportional sides. Used in Example 6 (OA/OC = OD/OB with vertically opposite \\(\\angle AOD = \\angle COB\\)) and Example 8(i).",
+      "keyMoves": [
+        "Identify the equal angle and check it is included between the two sides",
+        "Confirm the two including sides are in the same ratio",
+        "Declare similarity by SAS"
+      ],
+      "misconceptions": [
+        "Using a non-included angle with the two sides",
+        "Not rearranging a product OA·OB = OC·OD into the correct ratio form"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:compute-side-ratios",
+        "cbse10:maths:jemh106:source-equal-angles",
+        "cbse10:maths:jemh106:rearrange-product-to-ratio",
+        "cbse10:maths:jemh106:write-similarity-symbolically"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:rearrange-product-to-ratio",
+      "slug": "rearrange-product-to-ratio",
+      "title": "Rearrange an equal-products relation into a side ratio",
+      "role": "shared",
+      "brief": "From OA · OB = OC · OD derive OA/OC = OD/OB so SAS can be applied.",
+      "sec": 4,
+      "quote": "So, OA/OC = OD/OB     (1)",
+      "explanation": "A specific algebraic move (Example 6) turning a product equality into a proportion of the two sides that include the equal angle, the precondition for SAS.",
+      "keyMoves": [
+        "Divide both sides to isolate the needed ratio",
+        "Pair the ratio with the sides including the equal angle"
+      ],
+      "misconceptions": [
+        "Forming OA/OB = OC/OD (wrong grouping) instead of OA/OC = OD/OB"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
+      "slug": "read-off-corresponding-parts-from-similarity",
+      "title": "Read off equal angles and proportional sides from a stated similarity",
+      "role": "intermediate",
+      "brief": "Once Δ ABC ~ Δ PQR is established, write AB/PQ = BC/QR = CA/RP and ∠ A = ∠ P, ∠ B = ∠ Q, ∠ C = ∠ R.",
+      "sec": 4,
+      "quote": "So, AB/PQ = BC/QR = CA/RP     (1)",
+      "explanation": "The payoff step: a similarity statement is converted into usable equal-angle and equal-ratio equations (Example 8). Correct correspondence is essential to write these correctly.",
+      "keyMoves": [
+        "Use the matched vertex order to write side ratios",
+        "Use the matched vertex order to write angle equalities"
+      ],
+      "misconceptions": [
+        "Reading off ratios/angles using a wrong correspondence"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:identify-corresponding-parts",
+        "cbse10:maths:jemh106:write-similarity-symbolically"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:find-unknown-angle-via-similarity",
+      "slug": "find-unknown-angle-via-similarity",
+      "title": "Find an unknown angle using similar triangles and the angle-sum property",
+      "role": "intermediate",
+      "brief": "Match the unknown angle to its equal corresponding angle in the similar triangle, then compute it (e.g. via 180° − ∠A − ∠B).",
+      "sec": 4,
+      "quote": "But ∠ C = 180° – ∠ A – ∠ B     (Angle sum property)",
+      "explanation": "Example 5: after SSS gives Δ ABC ~ Δ RQP, ∠P equals ∠C, which is found by the angle-sum property as 180°−80°−60°=40°. Combines correspondence-reading with angle arithmetic.",
+      "keyMoves": [
+        "Identify which angle the unknown corresponds to",
+        "Compute the known angle by 180° minus the other two",
+        "Transfer the value to the unknown by correspondence"
+      ],
+      "misconceptions": [
+        "Matching the unknown to the wrong corresponding angle",
+        "Arithmetic error in the angle sum"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:find-unknown-length-via-proportion",
+      "slug": "find-unknown-length-via-proportion",
+      "title": "Find an unknown length by solving the similarity proportion",
+      "role": "intermediate",
+      "brief": "Set up the equal-ratio equation from the similar triangles and solve for the unknown side (cross-multiply and isolate).",
+      "sec": 4,
+      "quote": "i.e., (4.8 + x)/x = 3.6/0.9     (90 cm = 90/100 m = 0.9 m)",
+      "explanation": "Example 7 (lamp-post/shadow): after AA similarity, BE/DE = AB/CD gives \\(\\frac{4.8+x}{x} = \\frac{3.6}{0.9}\\), which the student cross-multiplies \\(4.8+x = 4x\\) and solves to \\(x = 1.6\\) m. The core 'application' computation.",
+      "keyMoves": [
+        "Write the proportion of corresponding sides",
+        "Convert units consistently (90 cm = 0.9 m)",
+        "Cross-multiply and solve the linear equation"
+      ],
+      "misconceptions": [
+        "Inverting a ratio when setting up the proportion",
+        "Failing to convert cm to m before substituting"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
+        "cbse10:maths:jemh106:compute-side-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:model-real-world-with-similar-triangles",
+      "slug": "model-real-world-with-similar-triangles",
+      "title": "Model a real-world height/shadow situation with similar triangles",
+      "role": "intermediate",
+      "brief": "Translate a lamp-post-and-shadow or pole-and-tower scenario into two similar right triangles sharing the sun/light angle, then use proportionality.",
+      "sec": 4,
+      "quote": "So, the shadow of the girl after walking for 4 seconds is 1.6 m long.",
+      "explanation": "Indirect measurement (Example 7, Exercise 6.3 Q15). The student sets up two triangles (object+shadow), justifies similarity by the shared angle and right angles, then solves the proportion. This is the chapter's signature application.",
+      "keyMoves": [
+        "Draw the two right triangles from the scenario",
+        "Justify similarity (shared angle, right angles)",
+        "Set the height/shadow proportion and solve"
+      ],
+      "misconceptions": [
+        "Not realising the two triangles share the light/sun angle",
+        "Mismatching which height goes with which shadow"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:apply-aaa-aa-criterion",
+        "cbse10:maths:jemh106:find-unknown-length-via-proportion"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh106:use-medians-in-similar-triangles",
+      "slug": "use-medians-in-similar-triangles",
+      "title": "Use medians (and the 2× relation) within similar triangles",
+      "role": "intermediate",
+      "brief": "Use AB = 2·AM and PQ = 2·PN to reduce side ratios to median-segment ratios, enabling SAS/SSS on the median sub-triangles.",
+      "sec": 4,
+      "quote": "But AB = 2 AM and PQ = 2 PN     (As CM and RN are medians)",
+      "explanation": "Example 8: a median bisects its side, so AM = AB/2; substituting into AB/PQ = CA/RP gives AM/PN = CA/RP, letting SAS prove △ AMC ~ △ PNR and then CM/RN = AB/PQ. Also appears in Exercise 6.3 Q16 and the SQP median sub-question.",
+      "keyMoves": [
+        "Replace a full side by twice its median-foot segment",
+        "Cancel the 2 to keep the same ratio for the half-segments",
+        "Apply SAS/SSS to the median sub-triangles"
+      ],
+      "misconceptions": [
+        "Forgetting the median bisects the side (AM = AB/2)",
+        "Not cancelling the factor 2 consistently on both sides"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh106:apply-sas-similarity-criterion",
+        "cbse10:maths:jemh106:apply-sss-similarity-criterion",
+        "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## What I read (reviewer pass)\n\nI re-read the full segmented chapter `jemh106.txt` (SEG 0 Introduction; SEG 1–2 Similar Figures; SEG 3 Similarity of Triangles with BPT, its area proof, the converse, and Examples 1–3; SEG 4 Criteria for Similarity with Theorems 6.3–6.5 and Examples 4–8; SEG 5 Summary) and `_maths-exams.txt` (CBSE Standard + Basic SQP and both Marking Schemes). I then independently re-located every node quote and every gate quote in the exact segment it was tagged to, and independently solved every gate from first principles.\n\n## Citation audit (D-120) — every quote re-located verbatim\n\nAll 22 node quotes and all 22 gate quotes were confirmed as contiguous, character-for-character substrings of the segment named in their `sec`/`srcKind`:\n- Node quotes: define (SEG1 l.16), polygon-conditions (SEG1 l.35), one-insufficient (SEG2 l.71), corresponding-parts (SEG2 l.50), write-symbolically (SEG4 l.295), BPT (SEG3 l.115), prove-BPT (SEG3 l.139), converse-BPT (SEG3 l.171), test-parallel (SEG3 l.257), manipulate-ratio (SEG3 l.195), AAA/AA (SEG4 l.305), source-angles (SEG4 l.397), SSS (SEG4 l.343), compute-ratios (SEG4 l.411), SAS (SEG4 l.375), rearrange-product (SEG4 l.431), read-off (SEG4 l.478), unknown-angle (SEG4 l.419), unknown-length (SEG4 l.459), model-real-world (SEG4 l.467), medians (SEG4 l.482), goal (SEG4 l.389).\n- Exam gate quotes: `8. B) 𝛥𝐸𝐴𝐷` (Basic MS l.1080) and `10. B) isosceles and similar` (Standard MS l.338) — both verbatim.\n\n## Fixes applied\n\n1. **`find-unknown-angle-via-similarity` node quote** changed from the two-line `∠ C = ∠ P … But ∠ C = 180° – ∠ A – ∠ B` (the embedded line break risked an exact-substring miss) to the single contiguous line `But ∠ C = 180° – ∠ A – ∠ B     (Angle sum property)` (l.419), which is the actual angle-sum move the node teaches.\n2. **`find-unknown-length-via-proportion` gate quote** re-anchored from `i.e., x = 1.6` to the proportion line `(4.8 + x)/x = 3.6/0.9` (l.459) so the quote shows the setup the node is about; answer x=1.6 independently verified (3x=4.8).\n3. **`find-unknown-angle` gate quote** re-anchored to the angle-sum line; prompt reworded to name the angle-sum step explicitly; answer 40° verified (180−80−60).\n4. **`apply-converse-bpt` / `apply-sss` / `state-polygon-conditions` / `use-medians` prompts** lightly reworded for unambiguity (e.g. 'all three pairs', 'both conditions required', 'cancelling the factor 2'); `use-medians` distractor `AB/PQ inverted` replaced with the concrete `PN/AM` so all options are well-formed ratios.\n5. **`identify-corresponding-parts` prompt** spelled out the matched correspondence (B↔E, A↔A, C↔D) so the answer D is deterministic without needing the exam figure; quote unchanged and verbatim.\n\n## Independent answer check\n\nEvery numeric gate re-solved: PE/EQ=3.9/3=1.3; 3.8/7.6=0.5; 180−80−60=40; 3x=4.8⇒x=1.6; pole/tower 6/4×28=42. MCQ criterion gates and the two exam-keyed gates (ΔEAD correspondence ⇒ C↔D; chords ⇒ isosceles and similar) all confirmed correct.\n\n## Structure\n\nSingle root `prove-and-apply-triangle-similarity`; 22 nodes, 38 edges. Every node appears in ≥1 edge (no orphans); every edge endpoint is a defined slug; graph is acyclic; descent bottoms out at the two bedrock nodes (define-similar-figures, identify-corresponding-parts). 22 gates = 22 nodes (100% coverage).\n\n## What was absent / uncertain\n\nThe chapter gives only sketch proofs ('Why?'/'How?') for Theorems 6.2–6.5, so each criterion is modelled as an *application* skill, not a full proof. The area-ratio-of-similar-triangles theorem and Pythagoras are NOT in this edition; RHS appears only as a one-line note. The `identify-corresponding-parts` exam gate is the one place where the prompt reconstructs the SQP figure scenario — the verbatim answer key (ΔEAD) is solid, but the underlying figure is not in the text, so the prompt states the correspondence explicitly to keep the answer deterministic.",
+  "absentNotes": "Concepts a fuller \"Triangles\"/similarity treatment would cover but THIS chapter (NCERT 2024-25 jemh106) does NOT teach, so they are intentionally omitted (not failures): (1) The ratio-of-areas-of-similar-triangles theorem (area ratio = square of the side ratio) — entirely absent from this edition. (2) Pythagoras Theorem and its converse — mentioned only in the Introduction as a future application (\"apply this knowledge in giving a simple proof of Pythagoras Theorem\"), never proved or demonstrated here. (3) RHS Similarity Criterion — appears ONLY as a one-line 'A NOTE TO THE READER', not taught, demonstrated, or exercised, so it is not modelled as a worked skill. (4) Full deductive proofs of Theorems 6.2, 6.3, 6.4, 6.5 — the chapter gives only sketch proofs with '(Why?)'/'(How?)' gaps, so the application of each criterion is modelled rather than its proof. (5) Trigonometric/coordinate methods, mid-point theorem proofs (deferred 'recall from Class IX'), and constructions — not developed in-chapter. (6) Pure exposition omitted as non-failable: similar-figures photography analogy, world-map scale factor, Thales biography, and Activities 1–6 (illustrative, not assessed)."
+}

@@ -1,71 +1,86 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
+import ExamSelect from './components/ExamSelect';
 import SubjectSelect from './components/SubjectSelect';
+import ChapterList from './components/ChapterList';
 import ChapterMap from './components/ChapterMap';
 import NodeView from './components/NodeView';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3030/api';
 
+type View = 'exam' | 'subject' | 'chapters' | 'nodes' | 'node';
+
 export default function App() {
   const [learnerId] = useState(() => {
     const id = localStorage.getItem('learnerId');
-    if (id) return id;
-    const newId = 'learner-' + Math.random().toString(36).slice(2);
+    const isUuid = id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+    if (isUuid) return id as string;
+    const newId = crypto.randomUUID();
     localStorage.setItem('learnerId', newId);
     return newId;
   });
 
-  const [view, setView] = useState<'subject' | 'chapters' | 'node'>('subject');
-  const [currentExam, setCurrentExam] = useState<string | null>(null);
-  const [currentSubject, setCurrentSubject] = useState<string | null>(null);
-  const [currentConceptId, setCurrentConceptId] = useState<string | null>(null);
-
-  const handleSubjectSelect = (exam: string, subject: string) => {
-    setCurrentExam(exam);
-    setCurrentSubject(subject);
-    setView('chapters');
-  };
-
-  const handleNodeClick = (conceptId: string) => {
-    setCurrentConceptId(conceptId);
-    setView('node');
-  };
-
-  const handleBackToChapters = () => {
-    setView('chapters');
-    setCurrentConceptId(null);
-  };
-
-  const handleBackToSubject = () => {
-    setView('subject');
-    setCurrentExam(null);
-    setCurrentSubject(null);
-  };
+  const [view, setView] = useState<View>('exam');
+  const [exam, setExam] = useState('cbse10');
+  const [subject, setSubject] = useState('maths');
+  const [chapterId, setChapterId] = useState<string | null>(null);
+  const [conceptId, setConceptId] = useState<string | null>(null);
 
   return (
     <div className="app">
       <main className="app-main">
-        {view === 'subject' && (
-          <SubjectSelect onSelect={handleSubjectSelect} />
-        )}
-
-        {view === 'chapters' && currentExam && currentSubject && (
-          <ChapterMap
-            learnerId={learnerId}
-            exam={currentExam}
-            subject={currentSubject}
-            onNodeClick={handleNodeClick}
-            onBack={handleBackToSubject}
-            apiBase={API_BASE}
+        {view === 'exam' && (
+          <ExamSelect
+            onSelect={(e) => {
+              setExam(e);
+              setView('subject');
+            }}
           />
         )}
 
-        {view === 'node' && currentConceptId && (
+        {view === 'subject' && (
+          <SubjectSelect
+            exam={exam}
+            onBack={() => setView('exam')}
+            onSelect={(s) => {
+              setSubject(s);
+              setView('chapters');
+            }}
+          />
+        )}
+
+        {view === 'chapters' && (
+          <ChapterList
+            exam={exam}
+            subject={subject}
+            apiBase={API_BASE}
+            onPick={(id) => {
+              setChapterId(id);
+              setView('nodes');
+            }}
+            onBack={() => setView('subject')}
+          />
+        )}
+
+        {view === 'nodes' && chapterId && (
+          <ChapterMap
+            learnerId={learnerId}
+            chapterId={chapterId}
+            apiBase={API_BASE}
+            onNodeClick={(id) => {
+              setConceptId(id);
+              setView('node');
+            }}
+            onBack={() => setView('chapters')}
+          />
+        )}
+
+        {view === 'node' && conceptId && (
           <NodeView
             learnerId={learnerId}
-            conceptId={currentConceptId}
-            onBack={handleBackToChapters}
+            conceptId={conceptId}
             apiBase={API_BASE}
+            onBack={() => setView('nodes')}
           />
         )}
       </main>

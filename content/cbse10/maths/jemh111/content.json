@@ -1,0 +1,334 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh111",
+  "title": "Areas Related to Circles",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+      "slug": "find-area-of-segment-of-circle",
+      "title": "Find the area of a segment of a circle",
+      "role": "goal",
+      "brief": "Compute the area of a segment as the area of the corresponding sector minus the area of the triangle formed by the two radii and the chord.",
+      "sec": 0,
+      "quote": "Area of the segment APB = Area of the sector OAPB – Area of Δ OAB",
+      "explanation": "The top skill of the chapter: a segment is the region between a chord and its arc. Its area equals the sector's area minus the triangle OAB's area. The student must compute both pieces and subtract. This composes the sector-area skill with the triangle-area skill (the latter requiring the perpendicular-drop and trig-ratio sub-skills demonstrated in Example 2).",
+      "keyMoves": [
+        "Identify the sector and the triangle that make up the segment",
+        "Compute area of the sector with θ/360 × πr²",
+        "Compute area of triangle OAB",
+        "Subtract: segment = sector − triangle"
+      ],
+      "misconceptions": [
+        "Adding instead of subtracting the triangle area",
+        "Confusing the minor segment with the major segment",
+        "Forgetting that the triangle area must be computed separately, not assumed equal to the sector"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:apply-sector-area-formula",
+        "cbse10:maths:jemh111:compute-triangle-area-base-height",
+        "cbse10:maths:jemh111:subtract-sector-minus-triangle",
+        "cbse10:maths:jemh111:compute-major-sector-area",
+        "cbse10:maths:jemh111:compute-arc-length"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:apply-sector-area-formula",
+      "slug": "apply-sector-area-formula",
+      "title": "Apply the sector-area formula θ/360 × πr²",
+      "role": "intermediate",
+      "brief": "Compute the area of a sector of angle θ and radius r using Area = θ/360 × πr².",
+      "sec": 0,
+      "quote": "Area of the sector of angle θ = θ/360 × πr²,",
+      "explanation": "The central formula of the chapter, derived by the Unitary Method from the full-circle area πr² (which subtends 360°). For an angle θ, the sector is the fraction θ/360 of the circle. The student substitutes θ, r and π and evaluates.",
+      "keyMoves": [
+        "Take the fraction θ/360 of the full angle",
+        "Multiply by the circle area πr²",
+        "Substitute the given θ, r, π and evaluate"
+      ],
+      "misconceptions": [
+        "Using θ/180 or θ/720 instead of θ/360",
+        "Using 2πr (circumference) in place of πr²",
+        "Forgetting to square the radius"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:derive-sector-area-unitary",
+        "cbse10:maths:jemh111:substitute-pi-value"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:derive-sector-area-unitary",
+      "slug": "derive-sector-area-unitary",
+      "title": "Derive sector area by the Unitary Method",
+      "role": "intermediate",
+      "brief": "Reason that a 360° angle gives area πr², so 1° gives πr²/360, hence θ° gives θ/360 × πr².",
+      "sec": 0,
+      "quote": "So, when the degree measure of the angle at the centre is 1, area of the sector = πr²/360",
+      "explanation": "The Unitary Method reasoning that justifies the sector formula: scale the whole-circle area down to one degree, then up to θ degrees. Demonstrates proportional reasoning the chapter explicitly walks through before stating the formula.",
+      "keyMoves": [
+        "Start from: 360° corresponds to area πr²",
+        "Divide by 360 to get area for 1°",
+        "Multiply by θ to get area for θ°"
+      ],
+      "misconceptions": [
+        "Multiplying instead of dividing when scaling to one degree",
+        "Treating the relationship as non-proportional"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:compute-arc-length",
+      "slug": "compute-arc-length",
+      "title": "Compute the length of an arc of a sector",
+      "role": "intermediate",
+      "brief": "Find arc length as θ/360 of the full circumference 2πr.",
+      "sec": 0,
+      "quote": "So, length of an arc of a sector of angle θ = θ/360 × 2πr",
+      "explanation": "Parallel to the area formula but for length: an arc is the fraction θ/360 of the whole circumference 2πr. The student substitutes θ, r and π. Used in exercises and in finding the perimeter of a sector (exam Basic Q34).",
+      "keyMoves": [
+        "Take the full circumference 2πr",
+        "Multiply by the fraction θ/360",
+        "Substitute and evaluate"
+      ],
+      "misconceptions": [
+        "Using πr² (area) instead of 2πr (circumference)",
+        "Dropping the factor of 2 in 2πr"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:derive-sector-area-unitary",
+        "cbse10:maths:jemh111:substitute-pi-value"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:compute-major-sector-area",
+      "slug": "compute-major-sector-area",
+      "title": "Compute the area of the major sector",
+      "role": "intermediate",
+      "brief": "Find the major sector area either as πr² minus the minor sector, or with angle (360 − θ).",
+      "sec": 0,
+      "quote": "Area of the major sector OAQB = πr² – Area of the minor sector OAPB",
+      "explanation": "The major sector is the rest of the disc after removing the minor sector. The student can subtract the minor sector from the whole circle area, or equivalently use (360 − θ)/360 × πr², as shown in Example 1.",
+      "keyMoves": [
+        "Compute the whole-circle area πr²",
+        "Subtract the minor-sector area",
+        "Or use angle (360 − θ) in the sector formula"
+      ],
+      "misconceptions": [
+        "Using θ instead of (360 − θ) for the major sector",
+        "Forgetting that minor + major sector = whole circle"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:apply-sector-area-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:compute-triangle-area-base-height",
+      "slug": "compute-triangle-area-base-height",
+      "title": "Compute triangle area as ½ × base × height",
+      "role": "shared",
+      "brief": "Find the area of triangle OAB using ½ × AB × OM, where OM is the perpendicular height.",
+      "sec": 0,
+      "quote": "So, area of Δ OAB = 1/2 AB × OM = 1/2 × 21√3 × 21/2 cm²",
+      "explanation": "Generic triangle-area skill applied with AB as the base (the chord) and OM as the height (the perpendicular from the centre). Needed to subtract the triangle from the sector when finding a segment area.",
+      "keyMoves": [
+        "Identify the base AB and the height OM",
+        "Apply Area = ½ × base × height",
+        "Substitute the found lengths and simplify"
+      ],
+      "misconceptions": [
+        "Using a slant side OA as the height instead of the perpendicular OM",
+        "Forgetting the factor of ½"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:drop-perpendicular-to-chord",
+        "cbse10:maths:jemh111:find-chord-length-from-half",
+        "cbse10:maths:jemh111:use-cosine-ratio-find-om"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:drop-perpendicular-to-chord",
+      "slug": "drop-perpendicular-to-chord",
+      "title": "Drop a perpendicular from centre to chord",
+      "role": "intermediate",
+      "brief": "Draw OM ⊥ AB; by RHS congruence M is the midpoint of AB and OM bisects the central angle.",
+      "sec": 0,
+      "quote": "For finding the area of Δ OAB, draw OM ⊥ AB as shown in Fig. 11.7.",
+      "explanation": "The setup move for computing the triangle's area: dropping the perpendicular from the centre to the chord splits the isosceles triangle into two congruent right triangles, halving the central angle and bisecting the chord. This unlocks the trig-ratio computations.",
+      "keyMoves": [
+        "Construct OM perpendicular to chord AB",
+        "Recognise OA = OB so the triangle is isosceles",
+        "Conclude M bisects AB and OM bisects the central angle"
+      ],
+      "misconceptions": [
+        "Assuming M is the midpoint without justifying it",
+        "Not drawing the perpendicular and trying to use OA as height"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:use-rhs-congruence-bisect",
+        "cbse10:maths:jemh110:use-perpendicular-bisects-chord"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:use-rhs-congruence-bisect",
+      "slug": "use-rhs-congruence-bisect",
+      "title": "Use RHS congruence to halve the central angle",
+      "role": "bedrock",
+      "brief": "By RHS, ΔAMO ≅ ΔBMO, so ∠AOM = ∠BOM = ½ of the central angle.",
+      "sec": 0,
+      "quote": "Note that OA = OB. Therefore, by RHS congruence, Δ AMO ≅ Δ BMO.",
+      "explanation": "Geometric justification that the perpendicular bisects both the chord and the central angle. The two right triangles share OM, have equal hypotenuses OA = OB, and right angles at M, so they are congruent (RHS), giving ∠AOM = ∠BOM = ½ × 120° = 60°.",
+      "keyMoves": [
+        "Note OA = OB (radii)",
+        "Note right angles at M and common side OM",
+        "Apply RHS congruence",
+        "Conclude the central angle is halved"
+      ],
+      "misconceptions": [
+        "Using SSS or ASA when RHS is the correct criterion",
+        "Failing to use OA = OB"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:use-cosine-ratio-find-om",
+      "slug": "use-cosine-ratio-find-om",
+      "title": "Use cos 60° to find the perpendicular OM",
+      "role": "intermediate",
+      "brief": "From right triangle OMA, OM/OA = cos 60° = ½, giving OM = r/2.",
+      "sec": 0,
+      "quote": "or, x/21 = 1/2     ( cos 60° = 1/2 )",
+      "explanation": "Apply the cosine ratio in the right triangle OMA: the side adjacent (OM) over the hypotenuse (OA) equals cos of the half-angle. With cos 60° = 1/2 and OA = 21, OM = 21/2.",
+      "keyMoves": [
+        "Set OM/OA = cos(half-angle)",
+        "Substitute cos 60° = 1/2",
+        "Solve for OM"
+      ],
+      "misconceptions": [
+        "Using sin instead of cos for the adjacent side",
+        "Misremembering cos 60° as √3/2"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:use-rhs-congruence-bisect",
+        "cbse10:maths:jemh108:recall-30-60-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:use-sine-ratio-find-am",
+      "slug": "use-sine-ratio-find-am",
+      "title": "Use sin 60° to find half-chord AM",
+      "role": "intermediate",
+      "brief": "From right triangle OMA, AM/OA = sin 60° = √3/2, giving AM = (r√3)/2.",
+      "sec": 0,
+      "quote": "Also, AM/OA = sin 60° = √3/2",
+      "explanation": "Apply the sine ratio: the side opposite (AM) over the hypotenuse (OA) equals sin of the half-angle. With sin 60° = √3/2 and OA = 21, AM = 21√3/2.",
+      "keyMoves": [
+        "Set AM/OA = sin(half-angle)",
+        "Substitute sin 60° = √3/2",
+        "Solve for AM"
+      ],
+      "misconceptions": [
+        "Using cos instead of sin for the opposite side",
+        "Misremembering sin 60° as 1/2"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:use-rhs-congruence-bisect",
+        "cbse10:maths:jemh108:recall-30-60-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:find-chord-length-from-half",
+      "slug": "find-chord-length-from-half",
+      "title": "Find chord length AB = 2 × AM",
+      "role": "shared",
+      "brief": "Since the perpendicular bisects the chord, the full chord AB is twice the half-chord AM.",
+      "sec": 0,
+      "quote": "Therefore, AB = 2 AM = (2 × 21√3)/2 cm = 21√3 cm",
+      "explanation": "After finding the half-chord AM from the right triangle, double it to get the full chord AB. This length is then used as the base of triangle OAB.",
+      "keyMoves": [
+        "Recognise M is the midpoint of AB",
+        "Multiply AM by 2 to get AB",
+        "Simplify"
+      ],
+      "misconceptions": [
+        "Forgetting to double AM and using AM as the chord",
+        "Doubling OM instead of AM"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:use-sine-ratio-find-am"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:subtract-sector-minus-triangle",
+      "slug": "subtract-sector-minus-triangle",
+      "title": "Subtract triangle from sector to get the segment",
+      "role": "intermediate",
+      "brief": "Combine the computed sector area and triangle area: segment = sector − triangle.",
+      "sec": 0,
+      "quote": "Therefore, area of the segment AYB = ( 462 – 441/4 √3 ) cm²     [From (1), (2) and (3)]",
+      "explanation": "The final assembly step of Example 2: take the sector area (462 cm²) and subtract the triangle area (441√3/4 cm²) to get the segment area. Tests that the student correctly combines the two sub-results.",
+      "keyMoves": [
+        "Bring together the sector area and triangle area",
+        "Subtract triangle from sector",
+        "Factor or simplify the result"
+      ],
+      "misconceptions": [
+        "Subtracting in the wrong order (triangle − sector)",
+        "Adding the two areas"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh111:apply-sector-area-formula",
+        "cbse10:maths:jemh111:compute-triangle-area-base-height"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh111:substitute-pi-value",
+      "slug": "substitute-pi-value",
+      "title": "Substitute the given value of π and evaluate",
+      "role": "shared",
+      "brief": "Substitute π = 22/7 or π = 3.14 as instructed, then carry out the arithmetic.",
+      "sec": 0,
+      "quote": "= 30/360 × 3.14 × 4 × 4 cm²",
+      "explanation": "A recurring numeracy skill: replace π with the prescribed value (22/7 for radii that are multiples of 7, else 3.14) and evaluate the resulting arithmetic carefully. Used in every worked example and exercise.",
+      "keyMoves": [
+        "Read which π value the problem prescribes",
+        "Substitute it into the formula",
+        "Carry out the multiplication/division accurately"
+      ],
+      "misconceptions": [
+        "Using a different π value than the one specified",
+        "Arithmetic slips with fractions like 22/7"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## What was read\n\nI re-read the full segmented chapter `jemh111.txt` (NCERT Class 10 Maths, \"Areas Related to Circles\") — SEG 0 (the 11.1 exposition + Examples 1 and 2), SEG 1 (Exercise 11.1), SEG 2 (Summary) — and the shared `_maths-exams.txt` marking schemes (CBSE Standard SQP Q30 A/B and Basic SQP Q34) for answer-keyed gate material.\n\n## Correctness audit results\n\nThe draft's node graph, grain, and edges were sound and I kept them. The teachable content lives entirely in SEG 0 (three formulae + two worked examples); SEG 1/SEG 2 only restate. Per D-117 the pure exposition (sector/segment definitions, minor/major naming, Remark, history) is dropped; Example 2 is unrolled into the failable chain: drop OM ⊥ AB → RHS congruence to halve the angle → cos 60° → OM → sin 60° → AM → double to AB → ½·base·height → triangle area → sector − triangle → segment. Each is one independently-failable skill (D-107) and is a node.\n\n## Citations (D-120) — re-verified every quote verbatim\n\nI located every node quote and every gate quote as a contiguous character-for-character substring of its tagged segment (chapter sec 0, exam MS lines). All 14 node quotes verify in SEG 0. Whitespace was confirmed (e.g. the five spaces before \"(3)\" in `= 441/4 √3 cm²     (3)`; the math-italic theta glyph 𝜃 and ∘ in `⇒ 𝜃 = 60∘`).\n\n## Gate fixes applied\n\n1. **Goal gate (Q30B) quote was wrong.** The draft quoted `= 69.23 cm2`, which (a) does not match the answer 17.89 and (b) is itself a marking-scheme ERROR: that MS row computes with angle 90° (`= 90/360 × 22/7 × 14×14 − √3/4 ×14×14`) even though the problem states ∠AOB = 60°. Solving from first principles for the stated 60°: sector = 60/360 × 22/7 × 196 = 102.67 cm²; the triangle is equilateral so area = √3/4 × 14² = 1.73/4 × 196 = 84.77 cm²; minor segment = 102.67 − 84.77 ≈ 17.89 cm². The correct value 17.89 IS printed verbatim in the MS margin (line 530), so I kept answer = 17.89 and replaced the quote with the verbatim `17.89`. Tol 0.5 absorbs rounding.\n\n2. **compute-major-sector-area (alternative-method gate).** Draft answer 46.1 did not match its quoted line `= 330/360 × 3.14 × 16 cm² = 46.05 cm²` (which yields 46.05). I set the answer to 46.05 to match the quote exactly (46.05 → rounds to the chapter's 46.1; both are correct, but the gate now agrees with its own cited line). The other major-sector gate keeps 46.1 with its `= 46.05 cm² = 46.1 cm² (approx.)` quote.\n\nI independently re-solved every other gate and all were correct: 4.19 (12.56/3), θ=60 (Q34: 48 + 0.4187θ = 73.12), 190.95 (½·21√3·10.5), ∠AOM=60, RHS=C, OM=10.5, AM=18.19, AB=36.37, segment=271.05 (462−190.95), 594 (210/360 × 22/7 × 324). The Q14 MCQ answer D (`p/720 × 2πR²`) is algebraically `p/360 × πR²` = the correct sector-area form, so D is right.\n\n## Edges\n\nSingle root `find-area-of-segment-of-circle`; acyclic; no orphans; every endpoint is a defined slug. Segment goal requires sector-area, triangle-area, and the subtraction; triangle-area requires perpendicular-drop, chord-length, cosine-ratio; these bottom out at RHS-congruence (bedrock). Arc-length and major-sector hang off the goal as parallel chapter skills sharing the same numeracy bedrock.\n\n## Honestly absent / uncertain\n\n- No composite/combination-of-plane-figures worked example exists in this transcription (SEG 0–2 only) — not authored.\n- The Q30B marking scheme is internally inconsistent (uses 90° not the stated 60°); I corrected to the mathematically right 17.89, citing the chapter segment skill and the verbatim 17.89 in the MS. This is the gate to watch downstream.\n- Some quotes retain font-substituted glyphs (𝜃, 𝑐𝑚2) copied exactly as in the source, not normalised, so the exact-substring grader matches.",
+  "absentNotes": "A fuller treatment of \"Areas Related to Circles\" (and adjacent mensuration) would teach several things this transcription's chapter does NOT, so they are intentionally omitted (not failed):\n- Areas of COMBINATIONS of plane figures (circle inscribed in/around a square, triangle, or polygon; flower-bed/design composite areas) — no such worked example appears in SEG 0–2 of this transcription.\n- Perimeter of a sector as an explicit taught formula (2r + arc). It appears only in the EXAM source (Basic Q34), not stated in the chapter body, so it is captured via the arc-length node + an exam gate rather than as its own taught node.\n- Area between two concentric circles / annulus (ring) area.\n- Circumference and area of a full circle as derivations — assumed prior knowledge (\"You know that area of a circle ... is πr²\"), used but not taught here, hence not a node.\n- Conversion of the angle described by a clock hand into degrees as a separately-taught skill — used in exercises/exam but not demonstrated in a chapter worked example.\n- Radian measure of angles — not part of Class 10 / not in this chapter.\n- Distinguishing major vs minor SEGMENT areas by subtraction from the whole circle is stated only in a Note (\"Area of major segment AQB = πr² – Area of the minor segment APB\"); the failable computation is folded into compute-major-sector-area rather than duplicated as a near-identical node."
+}

@@ -1,0 +1,40 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh107",
+  "generatedAt": "2026-06-05T14:35:49.442Z",
+  "rows": {
+    "citation": {
+      "pass": 44,
+      "total": 44,
+      "ok": true
+    },
+    "structure": {
+      "acyclic": true,
+      "singleRoot": true,
+      "allReachable": true,
+      "allGated": true,
+      "noEmptyQuotes": true,
+      "ok": true
+    },
+    "gateSanity": {
+      "pass": 22,
+      "total": 22,
+      "ok": true
+    },
+    "mockTeach": {
+      "ran": true,
+      "pass": true,
+      "transcript": "mock-teach.txt",
+      "label": "PASS (mock)"
+    },
+    "completeness": {
+      "coverage": "22/22 nodes gated",
+      "gaps": [
+        "22/22 node(s) have no labelled practice item yet (C8 to add)"
+      ],
+      "ok": true
+    }
+  },
+  "verdict": "PASS (mock)"
+}

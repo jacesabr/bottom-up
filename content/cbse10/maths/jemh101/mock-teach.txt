@@ -1,0 +1,41 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh101
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:35:17.572Z
+
+teach  know-prime-composite-coprime  (bedrock)
+  check  "their only common factor is 1 (HCF = 1)"  →  PASS
+teach  prime-factorise-integer  (intermediate)
+  check  "32760"  →  PASS
+teach  state-fundamental-theorem-arithmetic  (intermediate)
+  check  "unique apart from the order of factors"  →  PASS
+teach  decide-ends-with-digit-via-primes  (intermediate)
+  check  "0"  →  PASS
+teach  manipulate-prime-powers  (shared)
+  check  "360"  →  PASS
+teach  compute-hcf-prime-factorisation  (intermediate)
+  check  "6"  →  PASS
+teach  compute-lcm-prime-factorisation  (intermediate)
+  check  "60"  →  PASS
+teach  use-hcf-lcm-product-relation  (intermediate)
+  check  "9696"  →  PASS
+teach  interpret-divides-relation  (bedrock)
+  check  "7"  →  PASS
+teach  state-prime-divides-square-theorem  (intermediate)
+  check  "p divides a"  →  PASS
+teach  derive-square-relation-from-fraction  (intermediate)
+  check  "2b^2 = a^2"  →  PASS
+teach  set-up-contradiction-rational-assumption  (intermediate)
+  check  "√2 is rational"  →  PASS
+teach  close-irrationality-contradiction  (intermediate)
+  check  "that a and b have no common factor other than 1"  →  PASS
+teach  prove-irrational-rational-minus-irrational  (intermediate)
+  check  "(5b − a)/b"  →  PASS
+teach  prove-irrational-rational-times-irrational  (intermediate)
+  check  "a/3b"  →  PASS
+teach  solve-lcm-meeting-time-word-problem  (intermediate)
+  check  "36"  →  PASS
+teach  explain-sum-is-composite  (intermediate)
+  check  "13"  →  PASS
+teach  apply-real-number-theorems  (goal)
+  check  "60"  →  PASS
+
+# taught 18/18 reachable nodes; verdict PASS (mock)

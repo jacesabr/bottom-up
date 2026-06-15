@@ -1,0 +1,491 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh110",
+  "title": "Circles",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "slug": "solve-circle-tangent-problems",
+      "title": "Solve tangent-to-a-circle problems",
+      "role": "goal",
+      "brief": "Apply tangent properties (perpendicularity, equal lengths) to compute lengths/angles and prove results in circle figures.",
+      "sec": 1,
+      "quote": "In this chapter, we will study about the existence of the tangents to a circle and also study some of their properties.",
+      "explanation": "The chapter's top skill: given a circle with one or more tangents, combine the two core tangent properties (the radius at the point of contact is perpendicular to the tangent; tangents from a common external point are equal) with right-triangle and congruence tools to find unknown lengths and angles or to prove relations. Every worked example (Examples 1, 2, 3) and exercise is an instance of this composite skill.",
+      "keyMoves": [
+        "Identify which tangent property applies (perpendicularity or equal lengths)",
+        "Draw radii to points of contact to create right angles",
+        "Set up a right triangle or congruence and solve"
+      ],
+      "misconceptions": [
+        "Trying to solve without drawing the radius to the point of contact",
+        "Assuming a tangent meets the circle at two points"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:define-tangent-to-circle",
+        "cbse10:maths:jemh110:count-tangents-by-point-location",
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:apply-equal-tangent-lengths",
+        "cbse10:maths:jemh110:compute-tangent-length-pythagoras",
+        "cbse10:maths:jemh110:compute-chord-touching-smaller-circle",
+        "cbse10:maths:jemh110:relate-angle-tangents-central-angle",
+        "cbse10:maths:jemh110:prove-angle-PTQ-twice-OPQ",
+        "cbse10:maths:jemh110:use-tangent-segments-circumscribed-quad",
+        "cbse10:maths:jemh110:find-triangle-sides-inscribed-circle",
+        "cbse10:maths:jemh110:use-similar-right-triangles-tangent",
+        "cbse10:maths:jemh110:prove-tangents-diameter-parallel",
+        "cbse10:maths:jemh110:prove-equal-tangents-rhs"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:define-tangent-to-circle",
+      "slug": "define-tangent-to-circle",
+      "title": "Define a tangent to a circle",
+      "role": "intermediate",
+      "brief": "A tangent is a line meeting the circle at exactly one point (the point of contact).",
+      "sec": 1,
+      "quote": "you have seen that a tangent* to a circle is a line that intersects the circle at only one point.",
+      "explanation": "A tangent touches the circle at exactly one point, the point of contact; this distinguishes it from a secant (two points) and a non-intersecting line (no points). The single common point is the point of contact where the tangent touches the circle.",
+      "keyMoves": [
+        "Count common points of the line and circle: exactly one means tangent",
+        "Name the single common point the point of contact"
+      ],
+      "misconceptions": [
+        "Confusing a tangent with a secant (which meets the circle in two points)",
+        "Thinking a tangent can cross into the circle"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:classify-line-circle-position"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:classify-line-circle-position",
+      "slug": "classify-line-circle-position",
+      "title": "Classify a line relative to a circle",
+      "role": "bedrock",
+      "brief": "Decide whether a line is non-intersecting, a secant, or a tangent by its number of common points.",
+      "sec": 0,
+      "quote": "In Fig. 10.1 (iii), there is only one point A which is common to the line PQ and the circle. In this case, the line is called a tangent to the circle.",
+      "explanation": "Given a line and a circle in a plane there are exactly three cases: no common point (non-intersecting), two common points (secant), one common point (tangent). Classifying by the count of common points is the foundational distinction the whole chapter rests on.",
+      "keyMoves": [
+        "Count common points: 0, 2, or 1",
+        "Map 0 to non-intersecting, 2 to secant, 1 to tangent"
+      ],
+      "misconceptions": [
+        "Calling a two-point line a tangent",
+        "Believing there is a fourth possible position"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:count-tangents-by-point-location",
+      "slug": "count-tangents-by-point-location",
+      "title": "Count tangents from a point by its location",
+      "role": "intermediate",
+      "brief": "0 tangents from inside, 1 from on the circle, exactly 2 from an external point.",
+      "sec": 3,
+      "quote": "Case 3 : There are exactly two tangents to a circle through a point lying outside the circle.",
+      "explanation": "The number of tangents that can be drawn to a circle through a given point depends only on where the point lies: a point inside gives no tangent, a point on the circle gives exactly one tangent, a point outside gives exactly two tangents.",
+      "keyMoves": [
+        "Locate the point: inside, on, or outside the circle",
+        "Map to 0, 1, or 2 tangents respectively"
+      ],
+      "misconceptions": [
+        "Saying two tangents can be drawn from a point inside the circle",
+        "Forgetting that a point on the circle admits exactly one tangent"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:define-tangent-to-circle"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+      "slug": "apply-tangent-perpendicular-radius",
+      "title": "Apply tangent perpendicular to radius",
+      "role": "intermediate",
+      "brief": "The radius drawn to the point of contact is perpendicular to the tangent there.",
+      "sec": 1,
+      "quote": "Theorem 10.1 : The tangent at any point of a circle is perpendicular to the radius through the point of contact.",
+      "explanation": "The key tangent property: at the point of contact the radius and the tangent meet at a right angle. This lets you mark a 90 degree angle between a radius and a tangent, turning a tangent figure into a right triangle to which Pythagoras applies.",
+      "keyMoves": [
+        "Identify the point of contact",
+        "Draw the radius to it and mark the 90 degree angle with the tangent"
+      ],
+      "misconceptions": [
+        "Marking the right angle at the wrong point (not the point of contact)",
+        "Assuming any radius is perpendicular to the tangent"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:justify-point-outside-tangent",
+        "cbse10:maths:jemh110:define-tangent-to-circle"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:justify-point-outside-tangent",
+      "slug": "justify-point-outside-tangent",
+      "title": "Justify why a tangent point lies outside",
+      "role": "bedrock",
+      "brief": "Any point on the tangent other than the contact point lies outside the circle, so its distance from the centre exceeds the radius.",
+      "sec": 1,
+      "quote": "Therefore, OQ is longer than the radius OP of the circle. That is,",
+      "explanation": "Underlying the perpendicularity theorem: every point Q on the tangent except the point of contact P lies outside the circle, so OQ exceeds the radius OP. Because OP is the shortest distance from the centre to the line, OP is perpendicular to the tangent. This is the reasoning step that proves Theorem 10.1.",
+      "keyMoves": [
+        "Take any other point Q on the tangent",
+        "Argue Q is outside so OQ > OP, hence OP is shortest and perpendicular"
+      ],
+      "misconceptions": [
+        "Thinking points on the tangent could lie inside the circle",
+        "Confusing shortest distance with an arbitrary distance"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:apply-equal-tangent-lengths",
+      "slug": "apply-equal-tangent-lengths",
+      "title": "Apply equal lengths of tangents from external point",
+      "role": "intermediate",
+      "brief": "Two tangents drawn from the same external point to a circle are equal in length.",
+      "sec": 3,
+      "quote": "Theorem 10.2 : The lengths of tangents drawn from an external point to a circle are equal.",
+      "explanation": "The second core tangent property: from one external point the two tangent segments to a circle are equal. This is used to set equal-length tangent segments around inscribed/circumscribed figures and to deduce isosceles triangles.",
+      "keyMoves": [
+        "Identify two tangents from a single external point",
+        "Set their lengths equal"
+      ],
+      "misconceptions": [
+        "Equating tangents from different external points",
+        "Forgetting the point must be external"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:prove-equal-tangents-rhs"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:prove-equal-tangents-rhs",
+      "slug": "prove-equal-tangents-rhs",
+      "title": "Prove equal tangents via RHS congruence",
+      "role": "intermediate",
+      "brief": "Join centre to point and to contact points; right triangles are congruent by RHS, so tangents are equal by CPCT.",
+      "sec": 3,
+      "quote": "Therefore, Δ OQP ≅ Δ ORP (RHS)",
+      "explanation": "The proof of Theorem 10.2: joining OP, OQ, OR gives two right triangles OQP and ORP with equal radii OQ=OR, common hypotenuse OP, and right angles at the contact points; by RHS they are congruent, so PQ=PR by CPCT. This is the canonical 5-mark CBSE proof.",
+      "keyMoves": [
+        "Join centre to external point and to both contact points",
+        "Use radii equal, OP common, right angles, then RHS and CPCT"
+      ],
+      "misconceptions": [
+        "Using SSS/SAS where RHS is required",
+        "Forgetting to state the right angles come from Theorem 10.1"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:apply-rhs-cpct-congruence"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:compute-tangent-length-pythagoras",
+      "slug": "compute-tangent-length-pythagoras",
+      "title": "Compute tangent length using Pythagoras",
+      "role": "intermediate",
+      "brief": "In the right triangle radius-tangent-line-to-centre, tangent length = \\(\\sqrt{\\text{distance}^2 - \\text{radius}^2}\\).",
+      "sec": 3,
+      "quote": "PQ² = OP² – OQ² = OP² – OR² = PR² (As OQ = OR)",
+      "explanation": "Because the radius is perpendicular to the tangent, the triangle formed by the centre, the contact point, and the external point is right-angled at the contact point. Hence (distance from centre)^2 = radius^2 + (tangent length)^2, giving tangent length = sqrt(OP^2 - radius^2). This solves Exercise 10.2 Q1/Q6 and Exercise 10.1 Q3.",
+      "keyMoves": [
+        "Identify the right angle at the point of contact",
+        "Apply Pythagoras with hypotenuse = centre-to-external distance",
+        "Solve for the tangent leg"
+      ],
+      "misconceptions": [
+        "Putting the right angle at the centre instead of the contact point",
+        "Adding instead of subtracting radius squared"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:solve-right-triangle-pythagoras"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:compute-chord-touching-smaller-circle",
+      "slug": "compute-chord-touching-smaller-circle",
+      "title": "Find chord of larger circle touching smaller concentric circle",
+      "role": "intermediate",
+      "brief": "The chord of the larger circle tangent to the smaller is bisected at contact; use right triangle with the two radii.",
+      "sec": 3,
+      "quote": "Now AB is a chord of the circle C₁ and OP ⊥ AB. Therefore, OP is the bisector of the chord AB, as the perpendicular from the centre bisects the chord, i.e., AP = BP",
+      "explanation": "In two concentric circles, a chord of the larger circle that touches the smaller is tangent to the smaller circle, so the radius of the smaller circle is perpendicular to it and bisects it. Half-chord, smaller radius, and larger radius form a right triangle, giving half-chord = sqrt(R^2 - r^2). This is Example 1 plus Basic SQP Q22.",
+      "keyMoves": [
+        "Recognise the chord is tangent to the inner circle so inner radius is perpendicular",
+        "Use perpendicular-from-centre-bisects-chord to halve the chord",
+        "Apply Pythagoras with the two radii"
+      ],
+      "misconceptions": [
+        "Not halving the chord before applying Pythagoras",
+        "Mixing up which radius is the hypotenuse"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:use-perpendicular-bisects-chord",
+        "cbse10:maths:jemh110:solve-right-triangle-pythagoras"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:use-perpendicular-bisects-chord",
+      "slug": "use-perpendicular-bisects-chord",
+      "title": "Use perpendicular from centre bisects the chord",
+      "role": "bedrock",
+      "brief": "A line from the centre perpendicular to a chord bisects that chord.",
+      "sec": 3,
+      "quote": "OP is the bisector of the chord AB, as the perpendicular from the centre bisects the chord",
+      "explanation": "A Class IX fact reused here: when a segment from the centre is perpendicular to a chord it splits the chord into two equal halves. Used in Example 1 and Example 3 to get equal half-chords before applying Pythagoras.",
+      "keyMoves": [
+        "Confirm the segment from the centre is perpendicular to the chord",
+        "Conclude the two half-chords are equal"
+      ],
+      "misconceptions": [
+        "Assuming any segment from the centre bisects the chord without perpendicularity",
+        "Bisecting the wrong segment"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:relate-angle-tangents-central-angle",
+      "slug": "relate-angle-tangents-central-angle",
+      "title": "Relate angle between tangents to central angle",
+      "role": "intermediate",
+      "brief": "Angle between two tangents from an external point plus the central angle of the contact chord equals 180 degrees.",
+      "sec": 4,
+      "quote": "Prove that the angle between the two tangents drawn from an external point to a circle is supplementary to the angle subtended by the line-segment joining the points of contact at the centre.",
+      "explanation": "Quadrilateral OPTQ has right angles at the two contact points (radius ⊥ tangent), so its remaining two angles—the angle between the tangents at T and the central angle POQ—are supplementary. This solves Exercise 10.2 Q2, Standard SQP Q7, and Basic SQP Q5.",
+      "keyMoves": [
+        "Form quadrilateral: centre, two contact points, external point",
+        "Mark the two right angles at the contact points",
+        "Use angle sum 360 to get the two remaining angles supplementary"
+      ],
+      "misconceptions": [
+        "Thinking the two angles are equal rather than supplementary",
+        "Forgetting the two right angles from the radii"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:prove-angle-PTQ-twice-OPQ",
+      "slug": "prove-angle-PTQ-twice-OPQ",
+      "title": "Prove angle PTQ equals twice angle OPQ",
+      "role": "intermediate",
+      "brief": "Using isosceles tangent triangle and the right angle at the contact point, derive PTQ = 2·OPQ.",
+      "sec": 3,
+      "quote": "∠ OPQ = ∠ OPT – ∠ TPQ = 90° – (90° – ½ θ) = ½ θ = ½ ∠ PTQ",
+      "explanation": "Example 2: let angle PTQ = θ. Since TP=TQ, triangle TPQ is isosceles so each base angle is 90 - θ/2. The radius gives angle OPT = 90, so angle OPQ = 90 - (90 - θ/2) = θ/2, hence angle PTQ = 2·angle OPQ. Combines equal tangents, isosceles base angles, and the perpendicular-radius fact.",
+      "keyMoves": [
+        "Set PTQ = θ and use equal tangents for isosceles base angles",
+        "Use angle OPT = 90 from the radius",
+        "Subtract to get OPQ = θ/2"
+      ],
+      "misconceptions": [
+        "Forgetting the triangle is isosceles",
+        "Misplacing the right angle OPT"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:apply-equal-tangent-lengths",
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:compute-base-angle-isosceles-tangent"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:compute-base-angle-isosceles-tangent",
+      "slug": "compute-base-angle-isosceles-tangent",
+      "title": "Compute base angles of isosceles tangent triangle",
+      "role": "shared",
+      "brief": "In an isosceles triangle each base angle is (180 - apex)/2.",
+      "sec": 3,
+      "quote": "∠ TPQ = ∠ TQP = ½ (180° – θ) = 90° – ½ θ",
+      "explanation": "Generic isosceles-triangle fact applied to the tangent triangle TPQ: with apex θ the two equal base angles are each (180-θ)/2 = 90 - θ/2. Reused wherever the two equal tangents create an isosceles triangle.",
+      "keyMoves": [
+        "Identify the equal sides and apex angle",
+        "Compute each base angle as (180 - apex)/2"
+      ],
+      "misconceptions": [
+        "Dividing the wrong angle by two",
+        "Forgetting base angles are equal"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:use-tangent-segments-circumscribed-quad",
+      "slug": "use-tangent-segments-circumscribed-quad",
+      "title": "Use equal tangent segments in a circumscribed quadrilateral",
+      "role": "intermediate",
+      "brief": "For a quadrilateral circumscribing a circle, equal tangent segments give AB + CD = AD + BC.",
+      "sec": 4,
+      "quote": "A quadrilateral ABCD is drawn to circumscribe a circle (see Fig. 10.12). Prove that\n\nAB + CD = AD + BC",
+      "explanation": "Each vertex of a circumscribing quadrilateral is an external point with two equal tangent segments to the inscribed circle. Adding tangent lengths around the quadrilateral shows the sum of one pair of opposite sides equals the sum of the other pair. A standard exercise application of equal tangents.",
+      "keyMoves": [
+        "Label the four points of contact and pair equal tangent segments at each vertex",
+        "Add side lengths and group equal segments",
+        "Conclude AB + CD = AD + BC"
+      ],
+      "misconceptions": [
+        "Equating tangent segments from different vertices",
+        "Mislabelling which segments share a vertex"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:apply-equal-tangent-lengths"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:find-triangle-sides-inscribed-circle",
+      "slug": "find-triangle-sides-inscribed-circle",
+      "title": "Find triangle sides from inscribed-circle tangent segments",
+      "role": "intermediate",
+      "brief": "Use equal tangent segments from each vertex of a triangle with an inscribed circle to find unknown sides.",
+      "sec": 4,
+      "quote": "A triangle ABC is drawn to circumscribe a circle of radius 4 cm such that the segments BD and DC into which BC is divided by the point of contact D are of lengths 8 cm and 6 cm respectively (see Fig. 10.14). Find the sides AB and AC.",
+      "explanation": "For a triangle with an inscribed circle, the two tangent segments from each vertex are equal (AR=AQ, BP=BR, CP=CQ). Knowing some segment lengths lets you propagate the equalities around the triangle to find the remaining side lengths. This is Exercise 10.2 Q12 and Standard SQP Q33.",
+      "keyMoves": [
+        "Name contact points on the three sides",
+        "Set the two tangents from each vertex equal",
+        "Add segment pairs to get each side"
+      ],
+      "misconceptions": [
+        "Pairing tangent segments from different vertices",
+        "Forgetting a side is the sum of two distinct vertex tangents"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:apply-equal-tangent-lengths"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:use-similar-right-triangles-tangent",
+      "slug": "use-similar-right-triangles-tangent",
+      "title": "Use similar right triangles to find a tangent length",
+      "role": "intermediate",
+      "brief": "Set up AA-similar right triangles in a tangent-chord figure and use the proportion to find a length.",
+      "sec": 3,
+      "quote": "Therefore, right triangle TRP is similar to the right triangle PRO by AA similarity.",
+      "explanation": "Example 3: with chord PQ and tangents meeting at T, OT bisects and is perpendicular to PQ. Triangles TRP and PRO share equal angles (each complementary to angle RPO), so they are similar by AA, giving TP/PO = RP/RO and TP = 20/3. An alternative to the Pythagoras route shown in the Note.",
+      "keyMoves": [
+        "Establish the two right triangles share an equal acute angle",
+        "Conclude AA similarity",
+        "Write the proportion of corresponding sides and solve"
+      ],
+      "misconceptions": [
+        "Pairing non-corresponding sides in the proportion",
+        "Assuming similarity without justifying the equal angle"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:use-perpendicular-bisects-chord",
+        "cbse10:maths:jemh110:solve-right-triangle-pythagoras",
+        "cbse10:maths:jemh106:apply-aaa-aa-criterion"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:prove-tangents-diameter-parallel",
+      "slug": "prove-tangents-diameter-parallel",
+      "title": "Prove tangents at diameter ends are parallel",
+      "role": "intermediate",
+      "brief": "Both tangents are perpendicular to the same diameter, so they are parallel.",
+      "sec": 4,
+      "quote": "Prove that the tangents drawn at the ends of a diameter of a circle are parallel.",
+      "explanation": "At each end of a diameter the tangent is perpendicular to the radius (here the diameter line). Two lines perpendicular to the same line are parallel, so the two tangents are parallel. A direct application of Theorem 10.1.",
+      "keyMoves": [
+        "Mark the tangent at each diameter end perpendicular to the diameter",
+        "Use 'two lines perpendicular to a common line are parallel'"
+      ],
+      "misconceptions": [
+        "Forgetting the diameter is the common perpendicular line",
+        "Assuming the tangents meet"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:solve-right-triangle-pythagoras",
+      "slug": "solve-right-triangle-pythagoras",
+      "title": "Solve a right triangle with the Pythagoras theorem",
+      "role": "bedrock",
+      "brief": "Relate the three sides of a right triangle by hypotenuse² = leg² + leg².",
+      "sec": 3,
+      "quote": "Also, OR = √(OP² – PR²) = √(5² – 4²) cm = 3 cm.",
+      "explanation": "The underlying numeracy tool: in any right triangle the squares of the legs sum to the square of the hypotenuse, so an unknown side is found by squaring, adding or subtracting, and taking the square root. Used throughout the chapter once a radius creates a right angle.",
+      "keyMoves": [
+        "Identify the hypotenuse (longest side, opposite the right angle)",
+        "Form leg² = hyp² - other-leg² and take the square root"
+      ],
+      "misconceptions": [
+        "Treating a leg as the hypotenuse",
+        "Forgetting to take the square root"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh110:apply-rhs-cpct-congruence",
+      "slug": "apply-rhs-cpct-congruence",
+      "title": "Apply RHS congruence and CPCT",
+      "role": "bedrock",
+      "brief": "Two right triangles with equal hypotenuse and one equal side are congruent (RHS); corresponding parts are then equal (CPCT).",
+      "sec": 3,
+      "quote": "This gives PQ = PR (CPCT)",
+      "explanation": "A bedrock congruence rule reused in tangent proofs: right triangles sharing a hypotenuse and one leg are congruent by RHS, after which corresponding parts (here the tangent segments) are equal by CPCT. It is the engine of the equal-tangents proof.",
+      "keyMoves": [
+        "Verify a right angle, equal hypotenuses, and one equal side",
+        "Declare RHS congruence",
+        "Extract the needed equal parts by CPCT"
+      ],
+      "misconceptions": [
+        "Applying RHS without a right angle present",
+        "Claiming CPCT before congruence is established"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## What I read (as reviewer)\n\nI re-read the full segmented chapter `jemh110.txt` (NCERT Class 10 Maths, Ch.10 \"Circles\") — SEG 0 Introduction, SEG 1 Tangent to a Circle, SEG 2 Exercise 10.1, SEG 3 Number of Tangents from a Point, SEG 4 Exercise 10.2, SEG 5 Summary — plus all three worked Examples. I cross-checked every exam-sourced gate against `_maths-exams.txt` (Standard SQP Q3/Q7/Q33; Basic SQP Q5/Q22) at the exact line offsets.\n\n## Corrections I made to the draft\n\n1. **Citation sec error (D-120) — `relate-angle-tangents-central-angle`.** The node quote (\"Prove that the angle between the two tangents drawn from an external point...is supplementary to the angle subtended...at the centre.\") is Exercise 10.2 Q10, which lives in **SEG 4**, not SEG 3. The draft tagged sec 3. Verified verbatim at the Exercise 10.2 segment and reset sec → 4.\n\n2. **Gate self-consistency error — Exercise 10.1 Q3 tangent length.** The draft made this a `numeric` gate with value **119**, but the true length is PQ = √(12² − 5²) = √119 ≈ 10.91, NOT 119 (119 is the radicand, not the length). The source only states the answer as option \"(D) √119 cm\". Converted to an **mcq** gate keyed to \"√119 cm\" so the deterministic grader passes against a true canonical answer.\n\n3. **Too-short / unlocatable gate quotes replaced with ≥6-word verbatim spans.** Several gate quotes were either fabricated option lines that don't sit in the segment, or 3-word fragments that fail a meaningful substring check:\n   - Basic SQP Q22 gate quote was \"= 3 cm\" (the √ marking-scheme line carries multibyte glyphs and is only 3 tokens). Replaced with the verbatim question line \"In two concentric circles, a chord of length 8 cm of the larger circle touches the\" (line 918).\n   - Exercise 10.2 Q1 radius gate quote was an options line \"(A) 7 cm ...\"; replaced with the verbatim Q1 statement \"From a point Q, the length of the tangent to a circle is 24 cm and the distance of Q from the centre is 25 cm. The radius of the circle is\".\n   - Exercise 10.2 Q2 angle gate quote was an options line; replaced with the verbatim Q2 statement \"if TP and TQ are the two tangents to a circle with centre O so that ∠ POQ = 110°, then ∠ PTQ is equal to\".\n   These keep the same answer keys (7, 70, 3) which I re-derived and confirmed.\n\n4. **Tightened the Standard SQP Q33 BR gate prompt** to drop a stray contradictory CQ value and match the marking-scheme chain (AR=AQ=7, AB=10 ⇒ BR=3). Quote unchanged (\"BP = BR = AB-AR = 3cm\", verbatim line 570).\n\n5. **Added a second gate on `apply-equal-tangent-lengths`** (it previously shared one mcq) keyed to the verbatim proof line \"We are required to prove that PQ = PR.\" — and trimmed that node's other gate prompt to match its quote.\n\n## Verified-and-kept\n\n- Every other chapter node quote located verbatim in its tagged SEG (Theorems 10.1/10.2, the RHS/CPCT proof lines, Example 1/2/3 lines, Case 3, the two Exercise 10.1 fill-ins).\n- Every numeric answer re-derived: Q1→7, Q2→70, Q6→3, Q7→8, Q8(AD)→3, Q3(goal)→50, Std Q7→140, Std Q33→8 and 3, Basic Q5→145, Basic Q22→3, Example 2→30, Example 3→6.6667, isosceles base→70, Pythagoras OR→3.\n- **Graph:** single root `solve-circle-tangent-problems` (only ever a parent); 20 nodes, all appearing in ≥1 edge (no orphans); every edge endpoint is a defined slug; acyclic (all dependency edges point from application skills down to the two property pillars and bedrock tools). 100% node→gate coverage (every node has ≥1 gate).\n\n## Grain\n\nGrain looks correct: each node is a single failable move. No pure-exposition node survived (the pulley/wheel/bicycle activities, the Thomas Fineke etymology, and Activity 1–3 manipulatives are exposition and remain dropped). I did not split further — the chapter genuinely teaches two theorems plus a fan of application skills, which the draft already separates.\n\n## Uncertainty\n\nThe exam marking-scheme glyphs (e.g. \"7. C) 140𝑂 1\", \"5. D) 145∘ 1\") contain non-ASCII math characters; I kept those gate quotes byte-for-byte as they appear so the substring check matches the source. Example 3's TP = 20/3 is expressed numerically as 6.6667 (tol 0.01).",
+  "absentNotes": "The chapter does NOT teach (so omitted per retrieve-don't-generate): (1) compass/straightedge construction of tangents from an external point — that is the Constructions chapter; this chapter only states the number-of-tangents result. (2) Tangent-chord / alternate-segment theorem — not in NCERT Class 10. (3) The \"centre lies on the bisector of the angle between the two tangents\" is only a Remark (folded into the proof skills, not a standalone node). (4) History/etymology of \"tangent\" (Thomas Fineke, 1583), the pulley/cart-wheel/bicycle motivational passages, and Activities 1–3 manipulatives are pure exposition and were dropped. (5) Power-of-a-point / tangent-secant length product — not taught. (6) Coordinate-geometry treatment of tangents — absent. (7) The full formal write-ups of the \"prove\" exercises (Q9 ∠AOB=90°, Q11 rhombus, Q13 supplementary opposite sides) are represented by their underlying property skills (equal-tangents, perpendicular-radius) rather than as separate proof nodes, since each reduces to the two core properties already captured; only the two genuinely distinct provable patterns the exercises introduce — `relate-angle-tangents-central-angle` (Q10) and `prove-tangents-diameter-parallel` (Q4) — were kept as their own nodes. (8) Class IX prerequisites (definition of circle/chord/segment/sector/arc) are referenced but not taught here; only `use-perpendicular-bisects-chord`, which is actively reused in Examples 1 and 3, was retained as bedrock."
+}

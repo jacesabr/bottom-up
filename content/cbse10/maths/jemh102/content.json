@@ -1,0 +1,504 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh102",
+  "title": "Polynomials",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "slug": "relate-zeroes-and-coefficients-of-polynomials",
+      "title": "Relate zeroes and coefficients of a polynomial",
+      "role": "goal",
+      "brief": "The chapter's top skill: given a quadratic or cubic polynomial, find its zeroes and connect them to the coefficients via the sum/product relations (and the reverse — build a polynomial from its zeroes).",
+      "sec": 0,
+      "quote": "are the zeroes of a quadratic polynomial also related to its coefficients?",
+      "explanation": "This is the umbrella goal that all sub-skills serve: knowing what a zero is, finding zeroes by factorisation, and using the coefficient relations α+β=−b/a, αβ=c/a (and the cubic analogues) both to verify and to construct polynomials.",
+      "keyMoves": [
+        "Find zeroes of a quadratic/cubic",
+        "State sum and product of zeroes in terms of coefficients",
+        "Verify or construct a polynomial from its zeroes"
+      ],
+      "misconceptions": [
+        "Thinking zeroes equal the coefficients themselves rather than being related by −b/a and c/a"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+        "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations",
+        "cbse10:maths:jemh102:build-quadratic-from-sum-and-product",
+        "cbse10:maths:jemh102:verify-cubic-zero-coefficient-relations",
+        "cbse10:maths:jemh102:interpret-zero-as-x-intercept",
+        "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:identify-degree-of-polynomial",
+      "slug": "identify-degree-of-polynomial",
+      "title": "Identify the degree of a polynomial",
+      "role": "bedrock",
+      "brief": "Read off the highest power of the variable as the degree of the polynomial.",
+      "sec": 0,
+      "quote": "the highest power of x in p(x) is called the degree of the polynomial p(x)",
+      "explanation": "Degree is the highest exponent of the variable. 4x+2 has degree 1; 2y²−3y+4 has degree 2; the degree-6 example 7u⁶−... has degree 6. This is the bedrock skill for classifying linear/quadratic/cubic.",
+      "keyMoves": [
+        "Scan all terms",
+        "Pick the highest exponent of the variable"
+      ],
+      "misconceptions": [
+        "Confusing the leading coefficient with the degree",
+        "Counting the number of terms instead of the highest power"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:classify-polynomial-by-degree",
+      "slug": "classify-polynomial-by-degree",
+      "title": "Classify a polynomial as linear, quadratic, or cubic",
+      "role": "intermediate",
+      "brief": "Name a polynomial by its degree: degree 1 linear, degree 2 quadratic, degree 3 cubic.",
+      "sec": 0,
+      "quote": "A polynomial of degree 1 is called a linear polynomial.",
+      "explanation": "Once the degree is known, the polynomial gets a name: degree 1 = linear, degree 2 = quadratic (general form ax²+bx+c, a≠0), degree 3 = cubic (general form ax³+bx²+cx+d, a≠0).",
+      "keyMoves": [
+        "Find the degree",
+        "Map degree 1→linear, 2→quadratic, 3→cubic"
+      ],
+      "misconceptions": [
+        "Calling 2x+5−x² linear because it starts with a linear term — it is actually quadratic"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:identify-degree-of-polynomial"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:recognise-non-polynomial-expressions",
+      "slug": "recognise-non-polynomial-expressions",
+      "title": "Recognise expressions that are not polynomials",
+      "role": "bedrock",
+      "brief": "Reject expressions with the variable in a denominator or under a root as non-polynomials.",
+      "sec": 0,
+      "quote": "Expressions like 1/(x − 1), √x + 2, 1/(x² + 2x + 3) etc., are not polynomials.",
+      "explanation": "A polynomial requires non-negative integer powers of the variable. Expressions with the variable in a denominator (1/(x−1)) or under a radical (√x+2) are not polynomials.",
+      "keyMoves": [
+        "Check each term for a negative or fractional power of the variable",
+        "Reject if the variable appears in a denominator or under a root"
+      ],
+      "misconceptions": [
+        "Accepting √x+2 as a polynomial because it looks simple"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:evaluate-polynomial-at-a-value",
+      "slug": "evaluate-polynomial-at-a-value",
+      "title": "Evaluate a polynomial p(x) at x = k",
+      "role": "bedrock",
+      "brief": "Substitute a number for the variable and compute the resulting value p(k).",
+      "sec": 0,
+      "quote": "putting x = 2 in the polynomial, we get p(2) = 2² − 3 × 2 − 4 = − 6",
+      "explanation": "p(k) is found by replacing every x with k and evaluating. For p(x)=x²−3x−4, p(2)=2²−3×2−4=−6. This is the substitute-and-compute bedrock used to test zeroes.",
+      "keyMoves": [
+        "Replace x by k in every term",
+        "Apply order of operations to compute the number"
+      ],
+      "misconceptions": [
+        "Mishandling signs when k is negative, e.g. (−1)² becoming −1"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:evaluate-polynomial-at-negative-value",
+      "slug": "evaluate-polynomial-at-negative-value",
+      "title": "Evaluate a polynomial at a negative argument",
+      "role": "shared",
+      "brief": "Substitute a negative number, correctly squaring/cubing the sign.",
+      "sec": 0,
+      "quote": "p(−1) = (−1)² − {3 × (−1)} − 4 = 1 + 3 − 4 = 0",
+      "explanation": "When k is negative, (−1)² = 1 and the middle term −3×(−1) = +3. Careful sign handling gives p(−1)=0, showing −1 is a zero. This generic signed-substitution skill is reused across the chapter (e.g. verifying cubic zeroes).",
+      "keyMoves": [
+        "Square/cube the negative carefully",
+        "Track the sign of each term before summing"
+      ],
+      "misconceptions": [
+        "Writing (−1)² = −1",
+        "Dropping the double negative in −3×(−1)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:evaluate-polynomial-at-a-value"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:define-zero-of-polynomial",
+      "slug": "define-zero-of-polynomial",
+      "title": "Define a zero of a polynomial",
+      "role": "bedrock",
+      "brief": "A real number k is a zero of p(x) precisely when p(k)=0.",
+      "sec": 0,
+      "quote": "a real number k is said to be a zero of a polynomial p(x), if p(k) = 0.",
+      "explanation": "The defining property of a zero: substituting it makes the polynomial evaluate to 0. This is the criterion every zero-finding and zero-verifying step relies on.",
+      "keyMoves": [
+        "Substitute the candidate",
+        "Check whether the result is 0"
+      ],
+      "misconceptions": [
+        "Thinking a zero is where the polynomial equals the constant term rather than 0"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:evaluate-polynomial-at-a-value"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:find-zero-of-linear-polynomial",
+      "slug": "find-zero-of-linear-polynomial",
+      "title": "Find the zero of a linear polynomial",
+      "role": "intermediate",
+      "brief": "Set ax+b=0 and solve to get the single zero −b/a.",
+      "sec": 0,
+      "quote": "the zero of the linear polynomial ax + b is −b/a = −(Constant term)/(Coefficient of x).",
+      "explanation": "A linear polynomial ax+b has exactly one zero, found by solving ax+b=0 ⇒ k=−b/a. Example: zero of 2x+3 is −3/2. This is the first coefficient-to-zero relationship.",
+      "keyMoves": [
+        "Set the polynomial equal to 0",
+        "Solve the linear equation for x"
+      ],
+      "misconceptions": [
+        "Forgetting the negative sign: writing b/a instead of −b/a"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:define-zero-of-polynomial",
+        "cbse10:maths:jemh102:evaluate-polynomial-at-a-value"
+      ],
+      "sameConcept": [
+        "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
+      ],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:interpret-zero-as-x-intercept",
+      "slug": "interpret-zero-as-x-intercept",
+      "title": "Interpret a zero as an x-intercept of the graph",
+      "role": "intermediate",
+      "brief": "Read the zeroes of p(x) as the x-coordinates where y=p(x) crosses the x-axis.",
+      "sec": 1,
+      "quote": "the zeroes of a quadratic polynomial ax² + bx + c, a ≠ 0, are precisely the x-coordinates of the points where the parabola representing y = ax² + bx + c intersects the x-axis.",
+      "explanation": "Geometrically, every zero corresponds to an x-intercept of the graph y=p(x). For 2x+3 the line crosses at (−3/2,0); for x²−3x−4 the parabola crosses at −1 and 4. Used to read zeroes off a given graph.",
+      "keyMoves": [
+        "Locate where the curve meets the x-axis",
+        "Read each x-coordinate as a zero"
+      ],
+      "misconceptions": [
+        "Reading the y-intercept instead of the x-intercept",
+        "Using the vertex x-value as a zero"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:find-zero-of-linear-polynomial"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:count-zeroes-from-graph",
+      "slug": "count-zeroes-from-graph",
+      "title": "Count the number of zeroes from a graph",
+      "role": "intermediate",
+      "brief": "Count how many times the graph of y=p(x) meets the x-axis to get the number of zeroes.",
+      "sec": 1,
+      "quote": "The number of zeroes is 2 as the graph intersects the x-axis at two points.",
+      "explanation": "Example 1 demonstrates: the number of zeroes equals the number of x-axis intersection points of y=p(x). One crossing → 1 zero, two crossings → 2 zeroes, etc.",
+      "keyMoves": [
+        "Count intersection points with the x-axis",
+        "Report that count as the number of zeroes"
+      ],
+      "misconceptions": [
+        "Counting turning points instead of x-axis crossings",
+        "Counting tangential touches as two zeroes"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:interpret-zero-as-x-intercept"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree",
+      "slug": "bound-number-of-zeroes-by-degree",
+      "title": "Bound the number of zeroes by the degree",
+      "role": "intermediate",
+      "brief": "A polynomial of degree n has at most n zeroes.",
+      "sec": 1,
+      "quote": "a polynomial p(x) of degree n has at most n zeroes.",
+      "explanation": "A quadratic has at most 2 zeroes; a cubic at most 3; in general degree n has at most n zeroes, because the graph meets the x-axis in at most n points.",
+      "keyMoves": [
+        "Find the degree n",
+        "State the maximum number of zeroes as n"
+      ],
+      "misconceptions": [
+        "Assuming a degree-n polynomial always has exactly n real zeroes"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:count-zeroes-from-graph",
+        "cbse10:maths:jemh102:identify-degree-of-polynomial"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term",
+      "slug": "factorise-quadratic-by-splitting-middle-term",
+      "title": "Factorise a quadratic by splitting the middle term",
+      "role": "intermediate",
+      "brief": "Split the middle term into two terms whose product equals (coeff of x²)×(constant)×x², then group.",
+      "sec": 3,
+      "quote": "2x² − 8x + 6 = 2x² − 6x − 2x + 6 = 2x(x − 3) − 2(x − 1)",
+      "explanation": "To factorise ax²+bx+c, split bx into two terms whose product is the a×c term (here 6×2x²=12x²), then factor by grouping. 2x²−8x+6 splits as −6x−2x and factors to 2(x−1)(x−3).",
+      "keyMoves": [
+        "Compute the product a×c",
+        "Find two numbers with that product summing to b",
+        "Split and group to factor"
+      ],
+      "misconceptions": [
+        "Choosing split terms that sum to b but whose product is not a×c",
+        "Sign errors in the grouped factors"
+      ],
+      "prereqs": [],
+      "sameConcept": [
+        "cbse10:maths:jemh104:split-middle-term",
+        "cbse10:maths:jemh105:factor-quadratic"
+      ],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:factorise-using-difference-of-squares",
+      "slug": "factorise-using-difference-of-squares",
+      "title": "Factorise using the difference-of-squares identity",
+      "role": "shared",
+      "brief": "Apply a²−b²=(a−b)(a+b) to factor a quadratic with no middle term.",
+      "sec": 3,
+      "quote": "x² − 3 = (x − √3)(x + √3)",
+      "explanation": "Example 3 uses a²−b²=(a−b)(a+b): x²−3 = x²−(√3)² = (x−√3)(x+√3), giving zeroes √3 and −√3. This is the identity-based factoring route for ax²+c type quadratics.",
+      "keyMoves": [
+        "Recognise the expression as a²−b²",
+        "Write it as (a−b)(a+b)"
+      ],
+      "misconceptions": [
+        "Trying to factor x²−3 over integers and concluding it cannot be factored"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:find-zeroes-from-factors",
+      "slug": "find-zeroes-from-factors",
+      "title": "Find zeroes from factored form via zero-product",
+      "role": "intermediate",
+      "brief": "Set each linear factor equal to zero and solve to get the zeroes.",
+      "sec": 3,
+      "quote": "the value of p(x) = 2x² − 8x + 6 is zero when x − 1 = 0 or x − 3 = 0, i.e., when x = 1 or x = 3.",
+      "explanation": "Once factored as (x−1)(x−3) (times a constant), the polynomial is zero exactly when a factor is zero. Each factor gives one zero. This is the zero-product step turning factors into zeroes.",
+      "keyMoves": [
+        "Set each factor equal to 0",
+        "Solve each for x"
+      ],
+      "misconceptions": [
+        "Reading the zero as the constant inside the factor with the wrong sign (e.g. x−3 giving −3)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:define-zero-of-polynomial",
+        "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term",
+        "cbse10:maths:jemh102:factorise-using-difference-of-squares"
+      ],
+      "sameConcept": [
+        "cbse10:maths:jemh104:apply-zero-product-property"
+      ],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:verify-quadratic-sum-of-zeroes",
+      "slug": "verify-quadratic-sum-of-zeroes",
+      "title": "Verify the sum of zeroes equals −b/a",
+      "role": "intermediate",
+      "brief": "Check that the sum of the two zeroes equals −(coefficient of x)/(coefficient of x²).",
+      "sec": 3,
+      "quote": "Sum of its zeroes = 1 + 3 = 4 = −(−8)/2 = −(Coefficient of x)/(Coefficient of x²)",
+      "explanation": "After finding zeroes, add them and confirm the sum equals −b/a. For 2x²−8x+6: 1+3=4=−(−8)/2. This verifies the coefficient relationship for the sum.",
+      "keyMoves": [
+        "Add the zeroes",
+        "Compute −b/a from the coefficients",
+        "Confirm they match"
+      ],
+      "misconceptions": [
+        "Forgetting the leading negative sign in −b/a",
+        "Dividing by the constant instead of by a"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:find-zeroes-from-factors"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:verify-quadratic-product-of-zeroes",
+      "slug": "verify-quadratic-product-of-zeroes",
+      "title": "Verify the product of zeroes equals c/a",
+      "role": "intermediate",
+      "brief": "Check that the product of the two zeroes equals (constant term)/(coefficient of x²).",
+      "sec": 3,
+      "quote": "Product of its zeroes = 1 × 3 = 3 = 6/2 = (Constant term)/(Coefficient of x²)",
+      "explanation": "Multiply the zeroes and confirm the product equals c/a. For 2x²−8x+6: 1×3=3=6/2. This verifies the coefficient relationship for the product.",
+      "keyMoves": [
+        "Multiply the zeroes",
+        "Compute c/a from the coefficients",
+        "Confirm they match"
+      ],
+      "misconceptions": [
+        "Putting a negative sign on c/a (only the sum carries the negative)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:find-zeroes-from-factors"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+      "slug": "state-quadratic-zero-coefficient-relations",
+      "title": "State the general sum/product relations for a quadratic",
+      "role": "intermediate",
+      "brief": "Recall α+β=−b/a and αβ=c/a for zeroes of ax²+bx+c.",
+      "sec": 3,
+      "quote": "sum of zeroes = α + β = −b/a = −(Coefficient of x)/(Coefficient of x²),",
+      "explanation": "The derived general result: if α, β are zeroes of ax²+bx+c then α+β=−b/a and αβ=c/a. These two formulas drive both verification and construction problems.",
+      "keyMoves": [
+        "Identify a, b, c",
+        "Write α+β=−b/a and αβ=c/a"
+      ],
+      "misconceptions": [
+        "Swapping which relation gets the negative sign"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:verify-quadratic-sum-of-zeroes",
+        "cbse10:maths:jemh102:verify-quadratic-product-of-zeroes",
+        "cbse10:maths:jemh102:classify-polynomial-by-degree",
+        "cbse10:maths:jemh102:recognise-non-polynomial-expressions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:build-quadratic-from-sum-and-product",
+      "slug": "build-quadratic-from-sum-and-product",
+      "title": "Build a quadratic from given sum and product of zeroes",
+      "role": "intermediate",
+      "brief": "Use α+β=−b/a, αβ=c/a with a=1 to write a quadratic with the given sum and product.",
+      "sec": 3,
+      "quote": "So, one quadratic polynomial which fits the given conditions is x² + 3x + 2.",
+      "explanation": "Example 4: given sum −3 and product 2, set a=1 so b=−(sum)=3 and c=product=2, giving x²+3x+2 (any k-multiple also works). This is the reverse construction used heavily in exams.",
+      "keyMoves": [
+        "Set a=1",
+        "Take b=−(sum)",
+        "Take c=product",
+        "Write ax²+bx+c"
+      ],
+      "misconceptions": [
+        "Using b=sum instead of b=−sum",
+        "Forgetting the polynomial form is x²−(sum)x+(product)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:verify-cubic-zero-by-substitution",
+      "slug": "verify-cubic-zero-by-substitution",
+      "title": "Verify a value is a zero of a cubic by substitution",
+      "role": "intermediate",
+      "brief": "Substitute a candidate into the cubic and confirm the result is 0.",
+      "sec": 3,
+      "quote": "p(3) = 3 × 3³ − (5 × 3²) − (11 × 3) − 3 = 81 − 45 − 33 − 3 = 0,",
+      "explanation": "Example 5 checks each candidate: p(3)=0, p(−1)=0, p(−1/3)=0, confirming all three are zeroes of 3x³−5x²−11x−3. This is the substitution test applied to a cubic.",
+      "keyMoves": [
+        "Substitute the candidate into the cubic",
+        "Evaluate term by term",
+        "Confirm the total is 0"
+      ],
+      "misconceptions": [
+        "Arithmetic slips computing higher powers",
+        "Mishandling fractional or negative arguments"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:evaluate-polynomial-at-negative-value",
+        "cbse10:maths:jemh102:define-zero-of-polynomial"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations",
+      "slug": "state-cubic-zero-coefficient-relations",
+      "title": "State the sum/pair-sum/product relations for a cubic",
+      "role": "intermediate",
+      "brief": "Recall α+β+γ=−b/a, αβ+βγ+γα=c/a, αβγ=−d/a for ax³+bx²+cx+d.",
+      "sec": 3,
+      "quote": "α + β + γ = −b/a,\nαβ + βγ + γα = c/a,\nα β γ = −d/a.",
+      "explanation": "For a cubic ax³+bx²+cx+d with zeroes α,β,γ: the sum is −b/a, the sum of products taken two at a time is c/a, and the product is −d/a. Note the product carries a negative sign for a cubic.",
+      "keyMoves": [
+        "Identify a,b,c,d",
+        "Write the three symmetric relations"
+      ],
+      "misconceptions": [
+        "Dropping the negative on αβγ=−d/a",
+        "Putting a negative on the pair-sum c/a"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:classify-polynomial-by-degree"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:verify-cubic-zero-coefficient-relations",
+      "slug": "verify-cubic-zero-coefficient-relations",
+      "title": "Verify the cubic zero–coefficient relations numerically",
+      "role": "intermediate",
+      "brief": "Compute the sum, pair-sum, and product of the three zeroes and match them to −b/a, c/a, −d/a.",
+      "sec": 3,
+      "quote": "α + β + γ = 3 + (−1) + (−1/3) = 2 − 1/3 = 5/3 = −(−5)/3 = −b/a,",
+      "explanation": "Example 5 confirms all three relations for 3x³−5x²−11x−3 with zeroes 3,−1,−1/3: the sum 5/3=−(−5)/3, the pair-sum −11/3=c/a, and the product 1=−(−3)/3. This ties the symmetric functions to the coefficients.",
+      "keyMoves": [
+        "Add the three zeroes for the sum",
+        "Sum the three pairwise products",
+        "Multiply all three",
+        "Match each to the coefficient ratio"
+      ],
+      "misconceptions": [
+        "Forgetting one of the three pairwise products",
+        "Sign errors with fractional zeroes"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations",
+        "cbse10:maths:jemh102:verify-cubic-zero-by-substitution"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## What I read (review pass)\n\nI re-read the full segmented transcription of NCERT Class 10 Maths chapter jemh102 \"Polynomials\" (`extractions/_text/jemh102.txt`, 6 SEGs: 2.1 Introduction, 2.2 Geometrical Meaning of Zeroes, EXERCISE 2.1, 2.3 Relationship between Zeroes and Coefficients, EXERCISE 2.2, 2.4 Summary) and the shared CBSE Maths SQP + Marking Scheme (`_maths-exams.txt`, Standard paper Q1 and Q8 with answer keys).\n\nScope note: this transcription does NOT contain a Division Algorithm section — the chapter ends at 2.3/Summary even though SEG 0's intro line mentions it. Recorded in absentNotes; no nodes invented for it.\n\n## Corrections applied to the draft\n\n1. GOAL CITATION (D-120 fix). The draft cited the goal node `relate-zeroes-and-coefficients-of-polynomials` at sec=3 with the quote \"In this chapter, we will try to answer these questions. We will also study the division algorithm for polynomials.\" That line lives in SEG 0 (not SEG 3) AND it foregrounds the division algorithm, which the chapter never delivers. Re-quoted to the SEG-0 line that actually states the chapter's goal — \"are the zeroes of a quadratic polynomial also related to its coefficients?\" — and fixed sec to 0. This is a verbatim substring of SEG 0.\n\n2. EDGE FIX — second root removed. `bound-number-of-zeroes-by-degree` appeared only as a parent (of `count-zeroes-from-graph` and `identify-degree-of-polynomial`) and never as a child, so the graph had TWO roots. Added a true prerequisite edge `relate-zeroes-and-coefficients-of-polynomials → bound-number-of-zeroes-by-degree` (knowing how many zeroes a polynomial can have is a genuine prerequisite to relating those zeroes to coefficients). Now a single root with no orphans.\n\n3. GATE srcLabel cleanup. Two CAS/numeric gates carried the placeholder srcLabel \"2.3 (worked example p.x)\" — the page-range marker was an artifact. Renamed to \"2.3 (worked example 2x² − 8x + 6)\" so the locator is meaningful; the verbatim quote is unchanged and remains the authoritative citation.\n\n## Verification performed\n\n- CITATIONS: every node quote re-checked as a verbatim substring of its SEG. All 21 verify (including the multi-line cubic-relations quote at lines 236-238 and the signed-substitution line at 21).\n- GATES: 21 gates, one per node, 100% coverage. Every gate quote re-checked verbatim — chapter gates against jemh102 SEGs, the two exam gates against `_maths-exams.txt` Marking Scheme lines \"1. D) -6,6\" and \"8. B) 8𝑥2- 20\" (copied with the OCR's literal mathematical-bold \"𝑥\"). Each grader/expected/answer is self-consistent for the deterministic tester (numeric values match, mcq `correct` is among `options`, CAS forms are single-variable in x).\n- EDGES: acyclic (all edges flow from higher skill toward bedrock; no back-edges), single root, no orphan node, every endpoint is a defined slug.\n- GRAIN: each node is one failable step. Example 5's substitution check (`verify-cubic-zero-by-substitution`) is kept separate from the relations check (`verify-cubic-zero-coefficient-relations`), per one-failable-thing-one-node. No pure-exposition node (history of the word \"quadratic\", the parabola-shape cases, the no-zero case) was promoted to a skill.\n\n## What was absent / uncertain\n\n- Division Algorithm, dividing-out a known factor, hand-plotting graphs (explicitly excluded by the chapter footnote), and the formal proof of the cubic relations are all genuinely absent — recorded in absentNotes, not failed.\n- Goal gate Q8: the OCR garbles the zeroes (\"− √5 / 2 and √5 / 2\"); the keyed answer 8x²−20 is taken as canonical from the Marking Scheme regardless of the arithmetic ambiguity, since the gate is a deterministic MCQ against the published key.",
+  "absentNotes": "This chapter transcription teaches ONLY: classifying polynomials by degree, evaluating polynomials / defining zeroes, the geometric meaning of zeroes (reading and counting them from graphs), and the zero–coefficient relationships for quadratics and cubics (both verifying them and constructing a polynomial from a given sum and product). A fuller treatment would also cover, but THIS transcription does NOT teach (so these are omitted, not failed): (1) the Division Algorithm for Polynomials — polynomial long division and p(x)=g(x)×q(x)+r(x) — despite SEG 0's intro line promising it, the section is absent here; (2) finding all zeroes of a cubic/quartic given two known zeroes by dividing out the known quadratic factor; (3) plotting/sketching parabolas and cubics by hand (explicitly excluded by the chapter footnote: \"Plotting of graphs of quadratic or cubic polynomials is not meant to be done by the students, nor is to be evaluated\"); (4) the formal proof/derivation of the cubic relations (stated as \"it can be proved\" without proof); (5) forming a new polynomial from transformed zeroes such as α², β² (this appears in CBSE SQP problems but the chapter text itself never demonstrates it, so no node — only its prerequisite sum/product skills are taught here)."
+}

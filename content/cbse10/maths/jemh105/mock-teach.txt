@@ -1,0 +1,49 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh105
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:35:39.687Z
+
+teach  identify-first-term  (bedrock)
+  check  "1.5"  →  PASS
+teach  solve-linear-equation  (shared)
+  check  "35"  →  PASS
+teach  compute-common-difference  (intermediate)
+  check  "-1"  →  PASS
+teach  define-ap-common-difference  (intermediate)
+  check  "True"  →  PASS
+teach  test-is-ap  (intermediate)
+  check  "False"  →  PASS
+teach  write-next-terms  (intermediate)
+  check  "28"  →  PASS
+teach  apply-nth-term-formula  (intermediate)
+  check  "47"  →  PASS
+teach  derive-d-from-nth-term-rule  (intermediate)
+  check  "2"  →  PASS
+teach  apply-sum-formula-a-d  (intermediate)
+  check  "-979"  →  PASS
+teach  solve-simultaneous-equations  (shared)
+  check  "3"  →  PASS
+teach  find-two-equations-ap  (intermediate)
+  check  "1"  →  PASS
+teach  count-terms-ap  (intermediate)
+  check  "30"  →  PASS
+teach  model-real-world-ap  (intermediate)
+  check  "2400"  →  PASS
+teach  find-which-term  (intermediate)
+  check  "35"  →  PASS
+teach  check-membership-integer-n  (intermediate)
+  check  "False"  →  PASS
+teach  term-from-last  (intermediate)
+  check  "-32"  →  PASS
+teach  list-ap-from-a-d  (intermediate)
+  check  "15"  →  PASS
+teach  apply-sum-formula-a-l  (intermediate)
+  check  "500500"  →  PASS
+teach  factor-quadratic  (shared)
+  check  "13"  →  PASS
+teach  find-n-from-sum  (intermediate)
+  check  "4"  →  PASS
+teach  find-unknown-from-sum-system  (intermediate)
+  check  "10"  →  PASS
+teach  solve-ap-problems  (goal)
+  check  "4375"  →  PASS
+
+# taught 22/22 reachable nodes; verdict PASS (mock)

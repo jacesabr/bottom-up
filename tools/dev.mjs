@@ -8,17 +8,21 @@ const root = path.join(__dirname, '..');
 
 console.log('Starting dev servers...\n');
 
-// Start API server
-const api = spawn('node', ['--loader', 'ts-node/esm', 'src/api/index.ts'], {
+const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
+
+// Start API server (tsx runs TS+ESM directly)
+const api = spawn(npx, ['tsx', 'watch', 'src/api/index.ts'], {
   cwd: root,
   stdio: 'inherit',
+  shell: process.platform === 'win32',
   env: { ...process.env, NODE_ENV: 'development' },
 });
 
 // Start Vite dev server
-const web = spawn('npx', ['vite'], {
+const web = spawn(npx, ['vite'], {
   cwd: root,
   stdio: 'inherit',
+  shell: process.platform === 'win32',
   env: { ...process.env, NODE_ENV: 'development' },
 });
 

@@ -1,298 +1,277 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { MathText } from '../lib/MathText';
+import Scratchpad from './Scratchpad';
+import EquationComposer from './EquationComposer';
+import NodeDetails from './NodeDetails';
 import '../styles/NodeView.css';
 
-interface Checklist {
-  keyMoveIndex: number;
+interface Msg {
+  role: 'tutor' | 'learner';
+  text?: string;
+  image?: string;
+}
+interface Check {
+  index: number;
+  text: string;
   demonstrated: boolean;
 }
 
-interface NodeViewProps {
+export default function NodeView({
+  learnerId,
+  conceptId,
+  onBack,
+  apiBase,
+}: {
   learnerId: string;
   conceptId: string;
   onBack: () => void;
   apiBase: string;
-}
-
-type ViewPhase = 'intro' | 'teaching' | 'gate' | 'complete';
-
-export default function NodeView({ learnerId, conceptId, onBack, apiBase }: NodeViewProps) {
-  const [phase, setPhase] = useState<ViewPhase>('intro');
-  const [concept, setConcept] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const [dialogue, setDialogue] = useState<Array<{ role: 'tutor' | 'learner'; message: string }>>([]);
-  const [checklist, setChecklist] = useState<Checklist[]>([]);
-  const [allKeyMovesDemonstrated, setAllKeyMovesDemonstrated] = useState(false);
-  const [userInput, setUserInput] = useState('');
-  const [inputLoading, setInputLoading] = useState(false);
+}) {
+  const [messages, setMessages] = useState<Msg[]>([]);
+  const [checklist, setChecklist] = useState<Check[]>([]);
+  const [readyForGate, setReadyForGate] = useState(false);
+  const [busy, setBusy] = useState(true);
+  const [input, setInput] = useState('');
+  const [showEq, setShowEq] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   const [gate, setGate] = useState<any>(null);
   const [gateAnswer, setGateAnswer] = useState('');
-  const [gateResult, setGateResult] = useState<any>(null);
+  const [done, setDone] = useState(false);
 
+  const scroller = useRef<HTMLDivElement>(null);
+  const base = `${apiBase}/learner/${learnerId}/node/${conceptId}`;
+
+  // Auto-start: AI opens the conversation (no intro screen).
   useEffect(() => {
-    const fetchConcept = async () => {
+    let cancelled = false;
+    (async () => {
+      setBusy(true);
       try {
-        // Hardcode concept data from the content for now
-        const concepts = [
-          {
-            id: 'cbse10:maths:jemh101:know-prime-composite-coprime',
-            slug: 'know-prime-composite-coprime',
-            title: 'Recognise coprime integers (common factor only 1) and the prime/composite distinction',
-            role: 'bedrock',
-            sec: 2,
-            order: 1,
-            brief: 'Coprime numbers share no common factor other than 1; factorisation targets composites and produces primes.',
-            explanation: 'The irrationality proofs rely on writing a fraction in coprime form: a and b are coprime means their only common factor is 1.',
-            keyMoves: [
-              'Recognise coprime pairs (only common factor is 1, i.e. HCF = 1)',
-              'Reduce a fraction to coprime numerator and denominator',
-              "Use 'product of primes' as the goal of factorising a composite",
-            ],
-          },
-          {
-            id: 'cbse10:maths:jemh101:prime-factorise-integer',
-            title: 'Factorise a composite number into a product of primes',
-            role: 'intermediate',
-            order: 2,
-            brief: 'Break a positive integer into prime factors using a factor tree.',
-            keyMoves: [
-              'Divide out the smallest prime repeatedly via a factor tree',
-              'Continue until every leaf is prime',
-              'Combine repeated primes into powers and order ascending',
-            ],
-          },
-          {
-            id: 'cbse10:maths:jemh101:state-fundamental-theorem-arithmetic',
-            title: 'State the Fundamental Theorem of Arithmetic',
-            role: 'intermediate',
-            order: 3,
-            brief: 'Know that every composite number factorises as a product of primes uniquely.',
-            keyMoves: [
-              'State existence: every composite is a product of primes',
-              'State uniqueness: only one factorisation, ignoring order',
-              'Recognise uniqueness as the deductive tool',
-            ],
-          },
-        ];
-
-        const foundConcept = concepts.find(c => c.id === conceptId);
-        if (foundConcept) {
-          setConcept(foundConcept);
-          setChecklist(foundConcept.keyMoves.map((_, index) => ({ keyMoveIndex: index, demonstrated: false })));
-        }
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
+        const res = await fetch(`${base}/start`, { method: 'POST' });
+        const data = await res.json();
+        if (cancelled) return;
+        setMessages([{ role: 'tutor', text: data.message }]);
+        setChecklist(data.checklist ?? []);
+        setReadyForGate(!!data.readyForGate);
       } finally {
-        setLoading(false);
+        if (!cancelled) setBusy(false);
       }
+    })();
+    return () => {
+      cancelled = true;
     };
-
-    fetchConcept();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conceptId]);
 
-  const handleEnterNode = async () => {
+  useEffect(() => {
+    scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
+  }, [messages, busy]);
+
+  const send = async () => {
+    const text = input.trim();
+    if (!text || busy) return;
+    setInput('');
+    setShowEq(false);
+    setMessages((m) => [...m, { role: 'learner', text }]);
+    setBusy(true);
     try {
-      setInputLoading(true);
-      await fetch(`${apiBase}/learner/${learnerId}/node/${conceptId}/enter`, { method: 'POST' });
-      const res = await fetch(`${apiBase}/learner/${learnerId}/node/${conceptId}/tutor-turn`, { method: 'POST' });
-      const data = await res.json();
-      setDialogue([{ role: 'tutor', message: data.message }]);
-      setPhase('teaching');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to enter node');
-    } finally {
-      setInputLoading(false);
-    }
-  };
-
-  const handleLearnerReply = async () => {
-    if (!userInput.trim()) return;
-
-    try {
-      setInputLoading(true);
-      const newDialogue = [...dialogue, { role: 'learner', message: userInput }];
-      setDialogue(newDialogue);
-      setUserInput('');
-
-      const res = await fetch(`${apiBase}/learner/${learnerId}/node/${conceptId}/learner-reply`, {
+      const res = await fetch(`${base}/reply`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userInput }),
+        body: JSON.stringify({ message: text }),
       });
-
       const data = await res.json();
-      setChecklist(data.checklist);
-      setAllKeyMovesDemonstrated(data.allKeyMovesDemonstrated);
-
-      if (data.allKeyMovesDemonstrated) {
-        const gateRes = await fetch(`${apiBase}/learner/${learnerId}/node/${conceptId}/gate`, { method: 'POST' });
-        const gateData = await gateRes.json();
-        setGate(gateData);
-        setPhase('gate');
-      } else {
-        // Get next tutor message
-        const tutorRes = await fetch(`${apiBase}/learner/${learnerId}/node/${conceptId}/tutor-turn`, { method: 'POST' });
-        const tutorData = await tutorRes.json();
-        newDialogue.push({ role: 'tutor', message: tutorData.message });
-        setDialogue([...newDialogue]);
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to process reply');
+      setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
+      setChecklist(data.checklist ?? []);
+      setReadyForGate(!!data.readyForGate);
     } finally {
-      setInputLoading(false);
+      setBusy(false);
     }
   };
 
-  const handleGateAnswer = async () => {
-    if (!gateAnswer.trim()) return;
-
+  const sketchHelp = async (img: string) => {
+    if (busy) return;
+    setMessages((m) => [...m, { role: 'learner', image: img, text: 'Here is my working — can you help?' }]);
+    setBusy(true);
     try {
-      setInputLoading(true);
-      const res = await fetch(`${apiBase}/learner/${learnerId}/node/${conceptId}/gate-answer`, {
+      const res = await fetch(`${base}/help`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: img }),
+      });
+      const data = await res.json();
+      setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const sketchSend = async (img: string) => {
+    if (busy) return;
+    setMessages((m) => [...m, { role: 'learner', image: img }]);
+    setBusy(true);
+    try {
+      const res = await fetch(`${base}/reply`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: '[I shared my handwritten working on the scratchpad.]' }),
+      });
+      const data = await res.json();
+      setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
+      setChecklist(data.checklist ?? []);
+      setReadyForGate(!!data.readyForGate);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const startGate = async () => {
+    setBusy(true);
+    try {
+      const res = await fetch(`${base}/gate`, { method: 'POST' });
+      setGate(await res.json());
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const submitGate = async () => {
+    if (!gateAnswer.trim() || busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${base}/gate-answer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ gateId: gate.gateId, answer: gateAnswer }),
       });
-
       const data = await res.json();
-      setGateResult(data);
-
+      setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
       if (data.correct) {
-        setPhase('complete');
+        setDone(true);
+        setGate(null);
       } else {
-        // Return to teaching
-        setPhase('teaching');
+        // Re-teach: drop back into chat, same gate will be re-posed when ready again.
+        setGate(null);
         setGateAnswer('');
-        setChecklist(checklist.map(c => ({ ...c, demonstrated: false })));
-        setAllKeyMovesDemonstrated(false);
+        setReadyForGate(false);
       }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to grade answer');
     } finally {
-      setInputLoading(false);
+      setBusy(false);
     }
   };
 
-  if (loading) return <div className="node-view loading">Loading concept...</div>;
-  if (error) return <div className="node-view error">Error: {error}</div>;
+  const shown = checklist.filter((c) => c.demonstrated).length;
 
   return (
-    <div className="node-view">
-      <button className="back-button" onClick={onBack}>← Back to Chapter</button>
-
-      <div className="node-header">
-        <h2>{concept?.title}</h2>
-        <p className="node-brief">{concept?.brief}</p>
+    <div className="tutor-shell">
+      <div className="tutor-topbar">
+        <button className="back-btn" onClick={onBack}>← Chapter</button>
+        <div className="checklist-strip" title="Key ideas shown">
+          {checklist.map((c) => (
+            <span key={c.index} className={c.demonstrated ? 'chip done' : 'chip'} title={c.text} />
+          ))}
+          <span className="checklist-count">{shown}/{checklist.length} ideas</span>
+        </div>
+        <button className="details-btn" onClick={() => setShowDetails(true)}>ⓘ Details</button>
       </div>
 
-      {phase === 'intro' && (
-        <div className="intro-panel">
-          <div className="intro-content">
-            <h3>Ready to learn?</h3>
-            <p>In this node, you'll learn:</p>
-            <ul>
-              {concept?.keyMoves.map((move, idx) => (
-                <li key={idx}>{move}</li>
-              ))}
-            </ul>
-            <button onClick={handleEnterNode} disabled={inputLoading} className="btn-primary">
-              {inputLoading ? 'Starting...' : 'Start Learning'}
-            </button>
-          </div>
-        </div>
-      )}
-
-      {phase === 'teaching' && (
-        <div className="teaching-panel">
-          <div className="dialogue-area">
-            {dialogue.map((msg, idx) => (
-              <div key={idx} className={`dialogue-message ${msg.role}`}>
-                <div className="message-label">{msg.role === 'tutor' ? 'Tutor' : 'You'}</div>
-                <div className="message-text">{msg.message}</div>
+      <div className="tutor-grid">
+        {/* Chat pane */}
+        <section className="chat-pane">
+          <div className="chat-scroll" ref={scroller}>
+            {messages.map((m, i) => (
+              <div key={i} className={`bubble ${m.role}`}>
+                <div className="bubble-label">{m.role === 'tutor' ? 'Tutor' : 'You'}</div>
+                <div className="bubble-text">
+                  {m.image && <img className="bubble-img" src={m.image} alt="handwritten working" />}
+                  {m.text && <MathText>{m.text}</MathText>}
+                </div>
               </div>
             ))}
-          </div>
+            {busy && <div className="thinking">thinking…</div>}
 
-          <div className="checklist">
-            <h4>Key ideas to show:</h4>
-            {checklist.map((item, idx) => (
-              <div key={idx} className={`checklist-item ${item.demonstrated ? 'done' : ''}`}>
-                <input type="checkbox" checked={item.demonstrated} readOnly />
-                <span>{concept?.keyMoves[item.keyMoveIndex]}</span>
+            {done && (
+              <div className="node-done">
+                ✓ Concept passed.{' '}
+                <button className="link-btn" onClick={onBack}>Back to the chapter map →</button>
               </div>
-            ))}
-          </div>
+            )}
 
-          <div className="input-area">
-            <textarea
-              placeholder="Share your thoughts or answer..."
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              disabled={inputLoading}
-            />
-            <button onClick={handleLearnerReply} disabled={inputLoading || !userInput.trim()} className="btn-primary">
-              {inputLoading ? 'Processing...' : 'Reply'}
-            </button>
-          </div>
-        </div>
-      )}
+            {!done && readyForGate && !gate && (
+              <div className="gate-cta">
+                You've shown all the key ideas. <button className="btn-primary sm" onClick={startGate}>Take the quick check →</button>
+              </div>
+            )}
 
-      {phase === 'gate' && (
-        <div className="gate-panel">
-          <h3>Gate Question</h3>
-          <p className="gate-prompt">{gate?.prompt}</p>
-
-          {gate?.options && (
-            <div className="gate-options">
-              {gate.options.map((option, idx) => (
-                <label key={idx} className="gate-option">
+            {gate && (
+              <div className="gate-card">
+                <div className="gate-q"><MathText>{gate.prompt}</MathText></div>
+                {gate.options ? (
+                  <div className="gate-opts">
+                    {gate.options.map((o: string, i: number) => (
+                      <label key={i} className={gateAnswer === o ? 'gate-opt sel' : 'gate-opt'}>
+                        <input type="radio" name="g" value={o} checked={gateAnswer === o} onChange={(e) => setGateAnswer(e.target.value)} />
+                        <MathText>{o}</MathText>
+                      </label>
+                    ))}
+                  </div>
+                ) : (
                   <input
-                    type="radio"
-                    name="gate-answer"
-                    value={option}
-                    checked={gateAnswer === option}
+                    className="gate-input"
+                    placeholder="e.g. 2^3 * 3^2 * 5 * 7 * 13"
+                    value={gateAnswer}
                     onChange={(e) => setGateAnswer(e.target.value)}
-                    disabled={inputLoading}
                   />
-                  <span>{option}</span>
-                </label>
-              ))}
+                )}
+                <button className="btn-primary sm" onClick={submitGate} disabled={busy || !gateAnswer.trim()}>Submit</button>
+              </div>
+            )}
+          </div>
+
+          {/* Reply box */}
+          {!gate && !done && (
+            <div className="reply-box">
+              {showEq && (
+                <EquationComposer
+                  onInsert={(t) => setInput((v) => (v ? `${v} ${t}` : t))}
+                  onClose={() => setShowEq(false)}
+                />
+              )}
+              <div className="reply-row">
+                <textarea
+                  placeholder="Type your reply…  (use ∑ for maths)"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      send();
+                    }
+                  }}
+                  disabled={busy}
+                />
+                <div className="reply-actions">
+                  <button className="notation-btn" onClick={() => setShowEq((s) => !s)} title="Insert equation">∑ Math</button>
+                  <button className="btn-primary" onClick={send} disabled={busy || !input.trim()}>Send</button>
+                </div>
+              </div>
             </div>
           )}
+        </section>
 
-          {gate?.answerType === 'symbolic' && (
-            <input
-              type="text"
-              placeholder="e.g., 2^3 * 3^2 * 5 * 7 * 13"
-              value={gateAnswer}
-              onChange={(e) => setGateAnswer(e.target.value)}
-              disabled={inputLoading}
-              className="gate-input"
-            />
-          )}
+        {/* Scratchpad pane */}
+        <section className="pad-pane">
+          <Scratchpad
+            onAttach={sketchSend}
+            onSend={sketchSend}
+            onHelp={sketchHelp}
+          />
+        </section>
+      </div>
 
-          <button onClick={handleGateAnswer} disabled={inputLoading || !gateAnswer.trim()} className="btn-primary">
-            {inputLoading ? 'Checking...' : 'Submit'}
-          </button>
-
-          {gateResult && (
-            <div className={`gate-result ${gateResult.correct ? 'pass' : 'fail'}`}>
-              {gateResult.message}
-            </div>
-          )}
-        </div>
-      )}
-
-      {phase === 'complete' && (
-        <div className="complete-panel">
-          <h3>Great work! 🎉</h3>
-          <p>You've passed this concept.</p>
-          <button onClick={onBack} className="btn-primary">
-            Back to Chapter
-          </button>
-        </div>
+      {showDetails && (
+        <NodeDetails learnerId={learnerId} conceptId={conceptId} apiBase={apiBase} onClose={() => setShowDetails(false)} />
       )}
     </div>
   );

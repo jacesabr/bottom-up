@@ -1,0 +1,394 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh107",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh107:apply-distance-formula",
+      "kind": "book",
+      "prompt": "Find the distance between the points (0, 0) and (36, 15).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "39",
+      "expected": {
+        "kind": "numeric",
+        "value": 39,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Exercise 7.1 Q2)",
+      "quote": "Find the distance between the points (0, 0) and (36, 15)."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:distance-from-origin",
+      "kind": "book",
+      "prompt": "Using OP = √(x² + y²), the distance of the point (8, 6) from the origin (0,0) is what (give the numeric value)?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "10",
+      "expected": {
+        "kind": "numeric",
+        "value": 10,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 Remark 1 (distance from origin)",
+      "quote": "the distance of a point P(x, y) from the origin O(0, 0) is given by"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:compute-coordinate-differences",
+      "kind": "book",
+      "prompt": "In the distance formula for P(3,2) and Q(−2,−3), the x-difference (3 − (−2)) evaluates to what number?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5",
+      "expected": {
+        "kind": "numeric",
+        "value": 5,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 1)",
+      "quote": "PQ = √[(3 + 2)² + (2 + 3)²] = √(5² + 5²) = √50 = 7.07 (approx.)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:square-and-sum",
+      "kind": "book",
+      "prompt": "Evaluate (−4)² + (−6)², the quantity under the root for QR in Example 1.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "52",
+      "expected": {
+        "kind": "numeric",
+        "value": 52,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 1)",
+      "quote": "QR = √[(– 2 – 2)² + (– 3 – 3)²] = √[(– 4)² + (– 6)²] = √52 = 7.21 (approx.)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:use-pythagoras-theorem",
+      "kind": "book",
+      "prompt": "In right triangle PTQ with PT = 2 and QT = 2, PQ² = PT² + QT² equals what number?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "8",
+      "expected": {
+        "kind": "numeric",
+        "value": 8,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Fig. 7.3 derivation)",
+      "quote": "PQ² = PT² + QT²\n     = 2² + 2² = 8"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:classify-triangle-by-sides",
+      "kind": "book",
+      "prompt": "The points P(3,2), Q(−2,−3), R(2,3) have side lengths satisfying PQ² + PR² = QR² (50 + 2 = 52). By the converse of the Pythagoras theorem, what type of triangle is PQR?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Right triangle",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Right triangle",
+        "options": [
+          "Right triangle",
+          "Equilateral triangle",
+          "Obtuse triangle (no right angle)",
+          "Not a triangle"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 1)",
+      "quote": "Also, PQ² + PR² = QR², by the converse of Pythagoras theorem, we have ∠ P = 90°. Therefore, PQR is a right triangle."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:verify-triangle-exists",
+      "kind": "book",
+      "prompt": "Do the points (3, 2), (−2, −3) and (2, 3) form a triangle? Answer yes or no based on whether the sum of any two distances exceeds the third.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Yes",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Yes",
+        "options": [
+          "Yes",
+          "No"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 1)",
+      "quote": "Since the sum of any two of these distances is greater than the third distance, therefore, the points P, Q and R form a triangle."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:test-square-by-distance",
+      "kind": "book",
+      "prompt": "For points A(1,7), B(4,2), C(−1,−1), D(−4,4), each side equals √34 and each diagonal equals √68. What shape is ABCD?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Square",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Square",
+        "options": [
+          "Square",
+          "Rectangle only",
+          "Rhombus only",
+          "Not a quadrilateral"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 2)",
+      "quote": "Since, AB = BC = CD = DA and AC = BD, all the four sides of the quadrilateral ABCD are equal and its diagonals AC and BD are also equal. Therefore, ABCD is a square."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:test-collinearity-by-distance",
+      "kind": "book",
+      "prompt": "For A(3,1), B(6,4), C(8,6), AB = 3√2 and BC = 2√2 and AC = 5√2. Are A, B, C collinear?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Yes, collinear",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Yes, collinear",
+        "options": [
+          "Yes, collinear",
+          "No, they form a triangle"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 3)",
+      "quote": "Since, AB + BC = 3√2 + 2√2 = 5√2 = AC, we can say that the points A, B and C are collinear."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:set-up-equidistant-equation",
+      "kind": "book",
+      "prompt": "If P is equidistant from A and B, which equation do you set up to remove the radicals?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "AP² = BP²",
+      "expected": {
+        "kind": "mcq",
+        "correct": "AP² = BP²",
+        "options": [
+          "AP² = BP²",
+          "AP = 2·BP",
+          "AP + BP = 0",
+          "AP² + BP² = 0"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 4)",
+      "quote": "We are given that AP = BP. So, AP² = BP²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:derive-equidistant-relation",
+      "kind": "book",
+      "prompt": "Find a relation between x and y such that (x,y) is equidistant from (7,1) and (3,5). Give the simplified left-hand expression that equals 2 (i.e. x minus y).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "x - y",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "x - y"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 4)",
+      "quote": "i.e.,     x – y = 2"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:find-point-on-axis-equidistant",
+      "kind": "book",
+      "prompt": "Find the y-coordinate of the point on the y-axis equidistant from A(6,5) and B(−4,3).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "9",
+      "expected": {
+        "kind": "numeric",
+        "value": 9,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 5)",
+      "quote": "i.e.,     y = 9"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:read-point-coordinates",
+      "kind": "book",
+      "prompt": "According to the chapter, a point lying on the x-axis has coordinates of which form?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(x, 0)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(x, 0)",
+        "options": [
+          "(x, 0)",
+          "(0, y)",
+          "(0, 0)",
+          "(y, x)"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.1 (Introduction)",
+      "quote": "The coordinates of a point on the x-axis are of the form (x, 0), and of a point on the y-axis are of the form (0, y)."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:apply-section-formula",
+      "kind": "book",
+      "prompt": "Applying the section formula to divide (4,−3) and (8,5) in the ratio 3:1 internally, what is the y-coordinate of the dividing point?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.3 (Example 6)",
+      "quote": "x = (3(8) + 1(4))/(3 + 1) = 7 ,   y = (3(5) + 1(–3))/(3 + 1) = 3"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:find-point-dividing-in-ratio",
+      "kind": "book",
+      "prompt": "Find the x-coordinate of the point dividing the segment joining (4,−3) and (8,5) in the ratio 3:1 internally.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7",
+      "expected": {
+        "kind": "numeric",
+        "value": 7,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.3 (Example 6)",
+      "quote": "x = (3(8) + 1(4))/(3 + 1) = 7 ,   y = (3(5) + 1(–3))/(3 + 1) = 3"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:find-ratio-from-point",
+      "kind": "book",
+      "prompt": "In Example 7, point (−4,6) divides A(−6,10), B(3,−8) in ratio k:1. Equating the x-coordinate gives the equation 7k = 2. Solve for k (give the value as a decimal).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.285714",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.285714,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.3 (Example 7)",
+      "quote": "i.e.,     7k = 2"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:find-ratio-axis-divides",
+      "kind": "book",
+      "prompt": "Find the ratio (as k, where ratio is k:1) in which the y-axis divides the segment joining (5,−6) and (−1,−4).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5",
+      "expected": {
+        "kind": "numeric",
+        "value": 5,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.3 (Example 9)",
+      "quote": "This point lies on the y-axis, and we know that on the y-axis the abscissa is 0."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:find-trisection-points",
+      "kind": "book",
+      "prompt": "The first point of trisection P of segment AB (nearer A) divides AB internally in ratio m1:m2. Give the value of m1 when m2 = 2.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.3 (Example 8)",
+      "quote": "Therefore, P divides AB internally in the ratio 1 : 2."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:apply-midpoint-formula",
+      "kind": "book",
+      "prompt": "Using the midpoint formula, the x-coordinate of the midpoint of A(6,1) and C(9,4) is what value?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7.5",
+      "expected": {
+        "kind": "numeric",
+        "value": 7.5,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.3 (Example 10)",
+      "quote": "i.e.,    ( 15/2 , 5/2 ) = ( (8 + p)/2 , 5/2 )"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:use-parallelogram-diagonal-bisect",
+      "kind": "book",
+      "prompt": "If A(6,1), B(8,2), C(9,4), D(p,3) are the vertices of a parallelogram taken in order, find the value of p.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7",
+      "expected": {
+        "kind": "numeric",
+        "value": 7,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.3 (Example 10)",
+      "quote": "i.e.,    p = 7"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:equate-ordered-pairs",
+      "kind": "book",
+      "prompt": "If (x, y) = (a, b), then which two scalar equations follow?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "x = a and y = b",
+      "expected": {
+        "kind": "mcq",
+        "correct": "x = a and y = b",
+        "options": [
+          "x = a and y = b",
+          "x = b and y = a",
+          "x + y = a + b only",
+          "x = y and a = b"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.3 (Example 7)",
+      "quote": "Recall that if (x, y) = (a, b) then x = a and y = b."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "kind": "book",
+      "prompt": "A point on the y-axis (of the form (0, y)) is equidistant from A(6,5) and B(−4,3). Using the distance formula and solving, what are the coordinates of this point?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(0, 9)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(0, 9)",
+        "options": [
+          "(0, 9)",
+          "(9, 0)",
+          "(0, 4)",
+          "(6, 5)"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "7.2 (Example 5)",
+      "quote": "So, the required point is (0, 9)."
+    }
+  ]
+}

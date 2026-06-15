@@ -1,0 +1,37 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh114
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:36:28.528Z
+
+teach  identify-equally-likely-outcomes  (bedrock)
+  check  "No, they are not equally likely"  →  PASS
+teach  list-sample-space-two-coins  (intermediate)
+  check  "0.75"  →  PASS
+teach  list-sample-space-two-dice  (intermediate)
+  check  "0.1389"  →  PASS
+teach  card-deck-composition  (bedrock)
+  check  "4"  →  PASS
+teach  count-total-equally-likely-outcomes  (intermediate)
+  check  "36"  →  PASS
+teach  count-favourable-outcomes  (intermediate)
+  check  "4"  →  PASS
+teach  form-probability-ratio  (shared)
+  check  "0.625"  →  PASS
+teach  apply-complement-rule  (intermediate)
+  check  "0.38"  →  PASS
+teach  probability-impossible-event  (bedrock)
+  check  "0"  →  PASS
+teach  probability-sure-event  (bedrock)
+  check  "1"  →  PASS
+teach  probability-range-bounds  (bedrock)
+  check  "-1.5"  →  PASS
+teach  sum-of-elementary-events-is-one  (intermediate)
+  check  "0.4444"  →  PASS
+teach  geometric-probability-length  (intermediate)
+  check  "0.25"  →  PASS
+teach  geometric-probability-area  (intermediate)
+  check  "0.1852"  →  PASS
+teach  complement-word-problem  (intermediate)
+  check  "0.00274"  →  PASS
+teach  compute-theoretical-probability  (goal)
+  check  "1/13"  →  PASS
+
+# taught 16/16 reachable nodes; verdict PASS (mock)

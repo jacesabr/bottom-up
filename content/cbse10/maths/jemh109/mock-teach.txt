@@ -1,0 +1,43 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh109
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:36:02.185Z
+
+teach  identify-angle-of-elevation  (bedrock)
+  check  "elevation"  →  PASS
+teach  identify-angle-of-depression  (bedrock)
+  check  "depression"  →  PASS
+teach  use-alternate-angles-for-depression  (intermediate)
+  check  "30"  →  PASS
+teach  draw-and-label-right-triangle  (intermediate)
+  check  "B"  →  PASS
+teach  recall-trig-ratio-of-standard-angle  (bedrock)
+  check  "√3"  →  PASS
+teach  approximate-surd-to-decimal  (shared)
+  check  "7.32"  →  PASS
+teach  compute-base-with-cot  (intermediate)
+  check  "2.14"  →  PASS
+teach  choose-tan-for-opposite-over-adjacent  (intermediate)
+  check  "tan A = BC/AB"  →  PASS
+teach  solve-for-unknown-side  (shared)
+  check  "15*sqrt(3)"  →  PASS
+teach  compute-hypotenuse-with-sin  (intermediate)
+  check  "4.28"  →  PASS
+teach  choose-sin-for-opposite-over-hypotenuse  (intermediate)
+  check  "sin 60°"  →  PASS
+teach  set-up-trig-equation  (intermediate)
+  check  "sqrt(3)"  →  PASS
+teach  add-observer-height-to-triangle-result  (intermediate)
+  check  "30"  →  PASS
+teach  rationalise-surd-denominator  (shared)
+  check  "4*(sqrt(3)+1)"  →  PASS
+teach  solve-simultaneous-trig-equations  (intermediate)
+  check  "20"  →  PASS
+teach  equate-equal-sides-from-45-degree  (bedrock)
+  check  "3"  →  PASS
+teach  set-up-two-triangles-shared-side  (intermediate)
+  check  "10*sqrt(3)"  →  PASS
+teach  combine-segment-lengths-for-total  (intermediate)
+  check  "3*(1+sqrt(3))"  →  PASS
+teach  solve-heights-and-distances-problem  (goal)
+  check  "15*sqrt(3)"  →  PASS
+
+# taught 19/19 reachable nodes; verdict PASS (mock)

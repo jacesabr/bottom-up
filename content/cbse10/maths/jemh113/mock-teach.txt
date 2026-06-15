@@ -1,0 +1,51 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh113
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:36:22.855Z
+
+teach  compute-class-mark  (intermediate)
+  check  "17.5"  →  PASS
+teach  compute-fx-product-and-sum  (bedrock)
+  check  "1860"  →  PASS
+teach  compute-mean-direct-method  (intermediate)
+  check  "62"  →  PASS
+teach  choose-assumed-mean  (bedrock)
+  check  "47.5"  →  PASS
+teach  compute-deviation-di  (bedrock)
+  check  "-30"  →  PASS
+teach  compute-mean-assumed-mean-method  (intermediate)
+  check  "62"  →  PASS
+teach  compute-step-deviation-ui  (bedrock)
+  check  "3"  →  PASS
+teach  compute-mean-step-deviation-method  (intermediate)
+  check  "62"  →  PASS
+teach  apply-step-deviation-unequal-classes  (intermediate)
+  check  "152.89"  →  PASS
+teach  choose-appropriate-mean-method  (intermediate)
+  check  "The assumed mean method or the step-deviation method"  →  PASS
+teach  identify-modal-class  (bedrock)
+  check  "3 – 5"  →  PASS
+teach  read-modal-formula-parameters  (bedrock)
+  check  "3"  →  PASS
+teach  apply-mode-formula  (intermediate)
+  check  "3.286"  →  PASS
+teach  compute-cumulative-frequency-less-than  (bedrock)
+  check  "12"  →  PASS
+teach  identify-median-class  (bedrock)
+  check  "60 – 70"  →  PASS
+teach  read-median-formula-parameters  (bedrock)
+  check  "22"  →  PASS
+teach  convert-discontinuous-to-continuous-classes  (intermediate)
+  check  "117.5 - 126.5"  →  PASS
+teach  convert-cf-table-to-frequencies  (intermediate)
+  check  "7"  →  PASS
+teach  apply-median-formula  (intermediate)
+  check  "149.03"  →  PASS
+teach  select-appropriate-measure-of-central-tendency  (intermediate)
+  check  "Median"  →  PASS
+teach  use-empirical-mode-mean-median-relation  (intermediate)
+  check  "2"  →  PASS
+teach  find-unknown-frequencies-from-median  (intermediate)
+  check  "9"  →  PASS
+teach  find-measures-of-central-tendency-grouped-data  (goal)
+  check  "52"  →  PASS
+
+# taught 23/23 reachable nodes; verdict PASS (mock)

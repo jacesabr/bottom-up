@@ -1,0 +1,32 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh111
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:36:12.723Z
+
+teach  derive-sector-area-unitary  (intermediate)
+  check  "p/720 × 2 π R²"  →  PASS
+teach  substitute-pi-value  (shared)
+  check  "462"  →  PASS
+teach  apply-sector-area-formula  (intermediate)
+  check  "4.19"  →  PASS
+teach  use-rhs-congruence-bisect  (bedrock)
+  check  "RHS"  →  PASS
+teach  drop-perpendicular-to-chord  (intermediate)
+  check  "60"  →  PASS
+teach  use-sine-ratio-find-am  (intermediate)
+  check  "18.19"  →  PASS
+teach  find-chord-length-from-half  (shared)
+  check  "36.37"  →  PASS
+teach  use-cosine-ratio-find-om  (intermediate)
+  check  "10.5"  →  PASS
+teach  compute-triangle-area-base-height  (shared)
+  check  "190.95"  →  PASS
+teach  subtract-sector-minus-triangle  (intermediate)
+  check  "271.05"  →  PASS
+teach  compute-major-sector-area  (intermediate)
+  check  "46.1"  →  PASS
+  check  "46.05"  →  PASS
+teach  compute-arc-length  (intermediate)
+  check  "44"  →  PASS
+teach  find-area-of-segment-of-circle  (goal)
+  check  "271.05"  →  PASS
+
+# taught 13/13 reachable nodes; verdict PASS (mock)

@@ -1,0 +1,47 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh102
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:35:22.112Z
+
+teach  evaluate-polynomial-at-a-value  (bedrock)
+  check  "-6"  →  PASS
+teach  define-zero-of-polynomial  (bedrock)
+  check  "0"  →  PASS
+teach  factorise-quadratic-by-splitting-middle-term  (intermediate)
+  check  "2*(x-1)*(x-3)"  →  PASS
+teach  factorise-using-difference-of-squares  (shared)
+  check  "(x-sqrt(3))*(x+sqrt(3))"  →  PASS
+teach  find-zeroes-from-factors  (intermediate)
+  check  "-5 and -2"  →  PASS
+teach  verify-quadratic-sum-of-zeroes  (intermediate)
+  check  "4"  →  PASS
+teach  verify-quadratic-product-of-zeroes  (intermediate)
+  check  "3"  →  PASS
+teach  identify-degree-of-polynomial  (bedrock)
+  check  "2"  →  PASS
+teach  classify-polynomial-by-degree  (intermediate)
+  check  "linear"  →  PASS
+teach  recognise-non-polynomial-expressions  (bedrock)
+  check  "√x + 2"  →  PASS
+teach  state-quadratic-zero-coefficient-relations  (intermediate)
+  check  "-b/a"  →  PASS
+teach  state-cubic-zero-coefficient-relations  (intermediate)
+  check  "-d/a"  →  PASS
+teach  build-quadratic-from-sum-and-product  (intermediate)
+  check  "x^2 + 3*x + 2"  →  PASS
+teach  evaluate-polynomial-at-negative-value  (shared)
+  check  "0"  →  PASS
+teach  verify-cubic-zero-by-substitution  (intermediate)
+  check  "0"  →  PASS
+teach  verify-cubic-zero-coefficient-relations  (intermediate)
+  check  "1.6667"  →  PASS
+teach  find-zero-of-linear-polynomial  (intermediate)
+  check  "-1.5"  →  PASS
+teach  interpret-zero-as-x-intercept  (intermediate)
+  check  "-1 and 4"  →  PASS
+teach  count-zeroes-from-graph  (intermediate)
+  check  "2"  →  PASS
+teach  bound-number-of-zeroes-by-degree  (intermediate)
+  check  "n"  →  PASS
+teach  relate-zeroes-and-coefficients-of-polynomials  (goal)
+  check  "x^2 - 3"  →  PASS
+
+# taught 21/21 reachable nodes; verdict PASS (mock)

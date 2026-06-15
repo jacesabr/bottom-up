@@ -1,0 +1,399 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh114",
+  "title": "Probability",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh114:compute-theoretical-probability",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "slug": "compute-theoretical-probability",
+      "title": "Compute the theoretical probability of an event",
+      "role": "goal",
+      "brief": "Given a random experiment with equally likely outcomes, find P(E) by forming favourable-over-total.",
+      "sec": 0,
+      "quote": "P(E) = Number of outcomes favourable to E / Number of all possible outcomes of the experiment ,",
+      "explanation": "This is the chapter's top skill: model a random experiment, count favourable and total equally-likely outcomes, and combine them into the ratio P(E). Every worked example (coins, dice, balls, cards, marbles) is an instance of executing this formula. A student succeeds only when they correctly identify the event, count both numbers, and reduce the fraction.",
+      "keyMoves": [
+        "Identify the event E whose probability is asked",
+        "Count the number of all possible (equally likely) outcomes for the denominator",
+        "Count the outcomes favourable to E for the numerator",
+        "Write P(E) = favourable/total and reduce"
+      ],
+      "misconceptions": [
+        "Using number of trials (empirical) instead of equally-likely outcomes (theoretical)",
+        "Putting total over favourable (inverting the ratio)",
+        "Forgetting to reduce or mis-reducing the fraction"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh114:count-total-equally-likely-outcomes",
+        "cbse10:maths:jemh114:count-favourable-outcomes",
+        "cbse10:maths:jemh114:form-probability-ratio",
+        "cbse10:maths:jemh114:apply-complement-rule",
+        "cbse10:maths:jemh114:probability-impossible-event",
+        "cbse10:maths:jemh114:probability-sure-event",
+        "cbse10:maths:jemh114:probability-range-bounds",
+        "cbse10:maths:jemh114:sum-of-elementary-events-is-one",
+        "cbse10:maths:jemh114:geometric-probability-length",
+        "cbse10:maths:jemh114:geometric-probability-area",
+        "cbse10:maths:jemh114:complement-word-problem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:count-total-equally-likely-outcomes",
+      "slug": "count-total-equally-likely-outcomes",
+      "title": "Count the total number of equally likely outcomes",
+      "role": "intermediate",
+      "brief": "Determine the denominator: how many equally likely outcomes the experiment has.",
+      "sec": 0,
+      "quote": "Now, the number of possible outcomes = 3.",
+      "explanation": "Before any probability can be computed the student must enumerate the size of the sample space: 2 for a coin, 6 for a die, 3 for a 3-ball bag, 52 for a card deck, 9 for a 9-marble box. This count becomes the denominator. Getting it wrong scales every answer wrongly.",
+      "keyMoves": [
+        "List or count every distinct outcome of the experiment",
+        "Confirm all listed outcomes are equally likely",
+        "Use that count as the denominator of P(E)"
+      ],
+      "misconceptions": [
+        "Counting outcomes that are not equally likely (e.g. 'red or blue' from a 4-red 1-blue bag)",
+        "Miscounting the deck or bag total",
+        "Double-counting or omitting an outcome"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh114:identify-equally-likely-outcomes",
+        "cbse10:maths:jemh114:list-sample-space-two-coins",
+        "cbse10:maths:jemh114:list-sample-space-two-dice",
+        "cbse10:maths:jemh114:card-deck-composition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:count-favourable-outcomes",
+      "slug": "count-favourable-outcomes",
+      "title": "Count the outcomes favourable to an event",
+      "role": "intermediate",
+      "brief": "Determine the numerator: how many outcomes make the event happen.",
+      "sec": 0,
+      "quote": "The number of outcomes favourable to E = 4",
+      "explanation": "Given an event description (an ace, a number greater than 4, a girl's name), the student must select exactly those outcomes from the sample space that satisfy it and count them. This count is the numerator of P(E).",
+      "keyMoves": [
+        "Read the event description precisely",
+        "Pick out every outcome that satisfies the event",
+        "Count them to get the numerator"
+      ],
+      "misconceptions": [
+        "Including outcomes that do not satisfy the event",
+        "Missing boundary cases (e.g. 'greater than 4' includes 5 and 6 only, not 4)",
+        "Confusing favourable with total"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh114:card-deck-composition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:form-probability-ratio",
+      "slug": "form-probability-ratio",
+      "title": "Form and reduce the probability fraction",
+      "role": "shared",
+      "brief": "Write favourable/total as a fraction and reduce it to lowest terms.",
+      "sec": 0,
+      "quote": "P(E) = P(number greater than 4) = 2/6 = 1/3",
+      "explanation": "Once both counts are known the student divides favourable by total and simplifies the fraction (2/6 = 1/3, 25/40 = 5/8, 4/52 = 1/13). This is generic fraction arithmetic reused throughout maths.",
+      "keyMoves": [
+        "Place favourable count over total count",
+        "Divide numerator and denominator by their common factor",
+        "Express the reduced fraction (or decimal)"
+      ],
+      "misconceptions": [
+        "Leaving the fraction unreduced when a reduced form is expected",
+        "Cancelling incorrectly",
+        "Reporting a value outside [0,1]"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:identify-equally-likely-outcomes",
+      "slug": "identify-equally-likely-outcomes",
+      "title": "Decide whether outcomes are equally likely",
+      "role": "bedrock",
+      "brief": "Judge whether each outcome of an experiment has the same chance of occurring.",
+      "sec": 0,
+      "quote": "So, the outcomes (a red ball or a blue ball) are not equally likely.",
+      "explanation": "Classical probability only applies when outcomes are equally likely. The student must recognise when this holds (fair coin, balanced die, well-shuffled deck) and when it fails (4 red vs 1 blue ball; a car that may or may not start). This judgement gates the whole method.",
+      "keyMoves": [
+        "Check for symmetry / fairness of the mechanism",
+        "Reject the equally-likely assumption when outcomes differ in chance",
+        "Apply the classical formula only when equally likely holds"
+      ],
+      "misconceptions": [
+        "Assuming any two-way outcome (starts/doesn't, makes/misses) is 50-50",
+        "Treating 'red or blue' as equally likely when counts differ"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:apply-complement-rule",
+      "slug": "apply-complement-rule",
+      "title": "Apply the complement rule P(not E) = 1 - P(E)",
+      "role": "intermediate",
+      "brief": "Find the probability of 'not E' by subtracting P(E) from 1.",
+      "sec": 0,
+      "quote": "P(E) + P(E̅ ) = 1, which gives us P(E̅ ) = 1 – P(E).",
+      "explanation": "When an event and its complement partition all outcomes, their probabilities sum to 1. The student uses this to shortcut 'not E' problems (P(not ace) = 1 - 1/13 = 12/13; Reshma = 1 - 0.62 = 0.38) without re-counting.",
+      "keyMoves": [
+        "Recognise E and 'not E' as complementary",
+        "Subtract the known probability from 1",
+        "Report 1 - P(E) as P(not E)"
+      ],
+      "misconceptions": [
+        "Using events that are not actually complementary",
+        "Subtracting the count instead of the probability",
+        "Forgetting that the two must cover all outcomes"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh114:form-probability-ratio"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:probability-impossible-event",
+      "slug": "probability-impossible-event",
+      "title": "Recognise an impossible event has probability 0",
+      "role": "bedrock",
+      "brief": "When no outcome is favourable, P(E) = 0.",
+      "sec": 0,
+      "quote": "P(getting 7) = 0/6 = 0",
+      "explanation": "If the event can never occur (getting 7 on a die, sum of 13 on two dice) the favourable count is zero, so P(E) = 0/total = 0. Such an event is called an impossible event.",
+      "keyMoves": [
+        "Check whether any outcome satisfies the event",
+        "If none, set numerator to 0",
+        "Conclude P(E) = 0 (impossible event)"
+      ],
+      "misconceptions": [
+        "Thinking a rare event has probability 0",
+        "Assuming every described event must have a positive probability"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh114:count-favourable-outcomes"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:probability-sure-event",
+      "slug": "probability-sure-event",
+      "title": "Recognise a sure event has probability 1",
+      "role": "bedrock",
+      "brief": "When every outcome is favourable, P(E) = 1.",
+      "sec": 0,
+      "quote": "P(E) = P(getting a number less than 7) = 6/6 = 1",
+      "explanation": "If the event must occur (a number less than 7 on a die, sum ≤ 12 on two dice) the favourable count equals the total, so P(E) = total/total = 1. Such an event is called a sure or certain event.",
+      "keyMoves": [
+        "Check whether all outcomes satisfy the event",
+        "If so, set numerator equal to denominator",
+        "Conclude P(E) = 1 (sure event)"
+      ],
+      "misconceptions": [
+        "Confusing 'very likely' with 'certain'",
+        "Failing to see that every outcome qualifies"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh114:count-favourable-outcomes"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:probability-range-bounds",
+      "slug": "probability-range-bounds",
+      "title": "Apply the bound 0 ≤ P(E) ≤ 1",
+      "role": "bedrock",
+      "brief": "Any probability lies between 0 and 1 inclusive; reject values outside.",
+      "sec": 0,
+      "quote": "0 ≤ P(E) ≤ 1",
+      "explanation": "Because favourable count is at most the total and at least zero, every probability is between 0 and 1. The student uses this to reject impossible answers like -1.5 or values above 1.",
+      "keyMoves": [
+        "Compare a candidate value against the interval [0,1]",
+        "Reject negatives and values exceeding 1",
+        "Accept fractions, percentages and decimals within range"
+      ],
+      "misconceptions": [
+        "Accepting a negative or >1 value as a probability",
+        "Not recognising 15% or 0.7 as valid"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:sum-of-elementary-events-is-one",
+      "slug": "sum-of-elementary-events-is-one",
+      "title": "Use that elementary-event probabilities sum to 1",
+      "role": "intermediate",
+      "brief": "The probabilities of all single-outcome events of an experiment add to 1.",
+      "sec": 0,
+      "quote": "Observe that the sum of the probabilities of all the elementary events of an experiment is 1.",
+      "explanation": "Each single-outcome (elementary) event has probability 1/total, and summing over all outcomes gives 1 (P(Y)+P(R)+P(B)=1; P(W)+P(B)+P(R)=1). The student uses this as a check and to find a missing probability.",
+      "keyMoves": [
+        "Identify the elementary events of the experiment",
+        "Add their probabilities",
+        "Verify the sum is 1 (or solve for a missing one)"
+      ],
+      "misconceptions": [
+        "Thinking compound events also must sum to 1 across an arbitrary list",
+        "Assuming each of 11 dice-sums has probability 1/11"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:list-sample-space-two-coins",
+      "slug": "list-sample-space-two-coins",
+      "title": "List the sample space for two coins tossed together",
+      "role": "intermediate",
+      "brief": "Enumerate (H,H),(H,T),(T,H),(T,T) for two distinct coins.",
+      "sec": 1,
+      "quote": "the possible outcomes are (H, H), (H, T), (T, H), (T, T), which are all equally likely.",
+      "explanation": "For two distinct coins the student must list all four ordered outcomes, recognising (H,T) and (T,H) as distinct. This gives the 4-outcome sample space needed for events like 'at least one head'.",
+      "keyMoves": [
+        "Treat the two coins as distinguishable (first, second)",
+        "List all four ordered pairs of H/T",
+        "Count favourable pairs for the event"
+      ],
+      "misconceptions": [
+        "Collapsing (H,T) and (T,H) into one outcome and getting 3 outcomes",
+        "Assigning probability 1/3 to two-heads/two-tails/one-of-each"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:list-sample-space-two-dice",
+      "slug": "list-sample-space-two-dice",
+      "title": "List the sample space for two dice thrown together",
+      "role": "intermediate",
+      "brief": "Build the 6x6 grid of 36 ordered pairs for two dice.",
+      "sec": 1,
+      "quote": "So, the number of possible outcomes = 6 × 6 = 36.",
+      "explanation": "For two dice the student enumerates all ordered pairs (blue, grey), recognising (1,4) differs from (4,1), giving 36 equally-likely outcomes. Events like 'sum is 8' are then counted against this grid.",
+      "keyMoves": [
+        "Treat the dice as distinguishable",
+        "Form all 6 × 6 = 36 ordered pairs",
+        "Count pairs satisfying the target event (e.g. sum 8)"
+      ],
+      "misconceptions": [
+        "Counting unordered pairs and getting fewer than 36",
+        "Treating the 11 possible sums as equally likely"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:card-deck-composition",
+      "slug": "card-deck-composition",
+      "title": "Use the composition of a 52-card deck",
+      "role": "bedrock",
+      "brief": "Know 52 cards, 4 suits of 13, red/black, face cards = kings, queens, jacks.",
+      "sec": 0,
+      "quote": "It consists of 52 cards which are divided into 4 suits of 13 cards each — spades (♠), hearts (♥), diamonds (♦) and clubs (♣).",
+      "explanation": "Card problems require knowing the deck's structure: 52 cards, 4 aces, 12 face cards (kings, queens, jacks), 13 per suit, hearts and diamonds red. The student supplies these counts to fill numerator and denominator (e.g. P(ace)=4/52).",
+      "keyMoves": [
+        "Recall 52 total, 4 suits of 13",
+        "Identify counts: 4 aces, 12 face cards, 26 red, etc.",
+        "Feed the relevant count into the probability ratio"
+      ],
+      "misconceptions": [
+        "Counting aces as face cards",
+        "Mis-stating the number of face cards or red cards"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:geometric-probability-length",
+      "slug": "geometric-probability-length",
+      "title": "Compute probability as a ratio of lengths",
+      "role": "intermediate",
+      "brief": "For a continuous outcome on a line, P(E) = favourable length / total length.",
+      "sec": 1,
+      "quote": "So, P(E) = Distance favourable to the event E / Total distance in which outcomes can lie = (1/2)/2 = 1/4",
+      "explanation": "When outcomes form a continuum (a time between 0 and 2 minutes) the counting formula is replaced by a ratio of lengths. The student identifies the favourable interval and the total interval and divides.",
+      "keyMoves": [
+        "Identify the total interval of possible outcomes",
+        "Identify the favourable sub-interval",
+        "Divide favourable length by total length"
+      ],
+      "misconceptions": [
+        "Trying to count infinitely many point outcomes",
+        "Using the wrong interval endpoints"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:geometric-probability-area",
+      "slug": "geometric-probability-area",
+      "title": "Compute probability as a ratio of areas",
+      "role": "intermediate",
+      "brief": "For a 2D continuous outcome, P(E) = favourable area / total area.",
+      "sec": 1,
+      "quote": "Therefore, P (helicopter crashed in the lake) = 7.5/40.5 = 75/405 = 5/27",
+      "explanation": "Extending the length idea to two dimensions, the student computes the favourable region's area and the total region's area and divides (lake 7.5 km² over region 40.5 km² = 5/27).",
+      "keyMoves": [
+        "Compute the total region area",
+        "Compute the favourable region area",
+        "Divide favourable area by total area and reduce"
+      ],
+      "misconceptions": [
+        "Using perimeter instead of area",
+        "Arithmetic slips in area computation"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh114:geometric-probability-length"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh114:complement-word-problem",
+      "slug": "complement-word-problem",
+      "title": "Solve a word problem using the complement",
+      "role": "intermediate",
+      "brief": "Translate 'same/different' word events into P and 1-P (e.g. birthdays).",
+      "sec": 0,
+      "quote": "= 1 – 364/365     [Using P(E̅ ) = 1 – P(E)]",
+      "explanation": "In problems like the birthday example, the student finds one event directly (different birthdays = 364/365) then gets its complement (same birthday) by subtracting from 1. This combines reading the word problem with the complement rule.",
+      "keyMoves": [
+        "Identify the easier event to count directly",
+        "Compute its probability",
+        "Subtract from 1 to get the complementary event"
+      ],
+      "misconceptions": [
+        "Counting the hard event directly and erring",
+        "Forgetting the two events are complementary"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh114:apply-complement-rule"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## Audit performed\n\nI re-read jemh114.txt in full (SEG 0 = lines 4-196, the 14.1 definition plus Examples 1-8 and every rule statement: classical-probability definition, complement, impossible/sure events, the 0≤P(E)≤1 bound, the elementary-event sum, and the 52-card-deck description; SEG 1 = lines 198-280, Examples 9-13 with two coins, geometric length/area, shirts, and the two-dice 36-outcome grid; SEG 2 = Exercise 14.1; SEG 3 = Summary) and the shared maths exam file (Standard SQP+MS, Basic SQP+MS).\n\n## Citation re-verification (the #1 failure mode)\n\nI located every node quote AND every gate quote verbatim in its tagged segment:\n- All 16 NODE quotes confirmed character-for-character: e.g. compute-goal → line 36; count-total → \"Now, the number of possible outcomes = 3.\" line 65; count-favourable → line 145; form-ratio → line 84; identify-equally-likely → line 22; complement rule (with the garbled glyph E̅) → line 108; impossible → line 122; sure → line 129; range-bound line 135; elementary-sum line 78; two-coins line 201 (SEG 1); two-dice line 270 (SEG 1); card-deck line 137; geometric-length line 227; geometric-area line 242; complement-word-problem line 173.\n- All 16 GATE quotes confirmed. The three exam gates were checked against the Marking Scheme lines literally: Standard Q14 \"14. B) 3\\n8\" = exam lines 346-347; Standard Q18 \"18. D) 3\\n26\" = lines 352-353; Basic Q15 \"15. D) 4 1\" = line 1087. Chapter gates (\"Note that P(W) + P(B) + P(R) = 1.\" line 196; \"Therefore, P(E) = 3/4\" line 205; \"Hence, P(E) = 5/36\" line 274; \"= 1/365\" line 174; etc.) all verified.\n\nNo quote needed re-tagging or replacement — every cited string is a contiguous substring of the segment named.\n\n## Grain / coverage\n\n17 nodes, each a single failable skill. Re-scanning the worked examples I confirmed no lumped node and no missed skill that warrants its own gate: Example 12's \"acceptable to Sujatha = 88+8\" is just count-favourable over a compound category (covered), and the 'not an ace = 1-1/13' step is apply-complement-rule (covered). card-deck-composition is kept as a bedrock retrieval skill (deck structure) because it genuinely feeds numerator/denominator in Example 4 and exam Q18, not as bare exposition. No history/taxonomy node is present (Laplace/Cardan/Bernoulli paragraph correctly excluded).\n\n## Edges\n\nSingle root compute-theoretical-probability (never a child). Graph is acyclic (all parent→child arrows flow toward leaves), every one of the 17 node slugs appears in at least one edge (no orphans), and every edge endpoint is a defined node slug. geometric-area→geometric-length and complement-word-problem→apply-complement-rule are true prerequisites.\n\n## Gates\n\nOne gate per node (17/17, 100% coverage). Each grader/expected/answer is self-consistent for the deterministic tester: numeric gates carry the example's decimal value (5/36→0.1389, 5/27→0.1852, 1/365→0.00274) with an appropriate tol, mcq gates carry the marking-scheme option as `correct` and within `options` (3/8, 4, 3/26, plus the chapter-derived equally-likely yes/no). Arithmetic re-checked: white ball 9/24=3/8, red face card 6/52=3/26.\n\n## Result\n\nThe draft passed audit unchanged on citations, edges, grain and gate consistency. I corrected only a trivial wording in the elementary-sum gate prompt (comma) for readability; all load-bearing fields are retained.",
+  "absentNotes": "The chapter does NOT teach (so these are omitted, not failed): the addition rule P(A or B) for mutually exclusive events; conditional probability or 'given that'; independence/multiplication rule; drawing without replacement as a taught method (it appears only as Exercise 15(ii) and 17(ii) problems, with no worked solution stating the method); tree diagrams; odds; and empirical/experimental probability computation (mentioned only to contrast with theoretical, via the Class IX recap and the closing 'note to the reader'). The Cardan/Bernoulli/de Moivre/Laplace history paragraph is pure exposition and is intentionally not a node. The full two-dice sum-distribution table (Exercise 22) is an application of list-sample-space-two-dice, not a separate taught skill. Spinner, piggy-bank, fish-tank and disc-number exercises are all instances of count-favourable / count-total over equally-likely outcomes and add no new failable skill beyond the captured nodes. Standard SQP Q22 (product-odd with non-standard dice faces 4,6,7,9,11,12) was available as a gate but its method is already covered by count-favourable-outcomes + list-sample-space-two-dice, so the cleaner chapter examples were used for those nodes' gates."
+}

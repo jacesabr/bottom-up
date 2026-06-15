@@ -1,0 +1,339 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh101",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh101:prime-factorise-integer",
+      "kind": "book",
+      "prompt": "Express 32760 as a product of powers of primes (write exponents, e.g. 2^3 * 3^2 * 5 * 7 * 13).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "2^3 * 3^2 * 5 * 7 * 13",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "32760"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (factor-tree worked example, 32760)",
+      "quote": "32760 = 2³ × 3² × 5 × 7 × 13 as a product of powers of primes."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic",
+      "kind": "book",
+      "prompt": "The Fundamental Theorem of Arithmetic states that every composite number can be factorised as a product of primes, and that this factorisation is: A) never unique  B) unique apart from the order of factors  C) unique only for even numbers  D) unique including the order of factors",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "unique apart from the order of factors",
+      "expected": {
+        "kind": "mcq",
+        "correct": "unique apart from the order of factors",
+        "options": [
+          "never unique",
+          "unique apart from the order of factors",
+          "unique only for even numbers",
+          "unique including the order of factors"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (Theorem 1.1)",
+      "quote": "Every composite number can be expressed (factorised) as a product of primes, and this factorisation is unique, apart from the order in which the prime factors occur."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:decide-ends-with-digit-via-primes",
+      "kind": "book",
+      "prompt": "For how many natural numbers n does 4^n end with the digit zero?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (Example 1)",
+      "quote": "So, there is no natural number n for which 4ⁿ ends with the digit zero."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:compute-hcf-prime-factorisation",
+      "kind": "book",
+      "prompt": "Given 6 = 2 × 3, 72 = 2³ × 3², and 120 = 2³ × 3 × 5, find the HCF of 6, 72 and 120 by the prime factorisation method (product of the smallest power of each common prime).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6",
+      "expected": {
+        "kind": "numeric",
+        "value": 6,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (Example 4)",
+      "quote": "HCF (6, 72, 120) = 2¹ × 3¹ = 2 × 3 = 6"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:compute-lcm-prime-factorisation",
+      "kind": "book",
+      "prompt": "Given 6 = 2¹ × 3¹ and 20 = 2² × 5¹, find the LCM of 6 and 20 by the prime factorisation method (product of the greatest power of each prime involved).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "60",
+      "expected": {
+        "kind": "numeric",
+        "value": 60,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (Example 2)",
+      "quote": "LCM(6, 20) = 2 × 2 × 3 × 5 = 60, as done in your earlier classes."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:use-hcf-lcm-product-relation",
+      "kind": "book",
+      "prompt": "Find the HCF of 96 and 404, then use HCF × LCM = product of the two numbers to find their LCM.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "9696",
+      "expected": {
+        "kind": "numeric",
+        "value": 9696,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (Example 3)",
+      "quote": "LCM (96, 404) = (96 × 404) / HCF(96, 404) = (96 × 404) / 4 = 9696"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:manipulate-prime-powers",
+      "kind": "book",
+      "prompt": "Evaluate 2^3 × 3^2 × 5.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "360",
+      "expected": {
+        "kind": "numeric",
+        "value": 360,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (Example 4)",
+      "quote": "LCM (6, 72, 120) = 2³ × 3² × 5¹ = 8 × 9 × 5 = 360"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:state-prime-divides-square-theorem",
+      "kind": "book",
+      "prompt": "Let p be a prime. If p divides a^2 (a a positive integer), what can you conclude? A) p divides a  B) p divides 2a  C) p does not divide a  D) nothing can be concluded",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "p divides a",
+      "expected": {
+        "kind": "mcq",
+        "correct": "p divides a",
+        "options": [
+          "p divides a",
+          "p divides 2a",
+          "p does not divide a",
+          "nothing can be concluded"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.3 (Theorem 1.2)",
+      "quote": "Let p be a prime number. If p divides a², then p divides a, where a is a positive integer."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:derive-square-relation-from-fraction",
+      "kind": "book",
+      "prompt": "Starting from b√2 = a, square both sides. What relation results? A) 2b^2 = a^2  B) b^2 = 2a  C) 4b = a^2  D) b^2 = a^2",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "2b^2 = a^2",
+      "expected": {
+        "kind": "mcq",
+        "correct": "2b^2 = a^2",
+        "options": [
+          "2b^2 = a^2",
+          "b^2 = 2a",
+          "4b = a^2",
+          "b^2 = a^2"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.3 (Theorem 1.3 proof)",
+      "quote": "Squaring on both sides and rearranging, we get 2b² = a²."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:close-irrationality-contradiction",
+      "kind": "book",
+      "prompt": "In the proof that √2 is irrational, after showing 2 divides both a and b, this contradicts which assumed fact? A) that a and b are positive  B) that a and b have no common factor other than 1  C) that √2 = a/b  D) that 2 is prime",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "that a and b have no common factor other than 1",
+      "expected": {
+        "kind": "mcq",
+        "correct": "that a and b have no common factor other than 1",
+        "options": [
+          "that a and b are positive",
+          "that a and b have no common factor other than 1",
+          "that √2 = a/b",
+          "that 2 is prime"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.3 (Theorem 1.3 proof)",
+      "quote": "But this contradicts the fact that a and b have no common factors other than 1."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:set-up-contradiction-rational-assumption",
+      "kind": "book",
+      "prompt": "To prove √2 is irrational by contradiction, what is assumed at the start of the proof? A) √2 is irrational  B) √2 is rational  C) √2 = 2  D) √2 is an integer",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "√2 is rational",
+      "expected": {
+        "kind": "mcq",
+        "correct": "√2 is rational",
+        "options": [
+          "√2 is irrational",
+          "√2 is rational",
+          "√2 = 2",
+          "√2 is an integer"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.3 (Theorem 1.3 proof)",
+      "quote": "Let us assume, to the contrary, that √2 is rational."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:prove-irrational-rational-minus-irrational",
+      "kind": "book",
+      "prompt": "In proving 5 − √3 is irrational, you assume 5 − √3 = a/b and rearrange. √3 then equals which expression? A) (5b − a)/b  B) (a − 5b)/b  C) 5/b − a  D) (5 − a)/b",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(5b − a)/b",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(5b − a)/b",
+        "options": [
+          "(5b − a)/b",
+          "(a − 5b)/b",
+          "5/b − a",
+          "(5 − a)/b"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.3 (Example 6)",
+      "quote": "Rearranging this equation, we get √3 = 5 − a/b = (5b − a)/b."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:prove-irrational-rational-times-irrational",
+      "kind": "book",
+      "prompt": "In proving 3√2 is irrational, you assume 3√2 = a/b. Rearranging gives √2 equal to which expression? A) a/3b  B) 3a/b  C) ab/3  D) a/b − 3",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "a/3b",
+      "expected": {
+        "kind": "mcq",
+        "correct": "a/3b",
+        "options": [
+          "a/3b",
+          "3a/b",
+          "ab/3",
+          "a/b − 3"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.3 (Example 7)",
+      "quote": "Rearranging, we get √2 = a/3b."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:solve-lcm-meeting-time-word-problem",
+      "kind": "book",
+      "prompt": "Sonia takes 18 minutes and Ravi takes 12 minutes per round, starting together in the same direction. After how many minutes do they meet again at the starting point?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "36",
+      "expected": {
+        "kind": "numeric",
+        "value": 36,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (Exercise 1.1 Q7)",
+      "quote": "Sonia takes 18 minutes to drive one round of the field, while Ravi takes 12 minutes for the same."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:explain-sum-is-composite",
+      "kind": "book",
+      "prompt": "To show that 7 × 11 × 13 + 13 is composite, you factor out the integer that is common to both terms 7 × 11 × 13 and 13, writing the sum as that factor times (7 × 11 + 1). What is that common factor you take out?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "13",
+      "expected": {
+        "kind": "numeric",
+        "value": 13,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (Exercise 1.1 Q6)",
+      "quote": "Explain why 7 × 11 × 13 + 13 and 7 × 6 × 5 × 4 × 3 × 2 × 1 + 5 are composite numbers."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:know-prime-composite-coprime",
+      "kind": "book",
+      "prompt": "In the proof that √2 is irrational, the fraction is reduced so that a and b are coprime. Two integers being coprime means: A) both a and b are prime numbers  B) their only common factor is 1 (HCF = 1)  C) a and b are both even  D) a divides b",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "their only common factor is 1 (HCF = 1)",
+      "expected": {
+        "kind": "mcq",
+        "correct": "their only common factor is 1 (HCF = 1)",
+        "options": [
+          "both a and b are prime numbers",
+          "their only common factor is 1 (HCF = 1)",
+          "a and b are both even",
+          "a divides b"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.3 (Theorem 1.3 proof)",
+      "quote": "Then, we divide by the common factor to get √2 = a/b, where a and b are coprime."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:interpret-divides-relation",
+      "kind": "book",
+      "prompt": "If 2 divides a, then a can be written as a = 2c for some integer c. If a = 14, what is c?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7",
+      "expected": {
+        "kind": "numeric",
+        "value": 7,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.3 (Theorem 1.3 proof)",
+      "quote": "So, we can write a = 2c for some integer c."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "kind": "book",
+      "prompt": "For 6 and 20, HCF(6, 20) = 2. Using HCF(a, b) × LCM(a, b) = a × b, find LCM(6, 20). A) 26  B) 60  C) 120  D) 10",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "60",
+      "expected": {
+        "kind": "mcq",
+        "correct": "60",
+        "options": [
+          "26",
+          "60",
+          "120",
+          "10"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "1.2 (Example 2 / HCF×LCM relation)",
+      "quote": "HCF(6, 20) × LCM(6, 20) = 6 × 20."
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh105",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh105:solve-ap-problems",
+      "kind": "book",
+      "prompt": "A TV manufacturer's yearly production forms an AP with first-year production a = 550 and common difference d = 25. Using Sₙ = n/2[2a + (n−1)d], find the total production in the first 7 years (S₇).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4375",
+      "expected": {
+        "kind": "numeric",
+        "value": 4375,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.4 (Example 16 iii)",
+      "quote": "Thus, the total production of TV sets in first 7 years is 4375."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:define-ap-common-difference",
+      "kind": "book",
+      "prompt": "The common difference of an AP can be positive, negative, or zero. When a = 2 and d = 0, the list 2, 2, 2, 2, … is generated. Is this constant list an AP? Answer True or False.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "True",
+      "expected": {
+        "kind": "mcq",
+        "correct": "True",
+        "options": [
+          "True",
+          "False"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.2 (general form, d = 0 case)",
+      "quote": "a = 2, d = 0, the AP is 2, 2, 2, 2, . . ."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:compute-common-difference",
+      "kind": "book",
+      "prompt": "For the AP 3/2, 1/2, −1/2, −3/2, …, find the common difference d.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-1",
+      "expected": {
+        "kind": "numeric",
+        "value": -1,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.2 (Example 1)",
+      "quote": "Here, a = 3/2, d = 1/2 – 3/2 = – 1."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:test-is-ap",
+      "kind": "book",
+      "prompt": "For the list −2, 2, −2, 2, …, with a₂−a₁ = 4 and a₃−a₂ = −4, does the list form an AP? Answer True or False.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "False",
+      "expected": {
+        "kind": "mcq",
+        "correct": "False",
+        "options": [
+          "True",
+          "False"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.2 (Example 2 iii)",
+      "quote": "As a₂ – a₁ ≠ a₃ – a₂, the given list of numbers does not form an AP."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:write-next-terms",
+      "kind": "book",
+      "prompt": "The AP 4, 10, 16, 22, … has common difference 6. What is the term immediately after 22?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "28",
+      "expected": {
+        "kind": "numeric",
+        "value": 28,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.2 (Example 2 i)",
+      "quote": "The next two terms are: 22 + 6 = 28 and 28 + 6 = 34."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:list-ap-from-a-d",
+      "kind": "book",
+      "prompt": "If the first term a is 6 and the common difference d is 3, what is the fourth term of the AP?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "15",
+      "expected": {
+        "kind": "numeric",
+        "value": 15,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.2 (general form)",
+      "quote": "6, 9, 12, 15, . . ."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:identify-first-term",
+      "kind": "book",
+      "prompt": "For the AP 3/2, 1/2, −1/2, −3/2, …, what is the first term a? Give it as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1.5",
+      "expected": {
+        "kind": "numeric",
+        "value": 1.5,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.2 (Example 1)",
+      "quote": "Here, a = 3/2, d = 1/2 – 3/2 = – 1."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:apply-nth-term-formula",
+      "kind": "book",
+      "prompt": "Find the 10th term of the AP 2, 7, 12, … (a = 2, d = 5).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "47",
+      "expected": {
+        "kind": "numeric",
+        "value": 47,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.3 (Example 3)",
+      "quote": "So, a₁₀ = 2 + (10 – 1) × 5 = 2 + 45 = 47"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:find-which-term",
+      "kind": "book",
+      "prompt": "Which term of the AP 21, 18, 15, … is −81?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "35",
+      "expected": {
+        "kind": "numeric",
+        "value": 35,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.3 (Example 4)",
+      "quote": "Therefore, the 35th term of the given AP is – 81."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:check-membership-integer-n",
+      "kind": "book",
+      "prompt": "Solving 301 = 5 + (n−1)×6 for the AP 5, 11, 17, 23, … gives n = 151/3. Is 301 a term of this AP? Answer True or False.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "False",
+      "expected": {
+        "kind": "mcq",
+        "correct": "False",
+        "options": [
+          "True",
+          "False"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.3 (Example 6)",
+      "quote": "But n should be a positive integer (Why?). So, 301 is not a term of the given list of numbers."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:find-two-equations-ap",
+      "kind": "book",
+      "prompt": "An AP has 3rd term 5 and 7th term 9, giving a+2d=5 and a+6d=9. Find the common difference d.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.3 (Example 5)",
+      "quote": "a = 3, d = 1"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:count-terms-ap",
+      "kind": "book",
+      "prompt": "How many two-digit numbers are divisible by 3 (the AP 12, 15, 18, …, 99)?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "30",
+      "expected": {
+        "kind": "numeric",
+        "value": 30,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.3 (Example 7)",
+      "quote": "So, there are 30 two-digit numbers divisible by 3."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:term-from-last",
+      "kind": "book",
+      "prompt": "Find the 11th term from the last term of the AP 10, 7, 4, …, −62.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-32",
+      "expected": {
+        "kind": "numeric",
+        "value": -32,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.3 (Example 8)",
+      "quote": "i.e., the 11th term from the last term is – 32."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:model-real-world-ap",
+      "kind": "book",
+      "prompt": "₹1000 is invested at 8% simple interest per year, giving yearly interest 80, 160, 240, … (an AP with a=80, d=80). Find the interest at the end of 30 years.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2400",
+      "expected": {
+        "kind": "numeric",
+        "value": 2400,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.3 (Example 9)",
+      "quote": "So, the interest at the end of 30 years will be ₹ 2400."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:derive-d-from-nth-term-rule",
+      "kind": "book",
+      "prompt": "The nth term of a list of numbers is given by aₙ = 3 + 2n, producing 5, 7, 9, 11, …. What is the common difference d of this AP?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.4 (Example 15)",
+      "quote": "So, it forms an AP with common difference d = 2."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:apply-sum-formula-a-d",
+      "kind": "book",
+      "prompt": "Find the sum of the first 22 terms of the AP 8, 3, −2, … (a=8, d=−5).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-979",
+      "expected": {
+        "kind": "numeric",
+        "value": -979,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.4 (Example 11)",
+      "quote": "So, the sum of the first 22 terms of the AP is – 979."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:apply-sum-formula-a-l",
+      "kind": "book",
+      "prompt": "Using Sₙ = n/2(a+l), find the sum of the first 1000 positive integers (a=1, l=1000).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "500500",
+      "expected": {
+        "kind": "numeric",
+        "value": 500500,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.4 (Example 14 i)",
+      "quote": "So, the sum of the first 1000 positive integers is 500500."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:find-n-from-sum",
+      "kind": "book",
+      "prompt": "How many terms of the AP 24, 21, 18, … must be taken so that their sum is 78? Both values of n are admissible; give the smaller one.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4",
+      "expected": {
+        "kind": "numeric",
+        "value": 4,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.4 (Example 13)",
+      "quote": "or n = 4 or 13"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:find-unknown-from-sum-system",
+      "kind": "book",
+      "prompt": "The sum of the first 14 terms of an AP is 1050 and its first term is 10. Find the common difference d.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "10",
+      "expected": {
+        "kind": "numeric",
+        "value": 10,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.4 (Example 12)",
+      "quote": "1050 = 14/2 [20 + 13d] = 140 + 91d"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:solve-linear-equation",
+      "kind": "book",
+      "prompt": "Solve for n: −105 = −3n.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "35",
+      "expected": {
+        "kind": "numeric",
+        "value": 35,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.3 (Example 4)",
+      "quote": "– 105 = – 3n\nSo, n = 35"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:solve-simultaneous-equations",
+      "kind": "book",
+      "prompt": "Solve the simultaneous equations a + 2d = 5 and a + 6d = 9 for a.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.3 (Example 5)",
+      "quote": "a = 3, d = 1"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh105:factor-quadratic",
+      "kind": "book",
+      "prompt": "Factor and solve n² − 17n + 52 = 0; give the larger root.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "13",
+      "expected": {
+        "kind": "numeric",
+        "value": 13,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "5.4 (Example 13)",
+      "quote": "or (n – 4)(n – 13) = 0"
+    }
+  ]
+}

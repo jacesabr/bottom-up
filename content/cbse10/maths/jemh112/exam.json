@@ -1,0 +1,411 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh112",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh112:compute-slant-height",
+      "kind": "book",
+      "prompt": "In the rocket of Example 3, the cone has base radius r = 2.5 cm and vertical height h = 6 cm. Find its slant height l = sqrt(r^2 + h^2).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6.5",
+      "expected": {
+        "kind": "numeric",
+        "value": 6.5,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 3, rocket)",
+      "quote": "l = √(r² + h²) = √(2.5² + 6²) cm = 6.5 cm"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:csa-cone",
+      "kind": "book",
+      "prompt": "For the conical part of the lattu in Example 1, radius r = 3.5/2 cm = 1.75 cm and slant height l = 3.7 cm. Find the curved surface area CSA = πrl (take π = 22/7). Give the answer to 2 decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "20.35",
+      "expected": {
+        "kind": "numeric",
+        "value": 20.35,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 1, lattu)",
+      "quote": "Therefore, CSA of cone = πrl = ( 22/7 × 3.5/2 × 3.7 ) cm²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:csa-cylinder",
+      "kind": "book",
+      "prompt": "Using the bird-bath cylinder of Example 4 (radius r = 30 cm, height h = 145 cm), find ONLY the curved surface area of the cylinder, CSA = 2πrh (take π = 22/7). Give the answer to 2 decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "27342.86",
+      "expected": {
+        "kind": "numeric",
+        "value": 27342.86,
+        "tol": 0.5
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 4, bird-bath)",
+      "quote": "= 2πrh + 2πr² = 2πr (h + r)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:volume-cylinder",
+      "kind": "book",
+      "prompt": "A cylindrical glass has inner radius 2.5 cm and height 10 cm. Find its apparent capacity πr²h (take π = 3.14).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "196.25",
+      "expected": {
+        "kind": "numeric",
+        "value": 196.25,
+        "tol": 0.1
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.3 (Example 6)",
+      "quote": "= 3.14 × 2.5 × 2.5 × 10 cm³ = 196.25 cm³"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:volume-cone",
+      "kind": "book",
+      "prompt": "In the toy of Example 7, the conical part has radius r = 2 cm and height h = 2 cm. Find ONLY the cone's volume, (1/3)πr²h (take π = 3.14). Give the answer to 2 decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "8.37",
+      "expected": {
+        "kind": "numeric",
+        "value": 8.37,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.3 (Example 7)",
+      "quote": "So, volume of the toy = 2/3 πr³ + 1/3 πr²h"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+      "kind": "book",
+      "prompt": "A toy is a hemisphere (radius 2 cm) surmounted by a cone (radius 2 cm, height 2 cm). Find its volume = (2/3)πr³ + (1/3)πr²h (π = 3.14).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "25.12",
+      "expected": {
+        "kind": "numeric",
+        "value": 25.12,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.3 (Example 7)",
+      "quote": "= [ 2/3 × 3.14 × (2)³ + 1/3 × 3.14 × (2)² × 2 ] cm³ = 25.12 cm³"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:compute-tsa-solid-hemisphere",
+      "kind": "book",
+      "prompt": "When a solid hemisphere of radius r is attached, its contribution to the surface is its flat base πr² plus its curved dome 2πr². So the total surface area of a solid hemisphere is: (A) πr² (B) 2πr² (C) 3πr² (D) 4πr²",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "3πr²",
+      "expected": {
+        "kind": "mcq",
+        "correct": "3πr²",
+        "options": [
+          "πr²",
+          "2πr²",
+          "3πr²",
+          "4πr²"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 2, decorative block)",
+      "quote": "= 150 – πr² + 2πr² = (150 + πr²) cm²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:csa-hemisphere",
+      "kind": "book",
+      "prompt": "Find the curved surface area of a hemisphere of radius 2 cm using CSA = 2πr² (take π = 22/7). Give the answer to 2 decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "25.14",
+      "expected": {
+        "kind": "numeric",
+        "value": 25.14,
+        "tol": 0.1
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (formula, Example 1)",
+      "quote": "the curved surface area of the hemisphere = 1/2 (4πr²) = 2πr²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:volume-hemisphere",
+      "kind": "book",
+      "prompt": "Find the volume of a hemisphere of radius 2.5 cm using (2/3)πr³ (take π = 3.14). Give the answer to 2 decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "32.71",
+      "expected": {
+        "kind": "numeric",
+        "value": 32.71,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.3 (Example 6)",
+      "quote": "it is less by 2/3 πr³ = 2/3 × 3.14 × 2.5 × 2.5 × 2.5 cm³ = 32.71 cm³"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:actual-capacity-subtract-depression",
+      "kind": "book",
+      "prompt": "A glass has apparent capacity 196.25 cm³; the hemispherical bump at its base has volume 32.71 cm³. Find the actual capacity.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "163.54",
+      "expected": {
+        "kind": "numeric",
+        "value": 163.54,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.3 (Example 6)",
+      "quote": "= (196.25 – 32.71) cm³\n\n= 163.54 cm³"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:volume-difference-circumscribing-cylinder",
+      "kind": "book",
+      "prompt": "A toy of volume 25.12 cm³ is circumscribed by a cylinder of radius 2 cm and height 4 cm (π = 3.14). Find the difference between the cylinder's volume and the toy's volume.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "25.12",
+      "expected": {
+        "kind": "numeric",
+        "value": 25.12,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.3 (Example 7)",
+      "quote": "= (3.14 × 2² × 4 – 25.12) cm³\n\n= 25.12 cm³"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:tsa-cube-with-hemisphere-on-top",
+      "kind": "book",
+      "prompt": "A cube of edge 5 cm has a hemisphere of radius 2.1 cm on top. Surface area = TSA cube − πr² + 2πr² = 150 + πr² (π = 22/7). Find it.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "163.86",
+      "expected": {
+        "kind": "numeric",
+        "value": 163.86,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 2)",
+      "quote": "= (150 + 13.86) cm² = 163.86 cm²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:volume-cuboid",
+      "kind": "book",
+      "prompt": "Find the volume of the cuboidal portion of a shed whose base is 15 m by 7 m and whose cuboidal height is 8 m.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "840",
+      "expected": {
+        "kind": "numeric",
+        "value": 840,
+        "tol": 0.5
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.3 (Example 5)",
+      "quote": "the length, breadth and height of the cuboid are 15 m, 7 m and 8 m, respectively."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:volume-half-cylinder",
+      "kind": "book",
+      "prompt": "A shed's roof is half a cylinder of diameter 7 m and length 15 m (so radius 3.5 m). Find its volume = (1/2)πr²h (take π = 22/7).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "288.75",
+      "expected": {
+        "kind": "numeric",
+        "value": 288.75,
+        "tol": 0.5
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.3 (Example 5)",
+      "quote": "the diameter of the half cylinder is 7 m and its height is 15 m."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:tsa-toy-cone-plus-hemisphere",
+      "kind": "book",
+      "prompt": "A top is a cone surmounted by a hemisphere of the same radius. The CSA of the hemisphere is 19.25 cm² and the CSA of the cone is 20.35 cm². Find the total surface area to colour (CSA of hemisphere + CSA of cone), to 1 decimal place.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "39.6",
+      "expected": {
+        "kind": "numeric",
+        "value": 39.6,
+        "tol": 0.1
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 1)",
+      "quote": "TSA of the toy = CSA of hemisphere + CSA of cone"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:convert-units-cm-to-m",
+      "kind": "book",
+      "prompt": "Convert a surface area of 33000 cm² to square metres.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3.3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3.3,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 4)",
+      "quote": "= 33000 cm² = 3.3 m²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:radius-from-diameter",
+      "kind": "book",
+      "prompt": "A hemisphere (and cone) has base diameter 4 cm. Find the radius.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.3 (Example 7)",
+      "quote": "The radius BO of the hemisphere (as well as of the cone) = 1/2 × 4 cm = 2 cm."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:derive-cone-height-from-combined",
+      "kind": "book",
+      "prompt": "A top is 5 cm tall; the hemispherical part has radius 1.75 cm. Find the height of the cone (total height − hemisphere radius).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3.25",
+      "expected": {
+        "kind": "numeric",
+        "value": 3.25,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 1)",
+      "quote": "= ( 5 – 3.5/2 ) cm = 3.25 cm"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:tsa-ring-when-cone-base-exceeds-cylinder",
+      "kind": "book",
+      "prompt": "A rocket's cone (r = 2.5 cm, l = 6.5 cm) rests on a cylinder (r' = 1.5 cm). Orange area = π[(2.5×6.5) + 2.5² − 1.5²] = π·20.25 (π = 3.14). Find it.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "63.585",
+      "expected": {
+        "kind": "numeric",
+        "value": 63.585,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 3)",
+      "quote": "= π[20.25] cm² = 3.14 × 20.25 cm²\n\n= 63.585 cm²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:painted-area-cylinder-with-one-open-base",
+      "kind": "book",
+      "prompt": "A rocket's cylindrical portion (r' = 1.5 cm, h' = 20 cm) is painted yellow on its curved wall plus its one open bottom base: area = πr'(2h' + r') (π = 3.14). Find the yellow area in cm².",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "195.465",
+      "expected": {
+        "kind": "numeric",
+        "value": 195.465,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 3)",
+      "quote": "= 4.71 × 41.5 cm²\n\n= 195.465 cm²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:tsa-solid-with-hemispherical-depression",
+      "kind": "book",
+      "prompt": "A bird-bath = cylinder CSA + hemisphere CSA, radius 30 cm, cylinder height 145 cm, = 2 × 22/7 × 30(145 + 30) cm². Find the surface area in cm².",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "33000",
+      "expected": {
+        "kind": "numeric",
+        "value": 33000,
+        "tol": 50
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (Example 4)",
+      "quote": "= 2 × 22/7 × 30(145 + 30) cm²\n\n= 33000 cm² = 3.3 m²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:tsa-combination-sum-of-csa",
+      "kind": "book",
+      "prompt": "When two solids are stuck together, the total surface area of the new solid equals: (A) the sum of the total surface areas of the parts (B) the sum of the curved surface areas of the parts (C) the difference of the volumes (D) the larger part's surface area",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "the sum of the curved surface areas of the parts",
+      "expected": {
+        "kind": "mcq",
+        "correct": "the sum of the curved surface areas of the parts",
+        "options": [
+          "the sum of the total surface areas of the parts",
+          "the sum of the curved surface areas of the parts",
+          "the difference of the volumes",
+          "the larger part's surface area"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (rule statement)",
+      "quote": "the total surface area of the new solid is the sum of the curved surface areas of each of the individual parts"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:decompose-combination-into-basic-solids",
+      "kind": "book",
+      "prompt": "A truck container carrying oil is a cylinder with what attached at each end? (A) two cones (B) two hemispheres (C) two cubes (D) two pyramids",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "two hemispheres",
+      "expected": {
+        "kind": "mcq",
+        "correct": "two hemispheres",
+        "options": [
+          "two cones",
+          "two hemispheres",
+          "two cubes",
+          "two pyramids"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.2 (decomposition)",
+      "quote": "We can see that this solid is made up of a cylinder with two hemispheres stuck at either end."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations",
+      "kind": "book",
+      "prompt": "This chapter teaches how to find the surface areas and volumes of objects formed by combining which solids? (A) only spheres (B) cuboid, cone, cylinder, sphere and hemisphere (C) only prisms (D) only pyramids",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "cuboid, cone, cylinder, sphere and hemisphere",
+      "expected": {
+        "kind": "mcq",
+        "correct": "cuboid, cone, cylinder, sphere and hemisphere",
+        "options": [
+          "only spheres",
+          "cuboid, cone, cylinder, sphere and hemisphere",
+          "only prisms",
+          "only pyramids"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "12.4 Summary",
+      "quote": "To determine the surface area of an object formed by combining any two of the basic solids, namely, cuboid, cone, cylinder, sphere and hemisphere."
+    }
+  ]
+}

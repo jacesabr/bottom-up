@@ -1,0 +1,57 @@
+{
+  "pdf": "jemh109.pdf",
+  "pages": 11,
+  "figures": {
+    "1": [
+      "page001_img1.png",
+      "page001_img13.png",
+      "page001_img14.png"
+    ],
+    "2": [
+      "page002_img1.png",
+      "page002_img2.png",
+      "page002_img3.png",
+      "page002_img4.png"
+    ],
+    "3": [
+      "page003_img1.png",
+      "page003_img2.png",
+      "page003_img3.png"
+    ],
+    "4": [
+      "page004_img1.png",
+      "page004_img2.png",
+      "page004_img3.png"
+    ],
+    "5": [
+      "page005_img1.png",
+      "page005_img2.png",
+      "page005_img3.png"
+    ],
+    "6": [
+      "page006_img469.png",
+      "page006_img470.png"
+    ],
+    "7": [
+      "page007_img1.png",
+      "page007_img2.png"
+    ],
+    "8": [
+      "page008_img1.png",
+      "page008_img2.png",
+      "page008_img3.png"
+    ],
+    "9": [
+      "page009_img1.png",
+      "page009_img2.png"
+    ],
+    "10": [
+      "page010_img1.png",
+      "page010_img2.png"
+    ],
+    "11": [
+      "page011_img1.png",
+      "page011_img2.png"
+    ]
+  }
+}

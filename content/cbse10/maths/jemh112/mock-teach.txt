@@ -1,0 +1,53 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh112
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:36:17.774Z
+
+teach  decompose-combination-into-basic-solids  (intermediate)
+  check  "two hemispheres"  →  PASS
+teach  radius-from-diameter  (shared)
+  check  "2"  →  PASS
+teach  csa-hemisphere  (bedrock)
+  check  "25.14"  →  PASS
+teach  compute-slant-height  (bedrock)
+  check  "6.5"  →  PASS
+teach  csa-cone  (bedrock)
+  check  "20.35"  →  PASS
+teach  derive-cone-height-from-combined  (intermediate)
+  check  "3.25"  →  PASS
+teach  tsa-toy-cone-plus-hemisphere  (intermediate)
+  check  "39.6"  →  PASS
+teach  tsa-cube-with-hemisphere-on-top  (intermediate)
+  check  "163.86"  →  PASS
+teach  convert-units-cm-to-m  (shared)
+  check  "3.3"  →  PASS
+teach  csa-cylinder  (bedrock)
+  check  "27342.86"  →  PASS
+teach  tsa-solid-with-hemispherical-depression  (intermediate)
+  check  "33000"  →  PASS
+teach  tsa-ring-when-cone-base-exceeds-cylinder  (intermediate)
+  check  "63.585"  →  PASS
+teach  painted-area-cylinder-with-one-open-base  (intermediate)
+  check  "195.465"  →  PASS
+teach  compute-tsa-solid-hemisphere  (intermediate)
+  check  "3πr²"  →  PASS
+teach  tsa-combination-sum-of-csa  (intermediate)
+  check  "the sum of the curved surface areas of the parts"  →  PASS
+teach  volume-cylinder  (bedrock)
+  check  "196.25"  →  PASS
+teach  volume-cone  (bedrock)
+  check  "8.37"  →  PASS
+teach  volume-hemisphere  (bedrock)
+  check  "32.71"  →  PASS
+teach  volume-half-cylinder  (intermediate)
+  check  "288.75"  →  PASS
+teach  volume-cuboid  (bedrock)
+  check  "840"  →  PASS
+teach  actual-capacity-subtract-depression  (intermediate)
+  check  "163.54"  →  PASS
+teach  volume-difference-circumscribing-cylinder  (intermediate)
+  check  "25.12"  →  PASS
+teach  volume-combination-sum-of-volumes  (intermediate)
+  check  "25.12"  →  PASS
+teach  surface-areas-and-volumes-of-combinations  (goal)
+  check  "cuboid, cone, cylinder, sphere and hemisphere"  →  PASS
+
+# taught 24/24 reachable nodes; verdict PASS (mock)

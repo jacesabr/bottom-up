@@ -11,8 +11,7 @@ interface Node {
 
 interface ChapterMapProps {
   learnerId: string;
-  exam: string;
-  subject: string;
+  chapterId: string;
   onNodeClick: (conceptId: string) => void;
   onBack: () => void;
   apiBase: string;
@@ -20,8 +19,7 @@ interface ChapterMapProps {
 
 export default function ChapterMap({
   learnerId,
-  exam,
-  subject,
+  chapterId,
   onNodeClick,
   onBack,
   apiBase,
@@ -29,19 +27,19 @@ export default function ChapterMap({
   const [chapter, setChapter] = useState<any>(null);
   const [nodes, setNodes] = useState<Node[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const chapterId = 'cbse10:maths:jemh101'; // Hardcoded for 3-node prototype
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchChapter = async () => {
       try {
         const res = await fetch(`${apiBase}/learner/${learnerId}/chapter/${chapterId}`);
-        if (!res.ok) throw new Error('Failed to fetch chapter');
+        if (!res.ok) throw new Error(`API ${res.status}: could not load chapter`);
         const data = await res.json();
+        if (!data.nodes?.length) throw new Error('No concepts returned for this chapter');
         setChapter(data.chapter);
         setNodes(data.nodes.sort((a: Node, b: Node) => a.order - b.order));
       } catch (err) {
-        console.error('Error:', err);
+        setError(err instanceof Error ? err.message : 'Unknown error');
       } finally {
         setLoading(false);
       }
@@ -50,7 +48,15 @@ export default function ChapterMap({
     fetchChapter();
   }, [learnerId, chapterId, apiBase]);
 
-  if (loading) return <div className="chapter-map loading">Loading...</div>;
+  if (loading) return <div className="chapter-map loading">Loading concepts…</div>;
+  if (error) {
+    return (
+      <div className="chapter-map">
+        <button className="back-btn" onClick={onBack}>← Back</button>
+        <div className="map-error">Couldn't load concepts: {error}. Is the API running on :3030?</div>
+      </div>
+    );
+  }
 
   return (
     <div className="chapter-map">

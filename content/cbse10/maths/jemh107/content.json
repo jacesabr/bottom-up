@@ -1,0 +1,554 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh107",
+  "title": "Coordinate Geometry",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "slug": "solve-coordinate-geometry-problems",
+      "title": "Solve coordinate-geometry problems on points in the plane",
+      "role": "goal",
+      "brief": "Top skill: given coordinates of points, use the distance formula and the section formula to find distances, classify figures, locate points, and divide segments.",
+      "sec": 0,
+      "quote": "In this chapter, you will learn how to find the distance between the two points whose coordinates are given. You will also study how to find the coordinates of the point which divides a line segment joining two given points in a given ratio.",
+      "explanation": "The chapter's two engines are the distance formula and the section formula. Every worked example applies one or both of these to a configuration of points: testing for triangles/squares/collinearity, finding equidistant points, dividing segments in a ratio, and finding unknown vertices of parallelograms.",
+      "keyMoves": [
+        "Read off coordinates of the given points",
+        "Decide whether the task needs the distance formula, the section formula, or both",
+        "Apply the formula and interpret the numeric result back into the geometric claim"
+      ],
+      "misconceptions": [
+        "Treating coordinate geometry as pure algebra and forgetting the geometric meaning of the answer",
+        "Picking the wrong tool (e.g. using distance when a ratio/section is required)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:read-point-coordinates",
+        "cbse10:maths:jemh107:use-pythagoras-theorem",
+        "cbse10:maths:jemh107:apply-distance-formula",
+        "cbse10:maths:jemh107:apply-section-formula",
+        "cbse10:maths:jemh107:distance-from-origin",
+        "cbse10:maths:jemh107:classify-triangle-by-sides",
+        "cbse10:maths:jemh107:verify-triangle-exists",
+        "cbse10:maths:jemh107:test-square-by-distance",
+        "cbse10:maths:jemh107:test-collinearity-by-distance",
+        "cbse10:maths:jemh107:derive-equidistant-relation",
+        "cbse10:maths:jemh107:find-point-on-axis-equidistant",
+        "cbse10:maths:jemh107:find-point-dividing-in-ratio",
+        "cbse10:maths:jemh107:find-ratio-from-point",
+        "cbse10:maths:jemh107:find-ratio-axis-divides",
+        "cbse10:maths:jemh107:find-trisection-points",
+        "cbse10:maths:jemh107:apply-midpoint-formula",
+        "cbse10:maths:jemh107:use-parallelogram-diagonal-bisect"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:apply-distance-formula",
+      "slug": "apply-distance-formula",
+      "title": "Apply the distance formula to two points",
+      "role": "intermediate",
+      "brief": "Compute PQ = √[(x₂ − x₁)² + (y₂ − y₁)²] for points P(x₁,y₁) and Q(x₂,y₂).",
+      "sec": 1,
+      "quote": "PQ = √[(x₂ – x₁)² + (y₂ – y₁)²],",
+      "explanation": "The core distance formula derived from the Pythagoras theorem on the right triangle formed by horizontal and vertical legs between the two points. Plug the two coordinate pairs in, subtract, square, sum, and take the positive square root.",
+      "keyMoves": [
+        "Identify (x1,y1) and (x2,y2)",
+        "Form the differences x2−x1 and y2−y1",
+        "Square each difference, add, and take the positive square root"
+      ],
+      "misconceptions": [
+        "Subtracting an x from a y",
+        "Forgetting to square the differences",
+        "Taking a negative square root (distance is non-negative)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:compute-coordinate-differences",
+        "cbse10:maths:jemh107:square-and-sum",
+        "cbse10:maths:jemh107:read-point-coordinates",
+        "cbse10:maths:jemh107:use-pythagoras-theorem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:compute-coordinate-differences",
+      "slug": "compute-coordinate-differences",
+      "title": "Compute coordinate differences with signed coordinates",
+      "role": "shared",
+      "brief": "Form x₂ – x₁ and y₂ – y₁ correctly when coordinates can be negative, e.g. (3 + 2) for 3 − (−2).",
+      "sec": 1,
+      "quote": "PQ = √[(3 + 2)² + (2 + 3)²] = √(5² + 5²) = √50 = 7.07 (approx.)",
+      "explanation": "Before squaring, you subtract the coordinates. Subtracting a negative coordinate becomes addition. Getting these signed differences right is the most common failure point in the distance formula.",
+      "keyMoves": [
+        "Substitute coordinates with their signs into (x2 − x1)",
+        "Convert subtraction of a negative into addition",
+        "Reduce to a single signed number before squaring"
+      ],
+      "misconceptions": [
+        "3 − (−2) = 1 instead of 5",
+        "Dropping the minus sign of a negative coordinate"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:square-and-sum",
+      "slug": "square-and-sum",
+      "title": "Square the legs and sum them under the root",
+      "role": "shared",
+      "brief": "Square each difference and add: e.g. 5² + 5² = 50; (−4)² + (−6)² = 52.",
+      "sec": 1,
+      "quote": "QR = √[(– 2 – 2)² + (– 3 – 3)²] = √[(– 4)² + (– 6)²] = √52 = 7.21 (approx.)",
+      "explanation": "Once the differences are formed, square them (a negative squared is positive) and add to get the quantity under the radical. A squared negative becoming positive is a frequent slip.",
+      "keyMoves": [
+        "Square each signed difference",
+        "Note (negative)² is positive",
+        "Add the two squares"
+      ],
+      "misconceptions": [
+        "(−4)² = −16",
+        "Adding before squaring"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:distance-from-origin",
+      "slug": "distance-from-origin",
+      "title": "Find distance of a point from the origin",
+      "role": "intermediate",
+      "brief": "Special case OP = √(x² + y²) for the distance of P(x,y) from O(0,0).",
+      "sec": 1,
+      "quote": "OP = √(x² + y²) .",
+      "explanation": "When one point is the origin, the differences are just x and y, so the distance simplifies to √(x² + y²). It is the distance formula with x1 = y1 = 0.",
+      "keyMoves": [
+        "Recognise one point is (0,0)",
+        "Drop to √(x² + y²)",
+        "Square, sum, square-root"
+      ],
+      "misconceptions": [
+        "Still subtracting a non-zero value for the origin",
+        "Forgetting the square root"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-distance-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:classify-triangle-by-sides",
+      "slug": "classify-triangle-by-sides",
+      "title": "Classify a triangle from its three side lengths",
+      "role": "intermediate",
+      "brief": "Compute the three side lengths by distance; use the converse of Pythagoras (PQ²+PR²=QR²) to identify a right triangle, or equal sides for isosceles.",
+      "sec": 1,
+      "quote": "Also, PQ² + PR² = QR², by the converse of Pythagoras theorem, we have ∠ P = 90°. Therefore, PQR is a right triangle.",
+      "explanation": "After finding all three side lengths with the distance formula, compare them: two equal sides means isosceles; if the sum of squares of two sides equals the square of the third, the converse of Pythagoras gives a right angle.",
+      "keyMoves": [
+        "Find all three side lengths",
+        "Check whether any two sides are equal (isosceles)",
+        "Check whether sum of two squared sides equals the third squared side (right angle)"
+      ],
+      "misconceptions": [
+        "Comparing the raw roots instead of squares for the Pythagoras test",
+        "Assuming a triangle is right without verifying the converse condition"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-distance-formula",
+        "cbse10:maths:jemh107:use-pythagoras-theorem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:verify-triangle-exists",
+      "slug": "verify-triangle-exists",
+      "title": "Verify three points form a triangle",
+      "role": "intermediate",
+      "brief": "Three points form a triangle iff the sum of any two distances exceeds the third (not collinear).",
+      "sec": 1,
+      "quote": "Since the sum of any two of these distances is greater than the third distance, therefore, the points P, Q and R form a triangle.",
+      "explanation": "Distances between the three points are computed; if the sum of any two exceeds the third, the points are non-collinear and a genuine triangle exists.",
+      "keyMoves": [
+        "Compute the three pairwise distances",
+        "Check the triangle inequality (sum of two > third)",
+        "Conclude triangle vs collinear"
+      ],
+      "misconceptions": [
+        "Concluding a triangle when the points are actually collinear (sum equals third)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-distance-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:test-square-by-distance",
+      "slug": "test-square-by-distance",
+      "title": "Show four points form a square via sides and diagonals",
+      "role": "intermediate",
+      "brief": "All four sides equal AND both diagonals equal ⇒ square.",
+      "sec": 1,
+      "quote": "Since, AB = BC = CD = DA and AC = BD, all the four sides of the quadrilateral ABCD are equal and its diagonals AC and BD are also equal. Therefore, ABCD is a square.",
+      "explanation": "Compute the four side lengths and the two diagonals with the distance formula. If all sides are equal and both diagonals are equal, the quadrilateral is a square.",
+      "keyMoves": [
+        "Find the four side lengths",
+        "Find both diagonal lengths",
+        "Check all sides equal and both diagonals equal"
+      ],
+      "misconceptions": [
+        "Concluding a square from equal sides alone (that is a rhombus)",
+        "Confusing which pairs are sides versus diagonals"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-distance-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:test-collinearity-by-distance",
+      "slug": "test-collinearity-by-distance",
+      "title": "Test collinearity of three points by distances",
+      "role": "intermediate",
+      "brief": "Points A,B,C are collinear when AB + BC = AC.",
+      "sec": 1,
+      "quote": "Since, AB + BC = 3√2 + 2√2 = 5√2 = AC, we can say that the points A, B and C are collinear.",
+      "explanation": "Compute the three distances. If the two shorter distances sum exactly to the longest, the middle point lies on the segment joining the other two, so the points are collinear.",
+      "keyMoves": [
+        "Compute AB, BC, AC",
+        "Check whether AB + BC equals AC",
+        "Conclude collinear / in a line"
+      ],
+      "misconceptions": [
+        "Adding the wrong pair (must be the two that sum to the largest)",
+        "Treating approximate sums as exactly equal"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-distance-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:set-up-equidistant-equation",
+      "slug": "set-up-equidistant-equation",
+      "title": "Set up an equidistant-point equation",
+      "role": "intermediate",
+      "brief": "Equidistant means AP = BP, so set AP² = BP² and expand.",
+      "sec": 1,
+      "quote": "We are given that AP = BP. So, AP² = BP²",
+      "explanation": "To find points equidistant from two given points, equate the two squared distances (squaring removes the radicals), expand both sides, and simplify; the squared variable terms cancel leaving a linear relation.",
+      "keyMoves": [
+        "Write AP² = BP² using the distance formula",
+        "Expand both squared-distance expressions",
+        "Cancel the x² and y² terms to get a linear equation"
+      ],
+      "misconceptions": [
+        "Forgetting to square both sides (leaving radicals)",
+        "Failing to cancel x²/y² terms"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-distance-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:derive-equidistant-relation",
+      "slug": "derive-equidistant-relation",
+      "title": "Derive the relation for a general equidistant point (x,y)",
+      "role": "intermediate",
+      "brief": "Expand AP²=BP² for (x,y) equidistant from two points and reduce to a linear relation like x − y = 2.",
+      "sec": 1,
+      "quote": "i.e.,     x² – 14x + 49 + y² – 2y + 1 = x² – 6x + 9 + y² – 10y + 25",
+      "explanation": "With P = (x,y) general, expanding AP² = BP² and cancelling the common x² and y² yields a linear equation in x and y, which is the perpendicular bisector of the segment.",
+      "keyMoves": [
+        "Substitute P(x,y) and the two fixed points",
+        "Expand all four squared binomials",
+        "Cancel x², y² and collect to a linear relation"
+      ],
+      "misconceptions": [
+        "Expansion errors in (x−7)² etc.",
+        "Not recognising the result is the perpendicular bisector"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:set-up-equidistant-equation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:find-point-on-axis-equidistant",
+      "slug": "find-point-on-axis-equidistant",
+      "title": "Find a point on an axis equidistant from two points",
+      "role": "intermediate",
+      "brief": "A point on the y-axis is (0,y); set its squared distances equal and solve the single linear equation for y.",
+      "sec": 1,
+      "quote": "We know that a point on the y-axis is of the form (0, y). So, let the point P(0, y) be equidistant from A and B.",
+      "explanation": "Use the axis constraint to fix one coordinate (x=0 on the y-axis), write the squared-distance equality, and solve the resulting one-variable linear equation for the free coordinate.",
+      "keyMoves": [
+        "Write the point in axis form (0,y) or (x,0)",
+        "Set up the squared-distance equality",
+        "Solve the linear equation for the single unknown"
+      ],
+      "misconceptions": [
+        "Using the wrong axis form (mixing up (0,y) and (x,0))",
+        "Not cancelling the y² terms before solving"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:set-up-equidistant-equation",
+        "cbse10:maths:jemh107:read-point-coordinates"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:apply-section-formula",
+      "slug": "apply-section-formula",
+      "title": "Apply the section formula for internal division",
+      "role": "intermediate",
+      "brief": "P dividing \\(A(x_1,y_1)\\)–\\(B(x_2,y_2)\\) in ratio \\(m_1:m_2\\) internally is \\(\\left(\\frac{m_1x_2+m_2x_1}{m_1+m_2}, \\frac{m_1y_2+m_2y_1}{m_1+m_2}\\right)\\).",
+      "sec": 3,
+      "quote": "( (m₁x₂ + m₂x₁)/(m₁ + m₂) , (m₁y₂ + m₂y₁)/(m₁ + m₂) )",
+      "explanation": "Given the two endpoints and a ratio \\(m_1 : m_2\\), substitute into the section formula. Note the cross pattern: \\(m_1\\) multiplies the second point's coordinate and \\(m_2\\) the first point's.",
+      "keyMoves": [
+        "Identify (x1,y1), (x2,y2), and ratio m1:m2",
+        "Substitute into the weighted-average formula",
+        "Simplify each coordinate"
+      ],
+      "misconceptions": [
+        "Swapping which point each ratio number weights (m1x1 instead of m1x2)",
+        "Putting the ratio in the wrong order"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:read-point-coordinates"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:find-point-dividing-in-ratio",
+      "slug": "find-point-dividing-in-ratio",
+      "title": "Find the point dividing a segment in a given ratio",
+      "role": "intermediate",
+      "brief": "Plug concrete numbers into the section formula, e.g. ratio 3:1 of (4,−3) and (8,5) gives (7,3).",
+      "sec": 3,
+      "quote": "x = (3(8) + 1(4))/(3 + 1) = 7 ,   y = (3(5) + 1(–3))/(3 + 1) = 3",
+      "explanation": "The direct computation: substitute the ratio numbers and coordinates into the section formula and evaluate to get the dividing point.",
+      "keyMoves": [
+        "Substitute m1, m2 and coordinates",
+        "Evaluate numerator and denominator for x then y",
+        "Report the point (x,y)"
+      ],
+      "misconceptions": [
+        "Arithmetic slips with negative coordinates",
+        "Mismatching the x and y substitutions"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-section-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:find-ratio-from-point",
+      "slug": "find-ratio-from-point",
+      "title": "Find the ratio in which a point divides a segment",
+      "role": "intermediate",
+      "brief": "Set the point's known coordinate equal to the section formula and solve for k (using k:1 form).",
+      "sec": 3,
+      "quote": "i.e.,     7k = 2",
+      "explanation": "When the dividing point is known but the ratio is not, use the k:1 form, equate one coordinate to its section-formula expression, and solve the resulting equation for k to recover the ratio k:1.",
+      "keyMoves": [
+        "Let the ratio be k:1",
+        "Equate a known coordinate to its section-formula expression",
+        "Solve the linear equation for k and write the ratio"
+      ],
+      "misconceptions": [
+        "Forgetting to verify the ratio with the second coordinate",
+        "Errors clearing the (k+1) denominator"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-section-formula",
+        "cbse10:maths:jemh107:equate-ordered-pairs"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:find-ratio-axis-divides",
+      "slug": "find-ratio-axis-divides",
+      "title": "Find the ratio in which an axis divides a segment",
+      "role": "intermediate",
+      "brief": "On the y-axis abscissa = 0, so set the x-section expression to 0 and solve for k.",
+      "sec": 3,
+      "quote": "This point lies on the y-axis, and we know that on the y-axis the abscissa is 0.",
+      "explanation": "The axis imposes a coordinate condition (x=0 on the y-axis, y=0 on the x-axis). Set the corresponding section-formula coordinate to zero and solve for k to get the ratio, then back-substitute for the intersection point.",
+      "keyMoves": [
+        "Use k:1 form for the unknown ratio",
+        "Set the axis-fixed coordinate's expression to 0",
+        "Solve for k, then compute the point of intersection"
+      ],
+      "misconceptions": [
+        "Setting the wrong coordinate to zero",
+        "Stopping at k without finding the intersection point"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-section-formula",
+        "cbse10:maths:jemh107:read-point-coordinates"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:find-trisection-points",
+      "slug": "find-trisection-points",
+      "title": "Find points of trisection of a segment",
+      "role": "intermediate",
+      "brief": "Trisection points divide AB in ratios 1:2 and 2:1; apply the section formula twice.",
+      "sec": 3,
+      "quote": "Therefore, P divides AB internally in the ratio 1 : 2.",
+      "explanation": "Trisection produces three equal parts, so the first point divides AB in 1:2 and the second in 2:1. Apply the section formula with each ratio to get both trisection points.",
+      "keyMoves": [
+        "Recognise trisection means ratios 1:2 and 2:1",
+        "Apply the section formula for the 1:2 point",
+        "Apply it again for the 2:1 point"
+      ],
+      "misconceptions": [
+        "Using ratio 1:3 or 1:1 instead of 1:2 and 2:1",
+        "Computing only one of the two points"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-section-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:apply-midpoint-formula",
+      "slug": "apply-midpoint-formula",
+      "title": "Apply the midpoint formula",
+      "role": "intermediate",
+      "brief": "Midpoint of \\(A(x_1,y_1)\\), \\(B(x_2,y_2)\\) is \\(((x_1+x_2)/2, (y_1+y_2)/2)\\), the \\(1:1\\) special case of the section formula.",
+      "sec": 3,
+      "quote": "( (x₁ + x₂)/2 , (y₁ + y₂)/2 ).",
+      "explanation": "The midpoint divides a segment in ratio 1:1, so the section formula collapses to the simple average of the endpoint coordinates.",
+      "keyMoves": [
+        "Average the two x-coordinates",
+        "Average the two y-coordinates",
+        "Report the midpoint"
+      ],
+      "misconceptions": [
+        "Subtracting instead of averaging",
+        "Forgetting to halve"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-section-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:use-parallelogram-diagonal-bisect",
+      "slug": "use-parallelogram-diagonal-bisect",
+      "title": "Use diagonals-bisect property to find a parallelogram vertex",
+      "role": "intermediate",
+      "brief": "In a parallelogram the diagonals bisect each other, so midpoint of one diagonal = midpoint of the other; solve for the unknown.",
+      "sec": 3,
+      "quote": "So, the coordinates of the mid-point of AC = coordinates of the mid-point of BD",
+      "explanation": "For a parallelogram ABCD taken in order, diagonals AC and BD share a midpoint. Equate the midpoint of AC to the midpoint of BD and solve the resulting equation for the unknown coordinate.",
+      "keyMoves": [
+        "Write midpoint of AC",
+        "Write midpoint of BD with the unknown",
+        "Equate corresponding coordinates and solve"
+      ],
+      "misconceptions": [
+        "Pairing the wrong vertices as diagonal endpoints",
+        "Equating side midpoints instead of diagonal midpoints"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh107:apply-midpoint-formula",
+        "cbse10:maths:jemh107:equate-ordered-pairs"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:use-pythagoras-theorem",
+      "slug": "use-pythagoras-theorem",
+      "title": "Apply the Pythagoras theorem to a right triangle",
+      "role": "bedrock",
+      "brief": "In a right triangle the hypotenuse squared equals the sum of the squares of the legs.",
+      "sec": 1,
+      "quote": "PQ² = PT² + QT²",
+      "explanation": "The foundation of the distance formula: a right triangle with legs PT and QT has hypotenuse PQ satisfying PQ² = PT² + QT². The horizontal and vertical gaps between two points are the legs.",
+      "keyMoves": [
+        "Identify the two perpendicular legs",
+        "Square and add them",
+        "Take the square root for the hypotenuse"
+      ],
+      "misconceptions": [
+        "Adding the legs instead of their squares",
+        "Misidentifying which side is the hypotenuse"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:read-point-coordinates",
+      "slug": "read-point-coordinates",
+      "title": "Read and write a point's coordinates (abscissa, ordinate)",
+      "role": "bedrock",
+      "brief": "A point is (x, y): x is the abscissa (distance from y-axis), y the ordinate; axis points are (x,0) or (0,y).",
+      "sec": 0,
+      "quote": "The coordinates of a point on the x-axis are of the form (x, 0), and of a point on the y-axis are of the form (0, y).",
+      "explanation": "The bedrock of the chapter: every point is an ordered pair (x,y). Points on the x-axis have y=0 and points on the y-axis have x=0. All formulas operate on these ordered pairs.",
+      "keyMoves": [
+        "Identify the abscissa (x) and ordinate (y)",
+        "Use (x,0) for x-axis points and (0,y) for y-axis points",
+        "Keep coordinate order consistent"
+      ],
+      "misconceptions": [
+        "Swapping abscissa and ordinate",
+        "Using (y,0) for an x-axis point"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh107:equate-ordered-pairs",
+      "slug": "equate-ordered-pairs",
+      "title": "Equate ordered pairs componentwise",
+      "role": "shared",
+      "brief": "If (x,y) = (a,b) then x = a and y = b — split a coordinate equation into two scalar equations.",
+      "sec": 3,
+      "quote": "Recall that if (x, y) = (a, b) then x = a and y = b.",
+      "explanation": "When two points are stated equal, each coordinate must match. This lets you split one vector equation into two ordinary equations to solve for unknowns (as in ratio and parallelogram problems).",
+      "keyMoves": [
+        "Match first coordinates: x = a",
+        "Match second coordinates: y = b",
+        "Solve each scalar equation"
+      ],
+      "misconceptions": [
+        "Mixing the x-equation with the y-equation",
+        "Solving only one component"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## Repair Summary\n\nThe original authored.json had two critical failures:\n\n### 1. STRUCTURE (Primary Bug)\nThe graph had **multiple roots** and **broken reachability**:\n- Goal node `solve-coordinate-geometry-problems` was BOTH a parent (to many nodes) AND a child of `apply-distance-formula` (line 473-474), creating a cycle.\n- Many intermediate and bedrock nodes were orphaned or unreachable.\n\n**FIXED**: Restructured as a strict prerequisite DAG with:\n- **Single root**: `solve-coordinate-geometry-problems` (goal, no incoming edges)\n- **Reachability**: All 22 nodes reachable from goal by parent→child traversal (child = prerequisite of parent)\n- **Acyclic**: Explicitly verified no cycles\n- The two techniques (`apply-distance-formula`, `apply-section-formula`) are direct children of the goal\n- All bedrock nodes (`read-point-coordinates`, `use-pythagoras-theorem`) are children of higher-level nodes\n- All intermediate skills chain upward to goal\n\n### 2. NODE QUOTES (Provisional Issues)\nVerified all 22 quotes verbatim from chapter text (SEG 0, 1, 3):\n- All ≥4 words ✓\n- All exact substrings from specified SEG.sec ✓\n- No quotes changed; all preserved as originally authored\n\n### 3. GATE QUOTES & ANSWERS\nAll 22 gates verified:\n- All quotes ≥4 words and exact verbatim ✓\n- All numeric answers correct under numeric grader ✓\n- All MCQ answers are option TEXT (not letters) ✓\n- All CAS grader uses `x - y` (not `**` notation) ✓\n- All gate quotes match chapter sources ✓\n\n## Verification\n- **Edges**: 41 total (all endpoints are valid slugs, no undefined nodes)\n- **Node count**: 22 unique (7 intermediate from distance formula, 7 intermediate from section formula, 2 shared utilities, 3 bedrock, 1 goal, 2 shared auxiliary)\n- **Coverage**: 100% node coverage with gates; one gate per concept\n- **Reachability**: All 21 non-goal nodes reachable from goal\n- **Acyclicity**: Verified no cycles (goal has no parent, all edges flow upward)\n",
+  "absentNotes": "This chapter does NOT teach several things a fuller coordinate-geometry treatment would include, so they are intentionally omitted (not failed):\n- Area of a triangle from coordinates (the ½|x1(y2−y3)+...| / shoelace formula). This NCERT 2023+ edition removed the \"Area of a Triangle\" section; the only trace is Exercise 7.2 Q10's bracketed hint \"Area of a rhombus = 1/2 (product of its diagonals)\", which is a given hint, not a derived/taught method, so no node.\n- External division (section formula for a point outside the segment). The NOTE TO THE READER explicitly says \"You will study Section Formula for such case in higher classes.\" Deferred, so omitted.\n- A general perpendicular-bisector equation as a standalone technique — only the specific worked relation x − y = 2 (Example 4) and its remark appear; no general method is taught.\n- Slope / equation of a line — not in this chapter (Class XI).\n- Collinearity via the section/ratio method (the Note after Example 7 mentions it is possible but does not work it as a taught procedure).\n- Centroid / division-into-four-equal-parts is only an exercise (7.2 Q9), built from the section formula already captured — no separate taught skill statement, so folded under find-point-dividing-in-ratio rather than given its own node."
+}

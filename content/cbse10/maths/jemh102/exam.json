@@ -1,0 +1,374 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh102",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh102:identify-degree-of-polynomial",
+      "kind": "book",
+      "prompt": "What is the degree of the polynomial 2y² − 3y + 4?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.1 Introduction",
+      "quote": "2y² − 3y + 4 is a polynomial in the variable y of degree 2"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:classify-polynomial-by-degree",
+      "kind": "book",
+      "prompt": "A polynomial of degree 1 is called which type of polynomial?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "linear",
+      "expected": {
+        "kind": "mcq",
+        "correct": "linear",
+        "options": [
+          "linear",
+          "quadratic",
+          "cubic",
+          "constant"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.1 Introduction",
+      "quote": "A polynomial of degree 1 is called a linear polynomial."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:recognise-non-polynomial-expressions",
+      "kind": "book",
+      "prompt": "Which of these is NOT a polynomial: 2y² − 3y + 4, 4x + 2, √x + 2, or x³ + 1?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "√x + 2",
+      "expected": {
+        "kind": "mcq",
+        "correct": "√x + 2",
+        "options": [
+          "2y² − 3y + 4",
+          "4x + 2",
+          "√x + 2",
+          "x³ + 1"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.1 Introduction",
+      "quote": "Expressions like 1/(x − 1), √x + 2, 1/(x² + 2x + 3) etc., are not polynomials."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:evaluate-polynomial-at-a-value",
+      "kind": "book",
+      "prompt": "For p(x) = x² − 3x − 4, find p(2).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-6",
+      "expected": {
+        "kind": "numeric",
+        "value": -6,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.1 Introduction",
+      "quote": "p(2) = 2² − 3 × 2 − 4 = − 6"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:evaluate-polynomial-at-negative-value",
+      "kind": "book",
+      "prompt": "For p(x) = x² − 3x − 4, find p(−1).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.1 Introduction",
+      "quote": "p(−1) = (−1)² − {3 × (−1)} − 4 = 1 + 3 − 4 = 0"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:define-zero-of-polynomial",
+      "kind": "book",
+      "prompt": "A real number k is a zero of a polynomial p(x) if p(k) equals what value?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.1 Introduction",
+      "quote": "a real number k is said to be a zero of a polynomial p(x), if p(k) = 0."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:find-zero-of-linear-polynomial",
+      "kind": "book",
+      "prompt": "Find the zero of the linear polynomial 2x + 3.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-3/2",
+      "expected": {
+        "kind": "numeric",
+        "value": -1.5,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.1 Introduction",
+      "quote": "2k + 3 = 0, i.e., k = −3/2."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:interpret-zero-as-x-intercept",
+      "kind": "book",
+      "prompt": "The graph of y = x² − 3x − 4 crosses the x-axis at exactly the points where y = 0. Reading those x-coordinates as the zeroes of the polynomial, what are the two zeroes (smaller first)?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "-1 and 4",
+      "expected": {
+        "kind": "mcq",
+        "correct": "-1 and 4",
+        "options": [
+          "-1 and 4",
+          "-4 and -1",
+          "0 and 3",
+          "-6 and -6"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.2 Geometrical Meaning of the Zeroes of a Polynomial (y = x² − 3x − 4, Table 2.1 / Fig. 2.2)",
+      "quote": "−1 and 4 are the x-coordinates of the points where the graph of y = x² − 3x − 4 intersects the x-axis."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:count-zeroes-from-graph",
+      "kind": "book",
+      "prompt": "If the graph of y = p(x) intersects the x-axis at exactly two points, how many zeroes does p(x) have?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.2 Example 1(ii)",
+      "quote": "The number of zeroes is 2 as the graph intersects the x-axis at two points."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree",
+      "kind": "book",
+      "prompt": "What is the maximum number of zeroes a polynomial of degree n can have?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "n",
+      "expected": {
+        "kind": "mcq",
+        "correct": "n",
+        "options": [
+          "n",
+          "n + 1",
+          "2n",
+          "n − 1"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.2 Remark",
+      "quote": "a polynomial p(x) of degree n has at most n zeroes."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term",
+      "kind": "book",
+      "prompt": "Factorise 2x² − 8x + 6 by splitting the middle term (give the form with the common factor 2 pulled out).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "2*(x-1)*(x-3)",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "2*(x-1)*(x-3)"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 (worked example 2x² − 8x + 6)",
+      "quote": "= (2x − 2)(x − 3) = 2(x − 1)(x − 3)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:factorise-using-difference-of-squares",
+      "kind": "book",
+      "prompt": "Factorise x² − 3 using the difference-of-squares identity.",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "(x - sqrt(3))*(x + sqrt(3))",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "(x-sqrt(3))*(x+sqrt(3))"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 Example 3",
+      "quote": "x² − 3 = (x − √3)(x + √3)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:find-zeroes-from-factors",
+      "kind": "book",
+      "prompt": "The polynomial x² + 7x + 10 factors as (x + 2)(x + 5). What are its zeroes (smaller first)?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "-5 and -2",
+      "expected": {
+        "kind": "mcq",
+        "correct": "-5 and -2",
+        "options": [
+          "-5 and -2",
+          "2 and 5",
+          "-7 and 10",
+          "5 and 2"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 Example 2",
+      "quote": "i.e., when x = − 2 or x = −5. Therefore, the zeroes of x² + 7x + 10 are − 2 and − 5."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:verify-quadratic-sum-of-zeroes",
+      "kind": "book",
+      "prompt": "For 2x² − 8x + 6 with zeroes 1 and 3, what is the sum of the zeroes?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4",
+      "expected": {
+        "kind": "numeric",
+        "value": 4,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 (worked example 2x² − 8x + 6)",
+      "quote": "Sum of its zeroes = 1 + 3 = 4 = −(−8)/2 = −(Coefficient of x)/(Coefficient of x²)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:verify-quadratic-product-of-zeroes",
+      "kind": "book",
+      "prompt": "For 2x² − 8x + 6 with zeroes 1 and 3, what is the product of the zeroes?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 (worked example 2x² − 8x + 6)",
+      "quote": "Product of its zeroes = 1 × 3 = 3 = 6/2 = (Constant term)/(Coefficient of x²)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+      "kind": "book",
+      "prompt": "If α and β are the zeroes of ax² + bx + c, then the sum of zeroes α + β equals which expression?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "-b/a",
+      "expected": {
+        "kind": "mcq",
+        "correct": "-b/a",
+        "options": [
+          "-b/a",
+          "b/a",
+          "c/a",
+          "-c/a"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 / 2.4 Summary point 5",
+      "quote": "sum of zeroes = α + β = −b/a = −(Coefficient of x)/(Coefficient of x²),"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:build-quadratic-from-sum-and-product",
+      "kind": "book",
+      "prompt": "Find a quadratic polynomial whose zeroes have sum −3 and product 2 (take a = 1).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "x^2 + 3*x + 2",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "x^2 + 3*x + 2"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 Example 4",
+      "quote": "So, one quadratic polynomial which fits the given conditions is x² + 3x + 2."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:verify-cubic-zero-by-substitution",
+      "kind": "book",
+      "prompt": "For p(x) = 3x³ − 5x² − 11x − 3, compute p(3) to check whether 3 is a zero.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 Example 5",
+      "quote": "p(3) = 3 × 3³ − (5 × 3²) − (11 × 3) − 3 = 81 − 45 − 33 − 3 = 0,"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations",
+      "kind": "book",
+      "prompt": "If α, β, γ are the zeroes of the cubic ax³ + bx² + cx + d, then the product αβγ equals which expression?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "-d/a",
+      "expected": {
+        "kind": "mcq",
+        "correct": "-d/a",
+        "options": [
+          "-d/a",
+          "d/a",
+          "-b/a",
+          "c/a"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 / 2.4 Summary point 6",
+      "quote": "α + β + γ = −b/a,\nαβ + βγ + γα = c/a,\nα β γ = −d/a."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:verify-cubic-zero-coefficient-relations",
+      "kind": "book",
+      "prompt": "For 3x³ − 5x² − 11x − 3 with zeroes 3, −1, −1/3, compute the sum of the zeroes.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5/3",
+      "expected": {
+        "kind": "numeric",
+        "value": 1.6667,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 Example 5",
+      "quote": "α + β + γ = 3 + (−1) + (−1/3) = 2 − 1/3 = 5/3 = −(−5)/3 = −b/a,"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "kind": "book",
+      "prompt": "Using the relation α + β = −b/a, αβ = c/a, construct the monic quadratic polynomial (leading coefficient 1) whose two zeroes are √3 and −√3.",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "x^2 - 3",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "x^2 - 3"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "2.3 Example 3",
+      "quote": "x² − 3 = (x − √3)(x + √3)"
+    }
+  ]
+}

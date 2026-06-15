@@ -1,0 +1,340 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh104",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "kind": "book",
+      "prompt": "Find the roots of the quadratic equation 2x² – 5x + 3 = 0 by factorisation. Give the two roots.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "1 and 3/2",
+      "expected": {
+        "kind": "mcq",
+        "correct": "1 and 3/2",
+        "options": [
+          "1 and 3/2",
+          "2 and 3",
+          "-1 and -3/2",
+          "3 and 5"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.3 (Example 3)",
+      "quote": "In other words, 1 and 3/2 are the roots of the equation 2x² – 5x + 3 = 0."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:recognise-quadratic-equation",
+      "kind": "book",
+      "prompt": "After simplification, x(x + 1) + 8 = (x + 2)(x – 2) reduces to x + 12 = 0. Is the original equation a quadratic equation? (yes/no)",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "no",
+      "expected": {
+        "kind": "mcq",
+        "correct": "no",
+        "options": [
+          "yes",
+          "no"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.2 (Example 2 ii)",
+      "quote": "It is not of the form ax² + bx + c = 0.\nTherefore, the given equation is not a quadratic equation."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:rearrange-to-standard-form",
+      "kind": "book",
+      "prompt": "Write x² – 4x + 5 = 2x – 3 in standard form ax²+bx+c=0.",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "x^2 - 6*x + 8",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "x^2 - 6*x + 8"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.2 (Example 2 i)",
+      "quote": "x² – 4x + 5 = 2x – 3\ni.e., x² – 6x + 8 = 0"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:expand-and-simplify-expression",
+      "kind": "book",
+      "prompt": "Expand and simplify (x – 2)² + 1.",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "x^2 - 4*x + 5",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "x^2 - 4*x + 5"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.2 (Example 2 i)",
+      "quote": "(i) LHS = (x – 2)² + 1 = x² – 4x + 4 + 1 = x² – 4x + 5"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
+      "kind": "book",
+      "prompt": "A cottage industry produces x toys in a day; the cost per toy in rupees is 55 minus the number of toys, and the total cost was ₹750. Write the equation in standard form ax²+bx+c=0 (so the x² coefficient is positive).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "x^2 - 55*x + 750",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "x^2 - 55*x + 750"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.2 (Example 1 ii)",
+      "quote": "x² – 55x + 750 = 0"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:verify-root-by-substitution",
+      "kind": "book",
+      "prompt": "Evaluate 2x² – 3x + 1 at x = 1 to check whether 1 is a root. What value do you get?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.3 (root definition)",
+      "quote": "If we replace x by 1 on the LHS of this equation, we get (2 × 1²) – (3 × 1) + 1 = 0 = RHS of the equation."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:split-middle-term",
+      "kind": "book",
+      "prompt": "To factorise 2x² – 5x + 3, the middle term –5x is split as a sum of two terms. Into which pair is –5x split?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "–2x – 3x",
+      "expected": {
+        "kind": "mcq",
+        "correct": "–2x – 3x",
+        "options": [
+          "–2x – 3x",
+          "–1x – 4x",
+          "+2x – 7x",
+          "–5x + 0x"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.3 (Example 3)",
+      "quote": "Let us first split the middle term – 5x as –2x –3x [because (–2x) × (–3x) = 6x² = (2x²) × 3]."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:factor-by-grouping",
+      "kind": "book",
+      "prompt": "Factorise 2x² – 5x + 3 into two linear factors.",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "(2*x - 3)*(x - 1)",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "(2*x - 3)*(x - 1)",
+        "mustBeFactored": true
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.3 (Example 3)",
+      "quote": "= 2x (x – 1) – 3(x – 1) = (2x – 3)(x – 1)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:apply-zero-product-property",
+      "kind": "book",
+      "prompt": "Given (3x – 2)(2x + 1) = 0, the zero-product property gives which two linear equations?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "3x – 2 = 0 or 2x + 1 = 0",
+      "expected": {
+        "kind": "mcq",
+        "correct": "3x – 2 = 0 or 2x + 1 = 0",
+        "options": [
+          "3x – 2 = 0 or 2x + 1 = 0",
+          "3x + 2 = 0 or 2x – 1 = 0",
+          "3x – 2 = 0 and 2x + 1 = 1",
+          "x – 2 = 0 or x + 1 = 0"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.3 (Example 4)",
+      "quote": "The roots of 6x² – x – 2 = 0 are the values of x for which (3x – 2)(2x + 1) = 0\nTherefore, 3x – 2 = 0 or 2x + 1 = 0,"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:solve-linear-factor-for-root",
+      "kind": "book",
+      "prompt": "Solve the linear equations 3x – 2 = 0 and 2x + 1 = 0 for x. Which pair of roots results?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "2/3 and –1/2",
+      "expected": {
+        "kind": "mcq",
+        "correct": "2/3 and –1/2",
+        "options": [
+          "2/3 and –1/2",
+          "3/2 and –2",
+          "–2/3 and 1/2",
+          "2 and –1"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.3 (Example 4)",
+      "quote": "i.e., x = 2/3 or x = – 1/2"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:handle-repeated-factor-equal-roots",
+      "kind": "book",
+      "prompt": "The equation 3x² – 2√6x + 2 = 0 factorises as (√3x – √2)(√3x – √2) = 0. How many distinct real roots does it have?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.3 (Example 5)",
+      "quote": "So, this root is repeated twice, one for each repeated factor √3x – √2."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:factorise-quadratic-with-surds",
+      "kind": "book",
+      "prompt": "Factorise 3x² – 2√6x + 2 into linear factors (with surd coefficients).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "(sqrt(3)*x - sqrt(2))*(sqrt(3)*x - sqrt(2))",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "(sqrt(3)*x - sqrt(2))*(sqrt(3)*x - sqrt(2))",
+        "mustBeFactored": true
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.3 (Example 5)",
+      "quote": "= (√3x – √2)(√3x – √2)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:reject-inadmissible-root",
+      "kind": "book",
+      "prompt": "The breadth x of the prayer hall satisfies 2x² + x – 300 = 0 with roots x = 12 and x = –12.5. What is the breadth of the hall (in metres)?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "12",
+      "expected": {
+        "kind": "numeric",
+        "value": 12,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.3 (Example 6)",
+      "quote": "Thus, the breadth of the hall is 12 m. Its length = 2x + 1 = 25 m."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:identify-coefficients-abc",
+      "kind": "book",
+      "prompt": "For the quadratic equation 2x² – 4x + 3 = 0, what is the value of b?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-4",
+      "expected": {
+        "kind": "numeric",
+        "value": -4,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.4 (Example 7)",
+      "quote": "where a = 2, b = – 4 and c = 3."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:compute-discriminant",
+      "kind": "book",
+      "prompt": "Compute the discriminant b² – 4ac of 2x² – 4x + 3 = 0.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-8",
+      "expected": {
+        "kind": "numeric",
+        "value": -8,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.4 (Example 7)",
+      "quote": "b² – 4ac = (– 4)² – (4 × 2 × 3) = 16 – 24 = – 8 < 0"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:classify-nature-of-roots",
+      "kind": "book",
+      "prompt": "The roots of the quadratic equation x² + x – 1 = 0 are (its discriminant is 1+4 = 5 > 0, not a perfect square):",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Irrational and distinct",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Irrational and distinct",
+        "options": [
+          "Irrational and distinct",
+          "not real",
+          "rational and distinct",
+          "real and equal"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.4 (Nature of Roots classification)",
+      "quote": "(i) two distinct real roots, if b² – 4ac > 0,\n(ii) two equal real roots, if b² – 4ac = 0,\n(iii) no real roots, if b² – 4ac < 0."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:find-k-for-equal-roots",
+      "kind": "book",
+      "prompt": "Find the value of k (k ≠ 0) for which the quadratic equation kx(x − 2) + 6 = 0 has two equal roots.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6",
+      "expected": {
+        "kind": "numeric",
+        "value": 6,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "Exercise 4.4 Q2(ii)",
+      "quote": "(ii) kx (x – 2) + 6 = 0"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:state-quadratic-formula",
+      "kind": "book",
+      "prompt": "What is the denominator in the quadratic formula x = (–b ± √(b²–4ac)) / ____ for ax²+bx+c=0?",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "2*a",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "2*a"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.4 (formula statement)",
+      "quote": "x = (–b ± √(b² – 4ac))/2a"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh104:apply-quadratic-formula",
+      "kind": "book",
+      "prompt": "Solve x² + 7x – 60 = 0 using the quadratic formula (discriminant 289). Give the two roots.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "5 or –12",
+      "expected": {
+        "kind": "mcq",
+        "correct": "5 or –12",
+        "options": [
+          "5 or –12",
+          "12 or –5",
+          "–5 or 12",
+          "5 or 12"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "4.4 (Example 8)",
+      "quote": "x = (–7 ± √289)/2 = (–7 ± 17)/2\nTherefore, x = 5 or –12."
+    }
+  ]
+}

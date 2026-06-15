@@ -1,0 +1,53 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh110
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:36:07.533Z
+
+teach  classify-line-circle-position  (bedrock)
+  check  "secant"  →  PASS
+teach  define-tangent-to-circle  (intermediate)
+  check  "1"  →  PASS
+teach  count-tangents-by-point-location  (intermediate)
+  check  "0"  →  PASS
+  check  "2"  →  PASS
+teach  justify-point-outside-tangent  (bedrock)
+  check  "longer than"  →  PASS
+teach  apply-tangent-perpendicular-radius  (intermediate)
+  check  "perpendicular"  →  PASS
+teach  apply-rhs-cpct-congruence  (bedrock)
+  check  "CPCT"  →  PASS
+teach  prove-equal-tangents-rhs  (intermediate)
+  check  "RHS"  →  PASS
+teach  apply-equal-tangent-lengths  (intermediate)
+  check  "equal"  →  PASS
+  check  "PQ = PR"  →  PASS
+teach  solve-right-triangle-pythagoras  (bedrock)
+  check  "3"  →  PASS
+teach  compute-tangent-length-pythagoras  (intermediate)
+  check  "√119 cm"  →  PASS
+  check  "7"  →  PASS
+  check  "3"  →  PASS
+teach  use-perpendicular-bisects-chord  (bedrock)
+  check  "bisects"  →  PASS
+teach  compute-chord-touching-smaller-circle  (intermediate)
+  check  "8"  →  PASS
+  check  "3"  →  PASS
+teach  relate-angle-tangents-central-angle  (intermediate)
+  check  "70"  →  PASS
+  check  "50"  →  PASS
+  check  "145"  →  PASS
+teach  compute-base-angle-isosceles-tangent  (shared)
+  check  "70"  →  PASS
+teach  prove-angle-PTQ-twice-OPQ  (intermediate)
+  check  "30"  →  PASS
+teach  use-tangent-segments-circumscribed-quad  (intermediate)
+  check  "3"  →  PASS
+teach  find-triangle-sides-inscribed-circle  (intermediate)
+  check  "14"  →  PASS
+  check  "8"  →  PASS
+teach  use-similar-right-triangles-tangent  (intermediate)
+  check  "6.6667"  →  PASS
+teach  prove-tangents-diameter-parallel  (intermediate)
+  check  "parallel"  →  PASS
+teach  solve-circle-tangent-problems  (goal)
+  check  "50"  →  PASS
+
+# taught 20/20 reachable nodes; verdict PASS (mock)

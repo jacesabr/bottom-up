@@ -1,0 +1,49 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh106
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:35:44.528Z
+
+teach  define-similar-figures  (bedrock)
+  check  "True"  →  PASS
+teach  know-one-condition-insufficient-for-polygons  (intermediate)
+  check  "No, neither condition alone is sufficient"  →  PASS
+teach  identify-corresponding-parts  (bedrock)
+  check  "C′"  →  PASS
+teach  state-polygon-similarity-conditions  (intermediate)
+  check  "Both conditions are required"  →  PASS
+teach  source-equal-angles  (shared)
+  check  "Alternate angles"  →  PASS
+teach  write-similarity-symbolically  (intermediate)
+  check  "Δ BAC ~ Δ EDF"  →  PASS
+teach  apply-aaa-aa-criterion  (intermediate)
+  check  "Yes, by the AA similarity criterion"  →  PASS
+teach  compute-side-ratios  (shared)
+  check  "0.5"  →  PASS
+teach  apply-sss-similarity-criterion  (intermediate)
+  check  "SSS similarity criterion"  →  PASS
+teach  rearrange-product-to-ratio  (shared)
+  check  "OD/OB"  →  PASS
+teach  apply-sas-similarity-criterion  (intermediate)
+  check  "SAS similarity criterion"  →  PASS
+teach  read-off-corresponding-parts-from-similarity  (intermediate)
+  check  "BC/QR = CA/RP"  →  PASS
+teach  find-unknown-angle-via-similarity  (intermediate)
+  check  "40"  →  PASS
+teach  find-unknown-length-via-proportion  (intermediate)
+  check  "1.6"  →  PASS
+teach  model-real-world-with-similar-triangles  (intermediate)
+  check  "42"  →  PASS
+teach  use-medians-in-similar-triangles  (intermediate)
+  check  "CA/RP"  →  PASS
+teach  prove-bpt-with-areas  (intermediate)
+  check  "True"  →  PASS
+teach  manipulate-ratio-add-one  (shared)
+  check  "AC/AE"  →  PASS
+teach  apply-basic-proportionality-theorem  (intermediate)
+  check  "AE/EC"  →  PASS
+teach  test-parallel-by-ratio  (intermediate)
+  check  "1.3"  →  PASS
+teach  apply-converse-bpt  (intermediate)
+  check  "ST ‖ QR"  →  PASS
+teach  prove-and-apply-triangle-similarity  (goal)
+  check  "SAS similarity criterion"  →  PASS
+
+# taught 22/22 reachable nodes; verdict PASS (mock)

@@ -1,0 +1,400 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh113",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh113:compute-class-mark",
+      "kind": "book",
+      "prompt": "For the class interval 10-25, what is the class mark (mid-point)?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "17.5",
+      "expected": {
+        "kind": "numeric",
+        "value": 17.5,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (class mark of 10-25)",
+      "quote": "for the class 10-25, the class mark is (10+25)/2, i.e., 17.5."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:compute-mean-direct-method",
+      "kind": "book",
+      "prompt": "Using the direct method with Σfᵢxᵢ = 1860.0 and Σfᵢ = 30, find the mean x̄.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "62",
+      "expected": {
+        "kind": "numeric",
+        "value": 62,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (Example 1, grouped, direct method)",
+      "quote": "x̄ = Σfᵢxᵢ / Σfᵢ = 1860.0 / 30 = 62"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:compute-fx-product-and-sum",
+      "kind": "book",
+      "prompt": "In Table 13.3, summing the fᵢxᵢ column gives Σfᵢxᵢ = ?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1860.0",
+      "expected": {
+        "kind": "numeric",
+        "value": 1860,
+        "tol": 0.5
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (Table 13.3 total)",
+      "quote": "Total | Σfᵢ = 30 | | Σfᵢxᵢ = 1860.0"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:choose-assumed-mean",
+      "kind": "book",
+      "prompt": "In Example 1 (grouped), which class mark is chosen as the assumed mean a?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "47.5",
+      "expected": {
+        "kind": "numeric",
+        "value": 47.5,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (choice of assumed mean)",
+      "quote": "So, we can choose a = 47.5 or a = 62.5. Let us choose a = 47.5."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:compute-deviation-di",
+      "kind": "book",
+      "prompt": "With assumed mean a = 47.5, what is the deviation dᵢ = xᵢ − a for the class mark xᵢ = 17.5?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-30",
+      "expected": {
+        "kind": "numeric",
+        "value": -30,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (Table 13.4, row 10-25)",
+      "quote": "10-25 | 2 | 17.5 | –30 | –60"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:compute-mean-assumed-mean-method",
+      "kind": "book",
+      "prompt": "By the assumed mean method with a = 47.5, Σfᵢdᵢ = 435, Σfᵢ = 30, find the mean.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "62",
+      "expected": {
+        "kind": "numeric",
+        "value": 62,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (Example 1, assumed mean method)",
+      "quote": "x̄ = 47.5 + 435/30 = 47.5 + 14.5 = 62."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:compute-step-deviation-ui",
+      "kind": "book",
+      "prompt": "With a = 47.5 and h = 15, what is uᵢ = (xᵢ − a)/h for the class mark xᵢ = 92.5?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (Table 13.5, row 85-100)",
+      "quote": "85-100 | 6 | 92.5 | 45 | 3 | 18"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:compute-mean-step-deviation-method",
+      "kind": "book",
+      "prompt": "By the step-deviation method with a = 47.5, h = 15, Σfᵢuᵢ = 29, Σfᵢ = 30, find the mean.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "62",
+      "expected": {
+        "kind": "numeric",
+        "value": 62,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (Example 1, step-deviation method)",
+      "quote": "x̄ = 47.5 + 15 × (29/30)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:apply-step-deviation-unequal-classes",
+      "kind": "book",
+      "prompt": "In Example 3 (unequal classes, a = 200, h = 20, ū = −106/45), the mean number of wickets is?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "152.89",
+      "expected": {
+        "kind": "numeric",
+        "value": 152.89,
+        "tol": 0.1
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (Example 3)",
+      "quote": "So, u̅ = –106/45. Therefore, x̄ = 200 + 20 ((–106)/45) = 200 – 47.11 = 152.89."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:choose-appropriate-mean-method",
+      "kind": "book",
+      "prompt": "When the class marks xᵢ and frequencies fᵢ are numerically large, which method(s) does the chapter recommend for finding the mean?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "The assumed mean method or the step-deviation method",
+      "expected": {
+        "kind": "mcq",
+        "correct": "The assumed mean method or the step-deviation method",
+        "options": [
+          "The direct method",
+          "The assumed mean method or the step-deviation method",
+          "Only the direct method, since all methods need small numbers",
+          "None of the methods can be applied to large numbers"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.2 (Remark after Example 2, choice of method)",
+      "quote": "If xᵢ and fᵢ are numerically large numbers, then we can go for the assumed mean method or step-deviation method."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:identify-modal-class",
+      "kind": "book",
+      "prompt": "For the family-size data with frequencies 7, 8, 2, 2, 1 over classes 1-3, 3-5, 5-7, 7-9, 9-11, which is the modal class?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "3 – 5",
+      "expected": {
+        "kind": "mcq",
+        "correct": "3 – 5",
+        "options": [
+          "1 – 3",
+          "3 – 5",
+          "5 – 7",
+          "7 – 9"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.3 (Example 5)",
+      "quote": "Here the maximum class frequency is 8, and the class corresponding to this frequency is 3 – 5. So, the modal class is 3 – 5."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:read-modal-formula-parameters",
+      "kind": "book",
+      "prompt": "In Example 6 (modal class 40-55), what is the frequency f₀ of the class preceding the modal class?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.3 (Example 6)",
+      "quote": "the frequency (f₀) of the class preceding the modal class = 3,"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:apply-mode-formula",
+      "kind": "book",
+      "prompt": "For the family-size data, the modal class 3-5 has l=3, h=2, f₁=8, f₀=7, f₂=2. Apply the mode formula to find the mode.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3.286",
+      "expected": {
+        "kind": "numeric",
+        "value": 3.286,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.3 (Example 5, mode computation)",
+      "quote": "= 3 + ( (8 – 7) / (2 × 8 – 7 – 2) ) × 2 = 3 + 2/7 = 3.286"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:compute-cumulative-frequency-less-than",
+      "kind": "book",
+      "prompt": "Given frequencies 5, 3, 4 for classes 0-10, 10-20, 20-30, the cumulative frequency 'less than 30' is?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "12",
+      "expected": {
+        "kind": "numeric",
+        "value": 12,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.4 (Table 13.13)",
+      "quote": "Less than 30 | 8 + 4 = 12"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:convert-cf-table-to-frequencies",
+      "kind": "book",
+      "prompt": "From a less-than cf table where 'less than 145' = 11 and 'less than 140' = 4, the frequency of the class 140-145 is?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7",
+      "expected": {
+        "kind": "numeric",
+        "value": 7,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.4 (Example 7)",
+      "quote": "Therefore, the number of girls with height in the interval 140 - 145 = 11 – 4 = 7."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:identify-median-class",
+      "kind": "book",
+      "prompt": "For the grouped marks of 53 students (n = 53, so n/2 = 26.5), the cumulative frequency 29 of the class 60-70 is the first cf greater than and nearest to n/2. Which is the median class?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "60 – 70",
+      "expected": {
+        "kind": "mcq",
+        "correct": "60 – 70",
+        "options": [
+          "50 – 60",
+          "60 – 70",
+          "70 – 80",
+          "40 – 50"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.4 (median class of 53-student marks data)",
+      "quote": "Therefore, 60 – 70 is the median class."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:read-median-formula-parameters",
+      "kind": "book",
+      "prompt": "For the 53-student marks data, with median class 60-70, the cf of the class preceding the median class is?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "22",
+      "expected": {
+        "kind": "numeric",
+        "value": 22,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.4 (median computation)",
+      "quote": "Substituting the values (n/2) = 26.5, l = 60, cf = 22, f = 7, h = 10 in the formula above, we get"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:apply-median-formula",
+      "kind": "book",
+      "prompt": "Find the median height: l=145, n/2=25.5, cf=11, f=18, h=5. (Example 7)",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "149.03",
+      "expected": {
+        "kind": "numeric",
+        "value": 149.03,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.4 (Example 7)",
+      "quote": "Median = 145 + ( (25.5 – 11) / 18 ) × 5\n= 145 + 72.5/18 = 149.03."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:convert-discontinuous-to-continuous-classes",
+      "kind": "book",
+      "prompt": "Converting the inclusive class 118-126 to a continuous class gives which interval?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "117.5 - 126.5",
+      "expected": {
+        "kind": "mcq",
+        "correct": "117.5 - 126.5",
+        "options": [
+          "117.5 - 126.5",
+          "118 - 126",
+          "117 - 127",
+          "118.5 - 125.5"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.4 (Exercise 13.3 Q4 Hint)",
+      "quote": "The classes then change to 117.5 - 126.5, 126.5 - 135.5, . . ., 171.5 - 180.5."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:find-unknown-frequencies-from-median",
+      "kind": "book",
+      "prompt": "Median = 525, n = 100. From 525 = 500 + ((50−36−x)/20)×100, solve for x.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "9",
+      "expected": {
+        "kind": "numeric",
+        "value": 9,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.4 (Example 8)",
+      "quote": "525 = 500 + ( (50 – 36 – x) / 20 ) × 100"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:use-empirical-mode-mean-median-relation",
+      "kind": "book",
+      "prompt": "State the empirical relationship between the three measures of central tendency (fill: 3 Median = Mode + __ Mean).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.4 (Remark, empirical relationship)",
+      "quote": "3 Median = Mode + 2 Mean"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:select-appropriate-measure-of-central-tendency",
+      "kind": "book",
+      "prompt": "Which measure of central tendency gives the value of the middle-most observation in the data?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Median",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Median",
+        "options": [
+          "Median",
+          "Mean",
+          "Range",
+          "Mode"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.4 (definition of median, opening of section)",
+      "quote": "the median is a measure of central tendency which gives the value of the middle-most observation in the data."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "kind": "book",
+      "prompt": "For Example 6's marks data (modal class 40-55: l=40, h=15, f₁=7, f₀=3, f₂=6), the mode marks is?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "52",
+      "expected": {
+        "kind": "numeric",
+        "value": 52,
+        "tol": 0.5
+      },
+      "srcKind": "chapter",
+      "srcLabel": "13.3 (Example 6)",
+      "quote": "we get Mode = 40 + ( (7 – 3) / (14 – 6 – 3) ) × 15 = 52"
+    }
+  ]
+}

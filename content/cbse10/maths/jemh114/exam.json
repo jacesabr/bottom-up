@@ -1,0 +1,276 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh114",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "kind": "book",
+      "prompt": "One card is drawn from a well-shuffled deck of 52 cards. There are 4 aces in the deck. What is the probability that the card drawn is an ace?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "1/13",
+      "expected": {
+        "kind": "mcq",
+        "correct": "1/13",
+        "options": [
+          "1/4",
+          "1/13",
+          "4/13",
+          "1/52"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 4)",
+      "quote": "Therefore, P(E) = 4/52 = 1/13"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:count-total-equally-likely-outcomes",
+      "kind": "book",
+      "prompt": "Two dice, one blue and one grey, are thrown at the same time. How many possible outcomes are there?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "36",
+      "expected": {
+        "kind": "numeric",
+        "value": 36,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 13)",
+      "quote": "So, the number of possible outcomes = 6 × 6 = 36."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:count-favourable-outcomes",
+      "kind": "book",
+      "prompt": "One card is drawn from a well-shuffled deck of 52 cards. How many outcomes are favourable to the event 'the card is an ace'?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4",
+      "expected": {
+        "kind": "numeric",
+        "value": 4,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 4)",
+      "quote": "The number of outcomes favourable to E = 4"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:form-probability-ratio",
+      "kind": "book",
+      "prompt": "There are 40 students of whom 25 are girls. One name card is drawn at random. Find P(card with name of a girl).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5/8",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.625,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 7)",
+      "quote": "P (card with name of a girl) = P(Girl) = 25/40 = 5/8"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:identify-equally-likely-outcomes",
+      "kind": "book",
+      "prompt": "A bag contains 4 red balls and 1 blue ball; you draw a ball without looking. Are the outcomes 'a red ball' and 'a blue ball' equally likely?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "No, they are not equally likely",
+      "expected": {
+        "kind": "mcq",
+        "correct": "No, they are not equally likely",
+        "options": [
+          "No, they are not equally likely",
+          "Yes, they are equally likely"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (introduction to equally likely)",
+      "quote": "So, the outcomes (a red ball or a blue ball) are not equally likely."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:apply-complement-rule",
+      "kind": "book",
+      "prompt": "The probability of Sangeeta winning a tennis match is 0.62. What is the probability of Reshma (the only other player) winning?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.38",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.38,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 5)",
+      "quote": "= 1 – 0.62 = 0.38"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:probability-impossible-event",
+      "kind": "book",
+      "prompt": "What is the probability of getting the number 7 in a single throw of a die?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (impossible event)",
+      "quote": "P(getting 7) = 0/6 = 0"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:probability-sure-event",
+      "kind": "book",
+      "prompt": "What is the probability of getting a number less than 7 in a single throw of a die?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (sure event)",
+      "quote": "P(E) = P(getting a number less than 7) = 6/6 = 1"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:probability-range-bounds",
+      "kind": "book",
+      "prompt": "The chapter establishes that every probability satisfies 0 ≤ P(E) ≤ 1. Which of the following therefore CANNOT be the probability of an event?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "-1.5",
+      "expected": {
+        "kind": "mcq",
+        "correct": "-1.5",
+        "options": [
+          "2/3",
+          "-1.5",
+          "15%",
+          "0.7"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (range of probability)",
+      "quote": "0 ≤ P(E) ≤ 1"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:sum-of-elementary-events-is-one",
+      "kind": "book",
+      "prompt": "A box contains 3 blue, 2 white and 4 red marbles, drawn at random. Given P(W) = 2/9 and P(B) = 1/3, use the fact that the elementary-event probabilities sum to 1 to find P(R).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4/9",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.4444,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 8)",
+      "quote": "Note that P(W) + P(B) + P(R) = 1."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:list-sample-space-two-coins",
+      "kind": "book",
+      "prompt": "Two different coins are tossed simultaneously. What is the probability of getting at least one head?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3/4",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.75,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 9)",
+      "quote": "Therefore, P(E) = 3/4"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:list-sample-space-two-dice",
+      "kind": "book",
+      "prompt": "Two dice are thrown together. What is the probability that the sum of the two numbers appearing on top is 8?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5/36",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.1389,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 13)",
+      "quote": "Hence, P(E) = 5/36"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:card-deck-composition",
+      "kind": "book",
+      "prompt": "A standard deck of 52 playing cards has 4 suits of 13 cards each. How many aces are there in the deck?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4",
+      "expected": {
+        "kind": "numeric",
+        "value": 4,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 4)",
+      "quote": "(i) There are 4 aces in a deck."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:geometric-probability-length",
+      "kind": "book",
+      "prompt": "The music is stopped at random within 2 minutes. What is the probability that the music stops within the first half-minute?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1/4",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.25,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 10)",
+      "quote": "outcomes can lie = (1/2)/2 = 1/4"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:geometric-probability-area",
+      "kind": "book",
+      "prompt": "A helicopter is equally likely to crash anywhere in a 4.5 km by 9 km region. The lake inside measures 2.5 km by 3 km. What is the probability it crashed inside the lake?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "5/27",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.1852,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 11)",
+      "quote": "Therefore, P (helicopter crashed in the lake) = 7.5/40.5 = 75/405 = 5/27"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh114:complement-word-problem",
+      "kind": "book",
+      "prompt": "Sarika and Hamida are friends (ignoring leap years). What is the probability that both have the same birthday?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1/365",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.00274,
+        "tol": 0.0001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "14.1 (Example 6)",
+      "quote": "= 1 – 364/365     [Using P(E̅ ) = 1 – P(E)]"
+    }
+  ]
+}

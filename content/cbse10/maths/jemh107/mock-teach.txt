@@ -1,0 +1,49 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh107
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:35:49.437Z
+
+teach  read-point-coordinates  (bedrock)
+  check  "(x, 0)"  →  PASS
+teach  use-pythagoras-theorem  (bedrock)
+  check  "8"  →  PASS
+teach  compute-coordinate-differences  (shared)
+  check  "5"  →  PASS
+teach  square-and-sum  (shared)
+  check  "52"  →  PASS
+teach  apply-distance-formula  (intermediate)
+  check  "39"  →  PASS
+teach  apply-section-formula  (intermediate)
+  check  "3"  →  PASS
+teach  distance-from-origin  (intermediate)
+  check  "10"  →  PASS
+teach  classify-triangle-by-sides  (intermediate)
+  check  "Right triangle"  →  PASS
+teach  verify-triangle-exists  (intermediate)
+  check  "Yes"  →  PASS
+teach  test-square-by-distance  (intermediate)
+  check  "Square"  →  PASS
+teach  test-collinearity-by-distance  (intermediate)
+  check  "Yes, collinear"  →  PASS
+teach  set-up-equidistant-equation  (intermediate)
+  check  "AP² = BP²"  →  PASS
+teach  derive-equidistant-relation  (intermediate)
+  check  "x - y"  →  PASS
+teach  find-point-on-axis-equidistant  (intermediate)
+  check  "9"  →  PASS
+teach  find-point-dividing-in-ratio  (intermediate)
+  check  "7"  →  PASS
+teach  equate-ordered-pairs  (shared)
+  check  "x = a and y = b"  →  PASS
+teach  find-ratio-from-point  (intermediate)
+  check  "0.285714"  →  PASS
+teach  find-ratio-axis-divides  (intermediate)
+  check  "5"  →  PASS
+teach  find-trisection-points  (intermediate)
+  check  "1"  →  PASS
+teach  apply-midpoint-formula  (intermediate)
+  check  "7.5"  →  PASS
+teach  use-parallelogram-diagonal-bisect  (intermediate)
+  check  "7"  →  PASS
+teach  solve-coordinate-geometry-problems  (goal)
+  check  "(0, 9)"  →  PASS
+
+# taught 22/22 reachable nodes; verdict PASS (mock)

@@ -1,0 +1,295 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh108",
+  "title": "Introduction to Trigonometry",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh108:prove-trig-identities",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh108:define-trig-ratios",
+      "slug": "define-trig-ratios",
+      "title": "Define sin, cos, tan from a right triangle",
+      "role": "bedrock",
+      "brief": "State the three primary trigonometric ratios of an acute angle as ratios of the opposite side, adjacent side, and hypotenuse of a right triangle.",
+      "sec": 1,
+      "quote": "sine of ∠ A = side opposite to angle A / hypotenuse = BC / AC",
+      "explanation": "In right triangle ABC right-angled at B, with acute angle A, the side BC is opposite A, AB is adjacent to A, and AC is the hypotenuse. The three primary ratios are defined as sin A = BC/AC, cos A = AB/AC, tan A = BC/AB. These ratios depend only on the size of the angle, not on the triangle, because all such right triangles are similar.",
+      "keyMoves": [
+        "Identify which side is opposite the angle, which is adjacent, and which is the hypotenuse",
+        "Write sin = opposite/hypotenuse, cos = adjacent/hypotenuse, tan = opposite/adjacent",
+        "Use the correct triangle vertices to read off the side lengths"
+      ],
+      "misconceptions": [
+        "Confusing the opposite and adjacent sides relative to the angle",
+        "Treating the hypotenuse as a leg",
+        "Believing the ratio changes if the triangle is scaled"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:compute-reciprocal-ratios",
+      "slug": "compute-reciprocal-ratios",
+      "title": "Define cosec, sec, cot as reciprocals",
+      "role": "bedrock",
+      "brief": "Define the reciprocal trigonometric ratios cosec, sec, and cot as the reciprocals of sin, cos, and tan respectively.",
+      "sec": 1,
+      "quote": "cosecant of ∠ A = 1 / sine of ∠ A = hypotenuse / side opposite to angle A = AC / BC",
+      "explanation": "The remaining three ratios are reciprocals of the first three: cosec A = 1/sin A = AC/BC, sec A = 1/cos A = AC/AB, and cot A = 1/tan A = AB/BC. Knowing this reciprocal structure lets you move freely between a ratio and its reciprocal.",
+      "keyMoves": [
+        "Pair each reciprocal ratio with its primary ratio (cosec with sin, sec with cos, cot with tan)",
+        "Invert the side ratio to get the reciprocal ratio",
+        "Recognise sec pairs with cos (not sin) — a common slip"
+      ],
+      "misconceptions": [
+        "Pairing sec with sin and cosec with cos",
+        "Reading 'cos A' as the abbreviation for cosecant of A",
+        "Thinking cot A means cot times A"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:define-trig-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:relate-tan-to-sin-cos",
+      "slug": "relate-tan-to-sin-cos",
+      "title": "Express tan and cot via sin and cos",
+      "role": "intermediate",
+      "brief": "Use the quotient relations tan A = sin A/cos A and cot A = cos A/sin A to rewrite ratios in terms of sine and cosine.",
+      "sec": 1,
+      "quote": "tan A = BC/AB = (BC/AC)/(AB/AC) = sin A / cos A and cot A = cos A / sin A",
+      "explanation": "Dividing the definitions shows tan A = (BC/AC)/(AB/AC) = BC/AB = sin A/cos A, and similarly cot A = cos A/sin A. This quotient relation is the standard tool for converting any expression into sines and cosines before simplifying.",
+      "keyMoves": [
+        "Write tan as sin over cos and cot as cos over sin",
+        "Use the relation to convert mixed expressions to sin/cos form",
+        "Recognise tan and cot are reciprocals of each other"
+      ],
+      "misconceptions": [
+        "Writing tan A = cos A/sin A",
+        "Forgetting cos A cannot be zero for tan to be defined",
+        "Mixing up which ratio goes on top"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:define-trig-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:find-ratios-from-one-ratio",
+      "slug": "find-ratios-from-one-ratio",
+      "title": "Find all ratios given one ratio",
+      "role": "intermediate",
+      "brief": "Given one trigonometric ratio of an acute angle, construct the triangle and determine all the remaining ratios.",
+      "sec": 1,
+      "quote": "Given tan A = 4/3, find the other trigonometric ratios of the angle A.",
+      "explanation": "If tan A = 4/3, set the opposite side to 4 and the adjacent side to 3; the hypotenuse is sqrt(4^2 + 3^2) = 5 by the Pythagoras theorem. Then sin A = 4/5, cos A = 3/5, and the reciprocals follow. One known ratio fixes the whole triangle up to scale, hence all ratios.",
+      "keyMoves": [
+        "Assign opposite and adjacent sides from the given ratio",
+        "Use Pythagoras to find the missing side (here the hypotenuse = 5)",
+        "Read off every remaining ratio from the completed triangle"
+      ],
+      "misconceptions": [
+        "Forgetting to apply Pythagoras to find the third side",
+        "Swapping opposite and adjacent when reading tan",
+        "Assuming the hypotenuse equals the sum of the legs"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:define-trig-ratios",
+        "cbse10:maths:jemh108:compute-reciprocal-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:recall-45-ratios",
+      "slug": "recall-45-ratios",
+      "title": "Trigonometric ratios of 45°",
+      "role": "bedrock",
+      "brief": "Recall the exact trigonometric ratios of 45° from an isosceles right triangle.",
+      "sec": 3,
+      "quote": "sin 45° = side opposite to angle 45° / hypotenuse = BC/AC = a/a√2 = 1/√2",
+      "explanation": "From an isosceles right triangle with both acute angles 45°, the two legs are equal, so opposite = adjacent and tan 45° = 1; with hypotenuse √2 times a leg, sin 45° = cos 45° = 1/√2. The reciprocals give cosec 45° = sec 45° = √2 and cot 45° = 1.",
+      "keyMoves": [
+        "Use the isosceles right triangle to see the legs are equal",
+        "Read tan 45° = 1 directly from equal legs",
+        "Get sin and cos as 1/sqrt(2) using the sqrt(2) hypotenuse"
+      ],
+      "misconceptions": [
+        "Confusing 1/sqrt(2) with sqrt(2)",
+        "Mixing the 45° values with the 30°/60° values",
+        "Thinking tan 45° is anything other than 1"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:define-trig-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:recall-30-60-ratios",
+      "slug": "recall-30-60-ratios",
+      "title": "Trigonometric ratios of 30° and 60°",
+      "role": "bedrock",
+      "brief": "Recall the exact trigonometric ratios of 30° and 60° from an equilateral triangle bisected by an altitude.",
+      "sec": 3,
+      "quote": "sin 30° = BD/AB = a/2a = 1/2, cos 30° = AD/AB = a√3/2a = √3/2, tan 30° = BD/AD = a/a√3 = 1/√3",
+      "explanation": "Dropping a perpendicular in an equilateral triangle of side 2a creates a 30-60-90 triangle with sides a, \\(a\\sqrt{3}\\), 2a. This gives sin 30° = 1/2, cos 30° = \\(\\sqrt{3}/2\\), tan 30° = \\(1/\\sqrt{3}\\), and complementarily sin 60° = \\(\\sqrt{3}/2\\), cos 60° = 1/2, tan 60° = \\(\\sqrt{3}\\).",
+      "keyMoves": [
+        "Bisect an equilateral triangle to form a 30-60-90 triangle",
+        "Read sin 30° = 1/2 and cos 30° = sqrt(3)/2 from the side ratios",
+        "Swap opposite/adjacent to get the 60° values"
+      ],
+      "misconceptions": [
+        "Swapping the sin and cos values between 30° and 60°",
+        "Writing tan 30° = sqrt(3) instead of 1/sqrt(3)",
+        "Confusing cosec and sec for these angles"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:define-trig-ratios"
+      ],
+      "sameConcept": [
+        "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle"
+      ],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:recall-0-90-ratios",
+      "slug": "recall-0-90-ratios",
+      "title": "Trigonometric ratios of 0° and 90°",
+      "role": "bedrock",
+      "brief": "State the limiting values of the trigonometric ratios at 0° and 90°, including which are undefined.",
+      "sec": 3,
+      "quote": "We define : sin 0° = 0 and cos 0° = 1.",
+      "explanation": "As the triangle degenerates, the opposite side shrinks to zero at 0°, giving sin 0° = 0, cos 0° = 1, tan 0° = 0, while cosec 0° and cot 0° are undefined. Symmetrically sin 90° = 1, cos 90° = 0, tan 90° undefined, cot 90° = 0, cosec 90° = 1, sec 90° undefined.",
+      "keyMoves": [
+        "Use the degenerate-triangle limit to get sin 0° = 0 and cos 0° = 1",
+        "Identify cosec 0°, cot 0°, tan 90°, sec 90° as undefined",
+        "Apply the complementary pattern between 0° and 90°"
+      ],
+      "misconceptions": [
+        "Claiming tan 90° = 0 instead of undefined",
+        "Saying cos 0° = 0",
+        "Forgetting which boundary ratios are undefined"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:define-trig-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:evaluate-specific-angle-expressions",
+      "slug": "evaluate-specific-angle-expressions",
+      "title": "Evaluate expressions at specific angles",
+      "role": "intermediate",
+      "brief": "Substitute the exact values of the specific angles into a numeric trigonometric expression and simplify.",
+      "sec": 4,
+      "quote": "sin 60° cos 30° + sin 30° cos 60°",
+      "explanation": "Replace each ratio by its exact specific-angle value from Table 8.1, then do the arithmetic. For sin 60° cos 30° + sin 30° cos 60° you get (sqrt(3)/2)(sqrt(3)/2) + (1/2)(1/2) = 3/4 + 1/4 = 1.",
+      "keyMoves": [
+        "Look up each specific-angle ratio's exact value",
+        "Substitute carefully, squaring where indicated",
+        "Combine fractions to a single simplified number"
+      ],
+      "misconceptions": [
+        "Substituting the wrong angle's value",
+        "Forgetting to square in sin^2 or tan^2 terms",
+        "Arithmetic slips when adding the fractions"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:recall-45-ratios",
+        "cbse10:maths:jemh108:recall-30-60-ratios",
+        "cbse10:maths:jemh108:recall-0-90-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:apply-pythagorean-identity",
+      "slug": "apply-pythagorean-identity",
+      "title": "Apply the identity cos^2 A + sin^2 A = 1",
+      "role": "intermediate",
+      "brief": "Derive and apply the fundamental identity cos^2 A + sin^2 A = 1 from the Pythagoras theorem.",
+      "sec": 5,
+      "quote": "cos² A + sin² A = 1",
+      "explanation": "Dividing AB^2 + BC^2 = AC^2 by AC^2 gives (AB/AC)^2 + (BC/AC)^2 = 1, i.e. cos^2 A + sin^2 A = 1, valid for 0° <= A <= 90°. This lets you find sin from cos (or vice versa) for an acute angle.",
+      "keyMoves": [
+        "Start from AB^2 + BC^2 = AC^2 and divide by AC^2",
+        "Recognise the resulting squares as cos^2 A and sin^2 A",
+        "Use the identity to convert between sin and cos"
+      ],
+      "misconceptions": [
+        "Writing cos^2 A + sin^2 A = 0",
+        "Confusing this with the sec/tan identity",
+        "Dropping the square when applying it"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:define-trig-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:apply-sec-tan-identity",
+      "slug": "apply-sec-tan-identity",
+      "title": "Apply the identity 1 + tan^2 A = sec^2 A",
+      "role": "intermediate",
+      "brief": "Derive and apply the identity 1 + tan^2 A = sec^2 A and its cot/cosec counterpart.",
+      "sec": 5,
+      "quote": "1 + tan² A = sec² A",
+      "explanation": "Dividing AB^2 + BC^2 = AC^2 by AB^2 gives 1 + (BC/AB)^2 = (AC/AB)^2, i.e. \\(1 + \\tan^2 A = \\sec^2 A\\) for 0° <= A < 90°. Similarly dividing by BC^2 gives \\(\\cot^2 A + 1 = \\text{cosec}^2 A\\). These are the workhorses for identity proofs.",
+      "keyMoves": [
+        "Divide the Pythagoras relation by AB^2 to get 1 + tan^2 A = sec^2 A",
+        "Rearrange to sec^2 A - tan^2 A = 1 when needed",
+        "Use the parallel identity cot^2 A + 1 = cosec^2 A"
+      ],
+      "misconceptions": [
+        "Writing 1 + sec^2 A = tan^2 A",
+        "Forgetting the angle restriction A < 90° (sec undefined at 90°)",
+        "Mixing up the tan and cot versions"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:compute-reciprocal-ratios",
+        "cbse10:maths:jemh108:relate-tan-to-sin-cos"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh108:prove-trig-identities",
+      "slug": "prove-trig-identities",
+      "title": "Prove and simplify trigonometric identities",
+      "role": "goal",
+      "brief": "Prove a trigonometric identity by transforming one side using the reciprocal, quotient, and Pythagorean identities until it equals the other.",
+      "sec": 5,
+      "quote": "Prove that sec A (1 − sin A)(sec A + tan A) = 1.",
+      "explanation": "To prove an identity, rewrite one side using reciprocal relations, tan = sin/cos, and the Pythagorean identities, then simplify until it matches the other side. For example, sec A (1 - sin A)(sec A + tan A) expands and, using 1 - sin^2 A = cos^2 A, collapses to 1. This synthesises every prior skill.",
+      "keyMoves": [
+        "Convert all ratios to sin and cos (or use sec/tan and cot/cosec identities directly)",
+        "Apply cos^2 A + sin^2 A = 1 or 1 + tan^2 A = sec^2 A to cancel terms",
+        "Simplify one side until it equals the target side"
+      ],
+      "misconceptions": [
+        "Manipulating both sides as if solving an equation rather than proving",
+        "Forgetting to substitute a Pythagorean identity to finish",
+        "Cancelling incorrectly across sums"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh108:apply-pythagorean-identity",
+        "cbse10:maths:jemh108:apply-sec-tan-identity",
+        "cbse10:maths:jemh108:relate-tan-to-sin-cos",
+        "cbse10:maths:jemh108:evaluate-specific-angle-expressions",
+        "cbse10:maths:jemh108:find-ratios-from-one-ratio"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "The chapter builds trigonometry from a single right triangle outward. It first defines the three primary ratios sin, cos, tan as ratios of sides of a right triangle, then the three reciprocal ratios cosec, sec, cot, and the bridging relation tan A = sin A / cos A. Because the ratios depend only on the angle (a similar-triangles argument), knowing one ratio fixes all the others — taught through Example 1 (given tan A, find the rest). The chapter then derives exact ratios for the specific angles 45°, 30°, 60° from special triangles and 0°/90° from a limiting argument, tabulating them in Table 8.1 so learners can evaluate concrete expressions (Exercise 8.2). Finally it uses the Pythagorean relation AB^2 + BC^2 = AC^2 to derive the three identities (cos^2 A + sin^2 A = 1, 1 + tan^2 A = sec^2 A, cot^2 A + 1 = cosec^2 A), which culminate in the terminal skill: proving and simplifying trigonometric identities (Examples 9-12, Exercise 8.3).",
+  "absentNotes": "This rationalised edition stays within acute-angle, right-triangle trigonometry. It omits: the unit-circle / coordinate definition of the ratios and angles beyond 90°; radian measure; graphs of trigonometric functions; sum/difference and double-angle formulas as derived results (sin(A+B), cos(A+B) appear only as objects to disprove or as given data, never derived); inverse trigonometric functions; the law of sines and law of cosines for general triangles; and any heights-and-distances / angle-of-elevation application chapter (treated separately, not here). Proofs of the identities are given only for the right-triangle acute-angle case, not for general angles."
+}

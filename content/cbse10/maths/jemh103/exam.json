@@ -1,0 +1,358 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh103",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "kind": "book",
+      "prompt": "Solve the pair 2x + 3y = 11 and 2x − 4y = −24. What is the value of x?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-2",
+      "expected": {
+        "kind": "numeric",
+        "value": -2,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "Exercise 3.2 Q2",
+      "quote": "2. Solve 2x + 3y = 11 and 2x − 4y = − 24 and hence find the value of 'm' for which y = mx + 3."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios",
+      "kind": "book",
+      "prompt": "For 2x − 3y = 8 and 4x − 6y = 9, comparing \\(a_1/a_2\\), \\(b_1/b_2\\), \\(c_1/c_2\\), the lines are: (A) intersecting (B) parallel (C) coincident (D) perpendicular",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "parallel",
+      "expected": {
+        "kind": "mcq",
+        "correct": "parallel",
+        "options": [
+          "intersecting",
+          "parallel",
+          "coincident",
+          "perpendicular"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "Section 3.2 (ratio rules)",
+      "quote": "(iii)  parallel, then a₁/a₂ = b₁/b₂ ≠ c₁/c₂ ."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent",
+      "kind": "book",
+      "prompt": "A pair of linear equations which has no solution is called: (A) consistent (B) inconsistent (C) dependent (D) equivalent",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "inconsistent",
+      "expected": {
+        "kind": "mcq",
+        "correct": "inconsistent",
+        "options": [
+          "consistent",
+          "inconsistent",
+          "dependent",
+          "equivalent"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "Section 3.2",
+      "quote": "A pair of linear equations which has no solution, is called an inconsistent pair of linear equations."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:find-two-solutions-of-an-equation",
+      "kind": "book",
+      "prompt": "For the equation x + 3y = 6, when x = 0 find y (use y = (6 − x)/3).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2",
+      "expected": {
+        "kind": "numeric",
+        "value": 2,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.2 (Example 1, Table 3.2)",
+      "quote": "| y = (6 − x)/3 | 2 | 0 |"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:plot-points-and-draw-line",
+      "kind": "book",
+      "prompt": "When plotting the point B from Example 1 with coordinates (6, 0), how many units along the x-axis is it from the origin?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6",
+      "expected": {
+        "kind": "numeric",
+        "value": 6,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.2 (Example 1)",
+      "quote": "Plot the points A(0, 2), B(6, 0), P(0, − 4) and Q(3, − 2) on graph paper, and join the points to form the lines AB and PQ as shown in Fig. 3.1."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:read-intersection-as-solution",
+      "kind": "book",
+      "prompt": "In Example 1 the lines AB and PQ have common point B(6,0). What is the value of x in the solution?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6",
+      "expected": {
+        "kind": "numeric",
+        "value": 6,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.2 (Example 1)",
+      "quote": "So, the solution of the pair of linear equations is x = 6 and y = 0, i.e., the given pair of equations is consistent."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:solve-graphically",
+      "kind": "book",
+      "prompt": "Check graphically and solve the pair x + 3y = 6 and 2x − 3y = 12. What is the value of y at the solution?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.2 (Example 1)",
+      "quote": "So, the solution of the pair of linear equations is x = 6 and y = 0, i.e., the given pair of equations is consistent."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:express-one-variable-in-terms-of-other",
+      "kind": "book",
+      "prompt": "From x + 2y = 3, express x in terms of y as x = 3 − 2y. What is the constant term in this expression?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.1 (Example 4, Step 1)",
+      "quote": "and write it as          x = 3 − 2y          (3)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:substitute-expression-into-other-equation",
+      "kind": "book",
+      "prompt": "Substituting x = 3 − 2y into 7x − 15y = 2 and simplifying gives −29y = c. What is c?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "-19",
+      "expected": {
+        "kind": "numeric",
+        "value": -19,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.1 (Example 4, Step 2)",
+      "quote": "i.e.,          − 29y = − 19"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:solve-resulting-one-variable-equation",
+      "kind": "book",
+      "prompt": "Solve −29y = −19 for y. Give y as a decimal to 4 places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.6552",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.6552,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.1 (Example 4)",
+      "quote": "Therefore,          y = 19/29"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:back-substitute-to-find-other-variable",
+      "kind": "book",
+      "prompt": "With y = 19/29, compute x = 3 − 2(19/29). Give x as a decimal to 4 places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1.6897",
+      "expected": {
+        "kind": "numeric",
+        "value": 1.6897,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.1 (Example 4, Step 3)",
+      "quote": "x = 3 − 2 (19/29) = 49/29"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:solve-by-substitution",
+      "kind": "book",
+      "prompt": "Solve by substitution the Aftab age problem given by s − 7t + 42 = 0 and s − 3t = 6 (where s, t are the ages of Aftab and his daughter). Find t, the daughter's age in years.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "12",
+      "expected": {
+        "kind": "numeric",
+        "value": 12,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.1 (Example 5)",
+      "quote": "i.e.,          4t = 48, which gives t = 12."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:interpret-no-variable-true-statement",
+      "kind": "book",
+      "prompt": "While solving 2x+3y=9 and 4x+6y=18 the variables cancel leaving 18 = 18. The pair has: (A) a unique solution (B) no solution (C) infinitely many solutions (D) exactly two solutions",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "infinitely many solutions",
+      "expected": {
+        "kind": "mcq",
+        "correct": "infinitely many solutions",
+        "options": [
+          "a unique solution",
+          "no solution",
+          "infinitely many solutions",
+          "exactly two solutions"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.1 (Example 6)",
+      "quote": "Therefore, Equations (1) and (2) have infinitely many solutions."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:interpret-no-variable-false-statement",
+      "kind": "book",
+      "prompt": "Solving the rails x+2y−4=0 and 2x+4y−12=0 leads to −4 = 0, a false statement, so the pair has no common solution. How many solutions does the pair have?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0",
+      "expected": {
+        "kind": "numeric",
+        "value": 0,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.1 (Example 7)",
+      "quote": "Therefore, the equations do not have a common solution. So, the two rails will not cross each other."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:multiply-equations-to-equalize-coefficient",
+      "kind": "book",
+      "prompt": "To equalise the y-coefficients of 9x − 4y = 2000 and 7x − 3y = 2000, equation (1) is multiplied by 3 to give 27x − 12y = c. What is c?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6000",
+      "expected": {
+        "kind": "numeric",
+        "value": 6000,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.2 (Example 8, Step 1)",
+      "quote": "27x − 12y = 6000          (3)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:add-or-subtract-to-eliminate-variable",
+      "kind": "book",
+      "prompt": "Subtracting 27x − 12y = 6000 from 28x − 12y = 8000 eliminates y and gives x = ?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2000",
+      "expected": {
+        "kind": "numeric",
+        "value": 2000,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.2 (Example 8, Step 2)",
+      "quote": "i.e.,          x = 2000"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:solve-by-elimination",
+      "kind": "book",
+      "prompt": "Using elimination on 9x − 4y = 2000 and 7x − 3y = 2000, after x = 2000 find y.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4000",
+      "expected": {
+        "kind": "numeric",
+        "value": 4000,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.2 (Example 8, Step 3)",
+      "quote": "i.e.,          y = 4000"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:form-equations-from-word-problem",
+      "kind": "book",
+      "prompt": "Aftab says: 'Seven years ago, I was seven times as old as you were then.' With s and t the ages of Aftab and his daughter, this becomes s − 7 = 7(t − 7). Written in the form s − 7t + c = 0, what is the constant c?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "42",
+      "expected": {
+        "kind": "numeric",
+        "value": 42,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.1 (Example 5)",
+      "quote": "s − 7 = 7 (t − 7),  i.e.,  s − 7t + 42 = 0          (1)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:model-two-digit-number-by-place-value",
+      "kind": "book",
+      "prompt": "A two-digit number with ten's digit x and unit's digit y added to its reversal equals 66: (10x+y)+(10y+x)=66 simplifies to x+y = ?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6",
+      "expected": {
+        "kind": "numeric",
+        "value": 6,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.2 (Example 10)",
+      "quote": "i.e.,          x + y = 6          (1)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:verify-solution-in-original-equations",
+      "kind": "book",
+      "prompt": "Verify the number 42: does 42 + 24 = 66? Give the value of 42 + 24.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "66",
+      "expected": {
+        "kind": "numeric",
+        "value": 66,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "3.3.2 (Example 10, Verification)",
+      "quote": "Verification : Here 42 + 24 = 66 and 4 − 2 = 2."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh103:find-k-for-given-solution-type",
+      "kind": "book",
+      "prompt": "Using the inconsistency condition a₁/a₂ = b₁/b₂ ≠ c₁/c₂, find the value of k for which the pair kx + 3y = 6 and 12x + 9y = 15 is inconsistent.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4",
+      "expected": {
+        "kind": "numeric",
+        "value": 4,
+        "tol": 0
+      },
+      "srcKind": "chapter",
+      "srcLabel": "Summary point 4(ii)",
+      "quote": "(ii)  a₁/a₂ = b₁/b₂ ≠ c₁/c₂ : In this case, the pair of linear equations is inconsistent."
+    }
+  ]
+}

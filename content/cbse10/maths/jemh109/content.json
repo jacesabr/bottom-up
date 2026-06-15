@@ -1,0 +1,459 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh109",
+  "title": "Some Applications of Trigonometry",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "slug": "solve-heights-and-distances-problem",
+      "title": "Solve a heights-and-distances problem with trigonometry",
+      "role": "goal",
+      "brief": "Given a real-world height/distance situation, model it as right triangle(s), pick the correct trig ratio, and solve for the unknown length.",
+      "sec": 4,
+      "quote": "The height or length of an object or the distance between two distant objects can be determined with the help of trigonometric ratios.",
+      "explanation": "This is the chapter's top skill. A worded situation (tower, pole, ladder, shadow, building, bridge) is turned into one or more right triangles, the known angle of elevation/depression and known side are identified, the right trigonometric ratio is selected to relate the unknown to the known, and the resulting equation is solved. Composite problems (two triangles, observer height, flagstaff) decompose into these sub-skills.",
+      "keyMoves": [
+        "Read the situation and decide what length is asked",
+        "Draw the right triangle(s) and label known angle and known side",
+        "Choose the trig ratio that links the unknown to the known",
+        "Set up and solve the equation, then add/subtract auxiliary lengths"
+      ],
+      "misconceptions": [
+        "Trying to solve without drawing/labelling the triangle",
+        "Forgetting to add the observer's height or a base length to the triangle's answer"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:draw-and-label-right-triangle",
+        "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent",
+        "cbse10:maths:jemh109:choose-sin-for-opposite-over-hypotenuse",
+        "cbse10:maths:jemh109:set-up-trig-equation",
+        "cbse10:maths:jemh109:add-observer-height-to-triangle-result",
+        "cbse10:maths:jemh109:set-up-two-triangles-shared-side",
+        "cbse10:maths:jemh109:combine-segment-lengths-for-total"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:draw-and-label-right-triangle",
+      "slug": "draw-and-label-right-triangle",
+      "title": "Draw and label the right triangle from a word problem",
+      "role": "intermediate",
+      "brief": "Translate the verbal scene into a right triangle, marking the right angle, the given angle, the known side, and the unknown side.",
+      "sec": 0,
+      "quote": "First let us draw a simple diagram to represent the problem (see Fig. 9.4). Here AB represents the tower, CB is the distance of the point from the tower and ∠ ACB is the angle of elevation.",
+      "explanation": "Every solution begins by drawing the figure: identifying which segment is the vertical object, which is the horizontal distance, where the right angle sits (at the foot), and which angle is given. Without a correct labelled triangle the rest of the method cannot proceed.",
+      "keyMoves": [
+        "Represent the vertical object as one leg and ground distance as the other leg",
+        "Mark the right angle at the base",
+        "Identify the given angle's vertex and the side asked for"
+      ],
+      "misconceptions": [
+        "Placing the right angle at the wrong vertex",
+        "Mislabelling which side is opposite vs adjacent to the given angle"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:identify-angle-of-elevation",
+        "cbse10:maths:jemh109:identify-angle-of-depression",
+        "cbse10:maths:jemh109:use-alternate-angles-for-depression"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:identify-angle-of-elevation",
+      "slug": "identify-angle-of-elevation",
+      "title": "Identify the angle of elevation",
+      "role": "bedrock",
+      "brief": "Recognise the angle of elevation as the angle the upward line of sight makes with the horizontal.",
+      "sec": 0,
+      "quote": "The angle of elevation of the point viewed is the angle formed by the line of sight with the horizontal when it is above the horizontal level, i.e., the case when we raise our head to look at the object",
+      "explanation": "The angle of elevation is formed at the observer's eye between the horizontal and the upward line of sight to a point above. Correctly identifying it tells you which vertex of the triangle carries the known angle.",
+      "keyMoves": [
+        "Locate the line of sight from observer to the high point",
+        "Measure its angle above the horizontal"
+      ],
+      "misconceptions": [
+        "Confusing angle of elevation with angle of depression",
+        "Measuring the angle from the vertical instead of the horizontal"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:identify-angle-of-depression",
+      "slug": "identify-angle-of-depression",
+      "title": "Identify the angle of depression",
+      "role": "bedrock",
+      "brief": "Recognise the angle of depression as the angle the downward line of sight makes with the horizontal.",
+      "sec": 0,
+      "quote": "the angle of depression of a point on the object being viewed is the angle formed by the line of sight with the horizontal when the point is below the horizontal level, i.e., the case when we lower our head to look at the point being viewed",
+      "explanation": "When looking down at a point, the angle below the horizontal is the angle of depression. It is needed for problems observed from a height (lighthouse, multi-storey building, bridge).",
+      "keyMoves": [
+        "Locate the horizontal at the observer's eye",
+        "Measure the angle down to the line of sight"
+      ],
+      "misconceptions": [
+        "Calling a downward-look angle an angle of elevation",
+        "Forgetting the horizontal reference line at the top"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:use-alternate-angles-for-depression",
+      "slug": "use-alternate-angles-for-depression",
+      "title": "Convert an angle of depression to an angle inside the triangle (alternate angles)",
+      "role": "intermediate",
+      "brief": "Use that the angle of depression equals the alternate interior angle at the lower point because the two horizontals are parallel.",
+      "sec": 2,
+      "quote": "Observe that PB is a transversal to the parallel lines PQ and BD. Therefore, ∠ QPB and ∠ PBD are alternate angles, and so are equal. So, ∠ PBD = 30°.",
+      "explanation": "An angle of depression is measured at the top against the upper horizontal; to use it inside the right triangle you transfer it to the bottom point as an equal alternate angle (the two horizontals being parallel). This is the key move that makes depression problems solvable.",
+      "keyMoves": [
+        "Recognise the two horizontals are parallel",
+        "Treat the line of sight as a transversal",
+        "Set the bottom angle equal to the depression angle"
+      ],
+      "misconceptions": [
+        "Placing the depression angle directly inside the triangle at the top without transferring",
+        "Not recognising the alternate-angle equality"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:identify-angle-of-depression"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent",
+      "slug": "choose-tan-for-opposite-over-adjacent",
+      "title": "Choose tangent when opposite and adjacent sides are involved",
+      "role": "intermediate",
+      "brief": "Pick tan of the known angle when the unknown and known sides are the side opposite and the side adjacent to that angle.",
+      "sec": 0,
+      "quote": "tan A = BC/AB    or    cot A = AB/BC, which on solving would give us BC.",
+      "explanation": "When the height (opposite the angle) and the horizontal ground distance (adjacent) are the two relevant sides, tangent relates them. Choosing the ratio that involves exactly the known side and the unknown side is the core ratio-selection skill.",
+      "keyMoves": [
+        "Identify opposite and adjacent sides relative to the known angle",
+        "Use tan = opposite/adjacent to link them"
+      ],
+      "misconceptions": [
+        "Using sin or cos when no hypotenuse is involved",
+        "Swapping opposite and adjacent in the ratio"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle",
+        "cbse10:maths:jemh109:compute-base-with-cot"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:choose-sin-for-opposite-over-hypotenuse",
+      "slug": "choose-sin-for-opposite-over-hypotenuse",
+      "title": "Choose sine when opposite side and hypotenuse are involved",
+      "role": "intermediate",
+      "brief": "Pick sin of the known angle when the relevant sides are the side opposite the angle and the hypotenuse.",
+      "sec": 0,
+      "quote": "Now, can you think which trigonometric ratio should we consider?\n\nIt should be sin 60°.",
+      "explanation": "In the ladder problem the unknown is the hypotenuse and the known is the vertical side opposite the angle, so sine is the correct ratio. Recognising that the hypotenuse forces sin (or cos) rather than tan is the failable choice.",
+      "keyMoves": [
+        "Note the hypotenuse is one of the two relevant sides",
+        "Pair it with the opposite side via sin = opposite/hypotenuse"
+      ],
+      "misconceptions": [
+        "Using tan when the hypotenuse is actually the unknown",
+        "Confusing sine (opposite) with cosine (adjacent)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle",
+        "cbse10:maths:jemh109:compute-hypotenuse-with-sin"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle",
+      "slug": "recall-trig-ratio-of-standard-angle",
+      "title": "Recall the trig ratio value of a standard angle",
+      "role": "bedrock",
+      "brief": "Substitute the exact value of sin, cos, tan, or cot at 30°, 45°, or 60°.",
+      "sec": 0,
+      "quote": "Now,    tan 60° = AB/BC\n\ni.e.,    √3 = AB/15",
+      "explanation": "Each solution replaces the trig function of the standard angle by its exact value (tan60=√3, tan45=1, tan30=1/√3, sin60=√3/2, cot60=1/√3). Getting this value wrong derails the whole computation.",
+      "keyMoves": [
+        "Identify the standard angle (30, 45, 60)",
+        "Recall the exact value of the required ratio"
+      ],
+      "misconceptions": [
+        "Mixing up tan30 (1/√3) with tan60 (√3)",
+        "Using a decimal approximation prematurely"
+      ],
+      "prereqs": [],
+      "sameConcept": [
+        "cbse10:maths:jemh108:recall-30-60-ratios"
+      ],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:set-up-trig-equation",
+      "slug": "set-up-trig-equation",
+      "title": "Set up the trig equation relating the unknown to known values",
+      "role": "intermediate",
+      "brief": "Write the equation 'ratio of known angle = (one side)/(other side)' with the known length substituted.",
+      "sec": 0,
+      "quote": "Now,    tan 60° = AB/BC\n\ni.e.,    √3 = AB/15",
+      "explanation": "After choosing the ratio and recalling its value, you equate it to the side-ratio with the known length plugged in, producing a single-unknown equation. This is the bridge from geometry to algebra.",
+      "keyMoves": [
+        "Write ratio(angle) = side/side",
+        "Substitute the standard-angle value and the known length"
+      ],
+      "misconceptions": [
+        "Inverting the side ratio",
+        "Substituting the known length into the wrong position"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle",
+        "cbse10:maths:jemh109:solve-for-unknown-side",
+        "cbse10:maths:jemh108:define-trig-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:solve-for-unknown-side",
+      "slug": "solve-for-unknown-side",
+      "title": "Solve the trig equation for the unknown side",
+      "role": "shared",
+      "brief": "Rearrange the equation (multiply/divide) to isolate the unknown length.",
+      "sec": 0,
+      "quote": "i.e.,    √3 = AB/15\n\ni.e.,    AB = 15√3",
+      "explanation": "Once √3 = AB/15 is set up, multiply both sides by 15 to get AB = 15√3. Generic algebraic isolation of one variable, reused across all examples.",
+      "keyMoves": [
+        "Cross-multiply or multiply through to clear the fraction",
+        "Isolate the unknown"
+      ],
+      "misconceptions": [
+        "Dividing instead of multiplying",
+        "Dropping the surd factor"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:compute-hypotenuse-with-sin",
+      "slug": "compute-hypotenuse-with-sin",
+      "title": "Compute a hypotenuse length using sine",
+      "role": "intermediate",
+      "brief": "From sin(angle) = opposite/hypotenuse with the opposite known, solve for the hypotenuse.",
+      "sec": 0,
+      "quote": "So,    BD/BC = sin 60°    or    3.7/BC = √3/2\n\nTherefore,    BC = (3.7 × 2)/√3 = 4.28 m (approx.)",
+      "explanation": "Rearranging 3.7/BC = √3/2 gives BC = (3.7×2)/√3 ≈ 4.28 m — the ladder length. Isolating a denominator unknown and approximating with √3 = 1.73 is the specific skill demonstrated.",
+      "keyMoves": [
+        "Cross-multiply to move the hypotenuse to the numerator",
+        "Approximate the surd to a decimal"
+      ],
+      "misconceptions": [
+        "Leaving the hypotenuse in the denominator",
+        "Using √3/2 upside down"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:approximate-surd-to-decimal",
+        "cbse10:maths:jemh109:solve-for-unknown-side"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:compute-base-with-cot",
+      "slug": "compute-base-with-cot",
+      "title": "Compute the horizontal base using cot",
+      "role": "intermediate",
+      "brief": "Use cot(angle) = adjacent/opposite to find the horizontal distance from the foot.",
+      "sec": 0,
+      "quote": "Now,    DC/BD = cot 60° = 1/√3\n\ni.e.,    DC = 3.7/√3 = 2.14 m (approx.)",
+      "explanation": "The distance of the ladder's foot from the pole is found by cot60 = DC/BD = 1/√3, giving DC = 3.7/√3 ≈ 2.14 m. Demonstrates selecting cot for adjacent-over-opposite.",
+      "keyMoves": [
+        "Identify adjacent and opposite relative to the angle",
+        "Apply cot = adjacent/opposite and solve"
+      ],
+      "misconceptions": [
+        "Confusing cot with tan",
+        "Forgetting cot60 = 1/√3"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:approximate-surd-to-decimal"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:add-observer-height-to-triangle-result",
+      "slug": "add-observer-height-to-triangle-result",
+      "title": "Add the observer's height to the triangle result",
+      "role": "intermediate",
+      "brief": "When the angle is measured from an observer's eye, add the eye height to the computed leg to get the full object height.",
+      "sec": 1,
+      "quote": "We have    AB = AE + BE = AE + 1.5",
+      "explanation": "The right triangle only gives the part of the object above the observer's eye level (AE). The full height is AE plus the observer's height (1.5 m), giving 30 m for the chimney. Forgetting this step is a classic error.",
+      "keyMoves": [
+        "Recognise the triangle's vertical leg starts at eye level",
+        "Add observer height to the leg"
+      ],
+      "misconceptions": [
+        "Reporting only the triangle leg as the full height",
+        "Subtracting instead of adding the observer height"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:set-up-trig-equation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:set-up-two-triangles-shared-side",
+      "slug": "set-up-two-triangles-shared-side",
+      "title": "Model a problem with two right triangles sharing a side",
+      "role": "intermediate",
+      "brief": "When two angles are given for one base or one object, build two right triangles sharing a common side and write an equation from each.",
+      "sec": 1,
+      "quote": "Note that there are two right triangles PAB and PAD. We are required to find the length of the flagstaff, i.e., DB and the distance of the building from the point P, i.e., PA.",
+      "explanation": "Composite problems (flagstaff, shadow, two ships, two poles) need two triangles that share a side (the common base PA or common height AB). Each triangle yields one equation; together they pin down the unknowns. Setting up both triangles correctly is the key composite-modelling skill.",
+      "keyMoves": [
+        "Identify the shared side between the two triangles",
+        "Write a separate trig equation for each angle"
+      ],
+      "misconceptions": [
+        "Treating the two triangles as independent (ignoring the shared side)",
+        "Mislabelling which angle belongs to which triangle"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:solve-simultaneous-trig-equations",
+        "cbse10:maths:jemh109:set-up-trig-equation",
+        "cbse10:maths:jemh109:equate-equal-sides-from-45-degree"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:solve-simultaneous-trig-equations",
+      "slug": "solve-simultaneous-trig-equations",
+      "title": "Solve two trig equations by substitution",
+      "role": "intermediate",
+      "brief": "Eliminate one unknown by substituting one trig equation into the other and solve for the remaining unknown.",
+      "sec": 1,
+      "quote": "From (1), we have    h = x√3\n\nPutting this value in (2), we get (x√3)√3 = x + 40, i.e., 3x = x + 40\n\ni.e.,    x = 20",
+      "explanation": "In the shadow problem the two equations h = x√3 and 1/√3 = h/(x+40) are combined by substitution to give 3x = x+40, so x = 20 and h = 20√3. Substitution and simplification of surds is the algebraic engine for two-triangle problems.",
+      "keyMoves": [
+        "Express one variable from the first equation",
+        "Substitute into the second and simplify the surds",
+        "Solve the resulting linear equation"
+      ],
+      "misconceptions": [
+        "Algebra errors with √3·√3 = 3",
+        "Substituting into the wrong equation"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:solve-for-unknown-side",
+        "cbse10:maths:jemh109:rationalise-surd-denominator"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:rationalise-surd-denominator",
+      "slug": "rationalise-surd-denominator",
+      "title": "Rationalise a surd denominator",
+      "role": "shared",
+      "brief": "Multiply numerator and denominator by the conjugate to remove a surd from the denominator.",
+      "sec": 2,
+      "quote": "This gives    PD = 8/(√3 – 1) = 8(√3 + 1)/((√3 – 1)(√3 + 1)) = 4(√3 + 1) m.",
+      "explanation": "To simplify 8/(√3−1), multiply top and bottom by the conjugate (√3+1); the denominator becomes (√3)²−1² = 2, giving 4(√3+1). Needed whenever the answer has a surd in the denominator.",
+      "keyMoves": [
+        "Multiply by conjugate over itself",
+        "Use (a−b)(a+b)=a²−b² in the denominator"
+      ],
+      "misconceptions": [
+        "Forgetting to multiply the numerator too",
+        "Sign error in the conjugate"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:approximate-surd-to-decimal",
+      "slug": "approximate-surd-to-decimal",
+      "title": "Approximate a surd answer to a decimal",
+      "role": "shared",
+      "brief": "Substitute the given value of √3 (e.g. 1.732) to convert an exact surd answer to a decimal.",
+      "sec": 1,
+      "quote": "i.e.,    x = 10 (√3 – 1) = 7.32",
+      "explanation": "Using \\( \\sqrt{3} = 1.732 \\), \\( x = 10(\\sqrt{3} – 1) = 10(0.732) = 7.32 \\) m. Converting an exact surd into the required decimal value (when the problem supplies \\( \\sqrt{3} \\)) is a routine but failable final step.",
+      "keyMoves": [
+        "Substitute the supplied value of √3",
+        "Carry out the arithmetic carefully"
+      ],
+      "misconceptions": [
+        "Using a wrong value for √3",
+        "Arithmetic slip in subtraction/multiplication"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:combine-segment-lengths-for-total",
+      "slug": "combine-segment-lengths-for-total",
+      "title": "Combine segment lengths to get the asked quantity",
+      "role": "intermediate",
+      "brief": "Add or subtract the computed pieces (sub-lengths) to produce the final asked height/width/distance.",
+      "sec": 2,
+      "quote": "Now,    AB = BD + AD = 3 + 3√3 = 3 (1 + √3) m.",
+      "explanation": "For the river-width problem the width AB is the sum of the two computed parts AD and BD: 3√3 + 3 = 3(1+√3). Many problems ask for a total that is the sum (or difference) of two triangle results, so assembling the pieces correctly is essential.",
+      "keyMoves": [
+        "Identify which sub-lengths add to the target",
+        "Sum (or subtract) and factor if useful"
+      ],
+      "misconceptions": [
+        "Reporting only one sub-length",
+        "Adding lengths that should be subtracted"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh109:rationalise-surd-denominator",
+        "cbse10:maths:jemh109:approximate-surd-to-decimal"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh109:equate-equal-sides-from-45-degree",
+      "slug": "equate-equal-sides-from-45-degree",
+      "title": "Use that a 45° right triangle has equal legs",
+      "role": "bedrock",
+      "brief": "Recognise that when the angle is 45°, the opposite and adjacent legs are equal (tan45 = 1).",
+      "sec": 2,
+      "quote": "Also, in right ∆ PBD, ∠ B = 45°. So, BD = PD = 3 m.",
+      "explanation": "Because tan45 = 1, the two legs of a right triangle with a 45° angle are equal, so BD = PD = 3 m directly. Spotting this shortcut avoids extra algebra in 45° cases.",
+      "keyMoves": [
+        "Note the angle is 45°",
+        "Set the opposite leg equal to the adjacent leg"
+      ],
+      "misconceptions": [
+        "Not realising tan45 = 1 forces equal legs",
+        "Still setting up a full ratio unnecessarily"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## What was read\n\nI re-read the full segmented chapter text `jemh109.txt` (SEG 0 through SEG 4: 9.1 Heights and Distances with Examples 1-7, EXERCISE 9.1, and the 9.2 Summary) and the shared `_maths-exams.txt` (CBSE Standard + Basic SQP and Marking Schemes). I audited the DRAFT line-by-line, opening each tagged segment and locating each quote verbatim.\n\n## Corrections made in this review\n\nThree citation SEC errors were found and fixed (the #1 failure mode):\n1. `solve-heights-and-distances-problem` (goal): quote \"The height or length of an object ... determined with the help of trigonometric ratios.\" was tagged sec 0 but lives ONLY at line 267 in SEG 4 (the Summary). Fixed sec 0 → 4.\n2. `set-up-two-triangles-shared-side`: quote \"Note that there are two right triangles PAB and PAD...\" (Example 4, line 116) is in SEG 1, not SEG 0. Fixed sec 0 → 1.\n3. `solve-simultaneous-trig-equations`: quote \"From (1), we have h = x√3 ... x = 20\" (Example 5, lines 160-164) is in SEG 1, not SEG 0. Fixed sec 0 → 1.\n\nAll other 16 node quotes and all 19 gate quotes were located character-for-character in their tagged segments and left unchanged. Specifically I confirmed the SEG-1 boundary spans Examples 3, 4, and 5 (lines 93-168), the SEG-2 boundary spans Examples 6-7 (lines 170-215), and the exam Q12 quote (\"12. If 𝜃 = 30𝑜 then the value of 3tan𝜃 is\") matches line 90 of the exam file verbatim.\n\n## Independent gate answer verification\n\nI re-solved every gate from first principles: 15·tan60 = 15√3; 3·tan30 = 3/√3 (= √3, matches marking scheme option C at exam line 340); √3 = AB/15; AB = 15√3; 28.5+1.5 = 30; 3x = x+40 ⇒ x = 20; tan30=10/AP ⇒ AP = 10√3; 10(1.732−1) = 7.32; 8/(√3−1) = 4(√3+1); 3+3√3 = 3(1+√3); BD = PD = 3; 7.4/1.73 ≈ 4.28; 3.7/1.73 ≈ 2.14; right angle at B; sin 60°; tan A = BC/AB; ∠PBD = 30°; elevation; depression. Every expected value is mathematically correct and self-consistent with its grader (cas/numeric/mcq option string).\n\n## Graph integrity\n\nSingle root confirmed: `solve-heights-and-distances-problem` is the only node never appearing as a child. All 18 other nodes appear as a child of at least one edge (no orphans); every edge endpoint is a defined node slug. The graph is acyclic (all chains terminate at leaf bedrock/shared skills: recall-trig, solve-for-unknown-side, approximate-surd, rationalise, equate-45). Coverage is 100%: 19 gates, one per node.\n\n## What was absent / uncertain\n\nExercise 9.1 (SEG 3) gives no stated answers in the source, so no gates were sourced from it. The Summary (SEG 4) adds no new skill beyond restating definitions and the one-line claim now used as the goal citation. The exam SQP trig-application long-answers (Standard balloon, Basic building/lighthouse) reinforce the existing two-triangle / observer-height nodes and were not duplicated.",
+  "absentNotes": "The chapter does NOT teach or prove the underlying trigonometric ratios themselves (sin/cos/tan definitions), the Pythagoras theorem, or the alternate-interior-angles theorem — these are assumed from prior chapters and so are not nodes. It does not cover: angles other than 30°/45°/60°; bearings or compass directions; 3-D applications; problems requiring the sine/cosine rule (not in Class 10 scope); or any calculus/rate-of-change reasoning (Exercise Q15 asks for time-to-reach but its solution/answer is not given in the source, so no rate node was created). The Summary (SEG 4) only restates definitions and the one-line claim that heights/distances can be found with trig ratios — no new skill. Exercise 9.1 problems (SEG 3) are practice items with no stated answers in the source text, so although they exercise the same skills, none were turned into nodes or gates. The exam SQPs include trig-application problems (Standard Q34 balloon, Basic Q35 building-and-tower / lighthouse) that map onto the existing two-triangle and observer-height nodes; they were not added as separate nodes to avoid redundancy."
+}

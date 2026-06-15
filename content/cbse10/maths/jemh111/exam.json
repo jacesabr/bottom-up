@@ -1,0 +1,241 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh111",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+      "kind": "book",
+      "prompt": "Find the area of the segment AYB of a circle of radius 21 cm in which ∠AOB = 120°, given that the corresponding sector OAYB has area 462 cm² and triangle OAB has area 441/4 √3 cm². Give the segment area in cm². (Use √3 = 1.732)",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "271.05",
+      "expected": {
+        "kind": "numeric",
+        "value": 271.05,
+        "tol": 1
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 2)",
+      "quote": "Therefore, area of the segment AYB = ( 462 – 441/4 √3 ) cm²     [From (1), (2) and (3)]"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:apply-sector-area-formula",
+      "kind": "book",
+      "prompt": "Find the area of the sector of a circle with radius 4 cm and of angle 30°. (Use π = 3.14)",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4.19",
+      "expected": {
+        "kind": "numeric",
+        "value": 4.19,
+        "tol": 0.05
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 1)",
+      "quote": "= 12.56/3 cm² = 4.19 cm² (approx.)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:derive-sector-area-unitary",
+      "kind": "book",
+      "prompt": "Area of a sector of angle p (in degrees) of a circle with radius R is: (A) p/180 × 2πR  (B) p/180 × πR²  (C) p/360 × 2πR  (D) p/720 × 2πR²",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "p/720 × 2 π R²",
+      "expected": {
+        "kind": "mcq",
+        "correct": "p/720 × 2 π R²",
+        "options": [
+          "p/180 × 2 π R",
+          "p/180 × π R²",
+          "p/360 × 2 π R",
+          "p/720 × 2 π R²"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "Exercise 11.1 Q14",
+      "quote": "(A) p/180 × 2 π R   (B) p/180 × π R²   (C) p/360 × 2 π R   (D) p/720 × 2 π R²"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:compute-arc-length",
+      "kind": "book",
+      "prompt": "Using the formula for the length of an arc of a sector, find the length (in cm) of the arc of a sector of angle 120° in a circle of radius 21 cm. (Use π = 22/7)",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "44",
+      "expected": {
+        "kind": "numeric",
+        "value": 44,
+        "tol": 0.5
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (arc-length formula)",
+      "quote": "So, length of an arc of a sector of angle θ = θ/360 × 2πr"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:compute-major-sector-area",
+      "kind": "book",
+      "prompt": "For a circle with radius 4 cm and π = 3.14, the minor sector of angle 30° has area 4.19 cm². Find the area of the corresponding major sector in cm².",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "46.1",
+      "expected": {
+        "kind": "numeric",
+        "value": 46.1,
+        "tol": 0.2
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 1)",
+      "quote": "= 46.05 cm² = 46.1 cm² (approx.)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:compute-triangle-area-base-height",
+      "kind": "book",
+      "prompt": "In triangle OAB, the base AB = 21√3 cm and the height OM = 21/2 cm. Find the area of triangle OAB in cm² (use √3 = 1.732).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "190.95",
+      "expected": {
+        "kind": "numeric",
+        "value": 190.95,
+        "tol": 0.5
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 2)",
+      "quote": "= 441/4 √3 cm²     (3)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:drop-perpendicular-to-chord",
+      "kind": "book",
+      "prompt": "In a circle of radius 21 cm with ∠AOB = 120°, OM is drawn perpendicular to chord AB, meeting it at M. What is the measure of ∠AOM in degrees?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "60",
+      "expected": {
+        "kind": "numeric",
+        "value": 60,
+        "tol": 0.5
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 2)",
+      "quote": "So, M is the mid-point of AB and ∠ AOM = ∠ BOM = 1/2 × 120° = 60° ."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:use-rhs-congruence-bisect",
+      "kind": "book",
+      "prompt": "In triangle OAB with OA = OB and OM ⊥ AB, which congruence criterion proves ΔAMO ≅ ΔBMO? (A) SSS (B) ASA (C) RHS (D) AAA",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "RHS",
+      "expected": {
+        "kind": "mcq",
+        "correct": "RHS",
+        "options": [
+          "SSS",
+          "ASA",
+          "RHS",
+          "AAA"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 2)",
+      "quote": "Therefore, by RHS congruence, Δ AMO ≅ Δ BMO."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:use-cosine-ratio-find-om",
+      "kind": "book",
+      "prompt": "In right triangle OMA with hypotenuse OA = 21 cm and ∠AOM = 60°, OM/OA = cos 60°. Find OM in cm.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "10.5",
+      "expected": {
+        "kind": "numeric",
+        "value": 10.5,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 2)",
+      "quote": "or, x = 21/2"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:use-sine-ratio-find-am",
+      "kind": "book",
+      "prompt": "In right triangle OMA with hypotenuse OA = 21 cm and ∠AOM = 60°, AM/OA = sin 60° = √3/2. Find AM in cm (use √3 = 1.732).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "18.19",
+      "expected": {
+        "kind": "numeric",
+        "value": 18.19,
+        "tol": 0.1
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 2)",
+      "quote": "So, AM = 21√3/2 cm"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:find-chord-length-from-half",
+      "kind": "book",
+      "prompt": "The perpendicular from the centre bisects chord AB at M, and AM = 21√3/2 cm. Find the full chord length AB in cm (use √3 = 1.732).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "36.37",
+      "expected": {
+        "kind": "numeric",
+        "value": 36.37,
+        "tol": 0.2
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 2)",
+      "quote": "Therefore, AB = 2 AM = (2 × 21√3)/2 cm = 21√3 cm"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:subtract-sector-minus-triangle",
+      "kind": "book",
+      "prompt": "The minor sector area is 462 cm² and the triangle OAB area is 441√3/4 cm² (≈190.95 cm²). Find the area of the segment AYB in cm².",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "271.05",
+      "expected": {
+        "kind": "numeric",
+        "value": 271.05,
+        "tol": 1
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 2)",
+      "quote": "Therefore, area of the segment AYB = ( 462 – 441/4 √3 ) cm²     [From (1), (2) and (3)]"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:substitute-pi-value",
+      "kind": "book",
+      "prompt": "Substituting π = 22/7, evaluate the area of the sector OAYB of a circle of radius 21 cm with central angle 120°: area = 120/360 × 22/7 × 21 × 21 cm². Give the area in cm².",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "462",
+      "expected": {
+        "kind": "numeric",
+        "value": 462,
+        "tol": 1
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 2)",
+      "quote": "Now, area of the sector OAYB = 120/360 × 22/7 × 21 × 21 cm² = 462 cm²     (2)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh111:compute-major-sector-area",
+      "kind": "book",
+      "prompt": "Using the alternative method, the major sector of a circle (radius 4 cm, minor angle 30°, π = 3.14) has angle (360 − 30)°. Compute its area in cm².",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "46.05",
+      "expected": {
+        "kind": "numeric",
+        "value": 46.05,
+        "tol": 0.2
+      },
+      "srcKind": "chapter",
+      "srcLabel": "11.1 (Example 1, alternative)",
+      "quote": "= 330/360 × 3.14 × 16 cm² = 46.05 cm²"
+    }
+  ]
+}

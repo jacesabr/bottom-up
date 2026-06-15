@@ -1,53 +1,96 @@
 import { db } from '../db/index.js';
-import { concepts as conceptsTable, gates, buEvent, buNodePerformance, buNodeChecklist, buGateAttempt } from '../db/schema.js';
-import { eq, and } from 'drizzle-orm';
+import {
+  concepts as conceptsTable,
+  gates,
+  buEvent,
+  buNodePerformance,
+  buNodeChecklist,
+  buGateAttempt,
+} from '../db/schema.js';
+import { eq, and, asc } from 'drizzle-orm';
 import { recomputeAvailabilityAfterPass } from './sequencer.js';
-
-interface KeyMoveState {
-  index: number;
-  text: string;
-  demonstrated: boolean;
-  demonstratedAt?: Date;
-  evidence?: string;
-}
-
-interface TeachingTurn {
-  role: 'tutor' | 'learner';
-  content: string;
-  checklist?: {
-    keyMovesDemonstrated: Array<{ index: number; evidence: string }>;
-    misconceptionsSeen: string[];
-  };
-  signal?: 'ready_for_gate' | 'needs_more_teaching';
-}
-
-interface TeachingContext {
-  learnerId: string;
-  conceptId: string;
-  chapterId: string;
-  concept: any;
-  keyMoveStates: KeyMoveState[];
-  allKeyMovesDemonstrated: boolean;
-  dialogue: TeachingTurn[];
-  currentGateAttemptNo: number;
-}
+import { teachTurn, type KeyMove } from './node-agent.js';
+import { nimVision } from './llm.js';
 
 /**
- * Enter a node: initialize context, emit event, return initial tutor question.
+ * The per-node teaching loop (bottom_up.md §4).
+ * Source of truth = the append-only bu_event log; the dialogue is reconstructed from it,
+ * and bu_node_checklist / bu_node_performance / bu_gate_attempt are fast derived reads.
  */
-export async function enterNode(learnerId: string, conceptId: string): Promise<TeachingContext> {
-  const concept = await db
-    .select()
-    .from(conceptsTable)
-    .where(eq(conceptsTable.id, conceptId));
 
-  if (!concept.length) {
-    throw new Error(`Concept not found: ${conceptId}`);
+async function loadConcept(conceptId: string) {
+  const rows = await db.select().from(conceptsTable).where(eq(conceptsTable.id, conceptId));
+  if (!rows.length) throw new Error(`Concept not found: ${conceptId}`);
+  return rows[0];
+}
+
+/** Reconstruct the current node's dialogue from the event log (since the latest enter_node). */
+async function reconstructDialogue(learnerId: string, conceptId: string) {
+  const events = await db
+    .select()
+    .from(buEvent)
+    .where(and(eq(buEvent.learnerId, learnerId), eq(buEvent.conceptId, conceptId)))
+    .orderBy(asc(buEvent.ts));
+
+  const dialogue: Array<{ role: 'tutor' | 'learner'; content: string }> = [];
+  for (const e of events) {
+    if (e.type === 'tutor_turn') dialogue.push({ role: 'tutor', content: (e.payload as any)?.message ?? '' });
+    else if (e.type === 'learner_turn') dialogue.push({ role: 'learner', content: (e.payload as any)?.message ?? '' });
+  }
+  return dialogue;
+}
+
+async function loadChecklist(learnerId: string, conceptId: string, keyMoves: string[]): Promise<KeyMove[]> {
+  const rows = await db
+    .select()
+    .from(buNodeChecklist)
+    .where(and(eq(buNodeChecklist.learnerId, learnerId), eq(buNodeChecklist.conceptId, conceptId)));
+  const demoIdx = new Set(rows.filter((r) => r.demonstrated).map((r) => r.keyMoveIndex));
+  return keyMoves.map((text, index) => ({ index, text, demonstrated: demoIdx.has(index) }));
+}
+
+async function markKeyMove(learnerId: string, conceptId: string, chapterId: string, index: number, evidence: string) {
+  const existing = await db
+    .select()
+    .from(buNodeChecklist)
+    .where(
+      and(
+        eq(buNodeChecklist.learnerId, learnerId),
+        eq(buNodeChecklist.conceptId, conceptId),
+        eq(buNodeChecklist.keyMoveIndex, index)
+      )
+    );
+  if (existing.length && existing[0].demonstrated) return; // already shown
+
+  if (existing.length) {
+    await db
+      .update(buNodeChecklist)
+      .set({ demonstrated: true, evidence, demonstratedAt: new Date() })
+      .where(eq(buNodeChecklist.id, existing[0].id));
+  } else {
+    await db.insert(buNodeChecklist).values({
+      learnerId,
+      conceptId,
+      keyMoveIndex: index,
+      demonstrated: true,
+      evidence,
+      demonstratedAt: new Date(),
+    });
   }
 
-  const c = concept[0];
+  await db.insert(buEvent).values({
+    learnerId,
+    conceptId,
+    chapterId,
+    type: 'keymove_demonstrated',
+    payload: { keyMoveIndex: index, evidence },
+  });
+}
 
-  // Emit enter_node event
+/** Enter a node: emit enter_node, set teaching, bump attempts. Returns concept + whether it's a re-entry. */
+export async function enterNode(learnerId: string, conceptId: string) {
+  const c = await loadConcept(conceptId);
+
   await db.insert(buEvent).values({
     learnerId,
     conceptId,
@@ -56,352 +99,386 @@ export async function enterNode(learnerId: string, conceptId: string): Promise<T
     payload: { conceptId, title: c.title },
   });
 
-  // Initialize checklist
-  const keyMoveStates = c.keyMoves.map((text, index) => ({
-    index,
-    text,
-    demonstrated: false,
-  }));
+  const perf = await db
+    .select()
+    .from(buNodePerformance)
+    .where(and(eq(buNodePerformance.learnerId, learnerId), eq(buNodePerformance.conceptId, conceptId)));
 
-  // Update performance
-  await db
-    .update(buNodePerformance)
-    .set({
+  if (perf.length) {
+    await db
+      .update(buNodePerformance)
+      .set({ status: 'teaching', enteredAt: perf[0].enteredAt ?? new Date(), attempts: (perf[0].attempts ?? 0) + 1 })
+      .where(eq(buNodePerformance.id, perf[0].id));
+  } else {
+    await db.insert(buNodePerformance).values({
+      learnerId,
+      conceptId,
       status: 'teaching',
       enteredAt: new Date(),
-      attempts: (await db.select().from(buNodePerformance).where(
-        and(
-          eq(buNodePerformance.learnerId, learnerId),
-          eq(buNodePerformance.conceptId, conceptId)
-        )
-      )).then(r => r[0]?.attempts ?? 0),
-    })
-    .where(and(
-      eq(buNodePerformance.learnerId, learnerId),
-      eq(buNodePerformance.conceptId, conceptId)
-    ));
+      attempts: 1,
+    });
+  }
 
-  const context: TeachingContext = {
+  return c;
+}
+
+interface TurnResult {
+  message: string;
+  checklist: Array<{ index: number; text: string; demonstrated: boolean }>;
+  readyForGate: boolean;
+  provider: string;
+}
+
+/** Produce the next tutor turn. If learnerMessage is given, record it first and apply the checklist delta. */
+export async function respond(learnerId: string, conceptId: string, learnerMessage?: string): Promise<TurnResult> {
+  const c = await loadConcept(conceptId);
+
+  if (learnerMessage && learnerMessage.trim()) {
+    await db.insert(buEvent).values({
+      learnerId,
+      conceptId,
+      chapterId: c.chapterId,
+      type: 'learner_turn',
+      payload: { message: learnerMessage.trim() },
+    });
+  }
+
+  const dialogue = await reconstructDialogue(learnerId, conceptId);
+  const checklist = await loadChecklist(learnerId, conceptId, c.keyMoves);
+  const isReteach = (await nodeStatus(learnerId, conceptId)) === 'needs_reteach';
+
+  const turn = await teachTurn({
+    conceptTitle: c.title,
+    brief: c.brief,
+    explanation: c.explanation,
+    keyMoves: checklist,
+    misconceptions: c.misconceptions,
+    dialogue,
+    isReteach,
+  });
+
+  // Apply checklist delta
+  for (const d of turn.keyMovesDemonstrated) {
+    if (typeof d.index === 'number' && d.index >= 0 && d.index < c.keyMoves.length) {
+      await markKeyMove(learnerId, conceptId, c.chapterId, d.index, d.evidence ?? '');
+    }
+  }
+  for (const m of turn.misconceptionsSeen) {
+    await db.insert(buEvent).values({
+      learnerId,
+      conceptId,
+      chapterId: c.chapterId,
+      type: 'misconception_seen',
+      payload: { label: m },
+    });
+  }
+
+  // Record tutor turn
+  await db.insert(buEvent).values({
     learnerId,
     conceptId,
     chapterId: c.chapterId,
-    concept: c,
-    keyMoveStates,
-    allKeyMovesDemonstrated: false,
-    dialogue: [],
-    currentGateAttemptNo: 1,
-  };
-
-  return context;
-}
-
-/**
- * Process a tutor turn: call node-agent, parse checklist delta, emit events.
- * For now, mock the node-agent call.
- */
-export async function tutorTurn(context: TeachingContext, _userMessage?: string): Promise<{ response: string; checklist: any }> {
-  // Mock: call node-agent/respond
-  // In production, this calls the actual node-agent with the concept brain + dialogue
-  const tutorResponse = `Let me help you understand ${context.concept.title}.
-
-  ${context.concept.brief}
-
-  Here's the first key idea: ${context.concept.keyMoves[0]}
-
-  Can you explain what this means in your own words?`;
-
-  const checklist = {
-    keyMovesDemonstrated: [] as Array<{ index: number; evidence: string }>,
-    misconceptionsSeen: [] as string[],
-  };
-
-  // Emit tutor_turn
-  await db.insert(buEvent).values({
-    learnerId: context.learnerId,
-    conceptId: context.conceptId,
-    chapterId: context.chapterId,
     type: 'tutor_turn',
-    payload: { message: tutorResponse, checklist },
+    payload: { message: turn.message },
   });
 
-  return { response: tutorResponse, checklist };
+  const updated = await loadChecklist(learnerId, conceptId, c.keyMoves);
+  const allShown = updated.every((k) => k.demonstrated);
+
+  return {
+    message: turn.message,
+    checklist: updated,
+    readyForGate: allShown || turn.readyForGate,
+    provider: turn.provider,
+  };
 }
 
-/**
- * Process learner reply: update checklist, emit events.
- */
-export async function learnerReply(context: TeachingContext, message: string): Promise<void> {
-  // Emit learner_turn
+async function nodeStatus(learnerId: string, conceptId: string): Promise<string | null> {
+  const rows = await db
+    .select()
+    .from(buNodePerformance)
+    .where(and(eq(buNodePerformance.learnerId, learnerId), eq(buNodePerformance.conceptId, conceptId)));
+  return rows[0]?.status ?? null;
+}
+
+/** "Help me": read the learner's handwritten working (sketch) and give a short grounded hint. */
+export async function helpWithSketch(learnerId: string, conceptId: string, imageDataUrl: string): Promise<{ message: string }> {
+  const c = await loadConcept(conceptId);
+  const checklist = await loadChecklist(learnerId, conceptId, c.keyMoves);
+  const nextMove = checklist.find((k) => !k.demonstrated);
+
+  const prompt = `You are a warm CBSE Class 10 maths tutor helping with the concept "${c.title}" (${c.brief}).
+The image is the student's handwritten working. Read it, then give ONE short, encouraging hint (1–2 sentences) that nudges them toward${nextMove ? ` this idea: "${nextMove.text}"` : ' finishing'}.
+Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer — just the next nudge.`;
+
+  let message: string;
+  try {
+    message = (await nimVision(prompt, imageDataUrl)).trim();
+  } catch {
+    message = nextMove
+      ? `I can see you're working it out — nice. Try focusing on this next: ${nextMove.text.toLowerCase()}. What do you get?`
+      : `Good progress on paper! Talk me through your final step and we'll check it together.`;
+  }
+
   await db.insert(buEvent).values({
-    learnerId: context.learnerId,
-    conceptId: context.conceptId,
-    chapterId: context.chapterId,
-    type: 'learner_turn',
-    payload: { message },
+    learnerId,
+    conceptId,
+    chapterId: c.chapterId,
+    type: 'tutor_turn',
+    payload: { message, fromSketch: true },
   });
-
-  // In production: parse the message for evidence of key moves
-  // For now, mock: assume the first key move is demonstrated
-  const keyMoveIndex = 0;
-  const evidence = message;
-
-  // Update checklist state
-  const existingChecklist = await db
-    .select()
-    .from(buNodeChecklist)
-    .where(and(
-      eq(buNodeChecklist.learnerId, context.learnerId),
-      eq(buNodeChecklist.conceptId, context.conceptId),
-      eq(buNodeChecklist.keyMoveIndex, keyMoveIndex)
-    ));
-
-  if (!existingChecklist.length) {
-    await db.insert(buNodeChecklist).values({
-      learnerId: context.learnerId,
-      conceptId: context.conceptId,
-      keyMoveIndex,
-      demonstrated: true,
-      evidence,
-      demonstratedAt: new Date(),
-    });
-
-    await db.insert(buEvent).values({
-      learnerId: context.learnerId,
-      conceptId: context.conceptId,
-      chapterId: context.chapterId,
-      type: 'keymove_demonstrated',
-      payload: { keyMoveIndex, evidence },
-    });
-  }
-
-  context.keyMoveStates[keyMoveIndex].demonstrated = true;
-  context.keyMoveStates[keyMoveIndex].demonstratedAt = new Date();
-  context.keyMoveStates[keyMoveIndex].evidence = evidence;
-
-  context.allKeyMovesDemonstrated = context.keyMoveStates.every(k => k.demonstrated);
+  return { message };
 }
 
-/**
- * Check readiness and pose gate (if all key moves demonstrated).
- */
-export async function poseGate(context: TeachingContext): Promise<{ gateId: string; prompt: string }> {
-  if (!context.allKeyMovesDemonstrated) {
-    throw new Error('Not all key moves demonstrated yet');
-  }
+/** Pose the node's single gate (expected is never serialised to the client). */
+export async function poseGate(learnerId: string, conceptId: string) {
+  const rows = await db.select().from(gates).where(eq(gates.conceptId, conceptId));
+  if (!rows.length) throw new Error(`No gate for concept ${conceptId}`);
+  const g = rows[0];
+  const c = await loadConcept(conceptId);
 
-  const gate = await db
-    .select()
-    .from(gates)
-    .where(eq(gates.conceptId, context.conceptId));
-
-  if (!gate.length) {
-    throw new Error(`No gate found for concept ${context.conceptId}`);
-  }
-
-  const g = gate[0];
-
-  // Emit gate_posed
   await db.insert(buEvent).values({
-    learnerId: context.learnerId,
-    conceptId: context.conceptId,
-    chapterId: context.chapterId,
+    learnerId,
+    conceptId,
+    chapterId: c.chapterId,
     type: 'gate_posed',
     payload: { gateId: g.id, prompt: g.prompt },
   });
-
-  // Update status
   await db
     .update(buNodePerformance)
     .set({ status: 'awaiting_gate' })
-    .where(and(
-      eq(buNodePerformance.learnerId, context.learnerId),
-      eq(buNodePerformance.conceptId, context.conceptId)
-    ));
+    .where(and(eq(buNodePerformance.learnerId, learnerId), eq(buNodePerformance.conceptId, conceptId)));
 
-  return { gateId: g.id, prompt: g.prompt };
+  const expected = g.expected as any;
+  return {
+    gateId: g.id,
+    prompt: g.prompt,
+    answerType: g.answerType,
+    options: g.answerType === 'mcq' ? expected.options : null,
+  };
 }
 
-/**
- * Grade gate answer and emit result.
- * Return true if pass, false if fail.
- */
-export async function gradeGate(
-  context: TeachingContext,
-  gateId: string,
-  learnerAnswer: string
-): Promise<{ correct: boolean; gradedBy: string }> {
-  const gate = await db
-    .select()
-    .from(gates)
-    .where(eq(gates.id, gateId));
+/** Grade an answer, record the attempt, advance (pass) or re-teach (fail). */
+export async function answerGate(learnerId: string, conceptId: string, gateId: string, answer: string) {
+  const c = await loadConcept(conceptId);
+  const grows = await db.select().from(gates).where(eq(gates.id, gateId));
+  if (!grows.length) throw new Error(`Gate not found: ${gateId}`);
+  const g = grows[0];
+  const expected = g.expected as any;
 
-  if (!gate.length) {
-    throw new Error(`Gate not found: ${gateId}`);
-  }
-
-  const g = gate[0];
-
-  // Grade based on type
   let correct = false;
-  let gradedBy = 'deterministic';
-
+  const gradedBy = 'deterministic';
   if (g.grader === 'mcq') {
-    correct = learnerAnswer === (g.expected as any).correct;
+    correct = norm(answer) === norm(expected.correct);
   } else if (g.grader === 'cas') {
-    // Mock CAS check: for now, accept the example answer
-    const expected = (g.expected as any).equivalentTo;
-    correct = learnerAnswer.includes('2^3') && learnerAnswer.includes('3^2');
+    correct = casEquivalent(answer, expected.equivalentTo);
+  } else {
+    correct = norm(answer) === norm(expected.correct ?? expected.answer ?? '');
   }
 
-  // Record attempt
+  // attempt number = prior attempts + 1
+  const prior = await db
+    .select()
+    .from(buGateAttempt)
+    .where(and(eq(buGateAttempt.learnerId, learnerId), eq(buGateAttempt.conceptId, conceptId)));
+  const attemptNo = prior.length + 1;
+
   await db.insert(buGateAttempt).values({
-    learnerId: context.learnerId,
-    conceptId: context.conceptId,
+    learnerId,
+    conceptId,
     gateId,
-    attemptNo: context.currentGateAttemptNo,
+    attemptNo,
     prompt: g.prompt,
-    learnerAnswer,
+    learnerAnswer: answer,
     correct,
     gradedBy,
-    ms: 0, // Would track time in production
+    ms: 0,
   });
-
-  // Emit gate_answer
   await db.insert(buEvent).values({
-    learnerId: context.learnerId,
-    conceptId: context.conceptId,
-    chapterId: context.chapterId,
+    learnerId,
+    conceptId,
+    chapterId: c.chapterId,
     type: 'gate_answer',
-    payload: { gateId, answer: learnerAnswer, correct, gradedBy },
+    payload: { gateId, answer, correct, gradedBy },
   });
 
-  return { correct, gradedBy };
+  if (correct) await passNode(learnerId, conceptId, c.chapterId);
+  else await failNode(learnerId, conceptId, c.chapterId);
+
+  return { correct };
 }
 
-/**
- * Handle pass: advance node, unlock dependents, emit events.
- */
-export async function passGate(context: TeachingContext): Promise<void> {
-  // Emit gate_pass
-  await db.insert(buEvent).values({
-    learnerId: context.learnerId,
-    conceptId: context.conceptId,
-    chapterId: context.chapterId,
-    type: 'gate_pass',
-    payload: { conceptId: context.conceptId },
-  });
-
-  // Update performance
-  const current = await db
+async function passNode(learnerId: string, conceptId: string, chapterId: string) {
+  const perf = await db
     .select()
     .from(buNodePerformance)
-    .where(and(
-      eq(buNodePerformance.learnerId, context.learnerId),
-      eq(buNodePerformance.conceptId, context.conceptId)
-    ));
+    .where(and(eq(buNodePerformance.learnerId, learnerId), eq(buNodePerformance.conceptId, conceptId)));
+  const p = perf[0];
+  const firstPass = (p?.fails ?? 0) === 0;
 
-  const perf = current[0];
-  const isFirstPass = perf?.attempts === 1;
+  await db.insert(buEvent).values({ learnerId, conceptId, chapterId, type: 'gate_pass', payload: { conceptId } });
+  if (p) {
+    await db
+      .update(buNodePerformance)
+      .set({ status: 'passed', firstPass, passes: (p.passes ?? 0) + 1, passedAt: new Date() })
+      .where(eq(buNodePerformance.id, p.id));
+  }
+  await db.insert(buEvent).values({ learnerId, conceptId, chapterId, type: 'node_complete', payload: { conceptId } });
 
-  await db
-    .update(buNodePerformance)
-    .set({
-      status: 'passed',
-      firstPass: isFirstPass,
-      passes: (perf?.passes ?? 0) + 1,
-      passedAt: new Date(),
-    })
-    .where(and(
-      eq(buNodePerformance.learnerId, context.learnerId),
-      eq(buNodePerformance.conceptId, context.conceptId)
-    ));
+  await recomputeAvailabilityAfterPass(learnerId, conceptId);
 
-  // Emit node_complete
-  await db.insert(buEvent).values({
-    learnerId: context.learnerId,
-    conceptId: context.conceptId,
-    chapterId: context.chapterId,
-    type: 'node_complete',
-    payload: { conceptId: context.conceptId },
-  });
-
-  // Recompute availability for dependents
-  await recomputeAvailabilityAfterPass(context.learnerId, context.conceptId);
-
-  // Check if chapter is complete
-  const concepts = await db
-    .select()
-    .from(conceptsTable)
-    .where(eq(conceptsTable.chapterId, context.chapterId));
-
-  const performance = await db
-    .select()
-    .from(buNodePerformance)
-    .where(and(
-      eq(buNodePerformance.learnerId, context.learnerId),
-    ));
-
-  const allPassed = concepts.every(c =>
-    performance.some(p => p.conceptId === c.id && p.status === 'passed')
-  );
-
-  if (allPassed) {
-    await db.insert(buEvent).values({
-      learnerId: context.learnerId,
-      chapterId: context.chapterId,
-      type: 'chapter_complete',
-      payload: { chapterId: context.chapterId },
-    });
+  // chapter complete?
+  const chapterConcepts = await db.select().from(conceptsTable).where(eq(conceptsTable.chapterId, chapterId));
+  const perfRows = await db.select().from(buNodePerformance).where(eq(buNodePerformance.learnerId, learnerId));
+  const passed = new Set(perfRows.filter((r) => r.status === 'passed').map((r) => r.conceptId));
+  if (chapterConcepts.every((cc) => passed.has(cc.id))) {
+    await db.insert(buEvent).values({ learnerId, chapterId, type: 'chapter_complete', payload: { chapterId } });
   }
 }
 
-/**
- * Handle fail: emit event, trigger reteach.
- */
-export async function failGate(context: TeachingContext): Promise<void> {
-  // Emit gate_fail
-  await db.insert(buEvent).values({
-    learnerId: context.learnerId,
-    conceptId: context.conceptId,
-    chapterId: context.chapterId,
-    type: 'gate_fail',
-    payload: { conceptId: context.conceptId },
-  });
+async function failNode(learnerId: string, conceptId: string, chapterId: string) {
+  const perf = await db
+    .select()
+    .from(buNodePerformance)
+    .where(and(eq(buNodePerformance.learnerId, learnerId), eq(buNodePerformance.conceptId, conceptId)));
+  const p = perf[0];
 
-  // Update performance
-  await db
-    .update(buNodePerformance)
-    .set({
-      status: 'needs_reteach',
-      fails: (await db.select().from(buNodePerformance).where(
-        and(
-          eq(buNodePerformance.learnerId, context.learnerId),
-          eq(buNodePerformance.conceptId, context.conceptId)
-        )
-      )).then(r => r[0]?.fails ?? 0) + 1,
-    })
-    .where(and(
-      eq(buNodePerformance.learnerId, context.learnerId),
-      eq(buNodePerformance.conceptId, context.conceptId)
-    ));
+  await db.insert(buEvent).values({ learnerId, conceptId, chapterId, type: 'gate_fail', payload: { conceptId } });
+  await db.insert(buEvent).values({ learnerId, conceptId, chapterId, type: 'reteach_enter', payload: { conceptId } });
+  if (p) {
+    await db
+      .update(buNodePerformance)
+      .set({ status: 'needs_reteach', fails: (p.fails ?? 0) + 1, firstPass: false })
+      .where(eq(buNodePerformance.id, p.id));
+  }
+}
 
-  // Emit reteach_enter
-  await db.insert(buEvent).values({
-    learnerId: context.learnerId,
-    conceptId: context.conceptId,
-    chapterId: context.chapterId,
-    type: 'reteach_enter',
-    payload: { conceptId: context.conceptId },
-  });
+/** Everything the Details panel needs: content summary, progress, checklist+evidence, pain points, the gate (question only). */
+export async function getNodeDetail(learnerId: string, conceptId: string) {
+  const c = await loadConcept(conceptId);
 
-  // Return to teaching state
-  await db
-    .update(buNodePerformance)
-    .set({ status: 'teaching' })
-    .where(and(
-      eq(buNodePerformance.learnerId, context.learnerId),
-      eq(buNodePerformance.conceptId, context.conceptId)
-    ));
+  // checklist with the evidence line that proved each key move
+  const checkRows = await db
+    .select()
+    .from(buNodeChecklist)
+    .where(and(eq(buNodeChecklist.learnerId, learnerId), eq(buNodeChecklist.conceptId, conceptId)));
+  const evidenceByIdx = new Map(checkRows.map((r) => [r.keyMoveIndex, r]));
+  const checklist = c.keyMoves.map((text, index) => ({
+    index,
+    text,
+    demonstrated: !!evidenceByIdx.get(index)?.demonstrated,
+    evidence: evidenceByIdx.get(index)?.evidence ?? null,
+  }));
 
-  context.currentGateAttemptNo += 1;
+  // The gate question for transparency — NEVER the expected answer (server-only).
+  const grows = await db.select().from(gates).where(eq(gates.conceptId, conceptId));
+  const gate = grows.length
+    ? {
+        prompt: grows[0].prompt,
+        answerType: grows[0].answerType,
+        options: grows[0].answerType === 'mcq' ? (grows[0].expected as any).options : null,
+        srcLabel: grows[0].srcLabel,
+      }
+    : null;
+  const perf = await db
+    .select()
+    .from(buNodePerformance)
+    .where(and(eq(buNodePerformance.learnerId, learnerId), eq(buNodePerformance.conceptId, conceptId)));
+  const attempts = await db
+    .select()
+    .from(buGateAttempt)
+    .where(and(eq(buGateAttempt.learnerId, learnerId), eq(buGateAttempt.conceptId, conceptId)))
+    .orderBy(asc(buGateAttempt.attemptNo));
+  const misconceptionEvents = await db
+    .select()
+    .from(buEvent)
+    .where(and(eq(buEvent.learnerId, learnerId), eq(buEvent.conceptId, conceptId)));
+  const painPoints = misconceptionEvents
+    .filter((e) => e.type === 'misconception_seen')
+    .map((e) => (e.payload as any)?.label)
+    .filter(Boolean);
+
+  // Tutor's notes — a human read of where this learner is, derived purely from tracked data
+  // (no extra LLM call): current focus, sticking points, gate fails, next step.
+  const shown = checklist.filter((c) => c.demonstrated).length;
+  const nextMove = checklist.find((c) => !c.demonstrated);
+  const status = perf[0]?.status ?? 'available';
+  const fails = perf[0]?.fails ?? 0;
+
+  let currentFocus: string;
+  if (status === 'passed') currentFocus = 'Concept passed — gate cleared.';
+  else if (!nextMove) currentFocus = 'All key ideas shown — at the gate check now.';
+  else currentFocus = `Working to demonstrate: "${nextMove.text}".`;
+
+  const stickingPoints: string[] = [];
+  if (fails > 0) stickingPoints.push(`Missed the gate ${fails} time${fails > 1 ? 's' : ''} — re-teaching in place.`);
+  for (const p of painPoints) stickingPoints.push(`Misconception seen: ${p}`);
+
+  const notes = {
+    summary: `On "${c.title}": ${shown}/${c.keyMoves.length} key ideas shown. ${currentFocus}`,
+    currentFocus,
+    gateFails: fails,
+    stickingPoints,
+    nextStep:
+      status === 'passed'
+        ? 'Move to a newly-unlocked concept.'
+        : !nextMove
+          ? 'Answer the gate question to pass.'
+          : 'Continue the dialogue to solidify the current key idea.',
+  };
+
+  return {
+    concept: {
+      title: c.title,
+      role: c.role,
+      brief: c.brief,
+      explanation: c.explanation,
+      keyMoves: c.keyMoves,
+      misconceptions: c.misconceptions,
+    },
+    progress: {
+      status: perf[0]?.status ?? 'available',
+      attempts: perf[0]?.attempts ?? 0,
+      passes: perf[0]?.passes ?? 0,
+      fails: perf[0]?.fails ?? 0,
+      nudges: perf[0]?.nudges ?? 0,
+      firstPass: perf[0]?.firstPass ?? null,
+      enteredAt: perf[0]?.enteredAt ?? null,
+      passedAt: perf[0]?.passedAt ?? null,
+    },
+    counts: {
+      tutorTurns: misconceptionEvents.filter((e) => e.type === 'tutor_turn').length,
+      learnerTurns: misconceptionEvents.filter((e) => e.type === 'learner_turn').length,
+      events: misconceptionEvents.length,
+    },
+    checklist,
+    gate,
+    gateAttempts: attempts.map((a) => ({ attemptNo: a.attemptNo, answer: a.learnerAnswer, correct: a.correct })),
+    painPoints,
+    notes,
+  };
+}
+
+function norm(s: string): string {
+  return (s ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+/** Tiny CAS check for "product of prime powers" answers (e.g. 2^3 * 3^2 * 5 * 7 * 13). */
+function casEquivalent(answer: string, equivalentTo: string): boolean {
+  try {
+    const target = parseInt(equivalentTo, 10);
+    const cleaned = answer.replace(/[×·]/g, '*').replace(/\s+/g, '');
+    let product = 1;
+    for (const factor of cleaned.split('*')) {
+      if (!factor) continue;
+      const [base, exp] = factor.split('^');
+      const b = parseInt(base, 10);
+      const e = exp ? parseInt(exp, 10) : 1;
+      if (Number.isNaN(b) || Number.isNaN(e)) return false;
+      product *= Math.pow(b, e);
+    }
+    return product === target;
+  } catch {
+    return false;
+  }
 }

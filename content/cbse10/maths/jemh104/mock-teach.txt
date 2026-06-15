@@ -1,0 +1,43 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh104
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T15:39:59.231Z
+
+teach  expand-and-simplify-expression  (intermediate)
+  check  "x^2 - 4*x + 5"  →  PASS
+teach  rearrange-to-standard-form  (intermediate)
+  check  "x^2 - 6*x + 8"  →  PASS
+teach  recognise-quadratic-equation  (intermediate)
+  check  "no"  →  PASS
+teach  identify-coefficients-abc  (shared)
+  check  "-4"  →  PASS
+teach  split-middle-term  (intermediate)
+  check  "–2x – 3x"  →  PASS
+teach  factor-by-grouping  (intermediate)
+  check  "(2*x - 3)*(x - 1)"  →  PASS
+teach  apply-zero-product-property  (intermediate)
+  check  "3x – 2 = 0 or 2x + 1 = 0"  →  PASS
+teach  verify-root-by-substitution  (shared)
+  check  "0"  →  PASS
+teach  solve-linear-factor-for-root  (intermediate)
+  check  "2/3 and –1/2"  →  PASS
+teach  state-quadratic-formula  (bedrock)
+  check  "2*a"  →  PASS
+teach  compute-discriminant  (intermediate)
+  check  "-8"  →  PASS
+teach  apply-quadratic-formula  (intermediate)
+  check  "5 or –12"  →  PASS
+teach  handle-repeated-factor-equal-roots  (intermediate)
+  check  "1"  →  PASS
+teach  factorise-quadratic-with-surds  (intermediate)
+  check  "(sqrt(3)*x - sqrt(2))*(sqrt(3)*x - sqrt(2))"  →  PASS
+teach  reject-inadmissible-root  (intermediate)
+  check  "12"  →  PASS
+teach  translate-word-problem-to-quadratic  (intermediate)
+  check  "x^2 - 55*x + 750"  →  PASS
+teach  classify-nature-of-roots  (intermediate)
+  check  "Irrational and distinct"  →  PASS
+teach  find-k-for-equal-roots  (intermediate)
+  check  "6"  →  PASS
+teach  solve-quadratic-equation  (goal)
+  check  "1 and 3/2"  →  PASS
+
+# taught 19/19 reachable nodes; verdict PASS (mock)

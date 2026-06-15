@@ -1,0 +1,335 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh109",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "kind": "book",
+      "prompt": "A tower stands vertically on the ground. From a point on the ground, which is 15 m away from the foot of the tower, the angle of elevation of the top of the tower is 60°. Find the height of the tower (in metres, leave the answer as a surd).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "15*sqrt(3)",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "15*sqrt(3)"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 1)",
+      "quote": "Hence, the height of the tower is 15√3 m."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle",
+      "kind": "book",
+      "prompt": "In Example 1 the step tan 60° = AB/BC is rewritten as √3 = AB/15. This substitution uses the exact value of tan 60°. What is tan 60°? A) 1  B) 1/√3  C) √3  D) √3/2",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "√3",
+      "expected": {
+        "kind": "mcq",
+        "correct": "√3",
+        "options": [
+          "1",
+          "1/√3",
+          "√3",
+          "√3/2"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 1)",
+      "quote": "Now,    tan 60° = AB/BC\n\ni.e.,    √3 = AB/15"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:set-up-trig-equation",
+      "kind": "book",
+      "prompt": "In Example 1, after writing tan 60° = AB/BC with BC = 15, what equation results? Give the left-side value equal to AB/15.",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "sqrt(3)",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "sqrt(3)"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 1)",
+      "quote": "i.e.,    √3 = AB/15"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:solve-for-unknown-side",
+      "kind": "book",
+      "prompt": "Solve √3 = AB/15 for AB (leave as a surd).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "15*sqrt(3)",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "15*sqrt(3)"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 1)",
+      "quote": "i.e.,    AB = 15√3"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:add-observer-height-to-triangle-result",
+      "kind": "book",
+      "prompt": "An observer 1.5 m tall stands 28.5 m from a chimney; the angle of elevation of its top is 45°, giving AE = 28.5 m. What is the full height of the chimney (in m)?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "30",
+      "expected": {
+        "kind": "numeric",
+        "value": 30,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 3)",
+      "quote": "So the height of the chimney (AB) = (28.5 + 1.5) m = 30 m."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:solve-simultaneous-trig-equations",
+      "kind": "book",
+      "prompt": "From h = x√3 and 1/√3 = h/(x+40), solving gives 3x = x + 40. Find x.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "20",
+      "expected": {
+        "kind": "numeric",
+        "value": 20,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 5)",
+      "quote": "i.e.,    x = 20"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:set-up-two-triangles-shared-side",
+      "kind": "book",
+      "prompt": "From point P the angle of elevation of a 10 m building top is 30°. Using tan 30° = AB/AP with AB = 10, find AP (leave as a surd, in m).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "10*sqrt(3)",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "10*sqrt(3)"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 4)",
+      "quote": "Therefore,    AP = 10√3"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:approximate-surd-to-decimal",
+      "kind": "book",
+      "prompt": "Using √3 = 1.732, evaluate x = 10(√3 − 1) to two decimal places.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "7.32",
+      "expected": {
+        "kind": "numeric",
+        "value": 7.32,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 4)",
+      "quote": "i.e.,    x = 10 (√3 – 1) = 7.32"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:rationalise-surd-denominator",
+      "kind": "book",
+      "prompt": "Simplify 8/(√3 − 1) by rationalising the denominator. Give the simplified form.",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "4*(sqrt(3)+1)",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "4*(sqrt(3)+1)"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 6)",
+      "quote": "This gives    PD = 8/(√3 – 1) = 8(√3 + 1)/((√3 – 1)(√3 + 1)) = 4(√3 + 1) m."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:combine-segment-lengths-for-total",
+      "kind": "book",
+      "prompt": "The width of a river is AB = BD + AD = 3 + 3√3 m. Write this as a single factored surd expression.",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "3*(1+sqrt(3))",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "3*(1+sqrt(3))"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 7)",
+      "quote": "Now,    AB = BD + AD = 3 + 3√3 = 3 (1 + √3) m."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:equate-equal-sides-from-45-degree",
+      "kind": "book",
+      "prompt": "In right triangle PBD with ∠B = 45° and PD = 3 m, what is BD (in m)?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "3",
+      "expected": {
+        "kind": "numeric",
+        "value": 3,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 7)",
+      "quote": "Also, in right ∆ PBD, ∠ B = 45°. So, BD = PD = 3 m."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:compute-hypotenuse-with-sin",
+      "kind": "book",
+      "prompt": "From 3.7/BC = √3/2 (using √3 = 1.73), find the ladder length BC in m (two decimal places).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "4.28",
+      "expected": {
+        "kind": "numeric",
+        "value": 4.28,
+        "tol": 0.02
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 2)",
+      "quote": "Therefore,    BC = (3.7 × 2)/√3 = 4.28 m (approx.)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:compute-base-with-cot",
+      "kind": "book",
+      "prompt": "Using cot 60° = 1/√3 and DC = 3.7/√3 (with √3 = 1.73), find DC in m (two decimal places).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "2.14",
+      "expected": {
+        "kind": "numeric",
+        "value": 2.14,
+        "tol": 0.02
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 2)",
+      "quote": "i.e.,    DC = 3.7/√3 = 2.14 m (approx.)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:draw-and-label-right-triangle",
+      "kind": "book",
+      "prompt": "In Example 1, the right triangle ACB is right-angled at which vertex? A) A  B) B  C) C  D) none",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "B",
+      "expected": {
+        "kind": "mcq",
+        "correct": "B",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "none"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 1)",
+      "quote": "Also, ACB is a triangle, right-angled at B."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:choose-sin-for-opposite-over-hypotenuse",
+      "kind": "book",
+      "prompt": "In the ladder problem (Example 2), which trigonometric ratio is used to find the ladder length BC? A) sin 60°  B) tan 60°  C) cos 60°  D) cot 60°",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "sin 60°",
+      "expected": {
+        "kind": "mcq",
+        "correct": "sin 60°",
+        "options": [
+          "sin 60°",
+          "tan 60°",
+          "cos 60°",
+          "cot 60°"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 2)",
+      "quote": "It should be sin 60°."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent",
+      "kind": "book",
+      "prompt": "To find height BC using the opposite side BC and adjacent side AB of angle A, which ratio is used? A) tan A = BC/AB  B) sin A = BC/AB  C) cos A = BC/AB  D) sec A = AB/BC",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "tan A = BC/AB",
+      "expected": {
+        "kind": "mcq",
+        "correct": "tan A = BC/AB",
+        "options": [
+          "tan A = BC/AB",
+          "sin A = BC/AB",
+          "cos A = BC/AB",
+          "sec A = AB/BC"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 Heights and Distances",
+      "quote": "tan A = BC/AB    or    cot A = AB/BC, which on solving would give us BC."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:use-alternate-angles-for-depression",
+      "kind": "book",
+      "prompt": "Since PB is a transversal to the parallel horizontals and the angle of depression ∠QPB = 30°, what is the alternate angle ∠PBD inside the triangle (in degrees)?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "30",
+      "expected": {
+        "kind": "numeric",
+        "value": 30,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 (Example 6)",
+      "quote": "Observe that PB is a transversal to the parallel lines PQ and BD. Therefore, ∠ QPB and ∠ PBD are alternate angles, and so are equal. So, ∠ PBD = 30°."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:identify-angle-of-elevation",
+      "kind": "book",
+      "prompt": "The angle formed by the line of sight with the horizontal when it is above the horizontal level (raising the head) is called the angle of ____. A) elevation  B) depression  C) reflection  D) incidence",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "elevation",
+      "expected": {
+        "kind": "mcq",
+        "correct": "elevation",
+        "options": [
+          "elevation",
+          "depression",
+          "reflection",
+          "incidence"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 Heights and Distances",
+      "quote": "The angle of elevation of the point viewed is the angle formed by the line of sight with the horizontal when it is above the horizontal level, i.e., the case when we raise our head to look at the object"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh109:identify-angle-of-depression",
+      "kind": "book",
+      "prompt": "The angle formed by the line of sight with the horizontal when the point is below the horizontal level (lowering the head) is called the angle of ____. A) elevation  B) depression  C) rotation  D) inclination",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "depression",
+      "expected": {
+        "kind": "mcq",
+        "correct": "depression",
+        "options": [
+          "elevation",
+          "depression",
+          "rotation",
+          "inclination"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "9.1 Heights and Distances",
+      "quote": "The angle so formed by the line of sight with the horizontal is called the angle of depression."
+    }
+  ]
+}

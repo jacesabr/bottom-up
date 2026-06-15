@@ -1,0 +1,440 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh106",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh106:define-similar-figures",
+      "kind": "book",
+      "prompt": "True or false: Two figures are called similar if they have the same shape but not necessarily the same size.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "True",
+      "expected": {
+        "kind": "mcq",
+        "correct": "True",
+        "options": [
+          "True",
+          "False"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.2 Similar Figures (rule statement)",
+      "quote": "Two similar figures have the same shape but not necessarily the same size."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:state-polygon-similarity-conditions",
+      "kind": "book",
+      "prompt": "For two polygons of the same number of sides to be similar, the chapter requires (i) their corresponding angles are equal and (ii) their corresponding sides are in the same ratio. Are both conditions required?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Both conditions are required",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Both conditions are required",
+        "options": [
+          "Both conditions are required",
+          "Only equal angles is required",
+          "Only proportional sides is required",
+          "Neither is required"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.2 Similar Figures (rule statement)",
+      "quote": "Two polygons of the same number of sides are similar, if (i) their corresponding angles are equal and (ii) their corresponding sides are in the same ratio (or proportion)."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:know-one-condition-insufficient-for-polygons",
+      "kind": "book",
+      "prompt": "Is either one of the two conditions (equal corresponding angles, or proportional corresponding sides) sufficient on its own for two polygons to be similar?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "No, neither condition alone is sufficient",
+      "expected": {
+        "kind": "mcq",
+        "correct": "No, neither condition alone is sufficient",
+        "options": [
+          "No, neither condition alone is sufficient",
+          "Yes, equal angles alone is sufficient",
+          "Yes, proportional sides alone is sufficient",
+          "Yes, either one alone is sufficient"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.2 Similar Figures (continued)",
+      "quote": "Thus, either of the above two conditions (i) and (ii) of similarity of two polygons is not sufficient for them to be similar."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:identify-corresponding-parts",
+      "kind": "book",
+      "prompt": "In Activity 1 the shadow quadrilateral A′B′C′D′ is similar to ABCD with the correspondence A′↔A, B′↔B, C′↔C, D′↔D. Which vertex of A′B′C′D′ corresponds to vertex C of ABCD?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "C′",
+      "expected": {
+        "kind": "mcq",
+        "correct": "C′",
+        "options": [
+          "C′",
+          "B′",
+          "D′",
+          "A′"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.2 Similar Figures (Activity 1, correspondence of vertices)",
+      "quote": "vertex A′ corresponds to vertex A, vertex B′ corresponds to vertex B, vertex C′ corresponds to vertex C and vertex D′ corresponds to vertex D"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:write-similarity-symbolically",
+      "kind": "book",
+      "prompt": "For triangles ABC and DEF with A↔D, B↔E, C↔F, which similarity statement uses correct correspondence: Δ ABC ~ Δ EDF, Δ ABC ~ Δ FED, or Δ BAC ~ Δ EDF?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Δ BAC ~ Δ EDF",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Δ BAC ~ Δ EDF",
+        "options": [
+          "Δ BAC ~ Δ EDF",
+          "Δ ABC ~ Δ EDF",
+          "Δ ABC ~ Δ FED",
+          "none of these"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Criteria for Similarity of Triangles",
+      "quote": "we cannot write Δ ABC ~ Δ EDF or Δ ABC ~ Δ FED. However, we can write Δ BAC ~ Δ EDF."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:apply-basic-proportionality-theorem",
+      "kind": "book",
+      "prompt": "In Δ ABC a line DE ‖ BC meets AB at D and AC at E. By the Basic Proportionality Theorem, AD/DB equals which ratio?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "AE/EC",
+      "expected": {
+        "kind": "mcq",
+        "correct": "AE/EC",
+        "options": [
+          "AE/EC",
+          "AE/AC",
+          "DB/AD",
+          "EC/AE"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.3 Example 1 (Theorem 6.1)",
+      "quote": "So, AD/DB = AE/EC     (Theorem 6.1)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:prove-bpt-with-areas",
+      "kind": "book",
+      "prompt": "In the proof of BPT, why is ar(BDE) = ar(DEC)? Because the two triangles are on the same base DE and between the same parallels — true or false?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "True",
+      "expected": {
+        "kind": "mcq",
+        "correct": "True",
+        "options": [
+          "True",
+          "False"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.3 Proof of Theorem 6.1",
+      "quote": "Note that Δ BDE and DEC are on the same base DE and between the same parallels BC and DE."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:apply-converse-bpt",
+      "kind": "book",
+      "prompt": "In Δ PQR, S on PQ and T on PR satisfy PS/SQ = PT/TR. By the converse of the Basic Proportionality Theorem, what can you conclude about ST?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "ST ‖ QR",
+      "expected": {
+        "kind": "mcq",
+        "correct": "ST ‖ QR",
+        "options": [
+          "ST ‖ QR",
+          "ST ⊥ QR",
+          "ST = QR",
+          "nothing can be concluded"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.3 Example 3 (Theorem 6.2)",
+      "quote": "So, ST ‖ QR     (Theorem 6.2)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:test-parallel-by-ratio",
+      "kind": "book",
+      "prompt": "In Δ PQR, PE = 3.9 cm, EQ = 3 cm, PF = 3.6 cm, FR = 2.4 cm. Compute PE/EQ as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1.3",
+      "expected": {
+        "kind": "numeric",
+        "value": 1.3,
+        "tol": 0.01
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.3 Exercise 6.2 Q2(i)",
+      "quote": "(i) PE = 3.9 cm, EQ = 3 cm, PF = 3.6 cm and FR = 2.4 cm"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:manipulate-ratio-add-one",
+      "kind": "book",
+      "prompt": "Starting from AD/DB = AE/EC, invert each side and add 1 to both sides. What does AB/AD equal?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "AC/AE",
+      "expected": {
+        "kind": "mcq",
+        "correct": "AC/AE",
+        "options": [
+          "AC/AE",
+          "AE/AC",
+          "EC/AE",
+          "AD/AB"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.3 Example 1",
+      "quote": "or, AB/AD = AC/AE"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:apply-aaa-aa-criterion",
+      "kind": "book",
+      "prompt": "If two angles of one triangle are respectively equal to two angles of another triangle, are the triangles similar?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Yes, by the AA similarity criterion",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Yes, by the AA similarity criterion",
+        "options": [
+          "Yes, by the AA similarity criterion",
+          "No, you need all three angles",
+          "No, you also need a side ratio",
+          "Only if they are right triangles"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 AA similarity criterion (Remark after Theorem 6.3)",
+      "quote": "If two angles of one triangle are respectively equal to two angles of another triangle, then the two triangles are similar."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:source-equal-angles",
+      "kind": "book",
+      "prompt": "In Example 4, PQ ‖ RS. The reason given for ∠P = ∠S is which angle relationship?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Alternate angles",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Alternate angles",
+        "options": [
+          "Alternate angles",
+          "Vertically opposite angles",
+          "Corresponding angles",
+          "Co-interior angles"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 4",
+      "quote": "So, ∠ P = ∠ S     (Alternate angles)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:apply-sss-similarity-criterion",
+      "kind": "book",
+      "prompt": "Two triangles have all three pairs of corresponding sides in the same ratio. Which similarity criterion proves them similar?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "SSS similarity criterion",
+      "expected": {
+        "kind": "mcq",
+        "correct": "SSS similarity criterion",
+        "options": [
+          "SSS similarity criterion",
+          "SAS similarity criterion",
+          "AA similarity criterion",
+          "RHS similarity criterion"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 5 (Theorem 6.4)",
+      "quote": "So, Δ ABC ~ Δ RQP     (SSS similarity)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:compute-side-ratios",
+      "kind": "book",
+      "prompt": "Simplify the ratio 3.8/7.6 to lowest terms (as a decimal).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.5",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.5,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 5",
+      "quote": "AB/RQ = 3.8/7.6 = 1/2 , BC/QP = 6/12 = 1/2 and CA/PR = 3√3/6√3 = 1/2"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:apply-sas-similarity-criterion",
+      "kind": "book",
+      "prompt": "Given OA/OC = OD/OB and ∠AOD = ∠COB (vertically opposite angles, included between the proportional sides), which criterion proves Δ AOD ~ Δ COB?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "SAS similarity criterion",
+      "expected": {
+        "kind": "mcq",
+        "correct": "SAS similarity criterion",
+        "options": [
+          "SAS similarity criterion",
+          "SSS similarity criterion",
+          "AA similarity criterion",
+          "ASA similarity criterion"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 6 (Theorem 6.5)",
+      "quote": "Therefore, from (1) and (2), Δ AOD ~ Δ COB     (SAS similarity criterion)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:rearrange-product-to-ratio",
+      "kind": "book",
+      "prompt": "Given OA · OB = OC · OD, rearrange into a proportion of the sides including the vertical angle. OA/OC equals what?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "OD/OB",
+      "expected": {
+        "kind": "mcq",
+        "correct": "OD/OB",
+        "options": [
+          "OD/OB",
+          "OB/OD",
+          "OC/OA",
+          "OA/OD"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 6",
+      "quote": "So, OA/OC = OD/OB     (1)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
+      "kind": "book",
+      "prompt": "If Δ ABC ~ Δ PQR, the side ratio AB/PQ equals which other ratios?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "BC/QR = CA/RP",
+      "expected": {
+        "kind": "mcq",
+        "correct": "BC/QR = CA/RP",
+        "options": [
+          "BC/QR = CA/RP",
+          "QR/BC = RP/CA",
+          "BC/PQ = CA/QR",
+          "PQ/AB = QR/BC"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 8",
+      "quote": "So, AB/PQ = BC/QR = CA/RP     (1)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:find-unknown-angle-via-similarity",
+      "kind": "book",
+      "prompt": "After Δ ABC ~ Δ RQP, ∠C = ∠P. Using the angle-sum property with ∠A = 80° and ∠B = 60°, find ∠P (in degrees).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "40",
+      "expected": {
+        "kind": "numeric",
+        "value": 40,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 5",
+      "quote": "But ∠ C = 180° – ∠ A – ∠ B     (Angle sum property)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:find-unknown-length-via-proportion",
+      "kind": "book",
+      "prompt": "Solving (4.8 + x)/x = 3.6/0.9 gives 4.8 + x = 4x. Find x (in metres), the length of the girl's shadow.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1.6",
+      "expected": {
+        "kind": "numeric",
+        "value": 1.6,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 7",
+      "quote": "i.e., (4.8 + x)/x = 3.6/0.9     (90 cm = 90/100 m = 0.9 m)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:model-real-world-with-similar-triangles",
+      "kind": "book",
+      "prompt": "A vertical pole 6 m casts a 4 m shadow while a tower casts a 28 m shadow at the same time. Using similar triangles (height/shadow constant), find the tower's height in metres.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "42",
+      "expected": {
+        "kind": "numeric",
+        "value": 42,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Exercise 6.3 Q15",
+      "quote": "15. A vertical pole of length 6 m casts a shadow 4 m long on the ground and at the same time a tower casts a shadow 28 m long. Find the height of the tower."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:use-medians-in-similar-triangles",
+      "kind": "book",
+      "prompt": "In Example 8, CM and RN are medians, so AB = 2 AM and PQ = 2 PN. After substituting into AB/PQ = CA/RP and cancelling the factor 2, AM/PN equals which ratio?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "CA/RP",
+      "expected": {
+        "kind": "mcq",
+        "correct": "CA/RP",
+        "options": [
+          "CA/RP",
+          "RP/CA",
+          "PN/AM",
+          "BM/QN"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 8",
+      "quote": "i.e., AM/PN = CA/RP     (3)"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "kind": "book",
+      "prompt": "In Example 6, line segments AB and CD intersect at O with OA·OB = OC·OD, which rearranges to OA/OC = OD/OB, and ∠AOD = ∠COB are vertically opposite angles included between those proportional sides. Which similarity criterion establishes Δ AOD ~ Δ COB?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "SAS similarity criterion",
+      "expected": {
+        "kind": "mcq",
+        "correct": "SAS similarity criterion",
+        "options": [
+          "SAS similarity criterion",
+          "SSS similarity criterion",
+          "AA similarity criterion",
+          "the triangles are not similar"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "6.4 Example 6 (Theorem 6.5)",
+      "quote": "Therefore, from (1) and (2), Δ AOD ~ Δ COB     (SAS similarity criterion)"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh108
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-05T14:35:55.262Z
+
+teach  define-trig-ratios  (bedrock)
+  check  "BC/AC"  →  PASS
+teach  apply-pythagorean-identity  (intermediate)
+  check  "0.8"  →  PASS
+teach  compute-reciprocal-ratios  (bedrock)
+  check  "cosine of A"  →  PASS
+teach  relate-tan-to-sin-cos  (intermediate)
+  check  "sin(A)/cos(A)"  →  PASS
+teach  apply-sec-tan-identity  (intermediate)
+  check  "9"  →  PASS
+teach  recall-45-ratios  (bedrock)
+  check  "1"  →  PASS
+teach  recall-30-60-ratios  (bedrock)
+  check  "0.5"  →  PASS
+teach  recall-0-90-ratios  (bedrock)
+  check  "1"  →  PASS
+teach  evaluate-specific-angle-expressions  (intermediate)
+  check  "1"  →  PASS
+teach  find-ratios-from-one-ratio  (intermediate)
+  check  "0.8"  →  PASS
+teach  prove-trig-identities  (goal)
+  check  "1"  →  PASS
+
+# taught 11/11 reachable nodes; verdict PASS (mock)

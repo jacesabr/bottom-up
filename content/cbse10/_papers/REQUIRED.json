@@ -1,0 +1,8 @@
+{
+  "_comment": "The board papers a Class-10 student actually writes. The coverage guard FAILS if any paperId here has no paper.json yet — so an entire missing paper can never pass silently. Add a paper here the moment we commit to covering it; remove nothing.",
+  "requiredPapers": [
+    { "paperId": "cbse10-maths-standard-2024-25", "dir": "maths-standard", "status": "transcribed" },
+    { "paperId": "cbse10-maths-basic-2024-25", "dir": "maths-basic", "status": "pending" },
+    { "paperId": "cbse10-science-2024-25", "dir": "science", "status": "transcribed" }
+  ]
+}

@@ -1,0 +1,3271 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "nodes": [
+    "cbse10:maths:jemh101:apply-real-number-theorems",
+    "cbse10:maths:jemh101:prime-factorise-integer",
+    "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic",
+    "cbse10:maths:jemh101:decide-ends-with-digit-via-primes",
+    "cbse10:maths:jemh101:compute-hcf-prime-factorisation",
+    "cbse10:maths:jemh101:compute-lcm-prime-factorisation",
+    "cbse10:maths:jemh101:use-hcf-lcm-product-relation",
+    "cbse10:maths:jemh101:state-prime-divides-square-theorem",
+    "cbse10:maths:jemh101:set-up-contradiction-rational-assumption",
+    "cbse10:maths:jemh101:derive-square-relation-from-fraction",
+    "cbse10:maths:jemh101:close-irrationality-contradiction",
+    "cbse10:maths:jemh101:prove-irrational-rational-minus-irrational",
+    "cbse10:maths:jemh101:prove-irrational-rational-times-irrational",
+    "cbse10:maths:jemh101:solve-lcm-meeting-time-word-problem",
+    "cbse10:maths:jemh101:explain-sum-is-composite",
+    "cbse10:maths:jemh101:know-prime-composite-coprime",
+    "cbse10:maths:jemh101:interpret-divides-relation",
+    "cbse10:maths:jemh101:manipulate-prime-powers",
+    "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+    "cbse10:maths:jemh102:identify-degree-of-polynomial",
+    "cbse10:maths:jemh102:classify-polynomial-by-degree",
+    "cbse10:maths:jemh102:recognise-non-polynomial-expressions",
+    "cbse10:maths:jemh102:evaluate-polynomial-at-a-value",
+    "cbse10:maths:jemh102:evaluate-polynomial-at-negative-value",
+    "cbse10:maths:jemh102:define-zero-of-polynomial",
+    "cbse10:maths:jemh102:find-zero-of-linear-polynomial",
+    "cbse10:maths:jemh102:interpret-zero-as-x-intercept",
+    "cbse10:maths:jemh102:count-zeroes-from-graph",
+    "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree",
+    "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term",
+    "cbse10:maths:jemh102:factorise-using-difference-of-squares",
+    "cbse10:maths:jemh102:find-zeroes-from-factors",
+    "cbse10:maths:jemh102:verify-quadratic-sum-of-zeroes",
+    "cbse10:maths:jemh102:verify-quadratic-product-of-zeroes",
+    "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+    "cbse10:maths:jemh102:build-quadratic-from-sum-and-product",
+    "cbse10:maths:jemh102:verify-cubic-zero-by-substitution",
+    "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations",
+    "cbse10:maths:jemh102:verify-cubic-zero-coefficient-relations",
+    "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+    "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios",
+    "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent",
+    "cbse10:maths:jemh103:find-two-solutions-of-an-equation",
+    "cbse10:maths:jemh103:plot-points-and-draw-line",
+    "cbse10:maths:jemh103:read-intersection-as-solution",
+    "cbse10:maths:jemh103:solve-graphically",
+    "cbse10:maths:jemh103:express-one-variable-in-terms-of-other",
+    "cbse10:maths:jemh103:substitute-expression-into-other-equation",
+    "cbse10:maths:jemh103:solve-resulting-one-variable-equation",
+    "cbse10:maths:jemh103:back-substitute-to-find-other-variable",
+    "cbse10:maths:jemh103:solve-by-substitution",
+    "cbse10:maths:jemh103:interpret-no-variable-true-statement",
+    "cbse10:maths:jemh103:interpret-no-variable-false-statement",
+    "cbse10:maths:jemh103:multiply-equations-to-equalize-coefficient",
+    "cbse10:maths:jemh103:add-or-subtract-to-eliminate-variable",
+    "cbse10:maths:jemh103:solve-by-elimination",
+    "cbse10:maths:jemh103:form-equations-from-word-problem",
+    "cbse10:maths:jemh103:model-two-digit-number-by-place-value",
+    "cbse10:maths:jemh103:verify-solution-in-original-equations",
+    "cbse10:maths:jemh103:find-k-for-given-solution-type",
+    "cbse10:maths:jemh104:solve-quadratic-equation",
+    "cbse10:maths:jemh104:recognise-quadratic-equation",
+    "cbse10:maths:jemh104:rearrange-to-standard-form",
+    "cbse10:maths:jemh104:expand-and-simplify-expression",
+    "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
+    "cbse10:maths:jemh104:verify-root-by-substitution",
+    "cbse10:maths:jemh104:split-middle-term",
+    "cbse10:maths:jemh104:factor-by-grouping",
+    "cbse10:maths:jemh104:apply-zero-product-property",
+    "cbse10:maths:jemh104:solve-linear-factor-for-root",
+    "cbse10:maths:jemh104:handle-repeated-factor-equal-roots",
+    "cbse10:maths:jemh104:factorise-quadratic-with-surds",
+    "cbse10:maths:jemh104:reject-inadmissible-root",
+    "cbse10:maths:jemh104:identify-coefficients-abc",
+    "cbse10:maths:jemh104:compute-discriminant",
+    "cbse10:maths:jemh104:classify-nature-of-roots",
+    "cbse10:maths:jemh104:find-k-for-equal-roots",
+    "cbse10:maths:jemh104:state-quadratic-formula",
+    "cbse10:maths:jemh104:apply-quadratic-formula",
+    "cbse10:maths:jemh105:solve-ap-problems",
+    "cbse10:maths:jemh105:define-ap-common-difference",
+    "cbse10:maths:jemh105:compute-common-difference",
+    "cbse10:maths:jemh105:test-is-ap",
+    "cbse10:maths:jemh105:write-next-terms",
+    "cbse10:maths:jemh105:list-ap-from-a-d",
+    "cbse10:maths:jemh105:identify-first-term",
+    "cbse10:maths:jemh105:apply-nth-term-formula",
+    "cbse10:maths:jemh105:find-which-term",
+    "cbse10:maths:jemh105:check-membership-integer-n",
+    "cbse10:maths:jemh105:find-two-equations-ap",
+    "cbse10:maths:jemh105:count-terms-ap",
+    "cbse10:maths:jemh105:term-from-last",
+    "cbse10:maths:jemh105:model-real-world-ap",
+    "cbse10:maths:jemh105:derive-d-from-nth-term-rule",
+    "cbse10:maths:jemh105:apply-sum-formula-a-d",
+    "cbse10:maths:jemh105:apply-sum-formula-a-l",
+    "cbse10:maths:jemh105:find-n-from-sum",
+    "cbse10:maths:jemh105:find-unknown-from-sum-system",
+    "cbse10:maths:jemh105:solve-linear-equation",
+    "cbse10:maths:jemh105:solve-simultaneous-equations",
+    "cbse10:maths:jemh105:factor-quadratic",
+    "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+    "cbse10:maths:jemh106:define-similar-figures",
+    "cbse10:maths:jemh106:state-polygon-similarity-conditions",
+    "cbse10:maths:jemh106:know-one-condition-insufficient-for-polygons",
+    "cbse10:maths:jemh106:identify-corresponding-parts",
+    "cbse10:maths:jemh106:write-similarity-symbolically",
+    "cbse10:maths:jemh106:apply-basic-proportionality-theorem",
+    "cbse10:maths:jemh106:prove-bpt-with-areas",
+    "cbse10:maths:jemh106:apply-converse-bpt",
+    "cbse10:maths:jemh106:test-parallel-by-ratio",
+    "cbse10:maths:jemh106:manipulate-ratio-add-one",
+    "cbse10:maths:jemh106:apply-aaa-aa-criterion",
+    "cbse10:maths:jemh106:source-equal-angles",
+    "cbse10:maths:jemh106:apply-sss-similarity-criterion",
+    "cbse10:maths:jemh106:compute-side-ratios",
+    "cbse10:maths:jemh106:apply-sas-similarity-criterion",
+    "cbse10:maths:jemh106:rearrange-product-to-ratio",
+    "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
+    "cbse10:maths:jemh106:find-unknown-angle-via-similarity",
+    "cbse10:maths:jemh106:find-unknown-length-via-proportion",
+    "cbse10:maths:jemh106:model-real-world-with-similar-triangles",
+    "cbse10:maths:jemh106:use-medians-in-similar-triangles",
+    "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+    "cbse10:maths:jemh107:apply-distance-formula",
+    "cbse10:maths:jemh107:compute-coordinate-differences",
+    "cbse10:maths:jemh107:square-and-sum",
+    "cbse10:maths:jemh107:distance-from-origin",
+    "cbse10:maths:jemh107:classify-triangle-by-sides",
+    "cbse10:maths:jemh107:verify-triangle-exists",
+    "cbse10:maths:jemh107:test-square-by-distance",
+    "cbse10:maths:jemh107:test-collinearity-by-distance",
+    "cbse10:maths:jemh107:set-up-equidistant-equation",
+    "cbse10:maths:jemh107:derive-equidistant-relation",
+    "cbse10:maths:jemh107:find-point-on-axis-equidistant",
+    "cbse10:maths:jemh107:apply-section-formula",
+    "cbse10:maths:jemh107:find-point-dividing-in-ratio",
+    "cbse10:maths:jemh107:find-ratio-from-point",
+    "cbse10:maths:jemh107:find-ratio-axis-divides",
+    "cbse10:maths:jemh107:find-trisection-points",
+    "cbse10:maths:jemh107:apply-midpoint-formula",
+    "cbse10:maths:jemh107:use-parallelogram-diagonal-bisect",
+    "cbse10:maths:jemh107:use-pythagoras-theorem",
+    "cbse10:maths:jemh107:read-point-coordinates",
+    "cbse10:maths:jemh107:equate-ordered-pairs",
+    "cbse10:maths:jemh108:define-trig-ratios",
+    "cbse10:maths:jemh108:compute-reciprocal-ratios",
+    "cbse10:maths:jemh108:relate-tan-to-sin-cos",
+    "cbse10:maths:jemh108:find-ratios-from-one-ratio",
+    "cbse10:maths:jemh108:recall-45-ratios",
+    "cbse10:maths:jemh108:recall-30-60-ratios",
+    "cbse10:maths:jemh108:recall-0-90-ratios",
+    "cbse10:maths:jemh108:evaluate-specific-angle-expressions",
+    "cbse10:maths:jemh108:apply-pythagorean-identity",
+    "cbse10:maths:jemh108:apply-sec-tan-identity",
+    "cbse10:maths:jemh108:prove-trig-identities",
+    "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+    "cbse10:maths:jemh109:draw-and-label-right-triangle",
+    "cbse10:maths:jemh109:identify-angle-of-elevation",
+    "cbse10:maths:jemh109:identify-angle-of-depression",
+    "cbse10:maths:jemh109:use-alternate-angles-for-depression",
+    "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent",
+    "cbse10:maths:jemh109:choose-sin-for-opposite-over-hypotenuse",
+    "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle",
+    "cbse10:maths:jemh109:set-up-trig-equation",
+    "cbse10:maths:jemh109:solve-for-unknown-side",
+    "cbse10:maths:jemh109:compute-hypotenuse-with-sin",
+    "cbse10:maths:jemh109:compute-base-with-cot",
+    "cbse10:maths:jemh109:add-observer-height-to-triangle-result",
+    "cbse10:maths:jemh109:set-up-two-triangles-shared-side",
+    "cbse10:maths:jemh109:solve-simultaneous-trig-equations",
+    "cbse10:maths:jemh109:rationalise-surd-denominator",
+    "cbse10:maths:jemh109:approximate-surd-to-decimal",
+    "cbse10:maths:jemh109:combine-segment-lengths-for-total",
+    "cbse10:maths:jemh109:equate-equal-sides-from-45-degree",
+    "cbse10:maths:jemh110:solve-circle-tangent-problems",
+    "cbse10:maths:jemh110:define-tangent-to-circle",
+    "cbse10:maths:jemh110:classify-line-circle-position",
+    "cbse10:maths:jemh110:count-tangents-by-point-location",
+    "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+    "cbse10:maths:jemh110:justify-point-outside-tangent",
+    "cbse10:maths:jemh110:apply-equal-tangent-lengths",
+    "cbse10:maths:jemh110:prove-equal-tangents-rhs",
+    "cbse10:maths:jemh110:compute-tangent-length-pythagoras",
+    "cbse10:maths:jemh110:compute-chord-touching-smaller-circle",
+    "cbse10:maths:jemh110:use-perpendicular-bisects-chord",
+    "cbse10:maths:jemh110:relate-angle-tangents-central-angle",
+    "cbse10:maths:jemh110:prove-angle-PTQ-twice-OPQ",
+    "cbse10:maths:jemh110:compute-base-angle-isosceles-tangent",
+    "cbse10:maths:jemh110:use-tangent-segments-circumscribed-quad",
+    "cbse10:maths:jemh110:find-triangle-sides-inscribed-circle",
+    "cbse10:maths:jemh110:use-similar-right-triangles-tangent",
+    "cbse10:maths:jemh110:prove-tangents-diameter-parallel",
+    "cbse10:maths:jemh110:solve-right-triangle-pythagoras",
+    "cbse10:maths:jemh110:apply-rhs-cpct-congruence",
+    "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+    "cbse10:maths:jemh111:apply-sector-area-formula",
+    "cbse10:maths:jemh111:derive-sector-area-unitary",
+    "cbse10:maths:jemh111:compute-arc-length",
+    "cbse10:maths:jemh111:compute-major-sector-area",
+    "cbse10:maths:jemh111:compute-triangle-area-base-height",
+    "cbse10:maths:jemh111:drop-perpendicular-to-chord",
+    "cbse10:maths:jemh111:use-rhs-congruence-bisect",
+    "cbse10:maths:jemh111:use-cosine-ratio-find-om",
+    "cbse10:maths:jemh111:use-sine-ratio-find-am",
+    "cbse10:maths:jemh111:find-chord-length-from-half",
+    "cbse10:maths:jemh111:subtract-sector-minus-triangle",
+    "cbse10:maths:jemh111:substitute-pi-value",
+    "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations",
+    "cbse10:maths:jemh112:decompose-combination-into-basic-solids",
+    "cbse10:maths:jemh112:tsa-combination-sum-of-csa",
+    "cbse10:maths:jemh112:tsa-toy-cone-plus-hemisphere",
+    "cbse10:maths:jemh112:csa-hemisphere",
+    "cbse10:maths:jemh112:csa-cylinder",
+    "cbse10:maths:jemh112:csa-cone",
+    "cbse10:maths:jemh112:compute-slant-height",
+    "cbse10:maths:jemh112:derive-cone-height-from-combined",
+    "cbse10:maths:jemh112:tsa-cube-with-hemisphere-on-top",
+    "cbse10:maths:jemh112:tsa-solid-with-hemispherical-depression",
+    "cbse10:maths:jemh112:tsa-ring-when-cone-base-exceeds-cylinder",
+    "cbse10:maths:jemh112:painted-area-cylinder-with-one-open-base",
+    "cbse10:maths:jemh112:compute-tsa-solid-hemisphere",
+    "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+    "cbse10:maths:jemh112:volume-cylinder",
+    "cbse10:maths:jemh112:volume-cone",
+    "cbse10:maths:jemh112:volume-hemisphere",
+    "cbse10:maths:jemh112:volume-half-cylinder",
+    "cbse10:maths:jemh112:volume-cuboid",
+    "cbse10:maths:jemh112:actual-capacity-subtract-depression",
+    "cbse10:maths:jemh112:volume-difference-circumscribing-cylinder",
+    "cbse10:maths:jemh112:convert-units-cm-to-m",
+    "cbse10:maths:jemh112:radius-from-diameter",
+    "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+    "cbse10:maths:jemh113:compute-class-mark",
+    "cbse10:maths:jemh113:compute-mean-direct-method",
+    "cbse10:maths:jemh113:compute-fx-product-and-sum",
+    "cbse10:maths:jemh113:choose-assumed-mean",
+    "cbse10:maths:jemh113:compute-deviation-di",
+    "cbse10:maths:jemh113:compute-mean-assumed-mean-method",
+    "cbse10:maths:jemh113:compute-step-deviation-ui",
+    "cbse10:maths:jemh113:compute-mean-step-deviation-method",
+    "cbse10:maths:jemh113:apply-step-deviation-unequal-classes",
+    "cbse10:maths:jemh113:choose-appropriate-mean-method",
+    "cbse10:maths:jemh113:identify-modal-class",
+    "cbse10:maths:jemh113:read-modal-formula-parameters",
+    "cbse10:maths:jemh113:apply-mode-formula",
+    "cbse10:maths:jemh113:compute-cumulative-frequency-less-than",
+    "cbse10:maths:jemh113:convert-cf-table-to-frequencies",
+    "cbse10:maths:jemh113:identify-median-class",
+    "cbse10:maths:jemh113:read-median-formula-parameters",
+    "cbse10:maths:jemh113:apply-median-formula",
+    "cbse10:maths:jemh113:convert-discontinuous-to-continuous-classes",
+    "cbse10:maths:jemh113:find-unknown-frequencies-from-median",
+    "cbse10:maths:jemh113:use-empirical-mode-mean-median-relation",
+    "cbse10:maths:jemh113:select-appropriate-measure-of-central-tendency",
+    "cbse10:maths:jemh114:compute-theoretical-probability",
+    "cbse10:maths:jemh114:count-total-equally-likely-outcomes",
+    "cbse10:maths:jemh114:count-favourable-outcomes",
+    "cbse10:maths:jemh114:form-probability-ratio",
+    "cbse10:maths:jemh114:identify-equally-likely-outcomes",
+    "cbse10:maths:jemh114:apply-complement-rule",
+    "cbse10:maths:jemh114:probability-impossible-event",
+    "cbse10:maths:jemh114:probability-sure-event",
+    "cbse10:maths:jemh114:probability-range-bounds",
+    "cbse10:maths:jemh114:sum-of-elementary-events-is-one",
+    "cbse10:maths:jemh114:list-sample-space-two-coins",
+    "cbse10:maths:jemh114:list-sample-space-two-dice",
+    "cbse10:maths:jemh114:card-deck-composition",
+    "cbse10:maths:jemh114:geometric-probability-length",
+    "cbse10:maths:jemh114:geometric-probability-area",
+    "cbse10:maths:jemh114:complement-word-problem"
+  ],
+  "edges": [
+    {
+      "parent": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "child": "cbse10:maths:jemh101:decide-ends-with-digit-via-primes"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "child": "cbse10:maths:jemh101:compute-hcf-prime-factorisation"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "child": "cbse10:maths:jemh101:compute-lcm-prime-factorisation"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "child": "cbse10:maths:jemh101:use-hcf-lcm-product-relation"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "child": "cbse10:maths:jemh101:prove-irrational-rational-minus-irrational"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "child": "cbse10:maths:jemh101:prove-irrational-rational-times-irrational"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "child": "cbse10:maths:jemh101:solve-lcm-meeting-time-word-problem"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "child": "cbse10:maths:jemh101:explain-sum-is-composite"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "child": "cbse10:maths:jemh101:close-irrationality-contradiction"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:prime-factorise-integer",
+      "child": "cbse10:maths:jemh101:know-prime-composite-coprime"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic",
+      "child": "cbse10:maths:jemh101:know-prime-composite-coprime"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:decide-ends-with-digit-via-primes",
+      "child": "cbse10:maths:jemh101:prime-factorise-integer"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:decide-ends-with-digit-via-primes",
+      "child": "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:compute-hcf-prime-factorisation",
+      "child": "cbse10:maths:jemh101:prime-factorise-integer"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:compute-hcf-prime-factorisation",
+      "child": "cbse10:maths:jemh101:manipulate-prime-powers"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:compute-lcm-prime-factorisation",
+      "child": "cbse10:maths:jemh101:prime-factorise-integer"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:compute-lcm-prime-factorisation",
+      "child": "cbse10:maths:jemh101:manipulate-prime-powers"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:use-hcf-lcm-product-relation",
+      "child": "cbse10:maths:jemh101:compute-hcf-prime-factorisation"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:state-prime-divides-square-theorem",
+      "child": "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:state-prime-divides-square-theorem",
+      "child": "cbse10:maths:jemh101:interpret-divides-relation"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:set-up-contradiction-rational-assumption",
+      "child": "cbse10:maths:jemh101:know-prime-composite-coprime"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:derive-square-relation-from-fraction",
+      "child": "cbse10:maths:jemh101:interpret-divides-relation"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:close-irrationality-contradiction",
+      "child": "cbse10:maths:jemh101:state-prime-divides-square-theorem"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:close-irrationality-contradiction",
+      "child": "cbse10:maths:jemh101:derive-square-relation-from-fraction"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:close-irrationality-contradiction",
+      "child": "cbse10:maths:jemh101:set-up-contradiction-rational-assumption"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:prove-irrational-rational-minus-irrational",
+      "child": "cbse10:maths:jemh101:close-irrationality-contradiction"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:prove-irrational-rational-times-irrational",
+      "child": "cbse10:maths:jemh101:close-irrationality-contradiction"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:solve-lcm-meeting-time-word-problem",
+      "child": "cbse10:maths:jemh101:compute-lcm-prime-factorisation"
+    },
+    {
+      "parent": "cbse10:maths:jemh101:explain-sum-is-composite",
+      "child": "cbse10:maths:jemh101:know-prime-composite-coprime"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "child": "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "child": "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "child": "cbse10:maths:jemh102:build-quadratic-from-sum-and-product"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "child": "cbse10:maths:jemh102:verify-cubic-zero-coefficient-relations"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "child": "cbse10:maths:jemh102:interpret-zero-as-x-intercept"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "child": "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:classify-polynomial-by-degree",
+      "child": "cbse10:maths:jemh102:identify-degree-of-polynomial"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:evaluate-polynomial-at-negative-value",
+      "child": "cbse10:maths:jemh102:evaluate-polynomial-at-a-value"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:define-zero-of-polynomial",
+      "child": "cbse10:maths:jemh102:evaluate-polynomial-at-a-value"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:find-zero-of-linear-polynomial",
+      "child": "cbse10:maths:jemh102:define-zero-of-polynomial"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:find-zero-of-linear-polynomial",
+      "child": "cbse10:maths:jemh102:evaluate-polynomial-at-a-value"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:interpret-zero-as-x-intercept",
+      "child": "cbse10:maths:jemh102:find-zero-of-linear-polynomial"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:count-zeroes-from-graph",
+      "child": "cbse10:maths:jemh102:interpret-zero-as-x-intercept"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree",
+      "child": "cbse10:maths:jemh102:count-zeroes-from-graph"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree",
+      "child": "cbse10:maths:jemh102:identify-degree-of-polynomial"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:find-zeroes-from-factors",
+      "child": "cbse10:maths:jemh102:define-zero-of-polynomial"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:find-zeroes-from-factors",
+      "child": "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:find-zeroes-from-factors",
+      "child": "cbse10:maths:jemh102:factorise-using-difference-of-squares"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:verify-quadratic-sum-of-zeroes",
+      "child": "cbse10:maths:jemh102:find-zeroes-from-factors"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:verify-quadratic-product-of-zeroes",
+      "child": "cbse10:maths:jemh102:find-zeroes-from-factors"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+      "child": "cbse10:maths:jemh102:verify-quadratic-sum-of-zeroes"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+      "child": "cbse10:maths:jemh102:verify-quadratic-product-of-zeroes"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+      "child": "cbse10:maths:jemh102:classify-polynomial-by-degree"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+      "child": "cbse10:maths:jemh102:recognise-non-polynomial-expressions"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:build-quadratic-from-sum-and-product",
+      "child": "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:verify-cubic-zero-by-substitution",
+      "child": "cbse10:maths:jemh102:evaluate-polynomial-at-negative-value"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:verify-cubic-zero-by-substitution",
+      "child": "cbse10:maths:jemh102:define-zero-of-polynomial"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations",
+      "child": "cbse10:maths:jemh102:classify-polynomial-by-degree"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:verify-cubic-zero-coefficient-relations",
+      "child": "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations"
+    },
+    {
+      "parent": "cbse10:maths:jemh102:verify-cubic-zero-coefficient-relations",
+      "child": "cbse10:maths:jemh102:verify-cubic-zero-by-substitution"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "child": "cbse10:maths:jemh103:solve-graphically"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "child": "cbse10:maths:jemh103:solve-by-substitution"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "child": "cbse10:maths:jemh103:solve-by-elimination"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "child": "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "child": "cbse10:maths:jemh103:form-equations-from-word-problem"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "child": "cbse10:maths:jemh103:verify-solution-in-original-equations"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "child": "cbse10:maths:jemh103:find-k-for-given-solution-type"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios",
+      "child": "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:find-two-solutions-of-an-equation",
+      "child": "cbse10:maths:jemh103:plot-points-and-draw-line"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:plot-points-and-draw-line",
+      "child": "cbse10:maths:jemh107:read-point-coordinates"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-graphically",
+      "child": "cbse10:maths:jemh103:find-two-solutions-of-an-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-graphically",
+      "child": "cbse10:maths:jemh103:plot-points-and-draw-line"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-graphically",
+      "child": "cbse10:maths:jemh103:read-intersection-as-solution"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-graphically",
+      "child": "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:substitute-expression-into-other-equation",
+      "child": "cbse10:maths:jemh103:express-one-variable-in-terms-of-other"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:back-substitute-to-find-other-variable",
+      "child": "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-substitution",
+      "child": "cbse10:maths:jemh103:express-one-variable-in-terms-of-other"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-substitution",
+      "child": "cbse10:maths:jemh103:substitute-expression-into-other-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-substitution",
+      "child": "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-substitution",
+      "child": "cbse10:maths:jemh103:back-substitute-to-find-other-variable"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-substitution",
+      "child": "cbse10:maths:jemh103:interpret-no-variable-true-statement"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-substitution",
+      "child": "cbse10:maths:jemh103:interpret-no-variable-false-statement"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-substitution",
+      "child": "cbse10:maths:jemh103:form-equations-from-word-problem"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:add-or-subtract-to-eliminate-variable",
+      "child": "cbse10:maths:jemh103:multiply-equations-to-equalize-coefficient"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-elimination",
+      "child": "cbse10:maths:jemh103:multiply-equations-to-equalize-coefficient"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-elimination",
+      "child": "cbse10:maths:jemh103:add-or-subtract-to-eliminate-variable"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-elimination",
+      "child": "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-elimination",
+      "child": "cbse10:maths:jemh103:back-substitute-to-find-other-variable"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-elimination",
+      "child": "cbse10:maths:jemh103:interpret-no-variable-true-statement"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-elimination",
+      "child": "cbse10:maths:jemh103:interpret-no-variable-false-statement"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:solve-by-elimination",
+      "child": "cbse10:maths:jemh103:form-equations-from-word-problem"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:form-equations-from-word-problem",
+      "child": "cbse10:maths:jemh103:model-two-digit-number-by-place-value"
+    },
+    {
+      "parent": "cbse10:maths:jemh103:find-k-for-given-solution-type",
+      "child": "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:recognise-quadratic-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:rearrange-to-standard-form"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:split-middle-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:factor-by-grouping"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:apply-zero-product-property"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:solve-linear-factor-for-root"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:apply-quadratic-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:handle-repeated-factor-equal-roots"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:factorise-quadratic-with-surds"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:reject-inadmissible-root"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:translate-word-problem-to-quadratic"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:classify-nature-of-roots"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:find-k-for-equal-roots"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "child": "cbse10:maths:jemh104:verify-root-by-substitution"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:recognise-quadratic-equation",
+      "child": "cbse10:maths:jemh104:rearrange-to-standard-form"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:recognise-quadratic-equation",
+      "child": "cbse10:maths:jemh104:expand-and-simplify-expression"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:recognise-quadratic-equation",
+      "child": "cbse10:maths:jemh102:classify-polynomial-by-degree"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:rearrange-to-standard-form",
+      "child": "cbse10:maths:jemh104:expand-and-simplify-expression"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
+      "child": "cbse10:maths:jemh104:rearrange-to-standard-form"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
+      "child": "cbse10:maths:jemh104:expand-and-simplify-expression"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:split-middle-term",
+      "child": "cbse10:maths:jemh104:identify-coefficients-abc"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:factor-by-grouping",
+      "child": "cbse10:maths:jemh104:split-middle-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:apply-zero-product-property",
+      "child": "cbse10:maths:jemh104:factor-by-grouping"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-linear-factor-for-root",
+      "child": "cbse10:maths:jemh104:apply-zero-product-property"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:solve-linear-factor-for-root",
+      "child": "cbse10:maths:jemh104:verify-root-by-substitution"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:handle-repeated-factor-equal-roots",
+      "child": "cbse10:maths:jemh104:factor-by-grouping"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:handle-repeated-factor-equal-roots",
+      "child": "cbse10:maths:jemh104:solve-linear-factor-for-root"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:factorise-quadratic-with-surds",
+      "child": "cbse10:maths:jemh104:split-middle-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:factorise-quadratic-with-surds",
+      "child": "cbse10:maths:jemh104:factor-by-grouping"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:reject-inadmissible-root",
+      "child": "cbse10:maths:jemh104:solve-linear-factor-for-root"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:compute-discriminant",
+      "child": "cbse10:maths:jemh104:identify-coefficients-abc"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:classify-nature-of-roots",
+      "child": "cbse10:maths:jemh104:compute-discriminant"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:find-k-for-equal-roots",
+      "child": "cbse10:maths:jemh104:compute-discriminant"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:find-k-for-equal-roots",
+      "child": "cbse10:maths:jemh104:classify-nature-of-roots"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:apply-quadratic-formula",
+      "child": "cbse10:maths:jemh104:state-quadratic-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:apply-quadratic-formula",
+      "child": "cbse10:maths:jemh104:compute-discriminant"
+    },
+    {
+      "parent": "cbse10:maths:jemh104:apply-quadratic-formula",
+      "child": "cbse10:maths:jemh104:identify-coefficients-abc"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:test-is-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:apply-nth-term-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:apply-sum-formula-a-d"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:model-real-world-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:find-which-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:check-membership-integer-n"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:count-terms-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:term-from-last"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:find-two-equations-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:list-ap-from-a-d"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:apply-sum-formula-a-l"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:find-n-from-sum"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:solve-ap-problems",
+      "child": "cbse10:maths:jemh105:find-unknown-from-sum-system"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:compute-common-difference",
+      "child": "cbse10:maths:jemh105:identify-first-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:compute-common-difference",
+      "child": "cbse10:maths:jemh105:solve-linear-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:test-is-ap",
+      "child": "cbse10:maths:jemh105:compute-common-difference"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:test-is-ap",
+      "child": "cbse10:maths:jemh105:define-ap-common-difference"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:write-next-terms",
+      "child": "cbse10:maths:jemh105:test-is-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:write-next-terms",
+      "child": "cbse10:maths:jemh105:compute-common-difference"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:list-ap-from-a-d",
+      "child": "cbse10:maths:jemh105:define-ap-common-difference"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:list-ap-from-a-d",
+      "child": "cbse10:maths:jemh105:identify-first-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:apply-nth-term-formula",
+      "child": "cbse10:maths:jemh105:identify-first-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:apply-nth-term-formula",
+      "child": "cbse10:maths:jemh105:compute-common-difference"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:apply-nth-term-formula",
+      "child": "cbse10:maths:jemh105:write-next-terms"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:find-which-term",
+      "child": "cbse10:maths:jemh105:apply-nth-term-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:find-which-term",
+      "child": "cbse10:maths:jemh105:solve-linear-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:check-membership-integer-n",
+      "child": "cbse10:maths:jemh105:find-which-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:check-membership-integer-n",
+      "child": "cbse10:maths:jemh105:test-is-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:find-two-equations-ap",
+      "child": "cbse10:maths:jemh105:apply-nth-term-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:find-two-equations-ap",
+      "child": "cbse10:maths:jemh105:solve-simultaneous-equations"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:count-terms-ap",
+      "child": "cbse10:maths:jemh105:apply-nth-term-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:count-terms-ap",
+      "child": "cbse10:maths:jemh105:solve-linear-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:term-from-last",
+      "child": "cbse10:maths:jemh105:count-terms-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:term-from-last",
+      "child": "cbse10:maths:jemh105:apply-nth-term-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:model-real-world-ap",
+      "child": "cbse10:maths:jemh105:test-is-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:model-real-world-ap",
+      "child": "cbse10:maths:jemh105:find-two-equations-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:model-real-world-ap",
+      "child": "cbse10:maths:jemh105:count-terms-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:derive-d-from-nth-term-rule",
+      "child": "cbse10:maths:jemh105:compute-common-difference"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:derive-d-from-nth-term-rule",
+      "child": "cbse10:maths:jemh105:test-is-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:apply-sum-formula-a-d",
+      "child": "cbse10:maths:jemh105:identify-first-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:apply-sum-formula-a-d",
+      "child": "cbse10:maths:jemh105:compute-common-difference"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:apply-sum-formula-a-d",
+      "child": "cbse10:maths:jemh105:derive-d-from-nth-term-rule"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:apply-sum-formula-a-l",
+      "child": "cbse10:maths:jemh105:identify-first-term"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:apply-sum-formula-a-l",
+      "child": "cbse10:maths:jemh105:count-terms-ap"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:find-n-from-sum",
+      "child": "cbse10:maths:jemh105:apply-sum-formula-a-d"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:find-n-from-sum",
+      "child": "cbse10:maths:jemh105:factor-quadratic"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:find-unknown-from-sum-system",
+      "child": "cbse10:maths:jemh105:apply-sum-formula-a-d"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:find-unknown-from-sum-system",
+      "child": "cbse10:maths:jemh105:apply-nth-term-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh105:find-unknown-from-sum-system",
+      "child": "cbse10:maths:jemh105:solve-linear-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:apply-aaa-aa-criterion"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:apply-sss-similarity-criterion"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:apply-sas-similarity-criterion"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:find-unknown-angle-via-similarity"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:find-unknown-length-via-proportion"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:model-real-world-with-similar-triangles"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:use-medians-in-similar-triangles"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:apply-basic-proportionality-theorem"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "child": "cbse10:maths:jemh106:apply-converse-bpt"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:state-polygon-similarity-conditions",
+      "child": "cbse10:maths:jemh106:define-similar-figures"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:state-polygon-similarity-conditions",
+      "child": "cbse10:maths:jemh106:know-one-condition-insufficient-for-polygons"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:state-polygon-similarity-conditions",
+      "child": "cbse10:maths:jemh106:identify-corresponding-parts"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:know-one-condition-insufficient-for-polygons",
+      "child": "cbse10:maths:jemh106:define-similar-figures"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-basic-proportionality-theorem",
+      "child": "cbse10:maths:jemh106:prove-bpt-with-areas"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-basic-proportionality-theorem",
+      "child": "cbse10:maths:jemh106:identify-corresponding-parts"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-basic-proportionality-theorem",
+      "child": "cbse10:maths:jemh106:manipulate-ratio-add-one"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:prove-bpt-with-areas",
+      "child": "cbse10:maths:jemh106:identify-corresponding-parts"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-converse-bpt",
+      "child": "cbse10:maths:jemh106:test-parallel-by-ratio"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-converse-bpt",
+      "child": "cbse10:maths:jemh106:compute-side-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-aaa-aa-criterion",
+      "child": "cbse10:maths:jemh106:state-polygon-similarity-conditions"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-aaa-aa-criterion",
+      "child": "cbse10:maths:jemh106:source-equal-angles"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-aaa-aa-criterion",
+      "child": "cbse10:maths:jemh106:write-similarity-symbolically"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-sss-similarity-criterion",
+      "child": "cbse10:maths:jemh106:compute-side-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-sss-similarity-criterion",
+      "child": "cbse10:maths:jemh106:write-similarity-symbolically"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-sas-similarity-criterion",
+      "child": "cbse10:maths:jemh106:compute-side-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-sas-similarity-criterion",
+      "child": "cbse10:maths:jemh106:source-equal-angles"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-sas-similarity-criterion",
+      "child": "cbse10:maths:jemh106:rearrange-product-to-ratio"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:apply-sas-similarity-criterion",
+      "child": "cbse10:maths:jemh106:write-similarity-symbolically"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
+      "child": "cbse10:maths:jemh106:identify-corresponding-parts"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
+      "child": "cbse10:maths:jemh106:write-similarity-symbolically"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:find-unknown-angle-via-similarity",
+      "child": "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:find-unknown-length-via-proportion",
+      "child": "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:find-unknown-length-via-proportion",
+      "child": "cbse10:maths:jemh106:compute-side-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:model-real-world-with-similar-triangles",
+      "child": "cbse10:maths:jemh106:apply-aaa-aa-criterion"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:model-real-world-with-similar-triangles",
+      "child": "cbse10:maths:jemh106:find-unknown-length-via-proportion"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:use-medians-in-similar-triangles",
+      "child": "cbse10:maths:jemh106:apply-sas-similarity-criterion"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:use-medians-in-similar-triangles",
+      "child": "cbse10:maths:jemh106:apply-sss-similarity-criterion"
+    },
+    {
+      "parent": "cbse10:maths:jemh106:use-medians-in-similar-triangles",
+      "child": "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:read-point-coordinates"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:use-pythagoras-theorem"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:apply-distance-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:apply-section-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:distance-from-origin"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:classify-triangle-by-sides"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:verify-triangle-exists"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:test-square-by-distance"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:test-collinearity-by-distance"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:derive-equidistant-relation"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:find-point-on-axis-equidistant"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:find-point-dividing-in-ratio"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:find-ratio-from-point"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:find-ratio-axis-divides"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:find-trisection-points"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:apply-midpoint-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "child": "cbse10:maths:jemh107:use-parallelogram-diagonal-bisect"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:apply-distance-formula",
+      "child": "cbse10:maths:jemh107:compute-coordinate-differences"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:apply-distance-formula",
+      "child": "cbse10:maths:jemh107:square-and-sum"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:apply-distance-formula",
+      "child": "cbse10:maths:jemh107:read-point-coordinates"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:apply-distance-formula",
+      "child": "cbse10:maths:jemh107:use-pythagoras-theorem"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:distance-from-origin",
+      "child": "cbse10:maths:jemh107:apply-distance-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:classify-triangle-by-sides",
+      "child": "cbse10:maths:jemh107:apply-distance-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:classify-triangle-by-sides",
+      "child": "cbse10:maths:jemh107:use-pythagoras-theorem"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:verify-triangle-exists",
+      "child": "cbse10:maths:jemh107:apply-distance-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:test-square-by-distance",
+      "child": "cbse10:maths:jemh107:apply-distance-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:test-collinearity-by-distance",
+      "child": "cbse10:maths:jemh107:apply-distance-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:set-up-equidistant-equation",
+      "child": "cbse10:maths:jemh107:apply-distance-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:derive-equidistant-relation",
+      "child": "cbse10:maths:jemh107:set-up-equidistant-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:find-point-on-axis-equidistant",
+      "child": "cbse10:maths:jemh107:set-up-equidistant-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:find-point-on-axis-equidistant",
+      "child": "cbse10:maths:jemh107:read-point-coordinates"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:apply-section-formula",
+      "child": "cbse10:maths:jemh107:read-point-coordinates"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:find-point-dividing-in-ratio",
+      "child": "cbse10:maths:jemh107:apply-section-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:find-ratio-from-point",
+      "child": "cbse10:maths:jemh107:apply-section-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:find-ratio-from-point",
+      "child": "cbse10:maths:jemh107:equate-ordered-pairs"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:find-ratio-axis-divides",
+      "child": "cbse10:maths:jemh107:apply-section-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:find-ratio-axis-divides",
+      "child": "cbse10:maths:jemh107:read-point-coordinates"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:find-trisection-points",
+      "child": "cbse10:maths:jemh107:apply-section-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:apply-midpoint-formula",
+      "child": "cbse10:maths:jemh107:apply-section-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:use-parallelogram-diagonal-bisect",
+      "child": "cbse10:maths:jemh107:apply-midpoint-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh107:use-parallelogram-diagonal-bisect",
+      "child": "cbse10:maths:jemh107:equate-ordered-pairs"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:compute-reciprocal-ratios",
+      "child": "cbse10:maths:jemh108:define-trig-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:relate-tan-to-sin-cos",
+      "child": "cbse10:maths:jemh108:define-trig-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:find-ratios-from-one-ratio",
+      "child": "cbse10:maths:jemh108:define-trig-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:find-ratios-from-one-ratio",
+      "child": "cbse10:maths:jemh108:compute-reciprocal-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:recall-45-ratios",
+      "child": "cbse10:maths:jemh108:define-trig-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:recall-30-60-ratios",
+      "child": "cbse10:maths:jemh108:define-trig-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:recall-0-90-ratios",
+      "child": "cbse10:maths:jemh108:define-trig-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:evaluate-specific-angle-expressions",
+      "child": "cbse10:maths:jemh108:recall-45-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:evaluate-specific-angle-expressions",
+      "child": "cbse10:maths:jemh108:recall-30-60-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:evaluate-specific-angle-expressions",
+      "child": "cbse10:maths:jemh108:recall-0-90-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:apply-pythagorean-identity",
+      "child": "cbse10:maths:jemh108:define-trig-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:apply-sec-tan-identity",
+      "child": "cbse10:maths:jemh108:compute-reciprocal-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:apply-sec-tan-identity",
+      "child": "cbse10:maths:jemh108:relate-tan-to-sin-cos"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:prove-trig-identities",
+      "child": "cbse10:maths:jemh108:apply-pythagorean-identity"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:prove-trig-identities",
+      "child": "cbse10:maths:jemh108:apply-sec-tan-identity"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:prove-trig-identities",
+      "child": "cbse10:maths:jemh108:relate-tan-to-sin-cos"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:prove-trig-identities",
+      "child": "cbse10:maths:jemh108:evaluate-specific-angle-expressions"
+    },
+    {
+      "parent": "cbse10:maths:jemh108:prove-trig-identities",
+      "child": "cbse10:maths:jemh108:find-ratios-from-one-ratio"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "child": "cbse10:maths:jemh109:draw-and-label-right-triangle"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "child": "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "child": "cbse10:maths:jemh109:choose-sin-for-opposite-over-hypotenuse"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "child": "cbse10:maths:jemh109:set-up-trig-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "child": "cbse10:maths:jemh109:add-observer-height-to-triangle-result"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "child": "cbse10:maths:jemh109:set-up-two-triangles-shared-side"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "child": "cbse10:maths:jemh109:combine-segment-lengths-for-total"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:draw-and-label-right-triangle",
+      "child": "cbse10:maths:jemh109:identify-angle-of-elevation"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:draw-and-label-right-triangle",
+      "child": "cbse10:maths:jemh109:identify-angle-of-depression"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:draw-and-label-right-triangle",
+      "child": "cbse10:maths:jemh109:use-alternate-angles-for-depression"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:use-alternate-angles-for-depression",
+      "child": "cbse10:maths:jemh109:identify-angle-of-depression"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent",
+      "child": "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent",
+      "child": "cbse10:maths:jemh109:compute-base-with-cot"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:choose-sin-for-opposite-over-hypotenuse",
+      "child": "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:choose-sin-for-opposite-over-hypotenuse",
+      "child": "cbse10:maths:jemh109:compute-hypotenuse-with-sin"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:set-up-trig-equation",
+      "child": "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:set-up-trig-equation",
+      "child": "cbse10:maths:jemh109:solve-for-unknown-side"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:set-up-trig-equation",
+      "child": "cbse10:maths:jemh108:define-trig-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:compute-hypotenuse-with-sin",
+      "child": "cbse10:maths:jemh109:approximate-surd-to-decimal"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:compute-hypotenuse-with-sin",
+      "child": "cbse10:maths:jemh109:solve-for-unknown-side"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:compute-base-with-cot",
+      "child": "cbse10:maths:jemh109:approximate-surd-to-decimal"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:add-observer-height-to-triangle-result",
+      "child": "cbse10:maths:jemh109:set-up-trig-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:set-up-two-triangles-shared-side",
+      "child": "cbse10:maths:jemh109:solve-simultaneous-trig-equations"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:set-up-two-triangles-shared-side",
+      "child": "cbse10:maths:jemh109:set-up-trig-equation"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:set-up-two-triangles-shared-side",
+      "child": "cbse10:maths:jemh109:equate-equal-sides-from-45-degree"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:solve-simultaneous-trig-equations",
+      "child": "cbse10:maths:jemh109:solve-for-unknown-side"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:solve-simultaneous-trig-equations",
+      "child": "cbse10:maths:jemh109:rationalise-surd-denominator"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:combine-segment-lengths-for-total",
+      "child": "cbse10:maths:jemh109:rationalise-surd-denominator"
+    },
+    {
+      "parent": "cbse10:maths:jemh109:combine-segment-lengths-for-total",
+      "child": "cbse10:maths:jemh109:approximate-surd-to-decimal"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:define-tangent-to-circle"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:count-tangents-by-point-location"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:apply-equal-tangent-lengths"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:compute-tangent-length-pythagoras"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:compute-chord-touching-smaller-circle"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:relate-angle-tangents-central-angle"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:prove-angle-PTQ-twice-OPQ"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:use-tangent-segments-circumscribed-quad"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:find-triangle-sides-inscribed-circle"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:use-similar-right-triangles-tangent"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:prove-tangents-diameter-parallel"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "child": "cbse10:maths:jemh110:prove-equal-tangents-rhs"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:define-tangent-to-circle",
+      "child": "cbse10:maths:jemh110:classify-line-circle-position"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:count-tangents-by-point-location",
+      "child": "cbse10:maths:jemh110:define-tangent-to-circle"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+      "child": "cbse10:maths:jemh110:justify-point-outside-tangent"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+      "child": "cbse10:maths:jemh110:define-tangent-to-circle"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:apply-equal-tangent-lengths",
+      "child": "cbse10:maths:jemh110:prove-equal-tangents-rhs"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:prove-equal-tangents-rhs",
+      "child": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:prove-equal-tangents-rhs",
+      "child": "cbse10:maths:jemh110:apply-rhs-cpct-congruence"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:compute-tangent-length-pythagoras",
+      "child": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:compute-tangent-length-pythagoras",
+      "child": "cbse10:maths:jemh110:solve-right-triangle-pythagoras"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:compute-chord-touching-smaller-circle",
+      "child": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:compute-chord-touching-smaller-circle",
+      "child": "cbse10:maths:jemh110:use-perpendicular-bisects-chord"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:compute-chord-touching-smaller-circle",
+      "child": "cbse10:maths:jemh110:solve-right-triangle-pythagoras"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:relate-angle-tangents-central-angle",
+      "child": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:prove-angle-PTQ-twice-OPQ",
+      "child": "cbse10:maths:jemh110:apply-equal-tangent-lengths"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:prove-angle-PTQ-twice-OPQ",
+      "child": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:prove-angle-PTQ-twice-OPQ",
+      "child": "cbse10:maths:jemh110:compute-base-angle-isosceles-tangent"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:use-tangent-segments-circumscribed-quad",
+      "child": "cbse10:maths:jemh110:apply-equal-tangent-lengths"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:find-triangle-sides-inscribed-circle",
+      "child": "cbse10:maths:jemh110:apply-equal-tangent-lengths"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:use-similar-right-triangles-tangent",
+      "child": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:use-similar-right-triangles-tangent",
+      "child": "cbse10:maths:jemh110:use-perpendicular-bisects-chord"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:use-similar-right-triangles-tangent",
+      "child": "cbse10:maths:jemh110:solve-right-triangle-pythagoras"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:use-similar-right-triangles-tangent",
+      "child": "cbse10:maths:jemh106:apply-aaa-aa-criterion"
+    },
+    {
+      "parent": "cbse10:maths:jemh110:prove-tangents-diameter-parallel",
+      "child": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+      "child": "cbse10:maths:jemh111:apply-sector-area-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+      "child": "cbse10:maths:jemh111:compute-triangle-area-base-height"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+      "child": "cbse10:maths:jemh111:subtract-sector-minus-triangle"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+      "child": "cbse10:maths:jemh111:compute-major-sector-area"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+      "child": "cbse10:maths:jemh111:compute-arc-length"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:apply-sector-area-formula",
+      "child": "cbse10:maths:jemh111:derive-sector-area-unitary"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:apply-sector-area-formula",
+      "child": "cbse10:maths:jemh111:substitute-pi-value"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:compute-arc-length",
+      "child": "cbse10:maths:jemh111:derive-sector-area-unitary"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:compute-arc-length",
+      "child": "cbse10:maths:jemh111:substitute-pi-value"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:compute-major-sector-area",
+      "child": "cbse10:maths:jemh111:apply-sector-area-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:compute-triangle-area-base-height",
+      "child": "cbse10:maths:jemh111:drop-perpendicular-to-chord"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:compute-triangle-area-base-height",
+      "child": "cbse10:maths:jemh111:find-chord-length-from-half"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:compute-triangle-area-base-height",
+      "child": "cbse10:maths:jemh111:use-cosine-ratio-find-om"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:drop-perpendicular-to-chord",
+      "child": "cbse10:maths:jemh111:use-rhs-congruence-bisect"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:drop-perpendicular-to-chord",
+      "child": "cbse10:maths:jemh110:use-perpendicular-bisects-chord"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:use-cosine-ratio-find-om",
+      "child": "cbse10:maths:jemh111:use-rhs-congruence-bisect"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:use-cosine-ratio-find-om",
+      "child": "cbse10:maths:jemh108:recall-30-60-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:use-sine-ratio-find-am",
+      "child": "cbse10:maths:jemh111:use-rhs-congruence-bisect"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:use-sine-ratio-find-am",
+      "child": "cbse10:maths:jemh108:recall-30-60-ratios"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:find-chord-length-from-half",
+      "child": "cbse10:maths:jemh111:use-sine-ratio-find-am"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:subtract-sector-minus-triangle",
+      "child": "cbse10:maths:jemh111:apply-sector-area-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh111:subtract-sector-minus-triangle",
+      "child": "cbse10:maths:jemh111:compute-triangle-area-base-height"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations",
+      "child": "cbse10:maths:jemh112:decompose-combination-into-basic-solids"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations",
+      "child": "cbse10:maths:jemh112:tsa-combination-sum-of-csa"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations",
+      "child": "cbse10:maths:jemh112:volume-combination-sum-of-volumes"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-combination-sum-of-csa",
+      "child": "cbse10:maths:jemh112:tsa-toy-cone-plus-hemisphere"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-combination-sum-of-csa",
+      "child": "cbse10:maths:jemh112:tsa-cube-with-hemisphere-on-top"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-combination-sum-of-csa",
+      "child": "cbse10:maths:jemh112:tsa-solid-with-hemispherical-depression"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-combination-sum-of-csa",
+      "child": "cbse10:maths:jemh112:tsa-ring-when-cone-base-exceeds-cylinder"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-combination-sum-of-csa",
+      "child": "cbse10:maths:jemh112:painted-area-cylinder-with-one-open-base"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-combination-sum-of-csa",
+      "child": "cbse10:maths:jemh112:compute-tsa-solid-hemisphere"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-toy-cone-plus-hemisphere",
+      "child": "cbse10:maths:jemh112:csa-hemisphere"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-toy-cone-plus-hemisphere",
+      "child": "cbse10:maths:jemh112:csa-cone"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-toy-cone-plus-hemisphere",
+      "child": "cbse10:maths:jemh112:derive-cone-height-from-combined"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:csa-hemisphere",
+      "child": "cbse10:maths:jemh112:radius-from-diameter"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:csa-cylinder",
+      "child": "cbse10:maths:jemh112:convert-units-cm-to-m"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:csa-cone",
+      "child": "cbse10:maths:jemh112:compute-slant-height"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:compute-slant-height",
+      "child": "cbse10:maths:jemh112:radius-from-diameter"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:derive-cone-height-from-combined",
+      "child": "cbse10:maths:jemh112:radius-from-diameter"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-cube-with-hemisphere-on-top",
+      "child": "cbse10:maths:jemh112:csa-hemisphere"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-solid-with-hemispherical-depression",
+      "child": "cbse10:maths:jemh112:csa-cylinder"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-solid-with-hemispherical-depression",
+      "child": "cbse10:maths:jemh112:csa-hemisphere"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:tsa-ring-when-cone-base-exceeds-cylinder",
+      "child": "cbse10:maths:jemh112:csa-cone"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:painted-area-cylinder-with-one-open-base",
+      "child": "cbse10:maths:jemh112:csa-cylinder"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:compute-tsa-solid-hemisphere",
+      "child": "cbse10:maths:jemh112:csa-hemisphere"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+      "child": "cbse10:maths:jemh112:volume-cylinder"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+      "child": "cbse10:maths:jemh112:volume-cone"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+      "child": "cbse10:maths:jemh112:volume-hemisphere"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+      "child": "cbse10:maths:jemh112:volume-half-cylinder"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+      "child": "cbse10:maths:jemh112:volume-cuboid"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+      "child": "cbse10:maths:jemh112:actual-capacity-subtract-depression"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+      "child": "cbse10:maths:jemh112:volume-difference-circumscribing-cylinder"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-cylinder",
+      "child": "cbse10:maths:jemh112:radius-from-diameter"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-cone",
+      "child": "cbse10:maths:jemh112:radius-from-diameter"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-hemisphere",
+      "child": "cbse10:maths:jemh112:radius-from-diameter"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-half-cylinder",
+      "child": "cbse10:maths:jemh112:volume-cylinder"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:actual-capacity-subtract-depression",
+      "child": "cbse10:maths:jemh112:volume-cylinder"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:actual-capacity-subtract-depression",
+      "child": "cbse10:maths:jemh112:volume-hemisphere"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-difference-circumscribing-cylinder",
+      "child": "cbse10:maths:jemh112:volume-cylinder"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-difference-circumscribing-cylinder",
+      "child": "cbse10:maths:jemh112:volume-cone"
+    },
+    {
+      "parent": "cbse10:maths:jemh112:volume-difference-circumscribing-cylinder",
+      "child": "cbse10:maths:jemh112:volume-hemisphere"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "child": "cbse10:maths:jemh113:compute-mean-direct-method"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "child": "cbse10:maths:jemh113:compute-mean-assumed-mean-method"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "child": "cbse10:maths:jemh113:compute-mean-step-deviation-method"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "child": "cbse10:maths:jemh113:choose-appropriate-mean-method"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "child": "cbse10:maths:jemh113:apply-mode-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "child": "cbse10:maths:jemh113:apply-median-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "child": "cbse10:maths:jemh113:select-appropriate-measure-of-central-tendency"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "child": "cbse10:maths:jemh113:use-empirical-mode-mean-median-relation"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "child": "cbse10:maths:jemh113:find-unknown-frequencies-from-median"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-mean-direct-method",
+      "child": "cbse10:maths:jemh113:compute-class-mark"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-mean-direct-method",
+      "child": "cbse10:maths:jemh113:compute-fx-product-and-sum"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-deviation-di",
+      "child": "cbse10:maths:jemh113:choose-assumed-mean"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-mean-assumed-mean-method",
+      "child": "cbse10:maths:jemh113:compute-class-mark"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-mean-assumed-mean-method",
+      "child": "cbse10:maths:jemh113:choose-assumed-mean"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-mean-assumed-mean-method",
+      "child": "cbse10:maths:jemh113:compute-deviation-di"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-step-deviation-ui",
+      "child": "cbse10:maths:jemh113:compute-deviation-di"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-mean-step-deviation-method",
+      "child": "cbse10:maths:jemh113:compute-class-mark"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-mean-step-deviation-method",
+      "child": "cbse10:maths:jemh113:choose-assumed-mean"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-mean-step-deviation-method",
+      "child": "cbse10:maths:jemh113:compute-deviation-di"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:compute-mean-step-deviation-method",
+      "child": "cbse10:maths:jemh113:compute-step-deviation-ui"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:choose-appropriate-mean-method",
+      "child": "cbse10:maths:jemh113:apply-step-deviation-unequal-classes"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:read-modal-formula-parameters",
+      "child": "cbse10:maths:jemh113:identify-modal-class"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:apply-mode-formula",
+      "child": "cbse10:maths:jemh113:identify-modal-class"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:apply-mode-formula",
+      "child": "cbse10:maths:jemh113:read-modal-formula-parameters"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:convert-cf-table-to-frequencies",
+      "child": "cbse10:maths:jemh113:compute-cumulative-frequency-less-than"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:identify-median-class",
+      "child": "cbse10:maths:jemh113:compute-cumulative-frequency-less-than"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:read-median-formula-parameters",
+      "child": "cbse10:maths:jemh113:identify-median-class"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:read-median-formula-parameters",
+      "child": "cbse10:maths:jemh113:compute-cumulative-frequency-less-than"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:apply-median-formula",
+      "child": "cbse10:maths:jemh113:identify-median-class"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:apply-median-formula",
+      "child": "cbse10:maths:jemh113:read-median-formula-parameters"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:apply-median-formula",
+      "child": "cbse10:maths:jemh113:convert-discontinuous-to-continuous-classes"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:apply-median-formula",
+      "child": "cbse10:maths:jemh113:convert-cf-table-to-frequencies"
+    },
+    {
+      "parent": "cbse10:maths:jemh113:find-unknown-frequencies-from-median",
+      "child": "cbse10:maths:jemh113:apply-median-formula"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:count-total-equally-likely-outcomes"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:count-favourable-outcomes"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:form-probability-ratio"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:apply-complement-rule"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:probability-impossible-event"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:probability-sure-event"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:probability-range-bounds"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:sum-of-elementary-events-is-one"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:geometric-probability-length"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:geometric-probability-area"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "child": "cbse10:maths:jemh114:complement-word-problem"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:count-total-equally-likely-outcomes",
+      "child": "cbse10:maths:jemh114:identify-equally-likely-outcomes"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:count-total-equally-likely-outcomes",
+      "child": "cbse10:maths:jemh114:list-sample-space-two-coins"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:count-total-equally-likely-outcomes",
+      "child": "cbse10:maths:jemh114:list-sample-space-two-dice"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:count-total-equally-likely-outcomes",
+      "child": "cbse10:maths:jemh114:card-deck-composition"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:count-favourable-outcomes",
+      "child": "cbse10:maths:jemh114:card-deck-composition"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:apply-complement-rule",
+      "child": "cbse10:maths:jemh114:form-probability-ratio"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:probability-impossible-event",
+      "child": "cbse10:maths:jemh114:count-favourable-outcomes"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:probability-sure-event",
+      "child": "cbse10:maths:jemh114:count-favourable-outcomes"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:geometric-probability-area",
+      "child": "cbse10:maths:jemh114:geometric-probability-length"
+    },
+    {
+      "parent": "cbse10:maths:jemh114:complement-word-problem",
+      "child": "cbse10:maths:jemh114:apply-complement-rule"
+    }
+  ],
+  "examAttach": [
+    {
+      "ref": "jemh101#0",
+      "nodeId": "cbse10:maths:jemh101:prime-factorise-integer"
+    },
+    {
+      "ref": "jemh101#1",
+      "nodeId": "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic"
+    },
+    {
+      "ref": "jemh101#2",
+      "nodeId": "cbse10:maths:jemh101:decide-ends-with-digit-via-primes"
+    },
+    {
+      "ref": "jemh101#3",
+      "nodeId": "cbse10:maths:jemh101:compute-hcf-prime-factorisation"
+    },
+    {
+      "ref": "jemh101#4",
+      "nodeId": "cbse10:maths:jemh101:compute-lcm-prime-factorisation"
+    },
+    {
+      "ref": "jemh101#5",
+      "nodeId": "cbse10:maths:jemh101:use-hcf-lcm-product-relation"
+    },
+    {
+      "ref": "jemh101#6",
+      "nodeId": "cbse10:maths:jemh101:manipulate-prime-powers"
+    },
+    {
+      "ref": "jemh101#7",
+      "nodeId": "cbse10:maths:jemh101:state-prime-divides-square-theorem"
+    },
+    {
+      "ref": "jemh101#8",
+      "nodeId": "cbse10:maths:jemh101:derive-square-relation-from-fraction"
+    },
+    {
+      "ref": "jemh101#9",
+      "nodeId": "cbse10:maths:jemh101:close-irrationality-contradiction"
+    },
+    {
+      "ref": "jemh101#10",
+      "nodeId": "cbse10:maths:jemh101:set-up-contradiction-rational-assumption"
+    },
+    {
+      "ref": "jemh101#11",
+      "nodeId": "cbse10:maths:jemh101:prove-irrational-rational-minus-irrational"
+    },
+    {
+      "ref": "jemh101#12",
+      "nodeId": "cbse10:maths:jemh101:prove-irrational-rational-times-irrational"
+    },
+    {
+      "ref": "jemh101#13",
+      "nodeId": "cbse10:maths:jemh101:solve-lcm-meeting-time-word-problem"
+    },
+    {
+      "ref": "jemh101#14",
+      "nodeId": "cbse10:maths:jemh101:explain-sum-is-composite"
+    },
+    {
+      "ref": "jemh101#15",
+      "nodeId": "cbse10:maths:jemh101:know-prime-composite-coprime"
+    },
+    {
+      "ref": "jemh101#16",
+      "nodeId": "cbse10:maths:jemh101:interpret-divides-relation"
+    },
+    {
+      "ref": "jemh101#17",
+      "nodeId": "cbse10:maths:jemh101:apply-real-number-theorems"
+    },
+    {
+      "ref": "jemh102#0",
+      "nodeId": "cbse10:maths:jemh102:identify-degree-of-polynomial"
+    },
+    {
+      "ref": "jemh102#1",
+      "nodeId": "cbse10:maths:jemh102:classify-polynomial-by-degree"
+    },
+    {
+      "ref": "jemh102#2",
+      "nodeId": "cbse10:maths:jemh102:recognise-non-polynomial-expressions"
+    },
+    {
+      "ref": "jemh102#3",
+      "nodeId": "cbse10:maths:jemh102:evaluate-polynomial-at-a-value"
+    },
+    {
+      "ref": "jemh102#4",
+      "nodeId": "cbse10:maths:jemh102:evaluate-polynomial-at-negative-value"
+    },
+    {
+      "ref": "jemh102#5",
+      "nodeId": "cbse10:maths:jemh102:define-zero-of-polynomial"
+    },
+    {
+      "ref": "jemh102#6",
+      "nodeId": "cbse10:maths:jemh102:find-zero-of-linear-polynomial"
+    },
+    {
+      "ref": "jemh102#7",
+      "nodeId": "cbse10:maths:jemh102:interpret-zero-as-x-intercept"
+    },
+    {
+      "ref": "jemh102#8",
+      "nodeId": "cbse10:maths:jemh102:count-zeroes-from-graph"
+    },
+    {
+      "ref": "jemh102#9",
+      "nodeId": "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree"
+    },
+    {
+      "ref": "jemh102#10",
+      "nodeId": "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term"
+    },
+    {
+      "ref": "jemh102#11",
+      "nodeId": "cbse10:maths:jemh102:factorise-using-difference-of-squares"
+    },
+    {
+      "ref": "jemh102#12",
+      "nodeId": "cbse10:maths:jemh102:find-zeroes-from-factors"
+    },
+    {
+      "ref": "jemh102#13",
+      "nodeId": "cbse10:maths:jemh102:verify-quadratic-sum-of-zeroes"
+    },
+    {
+      "ref": "jemh102#14",
+      "nodeId": "cbse10:maths:jemh102:verify-quadratic-product-of-zeroes"
+    },
+    {
+      "ref": "jemh102#15",
+      "nodeId": "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations"
+    },
+    {
+      "ref": "jemh102#16",
+      "nodeId": "cbse10:maths:jemh102:build-quadratic-from-sum-and-product"
+    },
+    {
+      "ref": "jemh102#17",
+      "nodeId": "cbse10:maths:jemh102:verify-cubic-zero-by-substitution"
+    },
+    {
+      "ref": "jemh102#18",
+      "nodeId": "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations"
+    },
+    {
+      "ref": "jemh102#19",
+      "nodeId": "cbse10:maths:jemh102:verify-cubic-zero-coefficient-relations"
+    },
+    {
+      "ref": "jemh102#20",
+      "nodeId": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials"
+    },
+    {
+      "ref": "jemh103#0",
+      "nodeId": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables"
+    },
+    {
+      "ref": "jemh103#1",
+      "nodeId": "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios"
+    },
+    {
+      "ref": "jemh103#2",
+      "nodeId": "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"
+    },
+    {
+      "ref": "jemh103#3",
+      "nodeId": "cbse10:maths:jemh103:find-two-solutions-of-an-equation"
+    },
+    {
+      "ref": "jemh103#4",
+      "nodeId": "cbse10:maths:jemh103:plot-points-and-draw-line"
+    },
+    {
+      "ref": "jemh103#5",
+      "nodeId": "cbse10:maths:jemh103:read-intersection-as-solution"
+    },
+    {
+      "ref": "jemh103#6",
+      "nodeId": "cbse10:maths:jemh103:solve-graphically"
+    },
+    {
+      "ref": "jemh103#7",
+      "nodeId": "cbse10:maths:jemh103:express-one-variable-in-terms-of-other"
+    },
+    {
+      "ref": "jemh103#8",
+      "nodeId": "cbse10:maths:jemh103:substitute-expression-into-other-equation"
+    },
+    {
+      "ref": "jemh103#9",
+      "nodeId": "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
+    },
+    {
+      "ref": "jemh103#10",
+      "nodeId": "cbse10:maths:jemh103:back-substitute-to-find-other-variable"
+    },
+    {
+      "ref": "jemh103#11",
+      "nodeId": "cbse10:maths:jemh103:solve-by-substitution"
+    },
+    {
+      "ref": "jemh103#12",
+      "nodeId": "cbse10:maths:jemh103:interpret-no-variable-true-statement"
+    },
+    {
+      "ref": "jemh103#13",
+      "nodeId": "cbse10:maths:jemh103:interpret-no-variable-false-statement"
+    },
+    {
+      "ref": "jemh103#14",
+      "nodeId": "cbse10:maths:jemh103:multiply-equations-to-equalize-coefficient"
+    },
+    {
+      "ref": "jemh103#15",
+      "nodeId": "cbse10:maths:jemh103:add-or-subtract-to-eliminate-variable"
+    },
+    {
+      "ref": "jemh103#16",
+      "nodeId": "cbse10:maths:jemh103:solve-by-elimination"
+    },
+    {
+      "ref": "jemh103#17",
+      "nodeId": "cbse10:maths:jemh103:form-equations-from-word-problem"
+    },
+    {
+      "ref": "jemh103#18",
+      "nodeId": "cbse10:maths:jemh103:model-two-digit-number-by-place-value"
+    },
+    {
+      "ref": "jemh103#19",
+      "nodeId": "cbse10:maths:jemh103:verify-solution-in-original-equations"
+    },
+    {
+      "ref": "jemh103#20",
+      "nodeId": "cbse10:maths:jemh103:find-k-for-given-solution-type"
+    },
+    {
+      "ref": "jemh104#0",
+      "nodeId": "cbse10:maths:jemh104:solve-quadratic-equation"
+    },
+    {
+      "ref": "jemh104#1",
+      "nodeId": "cbse10:maths:jemh104:recognise-quadratic-equation"
+    },
+    {
+      "ref": "jemh104#2",
+      "nodeId": "cbse10:maths:jemh104:rearrange-to-standard-form"
+    },
+    {
+      "ref": "jemh104#3",
+      "nodeId": "cbse10:maths:jemh104:expand-and-simplify-expression"
+    },
+    {
+      "ref": "jemh104#4",
+      "nodeId": "cbse10:maths:jemh104:translate-word-problem-to-quadratic"
+    },
+    {
+      "ref": "jemh104#5",
+      "nodeId": "cbse10:maths:jemh104:verify-root-by-substitution"
+    },
+    {
+      "ref": "jemh104#6",
+      "nodeId": "cbse10:maths:jemh104:split-middle-term"
+    },
+    {
+      "ref": "jemh104#7",
+      "nodeId": "cbse10:maths:jemh104:factor-by-grouping"
+    },
+    {
+      "ref": "jemh104#8",
+      "nodeId": "cbse10:maths:jemh104:apply-zero-product-property"
+    },
+    {
+      "ref": "jemh104#9",
+      "nodeId": "cbse10:maths:jemh104:solve-linear-factor-for-root"
+    },
+    {
+      "ref": "jemh104#10",
+      "nodeId": "cbse10:maths:jemh104:handle-repeated-factor-equal-roots"
+    },
+    {
+      "ref": "jemh104#11",
+      "nodeId": "cbse10:maths:jemh104:factorise-quadratic-with-surds"
+    },
+    {
+      "ref": "jemh104#12",
+      "nodeId": "cbse10:maths:jemh104:reject-inadmissible-root"
+    },
+    {
+      "ref": "jemh104#13",
+      "nodeId": "cbse10:maths:jemh104:identify-coefficients-abc"
+    },
+    {
+      "ref": "jemh104#14",
+      "nodeId": "cbse10:maths:jemh104:compute-discriminant"
+    },
+    {
+      "ref": "jemh104#15",
+      "nodeId": "cbse10:maths:jemh104:classify-nature-of-roots"
+    },
+    {
+      "ref": "jemh104#16",
+      "nodeId": "cbse10:maths:jemh104:find-k-for-equal-roots"
+    },
+    {
+      "ref": "jemh104#17",
+      "nodeId": "cbse10:maths:jemh104:state-quadratic-formula"
+    },
+    {
+      "ref": "jemh104#18",
+      "nodeId": "cbse10:maths:jemh104:apply-quadratic-formula"
+    },
+    {
+      "ref": "jemh105#0",
+      "nodeId": "cbse10:maths:jemh105:solve-ap-problems"
+    },
+    {
+      "ref": "jemh105#1",
+      "nodeId": "cbse10:maths:jemh105:define-ap-common-difference"
+    },
+    {
+      "ref": "jemh105#2",
+      "nodeId": "cbse10:maths:jemh105:compute-common-difference"
+    },
+    {
+      "ref": "jemh105#3",
+      "nodeId": "cbse10:maths:jemh105:test-is-ap"
+    },
+    {
+      "ref": "jemh105#4",
+      "nodeId": "cbse10:maths:jemh105:write-next-terms"
+    },
+    {
+      "ref": "jemh105#5",
+      "nodeId": "cbse10:maths:jemh105:list-ap-from-a-d"
+    },
+    {
+      "ref": "jemh105#6",
+      "nodeId": "cbse10:maths:jemh105:identify-first-term"
+    },
+    {
+      "ref": "jemh105#7",
+      "nodeId": "cbse10:maths:jemh105:apply-nth-term-formula"
+    },
+    {
+      "ref": "jemh105#8",
+      "nodeId": "cbse10:maths:jemh105:find-which-term"
+    },
+    {
+      "ref": "jemh105#9",
+      "nodeId": "cbse10:maths:jemh105:check-membership-integer-n"
+    },
+    {
+      "ref": "jemh105#10",
+      "nodeId": "cbse10:maths:jemh105:find-two-equations-ap"
+    },
+    {
+      "ref": "jemh105#11",
+      "nodeId": "cbse10:maths:jemh105:count-terms-ap"
+    },
+    {
+      "ref": "jemh105#12",
+      "nodeId": "cbse10:maths:jemh105:term-from-last"
+    },
+    {
+      "ref": "jemh105#13",
+      "nodeId": "cbse10:maths:jemh105:model-real-world-ap"
+    },
+    {
+      "ref": "jemh105#14",
+      "nodeId": "cbse10:maths:jemh105:derive-d-from-nth-term-rule"
+    },
+    {
+      "ref": "jemh105#15",
+      "nodeId": "cbse10:maths:jemh105:apply-sum-formula-a-d"
+    },
+    {
+      "ref": "jemh105#16",
+      "nodeId": "cbse10:maths:jemh105:apply-sum-formula-a-l"
+    },
+    {
+      "ref": "jemh105#17",
+      "nodeId": "cbse10:maths:jemh105:find-n-from-sum"
+    },
+    {
+      "ref": "jemh105#18",
+      "nodeId": "cbse10:maths:jemh105:find-unknown-from-sum-system"
+    },
+    {
+      "ref": "jemh105#19",
+      "nodeId": "cbse10:maths:jemh105:solve-linear-equation"
+    },
+    {
+      "ref": "jemh105#20",
+      "nodeId": "cbse10:maths:jemh105:solve-simultaneous-equations"
+    },
+    {
+      "ref": "jemh105#21",
+      "nodeId": "cbse10:maths:jemh105:factor-quadratic"
+    },
+    {
+      "ref": "jemh106#0",
+      "nodeId": "cbse10:maths:jemh106:define-similar-figures"
+    },
+    {
+      "ref": "jemh106#1",
+      "nodeId": "cbse10:maths:jemh106:state-polygon-similarity-conditions"
+    },
+    {
+      "ref": "jemh106#2",
+      "nodeId": "cbse10:maths:jemh106:know-one-condition-insufficient-for-polygons"
+    },
+    {
+      "ref": "jemh106#3",
+      "nodeId": "cbse10:maths:jemh106:identify-corresponding-parts"
+    },
+    {
+      "ref": "jemh106#4",
+      "nodeId": "cbse10:maths:jemh106:write-similarity-symbolically"
+    },
+    {
+      "ref": "jemh106#5",
+      "nodeId": "cbse10:maths:jemh106:apply-basic-proportionality-theorem"
+    },
+    {
+      "ref": "jemh106#6",
+      "nodeId": "cbse10:maths:jemh106:prove-bpt-with-areas"
+    },
+    {
+      "ref": "jemh106#7",
+      "nodeId": "cbse10:maths:jemh106:apply-converse-bpt"
+    },
+    {
+      "ref": "jemh106#8",
+      "nodeId": "cbse10:maths:jemh106:test-parallel-by-ratio"
+    },
+    {
+      "ref": "jemh106#9",
+      "nodeId": "cbse10:maths:jemh106:manipulate-ratio-add-one"
+    },
+    {
+      "ref": "jemh106#10",
+      "nodeId": "cbse10:maths:jemh106:apply-aaa-aa-criterion"
+    },
+    {
+      "ref": "jemh106#11",
+      "nodeId": "cbse10:maths:jemh106:source-equal-angles"
+    },
+    {
+      "ref": "jemh106#12",
+      "nodeId": "cbse10:maths:jemh106:apply-sss-similarity-criterion"
+    },
+    {
+      "ref": "jemh106#13",
+      "nodeId": "cbse10:maths:jemh106:compute-side-ratios"
+    },
+    {
+      "ref": "jemh106#14",
+      "nodeId": "cbse10:maths:jemh106:apply-sas-similarity-criterion"
+    },
+    {
+      "ref": "jemh106#15",
+      "nodeId": "cbse10:maths:jemh106:rearrange-product-to-ratio"
+    },
+    {
+      "ref": "jemh106#16",
+      "nodeId": "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"
+    },
+    {
+      "ref": "jemh106#17",
+      "nodeId": "cbse10:maths:jemh106:find-unknown-angle-via-similarity"
+    },
+    {
+      "ref": "jemh106#18",
+      "nodeId": "cbse10:maths:jemh106:find-unknown-length-via-proportion"
+    },
+    {
+      "ref": "jemh106#19",
+      "nodeId": "cbse10:maths:jemh106:model-real-world-with-similar-triangles"
+    },
+    {
+      "ref": "jemh106#20",
+      "nodeId": "cbse10:maths:jemh106:use-medians-in-similar-triangles"
+    },
+    {
+      "ref": "jemh106#21",
+      "nodeId": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity"
+    },
+    {
+      "ref": "jemh107#0",
+      "nodeId": "cbse10:maths:jemh107:apply-distance-formula"
+    },
+    {
+      "ref": "jemh107#1",
+      "nodeId": "cbse10:maths:jemh107:distance-from-origin"
+    },
+    {
+      "ref": "jemh107#2",
+      "nodeId": "cbse10:maths:jemh107:compute-coordinate-differences"
+    },
+    {
+      "ref": "jemh107#3",
+      "nodeId": "cbse10:maths:jemh107:square-and-sum"
+    },
+    {
+      "ref": "jemh107#4",
+      "nodeId": "cbse10:maths:jemh107:use-pythagoras-theorem"
+    },
+    {
+      "ref": "jemh107#5",
+      "nodeId": "cbse10:maths:jemh107:classify-triangle-by-sides"
+    },
+    {
+      "ref": "jemh107#6",
+      "nodeId": "cbse10:maths:jemh107:verify-triangle-exists"
+    },
+    {
+      "ref": "jemh107#7",
+      "nodeId": "cbse10:maths:jemh107:test-square-by-distance"
+    },
+    {
+      "ref": "jemh107#8",
+      "nodeId": "cbse10:maths:jemh107:test-collinearity-by-distance"
+    },
+    {
+      "ref": "jemh107#9",
+      "nodeId": "cbse10:maths:jemh107:set-up-equidistant-equation"
+    },
+    {
+      "ref": "jemh107#10",
+      "nodeId": "cbse10:maths:jemh107:derive-equidistant-relation"
+    },
+    {
+      "ref": "jemh107#11",
+      "nodeId": "cbse10:maths:jemh107:find-point-on-axis-equidistant"
+    },
+    {
+      "ref": "jemh107#12",
+      "nodeId": "cbse10:maths:jemh107:read-point-coordinates"
+    },
+    {
+      "ref": "jemh107#13",
+      "nodeId": "cbse10:maths:jemh107:apply-section-formula"
+    },
+    {
+      "ref": "jemh107#14",
+      "nodeId": "cbse10:maths:jemh107:find-point-dividing-in-ratio"
+    },
+    {
+      "ref": "jemh107#15",
+      "nodeId": "cbse10:maths:jemh107:find-ratio-from-point"
+    },
+    {
+      "ref": "jemh107#16",
+      "nodeId": "cbse10:maths:jemh107:find-ratio-axis-divides"
+    },
+    {
+      "ref": "jemh107#17",
+      "nodeId": "cbse10:maths:jemh107:find-trisection-points"
+    },
+    {
+      "ref": "jemh107#18",
+      "nodeId": "cbse10:maths:jemh107:apply-midpoint-formula"
+    },
+    {
+      "ref": "jemh107#19",
+      "nodeId": "cbse10:maths:jemh107:use-parallelogram-diagonal-bisect"
+    },
+    {
+      "ref": "jemh107#20",
+      "nodeId": "cbse10:maths:jemh107:equate-ordered-pairs"
+    },
+    {
+      "ref": "jemh107#21",
+      "nodeId": "cbse10:maths:jemh107:solve-coordinate-geometry-problems"
+    },
+    {
+      "ref": "jemh108#0",
+      "nodeId": "cbse10:maths:jemh108:define-trig-ratios"
+    },
+    {
+      "ref": "jemh108#1",
+      "nodeId": "cbse10:maths:jemh108:compute-reciprocal-ratios"
+    },
+    {
+      "ref": "jemh108#2",
+      "nodeId": "cbse10:maths:jemh108:relate-tan-to-sin-cos"
+    },
+    {
+      "ref": "jemh108#3",
+      "nodeId": "cbse10:maths:jemh108:find-ratios-from-one-ratio"
+    },
+    {
+      "ref": "jemh108#4",
+      "nodeId": "cbse10:maths:jemh108:recall-45-ratios"
+    },
+    {
+      "ref": "jemh108#5",
+      "nodeId": "cbse10:maths:jemh108:recall-30-60-ratios"
+    },
+    {
+      "ref": "jemh108#6",
+      "nodeId": "cbse10:maths:jemh108:recall-0-90-ratios"
+    },
+    {
+      "ref": "jemh108#7",
+      "nodeId": "cbse10:maths:jemh108:evaluate-specific-angle-expressions"
+    },
+    {
+      "ref": "jemh108#8",
+      "nodeId": "cbse10:maths:jemh108:apply-pythagorean-identity"
+    },
+    {
+      "ref": "jemh108#9",
+      "nodeId": "cbse10:maths:jemh108:apply-sec-tan-identity"
+    },
+    {
+      "ref": "jemh108#10",
+      "nodeId": "cbse10:maths:jemh108:prove-trig-identities"
+    },
+    {
+      "ref": "jemh109#0",
+      "nodeId": "cbse10:maths:jemh109:solve-heights-and-distances-problem"
+    },
+    {
+      "ref": "jemh109#1",
+      "nodeId": "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle"
+    },
+    {
+      "ref": "jemh109#2",
+      "nodeId": "cbse10:maths:jemh109:set-up-trig-equation"
+    },
+    {
+      "ref": "jemh109#3",
+      "nodeId": "cbse10:maths:jemh109:solve-for-unknown-side"
+    },
+    {
+      "ref": "jemh109#4",
+      "nodeId": "cbse10:maths:jemh109:add-observer-height-to-triangle-result"
+    },
+    {
+      "ref": "jemh109#5",
+      "nodeId": "cbse10:maths:jemh109:solve-simultaneous-trig-equations"
+    },
+    {
+      "ref": "jemh109#6",
+      "nodeId": "cbse10:maths:jemh109:set-up-two-triangles-shared-side"
+    },
+    {
+      "ref": "jemh109#7",
+      "nodeId": "cbse10:maths:jemh109:approximate-surd-to-decimal"
+    },
+    {
+      "ref": "jemh109#8",
+      "nodeId": "cbse10:maths:jemh109:rationalise-surd-denominator"
+    },
+    {
+      "ref": "jemh109#9",
+      "nodeId": "cbse10:maths:jemh109:combine-segment-lengths-for-total"
+    },
+    {
+      "ref": "jemh109#10",
+      "nodeId": "cbse10:maths:jemh109:equate-equal-sides-from-45-degree"
+    },
+    {
+      "ref": "jemh109#11",
+      "nodeId": "cbse10:maths:jemh109:compute-hypotenuse-with-sin"
+    },
+    {
+      "ref": "jemh109#12",
+      "nodeId": "cbse10:maths:jemh109:compute-base-with-cot"
+    },
+    {
+      "ref": "jemh109#13",
+      "nodeId": "cbse10:maths:jemh109:draw-and-label-right-triangle"
+    },
+    {
+      "ref": "jemh109#14",
+      "nodeId": "cbse10:maths:jemh109:choose-sin-for-opposite-over-hypotenuse"
+    },
+    {
+      "ref": "jemh109#15",
+      "nodeId": "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent"
+    },
+    {
+      "ref": "jemh109#16",
+      "nodeId": "cbse10:maths:jemh109:use-alternate-angles-for-depression"
+    },
+    {
+      "ref": "jemh109#17",
+      "nodeId": "cbse10:maths:jemh109:identify-angle-of-elevation"
+    },
+    {
+      "ref": "jemh109#18",
+      "nodeId": "cbse10:maths:jemh109:identify-angle-of-depression"
+    },
+    {
+      "ref": "jemh110#0",
+      "nodeId": "cbse10:maths:jemh110:compute-tangent-length-pythagoras"
+    },
+    {
+      "ref": "jemh110#1",
+      "nodeId": "cbse10:maths:jemh110:classify-line-circle-position"
+    },
+    {
+      "ref": "jemh110#2",
+      "nodeId": "cbse10:maths:jemh110:count-tangents-by-point-location"
+    },
+    {
+      "ref": "jemh110#3",
+      "nodeId": "cbse10:maths:jemh110:compute-tangent-length-pythagoras"
+    },
+    {
+      "ref": "jemh110#4",
+      "nodeId": "cbse10:maths:jemh110:relate-angle-tangents-central-angle"
+    },
+    {
+      "ref": "jemh110#5",
+      "nodeId": "cbse10:maths:jemh110:relate-angle-tangents-central-angle"
+    },
+    {
+      "ref": "jemh110#6",
+      "nodeId": "cbse10:maths:jemh110:compute-tangent-length-pythagoras"
+    },
+    {
+      "ref": "jemh110#7",
+      "nodeId": "cbse10:maths:jemh110:compute-chord-touching-smaller-circle"
+    },
+    {
+      "ref": "jemh110#8",
+      "nodeId": "cbse10:maths:jemh110:find-triangle-sides-inscribed-circle"
+    },
+    {
+      "ref": "jemh110#9",
+      "nodeId": "cbse10:maths:jemh110:compute-chord-touching-smaller-circle"
+    },
+    {
+      "ref": "jemh110#10",
+      "nodeId": "cbse10:maths:jemh110:relate-angle-tangents-central-angle"
+    },
+    {
+      "ref": "jemh110#11",
+      "nodeId": "cbse10:maths:jemh110:prove-angle-PTQ-twice-OPQ"
+    },
+    {
+      "ref": "jemh110#12",
+      "nodeId": "cbse10:maths:jemh110:use-similar-right-triangles-tangent"
+    },
+    {
+      "ref": "jemh110#13",
+      "nodeId": "cbse10:maths:jemh110:compute-base-angle-isosceles-tangent"
+    },
+    {
+      "ref": "jemh110#14",
+      "nodeId": "cbse10:maths:jemh110:solve-right-triangle-pythagoras"
+    },
+    {
+      "ref": "jemh110#15",
+      "nodeId": "cbse10:maths:jemh110:apply-equal-tangent-lengths"
+    },
+    {
+      "ref": "jemh110#16",
+      "nodeId": "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"
+    },
+    {
+      "ref": "jemh110#17",
+      "nodeId": "cbse10:maths:jemh110:define-tangent-to-circle"
+    },
+    {
+      "ref": "jemh110#18",
+      "nodeId": "cbse10:maths:jemh110:count-tangents-by-point-location"
+    },
+    {
+      "ref": "jemh110#19",
+      "nodeId": "cbse10:maths:jemh110:use-tangent-segments-circumscribed-quad"
+    },
+    {
+      "ref": "jemh110#20",
+      "nodeId": "cbse10:maths:jemh110:prove-tangents-diameter-parallel"
+    },
+    {
+      "ref": "jemh110#21",
+      "nodeId": "cbse10:maths:jemh110:justify-point-outside-tangent"
+    },
+    {
+      "ref": "jemh110#22",
+      "nodeId": "cbse10:maths:jemh110:prove-equal-tangents-rhs"
+    },
+    {
+      "ref": "jemh110#23",
+      "nodeId": "cbse10:maths:jemh110:apply-rhs-cpct-congruence"
+    },
+    {
+      "ref": "jemh110#24",
+      "nodeId": "cbse10:maths:jemh110:use-perpendicular-bisects-chord"
+    },
+    {
+      "ref": "jemh110#25",
+      "nodeId": "cbse10:maths:jemh110:find-triangle-sides-inscribed-circle"
+    },
+    {
+      "ref": "jemh110#26",
+      "nodeId": "cbse10:maths:jemh110:solve-circle-tangent-problems"
+    },
+    {
+      "ref": "jemh110#27",
+      "nodeId": "cbse10:maths:jemh110:apply-equal-tangent-lengths"
+    },
+    {
+      "ref": "jemh111#0",
+      "nodeId": "cbse10:maths:jemh111:find-area-of-segment-of-circle"
+    },
+    {
+      "ref": "jemh111#1",
+      "nodeId": "cbse10:maths:jemh111:apply-sector-area-formula"
+    },
+    {
+      "ref": "jemh111#2",
+      "nodeId": "cbse10:maths:jemh111:derive-sector-area-unitary"
+    },
+    {
+      "ref": "jemh111#3",
+      "nodeId": "cbse10:maths:jemh111:compute-arc-length"
+    },
+    {
+      "ref": "jemh111#4",
+      "nodeId": "cbse10:maths:jemh111:compute-major-sector-area"
+    },
+    {
+      "ref": "jemh111#5",
+      "nodeId": "cbse10:maths:jemh111:compute-triangle-area-base-height"
+    },
+    {
+      "ref": "jemh111#6",
+      "nodeId": "cbse10:maths:jemh111:drop-perpendicular-to-chord"
+    },
+    {
+      "ref": "jemh111#7",
+      "nodeId": "cbse10:maths:jemh111:use-rhs-congruence-bisect"
+    },
+    {
+      "ref": "jemh111#8",
+      "nodeId": "cbse10:maths:jemh111:use-cosine-ratio-find-om"
+    },
+    {
+      "ref": "jemh111#9",
+      "nodeId": "cbse10:maths:jemh111:use-sine-ratio-find-am"
+    },
+    {
+      "ref": "jemh111#10",
+      "nodeId": "cbse10:maths:jemh111:find-chord-length-from-half"
+    },
+    {
+      "ref": "jemh111#11",
+      "nodeId": "cbse10:maths:jemh111:subtract-sector-minus-triangle"
+    },
+    {
+      "ref": "jemh111#12",
+      "nodeId": "cbse10:maths:jemh111:substitute-pi-value"
+    },
+    {
+      "ref": "jemh111#13",
+      "nodeId": "cbse10:maths:jemh111:compute-major-sector-area"
+    },
+    {
+      "ref": "jemh112#0",
+      "nodeId": "cbse10:maths:jemh112:compute-slant-height"
+    },
+    {
+      "ref": "jemh112#1",
+      "nodeId": "cbse10:maths:jemh112:csa-cone"
+    },
+    {
+      "ref": "jemh112#2",
+      "nodeId": "cbse10:maths:jemh112:csa-cylinder"
+    },
+    {
+      "ref": "jemh112#3",
+      "nodeId": "cbse10:maths:jemh112:volume-cylinder"
+    },
+    {
+      "ref": "jemh112#4",
+      "nodeId": "cbse10:maths:jemh112:volume-cone"
+    },
+    {
+      "ref": "jemh112#5",
+      "nodeId": "cbse10:maths:jemh112:volume-combination-sum-of-volumes"
+    },
+    {
+      "ref": "jemh112#6",
+      "nodeId": "cbse10:maths:jemh112:compute-tsa-solid-hemisphere"
+    },
+    {
+      "ref": "jemh112#7",
+      "nodeId": "cbse10:maths:jemh112:csa-hemisphere"
+    },
+    {
+      "ref": "jemh112#8",
+      "nodeId": "cbse10:maths:jemh112:volume-hemisphere"
+    },
+    {
+      "ref": "jemh112#9",
+      "nodeId": "cbse10:maths:jemh112:actual-capacity-subtract-depression"
+    },
+    {
+      "ref": "jemh112#10",
+      "nodeId": "cbse10:maths:jemh112:volume-difference-circumscribing-cylinder"
+    },
+    {
+      "ref": "jemh112#11",
+      "nodeId": "cbse10:maths:jemh112:tsa-cube-with-hemisphere-on-top"
+    },
+    {
+      "ref": "jemh112#12",
+      "nodeId": "cbse10:maths:jemh112:volume-cuboid"
+    },
+    {
+      "ref": "jemh112#13",
+      "nodeId": "cbse10:maths:jemh112:volume-half-cylinder"
+    },
+    {
+      "ref": "jemh112#14",
+      "nodeId": "cbse10:maths:jemh112:tsa-toy-cone-plus-hemisphere"
+    },
+    {
+      "ref": "jemh112#15",
+      "nodeId": "cbse10:maths:jemh112:convert-units-cm-to-m"
+    },
+    {
+      "ref": "jemh112#16",
+      "nodeId": "cbse10:maths:jemh112:radius-from-diameter"
+    },
+    {
+      "ref": "jemh112#17",
+      "nodeId": "cbse10:maths:jemh112:derive-cone-height-from-combined"
+    },
+    {
+      "ref": "jemh112#18",
+      "nodeId": "cbse10:maths:jemh112:tsa-ring-when-cone-base-exceeds-cylinder"
+    },
+    {
+      "ref": "jemh112#19",
+      "nodeId": "cbse10:maths:jemh112:painted-area-cylinder-with-one-open-base"
+    },
+    {
+      "ref": "jemh112#20",
+      "nodeId": "cbse10:maths:jemh112:tsa-solid-with-hemispherical-depression"
+    },
+    {
+      "ref": "jemh112#21",
+      "nodeId": "cbse10:maths:jemh112:tsa-combination-sum-of-csa"
+    },
+    {
+      "ref": "jemh112#22",
+      "nodeId": "cbse10:maths:jemh112:decompose-combination-into-basic-solids"
+    },
+    {
+      "ref": "jemh112#23",
+      "nodeId": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations"
+    },
+    {
+      "ref": "jemh113#0",
+      "nodeId": "cbse10:maths:jemh113:compute-class-mark"
+    },
+    {
+      "ref": "jemh113#1",
+      "nodeId": "cbse10:maths:jemh113:compute-mean-direct-method"
+    },
+    {
+      "ref": "jemh113#2",
+      "nodeId": "cbse10:maths:jemh113:compute-fx-product-and-sum"
+    },
+    {
+      "ref": "jemh113#3",
+      "nodeId": "cbse10:maths:jemh113:choose-assumed-mean"
+    },
+    {
+      "ref": "jemh113#4",
+      "nodeId": "cbse10:maths:jemh113:compute-deviation-di"
+    },
+    {
+      "ref": "jemh113#5",
+      "nodeId": "cbse10:maths:jemh113:compute-mean-assumed-mean-method"
+    },
+    {
+      "ref": "jemh113#6",
+      "nodeId": "cbse10:maths:jemh113:compute-step-deviation-ui"
+    },
+    {
+      "ref": "jemh113#7",
+      "nodeId": "cbse10:maths:jemh113:compute-mean-step-deviation-method"
+    },
+    {
+      "ref": "jemh113#8",
+      "nodeId": "cbse10:maths:jemh113:apply-step-deviation-unequal-classes"
+    },
+    {
+      "ref": "jemh113#9",
+      "nodeId": "cbse10:maths:jemh113:choose-appropriate-mean-method"
+    },
+    {
+      "ref": "jemh113#10",
+      "nodeId": "cbse10:maths:jemh113:identify-modal-class"
+    },
+    {
+      "ref": "jemh113#11",
+      "nodeId": "cbse10:maths:jemh113:read-modal-formula-parameters"
+    },
+    {
+      "ref": "jemh113#12",
+      "nodeId": "cbse10:maths:jemh113:apply-mode-formula"
+    },
+    {
+      "ref": "jemh113#13",
+      "nodeId": "cbse10:maths:jemh113:compute-cumulative-frequency-less-than"
+    },
+    {
+      "ref": "jemh113#14",
+      "nodeId": "cbse10:maths:jemh113:convert-cf-table-to-frequencies"
+    },
+    {
+      "ref": "jemh113#15",
+      "nodeId": "cbse10:maths:jemh113:identify-median-class"
+    },
+    {
+      "ref": "jemh113#16",
+      "nodeId": "cbse10:maths:jemh113:read-median-formula-parameters"
+    },
+    {
+      "ref": "jemh113#17",
+      "nodeId": "cbse10:maths:jemh113:apply-median-formula"
+    },
+    {
+      "ref": "jemh113#18",
+      "nodeId": "cbse10:maths:jemh113:convert-discontinuous-to-continuous-classes"
+    },
+    {
+      "ref": "jemh113#19",
+      "nodeId": "cbse10:maths:jemh113:find-unknown-frequencies-from-median"
+    },
+    {
+      "ref": "jemh113#20",
+      "nodeId": "cbse10:maths:jemh113:use-empirical-mode-mean-median-relation"
+    },
+    {
+      "ref": "jemh113#21",
+      "nodeId": "cbse10:maths:jemh113:select-appropriate-measure-of-central-tendency"
+    },
+    {
+      "ref": "jemh113#22",
+      "nodeId": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data"
+    },
+    {
+      "ref": "jemh114#0",
+      "nodeId": "cbse10:maths:jemh114:compute-theoretical-probability"
+    },
+    {
+      "ref": "jemh114#1",
+      "nodeId": "cbse10:maths:jemh114:count-total-equally-likely-outcomes"
+    },
+    {
+      "ref": "jemh114#2",
+      "nodeId": "cbse10:maths:jemh114:count-favourable-outcomes"
+    },
+    {
+      "ref": "jemh114#3",
+      "nodeId": "cbse10:maths:jemh114:form-probability-ratio"
+    },
+    {
+      "ref": "jemh114#4",
+      "nodeId": "cbse10:maths:jemh114:identify-equally-likely-outcomes"
+    },
+    {
+      "ref": "jemh114#5",
+      "nodeId": "cbse10:maths:jemh114:apply-complement-rule"
+    },
+    {
+      "ref": "jemh114#6",
+      "nodeId": "cbse10:maths:jemh114:probability-impossible-event"
+    },
+    {
+      "ref": "jemh114#7",
+      "nodeId": "cbse10:maths:jemh114:probability-sure-event"
+    },
+    {
+      "ref": "jemh114#8",
+      "nodeId": "cbse10:maths:jemh114:probability-range-bounds"
+    },
+    {
+      "ref": "jemh114#9",
+      "nodeId": "cbse10:maths:jemh114:sum-of-elementary-events-is-one"
+    },
+    {
+      "ref": "jemh114#10",
+      "nodeId": "cbse10:maths:jemh114:list-sample-space-two-coins"
+    },
+    {
+      "ref": "jemh114#11",
+      "nodeId": "cbse10:maths:jemh114:list-sample-space-two-dice"
+    },
+    {
+      "ref": "jemh114#12",
+      "nodeId": "cbse10:maths:jemh114:card-deck-composition"
+    },
+    {
+      "ref": "jemh114#13",
+      "nodeId": "cbse10:maths:jemh114:geometric-probability-length"
+    },
+    {
+      "ref": "jemh114#14",
+      "nodeId": "cbse10:maths:jemh114:geometric-probability-area"
+    },
+    {
+      "ref": "jemh114#15",
+      "nodeId": "cbse10:maths:jemh114:complement-word-problem"
+    }
+  ],
+  "sameConcept": [
+    [
+      "cbse10:maths:jemh102:find-zero-of-linear-polynomial",
+      "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
+    ],
+    [
+      "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term",
+      "cbse10:maths:jemh104:split-middle-term"
+    ],
+    [
+      "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term",
+      "cbse10:maths:jemh105:factor-quadratic"
+    ],
+    [
+      "cbse10:maths:jemh102:find-zeroes-from-factors",
+      "cbse10:maths:jemh104:apply-zero-product-property"
+    ],
+    [
+      "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "cbse10:maths:jemh105:solve-simultaneous-equations"
+    ],
+    [
+      "cbse10:maths:jemh103:solve-resulting-one-variable-equation",
+      "cbse10:maths:jemh105:solve-linear-equation"
+    ],
+    [
+      "cbse10:maths:jemh108:recall-30-60-ratios",
+      "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle"
+    ]
+  ],
+  "generatedFrom": [
+    "jemh101",
+    "jemh102",
+    "jemh103",
+    "jemh104",
+    "jemh105",
+    "jemh106",
+    "jemh107",
+    "jemh108",
+    "jemh109",
+    "jemh110",
+    "jemh111",
+    "jemh112",
+    "jemh113",
+    "jemh114"
+  ]
+}

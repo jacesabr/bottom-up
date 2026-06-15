@@ -1,0 +1,21 @@
+[
+  { "node": "cbse10:maths:jemh104:split-middle-term", "sameConcept": ["cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term"] },
+  { "node": "cbse10:maths:jemh104:apply-zero-product-property", "sameConcept": ["cbse10:maths:jemh102:find-zeroes-from-factors"] },
+  { "node": "cbse10:maths:jemh104:recognise-quadratic-equation", "prereqs": ["cbse10:maths:jemh102:classify-polynomial-by-degree"] },
+
+  { "node": "cbse10:maths:jemh103:solve-resulting-one-variable-equation", "sameConcept": ["cbse10:maths:jemh102:find-zero-of-linear-polynomial"] },
+  { "node": "cbse10:maths:jemh103:plot-points-and-draw-line", "prereqs": ["cbse10:maths:jemh107:read-point-coordinates"] },
+
+  { "node": "cbse10:maths:jemh105:solve-linear-equation", "sameConcept": ["cbse10:maths:jemh103:solve-resulting-one-variable-equation"] },
+  { "node": "cbse10:maths:jemh105:solve-simultaneous-equations", "sameConcept": ["cbse10:maths:jemh103:solve-pair-linear-equations-two-variables"] },
+  { "node": "cbse10:maths:jemh105:factor-quadratic", "sameConcept": ["cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term"] },
+
+  { "node": "cbse10:maths:jemh109:set-up-trig-equation", "prereqs": ["cbse10:maths:jemh108:define-trig-ratios"] },
+  { "node": "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle", "sameConcept": ["cbse10:maths:jemh108:recall-30-60-ratios"] },
+
+  { "node": "cbse10:maths:jemh110:use-similar-right-triangles-tangent", "prereqs": ["cbse10:maths:jemh106:apply-aaa-aa-criterion"] },
+
+  { "node": "cbse10:maths:jemh111:use-cosine-ratio-find-om", "prereqs": ["cbse10:maths:jemh108:recall-30-60-ratios"] },
+  { "node": "cbse10:maths:jemh111:use-sine-ratio-find-am", "prereqs": ["cbse10:maths:jemh108:recall-30-60-ratios"] },
+  { "node": "cbse10:maths:jemh111:drop-perpendicular-to-chord", "prereqs": ["cbse10:maths:jemh110:use-perpendicular-bisects-chord"] }
+]

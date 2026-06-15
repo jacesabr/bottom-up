@@ -1,0 +1,563 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh105",
+  "title": "Arithmetic Progressions",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh105:solve-ap-problems",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh105:solve-ap-problems",
+      "slug": "solve-ap-problems",
+      "title": "Solve arithmetic progression problems",
+      "role": "goal",
+      "brief": "Use the AP definition, the nth-term formula, and the sum formula together to answer term, count, and sum questions about real-world and pure-number lists.",
+      "sec": 1,
+      "quote": "In this chapter, we shall discuss one of these patterns in which succeeding terms are obtained by adding a fixed number to the preceding terms. We shall also see how to find their nth terms and the sum of n consecutive terms, and use this knowledge in solving some daily life problems.",
+      "explanation": "This is the chapter's top skill: given a situation, recognise/model it as an AP, extract a and d, then apply the right tool (nth term aₙ = a + (n−1)d or sum Sₙ = n/2[2a+(n−1)d]) to find the unknown. It composes every sub-skill below.",
+      "keyMoves": [
+        "Identify whether the list is an AP and find a and d",
+        "Choose nth-term vs sum formula based on what is asked",
+        "Substitute and solve for the unknown quantity"
+      ],
+      "misconceptions": [
+        "Applying the sum formula when only a single term is asked (or vice versa)",
+        "Forgetting to first verify the list is actually an AP"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:test-is-ap",
+        "cbse10:maths:jemh105:apply-nth-term-formula",
+        "cbse10:maths:jemh105:apply-sum-formula-a-d",
+        "cbse10:maths:jemh105:model-real-world-ap",
+        "cbse10:maths:jemh105:find-which-term",
+        "cbse10:maths:jemh105:check-membership-integer-n",
+        "cbse10:maths:jemh105:count-terms-ap",
+        "cbse10:maths:jemh105:term-from-last",
+        "cbse10:maths:jemh105:find-two-equations-ap",
+        "cbse10:maths:jemh105:list-ap-from-a-d",
+        "cbse10:maths:jemh105:apply-sum-formula-a-l",
+        "cbse10:maths:jemh105:find-n-from-sum",
+        "cbse10:maths:jemh105:find-unknown-from-sum-system"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:define-ap-common-difference",
+      "slug": "define-ap-common-difference",
+      "title": "Define an AP via its common difference",
+      "role": "intermediate",
+      "brief": "Recognise that an AP is a list where each term after the first is the previous term plus a fixed number d, the common difference.",
+      "sec": 1,
+      "quote": "So, an arithmetic progression is a list of numbers in which each term is obtained by adding a fixed number to the preceding term except the first term.",
+      "explanation": "The definitional skill: a list is an AP exactly when the gap between consecutive terms is constant. d can be positive, negative, or zero. This underlies the AP-test and every formula.",
+      "keyMoves": [
+        "State that succeeding term = preceding term + d",
+        "Recognise d may be positive, negative, or zero"
+      ],
+      "misconceptions": [
+        "Believing d must be positive",
+        "Confusing 'adding a fixed number' (AP) with 'multiplying by a fixed number' (GP)"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:compute-common-difference",
+      "slug": "compute-common-difference",
+      "title": "Compute d by subtracting consecutive terms",
+      "role": "intermediate",
+      "brief": "Find the common difference by subtracting any term from the term that immediately follows it: d = a_{k+1} − a_k.",
+      "sec": 1,
+      "quote": "d = aₖ₊₁ – aₖ",
+      "explanation": "To get d, subtract the kth term from the (k+1)th term — always next-minus-previous, even when the next term is smaller (giving a negative d). E.g. Example 1: d = 1/2 − 3/2 = −1.",
+      "keyMoves": [
+        "Pick two consecutive terms",
+        "Subtract the earlier from the later: later − earlier",
+        "Keep the sign even when the result is negative"
+      ],
+      "misconceptions": [
+        "Subtracting the larger from the smaller regardless of order",
+        "Computing previous − next, flipping the sign of d"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:identify-first-term",
+        "cbse10:maths:jemh105:solve-linear-equation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:test-is-ap",
+      "slug": "test-is-ap",
+      "title": "Test whether a list is an AP",
+      "role": "intermediate",
+      "brief": "Check that a₂−a₁, a₃−a₂, a₄−a₃, … are all equal; if any differs, the list is not an AP.",
+      "sec": 1,
+      "quote": "As a₂ – a₁ ≠ a₃ – a₂, the given list of numbers does not form an AP.",
+      "explanation": "Compute several consecutive differences. If aₖ₊₁ − aₖ is the same for every k, it is an AP with that common difference; if even one differs, it is not. Demonstrated in Example 2 across four lists.",
+      "keyMoves": [
+        "Compute at least the first three consecutive differences",
+        "Compare them for equality",
+        "Conclude AP (with that d) or not-AP"
+      ],
+      "misconceptions": [
+        "Checking only the first difference and assuming the rest match",
+        "Mistaking a list of repeated patterns (e.g. 1,1,1,2,2,2) for an AP"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:compute-common-difference",
+        "cbse10:maths:jemh105:define-ap-common-difference"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:write-next-terms",
+      "slug": "write-next-terms",
+      "title": "Write the next terms of an AP",
+      "role": "intermediate",
+      "brief": "Once d is known, generate subsequent terms by repeatedly adding d to the last term.",
+      "sec": 1,
+      "quote": "The next two terms are: 22 + 6 = 28 and 28 + 6 = 34.",
+      "explanation": "After confirming the list is an AP and finding d, the next term is last-term + d, and the one after is that + d again. Used in Example 2(i),(ii).",
+      "keyMoves": [
+        "Take the last known term",
+        "Add d to get the next term",
+        "Repeat to extend the list"
+      ],
+      "misconceptions": [
+        "Adding the wrong-signed d",
+        "Restarting from the first term instead of continuing from the last"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:test-is-ap",
+        "cbse10:maths:jemh105:compute-common-difference"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:list-ap-from-a-d",
+      "slug": "list-ap-from-a-d",
+      "title": "List an AP given a and d",
+      "role": "intermediate",
+      "brief": "Given the first term a and common difference d, write out the AP a, a+d, a+2d, a+3d, ….",
+      "sec": 1,
+      "quote": "if the first term a is 6 and the common difference d is 3, then the AP is\n6, 9, 12, 15, . . .",
+      "explanation": "The general form a, a+d, a+2d, … lets you build the whole list from just a and d. The minimum information needed to know an AP is both a and d together.",
+      "keyMoves": [
+        "Write a as the first term",
+        "Add d successively to produce a+d, a+2d, …"
+      ],
+      "misconceptions": [
+        "Thinking a alone or d alone determines the AP",
+        "Adding d to the wrong term when generating"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:define-ap-common-difference",
+        "cbse10:maths:jemh105:identify-first-term"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:identify-first-term",
+      "slug": "identify-first-term",
+      "title": "Identify the first term a of an AP",
+      "role": "bedrock",
+      "brief": "Read off a as the first number in the list.",
+      "sec": 1,
+      "quote": "Since a is the first term, it can easily be written.",
+      "explanation": "The first term a is simply the first entry of the list. This is a basic but independently-required move feeding d-computation and both formulas (e.g. Example 1: a = 3/2).",
+      "keyMoves": [
+        "Locate the first number in the given list",
+        "Record it as a"
+      ],
+      "misconceptions": [
+        "Taking the second term as a",
+        "When given 'reverse order' problems, forgetting a changes to the last term"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:apply-nth-term-formula",
+      "slug": "apply-nth-term-formula",
+      "title": "Apply the nth-term formula aₙ = a + (n−1)d",
+      "role": "intermediate",
+      "brief": "Compute any term of an AP by substituting a, n, and d into aₙ = a + (n−1)d.",
+      "sec": 2,
+      "quote": "So, the nth term aₙ of the AP with first term a and common difference d is given by aₙ = a + (n – 1) d.",
+      "explanation": "The central formula for the position-n term. Example 3: a=2, d=5, n=10 gives a₁₀ = 2 + 9×5 = 47. Note the multiplier is (n−1), not n.",
+      "keyMoves": [
+        "Identify a, d, and n",
+        "Substitute into a + (n−1)d",
+        "Simplify to the term value"
+      ],
+      "misconceptions": [
+        "Using n instead of (n−1) as the multiplier",
+        "Mixing up a and d in substitution"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:identify-first-term",
+        "cbse10:maths:jemh105:compute-common-difference",
+        "cbse10:maths:jemh105:write-next-terms"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:find-which-term",
+      "slug": "find-which-term",
+      "title": "Find which term equals a given value",
+      "role": "intermediate",
+      "brief": "Set aₙ equal to the target value and solve a + (n−1)d = value for n.",
+      "sec": 2,
+      "quote": "we have – 81 = 21 + (n – 1)(– 3)",
+      "explanation": "When asked 'which term is X', plug X for aₙ and solve the resulting linear equation for n. Example 4: −81 = 21 + (n−1)(−3) → n = 35.",
+      "keyMoves": [
+        "Set a + (n−1)d equal to the target",
+        "Solve the linear equation for n",
+        "Report the position n"
+      ],
+      "misconceptions": [
+        "Solving for aₙ instead of n",
+        "Sign errors when d is negative"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:apply-nth-term-formula",
+        "cbse10:maths:jemh105:solve-linear-equation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:check-membership-integer-n",
+      "slug": "check-membership-integer-n",
+      "title": "Check term membership using integer-n test",
+      "role": "intermediate",
+      "brief": "A number is a term of the AP only if solving a + (n−1)d = value yields a positive integer n.",
+      "sec": 2,
+      "quote": "But n should be a positive integer (Why?). So, 301 is not a term of the given list of numbers.",
+      "explanation": "Example 6: solving 301 = 5 + (n−1)6 gives n = 151/3, not an integer, so 301 is not in the list. The membership decision hinges on whether n comes out as a positive whole number.",
+      "keyMoves": [
+        "Solve for n as in find-which-term",
+        "Check whether n is a positive integer",
+        "Conclude member (integer) or non-member (fraction)"
+      ],
+      "misconceptions": [
+        "Concluding membership from any solved n, even a fraction",
+        "Ignoring the positivity requirement on n"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:find-which-term",
+        "cbse10:maths:jemh105:test-is-ap"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:find-two-equations-ap",
+      "slug": "find-two-equations-ap",
+      "title": "Find a and d from two given terms",
+      "role": "intermediate",
+      "brief": "Write each known term as a + (k−1)d, then solve the pair of simultaneous equations for a and d.",
+      "sec": 2,
+      "quote": "a₃ = a + (3 – 1) d = a + 2d = 5   (1)\nand a₇ = a + (7 – 1) d = a + 6d = 9   (2)",
+      "explanation": "When two terms are known, each gives one linear equation in a and d; solving the system yields both. Example 5: a+2d=5, a+6d=9 → a=3, d=1. Also Example 16 (a₃=600, a₇=700 → a=550, d=25).",
+      "keyMoves": [
+        "Express each known term via a + (k−1)d",
+        "Subtract the equations to eliminate a and find d",
+        "Back-substitute to find a"
+      ],
+      "misconceptions": [
+        "Writing aₖ = a + kd instead of a + (k−1)d",
+        "Arithmetic slip when subtracting the two equations"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:apply-nth-term-formula",
+        "cbse10:maths:jemh105:solve-simultaneous-equations"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:count-terms-ap",
+      "slug": "count-terms-ap",
+      "title": "Count the number of terms in a finite AP",
+      "role": "intermediate",
+      "brief": "Treat the last term as aₙ = l, solve l = a + (n−1)d for n to get the term count.",
+      "sec": 2,
+      "quote": "i.e., n = 29 + 1 = 30\nSo, there are 30 two-digit numbers divisible by 3.",
+      "explanation": "Given first term, common difference, and last term, the count n comes from l = a + (n−1)d. Example 7: 99 = 12 + (n−1)3 → n = 30. Also Example 10 (flower-bed rows = 10).",
+      "keyMoves": [
+        "Identify a, d, and the last term l",
+        "Solve l = a + (n−1)d for n",
+        "Report n as the number of terms"
+      ],
+      "misconceptions": [
+        "Forgetting the +1 (off-by-one) when isolating n",
+        "Using a wrong last term"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:apply-nth-term-formula",
+        "cbse10:maths:jemh105:solve-linear-equation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:term-from-last",
+      "slug": "term-from-last",
+      "title": "Find the kth term from the last term",
+      "role": "intermediate",
+      "brief": "Either count total terms then convert to a position from the start, or reverse the AP (new a = l, new d = −d) and take the kth term.",
+      "sec": 2,
+      "quote": "If we write the given AP in the reverse order, then a = – 62 and d = 3 (Why?)",
+      "explanation": "Example 8: the 11th term from the last of 10,7,4,…,−62. Method A: 25 terms total, so 11th-from-last = 15th-from-start = −32. Method B: reverse to a=−62, d=3, then a₁₁ = −32.",
+      "keyMoves": [
+        "Either count n then compute position (n − k + 1) from the start",
+        "Or reverse the AP: a becomes l, d becomes −d, then apply nth-term"
+      ],
+      "misconceptions": [
+        "Using the 14th term instead of the 15th (off-by-one from the last)",
+        "Forgetting to negate d when reversing"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:count-terms-ap",
+        "cbse10:maths:jemh105:apply-nth-term-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:model-real-world-ap",
+      "slug": "model-real-world-ap",
+      "title": "Model a real-world situation as an AP",
+      "role": "intermediate",
+      "brief": "Translate a uniformly-changing quantity (salary, interest, plant rows, production) into an AP and extract a and d.",
+      "sec": 2,
+      "quote": "It is an AP as the difference between the consecutive terms in the list is 80, i.e., d = 80. Also, a = 80.",
+      "explanation": "Word problems where a quantity changes by a fixed amount each step form an AP. Example 9 (simple interest 80,160,240,…), Example 10 (rose plants), Example 16 (TV production). The skill is setting up a and d from the words before computing.",
+      "keyMoves": [
+        "Identify the repeating fixed change as d",
+        "Identify the starting value as a",
+        "Map the question onto aₙ or Sₙ"
+      ],
+      "misconceptions": [
+        "Treating compound-interest / multiplicative growth as an AP",
+        "Mislabelling the first term"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:test-is-ap",
+        "cbse10:maths:jemh105:find-two-equations-ap",
+        "cbse10:maths:jemh105:count-terms-ap"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:derive-d-from-nth-term-rule",
+      "slug": "derive-d-from-nth-term-rule",
+      "title": "Derive a and d when aₙ is given as a formula",
+      "role": "intermediate",
+      "brief": "When the nth term is given as an expression in n, generate the first few terms to read off a and confirm constant d.",
+      "sec": 3,
+      "quote": "List of numbers becomes 5, 7, 9, 11, . . .\nHere, 7 – 5 = 9 – 7 = 11 – 9 = 2 and so on.",
+      "explanation": "Example 15: aₙ = 3 + 2n gives a₁=5, a₂=7, a₃=9, so a=5 and d=2. A linear formula in n always yields an AP whose d is the coefficient of n. This feeds the sum formula.",
+      "keyMoves": [
+        "Substitute n=1,2,3 into the given formula",
+        "Read off a from a₁",
+        "Confirm equal differences to get d"
+      ],
+      "misconceptions": [
+        "Reading the constant term as a instead of computing a₁",
+        "Assuming any formula in n gives an AP"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:compute-common-difference",
+        "cbse10:maths:jemh105:test-is-ap"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:apply-sum-formula-a-d",
+      "slug": "apply-sum-formula-a-d",
+      "title": "Apply the sum formula Sₙ = n/2[2a+(n−1)d]",
+      "role": "intermediate",
+      "brief": "Find the sum of the first n terms by substituting a, n, d into Sₙ = n/2[2a + (n−1)d].",
+      "sec": 3,
+      "quote": "So, the sum of the first n terms of an AP is given by\nS = n/2 [2a + (n – 1) d]",
+      "explanation": "The primary sum formula. Example 11: a=8, d=−5, n=22 gives S = 11(16−105) = −979. Used whenever a, d, and n are the known quantities.",
+      "keyMoves": [
+        "Identify a, d, n",
+        "Substitute into n/2[2a+(n−1)d]",
+        "Simplify carefully with signs"
+      ],
+      "misconceptions": [
+        "Dropping the factor n/2",
+        "Using (n) instead of (n−1) inside the bracket"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:identify-first-term",
+        "cbse10:maths:jemh105:compute-common-difference",
+        "cbse10:maths:jemh105:derive-d-from-nth-term-rule"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:apply-sum-formula-a-l",
+      "slug": "apply-sum-formula-a-l",
+      "title": "Apply the sum formula Sₙ = n/2(a+l)",
+      "role": "intermediate",
+      "brief": "When the first and last terms are known, use Sₙ = n/2(a + l) to find the sum.",
+      "sec": 3,
+      "quote": "S = n/2 (a + l)",
+      "explanation": "This form avoids needing d. Example 14(i): sum of first 1000 integers = 1000/2 (1+1000) = 500500. Useful when a and l are given but d is not.",
+      "keyMoves": [
+        "Identify a (first), l (last), and n",
+        "Substitute into n/2(a+l)"
+      ],
+      "misconceptions": [
+        "Using this form when the last term is unknown",
+        "Confusing l with d"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:identify-first-term",
+        "cbse10:maths:jemh105:count-terms-ap"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:find-n-from-sum",
+      "slug": "find-n-from-sum",
+      "title": "Find n given a target sum",
+      "role": "intermediate",
+      "brief": "Set Sₙ = n/2[2a+(n−1)d] equal to the target sum and solve the resulting quadratic for n.",
+      "sec": 3,
+      "quote": "or n² – 17n + 52 = 0\nor (n – 4)(n – 13) = 0\nor n = 4 or 13",
+      "explanation": "Example 13: 78 = n/2[48+(n−1)(−3)] becomes n²−17n+52=0, giving n=4 or 13 (both admissible). The sum equation in n is generally quadratic, so factor and accept positive-integer roots.",
+      "keyMoves": [
+        "Set the sum formula equal to the target",
+        "Rearrange to a quadratic in n",
+        "Factor and keep positive-integer solutions"
+      ],
+      "misconceptions": [
+        "Discarding a valid second root",
+        "Accepting a negative or fractional n"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:apply-sum-formula-a-d",
+        "cbse10:maths:jemh105:factor-quadratic"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:find-unknown-from-sum-system",
+      "slug": "find-unknown-from-sum-system",
+      "title": "Find a missing quantity from a sum condition",
+      "role": "intermediate",
+      "brief": "Use a known Sₙ together with the sum formula to solve for the missing a, d, or term.",
+      "sec": 3,
+      "quote": "so, 1050 = 14/2 [20 + 13d] = 140 + 91d\ni.e., 910 = 91d",
+      "explanation": "Example 12: S₁₄=1050, a=10 → solve for d=10, then find a₂₀=200. Knowing any three of S, a, d, n lets you find the fourth and then any term.",
+      "keyMoves": [
+        "Plug known values into the sum formula",
+        "Solve the linear equation for the unknown (often d)",
+        "Use the result in the nth-term formula if a further term is needed"
+      ],
+      "misconceptions": [
+        "Mis-substituting n into n/2",
+        "Stopping at d without computing the requested term"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh105:apply-sum-formula-a-d",
+        "cbse10:maths:jemh105:apply-nth-term-formula",
+        "cbse10:maths:jemh105:solve-linear-equation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:solve-linear-equation",
+      "slug": "solve-linear-equation",
+      "title": "Solve a linear equation for one unknown",
+      "role": "shared",
+      "brief": "Isolate the unknown by transposing and dividing to solve equations like −105 = −3n.",
+      "sec": 2,
+      "quote": "– 105 = – 3n\nSo, n = 35",
+      "explanation": "Generic numeracy reused throughout: rearranging a + (n−1)d = value or sum equations down to the unknown. Appears in nearly every worked example.",
+      "keyMoves": [
+        "Collect the unknown on one side",
+        "Divide by its coefficient",
+        "Simplify, tracking signs"
+      ],
+      "misconceptions": [
+        "Sign errors when dividing by a negative coefficient",
+        "Forgetting to apply an operation to both sides"
+      ],
+      "prereqs": [],
+      "sameConcept": [
+        "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
+      ],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:solve-simultaneous-equations",
+      "slug": "solve-simultaneous-equations",
+      "title": "Solve a pair of simultaneous linear equations",
+      "role": "shared",
+      "brief": "Eliminate one variable from two linear equations to find both unknowns.",
+      "sec": 2,
+      "quote": "Solving the pair of equations (1) and (2), we get\na = 3, d = 1",
+      "explanation": "Generic algebra reused when two terms of an AP give two equations in a and d (Examples 5, 16). Subtract to eliminate a, solve for d, back-substitute.",
+      "keyMoves": [
+        "Align the two equations",
+        "Subtract to eliminate one variable",
+        "Back-substitute for the other"
+      ],
+      "misconceptions": [
+        "Adding instead of subtracting when eliminating",
+        "Substituting the found value into the wrong equation"
+      ],
+      "prereqs": [],
+      "sameConcept": [
+        "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables"
+      ],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh105:factor-quadratic",
+      "slug": "factor-quadratic",
+      "title": "Factor a simple quadratic in n",
+      "role": "shared",
+      "brief": "Express n²+bn+c as (n−p)(n−q)=0 to find the roots.",
+      "sec": 3,
+      "quote": "or (n – 4)(n – 13) = 0",
+      "explanation": "Generic skill reused when a sum condition produces a quadratic (Example 13). Find two numbers multiplying to c and summing to −b, then read off roots.",
+      "keyMoves": [
+        "Find factor pair of the constant summing to the middle coefficient",
+        "Write as product of two binomials",
+        "Set each factor to zero for the roots"
+      ],
+      "misconceptions": [
+        "Sign errors in the factor pair",
+        "Missing one of the two roots"
+      ],
+      "prereqs": [],
+      "sameConcept": [
+        "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term"
+      ],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## What I read (reviewer pass)\n\nI re-read the full segmented chapter `jemh105.txt` (SEG 0 Introduction, SEG 1 = 5.2 Arithmetic Progressions, SEG 2 = 5.3 nth Term, SEG 3 = 5.4 Sum of First n Terms, SEG 4 = optional Exercise 5.4, SEG 5 = Summary) including all 16 worked Examples, and the shared `_maths-exams.txt` (CBSE Standard + Basic SQP and both Marking Schemes), re-locating every quoted line for the exam-sourced gates.\n\n## Audit verdict\n\nThe draft passed almost entirely. I verified all 23 node quotes as exact substrings of their cited SEG (sec mapping: 5.2→sec 1, 5.3→sec 2, 5.4→sec 3, all correct). Specifically re-confirmed the trickier ones: `identify-first-term` (\\\"Since a is the first term, it can easily be written.\\\" — line 92, mid-paragraph substring), `list-ap-from-a-d` (the \\\"if the first term a is 6 …\\\" fragment from \\\"For instance if the first term a is 6 …\\\", lines 81–82), and `apply-sum-formula-a-l` (\\\"S = n/2 (a + l)\\\", line 393).\n\nExam-sourced quotes re-verified against the raw paper: Q4 7n−4 (line 42), Q19 Assertion −1,−1−1,… (line 904), Q36(iii)(A) jars S8=108 (lines 678–680 of the marking scheme). NOTE: I corrected the assertion gate's `srcLabel` from \\\"Basic SQP Q19\\\" to \\\"Standard SQP Q19\\\" — the −1,−1−1 assertion lives in the second (Standard) paper at line 904, not the Basic paper.\n\n## Corrections applied\n\n1. `term-from-last` gate `quote` corrected from the encoding-corrupted character to the proper en-dash: \\\"i.e., the 11th term from the last term is – 32.\\\" (line 290) — this is the canonical close of the main worked method.\n2. All other quotes verified as exact verbatim substrings with ≥4 words and proper character encoding.\n3. All gates verified to have consistent grader/expected/answer triples.\n\n## Grain / coverage check\n\nEvery node is a single failable skill; no pure-exposition node survived. Re-scanned all 16 Examples for missed skills: Example 4's \\\"is any term 0?\\\" reduces to `find-which-term` (same solve-for-n), Example 16(iii) reuses `apply-sum-formula-a-d`, Example 8's reverse method is `term-from-last`. No new node warranted. The Gauss reversal derivation of Sₙ is a proof (exposition), correctly folded into the application nodes, not a student-performed gateable step.\n\n## Edges\n\nSingle root `solve-ap-problems` (never a child). Graph is acyclic — verified all potential cycles and none found. No orphan nodes (every non-root slug appears as a child at least once), and every edge endpoint is a defined node slug. All 22 nodes are reachable from the goal by forward traversal.\n\n## Gates\n\n23 gates, one per node, 100% coverage. Every grader/expected/answer triple is self-consistent for the deterministic tester (numeric tol 0 or mcq with the exact correct option string). The goal gate composes model+sum (jars S8) from an answer-keyed exam case study.\n",
+  "absentNotes": "The chapter does NOT teach these as failable skills (omitted, not failed): (1) Arithmetic mean — b = (a+c)/2 — appears only as a one-line \\\"A NOTE TO THE READER\\\" in the Summary (SEG 5), never demonstrated in a worked Example, so no node. (2) Deriving the sum formula via Gauss's reversal trick is exposition/proof in SEG 3, not a student-performed step, so it is folded into the formula-application nodes rather than a standalone \\\"derive the sum formula\\\" skill. (3) The optional Exercise 5.4 problems (first negative term, spiral semicircle lengths, terrace volume, house-number balancing) are flagged \\\"These exercises are not from the examination point of view\\\" and have no worked solutions, so no gates were sourced from them. (4) Distinguishing finite vs infinite APs is descriptive terminology only (SEG 1), not a gateable task. (5) The remark aₙ = Sₙ − Sₙ₋₁ is stated in SEG 3 but not exercised in any worked Example in this chapter (it surfaces in exam Q23(B): Sₙ = 6n − n² → d). Since no chapter Example performs it, no separate node was added; the chapter's own examples remain the spine."
+}

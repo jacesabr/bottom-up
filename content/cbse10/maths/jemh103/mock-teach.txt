@@ -1,0 +1,47 @@
+# MOCK teach/grade transcript — cbse10:maths:jemh103
+# LLM_PROVIDER=mock (deterministic; no model call). Generated 2026-06-06T07:43:31.155Z
+
+teach  plot-points-and-draw-line  (bedrock)
+  check  "6"  →  PASS
+teach  find-two-solutions-of-an-equation  (intermediate)
+  check  "2"  →  PASS
+teach  read-intersection-as-solution  (intermediate)
+  check  "6"  →  PASS
+teach  identify-consistent-inconsistent-dependent  (intermediate)
+  check  "inconsistent"  →  PASS
+teach  solve-graphically  (intermediate)
+  check  "0"  →  PASS
+teach  express-one-variable-in-terms-of-other  (intermediate)
+  check  "3"  →  PASS
+teach  substitute-expression-into-other-equation  (intermediate)
+  check  "-19"  →  PASS
+teach  solve-resulting-one-variable-equation  (shared)
+  check  "0.6552"  →  PASS
+teach  back-substitute-to-find-other-variable  (intermediate)
+  check  "1.6897"  →  PASS
+teach  interpret-no-variable-true-statement  (intermediate)
+  check  "infinitely many solutions"  →  PASS
+teach  interpret-no-variable-false-statement  (intermediate)
+  check  "0"  →  PASS
+teach  model-two-digit-number-by-place-value  (intermediate)
+  check  "6"  →  PASS
+teach  form-equations-from-word-problem  (intermediate)
+  check  "42"  →  PASS
+teach  solve-by-substitution  (intermediate)
+  check  "12"  →  PASS
+teach  multiply-equations-to-equalize-coefficient  (intermediate)
+  check  "6000"  →  PASS
+teach  add-or-subtract-to-eliminate-variable  (intermediate)
+  check  "2000"  →  PASS
+teach  solve-by-elimination  (intermediate)
+  check  "4000"  →  PASS
+teach  classify-pair-by-coefficient-ratios  (intermediate)
+  check  "parallel"  →  PASS
+teach  verify-solution-in-original-equations  (shared)
+  check  "66"  →  PASS
+teach  find-k-for-given-solution-type  (intermediate)
+  check  "4"  →  PASS
+teach  solve-pair-linear-equations-two-variables  (goal)
+  check  "-2"  →  PASS
+
+# taught 21/21 reachable nodes; verdict PASS (mock)

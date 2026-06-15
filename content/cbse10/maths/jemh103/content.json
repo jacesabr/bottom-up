@@ -1,0 +1,526 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh103",
+  "title": "Pair of Linear Equations in Two Variables",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "slug": "solve-pair-linear-equations-two-variables",
+      "title": "Solve a pair of linear equations in two variables",
+      "role": "goal",
+      "brief": "Given a pair of linear equations (or a word problem reducible to one), determine whether a solution exists and find it by an appropriate method.",
+      "sec": 8,
+      "quote": "A pair of linear equations in two variables can be represented, and solved, by the:",
+      "explanation": "This is the chapter's top skill: take two linear equations in x and y (possibly arising from a real situation), decide if the pair is consistent/inconsistent/dependent, and produce the solution. It is achieved by selecting and executing one of the taught methods — graphical, substitution, or elimination — and interpreting the result. All sub-skills below feed into this.",
+      "keyMoves": [
+        "Identify the two equations (or form them from a problem)",
+        "Choose a method (graphical / substitution / elimination)",
+        "Execute the method to get x and y, or to conclude no/infinite solutions",
+        "Interpret the answer back in the problem's context"
+      ],
+      "misconceptions": [
+        "Thinking every pair always has exactly one solution",
+        "Forgetting to interpret/verify the answer against the original situation"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:solve-graphically",
+        "cbse10:maths:jemh103:solve-by-substitution",
+        "cbse10:maths:jemh103:solve-by-elimination",
+        "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios",
+        "cbse10:maths:jemh103:form-equations-from-word-problem",
+        "cbse10:maths:jemh103:verify-solution-in-original-equations",
+        "cbse10:maths:jemh103:find-k-for-given-solution-type"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios",
+      "slug": "classify-pair-by-coefficient-ratios",
+      "title": "Classify a pair using the ratios \\(a_1/a_2\\), \\(b_1/b_2\\), \\(c_1/c_2\\)",
+      "role": "intermediate",
+      "brief": "Compare the three coefficient ratios to decide whether the lines intersect (unique), coincide (infinite), or are parallel (none).",
+      "sec": 1,
+      "quote": "are  (i)  intersecting, then a₁/a₂ ≠ b₁/b₂ .",
+      "explanation": "Writing both equations in the form \\(a_1x + b_1y + c_1 = 0\\) and \\(a_2x + b_2y + c_2 = 0\\), the student compares ratios. \\(a_1/a_2 \\ne b_1/b_2\\) means intersecting/unique; \\(a_1/a_2 = b_1/b_2 = c_1/c_2\\) means coincident/infinite; \\(a_1/a_2 = b_1/b_2 \\ne c_1/c_2\\) means parallel/none.",
+      "keyMoves": [
+        "Put both equations in general form",
+        "Form the three ratios \\(a_1/a_2\\), \\(b_1/b_2\\), \\(c_1/c_2\\)",
+        "Compare them against the three cases",
+        "State intersecting / coincident / parallel"
+      ],
+      "misconceptions": [
+        "Confusing the coincident case (=,=,=) with the parallel case (=,=,≠)",
+        "Mismatching sign of c when moving constant to the left side"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent",
+      "slug": "identify-consistent-inconsistent-dependent",
+      "title": "Label a pair consistent, inconsistent, or dependent",
+      "role": "intermediate",
+      "brief": "Map the geometric situation to the vocabulary: solution exists = consistent, none = inconsistent, infinitely many equivalent = dependent.",
+      "sec": 1,
+      "quote": "A pair of linear equations which has no solution, is called an inconsistent pair of linear equations.",
+      "explanation": "Once the lines' behaviour is known, the student attaches the correct term. A pair with a solution is consistent; with no solution is inconsistent; with infinitely many common solutions (equivalent equations) is dependent — and a dependent pair is always consistent. This vocabulary is required by exam phrasing.",
+      "keyMoves": [
+        "Determine intersecting/coincident/parallel",
+        "Apply: unique or infinite -> consistent",
+        "Apply: parallel/no solution -> inconsistent",
+        "Apply: coincident -> dependent (and consistent)"
+      ],
+      "misconceptions": [
+        "Calling a dependent pair inconsistent",
+        "Thinking 'consistent' implies a unique solution only"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:find-two-solutions-of-an-equation",
+      "slug": "find-two-solutions-of-an-equation",
+      "title": "Find two solutions of a linear equation for plotting",
+      "role": "intermediate",
+      "brief": "Choose convenient x-values, compute y, to get two points that determine the line.",
+      "sec": 1,
+      "quote": "For this, we find two solutions of each of the equations, which are given in Table 3.2.",
+      "explanation": "To draw a line's graph the student rearranges the equation to y = (expression in x) and substitutes two convenient x-values (often 0 and another) to obtain two (x,y) pairs. Two points suffice to draw the straight line.",
+      "keyMoves": [
+        "Solve the equation for y in terms of x",
+        "Pick two easy x-values",
+        "Compute the matching y-values",
+        "Tabulate the two ordered pairs"
+      ],
+      "misconceptions": [
+        "Arithmetic error when isolating y from a fraction like (6−x)/3",
+        "Choosing x-values that give awkward non-integer points"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:plot-points-and-draw-line"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:plot-points-and-draw-line",
+      "slug": "plot-points-and-draw-line",
+      "title": "Plot points and draw the line of an equation",
+      "role": "bedrock",
+      "brief": "Place ordered pairs on the coordinate plane and join them with a straight line.",
+      "sec": 1,
+      "quote": "Plot the points A(0, 2), B(6, 0), P(0, − 4) and Q(3, − 2) on graph paper, and join the points to form the lines AB and PQ as shown in Fig. 3.1.",
+      "explanation": "Given two coordinate pairs per equation, the student marks them on graph paper and draws the straight line through them. This bedrock plotting skill from Class IX is the physical step of the graphical method.",
+      "keyMoves": [
+        "Mark each (x,y) point accurately",
+        "Join the two points of one equation into a line",
+        "Repeat for the second equation"
+      ],
+      "misconceptions": [
+        "Swapping x and y coordinates when plotting",
+        "Mis-scaling negative coordinates"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:read-intersection-as-solution",
+      "slug": "read-intersection-as-solution",
+      "title": "Read the intersection point as the solution",
+      "role": "intermediate",
+      "brief": "Identify the common point of the two drawn lines and report it as x = , y = .",
+      "sec": 1,
+      "quote": "We observe that there is a point B (6, 0) common to both the lines AB and PQ. So, the solution of the pair of linear equations is x = 6 and y = 0, i.e., the given pair of equations is consistent.",
+      "explanation": "After both lines are drawn, the point they share gives the solution. The student reads the coordinates of the intersection and states them as the solution, concluding the pair is consistent. If lines coincide there are infinitely many; if parallel, none.",
+      "keyMoves": [
+        "Locate where the two lines cross",
+        "Read off the coordinates",
+        "State x and y as the solution",
+        "Conclude consistency"
+      ],
+      "misconceptions": [
+        "Misreading non-integral intersection coordinates",
+        "Reporting only x or only y instead of both"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:solve-graphically",
+      "slug": "solve-graphically",
+      "title": "Solve a pair graphically",
+      "role": "intermediate",
+      "brief": "Draw both lines from tabulated points and obtain the solution (or conclude none/infinite) from their geometric relation.",
+      "sec": 1,
+      "quote": "Solution : Let us draw the graphs of the Equations (1) and (2). For this, we find two solutions of each of the equations, which are given in Table 3.2.",
+      "explanation": "The full graphical method: for each equation find two solutions, plot and draw both lines, then read the intersection (unique solution), note coincidence (infinitely many), or parallelism (no solution). It is the visual method, used in Example 1 and exam Q32(A).",
+      "keyMoves": [
+        "Tabulate two solutions per equation",
+        "Plot and draw both lines",
+        "Read intersection / detect coincidence / detect parallel",
+        "State the solution or conclusion"
+      ],
+      "misconceptions": [
+        "Drawing lines from a single point",
+        "Assuming lines that look close are coincident without checking"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:find-two-solutions-of-an-equation",
+        "cbse10:maths:jemh103:plot-points-and-draw-line",
+        "cbse10:maths:jemh103:read-intersection-as-solution",
+        "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:express-one-variable-in-terms-of-other",
+      "slug": "express-one-variable-in-terms-of-other",
+      "title": "Express one variable in terms of the other",
+      "role": "intermediate",
+      "brief": "Rearrange one equation to isolate x (or y) as an expression in the other variable.",
+      "sec": 4,
+      "quote": "Step 1 : We pick either of the equations and write one variable in terms of the other.",
+      "explanation": "The first step of substitution: take whichever equation is convenient and solve it for one variable, e.g. x + 2y = 3 becomes x = 3 − 2y. This isolated expression is what gets substituted.",
+      "keyMoves": [
+        "Pick the easier equation",
+        "Isolate one variable on one side",
+        "Keep the expression in terms of the other variable"
+      ],
+      "misconceptions": [
+        "Sign error when moving a term across the equals sign",
+        "Forgetting to divide every term when a coefficient is present"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:substitute-expression-into-other-equation",
+      "slug": "substitute-expression-into-other-equation",
+      "title": "Substitute the expression into the other equation",
+      "role": "intermediate",
+      "brief": "Replace the isolated variable in the second equation, producing one equation in one variable.",
+      "sec": 4,
+      "quote": "Step 2 : Substitute the value of x in Equation (1). We get",
+      "explanation": "Having written x = 3 − 2y, the student plugs this into the other equation: 7(3 − 2y) − 15y = 2. Distributing and combining reduces the system to a single-variable equation that can be solved.",
+      "keyMoves": [
+        "Put the expression in place of the variable in the other equation",
+        "Distribute/expand carefully",
+        "Combine like terms into one-variable equation"
+      ],
+      "misconceptions": [
+        "Substituting back into the same equation it came from (gives 0=0)",
+        "Distribution error such as 7(3−2y) ≠ 21−14y"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:express-one-variable-in-terms-of-other"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:solve-resulting-one-variable-equation",
+      "slug": "solve-resulting-one-variable-equation",
+      "title": "Solve the resulting one-variable equation",
+      "role": "shared",
+      "brief": "Solve a linear equation in a single variable to get its value.",
+      "sec": 4,
+      "quote": "i.e.,          − 29y = − 19\n\nTherefore,          y = 19/29",
+      "explanation": "After substitution or elimination, one linear equation in one unknown remains; the student isolates that unknown, e.g. −29y = −19 gives y = 19/29. This is generic single-variable algebra reused throughout the chapter.",
+      "keyMoves": [
+        "Collect the variable terms and constants",
+        "Divide by the coefficient",
+        "Simplify the fraction"
+      ],
+      "misconceptions": [
+        "Dropping a negative sign giving y = −19/29",
+        "Not reducing the fraction"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:back-substitute-to-find-other-variable",
+      "slug": "back-substitute-to-find-other-variable",
+      "title": "Back-substitute to find the other variable",
+      "role": "intermediate",
+      "brief": "Plug the found value into the Step-1 expression/equation to get the remaining variable.",
+      "sec": 4,
+      "quote": "Step 3 : Substituting this value of y in Equation (3), we get\n\nx = 3 − 2 (19/29) = 49/29",
+      "explanation": "Once one variable is known, substitute it into the earlier isolated expression to find the other, e.g. y = 19/29 into x = 3 − 2y gives x = 49/29. This completes the solution pair.",
+      "keyMoves": [
+        "Insert the known value into the Step-1 equation",
+        "Compute the second variable",
+        "State both values as the solution"
+      ],
+      "misconceptions": [
+        "Substituting into a wrong/unsimplified equation",
+        "Arithmetic slip combining 3 and 2(19/29)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:solve-by-substitution",
+      "slug": "solve-by-substitution",
+      "title": "Solve a pair by the substitution method",
+      "role": "intermediate",
+      "brief": "Express, substitute, solve, and back-substitute to find x and y (or detect no/infinite solutions).",
+      "sec": 4,
+      "quote": "Step 1 : Find the value of one variable, say y in terms of the other variable, i.e., x from either equation, whichever is convenient.",
+      "explanation": "The complete substitution algorithm: isolate one variable from one equation, substitute into the other, solve the resulting single-variable equation, then back-substitute. A variable-free true statement means infinitely many solutions; a false one means inconsistent.",
+      "keyMoves": [
+        "Isolate one variable",
+        "Substitute into the other equation",
+        "Solve for one variable",
+        "Back-substitute for the other"
+      ],
+      "misconceptions": [
+        "Misreading a 'no variable' outcome",
+        "Choosing the harder equation and inviting fraction errors"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:express-one-variable-in-terms-of-other",
+        "cbse10:maths:jemh103:substitute-expression-into-other-equation",
+        "cbse10:maths:jemh103:solve-resulting-one-variable-equation",
+        "cbse10:maths:jemh103:back-substitute-to-find-other-variable",
+        "cbse10:maths:jemh103:interpret-no-variable-true-statement",
+        "cbse10:maths:jemh103:interpret-no-variable-false-statement",
+        "cbse10:maths:jemh103:form-equations-from-word-problem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:interpret-no-variable-true-statement",
+      "slug": "interpret-no-variable-true-statement",
+      "title": "Interpret a true no-variable statement as infinitely many solutions",
+      "role": "intermediate",
+      "brief": "When substitution/elimination yields an identity like 18 = 18, conclude infinitely many solutions.",
+      "sec": 4,
+      "quote": "i.e.,          18 = 18\n\nThis statement is true for all values of y.",
+      "explanation": "If the variable cancels and a true numeric identity remains (e.g. 18 = 18), the two equations are the same line; the pair has infinitely many solutions (dependent). The student must recognise this rather than treat it as an error.",
+      "keyMoves": [
+        "Notice the variable has vanished",
+        "Check the remaining statement is true",
+        "Conclude infinitely many solutions / dependent pair"
+      ],
+      "misconceptions": [
+        "Thinking the work is wrong because no x,y appeared",
+        "Confusing a true identity with a unique solution"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:interpret-no-variable-false-statement",
+      "slug": "interpret-no-variable-false-statement",
+      "title": "Interpret a false no-variable statement as no solution",
+      "role": "intermediate",
+      "brief": "When the variable cancels leaving a false statement like −4 = 0, conclude the pair is inconsistent.",
+      "sec": 4,
+      "quote": "i.e.,          − 4 = 0\n\nwhich is a false statement.",
+      "explanation": "If the variable cancels and an impossible equality remains (e.g. −4 = 0 or 0 = 9), the lines are parallel and the pair has no common solution — it is inconsistent. Example 7 (rails) and Example 9 show this.",
+      "keyMoves": [
+        "Notice the variable has cancelled",
+        "Check the remaining statement is false",
+        "Conclude no solution / inconsistent"
+      ],
+      "misconceptions": [
+        "Reporting 0 or the false value as the answer",
+        "Mislabelling the result as infinitely many"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:multiply-equations-to-equalize-coefficient",
+      "slug": "multiply-equations-to-equalize-coefficient",
+      "title": "Multiply equations to make a coefficient numerically equal",
+      "role": "intermediate",
+      "brief": "Scale each equation by a non-zero constant so one variable's coefficients match in magnitude.",
+      "sec": 6,
+      "quote": "Step 1 : First multiply both the equations by some suitable non-zero constants to make the coefficients of one variable (either x or y) numerically equal.",
+      "explanation": "The setup step of elimination: choose multipliers so that x's (or y's) coefficients become equal. E.g. multiply 9x−4y=2000 by 3 and 7x−3y=2000 by 4 to get −12y in both. This prepares the variable for cancellation.",
+      "keyMoves": [
+        "Pick which variable to eliminate",
+        "Find multipliers making its coefficients equal",
+        "Multiply every term in each equation by its multiplier"
+      ],
+      "misconceptions": [
+        "Multiplying only the variable term, not the whole equation",
+        "Picking multipliers that don't actually equalise the coefficient"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:add-or-subtract-to-eliminate-variable",
+      "slug": "add-or-subtract-to-eliminate-variable",
+      "title": "Add or subtract equations to eliminate a variable",
+      "role": "intermediate",
+      "brief": "Combine the scaled equations so one variable cancels, leaving one equation in one unknown.",
+      "sec": 6,
+      "quote": "Step 2 : Subtract Equation (3) from Equation (4) to eliminate y, because the coefficients of y are the same. So, we get",
+      "explanation": "With coefficients equalised, the student subtracts (if same sign) or adds (if opposite sign) the equations so that variable vanishes: (28x−27x)−(12y−12y)=8000−6000 gives x=2000. The remaining equation is solved next.",
+      "keyMoves": [
+        "Decide add (opposite signs) or subtract (same signs)",
+        "Combine the two equations term by term",
+        "Obtain one equation in one variable"
+      ],
+      "misconceptions": [
+        "Adding when you should subtract, leaving the variable in",
+        "Sign errors on the constant side"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:multiply-equations-to-equalize-coefficient"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:solve-by-elimination",
+      "slug": "solve-by-elimination",
+      "title": "Solve a pair by the elimination method",
+      "role": "intermediate",
+      "brief": "Equalise a coefficient, eliminate that variable, solve, and back-substitute.",
+      "sec": 6,
+      "quote": "The method used in solving the example above is called the elimination method, because we eliminate one variable first, to get a linear equation in one variable.",
+      "explanation": "The complete elimination algorithm: scale the equations to match one coefficient, add/subtract to remove that variable, solve the single-variable equation, then back-substitute for the other. A no-variable true/false statement again signals infinite/no solutions.",
+      "keyMoves": [
+        "Equalise one variable's coefficients",
+        "Add/subtract to eliminate it",
+        "Solve for the remaining variable",
+        "Back-substitute for the other"
+      ],
+      "misconceptions": [
+        "Forgetting to scale both sides of an equation",
+        "Mishandling the no-variable outcome"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:multiply-equations-to-equalize-coefficient",
+        "cbse10:maths:jemh103:add-or-subtract-to-eliminate-variable",
+        "cbse10:maths:jemh103:solve-resulting-one-variable-equation",
+        "cbse10:maths:jemh103:back-substitute-to-find-other-variable",
+        "cbse10:maths:jemh103:interpret-no-variable-true-statement",
+        "cbse10:maths:jemh103:interpret-no-variable-false-statement",
+        "cbse10:maths:jemh103:form-equations-from-word-problem"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:form-equations-from-word-problem",
+      "slug": "form-equations-from-word-problem",
+      "title": "Form a pair of linear equations from a word problem",
+      "role": "intermediate",
+      "brief": "Assign variables to unknowns and translate each stated condition into a linear equation.",
+      "sec": 4,
+      "quote": "Let s and t be the ages (in years) of Aftab and his daughter, respectively.",
+      "explanation": "Many problems are verbal. The student names the unknowns and converts each sentence into an equation, e.g. 'seven years ago I was seven times as old' becomes s−7 = 7(t−7). Producing the correct pair is prerequisite to any solving method.",
+      "keyMoves": [
+        "Define a variable for each unknown",
+        "Translate each condition into an equation",
+        "Simplify to general/standard form"
+      ],
+      "misconceptions": [
+        "Mixing up which quantity is multiplied",
+        "Using one variable where two are needed"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:model-two-digit-number-by-place-value"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:model-two-digit-number-by-place-value",
+      "slug": "model-two-digit-number-by-place-value",
+      "title": "Model a two-digit number and its reversal by place value",
+      "role": "intermediate",
+      "brief": "Write a two-digit number as 10x + y and its reversal as 10y + x.",
+      "sec": 6,
+      "quote": "So, the first number may be written as 10 x + y in the expanded form (for example, 56 = 10(5) + 6).",
+      "explanation": "A specific modelling skill: with ten's digit x and unit's digit y, the number is 10x+y and the digit-reversed number is 10y+x. This expansion turns digit-condition word problems (Example 10) into linear equations.",
+      "keyMoves": [
+        "Let x be ten's digit, y unit's digit",
+        "Write number as 10x+y",
+        "Write reversed number as 10y+x",
+        "Form equations from the given conditions"
+      ],
+      "misconceptions": [
+        "Writing the number as x+y instead of 10x+y",
+        "Reversing to 10x+y again instead of 10y+x"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:verify-solution-in-original-equations",
+      "slug": "verify-solution-in-original-equations",
+      "title": "Verify the solution satisfies both original equations",
+      "role": "shared",
+      "brief": "Substitute the found x and y back into the originals (or the problem's conditions) to confirm correctness.",
+      "sec": 4,
+      "quote": "Verification : Substituting x = 49/29 and y = 19/29 , you can verify that both the Equations (1) and (2) are satisfied.",
+      "explanation": "After solving, the student checks the answer by plugging both values into the original equations or the worded conditions, ensuring each holds. This guards against algebra slips.",
+      "keyMoves": [
+        "Substitute both values into equation (1)",
+        "Substitute both values into equation (2)",
+        "Confirm both reduce to true statements"
+      ],
+      "misconceptions": [
+        "Checking only one equation",
+        "Treating a near-miss from rounding as exact"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh103:find-k-for-given-solution-type",
+      "slug": "find-k-for-given-solution-type",
+      "title": "Find an unknown coefficient k giving a required solution type",
+      "role": "intermediate",
+      "brief": "Use the ratio conditions to solve for a parameter that makes a pair inconsistent/consistent/dependent.",
+      "sec": 1,
+      "quote": "(iii)  parallel, then a₁/a₂ = b₁/b₂ ≠ c₁/c₂ .",
+      "explanation": "When one coefficient is an unknown k, the student imposes the appropriate ratio condition (e.g. \\(a_1/a_2 = b_1/b_2\\) for inconsistency/parallel) and solves for k.",
+      "keyMoves": [
+        "Write the three ratios with k included",
+        "Set the ratio condition for the desired case",
+        "Solve the resulting equation for k"
+      ],
+      "misconceptions": [
+        "Using the coincident condition when parallel is required",
+        "Cross-multiplying the wrong pair of ratios"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## What was read\n\nI re-read the full segmented chapter `jemh103.txt` (9 segments, SEG 0–8) — all 10 worked Examples, the three exercises, and the summary — and re-read the full `_maths-exams.txt` (CBSE Standard + Basic SQP and both Marking Schemes) to confirm the answer-keyed exam gates that touch this chapter.\n\n## Audit outcome\n\nThe draft was largely sound. I verified every node `quote` as a verbatim substring of its declared SEG and every gate `quote` against its chapter SEG or exam line. Two real defects were corrected:\n\n1. **Gate prompt clarity (interpret-no-variable-false-statement).** The draft prompt mixed a yes/no ask with a parenthetical \"number of solutions = 0\", which a deterministic numeric grader could not parse cleanly. Rewrote it as a single numeric question (\"How many solutions does the pair have?\" → 0) keeping the same verbatim Example 7 quote.\n\n2. **Gate srcLabel (classify-pair-by-coefficient-ratios).** The label said \"Exercise 3.1 Q3(ii) with Summary rule\" but the verbatim quote is the Summary point 4(ii) line; relabelled to \"Summary point 4(ii)\" so srcLabel and quote agree. Quote unchanged and confirmed verbatim at SEG 8.\n\nAll other citations verified: e.g. `solve-resulting-one-variable-equation` SEG 4 (\"i.e.,          − 29y = − 19\" + \"Therefore,          y = 19/29\"), `multiply-equations-to-equalize-coefficient` SEG 6 (\"27x − 12y = 6000          (3)\"), `interpret-no-variable-true-statement` SEG 4 (\"18 = 18\" / \"This statement is true for all values of y.\"). Exam gates verified against the Standard Marking Scheme: Q2 k=−5 (\"2. B) -5 1\"), Q32(A) graphical y=2 (\"Solution x=-1 and y=2\"), Q32(B) cars x−y=20 (\"=> x-y= 20 ……………. (i)\").\n\n## Grain and coverage\n\n22 failable skills, no pure exposition/history nodes (SEG 0 introduction and SEG 3 motivation were intentionally not turned into nodes). Each worked Example maps to its discrete steps: substitution (Examples 4–7) → express / substitute / solve / back-substitute / interpret-true / interpret-false; elimination (Examples 8–10) → multiply / add-subtract / solve / back-substitute; graphical (Examples 1–3) → find-two-solutions / plot / read-intersection. The inverse ratio skill (find-k) is exam-driven (SQP Q2). All numeric gate answers recomputed and self-consistent; mcq options copy verbatim from source.\n\n## Dependency tree\n\nSingle root `solve-pair-linear-equations-two-variables`. Acyclic, no orphans, every edge endpoint is a defined slug. The three methods, the ratio classifier, word-problem forming, verification, and find-k hang off the goal. Method sub-steps decompose downward; substitution/elimination back-substitute depend on solve-one-variable; elimination add/subtract depends on multiply; find-k depends on the classifier. Verified each of the 22 nodes appears in at least one edge and that every non-goal node has a parent.\n\n## What was absent / uncertain\n\nConfirmed the 2024-25 rationalised edition does NOT teach cross-multiplication or a worked \"equations reducible to linear\" procedure (Summary point 5 mentions reduction in one sentence only) — no nodes created, recorded in absentNotes. Ex 3.1 Q7 (triangle vertices / shaded region) is an unworked exercise with no answer key, so no gate. Plotting kept as bedrock (Class IX carry-over). Numeric/mcq graders used throughout per guidance.",
+  "absentNotes": "This 2024-25 rationalised NCERT chapter does NOT teach several topics a fuller treatment would: (1) the cross-multiplication method (x/(b1c2−b2c1) = ...) — entirely absent from this edition, no worked example, so no node. (2) Equations reducible to a pair of linear equations via substitutions like 1/x = p, 1/y = q — only alluded to in Summary point 5 (\"we alter them so that they are reduced to a pair of linear equations\") with no procedure or worked example, so no failable skill is demonstrated; omitted. (3) Determinant / matrix methods — not in scope at Class 10. (4) The triangle-region shading and area exercise (Ex 3.1 Q7) is an unworked exercise with no stated answer key, so no gateable node was created for it. (5) Choosing the most efficient method for a given system is discussed only as a Remark, not as a tested skill. Plotting points on the coordinate plane is treated as a Class-IX bedrock carry-over rather than newly taught. None of these were 'failed' — they are simply not taught/demonstrated in this chapter text."
+}

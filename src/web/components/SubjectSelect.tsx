@@ -1,41 +1,42 @@
 import '../styles/SubjectSelect.css';
 
-interface SubjectSelectProps {
-  onSelect: (exam: string, subject: string) => void;
-}
+/** Step 2 — pick the subject within the chosen exam. Maths is live; Science comes later. */
+export default function SubjectSelect({
+  exam,
+  onSelect,
+  onBack,
+}: {
+  exam: string;
+  onSelect: (subject: string) => void;
+  onBack: () => void;
+}) {
+  const examLabel = exam === 'cbse10' ? 'CBSE Class 10' : exam;
 
-export default function SubjectSelect({ onSelect }: SubjectSelectProps) {
   return (
     <div className="subject-select">
       <div className="page-content">
-        <div className="kick">How it works · exam-prep</div>
-        <h1>Learn it chapter by chapter. Then sit one clean exam.</h1>
-        <p className="sub">
-          A simpler path through CBSE 10 Maths: build the understanding from the ground up — one chapter, one concept at a time — then measure it with a real exam.
-        </p>
+        <button className="back-btn" onClick={onBack}>← Exam</button>
 
-        <div className="steps">
+        <div className="steps" style={{ marginTop: 18 }}>
           <div className="step">
-            <div className="num">1</div>
+            <div className="num">2</div>
             <div className="grow">
-              <h2>Pick your exam &amp; subject</h2>
-              <p>For example: CBSE Class 10 · Mathematics.</p>
+              <h2>Pick your subject</h2>
+              <p>{examLabel} — choose a subject to begin.</p>
 
-              <button
-                className="exam-card"
-                onClick={() => onSelect('cbse10', 'maths')}
-              >
-                <div className="exam-label">CBSE Class 10</div>
+              <button className="exam-card" onClick={() => onSelect('maths')}>
+                <div className="exam-label">Subject</div>
                 <div className="exam-subject">Mathematics</div>
-                <div className="exam-note">3-node prototype: Real Numbers</div>
+                <div className="exam-note">14 chapters · 271 concepts · live</div>
               </button>
+
+              <div className="exam-card disabled">
+                <div className="exam-label">Subject</div>
+                <div className="exam-subject muted">Science</div>
+                <div className="exam-note">Coming soon</div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="track">
-          <h3>How this differs from the Socratic tutor</h3>
-          <p>The tutor jumps <em>into</em> a hard question and digs down to the gap. This builds you up <em>before</em> the exam instead — so they stay two separate tools, each doing one job well.</p>
         </div>
       </div>
     </div>

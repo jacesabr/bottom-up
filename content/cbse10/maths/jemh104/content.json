@@ -1,0 +1,505 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh104",
+  "title": "Quadratic Equations",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh104:solve-quadratic-equation",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "slug": "solve-quadratic-equation",
+      "title": "Solve a quadratic equation (find its roots)",
+      "role": "goal",
+      "brief": "Given a quadratic equation, find the values of x (its roots) that satisfy it, choosing factorisation, the quadratic formula, or discriminant analysis as the situation demands.",
+      "sec": 2,
+      "quote": "In other words, 1 and 3/2 are the roots of the equation 2x² – 5x + 3 = 0.",
+      "explanation": "In general, a real number α is called a root of the quadratic equation \\(ax^2 + bx + c = 0\\), \\(a \\neq 0\\) if \\(a\\alpha^2 + b\\alpha + c = 0\\). We also say that x = α is a solution of the quadratic equation, or that α satisfies the quadratic equation. Note that the zeroes of the quadratic polynomial \\(ax^2 + bx + c\\) and the roots of the quadratic equation \\(ax^2 + bx + c = 0\\) are the same.",
+      "keyMoves": [
+        "Put the equation into standard form ax²+bx+c=0",
+        "Choose a method: factorisation or the quadratic formula",
+        "Produce the root(s) and (where the context demands) reject inadmissible ones"
+      ],
+      "misconceptions": [
+        "Thinking a quadratic can have more than two roots",
+        "Forgetting to set the equation equal to zero before solving",
+        "Reporting a factor (e.g. 2x-3) as a root instead of solving 2x-3=0"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:recognise-quadratic-equation",
+        "cbse10:maths:jemh104:rearrange-to-standard-form",
+        "cbse10:maths:jemh104:split-middle-term",
+        "cbse10:maths:jemh104:factor-by-grouping",
+        "cbse10:maths:jemh104:apply-zero-product-property",
+        "cbse10:maths:jemh104:solve-linear-factor-for-root",
+        "cbse10:maths:jemh104:apply-quadratic-formula",
+        "cbse10:maths:jemh104:handle-repeated-factor-equal-roots",
+        "cbse10:maths:jemh104:factorise-quadratic-with-surds",
+        "cbse10:maths:jemh104:reject-inadmissible-root",
+        "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
+        "cbse10:maths:jemh104:classify-nature-of-roots",
+        "cbse10:maths:jemh104:find-k-for-equal-roots",
+        "cbse10:maths:jemh104:verify-root-by-substitution"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:recognise-quadratic-equation",
+      "slug": "recognise-quadratic-equation",
+      "title": "Recognise a quadratic equation by its standard form",
+      "role": "intermediate",
+      "brief": "Test whether an equation, once simplified, has the form ax²+bx+c=0 with a≠0 — i.e. is a polynomial equation of degree 2.",
+      "sec": 1,
+      "quote": "A quadratic equation in the variable x is an equation of the form ax² + bx + c = 0, where a, b, c are real numbers, a ≠ 0.",
+      "explanation": "Before solving, a student must decide whether an equation is quadratic at all. The defining test: after simplifying, the highest-degree term is x² with a non-zero coefficient and the equation is degree 2. Example 2 shows that some equations only LOOK quadratic (case ii collapses to linear) and some look cubic but reduce to quadratic (case iv). The decision rule is 'is it of the form ax²+bx+c=0 after simplification'.",
+      "keyMoves": [
+        "Simplify both sides fully",
+        "Check the highest surviving power is x² with a≠0",
+        "Confirm it is a degree-2 polynomial equation"
+      ],
+      "misconceptions": [
+        "Declaring quadratic from appearance before simplifying (the (ii) trap where x² cancels)",
+        "Declaring an equation cubic because of a cube term that cancels (the (iv) trap)",
+        "Forgetting the a≠0 requirement"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:rearrange-to-standard-form",
+        "cbse10:maths:jemh104:expand-and-simplify-expression",
+        "cbse10:maths:jemh102:classify-polynomial-by-degree"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:rearrange-to-standard-form",
+      "slug": "rearrange-to-standard-form",
+      "title": "Rearrange an equation into standard form ax²+bx+c=0",
+      "role": "intermediate",
+      "brief": "Move all terms to one side and collect like terms so the equation reads ax²+bx+c=0 in descending powers.",
+      "sec": 1,
+      "quote": "x² – 4x + 5 = 2x – 3\ni.e., x² – 6x + 8 = 0",
+      "explanation": "Many equations arrive with terms on both sides. The skill is transposing everything to one side and combining like terms to reach ax²+bx+c=0 in descending degree order. In Example 2(i), x²–4x+5 = 2x–3 becomes x²–6x+8=0. This is a prerequisite for both recognition and solving — you cannot read off a, b, c until the equation is in standard form.",
+      "keyMoves": [
+        "Transpose every term to the left side",
+        "Combine like terms",
+        "Write in descending order of degree"
+      ],
+      "misconceptions": [
+        "Sign errors when moving a term across the equals sign (e.g. +2x→ should become –2x)",
+        "Leaving the equation with terms on both sides",
+        "Not writing terms in descending degree order"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:expand-and-simplify-expression"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:expand-and-simplify-expression",
+      "slug": "expand-and-simplify-expression",
+      "title": "Expand brackets and simplify before classifying",
+      "role": "intermediate",
+      "brief": "Multiply out products, squares and cubes of binomials and collect terms so the true degree of the equation becomes visible.",
+      "sec": 1,
+      "quote": "(i) LHS = (x – 2)² + 1 = x² – 4x + 4 + 1 = x² – 4x + 5",
+      "explanation": "Example 2 hinges on correctly expanding (x–2)², (x+2)(x–2), x(2x+3) and (x+2)³. Only after expansion can a student see the real degree. (x+2)³ = x³+6x²+12x+8, and the x³ cancels with the RHS x³ leaving a quadratic. Errors in the binomial/cube expansion lead directly to the wrong classification.",
+      "keyMoves": [
+        "Apply (a±b)² = a²±2ab+b² and (a+b)³ = a³+3a²b+3ab²+b³",
+        "Apply (a+b)(a–b) = a²–b²",
+        "Collect like terms after expansion"
+      ],
+      "misconceptions": [
+        "Writing (x–2)² as x²+4 (dropping the middle term)",
+        "Mis-expanding the cube (x+2)³",
+        "Sign errors in the difference-of-squares product"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
+      "slug": "translate-word-problem-to-quadratic",
+      "title": "Translate a word problem into a quadratic equation",
+      "role": "intermediate",
+      "brief": "Assign a variable, express the described quantities in terms of it, and form the equation that the situation imposes.",
+      "sec": 1,
+      "quote": "So, the total cost of production (in rupees) that day = x (55 – x)\nTherefore, x (55 – x) = 750",
+      "explanation": "Example 1 demonstrates the modelling skill: let the unknown be x, write each quantity (marbles left = x–5 and 40–x; cost per toy = 55–x), form the product or relation the problem states, set it equal to the given value, and simplify to ax²+bx+c=0. This is the gateway to every applied quadratic in the exam (e.g. the books problem, train-speed problem).",
+      "keyMoves": [
+        "Define the unknown with a clear 'Let x = …'",
+        "Express each quantity in terms of x",
+        "Encode the stated relationship as an equation and simplify to standard form"
+      ],
+      "misconceptions": [
+        "Misreading 'one more than twice the breadth' as 2(x+1) instead of 2x+1",
+        "Forgetting to subtract the lost quantity (using x instead of x–5)",
+        "Not reducing the resulting equation to standard form"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:rearrange-to-standard-form",
+        "cbse10:maths:jemh104:expand-and-simplify-expression"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:verify-root-by-substitution",
+      "slug": "verify-root-by-substitution",
+      "title": "Verify a value is a root by substitution",
+      "role": "shared",
+      "brief": "Substitute a candidate value into ax²+bx+c and confirm the result equals zero.",
+      "sec": 2,
+      "quote": "If we replace x by 1 on the LHS of this equation, we get (2 × 1²) – (3 × 1) + 1 = 0 = RHS of the equation.",
+      "explanation": "A root is defined operationally: α is a root of ax²+bx+c=0 iff aα²+bα+c=0. Substituting a candidate and evaluating to zero confirms it. This generic substitute-and-evaluate skill underlies both verifying answers and the definition of a root used throughout the chapter.",
+      "keyMoves": [
+        "Substitute the candidate value for x",
+        "Evaluate the expression following order of operations",
+        "Confirm the result is 0"
+      ],
+      "misconceptions": [
+        "Arithmetic/sign slips when squaring a negative candidate",
+        "Concluding a value is a root when the result is non-zero",
+        "Substituting into only one side and not comparing to zero"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:split-middle-term",
+      "slug": "split-middle-term",
+      "title": "Split the middle term to factorise a quadratic",
+      "role": "intermediate",
+      "brief": "Rewrite bx as a sum of two terms whose coefficients multiply to a·c and add to b, enabling factorisation by grouping.",
+      "sec": 2,
+      "quote": "Let us first split the middle term – 5x as –2x –3x [because (–2x) × (–3x) = 6x² = (2x²) × 3].",
+      "explanation": "The core factorisation move: to factor ax²+bx+c, split bx into two terms whose product equals (ax²)·c = ac·x² and whose sum is bx. In Example 3, –5x splits into –2x–3x because (–2)(–3)=6=2·3. This requires finding the right pair of numbers — the failable part students most often miss.",
+      "keyMoves": [
+        "Compute the product a·c",
+        "Find two numbers multiplying to a·c and summing to b",
+        "Rewrite bx as the sum of those two terms"
+      ],
+      "misconceptions": [
+        "Finding numbers that sum to b but don't multiply to a·c (forgetting to use a, not just c)",
+        "Sign errors choosing the pair (e.g. for –5x needing two negatives)",
+        "Using b·c instead of a·c for the product"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:identify-coefficients-abc"
+      ],
+      "sameConcept": [
+        "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term"
+      ],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:factor-by-grouping",
+      "slug": "factor-by-grouping",
+      "title": "Factorise by grouping into two linear factors",
+      "role": "intermediate",
+      "brief": "After splitting the middle term, group the four terms in pairs, take common factors, and extract the shared binomial.",
+      "sec": 2,
+      "quote": "So, 2x² – 5x + 3 = 2x² – 2x – 3x + 3 = 2x (x – 1) – 3(x – 1) = (2x – 3)(x – 1)",
+      "explanation": "Once the middle term is split, group the four terms two-by-two, factor out the common factor of each pair so that the same binomial appears, then write the product of the two linear factors. Example 3: 2x(x–1) – 3(x–1) = (2x–3)(x–1). The bracket must match for grouping to succeed.",
+      "keyMoves": [
+        "Group the four terms into two pairs",
+        "Factor out the common factor from each pair",
+        "Extract the common binomial to write the product of two linear factors"
+      ],
+      "misconceptions": [
+        "Pairing terms so the binomials don't match",
+        "Sign error when factoring a negative common factor (e.g. –3 from –3x+3 gives –3(x–1) not –3(x+1))",
+        "Forgetting to write the final product form"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:split-middle-term"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:apply-zero-product-property",
+      "slug": "apply-zero-product-property",
+      "title": "Apply the zero-product property to a factored quadratic",
+      "role": "intermediate",
+      "brief": "From (linear)(linear)=0, conclude that at least one factor must be zero, giving two linear equations.",
+      "sec": 2,
+      "quote": "So, the values of x for which 2x² – 5x + 3 = 0 are the same for which (2x – 3)(x – 1) = 0,\ni.e., either 2x – 3 = 0 or x – 1 = 0.",
+      "explanation": "The logical engine of the factorisation method: a product of two factors is zero exactly when one of them is zero. So (2x–3)(x–1)=0 splits into 2x–3=0 OR x–1=0. This converts one quadratic into two linear equations to solve.",
+      "keyMoves": [
+        "Recognise the factored form equals zero",
+        "Set each factor equal to zero separately",
+        "Join the two resulting equations with 'or'"
+      ],
+      "misconceptions": [
+        "Setting only one factor to zero and missing a root",
+        "Trying to apply the property when the product equals a non-zero number",
+        "Adding the factors instead of treating each independently"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:factor-by-grouping"
+      ],
+      "sameConcept": [
+        "cbse10:maths:jemh102:find-zeroes-from-factors"
+      ],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:solve-linear-factor-for-root",
+      "slug": "solve-linear-factor-for-root",
+      "title": "Solve each linear factor to get a root",
+      "role": "intermediate",
+      "brief": "Solve each linear equation (factor = 0) for x to obtain the roots, including fractional roots.",
+      "sec": 2,
+      "quote": "Now, 2x – 3 = 0 gives x = 3/2 and x – 1 = 0 gives x = 1.",
+      "explanation": "The final step of factorisation: solve each linear equation. 2x–3=0 gives x=3/2; x–1=0 gives x=1. Roots can be fractions (3/2), and from a factor like (2x+1) you get x=–1/2. Students must isolate x correctly, dividing by the leading coefficient.",
+      "keyMoves": [
+        "Transpose the constant to the other side",
+        "Divide by the coefficient of x",
+        "Record both roots"
+      ],
+      "misconceptions": [
+        "Reading the root directly off the factor (saying root is 3 from 2x–3 instead of 3/2)",
+        "Sign error: from 2x+1=0 writing x=1/2 instead of –1/2",
+        "Forgetting to divide by the leading coefficient"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:apply-zero-product-property",
+        "cbse10:maths:jemh104:verify-root-by-substitution"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:handle-repeated-factor-equal-roots",
+      "slug": "handle-repeated-factor-equal-roots",
+      "title": "Recognise a repeated factor gives equal roots",
+      "role": "intermediate",
+      "brief": "When factorisation yields the same linear factor twice, report the single root as occurring twice (equal roots).",
+      "sec": 2,
+      "quote": "So, this root is repeated twice, one for each repeated factor √3x – √2.",
+      "explanation": "Example 5 factors 3x²–2√6x+2 into (√3x–√2)(√3x–√2) — the same factor squared. Solving √3x–√2=0 gives one value √(2/3), but it counts as a repeated (double) root. This connects factorisation to the 'two equal roots' case of the discriminant.",
+      "keyMoves": [
+        "Notice the two linear factors are identical",
+        "Solve the single factor once",
+        "Report the root as repeated (counted twice)"
+      ],
+      "misconceptions": [
+        "Reporting only one root and treating it as a single distinct root",
+        "Thinking a repeated factor means no real root",
+        "Mishandling the surd when solving √3x–√2=0"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:factor-by-grouping",
+        "cbse10:maths:jemh104:solve-linear-factor-for-root"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:factorise-quadratic-with-surds",
+      "slug": "factorise-quadratic-with-surds",
+      "title": "Factorise a quadratic with surd coefficients",
+      "role": "intermediate",
+      "brief": "Split the middle term and factor by grouping when coefficients involve surds such as √6, √3, √2.",
+      "sec": 2,
+      "quote": "3x² – 2√6x + 2 = 3x² – √6x – √6x + 2\n= √3x(√3x – √2) – √2(√3x – √2)",
+      "explanation": "Example 5 extends factorisation to irrational coefficients: –2√6x splits into –√6x–√6x, and grouping uses √3x and √2 as common factors (since 3=√3·√3, √6=√3·√2, 2=√2·√2). The same split/group/extract pipeline applies, but the arithmetic is with surds.",
+      "keyMoves": [
+        "Split the surd middle term symmetrically",
+        "Express coefficients via surd factors (3=√3·√3, √6=√3·√2)",
+        "Group and extract the common surd binomial"
+      ],
+      "misconceptions": [
+        "Mishandling √3·√3 = 3 or √3·√2 = √6",
+        "Failing to see the symmetric split of –2√6x",
+        "Errors rationalising x = √(2/3)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:split-middle-term",
+        "cbse10:maths:jemh104:factor-by-grouping"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:reject-inadmissible-root",
+      "slug": "reject-inadmissible-root",
+      "title": "Reject a root that the context forbids",
+      "role": "intermediate",
+      "brief": "In an applied problem, discard a mathematically valid root that violates a physical constraint (e.g. a negative length).",
+      "sec": 2,
+      "quote": "So, the roots of the given equation are x = 12 or x = – 12.5. Since x is the breadth of the hall, it cannot be negative.",
+      "explanation": "Example 6 solves 2x²+x–300=0 to get x=12 or x=–12.5, then rejects –12.5 because x is a breadth and cannot be negative. Example 8 likewise rejects x=–12. The skill is checking each root against the real-world constraints and keeping only the admissible one.",
+      "keyMoves": [
+        "Solve to get both candidate roots",
+        "Test each against the problem's constraint (positivity, integer, etc.)",
+        "Discard the inadmissible root and state the valid answer"
+      ],
+      "misconceptions": [
+        "Reporting a negative length/age/speed as a valid answer",
+        "Discarding the wrong (valid) root",
+        "Forgetting that a rejected root is still a mathematical solution"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:solve-linear-factor-for-root"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:identify-coefficients-abc",
+      "slug": "identify-coefficients-abc",
+      "title": "Identify the coefficients a, b, c from standard form",
+      "role": "shared",
+      "brief": "Read off a, b and c — with correct signs — from a quadratic written as ax²+bx+c=0.",
+      "sec": 3,
+      "quote": "The given equation is of the form ax² + bx + c = 0, where a = 2, b = – 4 and c = 3.",
+      "explanation": "Before computing a discriminant or applying the formula, a student must extract a, b, c including signs. In Example 7, 2x²–4x+3=0 gives a=2, b=–4, c=3. The sign of b is the most error-prone. This generic read-off feeds both the discriminant and the quadratic formula.",
+      "keyMoves": [
+        "Ensure the equation is in standard form first",
+        "Read a as the x² coefficient, b as the x coefficient, c as the constant",
+        "Carry the signs (b is negative when the x term is subtracted)"
+      ],
+      "misconceptions": [
+        "Taking b as positive when the middle term is subtracted",
+        "Reading coefficients before the equation is in standard form",
+        "Confusing b and c"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:compute-discriminant",
+      "slug": "compute-discriminant",
+      "title": "Compute the discriminant b²–4ac",
+      "role": "intermediate",
+      "brief": "Evaluate b²–4ac with the correct signs to obtain the discriminant of a quadratic equation.",
+      "sec": 3,
+      "quote": "b² – 4ac = (– 4)² – (4 × 2 × 3) = 16 – 24 = – 8 < 0",
+      "explanation": "The discriminant b²–4ac is the single number that controls the nature of the roots. Example 7: (–4)²–4·2·3 = 16–24 = –8. Example 9: (–2)²–4·3·(1/3) = 4–4 = 0. Example 8: 7²–4·1·(–60)=49+240=289. Squaring a negative b and tracking the sign of c are the failable parts.",
+      "keyMoves": [
+        "Square b (a negative b still squares to positive)",
+        "Compute 4ac with its sign",
+        "Subtract to get b²–4ac"
+      ],
+      "misconceptions": [
+        "Writing (–4)² as –16",
+        "Sign error when c is negative (49 – 4·1·(–60) should ADD 240)",
+        "Computing b²–4ac as (b–4ac) or 4ac–b²"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:identify-coefficients-abc"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:classify-nature-of-roots",
+      "slug": "classify-nature-of-roots",
+      "title": "Classify the nature of roots from the discriminant",
+      "role": "intermediate",
+      "brief": "Use the sign of b²–4ac to decide: two distinct real roots (>0), two equal real roots (=0), or no real roots (<0).",
+      "sec": 3,
+      "quote": "(i) two distinct real roots, if b² – 4ac > 0,\n(ii) two equal real roots, if b² – 4ac = 0,\n(iii) no real roots, if b² – 4ac < 0.",
+      "explanation": "The classification rule: the sign of the discriminant determines whether the equation has two distinct real roots, two equal real roots, or no real roots. Example 7 (D=–8<0) → no real roots; Example 9 (D=0) → two equal real roots; Example 8 (D=289>0) → two real roots. This is heavily tested (SQP Q11, Basic Q3).",
+      "keyMoves": [
+        "Determine the sign of the computed discriminant",
+        "Map >0 → distinct real, =0 → equal real, <0 → no real roots",
+        "State the conclusion"
+      ],
+      "misconceptions": [
+        "Swapping the >0 and <0 cases",
+        "Calling equal roots 'no roots'",
+        "Concluding 'no real roots' for D=0"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:compute-discriminant"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:find-k-for-equal-roots",
+      "slug": "find-k-for-equal-roots",
+      "title": "Find a parameter k via a discriminant condition",
+      "role": "intermediate",
+      "brief": "Write the discriminant of a quadratic with an unknown coefficient k, impose the required condition (b²–4ac = 0 for equal roots, < 0 for no real roots), and solve for k.",
+      "sec": 3,
+      "quote": "(ii) two equal real roots, if b² – 4ac = 0,",
+      "explanation": "Exercise 4.3 Q2 asks for k so 2x²+kx+3=0 has equal roots, and SQP Basic Q3 asks for k so kx²–5x+1=0 has no real solution. The method is the inverse use of the discriminant: express b²–4ac in terms of k, impose the stated condition on its sign, and solve for k. The same discriminant machinery drives both the 'equal roots' (=0) and 'no real roots' (<0) variants.",
+      "keyMoves": [
+        "Write the discriminant b²–4ac in terms of k",
+        "Impose the required condition on the discriminant (=0 or <0)",
+        "Solve the resulting (in)equality for k"
+      ],
+      "misconceptions": [
+        "Using the wrong condition (=0 when the problem wants <0, or vice versa)",
+        "Algebra errors solving the k-equation",
+        "Forgetting one of multiple admissible k-values"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:compute-discriminant",
+        "cbse10:maths:jemh104:classify-nature-of-roots"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:state-quadratic-formula",
+      "slug": "state-quadratic-formula",
+      "title": "State the quadratic formula",
+      "role": "bedrock",
+      "brief": "Recall the formula x = (–b ± √(b²–4ac))/2a for the roots of ax²+bx+c=0.",
+      "sec": 3,
+      "quote": "The roots of the equation ax² + bx + c = 0 are given by\nx = (–b ± √(b² – 4ac))/2a",
+      "explanation": "The quadratic formula gives the roots directly from a, b, c. The chapter states it at the head of Section 4.4 and the Summary notes it is valid provided b²–4ac ≥ 0. It is the universal solver used when factorisation is awkward, and is applied in Example 8.",
+      "keyMoves": [
+        "Recall x = (–b ± √(b²–4ac))/2a",
+        "Note the ± gives the two roots",
+        "Note the denominator is 2a, not a"
+      ],
+      "misconceptions": [
+        "Writing the denominator as a instead of 2a",
+        "Forgetting the leading –b (using +b)",
+        "Dropping the ± and getting only one root"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:apply-quadratic-formula",
+      "slug": "apply-quadratic-formula",
+      "title": "Apply the quadratic formula to find roots",
+      "role": "intermediate",
+      "brief": "Substitute a, b, c into x=(–b±√(b²–4ac))/2a, simplify the surd, and evaluate both roots.",
+      "sec": 3,
+      "quote": "x = (–7 ± √289)/2 = (–7 ± 17)/2\nTherefore, x = 5 or –12.",
+      "explanation": "Example 8 solves x²+7x–60=0 by the formula: a=1, b=7, c=–60, discriminant 289, so x=(–7±17)/2 = 5 or –12. The skill is substituting correctly, simplifying √289=17, then evaluating the + and – branches separately. This is the chapter's demonstrated formula application.",
+      "keyMoves": [
+        "Substitute a, b, c into the formula",
+        "Simplify √(b²–4ac)",
+        "Evaluate the + and – branches to get both roots"
+      ],
+      "misconceptions": [
+        "Arithmetic slip simplifying the surd",
+        "Computing only one branch of the ±",
+        "Sign error with –b when b is positive"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:state-quadratic-formula",
+        "cbse10:maths:jemh104:compute-discriminant",
+        "cbse10:maths:jemh104:identify-coefficients-abc"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## What I read (as reviewer)\n\nI re-read the full segmented chapter `jemh104.txt` (SEG 0 Introduction, SEG 1 = 4.2, SEG 2 = 4.3, SEG 3 = 4.4, SEG 4 Summary) including every worked Example (1–9), and the relevant items in `_maths-exams.txt` (Standard SQP Q11 + Marking Scheme line 226; Basic SQP Q3 + Marking Scheme line 739).\n\n## Corrections I made\n\n1. **Cycle removed (EDGES).** The draft contained a 2-cycle: `find-k-for-equal-roots → classify-nature-of-roots` AND `classify-nature-of-roots → find-k-for-equal-roots`. I deleted the back-edge `classify-nature-of-roots → find-k-for-equal-roots`. `find-k-for-equal-roots` now legitimately depends on `classify-nature-of-roots` and `compute-discriminant` (it imposes a discriminant condition), and I attached it to the root via a true prerequisite edge `solve-quadratic-equation → find-k-for-equal-roots` so it is not an orphan-from-above. The graph is now a single-rooted DAG.\n\n2. **False prerequisite removed.** The draft edge `recognise-quadratic-equation → verify-root-by-substitution` is not a true prerequisite (verifying a root is not needed to recognise a quadratic). I removed it and instead attached `verify-root-by-substitution` to the goal (`solve-quadratic-equation → verify-root-by-substitution`); it also remains reachable from `solve-linear-factor-for-root → verify-root-by-substitution`. No orphans remain; every endpoint is a defined node slug.\n\n3. **Citation fix (D-120) on `verify-root-by-substitution`.** The draft node/gate quote concatenated two non-contiguous sentences (\"...We say that 1 is a root...\"). I replaced both with the single CONTIGUOUS substring actually in SEG 2 line 120: \"If we replace x by 1 on the LHS of this equation, we get (2 × 1²) – (3 × 1) + 1 = 0 = RHS of the equation.\" Verified verbatim.\n\n4. **Gate de-ambiguation on `apply-zero-product-property`.** The draft prompt told the student the answer (\"...the two linear equations obtained are 3x – 2 = 0 or 2x + 1 = 0...\") then asked a trivial sub-question. I reworded it to ask which two linear equations the property yields from (3x – 2)(2x + 1) = 0, with the canonical answer \"3x – 2 = 0 or 2x + 1 = 0\" matching the verbatim chapter quote — now genuinely tests the zero-product skill.\n\n5. **`find-k-for-equal-roots` node/gate aligned.** The node now states the general skill (write the discriminant in terms of k, impose the required condition =0 or <0, solve for k), so the exam-sourced gate (kx²−5x+1=0 has no real solution ⇒ D = 25−4k < 0 ⇒ k > 25/4 ⇒ only k=7 fits) tests the node's actual failable skill, not a different one. The prompt now states the condition so the answer is unambiguous.\n\n## Independent gate-answer verification (solved from first principles)\n\n- Example 3 roots of 2x²−5x+3: x=1, 3/2 ✓ ; factor (2x−3)(x−1) ✓\n- (x−2)²+1 = x²−4x+5 ✓ ; x²−4x+5=2x−3 ⇒ x²−6x+8=0 ✓\n- x(55−x)=750 ⇒ x²−55x+750=0 ✓\n- 2(1)²−3(1)+1 = 0 ✓\n- Example 4: 3x−2=0,2x+1=0 ⇒ x=2/3,−1/2 ✓\n- Example 5: 3x²−2√6x+2 = (√3x−√2)² ✓ ; distinct real roots = 1 ✓\n- Example 6: roots 12, −12.5; breadth = 12 ✓\n- Example 7: b=−4 ✓ ; D=16−24=−8 ✓\n- Example 8: x²+7x−60=0 ⇒ x=5,−12 ✓\n- SQP Q11: x²+x−1, D=5>0 non-perfect-square ⇒ irrational & distinct ✓ (quote line 226 verbatim)\n- Basic Q3: kx²−5x+1 no real soln ⇒ 25−4k<0 ⇒ k>6.25 ⇒ only option 7 ✓ (quote line 739 verbatim)\n\nAll other quotes were located character-for-character in the tagged segment (en-dash minus signs and the garbled surd renderings √3x/√6x kept verbatim as in the source).\n\n## Coverage\n\n19 nodes, 19 gates (1:1, 100%). Single root `solve-quadratic-equation`; acyclic; no orphans; all edge endpoints are defined node slugs.",
+  "absentNotes": "Concepts a fuller quadratics treatment would teach but THIS chapter (as transcribed) does NOT, so they are intentionally omitted (not failed):\n- Completing the square: named only in Summary point 4 (\"A quadratic equation can also be solved by the method of completing the square\") with NO worked example in this transcription — so no node.\n- Derivation of the quadratic formula from completing the square — not shown; only the formula statement (SEG 3) and one application (Example 8) appear, so I have `state-quadratic-formula` (recall) and `apply-quadratic-formula` (use) but no derivation node.\n- Sum/product of roots (α+β = –b/a, αβ = c/a): appears in the EXAM file under Polynomials, but is NOT taught in jemh104 itself → omitted (belongs to the Polynomials chapter).\n- Graphical interpretation of roots as x-intercepts of a parabola — a Polynomials/graph topic, not taught in this chapter's text.\n- Equations reducible to quadratic form / reciprocal equations (train-speed, books problems) — appear in the exam as applications but the reduction technique is not a separately-taught sub-skill here beyond `translate-word-problem-to-quadratic`.\n- Discriminant refinement into rational vs irrational (perfect-square test): the chapter only teaches the >0 / =0 / <0 trichotomy; the rational-vs-irrational distinction is required only by SQP Q11's answer, so `classify-nature-of-roots` is gated to it via exam canon rather than spun into a separate chapter-taught node.\n- Exercises 4.1/4.2/4.3 have no answer key in the provided text, so they were used for node justification (which skills are tested) but not as gate answer-sources; gate answers come from the chapter's worked Examples and the two CBSE Marking Schemes."
+}

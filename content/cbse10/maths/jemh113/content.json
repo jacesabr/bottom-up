@@ -1,0 +1,570 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh113",
+  "title": "Statistics",
+  "book": "NCERT Class 10 Maths",
+  "goal": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+  "nodes": [
+    {
+      "id": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "slug": "find-measures-of-central-tendency-grouped-data",
+      "title": "Find mean, mode and median of grouped data",
+      "role": "goal",
+      "brief": "Compute the three measures of central tendency (mean, mode, median) for a grouped frequency distribution.",
+      "sec": 0,
+      "quote": "In this chapter, we shall extend the study of these three measures, i.e., mean, median and mode from ungrouped data to that of grouped data.",
+      "explanation": "This is the chapter's top skill: given a grouped frequency distribution, produce its mean (by an appropriate method), its mode, and its median. It composes every sub-skill below — class marks, the three mean methods, the modal-class/mode formula, cumulative frequency and the median formula.",
+      "keyMoves": [
+        "Choose which measure(s) are required",
+        "Build the working table (class marks / cf as needed)",
+        "Apply the correct formula",
+        "Interpret the result"
+      ],
+      "misconceptions": [
+        "Treating grouped-data formulas as identical to ungrouped methods",
+        "Using the wrong measure for the situation"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:compute-mean-direct-method",
+        "cbse10:maths:jemh113:compute-mean-assumed-mean-method",
+        "cbse10:maths:jemh113:compute-mean-step-deviation-method",
+        "cbse10:maths:jemh113:choose-appropriate-mean-method",
+        "cbse10:maths:jemh113:apply-mode-formula",
+        "cbse10:maths:jemh113:apply-median-formula",
+        "cbse10:maths:jemh113:select-appropriate-measure-of-central-tendency",
+        "cbse10:maths:jemh113:use-empirical-mode-mean-median-relation",
+        "cbse10:maths:jemh113:find-unknown-frequencies-from-median"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:compute-class-mark",
+      "slug": "compute-class-mark",
+      "title": "Compute the class mark (mid-point) of a class interval",
+      "role": "intermediate",
+      "brief": "Find the representative xᵢ of a class as the average of its lower and upper limits.",
+      "sec": 1,
+      "quote": "Class mark = (Upper class limit + Lower class limit) / 2",
+      "explanation": "Each class interval is represented by its mid-point (class mark), assuming the frequency is centred there. For 10-25 the class mark is (10+25)/2 = 17.5. These class marks serve as the xᵢ for every mean method.",
+      "keyMoves": [
+        "Add the lower and upper class limits",
+        "Divide by 2"
+      ],
+      "misconceptions": [
+        "Using the lower limit alone as xᵢ",
+        "Forgetting to divide by 2",
+        "Averaging frequencies instead of limits"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:compute-mean-direct-method",
+      "slug": "compute-mean-direct-method",
+      "title": "Compute mean of grouped data by the direct method",
+      "role": "intermediate",
+      "brief": "Use x̄ = Σfᵢxᵢ / Σfᵢ with class marks as xᵢ.",
+      "sec": 1,
+      "quote": "x̄ = Σfᵢxᵢ / Σfᵢ = 1860.0 / 30 = 62",
+      "explanation": "Multiply each class mark xᵢ by its frequency fᵢ, sum the products, sum the frequencies, and divide. In Example 1's grouped form Σfᵢxᵢ = 1860, Σfᵢ = 30, so x̄ = 62.",
+      "keyMoves": [
+        "Form the fᵢxᵢ column",
+        "Sum to get Σfᵢxᵢ and Σfᵢ",
+        "Divide Σfᵢxᵢ by Σfᵢ"
+      ],
+      "misconceptions": [
+        "Dividing by the number of classes instead of Σfᵢ",
+        "Forgetting to multiply xᵢ by fᵢ",
+        "Using raw class boundaries instead of class marks"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:compute-class-mark",
+        "cbse10:maths:jemh113:compute-fx-product-and-sum"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:compute-fx-product-and-sum",
+      "slug": "compute-fx-product-and-sum",
+      "title": "Build the fᵢxᵢ column and its total Σfᵢxᵢ",
+      "role": "bedrock",
+      "brief": "Multiply each frequency by its class mark and total the column.",
+      "sec": 1,
+      "quote": "Total | Σfᵢ = 30 | | Σfᵢxᵢ = 1860.0",
+      "explanation": "The mechanical tabulation step: compute fᵢxᵢ for every row and add them to get Σfᵢxᵢ, and separately add the fᵢ to get Σfᵢ. This feeds the direct-method division.",
+      "keyMoves": [
+        "Row by row multiply fᵢ × xᵢ",
+        "Add the fᵢxᵢ column",
+        "Add the fᵢ column"
+      ],
+      "misconceptions": [
+        "Arithmetic slips in the products",
+        "Omitting a row from the total"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:choose-assumed-mean",
+      "slug": "choose-assumed-mean",
+      "title": "Choose an assumed mean 'a'",
+      "role": "bedrock",
+      "brief": "Pick a convenient class mark (usually the central one) as 'a'.",
+      "sec": 1,
+      "quote": "The first step is to choose one among the xᵢ's as the assumed mean, and denote it by 'a'.",
+      "explanation": "To shrink the arithmetic, choose one of the class marks as the assumed mean a, preferably a central one (e.g. a = 47.5). The final mean does not depend on the choice of a.",
+      "keyMoves": [
+        "Identify the class marks",
+        "Select a central xᵢ as a"
+      ],
+      "misconceptions": [
+        "Believing the answer changes with a different a",
+        "Choosing a value that is not a class mark when convenience demands one"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:compute-deviation-di",
+      "slug": "compute-deviation-di",
+      "title": "Compute deviations dᵢ = xᵢ − a",
+      "role": "bedrock",
+      "brief": "Subtract the assumed mean from each class mark.",
+      "sec": 1,
+      "quote": "i.e., dᵢ = xᵢ – a = xᵢ – 47.5",
+      "explanation": "Each deviation dᵢ is the signed difference between the class mark and the assumed mean. With a = 47.5, class mark 17.5 gives dᵢ = −30; 62.5 gives +15. Signs matter.",
+      "keyMoves": [
+        "Subtract a from each xᵢ",
+        "Keep the sign (negative below a, positive above)"
+      ],
+      "misconceptions": [
+        "Dropping the negative sign",
+        "Computing a − xᵢ instead of xᵢ − a"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:choose-assumed-mean"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:compute-mean-assumed-mean-method",
+      "slug": "compute-mean-assumed-mean-method",
+      "title": "Compute mean by the assumed mean method",
+      "role": "intermediate",
+      "brief": "Use x̄ = a + Σfᵢdᵢ / Σfᵢ.",
+      "sec": 1,
+      "quote": "x̄ = 47.5 + 435/30 = 47.5 + 14.5 = 62.",
+      "explanation": "Form fᵢdᵢ, sum to Σfᵢdᵢ, divide by Σfᵢ, and add back the assumed mean a. With a = 47.5, Σfᵢdᵢ = 435, Σfᵢ = 30, x̄ = 62 — the same as the direct method.",
+      "keyMoves": [
+        "Form fᵢdᵢ and sum it",
+        "Divide Σfᵢdᵢ by Σfᵢ",
+        "Add a"
+      ],
+      "misconceptions": [
+        "Forgetting to add a back",
+        "Sign errors in Σfᵢdᵢ",
+        "Dividing by number of classes"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:compute-class-mark",
+        "cbse10:maths:jemh113:choose-assumed-mean",
+        "cbse10:maths:jemh113:compute-deviation-di"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:compute-step-deviation-ui",
+      "slug": "compute-step-deviation-ui",
+      "title": "Compute step deviations uᵢ = (xᵢ − a)/h",
+      "role": "bedrock",
+      "brief": "Divide each deviation by the class size h to get small integers.",
+      "sec": 1,
+      "quote": "So, let uᵢ = (xᵢ – a)/h, where a is the assumed mean and h is the class size.",
+      "explanation": "When all dᵢ share a common factor (the class size h), divide by h to get small uᵢ. With h = 15, dᵢ = −30 gives uᵢ = −2; dᵢ = 45 gives uᵢ = 3.",
+      "keyMoves": [
+        "Identify the class size h",
+        "Divide each dᵢ by h"
+      ],
+      "misconceptions": [
+        "Using a wrong h",
+        "Forgetting to later multiply by h in the formula",
+        "Sign errors after dividing"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:compute-deviation-di"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:compute-mean-step-deviation-method",
+      "slug": "compute-mean-step-deviation-method",
+      "title": "Compute mean by the step-deviation method",
+      "role": "intermediate",
+      "brief": "Use x̄ = a + h(Σfᵢuᵢ / Σfᵢ).",
+      "sec": 1,
+      "quote": "x̄ = 47.5 + 15 × (29/30)",
+      "explanation": "Form fᵢuᵢ, sum to Σfᵢuᵢ, divide by Σfᵢ, multiply by h, and add a. With a = 47.5, h = 15, Σfᵢuᵢ = 29, Σfᵢ = 30: x̄ = 47.5 + 15×(29/30) = 62.",
+      "keyMoves": [
+        "Form and sum fᵢuᵢ",
+        "Divide by Σfᵢ",
+        "Multiply by h",
+        "Add a"
+      ],
+      "misconceptions": [
+        "Forgetting to multiply by h",
+        "Forgetting to add a",
+        "Using the wrong h"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:compute-class-mark",
+        "cbse10:maths:jemh113:choose-assumed-mean",
+        "cbse10:maths:jemh113:compute-deviation-di",
+        "cbse10:maths:jemh113:compute-step-deviation-ui"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:apply-step-deviation-unequal-classes",
+      "slug": "apply-step-deviation-unequal-classes",
+      "title": "Apply step-deviation method when class sizes are unequal",
+      "role": "intermediate",
+      "brief": "Choose a suitable divisor h and still use the step-deviation formula on unequal classes.",
+      "sec": 1,
+      "quote": "Here, the class size varies, and the xᵢ are large. Let us still apply the step-deviation method with a = 200 and h = 20.",
+      "explanation": "Even with unequal class widths, the step-deviation method works by taking h as a suitable divisor of the deviations. In Example 3, a = 200, h = 20 gives non-integer uᵢ such as −3.75 yet the formula yields x̄ = 152.89.",
+      "keyMoves": [
+        "Compute class marks of unequal classes",
+        "Pick a and a divisor h",
+        "Form uᵢ = dᵢ/h (may be non-integer)",
+        "Apply x̄ = a + h·ū"
+      ],
+      "misconceptions": [
+        "Assuming step-deviation needs equal classes",
+        "Rounding non-integer uᵢ wrongly"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:choose-appropriate-mean-method",
+      "slug": "choose-appropriate-mean-method",
+      "title": "Choose an appropriate method to find the mean",
+      "role": "intermediate",
+      "brief": "Decide between direct, assumed-mean and step-deviation based on the size of xᵢ and fᵢ.",
+      "sec": 1,
+      "quote": "If xᵢ and fᵢ are sufficiently small, then the direct method is an appropriate choice. If xᵢ and fᵢ are numerically large numbers, then we can go for the assumed mean method or step-deviation method.",
+      "explanation": "All three methods give the same mean; the choice is about ease of arithmetic. Small numbers → direct; large numbers → assumed-mean or step-deviation.",
+      "keyMoves": [
+        "Inspect magnitudes of xᵢ and fᵢ",
+        "Pick the least laborious method"
+      ],
+      "misconceptions": [
+        "Thinking different methods give different means",
+        "Always defaulting to the direct method even for large data"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:apply-step-deviation-unequal-classes"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:identify-modal-class",
+      "slug": "identify-modal-class",
+      "title": "Identify the modal class",
+      "role": "bedrock",
+      "brief": "Locate the class with the maximum frequency.",
+      "sec": 2,
+      "quote": "Here the maximum class frequency is 8, and the class corresponding to this frequency is 3 – 5. So, the modal class is 3 – 5.",
+      "explanation": "In grouped data the mode lies inside the class of greatest frequency. Scan the frequency column for the maximum; its class is the modal class.",
+      "keyMoves": [
+        "Find the maximum frequency",
+        "Read off its class interval"
+      ],
+      "misconceptions": [
+        "Picking the class with the largest class mark rather than largest frequency",
+        "Confusing modal class with median class"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:read-modal-formula-parameters",
+      "slug": "read-modal-formula-parameters",
+      "title": "Read off l, h, f₁, f₀, f₂ for the mode formula",
+      "role": "bedrock",
+      "brief": "Extract the lower limit, class size, modal frequency and the preceding/succeeding frequencies.",
+      "sec": 2,
+      "quote": "frequency (f₁) of the modal class = 8,\nfrequency (f₀) of class preceding the modal class = 7,\nfrequency (f₂) of class succeeding the modal class = 2.",
+      "explanation": "Before substituting, identify l = lower limit of the modal class, h = class size, f₁ = modal frequency, f₀ = frequency of the class just before, f₂ = frequency of the class just after.",
+      "keyMoves": [
+        "Read l and h from the modal class",
+        "Read f₁, f₀, f₂ from the table"
+      ],
+      "misconceptions": [
+        "Swapping f₀ and f₂",
+        "Using the upper limit as l",
+        "Picking f₀/f₂ from non-adjacent classes"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:identify-modal-class"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:apply-mode-formula",
+      "slug": "apply-mode-formula",
+      "title": "Apply the grouped-data mode formula",
+      "role": "intermediate",
+      "brief": "Compute Mode = l + ((f₁−f₀)/(2f₁−f₀−f₂)) × h.",
+      "sec": 2,
+      "quote": "Mode = l + ( (f₁ – f₀) / (2f₁ – f₀ – f₂) ) × h",
+      "explanation": "Substitute the read-off values into the formula. In Example 5: 3 + ((8−7)/(16−7−2))×2 = 3 + 2/7 = 3.286.",
+      "keyMoves": [
+        "Substitute l, f₁, f₀, f₂, h",
+        "Evaluate the denominator 2f₁−f₀−f₂",
+        "Compute the fraction and multiply by h",
+        "Add l"
+      ],
+      "misconceptions": [
+        "Writing the denominator as 2f₁−f₀+f₂",
+        "Forgetting to add l",
+        "Multiplying l (not the fraction) by h"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:identify-modal-class",
+        "cbse10:maths:jemh113:read-modal-formula-parameters"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:compute-cumulative-frequency-less-than",
+      "slug": "compute-cumulative-frequency-less-than",
+      "title": "Build a less-than cumulative frequency column",
+      "role": "bedrock",
+      "brief": "Add successive frequencies to get the running total up to each upper limit.",
+      "sec": 4,
+      "quote": "The cumulative frequency of a class is the frequency obtained by adding the frequencies of all the classes preceding the given class.",
+      "explanation": "Running totals: cf of a class = sum of all frequencies up to and including that class. For marks data, less than 20 = 5+3 = 8, less than 30 = 8+4 = 12, and so on up to n.",
+      "keyMoves": [
+        "Start with the first frequency",
+        "Add each next frequency cumulatively"
+      ],
+      "misconceptions": [
+        "Resetting instead of accumulating",
+        "Adding from the wrong end",
+        "Off-by-one in the running sum"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:convert-cf-table-to-frequencies",
+      "slug": "convert-cf-table-to-frequencies",
+      "title": "Recover class frequencies from a cumulative-frequency table",
+      "role": "intermediate",
+      "brief": "Subtract consecutive cumulative frequencies to get each class frequency.",
+      "sec": 3,
+      "quote": "Therefore, the number of girls with height in the interval 140 - 145 = 11 – 4 = 7.",
+      "explanation": "Given a less-than (or below) cumulative table, the frequency of a class is the difference between its cf and the previous cf. E.g. 145-150 frequency = 29 − 11 = 18. Needed before applying the median formula.",
+      "keyMoves": [
+        "Identify the class boundaries from the upper limits",
+        "Subtract the previous cf from each cf"
+      ],
+      "misconceptions": [
+        "Treating cumulative values as the frequencies",
+        "Subtracting in the wrong order"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:compute-cumulative-frequency-less-than"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:identify-median-class",
+      "slug": "identify-median-class",
+      "title": "Identify the median class using n/2",
+      "role": "bedrock",
+      "brief": "Find n/2, then the class whose cf is just ≥ n/2.",
+      "sec": 3,
+      "quote": "We now locate the class whose cumulative frequency is greater than (and nearest to) n/2. This is called the median class.",
+      "explanation": "Compute n/2 (here 53/2 = 26.5), then scan cumulative frequencies for the first one that is greater than and nearest to n/2. That class (60-70, cf 29) is the median class.",
+      "keyMoves": [
+        "Compute n/2",
+        "Find the smallest cf that is ≥ n/2",
+        "Name that class the median class"
+      ],
+      "misconceptions": [
+        "Using n instead of n/2",
+        "Picking the class with maximum frequency instead",
+        "Choosing the cf that exceeds n/2 by the most rather than the nearest"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:compute-cumulative-frequency-less-than"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:read-median-formula-parameters",
+      "slug": "read-median-formula-parameters",
+      "title": "Read off l, cf, f, h for the median formula",
+      "role": "bedrock",
+      "brief": "Extract lower limit of median class, preceding cf, median-class frequency, and class size.",
+      "sec": 3,
+      "quote": "where l = lower limit of median class,\nn = number of observations,\ncf = cumulative frequency of class preceding the median class,\nf = frequency of median class,\nh = class size (assuming class size to be equal).",
+      "explanation": "Before substituting, identify l (lower limit of median class), cf (cumulative frequency of the class before the median class), f (frequency of the median class), and h (class size).",
+      "keyMoves": [
+        "Read l and h from the median class",
+        "Read f of the median class",
+        "Read cf of the preceding class"
+      ],
+      "misconceptions": [
+        "Using the cf of the median class itself instead of the preceding class",
+        "Confusing f (frequency) with cf"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:identify-median-class",
+        "cbse10:maths:jemh113:compute-cumulative-frequency-less-than"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:apply-median-formula",
+      "slug": "apply-median-formula",
+      "title": "Apply the grouped-data median formula",
+      "role": "intermediate",
+      "brief": "Compute Median = l + ((n/2 − cf)/f) × h.",
+      "sec": 3,
+      "quote": "Median = l + ( ((n/2) – cf) / f ) × h,",
+      "explanation": "Substitute the parameters. In the marks example: 60 + ((26.5 − 22)/7)×10 = 60 + 45/7 = 66.4.",
+      "keyMoves": [
+        "Substitute n/2, cf, f, h, l",
+        "Compute n/2 − cf",
+        "Divide by f and multiply by h",
+        "Add l"
+      ],
+      "misconceptions": [
+        "Using n instead of n/2",
+        "Adding cf instead of subtracting",
+        "Forgetting to add l"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:identify-median-class",
+        "cbse10:maths:jemh113:read-median-formula-parameters",
+        "cbse10:maths:jemh113:convert-discontinuous-to-continuous-classes",
+        "cbse10:maths:jemh113:convert-cf-table-to-frequencies"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:convert-discontinuous-to-continuous-classes",
+      "slug": "convert-discontinuous-to-continuous-classes",
+      "title": "Convert inclusive (discontinuous) classes to continuous classes",
+      "role": "intermediate",
+      "brief": "Adjust boundaries by 0.5 so classes are continuous before applying mode/median formulas.",
+      "sec": 4,
+      "quote": "For calculating mode and median for grouped data, it should be ensured that the class intervals are continuous before applying the formulae.",
+      "explanation": "Formulas assume continuous classes. Inclusive classes like 118-126, 127-135 must be converted (e.g. to 117.5-126.5, 126.5-135.5) by shifting each boundary by half the gap before computing mode or median.",
+      "keyMoves": [
+        "Find the gap between consecutive class limits",
+        "Subtract half the gap from lower limits and add to upper limits"
+      ],
+      "misconceptions": [
+        "Applying formulas directly to gapped classes",
+        "Shifting by the full gap instead of half"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:find-unknown-frequencies-from-median",
+      "slug": "find-unknown-frequencies-from-median",
+      "title": "Find missing frequencies given the median and total",
+      "role": "intermediate",
+      "brief": "Use the total-frequency equation plus the median formula to solve for two unknowns.",
+      "sec": 3,
+      "quote": "525 = 500 + ( (50 – 36 – x) / 20 ) × 100",
+      "explanation": "With two unknown frequencies x and y, use Σf = n to get one equation (x+y = 24) and substitute into the median formula at the known median to solve for x (here x = 9), then back-substitute for y (y = 15).",
+      "keyMoves": [
+        "Form cumulative frequencies in terms of x",
+        "Write x+y = n equation",
+        "Substitute into median formula at given median",
+        "Solve for x then y"
+      ],
+      "misconceptions": [
+        "Forgetting the second (total) equation",
+        "Using the wrong cf in the median formula"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh113:apply-median-formula"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:use-empirical-mode-mean-median-relation",
+      "slug": "use-empirical-mode-mean-median-relation",
+      "title": "Use the empirical relation 3 Median = Mode + 2 Mean",
+      "role": "intermediate",
+      "brief": "Estimate one measure from the other two via the empirical relationship.",
+      "sec": 3,
+      "quote": "3 Median = Mode + 2 Mean",
+      "explanation": "There is an empirical relationship linking the three measures of central tendency: 3 Median = Mode + 2 Mean. Given any two, the third can be estimated.",
+      "keyMoves": [
+        "Substitute the two known measures",
+        "Solve for the unknown one"
+      ],
+      "misconceptions": [
+        "Mixing up which measure has the coefficient 3 vs 2",
+        "Treating the relation as exact for all data"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh113:select-appropriate-measure-of-central-tendency",
+      "slug": "select-appropriate-measure-of-central-tendency",
+      "title": "Select the appropriate measure of central tendency",
+      "role": "intermediate",
+      "brief": "Choose mean, median or mode based on the data and the question's intent.",
+      "sec": 3,
+      "quote": "In situations which require establishing the most frequent value or most popular item, the mode is the best choice",
+      "explanation": "Mean uses all observations but is affected by extreme values; median (the middle-most value) is better with extremes; mode identifies the most frequent/popular item. The choice depends on the situation.",
+      "keyMoves": [
+        "Identify whether extremes distort the mean",
+        "Decide if a typical or a most-frequent value is wanted",
+        "Pick mean, median, or mode accordingly"
+      ],
+      "misconceptions": [
+        "Always using the mean",
+        "Thinking the median is affected by extreme values like the mean"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ],
+  "narrative": "## What I audited\n\nI re-read the full segmented text of jemh113 (\"Statistics\"), SEG 0 through SEG 4, every worked Example (1-8), the three mean methods, the mode/median formulas and the summary, plus the shared CBSE Maths SQP + Marking Scheme (`_maths-exams.txt`) for the four exam-sourced items. I then opened the exact segment for EVERY node and EVERY gate and located the quote verbatim.\n\n## Corrections made to the draft\n\n**Citation (sec) fixes — the #1 failure mode.** Two node quotes were tagged to the wrong segment:\n- `compute-cumulative-frequency-less-than` — quote \"The cumulative frequency of a class is the frequency obtained by adding the frequencies of all the classes preceding the given class.\" is NOT in SEG 3; it is verbatim in the SEG 4 Summary (point 3). Re-tagged sec 3 → 4. (Its gate \"Less than 30 | 8 + 4 = 12\" is genuinely in SEG 3 and was left.)\n- `convert-discontinuous-to-continuous-classes` — quote \"For calculating mode and median for grouped data, it should be ensured that the class intervals are continuous before applying the formulae.\" is in SEG 4's \"A NOTE TO THE READER\", not SEG 3. Re-tagged sec 3 → 4. (Its gate quote about 117.5-126.5 is in the SEG 3 Exercise hint and was left.)\n\n**Dropped a node with no answer-keyed gate.** `find-unknown-frequency-from-known-mean` mapped to Exercise 13.1 Q3 (mean = Rs 18, find missing frequency f). The chapter never works this out — there is no stated answer, and no exam item covers it. Its draft gate had been borrowed from Example 8's \"i.e., y = 15\", which is actually the SECOND output of the median-based two-unknowns skill (`find-unknown-frequencies-from-median`), not a mean-based result. I removed the node, its two edges (to the goal and to `compute-mean-direct-method`), and that borrowed y=15 gate, keeping a single clean inverse-frequency node (`find-unknown-frequencies-from-median`, Example 8, gated on x=9). Moved the absent mean-based variant to absentNotes.\n\n**Minor gate-prompt fix.** The `identify-modal-class` gate called Example 5's data \"female-size data\"; it is household family-size data. Corrected the prompt wording (quote unchanged, still verbatim).\n\n## Verified verbatim (spot list)\n- goal (sec 0) \"...extend the study of these three measures, i.e., mean, median and mode from ungrouped data to that of grouped data.\" ✓ line 7\n- `apply-mode-formula` (sec 2) \"Mode = l + ( (f₁ – f₀) / (2f₁ – f₀ – f₂) ) × h\" ✓ line 323; gate = CBSE Basic SQP Q25 \"= 18.21(approx.)\" ✓\n- `apply-median-formula` (sec 3) \"Median = l + ( ((n/2) – cf) / f ) × h,\" ✓ line 548; gate \"Median = 145 + ( (25.5 – 11) / 18 ) × 5...\" ✓\n- `apply-step-deviation-unequal-classes` gate \"Therefore, x̄ = 200 + 20 ((–106)/45) = 200 – 47.11 = 152.89.\" ✓ line 249\n- exam gates: Q9 \"9. C) 30 1\" ✓, Q16 \"16. A) median 1\" ✓ (question \"Which of the following gives the middle most observation of the data? A) Median...\" ✓ line 115)\n\n## Edges\nSingle root `find-measures-of-central-tendency-grouped-data`. After dropping the orphaned mean-inverse node, all 24 nodes are in at least one edge, every endpoint is a defined slug, the graph is acyclic, and the three mean methods / mode / median / method-selection / empirical relation / median-inverse all hang off the root with their tabulation sub-skills decomposing down to bedrock.\n\n## Gates\n24 gates, one per node (100% coverage, including the goal node's mode=52 gate). All graders are numeric (with tol) or mcq; each answer is self-consistent with its expected block; every quote was confirmed a contiguous character-for-character substring of its tagged segment.\n\n## What was absent / uncertain\n- Ogives are named in SEG 0 and SEG 4 but never demonstrated (no plotting/construction/worked example) — no node, recorded in absentNotes.\n- Finding a missing frequency from a GIVEN MEAN (Exercise 13.1 Q3) is a real skill but unworked in this chapter and absent from the supplied exams, so it has no answer-keyed gate — dropped and noted.",
+  "absentNotes": "OGIVES: the introduction (SEG 0) and the closing \"NOTE TO THE READER\" (SEG 4) reference ogives (less-than and more-than cumulative frequency curves) and finding the median graphically from their intersection, but THIS transcription contains no worked example, no plotting steps and no construction procedure, so no ogive node was created. A fuller treatment would teach plotting a less-than ogive, plotting a more-than ogive, and locating the median at their intersection (or via the n/2 horizontal line).\n\nFIND MISSING FREQUENCY FROM A GIVEN MEAN: Exercise 13.1 Q3 (\"The mean pocket allowance is Rs 18. Find the missing frequency f\") poses this genuinely-distinct inverse skill, but the chapter never solves it (it is an exercise with no stated answer) and no supplied CBSE exam item covers it, so there is no answer-keyed gate available. The draft's node for this had borrowed Example 8's median-based \"y = 15\" result; that was incorrect provenance, so the node was dropped. The chapter DOES fully work the median-based two-unknowns version (Example 8), retained as `find-unknown-frequencies-from-median`.\n\nMORE-THAN-TYPE cumulative frequency (Table 13.14) is constructed but never used to compute any measure, so only the less-than construction is a node.\n\nDELIBERATELY DEFERRED BY THE TEXT (correctly omitted): mode/median for grouped data with UNEQUAL class sizes (\"we shall not be discussing it\"), and MULTIMODAL data (\"we shall restrict ourselves to problems having a single mode only\").\n\nDerivations of d̄ = x̄ − a and hū = x̄ − a are exposition justifying the mean formulas, not separately failable student skills, so they are folded into the corresponding method nodes rather than split out."
+}

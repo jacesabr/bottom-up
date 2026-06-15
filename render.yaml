@@ -1,36 +1,32 @@
 services:
   - type: web
     name: bottom-up-api
-    env: node
-    plan: standard
-    buildCommand: npm install && npm run build:api
-    startCommand: npm run start
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: node_modules/.bin/tsx src/api/index.ts
     envVars:
       - key: NODE_ENV
         value: production
-      - key: API_PORT
-        value: 3030
+      - key: LLM_PROVIDER
+        value: nvidia
       - key: DATABASE_URL
-        fromDatabase:
-          name: bottom-up-db
-          property: connectionString
-      - key: ANTHROPIC_API_KEY
         sync: false
       - key: NVIDIA_API_KEY
         sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
 
-  - type: static_site
+  - type: web
     name: bottom-up-web
+    runtime: static
     buildCommand: npm install && npm run build:web
     staticPublishPath: dist/web
+    envVars:
+      - key: VITE_API_URL
+        sync: false
     routes:
-      - path: /api/*
-        destination: https://bottom-up-api.onrender.com:3030/api/$path
-      - path: /*
+      - type: rewrite
+        source: /*
         destination: /index.html
-
-databases:
-  - name: bottom-up-db
-    databaseName: bottom_up
-    user: neon_user
-    plan: free

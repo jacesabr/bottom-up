@@ -1,0 +1,186 @@
+{
+  "exam": "cbse10",
+  "subject": "maths",
+  "chapter": "jemh108",
+  "items": [
+    {
+      "nodeId": "cbse10:maths:jemh108:define-trig-ratios",
+      "kind": "book",
+      "prompt": "In right triangle ABC right-angled at B, side BC is opposite angle A and AC is the hypotenuse. Using the chapter's definition, write sin A as a ratio of two side lengths (use the side names BC, AB, AC).",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "BC/AC",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "BC/AC"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 1, Section 8.2 definitions",
+      "quote": "sine of ∠ A = side opposite to angle A / hypotenuse = BC / AC"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:compute-reciprocal-ratios",
+      "kind": "book",
+      "prompt": "Which primary trigonometric ratio is sec A the reciprocal of, according to the chapter's reciprocal definitions?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "cosine of A",
+      "expected": {
+        "kind": "mcq",
+        "correct": "cosine of A",
+        "options": [
+          "cosine of A",
+          "sine of A",
+          "tangent of A",
+          "cotangent of A"
+        ]
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 1, Section 8.2 reciprocal definitions",
+      "quote": "secant of ∠ A = 1 / cosine of ∠ A = hypotenuse / side adjacent to angle A = AC / AB"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:relate-tan-to-sin-cos",
+      "kind": "book",
+      "prompt": "Using the chapter's quotient relation, write tan A as a single fraction in terms of sin A and cos A.",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "sin(A)/cos(A)",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "sin(A)/cos(A)"
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 1, Section 8.2",
+      "quote": "sin A / cos A and cot A = cos A / sin A"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:find-ratios-from-one-ratio",
+      "kind": "book",
+      "prompt": "In Example 1, tan A = 4/3 in a right triangle. Taking the opposite side as 4 and the adjacent side as 3, find the value of sin A as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.8",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.8,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 1, Example 1",
+      "quote": "Given tan A = 4/3, find the other trigonometric ratios of the angle A."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:recall-45-ratios",
+      "kind": "book",
+      "prompt": "From the chapter's table of ratios for 45°, what is the exact value of tan 45°?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0.0001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 3, ratios of 45°",
+      "quote": "tan 45° = side opposite to angle 45° / side adjacent to angle 45° = BC/AB = a/a = 1"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:recall-30-60-ratios",
+      "kind": "book",
+      "prompt": "From the chapter's specific-angle ratios, what is the exact value of cos 60°? Give it as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.5",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.5,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 3, ratios of 60°",
+      "quote": "cos 60° = BD/AB = a/2a = 1/2"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:recall-0-90-ratios",
+      "kind": "book",
+      "prompt": "Using the chapter's limiting values, what is the value of cos 0°?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0.0001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 3, ratios of 0°",
+      "quote": "We define : sin 0° = 0 and cos 0° = 1."
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:evaluate-specific-angle-expressions",
+      "kind": "book",
+      "prompt": "Evaluate sin 60° cos 30° + sin 30° cos 60° using the exact specific-angle values.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 4, Exercise 8.2 Q1(i)",
+      "quote": "sin 60° cos 30° + sin 30° cos 60°"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:apply-pythagorean-identity",
+      "kind": "book",
+      "prompt": "For an acute angle theta, sin theta = 3/5. Using the chapter's fundamental identity cos^2 A + sin^2 A = 1, find cos theta as a decimal.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "0.8",
+      "expected": {
+        "kind": "numeric",
+        "value": 0.8,
+        "tol": 0.001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 5, identity 2",
+      "quote": "cos² A + sin² A = 1"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:apply-sec-tan-identity",
+      "kind": "book",
+      "prompt": "Using the chapter's identity 1 + tan^2 A = sec^2 A, evaluate 9 sec^2 A - 9 tan^2 A (Exercise 8.3 Q3(i)).",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "9",
+      "expected": {
+        "kind": "numeric",
+        "value": 9,
+        "tol": 0.0001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 5/6, identity 3 and Exercise 8.3 Q3(i)",
+      "quote": "9 sec² A − 9 tan² A"
+    },
+    {
+      "nodeId": "cbse10:maths:jemh108:prove-trig-identities",
+      "kind": "book",
+      "prompt": "In Example 10 you prove sec A (1 - sin A)(sec A + tan A) = 1. After expanding and using a Pythagorean identity, what single number does the left-hand side simplify to?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0.0001
+      },
+      "srcKind": "chapter",
+      "srcLabel": "SEG 5, Example 10",
+      "quote": "Prove that sec A (1 − sin A)(sec A + tan A) = 1."
+    }
+  ]
+}

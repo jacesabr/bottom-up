@@ -110,33 +110,29 @@ export async function recomputeAvailabilityAfterPass(learnerId: string, conceptI
 
   const chapterId = concept[0].chapterId;
 
-  // Find all concepts that depend on this one
-  const dependents = await db
+  // All concepts in the chapter + this learner's performance rows
+  const chapterConcepts = await db
     .select()
     .from(conceptsTable)
-    .where(
-      and(
-        eq(conceptsTable.chapterId, chapterId),
-        // We'd need a better query for this, but for now we'll check each
-      )
+    .where(eq(conceptsTable.chapterId, chapterId));
+
+  const perfRows = await db
+    .select()
+    .from(buNodePerformance)
+    .where(eq(buNodePerformance.learnerId, learnerId));
+  const statusOf = new Map(perfRows.map((p) => [p.conceptId, p.status]));
+
+  for (const dependent of chapterConcepts) {
+    if (!dependent.prereqs.includes(conceptId)) continue;
+    // Don't downgrade a node already past 'available'
+    const current = statusOf.get(dependent.id);
+    if (current && current !== 'locked') continue;
+
+    const allPrereqsPassed = dependent.prereqs.every(
+      (prereqId) => statusOf.get(prereqId) === 'passed'
     );
 
-  for (const dependent of dependents) {
-    if (!dependent.prereqs.includes(conceptId)) continue;
-
-    // Check if all prereqs are now passed
-    const allPrereqsPassed = dependent.prereqs.every(async (prereqId) => {
-      const perf = await db
-        .select()
-        .from(buNodePerformance)
-        .where(and(
-          eq(buNodePerformance.learnerId, learnerId),
-          eq(buNodePerformance.conceptId, prereqId)
-        ));
-      return perf.length > 0 && perf[0].status === 'passed';
-    });
-
-    if (await allPrereqsPassed) {
+    if (allPrereqsPassed) {
       await db
         .update(buNodePerformance)
         .set({ status: 'available' })
