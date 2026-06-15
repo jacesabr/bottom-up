@@ -5,6 +5,8 @@ import { eq } from 'drizzle-orm';
 import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures } from '../core/teach-loop.js';
 import { LANGUAGES } from '../core/languages.js';
 import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
+import { computeChapterStatuses } from '../core/sequencer.js';
+import { listPapers, paperForClient, answerPaperQuestion, paperResult, paperState } from '../core/papers.js';
 
 const router = express.Router();
 
@@ -74,18 +76,32 @@ router.get('/concept/:conceptId/figures', async (req, res) => {
   }
 });
 
-// List chapters for an exam+subject (strict-linear status). 14 maths chapters.
+// List chapters for an exam+subject, with this LEARNER's strict-linear progress: chapters the
+// learner has fully cleared are 'complete', the first uncleared one is 'active', the rest 'locked'.
+// Finishing every node in a chapter unlocks the next — progression runs through ALL content
+// (each node is teachable from its book/practice gate; high-quality 5-gate authoring not required).
+router.get('/learner/:learnerId/chapters/:exam/:subject', async (req, res) => {
+  try {
+    const { learnerId, exam, subject } = req.params;
+    const subjectId = `${exam}:${subject}`;
+    const chapters = await computeChapterStatuses(learnerId, subjectId);
+    res.json({ exam, subject, chapters });
+  } catch (err) {
+    console.error('Error listing chapters:', err);
+    res.status(500).json({ error: 'Failed to list chapters' });
+  }
+});
+
+// Back-compat (no learner): first chapter active, rest locked.
 router.get('/chapters/:exam/:subject', async (req, res) => {
   try {
     const { exam, subject } = req.params;
     const subjectId = `${exam}:${subject}`;
-    // Served from the in-memory content cache — 0 DB queries on the hot path.
     const ordered = await getChaptersForSubject(subjectId);
     const list = ordered.map((c, i) => ({
       id: c.id,
       title: c.title,
       index: i + 1,
-      // Strict-linear: first chapter active, rest locked (per-learner completion wires in later).
       status: i === 0 ? 'active' : 'locked',
     }));
     res.json({ exam, subject, chapters: list });
@@ -212,6 +228,59 @@ router.get('/learner/:learnerId/node/:conceptId/detail', async (req, res) => {
   } catch (err) {
     console.error('Error fetching node detail:', err);
     res.status(500).json({ error: 'Failed to fetch detail' });
+  }
+});
+
+// ---- Final past-paper exam (README steps 5-6) ----
+
+// List the board/past papers available for an exam.
+router.get('/papers/:exam', (req, res) => {
+  try {
+    const subject = typeof req.query.subject === 'string' ? req.query.subject : undefined;
+    res.json({ exam: req.params.exam, papers: listPapers(req.params.exam, subject) });
+  } catch (err) {
+    console.error('Error listing papers:', err);
+    res.status(500).json({ error: 'Failed to list papers' });
+  }
+});
+
+// The paper to sit: prompts/options/sections only (answers never leave the server), + resume state.
+router.get('/learner/:learnerId/paper/:paperId', async (req, res) => {
+  try {
+    const { learnerId, paperId } = req.params;
+    const paper = paperForClient(paperId);
+    if (!paper) return res.status(404).json({ error: 'Paper not found' });
+    const answers = await paperState(learnerId, paperId);
+    res.json({ paper, answers });
+  } catch (err) {
+    console.error('Error loading paper:', err);
+    res.status(500).json({ error: 'Failed to load paper' });
+  }
+});
+
+// Grade one answer (mcq/numeric deterministic; written → LLM vs marking scheme).
+router.post('/learner/:learnerId/paper/:paperId/answer', async (req, res) => {
+  try {
+    const { learnerId, paperId } = req.params;
+    const { q, answer } = req.body || {};
+    if (typeof q !== 'number' || typeof answer !== 'string') return res.status(400).json({ error: 'q (number) and answer (string) required' });
+    const result = await answerPaperQuestion(learnerId, paperId, q, answer);
+    res.json(result);
+  } catch (err) {
+    console.error('Error grading paper answer:', err);
+    res.status(500).json({ error: 'Failed to grade answer' });
+  }
+});
+
+// Score, per-section breakdown, and the weak-concept review (clickable back into those nodes).
+router.get('/learner/:learnerId/paper/:paperId/result', async (req, res) => {
+  try {
+    const { learnerId, paperId } = req.params;
+    const result = await paperResult(learnerId, paperId);
+    res.json(result);
+  } catch (err) {
+    console.error('Error computing paper result:', err);
+    res.status(500).json({ error: 'Failed to compute result' });
   }
 });
 

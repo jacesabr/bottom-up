@@ -9,15 +9,19 @@ interface Chapter {
 }
 
 export default function ChapterList({
+  learnerId,
   exam,
   subject,
   onPick,
+  onTakePaper,
   onBack,
   apiBase,
 }: {
+  learnerId: string;
   exam: string;
   subject: string;
   onPick: (chapterId: string) => void;
+  onTakePaper: () => void;
   onBack: () => void;
   apiBase: string;
 }) {
@@ -25,12 +29,13 @@ export default function ChapterList({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${apiBase}/chapters/${exam}/${subject}`)
+    setLoading(true);
+    fetch(`${apiBase}/learner/${learnerId}/chapters/${exam}/${subject}`)
       .then((r) => r.json())
       .then((d) => setChapters(d.chapters ?? []))
       .catch(() => setChapters([]))
       .finally(() => setLoading(false));
-  }, [exam, subject, apiBase]);
+  }, [learnerId, exam, subject, apiBase]);
 
   return (
     <div className="chapter-list">
@@ -67,6 +72,10 @@ export default function ChapterList({
               <span className="l-lock">locked</span>
             </div>
           </div>
+
+          <button className="take-paper-btn" onClick={onTakePaper}>
+            📝 Sit a past board paper — then revise what you miss →
+          </button>
         </div>
       </div>
     </div>

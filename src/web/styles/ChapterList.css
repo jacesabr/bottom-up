@@ -198,3 +198,21 @@
   font-weight: 600;
 }
 .cl-loading{padding:20px;color:var(--dim);font-size:0.9rem;}
+
+/* Entry to the final past-paper exam (sits below the chapter map). */
+.take-paper-btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.05s;
+}
+.take-paper-btn:hover { background: var(--accent); }
+.take-paper-btn:active { transform: translateY(1px); }

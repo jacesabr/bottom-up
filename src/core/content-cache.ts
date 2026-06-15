@@ -57,3 +57,13 @@ export async function getConceptsForChapter(chapterId: string): Promise<Concept[
   await ensureLoaded();
   return conceptsByChapter!.get(chapterId) ?? [];
 }
+
+/** Look up a single concept by id (used to title weak-concept review links). */
+export async function getConceptById(conceptId: string): Promise<Concept | undefined> {
+  await ensureLoaded();
+  for (const arr of conceptsByChapter!.values()) {
+    const found = arr.find((c) => c.id === conceptId);
+    if (found) return found;
+  }
+  return undefined;
+}

@@ -104,6 +104,51 @@ export async function gradeWritten(
   return { correct: ok, feedback: ok ? 'Good — that captures the idea.' : 'Try to explain a bit more fully.' };
 }
 
+export interface SubjectiveResult {
+  marksAwarded: number;
+  feedback: string;
+}
+
+/**
+ * Subjective marking for a board-paper written question: award PARTIAL marks out of the question's
+ * maximum, following the official marking scheme's step-marking (method marks, not just the final
+ * answer). Returns an integer 0..maxMarks. Used by the final past-paper exam so a half-right answer
+ * earns half the marks, exactly as a real examiner would.
+ */
+export async function gradeSubjective(
+  prompt: string,
+  markingScheme: string | null,
+  answer: string,
+  maxMarks: number,
+  langCode?: string,
+  conceptId?: string,
+  track: Track = 'foundation'
+): Promise<SubjectiveResult> {
+  const prof = examProfile(conceptId ?? 'cbse10', track);
+  const messages: ChatMessage[] = [
+    {
+      role: 'system',
+      content: `You are an official ${prof.level} ${prof.subject} board examiner marking one exam question out of ${maxMarks} mark${maxMarks === 1 ? '' : 's'}. Award marks STRICTLY per the marking scheme, giving step/method marks for correct working even when the final answer is wrong or incomplete — exactly as a real examiner does. The student may answer in their own language; mark the mathematics, not the language. Return ONLY JSON {"marksAwarded": <integer 0..${maxMarks}>, "feedback": "<1-2 warm sentences: what earned marks / what was missed>"}`,
+    },
+    {
+      role: 'user',
+      content: `QUESTION (worth ${maxMarks} marks): ${prompt}\n\nOFFICIAL MARKING SCHEME / MODEL ANSWER: ${markingScheme || '(use your expert judgement of a fully-correct answer)'}\n\nSTUDENT ANSWER: ${answer}\n\nAward an integer number of marks from 0 to ${maxMarks}, following the marking scheme's step-marking.`,
+    },
+  ];
+  try {
+    const raw = await completeJson(messages, { maxTokens: 320 });
+    const p = parseLooseJson<any>(raw);
+    if (p && typeof p.marksAwarded === 'number') {
+      const m = Math.max(0, Math.min(maxMarks, Math.round(p.marksAwarded)));
+      return { marksAwarded: m, feedback: String(p.feedback || '') };
+    }
+  } catch {
+    /* fall through */
+  }
+  // Offline/grader-unavailable: do NOT invent marks — award 0 and say it couldn't be marked.
+  return { marksAwarded: 0, feedback: '(Could not mark this answer automatically — please review against the marking scheme.)' };
+}
+
 /** Grade a maths answer by checking equivalence to the ideal answer (handles fractions, expressions). */
 export async function gradeEquation(prompt: string, ideal: string | null, answer: string, langCode?: string, conceptId?: string, track: Track = 'foundation'): Promise<GradeResult> {
   const prof = examProfile(conceptId ?? 'cbse10', track);
