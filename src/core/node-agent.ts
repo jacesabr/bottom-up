@@ -1,4 +1,4 @@
-import { completeJson, parseLooseJson, resolveProvider, nimVision, type ChatMessage } from './llm.js';
+import { completeJson, parseLooseJson, resolveProvider, nimVision, claudeTranslate, type ChatMessage } from './llm.js';
 import { languageInstruction, lang } from './languages.js';
 
 export interface GradeResult {
@@ -6,20 +6,24 @@ export interface GradeResult {
   feedback: string;
 }
 
-/** Translate text into the learner's language (NIM, free). Returns the original on failure or for English. */
+/**
+ * Translate text into the learner's language using a STRONG, fast model (Claude) — NIM is weak on
+ * Indian languages and slow. Content is stored once (English) and translated dynamically here, so
+ * nothing goes stale. Returns the original on failure or for English.
+ */
 export async function translateText(text: string, langCode?: string): Promise<string> {
-  if (!langCode || langCode === 'en') return text;
+  if (!langCode || langCode === 'en' || !text?.trim()) return text;
   const l = lang(langCode);
   try {
-    const raw = await completeJson(
+    const raw = await claudeTranslate(
       [
         {
           role: 'system',
-          content: `You are a translator. Translate the user's message into ${l.name} (${l.native}). Keep Markdown like **bold**, emoji, and maths ($...$) exactly as-is. Output ONLY the translation — no quotes, no notes, no JSON.`,
+          content: `You are an expert translator for an Indian school maths tutor. Translate the user's message into natural, conversational ${l.name} (${l.native}) as a real teacher would speak it. Keep Markdown like **bold**, emoji, and all maths ($...$, exponents, HCF) exactly as-is. Output ONLY the translation — no quotes, no notes.`,
         },
         { role: 'user', content: text },
       ],
-      { maxTokens: 800 }
+      1200
     );
     const out = raw.trim().replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
     if (out) return out;
@@ -40,7 +44,7 @@ export async function gradeWritten(
   const messages: ChatMessage[] = [
     {
       role: 'system',
-      content: `You are a fair but rigorous CBSE Class 10 maths grader. Decide if the student's written answer demonstrates genuine understanding. Be encouraging in feedback. The student may answer in their own language — judge the meaning. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences: what was good / what's missing>"}.${languageInstruction(langCode)}`,
+      content: `You are a fair but rigorous CBSE Class 10 maths grader. Decide if the student's written answer demonstrates genuine understanding. Be encouraging in feedback. The student may answer in their own language — judge the meaning. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences: what was good / what's missing>"}`,
     },
     {
       role: 'user',
@@ -64,7 +68,7 @@ export async function gradeEquation(prompt: string, ideal: string | null, answer
   const messages: ChatMessage[] = [
     {
       role: 'system',
-      content: `You check CBSE Class 10 maths answers for MATHEMATICAL equivalence (not exact string match). Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences>"}.${languageInstruction(langCode)}`,
+      content: `You check CBSE Class 10 maths answers for MATHEMATICAL equivalence (not exact string match). Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences>"}`,
     },
     {
       role: 'user',
@@ -92,7 +96,7 @@ export async function gradeSketch(
   const visionPrompt = `You are grading a CBSE Class 10 student's hand-drawn answer.
 QUESTION: ${prompt}
 WHAT A CORRECT DRAWING MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled diagram'}
-Look at the image and decide if it satisfies the requirement. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences on what's right / what to fix>"}.${languageInstruction(langCode)}`;
+Look at the image and decide if it satisfies the requirement. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences on what's right / what to fix>"}`;
   try {
     const raw = await nimVision(visionPrompt, imageDataUrl, 350);
     const p = parseLooseJson<any>(raw);
@@ -149,34 +153,41 @@ function buildMessages(input: TeachTurnInput): ChatMessage[] {
     .map((t) => `${t.role === 'tutor' ? 'TUTOR' : 'LEARNER'}: ${t.content}`)
     .join('\n');
 
-  const system = `You ARE Socrates, reborn as a warm CBSE Class 10 maths tutor. You teach by the Socratic method:
-you never lecture or dump answers — you ask one good question at a time and let the student discover the idea.
-You are patient, curious, gently humorous, and genuinely delighted when the student reasons well. Speak like a
-real person having a conversation, not a textbook.
+  const system = `You are a real, warm human maths teacher sitting beside a 15-year-old CBSE Class 10 student, chatting.
+You teach in the Socratic spirit — you draw understanding out with gentle questions rather than lecturing — but
+above all you sound like an actual caring person, not a script. Use natural, everyday language and contractions.
+React genuinely to what they say. Be encouraging and patient. Short messages, like real chat.
 
 You are teaching ONE concept only: "${input.conceptTitle}".
-What it means: ${input.brief}
-Background (your ONLY source of truth): ${input.explanation}
+In plain words it's about: ${input.brief}
+Your ONLY source of truth for facts/examples: ${input.explanation}
 
-Guide the student to demonstrate these KEY MOVES (the hidden checklist — never read them out as a list):
+You are quietly guiding the student to eventually grasp these ideas (NEVER list or quote these — they're your private map):
 ${moves}
 
-Common misconceptions to watch for:
+Watch gently for these misunderstandings:
 ${input.misconceptions.map((m) => `  - ${m}`).join('\n')}
 
-RULES (Socratic + anti-drift):
-- Stay STRICTLY on this concept and the material above. Do NOT introduce other topics, outside facts, tangents,
-  or examples that aren't grounded in this concept — if the student wanders, gently steer back with a question.
-- Keep each turn SHORT: 1–3 sentences, ending in ONE question that elicits the next not-yet-shown key move.
-- Never give the full answer; draw it out of the student. Acknowledge what they got right, then nudge.
-- Be warm and plain. Use $...$ for any maths (e.g. $\\sqrt{2}$, $2^3 \\cdot 3^2$). You may use a $$…$$ display
-  line or a simple LaTeX array for a small diagram (e.g. a factor tree) when it truly helps.
-- Do NOT reveal the checklist or talk about "key moves", "gates", or grading — just teach naturally.
-${input.isReteach ? '- This is a RE-TEACH after a missed check: open a fresh angle warmly, no shame, and probe the gap.' : ''}
+HOW TO TEACH (read carefully — this is the whole job):
+- ASSUME THE STUDENT KNOWS NOTHING about this topic's words. Before you use any term, make sure they understand it,
+  in everyday language, with one tiny concrete example. Build from the absolute ground up, slowly.
+- ONE small step per message. Introduce a single idea, give a simple friendly example, then ask ONE question they
+  can genuinely answer from what you just said. Then stop and wait.
+- NEVER restate a definition or fact as if it were a question. NEVER ask something whose answer you already showed
+  (e.g. do NOT write "$2^3 = 8$, so what is $2^3$?" — that's meaningless). Your question must actually require them
+  to think and have a real, not-yet-given answer.
+- If they're unsure or wrong, that's great — slow down further, give an even simpler example or analogy, and try a
+  smaller question. Never make them feel behind.
+- Keep maths gentle: $...$ for inline (e.g. $2^3$), a $$…$$ line only when it truly clarifies.
+- Stay STRICTLY on this concept (anti-drift): no outside topics, no tangents, no facts not grounded above. If they
+  wander, warmly bring them back.
+- Sound human: vary your wording, don't be formulaic, don't say "key move" / "gate" / "checklist" / "let's build it up"
+  every time. Just talk.
+${input.isReteach ? '- They just missed a check, so re-approach from a completely fresh, even simpler angle — no shame, lots of warmth.' : ''}
 
-After reading the latest learner reply, judge which key moves they have now clearly demonstrated and which misconceptions appeared.${languageInstruction(input.lang)}
+Then quietly judge which of your private ideas they've now genuinely demonstrated, and which misunderstandings showed.
 
-Return ONLY a JSON object, no prose around it (the "message" value must be in the student's language):
+Return ONLY a JSON object, no prose around it (write "message" in natural English — it will be translated for the student if needed):
 {
   "message": "<your next short tutor turn>",
   "keyMovesDemonstrated": [{ "index": <int>, "evidence": "<the learner words that prove it>" }],

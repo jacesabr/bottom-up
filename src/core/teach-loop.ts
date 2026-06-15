@@ -131,10 +131,10 @@ interface TurnResult {
 }
 
 /** A warm, in-character Socrates opening — instant (no LLM wait), grounded in THIS concept. */
-function socratesOpening(c: any, nextMoveText?: string, returning = false): string {
-  const q = nextMoveText
-    ? `Tell me first, in your own words — ${nextMoveText.charAt(0).toLowerCase()}${nextMoveText.slice(1)}?`
-    : `What do you already notice about this?`;
+function socratesOpening(c: any, _nextMoveText?: string, returning = false): string {
+  // Open like a real teacher meeting a student: never dump the lesson goal as a question, never
+  // assume they know the terms. Just find out where they're starting from, warmly.
+  const q = `Today we're going to look at ${c.title.toLowerCase()} — and don't worry at all if that sounds unfamiliar, we'll build it up from scratch and take it nice and slow. Before we start: is this something you've come across before, or is it brand new to you?`;
 
   if (returning) {
     // Gentle reminder for a learner who's been here before — assume they may have forgotten.
@@ -232,15 +232,10 @@ export async function respond(
     });
   }
 
-  // On the very first turn, prepend a warm welcome + how-to so every chat onboards the learner.
+  // Teaching reasons in English (best quality); translate the final message to the learner's language.
   let message = turn.message;
-  if (isOpening) {
-    const welcome =
-      `Hi there! 👋 I'm your tutor — we'll take this one step at a time, no pressure, and you can't "fail" here; we just keep going until it clicks.\n\n` +
-      `💡 Tap **Details** (top-right) anytime to see what we'll cover. The panel on the right is your **scratchpad** — sketch anything, even rough or half-finished working, then **Attach** it to your reply or hit **Help me** and I'll take a look.\n\n` +
-      `Okay — let's begin. `;
-    message = welcome + turn.message;
-  }
+  void isOpening;
+  if (langCode !== 'en') message = await translateText(message, langCode);
 
   // Record tutor turn
   await db.insert(buEvent).values({
@@ -278,7 +273,7 @@ export async function helpWithSketch(learnerId: string, conceptId: string, image
 
   const prompt = `You are a warm CBSE Class 10 maths tutor helping with the concept "${c.title}" (${c.brief}).
 The image is the student's handwritten working. Read it, then give ONE short, encouraging hint (1–2 sentences) that nudges them toward${nextMove ? ` this idea: "${nextMove.text}"` : ' finishing'}.
-Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer — just the next nudge.${languageInstruction(langCode)}`;
+Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer — just the next nudge.`;
 
   let message: string;
   try {
@@ -288,6 +283,7 @@ Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer 
       ? `I can see you're working it out — nice. Try focusing on this next: ${nextMove.text.toLowerCase()}. What do you get?`
       : `Good progress on paper! Talk me through your final step and we'll check it together.`;
   }
+  if (langCode !== 'en') message = await translateText(message, langCode);
 
   await db.insert(buEvent).values({
     learnerId,
@@ -370,33 +366,34 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
     const strip = (s: string) => norm(s).replace(/[^a-z0-9]/g, '');
     correct = norm(answer) === norm(expected.correct) || strip(answer) === strip(expected.correct);
     feedback = correct ? 'Correct.' : 'Not the right option — look again.';
-    if (langCode !== 'en') feedback = await translateText(feedback, langCode);
   } else if (g.grader === 'cas') {
     const target = expected.equivalentTo ?? '';
     // Clean integer target → deterministic CAS; otherwise LLM equivalence vs the ideal answer.
     if (/^\d+$/.test(String(target).trim())) {
       correct = casEquivalent(answer, target);
       feedback = correct ? 'Correct.' : "That doesn't evaluate to the right value — recheck your working.";
-      if (langCode !== 'en') feedback = await translateText(feedback, langCode);
     } else {
       gradedBy = 'equivalence';
-      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer, langCode);
+      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer);
       correct = r.correct;
       feedback = r.feedback;
     }
   } else if (g.grader === 'rubric') {
     gradedBy = 'rubric';
-    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer, langCode);
+    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer);
     correct = r.correct;
     feedback = r.feedback;
   } else if (g.grader === 'vision') {
     gradedBy = 'vision';
-    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer, langCode);
+    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer);
     correct = r.correct;
     feedback = r.feedback;
   } else {
     correct = norm(answer) === norm(expected.correct ?? expected.answer ?? '');
   }
+
+  // All grading reasons in English; translate the feedback to the learner's language (strong model).
+  if (langCode !== 'en') feedback = await translateText(feedback, langCode);
 
   const prior = await db
     .select()

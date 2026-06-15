@@ -16,6 +16,14 @@ const NIM_BASE = process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.co
 // "super" reasoning models strand content as null with json_object on NIM). Fast + warm for tutoring.
 const NIM_MODEL = process.env.MODEL_NODE_NIM || 'meta/llama-3.3-70b-instruct';
 const HAIKU_MODEL = process.env.MODEL_NODE || 'claude-haiku-4-5-20251001';
+// Translation needs a strong multilingual model (NIM is weak on Indian languages). Claude Haiku by
+// default; set MODEL_TRANSLATE=claude-sonnet-4-6 for top quality.
+const TRANSLATE_MODEL = process.env.MODEL_TRANSLATE || 'claude-haiku-4-5-20251001';
+
+/** Strong-model completion for translation (Claude). Returns plain text. */
+export async function claudeTranslate(messages: ChatMessage[], maxTokens = 1000): Promise<string> {
+  return claudeComplete(messages, maxTokens, TRANSLATE_MODEL);
+}
 
 export function resolveProvider(): Provider {
   const isTestRunner = process.env.NODE_ENV === 'test';
@@ -107,7 +115,7 @@ export async function claudeAuthor(messages: ChatMessage[], maxTokens = 2000): P
   return claudeComplete(messages, maxTokens);
 }
 
-async function claudeComplete(messages: ChatMessage[], maxTokens: number): Promise<string> {
+async function claudeComplete(messages: ChatMessage[], maxTokens: number, model: string = HAIKU_MODEL): Promise<string> {
   const key = process.env.ANTHROPIC_API_KEY;
   if (!key) throw new Error('ANTHROPIC_API_KEY missing');
   const system = messages.filter((m) => m.role === 'system').map((m) => m.content).join('\n\n');
@@ -116,7 +124,7 @@ async function claudeComplete(messages: ChatMessage[], maxTokens: number): Promi
     .map((m) => ({ role: m.role as 'user' | 'assistant', content: m.content }));
   const res = await axios.post(
     'https://api.anthropic.com/v1/messages',
-    { model: HAIKU_MODEL, max_tokens: maxTokens, system, messages: rest },
+    { model, max_tokens: maxTokens, system, messages: rest },
     {
       headers: {
         'x-api-key': key,
