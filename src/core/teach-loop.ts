@@ -132,28 +132,26 @@ interface TurnResult {
 
 /** A warm, in-character Socrates opening — instant (no LLM wait), grounded in THIS concept. */
 function socratesOpening(c: any, _nextMoveText?: string, returning = false): string {
-  // Open like a real teacher meeting a student: never dump the lesson goal as a question, never
-  // assume they know the terms. Just find out where they're starting from, warmly.
-  const q = `Today we're going to look at ${c.title.toLowerCase()} — and don't worry at all if that sounds unfamiliar, we'll build it up from scratch and take it nice and slow. Before we start: is this something you've come across before, or is it brand new to you?`;
+  // Open like a real teacher meeting a student: never dump the internal node title or the lesson
+  // goal as a question, never assume terms. Just find out where they're starting from, warmly.
+  // (The AI introduces the actual topic naturally on the first real turn.)
+  const q = `Before we dive in — how are you feeling about this topic so far? Have you come across it before, or is it pretty new? Either way is completely fine, we'll take it nice and slow.`;
 
   if (returning) {
     // Gentle reminder for a learner who's been here before — assume they may have forgotten.
     return (
-      `Welcome back, my friend. 🙂\n\n` +
-      `Quick reminder of what's here for you: **Details** (top-right) shows what we'll cover; the **scratchpad** on the ` +
-      `right is for rough working — **Attach** it or hit **Help me** and I'll look; and you can **🎤 speak** your ideas ` +
-      `instead of typing, plus tap **🔊** to hear me read a reply aloud. Talking a problem through out loud really does help it click.\n\n` +
-      `Now — **${c.title}**. ${q}`
+      `Welcome back. 🙂 Quick reminder: tap **Details** (top-right) anytime, use the **scratchpad** for rough working ` +
+      `(then **Attach** it or hit **Help me**), and you can **🎤 speak** instead of typing or have replies **read aloud**.\n\n` +
+      q
     );
   }
 
   return (
-    `Hello, my friend. 🙂 I am your tutor — think of me as your Socrates: I won't lecture at you, ` +
-    `I'll ask, you'll think, and together we'll arrive at the truth. There's no failing here — we simply keep questioning until it's clear.\n\n` +
-    `💡 A few things that help: tap **Details** (top-right) to see what we'll cover; use the **scratchpad** on the right for rough ` +
-    `working, then **Attach** it or hit **Help me** and I'll look; you can **🎤 speak** your ideas instead of typing (talking a ` +
-    `problem through really helps it click), and tap **🔊** on any of my replies to hear it read aloud.\n\n` +
-    `So, let us begin with **${c.title}**. ${c.brief}\n\n${q}`
+    `Hi there. 🙂 I'm your tutor — I won't lecture at you; I'll ask little questions and we'll figure it out together, ` +
+    `step by step. There's no failing here, so relax.\n\n` +
+    `A couple of handy things: tap **Details** (top-right) anytime, jot rough working on the **scratchpad** (then **Attach** ` +
+    `it or hit **Help me**), and you can **🎤 speak** instead of typing or have my replies **read aloud**.\n\n` +
+    q
   );
 }
 
@@ -508,16 +506,17 @@ export async function getNodeDetail(learnerId: string, conceptId: string) {
     evidence: evidenceByIdx.get(index)?.evidence ?? null,
   }));
 
-  // The gate question for transparency — NEVER the expected answer (server-only).
+  // The full gate set for transparency — NEVER the expected answer (server-only).
   const grows = await db.select().from(gates).where(eq(gates.conceptId, conceptId));
-  const gate = grows.length
-    ? {
-        prompt: grows[0].prompt,
-        answerType: grows[0].answerType,
-        options: grows[0].answerType === 'mcq' ? (grows[0].expected as any).options : null,
-        srcLabel: grows[0].srcLabel,
-      }
-    : null;
+  const authored = grows.filter((g) => g.kind === 'authored').sort((a, b) => (a.ord ?? 0) - (b.ord ?? 0));
+  const gateRows = authored.length ? authored : grows;
+  const gatesList = gateRows.map((g) => ({
+    slot: g.slot,
+    answerType: g.answerType,
+    prompt: g.prompt,
+    options: g.answerType === 'mcq' ? (g.expected as any).options : null,
+  }));
+  const gate = gatesList[0] ?? null; // back-compat
   const perf = await db
     .select()
     .from(buNodePerformance)
@@ -591,6 +590,7 @@ export async function getNodeDetail(learnerId: string, conceptId: string) {
     },
     checklist,
     gate,
+    gates: gatesList,
     gateAttempts: attempts.map((a) => ({ attemptNo: a.attemptNo, answer: a.learnerAnswer, correct: a.correct })),
     painPoints,
     notes,

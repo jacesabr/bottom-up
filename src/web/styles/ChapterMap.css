@@ -136,11 +136,11 @@
   justify-content: center;
 }
 
+/* Incomplete / open-now → red (do these next). */
 .c.available .dot {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-soft);
+  background: #fdeceb;
+  border-color: #d64541;
+  color: #c0392b;
   cursor: pointer;
 }
 
@@ -151,6 +151,23 @@
 .c.available .nm {
   color: var(--ink);
   font-weight: 600;
+}
+
+/* Current node in focus / in progress → glowing highlight. */
+.c.current .dot {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  cursor: pointer;
+  animation: nodeGlow 1.4s ease-in-out infinite;
+}
+.c.current .nm {
+  color: var(--ink);
+  font-weight: 700;
+}
+@keyframes nodeGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 89, 31, 0.45); }
+  50% { box-shadow: 0 0 0 7px rgba(217, 89, 31, 0); }
 }
 
 .c.locked .dot::after {
@@ -185,6 +202,10 @@
 }
 
 .l-now::before {
+  color: #c0392b;
+}
+
+.l-cur::before {
   color: var(--accent);
 }
 

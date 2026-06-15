@@ -154,3 +154,10 @@ h1 {
   border-radius: 8px; cursor: pointer; font-size: 0.9rem;
 }
 .subject-select .back-btn:hover { background: var(--bg); }
+
+.doc-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.doc-link {
+  font-size: 0.82rem; font-weight: 600; color: var(--accent); text-decoration: none;
+  border: 1px solid var(--rule); border-radius: 8px; padding: 5px 11px; white-space: nowrap;
+}
+.doc-link:hover { border-color: var(--accent); background: var(--accent-soft); }

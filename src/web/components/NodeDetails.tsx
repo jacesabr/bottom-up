@@ -2,6 +2,14 @@ import { useEffect, useState } from 'react';
 import { MathText } from '../lib/MathText';
 import '../styles/NodeDetails.css';
 
+function slotLabel(slot?: string, answerType?: string): string {
+  if (slot === 'sketch1' || slot === 'sketch2' || answerType === 'sketch') return '✏️ draw it';
+  if (slot === 'explain' || answerType === 'written') return '✍️ explain in words';
+  if (slot === 'mcq' || answerType === 'mcq') return '🔘 multiple choice';
+  if (slot === 'equation' || answerType === 'symbolic') return '🧮 solve it';
+  return 'check';
+}
+
 /**
  * Optional disclosure (the "ⓘ Details" button). Keeps content/progress/pain-points OUT of the
  * teaching flow so they never add friction — the learner opens this only if they want it.
@@ -63,7 +71,7 @@ export default function NodeDetails({
             </section>
 
             <section>
-              <div className="d-label">Key ideas ({d.checklist.filter((c: any) => c.demonstrated).length}/{d.checklist.length} shown)</div>
+              <div className="d-label">What we're learning — covered ✓ / remaining ◻ ({d.checklist.filter((c: any) => c.demonstrated).length}/{d.checklist.length})</div>
               <ul className="d-checklist">
                 {d.checklist.map((c: any) => (
                   <li key={c.index} className={c.demonstrated ? 'done' : ''}>
@@ -97,18 +105,22 @@ export default function NodeDetails({
               )}
             </section>
 
-            {d.gate && (
+            {d.gates && d.gates.length > 0 && (
               <section>
-                <div className="d-label">Gate check — appears in chat after all ideas are shown</div>
-                <p className="d-gate"><MathText>{d.gate.prompt}</MathText></p>
-                {d.gate.options && (
-                  <ul className="d-gate-opts">
-                    {d.gate.options.map((o: string, i: number) => (
-                      <li key={i}><MathText>{o}</MathText></li>
-                    ))}
-                  </ul>
-                )}
-                {d.gate.srcLabel && <div className="d-gate-src">Source: {d.gate.srcLabel}</div>}
+                <div className="d-label">The checks ({d.gates.length}) — posed in chat after all ideas are shown</div>
+                {d.gates.map((g: any, i: number) => (
+                  <div key={i} className="d-gate">
+                    <div className="d-gate-type">{slotLabel(g.slot, g.answerType)}</div>
+                    <div className="d-gate-q"><MathText>{g.prompt}</MathText></div>
+                    {g.options && (
+                      <ul className="d-gate-opts">
+                        {g.options.map((o: string, j: number) => (
+                          <li key={j}><MathText>{o}</MathText></li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
               </section>
             )}
 

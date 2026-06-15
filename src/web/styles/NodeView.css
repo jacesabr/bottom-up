@@ -270,3 +270,5 @@
 }
 .speak-btn:hover { opacity: 1; }
 .notation-btn.mic.listening { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.notation-btn.read.on { background: var(--green-soft); border-color: #bcd6c4; color: var(--green); }

@@ -87,3 +87,7 @@
 .d-gate-src { font-size: 0.76rem; color: var(--dim); margin-top: 4px; }
 
 .d-evidence { display: block; font-size: 0.8rem; color: var(--dim); font-style: italic; margin-top: 2px; }
+
+.d-gate { margin-bottom: 10px; }
+.d-gate-type { font-size: 0.72rem; font-weight: 700; color: var(--accent); margin-bottom: 3px; }
+.d-gate-q { font-size: 0.9rem; background: #faf7f2; border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 8px; padding: 9px 11px; line-height: 1.5; }

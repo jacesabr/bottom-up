@@ -7,26 +7,54 @@ export interface GradeResult {
 }
 
 /**
- * Translate text into the learner's language using a STRONG, fast model (Claude) — NIM is weak on
- * Indian languages and slow. Content is stored once (English) and translated dynamically here, so
- * nothing goes stale. Returns the original on failure or for English.
+ * Translate into the learner's language using a FREE service (no Claude — those credits are for
+ * actual teaching). Content is stored once in English and translated dynamically here, so nothing
+ * goes stale. Maths ($...$) and **bold** are masked so the translator can't mangle them.
+ * Provider: free Google endpoint (no key) → NIM fallback → original. For production-grade Indian
+ * languages, swap in Bhashini (Govt of India, free) — see continue_authoring.md.
  */
 export async function translateText(text: string, langCode?: string): Promise<string> {
   if (!langCode || langCode === 'en' || !text?.trim()) return text;
-  const l = lang(langCode);
+
+  // Mask maths/markdown/emoji so the translator preserves them verbatim.
+  const masks: string[] = [];
+  const mask = (s: string) => {
+    const i = masks.length;
+    masks.push(s);
+    return ` _${i}_ `; // a token translators leave alone
+  };
+  let masked = text
+    .replace(/\$\$[\s\S]+?\$\$/g, mask)
+    .replace(/\$[^$\n]+?\$/g, mask)
+    .replace(/\*\*([^*]+)\*\*/g, (_m, b) => `**${mask(b)}**`);
+
+  const unmask = (s: string) => s.replace(/_\s*(\d+)\s*_/g, (_m, i) => masks[+i] ?? '');
+
+  // 1) Free Google endpoint (no key).
   try {
-    const raw = await claudeTranslate(
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${langCode}&dt=t&q=${encodeURIComponent(masked)}`;
+    const res = await axios.get(url, { timeout: 12_000 });
+    const segments = res.data?.[0];
+    if (Array.isArray(segments)) {
+      const out = segments.map((s: any) => s?.[0] ?? '').join('');
+      if (out.trim()) return unmask(out);
+    }
+  } catch {
+    /* try NIM */
+  }
+
+  // 2) NIM fallback (free, weaker/slower but better than nothing).
+  try {
+    const l = lang(langCode);
+    const raw = await completeJson(
       [
-        {
-          role: 'system',
-          content: `You are an expert translator for an Indian school maths tutor. Translate the user's message into natural, conversational ${l.name} (${l.native}) as a real teacher would speak it. Keep Markdown like **bold**, emoji, and all maths ($...$, exponents, HCF) exactly as-is. Output ONLY the translation — no quotes, no notes.`,
-        },
-        { role: 'user', content: text },
+        { role: 'system', content: `Translate the user's message into ${l.name} (${l.native}). Keep tokens like _0_ , **bold**, emoji and maths exactly as-is. Output ONLY the translation.` },
+        { role: 'user', content: masked },
       ],
-      1200
+      { maxTokens: 800 }
     );
     const out = raw.trim().replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
-    if (out) return out;
+    if (out) return unmask(out);
   } catch {
     /* keep original */
   }

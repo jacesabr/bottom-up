@@ -27,7 +27,6 @@ export default function SubjectSelect({
               <button className="exam-card" onClick={() => onSelect('maths')}>
                 <div className="exam-label">Subject</div>
                 <div className="exam-subject">Mathematics</div>
-                <div className="exam-note">14 chapters · 271 concepts · live</div>
               </button>
 
               <div className="exam-card disabled">

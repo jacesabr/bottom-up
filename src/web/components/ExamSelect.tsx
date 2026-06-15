@@ -5,7 +5,10 @@ export default function ExamSelect({ onSelect }: { onSelect: (exam: string) => v
   return (
     <div className="subject-select">
       <div className="page-content">
-        <div className="kick">How it works · exam-prep</div>
+        <div className="doc-bar">
+          <div className="kick">How it works · exam-prep</div>
+          <a className="doc-link" href="/how-it-works.html" target="_blank" rel="noreferrer">📖 Documentation</a>
+        </div>
         <h1>Learn it chapter by chapter. Then sit one clean exam.</h1>
         <p className="sub">
           Build the understanding from the ground up — one chapter, one concept at a time — then measure it with a real exam.

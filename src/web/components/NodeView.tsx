@@ -3,7 +3,7 @@ import { MathText } from '../lib/MathText';
 import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
-import { listen, speak, speechSupported, ttsSupported } from '../lib/voice';
+import { listen, speak, stopSpeaking, speechSupported, ttsSupported } from '../lib/voice';
 import '../styles/NodeView.css';
 
 interface LangOpt {
@@ -59,7 +59,9 @@ export default function NodeView({
   const [langs, setLangs] = useState<LangOpt[]>([]);
   const [lang, setLang] = useState<string>(() => localStorage.getItem('lang') || 'en');
   const [listening, setListening] = useState(false);
+  const [autoRead, setAutoRead] = useState<boolean>(() => localStorage.getItem('autoRead') === '1');
   const stopListenRef = useRef<(() => void) | null>(null);
+  const spokenCount = useRef(0);
 
   const scroller = useRef<HTMLDivElement>(null);
   const padRef = useRef<ScratchpadHandle>(null);
@@ -122,6 +124,19 @@ export default function NodeView({
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
   }, [messages, busy]);
+
+  // Global read-aloud: when on, speak each NEW tutor message as it arrives.
+  useEffect(() => {
+    if (!autoRead || !ttsSupported()) {
+      spokenCount.current = messages.length;
+      return;
+    }
+    for (let i = spokenCount.current; i < messages.length; i++) {
+      const m = messages[i];
+      if (m.role === 'tutor' && m.text) speak(m.text, speechCode);
+    }
+    spokenCount.current = messages.length;
+  }, [messages, autoRead, speechCode]);
 
   const send = async () => {
     const text = input.trim();
@@ -267,12 +282,7 @@ export default function NodeView({
           <div className="chat-scroll" ref={scroller}>
             {messages.map((m, i) => (
               <div key={i} className={`bubble ${m.role}`}>
-                <div className="bubble-label">
-                  {m.role === 'tutor' ? 'Tutor' : 'You'}
-                  {m.role === 'tutor' && m.text && ttsSupported() && (
-                    <button className="speak-btn" title="Read aloud" onClick={() => speak(m.text!, speechCode)}>🔊</button>
-                  )}
-                </div>
+                <div className="bubble-label">{m.role === 'tutor' ? 'Tutor' : 'You'}</div>
                 <div className="bubble-text">
                   {m.image && <img className="bubble-img" src={m.image} alt="handwritten working" />}
                   {m.text && <MathText>{m.text}</MathText>}
@@ -370,6 +380,20 @@ export default function NodeView({
                   disabled={busy}
                 />
                 <div className="reply-actions">
+                  {ttsSupported() && (
+                    <button
+                      className={autoRead ? 'notation-btn read on' : 'notation-btn read'}
+                      onClick={() => {
+                        const next = !autoRead;
+                        setAutoRead(next);
+                        localStorage.setItem('autoRead', next ? '1' : '0');
+                        if (!next) stopSpeaking();
+                      }}
+                      title="Read every reply aloud automatically"
+                    >
+                      {autoRead ? '🔊 Read aloud: on' : '🔈 Read aloud: off'}
+                    </button>
+                  )}
                   {speechSupported() && (
                     <button
                       className={listening ? 'notation-btn mic listening' : 'notation-btn mic'}

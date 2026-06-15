@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How it works — learn the chapters, then one clean exam</title>
+<style>
+  :root { color-scheme: light;
+    --bg:#fbfaf8; --ink:#1c1b19; --dim:#6b6a66; --accent:#d9591f; --accent-soft:#fbe9dd;
+    --green:#3f7d4f; --green-soft:#e8f1ea; --blue:#2f6f8f; --blue-soft:#e6eff3;
+    --rule:#e7e4df; --card:#ffffff; --lock:#c2bcb2; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:'Inter',-apple-system,system-ui,sans-serif; line-height:1.55; padding:28px 16px 70px; }
+  .wrap { max-width:660px; margin:0 auto; }
+
+  .kick { font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+  h1 { font-size:1.9rem; font-weight:800; letter-spacing:-0.02em; line-height:1.12; margin:8px 0 10px; }
+  .sub { font-size:1.02rem; color:var(--dim); }
+
+  .steps { margin-top:30px; display:flex; flex-direction:column; gap:14px; }
+  .step { display:flex; gap:15px; align-items:flex-start; background:var(--card); border:1px solid var(--rule); border-radius:16px; padding:18px 18px; }
+  .num { flex:0 0 38px; height:38px; border-radius:50%; background:var(--accent-soft); color:var(--accent); font-weight:800; font-size:1.05rem; display:flex; align-items:center; justify-content:center; }
+  .step h2 { font-size:1.08rem; font-weight:800; letter-spacing:-0.01em; }
+  .step p { font-size:0.94rem; color:var(--dim); margin-top:3px; }
+  .grow { flex:1; }
+
+  /* maps (chapters + nodes share the circle style) */
+  .map-wrap { margin-top:13px; background:#faf7f2; border:1px solid var(--rule); border-radius:12px; padding:15px 14px 13px; }
+  .map-title { font-size:0.78rem; font-weight:700; color:var(--ink); margin-bottom:11px; }
+  .map { display:flex; flex-wrap:wrap; gap:9px; }
+  .c { width:74px; text-align:center; }
+  .c .dot { width:46px; height:46px; border-radius:50%; margin:0 auto 5px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.9rem; border:2px solid var(--rule); background:#fff; color:var(--lock); position:relative; }
+  .c .nm { font-size:0.6rem; line-height:1.15; color:var(--dim); }
+  .c.done .dot { background:var(--green-soft); border-color:#bcd6c4; color:var(--green); }
+  .c.done .dot::after { content:"✓"; position:absolute; right:-3px; top:-3px; background:var(--green); color:#fff; width:17px; height:17px; border-radius:50%; font-size:0.65rem; display:flex; align-items:center; justify-content:center; }
+  .c.now .dot { background:var(--accent-soft); border-color:var(--accent); color:var(--accent); box-shadow:0 0 0 4px var(--accent-soft); }
+  .c.now .nm { color:var(--ink); font-weight:600; }
+  .c.lock .dot::after { content:"🔒"; position:absolute; right:-4px; top:-4px; font-size:0.6rem; }
+  .legend { display:flex; gap:15px; flex-wrap:wrap; margin-top:12px; font-size:0.73rem; color:var(--dim); }
+  .legend span::before { content:"●"; margin-right:5px; }
+  .l-done::before { color:var(--green); } .l-now::before { color:var(--accent); } .l-lock::before { color:var(--lock); }
+  .hint { font-size:0.78rem; color:var(--accent); margin-top:9px; font-weight:600; }
+
+  /* the per-node loop */
+  .loop { display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin-top:13px; }
+  .pill { font-size:0.8rem; font-weight:600; border-radius:20px; padding:6px 12px; border:1px solid var(--rule); background:#faf8f5; color:var(--dim); }
+  .pill.teach { color:var(--blue); background:var(--blue-soft); border-color:#cfe0e8; }
+  .pill.check { color:#8a5a00; background:#f7eccc; border-color:#e8d8a8; }
+  .pill.pass { color:var(--green); background:var(--green-soft); border-color:#bcd6c4; }
+  .pill.miss { color:var(--accent); background:var(--accent-soft); border-color:#f0cdb6; }
+  .arr { color:#c9c3ba; font-weight:700; }
+  .loop-note { font-size:0.8rem; color:var(--dim); margin-top:9px; }
+
+  .track { margin-top:24px; background:var(--blue-soft); border:1px solid #cfe0e8; border-radius:14px; padding:16px 17px; }
+  .track h3 { font-size:0.95rem; color:var(--blue); margin-bottom:5px; }
+  .track p { font-size:0.9rem; color:var(--dim); }
+
+  .aside { margin-top:14px; background:var(--green-soft); border:1px solid #cfe0d4; border-radius:14px; padding:15px 17px; font-size:0.92rem; }
+  .aside b { color:var(--green); }
+
+  .brain { margin-top:26px; border-top:2px dashed var(--rule); padding-top:18px; }
+  .brain .bk { font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+  .brain h2 { font-size:1.15rem; font-weight:800; margin:5px 0 12px; }
+  .q { background:var(--card); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:10px; padding:13px 15px; margin-bottom:10px; font-size:0.95rem; }
+  .q b { color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kick">How it works · exam-prep</div>
+  <h1>Learn it chapter by chapter. Then sit one clean exam.</h1>
+  <p class="sub">A simpler path through CBSE 10 Maths: build the understanding from the ground up — one chapter, one concept at a time — then measure it with a real exam.</p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <h2>Pick your exam &amp; subject</h2>
+        <p>For example: CBSE Class 10 · Mathematics.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <div class="grow">
+        <h2>Work through the chapters, in order</h2>
+        <p>Chapters unlock one after another — finish one to open the next. No skipping ahead.</p>
+        <div class="map-wrap">
+          <div class="map-title">CBSE 10 · Maths — 14 chapters</div>
+          <div class="map" id="chapters"></div>
+          <div class="legend"><span class="l-done">done</span><span class="l-now">you're here</span><span class="l-lock">locked</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <div class="grow">
+        <h2>Inside a chapter, concepts unlock as you go</h2>
+        <p>Each chapter is a small map of its concepts, built bottom-up: the foundations open first, and finishing them unlocks what builds on top. Tap any open concept to start it.</p>
+        <div class="map-wrap">
+          <div class="map-title">Chapter 1 · Real Numbers</div>
+          <div class="map" id="nodes"></div>
+          <div class="legend"><span class="l-done">passed</span><span class="l-now">open now</span><span class="l-lock">locked</span></div>
+          <div class="hint">More than one can be open at once — you choose which to do next.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">4</div>
+      <div class="grow">
+        <h2>Inside a concept — the AI teaches, then checks</h2>
+        <p>A guided chat walks you to the idea and ticks off each part as you show you've got it. Then a quick check.</p>
+        <div class="loop">
+          <span class="pill teach">AI teaches the idea</span><span class="arr">→</span>
+          <span class="pill check">ticks off each part ✓</span><span class="arr">→</span>
+          <span class="pill check">quick check</span><span class="arr">→</span>
+          <span class="pill pass">pass → next opens</span><span class="arr">/</span>
+          <span class="pill miss">miss → re-teach &amp; retry</span>
+        </div>
+        <p class="loop-note">A miss just loops you back into teaching for that concept — there's no failing out, you keep going until it clicks.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">5</div>
+      <div>
+        <h2>Sit one clean final exam</h2>
+        <p>A real past board paper — no hints, no teaching mid-way. An honest measure of what actually stuck.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">6</div>
+      <div>
+        <h2>Get your weak concepts to revise</h2>
+        <p>We flag the exact concepts behind each wrong answer, so you go straight back and revise them — instead of "study harder."</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="track">
+    <h3>Quietly, it keeps a record of every concept</h3>
+    <p>For each concept: which ideas you've shown, and how each check went. So you can see exactly where you're strong or shaky — and so we can see which concepts trip people up and teach them better.</p>
+  </div>
+
+  <div class="aside">
+    <b>How this differs from the Socratic tutor.</b> The tutor jumps <em>into</em> a hard question and digs down to the gap. This builds you up <em>before</em> the exam instead — so they stay two separate tools, each doing one job well.
+  </div>
+
+  <div class="brain">
+    <div class="bk">The shape of it</div>
+    <h2>Three calls we've made</h2>
+    <div class="q"><b>The final exam</b> is a real past board paper — authentic conditions, no shortcuts.</div>
+    <div class="q"><b>The pace</b> is strict — chapters, and the concepts inside them, open in order.</div>
+    <div class="q"><b>After the exam</b>, we flag the concepts you were weak on so you can go revise them.</div>
+  </div>
+
+</div>
+
+<script>
+  // Chapter map (14) — strict linear: ch.1 open, rest locked
+  const chapters = ["Real Numbers","Polynomials","Linear Eq.","Quadratics","Arithmetic Prog.","Triangles","Coordinate Geom.","Trigonometry","Heights & Dist.","Circles","Areas & Circles","Surface & Volume","Statistics","Probability"];
+  const cm = document.getElementById('chapters');
+  chapters.forEach((name,i)=>{
+    const el = document.createElement('div');
+    el.className = 'c ' + (i===0 ? 'now' : 'lock');
+    el.innerHTML = '<div class="dot">'+(i+1)+'</div><div class="nm">'+name+'</div>';
+    cm.appendChild(el);
+  });
+
+  // Node map (inside Ch.1) — foundations passed, frontier open, rest locked
+  const nodes = [
+    ["Primes & coprime","done"],
+    ["Prime factorising","now"],
+    ["Fundamental Theorem","now"],
+    ["HCF & LCM","lock"],
+    ["Irrational proofs","lock"],
+    ["★ Apply it all","lock"]
+  ];
+  const nm = document.getElementById('nodes');
+  nodes.forEach(([name,state],i)=>{
+    const el = document.createElement('div');
+    el.className = 'c ' + state;
+    const inner = state==='done' ? '' : (i+1);
+    el.innerHTML = '<div class="dot">'+inner+'</div><div class="nm">'+name+'</div>';
+    nm.appendChild(el);
+  });
+</script>
+</body>
+</html>
