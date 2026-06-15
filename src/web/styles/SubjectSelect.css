@@ -1,0 +1,93 @@
+.subject-select {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.kick {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  margin: 0 0 10px;
+}
+
+.sub {
+  font-size: 1.02rem;
+  color: var(--dim);
+  margin-bottom: 30px;
+}
+
+.exams {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.exam-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.exam-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(217, 89, 31, 0.1);
+  transform: translateY(-2px);
+}
+
+.exam-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.exam-subject {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.exam-note {
+  font-size: 0.85rem;
+  color: var(--dim);
+  margin-top: 4px;
+}
+
+.info {
+  background: var(--green-soft);
+  border: 1px solid #cfe0d4;
+  border-radius: 14px;
+  padding: 15px 17px;
+  font-size: 0.92rem;
+}
+
+.info p {
+  margin: 0;
+}
+
+.info b {
+  color: var(--green);
+}

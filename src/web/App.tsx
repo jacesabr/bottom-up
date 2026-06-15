@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import ChapterView from './components/ChapterView';
+import SubjectSelect from './components/SubjectSelect';
+import ChapterMap from './components/ChapterMap';
 import NodeView from './components/NodeView';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3030/api';
@@ -14,33 +15,47 @@ export default function App() {
     return newId;
   });
 
-  const [view, setView] = useState<'chapter' | 'node'>('chapter');
+  const [view, setView] = useState<'subject' | 'chapters' | 'node'>('subject');
+  const [currentExam, setCurrentExam] = useState<string | null>(null);
+  const [currentSubject, setCurrentSubject] = useState<string | null>(null);
   const [currentConceptId, setCurrentConceptId] = useState<string | null>(null);
-  const [chapterId] = useState('cbse10:maths:jemh101');
+
+  const handleSubjectSelect = (exam: string, subject: string) => {
+    setCurrentExam(exam);
+    setCurrentSubject(subject);
+    setView('chapters');
+  };
 
   const handleNodeClick = (conceptId: string) => {
     setCurrentConceptId(conceptId);
     setView('node');
   };
 
-  const handleBackToChapter = () => {
-    setView('chapter');
+  const handleBackToChapters = () => {
+    setView('chapters');
     setCurrentConceptId(null);
+  };
+
+  const handleBackToSubject = () => {
+    setView('subject');
+    setCurrentExam(null);
+    setCurrentSubject(null);
   };
 
   return (
     <div className="app">
-      <header className="app-header">
-        <h1>Bottom-Up Exam Prep</h1>
-        <p className="learner-id">Learner: {learnerId.slice(0, 12)}</p>
-      </header>
-
       <main className="app-main">
-        {view === 'chapter' && (
-          <ChapterView
+        {view === 'subject' && (
+          <SubjectSelect onSelect={handleSubjectSelect} />
+        )}
+
+        {view === 'chapters' && currentExam && currentSubject && (
+          <ChapterMap
             learnerId={learnerId}
-            chapterId={chapterId}
+            exam={currentExam}
+            subject={currentSubject}
             onNodeClick={handleNodeClick}
+            onBack={handleBackToSubject}
             apiBase={API_BASE}
           />
         )}
@@ -49,7 +64,7 @@ export default function App() {
           <NodeView
             learnerId={learnerId}
             conceptId={currentConceptId}
-            onBack={handleBackToChapter}
+            onBack={handleBackToChapters}
             apiBase={API_BASE}
           />
         )}

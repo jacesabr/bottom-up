@@ -1,13 +1,18 @@
-/* Socratic-inspired cream palette */
+/* Exam-prep design from docs/exam-prep-overview.html */
 
 :root {
-  --cream-bg: #faf8f3;
-  --cream-text: #2a2520;
-  --cream-border: #e8e4da;
-  --accent-blue: #1f5a96;
-  --accent-green: #4a7c5c;
-  --accent-red: #c85a54;
-  --spacing: 1rem;
+  --bg: #fbfaf8;
+  --ink: #1c1b19;
+  --dim: #6b6a66;
+  --accent: #d9591f;
+  --accent-soft: #fbe9dd;
+  --green: #3f7d4f;
+  --green-soft: #e8f1ea;
+  --blue: #2f6f8f;
+  --blue-soft: #e6eff3;
+  --rule: #e7e4df;
+  --card: #ffffff;
+  --lock: #c2bcb2;
 }
 
 * {
@@ -16,51 +21,29 @@
   box-sizing: border-box;
 }
 
+html, body {
+  color-scheme: light;
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--cream-bg);
-  color: var(--cream-text);
-  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
 }
 
 .app {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.app-header {
-  background-color: var(--accent-blue);
-  color: white;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.app-header h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.learner-id {
-  font-size: 0.875rem;
-  opacity: 0.9;
 }
 
 .app-main {
-  flex: 1;
-  padding: 2rem;
-  max-width: 1200px;
+  max-width: 660px;
   margin: 0 auto;
-  width: 100%;
+  padding: 28px 16px 70px;
 }
 
 @media (max-width: 768px) {
-  .app-header h1 {
-    font-size: 1.5rem;
-  }
-
   .app-main {
-    padding: 1rem;
+    padding: 16px;
   }
 }
