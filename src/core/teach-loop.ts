@@ -6,10 +6,12 @@ import {
   buNodePerformance,
   buNodeChecklist,
   buGateAttempt,
+  buChatSummary,
+  buCorpusGap,
 } from '../db/schema.js';
-import { eq, and, asc } from 'drizzle-orm';
+import { eq, and, asc, gt } from 'drizzle-orm';
 import { recomputeAvailabilityAfterPass } from './sequencer.js';
-import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, type KeyMove } from './node-agent.js';
+import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, summarizeConversation, type KeyMove } from './node-agent.js';
 import { languageInstruction } from './languages.js';
 import { nimVision } from './llm.js';
 
@@ -39,6 +41,65 @@ async function reconstructDialogue(learnerId: string, conceptId: string) {
     else if (e.type === 'learner_turn') dialogue.push({ role: 'learner', content: (e.payload as any)?.message ?? '' });
   }
   return dialogue;
+}
+
+/** Turn events (tutor/learner) strictly after a watermark timestamp. */
+async function turnsSince(learnerId: string, conceptId: string, since: Date | null) {
+  const base = and(eq(buEvent.learnerId, learnerId), eq(buEvent.conceptId, conceptId));
+  const where = since ? and(base, gt(buEvent.ts, since)) : base;
+  const events = await db.select().from(buEvent).where(where).orderBy(asc(buEvent.ts));
+  const out: Array<{ role: 'tutor' | 'learner'; content: string; ts: Date | null }> = [];
+  for (const e of events) {
+    if (e.type === 'tutor_turn') out.push({ role: 'tutor', content: (e.payload as any)?.message ?? '', ts: e.ts });
+    else if (e.type === 'learner_turn') out.push({ role: 'learner', content: (e.payload as any)?.message ?? '', ts: e.ts });
+  }
+  return out;
+}
+
+/** Resume context = stored running summary (compact) + the turns since its watermark. Bounds growth. */
+async function buildContext(learnerId: string, conceptId: string) {
+  const rows = await db
+    .select()
+    .from(buChatSummary)
+    .where(and(eq(buChatSummary.learnerId, learnerId), eq(buChatSummary.conceptId, conceptId)));
+  const summaryRow = rows[0];
+  const recent = await turnsSince(learnerId, conceptId, summaryRow?.watermark ?? null);
+  return {
+    summary: summaryRow?.summary ?? null,
+    recentDialogue: recent.map((t) => ({ role: t.role, content: t.content })),
+  };
+}
+
+/**
+ * Cold-start/revisit summarization: fold all turns up to now into the running summary and advance
+ * the watermark. Runs once per node entry (not per turn). Cheap, occasional. No-op on a fresh node.
+ */
+export async function summarizeOnEntry(learnerId: string, conceptId: string): Promise<void> {
+  const c = await loadConcept(conceptId);
+  const rows = await db
+    .select()
+    .from(buChatSummary)
+    .where(and(eq(buChatSummary.learnerId, learnerId), eq(buChatSummary.conceptId, conceptId)));
+  const summaryRow = rows[0];
+  const newTurns = await turnsSince(learnerId, conceptId, summaryRow?.watermark ?? null);
+  if (!newTurns.length) return; // nothing new to fold (fresh node)
+
+  const updated = await summarizeConversation(
+    c.title,
+    summaryRow?.summary ?? null,
+    newTurns.map((t) => ({ role: t.role, content: t.content }))
+  );
+  const watermark = newTurns[newTurns.length - 1].ts ?? new Date();
+  const turnsSummarized = (summaryRow?.turnsSummarized ?? 0) + newTurns.length;
+
+  if (summaryRow) {
+    await db
+      .update(buChatSummary)
+      .set({ summary: updated, watermark, turnsSummarized })
+      .where(eq(buChatSummary.id, summaryRow.id));
+  } else {
+    await db.insert(buChatSummary).values({ learnerId, conceptId, summary: updated, watermark, turnsSummarized });
+  }
 }
 
 async function loadChecklist(learnerId: string, conceptId: string, keyMoves: string[]): Promise<KeyMove[]> {
@@ -120,6 +181,12 @@ export async function enterNode(learnerId: string, conceptId: string) {
     });
   }
 
+  // Cold-start: fold any prior-session turns into the running summary (fire-and-forget so /start
+  // stays fast; buildContext tolerates a not-yet-updated summary).
+  void summarizeOnEntry(learnerId, conceptId).catch((e) =>
+    console.error('summarizeOnEntry (non-fatal):', e?.message ?? e)
+  );
+
   return c;
 }
 
@@ -198,7 +265,8 @@ export async function respond(
     return { message, checklist, readyForGate: false, provider: 'opening' };
   }
 
-  const dialogue = await reconstructDialogue(learnerId, conceptId);
+  // Resume context = running summary (compact) + recent turns since its watermark (bounds growth).
+  const { summary, recentDialogue } = await buildContext(learnerId, conceptId);
   const isReteach = (await nodeStatus(learnerId, conceptId)) === 'needs_reteach';
   const isOpening = false;
 
@@ -208,10 +276,29 @@ export async function respond(
     explanation: c.explanation,
     keyMoves: checklist,
     misconceptions: c.misconceptions,
-    dialogue,
+    dialogue: recentDialogue,
+    priorSummary: summary ?? undefined,
     isReteach,
     lang: langCode,
   });
+
+  // Corpus gap: the tutor couldn't answer from our content — log it for review (→ corpus_gap.md).
+  if (turn.corpusGap?.missing) {
+    await db.insert(buEvent).values({
+      learnerId,
+      conceptId,
+      chapterId: c.chapterId,
+      type: 'corpus_gap',
+      payload: turn.corpusGap,
+    });
+    await db.insert(buCorpusGap).values({
+      conceptId,
+      chapterId: c.chapterId,
+      learnerId,
+      question: turn.corpusGap.question || null,
+      missing: turn.corpusGap.missing,
+    });
+  }
 
   // Apply checklist delta
   for (const d of turn.keyMovesDemonstrated) {

@@ -163,6 +163,7 @@ export interface TeachTurnInput {
   dialogue: Array<{ role: 'tutor' | 'learner'; content: string }>;
   isReteach?: boolean;
   lang?: string;
+  priorSummary?: string; // running summary of earlier conversation (cold-start resume)
 }
 
 export interface TeachTurnOutput {
@@ -171,6 +172,7 @@ export interface TeachTurnOutput {
   misconceptionsSeen: string[];
   readyForGate: boolean;
   provider: string;
+  corpusGap?: { question: string; missing: string } | null;
 }
 
 function buildMessages(input: TeachTurnInput): ChatMessage[] {
@@ -213,6 +215,8 @@ HOW TO TEACH (read carefully — this is the whole job):
   every time. Just talk.
 ${input.isReteach ? '- They just missed a check, so re-approach from a completely fresh, even simpler angle — no shame, lots of warmth.' : ''}
 
+If the student asks something you genuinely CANNOT answer from "Your ONLY source of truth" above (the content is missing it), do NOT make facts up — gently keep them on the current concept, and set "corpusGap" to flag what our material was missing.
+
 Then quietly judge which of your private ideas they've now genuinely demonstrated, and which misunderstandings showed.
 
 Return ONLY a JSON object, no prose around it (write "message" in natural English — it will be translated for the student if needed):
@@ -220,12 +224,19 @@ Return ONLY a JSON object, no prose around it (write "message" in natural Englis
   "message": "<your next short tutor turn>",
   "keyMovesDemonstrated": [{ "index": <int>, "evidence": "<the learner words that prove it>" }],
   "misconceptionsSeen": ["<short label>"],
-  "readyForGate": <true if ALL key moves are now demonstrated>
+  "readyForGate": <true if ALL key moves are now demonstrated>,
+  "corpusGap": null | { "question": "<what they asked>", "missing": "<what our content lacked, one short phrase>" }
 }`;
 
+  const summaryBlock = input.priorSummary
+    ? `WHAT'S HAPPENED SO FAR (summary of the earlier part of this conversation — treat as already-said context):\n${input.priorSummary}\n\n`
+    : '';
+
   const user = transcript
-    ? `Conversation so far:\n${transcript}\n\nProduce the next tutor turn + checklist delta as JSON.`
-    : `Open the lesson: name the concept in plain, friendly words so the student knows what we're about to build, then ask ONE gentle opening question that elicits key move [0]. Do NOT greet or say hi (a warm welcome is shown separately) — go straight into the topic, warmly and simply. Keep it short and human. Return JSON.`;
+    ? `${summaryBlock}Recent conversation:\n${transcript}\n\nProduce the next tutor turn + checklist delta as JSON.`
+    : input.priorSummary
+      ? `${summaryBlock}The student is returning to this concept. Warmly pick up where you left off (don't repeat what's already covered) and ask ONE gentle next question. Return JSON.`
+      : `Open the lesson: name the concept in plain, friendly words so the student knows what we're about to build, then ask ONE gentle opening question that elicits key move [0]. Do NOT greet or say hi (a warm welcome is shown separately) — go straight into the topic, warmly and simply. Keep it short and human. Return JSON.`;
 
   return [
     { role: 'system', content: system },
@@ -238,18 +249,51 @@ export async function teachTurn(input: TeachTurnInput): Promise<TeachTurnOutput>
     const raw = await completeJson(buildMessages(input), { maxTokens: 700 });
     const parsed = parseLooseJson<any>(raw);
     if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
+      const cg = parsed.corpusGap;
       return {
         message: parsed.message.trim(),
         keyMovesDemonstrated: Array.isArray(parsed.keyMovesDemonstrated) ? parsed.keyMovesDemonstrated : [],
         misconceptionsSeen: Array.isArray(parsed.misconceptionsSeen) ? parsed.misconceptionsSeen : [],
         readyForGate: !!parsed.readyForGate,
         provider: resolveProvider(),
+        corpusGap: cg && cg.missing ? { question: String(cg.question ?? ''), missing: String(cg.missing) } : null,
       };
     }
   } catch {
     /* fall through to mock */
   }
   return mockTurn(input);
+}
+
+/**
+ * Summarize a conversation (folding any existing summary + new turns) into a concise note for resume.
+ * Captures: what was covered, what the student understands, what's still unclear, where they are.
+ * Runs occasionally (cold-start/revisit), not per turn.
+ */
+export async function summarizeConversation(
+  conceptTitle: string,
+  existingSummary: string | null,
+  newTurns: Array<{ role: 'tutor' | 'learner'; content: string }>
+): Promise<string> {
+  const transcript = newTurns.map((t) => `${t.role === 'tutor' ? 'TUTOR' : 'STUDENT'}: ${t.content}`).join('\n');
+  const messages: ChatMessage[] = [
+    {
+      role: 'system',
+      content: `You compress a tutoring conversation into a short resume note (max ~120 words). Capture, as compact bullets: what's been covered/explained, what the student clearly understands, what's still shaky or unclear, and where the conversation left off. No fluff. Output ONLY the note.`,
+    },
+    {
+      role: 'user',
+      content: `Concept: ${conceptTitle}\n\n${existingSummary ? `Earlier summary:\n${existingSummary}\n\n` : ''}New conversation to fold in:\n${transcript}\n\nProduce the updated resume note.`,
+    },
+  ];
+  try {
+    const note = (await completeJson(messages, { maxTokens: 300 })).trim();
+    if (note) return note;
+  } catch {
+    /* fall through */
+  }
+  // Fallback: keep the existing summary or a trivial note.
+  return existingSummary ?? `Discussed ${conceptTitle}; ${newTurns.length} turns exchanged.`;
 }
 
 /** Clean offline fallback — readable prose, simple heuristic checklist progress. */

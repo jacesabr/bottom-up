@@ -109,6 +109,31 @@ export const buGateAttempt = pgTable('bu_gate_attempt', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 
+// Per-student, per-node running conversation summary. Written on cold-start/revisit so we resume
+// from "summary + recent turns" instead of replaying the whole dialogue (bounds context growth).
+export const buChatSummary = pgTable('bu_chat_summary', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  learnerId: uuid('learner_id').notNull(),
+  conceptId: text('concept_id').notNull(),
+  summary: text('summary').notNull(), // what was covered / understood / still unclear / where they are
+  watermark: timestamp('watermark', { withTimezone: true }), // events up to here are folded into summary
+  turnsSummarized: integer('turns_summarized').default(0),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().$onUpdate(() => new Date()),
+});
+
+// Corpus gaps: when the tutor can't answer from the concept's material, we log what was missing so
+// we can review occasionally and decide whether to research + add content. Exported to corpus_gap.md.
+export const buCorpusGap = pgTable('bu_corpus_gap', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  conceptId: text('concept_id').notNull(),
+  chapterId: text('chapter_id'),
+  learnerId: uuid('learner_id'),
+  question: text('question'), // what the student asked
+  missing: text('missing').notNull(), // short summary of what our content lacked
+  resolved: boolean('resolved').default(false), // set true once content is added
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+});
+
 export const buChapterProgress = pgTable('bu_chapter_progress', {
   id: uuid('id').primaryKey().defaultRandom(),
   learnerId: uuid('learner_id').notNull(),
