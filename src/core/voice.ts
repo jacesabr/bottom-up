@@ -101,43 +101,52 @@ export interface SttResult {
   provider: string;
 }
 
-/** STT chain: Deepgram (strong multilingual) → Sarvam (Indic) → null (client falls back to browser STT). */
+async function deepgramSTT(audio: Buffer, mime: string, langCode: string): Promise<SttResult | null> {
+  if (!DEEPGRAM) return null;
+  try {
+    const dgLang = langCode === 'en' ? 'en-IN' : lang(langCode).speech;
+    const res = await axios.post(
+      `https://api.deepgram.com/v1/listen?model=nova-2&smart_format=true&language=${encodeURIComponent(dgLang)}`,
+      audio,
+      { headers: { Authorization: `Token ${DEEPGRAM}`, 'Content-Type': mime }, timeout: 25_000 }
+    );
+    const t = res.data?.results?.channels?.[0]?.alternatives?.[0]?.transcript;
+    return t && t.trim() ? { transcript: t, provider: 'deepgram' } : null;
+  } catch {
+    return null;
+  }
+}
+
+async function sarvamSTT(audio: Buffer, mime: string, langCode: string): Promise<SttResult | null> {
+  if (!SARVAM) return null;
+  try {
+    const FormData = (await import('form-data')).default;
+    const form = new FormData();
+    const ext = mime.includes('wav') ? 'wav' : mime.includes('mp') ? 'mp3' : 'webm';
+    form.append('file', audio, { filename: `audio.${ext}`, contentType: mime });
+    form.append('model', 'saarika:v2.5');
+    form.append('language_code', lang(langCode).speech);
+    const res = await axios.post('https://api.sarvam.ai/speech-to-text', form, {
+      headers: { 'api-subscription-key': SARVAM, ...form.getHeaders() },
+      timeout: 25_000,
+    });
+    const t = res.data?.transcript;
+    return t && t.trim() ? { transcript: t, provider: 'sarvam' } : null;
+  } catch {
+    return null;
+  }
+}
+
+/** STT chain. For Indian languages, Sarvam (Indic-specialist) leads; for English, Deepgram leads. */
 export async function transcribe(audio: Buffer, mime: string, langCode: string): Promise<SttResult | null> {
-  // 1) Deepgram — reliable multilingual ASR.
-  if (DEEPGRAM) {
-    try {
-      const dgLang = langCode === 'en' ? 'en-IN' : lang(langCode).speech; // Deepgram accepts BCP-47
-      const res = await axios.post(
-        `https://api.deepgram.com/v1/listen?model=nova-2&smart_format=true&language=${encodeURIComponent(dgLang)}`,
-        audio,
-        { headers: { Authorization: `Token ${DEEPGRAM}`, 'Content-Type': mime }, timeout: 25_000 }
-      );
-      const t = res.data?.results?.channels?.[0]?.alternatives?.[0]?.transcript;
-      if (t && t.trim()) return { transcript: t, provider: 'deepgram' };
-    } catch {
-      /* fall through */
-    }
+  const order =
+    langCode === 'en'
+      ? [() => deepgramSTT(audio, mime, langCode), () => sarvamSTT(audio, mime, langCode)]
+      : [() => sarvamSTT(audio, mime, langCode), () => deepgramSTT(audio, mime, langCode)];
+  for (const attempt of order) {
+    const r = await attempt();
+    if (r) return r;
   }
-
-  // 2) Sarvam Saaras — Indic ASR (multipart form).
-  if (SARVAM) {
-    try {
-      const FormData = (await import('form-data')).default;
-      const form = new FormData();
-      form.append('file', audio, { filename: 'audio.webm', contentType: mime });
-      form.append('model', 'saarika:v2');
-      form.append('language_code', lang(langCode).speech);
-      const res = await axios.post('https://api.sarvam.ai/speech-to-text', form, {
-        headers: { 'api-subscription-key': SARVAM, ...form.getHeaders() },
-        timeout: 25_000,
-      });
-      const t = res.data?.transcript;
-      if (t && t.trim()) return { transcript: t, provider: 'sarvam' };
-    } catch {
-      /* fall through */
-    }
-  }
-
   return null;
 }
 

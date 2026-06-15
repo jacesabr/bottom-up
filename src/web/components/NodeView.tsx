@@ -82,11 +82,15 @@ export default function NodeView({
     localStorage.setItem('lang', code);
   };
 
-  const startRecording = async () => {
+  // langOverride avoids the stale-closure bug: when chosen from the popup, the lang state hasn't
+  // updated yet this render, so we pass the picked code explicitly.
+  const startRecording = async (langOverride?: string) => {
+    const lc = langOverride || lang;
+    const sc = langs.find((l) => l.code === lc)?.speech || 'en-IN';
     setListening(true);
     stopListenRef.current = await recordAndTranscribe(
-      lang,
-      speechCode,
+      lc,
+      sc,
       apiBase,
       (text) => setInput(text),
       () => setListening(false)
@@ -450,7 +454,7 @@ export default function NodeView({
                     changeLang(l.code);
                     localStorage.setItem('micLangAsked', '1');
                     setShowLangPrompt(false);
-                    startRecording();
+                    startRecording(l.code);
                   }}
                 >
                   {l.native}
