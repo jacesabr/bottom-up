@@ -146,6 +146,7 @@ export async function respond(learnerId: string, conceptId: string, learnerMessa
   const dialogue = await reconstructDialogue(learnerId, conceptId);
   const checklist = await loadChecklist(learnerId, conceptId, c.keyMoves);
   const isReteach = (await nodeStatus(learnerId, conceptId)) === 'needs_reteach';
+  const isOpening = !learnerMessage && dialogue.length === 0;
 
   const turn = await teachTurn({
     conceptTitle: c.title,
@@ -173,20 +174,30 @@ export async function respond(learnerId: string, conceptId: string, learnerMessa
     });
   }
 
+  // On the very first turn, prepend a warm welcome + how-to so every chat onboards the learner.
+  let message = turn.message;
+  if (isOpening) {
+    const welcome =
+      `Hi there! 👋 I'm your tutor — we'll take this one step at a time, no pressure, and you can't "fail" here; we just keep going until it clicks.\n\n` +
+      `💡 Tap **Details** (top-right) anytime to see what we'll cover. The panel on the right is your **scratchpad** — sketch anything, even rough or half-finished working, then **Attach** it to your reply or hit **Help me** and I'll take a look.\n\n` +
+      `Okay — let's begin. `;
+    message = welcome + turn.message;
+  }
+
   // Record tutor turn
   await db.insert(buEvent).values({
     learnerId,
     conceptId,
     chapterId: c.chapterId,
     type: 'tutor_turn',
-    payload: { message: turn.message },
+    payload: { message },
   });
 
   const updated = await loadChecklist(learnerId, conceptId, c.keyMoves);
   const allShown = updated.every((k) => k.demonstrated);
 
   return {
-    message: turn.message,
+    message,
     checklist: updated,
     readyForGate: allShown || turn.readyForGate,
     provider: turn.provider,

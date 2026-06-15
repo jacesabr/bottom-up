@@ -70,7 +70,7 @@ Return ONLY a JSON object, no prose around it:
 
   const user = transcript
     ? `Conversation so far:\n${transcript}\n\nProduce the next tutor turn + checklist delta as JSON.`
-    : `Open the lesson warmly: a one-line friendly greeting, name the concept in plain words so the student knows what we're about to build, then ask ONE gentle opening question that elicits key move [0]. Keep it short and human. Return JSON.`;
+    : `Open the lesson: name the concept in plain, friendly words so the student knows what we're about to build, then ask ONE gentle opening question that elicits key move [0]. Do NOT greet or say hi (a warm welcome is shown separately) — go straight into the topic, warmly and simply. Keep it short and human. Return JSON.`;
 
   return [
     { role: 'system', content: system },
@@ -102,11 +102,10 @@ function mockTurn(input: TeachTurnInput): TeachTurnOutput {
   const nextMove = input.keyMoves.find((m) => !m.demonstrated);
   const lastLearner = [...input.dialogue].reverse().find((t) => t.role === 'learner');
 
-  // Opening turn — warm greeting that leads into the topic.
+  // Opening turn — lead into the topic (the welcome banner is added separately by respond()).
   if (!lastLearner) {
-    const topic = input.conceptTitle.charAt(0).toLowerCase() + input.conceptTitle.slice(1);
     return {
-      message: `Hi! 👋 Let's work through ${topic} together — no rush, we'll build it up step by step. ${input.brief}\n\nTo get us started: ${questionFor(nextMove?.text)}`,
+      message: `${input.brief}\n\nTo get us started: ${questionFor(nextMove?.text)}`,
       keyMovesDemonstrated: [],
       misconceptionsSeen: [],
       readyForGate: false,
