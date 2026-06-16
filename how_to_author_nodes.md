@@ -22,7 +22,14 @@ node_modules/.bin/tsx tools/generate-gates.ts <exam:subject:chapter:slug> --mode
 # dry-run first to inspect without writing:  add --dry
 # a whole chapter's first 10 nodes:
 node_modules/.bin/tsx tools/generate-gates.ts <exam:subject:chapter1> --limit 10 --model claude-sonnet-4-6 --improve-content
+# SAFE RE-RUN (skip concepts that already have authored gates — prevents accidental clean-slate re-author):
+node_modules/.bin/tsx tools/generate-gates.ts <exam:subject:chapter1> --limit 10 --model claude-sonnet-4-6 --improve-content --skip-authored
 ```
+
+> **`--skip-authored` rule:** Always add this flag when authoring a chapter that may already be partially done,
+> or when batching across chapters. Without it, the tool does a **clean-slate re-author** (deletes + rewrites
+> existing authored gates) — intentional when you want to force-rewrite one node, dangerous when batching.
+> The flag reads the `gates` table and skips any concept that already has ≥1 authored gate.
 
 > **MODEL: use Sonnet 4.6 (`--model claude-sonnet-4-6`), not Opus, for scaling.** Head-to-head on real
 > nodes (2026-06-16): a 3-node Opus vs 3-node Sonnet comparison (cbse10 ends-with-digit, cbse12 function
@@ -102,6 +109,81 @@ A skipped slot is a deliberate, logged decision, never a silent gap.
 
 Each authored gate stores **four extra fields beyond the question** so it is auditable and
 gradable: `idealAnswer`, `why`, `rubric` (sketch/explain only), and `source` (the research URLs).
+
+---
+
+## 0a. The PARTS explanation format (required — not auto-generated)
+
+The automated `--improve-content` pass writes a prose paragraph for `explanation`. That is **not
+the target format.** Every explanation must be restructured into **one PART per key move**, because
+the AI tutor works directly from the explanation — dense prose collapses distinct skills into one
+un-parseable block.
+
+### The format
+
+```
+PART 1 — <what key move 1 teaches>.
+<2–3 sentences. The move itself + one worked example. No forward references.>
+
+PART 2 — <what key move 2 teaches>.
+<2–3 sentences. …>
+```
+
+**Rules:**
+- One PART per entry in `keyMoves`. If there are 3 key moves, there are exactly 3 PARTs.
+- Each PART ≤ 3 sentences. If you need a 4th sentence, split it into a new PART.
+- No blending — key move 2 does not appear in PART 1's prose.
+- No forward references — PART 1 cannot say "you'll need this in PART 3."
+- `brief` must be a **distinct 1-sentence hook**, not a copy of the PART 1 opening sentence.
+  (If `brief` and `explanation` share any sentence, the Details panel renders it twice.)
+
+### How it renders (the format is load-bearing)
+
+The Details panel (`src/web/components/NodeDetails.tsx` → `parseParts`) detects the `PART N —`
+markers and renders each PART as a **numbered card** (circled `N` badge + bold heading + body),
+with a **↓ arrow connector between consecutive cards** — so the parts read as a clear visual
+sequence instead of one wall of prose (`.d-part*` rules in `NodeDetails.css`). For this to work:
+
+- Put a **line break after the `PART N — Heading.`** — the text up to that newline becomes the
+  card's bold heading; everything after it is the card body. (If there's no newline, the parser
+  falls back to the first sentence as the heading.)
+- Separate PARTs with a **blank line** (`\n\n`).
+- Use the em-dash `—` (a hyphen `-` also parses, but `—` is the house style).
+- Any text **before `PART 1`** renders as a normal lead-in paragraph.
+- A node with no `PART N —` markers renders as a single plain paragraph — so the format is
+  opt-in and old nodes are unaffected.
+
+### When to rewrite
+
+The `--improve-content` output is the **raw material**, not the final node. After generating,
+check the explanation: if it is a single paragraph or PARTs are blended, rewrite it manually
+in content.json using the format above, then reload the chapter with `load-content.ts`.
+
+### Worked example (`manipulate-prime-powers` — verified 2026-06-16)
+
+**Before (auto-generated, wrong shape):**
+> "Throughout HCF/LCM work the student must evaluate prime-power products (2³ = 8, 3² = 9) and
+> compare exponents to pick the smallest or greatest. This generic exponent arithmetic is reused
+> across many chapters."
+
+**After (PARTS format):**
+```
+PART 1 — What a prime power means.
+2³ means 2 multiplied by itself 3 times: 2 × 2 × 2 = 8. It does NOT mean 2 × 3 = 6. The
+exponent tells you how many copies of the base to multiply together. So 3² = 3 × 3 = 9, and 5¹ = 5.
+
+PART 2 — Multiplying prime powers into one number.
+Once you have evaluated each prime power separately, multiply the results. For 2³ × 3² × 5:
+evaluate each — 8, 9, 5 — then multiply: 8 × 9 × 5 = 360.
+
+PART 3 — Comparing exponents of the same prime.
+When the same prime appears in two different numbers, line up its exponents and choose one.
+For HCF take the SMALLEST exponent; for LCM take the GREATEST.
+```
+
+**Brief (distinct hook, not copied from PART 1):**
+> "Two arithmetic skills underlie all HCF/LCM work: evaluating a prime power, and choosing the
+> right exponent when the same prime appears in different numbers."
 
 ---
 
@@ -382,3 +464,22 @@ cbse12 `composition-of-functions`, jee `compute-the-union-of-sets`), audited lin
 **Conclusion: author with Sonnet by default.** Opus (`--strong`) only for a node that proves shaky or a final
 verify pass. Haiku remains forbidden for authoring (it's the one that produced wrong maths). Caveat: 3-node
 sample — keep auditing as we scale; if Sonnet slips on a harder node, escalate that node to Opus.
+
+---
+
+## 9. Authored-node progress log
+
+Track which chapters are fully authored here. Use the DB query in §5 to verify counts before marking done.
+**Always use `--skip-authored` when re-running or extending a chapter.**
+
+| chapter | exam | nodes authored | total nodes | date | notes |
+|---|---|---|---|---|---|
+| `jemh101` | cbse10 | 17 | 18 | 2026-06-16 | Ch.1 Real Numbers — full (1 node unloaded) |
+| `mathematics-ch01` | cbse12 | 11 | 14 | 2026-06-16 | Ch.1 Relations & Functions — first 11 |
+| `maths-ch01` | jee | 11 | 18 | 2026-06-16 | Ch.1 Sets — first 11 |
+| `jemh102` | cbse10 | 10 | 21 | 2026-06-16 | Ch.2 Polynomials — first 10 ✓ |
+| `mathematics-ch02` | cbse12 | 10 | 13 | 2026-06-16 | Ch.2 Inverse Trig Functions — first 10 ✓ |
+| `maths-ch02` | jee | 9 | 14 | 2026-06-16 | Ch.2 Relations — first 9 of 10 (polynomial-function skipped — API credits ran out) |
+| `maths-ch02` | jee | 10 | 14 | 2026-06-16 | Ch.2 Relations — all 10 of first 10 ✓ (1 authored by Claude Code in-session) |
+| `jemh103` | cbse10 | 10 | 21 | 2026-06-16 | Ch.3 Linear Equations — first 10 ✓ (authored by Claude Code in-session) |
+| `mathematics-ch03` | cbse12 | 10 | 16 | 2026-06-16 | Ch.3 Matrices — first 10 ✓ (authored by Claude Code in-session) |
