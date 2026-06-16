@@ -132,7 +132,7 @@
       "brief": "Identify the identity matrix as a square matrix with 1s on the diagonal and 0s elsewhere.",
       "sec": 3,
       "quote": "A square matrix in which elements in the diagonal are all 1 and rest are all zero is called an *identity matrix*.",
-      "explanation": "A square matrix in which the diagonal elements are all 1 and the rest are all zero is the identity matrix, written I_n (or simply I). Formally a_ij = 1 when i = j and a_ij = 0 when i is not equal to j. For every square matrix A of the same order, IA = AI = A, so I is the multiplicative identity for matrices.",
+      "explanation": "PART 1 — The defining pattern: 1s on the diagonal, 0s everywhere else.\nThe identity matrix I_n is a square n×n matrix with a_ij = 1 if i = j (diagonal entries) and a_ij = 0 if i ≠ j (off-diagonal entries). The 2×2 identity is [[1,0],[0,1]] and the 3×3 identity is [[1,0,0],[0,1,0],[0,0,1]]. It is NOT the zero matrix — the zero matrix has 0s everywhere including the diagonal.\n\nPART 2 — The key property: IA = AI = A for any same-order square A.\nMultiplying any square matrix A (of the same order) by I on either side leaves A unchanged: IA = AI = A. This is why I is called the multiplicative identity — it plays the role of 1 in ordinary number multiplication.\n\nPART 3 — Use I to set up and check inverse problems.\nA matrix B is the inverse of A if and only if AB = BA = I. When verifying an inverse, compute the product and check whether you get I — every diagonal entry must be 1 and every off-diagonal entry 0.",
       "keyMoves": [
         "Place 1s along the whole diagonal",
         "Set every off-diagonal entry to 0",

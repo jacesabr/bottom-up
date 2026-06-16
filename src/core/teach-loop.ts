@@ -39,10 +39,23 @@ async function reconstructDialogue(learnerId: string, conceptId: string) {
 
   const dialogue: Array<{ role: 'tutor' | 'learner'; content: string }> = [];
   for (const e of events) {
-    if (e.type === 'tutor_turn') dialogue.push({ role: 'tutor', content: (e.payload as any)?.message ?? '' });
-    else if (e.type === 'learner_turn') dialogue.push({ role: 'learner', content: (e.payload as any)?.message ?? '' });
+    if (e.type === 'tutor_turn') {
+      // Skip the boilerplate welcome/opening turns so resumed history shows the real teaching only.
+      if ((e.payload as any)?.opening) continue;
+      const msg = (e.payload as any)?.message ?? '';
+      if (isOpeningMessage(msg)) continue; // catch pre-flag openings already in the log
+      dialogue.push({ role: 'tutor', content: msg });
+    } else if (e.type === 'learner_turn') {
+      dialogue.push({ role: 'learner', content: (e.payload as any)?.message ?? '' });
+    }
   }
   return dialogue;
+}
+
+// Opening turns predate the payload.opening flag for some learners; match their fixed prefixes too.
+const OPENING_PREFIXES = ['Welcome back', "Hi there. 🙂 I'm your tutor"];
+function isOpeningMessage(m: string): boolean {
+  return OPENING_PREFIXES.some((p) => m.startsWith(p));
 }
 
 /** Turn events (tutor/learner) strictly after a watermark timestamp. */
@@ -211,13 +224,23 @@ interface TurnResult {
   readyForGate: boolean;
   provider: string;
   figure?: { url: string; caption: string } | null;
+  // On a resumed node, the prior conversation so the client can replay it before the opening turn.
+  history?: Array<{ role: 'tutor' | 'learner'; text: string }>;
 }
 
 /** A warm, in-character Socrates opening — instant (no LLM wait), grounded in THIS concept. */
-function socratesOpening(c: any, _nextMoveText?: string, returning = false): string {
+function socratesOpening(c: any, _nextMoveText?: string, returning = false, hasPrior = false): string {
   // Name the topic ONCE, cleanly, then a gentle prior-knowledge question (don't dump it as a goal,
   // don't assume they know the terms). The AI builds the actual idea up on the first real turn.
   const q = `Today's topic is **${c.title}**. Before we dive in — how are you feeling about it? Have you come across it before, or is it pretty new? Either way is completely fine, we'll take it nice and slow.`;
+
+  // Resuming a node we've actually talked through before — don't restart, pick up the thread.
+  if (hasPrior) {
+    return (
+      `Welcome back! 🙂 Here's our conversation so far on **${c.title}** above — take a moment to read back over it. ` +
+      `When you're ready, let's carry on from where we left off. Want to keep going, or shall I give a quick recap first?`
+    );
+  }
 
   if (returning) {
     // Gentle reminder for a learner who's been here before — assume they may have forgotten.
@@ -270,16 +293,25 @@ export async function respond(
         .where(and(eq(buEvent.learnerId, learnerId), eq(buEvent.type, 'enter_node')))
     ).length;
     const returning = enterCount > 1; // they've entered some node before → gentle reminder
-    let message = socratesOpening(c, nextMove?.text, returning);
+    // Prior teaching turns for THIS node (excludes earlier openings) — replayed by the client.
+    const prior = await reconstructDialogue(learnerId, conceptId);
+    const hasPrior = prior.length > 0;
+    let message = socratesOpening(c, nextMove?.text, returning, hasPrior);
     if (langCode !== 'en') message = await translateText(message, langCode);
     await db.insert(buEvent).values({
       learnerId,
       conceptId,
       chapterId: c.chapterId,
       type: 'tutor_turn',
-      payload: { message },
+      payload: { message, opening: true },
     });
-    return { message, checklist, readyForGate: false, provider: 'opening' };
+    return {
+      message,
+      checklist,
+      readyForGate: false,
+      provider: 'opening',
+      history: prior.map((d) => ({ role: d.role, text: d.content })),
+    };
   }
 
   // Resume context = running summary (compact) + recent turns since its watermark (bounds growth).

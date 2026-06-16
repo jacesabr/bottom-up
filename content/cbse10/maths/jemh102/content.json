@@ -335,7 +335,7 @@
       "brief": "Check that the sum of the two zeroes equals −(coefficient of x)/(coefficient of x²).",
       "sec": 3,
       "quote": "Sum of its zeroes = 1 + 3 = 4 = −(−8)/2 = −(Coefficient of x)/(Coefficient of x²)",
-      "explanation": "After finding zeroes, add them and confirm the sum equals −b/a. For 2x²−8x+6: 1+3=4=−(−8)/2. This verifies the coefficient relationship for the sum.",
+      "explanation": "PART 1 — State the sum formula and memorise the minus.\nFor a quadratic ax²+bx+c with zeroes α and β, the sum is α+β = −b/a. The minus on b is the most common error: writing b/a instead of −b/a gives the wrong sign. Remember: sum gets the MINUS; product does not.\n\nPART 2 — Compute the sum and −b/a from the coefficients.\nAdd the two zeroes. For 2x²−8x+6 with zeroes 1 and 3: α+β = 1+3 = 4. Also −b/a = −(−8)/2 = 8/2 = 4. They match ✓.\n\nPART 3 — Verify and flag the two most common errors.\nIf α+β = −b/a the sum relation is verified. Common errors: (1) using b/a without the minus → gets −4 instead of 4; (2) dividing by the constant c instead of by the leading coefficient a.",
       "keyMoves": [
         "Add the zeroes",
         "Compute −b/a from the coefficients",
@@ -359,7 +359,7 @@
       "brief": "Check that the product of the two zeroes equals (constant term)/(coefficient of x²).",
       "sec": 3,
       "quote": "Product of its zeroes = 1 × 3 = 3 = 6/2 = (Constant term)/(Coefficient of x²)",
-      "explanation": "Multiply the zeroes and confirm the product equals c/a. For 2x²−8x+6: 1×3=3=6/2. This verifies the coefficient relationship for the product.",
+      "explanation": "PART 1 — Identify the product of zeroes formula.\nFor a quadratic ax²+bx+c with zeroes α and β, the product is αβ = c/a. Note: no minus sign — only the sum relation carries the negative (α+β = −b/a). Confusing the two is the most common sign error on this topic.\n\nPART 2 — Compute the product and the ratio c/a.\nMultiply the two zeroes and compute c/a from the coefficients. For 2x²−8x+6 with zeroes 1 and 3: αβ = 1×3 = 3; c/a = 6/2 = 3. They match ✓.\n\nPART 3 — State the verification.\nIf αβ = c/a the product relation is verified. If they do not match, recheck the zeroes or the coefficient read-off — do not add a minus sign to 'fix' the mismatch.",
       "keyMoves": [
         "Multiply the zeroes",
         "Compute c/a from the coefficients",
@@ -480,7 +480,7 @@
       "brief": "Compute the sum, pair-sum, and product of the three zeroes and match them to −b/a, c/a, −d/a.",
       "sec": 3,
       "quote": "α + β + γ = 3 + (−1) + (−1/3) = 2 − 1/3 = 5/3 = −(−5)/3 = −b/a,",
-      "explanation": "Example 5 confirms all three relations for 3x³−5x²−11x−3 with zeroes 3,−1,−1/3: the sum 5/3=−(−5)/3, the pair-sum −11/3=c/a, and the product 1=−(−3)/3. This ties the symmetric functions to the coefficients.",
+      "explanation": "PART 1 — Add the three zeroes to verify the sum relation.\nFor ax³+bx²+cx+d with zeroes α, β, γ, compute α+β+γ and check it equals −b/a. For 3x³−5x²−11x−3 (a=3, b=−5) with zeroes 3, −1, −1/3: sum = 3+(−1)+(−1/3) = 2−1/3 = 5/3 = −(−5)/3 ✓.\n\nPART 2 — Compute all three pairwise products to verify the pair-sum.\nForm αβ+βγ+γα and check it equals c/a (no minus sign). αβ=3×(−1)=−3; βγ=(−1)×(−1/3)=1/3; γα=(−1/3)×3=−1. Sum = −3+1/3−1 = −4+1/3 = −12/3+1/3 = −11/3 = (−11)/3 ✓.\n\nPART 3 — Multiply all three zeroes to verify the product relation.\nCompute αβγ and check it equals −d/a (has minus sign). αβγ = 3×(−1)×(−1/3) = 1 = −(−3)/3 ✓. Memory aid: sum and product carry the minus (−b/a and −d/a); pair-sum does not (c/a).",
       "keyMoves": [
         "Add the three zeroes for the sum",
         "Sum the three pairwise products",

@@ -124,7 +124,14 @@ export default function NodeView({
         });
         const data = await res.json();
         if (cancelled) return;
-        setMessages([{ role: 'tutor', text: data.message }]);
+        // Replay any prior conversation for this node, then the opening/continue message last.
+        const history: Msg[] = (data.history ?? []).map((h: { role: 'tutor' | 'learner'; text: string }) => ({
+          role: h.role,
+          text: h.text,
+        }));
+        setMessages([...history, { role: 'tutor', text: data.message }]);
+        // Don't auto-read the whole replayed transcript — only the new opening line (index = history.length).
+        spokenCount.current = history.length;
         setChecklist(data.checklist ?? []);
         setReadyForGate(!!data.readyForGate);
       } finally {
