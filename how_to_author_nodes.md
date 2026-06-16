@@ -8,6 +8,13 @@ generalised to every math exam in the corpus (cbse10, cbse12, jee).
 > This file is the **operator's manual**: the commands, the prompts, the API research loop,
 > and the quality bar. It is intentionally concrete so any future chat can reproduce it.
 
+> **Sibling repo — keep them in sync.** **Inference Engineering** (`c:\Users\E Logitech\Desktop\bottom_up_IE`)
+> is forked from this codebase and shares its skeleton: schema, teach→gate loop, `NodeDetails`/`App` web
+> shell, the PARTS explanation format, and the dev API-proxy setup. When a fix or improvement we make here
+> could benefit IE (web rendering, the explanation format, dev-server wiring, grader seams, etc.), **mirror it
+> there** and note it in IE's `how_to_audit_ie_nodes.md`. Examples already mirrored both ways: the PART-card
+> Details rendering and the `API_PORT`-following Vite proxy (2026-06-16).
+
 ---
 
 ## ★ The current, PROVEN pipeline (use this — supersedes the Haiku-era notes below)
@@ -22,7 +29,14 @@ node_modules/.bin/tsx tools/generate-gates.ts <exam:subject:chapter:slug> --mode
 # dry-run first to inspect without writing:  add --dry
 # a whole chapter's first 10 nodes:
 node_modules/.bin/tsx tools/generate-gates.ts <exam:subject:chapter1> --limit 10 --model claude-sonnet-4-6 --improve-content
+# SAFE RE-RUN (skip concepts that already have authored gates — prevents accidental clean-slate re-author):
+node_modules/.bin/tsx tools/generate-gates.ts <exam:subject:chapter1> --limit 10 --model claude-sonnet-4-6 --improve-content --skip-authored
 ```
+
+> **`--skip-authored` rule:** Always add this flag when authoring a chapter that may already be partially done,
+> or when batching across chapters. Without it, the tool does a **clean-slate re-author** (deletes + rewrites
+> existing authored gates) — intentional when you want to force-rewrite one node, dangerous when batching.
+> The flag reads the `gates` table and skips any concept that already has ≥1 authored gate.
 
 > **MODEL: use Sonnet 4.6 (`--model claude-sonnet-4-6`), not Opus, for scaling.** Head-to-head on real
 > nodes (2026-06-16): a 3-node Opus vs 3-node Sonnet comparison (cbse10 ends-with-digit, cbse12 function
@@ -102,6 +116,81 @@ A skipped slot is a deliberate, logged decision, never a silent gap.
 
 Each authored gate stores **four extra fields beyond the question** so it is auditable and
 gradable: `idealAnswer`, `why`, `rubric` (sketch/explain only), and `source` (the research URLs).
+
+---
+
+## 0a. The PARTS explanation format (required — not auto-generated)
+
+The automated `--improve-content` pass writes a prose paragraph for `explanation`. That is **not
+the target format.** Every explanation must be restructured into **one PART per key move**, because
+the AI tutor works directly from the explanation — dense prose collapses distinct skills into one
+un-parseable block.
+
+### The format
+
+```
+PART 1 — <what key move 1 teaches>.
+<2–3 sentences. The move itself + one worked example. No forward references.>
+
+PART 2 — <what key move 2 teaches>.
+<2–3 sentences. …>
+```
+
+**Rules:**
+- One PART per entry in `keyMoves`. If there are 3 key moves, there are exactly 3 PARTs.
+- Each PART ≤ 3 sentences. If you need a 4th sentence, split it into a new PART.
+- No blending — key move 2 does not appear in PART 1's prose.
+- No forward references — PART 1 cannot say "you'll need this in PART 3."
+- `brief` must be a **distinct 1-sentence hook**, not a copy of the PART 1 opening sentence.
+  (If `brief` and `explanation` share any sentence, the Details panel renders it twice.)
+
+### How it renders (the format is load-bearing)
+
+The Details panel (`src/web/components/NodeDetails.tsx` → `parseParts`) detects the `PART N —`
+markers and renders each PART as a **numbered card** (circled `N` badge + bold heading + body),
+with a **↓ arrow connector between consecutive cards** — so the parts read as a clear visual
+sequence instead of one wall of prose (`.d-part*` rules in `NodeDetails.css`). For this to work:
+
+- Put a **line break after the `PART N — Heading.`** — the text up to that newline becomes the
+  card's bold heading; everything after it is the card body. (If there's no newline, the parser
+  falls back to the first sentence as the heading.)
+- Separate PARTs with a **blank line** (`\n\n`).
+- Use the em-dash `—` (a hyphen `-` also parses, but `—` is the house style).
+- Any text **before `PART 1`** renders as a normal lead-in paragraph.
+- A node with no `PART N —` markers renders as a single plain paragraph — so the format is
+  opt-in and old nodes are unaffected.
+
+### When to rewrite
+
+The `--improve-content` output is the **raw material**, not the final node. After generating,
+check the explanation: if it is a single paragraph or PARTs are blended, rewrite it manually
+in content.json using the format above, then reload the chapter with `load-content.ts`.
+
+### Worked example (`manipulate-prime-powers` — verified 2026-06-16)
+
+**Before (auto-generated, wrong shape):**
+> "Throughout HCF/LCM work the student must evaluate prime-power products (2³ = 8, 3² = 9) and
+> compare exponents to pick the smallest or greatest. This generic exponent arithmetic is reused
+> across many chapters."
+
+**After (PARTS format):**
+```
+PART 1 — What a prime power means.
+2³ means 2 multiplied by itself 3 times: 2 × 2 × 2 = 8. It does NOT mean 2 × 3 = 6. The
+exponent tells you how many copies of the base to multiply together. So 3² = 3 × 3 = 9, and 5¹ = 5.
+
+PART 2 — Multiplying prime powers into one number.
+Once you have evaluated each prime power separately, multiply the results. For 2³ × 3² × 5:
+evaluate each — 8, 9, 5 — then multiply: 8 × 9 × 5 = 360.
+
+PART 3 — Comparing exponents of the same prime.
+When the same prime appears in two different numbers, line up its exponents and choose one.
+For HCF take the SMALLEST exponent; for LCM take the GREATEST.
+```
+
+**Brief (distinct hook, not copied from PART 1):**
+> "Two arithmetic skills underlie all HCF/LCM work: evaluating a prime power, and choosing the
+> right exponent when the same prime appears in different numbers."
 
 ---
 
@@ -382,3 +471,117 @@ cbse12 `composition-of-functions`, jee `compute-the-union-of-sets`), audited lin
 **Conclusion: author with Sonnet by default.** Opus (`--strong`) only for a node that proves shaky or a final
 verify pass. Haiku remains forbidden for authoring (it's the one that produced wrong maths). Caveat: 3-node
 sample — keep auditing as we scale; if Sonnet slips on a harder node, escalate that node to Opus.
+
+---
+
+## 10. Prerequisite / bridge nodes — what to do when a concept mentions something the student hasn't learned yet
+
+If a node's `explanation` or `keyMoves` references a term or idea that isn't taught in any lower-`order`
+node upstream, the student will hit an unexplained concept mid-lesson. The fix is either to **author a
+bridge node** (a new, small upstream node that introduces exactly that term) or to **remove the forward
+reference** from this node's content and replace it with an explanation using only known concepts.
+
+### Step 1 — Concept inventory
+
+Read the node's `explanation` and `keyMoves`. List every distinct mathematical term or idea it references.
+For each term, check whether it appears in any lower-`order` node's `keyMoves` in the same chapter.
+
+| Term used in this node | Introduced by which upstream node | Status |
+|---|---|---|
+| `HCF` | `compute-hcf-by-prime-factorisation` | ✓ upstream |
+| `prime factorisation` | none | → bridge node needed |
+| `exponent` | none | → bridge node needed |
+| `irrational number` | later node `prove-root-2-irrational` | → forward reference — remove |
+
+Build this table before touching any JSON. The `concept.order` field (set by `load-content.ts` toposort)
+is the ground truth for what is "upstream."
+
+### Step 2 — Classify: bridge node vs. forward reference
+
+- **Bridge node needed** — the term is genuinely required to understand this node, and no upstream node
+  teaches it. Author a new node before this one.
+- **Forward reference** — the term belongs to a later node and was just dropped in too early. Remove it
+  from this node's `explanation`/`keyMoves` and rewrite using only concepts the student already knows.
+
+**Rule of thumb:** if removing the term makes the explanation *simpler and clearer*, it was a forward
+reference. If removing it makes the explanation *impossible to follow*, it needs a bridge node.
+
+### Step 3 — Get approval before writing JSON
+
+Before authoring any new node, output a plain-text summary in chat:
+- Each proposed bridge node: title + 1-line brief
+- Each forward reference to be removed from the current node
+
+Ask "Does this look right before I write the nodes?" Wait for confirmation.
+
+### Step 4 — Author the bridge node
+
+A bridge node is a normal node entry in the chapter's `content.json`, placed **before** the consuming node
+in the file (order is derived by `load-content.ts` toposort from `prereqs`, not file order, but keeping
+the file readable matters):
+
+```json
+{
+  "id": "<exam>:<subject>:<chapter>:<slug>",
+  "title": "<concise 3–8 word title>",
+  "brief": "<distinct 1-sentence hook — not copied from explanation PART 1>",
+  "explanation": "PART 1 — <what it teaches>.\n<2–3 sentences. No jargon that isn't in the allow-list.>\n\nPART 2 — …",
+  "keyMoves": ["…"],
+  "misconceptions": ["…"],
+  "prereqs": [],
+  "source": { "ref": "<NCERT chapter/section>", "url": "<ncert.nic.in URL if applicable>" }
+}
+```
+
+- Follow the PARTS format exactly (§0a). Each PART ≤ 3 sentences, no blending.
+- `brief` must be a **distinct** hook, not the opening sentence of PART 1 (it renders twice if duplicated).
+- Ground every claim in the NCERT OCR source (`content/<exam>/<subject>/<chapter>/source/*.txt`). If the
+  concept is implicit in NCERT but not explicitly a chapter node (e.g. "what a variable is" in an algebra
+  chapter), cite the NCERT chapter/page where it is used.
+- Keep it **small**: a bridge node teaches exactly one missing idea. If two ideas are missing, author two
+  bridge nodes in dependency order.
+
+### Step 5 — Wire prereqs and reload
+
+1. Add the bridge node's `id` to the consuming node's `prereqs` array in `content.json`.
+2. If one bridge node depends on another (e.g. "exponent" depends on "multiplication"), add that edge too.
+3. Reload the chapter:
+   ```bash
+   node_modules/.bin/tsx tools/load-content.ts <exam>:<subject>:<chapter>
+   ```
+   `load-content.ts` recomputes `concept.order` by toposort, so the bridge node will be placed before the
+   consuming node automatically — no manual ordering needed.
+4. Verify the DB: the bridge node should have a lower `order` than the consuming node.
+5. Author gates for the bridge node via `generate-gates.ts` (it needs its own 5-gate set like any other node):
+   ```bash
+   node_modules/.bin/tsx tools/generate-gates.ts <exam>:<subject>:<chapter>:<bridge-slug> \
+     --model claude-sonnet-4-6 --improve-content
+   ```
+
+### Recurring failure modes
+
+| Defect | Symptom | Fix |
+|---|---|---|
+| Bridge authored but `prereqs` not updated | Toposort places the bridge AFTER the consuming node | Add bridge id to consuming node's `prereqs`, reload |
+| Bridge node uses another undefined term | Cascading confusion — bridge itself needs a bridge | Inventory the bridge node too before writing |
+| Forward reference softened but not removed | Explanation still confuses with a parenthetical "you'll see this later" | Remove the term entirely; the consuming node can reintroduce it properly |
+| Bridge too big (teaches 2+ ideas) | Cognitive overload; gates become out-of-scope | Split into two bridge nodes in dependency order |
+
+---
+
+## 9. Authored-node progress log
+
+Track which chapters are fully authored here. Use the DB query in §5 to verify counts before marking done.
+**Always use `--skip-authored` when re-running or extending a chapter.**
+
+| chapter | exam | nodes authored | total nodes | date | notes |
+|---|---|---|---|---|---|
+| `jemh101` | cbse10 | 17 | 18 | 2026-06-16 | Ch.1 Real Numbers — full (1 node unloaded) |
+| `mathematics-ch01` | cbse12 | 11 | 14 | 2026-06-16 | Ch.1 Relations & Functions — first 11 |
+| `maths-ch01` | jee | 11 | 18 | 2026-06-16 | Ch.1 Sets — first 11 |
+| `jemh102` | cbse10 | 10 | 21 | 2026-06-16 | Ch.2 Polynomials — first 10 ✓ |
+| `mathematics-ch02` | cbse12 | 10 | 13 | 2026-06-16 | Ch.2 Inverse Trig Functions — first 10 ✓ |
+| `maths-ch02` | jee | 9 | 14 | 2026-06-16 | Ch.2 Relations — first 9 of 10 (polynomial-function skipped — API credits ran out) |
+| `maths-ch02` | jee | 10 | 14 | 2026-06-16 | Ch.2 Relations — all 10 of first 10 ✓ (1 authored by Claude Code in-session) |
+| `jemh103` | cbse10 | 10 | 21 | 2026-06-16 | Ch.3 Linear Equations — first 10 ✓ (authored by Claude Code in-session) |
+| `mathematics-ch03` | cbse12 | 10 | 16 | 2026-06-16 | Ch.3 Matrices — first 10 ✓ (authored by Claude Code in-session) |

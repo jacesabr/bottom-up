@@ -81,6 +81,7 @@
 }
 
 .chat-pane {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -272,6 +273,74 @@
 .notation-btn.mic.listening { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 .notation-btn.read.on { background: var(--green-soft); border-color: #bcd6c4; color: var(--green); }
+
+/* Full chat-area overlay while the mic is recording — impossible to miss. */
+.recording-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(255, 251, 245, 0.96);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+  animation: overlayIn 0.15s ease-out;
+}
+@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+.recording-card {
+  max-width: 440px;
+  text-align: center;
+  cursor: default;
+}
+.recording-pulse {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recording-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.25;
+  animation: recPulse 1.4s ease-out infinite;
+}
+.recording-mic { font-size: 44px; line-height: 1; }
+@keyframes recPulse {
+  0% { transform: scale(0.8); opacity: 0.35; }
+  70% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.recording-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.recording-sub {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+.recording-stop {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  cursor: pointer;
+}
+.recording-stop:hover { background: #b8480f; }
 
 .tutor-figure { margin: 8px 0 2px; }
 .tutor-figure img {

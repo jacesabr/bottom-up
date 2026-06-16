@@ -14,7 +14,7 @@
       "brief": "Use prime factorisation, the Fundamental Theorem of Arithmetic, and proof-by-contradiction to compute HCF/LCM, settle divisibility/ends-with-digit questions, and prove numbers irrational.",
       "sec": 0,
       "quote": "We begin with very important properties of positive integers in Sections 1.2, namely the Euclid's division algorithm and the Fundamental Theorem of Arithmetic.",
-      "explanation": "This is the chapter's top-level competence: given a positive integer or a candidate number, decide what tool applies (prime factorisation for HCF/LCM and divisibility, FTA-based contradiction for irrationality) and execute it correctly. It is the root that every sub-skill in the chapter serves.",
+      "explanation": "PART 1 — Identify the type of real-number question.\nEvery Class 10 real-number problem belongs to one of three families: HCF/LCM computation, an ends-with-digit or divisibility question, or an irrationality proof. Read the question and name the family before choosing a method.\n\nPART 2 — Prime-factorise when divisibility is at stake.\nFor HCF/LCM problems, write each number as a product of prime powers: take the smallest power of each common prime for HCF, the greatest power of every prime appearing in either number for LCM. For ends-with-digit questions (e.g. does 6ⁿ end in 0?), factorise the base and check whether the required primes (2 and 5 for ending in 0) are present.\n\nPART 3 — Invoke the right theorem explicitly.\nFor irrationality proofs, assume the number equals a/b (coprime), square and rearrange to get p | a², cite Theorem 1.2 to get p | a, write a = pk, substitute to get p | b — contradicting gcd(a, b) = 1. Always name the theorem you are using.",
       "keyMoves": [
         "Identify whether the task is HCF/LCM, an ends-with/divisibility question, or an irrationality proof",
         "Reduce numbers to prime factorisation when divisibility is at stake",
@@ -43,14 +43,14 @@
       "slug": "prime-factorise-integer",
       "title": "Factorise a composite number into a product of primes",
       "role": "intermediate",
-      "brief": "Break a positive integer into prime factors using a factor tree and write it as a product of powers of primes in ascending order.",
+      "brief": "The factor-tree method breaks a composite into its prime building blocks — the fundamental step behind every HCF, LCM, and divisibility argument.",
       "sec": 1,
       "quote": "So we have factorised 32760 as 2 × 2 × 2 × 3 × 3 × 5 × 7 × 13 as a product of primes, i.e., 32760 = 2³ × 3² × 5 × 7 × 13 as a product of powers of primes.",
-      "explanation": "The chapter demonstrates the factor-tree procedure on 32760, repeatedly splitting off the smallest prime factor until only primes remain, then collecting repeated primes into powers written in ascending order. This is the workhorse subskill behind HCF, LCM, and divisibility arguments.",
+      "explanation": "PART 1 — Start: divide out the smallest prime factor.\nBegin with the number (e.g. 32760). Find the smallest prime that divides it: 2 divides 32760, giving 32760 = 2 × 16380. Repeat on 16380: 2 × 8190. Each split produces one prime leaf and a smaller composite to continue from.\n\nPART 2 — Continue until every branch is prime.\nKeep dividing by the smallest prime at each step until every branch ends in a prime: ..., 2 × 4095, then 4095 is not even, try 3: 4095 = 3 × 1365, 1365 = 3 × 455, 455 = 5 × 91, 91 = 7 × 13 — both prime. Stop when no branch can be split further.\n\nPART 3 — Collect into powers, write in ascending order.\nGroup repeated primes by their exponent: 32760 = 2 × 2 × 2 × 3 × 3 × 5 × 7 × 13 = 2³ × 3² × 5 × 7 × 13. Write the prime bases in ascending order. Each prime appears exactly once with its collected exponent.",
       "keyMoves": [
-        "Divide out the smallest prime repeatedly via a factor tree",
-        "Continue until every leaf is prime",
-        "Combine repeated primes into powers and order ascending"
+        "Find the smallest prime that divides the number and split: number = prime × remainder",
+        "Repeat on every composite remainder until every branch of the factor tree is prime",
+        "Collect repeated primes into powers and list bases in ascending order: 2³ × 3² × 5 × 7 × 13"
       ],
       "misconceptions": [
         "Stopping before all factors are prime (leaving a composite factor)",
@@ -70,11 +70,11 @@
       "brief": "Know that every composite number factorises as a product of primes, and that this factorisation is unique apart from order.",
       "sec": 1,
       "quote": "Theorem 1.1 (Fundamental Theorem of Arithmetic) : Every composite number can be expressed (factorised) as a product of primes, and this factorisation is unique, apart from the order in which the prime factors occur.",
-      "explanation": "The theorem has two halves: existence (a factorisation exists) and uniqueness (only one, up to ordering). The uniqueness half is the part repeatedly invoked later to argue which primes can or cannot appear in a factorisation.",
+      "explanation": "PART 1 — Existence: every composite is a product of primes.\nTheorem 1.1 guarantees that every composite integer can be expressed as a product of prime factors. There is no composite number that resists factorisation: 12 = 2² × 3, 360 = 2³ × 3² × 5, 32760 = 2³ × 3² × 5 × 7 × 13. This half grants the permission to factorise.\n\nPART 2 — Uniqueness: only one factorisation, apart from order.\nThe prime factorisation produced is unique: 12 cannot also equal 3 × 4, because 4 is not prime; the PRIME factorisation is 2² × 3 and nothing else. 2² × 3 and 3 × 2² are the same factorisation — different orderings count as identical.\n\nPART 3 — Uniqueness is the operative clause.\nAlmost every argument that follows uses uniqueness, not just existence. To prove 4ⁿ never ends in 0: uniqueness says 4ⁿ = 2²ⁿ has only the prime 2 in its factorisation — so 5 cannot appear — so 4ⁿ cannot end in 0. The deductive force is always 'this prime cannot be there,' which only uniqueness can establish.",
       "keyMoves": [
-        "State existence: every composite is a product of primes",
-        "State uniqueness: only one factorisation, ignoring order",
-        "Recognise uniqueness as the deductive tool, not just existence"
+        "State existence: every composite can be expressed as a product of primes",
+        "State uniqueness: that product of primes is unique apart from the order of factors",
+        "Use uniqueness to argue which primes can or cannot appear in a given factorisation"
       ],
       "misconceptions": [
         "Quoting only existence and dropping uniqueness",
@@ -388,11 +388,11 @@
       "brief": "Coprime numbers share no common factor other than 1; factorisation targets composites and produces primes.",
       "sec": 2,
       "quote": "Then, we divide by the common factor to get √2 = a/b, where a and b are coprime.",
-      "explanation": "The irrationality proofs rely on writing a fraction in coprime form: a and b are coprime means their only common factor is 1. The same prime/composite vocabulary underlies factorisation (composites factor into primes). Without firm grasp of these terms the rules are unusable.",
+      "explanation": "PART 1 — What coprime means.\nTwo integers a and b are coprime (also: relatively prime) when their only common factor is 1 — i.e. HCF(a, b) = 1. So 8 and 15 are coprime (common factors: only 1), while 6 and 9 are NOT coprime (both divisible by 3, so HCF = 3).\n\nPART 2 — Reducing a fraction to coprime form.\nEvery fraction a/b can be reduced until a and b are coprime: divide both by their HCF until HCF = 1. The irrationality proofs always assume the rational number is written in this reduced form — that is what makes the later appearance of a common factor a contradiction.\n\nPART 3 — Prime vs composite.\nAn integer > 1 is prime if its only factors are 1 and itself; it is composite if it has a factor strictly between 1 and itself. The goal of prime factorisation is to express a composite as a product of primes: 12 = 2² × 3. Note: 1 is neither prime nor composite.",
       "keyMoves": [
-        "Recognise coprime pairs (only common factor is 1, i.e. HCF = 1)",
-        "Reduce a fraction to coprime numerator and denominator",
-        "Use 'product of primes' as the goal of factorising a composite"
+        "Recognise coprime pairs: a and b are coprime when HCF(a, b) = 1",
+        "Reduce a fraction a/b by dividing both by their HCF until they are coprime",
+        "Distinguish prime (only factors: 1 and itself) from composite (has a factor strictly between 1 and itself); note 1 is neither"
       ],
       "misconceptions": [
         "Calling 1 a prime, or treating it as composite",
@@ -407,14 +407,14 @@
       "slug": "interpret-divides-relation",
       "title": "Interpret the 'divides' relation between integers",
       "role": "bedrock",
-      "brief": "p divides a means a = p × (integer) with no remainder.",
+      "brief": "The divisibility symbol p | a — 'p divides a' — is the basic shorthand the irrationality proofs translate into algebra at every step.",
       "sec": 2,
       "quote": "Now, since a = p₁ p₂ ... pₙ, p divides a.",
-      "explanation": "The divisibility statements ('p divides a²', 'a = 2c') that drive Theorem 1.2 and the irrationality proofs depend on understanding that p | a means a is an exact multiple of p. This is the most basic atom the proofs are built from.",
+      "explanation": "PART 1 — What p | a means.\nWriting p | a (read 'p divides a') is shorthand for 'a is an exact multiple of p': there exists an integer k such that a = p × k, with no remainder. So 2 | 6 because 6 = 2 × 3, but 2 does not divide 7 because no integer k satisfies 7 = 2 × k.\n\nPART 2 — Translating into an explicit multiple.\nIn proofs, make divisibility concrete by naming the integer: from 2 | a², write a² = 2c for some integer c. This explicit form is what gets substituted in the algebra steps that follow — for example, writing a = 2c and squaring gives a² = 4c², from which 2 | b².\n\nPART 3 — When the divisor is prime.\nIf p is prime and p | a, then p is one of the prime factors of a. This is the foundation of Theorem 1.2: primality of p guarantees the whole prime factor passes from a² down to a, not just part of it.",
       "keyMoves": [
-        "Read 'p divides a' as a = p·k for some integer k",
-        "Translate divisibility into an explicit multiple (a = 2c)",
-        "Recognise a divisor as a prime factor when it is prime"
+        "Read 'p divides a' as a = p·k for some integer k, with no remainder",
+        "Translate divisibility into an explicit multiple (from 2 | a², write a² = 2c)",
+        "Recognise that if p is prime and p | a, then p is a prime factor of a"
       ],
       "misconceptions": [
         "Confusing 'a divides p' with 'p divides a'",
@@ -429,18 +429,18 @@
       "slug": "manipulate-prime-powers",
       "title": "Multiply and compare powers of primes",
       "role": "shared",
-      "brief": "Evaluate and compare expressions like 2³ × 3² × 5 and pick smallest/greatest exponents.",
+      "brief": "Two arithmetic skills underlie all HCF/LCM work: evaluating a prime power, and choosing the right exponent when the same prime appears in different numbers.",
       "sec": 1,
       "quote": "So,    LCM (6, 72, 120) = 2³ × 3² × 5¹ = 8 × 9 × 5 = 360",
-      "explanation": "Throughout HCF/LCM work the student must evaluate prime-power products (2³ = 8, 3² = 9) and compare exponents to pick the smallest or greatest. This generic exponent arithmetic is reused across many chapters.",
+      "explanation": "PART 1 — What a prime power means.\n2³ means 2 multiplied by itself 3 times: 2 × 2 × 2 = 8. It does NOT mean 2 × 3 = 6. The exponent tells you how many copies of the base to multiply together. So 3² = 3 × 3 = 9, and 5¹ = 5.\n\nPART 2 — Multiplying prime powers into one number.\nOnce you have evaluated each prime power separately, multiply the results. For 2³ × 3² × 5: evaluate each — 8, 9, 5 — then multiply: 8 × 9 × 5 = 360. This is how a number expressed as a product of prime powers becomes a single integer.\n\nPART 3 — Comparing exponents of the same prime.\nWhen the same prime appears in two different numbers, line up its exponents and choose one. For HCF take the SMALLEST exponent; for LCM take the GREATEST. Between 2² and 2³: HCF uses 2², LCM uses 2³. You only compare exponents of the same prime — never mix different primes.",
       "keyMoves": [
-        "Evaluate a prime power (2³ = 8)",
-        "Multiply prime powers to a single integer",
-        "Compare exponents of the same prime across numbers"
+        "2³ means 2 × 2 × 2 = 8 — multiply the base by itself (exponent) times, never base × exponent",
+        "Evaluate each prime power separately, then multiply the results: 2³ × 3² × 5 = 8 × 9 × 5 = 360",
+        "When the same prime appears in two numbers, compare its exponents: SMALLEST for HCF, GREATEST for LCM"
       ],
       "misconceptions": [
-        "Adding exponents when multiplying different primes",
-        "Mis-evaluating a power (e.g. 2³ = 6)"
+        "Evaluating 2³ as 2 × 3 = 6 instead of 2 × 2 × 2 = 8",
+        "Adding exponents when multiplying different prime powers (2³ × 3² is not 6⁵)"
       ],
       "prereqs": [],
       "sameConcept": [],

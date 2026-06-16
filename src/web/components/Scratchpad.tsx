@@ -77,7 +77,7 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
     return () => ro.disconnect();
   }, []);
 
-  const pos = (e: React.MouseEvent) => {
+  const pos = (e: React.PointerEvent) => {
     const canvas = canvasRef.current!;
     const rect = canvas.getBoundingClientRect();
     return {
@@ -86,15 +86,29 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
     };
   };
 
-  const startDraw = (e: React.MouseEvent) => {
+  const startDraw = (e: React.PointerEvent) => {
     if (tool !== 'pen') return;
+    e.preventDefault();
+    // Keep receiving move/up events even if the pointer drifts off the canvas mid-stroke.
+    try {
+      canvasRef.current?.setPointerCapture(e.pointerId);
+    } catch {
+      /* not all pointers support capture */
+    }
     drawing.current = true;
     const p = pos(e);
     last.current = p;
     strokes.current.push([p]);
+    // Restore stroke styling in case the context was reset (e.g. after a resize).
+    const ctx = canvasRef.current!.getContext('2d')!;
+    ctx.strokeStyle = INK;
+    ctx.lineWidth = 2;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
   };
-  const draw = (e: React.MouseEvent) => {
+  const draw = (e: React.PointerEvent) => {
     if (!drawing.current || tool !== 'pen') return;
+    e.preventDefault();
     const ctx = canvasRef.current!.getContext('2d')!;
     const p = pos(e);
     ctx.beginPath();
@@ -105,7 +119,14 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
     last.current = p;
     if (!dirty) setDirty(true);
   };
-  const endDraw = () => {
+  const endDraw = (e?: React.PointerEvent) => {
+    if (e) {
+      try {
+        canvasRef.current?.releasePointerCapture(e.pointerId);
+      } catch {
+        /* noop */
+      }
+    }
     drawing.current = false;
     last.current = null;
   };
@@ -132,14 +153,16 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
       <div className="scratchpad-canvas-container" ref={containerRef}>
         <canvas
           ref={canvasRef}
-          onMouseDown={startDraw}
-          onMouseMove={draw}
-          onMouseUp={endDraw}
-          onMouseLeave={endDraw}
+          onPointerDown={startDraw}
+          onPointerMove={draw}
+          onPointerUp={endDraw}
+          onPointerCancel={endDraw}
+          onPointerLeave={endDraw}
           style={{
             cursor: tool === 'hand' ? 'grab' : 'crosshair',
             transform: `scale(${zoom})`,
             transformOrigin: '0 0',
+            touchAction: 'none', // stop touch/pen gestures from scrolling instead of drawing
           }}
         />
       </div>

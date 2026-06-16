@@ -228,7 +228,7 @@
       "brief": "Avoid the classic trap: sin-inverse x is an angle, NOT the reciprocal 1/sin x.",
       "sec": 2,
       "quote": "$\\sin^{-1}x$  should not be confused with  $(\\sin x)^{-1}$ .",
-      "explanation": "The notation sin-inverse x must not be confused with (sin x) raised to the power -1. The superscript -1 in sin-inverse denotes the inverse function (an angle whose sine is x), whereas (sin x)^-1 = 1/sin x is the reciprocal of sin x. The same warning applies to all the inverse trig functions. Mixing these up is one of the most common errors in the topic.",
+      "explanation": "PART 1 — Two very different meanings of the same superscript.\nWhen −1 appears as a superscript on the function name before the argument, it means the inverse function: sin⁻¹x is the angle whose sine is x. When −1 is a power on the value, (sinx)⁻¹ = 1/sinx = cosecx. These are completely different objects — one is an angle, the other a ratio.\n\nPART 2 — How to tell them apart at a glance.\nsin⁻¹(x) — the −1 is on the function name, before the argument: inverse function. (sin x)⁻¹ — the −1 is on the result, the whole expression is raised to a power: reciprocal. The parentheses mark the difference. The same rule applies to cos, tan, cot, sec and cosec.\n\nPART 3 — Concrete example to lock the distinction in.\nsin⁻¹(1/2) = π/6 (an angle in [−π/2, π/2]). (sin(π/6))⁻¹ = (1/2)⁻¹ = 2 (a pure number). Never write sin⁻¹x = 1/sinx — it is the most common Class 12 inverse-trig error.",
       "keyMoves": [
         "Read sin-inverse x as the angle whose sine is x",
         "Read (sin x)^-1 as 1/sin x",

@@ -14,11 +14,11 @@
       "brief": "Test a collection against the well-defined criterion: a set is a collection for which membership of any object can be decided unambiguously.",
       "sec": 2,
       "quote": "We shall say that a set is a well-defined collection of objects.",
-      "explanation": "A set is a well-defined collection of objects, meaning that for any given object we can definitely decide whether it belongs to the collection or not. The collection of rivers of India is a set because the river Ganga clearly belongs and the river Nile clearly does not. By contrast, 'the five most renowned mathematicians of the world' is not a set, because the criterion for 'most renowned' varies from person to person, so membership cannot be decided unambiguously. The terms object, element and member are synonymous; sets are denoted by capital letters A, B, C and their elements by small letters a, b, c.",
+      "explanation": "PART 1 — The well-defined test: can membership be decided unambiguously?\nA collection qualifies as a set only if, for any object, we can say definitively whether it belongs or not — no room for disagreement. 'The collection of rivers of India' is a set: the river Ganga clearly belongs; the river Nile clearly does not. No one disagrees on any river.\n\nPART 2 — When a collection is NOT a set.\nIf the membership rule depends on subjective judgement, the collection is not a set. 'The five most renowned mathematicians of the world' is not a set: different people would choose different mathematicians, so membership cannot be decided unambiguously. The key signal is whether the criterion VARIES from person to person.\n\nPART 3 — Notation: sets and elements.\nSets are denoted by capital letters (A, B, C, …) and their elements by small letters (a, b, c, …). The terms object, element, and member mean the same thing. This convention is used throughout all of set theory — getting it wrong signals confusion to the examiner.",
       "keyMoves": [
-        "Ask whether membership of any object in the collection can be decided unambiguously",
-        "Classify the collection as a set (well-defined) or not a set (criterion varies)",
-        "Use capital letters for sets and small letters for their elements"
+        "Ask: can membership of any object be decided unambiguously? If yes → set; if the criterion varies → not a set",
+        "Identify the key signal of non-well-definedness: the criterion depends on who is judging",
+        "Use capital letters for sets (A, B, C) and small letters for elements (a, b, c)"
       ],
       "misconceptions": [
         "Treating a vague collection ('ten talented writers') as a set when its membership cannot be decided",
@@ -33,14 +33,14 @@
       "slug": "use-set-membership",
       "title": "Use the membership symbols belongs-to and does-not-belong-to",
       "role": "bedrock",
-      "brief": "Read and write a belongs to A and b does not belong to A using the symbols in and not-in.",
+      "brief": "Read and write 'a belongs to A' and 'b does not belong to A' using the symbols ∈ and ∉.",
       "sec": 2,
       "quote": "the Greek symbol  $\\in$  (epsilon) is used to denote the phrase '*belongs to*'.",
-      "explanation": "If a is an element of a set A we say 'a belongs to A' and write a in A, using the Greek symbol in (epsilon). If b is not an element of A we write b not-in A and read it 'b does not belong to A'. For example, in the set V of vowels in the English alphabet, a in V but b not-in V; in the set P of prime factors of 30, 3 in P but 15 not-in P. Membership is the basic relation that every other set idea (equality, subset, union, intersection) is ultimately built on.",
+      "explanation": "PART 1 — Writing membership: a ∈ A.\nThe Greek letter ∈ (epsilon) means 'belongs to.' If a is an element of a set A, write a ∈ A, read 'a belongs to A.' For the set V = {a, e, i, o, u} of English vowels: a ∈ V and e ∈ V, but b ∉ V — b is a consonant, not in V.\n\nPART 2 — Writing non-membership: b ∉ A.\nIf b is not an element of A, write b ∉ A (∈ with a stroke through it), read 'b does not belong to A.' For the set P of prime factors of 30: P = {2, 3, 5}. So 3 ∈ P, but 15 ∉ P — 15 is a factor of 30 but NOT a PRIME factor (15 = 3 × 5 is composite).\n\nPART 3 — Reading aloud and why membership matters.\nAlways read ∈ as 'belongs to' and ∉ as 'does not belong to.' Membership is the foundational relation for all of set theory: subset (A ⊆ B), equality (A = B), union, and intersection are all defined in terms of which elements belong to which sets.",
       "keyMoves": [
-        "Write a in A when a is an element of A",
-        "Write b not-in A when b is not an element of A",
-        "Read the symbols aloud as 'belongs to' and 'does not belong to'"
+        "Write a ∈ A when a is an element of A; read it 'a belongs to A'",
+        "Write b ∉ A when b is not an element of A; read it 'b does not belong to A'",
+        "Read ∈ aloud as 'belongs to' and ∉ as 'does not belong to' — do not confuse membership (∈) with the subset relation (⊆)"
       ],
       "misconceptions": [
         "Confusing membership (in, element of a set) with the subset relation (subset of, set inside a set)",
@@ -60,11 +60,11 @@
       "brief": "List all the elements of a set inside braces, separated by commas, taking each distinct element once and ignoring order.",
       "sec": 2,
       "quote": "In roster form, all the elements of a set are listed, the elements are being separated by commas and are enclosed within braces { }.",
-      "explanation": "In roster (tabular) form a set is written by listing all its elements separated by commas inside braces { }. For example the even positive integers less than 7 form {2, 4, 6}, and the vowels form {a, e, i, o, u}. Two rules apply: the order of listing is immaterial (so {1, 3, 7} = {7, 1, 3}), and each element is taken as distinct and not repeated (the letters of 'SCHOOL' give {S, C, H, O, L}). An infinite set with a clear pattern can be shown with three dots, e.g. the odd natural numbers as {1, 3, 5, ...}.",
+      "explanation": "PART 1 — The basic format: elements inside braces, separated by commas.\nIn roster (tabular) form, list every element of the set inside braces separated by commas. Even positive integers less than 7: {2, 4, 6}. Vowels in the English alphabet: {a, e, i, o, u}. This is the most direct representation when the elements are known and manageable in number.\n\nPART 2 — Two rules: no repeats, order does not matter.\nRule 1 — each element appears exactly once. The letters of 'SCHOOL' give {S, C, H, O, L} — the repeated O is written only once. Rule 2 — the order of listing is immaterial: {1, 3, 7} and {7, 3, 1} are the same set. Both rules reflect that a set is defined by which elements belong, not by arrangement or multiplicity.\n\nPART 3 — Infinite sets: use three dots for a clear pattern.\nWhen a set is infinite but has an unambiguous pattern, use three dots (…) to show continuation: odd natural numbers = {1, 3, 5, …}. Use this only when the pattern is unmistakable. If the pattern is unclear, switch to set-builder form.",
       "keyMoves": [
-        "List every element inside braces, separated by commas",
-        "Drop repeated elements and ignore the order of listing",
-        "Use three dots for a clearly-patterned infinite set, e.g. {1, 3, 5, ...}"
+        "List every element inside braces { }, separated by commas",
+        "Write each element exactly once and in any order: {1, 3, 7} = {7, 3, 1}; letters of 'SCHOOL' → {S, C, H, O, L}",
+        "Use three dots for a clearly-patterned infinite set: odd naturals → {1, 3, 5, …}"
       ],
       "misconceptions": [
         "Repeating elements (e.g. writing {S, C, H, O, O, L}) instead of taking each once",
@@ -84,11 +84,11 @@
       "brief": "Describe a set by the common defining property of its elements, written as {x : x has property P}.",
       "sec": 2,
       "quote": "In set-builder form, all the elements of a set possess a single common property which is not possessed by any element outside the set.",
-      "explanation": "In set-builder form a set is described by the single common property shared by all its elements and by no object outside the set. We write a variable (say x), a colon ':' meaning 'such that', and then the characteristic property, all inside braces: V = {x : x is a vowel in English alphabet} reads 'the set of all x such that x is a vowel'. The braces stand for 'the set of all'. This form is the natural way to describe sets given by a rule rather than a list, e.g. A = {x : x is a natural number and 3 < x < 10} = {4, 5, 6, 7, 8, 9}, and it converts back and forth with roster form.",
+      "explanation": "PART 1 — The format: {x : property}.\nIn set-builder form, write a variable (x), then a colon (:) meaning 'such that,' then the characteristic property, all inside braces. The braces mean 'the set of all.' V = {x : x is a vowel in the English alphabet} reads 'the set of all x such that x is a vowel' — the same set as {a, e, i, o, u} in roster form.\n\nPART 2 — The property must pin the set down exactly.\nThe defining property must be satisfied by every element and by NO object outside the set. If the property is too loose, it admits outsiders and fails to pin the set down. A = {x : x is a natural number and 3 < x < 10} gives exactly {4, 5, 6, 7, 8, 9} — no natural number satisfying both conditions is left out or incorrectly included.\n\nPART 3 — Converting between set-builder and roster form.\nTo go from set-builder to roster: list every object satisfying the property. To go from roster to set-builder: state the common property shared by all listed elements. Example: {1, 4, 9, 16, 25} = {x : x = n² for n ∈ {1,2,3,4,5}} in set-builder form. Both describe the same set; choose whichever is more convenient.",
       "keyMoves": [
-        "Identify the single property common to all elements and no outsiders",
-        "Write {x : property}, reading ':' as 'such that' and braces as 'the set of all'",
-        "Convert between set-builder and roster form for the same set"
+        "Write {x : property}, reading ':' as 'such that' and the braces as 'the set of all'",
+        "The property must hold for EVERY element and for NO object outside the set — it must pin the set down exactly",
+        "Convert set-builder to roster by listing all objects satisfying the property; convert roster to set-builder by identifying the common property"
       ],
       "misconceptions": [
         "Choosing a property that some outside object also satisfies (so the set is not pinned down)",
@@ -105,14 +105,14 @@
       "slug": "identify-the-empty-set",
       "title": "Identify the empty (null) set",
       "role": "bedrock",
-      "brief": "Recognise a set that contains no element at all, denoted by the symbol phi or { }.",
+      "brief": "Recognise a set that contains no element at all, denoted by ∅ or { }.",
       "sec": 3,
       "quote": "A set which does not contain any element is called the *empty set* or the *null set* or the *void set*.",
-      "explanation": "A set which does not contain any element is called the empty set (also null set or void set), denoted phi or { }. A set is empty when its defining property is satisfied by no object: {x : 1 < x < 2, x natural} is empty because there is no natural number between 1 and 2, and {x : x^2 = 2 and x rational} is empty because no rational number squares to 2. Deciding whether a described set is empty is a frequent exam task and the key first check before classifying or operating on a set.",
+      "explanation": "PART 1 — What the empty set is.\nThe empty set (also: null set, void set) contains no elements at all. It is denoted ∅ or { }. It is a valid set — just one with nothing in it. Every set has the empty set as a subset, including the empty set itself.\n\nPART 2 — Testing: check whether any object satisfies the defining property.\nTo decide if a described set is empty, ask: is there even one object satisfying the rule? If nothing does, the set is ∅. Examples: {x : 1 < x < 2, x ∈ ℕ} — no natural number lies strictly between 1 and 2 → empty. {x : x² = 2, x ∈ ℚ} — no rational number squares to exactly 2 → empty.\n\nPART 3 — Distinguish ∅ from {0}.\nThe empty set ∅ = { } has zero elements. The set {0} has one element, namely 0 — it is non-empty. These are not the same set. Common trap: 'the set of natural numbers less than 1' is ∅ (no natural number < 1), not {0}.",
       "keyMoves": [
-        "Check whether any object satisfies the set's defining property",
-        "Declare the set empty (phi or { }) when no object qualifies",
-        "Distinguish the empty set from a set containing the single element 0, i.e. {0}"
+        "Check whether any object satisfies the set's defining property; if none does, the set is ∅",
+        "Declare the set empty (∅ or { }) when no object qualifies — ∅ is still a valid set",
+        "Distinguish ∅ (zero elements) from {0} (one element, namely 0) — they are not the same"
       ],
       "misconceptions": [
         "Treating {0} as the empty set (it has one element, namely 0)",
@@ -228,7 +228,7 @@
       "brief": "Translate open, closed and half-open intervals to and from set-builder form, and find an interval's length.",
       "sec": 6,
       "quote": "The interval which contains the end points also is called *closed interval* and is denoted by [a, b].",
-      "explanation": "For a < b, the open interval (a, b) = {y : a < y < b} contains all points strictly between a and b but not the end points. The interval which contains the end points also is called closed interval and is denoted by [a, b] = {x : a <= x <= b}. Half-open intervals [a, b) and (a, b] include just one end point. Special unbounded intervals: [0, infinity) is the non-negative reals, (-infinity, 0) the negative reals, and (-infinity, infinity) all of R. Every interval contains infinitely many points, and the length of (a, b), [a, b], [a, b) or (a, b] is the number (b - a). Intervals are an alternative, compact way of naming subsets of R that converts directly to set-builder form.",
+      "explanation": "PART 1 — Read the bracket to know which end points are included.\nA square bracket [ or ] means the end point IS included; a round bracket ( or ) means it is NOT. So [a, b] = {x : a ≤ x ≤ b} includes both; (a, b) = {x : a < x < b} excludes both; [a, b) includes a but not b; (a, b] includes b but not a. Always use a round bracket at ±∞ since infinity is not a real number and cannot be included.\n\nPART 2 — Convert between interval notation and set-builder form.\nTo go from interval to set-builder: replace [ with ≤ and ( with < at each boundary. To go the other way: replace ≤ with ] and < with ) at the appropriate end. Example: {x : −3 ≤ x < 5} ↔ [−3, 5).\n\nPART 3 — Compute the interval length.\nThe length of any bounded interval (a, b), [a, b], [a, b), or (a, b] is b − a, regardless of which end points are included. Example: the length of [2, 9) is 9 − 2 = 7.",
       "keyMoves": [
         "Match bracket type to end-point inclusion: ( ) excludes, [ ] includes the end point",
         "Rewrite an interval as {x : inequality} and vice versa",
@@ -276,7 +276,7 @@
       "brief": "Draw the universal set as a rectangle and its subsets as circles, placing elements and showing subset relations.",
       "sec": 8,
       "quote": "Most of the relationships between sets can be represented by means of diagrams which are known as *Venn diagrams*.",
-      "explanation": "Most of the relationships between sets can be represented by Venn diagrams, named after the logician John Venn. The universal set is drawn as a rectangle and its subsets as closed curves (usually circles) inside it, with the elements written in their respective circles. For instance with U = {1, 2, ..., 10}, A = {2,4,6,8,10} is a circle inside the rectangle; if B = {4, 6} then B subset A is shown by drawing B's circle inside A's. Venn diagrams are the standard tool for visualising union, intersection, difference and complement, and for checking set identities.",
+      "explanation": "PART 1 — Draw the rectangle for U and circles for subsets.\nThe universal set U is always the outermost boundary: draw it as a rectangle and label it. Every named subset is drawn as a circle inside the rectangle (all subsets are contained in U). An element belongs to a set iff it lies inside that set's circle.\n\nPART 2 — Place every element in the correct region.\nCheck each element of U against the subsets: if it belongs to A place it inside A's circle; if to B inside B's; if to both, in the overlapping region; if to neither, inside the rectangle but outside all circles. Every element must appear exactly once.\n\nPART 3 — Show subset relations by nesting circles.\nIf B ⊆ A, draw B's circle entirely inside A's circle. If neither set contains the other, draw the circles overlapping. Never draw a subset's circle outside or straddling its superset's boundary — that would falsely suggest elements of B exist outside A.",
       "keyMoves": [
         "Draw U as a rectangle and each subset as a circle inside it",
         "Place each element in the correct region/circle",
@@ -324,7 +324,7 @@
       "brief": "Form A intersection B as the elements common to both A and B, recognise disjoint sets, and use intersection's properties including distributivity.",
       "sec": 9,
       "quote": "The intersection of sets A and B is the set of all elements which are common to both A and B.",
-      "explanation": "The intersection of A and B, written A intersection B, is the set of all elements common to both: A intersection B = {x : x in A and x in B}. For example {2,4,6,8} intersection {6,8,10,12} = {6,8}; and if B subset A then A intersection B = B. If A intersection B = phi the sets share no element and are called disjoint sets. Intersection is commutative, associative, idempotent (A intersection A = A), satisfies phi intersection A = phi and U intersection A = A, and distributes over union: A intersection (B union C) = (A intersection B) union (A intersection C).",
+      "explanation": "PART 1 — Keep only elements common to BOTH sets.\nA ∩ B = {x : x ∈ A and x ∈ B}. Test each candidate element against both sets; include it only if it passes both tests. Example: {2,4,6,8} ∩ {6,8,10,12} = {6,8} — only 6 and 8 appear in both.\n\nPART 2 — Recognise disjoint sets.\nIf A ∩ B = ∅, the sets share no element and are called disjoint. Example: {1,3,5} ∩ {2,4,6} = ∅ — odd and even integers share no element. Checking for disjointness is a special case of computing the intersection.\n\nPART 3 — Apply the distributive law.\nIntersection distributes over union: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C). Compute each intersection on the right separately, then take their union. This law (and its mirror: union distributes over intersection) is the key algebraic property tested at JEE level.",
       "keyMoves": [
         "Keep only the elements that lie in both A and B",
         "Recognise disjoint sets when A intersection B = phi",
@@ -348,7 +348,7 @@
       "brief": "Form A - B as the elements in A but not in B, and note that A - B is generally not equal to B - A.",
       "sec": 9,
       "quote": "The difference of the sets A and B in this order is the set of elements which belong to A but not to B.",
-      "explanation": "The difference A - B (read 'A minus B') is the set of elements that belong to A but not to B: A - B = {x : x in A and x not-in B}. For A = {1,2,3,4,5,6}, B = {2,4,6,8} we get A - B = {1,3,5} and B - A = {8}, showing that A - B is generally not equal to B - A (order matters). The three sets A - B, A intersection B and B - A are mutually disjoint. The difference is the operation from which the complement of a set is defined.",
+      "explanation": "PART 1 — Definition and computation of A − B.\nA − B is the set of all elements that belong to A but not to B: A − B = {x : x ∈ A and x ∉ B}. For A = {1,2,3,4,5,6} and B = {2,4,6,8}, cross out the elements of A that appear in B (2, 4, 6) — the remainder A − B = {1, 3, 5}.\n\nPART 2 — Order matters: A − B ≠ B − A in general.\nFor the same sets, B − A removes from B the elements appearing in A (2, 4, 6), leaving B − A = {8}. Since {1,3,5} ≠ {8}, the order of subtraction matters — unlike union and intersection, which are commutative.\n\nPART 3 — The three pieces partition the union.\nA − B, A ∩ B, and B − A are mutually disjoint and together equal A ∪ B. In the Venn diagram these are the left crescent, the overlap, and the right crescent. This triple partition is used whenever a problem asks 'how many elements are in exactly one of the two sets.'",
       "keyMoves": [
         "Keep the elements of A that are not in B to form A - B",
         "Note that the order matters: compute B - A separately",
