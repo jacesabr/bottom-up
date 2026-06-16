@@ -14,7 +14,7 @@
       "brief": "The chapter's top skill: given a quadratic or cubic polynomial, find its zeroes and connect them to the coefficients via the sum/product relations (and the reverse — build a polynomial from its zeroes).",
       "sec": 0,
       "quote": "are the zeroes of a quadratic polynomial also related to its coefficients?",
-      "explanation": "This is the umbrella goal that all sub-skills serve: knowing what a zero is, finding zeroes by factorisation, and using the coefficient relations α+β=−b/a, αβ=c/a (and the cubic analogues) both to verify and to construct polynomials.",
+      "explanation": "PART 1 — Find zeroes and read off coefficient relations.\nA zero of p(x) is a value k where p(k) = 0 (an x-intercept on the graph). For a quadratic ax²+bx+c with zeroes alpha and beta: sum alpha+beta = -b/a and product alpha*beta = c/a. These two formulas give the link between every zero and the coefficients.\n\nPART 2 — Verify zeroes against the coefficient formulas.\nGiven the zeroes, compute their sum and product and check they equal -b/a and c/a. Example: 2x²-5x+3 has zeroes 1 and 3/2; sum = 1+3/2 = 5/2 = -(-5)/2 ✓ and product = 1*3/2 = 3/2 = 3/2 ✓.\n\nPART 3 — Reverse: build a polynomial from sum and product.\nGiven sum S and product P, the monic quadratic is x²-Sx+P. For S=5, P=6: x²-5x+6 = (x-2)(x-3), zeroes 2 and 3, confirming sum=5 and product=6 ✓.",
       "keyMoves": [
         "Find zeroes of a quadratic/cubic",
         "State sum and product of zeroes in terms of coefficients",
@@ -218,7 +218,7 @@
       "brief": "Count how many times the graph of y=p(x) meets the x-axis to get the number of zeroes.",
       "sec": 1,
       "quote": "The number of zeroes is 2 as the graph intersects the x-axis at two points.",
-      "explanation": "Example 1 demonstrates: the number of zeroes equals the number of x-axis intersection points of y=p(x). One crossing → 1 zero, two crossings → 2 zeroes, etc.",
+      "explanation": "PART 1 — Count x-axis crossings, not other features.\nThe number of zeroes of y = p(x) equals the number of times the graph meets the x-axis. One x-intercept → 1 zero, two x-intercepts → 2 zeroes. Do not count turning points, the y-intercept, or any feature that is not an x-axis meeting point.\n\nPART 2 — Handle tangential touches carefully.\nWhen the graph only touches (is tangent to) the x-axis without crossing, that point counts as one zero — not two. A tangential touch is still an x-intercept; it just has multiplicity 2 algebraically, but there is still only one distinct zero at that x-value.",
       "keyMoves": [
         "Count intersection points with the x-axis",
         "Report that count as the number of zeroes"
@@ -241,7 +241,7 @@
       "brief": "A polynomial of degree n has at most n zeroes.",
       "sec": 1,
       "quote": "a polynomial p(x) of degree n has at most n zeroes.",
-      "explanation": "A quadratic has at most 2 zeroes; a cubic at most 3; in general degree n has at most n zeroes, because the graph meets the x-axis in at most n points.",
+      "explanation": "PART 1 — State the bounding rule: degree n gives at most n zeroes.\nA polynomial of degree n has at most n real zeroes. A quadratic (degree 2) can have 0, 1, or 2 real zeroes; a cubic (degree 3) can have 1, 2, or 3. The degree is an upper bound, not the exact count.\n\nPART 2 — Apply the rule to specific polynomials.\nFor a polynomial of degree n, count zeroes by counting x-axis crossings on its graph — there can be at most n. Example: x²+1 has 0 real zeroes (graph never touches x-axis); (x−1)² has 1; x²−5x+6 has 2. Never assume there are exactly n.",
       "keyMoves": [
         "Find the degree n",
         "State the maximum number of zeroes as n"
@@ -382,7 +382,7 @@
       "brief": "Recall α+β=−b/a and αβ=c/a for zeroes of ax²+bx+c.",
       "sec": 3,
       "quote": "sum of zeroes = α + β = −b/a = −(Coefficient of x)/(Coefficient of x²),",
-      "explanation": "The derived general result: if α, β are zeroes of ax²+bx+c then α+β=−b/a and αβ=c/a. These two formulas drive both verification and construction problems.",
+      "explanation": "PART 1 — State both formulas for the general quadratic ax²+bx+c.\nIf α, β are the two zeroes of ax²+bx+c (a≠0), then sum α+β = −b/a and product αβ = c/a. The negative sign belongs to the sum formula, not the product formula.\n\nPART 2 — Identify a, b, c correctly from the polynomial.\nWrite the polynomial in standard form before reading off a, b, c. For x²−5x+6: a=1, b=−5, c=6; so α+β = −(−5)/1 = 5 and αβ = 6/1 = 6. A missing term means the coefficient is 0.",
       "keyMoves": [
         "Identify a, b, c",
         "Write α+β=−b/a and αβ=c/a"
@@ -407,7 +407,7 @@
       "brief": "Use α+β=−b/a, αβ=c/a with a=1 to write a quadratic with the given sum and product.",
       "sec": 3,
       "quote": "So, one quadratic polynomial which fits the given conditions is x² + 3x + 2.",
-      "explanation": "Example 4: given sum −3 and product 2, set a=1 so b=−(sum)=3 and c=product=2, giving x²+3x+2 (any k-multiple also works). This is the reverse construction used heavily in exams.",
+      "explanation": "PART 1 — The monic form: x²−Sx+P.\nIf the zeroes have sum S and product P, the simplest (a=1) quadratic is x²−Sx+P. The coefficient of x is −S (negative of the sum) and the constant term is P.\n\nPART 2 — Apply: sum=−3, product=2.\nb = −(sum) = −(−3) = 3 and c = product = 2, giving x²+3x+2. Check: zeroes are −1 and −2; sum = −1+(−2) = −3 ✓ and product = (−1)(−2) = 2 ✓. Any non-zero scalar multiple k·(x²+3x+2) also has the same zeroes.",
       "keyMoves": [
         "Set a=1",
         "Take b=−(sum)",

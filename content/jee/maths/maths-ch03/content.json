@@ -14,7 +14,7 @@
       "brief": "Treat an angle as the amount of rotation of a ray about its initial point, with anticlockwise rotation positive and clockwise rotation negative.",
       "sec": 2,
       "quote": "If the direction of rotation is anticlockwise, the angle is said to be positive and if the direction of rotation is clockwise, then the angle is *negative*",
-      "explanation": "An angle is a measure of rotation of a given ray about its initial point. The starting ray is the initial side, the final position of the ray after rotation is the terminal side, and the point of rotation is the vertex. The size of the angle is the amount of rotation needed to carry the initial side onto the terminal side, and there is no upper limit (e.g. 420 deg or one revolution per second). The sign records the sense of rotation: anticlockwise rotation gives a positive angle and clockwise rotation gives a negative angle. This rotational picture, rather than a triangle, is what lets angles be arbitrarily large or negative.",
+      "explanation": "PART 1 — An angle is the amount of rotation of a ray, with no upper limit.\nThe starting ray is the initial side, its final position is the terminal side, and the fixed point is the vertex. The angle measures how much the ray rotates from initial to terminal side. There is no upper limit — angles can exceed 360° or complete multiple full revolutions (e.g. 420°, or negative 720°).\n\nPART 2 — The sign records direction: anticlockwise is positive, clockwise is negative.\nAnticlockwise rotation produces a positive angle and clockwise rotation produces a negative angle. For example, −90° (clockwise quarter-turn) has the same terminal side as +270° (anticlockwise three-quarter-turn) but carries a different sign.",
       "keyMoves": [
         "Identify the initial side, terminal side and vertex of a rotation",
         "Read the angle as the amount of rotation from initial to terminal side",
@@ -36,7 +36,7 @@
       "brief": "Use the degree as one 360th of a revolution and subdivide it into minutes and seconds (1 deg = 60', 1' = 60'').",
       "sec": 2,
       "quote": "A degree is divided into 60 minutes, and a minute is divided into 60 seconds.",
-      "explanation": "In degree measure, a rotation of one 360th of a complete revolution is an angle of one degree, written 1 deg. A degree is divided into 60 minutes and a minute into 60 seconds, so 1 deg = 60' and 1' = 60''. To combine such measures you convert the sexagesimal parts: e.g. 40 deg 20' = 40 + 20/60 deg = 40 1/3 deg. Degree measure is the familiar unit used for naming common angles such as 30 deg, 90 deg, 180 deg, 270 deg and 360 deg.",
+      "explanation": "PART 1 — One degree is 1/360 of a full revolution; subdivide with 1° = 60′ and 1′ = 60″.\nThe degree (°) measures angles as fractions of a revolution: 1° = 1/360 of one full revolution. For finer measurement, each degree is divided into 60 minutes (1° = 60′) and each minute into 60 seconds (1′ = 60″). Common angles: 30°, 45°, 60°, 90°, 180°, 270°, 360°.\n\nPART 2 — Convert minutes and seconds to a fractional degree before arithmetic.\nThe subdivision is base 60 (sexagesimal), not base 10. To combine 40° 20′: 40° 20′ = 40 + 20/60 = 40⅓°. Never add degrees and minutes as if they are the same unit — 40° 20′ ≠ 60°.",
       "keyMoves": [
         "State that 1 degree is one 360th of one revolution",
         "Apply 1 deg = 60' and 1' = 60'' to subdivide a degree",
@@ -60,7 +60,7 @@
       "brief": "Define one radian as the angle an arc of length one unit subtends at the centre of a unit circle, and treat radian measures as real numbers.",
       "sec": 2,
       "quote": "Angle subtended at the centre by an arc of length 1 unit in a unit circle (circle of radius 1 unit) is said to have a measure of 1 radian.",
-      "explanation": "The radian is a second unit for measuring angles. One radian is the angle subtended at the centre by an arc of length 1 unit in a unit circle (a circle of radius 1 unit); more generally, in a circle of radius r an arc of length r subtends 1 radian. Since the circumference of a unit circle is 2 pi, one complete revolution subtends 2 pi radian. By rolling the real line along the unit circle, every real number corresponds to a radian measure and conversely, so radian measures and real numbers can be treated as one and the same. By convention the word 'radian' is usually omitted, so pi means pi radian = 180 deg.",
+      "explanation": "PART 1 — One radian is the central angle when arc length equals the radius.\nIn a circle of radius r, an arc of length r subtends exactly 1 radian at the centre. In a unit circle (r = 1), arc length 1 gives 1 radian. The full circumference is 2*pi*r, so a complete revolution subtends 2*pi radians. Therefore pi radian = 180°.\n\nPART 2 — Radian measures are real numbers; the word 'radian' is usually dropped.\nBy wrapping the real number line around the unit circle, every real number maps to a radian measure. By convention the word 'radian' is omitted: writing 'pi' means pi radians = 180°. Treat radian measures and real numbers as interchangeable.",
       "keyMoves": [
         "Define 1 radian via an arc of length 1 in a unit circle (or length r in radius-r circle)",
         "State that one full revolution is 2 pi radian",
@@ -84,7 +84,7 @@
       "brief": "Use l = r theta (theta in radians) to find any one of arc length, radius or central angle from the other two.",
       "sec": 2,
       "quote": "in a circle of radius r, an arc of length l subtends an angle  $\\theta$  radian at the centre",
-      "explanation": "Because an arc of length r subtends 1 radian in a circle of radius r, an arc of length l subtends an angle of l/r radian. Thus if an arc of length l subtends an angle theta radian at the centre of a circle of radius r, then theta = l/r, or equivalently l = r theta (with theta in radians). This single relation lets you find the arc length from the radius and angle, the radius from the arc and angle, or the angle from the arc and radius. For example, a 60 deg = pi/3 central angle cutting an arc of 37.4 cm gives r = l/theta; and a 1.5 cm minute hand turning through 4 pi/3 in 40 minutes sweeps its tip a distance l = r theta.",
+      "explanation": "PART 1 — The formula l = r*theta with theta in radians.\nIn a circle of radius r, an arc of length l subtends a central angle theta radians where l = r*theta. This follows from the definition of radian: an arc of length r subtends exactly 1 radian. Rearrange to get theta = l/r or r = l/theta.\n\nPART 2 — Always convert degrees to radians before applying the formula.\nThe formula l = r*theta requires theta in radians. Multiply degrees by pi/180 first. Example: 60 degrees = 60*(pi/180) = pi/3 radians.\n\nPART 3 — Apply to find any one of l, r, or theta from the other two.\nExample: a minute hand of length 1.5 cm sweeps 40 minutes = 240 degrees = 4*pi/3 radians; tip travels l = 1.5 * (4*pi/3) = 2*pi cm.",
       "keyMoves": [
         "Convert the central angle to radians before using the formula",
         "Apply l = r theta (or theta = l/r, r = l/theta) to find the unknown quantity",
@@ -108,7 +108,7 @@
       "brief": "Use pi radian = 180 deg to convert any angle between degrees and radians.",
       "sec": 2,
       "quote": "a circle subtends at the centre an angle whose radian measure is  $2\\pi$  and its degree measure is  $360^{\\circ}$",
-      "explanation": "A full circle subtends 2 pi radian at the centre, and its degree measure is 360 deg, so 2 pi radian = 360 deg, i.e. pi radian = 180 deg. This single relation converts both ways: Radian measure = (pi/180) x Degree measure and Degree measure = (180/pi) x Radian measure. Using pi approx 22/7 gives 1 radian approx 57 deg 16' and 1 deg approx 0.01746 radian. The common angles convert as 30 deg = pi/6, 45 deg = pi/4, 60 deg = pi/3, 90 deg = pi/2, 180 deg = pi, 270 deg = 3 pi/2, 360 deg = 2 pi.",
+      "explanation": "PART 1 — The single relation: pi radians = 180°. Derive both conversion multipliers from it.\nA full circle is 360° = 2*pi radians, so pi radians = 180°. From this: radians = degrees * (pi/180), and degrees = radians * (180/pi). Multiply by pi/180 to go degrees → radians; multiply by 180/pi to go radians → degrees.\n\nPART 2 — Memorise the standard angle table and avoid the wrong multiplier direction.\nCommon conversions: 30° = pi/6, 45° = pi/4, 60° = pi/3, 90° = pi/2, 180° = pi, 270° = 3*pi/2, 360° = 2*pi. The most common error is using 180/pi when converting from degrees (should be pi/180) — remember 'degrees are bigger numbers, divide by 180 to shrink them to radians'.",
       "keyMoves": [
         "Start from pi radian = 180 deg",
         "Multiply a degree measure by pi/180 to get radians",
@@ -133,7 +133,7 @@
       "brief": "For a point P(a, b) on the unit circle at angle x, define cos x = a and sin x = b, extending the trig ratios to any angle.",
       "sec": 3,
       "quote": "We define  $\\cos x = a$  and  $\\sin x = b$",
-      "explanation": "To extend trigonometric ratios beyond acute angles, take a unit circle centred at the origin and let P(a, b) be the point with angle AOP = x radian (so the arc AP has length x). Then by definition cos x = a and sin x = b - the x- and y-coordinates of P. This works for any real x, positive or negative, so sine and cosine become functions defined for all angles, not just the acute angles of a right triangle. The quadrantal angles give cos 0 = 1, sin 0 = 0; cos(pi/2) = 0, sin(pi/2) = 1; cos pi = -1, sin pi = 0; cos(3 pi/2) = 0, sin(3 pi/2) = -1; cos 2 pi = 1, sin 2 pi = 0.",
+      "explanation": "PART 1 — Place a point P on the unit circle at angle x and read off its coordinates.\nCentre a circle of radius 1 at the origin. For an angle x (in radians), let P(a, b) be the point on the circle where the angle AOP = x. Define cos x = a (x-coordinate) and sin x = b (y-coordinate). This extends sine and cosine to ALL real values of x, not just acute angles.\n\nPART 2 — Read quadrantal values directly from coordinates.\nAt key angles: (0°) P=(1,0): cos 0=1, sin 0=0. (90°=pi/2) P=(0,1): cos(pi/2)=0, sin(pi/2)=1. (180°=pi) P=(-1,0): cos pi=-1, sin pi=0. (270°=3pi/2) P=(0,-1): cos(3pi/2)=0, sin(3pi/2)=-1. (360°=2pi) back to (1,0). Do not swap: cos is x-coordinate, sin is y-coordinate.",
       "keyMoves": [
         "Place P at angle x on the unit circle centred at the origin",
         "Read cos x as the x-coordinate a and sin x as the y-coordinate b of P",
@@ -157,7 +157,7 @@
       "brief": "Use that P(a, b) lies on the unit circle (a^2 + b^2 = 1) to prove cos^2 x + sin^2 x = 1 for every angle x.",
       "sec": 3,
       "quote": "or  $\\cos^2 x + \\sin^2 x = 1$",
-      "explanation": "For the unit-circle point P(a, b) at angle x, triangle OMP is right-angled, so OM^2 + MP^2 = OP^2 gives a^2 + b^2 = 1. Since cos x = a and sin x = b, this is the fundamental identity cos^2 x + sin^2 x = 1, holding for every real x. It is the backbone of the subject: it lets you find one of sin x, cos x from the other (up to a sign fixed by the quadrant). Together with the reciprocal definitions it yields the derived identities 1 + tan^2 x = sec^2 x and 1 + cot^2 x = cosec^2 x.",
+      "explanation": "PART 1 — The identity comes from Pythagoras on the unit circle.\nThe point P(a,b) lies on the unit circle, so a^2 + b^2 = 1 (the circle's equation, equivalently Pythagoras on triangle OMP). Since cos x = a and sin x = b, substituting gives cos^2 x + sin^2 x = 1, holding for EVERY real x.\n\nPART 2 — Use it to find one ratio from the other, fixing sign by quadrant.\nGiven sin x, then cos^2 x = 1 - sin^2 x, so cos x = +/- sqrt(1 - sin^2 x); choose the sign from the quadrant of x. Note sin^2 x means (sin x)^2, NOT sin(x^2), and (sin x + cos x)^2 is not 1. The identity also produces 1 + tan^2 x = sec^2 x by dividing through by cos^2 x.",
       "keyMoves": [
         "Use a^2 + b^2 = 1 because P lies on the unit circle (Pythagoras in triangle OMP)",
         "Substitute cos x = a, sin x = b to get sin^2 x + cos^2 x = 1",
@@ -181,7 +181,7 @@
       "brief": "Define the other four trig functions as cosec x = 1/sin x, sec x = 1/cos x, tan x = sin x/cos x, cot x = cos x/sin x, with their exclusions.",
       "sec": 3,
       "quote": "We now define other trigonometric functions in terms of sine and cosine functions:",
-      "explanation": "The remaining four trigonometric functions are defined in terms of sine and cosine: cosec x = 1/sin x (x != n pi), sec x = 1/cos x (x != (2n+1) pi/2), tan x = sin x/cos x (x != (2n+1) pi/2), and cot x = cos x/sin x (x != n pi), where n is any integer. The excluded values are exactly where the denominator (sin x or cos x) vanishes - sin x = 0 when x = n pi, cos x = 0 when x = (2n+1) pi/2 - making the function undefined there. The values of cosec, sec and cot are the reciprocals of sin, cos and tan respectively.",
+      "explanation": "PART 1 — Define the four functions from sin and cos.\ncosec x = 1/sin x, sec x = 1/cos x, tan x = sin x/cos x, cot x = cos x/sin x. Watch the pairing: cosec is the reciprocal of SINE (not cosine) and sec is the reciprocal of COSINE (not sine) — the names are crossed relative to what you might guess.\n\nPART 2 — Exclude the angles where the denominator vanishes.\ncosec x and cot x are undefined where sin x = 0, i.e. x = n*pi. sec x and tan x are undefined where cos x = 0, i.e. x = (2n+1)*pi/2. At those angles the function does not exist because you would divide by zero.",
       "keyMoves": [
         "Write cosec x = 1/sin x and sec x = 1/cos x as reciprocals",
         "Write tan x = sin x/cos x and cot x = cos x/sin x as ratios",
@@ -205,7 +205,7 @@
       "brief": "Divide sin^2 x + cos^2 x = 1 by cos^2 x and by sin^2 x to obtain the two derived Pythagorean identities.",
       "sec": 3,
       "quote": "$$1 + \\tan^2 x = \\sec^2 x \\qquad (\\text{why?})$$",
-      "explanation": "From sin^2 x + cos^2 x = 1, dividing throughout by cos^2 x gives tan^2 x + 1 = sec^2 x, i.e. 1 + tan^2 x = sec^2 x; dividing instead by sin^2 x gives 1 + cot^2 x = cosec^2 x. These two follow directly from the fundamental identity together with the reciprocal/ratio definitions, and they are the standard tools for converting between tan and sec, or between cot and cosec, when simplifying expressions or solving equations.",
+      "explanation": "PART 1 — Divide the fundamental identity by cos^2 x to get 1 + tan^2 x = sec^2 x.\nStart from sin^2 x + cos^2 x = 1. Divide every term by cos^2 x: (sin^2 x/cos^2 x) + 1 = 1/cos^2 x, which is tan^2 x + 1 = sec^2 x. Rearranged: 1 + tan^2 x = sec^2 x.\n\nPART 2 — Divide by sin^2 x to get 1 + cot^2 x = cosec^2 x, and watch the signs.\nDividing sin^2 x + cos^2 x = 1 by sin^2 x gives 1 + cot^2 x = cosec^2 x. Both identities have a PLUS sign: 1 + tan^2 x = sec^2 x (not 1 - tan^2 x), and do not mix the pairs (tan goes with sec, cot goes with cosec).",
       "keyMoves": [
         "Start from sin^2 x + cos^2 x = 1",
         "Divide by cos^2 x to get 1 + tan^2 x = sec^2 x",
@@ -230,7 +230,7 @@
       "brief": "Use the signs of the coordinates a, b in each quadrant to decide the sign of each trigonometric function there.",
       "sec": 3,
       "quote": "in the first quadrant  $(0 < x < \\frac{\\pi}{2}) a$  and *b* are both positive",
-      "explanation": "Because cos x = a and sin x = b, the sign of each function follows the signs of the coordinates in each quadrant. In the first quadrant (0 < x < pi/2) both a and b are positive; in the second (pi/2 < x < pi) a is negative and b positive; in the third (pi < x < 3 pi/2) both are negative; in the fourth (3 pi/2 < x < 2 pi) a is positive and b negative. Hence sin x > 0 for 0 < x < pi and < 0 for pi < x < 2 pi, while cos x > 0 in quadrants I and IV. The signs of tan, cot, sec, cosec follow from those of sin and cos. This is what pins down the sign when an identity gives a value only up to +/-.",
+      "explanation": "PART 1 — Signs of cos x and sin x follow the coordinate signs by quadrant.\nSince cos x = a (x-coordinate) and sin x = b (y-coordinate): QI (0 to pi/2) both positive; QII (pi/2 to pi) a negative, b positive; QIII (pi to 3pi/2) both negative; QIV (3pi/2 to 2pi) a positive, b negative. So sin x > 0 in QI and QII; cos x > 0 in QI and QIV.\n\nPART 2 — Use the ASTC rule and derive the other four functions.\nA handy summary: All positive in QI, Sine in QII, Tangent in QIII, Cosine in QIV (ASTC). tan, cot, sec, cosec take their signs from sin and cos (e.g. tan = sin/cos is positive when both have the same sign — QI and QIII). This pins down the sign when an identity gives a value only up to +/-.",
       "keyMoves": [
         "Identify the quadrant of the angle",
         "Read the signs of a = cos x and b = sin x there",
@@ -379,7 +379,7 @@
       "brief": "Use the cos(x - y) formula to get cos(pi/2 - x) = sin x, sin(pi/2 - x) = cos x and the related allied-angle reductions.",
       "sec": 4,
       "quote": "5.  $\\cos\\left(\\frac{\\pi}{2}-x\\right) = \\sin x$",
-      "explanation": "Putting x = pi/2 and y = x in the cos(x - y) identity gives cos(pi/2 - x) = cos(pi/2) cos x + sin(pi/2) sin x = sin x, and then sin(pi/2 - x) = cos x. By choosing suitable values in the sum/difference identities one similarly gets the allied-angle results: cos(pi/2 + x) = -sin x, sin(pi/2 + x) = cos x, cos(pi - x) = -cos x, sin(pi - x) = sin x, cos(pi + x) = -cos x, sin(pi + x) = -sin x, cos(2 pi - x) = cos x, sin(2 pi - x) = -sin x. These reduce any angle to a related acute angle and are essential for simplifying trigonometric expressions.",
+      "explanation": "PART 1 — Derive the basic cofunction identities from cos(x-y).\nSubstitute x=pi/2 and y=x in cos(x-y): cos(pi/2-x) = cos(pi/2)cos x + sin(pi/2)sin x = 0*cos x + 1*sin x = sin x. Then sin(pi/2-x) = cos(pi/2-(pi/2-x)) = cos x.\n\nPART 2 — Allied-angle table for pi/2+x, pi-x, pi+x and 2pi-x.\ncos(pi/2+x)=-sin x; sin(pi/2+x)=cos x; cos(pi-x)=-cos x; sin(pi-x)=sin x; cos(pi+x)=-cos x; sin(pi+x)=-sin x; cos(2pi-x)=cos x; sin(2pi-x)=-sin x.\n\nPART 3 — Pattern: function swaps at pi/2 offsets; sign depends on quadrant.\nAt pi/2 +/- x: cos and sin interchange (cofunction). At pi +/- x: the function name stays the same but sign is determined by quadrant. Use this pattern to reduce any angle rather than memorising all eight identities separately.",
       "keyMoves": [
         "Substitute x = pi/2, y = x in cos(x - y) to get cos(pi/2 - x) = sin x",
         "Deduce sin(pi/2 - x) = cos x from the cofunction relation",

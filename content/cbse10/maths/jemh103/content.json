@@ -14,7 +14,7 @@
       "brief": "Given a pair of linear equations (or a word problem reducible to one), determine whether a solution exists and find it by an appropriate method.",
       "sec": 8,
       "quote": "A pair of linear equations in two variables can be represented, and solved, by the:",
-      "explanation": "This is the chapter's top skill: take two linear equations in x and y (possibly arising from a real situation), decide if the pair is consistent/inconsistent/dependent, and produce the solution. It is achieved by selecting and executing one of the taught methods — graphical, substitution, or elimination — and interpreting the result. All sub-skills below feed into this.",
+      "explanation": "PART 1 — Form the pair, choose a method, and execute it.\nTake the two linear equations (forming them from a word problem if needed). Choose a method: graphical (visual, approximate), substitution (good when a variable has coefficient 1), or elimination (good when coefficients align). Execute it to find x and y.\n\nPART 2 — Classify and interpret the result back in context.\nThe pair is consistent (unique solution), dependent (infinitely many), or inconsistent (none). After solving, interpret the answer in the problem's situation and verify it satisfies both original equations. Every sub-skill — classifying by ratios, the three methods, forming equations, verifying — feeds into this top skill.",
       "keyMoves": [
         "Identify the two equations (or form them from a problem)",
         "Choose a method (graphical / substitution / elimination)",
@@ -45,7 +45,7 @@
       "brief": "Compare the three coefficient ratios to decide whether the lines intersect (unique), coincide (infinite), or are parallel (none).",
       "sec": 1,
       "quote": "are  (i)  intersecting, then a₁/a₂ ≠ b₁/b₂ .",
-      "explanation": "Writing both equations in the form \\(a_1x + b_1y + c_1 = 0\\) and \\(a_2x + b_2y + c_2 = 0\\), the student compares ratios. \\(a_1/a_2 \\ne b_1/b_2\\) means intersecting/unique; \\(a_1/a_2 = b_1/b_2 = c_1/c_2\\) means coincident/infinite; \\(a_1/a_2 = b_1/b_2 \\ne c_1/c_2\\) means parallel/none.",
+      "explanation": "PART 1 — Write both equations in general form and form the three ratios.\nRearrange each equation to a1x + b1y + c1 = 0 and a2x + b2y + c2 = 0. Watch signs: 2x + 3y = 5 becomes 2x + 3y − 5 = 0, so c1 = −5. Then form a1/a2, b1/b2, c1/c2.\n\nPART 2 — Compare the three ratios against the three cases.\na1/a2 ≠ b1/b2 → lines intersect → unique solution (consistent). a1/a2 = b1/b2 = c1/c2 → lines coincide → infinitely many solutions (dependent). a1/a2 = b1/b2 ≠ c1/c2 → lines are parallel → no solution (inconsistent). The middle case and the last case share equal a and b ratios — only the c ratio distinguishes them.",
       "keyMoves": [
         "Put both equations in general form",
         "Form the three ratios \\(a_1/a_2\\), \\(b_1/b_2\\), \\(c_1/c_2\\)",
@@ -93,7 +93,7 @@
       "brief": "Choose convenient x-values, compute y, to get two points that determine the line.",
       "sec": 1,
       "quote": "For this, we find two solutions of each of the equations, which are given in Table 3.2.",
-      "explanation": "To draw a line's graph the student rearranges the equation to y = (expression in x) and substitutes two convenient x-values (often 0 and another) to obtain two (x,y) pairs. Two points suffice to draw the straight line.",
+      "explanation": "PART 1 — Rearrange for y, then pick two convenient x-values.\nWrite the equation as y = (expression in x). Choose x = 0 first (almost always gives a clean point), then a second x-value that avoids fractions. For x + 2y = 4: y = (4 − x)/2. At x = 0, y = 2; at x = 2, y = 1.\n\nPART 2 — Tabulate the two ordered pairs.\nRecord the two (x, y) pairs in a small table. Two points fully determine a straight line. A third point is optional but useful as a check. Example: x: 0, 2; y: 2, 1.",
       "keyMoves": [
         "Solve the equation for y in terms of x",
         "Pick two easy x-values",
@@ -163,7 +163,7 @@
       "brief": "Draw both lines from tabulated points and obtain the solution (or conclude none/infinite) from their geometric relation.",
       "sec": 1,
       "quote": "Solution : Let us draw the graphs of the Equations (1) and (2). For this, we find two solutions of each of the equations, which are given in Table 3.2.",
-      "explanation": "The full graphical method: for each equation find two solutions, plot and draw both lines, then read the intersection (unique solution), note coincidence (infinitely many), or parallelism (no solution). It is the visual method, used in Example 1 and exam Q32(A).",
+      "explanation": "PART 1 — Tabulate two points per equation, plot, and draw both lines.\nFor each of the two equations, rearrange for y and find two solutions, then plot the points and draw each line. Two points fix each line. You now have two straight lines on one set of axes.\n\nPART 2 — Read the geometric relationship to get the solution.\nIf the lines intersect at one point, its coordinates are the unique solution (consistent). If the lines coincide (lie on top of each other), there are infinitely many solutions (dependent). If they are parallel and distinct, there is no solution (inconsistent). Example: x − y = −1 and 3x + 2y = 12 cross at (2, 3).",
       "keyMoves": [
         "Tabulate two solutions per equation",
         "Plot and draw both lines",
@@ -213,7 +213,7 @@
       "brief": "Replace the isolated variable in the second equation, producing one equation in one variable.",
       "sec": 4,
       "quote": "Step 2 : Substitute the value of x in Equation (1). We get",
-      "explanation": "Having written x = 3 − 2y, the student plugs this into the other equation: 7(3 − 2y) − 15y = 2. Distributing and combining reduces the system to a single-variable equation that can be solved.",
+      "explanation": "PART 1 — Plug the Step-1 expression into the OTHER equation, then expand.\nHaving isolated x = 3 − 2y, replace x in the other equation: 7(3 − 2y) − 15y = 2. Distribute the bracket: 21 − 14y − 15y = 2. Never substitute back into the same equation you isolated from.\n\nPART 2 — Combine like-variable terms to get one equation in one unknown.\nCollect all y-terms: 21 − 29y = 2. The equation now contains only y. Solve it in the next step.",
       "keyMoves": [
         "Put the expression in place of the variable in the other equation",
         "Distribute/expand carefully",
@@ -259,7 +259,7 @@
       "brief": "Plug the found value into the Step-1 expression/equation to get the remaining variable.",
       "sec": 4,
       "quote": "Step 3 : Substituting this value of y in Equation (3), we get\n\nx = 3 − 2 (19/29) = 49/29",
-      "explanation": "Once one variable is known, substitute it into the earlier isolated expression to find the other, e.g. y = 19/29 into x = 3 − 2y gives x = 49/29. This completes the solution pair.",
+      "explanation": "PART 1 — Plug the known value into the Step-1 expression.\nOnce you have solved for one variable (say y = 19/29), go back to the expression isolated in Step 1 (x = 3 − 2y). Replace y with the found value: x = 3 − 2(19/29) = 3 − 38/29 = 87/29 − 38/29 = 49/29.\n\nPART 2 — State both values as the complete solution.\nWrite x and y clearly or as an ordered pair. Then verify by substituting both into each original equation to confirm both hold.",
       "keyMoves": [
         "Insert the known value into the Step-1 equation",
         "Compute the second variable",
@@ -283,7 +283,7 @@
       "brief": "Express, substitute, solve, and back-substitute to find x and y (or detect no/infinite solutions).",
       "sec": 4,
       "quote": "Step 1 : Find the value of one variable, say y in terms of the other variable, i.e., x from either equation, whichever is convenient.",
-      "explanation": "The complete substitution algorithm: isolate one variable from one equation, substitute into the other, solve the resulting single-variable equation, then back-substitute. A variable-free true statement means infinitely many solutions; a false one means inconsistent.",
+      "explanation": "PART 1 — Four steps: isolate, substitute, solve, back-substitute.\nStep 1: from the easier equation isolate one variable (e.g. x = 3 − 2y). Step 2: substitute that expression into the OTHER equation. Step 3: solve the resulting one-variable equation. Step 4: back-substitute that value into the Step-1 expression to get the second variable.\n\nPART 2 — Read a variable-free outcome correctly.\nIf, after substituting, the variable cancels and you get a TRUE statement (e.g. 18 = 18), the pair has infinitely many solutions (dependent). If you get a FALSE statement (e.g. −4 = 0), the pair has no solution (inconsistent). Choose the easier equation to isolate from so you avoid fractions.",
       "keyMoves": [
         "Isolate one variable",
         "Substitute into the other equation",
@@ -380,7 +380,7 @@
       "brief": "Combine the scaled equations so one variable cancels, leaving one equation in one unknown.",
       "sec": 6,
       "quote": "Step 2 : Subtract Equation (3) from Equation (4) to eliminate y, because the coefficients of y are the same. So, we get",
-      "explanation": "With coefficients equalised, the student subtracts (if same sign) or adds (if opposite sign) the equations so that variable vanishes: (28x−27x)−(12y−12y)=8000−6000 gives x=2000. The remaining equation is solved next.",
+      "explanation": "PART 1 — Decide: add if signs are opposite, subtract if same.\nAfter equalising the target coefficient, look at the signs on that variable in both equations. If they are opposite (one positive, one negative), ADD the equations to cancel the variable. If they are the same sign, SUBTRACT one equation from the other.\n\nPART 2 — Combine term by term and get one equation in one variable.\nApply the chosen operation to every corresponding term including the right-hand constant. Example: 28x−12y=8000 and 27x−12y=6000 (same sign −12y); subtract to get (28−27)x = 8000−6000, so x=2000. One equation in one variable remains.",
       "keyMoves": [
         "Decide add (opposite signs) or subtract (same signs)",
         "Combine the two equations term by term",
@@ -404,7 +404,7 @@
       "brief": "Equalise a coefficient, eliminate that variable, solve, and back-substitute.",
       "sec": 6,
       "quote": "The method used in solving the example above is called the elimination method, because we eliminate one variable first, to get a linear equation in one variable.",
-      "explanation": "The complete elimination algorithm: scale the equations to match one coefficient, add/subtract to remove that variable, solve the single-variable equation, then back-substitute for the other. A no-variable true/false statement again signals infinite/no solutions.",
+      "explanation": "PART 1 — Four steps: equalise a coefficient, eliminate, solve, back-substitute.\nStep 1: multiply one or both equations by constants so one variable's coefficients match in magnitude. Step 2: add (opposite signs) or subtract (same signs) to remove that variable. Step 3: solve the resulting one-variable equation. Step 4: back-substitute to find the other variable.\n\nPART 2 — Scale every term, and read a no-variable outcome correctly.\nWhen scaling, multiply EVERY term including the constant — not just the variable. If elimination leaves a true statement (e.g. 0 = 0) there are infinitely many solutions; a false one (e.g. 0 = 5) means no solution.",
       "keyMoves": [
         "Equalise one variable's coefficients",
         "Add/subtract to eliminate it",
@@ -435,7 +435,7 @@
       "brief": "Assign variables to unknowns and translate each stated condition into a linear equation.",
       "sec": 4,
       "quote": "Let s and t be the ages (in years) of Aftab and his daughter, respectively.",
-      "explanation": "Many problems are verbal. The student names the unknowns and converts each sentence into an equation, e.g. 'seven years ago I was seven times as old' becomes s−7 = 7(t−7). Producing the correct pair is prerequisite to any solving method.",
+      "explanation": "PART 1 — Assign a variable to each unknown and translate conditions into equations.\nRead the problem, identify the two unknowns (e.g. present ages s and t), and assign a letter to each. Then convert each stated condition into an equation: 'seven years ago I was seven times as old as my daughter' → s − 7 = 7(t − 7). Producing the correct pair of equations is required before any method can be applied.\n\nPART 2 — Simplify each equation to standard/general form before solving.\nExpand brackets and collect like terms: s − 7 = 7t − 49 → s − 7t = −42. Write both equations in ax + by = c form so they are ready for the chosen method.",
       "keyMoves": [
         "Define a variable for each unknown",
         "Translate each condition into an equation",

@@ -14,7 +14,7 @@
       "brief": "Recognise the determinant as a unique number associated with each square matrix, written |A| or det A.",
       "sec": 2,
       "quote": "f(A) is called the determinant of A. It is also denoted by |A| or det A",
-      "explanation": "The determinant is a function that associates each square matrix with a unique number (real or complex). If f(A) = k for a square matrix A, then f(A) is called the determinant of A, denoted |A|, det A, or the symbol Delta. Note |A| is read as 'determinant of A', not 'modulus of A', and only square matrices have determinants.",
+      "explanation": "PART 1 — The determinant is a single number, not a matrix.\nFor any square matrix A, the determinant (written |A|, det A, or Δ) is a scalar (real or complex) attached to A. Only square matrices have determinants; rectangular matrices do not.\n\nPART 2 — Do not read |A| as modulus of A.\nThe notation |A| means determinant of A, which can be negative (e.g. |[[1,2],[3,4]]| = 1×4 − 2×3 = −2). Modulus is always non-negative; the determinant need not be.",
       "keyMoves": [
         "Recognise the determinant as a single number attached to a square matrix",
         "Write it as |A|, det A or Delta",
@@ -36,7 +36,7 @@
       "brief": "Compute a second-order determinant as a11 a22 - a21 a12.",
       "sec": 2,
       "quote": "a_{11}a_{22} - a_{21}a_{12}",
-      "explanation": "For a 2 x 2 matrix with entries a11, a12 in the first row and a21, a22 in the second, the determinant is defined as a11 a22 - a21 a12 - the product of the main-diagonal entries minus the product of the off-diagonal entries. For example, the determinant of [2, 4; -1, 2] is 2(2) - 4(-1) = 8. (The determinant of a 1 x 1 matrix [a] is just a.)",
+      "explanation": "PART 1 — The formula: main-diagonal product minus off-diagonal product.\nFor A = [[a11, a12],[a21, a22]], the determinant is |A| = a11*a22 − a12*a21. Multiply the top-left and bottom-right entries (main diagonal), then subtract the product of the top-right and bottom-left entries (off-diagonal). The result is a single number.\n\nPART 2 — Watch sign when the off-diagonal product is negative.\nFor [[2, 4],[−1, 2]], |A| = 2(2) − 4(−1) = 4 + 4 = 8. Subtracting a negative entry gives addition. Do not reverse the subtraction order: a11*a22 − a12*a21 is correct, not a12*a21 − a11*a22.",
       "keyMoves": [
         "Multiply the main-diagonal entries a11 and a22",
         "Subtract the product of the off-diagonal entries a21 and a12",
@@ -60,7 +60,7 @@
       "brief": "Form the minor M_ij of a_ij by deleting its row and column and taking the resulting determinant.",
       "sec": 4,
       "quote": "Minor of an element  $a_{ij}$  of a determinant is the determinant obtained by deleting its *i*th row and *j*th column in which element  $a_{ij}$  lies.",
-      "explanation": "The minor M_ij of an element a_ij of a determinant is the determinant obtained by deleting the i-th row and j-th column in which a_ij lies. So for a 3 x 3 determinant, each minor is a 2 x 2 determinant. Minors are the building blocks for cofactors and for expanding a determinant.",
+      "explanation": "PART 1 — Delete the whole row and whole column of the element, then evaluate the remaining determinant.\nThe minor M_ij of element a_ij is the determinant of the sub-matrix formed by deleting row i and column j entirely. For a 3×3 matrix, each minor is a 2×2 determinant. Example: M_12 in a 3×3 is found by crossing out all of row 1 and all of column 2, leaving a 2×2 sub-matrix.\n\nPART 2 — Delete the entire row and column, not just the single entry.\nA common mistake is deleting only the element a_ij itself. You must remove every entry in row i and every entry in column j. The minor is the determinant of what remains.",
       "keyMoves": [
         "Locate the element a_ij in its row i and column j",
         "Delete that whole row and that whole column",
@@ -84,7 +84,7 @@
       "brief": "Form the cofactor A_ij = (-1)^(i+j) M_ij by attaching the chequerboard sign to the minor.",
       "sec": 4,
       "quote": "Cofactor of an element  $a_{ij}$ , denoted by  $A_{ij}$  is defined by  $A_{ij} = (-1)^{i+j} M_{ij}$ , where  $M_{ij}$  is minor of  $a_{ij}$ .",
-      "explanation": "The cofactor A_ij of an element a_ij is defined by A_ij = (-1)^(i+j) M_ij, where M_ij is the minor of a_ij. The factor (-1)^(i+j) is +1 when i + j is even and -1 when i + j is odd (the chequerboard sign pattern). Cofactors are used to expand a determinant and to build the adjoint of a matrix.",
+      "explanation": "PART 1 — Cofactor = sign factor times minor: A_ij = (-1)^(i+j) * M_ij.\nThe cofactor of element a_ij is the minor M_ij multiplied by a sign determined by position. The sign is (+1) when i+j is even and (-1) when i+j is odd. This gives the chequerboard pattern: + − + / − + − / + − + for a 3×3 matrix.\n\nPART 2 — Apply the chequerboard sign, do not confuse cofactor with minor.\nM_ij and A_ij agree when i+j is even; they differ only in sign when i+j is odd. Example: for position (1,2), i+j=3 (odd), so A_12 = −M_12. For position (2,2), i+j=4 (even), so A_22 = +M_22.",
       "keyMoves": [
         "Compute the minor M_ij",
         "Multiply by (-1)^(i+j): + when i + j is even, - when odd",
@@ -108,7 +108,7 @@
       "brief": "Evaluate a third-order determinant by cofactor expansion along any row or column.",
       "sec": 2,
       "quote": "Hence, expanding a determinant along any row or column gives same value.",
-      "explanation": "A 3 x 3 determinant is evaluated by expressing it in terms of second-order determinants - expansion along a row or column. You multiply each element of the chosen row (or column) by its cofactor and add. There are six ways (three rows, three columns) and all give the same value: expanding a determinant along any row or column gives the same value. For easier calculation, expand along the row or column with the most zeros.",
+      "explanation": "PART 1 — Expand along any row or column: multiply each element by its cofactor and sum.\nTo evaluate |A| for a 3×3 matrix, choose any row (or column) and compute the sum of each element multiplied by its cofactor. Expanding along row 1: |A| = a_11*A_11 + a_12*A_12 + a_13*A_13. Each A_ij is the signed 2×2 minor computed earlier.\n\nPART 2 — Choose the row or column with the most zeros to minimise arithmetic.\nAll six expansions (3 rows, 3 columns) give the same value — this is a theorem. Expand along whichever row/column has the most zeros, since zero times a cofactor contributes nothing. Do not mix elements from one row with cofactors from another row.",
       "keyMoves": [
         "Choose a row or column (ideally one with zeros)",
         "Multiply each entry by its cofactor and sum",
@@ -132,7 +132,7 @@
       "brief": "Use the determinant of vertex coordinates to get triangle area; collinear points give a zero determinant.",
       "sec": 3,
       "quote": "The area of the triangle formed by three collinear points is zero.",
-      "explanation": "The area of a triangle with vertices (x1,y1), (x2,y2), (x3,y3) equals one half the absolute value of the determinant whose rows are (x1, y1, 1), (x2, y2, 1), (x3, y3, 1). Because area is positive we take the absolute value of the determinant. A key consequence: the area of the triangle formed by three collinear points is zero, so setting the determinant to zero is the condition for three points to be collinear (and gives the equation of a line through two points).",
+      "explanation": "PART 1 — Area = half the absolute value of the vertex determinant.\nFor a triangle with vertices (x1,y1), (x2,y2), (x3,y3), the area is (1/2)*|D| where D is the determinant with rows (x1,y1,1), (x2,y2,1), (x3,y3,1). The factor 1/2 and the absolute value are both essential — area is never negative.\n\nPART 2 — A zero determinant means the points are collinear.\nIf D = 0, the 'triangle' has zero area, so the three points lie on one straight line. Setting D = 0 is therefore the collinearity test, and it also yields the equation of the line through two given points (treat the third vertex as (x,y)).",
       "keyMoves": [
         "Form the determinant with rows (x_i, y_i, 1) for the three vertices",
         "Take one half of its absolute value for the area",
@@ -156,7 +156,7 @@
       "brief": "Form adj A as the transpose of the matrix of cofactors.",
       "sec": 5,
       "quote": "The adjoint of a square matrix  $A = [a_{ij}]_{n \\times n}$  is defined as the transpose of the matrix  $[A_{ij}]_{n \\times n}$ , where  $A_{ij}$  is the cofactor of the element  $a_{ij}$ .",
-      "explanation": "The adjoint of a square matrix A = [a_ij] is defined as the transpose of the matrix of cofactors [A_ij], where A_ij is the cofactor of a_ij; it is written adj A. So you build the cofactor matrix and then transpose it. For a 2 x 2 matrix the adjoint is obtained by swapping the diagonal entries and changing the signs of the off-diagonal entries. The adjoint is the gateway to the inverse.",
+      "explanation": "PART 1 — Two steps: cofactor matrix, then transpose.\nThe adjoint of a square matrix A, written adj A, is the transpose of the matrix of cofactors [A_ij]. Step 1: compute each signed cofactor A_ij = (-1)^(i+j) times the minor M_ij. Step 2: arrange these into the cofactor matrix and then transpose it.\n\nPART 2 — 2x2 shortcut: swap diagonal, negate off-diagonal.\nFor A = [[a,b],[c,d]], adj A = [[d,-b],[-c,a]]. The two diagonal entries swap and the two off-diagonal entries change sign. This shortcut only applies to 2x2.\n\nPART 3 — Do not forget the transpose step.\nThe cofactor matrix and adj A differ (unless A is symmetric): adj A has (i,j) entry equal to A_ji (the cofactor of the TRANSPOSED position). Stopping at the cofactor matrix without transposing is the most common error.",
       "keyMoves": [
         "Compute the cofactor A_ij of every element",
         "Arrange them into the cofactor matrix [A_ij]",
@@ -180,7 +180,7 @@
       "brief": "Apply the key theorem linking a matrix, its adjoint, and its determinant.",
       "sec": 5,
       "quote": "\\mathbf{A}(adj \\mathbf{A}) = (adj \\mathbf{A}) \\mathbf{A} = |\\mathbf{A}|\\mathbf{I},",
-      "explanation": "For any square matrix A of order n, A(adj A) = (adj A)A = |A| I, where I is the identity matrix of order n. This follows because the sum of products of the elements of a row (or column) with the corresponding cofactors equals |A|, and is zero otherwise. This identity is exactly what lets you build the inverse: dividing through by |A| (when it is non-zero) gives A times (1/|A|) adj A = I.",
+      "explanation": "PART 1 — The identity: A(adj A) = (adj A)A = |A| I.\nFor any square matrix A of order n, multiplying A by its adjoint (in either order) gives the scalar |A| times the identity matrix. The result is |A| I — NOT just I. This holds because a row of A dotted with its own cofactors sums to |A|, while a row dotted with another row's cofactors sums to 0.\n\nPART 2 — Divide by |A| to reach the inverse — only when |A| is non-zero.\nFrom A(adj A) = |A| I, dividing by |A| gives A * ((1/|A|) adj A) = I, so the inverse is (1/|A|) adj A. This division is valid only when |A| != 0. A common error is writing A(adj A) = I, dropping the |A| factor.",
       "keyMoves": [
         "Recall A(adj A) = (adj A)A = |A| I",
         "Recognise the off-diagonal sums of element times cofactor vanish",
@@ -276,7 +276,7 @@
       "brief": "Call a system consistent if a solution exists, inconsistent if none does.",
       "sec": 6,
       "quote": "A system of equations is said to be *consistent* if its solution (one or more) exists.",
-      "explanation": "A system of linear equations is said to be consistent if its solution (one or more) exists, and inconsistent if no solution exists. Writing the system as AX = B, when A is non-singular (|A| not 0) the system has the unique solution X = A-inverse B and is consistent; when |A| = 0 you examine (adj A)B - if (adj A)B is not the zero matrix the system is inconsistent. This is the application of determinants and inverses to solving linear systems.",
+      "explanation": "PART 1 — Consistent means a solution exists; inconsistent means none does.\nWrite the system as AX = B. If a solution (one or infinitely many) exists, the system is consistent; if no solution exists, it is inconsistent. The determinant |A| decides which case you are in.\n\nPART 2 — Use |A| to classify, then test (adj A)B if |A| = 0.\nIf |A| != 0, A is invertible and the system has the unique solution X = A-inverse B (consistent). If |A| = 0, compute (adj A)B: if it is NOT the zero matrix the system is inconsistent (no solution); if it IS the zero matrix the system has infinitely many solutions (consistent, dependent).",
       "keyMoves": [
         "Write the system as AX = B",
         "If |A| is not 0, solve uniquely by X = A-inverse B (consistent)",
@@ -300,7 +300,7 @@
       "brief": "Use the criterion 'A is invertible iff A is non-singular' and the formula A-inverse = (1/|A|) adj A.",
       "sec": 5,
       "quote": "A square matrix A is invertible if and only if A is nonsingular matrix.",
-      "explanation": "The capstone result: a square matrix A is invertible if and only if A is non-singular (|A| not 0). The proof uses |AB| = |A| |B| (so AB = I forces |A| not 0) and the adjoint identity A(adj A) = |A| I, which gives the explicit inverse A-inverse = (1/|A|) adj A whenever |A| is non-zero. To invert a matrix: check |A| not 0, compute adj A from the cofactors, and divide by |A|. The same machinery solves a linear system AX = B by X = A-inverse B.",
+      "explanation": "PART 1 — A is invertible if and only if |A| != 0 (non-singular).\nThe capstone result: a square matrix has an inverse exactly when its determinant is non-zero. Proof sketch: |AB| = |A||B|, so AB = I forces |A||B| = 1, meaning |A| != 0; conversely the adjoint identity supplies an explicit inverse when |A| != 0.\n\nPART 2 — Compute the inverse: A-inverse = (1/|A|) adj A.\nThree steps: (1) check |A| != 0 (else no inverse exists); (2) compute adj A as the transpose of the cofactor matrix; (3) divide by |A|. The same machinery solves AX = B via X = A-inverse B. Do not attempt to invert a singular matrix (|A| = 0), and do not forget to divide the adjoint by |A|.",
       "keyMoves": [
         "Check |A| is non-zero (non-singular) so the inverse exists",
         "Compute adj A (transpose of the cofactor matrix)",

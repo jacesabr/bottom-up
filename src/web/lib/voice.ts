@@ -75,7 +75,13 @@ if (ttsSupported()) {
 export function stripForSpeech(text: string): string {
   let t = text;
 
-  // 1) Markdown emphasis (do this before we treat lone * as "times").
+  // 0) Genuine multiplication is written tight (2*3, 2*x, a*b, f(x)*g(x)) — convert it to "times"
+  //    BEFORE the emphasis step, so those asterisks can't be mistaken for italic markers (which
+  //    would eat the maths between two products). Emphasis "*"s are space-/edge-flanked, so this
+  //    operand-adjacent rule never touches them.
+  t = t.replace(/([0-9a-zA-Z)\]])\*([0-9a-zA-Z(\[])/g, '$1 times $2');
+
+  // 1) Markdown emphasis (only true emphasis asterisks remain now).
   t = t.replace(/\*\*(.+?)\*\*/g, '$1');
   t = t.replace(/__(.+?)__/g, '$1');
   t = t.replace(/(^|[^*])\*(?!\*)([^*]+?)\*(?!\*)/g, '$1$2'); // *italic* but not bullet "* "
@@ -127,10 +133,9 @@ export function stripForSpeech(text: string): string {
   ];
   for (const [re, rep] of sym) t = t.replace(re, rep);
 
-  // 7) Inline arithmetic operators ONLY when they sit between operands (so we never turn an
-  //    emphasis "*" or a bullet "* " into the word "times").
+  // 7) Inline arithmetic operators between operands (multiplication handled up front in step 0).
   t = t.replace(/([0-9a-zA-Z)\]])\s*\/\s*([0-9a-zA-Z(\[])/g, '$1 over $2'); // a/b → a over b
-  t = t.replace(/([0-9a-zA-Z)\]])\s*\*\s*([0-9a-zA-Z(\[])/g, '$1 times $2'); // 2*x → 2 times x
+  t = t.replace(/([0-9a-zA-Z)\]])\s*\+\s*([0-9a-zA-Z(\[])/g, '$1 plus $2'); // x + 2 → x plus 2
   t = t.replace(/([0-9a-zA-Z)\]])\s*=\s*([0-9a-zA-Z(\[-])/g, '$1 equals $2'); // x=2 → x equals 2
 
   // 8) Drop any remaining LaTeX commands and leftover braces/backslashes/dollars.
@@ -142,9 +147,14 @@ export function stripForSpeech(text: string): string {
   t = t.replace(/^\s*[-*+]\s+/gm, '');
   t = t.replace(/[`#>|]/g, ' ');
 
-  // 10) Strip characters voices tend to read out literally or stumble on: leftover * / = and
-  //     brackets/parens. Parens become a comma so the engine still pauses where they sat.
+  // 10) Parentheses/brackets — read math naturally instead of saying "open paren".
+  //   (x, y) ordered pairs/coordinates → "x, y, in parentheses"
+  t = t.replace(/[([]\s*([^()\[\],]{1,24},[^()\[\]]{1,24}?)\s*[)\]]/g, ' $1, in parentheses, ');
+  //   other short asides like (x + 2) → keep the content, just pause around it
+  t = t.replace(/[([]\s*([^()\[\]]{1,48}?)\s*[)\]]/g, ', $1, ');
+  //   any leftover/nested brackets → a comma pause
   t = t.replace(/\s*[()\[\]]\s*/g, ', ');
+  // Leftover emphasis/operator chars (failed *bold*, stray =) → silence — NEVER "times".
   t = t.replace(/[*=]/g, ' ');
 
   // 11) Tidy whitespace and collapse any doubled/space-before punctuation so pauses land right.
@@ -157,55 +167,67 @@ export function stripForSpeech(text: string): string {
   return t;
 }
 
-// Chrome silently stops a single SpeechSynthesis utterance after ~15s. Nudging pause()/resume()
-// on a timer keeps it alive; we also feed it ONE short utterance per sentence-chunk so each is
-// well under the cutoff and the built-in queue plays them back-to-back.
-let keepAliveTimer: ReturnType<typeof setInterval> | null = null;
-function startKeepAlive() {
-  stopKeepAlive();
-  keepAliveTimer = setInterval(() => {
-    if (!ttsSupported() || !window.speechSynthesis.speaking) {
-      stopKeepAlive();
-      return;
-    }
-    window.speechSynthesis.pause();
-    window.speechSynthesis.resume();
-  }, 10_000);
-}
-function stopKeepAlive() {
-  if (keepAliveTimer) {
-    clearInterval(keepAliveTimer);
-    keepAliveTimer = null;
-  }
+function pickVoice(speechLang: string): SpeechSynthesisVoice | undefined {
+  return (
+    loadVoices().find((vo) => vo.lang === speechLang) ||
+    loadVoices().find((vo) => vo.lang.startsWith(speechLang.slice(0, 2)))
+  );
 }
 
-/** Read `text` aloud in `speechLang`. Strips markdown/LaTeX, then queues it chunk-by-chunk. */
+/**
+ * Read `text` aloud in `speechLang`. Strips markdown/LaTeX, then speaks it one short chunk at a
+ * time, CHAINED via onend (each chunk starts the next). Chaining — rather than queuing every
+ * utterance up front or nudging pause()/resume() — avoids both Chrome's ~15s cutoff and its habit
+ * of silently dropping a queued utterance (which sounded like "a line was skipped").
+ */
 export function speak(text: string, speechLang: string) {
   if (!ttsSupported()) return;
-  window.speechSynthesis.cancel();
+  stopSpeaking(); // bumps speakGen + cancels anything in flight
+  const myGen = speakGen;
   const clean = stripForSpeech(text);
   if (!clean) return;
-  const v =
-    loadVoices().find((vo) => vo.lang === speechLang) ||
-    loadVoices().find((vo) => vo.lang.startsWith(speechLang.slice(0, 2)));
-  // Shorter chunks for the browser so no single utterance hits Chrome's ~15s cutoff.
-  for (const chunk of chunkForSpeech(clean, 200)) {
-    const u = new SpeechSynthesisUtterance(chunk);
+  const v = pickVoice(speechLang);
+  const chunks = chunkForSpeech(clean, 160);
+  let i = 0;
+  const next = () => {
+    if (myGen !== speakGen || i >= chunks.length) return;
+    const u = new SpeechSynthesisUtterance(chunks[i++]);
     u.lang = speechLang;
     if (v) u.voice = v;
     u.rate = 0.9; // a touch slower so sentence structure is easier to follow
+    u.onend = () => {
+      if (myGen === speakGen) next();
+    };
+    u.onerror = () => {
+      if (myGen === speakGen) next();
+    };
     window.speechSynthesis.speak(u);
-  }
-  startKeepAlive();
+  };
+  next();
+}
+
+/** Speak ONE already-clean chunk and resolve when done — used to recover a failed server chunk
+ *  without disturbing the in-flight server sequence (no gen bump, no global cancel). */
+function browserSpeakOne(text: string, speechLang: string, gen: number): Promise<void> {
+  return new Promise((resolve) => {
+    if (!ttsSupported() || gen !== speakGen || !text.trim()) return resolve();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = speechLang;
+    const v = pickVoice(speechLang);
+    if (v) u.voice = v;
+    u.rate = 0.9;
+    u.onend = () => resolve();
+    u.onerror = () => resolve();
+    window.speechSynthesis.speak(u);
+  });
 }
 
 export function stopSpeaking() {
-  speakGen++; // supersede any in-flight chunked server-TTS playback
+  speakGen++; // supersede any in-flight chunked server-TTS playback / chained browser speech
   if (currentAudio) {
     currentAudio.pause();
     currentAudio = null;
   }
-  stopKeepAlive();
   if (ttsSupported()) window.speechSynthesis.cancel();
 }
 
@@ -242,11 +264,12 @@ function chunkForSpeech(text: string, maxLen = 450): string[] {
   return chunks;
 }
 
-function playToEnd(audio: HTMLAudioElement): Promise<void> {
+/** Resolves true if the clip played to the end, false if it errored/failed to play. */
+function playToEnd(audio: HTMLAudioElement): Promise<boolean> {
   return new Promise((resolve) => {
-    audio.onended = () => resolve();
-    audio.onerror = () => resolve();
-    audio.play().catch(() => resolve());
+    audio.onended = () => resolve(true);
+    audio.onerror = () => resolve(false);
+    audio.play().catch(() => resolve(false));
   });
 }
 
@@ -277,14 +300,21 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
       if (d?.audioBase64) {
         const audio = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.audioBase64}`);
         currentAudio = audio;
-        await playToEnd(audio);
-        ok = true;
+        const played = await playToEnd(audio);
+        if (myGen !== speakGen) return;
+        if (played) {
+          ok = true;
+        } else {
+          // Clip failed to decode/play — re-read THIS chunk with the browser so no line is skipped.
+          await browserSpeakOne(chunks[i], speechLang, myGen);
+          ok = true;
+        }
       }
     } catch {
       /* fall through to browser */
     }
     if (!ok) {
-      // Server unavailable — read the remaining (already-clean) text with the browser voice.
+      // Server returned no audio — read the remaining (already-clean) text with the browser voice.
       if (myGen === speakGen) speak(chunks.slice(i).join(' '), speechLang);
       return;
     }

@@ -205,7 +205,7 @@
       "sec": 4,
       "brief": "Identify f(x) = x as the identity function, with domain and range R and a straight-line graph through the origin.",
       "quote": "by y = f(x) = x for each  $x \\in \\mathbf{R}$ . Such a function is called the *identity function*.",
-      "explanation": "The identity function is the real valued function f : R -> R defined by y = f(x) = x for each x in R. It sends every real number to itself, so its domain and range are both R. Its graph is a straight line passing through the origin (the line y = x). It is the simplest building block among the standard functions and serves as a reference when comparing graphs of other functions.",
+      "explanation": "PART 1 — Definition: every real number maps to itself.\nThe identity function f: R to R is defined by f(x) = x for all x in R. Every input is its own output: f(3)=3, f(-7)=-7, f(0)=0. Its domain and range are both R.\n\nPART 2 — Graph: the line y = x through the origin.\nThe graph is a straight line with slope 1 passing through the origin. It bisects the first and third quadrants at 45 degrees. Every point on it has equal x- and y-coordinates.\n\nPART 3 — Distinguish from the constant function.\nThe constant function f(x) = c has a single-element range {c} and a horizontal graph. The identity function has range R and a sloped graph through the origin. Do not confuse f(x) = 0 (constant, range {0}) with f(x) = x (identity, range R).",
       "keyMoves": [
         "Recognise f(x) = x as the identity function",
         "State its domain and range are both R",
@@ -229,7 +229,7 @@
       "sec": 4,
       "brief": "Identify f(x) = c as the constant function, with domain R and range the single value {c}, graphed as a line parallel to the x-axis.",
       "quote": "The graph is a line parallel to *x*-axis.",
-      "explanation": "The constant function f : R -> R is defined by y = f(x) = c, where c is a fixed constant and x ranges over R. Every input maps to the same output c, so its domain is R and its range is the single-element set {c}. Its graph is a line parallel to the x-axis at height c; for example f(x) = 3 graphs as the horizontal line y = 3. Because the output never changes, no input is distinguished by its image.",
+      "explanation": "PART 1 — Definition and range.\nThe constant function f: R to R is defined by f(x) = c for all x in R, where c is a fixed real number. Every input maps to the same output c. Its domain is R and its range is the single-element set {c}, NOT all of R.\n\nPART 2 — Graph: a horizontal line at height c.\nThe graph is the line y = c, running parallel to the x-axis across the whole plane. For f(x) = 3, every point has y-coordinate 3 regardless of x. The graph is completely flat — slope zero.\n\nPART 3 — Distinguish from the identity function.\nThe identity function f(x) = x has range R and a slanted graph (slope 1 through origin). The constant function has range {c} and a horizontal graph. It is neither one-one (all inputs map to one output) nor onto R (only value c is ever reached).",
       "keyMoves": [
         "Recognise f(x) = c (a fixed number) as a constant function",
         "State its domain is R and its range is the single value {c}",
@@ -277,7 +277,7 @@
       "sec": 4,
       "brief": "Recognise a rational function as a ratio f(x)/g(x) of polynomials defined where g(x) is not zero, and exclude the zeros of the denominator from its domain.",
       "quote": "are functions of the type",
-      "explanation": "Rational functions are functions of the type f(x)/g(x), where f(x) and g(x) are polynomial functions of x defined in a domain where g(x) is not equal to 0. The function is undefined wherever the denominator vanishes, so those points are removed from the domain. For example f(x) = 1/x is a rational function with domain R minus {0} and range R minus {0}; its values run -0.5, -0.67, -1, -2, ... 4, 2, 1, ... as x varies. More generally, to find the domain of a rational function, factor the denominator and exclude the values that make it zero.",
+      "explanation": "PART 1 — Definition: a ratio of two polynomials.\nA rational function has the form f(x)/g(x) where f(x) and g(x) are both polynomials. It is defined wherever g(x) is not zero. Example: 1/x is a rational function; it is undefined at x=0 so its domain is R minus {0}.\n\nPART 2 — Find the domain by excluding zeros of the denominator.\nSolve g(x) = 0 to find where the function is undefined, then remove those values from R. Example: h(x) = (x+1)/((x−2)(x+3)) is undefined at x=2 and x=−3, so domain = R minus {2, −3}.",
       "keyMoves": [
         "Recognise the function as a ratio f(x)/g(x) of two polynomials",
         "Find the zeros of the denominator g(x)",
@@ -325,7 +325,7 @@
       "sec": 1,
       "brief": "Pair elements of two sets via the cartesian product, carve out a relation, read its domain, range and codomain, and decide whether it qualifies as a function.",
       "quote": "Finally, we will learn about special relations which will qualify to be functions.",
-      "explanation": "The chapter builds one chain of ideas: order pairs of objects into ordered pairs, collect all such pairs as the cartesian product A x B, carve out a relation as a subset of A x B that satisfies a stated rule, and then test which relations qualify to be functions. Given any pairing problem you can therefore: form A x B (and count it as pq), describe the relation R picking out the pairs you want, read off its domain, range and codomain, and finally decide whether R is a function by checking that every element of A has exactly one image. If it is a function you can classify it further (real valued, identity, constant, polynomial, rational) and combine it with others through the algebra of functions. This captures the chapter's aim of a mathematically precise correspondence between one quantity and another.",
+      "explanation": "PART 1 — Build the relation from the cartesian product.\nGiven sets A and B, form A x B and pick out the pairs (a, b) satisfying your rule to get a relation R contained in A x B. Read off: domain = first elements of R, range = second elements of R, codomain = B.\n\nPART 2 — Test whether the relation is a function.\nA relation is a function if and only if every element of A has exactly one image in B. If any element of A maps to zero images or to two or more images, the relation is not a function.\n\nPART 3 — Classify and combine.\nIf R is a function f: A to B, classify it: constant (f(x) = c), identity (f(x) = x), polynomial, or rational. Combine functions via (f+g)(x), (f-g)(x), (fg)(x), or (f/g)(x) where g(x) is not 0.",
       "keyMoves": [
         "Form the cartesian product and pick out the relation that satisfies the stated rule",
         "Read off the domain, range and codomain of that relation",

@@ -276,7 +276,7 @@
       "brief": "Understand that AB need not equal BA, and AB may be defined while BA is not.",
       "sec": 4,
       "quote": "Thus matrix multiplication is not commutative.",
-      "explanation": "Matrix multiplication is not commutative: even when both AB and BA are defined, generally AB is not equal to BA. Moreover, AB may be defined while BA is not (the orders need not match both ways). This does not mean AB is never equal to BA - for instance diagonal matrices of the same order do commute - but you cannot assume commutativity. Matrix multiplication is, however, associative and distributive over addition.",
+      "explanation": "PART 1 — The main fact: AB does not equal BA in general.\nMatrix multiplication is NOT commutative. Even when AB and BA are both defined and have the same order, they will usually differ. Never assume AB = BA unless you have a specific reason (e.g. one factor is a scalar matrix).\n\nPART 2 — Definedness is separate for each order.\nIf A is m×n and B is n×p, then AB is m×p (defined). But BA requires B to be p×n and A to be n×m — completely different size conditions. So AB being defined tells you nothing about whether BA is defined.\n\nPART 3 — What DOES hold: associativity and distributivity.\nMatrix multiplication IS associative: (AB)C = A(BC). It IS distributive over addition: A(B+C) = AB+AC. These laws are safe to use; commutativity is not.",
       "keyMoves": [
         "Do not assume AB = BA",
         "Check separately whether each of AB and BA is even defined",
@@ -300,7 +300,7 @@
       "brief": "Form A' (or A^T) by interchanging the rows and columns of A.",
       "sec": 5,
       "quote": "the matrix obtained by interchanging the rows and columns of A is called the transpose of A.",
-      "explanation": "If A = [a_ij] is an m x n matrix, the matrix obtained by interchanging the rows and columns of A is its transpose, written A' or A^T; it has order n x m. The properties are (A')' = A, (kA)' = kA', (A + B)' = A' + B', and (AB)' = B'A' (note the order reverses on a product).",
+      "explanation": "PART 1 — Form the transpose by swapping rows and columns.\nThe transpose of A, written A^T or A', is obtained by turning each row of A into a column (and each column into a row). If A is m×n, then A^T is n×m. The (i,j) entry of A^T equals the (j,i) entry of A.\n\nPART 2 — Properties: double-transpose and linearity.\n(A^T)^T = A (transposing twice returns the original). (A + B)^T = A^T + B^T and (kA)^T = kA^T, so transpose distributes over addition and scalar multiplication.\n\nPART 3 — The reversal rule for products: (AB)^T = B^T A^T.\nWhen transposing a product, the order of factors reverses. Writing A^T B^T instead of B^T A^T is the most common error with this operation.",
       "keyMoves": [
         "Turn each row of A into the corresponding column of A'",
         "Swap the order: an m x n matrix transposes to n x m",
@@ -324,7 +324,7 @@
       "brief": "Identify a symmetric matrix as a square matrix with A' = A.",
       "sec": 6,
       "quote": "A square matrix  $A = [a_{ij}]$  is said to be *symmetric* if A' = A",
-      "explanation": "A square matrix A = [a_ij] is symmetric if A' = A, i.e. a_ji = a_ij for all i and j - the matrix equals its own transpose, so it is mirror-symmetric across the main diagonal. For any square matrix A, A + A' is symmetric, and any square matrix can be written as the sum of a symmetric matrix (1/2)(A + A') and a skew-symmetric matrix.",
+      "explanation": "PART 1 — Definition: A^T = A means entries mirror across the main diagonal.\nA square matrix A is symmetric if A^T = A, meaning a_ji = a_ij for every (i, j). The matrix equals its own transpose — off-diagonal entries reflect across the main diagonal without any sign change.\n\nPART 2 — Verify symmetry and extract the symmetric part.\nTo check: compute A^T and verify A^T = A. For any square matrix A, the expression (1/2)(A + A^T) is always symmetric. This gives the symmetric part of A.\n\nPART 3 — Distinguish from skew-symmetric (A^T = -A).\nSymmetric: A^T = A (entries mirror, no sign change; diagonal can be anything). Skew-symmetric: A^T = -A (off-diagonal entries flip sign; diagonal must be zero). Any square matrix = symmetric part + skew-symmetric part.",
       "keyMoves": [
         "Confirm the matrix is square",
         "Check a_ij = a_ji for all entries (A' = A)",
@@ -348,7 +348,7 @@
       "brief": "Identify a skew-symmetric matrix as a square matrix with A' = -A and zero diagonal.",
       "sec": 6,
       "quote": "A square matrix  $A = [a_{ij}]$  is said to be *skew symmetric* matrix if A' = -A",
-      "explanation": "A square matrix A = [a_ij] is skew-symmetric if A' = -A, i.e. a_ji = -a_ij for all i and j. Putting i = j gives a_ii = -a_ii, so 2 a_ii = 0, meaning all diagonal elements of a skew-symmetric matrix are zero. For any square matrix A, A - A' is skew-symmetric, providing the skew-symmetric part (1/2)(A - A') in the symmetric + skew-symmetric decomposition.",
+      "explanation": "PART 1 — Definition: A^T = −A forces zero diagonal.\nA square matrix A is skew-symmetric if A^T = −A, meaning a_ji = −a_ij for every (i, j). Setting i=j gives a_ii = −a_ii, so all diagonal entries must be zero.\n\nPART 2 — Verify and contrast with symmetric.\nTo check skew-symmetry: compute A^T and verify A^T = −A (each off-diagonal entry must flip sign). Symmetric satisfies A^T = A (no sign flip). A zero matrix satisfies both simultaneously.\n\nPART 3 — Extract the skew-symmetric part of any square matrix.\nFor any square matrix A, the expression (1/2)(A − A^T) is always skew-symmetric. This allows any square matrix to be decomposed as the sum of a symmetric part (1/2)(A + A^T) and a skew-symmetric part (1/2)(A − A^T).",
       "keyMoves": [
         "Confirm the matrix is square",
         "Check a_ji = -a_ij (A' = -A); the diagonal must be all zeros",
@@ -372,7 +372,7 @@
       "brief": "Recognise an invertible square matrix A as one with a square B of the same order satisfying AB = BA = I; B = A-inverse is unique.",
       "sec": 7,
       "quote": "If A is a square matrix of order *m*, and if there exists another square matrix B of the same order *m*, such that AB = BA = I, then B is called the *inverse* matrix of A",
-      "explanation": "If A is a square matrix of order m and there exists another square matrix B of the same order with AB = BA = I, then B is the inverse matrix of A, denoted A-inverse, and A is said to be invertible. Only square matrices can have inverses (both products must be defined and equal I). The inverse, when it exists, is unique, and for invertible A and B of the same order (AB)-inverse = B-inverse A-inverse (the order reverses). This is the capstone: it brings together equality, multiplication and the identity matrix into the criterion AB = BA = I.",
+      "explanation": "PART 1 — Definition: AB = BA = I identifies the inverse.\nA square matrix A is invertible if there exists a square matrix B of the same order such that AB = BA = I. We write B = A^(-1). Only square matrices can be invertible — the products must be defined and both equal I.\n\nPART 2 — Verify BOTH products; the inverse is unique.\nChecking only AB = I is not enough; you must also confirm BA = I. When both conditions hold, B is uniquely determined as A^(-1): no square matrix can have two different inverses.\n\nPART 3 — Inverse of a product reverses order: (AB)^(-1) = B^(-1) A^(-1).\nExactly like the transpose reversal rule, inverting a product of invertible matrices reverses the factors. Proof: (AB)(B^(-1) A^(-1)) = A(BB^(-1))A^(-1) = AIA^(-1) = I, and the other product also gives I.",
       "keyMoves": [
         "Require A and B to be square of the same order",
         "Verify BOTH AB = I and BA = I to confirm B = A-inverse",
