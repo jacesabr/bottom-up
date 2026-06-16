@@ -1,6 +1,7 @@
 import { concepts as conceptsTable, buNodePerformance, buEvent } from '../db/schema.js';
 import { db } from '../db/index.js';
 import { eq, and } from 'drizzle-orm';
+import { getChaptersForSubject, getConceptsForChapter } from './content-cache.js';
 
 export type NodeStatus = 'locked' | 'available' | 'teaching' | 'awaiting_gate' | 'needs_reteach' | 'passed';
 
@@ -62,6 +63,48 @@ export async function computeAvailability(learnerId: string, chapterId: string):
   });
 
   return states;
+}
+
+export type ChapterStatus = 'complete' | 'active' | 'locked';
+
+/**
+ * Strict-linear chapter progression for a learner across a subject.
+ * A chapter is COMPLETE when the learner has passed every concept in it; chapters are unlocked
+ * one at a time — the first not-yet-complete chapter is ACTIVE, everything after it is LOCKED.
+ * Every concept is teachable (each has at least a book/practice gate), so high-quality 5-gate
+ * authoring is NOT required for a chapter to be cleared — passing its single gate per node suffices.
+ */
+export async function computeChapterStatuses(
+  learnerId: string,
+  subjectId: string
+): Promise<Array<{ id: string; title: string; index: number; status: ChapterStatus }>> {
+  const ordered = await getChaptersForSubject(subjectId);
+
+  // One DB read: every concept this learner has passed (across the subject).
+  const perfRows = await db
+    .select()
+    .from(buNodePerformance)
+    .where(eq(buNodePerformance.learnerId, learnerId));
+  const passed = new Set(perfRows.filter((p) => p.status === 'passed').map((p) => p.conceptId));
+
+  // Per-chapter completion: chapter is complete iff it has concepts and all are passed.
+  const complete: boolean[] = [];
+  for (const ch of ordered) {
+    const concepts = await getConceptsForChapter(ch.id);
+    complete.push(concepts.length > 0 && concepts.every((c) => passed.has(c.id)));
+  }
+
+  // Walk in order: complete chapters stay open; the first incomplete one is active; rest locked.
+  let activeAssigned = false;
+  return ordered.map((ch, i) => {
+    let status: ChapterStatus;
+    if (complete[i]) status = 'complete';
+    else if (!activeAssigned) {
+      status = 'active';
+      activeAssigned = true;
+    } else status = 'locked';
+    return { id: ch.id, title: ch.title, index: i + 1, status };
+  });
 }
 
 /**

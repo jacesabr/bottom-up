@@ -152,6 +152,25 @@ export const buCorpusGap = pgTable('bu_corpus_gap', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 
+// Final past-paper exam: one row per (learner, paper, question) — the learner's graded answer.
+// Re-answering a question replaces its row (the exam is taken once, but answers can be revised
+// before finishing). Every question carries its source `node` (conceptId) so wrong answers roll
+// straight up into the weak-concept review.
+export const buPaperAttempt = pgTable('bu_paper_attempt', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  learnerId: uuid('learner_id').notNull(),
+  paperId: text('paper_id').notNull(),
+  q: integer('q').notNull(), // question number within the paper
+  node: text('node'), // conceptId this question tests (for weak-concept review)
+  section: text('section'),
+  answer: text('answer'), // learner's answer (text; '[sketch]' marker if ever image)
+  correct: boolean('correct'),
+  marksAwarded: integer('marks_awarded').default(0),
+  marksPossible: integer('marks_possible').default(0),
+  gradedBy: text('graded_by'), // 'mcq' | 'numeric' | 'rubric' | 'acknowledged'
+  ts: timestamp('ts', { withTimezone: true }).defaultNow(),
+});
+
 export const buChapterProgress = pgTable('bu_chapter_progress', {
   id: uuid('id').primaryKey().defaultRandom(),
   learnerId: uuid('learner_id').notNull(),

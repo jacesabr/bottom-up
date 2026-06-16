@@ -1,975 +1,472 @@
 {
   "paperId": "jeemain-2026-apr02-s1",
   "exam": "jee",
-  "subject": "jee-main",
+  "subject": "Mathematics",
   "session": "2026",
-  "kind": "JEE Main",
-  "title": "JEE Main 2026 (Apr 2, Shift 1)",
+  "kind": "official",
+  "title": "JEE Main 2026 (Session 2, 02 Apr, Shift 1) — Mathematics",
   "source": {
-    "sqp": "https://www.aakash.ac.in/blog/jee-main-2026-april-02-shift-1-question-paper-with-solutions/",
-    "ms": "https://www.aakash.ac.in/blog/jee-main-2026-april-02-shift-1-question-paper-with-solutions/",
-    "_prior_sqp": "JEE Main 2026 Phase-2, 02-04-2026 Morning",
-    "_prior_ms": "Aakash Memory-Based Answers & Solutions (02-04-2026 Morning)",
-    "_verified": "2026-06-12 HTTP 200 + page content checked (Aakash memory-based Answers & Solutions, 02-04-2026 Morning = Shift 1)"
+    "official": "https://jeemain.nta.nic.in/",
+    "qp": "Official NTA question paper — B.E./B.Tech, Exam Date 02.04.2026, Shift 1 (JEEMain-2026-S2-02Apr-Shift1-QP.pdf)",
+    "key": "Official NTA Final Answer Key — Exam Date 02.04.2026, Shift First (JEEMain-2026-S2-FinalAnswerKey.pdf)"
   },
-  "_provenance": "Questions + answers transcribed from Aakash Institute's 'Memory Based Answers & Solutions' PDFs for JEE (Main) 2026 Phase-2, 02-04-2026 Morning (subject-wise: Maths/Physics/Chemistry), read eyes-on by Opus vision. Every question carries the institute-VERIFIED correct answer. This is a MEMORY-BASED reconstruction by a coaching institute (not the official NTA paper), and is PARTIAL: questions Aakash could not recall are omitted, and a few items whose options are drawn chemical/physics structures or whose printed answer was internally inconsistent were excluded — nothing invented. 51 questions total (Maths 16, Physics 15, Chemistry 20). Figure-dependent questions carry a [Figure: ...] text description (no image file).",
+  "_provenance": "SOURCE-GROUNDED, NOT memory-based. Question stems and options transcribed verbatim from the official NTA question paper PDF (eyes-on read of the OCR text + the QP page images). Every correct answer is taken from the official NTA FINAL ANSWER KEY by resolving each Question Id to its correct Option Id and reading that option's text from the QP. Numeric (Section B) answers are the key's literal values.",
+  "_coverageNote": "Mathematics only (the app is maths). Section A = 20 single-correct MCQ (4 marks each); Section B = 5 numeric (4 marks each). Q17 is OMITTED because its 4th option renders indistinguishably from the correct option in the source PDF and cannot be transcribed without fabrication; _origQ preserves original paper numbers. Built: 24 of 25 maths questions, 96 marks.",
   "contract": {
-    "_comment": "Memory-based coaching reconstruction; sections grouped by subject (A = MCQ, B = numeric). Marks 4 each. totalQuestions reflects the verified subset actually built, contiguously numbered 1..N.",
-    "totalQuestions": 51,
-    "maxMarks": 204,
+    "totalQuestions": 24,
+    "maxMarks": 96,
     "sections": {
-      "Mathematics-A": {
+      "A": {
         "q": [
           1,
-          15
+          20
         ],
         "type": "mcq",
-        "marksEach": 4
+        "marksEach": 4,
+        "desc": "Single-correct MCQ (Q17 omitted)"
       },
-      "Mathematics-B": {
+      "B": {
         "q": [
-          16,
-          16
+          21,
+          25
         ],
         "type": "numeric",
-        "marksEach": 4
-      },
-      "Physics-A": {
-        "q": [
-          17,
-          29
-        ],
-        "type": "mcq",
-        "marksEach": 4
-      },
-      "Physics-B": {
-        "q": [
-          30,
-          31
-        ],
-        "type": "numeric",
-        "marksEach": 4
-      },
-      "Chemistry-A": {
-        "q": [
-          32,
-          48
-        ],
-        "type": "mcq",
-        "marksEach": 4
-      },
-      "Chemistry-B": {
-        "q": [
-          49,
-          51
-        ],
-        "type": "numeric",
-        "marksEach": 4
+        "marksEach": 4,
+        "desc": "Numeric (integer) answer"
       }
     }
   },
   "questions": [
     {
       "q": 1,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "If y = f(x) is the solution of the differential equation (1 + sin x) dy/dx + cos x = 0, such that f(0) = 0, then f(π/2) is equal to",
-      "options": [
-        "ln 2",
-        "−ln 2",
-        "ln 3",
-        "ln 4"
-      ],
-      "correct": "−ln 2",
-      "msAnswer": "−ln 2",
-      "node": "jee:maths:maths-c12-ch09:variables-separable",
+      "node": "jee:maths:maths-ch08:form-a-series-with-sigma-notation",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let $\\alpha,\\ \\alpha+2$, $\\alpha\\in\\mathbb{Z}$, be the roots of the quadratic equation $x(x+2)+(x+1)(x+3)+(x+2)(x+4)+\\dots+(x+n-1)(x+n+1)=4n$ for some $n\\in\\mathbb{N}$. Then $n+\\alpha$ is equal to :",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correct": "2",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 2",
+      "_origQ": 1
     },
     {
       "q": 2,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "If the eccentricity of an ellipse x²/a² + y²/b² = 1, which passes through the point (3, 4), is √5/3, then the length of the latus rectum of the ellipse is",
-      "options": [
-        "4√5/3",
-        "8√5/3",
-        "4√7/3",
-        "8√7/3"
-      ],
-      "correct": "8√5/3",
-      "msAnswer": "8√5/3",
-      "node": "jee:maths:maths-ch10:ellipse-latus-rectum",
+      "node": "jee:maths:maths-ch04:reduce-expressions-to-a-plus-ib",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let $x$ and $y$ be real numbers such that $50\\left(\\dfrac{2x}{1+3i}-\\dfrac{y}{1-2i}\\right)=31+17i$, $i=\\sqrt{-1}$. Then the value of $10(x-3y)$ is :",
+      "options": [
+        "20",
+        "31",
+        "35",
+        "75"
+      ],
+      "correct": "75",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 75",
+      "_origQ": 2
     },
     {
       "q": 3,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "Let x ∈ [−π, π]. S = {x : sin x (sin x + cos x) = a, a ∈ ℤ}. Then the number of elements in set S is equal to",
-      "options": [
-        "5",
-        "10",
-        "9",
-        "4"
-      ],
-      "correct": "9",
-      "msAnswer": "9",
-      "node": "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities",
+      "node": "jee:maths:maths-c12-ch04:consistent-system",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let $\\alpha,\\beta\\in\\mathbb{R}$ be such that the system of linear equations $x+2y+z=5$, $2x+y+\\alpha z=5$, $8x+4y+\\beta z=18$ has no solution. Then $\\dfrac{\\beta}{\\alpha}$ is equal to :",
+      "options": [
+        "$-4$",
+        "$4$",
+        "$8$",
+        "$-8$"
+      ],
+      "correct": "$4$",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $4$",
+      "_origQ": 3
     },
     {
       "q": 4,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "Number of seven-digit numbers formed by using the digits 1, 2, 3, 4, 5 (each at least once) are",
-      "options": [
-        "16800",
-        "13200",
-        "15200",
-        "15800"
-      ],
-      "correct": "16800",
-      "msAnswer": "16800",
-      "node": "jee:maths:maths-ch06:solve-counting-problems",
+      "node": "jee:maths:maths-c12-ch04:adjoint",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let $A=\\begin{bmatrix}1&2\\\\1&\\alpha\\end{bmatrix}$ and $B=\\begin{bmatrix}3&3\\\\\\beta&2\\end{bmatrix}$. If $A^2-4A+I=O$ and $B^2-5B-6I=O$, then among the two statements (S1): $[(B-A)(B+A)]^{T}=\\begin{bmatrix}13&15\\\\7&10\\end{bmatrix}$ and (S2): $\\det(\\operatorname{adj}(A+B))=-5$ :",
+      "options": [
+        "only (S1) is correct",
+        "only (S2) is correct",
+        "both (S1) and (S2) are correct",
+        "both (S1) and (S2) are wrong"
+      ],
+      "correct": "only (S2) is correct",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): only (S2) is correct",
+      "_origQ": 4
     },
     {
       "q": 5,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "The value of ∫₀³ (eˣ + e⁻ˣ)/([x])! dx equals (here [.] denotes the greatest integer function)",
-      "options": [
-        "½(e² + e³ − e⁻² − e⁻³)",
-        "e² − e³ + e⁻² − e⁻³",
-        "¼(e² + e³ − e⁻² − e⁻³)",
-        "½(e² + e − e⁻¹ − e⁻²)"
-      ],
-      "correct": "½(e² + e³ − e⁻² − e⁻³)",
-      "msAnswer": "½(e² + e³ − e⁻² − e⁻³)",
-      "node": "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
+      "node": "jee:maths:maths-ch08:solve-geometric-progression-problems",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let $A$ be the set of first 101 terms of an A.P., whose first term is 1 and the common difference is 5 and let $B$ be the set of first 71 terms of an A.P., whose first term is 9 and the common difference is 7. Then the number of elements in $A\\cap B$, which are divisible by 3, is :",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correct": "5",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 5",
+      "_origQ": 5
     },
     {
       "q": 6,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "The value of sin(π/18)·sin(5π/18)·sin(7π/18) is equal to",
-      "options": [
-        "1/8",
-        "1/16",
-        "1/4",
-        "1/32"
-      ],
-      "correct": "1/8",
-      "msAnswer": "1/8",
-      "node": "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities",
+      "node": "jee:maths:maths-ch06:solve-counting-problems",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "The number of seven-digit numbers, that can be formed by using the digits 1, 2, 3, 5 and 7 such that each digit is used at least once, is :",
+      "options": [
+        "15400",
+        "17800",
+        "16800",
+        "29400"
+      ],
+      "correct": "16800",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 16800",
+      "_origQ": 6
     },
     {
       "q": 7,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "Let f(x) = |sin x / x| for x ≠ 0, and f(x) = 1 for x = 0. Then the total number of critical point(s) in x ∈ (−2π, 2π) is",
-      "options": [
-        "3",
-        "5",
-        "9",
-        "1"
-      ],
-      "correct": "5",
-      "msAnswer": "5",
-      "node": "jee:maths:maths-c12-ch06:critical-point",
+      "node": "jee:maths:maths-ch06:combinations-ncr",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "The number of elements in the set $S=\\left\\{(r,k):k\\in\\mathbb{Z}\\text{ and }{}^{36}C_{r+1}=\\dfrac{6\\cdot{}^{35}C_r}{(k^2-3)}\\right\\}$, is :",
+      "options": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ],
+      "correct": "4",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 4",
+      "_origQ": 7
     },
     {
       "q": 8,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "Consider two A.P.s such that A.P.₁ has 1st term 1, common difference 5 and total terms 101, and A.P.₂ has 1st term 9, common difference 7 and total terms 71. Then the number of common terms which appear in both these A.P.s is",
-      "options": [
-        "11",
-        "14",
-        "12",
-        "13"
-      ],
-      "correct": "14",
-      "msAnswer": "14",
-      "node": "jee:maths:maths-ch08:solve-geometric-progression-problems",
+      "node": "jee:maths:maths-ch13:variance",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "If the mean of the data with classes 5-10, 10-15, 15-20, 20-25, 25-30, 30-35 and corresponding frequencies 2, $k$, 28, 54, $k+1$, 5 is 21, then $k$ is one of the roots of the equation :",
+      "options": [
+        "$2x^2-23x-10=0$",
+        "$4x^2-35x+24=0$",
+        "$2x^2-19x-10=0$",
+        "$2x^2-35x+98=0$"
+      ],
+      "correct": "$2x^2-19x-10=0$",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $2x^2-19x-10=0$",
+      "_origQ": 8
     },
     {
       "q": 9,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "If ³⁶C_(r+1) = 6·³⁵C_r / (k² − 3) such that S = {(r, k)}, then the number of elements in set S is",
-      "options": [
-        "9",
-        "4",
-        "13",
-        "7"
-      ],
-      "correct": "4",
-      "msAnswer": "4",
-      "node": "jee:maths:maths-ch06:combinations-ncr",
+      "node": "jee:maths:maths-ch09:represent-a-line-algebraically",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let the mid points of the sides of a triangle $ABC$ be $\\left(\\tfrac{5}{2},7\\right)$, $\\left(\\tfrac{5}{2},3\\right)$ and $(4,5)$. If its incentre is $(h,k)$, then $3h+k$ is equal to :",
+      "options": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "correct": "13",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 13",
+      "_origQ": 9
     },
     {
       "q": 10,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "If the system of equations x + 2y + z = 5, 2x + y + αz = 5, 8x + y + z = 18 has no solution, then α is equal to",
-      "options": [
-        "3",
-        "1/3",
-        "4",
-        "9/15"
-      ],
-      "correct": "9/15",
-      "msAnswer": "9/15",
-      "node": "jee:maths:maths-c12-ch04:consistent-system",
+      "node": "jee:maths:maths-ch10:ellipse-latus-rectum",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let an ellipse $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$, $a<b$, pass through the point $(4,3)$ and have eccentricity $\\dfrac{\\sqrt{5}}{3}$. Then the length of its latus rectum is :",
+      "options": [
+        "$\\dfrac{4\\sqrt{5}}{3}$",
+        "$2\\sqrt{5}$",
+        "$\\dfrac{7\\sqrt{5}}{3}$",
+        "$\\dfrac{8\\sqrt{5}}{3}$"
+      ],
+      "correct": "$\\dfrac{8\\sqrt{5}}{3}$",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $\\dfrac{8\\sqrt{5}}{3}$",
+      "_origQ": 10
     },
     {
       "q": 11,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "The domain of f(x) = √( log_0.6 ( |2x − 5| / |x² − 4| ) ) is",
-      "options": [
-        "(−∞, −1−√10) ∪ (−1+√10, 5/2) ∪ (5/2, ∞)",
-        "(−∞, −1−√10) ∪ (√10, ∞)",
-        "(−1−√10, 5/2)",
-        "(−∞, −1−√10) ∪ (√10−1, ∞)"
-      ],
-      "correct": "(−∞, −1−√10) ∪ (−1+√10, 5/2) ∪ (5/2, ∞)",
-      "msAnswer": "(−∞, −1−√10) ∪ (−1+√10, 5/2) ∪ (5/2, ∞)",
-      "node": "jee:maths:maths-ch02:real-function",
+      "node": "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "If $\\sin\\left(\\dfrac{\\pi}{18}\\right)\\sin\\left(\\dfrac{5\\pi}{18}\\right)\\sin\\left(\\dfrac{7\\pi}{18}\\right)=K$, then the value of $\\sin\\left(\\dfrac{10K\\pi}{3}\\right)$ is :",
+      "options": [
+        "$\\dfrac{\\sqrt{3}+1}{2\\sqrt{2}}$",
+        "$\\dfrac{\\sqrt{3}-1}{\\sqrt{2}}$",
+        "$\\dfrac{\\sqrt{3}}{2}$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "correct": "$\\dfrac{\\sqrt{3}+1}{2\\sqrt{2}}$",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $\\dfrac{\\sqrt{3}+1}{2\\sqrt{2}}$",
+      "_origQ": 11
     },
     {
       "q": 12,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "If L₁ : (x−a)/2 = (y−2)/3 = (z−b)/6 and L₂ : (x−b)/3 = (y−7)/6 = (z−1)/3 intersect in the xy-plane, then the value of |a + b| is",
-      "options": [
-        "15",
-        "10",
-        "14",
-        "11"
-      ],
-      "correct": "15",
-      "msAnswer": "15",
-      "node": "jee:maths:maths-c12-ch11:cartesian-equation-line",
+      "node": "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let $S=\\{x\\in[-\\pi,\\pi]:\\sin x\\,(\\sin x+\\cos x)=a,\\ a\\in\\mathbb{Z}\\}$. Then $n(S)$ is equal to :",
+      "options": [
+        "3",
+        "6",
+        "7",
+        "9"
+      ],
+      "correct": "9",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 9",
+      "_origQ": 12
     },
     {
       "q": 13,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "If dy/dx = (2 + ln x) has solution y = y(x) such that y(1) = e, then y(e) is equal to",
-      "options": [
-        "2e − 1",
-        "3e − 1",
-        "2e + 1",
-        "3e + 1"
-      ],
-      "correct": "3e − 1",
-      "msAnswer": "3e − 1",
-      "node": "jee:maths:maths-c12-ch09:particular-solution",
+      "node": "jee:maths:maths-c12-ch11:cartesian-equation-line",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "If the point of intersection of the lines $\\dfrac{x+1}{3}=\\dfrac{y+a}{5}=\\dfrac{z+b+1}{7}$ and $\\dfrac{x-2}{1}=\\dfrac{y-b}{4}=\\dfrac{z-2a}{7}$ lies on the $xy$-plane, then the value of $a+b$ is :",
+      "options": [
+        "2",
+        "5",
+        "7",
+        "9"
+      ],
+      "correct": "7",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 7",
+      "_origQ": 13
     },
     {
       "q": 14,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "If |a| = 2 and |b| = 3 and the angle between vectors a and b is 60°, then 3|3a + 4b| + 4|3a − 4b| is equal to",
-      "options": [
-        "9√7 + 12√3",
-        "18√7 + 24√3",
-        "18√7 − 6√3",
-        "12√7 − 6√3"
-      ],
-      "correct": "18√7 + 24√3",
-      "msAnswer": "18√7 + 24√3",
       "node": "jee:maths:maths-c12-ch10:scalar-product",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "If $\\vec{a}$ and $\\vec{b}$ are two vectors such that $|\\vec{a}|=2$ and $|\\vec{b}|=3$, then the maximum value of $3\\left|3\\vec{a}+2\\vec{b}\\right|+4\\left|3\\vec{a}-2\\vec{b}\\right|$ is :",
+      "options": [
+        "30",
+        "36",
+        "60",
+        "72"
+      ],
+      "correct": "60",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 60",
+      "_origQ": 14
     },
     {
       "q": 15,
-      "section": "Mathematics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "The value of ∫₂⁴ √(2ˣ − 4) dx + ∫₀^(2√3) log₂(x² + 4) dx is equal to",
-      "options": [
-        "4√3",
-        "2√3",
-        "8√3",
-        "16√3"
-      ],
-      "correct": "8√3",
-      "msAnswer": "8√3",
-      "node": "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
+      "node": "jee:maths:maths-c12-ch11:cartesian-equation-line",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let a line $L$ passing through the point $(1,1,1)$ be perpendicular to both the vectors $2\\hat{i}+2\\hat{j}+\\hat{k}$ and $\\hat{i}+2\\hat{j}+2\\hat{k}$. If $P(a,b,c)$ is the foot of perpendicular from the origin on the line $L$, then the value of $34(a+b+c)$ is :",
+      "options": [
+        "50",
+        "80",
+        "100",
+        "120"
+      ],
+      "correct": "100",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 100",
+      "_origQ": 15
     },
     {
       "q": 16,
-      "section": "Mathematics",
-      "marks": 4,
-      "type": "numeric",
-      "prompt": "If the roots of the equation x(x+2) + (x+1)(x+3) + … + (x+(n−1))(x+(n+1)) = 4n are α and α+2, then the value of |2α + n| is",
-      "options": [],
-      "correct": "3",
-      "msAnswer": "Correct numerical answer: 3. Mark correct only if the learner's value equals 3.",
-      "node": "jee:maths:maths-ch08:form-a-series-with-sigma-notation",
-      "grader": "numeric",
-      "handling": "grade",
-      "_value": 3,
-      "_tol": 0
-    },
-    {
-      "q": 17,
-      "section": "Physics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "The dimensions of ½ ε₀ E² is",
-      "options": [
-        "MLT⁻²",
-        "ML⁻¹T⁻²",
-        "MLT⁻¹",
-        "ML⁻¹T⁻¹"
-      ],
-      "correct": "ML⁻¹T⁻²",
-      "msAnswer": "ML⁻¹T⁻²",
-      "node": "jee:physics:physics-c12-ch02:energy-stored-capacitor",
+      "node": "jee:maths:maths-ch12:trigonometric-limits",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "If $\\displaystyle\\lim_{x\\to 2}\\dfrac{\\sin(x^3-5x^2+ax+b)}{(\\sqrt{x-1}-1)\\log_e(x-1)}=m$, then $a+b+m$ is equal to :",
+      "options": [
+        "5",
+        "6",
+        "8",
+        "10"
+      ],
+      "correct": "6",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 6",
+      "_origQ": 16
     },
     {
       "q": 18,
-      "section": "Physics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "A wooden cubic block of relative density 0.4 is floating in water. The side of the cubic block is 10 cm. When a coin is placed on the block, the block dips 0.3 cm in equilibrium. The weight of the coin is",
-      "options": [
-        "0.2 N",
-        "30 N",
-        "0.3 N",
-        "3 N"
-      ],
-      "correct": "0.3 N",
-      "msAnswer": "0.3 N",
-      "node": "jee:physics:physics-ch09:fluid-density-and-relative-density",
+      "node": "jee:maths:maths-c12-ch06:critical-point",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "The number of critical points of the function $f(x)=\\begin{cases}\\left|\\dfrac{\\sin x}{x}\\right|,&x\\neq0\\\\1,&x=0\\end{cases}$ in the interval $(-2\\pi,2\\pi)$ is equal to :",
+      "options": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "correct": "5",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 5",
+      "_origQ": 18
     },
     {
       "q": 19,
-      "section": "Physics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "[Figure: Two arrangements of wires, each carrying current I, each with a semi-circular part of radius R at the centre C; find the ratio of magnetic field at the centre of the semi-circular part of the two arrangements.]\nConsider two arrangements of wires; find the ratio of magnetic field at the centre of the semi-circular part.",
-      "options": [
-        "(π+4)/(π−1)",
-        "(π+4)/(π+2)",
-        "(π+2)/(π+1)",
-        "(π−2)/(π+1)"
-      ],
-      "correct": "(π+2)/(π+1)",
-      "msAnswer": "(π+2)/(π+1)",
-      "node": "jee:physics:physics-c12-ch04:field-circular-loop",
+      "node": "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let $[\\cdot]$ denote the greatest integer function. Then the value of $\\displaystyle\\int_{0}^{3}\\dfrac{e^{x}+e^{-x}}{[x]!}\\,dx$ is :",
+      "options": [
+        "$e^2+e^3-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}$",
+        "$\\dfrac{1}{2}\\left(e^2+e^3-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}\\right)$",
+        "$e^2+e^3-\\dfrac{1}{2e^2}-\\dfrac{1}{2e^3}$",
+        "$\\dfrac{1}{2}(e^2+e^3)-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}$"
+      ],
+      "correct": "$\\dfrac{1}{2}\\left(e^2+e^3-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}\\right)$",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $\\dfrac{1}{2}\\left(e^2+e^3-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}\\right)$",
+      "_origQ": 19
     },
     {
       "q": 20,
-      "section": "Physics",
+      "section": "A",
       "marks": 4,
       "type": "mcq",
-      "prompt": "In an isobaric reversible process on a diatomic gas, the ratio of ΔQ : ΔU : ΔW shall be",
-      "options": [
-        "7 : 5 : 2",
-        "5 : 3 : 2",
-        "3 : 2 : 1",
-        "6 : 5 : 1"
-      ],
-      "correct": "7 : 5 : 2",
-      "msAnswer": "7 : 5 : 2",
-      "node": "jee:physics:physics-ch11:isobaric-process",
+      "node": "jee:maths:maths-c12-ch09:particular-solution",
       "grader": "mcq",
-      "handling": "grade"
+      "handling": "grade",
+      "prompt": "Let $y=y(x)$ be the solution curve of the differential equation $(1+\\sin x)\\dfrac{dy}{dx}+(y+1)\\cos x=0$, $y(0)=0$. If the curve $y=y(x)$ passes through the point $\\left(\\alpha,-\\dfrac{1}{2}\\right)$, then a value of $\\alpha$ is :",
+      "options": [
+        "$\\dfrac{\\pi}{6}$",
+        "$\\dfrac{\\pi}{4}$",
+        "$\\dfrac{\\pi}{3}$",
+        "$\\dfrac{\\pi}{2}$"
+      ],
+      "correct": "$\\dfrac{\\pi}{2}$",
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $\\dfrac{\\pi}{2}$",
+      "_origQ": 20
     },
     {
       "q": 21,
-      "section": "Physics",
+      "section": "B",
       "marks": 4,
-      "type": "mcq",
-      "prompt": "In circular motion, angular position θ and time t are related as θ = 5t⁴/4 − t³/3. Then the angular acceleration at t = 10 s is",
-      "options": [
-        "1180 rad/s²",
-        "130 rad/s²",
-        "1480 rad/s²",
-        "98 rad/s²"
-      ],
-      "correct": "1480 rad/s²",
-      "msAnswer": "1480 rad/s²",
-      "node": "jee:physics:physics-ch06:angular-acceleration",
-      "grader": "mcq",
-      "handling": "grade"
+      "type": "numeric",
+      "node": "jee:maths:maths-ch02:real-function",
+      "grader": "numeric",
+      "handling": "grade",
+      "prompt": "If the domain of the function $f(x)=\\sqrt{\\log_{(0.6)}\\left(\\left|\\dfrac{2x-5}{x^2-4}\\right|\\right)}$ is $(-\\infty,a]\\cup\\{b\\}\\cup[c,d]\\cup(e,\\infty)$, then the value of $a+b+c+d+e$ is _____.",
+      "correct": "4",
+      "tolerance": null,
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 4",
+      "_origQ": 21
     },
     {
       "q": 22,
-      "section": "Physics",
+      "section": "B",
       "marks": 4,
-      "type": "mcq",
-      "prompt": "For an ideal gas having Cp = 3R and Cv = 2R, find the work done by one mole of the gas in an adiabatic expansion when pressure reduces from 8 bar to 1 bar. (Initial temperature = 140 °C)",
-      "options": [
-        "140R",
-        "70R",
-        "826R",
-        "413R"
-      ],
-      "correct": "413R",
-      "msAnswer": "413R",
-      "node": "jee:physics:physics-ch11:adiabatic-process",
-      "grader": "mcq",
-      "handling": "grade"
+      "type": "numeric",
+      "node": "jee:maths:maths-ch08:form-a-series-with-sigma-notation",
+      "grader": "numeric",
+      "handling": "grade",
+      "prompt": "If $\\displaystyle\\sum_{k=1}^{n}a_k=6n^3$, then $\\displaystyle\\sum_{k=1}^{6}\\left(\\dfrac{a_{k+1}-a_k}{36}\\right)^2$ is equal to _____.",
+      "correct": "91",
+      "tolerance": null,
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 91",
+      "_origQ": 22
     },
     {
       "q": 23,
-      "section": "Physics",
+      "section": "B",
       "marks": 4,
-      "type": "mcq",
-      "prompt": "In a YDSE experiment the wavelength of light used is 620 nm and the separation between slits is 0.2 mm. Find the angular fringe width.",
-      "options": [
-        "3 × 10⁻⁴",
-        "3.1 × 10⁻³",
-        "1.2 × 10⁻³",
-        "6.2 × 10⁻⁴"
-      ],
-      "correct": "3.1 × 10⁻³",
-      "msAnswer": "3.1 × 10⁻³",
-      "node": "jee:physics:physics-c12-ch10:fringe-width",
-      "grader": "mcq",
-      "handling": "grade"
+      "type": "numeric",
+      "node": "jee:maths:maths-ch14:solve-probability-problems",
+      "grader": "numeric",
+      "handling": "grade",
+      "prompt": "Let $a,b,c\\in\\{1,2,3,4\\}$. If the probability, that $ax^2+2\\sqrt{2}\\,bx+c>0$ for all $x\\in\\mathbb{R}$, is $\\dfrac{m}{n}$, $\\gcd(m,n)=1$, then $m+n$ is equal to _____.",
+      "correct": "81",
+      "tolerance": null,
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 81",
+      "_origQ": 23
     },
     {
       "q": 24,
-      "section": "Physics",
+      "section": "B",
       "marks": 4,
-      "type": "mcq",
-      "prompt": "Photons of wavelength λ and 3λ are incident on a metal surface. If the stopping potentials for the ejected photoelectrons are 4V₀ and V₀ respectively, find the threshold wavelength.",
-      "options": [
-        "6λ",
-        "9λ",
-        "2λ",
-        "8λ"
-      ],
-      "correct": "9λ",
-      "msAnswer": "9λ",
-      "node": "jee:physics:physics-c12-ch11:einstein-equation",
-      "grader": "mcq",
-      "handling": "grade"
+      "type": "numeric",
+      "node": "jee:maths:maths-ch10:circle-find-centre-radius",
+      "grader": "numeric",
+      "handling": "grade",
+      "prompt": "Let a circle $C$ have its centre in the first quadrant, intersect the coordinate axes at exactly three points and cut off equal intercepts from the coordinate axes. If the length of the chord of $C$ on the line $x+y=1$ is $\\sqrt{14}$, then the square of the radius of $C$ is _____.",
+      "correct": "8",
+      "tolerance": null,
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 8",
+      "_origQ": 24
     },
     {
       "q": 25,
-      "section": "Physics",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "[Figure: A single spherical refracting surface of radius of curvature R = 20 cm; an object of height h₀ = 2 mm is placed at 40 cm from the surface; medium on the two sides has refractive index μ₁ = 1 and μ₂ = 1.5.]\nFor the given spherical surface of radius of curvature R = 20 cm, an object of height h₀ = 2 mm is placed at a distance 40 cm from the surface. The media on the two sides of the spherical surface have refractive indices μ₁ = 1 and μ₂ = 1.5 respectively. Find the height of the image.",
-      "options": [
-        "2 mm",
-        "1.5 mm",
-        "1 mm",
-        "4 mm"
-      ],
-      "correct": "1 mm",
-      "msAnswer": "1 mm",
-      "node": "jee:physics:physics-c12-ch09:refraction-spherical-surface",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 26,
-      "section": "Physics",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "Find the change in surface energy if 512 small drops of radius r = 2 mm merge into a single large drop. (surface tension = S)",
-      "options": [
-        "πS × 7.168 × 10⁻³ J",
-        "πS × 3.584 × 10⁻³ J",
-        "πS × 1.792 × 10⁻³ J",
-        "πS × 6.284 × 10⁻³ J"
-      ],
-      "correct": "πS × 7.168 × 10⁻³ J",
-      "msAnswer": "πS × 7.168 × 10⁻³ J",
-      "node": "jee:physics:physics-ch09:surface-tension-energy-and-force",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 27,
-      "section": "Physics",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "[Figure: An empty parallel-plate capacitor of capacitance C₀; one-fourth of its volume is filled with a dielectric slab of constant K = 5 (the slab has surface area A/2 and width d/2).]\nOne-fourth volume of an empty capacitor of capacitance C₀ is filled with a dielectric of constant K = 5. The surface area of the dielectric is A/2 and width d/2. If A ≫ d², then the new capacitance is",
-      "options": [
-        "3C₀/2",
-        "4C₀/3",
-        "5C₀/4",
-        "7C₀/6"
-      ],
-      "correct": "4C₀/3",
-      "msAnswer": "4C₀/3",
-      "node": "jee:physics:physics-c12-ch02:dielectric-capacitance",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 28,
-      "section": "Physics",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "[Figure: Two hollow conducting spheres (radii 8 cm and 18 cm) separated by a large distance, connected by a conducting wire.]\nTwo hollow conducting spheres are separated by a large distance. They are connected by a conducting wire. If E₁ and E₂ are the magnitudes of the electric field near the surface of sphere (1) (radius 8 cm) and sphere (2) (radius 18 cm) respectively, then find the ratio E₁/E₂.",
-      "options": [
-        "9/2",
-        "9/4",
-        "2/9",
-        "4/9"
-      ],
-      "correct": "9/4",
-      "msAnswer": "9/4",
-      "node": "jee:physics:physics-c12-ch01:field-spherical-shell",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 29,
-      "section": "Physics",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "[Figure: Two satellites revolve around two planets in circular orbits: planet of mass M with orbit radius r, and planet of mass 2M with orbit radius 2r.]\nTwo satellites are revolving around two planets in circular orbits as shown (mass M, radius r; and mass 2M, radius 2r). Find the ratio of their time periods T₁/T₂.",
-      "options": [
-        "1/2",
-        "1/3",
-        "1/4",
-        "1/√2"
-      ],
-      "correct": "1/2",
-      "msAnswer": "1/2",
-      "node": "jee:physics:physics-ch07:satellite-orbit-speed-period",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 30,
-      "section": "Physics",
+      "section": "B",
       "marks": 4,
       "type": "numeric",
-      "prompt": "[Figure: An inductor coil (solenoid).]\nPower dissipated in an inductor coil is P. If a coil of the same material, but with number of turns, length and cross-section area all doubled, is used at the same current, then the power dissipated is α√2 · P. Then α is",
-      "options": [],
-      "correct": "2",
-      "msAnswer": "Correct numerical answer: 2. Mark correct only if the learner's value equals 2.",
-      "node": "jee:physics:physics-c12-ch03:resistivity",
+      "node": "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
       "grader": "numeric",
       "handling": "grade",
-      "_value": 2,
-      "_tol": 0
-    },
-    {
-      "q": 31,
-      "section": "Physics",
-      "marks": 4,
-      "type": "numeric",
-      "prompt": "For a thin prism of angle A, the deviation of the ray is δ. If the refractive index of the prism is 1.5, then A/δ is",
-      "options": [],
-      "correct": "2",
-      "msAnswer": "Correct numerical answer: 2. Mark correct only if the learner's value equals 2.",
-      "node": "jee:physics:physics-c12-ch09:prism-deviation",
-      "grader": "numeric",
-      "handling": "grade",
-      "_value": 2,
-      "_tol": 0
-    },
-    {
-      "q": 32,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "The correct increasing order of bond length among the following is",
-      "options": [
-        "O₂⁺, O₂, O₂⁻, O₂²⁻",
-        "O₂⁺, O₂, O₂²⁻, O₂⁻",
-        "O₂²⁻, O₂⁻, O₂, O₂⁺",
-        "O₂⁻, O₂²⁻, O₂⁺, O₂"
-      ],
-      "correct": "O₂⁺, O₂, O₂⁻, O₂²⁻",
-      "msAnswer": "O₂⁺, O₂, O₂⁻, O₂²⁻",
-      "node": "jee:chemistry:chemistry-ch04:mo-bond-order-stability",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 33,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "[Figure: Three aromatic amines: R = aniline (C₆H₅–NH₂); P = N-methyl-o-toluidine type (benzene with N(CH₃) and an adjacent CH₃); Q = N,N-substituted methyl aniline derivative.]\nWrite the correct order of rate of reaction (azo coupling) of the following with PhN₂⁺Cl⁻ (R, P, Q as shown).",
-      "options": [
-        "R > P > Q",
-        "P > R > Q",
-        "Q > P > R",
-        "P > Q > R"
-      ],
-      "correct": "R > P > Q",
-      "msAnswer": "R > P > Q",
-      "node": "jee:chemistry:chemistry-c12-ch09:diazonium-coupling",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 34,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "Match List-I (Vitamin) with List-II (Name): (I) Vitamin C, (II) Vitamin B1, (III) Vitamin B6, (IV) Vitamin B2 ; (A) Thiamine, (B) Riboflavin, (C) Ascorbic Acid, (D) Pyridoxine.",
-      "options": [
-        "I-A, II-B, III-C, IV-D",
-        "I-C, II-A, III-D, IV-B",
-        "I-A, II-C, III-B, IV-D",
-        "I-C, II-D, III-A, IV-B"
-      ],
-      "correct": "I-C, II-A, III-D, IV-B",
-      "msAnswer": "I-C, II-A, III-D, IV-B",
-      "node": "jee:chemistry:chemistry-c12-ch10:vitamins",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 35,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "[Figure: Six functional groups to rank by IUPAC seniority: (1) –COOH, (2) –CONH₂, (3) –CHO, (4) ketone (>C=O), (5) –C≡C–, (6) –NH₂. (numbered as in the paper)]\nArrange the following functional groups in the increasing order of priority (seniority) of functional group (numbered 1–6 as shown).",
-      "options": [
-        "1 > 4 > 2 > 3 > 6 > 5",
-        "1 > 4 > 2 > 3 > 5 > 6",
-        "1 > 4 > 3 > 2 > 6 > 5",
-        "1 > 2 > 4 > 3 > 6 > 5"
-      ],
-      "correct": "1 > 4 > 3 > 2 > 6 > 5",
-      "msAnswer": "1 > 4 > 3 > 2 > 6 > 5",
-      "node": "jee:chemistry:chemistry-ch08:iupac-functional-groups",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 36,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "[Figure: An amide-bridged diaryl compound: Ph–C(=O)–NH–C₆H₅ with positions labelled P, Q, R, S on the two rings.]\nIn the given compound, the electrophile attack (EAS) will be favoured at position",
-      "options": [
-        "S",
-        "P",
-        "Q",
-        "R"
-      ],
-      "correct": "S",
-      "msAnswer": "S",
-      "node": "jee:chemistry:chemistry-ch09:directive-influence",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 37,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "Which compound gives an apple-green colour in the flame test?",
-      "options": [
-        "BaSO₄",
-        "Mn₃(PO₄)₂",
-        "Ca₃(PO₄)₂",
-        "Al₂(SO₄)₃"
-      ],
-      "correct": "BaSO₄",
-      "msAnswer": "BaSO₄",
-      "node": "jee:chemistry:chemistry-c12-ch04:why-transition-metals",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 38,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "One mole of an alkane reacts with 8 moles of O₂ (complete combustion). The molecular formula of the alkane is",
-      "options": [
-        "C₄H₁₀",
-        "C₅H₁₂",
-        "C₇H₁₄",
-        "C₃H₈"
-      ],
-      "correct": "C₅H₁₂",
-      "msAnswer": "C₅H₁₂",
-      "node": "jee:chemistry:chemistry-ch01:stoichiometric-calculations",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 39,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "18 g of H₂O reacts with x g of Fe to produce Fe₃O₄. ‘x’ is (Atomic mass of Fe = 56 u)",
-      "options": [
-        "84 g",
-        "63 g",
-        "42 g",
-        "51 g"
-      ],
-      "correct": "42 g",
-      "msAnswer": "42 g",
-      "node": "jee:chemistry:chemistry-ch01:stoichiometric-calculations",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 40,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "The Ksp values of Ag₂CrO₄ and AgBr are 32x and 4y respectively. The ratio of solubilities S₁/S₂ is (S₁ = solubility of Ag₂CrO₄, S₂ = solubility of AgBr)",
-      "options": [
-        "2x^(1/3)/y^(1/2)",
-        "x^(1/3)/y^(1/2)",
-        "x^(1/3)/(2y^(1/2))",
-        "(2x)^(1/3)/(2y)^(1/2)"
-      ],
-      "correct": "x^(1/3)/y^(1/2)",
-      "msAnswer": "x^(1/3)/y^(1/2)",
-      "node": "jee:chemistry:chemistry-ch06:solubility-product",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 41,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "The orbital angular momentum of an electron in the nth shell of the H atom is 3h/π. The total energy of the electron is",
-      "options": [
-        "−0.38 eV",
-        "−3.4 eV",
-        "−0.544 eV",
-        "−0.85 eV"
-      ],
-      "correct": "−0.38 eV",
-      "msAnswer": "−0.38 eV",
-      "node": "jee:chemistry:chemistry-ch02:bohr-energy-radius",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 42,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "Arrange the following complexes in the increasing order of crystal field splitting energy (Δ₀): (a) [Cr(CN)₆]³⁻, (b) [CrF₆]³⁻, (c) [Cr(NH₃)₆]³⁺, (d) [Cr(en)₃]³⁺",
-      "options": [
-        "(b) < (c) < (d) < (a)",
-        "(a) < (b) < (c) < (d)",
-        "(a) < (d) < (c) < (b)",
-        "(b) < (a) < (c) < (d)"
-      ],
-      "correct": "(b) < (c) < (d) < (a)",
-      "msAnswer": "(b) < (c) < (d) < (a)",
-      "node": "jee:chemistry:chemistry-c12-ch05:spectrochemical-series-spin",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 43,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "Calculate the energy required for the process Li²⁺ → Li³⁺ + e⁻. (Ground state energy of hydrogen is −13.6 eV/atom)",
-      "options": [
-        "13.6 eV/atom",
-        "122.4 eV/atom",
-        "54.4 eV/atom",
-        "30.6 eV/atom"
-      ],
-      "correct": "122.4 eV/atom",
-      "msAnswer": "122.4 eV/atom",
-      "node": "jee:chemistry:chemistry-ch02:bohr-energy-radius",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 44,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "20 g of fluoroacetic acid is dissolved in 500 g water. If the depression in freezing point is 1 °C, then calculate Ka for fluoroacetic acid. (Assume molality = molarity; Kf = 1.86)",
-      "options": [
-        "1.18 × 10⁻³",
-        "1.5 × 10⁻⁵",
-        "1.18 × 10⁻⁴",
-        "1.2 × 10⁻⁶"
-      ],
-      "correct": "1.18 × 10⁻³",
-      "msAnswer": "1.18 × 10⁻³",
-      "node": "jee:chemistry:chemistry-c12-ch01:freezing-point-depression",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 45,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "[Figure: A P–V diagram: gas goes from state A (P = 8 atm, V = 0.5 L) to state B (P = 1 atm, V = 4 L) along a curve (isothermal-like).]\nCalculate the work in the following process during A to B (given Cv = 3R), with A at (8 atm, 0.5 L) and B at (1 atm, 4 L).",
-      "options": [
-        "−6.2 L·atm",
-        "−8.3 L·atm",
-        "−4.8 L·atm",
-        "−9.2 L·atm"
-      ],
-      "correct": "−8.3 L·atm",
-      "msAnswer": "−8.3 L·atm",
-      "node": "jee:chemistry:chemistry-ch05:reversible-and-free-expansion",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 46,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "Match List-I (Molecules) with List-II (Test): (I) Ethanol, (II) Phenol, (III) Ethanoic Acid, (IV) Acetaldehyde ; (P) Neutral FeCl₃, (Q) Ceric ammonium nitrate, (R) Schiff reagent, (S) NaHCO₃.",
-      "options": [
-        "I-P, II-Q, III-R, IV-S",
-        "I-Q, II-S, III-P, IV-R",
-        "I-Q, II-P, III-S, IV-R",
-        "I-P, II-Q, III-S, IV-R"
-      ],
-      "correct": "I-Q, II-P, III-S, IV-R",
-      "msAnswer": "I-Q, II-P, III-S, IV-R",
-      "node": "jee:chemistry:chemistry-c12-ch08:oxidation-and-distinguishing-tests",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 47,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "Which of the following relations about first-order and zero-order reactions is correct?",
-      "options": [
-        "(t½)_first order = 2 (t100%)_first order",
-        "(t100%)_first order = infinite time of t½ of first order",
-        "(t½)_zero order = 2 × (t100%)_zero order",
-        "(t100%)_zero order = infinite time of t½ of zero order"
-      ],
-      "correct": "(t100%)_first order = infinite time of t½ of first order",
-      "msAnswer": "(t100%)_first order = infinite time of t½ of first order",
-      "node": "jee:chemistry:chemistry-c12-ch03:half-life",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 48,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "mcq",
-      "prompt": "Given two statements — Statement I: First I.E. order is Na > Mg > Al. Statement II: 3rd I.E. order is Mg > Al > Na. Choose the correct option.",
-      "options": [
-        "Both Statement I and Statement II are incorrect",
-        "Statement I is correct but Statement II is incorrect",
-        "Statement I is incorrect but Statement II is correct",
-        "Both Statement I and Statement II are correct"
-      ],
-      "correct": "Both Statement I and Statement II are incorrect",
-      "msAnswer": "Both Statement I and Statement II are incorrect",
-      "node": "jee:chemistry:chemistry-ch03:ionization-enthalpy",
-      "grader": "mcq",
-      "handling": "grade"
-    },
-    {
-      "q": 49,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "numeric",
-      "prompt": "For a first-order reaction the rate constants at 27 °C and t °C are 1.5 × 10³ and 4.5 × 10³ respectively. If the activation energy of the reaction is 60 kJ, then find the temperature t in °C. (R = 8.3 J mol⁻¹ K⁻¹)",
-      "options": [],
-      "correct": "41",
-      "msAnswer": "Correct numerical answer: 41. Mark correct only if the learner's value equals 41 (tolerance ±1).",
-      "node": "jee:chemistry:chemistry-c12-ch03:arrhenius-equation",
-      "grader": "numeric",
-      "handling": "grade",
-      "_value": 41,
-      "_tol": 1
-    },
-    {
-      "q": 50,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "numeric",
-      "prompt": "Calculate the number of isomers of C₅H₁₀ which do NOT decolorise cold alkaline KMnO₄ solution.",
-      "options": [],
-      "correct": "7",
-      "msAnswer": "Correct numerical answer: 7. Mark correct only if the learner's value equals 7.",
-      "node": "jee:chemistry:chemistry-ch09:alkene-structure-bonding",
-      "grader": "numeric",
-      "handling": "grade",
-      "_value": 7,
-      "_tol": 0
-    },
-    {
-      "q": 51,
-      "section": "Chemistry",
-      "marks": 4,
-      "type": "numeric",
-      "prompt": "8 g of [CrClₓ(H₂O)_y]Cl_(3−x)·H₂O_(6−y) reacts with AgNO₃ to form 8.61 g of AgCl. The value of (x × y) is",
-      "options": [],
-      "correct": "5",
-      "msAnswer": "Correct numerical answer: 5. Mark correct only if the learner's value equals 5.",
-      "node": "jee:chemistry:chemistry-c12-ch05:coordination-number",
-      "grader": "numeric",
-      "handling": "grade",
-      "_value": 5,
-      "_tol": 0
+      "prompt": "If $\\alpha=\\displaystyle\\int_{0}^{2\\sqrt{3}}\\log_2(x^2+4)\\,dx+\\int_{2}^{4}\\sqrt{2^x-4}\\,dx$, then $\\alpha^2$ is equal to _____.",
+      "correct": "192",
+      "tolerance": null,
+      "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 192",
+      "_origQ": 25
     }
-  ],
-  "_coverageNote": "All 51 questions are answer-keyed (MCQ via deterministic grader; numeric via exact-value rubric) and node-mapped. Contiguous 1..51.",
-  "_source": "Aakash memory-based solved PDFs (maths.pdf/physics.pdf/chemistry.pdf), eyes-on Opus vision read 2026-06-11."
+  ]
 }

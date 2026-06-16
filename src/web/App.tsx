@@ -5,12 +5,13 @@ import SubjectSelect from './components/SubjectSelect';
 import ChapterList from './components/ChapterList';
 import ChapterMap from './components/ChapterMap';
 import NodeView from './components/NodeView';
+import PaperView from './components/PaperView';
 
 // Prod bakes in VITE_API_URL (render.yaml). In dev, fall back to the relative '/api' so requests go
 // through Vite's proxy (vite.config.ts → API_PORT) — no hardcoded port that can drift from the API.
 const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
-type View = 'exam' | 'subject' | 'chapters' | 'nodes' | 'node';
+type View = 'exam' | 'subject' | 'chapters' | 'nodes' | 'node' | 'paper';
 
 export default function App() {
   const [learnerId] = useState(() => {
@@ -53,6 +54,7 @@ export default function App() {
 
         {view === 'chapters' && (
           <ChapterList
+            learnerId={learnerId}
             exam={exam}
             subject={subject}
             apiBase={API_BASE}
@@ -60,7 +62,23 @@ export default function App() {
               setChapterId(id);
               setView('nodes');
             }}
+            onTakePaper={() => setView('paper')}
             onBack={() => setView('subject')}
+          />
+        )}
+
+        {view === 'paper' && (
+          <PaperView
+            learnerId={learnerId}
+            exam={exam}
+            subject={subject}
+            apiBase={API_BASE}
+            onBack={() => setView('chapters')}
+            onRevise={(conceptId, chapterId) => {
+              setChapterId(chapterId);
+              setConceptId(conceptId);
+              setView('node');
+            }}
           />
         )}
 

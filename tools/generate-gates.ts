@@ -34,6 +34,10 @@ const DRY = process.argv.includes('--dry');
 // Curated authoring: --strong (Opus) for correct maths/phrasing; --model <id> to override; --improve-content
 // to rewrite the node's teaching content (explanation/keyMoves/misconceptions) from NCERT + research first.
 const IMPROVE_CONTENT = process.argv.includes('--improve-content');
+// --skip-authored: skip concepts that already have authored gates (safe re-run default for batching).
+// Without this flag, the tool does a clean-slate re-author (deletes + rewrites), which is intentional
+// when you want to force a re-run but dangerous when batching over a mixed chapter.
+const SKIP_AUTHORED = process.argv.includes('--skip-authored');
 const AUTHOR_MODEL = (() => {
   const i = process.argv.indexOf('--model');
   if (i >= 0 && process.argv[i + 1]) return process.argv[i + 1];
@@ -335,9 +339,26 @@ async function main() {
 
   targets.sort((a, b) => a.order - b.order);
   if (Number.isFinite(LIMIT)) targets.splice(LIMIT); // --limit N → only the first N in bottom-up order
-  console.log(`Authoring ${SLOTS.length}-gate sets for ${targets.length} concept(s)${DRY ? ' [DRY RUN]' : ''}\n`);
+
+  // Build set of already-authored concept IDs (at least one authored gate exists).
+  let alreadyAuthored = new Set<string>();
+  if (SKIP_AUTHORED) {
+    const rows = await db
+      .selectDistinct({ conceptId: gates.conceptId })
+      .from(gates)
+      .where(eq(gates.kind, 'authored'));
+    alreadyAuthored = new Set(rows.map((r) => r.conceptId));
+    const skippable = targets.filter((c) => alreadyAuthored.has(c.id)).length;
+    if (skippable) console.log(`  --skip-authored: skipping ${skippable} already-authored concept(s)\n`);
+  }
+
+  console.log(`Authoring ${SLOTS.length}-gate sets for ${targets.length} concept(s)${DRY ? ' [DRY RUN]' : ''}${SKIP_AUTHORED ? ' [skip-authored ON]' : ''}\n`);
 
   for (const concept of targets) {
+    if (SKIP_AUTHORED && alreadyAuthored.has(concept.id)) {
+      console.log(`• ${concept.slug}: already authored, skipping`);
+      continue;
+    }
     console.log(`• ${concept.slug}`);
     try {
       // Already-taught = lower-order concepts in the same chapter (the scope guard's allow-list).

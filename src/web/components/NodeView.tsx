@@ -295,6 +295,22 @@ export default function NodeView({
       <div className="tutor-grid">
         {/* Chat pane */}
         <section className="chat-pane">
+          {listening && (
+            <div className="recording-overlay" onClick={toggleMic} role="button" tabIndex={0}>
+              <div className="recording-card" onClick={(e) => e.stopPropagation()}>
+                <div className="recording-pulse">
+                  <span className="recording-ring" />
+                  <span className="recording-mic">🎤</span>
+                </div>
+                <div className="recording-title">Listening… speak now</div>
+                <p className="recording-sub">
+                  Your voice is being turned into text. When you're done, tap the button below —
+                  your words will appear in the box so you can read them before you press Send.
+                </p>
+                <button className="recording-stop" onClick={toggleMic}>⏹ Tap to stop &amp; see my text</button>
+              </div>
+            </div>
+          )}
           <div className="chat-scroll" ref={scroller}>
             {messages.map((m, i) => (
               <div key={i} className={`bubble ${m.role}`}>
@@ -417,9 +433,9 @@ export default function NodeView({
                   <button
                     className={listening ? 'notation-btn mic listening' : 'notation-btn mic'}
                     onClick={toggleMic}
-                    title={`Speak your answer (${langs.find((l) => l.code === lang)?.native || 'English'})`}
+                    title={listening ? 'Tap to stop and turn your speech into text' : `Speak your answer (${langs.find((l) => l.code === lang)?.native || 'English'})`}
                   >
-                    {listening ? '● listening…' : '🎤 Speak'}
+                    {listening ? '⏹ Tap to stop' : '🎤 Speak'}
                   </button>
                   <button className="notation-btn" onClick={() => setShowEq((s) => !s)} title="Insert equation">∑ Math</button>
                   <button className="btn-primary" onClick={send} disabled={busy || !input.trim()}>Send</button>

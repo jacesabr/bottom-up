@@ -11,14 +11,14 @@
       "slug": "relation-definition",
       "title": "Define a relation as a subset of A x B",
       "role": "bedrock",
-      "brief": "Treat a relation R from A to B as an arbitrary subset of the Cartesian product A x B, dropping the everyday idea of a 'recognisable link'.",
+      "brief": "A relation from A to B is any subset of A × B — the mathematical abstraction drops the requirement for a real-world 'link' between the elements.",
       "sec": 1,
       "quote": "we define mathematically a relation R from A to B as an arbitrary subset of",
-      "explanation": "In everyday English two objects are related if there is some recognisable connection between them, but mathematics abstracts this away. A relation R from a set A to a set B is defined to be any subset of the Cartesian product A x B - that is, any collection of ordered pairs (a, b) with a in A and b in B. If (a, b) belongs to R we say a is related to b and write a R b; we do not require any intuitive 'link'. A relation in a set A is the special case where B = A, i.e. a subset of A x A. Functions are a special kind of relation.",
+      "explanation": "PART 1 — The universe: the Cartesian product A × B.\nThe Cartesian product A × B is the set of ALL ordered pairs (a, b) with a in A and b in B. If A = {1, 2} and B = {x, y}, then A × B = {(1,x), (1,y), (2,x), (2,y)}: four pairs. This is the universe from which any relation is carved out.\n\nPART 2 — A relation is any subset of A × B.\nA relation R from A to B is defined as any chosen subset of A × B — no conditions required. The empty set is a valid relation (relating nothing). The whole of A × B is a valid relation (relating everything). Any partial choice of pairs is a relation. Mathematics places no constraint on which pairs you pick.\n\nPART 3 — Reading membership as 'a is related to b'.\nIf the pair (a, b) belongs to R we say 'a is related to b' and write a R b. If (a, b) is not in R, a is not related to b. No real-world link between a and b is required — membership in R is the entire definition. A relation in a set A is the special case B = A: a subset of A × A.",
       "keyMoves": [
-        "Identify the Cartesian product A x B as the universe of ordered pairs",
-        "Pick out R as any chosen subset of A x B",
-        "Read (a, b) in R as 'a is related to b' (a R b), with no link required"
+        "Identify A × B as the set of ALL ordered pairs (a, b) with a in A and b in B — the universe of the relation",
+        "Pick any subset of A × B as R; no rule or real-world link is required",
+        "Read (a, b) ∈ R as 'a is related to b' (write a R b); (a, b) ∉ R means a is not related to b"
       ],
       "misconceptions": [
         "Thinking a relation needs a meaningful real-world connection between the elements",
@@ -36,11 +36,11 @@
       "brief": "Identify the empty relation: the relation containing no pairs, where no element of A is related to any element of A.",
       "sec": 2,
       "quote": "A relation R in a set A is called *empty relation*, if no element of A is related to any element of A",
-      "explanation": "Among all relations in a set A, two are extreme. The empty relation is the relation R in A in which no element of A is related to any element of A, i.e. R is the empty set, a subset of A x A. For example, in the set A = {1, 2, 3, 4} the relation R = {(a, b) : a - b = 10} is empty because no pair satisfies the condition. The empty relation and the universal relation are sometimes called trivial relations.",
+      "explanation": "PART 1 — What makes a relation empty.\nThe empty relation in a set A is R = ∅ — no ordered pair (a, b) from A × A belongs to R, so no element of A is related to any other element of A. It is still a valid relation; it is simply the smallest possible one.\n\nPART 2 — Testing: check whether ANY pair satisfies the condition.\nTo decide if a relation is empty, ask: is there even a single pair (a, b) in A × A that satisfies the defining rule? If the answer is no for every possible pair, the relation is empty. Example: on A = {1, 2, 3, 4}, the rule 'a − b = 10' is satisfied by no pair (maximum of a − b is 4 − 1 = 3), so R = ∅.\n\nPART 3 — Position: one of the two trivial extremes.\nThe empty relation and the universal relation (R = A × A) are the two extreme cases, sometimes called trivial relations, because all other relations lie strictly between them. Both are always reflexive-or-not, symmetric-or-not in a trivial way; exam questions often exclude them when asking for 'interesting' examples.",
       "keyMoves": [
-        "Check whether ANY pair satisfies the defining condition",
-        "If none does, declare the relation empty (R = the empty set)",
-        "Recognise the empty relation as one of the two trivial extremes"
+        "Check whether ANY pair (a, b) in A × A satisfies the defining condition",
+        "If no pair satisfies it, declare the relation empty: R = ∅",
+        "Recognise the empty relation as one of the two trivial extremes (the other is the universal relation R = A × A)"
       ],
       "misconceptions": [
         "Confusing 'empty relation' (no pairs) with a relation that simply has few pairs",
@@ -57,14 +57,14 @@
       "slug": "universal-relation",
       "title": "Recognise the universal relation",
       "role": "bedrock",
-      "brief": "Identify the universal relation: the relation A x A in which every element of A is related to every element of A.",
+      "brief": "Identify the universal relation: the relation A × A in which every element of A is related to every element of A.",
       "sec": 2,
       "quote": "A relation R in a set A is called *universal relation*, if each element of A is related to every element of A",
-      "explanation": "The other extreme relation in a set A is the universal relation: the relation R in which each element of A is related to every element of A, i.e. R = A x A (the whole Cartesian product). For example, in A = {1, 2, 3, 4} the relation R' = {(a, b) : |a - b| >= 0} is universal, since every pair satisfies |a - b| >= 0. Together with the empty relation it forms the two trivial relations.",
+      "explanation": "PART 1 — What makes a relation universal.\nThe universal relation in a set A is R = A × A — every possible ordered pair (a, b) with a, b in A is included. It is the largest relation on A; every other relation on A is a subset of it.\n\nPART 2 — Testing: check whether EVERY pair satisfies the condition.\nA relation is universal if its defining rule is satisfied by ALL pairs (a, b) in A × A — not just many, but every pair without exception. Example: on A = {1, 2, 3, 4}, the rule '|a − b| ≥ 0' is satisfied by every pair (since |a − b| is always non-negative), so R = A × A.\n\nPART 3 — Position: the second trivial extreme.\nThe universal relation is the counterpart to the empty relation: empty gives minimum (no pairs), universal gives maximum (all pairs). Any 'interesting' relation on A is a proper subset strictly between the two. Note: the universal relation always includes self-pairs (a, a) — it is always reflexive and symmetric.",
       "keyMoves": [
-        "Check whether EVERY pair of A x A satisfies the defining condition",
-        "If all do, declare the relation universal (R = A x A)",
-        "Recognise the universal relation as the second trivial extreme"
+        "Check whether EVERY pair (a, b) in A × A satisfies the defining condition",
+        "If all do, declare the relation universal: R = A × A",
+        "Recognise the universal relation as the second trivial extreme; it is always reflexive and symmetric"
       ],
       "misconceptions": [
         "Thinking 'universal' means a relation across different sets rather than R = A x A",
@@ -81,14 +81,14 @@
       "slug": "reflexive-relation",
       "title": "Test a relation for reflexivity",
       "role": "intermediate",
-      "brief": "Decide whether a relation is reflexive: every element must be related to itself, (a, a) in R for every a in A.",
+      "brief": "Decide whether a relation is reflexive: every element must be related to itself, (a, a) ∈ R for every a in A.",
       "sec": 2,
       "quote": "*reflexive*, if  $(a, a) \\in \\mathbb{R}$ , for every  $a \\in \\mathbb{A}$ ,",
-      "explanation": "A relation R in a set A is reflexive if (a, a) belongs to R for every a in A - i.e. every element is related to itself. To test reflexivity, check whether the pair (a, a) lies in R for each element a. For instance R = {(1,1),(2,2),(3,3),(1,2),(2,3)} on {1,2,3} is reflexive because all of (1,1),(2,2),(3,3) are present. A single missing self-pair (e.g. a line is never perpendicular to itself) destroys reflexivity.",
+      "explanation": "PART 1 — What reflexivity requires.\nA relation R in a set A is reflexive if (a, a) ∈ R for EVERY element a in A — every element must be related to itself, without exception. For A = {1, 2, 3}, the required self-pairs are exactly (1,1), (2,2), (3,3); all three must appear in R.\n\nPART 2 — Testing: list and check every required self-pair.\nStep 1: list all self-pairs (a, a) for every a in A. Step 2: check that each one is present in R. If even one is missing, reflexivity fails. Example: R = {(1,1),(2,2),(3,3),(1,2),(2,3)} on {1,2,3} is reflexive — all self-pairs present. R = {(1,1),(2,3)} is NOT reflexive: (2,2) and (3,3) are missing.\n\nPART 3 — One missing self-pair is enough to fail.\nExtra pairs in R beyond the self-pairs are irrelevant to reflexivity. The only check is whether every diagonal element is covered. Real-world counterexample: 'is perpendicular to' among lines is not reflexive because no line is perpendicular to itself — every self-pair is absent.",
       "keyMoves": [
-        "List the required self-pairs (a, a) for every element a in A",
-        "Check each (a, a) is present in R",
-        "Conclude reflexive only if NONE is missing"
+        "List the required self-pairs (a, a) for every a in A",
+        "Check that every (a, a) is present in R",
+        "Conclude reflexive only if ALL self-pairs are present; one missing self-pair fails the test"
       ],
       "misconceptions": [
         "Thinking one self-pair (a, a) in R is enough; reflexivity needs ALL of them",
@@ -105,14 +105,14 @@
       "slug": "symmetric-relation",
       "title": "Test a relation for symmetry",
       "role": "intermediate",
-      "brief": "Decide whether a relation is symmetric: whenever (a1, a2) is in R, (a2, a1) must also be in R.",
+      "brief": "Decide whether a relation is symmetric: whenever (a₁, a₂) is in R, the reverse (a₂, a₁) must also be in R.",
       "sec": 2,
       "quote": "symmetric, if  $(a_1, a_2) \\in \\mathbb{R}$  implies that  $(a_2, a_1) \\in \\mathbb{R}$ , for all",
-      "explanation": "A relation R in a set A is symmetric if (a1, a2) in R implies (a2, a1) in R for all a1, a2 in A - the order of a related pair can be reversed. To test it, take each pair (a, b) in R and check whether (b, a) is also present. 'Perpendicular to' is symmetric (if L1 is perpendicular to L2 then L2 is perpendicular to L1), but 'is brother of' or the relation {(1,2),(2,3)} need not be.",
+      "explanation": "PART 1 — What symmetry requires.\nA relation R in a set A is symmetric if: whenever (a₁, a₂) ∈ R, the reverse (a₂, a₁) also ∈ R, for ALL pairs in R. Every pair must come with its mirror image. Self-pairs (a, a) are automatically their own reverse and impose no extra obligation.\n\nPART 2 — Testing: for each pair, look for its reverse.\nFor every pair (a, b) in R, check whether (b, a) is also in R. If any pair is 'one-sided' — (a, b) present but (b, a) absent — symmetry fails immediately. Example: R = {(1,2),(2,1),(3,3)} on {1,2,3} is symmetric (each non-self pair has its reverse). R = {(1,2),(2,3)} is NOT symmetric: (2,1) and (3,2) are both absent.\n\nPART 3 — Real-world test and contrast with reflexivity.\n'Is perpendicular to' is symmetric: L₁ ⊥ L₂ implies L₂ ⊥ L₁. 'Is brother of' is not: A is brother of B does not imply B is brother of A (B might be a sister). Symmetry and reflexivity are independent properties — a relation can have either, both, or neither.",
       "keyMoves": [
-        "For each pair (a, b) in R, look for its reverse (b, a)",
-        "If any reverse is missing, the relation is not symmetric",
-        "Conclude symmetric only if every reversed pair is present"
+        "For each pair (a, b) in R, check whether the reverse (b, a) is also in R",
+        "If any (a, b) is present but (b, a) is absent, the relation is NOT symmetric",
+        "Conclude symmetric only if every non-self pair has its reverse present in R"
       ],
       "misconceptions": [
         "Checking only some pairs instead of all of them",
@@ -182,7 +182,7 @@
       "brief": "Understand how an equivalence relation splits a set into disjoint equivalence classes whose union is the whole set.",
       "sec": 2,
       "quote": "The subsets  $A_i$  are called *equivalence classes*.",
-      "explanation": "Every equivalence relation R on a set X divides X into mutually disjoint subsets called equivalence classes: all elements within one class are related to each other, no element of one class is related to an element of another, and the union of all classes is X. The class containing an element a is written [a]. For R = {(a, b) : 2 divides a - b} on the integers there are two classes, [0] (the even integers) and [1] (the odd integers). Conversely, any such partition of X gives back an equivalence relation.",
+      "explanation": "PART 1 — Form the equivalence class [a].\nThe class [a] is the set of every element in X related to a under R. To find [a], test each b in X: if (a, b) ∈ R then b ∈ [a]. For R = {(a, b) : 2 | (a − b)} on Z, the class [0] contains every even integer and [1] contains every odd integer.\n\nPART 2 — Verify the classes partition X.\nTwo facts follow from the properties of an equivalence relation: (i) every element x is in at least one class (x ∈ [x] by reflexivity); (ii) any two classes are either identical or completely disjoint — they never partially overlap. Together the classes tile X without gaps or repetitions: a partition.\n\nPART 3 — Assign an element to its class.\nGiven element c, test whether (c, representative) ∈ R for each candidate class representative. If yes, c belongs to that class. Example: for mod-2 above, does 7 belong to [0] or [1]? 7 − 0 = 7 (odd, not divisible by 2) so 7 ∉ [0]. 7 − 1 = 6 (divisible by 2) so 7 ∈ [1].",
       "keyMoves": [
         "Group together all elements related to a given element to form its class [a]",
         "Check the classes are disjoint and cover all of X (a partition)",
@@ -304,7 +304,7 @@
       "brief": "Recognise an invertible function as one with a g satisfying gof = identity on X and fog = identity on Y; g is the inverse f-inverse.",
       "sec": 4,
       "quote": "A function  $f: X \\to Y$  is defined to be *invertible*, if there exists a function  $g: Y \\to X$  such that",
-      "explanation": "A function f : X -> Y is invertible if there exists a function g : Y -> X with gof = I_X (the identity on X) and fog = I_Y (the identity on Y). The function g is the inverse of f, written f-inverse. To find an inverse, solve y = f(x) for x in terms of y; that rule is g. For f(x) = 4x + 3 on N (onto its range Y), the inverse is g(y) = (y - 3)/4, and one checks gof and fog are the identities.",
+      "explanation": "PART 1 — Define invertibility using two composite identities.\nA function f: X→Y is invertible if there exists g: Y→X with g∘f = I_X and f∘g = I_Y. Both identities are required: checking only one is not enough.\n\nPART 2 — Find g by solving y = f(x) for x.\nTreat y = f(x) as an equation and solve for x in terms of y. The resulting expression defines g(y). For f(x) = 4x + 3: set y = 4x + 3, solve to get x = (y − 3)/4, so g(y) = (y − 3)/4.\n\nPART 3 — Verify both composite identities.\nCheck (g∘f)(x) = g(f(x)) = x and (f∘g)(y) = f(g(y)) = y. For the example: (g∘f)(x) = g(4x+3) = (4x+3−3)/4 = x ✓; (f∘g)(y) = f((y−3)/4) = 4·(y−3)/4 + 3 = y ✓. If either check fails, g is not the inverse of f.",
       "keyMoves": [
         "Look for g : Y -> X with gof = I_X and fog = I_Y",
         "Find g by solving y = f(x) for x",
@@ -328,7 +328,7 @@
       "brief": "Use the key result: f is invertible if and only if f is one-one and onto, so bijectivity is the test for invertibility.",
       "sec": 4,
       "quote": "if f is invertible, then f must be one-one and onto and conversely, if f is one-one and onto, then f must be invertible.",
-      "explanation": "The central result tying the chapter together: a function f is invertible if and only if it is one-one and onto (bijective). So to prove f invertible you need only show it is injective and surjective - you need not actually construct the inverse. This is especially useful when the explicit inverse is awkward to write down. Conversely, an invertible function is necessarily a bijection. This links the relation/equivalence machinery and the function-type definitions into a single criterion.",
+      "explanation": "PART 1 — Show f is one-one (injective).\nAssume f(x₁) = f(x₂) and deduce x₁ = x₂. If you can always do this, f is injective. For f(x) = 3x − 5: if 3x₁ − 5 = 3x₂ − 5 then x₁ = x₂ ✓.\n\nPART 2 — Show f is onto (surjective).\nFor any y in the codomain, find at least one x in the domain with f(x) = y. For f(x) = 3x − 5 on ℝ: given any y, set x = (y+5)/3 ∈ ℝ; then f(x) = y ✓.\n\nPART 3 — Invoke 'invertible iff bijective' to conclude.\nThe theorem states: f is invertible ⟺ f is bijective (one-one AND onto). Having shown both properties, write the conclusion directly — you do not need to construct the explicit inverse. Conversely, if f is NOT onto (or not one-one), you can immediately rule out invertibility.",
       "keyMoves": [
         "Show f is one-one (injective)",
         "Show f is onto (surjective)",

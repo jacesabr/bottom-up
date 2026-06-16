@@ -474,6 +474,101 @@ sample — keep auditing as we scale; if Sonnet slips on a harder node, escalate
 
 ---
 
+## 10. Prerequisite / bridge nodes — what to do when a concept mentions something the student hasn't learned yet
+
+If a node's `explanation` or `keyMoves` references a term or idea that isn't taught in any lower-`order`
+node upstream, the student will hit an unexplained concept mid-lesson. The fix is either to **author a
+bridge node** (a new, small upstream node that introduces exactly that term) or to **remove the forward
+reference** from this node's content and replace it with an explanation using only known concepts.
+
+### Step 1 — Concept inventory
+
+Read the node's `explanation` and `keyMoves`. List every distinct mathematical term or idea it references.
+For each term, check whether it appears in any lower-`order` node's `keyMoves` in the same chapter.
+
+| Term used in this node | Introduced by which upstream node | Status |
+|---|---|---|
+| `HCF` | `compute-hcf-by-prime-factorisation` | ✓ upstream |
+| `prime factorisation` | none | → bridge node needed |
+| `exponent` | none | → bridge node needed |
+| `irrational number` | later node `prove-root-2-irrational` | → forward reference — remove |
+
+Build this table before touching any JSON. The `concept.order` field (set by `load-content.ts` toposort)
+is the ground truth for what is "upstream."
+
+### Step 2 — Classify: bridge node vs. forward reference
+
+- **Bridge node needed** — the term is genuinely required to understand this node, and no upstream node
+  teaches it. Author a new node before this one.
+- **Forward reference** — the term belongs to a later node and was just dropped in too early. Remove it
+  from this node's `explanation`/`keyMoves` and rewrite using only concepts the student already knows.
+
+**Rule of thumb:** if removing the term makes the explanation *simpler and clearer*, it was a forward
+reference. If removing it makes the explanation *impossible to follow*, it needs a bridge node.
+
+### Step 3 — Get approval before writing JSON
+
+Before authoring any new node, output a plain-text summary in chat:
+- Each proposed bridge node: title + 1-line brief
+- Each forward reference to be removed from the current node
+
+Ask "Does this look right before I write the nodes?" Wait for confirmation.
+
+### Step 4 — Author the bridge node
+
+A bridge node is a normal node entry in the chapter's `content.json`, placed **before** the consuming node
+in the file (order is derived by `load-content.ts` toposort from `prereqs`, not file order, but keeping
+the file readable matters):
+
+```json
+{
+  "id": "<exam>:<subject>:<chapter>:<slug>",
+  "title": "<concise 3–8 word title>",
+  "brief": "<distinct 1-sentence hook — not copied from explanation PART 1>",
+  "explanation": "PART 1 — <what it teaches>.\n<2–3 sentences. No jargon that isn't in the allow-list.>\n\nPART 2 — …",
+  "keyMoves": ["…"],
+  "misconceptions": ["…"],
+  "prereqs": [],
+  "source": { "ref": "<NCERT chapter/section>", "url": "<ncert.nic.in URL if applicable>" }
+}
+```
+
+- Follow the PARTS format exactly (§0a). Each PART ≤ 3 sentences, no blending.
+- `brief` must be a **distinct** hook, not the opening sentence of PART 1 (it renders twice if duplicated).
+- Ground every claim in the NCERT OCR source (`content/<exam>/<subject>/<chapter>/source/*.txt`). If the
+  concept is implicit in NCERT but not explicitly a chapter node (e.g. "what a variable is" in an algebra
+  chapter), cite the NCERT chapter/page where it is used.
+- Keep it **small**: a bridge node teaches exactly one missing idea. If two ideas are missing, author two
+  bridge nodes in dependency order.
+
+### Step 5 — Wire prereqs and reload
+
+1. Add the bridge node's `id` to the consuming node's `prereqs` array in `content.json`.
+2. If one bridge node depends on another (e.g. "exponent" depends on "multiplication"), add that edge too.
+3. Reload the chapter:
+   ```bash
+   node_modules/.bin/tsx tools/load-content.ts <exam>:<subject>:<chapter>
+   ```
+   `load-content.ts` recomputes `concept.order` by toposort, so the bridge node will be placed before the
+   consuming node automatically — no manual ordering needed.
+4. Verify the DB: the bridge node should have a lower `order` than the consuming node.
+5. Author gates for the bridge node via `generate-gates.ts` (it needs its own 5-gate set like any other node):
+   ```bash
+   node_modules/.bin/tsx tools/generate-gates.ts <exam>:<subject>:<chapter>:<bridge-slug> \
+     --model claude-sonnet-4-6 --improve-content
+   ```
+
+### Recurring failure modes
+
+| Defect | Symptom | Fix |
+|---|---|---|
+| Bridge authored but `prereqs` not updated | Toposort places the bridge AFTER the consuming node | Add bridge id to consuming node's `prereqs`, reload |
+| Bridge node uses another undefined term | Cascading confusion — bridge itself needs a bridge | Inventory the bridge node too before writing |
+| Forward reference softened but not removed | Explanation still confuses with a parenthetical "you'll see this later" | Remove the term entirely; the consuming node can reintroduce it properly |
+| Bridge too big (teaches 2+ ideas) | Cognitive overload; gates become out-of-scope | Split into two bridge nodes in dependency order |
+
+---
+
 ## 9. Authored-node progress log
 
 Track which chapters are fully authored here. Use the DB query in §5 to verify counts before marking done.
