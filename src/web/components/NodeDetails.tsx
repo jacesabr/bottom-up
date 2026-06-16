@@ -14,7 +14,7 @@ type ExplainPart = { num: string; head: string; body: string };
 
 /**
  * Split a PART-structured explanation into ordered parts. Authored explanations follow
- * `PART N — Heading.\n<body>` (see how_to_author_nodes.md). We split on the marker (em-dash or
+ * `PART N — Heading.\n<body>` (see authoring_and_improve.md §C). We split on the marker (em-dash or
  * hyphen, any surrounding whitespace) so it works whether parts are separated by blank lines or
  * run together. Returns null when there are no PART markers — caller falls back to plain text.
  */

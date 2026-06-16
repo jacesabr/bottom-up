@@ -12,7 +12,7 @@ export interface GradeResult {
  * actual teaching). Content is stored once in English and translated dynamically here, so nothing
  * goes stale. Maths ($...$) and **bold** are masked so the translator can't mangle them.
  * Provider: free Google endpoint (no key) → NIM fallback → original. For production-grade Indian
- * languages, swap in Bhashini (Govt of India, free) — see continue_authoring.md.
+ * languages, swap in Bhashini (Govt of India, free) — see authoring_and_improve.md.
  */
 export async function translateText(text: string, langCode?: string): Promise<string> {
   if (!langCode || langCode === 'en' || !text?.trim()) return text;
@@ -288,6 +288,10 @@ HOW TO TEACH (read carefully — this is the whole job):
   wander, warmly bring them back.
 - Sound human: vary your wording, don't be formulaic, don't say "key move" / "gate" / "checklist" / "let's build it up"
   every time. Just talk.
+- CLOSING THE LESSON: if the student's latest reply means EVERY idea above is now shown (none left as ◻), do NOT ask
+  another question. Instead write a short, warm wrap-up that signals the lesson part is done and you'll move to a few
+  quick checks — e.g. "Lovely — you've got all the core ideas now. Whenever you're ready, I'll give you a few quick
+  checks to lock it in." Keep it brief and human. Set "readyForGate": true on this turn. Never pose a fresh question here.
 ${input.isReteach ? '- They just missed a check, so re-approach from a completely fresh, even simpler angle — no shame, lots of warmth.' : ''}
 
 If the student asks something you genuinely CANNOT answer from "Your ONLY source of truth" above (the content is missing it), do NOT make facts up — gently keep them on the current concept, and set "corpusGap" to flag what our material was missing.
@@ -400,7 +404,7 @@ function mockTurn(input: TeachTurnInput): TeachTurnOutput {
 
   const followUp = remaining[0];
   const message = ready
-    ? `Nice — that's the idea. You've shown all the key moves for this concept. Let's check it with a quick question.`
+    ? `Lovely — that's the idea, and you've got all the core ideas for this one now. Whenever you're ready, I'll give you a few quick checks to lock it in.`
     : `Good thinking. ${questionFor(followUp?.text)}`;
 
   return { message, keyMovesDemonstrated: demonstrated, misconceptionsSeen: [], readyForGate: ready, provider: 'mock' };

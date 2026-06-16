@@ -242,7 +242,7 @@ documentation page.
 > Added 2026-06-15 while loading **all math exams** (cbse10 + cbse12 + jee) and authoring the first
 > 5 nodes per exam. This is the **definitive, eyes-on** description of what a node *is* in the database,
 > what each field means, and how the pieces combine into a teaching experience. Schema lives in
-> `src/db/schema.ts`; the loop that consumes it in `src/core/teach-loop.ts`. Authoring → `how_to_author_nodes.md`.
+> `src/db/schema.ts`; the loop that consumes it in `src/core/teach-loop.ts`. Authoring → `authoring_and_improve.md`.
 
 A "node" = one **concept**. Its data splits into **three layers**: (A) static content (imported, shared by
 all learners), (B) the gate set (the objective check), and (C) per-learner state (append-only truth + derived
