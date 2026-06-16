@@ -67,6 +67,35 @@ if (ttsSupported()) {
   };
 }
 
+// How each capital letter should be spelled so a TTS voice says the LETTER name clearly.
+// (A bare "A"/"B" from Sarvam is too ambiguous to hear; "Ay"/"Bee" come through.) "A" and "I"
+// are deliberately excluded here — they're English words, handled separately and only in maths
+// context. Lowercase maths vars (x, y) are pronounced fine, so we never touch them.
+// Lowercase on purpose: the voice pronounces lowercase "ay/bee/see" clearly as the letter, but
+// reads the capitalised forms like names ("y/v"). This text is spoken only, never displayed.
+const CAP_LETTER: Record<string, string> = {
+  B: 'bee', C: 'see', D: 'dee', E: 'ee', F: 'eff', G: 'jee', H: 'aitch', J: 'jay',
+  K: 'kay', L: 'ell', M: 'em', N: 'en', O: 'oh', P: 'pee', Q: 'cue', R: 'arr',
+  S: 'ess', T: 'tee', U: 'yoo', V: 'vee', W: 'double-yoo', X: 'eks', Y: 'why', Z: 'zed',
+};
+const CAP_NAMES = Object.values(CAP_LETTER).concat('ay').join('|');
+const A_OP = 'times|plus|minus|over|equals|cross|squared|cubed';
+const A_LEAD = 'times|plus|minus|over|equals|cross|set|sets|point|points|vertex|vertices|angle|matrix|line|triangle|side|region';
+
+function phoneticiseCapitalLetters(t: string): string {
+  // 1) Standalone capitals that are NOT English words (B–H, J–Z) → always spell out.
+  t = t.replace(/(^|[^A-Za-z'])([B-HJ-Z])(?![A-Za-z'])/g, (_m, pre, L) => pre + (CAP_LETTER[L] || L));
+  // 2) "A" only in clear maths surroundings, so the article "A relation" stays "A".
+  //    a) "A," / "A times" / "A Bee" / "A and Bee"
+  t = t.replace(
+    new RegExp(`(^|[^A-Za-z'])A(?=,|\\s+(?:${A_OP})\\b|\\s+(?:and\\s+)?(?:${CAP_NAMES})\\b)`, 'g'),
+    '$1ay'
+  );
+  //    b) "set A" / "point A" / "times A" / "equals A"
+  t = t.replace(new RegExp(`\\b(?:${A_LEAD})\\s+A(?![A-Za-z'])`, 'g'), (m) => m.slice(0, -1) + 'ay');
+  return t;
+}
+
 /**
  * Turn markdown + LaTeX into words a voice can read naturally — no stray "dollar", "slash",
  * "asterisk", or backslash-commands. Punctuation (. , ? ! ; :) is preserved so the engine
@@ -156,6 +185,11 @@ export function stripForSpeech(text: string): string {
   t = t.replace(/\s*[()\[\]]\s*/g, ', ');
   // Leftover emphasis/operator chars (failed *bold*, stray =) → silence — NEVER "times".
   t = t.replace(/[*=]/g, ' ');
+
+  // 10b) Spell isolated CAPITAL letters phonetically. Sarvam's voice renders a bare "A"/"B" so
+  //      ambiguously that even a recogniser can't hear it; "Ay"/"Bee"/"See" come through clearly.
+  //      Lowercase maths vars (x, y) are pronounced fine, so we leave those alone.
+  t = phoneticiseCapitalLetters(t);
 
   // 11) Tidy whitespace and collapse any doubled/space-before punctuation so pauses land right.
   t = t
