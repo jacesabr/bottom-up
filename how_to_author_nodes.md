@@ -8,6 +8,13 @@ generalised to every math exam in the corpus (cbse10, cbse12, jee).
 > This file is the **operator's manual**: the commands, the prompts, the API research loop,
 > and the quality bar. It is intentionally concrete so any future chat can reproduce it.
 
+> **Sibling repo — keep them in sync.** **Inference Engineering** (`c:\Users\E Logitech\Desktop\bottom_up_IE`)
+> is forked from this codebase and shares its skeleton: schema, teach→gate loop, `NodeDetails`/`App` web
+> shell, the PARTS explanation format, and the dev API-proxy setup. When a fix or improvement we make here
+> could benefit IE (web rendering, the explanation format, dev-server wiring, grader seams, etc.), **mirror it
+> there** and note it in IE's `how_to_audit_ie_nodes.md`. Examples already mirrored both ways: the PART-card
+> Details rendering and the `API_PORT`-following Vite proxy (2026-06-16).
+
 ---
 
 ## ★ The current, PROVEN pipeline (use this — supersedes the Haiku-era notes below)

@@ -6,7 +6,9 @@ import ChapterList from './components/ChapterList';
 import ChapterMap from './components/ChapterMap';
 import NodeView from './components/NodeView';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3030/api';
+// Prod bakes in VITE_API_URL (render.yaml). In dev, fall back to the relative '/api' so requests go
+// through Vite's proxy (vite.config.ts → API_PORT) — no hardcoded port that can drift from the API.
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 type View = 'exam' | 'subject' | 'chapters' | 'nodes' | 'node';
 
