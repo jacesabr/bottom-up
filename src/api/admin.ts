@@ -81,6 +81,22 @@ router.get('/traffic', async (_req, res) => {
     const referrers = await rows(sql`
       select coalesce(nullif(referrer,''),'(direct)') as ref, count(*)::int as n
       from bu_visit group by 1 order by 2 desc limit 8`);
+    const topPages = await rows(sql`
+      select coalesce(nullif(path,''),'(none)') as page, count(*)::int as n
+      from bu_visit group by 1 order by 2 desc limit 8`);
+    const devices = await rows(sql`
+      select case when ua ilike '%mobi%' then 'Mobile'
+                  when ua ilike '%tablet%' or ua ilike '%ipad%' then 'Tablet'
+                  else 'Desktop' end as device, count(*)::int as n
+      from bu_visit where ua is not null group by 1 order by 2 desc`);
+    const browsers = await rows(sql`
+      select case when ua ilike '%edg%' then 'Edge'
+                  when ua ilike '%opr%' or ua ilike '%opera%' then 'Opera'
+                  when ua ilike '%chrome%' or ua ilike '%crios%' then 'Chrome'
+                  when ua ilike '%firefox%' or ua ilike '%fxios%' then 'Firefox'
+                  when ua ilike '%safari%' then 'Safari'
+                  else 'Other' end as browser, count(*)::int as n
+      from bu_visit where ua is not null group by 1 order by 2 desc`);
     const signupsByDay = await rows(sql`
       select to_char(date_trunc('day', created_at),'YYYY-MM-DD') as "day", count(*)::int as n
       from users where username is not null and created_at > now() - interval '14 days' group by 1 order by 1 desc`);
@@ -92,7 +108,7 @@ router.get('/traffic', async (_req, res) => {
     const [activeUsers] = await rows(sql`
       select (select count(distinct learner_id) from bu_event where ts > now() - interval '1 day')::int dau,
              (select count(distinct learner_id) from bu_event where ts > now() - interval '7 days')::int wau`);
-    res.json({ visits, byDay, referrers, signupsByDay, funnel, active: activeUsers });
+    res.json({ visits, byDay, referrers, topPages, devices, browsers, signupsByDay, funnel, active: activeUsers });
   } catch (err) {
     console.error('admin/traffic error:', err);
     res.status(500).json({ error: 'traffic failed' });

@@ -27,6 +27,7 @@
 
 .admin-row { display: flex; gap: 16px; flex-wrap: wrap; }
 .admin-half { flex: 1 1 320px; }
+.admin-third { flex: 1 1 220px; }
 
 .funnel { display: flex; gap: 10px; flex-wrap: wrap; }
 .funnel-step {

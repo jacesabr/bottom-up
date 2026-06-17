@@ -50,8 +50,9 @@ export default function App() {
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
-  // One anonymous page-visit beacon per app load (for the admin Traffic panel).
-  useEffect(() => { track(API_BASE, (typeof location !== 'undefined' && location.hash) || 'home'); }, []);
+  // Anonymous page-visit beacon — fires per page (view or hash route) for the admin Traffic panel.
+  const page = route === '#docs' ? 'docs' : route === '#admin' ? 'admin' : view;
+  useEffect(() => { track(API_BASE, page); }, [page]);
   if (route === '#admin') {
     return (
       <div className="app">

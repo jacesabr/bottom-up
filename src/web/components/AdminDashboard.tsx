@@ -169,6 +169,12 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
               </table>
             </section>
           </div>
+
+          <div className="admin-row">
+            <MiniTable title="Top pages" rows={traffic.topPages} keyName="page" />
+            <MiniTable title="Devices" rows={traffic.devices} keyName="device" />
+            <MiniTable title="Browsers" rows={traffic.browsers} keyName="browser" />
+          </div>
         </>
       )}
 
@@ -244,5 +250,21 @@ function Kpi({ label, value }: { label: string; value: number | string }) {
       <div className="kpi-v">{value}</div>
       <div className="kpi-l">{label}</div>
     </div>
+  );
+}
+
+function MiniTable({ title, rows, keyName }: { title: string; rows?: any[]; keyName: string }) {
+  return (
+    <section className="admin-card admin-third">
+      <h3>{title}</h3>
+      <table>
+        <tbody>
+          {(!rows || rows.length === 0) && <tr><td className="muted">No data yet.</td></tr>}
+          {(rows ?? []).map((r, i) => (
+            <tr key={i}><td>{r[keyName]}</td><td style={{ textAlign: 'right' }}>{r.n}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
   );
 }
