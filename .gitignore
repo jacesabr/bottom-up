@@ -13,3 +13,6 @@ content/cbse10/papers-pdf/
 content/cbse12/textbooks/
 content/jee/textbooks/
 pnpm-lock.yaml
+
+# NIM study generated reports
+tools/nim-study/

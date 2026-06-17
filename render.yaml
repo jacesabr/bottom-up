@@ -17,6 +17,11 @@ services:
         sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
+      # Admin panel (#admin route) — HTTP Basic auth. Set in the dashboard; if unset, /admin returns 503.
+      - key: ADMIN_USER
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
 
   - type: web
     name: bottom-up-web

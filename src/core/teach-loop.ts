@@ -260,6 +260,11 @@ function socratesOpening(c: any, _nextMoveText?: string, returning = false, hasP
   );
 }
 
+/** Warm, deterministic closing turn — used when the lesson just completed but the model didn't wrap up. */
+function closingHandoff(c: any): string {
+  return `Lovely — that's all the core ideas for **${c.title}** now. 🙂 Whenever you're ready, tap the button below and I'll give you a few quick checks to lock it in.`;
+}
+
 /** Produce the next tutor turn. `opening` forces a fresh warm open every time a node is entered. */
 export async function respond(
   learnerId: string,
@@ -378,9 +383,24 @@ export async function respond(
     });
   }
 
+  // Did THIS turn complete the concept? The server is the source of truth (deterministic), so we
+  // don't rely on the model foreseeing its own completion — it often can't (the move still reads
+  // "not yet" while it's generating).
+  const updated = await loadChecklist(learnerId, conceptId, c.keyMoves);
+  const prevAllShown = checklist.length > 0 && checklist.every((k) => k.demonstrated);
+  const allShown = updated.length > 0 && updated.every((k) => k.demonstrated);
+  const becameReady = allShown && !prevAllShown;
+
   // Teaching reasons in English (best quality); translate the final message to the learner's language.
   let message = turn.message;
   void isOpening;
+  // Clean hand-off guarantee: if the student just finished the last key idea but the model still
+  // ended on a fresh question (didn't wrap up), swap in a warm closing so the chat never leaves a
+  // dangling question sitting beside the "I'm ready" checks button. Stronger models obey the prompt
+  // and keep their own wrap-up (no trailing '?'), so this only fires as a safety net.
+  if (becameReady && /\?\s*$/.test(message.trim())) {
+    message = closingHandoff(c);
+  }
   if (langCode !== 'en') message = await translateText(message, langCode);
 
   // Record tutor turn
@@ -391,9 +411,6 @@ export async function respond(
     type: 'tutor_turn',
     payload: { message },
   });
-
-  const updated = await loadChecklist(learnerId, conceptId, c.keyMoves);
-  const allShown = updated.every((k) => k.demonstrated);
 
   return {
     message,

@@ -5,6 +5,11 @@ export const users = pgTable('users', {
   id: uuid('id').primaryKey().defaultRandom(),
   email: text('email').unique(),
   name: text('name'),
+  // Simple username/password auth. `username` is stored as typed; uniqueness is enforced
+  // case-insensitively by a lower(username) index (see migration). `passwordHash` is
+  // scrypt: "<saltHex>:<hashHex>" (see src/core/auth.ts).
+  username: text('username'),
+  passwordHash: text('password_hash'),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().$onUpdate(() => new Date()),
 });
@@ -124,6 +129,29 @@ export const buChatSummary = pgTable('bu_chat_summary', {
   watermark: timestamp('watermark', { withTimezone: true }), // events up to here are folded into summary
   turnsSummarized: integer('turns_summarized').default(0),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().$onUpdate(() => new Date()),
+});
+
+// Raw LLM call capture — the replay corpus for the NIM model study (Haiku→self-hosted-GPU switch).
+// Every production model call records the FULL request messages + the FULL response + model/tokens/
+// latency, so the study harness (tools/nim-study.mjs) can replay the SAME prompts through candidate
+// NVIDIA NIM models and compare quality against the already-captured Haiku baseline — WITHOUT ever
+// re-calling a paid API from Claude Code. `messages` is the exact array sent to the provider.
+export const buLlmCall = pgTable('bu_llm_call', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  ts: timestamp('ts', { withTimezone: true }).defaultNow(),
+  provider: text('provider').notNull(), // 'claude' | 'nvidia'
+  model: text('model').notNull(),
+  purpose: text('purpose'), // 'tutor' | 'vision' | 'translate' | 'author' | 'figure'
+  learnerId: uuid('learner_id'),
+  conceptId: text('concept_id'),
+  messages: jsonb('messages').notNull(), // exact request messages (system+turns), enough to replay
+  response: text('response'), // full completion text
+  promptTokens: integer('prompt_tokens'),
+  completionTokens: integer('completion_tokens'),
+  ms: integer('ms'),
+  ok: boolean('ok').default(true),
+  error: text('error'),
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 
 // Textbook figures: a Haiku-vision captioning pass maps each extracted page image to the concept(s)

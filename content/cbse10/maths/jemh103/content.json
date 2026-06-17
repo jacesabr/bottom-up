@@ -151,7 +151,9 @@
         "Misreading non-integral intersection coordinates",
         "Reporting only x or only y instead of both"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -270,7 +272,8 @@
         "Arithmetic slip combining 3 and 2(19/29)"
       ],
       "prereqs": [
-        "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
+        "cbse10:maths:jemh103:solve-resulting-one-variable-equation",
+        "cbse10:maths:jemh103:express-one-variable-in-terms-of-other"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -324,7 +327,9 @@
         "Thinking the work is wrong because no x,y appeared",
         "Confusing a true identity with a unique solution"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -346,7 +351,9 @@
         "Reporting 0 or the false value as the answer",
         "Mislabelling the result as infinitely many"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -504,7 +511,7 @@
       "brief": "Use the ratio conditions to solve for a parameter that makes a pair inconsistent/consistent/dependent.",
       "sec": 1,
       "quote": "(iii)  parallel, then a₁/a₂ = b₁/b₂ ≠ c₁/c₂ .",
-      "explanation": "When one coefficient is an unknown k, the student imposes the appropriate ratio condition (e.g. \\(a_1/a_2 = b_1/b_2\\) for inconsistency/parallel) and solves for k.",
+      "explanation": "PART 1 — Pick the ratio condition that matches the required solution type.\nUnique solution: a1/a2 != b1/b2. No solution (parallel): a1/a2 = b1/b2 != c1/c2. Infinitely many (coincident): a1/a2 = b1/b2 = c1/c2. Identify which case the question asks for and write the corresponding ratio condition with k included.\n\nPART 2 — Solve the ratio equation for k, then check the remaining condition.\nSet up the equation (e.g. a1/a2 = b1/b2) and cross-multiply to solve for k. For a parallel/no-solution case, also confirm the c-ratio is NOT equal, otherwise k would give coincident lines instead. Example: kx + 3y = k-3 and 12x + ky = k parallel requires k/12 = 3/k, so k^2 = 36, k = +/-6.",
       "keyMoves": [
         "Write the three ratios with k included",
         "Set the ratio condition for the desired case",

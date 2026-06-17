@@ -14,7 +14,7 @@
       "brief": "Compute the area of a segment as the area of the corresponding sector minus the area of the triangle formed by the two radii and the chord.",
       "sec": 0,
       "quote": "Area of the segment APB = Area of the sector OAPB – Area of Δ OAB",
-      "explanation": "The top skill of the chapter: a segment is the region between a chord and its arc. Its area equals the sector's area minus the triangle OAB's area. The student must compute both pieces and subtract. This composes the sector-area skill with the triangle-area skill (the latter requiring the perpendicular-drop and trig-ratio sub-skills demonstrated in Example 2).",
+      "explanation": "PART 1 — Decomposing the segment.\nA segment is the region enclosed between a chord AB and the arc it cuts off. It equals the sector OAPB (formed by the two radii and the arc) minus the triangle OAB (formed by the two radii and the chord): Segment = Sector − Triangle.\n\nPART 2 — Computing the sector area.\nUse Area(sector) = theta/360 × pi*r². For a segment with central angle theta and radius r, substitute and simplify. For r = 14 cm, theta = 60°: sector = 60/360 × 22/7 × 196 = 1/6 × 616 = 102.67 cm².\n\nPART 3 — Computing the triangle area and subtracting.\nFor an equilateral triangle (theta = 60°), all sides = r = 14, so Area(triangle) = sqrt(3)/4 × 14² = sqrt(3)/4 × 196 = 49*sqrt(3) ≈ 84.87 cm². Segment = 102.67 − 84.87 = 17.80 cm² ≈ 17.89 cm² (small rounding differences from pi and sqrt(3) approximations).",
       "keyMoves": [
         "Identify the sector and the triangle that make up the segment",
         "Compute area of the sector with θ/360 × πr²",
@@ -44,7 +44,7 @@
       "brief": "Compute the area of a sector of angle θ and radius r using Area = θ/360 × πr².",
       "sec": 0,
       "quote": "Area of the sector of angle θ = θ/360 × πr²,",
-      "explanation": "The central formula of the chapter, derived by the Unitary Method from the full-circle area πr² (which subtends 360°). For an angle θ, the sector is the fraction θ/360 of the circle. The student substitutes θ, r and π and evaluates.",
+      "explanation": "PART 1 — Setting up the fraction.\nThe sector angle θ out of the full 360° gives the fraction θ/360. This is the portion of the full circle that the sector occupies. For example, a 90° sector covers 90/360 = 1/4 of the circle.\n\nPART 2 — Multiplying by the circle area.\nThe full circle area is pi*r². Multiply by the fraction: Area of sector = θ/360 × pi*r². For r = 7 cm and θ = 90°: Area = 90/360 × 22/7 × 49 = 1/4 × 154 = 38.5 cm².\n\nPART 3 — Substituting and evaluating.\nReplace θ, r, and pi with the given values and simplify step by step. Cancel where possible before multiplying — e.g., 22/7 × 49 cancels to 22 × 7 = 154 before dividing by 4.",
       "keyMoves": [
         "Take the fraction θ/360 of the full angle",
         "Multiply by the circle area πr²",
@@ -70,7 +70,7 @@
       "brief": "Reason that a 360° angle gives area πr², so 1° gives πr²/360, hence θ° gives θ/360 × πr².",
       "sec": 0,
       "quote": "So, when the degree measure of the angle at the centre is 1, area of the sector = πr²/360",
-      "explanation": "The Unitary Method reasoning that justifies the sector formula: scale the whole-circle area down to one degree, then up to θ degrees. Demonstrates proportional reasoning the chapter explicitly walks through before stating the formula.",
+      "explanation": "PART 1 — Starting from the full circle.\nA complete circle subtends 360° at its centre and has area pi*r². This is the anchor fact: a 360° sector IS the whole circle, so its area equals pi*r². Every other sector is a fraction of this.\n\nPART 2 — Scaling down to one degree.\nDivide the full-circle area by 360 to find the area for a 1° sector: area for 1° = pi*r²/360. This is the unitary step — finding the value of one unit.\n\nPART 3 — Scaling up to θ degrees.\nMultiply the one-degree area by θ to get the area of a θ° sector: Area = θ/360 × pi*r². So a 90° sector has area 90/360 × pi*r² = pi*r²/4, exactly one-quarter of the circle.",
       "keyMoves": [
         "Start from: 360° corresponds to area πr²",
         "Divide by 360 to get area for 1°",
@@ -92,7 +92,7 @@
       "brief": "Find arc length as θ/360 of the full circumference 2πr.",
       "sec": 0,
       "quote": "So, length of an arc of a sector of angle θ = θ/360 × 2πr",
-      "explanation": "Parallel to the area formula but for length: an arc is the fraction θ/360 of the whole circumference 2πr. The student substitutes θ, r and π. Used in exercises and in finding the perimeter of a sector (exam Basic Q34).",
+      "explanation": "PART 1 — Starting from the full circumference.\nThe circumference of a complete circle is 2*pi*r. A full circle spans 360°, so the full circumference corresponds to 360°.\n\nPART 2 — Taking the fraction for arc length.\nAn arc of θ° is the fraction θ/360 of the full circumference: Arc length = θ/360 × 2*pi*r. For r = 7 cm and θ = 90°: Arc = 90/360 × 2 × 22/7 × 7 = 1/4 × 44 = 11 cm.\n\nPART 3 — Applying to perimeter of a sector.\nThe perimeter of a sector = arc length + 2r (the two radii). For r = 7, θ = 90°: perimeter = 11 + 14 = 25 cm.",
       "keyMoves": [
         "Take the full circumference 2πr",
         "Multiply by the fraction θ/360",
@@ -117,7 +117,7 @@
       "brief": "Find the major sector area either as πr² minus the minor sector, or with angle (360 − θ).",
       "sec": 0,
       "quote": "Area of the major sector OAQB = πr² – Area of the minor sector OAPB",
-      "explanation": "The major sector is the rest of the disc after removing the minor sector. The student can subtract the minor sector from the whole circle area, or equivalently use (360 − θ)/360 × πr², as shown in Example 1.",
+      "explanation": "PART 1 — Understanding major and minor sectors.\nWhen a central angle θ (less than 180°) creates a minor sector, the remaining region is the major sector with angle (360 − θ). Minor sector + major sector = full circle.\n\nPART 2 — Subtracting from the full circle.\nMajor sector area = pi*r² − minor sector area. For r = 7, θ = 60°: minor sector = 60/360 × 22/7 × 49 = 25.67 cm²; major sector = 154 − 25.67 = 128.33 cm².\n\nPART 3 — Using the complement angle directly.\nAlternatively, plug (360 − θ) into the sector formula: major sector area = (360 − θ)/360 × pi*r². For θ = 60°, r = 7: major area = 300/360 × 22/7 × 49 = 5/6 × 154 = 128.33 cm². Both methods must give the same result.",
       "keyMoves": [
         "Compute the whole-circle area πr²",
         "Subtract the minor-sector area",
@@ -141,7 +141,7 @@
       "brief": "Find the area of triangle OAB using ½ × AB × OM, where OM is the perpendicular height.",
       "sec": 0,
       "quote": "So, area of Δ OAB = 1/2 AB × OM = 1/2 × 21√3 × 21/2 cm²",
-      "explanation": "Generic triangle-area skill applied with AB as the base (the chord) and OM as the height (the perpendicular from the centre). Needed to subtract the triangle from the sector when finding a segment area.",
+      "explanation": "PART 1 — Identifying base and height in triangle OAB.\nThe chord AB is the base of triangle OAB. The perpendicular from O to AB is OM, the height. These are the two measurements needed for the area formula.\n\nPART 2 — Applying the area formula.\nArea = ½ × base × height = ½ × AB × OM. For AB = 21*sqrt(3) cm and OM = 10.5 cm: Area = ½ × 21*sqrt(3) × 10.5 = ½ × 21 × 10.5 × sqrt(3) = 441*sqrt(3)/4 cm² ≈ 190.95 cm².\n\nPART 3 — Simplifying the result.\nFactor where possible: ½ × 21*sqrt(3) × 10.5 = ½ × 21 × (21/2) × sqrt(3) = 441*sqrt(3)/4 cm². In decimal: 441 × 1.732 / 4 = 763.812/4 = 190.95 cm².",
       "keyMoves": [
         "Identify the base AB and the height OM",
         "Apply Area = ½ × base × height",
@@ -167,7 +167,7 @@
       "brief": "Draw OM ⊥ AB; by RHS congruence M is the midpoint of AB and OM bisects the central angle.",
       "sec": 0,
       "quote": "For finding the area of Δ OAB, draw OM ⊥ AB as shown in Fig. 11.7.",
-      "explanation": "The setup move for computing the triangle's area: dropping the perpendicular from the centre to the chord splits the isosceles triangle into two congruent right triangles, halving the central angle and bisecting the chord. This unlocks the trig-ratio computations.",
+      "explanation": "PART 1 — Drawing OM perpendicular to AB.\nConstruct the perpendicular from centre O to chord AB, meeting AB at M. This is the key construction move that unlocks the triangle's area computation by creating right angles at M.\n\nPART 2 — Recognising the isosceles triangle.\nSince OA = OB (both radii), triangle OAB is isosceles. The perpendicular from the apex O to the base AB of an isosceles triangle always bisects the base — so M is the midpoint of AB.\n\nPART 3 — Concluding the bisection of the central angle.\nBy RHS congruence (ΔAMO ≅ ΔBMO), the perpendicular also bisects the central angle ∠AOB. If ∠AOB = 120°, then ∠AOM = ∠BOM = 60°. Now the two resulting right triangles are ready for trig-ratio work.",
       "keyMoves": [
         "Construct OM perpendicular to chord AB",
         "Recognise OA = OB so the triangle is isosceles",
@@ -192,7 +192,7 @@
       "brief": "By RHS, ΔAMO ≅ ΔBMO, so ∠AOM = ∠BOM = ½ of the central angle.",
       "sec": 0,
       "quote": "Note that OA = OB. Therefore, by RHS congruence, Δ AMO ≅ Δ BMO.",
-      "explanation": "Geometric justification that the perpendicular bisects both the chord and the central angle. The two right triangles share OM, have equal hypotenuses OA = OB, and right angles at M, so they are congruent (RHS), giving ∠AOM = ∠BOM = ½ × 120° = 60°.",
+      "explanation": "PART 1 — Identifying the two right triangles.\nWhen OM is drawn perpendicular to chord AB, point M lies on AB with angle OMA = angle OMB = 90°. This creates two triangles, ΔAMO and ΔBMO, each with a right angle at M.\n\nPART 2 — Applying RHS congruence.\nBoth triangles share the side OM (common), have equal hypotenuses OA = OB (both radii), and right angles at M. By the RHS criterion (Right angle – Hypotenuse – Side), ΔAMO ≅ ΔBMO.\n\nPART 3 — Concluding both bisections.\nFrom the congruence: AM = BM (so M bisects chord AB) and angle AOM = angle BOM (so OM bisects the central angle). If the central angle was 2α, each half is α. For example, a 120° central angle gives angle AOM = angle BOM = 60°.",
       "keyMoves": [
         "Note OA = OB (radii)",
         "Note right angles at M and common side OM",
@@ -215,7 +215,7 @@
       "brief": "From right triangle OMA, OM/OA = cos 60° = ½, giving OM = r/2.",
       "sec": 0,
       "quote": "or, x/21 = 1/2     ( cos 60° = 1/2 )",
-      "explanation": "Apply the cosine ratio in the right triangle OMA: the side adjacent (OM) over the hypotenuse (OA) equals cos of the half-angle. With cos 60° = 1/2 and OA = 21, OM = 21/2.",
+      "explanation": "PART 1 — Setting up cos in right triangle OMA.\nAfter halving the central angle, triangle OMA has a right angle at M. The angle at O is half the central angle (e.g., half of 120° = 60°). The side adjacent to angle O is OM, and the hypotenuse is OA = r.\n\nPART 2 — Applying cos 60° = 1/2.\ncos(angle AOM) = adjacent/hypotenuse = OM/OA. So OM = OA × cos(60°) = r × 1/2 = r/2. For r = 21 cm: OM = 21/2 = 10.5 cm.\n\nPART 3 — Reading off the result.\nOM is the perpendicular height from the centre to the chord. For any central angle 2α, OM = r × cos(α). This value is used as the height in the triangle-area formula.",
       "keyMoves": [
         "Set OM/OA = cos(half-angle)",
         "Substitute cos 60° = 1/2",
@@ -240,7 +240,7 @@
       "brief": "From right triangle OMA, AM/OA = sin 60° = √3/2, giving AM = (r√3)/2.",
       "sec": 0,
       "quote": "Also, AM/OA = sin 60° = √3/2",
-      "explanation": "Apply the sine ratio: the side opposite (AM) over the hypotenuse (OA) equals sin of the half-angle. With sin 60° = √3/2 and OA = 21, AM = 21√3/2.",
+      "explanation": "PART 1 — Setting up sin in right triangle OMA.\nIn right triangle OMA (right angle at M), the angle at O is the half-angle (e.g., 60° when central angle is 120°). The side opposite to angle O is AM, and the hypotenuse is OA = r.\n\nPART 2 — Applying sin 60° = sqrt(3)/2.\nsin(angle AOM) = opposite/hypotenuse = AM/OA. So AM = OA × sin(60°) = r × sqrt(3)/2. For r = 21 cm: AM = 21 × sqrt(3)/2 = 21*sqrt(3)/2 ≈ 18.19 cm.\n\nPART 3 — Reading off AM for later use.\nAM is the half-chord. It will be doubled to get the full chord AB = 2 × AM = 21*sqrt(3) cm, which becomes the base of the triangle OAB.",
       "keyMoves": [
         "Set AM/OA = sin(half-angle)",
         "Substitute sin 60° = √3/2",
@@ -265,7 +265,7 @@
       "brief": "Since the perpendicular bisects the chord, the full chord AB is twice the half-chord AM.",
       "sec": 0,
       "quote": "Therefore, AB = 2 AM = (2 × 21√3)/2 cm = 21√3 cm",
-      "explanation": "After finding the half-chord AM from the right triangle, double it to get the full chord AB. This length is then used as the base of triangle OAB.",
+      "explanation": "PART 1 — Recognising M as the midpoint.\nThe perpendicular from the centre to a chord always bisects the chord (proven by RHS congruence). So if M is the foot of the perpendicular, then AM = MB and AB = 2 × AM.\n\nPART 2 — Doubling AM to find AB.\nSubstitute the value of AM found from the sine ratio. For AM = 10.5*sqrt(3) cm: AB = 2 × 10.5*sqrt(3) = 21*sqrt(3) cm ≈ 36.37 cm. This length is the base of triangle OAB.\n\nPART 3 — Using AB in the area formula.\nOnce AB is known, it serves as the base in Area(OAB) = ½ × AB × OM. With AB = 21*sqrt(3) and OM = 10.5: Area = ½ × 21*sqrt(3) × 10.5 = 441*sqrt(3)/4 ≈ 190.95 cm².",
       "keyMoves": [
         "Recognise M is the midpoint of AB",
         "Multiply AM by 2 to get AB",
@@ -289,7 +289,7 @@
       "brief": "Combine the computed sector area and triangle area: segment = sector − triangle.",
       "sec": 0,
       "quote": "Therefore, area of the segment AYB = ( 462 – 441/4 √3 ) cm²     [From (1), (2) and (3)]",
-      "explanation": "The final assembly step of Example 2: take the sector area (462 cm²) and subtract the triangle area (441√3/4 cm²) to get the segment area. Tests that the student correctly combines the two sub-results.",
+      "explanation": "PART 1 — Assembling the two computed quantities.\nFrom earlier steps: sector OAPB has area 462 cm² (for r=21, θ=120°); triangle OAB has area 441*sqrt(3)/4 cm² ≈ 190.95 cm².\n\nPART 2 — Subtracting to get the segment.\nSegment area = Sector area − Triangle area = 462 − 441*sqrt(3)/4 cm². Numerically: 462 − 190.95 = 271.05 cm².\n\nPART 3 — Verifying the subtraction direction.\nThe segment is the region between the chord and the arc — it is SMALLER than the sector (which also includes the triangle). So Segment < Sector, confirming subtraction gives a positive result. Never add: that would give a region larger than the sector.",
       "keyMoves": [
         "Bring together the sector area and triangle area",
         "Subtract triangle from sector",
@@ -314,7 +314,7 @@
       "brief": "Substitute π = 22/7 or π = 3.14 as instructed, then carry out the arithmetic.",
       "sec": 0,
       "quote": "= 30/360 × 3.14 × 4 × 4 cm²",
-      "explanation": "A recurring numeracy skill: replace π with the prescribed value (22/7 for radii that are multiples of 7, else 3.14) and evaluate the resulting arithmetic carefully. Used in every worked example and exercise.",
+      "explanation": "PART 1 — Reading the prescribed pi value.\nEvery problem specifies which approximation to use: pi = 22/7 when the radius is a multiple of 7, and pi = 3.14 otherwise. Read the problem carefully — using the wrong approximation gives a different numerical answer, even if the algebra is correct.\n\nPART 2 — Substituting and evaluating.\nReplace pi with its given value in the formula, then compute step by step. For example, if Area = pi × 7², substitute pi = 22/7: Area = 22/7 × 49 = 22 × 7 = 154 cm². Cancel factors before multiplying to keep the arithmetic manageable.",
       "keyMoves": [
         "Read which π value the problem prescribes",
         "Substitute it into the formula",

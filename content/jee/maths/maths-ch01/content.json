@@ -173,6 +173,30 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-ch01:count-subsets-and-power-set",
+      "slug": "count-subsets-and-power-set",
+      "title": "Count all subsets using the power-set formula",
+      "role": "bedrock",
+      "brief": "A set with n elements has exactly 2^n subsets in total; the collection of all those subsets is called the power set P(A).",
+      "sec": 6,
+      "quote": "The collection of all subsets of a set A is called the power set of A.",
+      "explanation": "PART 1 — What the power set is.\nThe power set of A, written P(A), is the set whose elements are ALL the subsets of A -- including the empty set and A itself. For A = {a, b}: P(A) = {{}, {a}, {b}, {a, b}}. Notice P(A) has 4 elements, and A has 2 elements: 4 = 2^2.\n\nPART 2 — The counting formula: a set with n elements has 2^n subsets.\nFor each element, there are exactly two independent choices: include it in the subset or leave it out. Multiplying these binary choices across all n elements gives 2 x 2 x ... x 2 (n times) = 2^n total subsets. Examples: n = 0 (empty set) -> 2^0 = 1 subset (the empty set itself); n = 1 -> 2^1 = 2; n = 3 -> 2^3 = 8. Listing all 8 subsets of {1, 2, 3} verifies the count.\n\nPART 3 — Proper subsets: subtract 1.\nA proper subset of A is any subset that is NOT equal to A itself. Since there are 2^n subsets in total and exactly one of them equals A, the number of proper subsets is 2^n - 1. For A = {p, q, r, s} (n = 4): total subsets = 16, proper subsets = 15.",
+      "keyMoves": [
+        "Identify n = number of elements in the set",
+        "Apply 2^n to count ALL subsets; list P(A) for small sets as a check",
+        "Subtract 1 to count proper subsets: 2^n - 1"
+      ],
+      "misconceptions": [
+        "Forgetting to include the empty set and A itself when listing subsets",
+        "Confusing the number of subsets (2^n) with the number of proper subsets (2^n - 1)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:decide-when-two-sets-are-equal"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch01:determine-subset-relations",
       "slug": "determine-subset-relations",
       "title": "Determine subset and proper-subset relations",
@@ -191,7 +215,8 @@
         "Forgetting that the empty set is a subset of every set"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:decide-when-two-sets-are-equal"
+        "jee:maths:maths-ch01:decide-when-two-sets-are-equal",
+        "jee:maths:maths-ch01:count-subsets-and-power-set"
       ],
       "sameConcept": [],
       "teachingInsights": []

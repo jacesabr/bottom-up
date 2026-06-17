@@ -11,10 +11,10 @@
       "slug": "surface-areas-and-volumes-of-combinations",
       "title": "Find surface areas and volumes of combinations of solids",
       "role": "goal",
-      "brief": "Top skill: given a real object built from two basic solids, compute its surface area or its volume.",
+      "brief": "Real objects are built from two or more basic solids; to find their surface area or volume you must decompose the object and recombine the parts correctly.",
       "sec": 0,
       "quote": "In this chapter, you will see how to find surface areas and volumes of such objects.",
-      "explanation": "The chapter's whole purpose is to handle objects that are combinations of cuboid, cone, cylinder, sphere and hemisphere — neither pure surface-area nor pure volume formulas apply directly, so the student must decompose and recombine.",
+      "explanation": "PART 1 — Recognise the object as a combination of basic solids.\nReal objects such as a toy top, a rocket, a bird-bath, or a silo are not pure spheres or cylinders — they are built from two or more of the basic solids (cuboid, cone, cylinder, sphere, hemisphere). The first step is always to name each constituent solid and identify where it is joined to its neighbour.\n\nPART 2 — Decide whether surface area or volume is wanted, then apply the correct rule.\nFor surface area, add only the exposed curved surfaces (joined flat faces vanish). For volume, simply add all the parts' volumes (joining does not remove interior space). Choosing the wrong rule — adding total surface areas, or subtracting a volume that does not disappear — is the most common error.\n\nPART 3 — Decompose, compute each part, and combine.\nOnce you know which formula to apply, compute each part separately using the relevant bedrock formula, then add (or subtract, for a cavity) the results. For example, a toy = hemisphere + cone: volume = (2/3)πr³ + (1/3)πr²h.",
       "keyMoves": [
         "Recognise the object as a combination of two basic solids",
         "Decide whether surface area or volume is wanted",
@@ -37,10 +37,10 @@
       "slug": "decompose-combination-into-basic-solids",
       "title": "Decompose a combined solid into basic solids",
       "role": "intermediate",
-      "brief": "Break a new object down into the basic solids that compose it.",
+      "brief": "Before applying any formula, name each constituent solid in the object and note where it is attached.",
       "sec": 1,
       "quote": "We can see that this solid is made up of a cylinder with two hemispheres stuck at either end.",
-      "explanation": "Before any formula applies, the student must identify which basic solids make up the object (e.g. cylinder + two hemispheres, cone + hemisphere, cube + hemisphere). This naming step drives every later computation.",
+      "explanation": "PART 1 — Compare the object's shape to the four basic solids.\nThe four basic solids used throughout this chapter are: cuboid (box), cylinder (can), cone (ice-cream cone shape), and hemisphere (half-ball). Look at each distinct region of the combined object and decide which basic solid it matches — by its flat base, curved side, or rounded top.\n\nPART 2 — Name each constituent and where it is attached.\nState exactly what is joined to what: for example, \"a cylinder with a hemisphere stuck at each end\" or \"a cone placed on top of a hemisphere of the same radius.\" This two-part description drives every later formula choice. A depression (cavity) counts as a removed solid, not an added one.",
       "keyMoves": [
         "Compare the object's parts to the four basic solids",
         "Name each constituent and where it is attached"
@@ -58,10 +58,10 @@
       "slug": "tsa-combination-sum-of-csa",
       "title": "Total surface area of a combination = sum of curved surface areas",
       "role": "intermediate",
-      "brief": "Add only the exposed curved surface areas of the parts; joined faces vanish.",
+      "brief": "When two solids are joined, the hidden flat faces vanish; total surface area = sum of exposed curved surfaces only.",
       "sec": 1,
       "quote": "the total surface area of the new solid is the sum of the curved surface areas of each of the individual parts",
-      "explanation": "When two solids are stuck together, the flat faces that touch are hidden. So the visible surface is the sum of the curved surfaces only — not the sum of the parts' total surface areas.",
+      "explanation": "PART 1 — List the exposed curved surfaces; joined flat faces vanish.\nWhen two solids are glued together, each flat face at the join is invisible (hidden inside). The visible outer surface consists only of the curved portions of each part. Never add the full TSA of each part — that double-counts the hidden faces.\n\nPART 2 — Sum their CSAs, adjusting for special cases (covered patches, exposed rings).\nMost assemblies: TSA = CSA1 + CSA2. But if one solid's flat base is larger (ring exposed) or if a flat patch of a cube is covered, those areas are added or subtracted as needed. The general rule is: total visible area = sum of all curved surfaces that remain exposed after joining.",
       "keyMoves": [
         "List the exposed curved surfaces",
         "Sum their CSAs",
@@ -87,13 +87,13 @@
       "slug": "tsa-toy-cone-plus-hemisphere",
       "title": "TSA of a cone surmounted by a hemisphere",
       "role": "intermediate",
-      "brief": "For a toy = cone + hemisphere of equal radius, TSA = CSA hemisphere + CSA cone.",
+      "brief": "A toy top (cone + hemisphere of equal radius) has total surface area = CSA hemisphere + CSA cone.",
       "sec": 1,
       "quote": "Total surface area of the toy = CSA of hemisphere + CSA of cone",
-      "explanation": "A specific assembly: a cone sitting on a hemisphere with matching radius. The painted/colour area is exactly the two curved surfaces. Demonstrated in Example 1 (the lattu).",
+      "explanation": "PART 1 — The two curved surfaces share the same radius; the flat join circle is hidden.\nWhen a cone is placed on a hemisphere so that the cone's base fits exactly on the hemisphere's flat face, the shared circle is invisible. The entire outer surface is just the dome (2πr²) plus the slanted cone (πrl). Both use the same radius r.\n\nPART 2 — Add CSA of hemisphere (2pir^2) and CSA of cone (pirl).\nExample 1 (lattu): r = 1.75 cm, l ≈ 3.7 cm. CSA hemisphere = 2π(1.75²) = 2π(3.0625) ≈ 19.25 cm². CSA cone = π(1.75)(3.7) ≈ 20.35 cm². Total TSA ≈ 19.25 + 20.35 = 39.6 cm².",
       "keyMoves": [
         "Set hemisphere radius = cone base radius",
-        "Add CSA of hemisphere (2πr²) and CSA of cone (πrl)"
+        "Add CSA of hemisphere (2pir^2) and CSA of cone (pirl)"
       ],
       "misconceptions": [
         "Including the flat join circle",
@@ -112,10 +112,10 @@
       "slug": "csa-hemisphere",
       "title": "Curved surface area of a hemisphere = 2πr²",
       "role": "bedrock",
-      "brief": "Half the surface of a sphere: CSA = ½(4πr²) = 2πr².",
+      "brief": "The curved (dome) surface of a hemisphere is half the full sphere's surface: CSA = 2πr².",
       "sec": 1,
       "quote": "the curved surface area of the hemisphere = 1/2 (4πr²) = 2πr²",
-      "explanation": "A bedrock formula reused throughout: the curved (dome) surface of a hemisphere is 2πr², derived as half of a sphere's 4πr².",
+      "explanation": "PART 1 — Start from the full sphere's surface area, then halve it.\nA complete sphere of radius r has surface area 4πr² (a standard Class IX result). A hemisphere is exactly half a sphere, so its curved (dome) surface is (1/2)(4πr²) = 2πr². This is the only curved surface visible on the outside; the flat circular base (πr²) is a separate piece added only when a solid hemisphere is needed.\n\nPART 2 — Always use the radius, not the diameter.\nIf the problem gives a diameter d, halve it first: r = d/2. Then substitute into 2πr². For example, a hemisphere of diameter 4 cm has r = 2 cm, so CSA = 2π(4) = 8π ≈ 25.13 cm².",
       "keyMoves": [
         "Halve the sphere surface area 4πr²",
         "Use radius (not diameter)"
@@ -135,10 +135,10 @@
       "slug": "csa-cylinder",
       "title": "Curved surface area of a cylinder = 2πrh",
       "role": "bedrock",
-      "brief": "The lateral (side) surface of a cylinder is 2πrh.",
+      "brief": "The side (lateral) surface of a cylinder wraps around once: CSA = 2πrh.",
       "sec": 1,
       "quote": "= 2πrh + 2πr² = 2πr (h + r)",
-      "explanation": "Used in Example 4 (bird-bath) and the silo exam question: the side wall of a cylinder has area 2πrh; do not include the circular ends unless asked.",
+      "explanation": "PART 1 — The curved surface is circumference times height.\nIf you unroll the side wall of a cylinder of radius r and height h, you get a rectangle of width 2πr (the circumference) and height h, so CSA = 2πrh. Do not include the two circular ends unless the problem explicitly asks for the full TSA (= 2πrh + 2πr²).\n\nPART 2 — Add base areas only when the problem requires them.\nFor a combined solid, the exposed bases are usually covered by another part or not visible, so CSA alone is used. For example, the bird-bath cylinder (r = 30 cm, h = 145 cm) contributes CSA = 2π(30)(145) = 8700π cm² ≈ 27342 cm².",
       "keyMoves": [
         "Multiply circumference 2πr by height h",
         "Add base areas only when the problem requires them"
@@ -156,15 +156,15 @@
     {
       "id": "cbse10:maths:jemh112:csa-cone",
       "slug": "csa-cone",
-      "title": "Curved surface area of a cone = πrl",
+      "title": "Curved surface area of a cone = pirl",
       "role": "bedrock",
-      "brief": "The slanted surface of a cone is πrl, using slant height l.",
+      "brief": "The slanted surface of a cone uses slant height l, not vertical height h: CSA = pirl.",
       "sec": 1,
       "quote": "Therefore, CSA of cone = πrl = ( 22/7 × 3.5/2 × 3.7 ) cm²",
-      "explanation": "Bedrock formula reused in Examples 1, 3 and the silo/pencil exam questions: the curved surface of a cone uses slant height l, not vertical height h.",
+      "explanation": "PART 1 — Use the slant height l, not the vertical height h.\nThe curved surface of a cone is the slanted outer skin, which depends on how long the slant is. The formula is CSA = pirl, where l is the slant height (the distance along the slope from base rim to apex). Using h instead of l is the most common error and always gives a wrong answer.\n\nPART 2 — Compute pirl with l already found.\nFor the lattu in Example 1: r = 1.75 cm, l ≈ 3.7 cm. CSA = (22/7)(1.75)(3.7) = (22/7)(6.475) ≈ 20.35 cm². Slant height must be computed first (see compute-slant-height node) unless it is given directly.",
       "keyMoves": [
         "Use slant height l (not vertical height h)",
-        "Compute πrl"
+        "Compute pirl"
       ],
       "misconceptions": [
         "Using vertical height h in place of slant height l",
@@ -179,12 +179,12 @@
     {
       "id": "cbse10:maths:jemh112:compute-slant-height",
       "slug": "compute-slant-height",
-      "title": "Compute slant height \\(l = \\sqrt{r^2 + h^2}\\)",
+      "title": "Compute slant height l = sqrt(r^2 + h^2)",
       "role": "bedrock",
-      "brief": "Find a cone's slant height from its radius and vertical height by Pythagoras.",
+      "brief": "A cone's slant height l is the hypotenuse of the right triangle formed by its radius r and vertical height h.",
       "sec": 1,
       "quote": "the slant height of the cone (l) = √(r² + h²) = √( (3.5/2)² + (3.25)² ) cm = 3.7 cm (approx.)",
-      "explanation": "To use πrl you usually must first derive l from r and h via the right triangle: l = sqrt(r² + h²). Used in Examples 1, 3 and both silo/pencil exam questions.",
+      "explanation": "PART 1 — The slant height is the hypotenuse of a right triangle.\nA cross-section of a cone reveals a right triangle: vertical height h (one leg), base radius r (other leg), and the slant edge l (hypotenuse). By the Pythagoras theorem (covered in Chapter 7): l = sqrt(r² + h²). The slant height l — not the vertical height h — goes into the CSA formula πrl.\n\nPART 2 — Square r and h separately, add, then take the square root.\nFor the lattu in Example 1: r = 3.5/2 = 1.75 cm, h = 3.25 cm. Then l = sqrt(1.75² + 3.25²) = sqrt(3.0625 + 10.5625) = sqrt(13.625) ≈ 3.7 cm. Always compute r² and h² individually before adding.",
       "keyMoves": [
         "Square r and h, add them",
         "Take the square root"
@@ -204,10 +204,10 @@
       "slug": "derive-cone-height-from-combined",
       "title": "Derive a part's height by subtracting from the total height",
       "role": "intermediate",
-      "brief": "Get the cone (or cylinder) height by subtracting the other part's dimension from the overall height.",
+      "brief": "When only the total height of a combined solid is given, back out each part's height by subtraction.",
       "sec": 1,
       "quote": "the height of the cone = height of the top – height (radius) of the hemispherical part",
-      "explanation": "In combined solids the given measurement is often the total height; the individual part heights must be backed out (e.g. cone height = total − hemisphere radius, as in Example 1, or cylinder height = total − cone height in Example 3).",
+      "explanation": "PART 1 — Identify what the total height spans.\nProblems usually give the overall height of the combined object, not the height of each part separately. Total height = height of part 1 + contribution of part 2. For a cone sitting on a hemisphere, the hemisphere's contribution to the total height equals its radius r.\n\nPART 2 — Subtract the known part's contribution to get the unknown part's height.\nExample 1 (lattu): total height = 5 cm, hemisphere radius = 3.5/2 = 1.75 cm, so cone height h = 5 − 1.75 = 3.25 cm. In Example 3 (rocket), cylinder height h' = total − cone height. Always subtract the radius (not the diameter) of the hemispherical part.",
       "keyMoves": [
         "Identify the total height",
         "Subtract the known part's contribution to get the unknown part's height"
@@ -227,14 +227,14 @@
       "slug": "tsa-cube-with-hemisphere-on-top",
       "title": "TSA of a cube with a hemisphere attached on a face",
       "role": "intermediate",
-      "brief": "TSA = TSA of cube − base area of hemisphere + CSA of hemisphere.",
+      "brief": "Attaching a hemisphere on a cube's face hides a circle but exposes a dome: TSA = 6a^2 - pir^2 + 2pir^2.",
       "sec": 1,
       "quote": "So, the surface area of the block = TSA of cube – base area of hemisphere + CSA of hemisphere",
-      "explanation": "Example 2: attaching the hemisphere hides a circular patch (its base, πr²) of the cube's face but adds the dome (2πr²); net effect adds πr². Must subtract the covered circle, not the whole face.",
+      "explanation": "PART 1 — Start with the cube's full surface area, then correct for the covered patch.\nA cube of edge a has TSA = 6a². When a hemisphere of radius r is glued to one face, the flat base of the hemisphere (a circle of area πr²) covers part of that face and becomes invisible. Subtract πr².\n\nPART 2 — Add the dome's curved surface.\nThe dome (CSA = 2πr²) is now the visible part of the hemisphere. So surface area of block = 6a² − πr² + 2πr² = 6a² + πr². Example 2: a = 5 cm, r = 2.1 cm. Area = 6(25) + π(4.41) = 150 + 13.86 = 163.86 cm².",
       "keyMoves": [
-        "Compute TSA of cube 6×edge²",
-        "Subtract πr² (covered circle)",
-        "Add 2πr² (dome)"
+        "Compute TSA of cube 6 times edge squared",
+        "Subtract pir^2 (covered circle)",
+        "Add 2pir^2 (dome)"
       ],
       "misconceptions": [
         "Adding the full hemisphere TSA without removing the covered base",
@@ -251,10 +251,10 @@
       "slug": "tsa-solid-with-hemispherical-depression",
       "title": "TSA when a hemispherical depression is cut into a solid",
       "role": "intermediate",
-      "brief": "A scooped-out hemisphere adds its curved (inner) surface while replacing a flat patch.",
+      "brief": "A hemispherical cavity scooped into a cylinder's top adds the dome's inner curved surface to the cylinder's side.",
       "sec": 1,
       "quote": "the total surface area of the bird-bath = CSA of cylinder + CSA of hemisphere",
-      "explanation": "Example 4 (bird-bath): a hemispherical depression in the cylinder's top means the visible surface is the cylinder's CSA plus the depression's inner curved surface 2πr² — a cavity contributes curved area, not solid volume.",
+      "explanation": "PART 1 — A cavity exposes curved area, not solid volume.\nWhen a hemispherical depression (hollow) is carved into the flat top of a cylinder, the flat top is replaced by the inner curved surface of the depression. The visible surface is now: the cylinder's side wall (CSA = 2πrh) plus the curved inside of the hemispherical bowl (CSA = 2πr²). There is no flat top left.\n\nPART 2 — Add CSA of cylinder + CSA of hemisphere.\nExample 4 (bird-bath): r = 30 cm (= 45/2 dm, but given directly as 30 cm), h = 145 cm. Total surface area = 2π(30)(145) + 2π(30²) = 8700π + 1800π = 10500π cm² = 33000 cm² = 3.3 m².",
       "keyMoves": [
         "Treat the depression's inner dome as exposed curved surface",
         "Add CSA of cylinder + CSA of hemisphere"
@@ -275,13 +275,13 @@
       "slug": "tsa-ring-when-cone-base-exceeds-cylinder",
       "title": "Account for an exposed base ring when stacked radii differ",
       "role": "intermediate",
-      "brief": "When a cone's base is wider than the cylinder it rests on, the leftover ring is also painted/counted.",
+      "brief": "When the cone's base is wider than the cylinder it sits on, the exposed annular ring must also be painted.",
       "sec": 1,
       "quote": "a part of the base of the cone (a ring) is to be painted",
-      "explanation": "Example 3 (rocket): the cone's base (πr²) sits on the cylinder, but since the cone base is bigger, a ring = (cone base − cylinder base) is exposed and must be added: CSA cone + πr² − π(r')².",
+      "explanation": "PART 1 — Compare the two radii to spot the exposed ring.\nIn Example 3 (rocket), the cone has base radius r = 2.5 cm and the cylinder has radius r' = 1.5 cm. Because r > r', the cone's base does not fit exactly on the cylinder top; an annular ring (the donut-shaped area between the two circles) is left exposed and must be included in the painted surface.\n\nPART 2 — Add the annular ring area = pir^2 - pi(r')^2.\nOrange region (cone + ring): CSA of cone + ring area = πrl + (πr² − π(r')²) = π(2.5)(6.5) + π(2.5² − 1.5²) = 51.05 + π(4) ≈ 51.05 + 12.57 = 63.62 cm². (NCERT rounds to 63.585 cm².)",
       "keyMoves": [
         "Compare the two radii",
-        "Add the annular ring area = πr² − π(r')²"
+        "Add the annular ring area = pir^2 - pi(r')^2"
       ],
       "misconceptions": [
         "Ignoring the exposed ring",
@@ -298,13 +298,13 @@
       "slug": "painted-area-cylinder-with-one-open-base",
       "title": "Painted area of a cylinder part = CSA + one base circle",
       "role": "intermediate",
-      "brief": "For a cylinder closed at one end (the other capped by another solid), painted area = 2πr'h' + π(r')².",
+      "brief": "When one end of a cylinder is capped by another solid, the painted area is the side wall plus only the exposed bottom base.",
       "sec": 1,
       "quote": "= 2πr'h' + π(r')²",
-      "explanation": "Example 3 (rocket, yellow region): the cylindrical portion shows its curved wall plus exactly one base circle (the bottom), since its top is covered by the cone. So area = CSA cylinder + one base = πr'(2h' + r'), distinct from full-TSA which would add two bases.",
+      "explanation": "PART 1 — The top is covered; only the bottom base is exposed.\nIn Example 3 (rocket, yellow cylindrical region), the cylinder's top is covered by the cone sitting on it, so only the cylinder's curved wall and its single bottom base are painted. This is CSA + one base, not the full TSA (which would add two bases).\n\nPART 2 — Add CSA = 2pir'h' and one base = pi(r')^2; factor as pir'(2h' + r').\nWith r' = 1.5 cm and h' = 20 cm: area = 2π(1.5)(20) + π(1.5²) = 60π + 2.25π = 62.25π ≈ 195.47 cm². (NCERT gives 195.465 cm² using π = 3.14.)",
       "keyMoves": [
-        "Add CSA of cylinder 2πr'h' to one base circle π(r')²",
-        "Factor as πr'(2h' + r')",
+        "Add CSA of cylinder 2pir'h' to one base circle pi(r')^2",
+        "Factor as pir'(2h' + r')",
         "Include only the exposed (uncovered) base"
       ],
       "misconceptions": [
@@ -320,15 +320,15 @@
     {
       "id": "cbse10:maths:jemh112:compute-tsa-solid-hemisphere",
       "slug": "compute-tsa-solid-hemisphere",
-      "title": "Total surface area of a solid hemisphere = 3πr²",
+      "title": "Total surface area of a solid hemisphere = 3pir^2",
       "role": "intermediate",
-      "brief": "A solid hemisphere's TSA adds the flat base πr² to the dome 2πr², giving 3πr².",
+      "brief": "A solid hemisphere has both the dome (2pir^2) and the flat circular base (pir^2), so TSA = 3pir^2.",
       "sec": 1,
       "quote": "= 150 – πr² + 2πr² = (150 + πr²) cm²",
-      "explanation": "Distinct from a hollow/curved hemisphere: a solid hemisphere has both the curved dome (2πr²) and the flat circular base (πr²), so TSA = 3πr². This is directly tested in the CBSE SQP.",
+      "explanation": "PART 1 — Distinguish CSA from TSA for a hemisphere.\nThe curved surface area (CSA) of a hemisphere is 2πr² — just the dome. But a solid hemisphere also has a flat circular base of area πr². If the question asks for the total surface area (TSA) of a standalone solid hemisphere, both surfaces count.\n\nPART 2 — Add dome and base: TSA = 2pir^2 + pir^2 = 3pir^2.\nFor example, a solid hemisphere of radius 7 cm: TSA = 3π(49) = 147π ≈ 462 cm². This formula is directly tested in the CBSE SQP (Basic Q14). Do not confuse with the cube+hemisphere node where the flat base is already hidden by the cube's face.",
       "keyMoves": [
-        "Add curved 2πr² and base πr²",
-        "Result is 3πr²"
+        "Add curved 2pir^2 and base pir^2",
+        "Result is 3pir^2"
       ],
       "misconceptions": [
         "Reporting only 2πr² (forgetting the base)",
@@ -343,12 +343,12 @@
     {
       "id": "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
       "slug": "volume-combination-sum-of-volumes",
-      "title": "Volume of a combination = sum of the parts' volumes",
+      "title": "Volume of a combination = sum of the parts volumes",
       "role": "intermediate",
-      "brief": "Unlike surface area, volumes simply add when solids are joined.",
+      "brief": "Joining solids hides surface area but not interior space; total volume is simply the sum of each part's volume.",
       "sec": 2,
       "quote": "The volume of the solid formed by joining two basic solids will actually be the sum of the volumes of the constituents",
-      "explanation": "Joining solids hides surface but does not remove interior space, so total volume = volume of part 1 + volume of part 2 (e.g. cuboid + half cylinder in Example 5, hemisphere + cone in Example 7).",
+      "explanation": "PART 1 — Unlike surface area, joining does not remove volume.\nWhen two solids are glued together, the interior space of each is preserved — no volume is lost at the join (the hidden faces are inside the material, not air). So V_total = V_part1 + V_part2. This contrast with the surface-area rule (which subtracts hidden faces) is the most important conceptual distinction in the chapter.\n\nPART 2 — Compute each part's volume independently, then add.\nExample 5 (shed): cuboid part = 840 m³, half-cylinder part ≈ 288.75 m³; total = 1128.75 m³. Example 7 (toy): hemisphere = (2/3)π(8) + cone = (1/3)π(4)(2) = 8π ≈ 25.12 cm³. A cavity (depression) is the one exception: subtract the cavity's volume.",
       "keyMoves": [
         "Compute each part's volume",
         "Add them"
@@ -372,15 +372,15 @@
     {
       "id": "cbse10:maths:jemh112:volume-cylinder",
       "slug": "volume-cylinder",
-      "title": "Volume of a cylinder = πr²h",
+      "title": "Volume of a cylinder = pir^2h",
       "role": "bedrock",
-      "brief": "A cylinder's volume is base area times height, πr²h.",
+      "brief": "A cylinder's volume equals the area of its circular base times its height: V = pir^2h.",
       "sec": 2,
       "quote": "the apparent capacity of the glass = πr²h",
-      "explanation": "Bedrock volume formula reused across Examples 5, 6, 7 and the silo exam: cross-section area πr² times height h.",
+      "explanation": "PART 1 — Square the radius to get the base area, then scale by height.\nThe circular base of a cylinder has area πr². Multiplying by height h gives the volume: V = πr²h. This is the standard Class IX result used throughout Chapter 12 — for the cylindrical glass (Example 6), the full silo body, and the shaft in Example 5.\n\nPART 2 — Always use radius, not diameter, and keep units consistent.\nIf the diameter is given, halve it first. Example 6: inner radius r = 2.5 cm (diameter 5 cm given), h = 10 cm. V = π(6.25)(10) = 62.5π = 196.25 cm³ (apparent capacity).",
       "keyMoves": [
         "Square the radius",
-        "Multiply by π and height h"
+        "Multiply by pi and height h"
       ],
       "misconceptions": [
         "Using diameter for r",
@@ -395,14 +395,14 @@
     {
       "id": "cbse10:maths:jemh112:volume-cone",
       "slug": "volume-cone",
-      "title": "Volume of a cone = (1/3)πr²h",
+      "title": "Volume of a cone = (1/3)pir^2h",
       "role": "bedrock",
-      "brief": "A cone holds one-third of the cylinder of the same base and height.",
+      "brief": "A cone holds exactly one-third of the cylinder with the same base and height: V = (1/3)pir^2h.",
       "sec": 2,
       "quote": "So, volume of the toy = 2/3 πr³ + 1/3 πr²h",
-      "explanation": "Bedrock: cone volume is (1/3)πr²h, used in Example 7 and the silo capacity exam question. The 1/3 factor is essential.",
+      "explanation": "PART 1 — Compute pir^2h first, then multiply by 1/3.\nThe volume of a cone is one-third of the cylinder with the same circular base (area πr²) and height h: V = (1/3)πr²h. The 1/3 factor is essential and is the most common source of errors when computing toy/rocket volumes.\n\nPART 2 — Use vertical height h (not slant height l).\nExample 7 (toy): cone has r = 2 cm, h = 2 cm. V = (1/3)π(4)(2) = 8π/3 ≈ 8.38 cm³. The slant height l is used only in the CSA formula; for volume always use the vertical height h.",
       "keyMoves": [
-        "Compute πr²h",
+        "Compute pir^2h",
         "Multiply by 1/3"
       ],
       "misconceptions": [
@@ -418,15 +418,15 @@
     {
       "id": "cbse10:maths:jemh112:volume-hemisphere",
       "slug": "volume-hemisphere",
-      "title": "Volume of a hemisphere = (2/3)πr³",
+      "title": "Volume of a hemisphere = (2/3)pir^3",
       "role": "bedrock",
-      "brief": "Half a sphere's volume: (2/3)πr³.",
+      "brief": "A hemisphere holds half a sphere's volume: V = (2/3)pir^3.",
       "sec": 2,
       "quote": "it is less by 2/3 πr³ = 2/3 × 3.14 × 2.5 × 2.5 × 2.5 cm³ = 32.71 cm³",
-      "explanation": "Bedrock volume formula used in Examples 6 (raised hemisphere reducing capacity) and 7 (hemisphere of toy): (2/3)πr³, half of the sphere's (4/3)πr³.",
+      "explanation": "PART 1 — Start from the sphere's volume, then halve it.\nA full sphere of radius r has volume (4/3)πr³ (a standard Class IX result). A hemisphere is half a sphere, so its volume is (2/3)πr³. Note that the power is r³ (cube), not r² — using r² is a common slip.\n\nPART 2 — Cube the radius, then multiply by (2/3)pi.\nExample 6 (glass with hemispherical bump): r = 2.5 cm. V = (2/3)π(2.5³) = (2/3)π(15.625) = (2/3)(3.14)(15.625) ≈ 32.71 cm³. This hemisphere reduces the usable capacity of the glass.",
       "keyMoves": [
         "Cube the radius",
-        "Multiply by (2/3)π"
+        "Multiply by (2/3)pi"
       ],
       "misconceptions": [
         "Using (4/3)πr³ (full sphere)",
@@ -441,14 +441,14 @@
     {
       "id": "cbse10:maths:jemh112:volume-half-cylinder",
       "slug": "volume-half-cylinder",
-      "title": "Volume of a half cylinder = (1/2)πr²h",
+      "title": "Volume of a half cylinder = (1/2)pir^2h",
       "role": "intermediate",
-      "brief": "A half (semicircular cross-section) cylinder holds half of πr²h.",
+      "brief": "A half-cylinder (semicircular cross-section) has volume equal to half the full cylinder's volume.",
       "sec": 2,
       "quote": "the required volume = volume of the cuboid + 1/2 volume of the cylinder",
-      "explanation": "Example 5 (shed): the roof is half a cylinder lying on its side, so its volume is half the full cylinder. Identify which dimension is the cylinder's length.",
+      "explanation": "PART 1 — Identify which dimension is the cylinder's length (not its height in the usual orientation).\nIn Example 5, the shed roof is a cylinder lying on its side: the cylinder's length runs along the 15 m direction, and its radius is half the 7 m span = 3.5 m. The 'height' of the cylinder formula is 15 m (the length of the shed).\n\nPART 2 — Compute full cylinder volume, then halve it.\nFull cylinder volume = πr²h = π(3.5²)(15) = π(12.25)(15) = 183.75π ≈ 577.5 m³. Half-cylinder volume = 577.5/2 = 288.75 m³. (Using π = 22/7: (22/7)(12.25)(15)/2 = 288.75 m³.)",
       "keyMoves": [
-        "Compute full cylinder volume πr²h",
+        "Compute full cylinder volume pir^2h",
         "Halve it"
       ],
       "misconceptions": [
@@ -464,12 +464,12 @@
     {
       "id": "cbse10:maths:jemh112:volume-cuboid",
       "slug": "volume-cuboid",
-      "title": "Volume of a cuboid = l × b × h",
+      "title": "Volume of a cuboid = l x b x h",
       "role": "bedrock",
-      "brief": "A cuboid's volume is the product of its three dimensions.",
+      "brief": "A cuboid (box) has volume equal to the product of its three dimensions: V = l x b x h.",
       "sec": 2,
       "quote": "= [ 15 × 7 × 8 + 1/2 × 22/7 × 7/2 × 7/2 × 15 ] m³ = 1128.75 m³",
-      "explanation": "Bedrock: the cuboid part of the shed (Example 5) and the pen-stand have volume length×breadth×height.",
+      "explanation": "PART 1 — Multiply all three dimensions: length, breadth (width), height.\nA cuboid has a rectangular cross-section; its volume is V = l x b x h (standard Class IX). In Example 5 (shed), the cuboidal part has l = 15 m, b = 7 m, h = 8 m, giving V = 15 x 7 x 8 = 840 m³.\n\nPART 2 — Use consistent units; avoid using only two dimensions.\nA common error is computing l x b (area, not volume). Ensure all three dimensions are in the same unit, then multiply. The total shed volume in Example 5 is cuboid volume + half-cylinder volume = 840 + 288.75 = 1128.75 m³.",
       "keyMoves": [
         "Multiply length, breadth, height"
       ],
@@ -484,15 +484,15 @@
     {
       "id": "cbse10:maths:jemh112:actual-capacity-subtract-depression",
       "slug": "actual-capacity-subtract-depression",
-      "title": "Actual capacity = apparent capacity − volume of the raised/depressed part",
+      "title": "Actual capacity = apparent capacity minus volume of the raised part",
       "role": "intermediate",
-      "brief": "A raised hemispherical bottom reduces a glass's true capacity.",
+      "brief": "A hemispherical bump at the base of a glass occupies space; actual capacity = cylinder volume minus hemisphere volume.",
       "sec": 2,
       "quote": "the actual capacity of the glass = apparent capacity of glass – volume of the hemisphere",
-      "explanation": "Example 6: the cylinder volume (apparent) overstates capacity because the hemispherical bump occupies space; subtract the hemisphere's volume to get actual capacity.",
+      "explanation": "PART 1 — The bump displaces space; apparent capacity overstates reality.\nExample 6: a cylindrical glass has a hemispherical bump on its inner base (the glass manufacturer does this to save material). The cylinder's volume πr²h is the apparent (theoretical) capacity, but the hemisphere occupies volume inside the glass, leaving less room for liquid.\n\nPART 2 — Subtract the hemisphere's volume from the cylinder's volume.\nWith r = 2.5 cm, h = 10 cm: apparent = π(6.25)(10) = 196.25 cm³. Hemisphere volume = (2/3)π(15.625) ≈ 32.71 cm³. Actual capacity = 196.25 − 32.71 = 163.54 cm³ ≈ 163.54 mL.",
       "keyMoves": [
-        "Compute apparent volume πr²h",
-        "Subtract the hemisphere volume (2/3)πr³"
+        "Compute apparent volume pir^2h",
+        "Subtract the hemisphere volume (2/3)pir^3"
       ],
       "misconceptions": [
         "Adding the hemisphere instead of subtracting",
@@ -510,10 +510,10 @@
       "slug": "volume-difference-circumscribing-cylinder",
       "title": "Find volume difference between a circumscribing cylinder and the solid",
       "role": "intermediate",
-      "brief": "Subtract the toy's volume from the enclosing cylinder's volume.",
+      "brief": "The empty space around a toy inside its just-enclosing cylinder = cylinder volume minus toy volume.",
       "sec": 2,
       "quote": "the volume required = volume of the right circular cylinder – volume of the toy",
-      "explanation": "Example 7: a cylinder that just circumscribes the toy has radius = toy radius and height = cone height + hemisphere radius; the empty space is cylinder volume minus toy volume.",
+      "explanation": "PART 1 — Build the circumscribing cylinder: same radius, height = sum of parts.\nExample 7: the toy (hemisphere radius r = 2 cm, cone height h = 2 cm) fits inside a cylinder of radius 2 cm and height = hemisphere radius + cone height = 2 + 2 = 4 cm. This cylinder just encloses the toy with no extra room to the sides or top.\n\nPART 2 — Subtract the toy's volume from the cylinder's volume.\nCylinder volume = πr²H = π(4)(4) = 16π ≈ 50.24 cm³. Toy volume = (2/3)πr³ + (1/3)πr²h = (2/3)π(8) + (1/3)π(4)(2) = 16π/3 + 8π/3 = 24π/3 = 8π ≈ 25.12 cm³. Empty space = 50.24 − 25.12 = 25.12 cm³.",
       "keyMoves": [
         "Set cylinder radius = solid's radius",
         "Set cylinder height = sum of the parts' heights",
@@ -536,10 +536,10 @@
       "slug": "convert-units-cm-to-m",
       "title": "Keep units consistent before computing",
       "role": "shared",
-      "brief": "Convert all lengths to one unit (and answers between cm² and m²) before combining.",
+      "brief": "When a problem mixes cm and m, convert everything to one unit first; then convert the final answer if needed.",
       "sec": 1,
       "quote": "= 33000 cm² = 3.3 m²",
-      "explanation": "Example 4 mixes height in metres with radius in cm; everything must be in the same unit, and the final area is converted (1 m² = 10000 cm²). A common silent failure point.",
+      "explanation": "PART 1 — Convert all lengths to a common unit before substituting.\nExample 4 (bird-bath) gives the height in metres (1.45 m) and radius in centimetres (30 cm). Using different units in a single formula produces a nonsense answer. Choose one unit — here, convert 1.45 m = 145 cm — and use it for all measurements in the calculation.\n\nPART 2 — Convert the final answer to the requested unit.\nArea conversions: 1 m = 100 cm, so 1 m² = 10 000 cm² (not 100 cm²). Volume: 1 m³ = 1 000 000 cm³. For the bird-bath: total area = 33 000 cm² = 33 000 / 10 000 m² = 3.3 m².",
       "keyMoves": [
         "Convert all lengths to a common unit",
         "Convert the final area/volume to requested units"
@@ -555,12 +555,12 @@
     {
       "id": "cbse10:maths:jemh112:radius-from-diameter",
       "slug": "radius-from-diameter",
-      "title": "Use radius = diameter / 2",
+      "title": "Use radius = diameter divided by 2",
       "role": "shared",
-      "brief": "Convert a given diameter to radius before applying any formula.",
+      "brief": "Every area and volume formula in this chapter needs the radius; if a diameter is given, halve it first.",
       "sec": 2,
       "quote": "The radius BO of the hemisphere (as well as of the cone) = 1/2 × 4 cm = 2 cm.",
-      "explanation": "Most problems state the diameter; every area/volume formula needs the radius, so halve it first. A frequent source of factor-of-2 errors.",
+      "explanation": "PART 1 — Halve the given diameter to get the radius.\nProblems in this chapter commonly state the diameter (e.g. 'a hemisphere of diameter 4 cm'). All surface-area and volume formulas — 2πr², πr²h, (2/3)πr³, etc. — use the radius r, not the diameter. The fix is always r = diameter / 2 before substituting into any formula.\n\nPART 2 — Use that radius consistently in all formulas for that solid.\nExample 7 (toy): hemisphere and cone share the same base — diameter 4 cm, so r = 2 cm for both. Plugging diameter 4 into a formula that expects r would give answers 4 times too large (in area) or 8 times too large (in volume).",
       "keyMoves": [
         "Halve the given diameter",
         "Use that radius in all formulas"

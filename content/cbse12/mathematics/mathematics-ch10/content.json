@@ -14,7 +14,7 @@
       "brief": "Recognise a vector as a quantity having both magnitude and direction.",
       "sec": 2,
       "quote": "A quantity that has magnitude as well as direction is called a vector.",
-      "explanation": "A quantity that has magnitude as well as direction is called a vector. It is represented by a directed line segment: the point it starts from is the initial point and the point it ends at is the terminal point, with the arrow giving the direction. This distinguishes a vector from a scalar, which has magnitude only.",
+      "explanation": "PART 1 — What makes a vector.\nA quantity that has BOTH magnitude AND direction is called a vector; a quantity with magnitude alone is a scalar. Mass (5 kg) is a scalar; velocity (30 m/s north) is a vector.\n\nPART 2 — Representing a vector as a directed line segment.\nA vector is drawn as an arrow from an initial point A to a terminal point B, written AB (with an arrow); the length of the arrow is the magnitude and the arrowhead gives the direction. Example: if A is (0,0) and B is (3,4) the arrow from A to B represents a vector of magnitude 5 in the direction of B from A.\n\nPART 3 — Distinguishing vector from scalar.\nCheck: does the quantity change meaning if you reverse its direction? If yes, it is a vector (force, displacement, velocity); if no, it is a scalar (speed, temperature, mass). Displacement 5 km east is NOT the same as 5 km west, confirming it is a vector.",
       "keyMoves": [
         "Check the quantity has both a size and a direction",
         "Represent it as a directed line segment (arrow)",
@@ -36,7 +36,7 @@
       "brief": "Define the magnitude as the distance between the initial and terminal points.",
       "sec": 2,
       "quote": "The distance between initial and terminal points of a vector is called the *magnitude* (or length) of the vector",
-      "explanation": "The distance between the initial and terminal points of a vector is called the magnitude (or length) of the vector, written |a|. For a vector given in component form x i + y j + z k, the magnitude is sqrt(x^2 + y^2 + z^2) by the distance formula. The magnitude is always non-negative.",
+      "explanation": "PART 1 — Definition of magnitude.\nThe magnitude (or length) of a vector a, written |a|, is the distance between its initial and terminal points. Magnitude is always a non-negative real number; it is zero only for the zero vector.\n\nPART 2 — Computing magnitude from components.\nFor a vector a = x i + y j + z k, the magnitude is |a| = sqrt(x^2 + y^2 + z^2) by the 3-D distance formula. Example: a = 2 i + 3 j + 6 k gives |a| = sqrt(4 + 9 + 36) = sqrt(49) = 7.\n\nPART 3 — Common traps.\nSquare EVERY component before adding — do not sum the components first, then square. Also note that |a| >= 0 always; a negative answer signals an arithmetic error.",
       "keyMoves": [
         "Identify the components x, y, z of the vector",
         "Apply the distance formula |a| = sqrt(x^2 + y^2 + z^2)",
@@ -60,7 +60,7 @@
       "brief": "Recognise the position vector of P as the vector OP from the origin to P.",
       "sec": 2,
       "quote": "is called the *position vector* of the point P with respect to O.",
-      "explanation": "For a point P(x, y, z), the vector OP having the origin O and the point P as its initial and terminal points is called the position vector of the point P with respect to O. Its magnitude is sqrt(x^2 + y^2 + z^2). Position vectors of points A, B, C are usually written a, b, c. They let geometric points be handled with vector algebra.",
+      "explanation": "PART 1 — Definition.\nFor a point P(x, y, z) in 3-D space, the vector from the origin O(0,0,0) to P is called the position vector of P with respect to O, written OP = x i + y j + z k. The position vector pins the point to the coordinate system.\n\nPART 2 — Magnitude and direction.\nThe magnitude of the position vector equals the distance from the origin: |OP| = sqrt(x^2 + y^2 + z^2). Example: P = (1, 2, 2) gives OP = i + 2j + 2k with |OP| = sqrt(1+4+4) = 3.\n\nPART 3 — Vector between two points.\nIf A has position vector a and B has position vector b, the vector AB = b - a. This is the key link between coordinate geometry and vector algebra: AB = OB - OA.",
       "keyMoves": [
         "Take the origin O as the initial point and P as the terminal point",
         "Write the position vector as OP = x i + y j + z k",
@@ -84,7 +84,7 @@
       "brief": "Identify the direction cosines l, m, n as the cosines of the angles with the axes.",
       "sec": 2,
       "quote": "are called *direction cosines* of the vector",
-      "explanation": "The angles alpha, beta, gamma made by a vector with the positive directions of the x, y and z axes are its direction angles, and their cosines cos alpha, cos beta, cos gamma are called the direction cosines of the vector, usually denoted l, m, n. They satisfy l^2 + m^2 + n^2 = 1, and the unit vector in the direction is l i + m j + n k. The components themselves are the direction ratios.",
+      "explanation": "PART 1 — Definition of direction angles and direction cosines.\nA vector a makes angles alpha, beta, gamma with the positive x-, y-, z-axes respectively; these are its direction angles. Their cosines l = cos(alpha), m = cos(beta), n = cos(gamma) are the direction cosines. For a = a1 i + a2 j + a3 k with magnitude |a|: l = a1/|a|, m = a2/|a|, n = a3/|a|.\n\nPART 2 — The identity l^2 + m^2 + n^2 = 1.\nBecause (a1^2 + a2^2 + a3^2)/|a|^2 = |a|^2/|a|^2 = 1, the direction cosines always satisfy l^2 + m^2 + n^2 = 1. The unit vector in the direction of a is therefore l i + m j + n k.\n\nPART 3 — Worked example.\nFor a = 3 i + 4 j + 0 k, |a| = 5. Direction cosines: l = 3/5, m = 4/5, n = 0. Check: (9+16+0)/25 = 1. The direction ratios are just 3, 4, 0 (the raw components, not divided by the magnitude).",
       "keyMoves": [
         "Identify the angles the vector makes with the x, y, z axes",
         "Take their cosines l, m, n (= components divided by magnitude)",
@@ -108,7 +108,7 @@
       "brief": "Identify the zero vector as one whose initial and terminal points coincide.",
       "sec": 2,
       "quote": "A vector whose initial and terminal points coincide, is called a zero vector (or null vector)",
-      "explanation": "A vector whose initial and terminal points coincide is called a zero vector (or null vector), denoted by the bold 0. It has zero magnitude and cannot be assigned a definite direction (it may be regarded as having any direction). The zero vector is the additive identity for vector addition: adding it to any vector leaves the vector unchanged.",
+      "explanation": "PART 1 — Definition.\nA vector whose initial and terminal points coincide is called the zero vector (or null vector), written 0 (bold). Its magnitude is 0 and its direction is indeterminate — it may be regarded as having any direction. The zero vector cannot be visualised as an arrow with a sense, but it is the essential additive identity.\n\nPART 2 — Role as additive identity.\nFor any vector a: a + 0 = 0 + a = a. Also a - a = 0. This makes the zero vector the identity element for vector addition, just as 0 plays for ordinary addition. Example: displacement 5 km east then 5 km west returns you to the start — net displacement is the zero vector.\n\nPART 3 — When the zero vector arises naturally.\nThe cross product of any vector with itself is the zero vector: a x a = 0. The zero vector also arises when a vector is scaled by the scalar 0: 0 * a = 0. Recognising it as a vector (not just the number zero) avoids confusion in later operations.",
       "keyMoves": [
         "Check the initial and terminal points are the same",
         "Recognise the magnitude is zero, direction indeterminate",
@@ -132,7 +132,7 @@
       "brief": "Recognise a unit vector as one of magnitude 1, and form it as a / |a|.",
       "sec": 2,
       "quote": "A vector whose magnitude is unity (i.e., 1 unit) is called a unit vector.",
-      "explanation": "A vector whose magnitude is unity (i.e. 1 unit) is called a unit vector. The unit vector in the direction of a given non-zero vector a is denoted a-hat and obtained by dividing a by its magnitude: a-hat = (1/|a|) a. The unit vectors along the coordinate axes are i, j, k. Unit vectors carry direction information without magnitude.",
+      "explanation": "PART 1 — Definition.\nA vector whose magnitude is exactly 1 is called a unit vector. The unit vector in the direction of a non-zero vector a is denoted a-hat and equals a / |a|. The standard unit vectors along the coordinate axes are i (x-axis), j (y-axis), k (z-axis).\n\nPART 2 — How to find a-hat.\nStep 1: compute |a| = sqrt(x^2 + y^2 + z^2). Step 2: divide every component by |a|. Example: a = 1 i + 2 j + 2 k gives |a| = 3, so a-hat = (1/3) i + (2/3) j + (2/3) k. Verify: |(1/3)^2 + (2/3)^2 + (2/3)^2| = sqrt(1/9 + 4/9 + 4/9) = sqrt(9/9) = 1.\n\nPART 3 — Why unit vectors matter.\nUnit vectors carry pure direction with no magnitude information. In direction-cosine notation, a-hat = l i + m j + n k. Any vector a can be written a = |a| * a-hat, cleanly separating its magnitude and direction.",
       "keyMoves": [
         "Compute the magnitude |a| of the given vector",
         "Divide the vector by its magnitude: a-hat = a / |a|",
@@ -156,7 +156,7 @@
       "brief": "Identify collinear vectors as those parallel to the same line.",
       "sec": 2,
       "quote": "Two or more vectors are said to be collinear if they are parallel to the same line, irrespective of their magnitudes and directions.",
-      "explanation": "Two or more vectors are said to be collinear if they are parallel to the same line, irrespective of their magnitudes and directions. Equivalently, a is collinear with b (b not zero) if a = lambda b for some scalar lambda. A vector and its negative are collinear. Collinearity does NOT require equal magnitude or the same direction.",
+      "explanation": "PART 1 — Definition.\nTwo or more vectors are collinear if they are all parallel to the same line, regardless of their magnitudes and directions. Collinear means the vectors lie along lines that are parallel (or the same line) — it does NOT require equal magnitude or the same sense.\n\nPART 2 — Algebraic test.\nVectors a and b (b not 0) are collinear if and only if a = lambda * b for some scalar lambda. If lambda > 0 they point the same way; if lambda < 0 they point opposite ways; either satisfies collinearity. Example: a = 2 i + 4 j and b = i + 2 j are collinear because a = 2 b (lambda = 2).\n\nPART 3 — Component test.\nFor a = (a1, a2, a3) and b = (b1, b2, b3), they are collinear iff a1/b1 = a2/b2 = a3/b3 (the common ratio is lambda). If any component of b is zero, the matching component of a must also be zero. Example: a = 3 i - 6 j + 9 k and b = i - 2 j + 3 k: 3/1 = -6/-2 = 9/3 = 3, so a = 3 b — collinear.",
       "keyMoves": [
         "Check whether the vectors are parallel to one common line",
         "Equivalently test a = lambda b for some scalar lambda",
@@ -179,8 +179,8 @@
       "role": "intermediate",
       "brief": "Identify equal vectors as those with the same magnitude AND direction, regardless of position.",
       "sec": 2,
-      "quote": "Two vectors  $\\vec{a}$  and  $\\vec{b}$  are said to be equal, if they have the same magnitude and direction regardless of the positions of their initial points",
-      "explanation": "Two vectors a and b are said to be equal if they have the same magnitude and direction, regardless of the positions of their initial points, written a = b. Because we treat free vectors, a vector may be moved parallel to itself without changing it, so two arrows anywhere in space represent the same vector if their length and direction match.",
+      "quote": "Two vectors a and b are said to be equal, if they have the same magnitude and direction regardless of the positions of their initial points",
+      "explanation": "PART 1 — Definition.\nTwo vectors a and b are equal (written a = b) if and only if they have the same magnitude AND the same direction, regardless of where their initial points are located. We treat vectors as free vectors that can be translated parallel to themselves without becoming different vectors.\n\nPART 2 — Component criterion.\nIn component form, a = a1 i + a2 j + a3 k equals b = b1 i + b2 j + b3 k if and only if a1 = b1, a2 = b2, and a3 = b3. This gives three simultaneous equations when we set two unknown vectors equal. Example: a = 2 i + 3 j - k equals b only if b = 2 i + 3 j - k, whatever the initial point of b.\n\nPART 3 — Equality vs collinearity.\nEqual vectors are always collinear (with lambda = 1), but collinear vectors are not necessarily equal (they may differ in magnitude or sense). Two equal vectors placed at different positions in space are the same free vector — the defining property of the free-vector model used throughout this chapter.",
       "keyMoves": [
         "Compare both magnitude and direction of the two vectors",
         "Ignore where their initial points sit (free vectors)",
@@ -204,7 +204,7 @@
       "brief": "Add two vectors head-to-tail (triangle law) or as adjacent sides of a parallelogram.",
       "sec": 2,
       "quote": "This is known as the *parallelogram law of vector addition*.",
-      "explanation": "To add vectors a and b, place the initial point of b at the terminal point of a; the vector from a's start to b's end is the sum a + b (triangle law). Equivalently, if a and b are the two adjacent sides of a parallelogram, their sum is the diagonal through their common point - this is known as the parallelogram law of vector addition. Vector addition is commutative and associative, with the zero vector as identity.",
+      "explanation": "PART 1 — Triangle law.\nTo add vectors a and b, place the tail of b at the head of a. The vector from the tail of a to the head of b is a + b. This is the triangle law (or head-to-tail rule). Example: a = 3 i and b = 4 j gives a + b = 3 i + 4 j with |a + b| = 5.\n\nPART 2 — Parallelogram law.\nAlternatively, draw a and b from the same initial point as two adjacent sides of a parallelogram. The diagonal from that initial point is a + b. This is the parallelogram law of vector addition. Both laws give the same resultant.\n\nPART 3 — Properties of vector addition.\nVector addition is commutative (a + b = b + a), associative ((a+b)+c = a+(b+c)), and has the zero vector as identity (a + 0 = a). The negative of a is -a (same magnitude, opposite direction), and a - b = a + (-b). In components: (a1 i + a2 j + a3 k) + (b1 i + b2 j + b3 k) = (a1+b1) i + (a2+b2) j + (a3+b3) k.",
       "keyMoves": [
         "Join the vectors head-to-tail for the triangle law",
         "Or take them as adjacent sides; the diagonal is the sum",
@@ -228,7 +228,7 @@
       "brief": "Express a vector as x i + y j + z k with scalar components x, y, z.",
       "sec": 2,
       "quote": "This form of any vector is called its *component form*.",
-      "explanation": "The position vector of P(x, y, z) can be written x i + y j + z k using the unit vectors i, j, k along the axes; this form of any vector is called its component form. Here x, y, z are the scalar components and x i, y j, z k the vector components. In component form, vectors add componentwise and a scalar multiplies each component, which makes all the vector operations concrete arithmetic.",
+      "explanation": "PART 1 — Component form definition.\nAny vector a in 3-D space can be written as a = x i + y j + z k, where i, j, k are unit vectors along the x-, y-, z-axes and x, y, z are the scalar components. This is the component form (rectangular form) of a. The vector components are x i, y j, z k (each a vector along one axis).\n\nPART 2 — Operations in component form.\nAddition: (x1 i + y1 j + z1 k) + (x2 i + y2 j + z2 k) = (x1+x2) i + (y1+y2) j + (z1+z2) k. Scalar multiplication: lambda * (x i + y j + z k) = (lambda x) i + (lambda y) j + (lambda z) k. Magnitude: |a| = sqrt(x^2 + y^2 + z^2).\n\nPART 3 — Finding components from two points.\nIf a vector goes from point A(x1, y1, z1) to B(x2, y2, z2), its component form is AB = (x2-x1) i + (y2-y1) j + (z2-z1) k. Example: A = (1,2,3), B = (4,0,5): AB = 3 i - 2 j + 2 k, |AB| = sqrt(9+4+4) = sqrt(17).",
       "keyMoves": [
         "Resolve the vector along the i, j, k directions",
         "Write it as x i + y j + z k",
@@ -253,7 +253,7 @@
       "brief": "Find the position vector of a point dividing a segment in a given ratio, internally or externally.",
       "sec": 2,
       "quote": "the position vector of the point R which divides P and Q internally in the ratio of *m* : *n* is given by",
-      "explanation": "Given points P and Q with position vectors p and q, the position vector of the point R which divides PQ internally in the ratio m : n is (m q + n p)/(m + n). For external division the formula is (m q - n p)/(m - n). When R is the midpoint (m = n) the position vector is (p + q)/2. This is the vector form of the section formula from coordinate geometry.",
+      "explanation": "PART 1 — Internal division.\nIf P and Q have position vectors p and q, the point R that divides PQ internally in the ratio m : n has position vector r = (m q + n p) / (m + n). R lies between P and Q; m and n are both positive. Example: P has position vector i + 2 j, Q has position vector 4 i + 5 j, ratio 1:2 internally. r = (1*(4i+5j) + 2*(i+2j)) / 3 = (4i+5j+2i+4j)/3 = (6i+9j)/3 = 2i + 3j.\n\nPART 2 — Midpoint and external division.\nMidpoint (m = n): r = (p + q)/2. External division in ratio m : n (R outside PQ, m not= n): r = (m q - n p)/(m - n). In external division R is not between P and Q.\n\nPART 3 — Mnemonic for internal division.\nThe formula is a weighted average: R is closer to Q if m is larger. Remember: the NUMERATOR pairs m with q and n with p (the OPPOSITE endpoint). Writing it as r = (m q + n p)/(m+n) helps avoid the common swap error.",
       "keyMoves": [
         "Identify the ratio m : n and whether division is internal or external",
         "Apply (m q + n p)/(m + n) internally, (m q - n p)/(m - n) externally",
@@ -277,8 +277,8 @@
       "role": "intermediate",
       "brief": "Use a.b = |a||b|cos(theta); equivalently a1 b1 + a2 b2 + a3 b3.",
       "sec": 3,
-      "quote": "The scalar product of two nonzero vectors  $\\vec{a}$  and  $\\vec{b}$ , denoted by  $\\vec{a} \\cdot \\vec{b}$ , is",
-      "explanation": "The scalar product (dot product) of two non-zero vectors a and b, denoted a.b, is a.b = |a||b| cos(theta), where theta is the angle between them (0 to pi); if either vector is zero, a.b = 0. In component form a.b = a1 b1 + a2 b2 + a3 b3. The dot product is a scalar, is commutative, distributes over addition, and is zero exactly when the vectors are perpendicular. It also gives the angle between vectors and the projection of one on another.",
+      "quote": "The scalar product of two nonzero vectors a and b, denoted by a.b, is",
+      "explanation": "PART 1 — Definition.\nThe scalar (dot) product of two non-zero vectors a and b is a.b = |a| |b| cos(theta), where theta is the angle between them (0 <= theta <= pi). If either vector is the zero vector, a.b = 0 by convention. The result is a SCALAR (a number), not a vector.\n\nPART 2 — Component formula and key facts.\nIn component form: a.b = a1 b1 + a2 b2 + a3 b3. Perpendicularity test: a.b = 0 iff a and b are perpendicular (theta = 90 deg, cos 90 = 0). Angle formula: cos(theta) = a.b / (|a| |b|). Example: a = 1 i + 2 j + 2 k, b = 3 i + 0 j + 4 k. a.b = 3+0+8 = 11. |a| = 3, |b| = 5. cos(theta) = 11/15.\n\nPART 3 — Projection and properties.\nThe projection of a onto b is (a.b)/|b|. Properties: commutative (a.b = b.a), distributive over addition (a.(b+c) = a.b + a.c), and a.a = |a|^2. Standard basis: i.i = j.j = k.k = 1; i.j = j.k = k.i = 0.",
       "keyMoves": [
         "Use a.b = |a||b| cos(theta) or a1 b1 + a2 b2 + a3 b3",
         "Note the result is a scalar (a number)",
@@ -301,8 +301,8 @@
       "role": "goal",
       "brief": "Use a x b = |a||b| sin(theta) n-hat; it is a vector perpendicular to both, anticommutative.",
       "sec": 4,
-      "quote": "The vector product of two nonzero vectors  $\\vec{a}$  and  $\\vec{b}$ , is denoted by  $\\vec{a} \\times \\vec{b}$  and defined as",
-      "explanation": "The vector product (cross product) of two non-zero vectors a and b, denoted a x b, is defined as a x b = |a||b| sin(theta) n-hat, where theta is the angle between them (0 to pi) and n-hat is the unit vector perpendicular to both a and b such that a, b, n-hat form a right-handed system. Unlike the dot product, the cross product is a VECTOR, perpendicular to the plane of a and b; it is not commutative (a x b = -(b x a)); its magnitude |a x b| = |a||b| sin(theta) equals the area of the parallelogram with sides a and b. In component form it is the determinant expansion with rows i, j, k; a1, a2, a3; b1, b2, b3. This capstone draws on magnitude, unit vectors, component form and the dot product to complete the algebra of vectors.",
+      "quote": "The vector product of two nonzero vectors a and b, is denoted by a x b and defined as",
+      "explanation": "PART 1 — Definition.\nThe vector (cross) product of two non-zero vectors a and b is a x b = |a| |b| sin(theta) n-hat, where theta is the angle between them (0 <= theta <= pi) and n-hat is the unit vector perpendicular to both such that a, b, n-hat form a right-handed system. The result is a VECTOR, unlike the dot product.\n\nPART 2 — Component formula (determinant expansion).\nFor a = a1 i + a2 j + a3 k and b = b1 i + b2 j + b3 k:\na x b = (a2 b3 - a3 b2) i - (a1 b3 - a3 b1) j + (a1 b2 - a2 b1) k.\nExample: a = 1 i + 2 j + 3 k, b = 4 i + 5 j + 6 k.\na x b = (2*6 - 3*5) i - (1*6 - 3*4) j + (1*5 - 2*4) k = (12-15) i - (6-12) j + (5-8) k = -3 i + 6 j - 3 k.\n\nPART 3 — Key properties.\nAnticommutative: a x b = -(b x a). Self-cross-product: a x a = 0 (zero vector). Magnitude = area of parallelogram with sides a and b: |a x b| = |a||b| sin(theta). Standard basis: i x j = k, j x k = i, k x i = j (and reverses give negatives). If a x b = 0 and both are non-zero, then sin(theta) = 0 so a and b are parallel (collinear).",
       "keyMoves": [
         "Use a x b = |a||b| sin(theta) n-hat (a vector perpendicular to both)",
         "Compute it as the i, j, k determinant in component form",

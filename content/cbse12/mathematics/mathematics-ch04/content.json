@@ -204,7 +204,7 @@
       "brief": "Identify a singular matrix as a square matrix with determinant zero.",
       "sec": 5,
       "quote": "A square matrix A is said to be singular if  $|\\mathbf{A}| = 0$ .",
-      "explanation": "A square matrix A is said to be singular if |A| = 0. For example, [1, 2; 4, 8] has determinant 1(8) - 2(4) = 0, so it is singular. Singularity is the obstruction to invertibility: a singular matrix has no inverse.",
+      "explanation": "PART 1 — Singular means determinant zero.\nA square matrix A is singular if |A| = 0. To test, compute the determinant and check whether it equals zero. Example: [[1,2],[4,8]] has |A| = 1*8 - 2*4 = 8 - 8 = 0, so it is singular.\n\nPART 2 — A singular matrix has no inverse.\nSingularity is exactly the obstruction to invertibility: since the inverse formula divides by |A|, a zero determinant makes the inverse undefined. Singular = non-invertible. The rows (or columns) of a singular matrix are linearly dependent (e.g. row 2 = 4 times row 1 above).",
       "keyMoves": [
         "Compute the determinant |A|",
         "If |A| = 0, declare A singular",
@@ -228,7 +228,7 @@
       "brief": "Identify a non-singular matrix as a square matrix with non-zero determinant.",
       "sec": 5,
       "quote": "A square matrix A is said to be non-singular if  $|A| \\neq 0$",
-      "explanation": "A square matrix A is said to be non-singular if |A| is not equal to 0. Non-singularity is exactly the condition that lets you invert a matrix: a non-singular matrix has a well-defined inverse, found as (1/|A|) adj A. The determinant being non-zero also guarantees A(adj A) can be scaled to the identity.",
+      "explanation": "PART 1 — Non-singular means determinant non-zero.\nA square matrix A is non-singular if |A| != 0. To test, compute the determinant and confirm it is not zero. Example: [[2,1],[3,4]] has |A| = 8 - 3 = 5 != 0, so it is non-singular.\n\nPART 2 — Non-singular = invertible.\nNon-singularity is exactly the condition for invertibility: a non-singular matrix has the well-defined inverse (1/|A|) adj A. Because |A| != 0, you can divide the adjoint identity A(adj A) = |A| I by |A| to obtain the inverse. Singular (|A|=0) and non-singular (|A|!=0) are the two mutually exclusive cases.",
       "keyMoves": [
         "Compute the determinant |A|",
         "If |A| is not 0, declare A non-singular",
@@ -252,7 +252,7 @@
       "brief": "Apply the theorem that the determinant of a product is the product of the determinants.",
       "sec": 5,
       "quote": "|AB| = |A| |B|",
-      "explanation": "The determinant of the product of two square matrices of the same order equals the product of their determinants: |AB| = |A| |B|. A direct consequence used in proving invertibility: from AB = I we get |A| |B| = |I| = 1, which forces |A| to be non-zero. The product of two non-singular matrices is therefore non-singular.",
+      "explanation": "PART 1 — The determinant of a product is the product of determinants.\nFor square matrices A and B of the same order, |AB| = |A| |B|. This is a multiplicative rule — NOT additive. Example: if |A| = 3 and |B| = 4, then |AB| = 12, regardless of the individual entries.\n\nPART 2 — Use it to reason about invertibility.\nFrom AB = I, take determinants: |A||B| = |I| = 1, which forces |A| != 0 (and |B| != 0). So if a product of matrices is the identity, each factor must be non-singular. The product of two non-singular matrices is itself non-singular. Do not write |AB| = |A| + |B|.",
       "keyMoves": [
         "Apply |AB| = |A| |B| for square matrices of the same order",
         "Use |I| = 1 to deduce |A| |B| = 1 from AB = I",

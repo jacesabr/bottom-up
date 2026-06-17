@@ -14,7 +14,7 @@
       "brief": "Apply tangent properties (perpendicularity, equal lengths) to compute lengths/angles and prove results in circle figures.",
       "sec": 1,
       "quote": "In this chapter, we will study about the existence of the tangents to a circle and also study some of their properties.",
-      "explanation": "The chapter's top skill: given a circle with one or more tangents, combine the two core tangent properties (the radius at the point of contact is perpendicular to the tangent; tangents from a common external point are equal) with right-triangle and congruence tools to find unknown lengths and angles or to prove relations. Every worked example (Examples 1, 2, 3) and exercise is an instance of this composite skill.",
+      "explanation": "PART 1 — Identify which tangent property to use.\nEvery tangent problem reduces to one of two properties: the radius at the contact point is perpendicular to the tangent (Theorem 10.1), or two tangents from the same external point are equal in length (Theorem 10.2). Decide which applies before drawing anything.\n\nPART 2 — Draw radii to contact points to create right angles.\nOnce the relevant property is chosen, draw the radius (or radii) to each point of contact. This converts the figure into a right triangle or a pair of congruent triangles. For example, joining O to the contact point T on tangent PT immediately gives a right angle at T.\n\nPART 3 — Set up and solve using Pythagoras, congruence, or angle sums.\nWith the right triangle or congruence identified, apply the appropriate tool: Pythagoras for a missing length (e.g. PT = sqrt(OP^2 - OT^2)), RHS congruence to prove equal tangents, or angle-sum in a quadrilateral to show supplementary angles.",
       "keyMoves": [
         "Identify which tangent property applies (perpendicularity or equal lengths)",
         "Draw radii to points of contact to create right angles",
@@ -50,7 +50,7 @@
       "brief": "A tangent is a line meeting the circle at exactly one point (the point of contact).",
       "sec": 1,
       "quote": "you have seen that a tangent* to a circle is a line that intersects the circle at only one point.",
-      "explanation": "A tangent touches the circle at exactly one point, the point of contact; this distinguishes it from a secant (two points) and a non-intersecting line (no points). The single common point is the point of contact where the tangent touches the circle.",
+      "explanation": "PART 1 — Count common points to name the line.\nA line in the plane of a circle can meet it at 0, 1, or 2 points. Exactly one common point means the line is a tangent; two common points means a secant; zero means non-intersecting. So to classify: count the intersections.\n\nPART 2 — Name the single common point the point of contact.\nThe unique point where a tangent touches the circle is called the point of contact. It is the only point shared by the line and the circle, and a tangent never crosses into the interior of the circle.",
       "keyMoves": [
         "Count common points of the line and circle: exactly one means tangent",
         "Name the single common point the point of contact"
@@ -73,7 +73,7 @@
       "brief": "Decide whether a line is non-intersecting, a secant, or a tangent by its number of common points.",
       "sec": 0,
       "quote": "In Fig. 10.1 (iii), there is only one point A which is common to the line PQ and the circle. In this case, the line is called a tangent to the circle.",
-      "explanation": "Given a line and a circle in a plane there are exactly three cases: no common point (non-intersecting), two common points (secant), one common point (tangent). Classifying by the count of common points is the foundational distinction the whole chapter rests on.",
+      "explanation": "PART 1 — Three cases, determined by common-point count.\nGiven a line and a circle in a plane, there are exactly three cases: 0 common points (the line does not touch the circle — non-intersecting), 2 common points (the line cuts through — secant), or 1 common point (the line just touches — tangent). No other case is possible.\n\nPART 2 — Map the count to the correct name.\nTo classify: count the intersections. 0 → non-intersecting; 2 → secant; 1 → tangent. Example: a horizontal line below a circle has 0 points in common (non-intersecting); a horizontal line cutting through the middle has 2 (secant); a horizontal line touching the very bottom has 1 (tangent).",
       "keyMoves": [
         "Count common points: 0, 2, or 1",
         "Map 0 to non-intersecting, 2 to secant, 1 to tangent"
@@ -94,7 +94,7 @@
       "brief": "0 tangents from inside, 1 from on the circle, exactly 2 from an external point.",
       "sec": 3,
       "quote": "Case 3 : There are exactly two tangents to a circle through a point lying outside the circle.",
-      "explanation": "The number of tangents that can be drawn to a circle through a given point depends only on where the point lies: a point inside gives no tangent, a point on the circle gives exactly one tangent, a point outside gives exactly two tangents.",
+      "explanation": "PART 1 — Locate the point relative to the circle.\nThe number of tangents from a point depends entirely on whether the point is inside the circle, on the circle, or outside the circle. Locate the point first.\n\nPART 2 — Map location to tangent count.\nInside: no tangent can be drawn — any line through the point crosses the circle twice (making it a secant, not a tangent). On the circle: exactly one tangent, perpendicular to the radius at that point. Outside: exactly two tangents can be drawn, touching the circle at two distinct points.",
       "keyMoves": [
         "Locate the point: inside, on, or outside the circle",
         "Map to 0, 1, or 2 tangents respectively"
@@ -117,7 +117,7 @@
       "brief": "The radius drawn to the point of contact is perpendicular to the tangent there.",
       "sec": 1,
       "quote": "Theorem 10.1 : The tangent at any point of a circle is perpendicular to the radius through the point of contact.",
-      "explanation": "The key tangent property: at the point of contact the radius and the tangent meet at a right angle. This lets you mark a 90 degree angle between a radius and a tangent, turning a tangent figure into a right triangle to which Pythagoras applies.",
+      "explanation": "PART 1 — Identify the point of contact.\nTheoem 10.1 applies at exactly the point where the tangent touches the circle — the point of contact. Identify it first before marking any angle. Any other point on the tangent line is NOT the contact point, so the perpendicularity does not apply there.\n\nPART 2 — Draw the radius to it and mark the 90 degree angle.\nJoin the centre O to the point of contact T. By Theorem 10.1, angle OTP = 90 degrees (where PT is the tangent). This right angle is the starting point of every tangent calculation in the chapter — it converts the figure into a right triangle.",
       "keyMoves": [
         "Identify the point of contact",
         "Draw the radius to it and mark the 90 degree angle with the tangent"
@@ -141,7 +141,7 @@
       "brief": "Any point on the tangent other than the contact point lies outside the circle, so its distance from the centre exceeds the radius.",
       "sec": 1,
       "quote": "Therefore, OQ is longer than the radius OP of the circle. That is,",
-      "explanation": "Underlying the perpendicularity theorem: every point Q on the tangent except the point of contact P lies outside the circle, so OQ exceeds the radius OP. Because OP is the shortest distance from the centre to the line, OP is perpendicular to the tangent. This is the reasoning step that proves Theorem 10.1.",
+      "explanation": "PART 1 — Take any other point Q on the tangent.\nThe tangent line touches the circle at exactly one point P. Pick any other point Q on the tangent line (on either side of P). Because the tangent meets the circle at only P, Q is not on the circle — so Q must lie outside the circle.\n\nPART 2 — Argue Q is outside so OQ > OP, making OP the perpendicular.\nBecause Q lies outside the circle, OQ > radius = OP. This holds for every Q on the tangent other than P. That means OP is the shortest distance from O to the tangent line. The shortest distance from a point to a line is always along the perpendicular, so OP is perpendicular to the tangent — which is Theorem 10.1.",
       "keyMoves": [
         "Take any other point Q on the tangent",
         "Argue Q is outside so OQ > OP, hence OP is shortest and perpendicular"
@@ -162,7 +162,7 @@
       "brief": "Two tangents drawn from the same external point to a circle are equal in length.",
       "sec": 3,
       "quote": "Theorem 10.2 : The lengths of tangents drawn from an external point to a circle are equal.",
-      "explanation": "The second core tangent property: from one external point the two tangent segments to a circle are equal. This is used to set equal-length tangent segments around inscribed/circumscribed figures and to deduce isosceles triangles.",
+      "explanation": "PART 1 — Identify two tangents from a single external point.\nTheorem 10.2 applies when two tangents are drawn from the same external point P, touching the circle at two different points A and B. The point P must be external (outside the circle).\n\nPART 2 — Set their lengths equal.\nPA = PB — always, regardless of the circle's size or the exact position of P. This equality is used to create equal-length pairs around circumscribed figures (quadrilaterals, triangles with an inscribed circle) and to deduce isosceles triangles like PAB.",
       "keyMoves": [
         "Identify two tangents from a single external point",
         "Set their lengths equal"
@@ -185,7 +185,7 @@
       "brief": "Join centre to point and to contact points; right triangles are congruent by RHS, so tangents are equal by CPCT.",
       "sec": 3,
       "quote": "Therefore, Δ OQP ≅ Δ ORP (RHS)",
-      "explanation": "The proof of Theorem 10.2: joining OP, OQ, OR gives two right triangles OQP and ORP with equal radii OQ=OR, common hypotenuse OP, and right angles at the contact points; by RHS they are congruent, so PQ=PR by CPCT. This is the canonical 5-mark CBSE proof.",
+      "explanation": "PART 1 — Join centre to external point and to both contact points.\nGiven circle O, external point P, tangents PA and PB at contact points A and B. Construct segments OA, OB, and OP. This creates two right triangles OAP and OBP (right angles at A and B by Theorem 10.1).\n\nPART 2 — Apply RHS and CPCT to conclude PA = PB.\nIn triangles OAP and OBP: angle OAP = angle OBP = 90 degrees (radius perpendicular to tangent); OA = OB (radii of the same circle); OP = OP (common hypotenuse). By RHS congruence, triangle OAP is congruent to triangle OBP. Therefore PA = PB by CPCT.",
       "keyMoves": [
         "Join centre to external point and to both contact points",
         "Use radii equal, OP common, right angles, then RHS and CPCT"
@@ -206,10 +206,10 @@
       "slug": "compute-tangent-length-pythagoras",
       "title": "Compute tangent length using Pythagoras",
       "role": "intermediate",
-      "brief": "In the right triangle radius-tangent-line-to-centre, tangent length = \\(\\sqrt{\\text{distance}^2 - \\text{radius}^2}\\).",
+      "brief": "In the right triangle radius-tangent-line-to-centre, tangent length = sqrt(distance^2 - radius^2).",
       "sec": 3,
       "quote": "PQ² = OP² – OQ² = OP² – OR² = PR² (As OQ = OR)",
-      "explanation": "Because the radius is perpendicular to the tangent, the triangle formed by the centre, the contact point, and the external point is right-angled at the contact point. Hence (distance from centre)^2 = radius^2 + (tangent length)^2, giving tangent length = sqrt(OP^2 - radius^2). This solves Exercise 10.2 Q1/Q6 and Exercise 10.1 Q3.",
+      "explanation": "PART 1 — Identify the right angle at the point of contact.\nBy Theorem 10.1, the radius OT is perpendicular to the tangent AT at the contact point T. So triangle OTA has a right angle at T, with hypotenuse OA (the line from the external point to the centre).\n\nPART 2 — Apply Pythagoras with hypotenuse = centre-to-external distance.\nIn right triangle OTA: OA^2 = OT^2 + AT^2. Rearranging: AT^2 = OA^2 - OT^2, so AT = sqrt(OA^2 - OT^2). Substituting: tangent length = sqrt(d^2 - r^2) where d is the distance from the external point to the centre and r is the radius.\n\nPART 3 — Solve for the tangent leg.\nExample: circle with radius r = 7 cm, external point A at distance OA = 25 cm from centre O. Tangent length AT = sqrt(25^2 - 7^2) = sqrt(625 - 49) = sqrt(576) = 24 cm.",
       "keyMoves": [
         "Identify the right angle at the point of contact",
         "Apply Pythagoras with hypotenuse = centre-to-external distance",
@@ -234,7 +234,7 @@
       "brief": "The chord of the larger circle tangent to the smaller is bisected at contact; use right triangle with the two radii.",
       "sec": 3,
       "quote": "Now AB is a chord of the circle C₁ and OP ⊥ AB. Therefore, OP is the bisector of the chord AB, as the perpendicular from the centre bisects the chord, i.e., AP = BP",
-      "explanation": "In two concentric circles, a chord of the larger circle that touches the smaller is tangent to the smaller circle, so the radius of the smaller circle is perpendicular to it and bisects it. Half-chord, smaller radius, and larger radius form a right triangle, giving half-chord = sqrt(R^2 - r^2). This is Example 1 plus Basic SQP Q22.",
+      "explanation": "PART 1 — Recognise the chord is tangent to the inner circle so the inner radius is perpendicular.\nIn two concentric circles (both centred at O, radii R and r with R > r), a chord AB of the outer circle that touches the inner circle at M is tangent to the inner circle. By Theorem 10.1, the inner radius OM is perpendicular to AB at M.\n\nPART 2 — Use perpendicular-from-centre-bisects-chord to halve the chord.\nSince OM is perpendicular to chord AB (of the outer circle), it bisects AB by the chord-bisection theorem. So AM = BM = half the chord length.\n\nPART 3 — Apply Pythagoras with the two radii.\nIn right triangle OMA: OA^2 = OM^2 + AM^2, so AM = sqrt(R^2 - r^2). Full chord = AB = 2 * sqrt(R^2 - r^2). Example: R = 10, r = 6 gives AM = sqrt(100-36) = 8, chord = 16 cm.",
       "keyMoves": [
         "Recognise the chord is tangent to the inner circle so inner radius is perpendicular",
         "Use perpendicular-from-centre-bisects-chord to halve the chord",
@@ -260,7 +260,7 @@
       "brief": "A line from the centre perpendicular to a chord bisects that chord.",
       "sec": 3,
       "quote": "OP is the bisector of the chord AB, as the perpendicular from the centre bisects the chord",
-      "explanation": "A Class IX fact reused here: when a segment from the centre is perpendicular to a chord it splits the chord into two equal halves. Used in Example 1 and Example 3 to get equal half-chords before applying Pythagoras.",
+      "explanation": "PART 1 — Confirm the segment from the centre is perpendicular to the chord.\nThis theorem (a Class 9 result) applies only when the segment from the centre meets the chord at a right angle. Verify the perpendicularity first — not every segment from the centre bisects the chord, only the perpendicular one.\n\nPART 2 — Conclude the two half-chords are equal.\nOnce perpendicularity is confirmed, the chord is split into two equal halves. If M is the foot of the perpendicular from O to chord AB, then AM = MB. This gives you a half-chord length to use in the Pythagoras calculation.",
       "keyMoves": [
         "Confirm the segment from the centre is perpendicular to the chord",
         "Conclude the two half-chords are equal"
@@ -281,7 +281,7 @@
       "brief": "Angle between two tangents from an external point plus the central angle of the contact chord equals 180 degrees.",
       "sec": 4,
       "quote": "Prove that the angle between the two tangents drawn from an external point to a circle is supplementary to the angle subtended by the line-segment joining the points of contact at the centre.",
-      "explanation": "Quadrilateral OPTQ has right angles at the two contact points (radius ⊥ tangent), so its remaining two angles—the angle between the tangents at T and the central angle POQ—are supplementary. This solves Exercise 10.2 Q2, Standard SQP Q7, and Basic SQP Q5.",
+      "explanation": "PART 1 — Form the quadrilateral with centre, two contact points, and external point.\nFrom external point T, draw two tangents TP and TQ touching the circle (centre O) at P and Q. Draw OP and OQ. The four points O, P, T, Q form a quadrilateral OPTQ.\n\nPART 2 — Mark the two right angles at the contact points.\nBy Theorem 10.1, angle OPT = 90 degrees and angle OQT = 90 degrees (radius perpendicular to tangent at each contact point). Two of the four interior angles of the quadrilateral are already 90 degrees each.\n\nPART 3 — Use angle sum 360 degrees to conclude the remaining two angles are supplementary.\nSum of interior angles of a quadrilateral = 360 degrees. So angle PTQ + angle POQ = 360 - 90 - 90 = 180 degrees. The angle between the tangents and the central angle are supplementary.",
       "keyMoves": [
         "Form quadrilateral: centre, two contact points, external point",
         "Mark the two right angles at the contact points",
@@ -305,11 +305,11 @@
       "brief": "Using isosceles tangent triangle and the right angle at the contact point, derive PTQ = 2·OPQ.",
       "sec": 3,
       "quote": "∠ OPQ = ∠ OPT – ∠ TPQ = 90° – (90° – ½ θ) = ½ θ = ½ ∠ PTQ",
-      "explanation": "Example 2: let angle PTQ = θ. Since TP=TQ, triangle TPQ is isosceles so each base angle is 90 - θ/2. The radius gives angle OPT = 90, so angle OPQ = 90 - (90 - θ/2) = θ/2, hence angle PTQ = 2·angle OPQ. Combines equal tangents, isosceles base angles, and the perpendicular-radius fact.",
+      "explanation": "PART 1 — Set PTQ = theta and use equal tangents for isosceles base angles.\nLet angle PTQ = theta. Since TP = TQ (equal tangents from T), triangle TPQ is isosceles with apex angle theta. Each base angle is (180 - theta)/2 = 90 - theta/2. So angle TPQ = angle TQP = 90 - theta/2.\n\nPART 2 — Use angle OPT = 90 degrees from the radius.\nBy Theorem 10.1, the radius OP is perpendicular to the tangent PT at P, so angle OPT = 90 degrees.\n\nPART 3 — Subtract to get OPQ = theta/2.\nAngle OPQ = angle OPT - angle TPQ = 90 - (90 - theta/2) = theta/2. Therefore angle PTQ = theta = 2 * (theta/2) = 2 * angle OPQ.",
       "keyMoves": [
-        "Set PTQ = θ and use equal tangents for isosceles base angles",
+        "Set PTQ = theta and use equal tangents for isosceles base angles",
         "Use angle OPT = 90 from the radius",
-        "Subtract to get OPQ = θ/2"
+        "Subtract to get OPQ = theta/2"
       ],
       "misconceptions": [
         "Forgetting the triangle is isosceles",
@@ -331,7 +331,7 @@
       "brief": "In an isosceles triangle each base angle is (180 - apex)/2.",
       "sec": 3,
       "quote": "∠ TPQ = ∠ TQP = ½ (180° – θ) = 90° – ½ θ",
-      "explanation": "Generic isosceles-triangle fact applied to the tangent triangle TPQ: with apex θ the two equal base angles are each (180-θ)/2 = 90 - θ/2. Reused wherever the two equal tangents create an isosceles triangle.",
+      "explanation": "PART 1 — Identify the equal sides and the apex angle.\nIn an isosceles triangle the two sides that are equal are the legs; the angle between them (opposite the unequal base) is the apex angle. Identify these before computing. For the tangent triangle TPQ, the equal sides are the tangent segments TP = TQ, so T is the apex.\n\nPART 2 — Compute each base angle as (180 - apex)/2.\nAll three angles sum to 180 degrees. The two base angles are equal, so each base angle = (180 - apex angle)/2. Example: if angle PTQ = 60 degrees, each base angle = (180 - 60)/2 = 60 degrees. If angle PTQ = 100 degrees, each base angle = (180 - 100)/2 = 40 degrees.",
       "keyMoves": [
         "Identify the equal sides and apex angle",
         "Compute each base angle as (180 - apex)/2"
@@ -352,7 +352,7 @@
       "brief": "For a quadrilateral circumscribing a circle, equal tangent segments give AB + CD = AD + BC.",
       "sec": 4,
       "quote": "A quadrilateral ABCD is drawn to circumscribe a circle (see Fig. 10.12). Prove that\n\nAB + CD = AD + BC",
-      "explanation": "Each vertex of a circumscribing quadrilateral is an external point with two equal tangent segments to the inscribed circle. Adding tangent lengths around the quadrilateral shows the sum of one pair of opposite sides equals the sum of the other pair. A standard exercise application of equal tangents.",
+      "explanation": "PART 1 — Label the four contact points and pair equal tangent segments at each vertex.\nLet the circle touch AB at P, BC at Q, CD at R, and DA at S. From Theorem 10.2, tangents from each vertex are equal: AP = AS (from A), BP = BQ (from B), CQ = CR (from C), DR = DS (from D).\n\nPART 2 — Add side lengths and group equal segments.\nExpress each side as a sum of two tangent segments: AB = AP + PB = AS + BQ; CD = CR + RD = CQ + DS. Adding: AB + CD = (AS + BQ) + (CQ + DS).\n\nPART 3 — Conclude AB + CD = AD + BC.\nRegroup: (AS + DS) + (BQ + CQ) = AD + BC. So AB + CD = AD + BC.",
       "keyMoves": [
         "Label the four points of contact and pair equal tangent segments at each vertex",
         "Add side lengths and group equal segments",
@@ -376,7 +376,7 @@
       "brief": "Use equal tangent segments from each vertex of a triangle with an inscribed circle to find unknown sides.",
       "sec": 4,
       "quote": "A triangle ABC is drawn to circumscribe a circle of radius 4 cm such that the segments BD and DC into which BC is divided by the point of contact D are of lengths 8 cm and 6 cm respectively (see Fig. 10.14). Find the sides AB and AC.",
-      "explanation": "For a triangle with an inscribed circle, the two tangent segments from each vertex are equal (AR=AQ, BP=BR, CP=CQ). Knowing some segment lengths lets you propagate the equalities around the triangle to find the remaining side lengths. This is Exercise 10.2 Q12 and Standard SQP Q33.",
+      "explanation": "PART 1 — Name the contact points on the three sides.\nLet the incircle touch BC at D, CA at E, and AB at F. These are the three points of contact, one on each side of the triangle.\n\nPART 2 — Set the two tangents from each vertex equal.\nFrom Theorem 10.2: BF = BD (tangents from B), CD = CE (tangents from C), AE = AF (tangents from A). If BD = 8 and CD = 6, then BF = 8 and CE = 6. Let AE = AF = a.\n\nPART 3 — Add segment pairs to get each side.\nAB = AF + FB = a + 8; BC = BD + DC = 8 + 6 = 14; CA = CE + EA = 6 + a. Use additional information (such as radius and area formula) to find a, then compute AB and AC. For the NCERT example with radius 4: a = 7, so AB = 15 cm and AC = 13 cm.",
       "keyMoves": [
         "Name contact points on the three sides",
         "Set the two tangents from each vertex equal",
@@ -400,7 +400,7 @@
       "brief": "Set up AA-similar right triangles in a tangent-chord figure and use the proportion to find a length.",
       "sec": 3,
       "quote": "Therefore, right triangle TRP is similar to the right triangle PRO by AA similarity.",
-      "explanation": "Example 3: with chord PQ and tangents meeting at T, OT bisects and is perpendicular to PQ. Triangles TRP and PRO share equal angles (each complementary to angle RPO), so they are similar by AA, giving TP/PO = RP/RO and TP = 20/3. An alternative to the Pythagoras route shown in the Note.",
+      "explanation": "PART 1 — Establish the two right triangles share an equal acute angle.\nIn a tangent-secant figure from external point T, draw tangent TP and secant TAB. In triangles TPA and TBP: angle T is common to both. A second equal angle pair comes from the tangent-chord angle relationship. Both triangles have angle T in common, making them AA-similar.\n\nPART 2 — Conclude AA similarity and write the proportion.\nTriangles TPA and TBP are AA-similar. The proportion of corresponding sides gives: TP/TA = TB/TP, which simplifies to TP^2 = TA * TB (the power-of-a-point relation).\n\nPART 3 — Solve for the unknown length.\nIf TA and TB are known, TP = sqrt(TA * TB). If TP and one segment are known, find the other. Example: TP = 15 cm, TA = 9 cm gives TB = TP^2/TA = 225/9 = 25 cm.",
       "keyMoves": [
         "Establish the two right triangles share an equal acute angle",
         "Conclude AA similarity",
@@ -427,7 +427,7 @@
       "brief": "Both tangents are perpendicular to the same diameter, so they are parallel.",
       "sec": 4,
       "quote": "Prove that the tangents drawn at the ends of a diameter of a circle are parallel.",
-      "explanation": "At each end of a diameter the tangent is perpendicular to the radius (here the diameter line). Two lines perpendicular to the same line are parallel, so the two tangents are parallel. A direct application of Theorem 10.1.",
+      "explanation": "PART 1 — Mark each tangent perpendicular to the diameter at its endpoint.\nLet AB be a diameter. The tangent at A is perpendicular to OA (= AB) by Theorem 10.1. The tangent at B is perpendicular to OB (= AB) by Theorem 10.1. So both tangents are perpendicular to the line AB.\n\nPART 2 — Conclude using the parallel-lines criterion.\nTwo lines that are both perpendicular to the same line are parallel to each other. Since both tangents are perpendicular to diameter AB, the two tangents are parallel.",
       "keyMoves": [
         "Mark the tangent at each diameter end perpendicular to the diameter",
         "Use 'two lines perpendicular to a common line are parallel'"
@@ -450,7 +450,7 @@
       "brief": "Relate the three sides of a right triangle by hypotenuse² = leg² + leg².",
       "sec": 3,
       "quote": "Also, OR = √(OP² – PR²) = √(5² – 4²) cm = 3 cm.",
-      "explanation": "The underlying numeracy tool: in any right triangle the squares of the legs sum to the square of the hypotenuse, so an unknown side is found by squaring, adding or subtracting, and taking the square root. Used throughout the chapter once a radius creates a right angle.",
+      "explanation": "PART 1 — Identify the hypotenuse (the side opposite the right angle).\nIn a right triangle, the hypotenuse is always the longest side and is opposite the right angle. Label it c; the two legs are a and b. The relation is c^2 = a^2 + b^2.\n\nPART 2 — Rearrange to find an unknown leg.\nTo find leg a when c and b are known: a^2 = c^2 - b^2, so a = sqrt(c^2 - b^2). Example: hypotenuse = 13, one leg = 5. Other leg = sqrt(13^2 - 5^2) = sqrt(169 - 25) = sqrt(144) = 12.",
       "keyMoves": [
         "Identify the hypotenuse (longest side, opposite the right angle)",
         "Form leg² = hyp² - other-leg² and take the square root"
@@ -471,7 +471,7 @@
       "brief": "Two right triangles with equal hypotenuse and one equal side are congruent (RHS); corresponding parts are then equal (CPCT).",
       "sec": 3,
       "quote": "This gives PQ = PR (CPCT)",
-      "explanation": "A bedrock congruence rule reused in tangent proofs: right triangles sharing a hypotenuse and one leg are congruent by RHS, after which corresponding parts (here the tangent segments) are equal by CPCT. It is the engine of the equal-tangents proof.",
+      "explanation": "PART 1 — Verify a right angle, equal hypotenuses, and one equal side.\nRHS (Right angle-Hypotenuse-Side) applies to right triangles: both triangles must have a right angle, their hypotenuses must be equal, and one additional pair of sides must be equal. Check all three conditions before applying the rule.\n\nPART 2 — Declare RHS congruence, then extract equal parts by CPCT.\nOnce RHS is established, the triangles are congruent and all corresponding parts are equal. CPCT (Corresponding Parts of Congruent Triangles) lets you conclude that any pair of corresponding sides or angles are equal — for example, in the equal-tangents proof, CPCT gives PA = PB.",
       "keyMoves": [
         "Verify a right angle, equal hypotenuses, and one equal side",
         "Declare RHS congruence",

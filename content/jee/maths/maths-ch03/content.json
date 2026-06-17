@@ -255,7 +255,7 @@
       "brief": "Give the domain and range of sin, cos, cosec, sec, tan and cot, including the bound -1 <= sin x, cos x <= 1.",
       "sec": 3,
       "quote": "Thus, domain of  $y = \\sin x$  and  $y = \\cos x$  is the set of all real numbers and range is the interval [-1, 1]",
-      "explanation": "Since the unit-circle coordinates satisfy -1 <= a <= 1 and -1 <= b <= 1, we have -1 <= cos x <= 1 and -1 <= sin x <= 1 for all x. So y = sin x and y = cos x have domain all real numbers and range [-1, 1]. For the reciprocals: cosec x has domain {x : x != n pi} and range {y : y >= 1 or y <= -1}; sec x has domain {x : x != (2n+1) pi/2} and the same range; tan x has domain {x : x != (2n+1) pi/2} and range all reals; cot x has domain {x : x != n pi} and range all reals. The excluded points are where the defining denominator vanishes.",
+      "explanation": "PART 1 — sin and cos: domain all reals, range [-1, 1].\nBecause the unit-circle coordinates satisfy -1 <= a <= 1 and -1 <= b <= 1, both sin x and cos x lie in [-1, 1] for every real x. So y = sin x and y = cos x are defined for all real x with range [-1, 1]. In particular sin x and cos x can never exceed 1 in magnitude.\n\nPART 2 — Reciprocal/ratio functions: exclude where the denominator vanishes.\nsec x and tan x are undefined at x = (2n+1)*pi/2 (where cos x = 0); cosec x and cot x are undefined at x = n*pi (where sin x = 0). Ranges: sec x and cosec x give |y| >= 1 (values in (-inf,-1] union [1,inf)); tan x and cot x give all real numbers.",
       "keyMoves": [
         "Use -1 <= sin x <= 1 and -1 <= cos x <= 1 to set the range of sin and cos",
         "Exclude n pi for cosec and cot, and (2n+1) pi/2 for sec and tan, from the domain",
@@ -280,7 +280,7 @@
       "brief": "Apply sin(2n pi + x) = sin x, cos(2n pi + x) = cos x and tan(pi + x) = tan x to reduce large angles and sketch the graphs.",
       "sec": 3,
       "quote": "if x increases (or decreases) by any integral multiple of  $2\\pi$ , the values of sine and cosine functions do not change.",
-      "explanation": "Going one full revolution returns P to the same point, so if x changes by any integer multiple of 2 pi the values of sine and cosine are unchanged: sin(2n pi + x) = sin x and cos(2n pi + x) = cos x for n in Z. Hence cosec and sec also repeat after 2 pi, while tan(pi + x) = tan x makes tan and cot repeat after pi. This periodicity is used to evaluate functions of large or negative angles by subtracting full periods (e.g. sin(31 pi/3) = sin(pi/3), cos(-1710 deg) = cos 90 deg = 0), and it dictates the repeating shape of the graphs of these functions.",
+      "explanation": "PART 1 — sin and cos have period 2 pi; tan and cot have period pi.\nA full revolution returns the unit-circle point to itself, so sin(2n pi + x) = sin x and cos(2n pi + x) = cos x for integer n. Hence sec and cosec also repeat every 2 pi. But tan(pi + x) = tan x, so tan and cot repeat every pi (NOT 2 pi).\n\nPART 2 — Reduce large or negative angles by subtracting full periods.\nTo evaluate a function at a large angle, subtract whole periods until the angle lands in a standard range. Example: sin(31 pi/3) = sin(31 pi/3 - 10 pi) = sin(pi/3) = sqrt3/2. For tan use multiples of pi. This periodicity also dictates the repeating shape of the graphs.",
       "keyMoves": [
         "Reduce a large angle by adding/subtracting multiples of 2 pi for sin, cos, sec, cosec",
         "Reduce by multiples of pi for tan and cot",
@@ -305,7 +305,7 @@
       "brief": "Given one trig function and the quadrant, use the identities to find the other five, fixing each sign by the quadrant.",
       "sec": 3,
       "quote": "find the values of other five trigonometric functions.",
-      "explanation": "Given one trigonometric value and the quadrant of x, the others follow from the identities. For example, if cos x = -3/5 with x in the third quadrant, then sec x = -5/3; sin^2 x = 1 - cos^2 x = 16/25, and since sin is negative in the third quadrant sin x = -4/5, so cosec x = -5/4, tan x = sin x/cos x = 4/3 and cot x = 3/4. The recipe is: use sin^2 + cos^2 = 1 (or 1 + tan^2 = sec^2, etc.) to get a second value up to sign, then fix the sign from the quadrant, then take reciprocals and ratios for the rest.",
+      "explanation": "PART 1 — The recipe: identity for the second value, quadrant for the sign, then reciprocals/ratios.\nGiven one trig value and the quadrant of x, use a Pythagorean identity (sin^2+cos^2=1, or 1+tan^2=sec^2) to get a second function up to a +/- sign. Fix the sign from the quadrant. Then take reciprocals and ratios to get the remaining functions.\n\nPART 2 — Worked example.\nIf cos x = -3/5 with x in QIII: sec x = -5/3. sin^2 x = 1 - 9/25 = 16/25, so sin x = +/-4/5; QIII makes sin negative, so sin x = -4/5. Then cosec x = -5/4, tan x = sin/cos = (-4/5)/(-3/5) = 4/3, cot x = 3/4. Forgetting the quadrant sign is the main error.",
       "keyMoves": [
         "Use a Pythagorean identity to get a second function up to a sign",
         "Fix the sign using the quadrant of x",
@@ -330,7 +330,7 @@
       "brief": "Use that reflecting P across the x-axis sends x to -x and b to -b to get cos(-x) = cos x and sin(-x) = -sin x.",
       "sec": 3,
       "quote": "$\\cos\\left(-x\\right) = \\cos x$",
-      "explanation": "If P(a, b) is the point at angle x on the unit circle, then the point Q at angle -x is the reflection (a, -b) across the x-axis. Reading off coordinates gives cos(-x) = a = cos x (cosine is even) and sin(-x) = -b = -sin x (sine is odd). These even-odd properties extend to the other functions (e.g. tan(-x) = -tan x) and are used constantly to simplify expressions involving negative angles before applying the sum and difference formulas.",
+      "explanation": "PART 1 — Reflecting across the x-axis sends x to -x and keeps a, flips b.\nIf P(a,b) is at angle x on the unit circle, the point at angle -x is the mirror image (a, -b) across the x-axis. The x-coordinate is unchanged; only the y-coordinate flips sign.\n\nPART 2 — Hence cos is even and sin is odd.\ncos(-x) = a = cos x (EVEN: no sign change). sin(-x) = -b = -sin x (ODD: sign flips). It follows that tan(-x) = -tan x and cot(-x) = -cot x (odd), while sec(-x) = sec x (even). The common error is writing cos(-x) = -cos x; cosine is even, so cos(-x) = +cos x.",
       "keyMoves": [
         "Reflect P across the x-axis to get the point at angle -x as (a, -b)",
         "Conclude cos(-x) = cos x (even)",
@@ -354,7 +354,7 @@
       "brief": "Establish cos(x + y) = cos x cos y - sin x sin y and cos(x - y) = cos x cos y + sin x sin y, then use them to evaluate angles.",
       "sec": 4,
       "quote": "$\\cos (x + y) = \\cos x \\cos y - \\sin x \\sin y$",
-      "explanation": "Using the unit circle and the distance formula on congruent chords P1P3 and P2P4, one proves the cornerstone identity cos(x + y) = cos x cos y - sin x sin y. Replacing y by -y (and using the even-odd identities) gives cos(x - y) = cos x cos y + sin x sin y. These let you evaluate cosines of non-standard angles by splitting them into standard ones (e.g. cos 15 deg = cos(45 deg - 30 deg)). They are the seed identities from which the sine sum/difference, the cofunction, tan and cot sum formulas, and the multiple-angle formulas are all derived.",
+      "explanation": "PART 1 — The two formulas, distinguished by the middle sign.\ncos(x + y) = cos x cos y - sin x sin y. cos(x - y) = cos x cos y + sin x sin y. The sign FLIPS relative to the angle: plus-angle gives minus-sign, minus-angle gives plus-sign. Get cos(x-y) from cos(x+y) by replacing y with -y and using cos(-y)=cos y, sin(-y)=-sin y.\n\nPART 2 — Use them to evaluate non-standard angles, never distribute.\nSplit an awkward angle into standard parts: cos 15 = cos(45 - 30) = cos45 cos30 + sin45 sin30 = (sqrt6 + sqrt2)/4. Never write cos(x+y) = cos x + cos y — cosine does not distribute. These are the seed identities for the sine, tangent, cofunction, and multiple-angle formulas.",
       "keyMoves": [
         "Prove cos(x + y) = cos x cos y - sin x sin y from congruent chords on the unit circle",
         "Replace y by -y to get cos(x - y) = cos x cos y + sin x sin y",
@@ -403,7 +403,7 @@
       "brief": "Establish sin(x + y) = sin x cos y + cos x sin y and sin(x - y) = sin x cos y - cos x sin y, then use them to evaluate angles.",
       "sec": 4,
       "quote": "$\\sin (x + y) = \\sin x \\cos y + \\cos x \\sin y$",
-      "explanation": "Writing sin(x + y) = cos(pi/2 - (x + y)) = cos((pi/2 - x) - y) and applying the cos(x - y) formula gives sin(x + y) = sin x cos y + cos x sin y. Replacing y by -y yields sin(x - y) = sin x cos y - cos x sin y. Like their cosine analogues, these evaluate sines of non-standard angles by decomposition (e.g. sin 15 deg = sin(45 deg - 30 deg) = (sqrt(3) - 1)/(2 sqrt(2))) and feed the double- and triple-angle and sum-to-product identities.",
+      "explanation": "PART 1 — The two formulas, with the SAME sign as the angle.\nsin(x + y) = sin x cos y + cos x sin y. sin(x - y) = sin x cos y - cos x sin y. Unlike cosine, the sign MATCHES the angle: plus-angle gives plus-sign, minus-angle gives minus-sign. Note the cross structure (sin-cos + cos-sin), not sin-sin.\n\nPART 2 — Evaluate non-standard angles by decomposition.\nSplit the angle into standard parts: sin 75 = sin(45 + 30) = sin45 cos30 + cos45 sin30 = (sqrt6 + sqrt2)/4. Never write sin(x+y) = sin x + sin y. These feed the double-angle, triple-angle, and sum-to-product identities.",
       "keyMoves": [
         "Use the cofunction identity to write sin(x + y) as a cosine of a difference",
         "Apply cos(x - y) to obtain sin(x + y) = sin x cos y + cos x sin y",
@@ -427,7 +427,7 @@
       "brief": "Obtain tan(x +/- y) and cot(x +/- y) by dividing the sine and cosine sum/difference formulas, with the stated angle restrictions.",
       "sec": 4,
       "quote": "$$\\tan (x + y) = \\frac{\\tan x + \\tan y}{1 - \\tan x \\tan y}$$",
-      "explanation": "Provided none of x, y, (x + y) is an odd multiple of pi/2, dividing sin(x + y) by cos(x + y) and then numerator and denominator by cos x cos y gives tan(x + y) = (tan x + tan y)/(1 - tan x tan y); replacing y by -y gives tan(x - y) = (tan x - tan y)/(1 + tan x tan y). Similarly, when none of x, y, (x + y) is a multiple of pi, dividing by sin x sin y gives cot(x + y) = (cot x cot y - 1)/(cot y + cot x), and cot(x - y) = (cot x cot y + 1)/(cot y - cot x). These are used to evaluate tangents of compound angles (e.g. tan(13 pi/12)) and to prove identities such as tan 3x tan 2x tan x = tan 3x - tan 2x - tan x.",
+      "explanation": "PART 1 — The tangent sum/difference formulas, with opposite denominator sign.\ntan(x + y) = (tan x + tan y)/(1 - tan x tan y). tan(x - y) = (tan x - tan y)/(1 + tan x tan y). Note: numerator sign matches the angle; denominator sign is OPPOSITE. These hold provided none of x, y, x+y is an odd multiple of pi/2.\n\nPART 2 — Derivation and use.\nDerive by dividing sin(x+y)/cos(x+y), then dividing numerator and denominator by cos x cos y. Use to evaluate compound angles, e.g. tan 75 = tan(45+30) = (1 + 1/sqrt3)/(1 - 1/sqrt3) = 2 + sqrt3. The common error is putting a plus in the denominator of tan(x+y) — it must be minus.",
       "keyMoves": [
         "Divide sin(x + y) by cos(x + y), then by cos x cos y, to get the tan formula",
         "Replace y by -y for tan(x - y); divide by sin x sin y for the cot formulas",
@@ -453,7 +453,7 @@
       "brief": "Put y = x in the sum formulas to get cos 2x, sin 2x and tan 2x in their several equivalent forms.",
       "sec": 4,
       "quote": "$$\\cos 2x = \\cos^2 x - \\sin^2 x = 2 \\cos^2 x - 1 = 1 - 2 \\sin^2 x = \\frac{1 - \\tan^2 x}{1 + \\tan^2 x}$$",
-      "explanation": "Setting y = x in the sum formulas gives the double-angle identities. cos 2x = cos^2 x - sin^2 x = 2 cos^2 x - 1 = 1 - 2 sin^2 x = (1 - tan^2 x)/(1 + tan^2 x). sin 2x = 2 sin x cos x = 2 tan x/(1 + tan^2 x). tan 2x = 2 tan x/(1 - tan^2 x) (for 2x not an odd multiple of pi/2). The several forms of cos 2x are interchangeable via sin^2 + cos^2 = 1 and are the ones used to convert between sin^2 x, cos^2 x and cos 2x (e.g. cos^2 x = (1 + cos 2x)/2), which underlies many proofs and the half-angle results.",
+      "explanation": "PART 1 — Get the double-angle forms by putting y = x in the sum formulas.\nsin 2x = 2 sin x cos x. cos 2x = cos^2 x - sin^2 x. tan 2x = 2 tan x/(1 - tan^2 x) (2x not an odd multiple of pi/2). These follow directly from sin(x+x) and cos(x+x).\n\nPART 2 — The three forms of cos 2x and the power-reduction uses.\ncos 2x = cos^2 x - sin^2 x = 2 cos^2 x - 1 = 1 - 2 sin^2 x (interchangeable via sin^2+cos^2=1). Rearranged: cos^2 x = (1 + cos 2x)/2 and sin^2 x = (1 - cos 2x)/2 — used to reduce squared functions. Note sin 2x is NOT 2 sin x; the cos x factor is essential.",
       "keyMoves": [
         "Put y = x in cos(x + y), sin(x + y), tan(x + y) to get the double-angle forms",
         "Use sin^2 + cos^2 = 1 to switch between the three forms of cos 2x",
@@ -479,7 +479,7 @@
       "brief": "Use sin 3x = sin(2x + x) etc. to obtain sin 3x, cos 3x and tan 3x in terms of the single angle.",
       "sec": 4,
       "quote": "$\\sin 3x = 3 \\sin x - 4 \\sin^3 x$",
-      "explanation": "Writing 3x = 2x + x and applying the sum and double-angle formulas gives the triple-angle identities. sin 3x = 3 sin x - 4 sin^3 x; cos 3x = 4 cos^3 x - 3 cos x; tan 3x = (3 tan x - tan^3 x)/(1 - 3 tan^2 x) (for 3x not an odd multiple of pi/2). These express a function of 3x purely in terms of the single angle x and are used both to evaluate and to prove identities involving tripled angles.",
+      "explanation": "PART 1 — The triple-angle identities, derived from 3x = 2x + x.\nsin 3x = 3 sin x - 4 sin^3 x. cos 3x = 4 cos^3 x - 3 cos x. tan 3x = (3 tan x - tan^3 x)/(1 - 3 tan^2 x). Each expresses a function of 3x purely in terms of the single angle x.\n\nPART 2 — Watch the coefficients and signs.\nNote sin 3x leads with +3 sin x and SUBTRACTS 4 sin^3 x, while cos 3x leads with +4 cos^3 x and subtracts 3 cos x — the 3 and 4 swap roles between sine and cosine. A common error is sin 3x = 3 sin x (dropping the cubic term). Derive by sin(2x+x) = sin 2x cos x + cos 2x sin x, then substitute the double-angle forms.",
       "keyMoves": [
         "Write 3x = 2x + x and apply the sum formula",
         "Substitute the double-angle forms of sin 2x, cos 2x (or tan 2x)",
@@ -503,7 +503,7 @@
       "brief": "Use cos x +/- cos y and sin x +/- sin y written as products of cosines/sines of (x+y)/2 and (x-y)/2.",
       "sec": 4,
       "quote": "(i)  $\\cos x + \\cos y = 2\\cos \\frac{x+y}{2}\\cos \\frac{x-y}{2}$",
-      "explanation": "Adding and subtracting the cos(x + y), cos(x - y) and sin(x + y), sin(x - y) formulas, then substituting x = (theta + phi)/2, y = (theta - phi)/2, gives the sum-to-product formulas: cos x + cos y = 2 cos((x+y)/2) cos((x-y)/2); cos x - cos y = -2 sin((x+y)/2) sin((x-y)/2); sin x + sin y = 2 sin((x+y)/2) cos((x-y)/2); sin x - sin y = 2 cos((x+y)/2) sin((x-y)/2). They turn a sum or difference of two sines or cosines into a product, which is the key step in simplifying ratios like (cos 7x + cos 5x)/(sin 7x - sin 5x) = cot x.",
+      "explanation": "PART 1 — The four sum-to-product formulas.\ncos x + cos y = 2 cos((x+y)/2) cos((x-y)/2). cos x - cos y = -2 sin((x+y)/2) sin((x-y)/2). sin x + sin y = 2 sin((x+y)/2) cos((x-y)/2). sin x - sin y = 2 cos((x+y)/2) sin((x-y)/2). Each uses the half-sum (x+y)/2 and half-difference (x-y)/2.\n\nPART 2 — Watch the minus sign and use to simplify ratios.\nThe cos-difference formula carries a leading MINUS: cos x - cos y = -2 sin(...) sin(...). Sum-to-product turns sums into products so factors cancel, e.g. (cos 7x + cos 5x)/(sin 7x - sin 5x): numerator = 2 cos6x cos x, denominator = 2 cos6x sin x, ratio = cot x.",
       "keyMoves": [
         "Identify whether the expression is a sum/difference of two cosines or two sines",
         "Apply the matching formula with half-sum (x+y)/2 and half-difference (x-y)/2",
@@ -528,7 +528,7 @@
       "brief": "Use 2 cos x cos y, -2 sin x sin y, 2 sin x cos y and 2 cos x sin y written as sums/differences of cosines and sines.",
       "sec": 4,
       "quote": "As a part of identities given in 20, we can prove the following results:",
-      "explanation": "Reversing the additions used for the sum-to-product formulas gives the product-to-sum identities: 2 cos x cos y = cos(x + y) + cos(x - y); -2 sin x sin y = cos(x + y) - cos(x - y); 2 sin x cos y = sin(x + y) + sin(x - y); 2 cos x sin y = sin(x + y) - sin(x - y). They convert a product of two trig functions into a sum or difference, which linearises products inside proofs and integrals (e.g. expanding 2 cos 2x cos(x/2) before combining terms).",
+      "explanation": "PART 1 — The four product-to-sum formulas.\n2 cos x cos y = cos(x + y) + cos(x - y). 2 sin x sin y = cos(x - y) - cos(x + y). 2 sin x cos y = sin(x + y) + sin(x - y). 2 cos x sin y = sin(x + y) - sin(x - y). Each turns a product of two trig functions into a sum or difference.\n\nPART 2 — Keep the leading 2 and the sign order.\nDo not drop the factor of 2 on the left. For sin*sin the right side is cos(x-y) - cos(x+y) (difference minus sum, in that order). These linearise products inside proofs and integrals, e.g. expanding 2 cos 2x cos(x/2) = cos(5x/2) + cos(3x/2).",
       "keyMoves": [
         "Recognise a product of two sines/cosines to be linearised",
         "Apply the matching product-to-sum formula to write it as a sum or difference",
@@ -552,7 +552,7 @@
       "brief": "Combine the unit-circle definitions, the Pythagorean identities and the sum/difference, multiple-angle and product-sum formulas to prove identities and evaluate trigonometric expressions.",
       "sec": 4,
       "quote": "The basic results in this connection are called *trigonometric identities*.",
-      "explanation": "The chapter generalises the trigonometric ratios to functions of any real angle and builds the full toolkit of trigonometric identities. Everything rests on cos x and sin x as unit-circle coordinates, the fundamental identity sin^2 x + cos^2 x = 1 with its derived forms, and the cos(x +/- y) seed from which the sine, tangent, cotangent, cofunction, double-angle, triple-angle, sum-to-product and product-to-sum identities all follow. The overall skill is to choose and combine these identities - reducing angles by periodicity and allied-angle rules, fixing signs by quadrant - to evaluate non-standard angles and to prove or simplify trigonometric expressions.",
+      "explanation": "PART 1 — The toolkit: everything builds from sin/cos and cos(x +/- y).\nThe foundations are cos x, sin x as unit-circle coordinates, the identity sin^2 x + cos^2 x = 1 (with 1+tan^2=sec^2 etc.), and the cos(x +/- y) seed from which the sine, tangent, cofunction, double-angle, triple-angle, sum-to-product, and product-to-sum identities all follow.\n\nPART 2 — The skill: select and chain identities, fixing signs by quadrant.\nTo prove or evaluate, match the expression structure to an identity, reduce angles using periodicity and allied-angle (cofunction) rules, and fix signs by quadrant. Standard moves: convert sums to products to cancel factors, use double/triple-angle to collapse, apply sin^2+cos^2=1. Never treat trig functions as linear (sin(x+y) is NOT sin x + sin y).",
       "keyMoves": [
         "Select the identities that match the structure of the expression",
         "Reduce angles using periodicity, even-odd and allied-angle rules, fixing signs by quadrant",

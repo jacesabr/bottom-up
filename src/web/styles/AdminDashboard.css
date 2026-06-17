@@ -1,0 +1,42 @@
+.admin { max-width: 1100px; margin: 0 auto; }
+.admin-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.admin-head h1 { font-size: 1.25rem; font-weight: 800; }
+.admin-head button { margin-left: 8px; border: 1px solid var(--rule); background: #fff; border-radius: 8px; padding: 7px 12px; font: inherit; font-size: 0.85rem; cursor: pointer; }
+.admin-head button:hover { background: var(--bg); }
+
+.admin-login { max-width: 320px; margin: 80px auto; }
+.admin-login h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 14px; }
+.admin-login input { display: block; width: 100%; margin-bottom: 10px; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 9px; font: inherit; }
+.admin-login button { width: 100%; padding: 11px; background: var(--ink); color: #fff; border: none; border-radius: 9px; font: inherit; font-weight: 700; cursor: pointer; }
+
+.admin-err { background: #fdecea; border: 1px solid #f5c2bd; color: #a23028; padding: 8px 12px; border-radius: 8px; margin-bottom: 14px; font-size: 0.85rem; }
+
+.admin-kpis { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+.kpi { flex: 1 1 120px; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 14px; text-align: center; }
+.kpi-v { font-size: 1.5rem; font-weight: 800; }
+.kpi-l { font-size: 0.78rem; color: var(--dim); }
+
+.admin-card { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+.admin-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 10px; }
+.admin-card .hint { font-weight: 400; font-size: 0.78rem; color: var(--dim); }
+.admin-card table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.admin-card th, .admin-card td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+.admin-card th { color: var(--dim); font-weight: 700; }
+.admin-card .muted { color: var(--lock); }
+.mono { font-family: ui-monospace, monospace; font-size: 0.78rem; }
+button.link { background: none; border: none; color: var(--accent); cursor: pointer; font: inherit; font-weight: 600; padding: 0; }
+
+.admin-overlay { position: fixed; inset: 0; background: rgba(28,27,25,0.45); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 100; }
+.admin-transcript { position: relative; background: var(--card); border-radius: 14px; padding: 22px; max-width: 680px; width: 100%; max-height: 80vh; overflow: auto; }
+.admin-close { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--dim); }
+.admin-transcript h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 12px; }
+.tline { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--rule); }
+.ttype { flex: 0 0 110px; font-size: 0.7rem; font-weight: 700; color: var(--dim); text-transform: uppercase; }
+.ttext { font-size: 0.88rem; white-space: pre-wrap; }
+.t-tutor .ttext { color: var(--ink); }
+.t-learner_message .ttext, .t-learner .ttext { color: var(--blue); }
+.transcript-gates { margin-top: 14px; }
+.transcript-gates h4 { font-size: 0.85rem; font-weight: 800; margin-bottom: 6px; }
+.gline { font-size: 0.82rem; padding: 3px 0; }
+.gline.ok { color: var(--green); }
+.gline.no { color: #a23028; }

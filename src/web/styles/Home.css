@@ -1,0 +1,154 @@
+.home {
+  max-width: 760px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ---- Top bar ---- */
+.home-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.home-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-logo {
+  flex: 0 0 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.home-tag {
+  font-size: 0.82rem;
+  color: var(--dim);
+}
+
+.home-account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.home-hi { font-size: 0.85rem; color: var(--dim); }
+.home-login,
+.home-logout {
+  border: 1px solid var(--rule);
+  background: #fff;
+  border-radius: 9px;
+  padding: 8px 13px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.home-login { background: var(--accent); color: #fff; border-color: var(--accent); }
+.home-login:hover { background: #c24d18; }
+.home-logout:hover { background: var(--bg); }
+
+/* ---- Progress strip ---- */
+.prog-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.prog-loading { color: var(--dim); font-size: 0.9rem; padding: 8px 0; }
+
+.prog-card {
+  flex: 1 1 200px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 13px 15px;
+}
+
+.ring {
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ring-hole {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.prog-name { font-size: 0.9rem; font-weight: 700; }
+.prog-count { font-size: 0.78rem; color: var(--dim); }
+
+.home-cta {
+  background: var(--accent-soft);
+  border: 1px solid #f3d3c2;
+  color: #8a3d18;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 11px 14px;
+  border-radius: 10px;
+  margin-bottom: 22px;
+}
+
+/* ---- Course block (the full node layout) ---- */
+.course-block {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+  margin-bottom: 18px;
+}
+
+.course-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.course-head h2 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.course-chcount { font-weight: 600; color: var(--dim); font-size: 0.85rem; }
+.course-pct {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .home-top { flex-wrap: wrap; }
+}

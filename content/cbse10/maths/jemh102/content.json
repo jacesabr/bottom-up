@@ -467,7 +467,8 @@
         "Putting a negative on the pair-sum c/a"
       ],
       "prereqs": [
-        "cbse10:maths:jemh102:classify-polynomial-by-degree"
+        "cbse10:maths:jemh102:classify-polynomial-by-degree",
+        "cbse10:maths:jemh102:define-zero-of-polynomial"
       ],
       "sameConcept": [],
       "teachingInsights": []

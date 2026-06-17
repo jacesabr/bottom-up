@@ -7,8 +7,88 @@ import { LANGUAGES } from '../core/languages.js';
 import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
 import { computeChapterStatuses } from '../core/sequencer.js';
 import { listPapers, paperForClient, answerPaperQuestion, paperResult, paperState } from '../core/papers.js';
+import { registerUser, loginUser, AuthError } from '../core/auth.js';
 
 const router = express.Router();
+
+// The math courses shown on the home page (the only subject we surface for now). Each is an
+// exam+subject pair; `subject` differs per exam because the corpus is keyed differently.
+const MATH_COURSES = [
+  { key: 'cbse10:maths', exam: 'cbse10', subject: 'maths', title: 'CBSE 10 · Maths' },
+  { key: 'cbse12:mathematics', exam: 'cbse12', subject: 'mathematics', title: 'CBSE 12 · Maths' },
+  { key: 'jee:maths', exam: 'jee', subject: 'maths', title: 'JEE · Maths' },
+] as const;
+
+// ---- Auth (simple username/password; the returned user id becomes the client's learnerId) ----
+
+router.post('/auth/register', async (req, res) => {
+  try {
+    const { username, password } = req.body || {};
+    const user = await registerUser(String(username ?? ''), String(password ?? ''));
+    res.json({ user });
+  } catch (err) {
+    if (err instanceof AuthError) return res.status(400).json({ error: err.message });
+    console.error('register error:', err);
+    res.status(500).json({ error: 'Could not create account' });
+  }
+});
+
+router.post('/auth/login', async (req, res) => {
+  try {
+    const { username, password } = req.body || {};
+    const user = await loginUser(String(username ?? ''), String(password ?? ''));
+    res.json({ user });
+  } catch (err) {
+    if (err instanceof AuthError) return res.status(400).json({ error: err.message });
+    console.error('login error:', err);
+    res.status(500).json({ error: 'Could not log in' });
+  }
+});
+
+// Home page payload: every math course with this learner's per-course completion % AND the full
+// chapter-node grid (status per chapter). One call powers the whole landing page (stacked grids +
+// progress header). Counts are derived from the in-memory content cache; only the learner's passed
+// set hits the DB (1 query, reused across all courses).
+router.get('/learner/:learnerId/home', async (req, res) => {
+  try {
+    const { learnerId } = req.params;
+    const perfRows = await db.select().from(buNodePerformance).where(eq(buNodePerformance.learnerId, learnerId));
+    const passed = new Set(perfRows.filter((p) => p.status === 'passed').map((p) => p.conceptId));
+
+    const courses = await Promise.all(
+      MATH_COURSES.map(async (course) => {
+        const ordered = await getChaptersForSubject(`${course.exam}:${course.subject}`);
+        let total = 0;
+        let passedCount = 0;
+        let activeAssigned = false;
+        const chapters = await Promise.all(
+          ordered.map(async (ch, i) => {
+            const concepts = await getConceptsForChapter(ch.id);
+            const chTotal = concepts.length;
+            const chPassed = concepts.filter((c) => passed.has(c.id)).length;
+            total += chTotal;
+            passedCount += chPassed;
+            const complete = chTotal > 0 && chPassed === chTotal;
+            let status: 'complete' | 'active' | 'locked';
+            if (complete) status = 'complete';
+            else if (!activeAssigned) {
+              status = 'active';
+              activeAssigned = true;
+            } else status = 'locked';
+            return { id: ch.id, title: ch.title, index: i + 1, status };
+          })
+        );
+        const pct = total > 0 ? Math.round((passedCount / total) * 100) : 0;
+        return { ...course, passed: passedCount, total, pct, chapters };
+      })
+    );
+
+    res.json({ courses });
+  } catch (err) {
+    console.error('Error building home:', err);
+    res.status(500).json({ error: 'Failed to load home' });
+  }
+});
 
 // Supported teaching/voice languages (for the UI selector).
 router.get('/languages', (_req, res) => {

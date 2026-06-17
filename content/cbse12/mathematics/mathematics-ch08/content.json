@@ -15,7 +15,7 @@
       "brief": "Treat the area under a curve as built from thin vertical strips of area dA = y dx.",
       "sec": 2,
       "quote": "(area of the elementary strip)",
-      "explanation": "To find the area bounded by a curve y = f(x), the x-axis and the ordinates x = a and x = b, picture the region as composed of a large number of very thin vertical strips. An arbitrary strip of height y and width dx has elementary area dA = y dx (with y = f(x)). The total area is obtained by adding up (integrating) these elementary areas across the region. This strip idea is the foundation for every area computation in the chapter.",
+      "explanation": "PART 1 — Slicing the region into vertical strips.\nTo find the area enclosed by a curve y = f(x), the x-axis, and the vertical lines x = a and x = b, picture the region as built from a large number of very thin vertical strips. Each strip has height equal to the curve value y = f(x) at that x and a tiny width dx.\n\nPART 2 — Writing the elementary area dA = y dx.\nThe area of one such strip is dA = y dx, where y = f(x). This single expression is called the elementary area, and it is the building block for every area calculation in the chapter. Example: for y = x^2 between x = 0 and x = 1, a strip at position x has dA = x^2 dx.\n\nPART 3 — Summing strips by integration.\nAdding up all the elementary strips across the region from x = a to x = b gives the total area A = integral from a to b of y dx. Integration is precisely the continuous limit of this summation process.",
       "keyMoves": [
         "Slice the region into thin vertical strips of width dx",
         "Write the elementary area of a strip as dA = y dx with y = f(x)",
@@ -37,7 +37,7 @@
       "brief": "Compute area bounded by y = f(x), the x-axis and x = a, x = b as the integral of y dx from a to b.",
       "sec": 2,
       "quote": "the result of adding up the elementary areas of thin strips across the region",
-      "explanation": "The total area A of the region between the x-axis, the ordinates x = a and x = b, and the curve y = f(x) is the result of adding up the elementary areas of the thin strips across the region. Symbolically A = integral from a to b of dA = integral from a to b of y dx = integral from a to b of f(x) dx. So you integrate the curve's equation (solved for y) between the two x-limits.",
+      "explanation": "PART 1 — Setting up the integral.\nThe total area A of the region between the curve y = f(x), the x-axis, and the ordinates x = a and x = b is found by integrating the elementary strip areas: A = integral from a to b of y dx = integral from a to b of f(x) dx. You just substitute the curve equation for y and integrate between the two x-limits.\n\nPART 2 — Worked example: area under y = x from x = 0 to x = 2.\nHere f(x) = x, so A = integral from 0 to 2 of x dx = [x^2/2] from 0 to 2 = (4/2) - 0 = 2. This matches the triangle with base 2 and height 2, which has area (1/2)(2)(2) = 2, confirming the formula.\n\nPART 3 — Key check.\nAlways confirm that the curve lies above the x-axis (f(x) >= 0) on [a, b] before applying this formula directly; if the curve dips below, the integral is negative and you must handle the sign separately.",
       "keyMoves": [
         "Express y = f(x) for the curve",
         "Integrate y dx from x = a to x = b",
@@ -61,7 +61,7 @@
       "brief": "Compute area bounded by x = g(y), the y-axis and y = c, y = d as the integral of x dy from c to d.",
       "sec": 2,
       "quote": "The area A of the region bounded by the curve x = g(y), y-axis and the lines y = c, y = d is given by",
-      "explanation": "When it is convenient to integrate along the y-direction, the area A of the region bounded by the curve x = g(y), the y-axis and the lines y = c and y = d is given by A = integral from c to d of x dy = integral from c to d of g(y) dy. Here you use horizontal strips of width dy and height x. This is the mirror image of the x-axis case and is chosen when the curve is more naturally written as x = g(y).",
+      "explanation": "PART 1 — Switching to horizontal strips.\nWhen the boundary is more naturally written as x = g(y), use horizontal strips of width dy instead of vertical strips. Each strip has length x = g(y) and width dy, so its elementary area is dA = x dy = g(y) dy.\n\nPART 2 — The formula.\nThe total area of the region bounded by x = g(y), the y-axis, and the lines y = c and y = d is A = integral from c to d of x dy = integral from c to d of g(y) dy. This is the mirror image of the x-axis case with the roles of x and y swapped.\n\nPART 3 — Worked example: area bounded by x = y^2, y-axis, y = 0, y = 2.\nHere g(y) = y^2, so A = integral from 0 to 2 of y^2 dy = [y^3/3] from 0 to 2 = 8/3 - 0 = 8/3. Horizontal strips give this directly; vertical strips would require inverting the curve and splitting the region.",
       "keyMoves": [
         "Write the curve as x = g(y)",
         "Use horizontal strips of width dy",
@@ -85,7 +85,7 @@
       "brief": "When the curve dips below the x-axis the integral is negative; take its numerical (absolute) value as the area.",
       "sec": 2,
       "quote": "it is only the numerical value of the area which is taken into consideration.",
-      "explanation": "If the curve lies below the x-axis between x = a and x = b, then f(x) < 0 there and the definite integral comes out negative. Since area is a positive quantity, it is only the numerical value of the area which is taken into consideration - you take the absolute value of the negative integral. This matters whenever part of the region sits beneath the axis.",
+      "explanation": "PART 1 — Why the integral is negative below the axis.\nIf the curve y = f(x) lies below the x-axis on [a, b], then f(x) < 0 everywhere on that interval. Each elementary strip area dA = f(x) dx is therefore negative, and the definite integral integral from a to b of f(x) dx comes out as a negative number.\n\nPART 2 — Taking the numerical (absolute) value.\nSince area is always a positive quantity, it is only the numerical value of the area which is taken into consideration. You take the absolute value: area = |integral from a to b of f(x) dx|. Example: for y = x - 2 on [0, 2], the curve is below the x-axis; the integral = [x^2/2 - 2x] from 0 to 2 = (2 - 4) - 0 = -2, so the area = |-2| = 2.\n\nPART 3 — Practical check.\nBefore computing, sketch or test a point to confirm whether the curve is above or below the axis. A negative integral result is a signal to apply the absolute value, not an error in the calculation.",
       "keyMoves": [
         "Detect where the curve lies below the x-axis (f(x) < 0)",
         "Compute the (negative) integral there",
@@ -108,8 +108,8 @@
       "role": "intermediate",
       "brief": "When a curve is partly above and partly below the axis, add the absolute pieces: A = |A1| + A2.",
       "sec": 2,
-      "quote": "the area A bounded by the curve y = f(x), *x*-axis and the ordinates x = a and x = b is given by  $A = |A_1| + A_2$ .",
-      "explanation": "It often happens that some portion of the curve is above the x-axis and some is below. If A1 (below) is negative and A2 (above) is positive, the area A bounded by the curve y = f(x), the x-axis and the ordinates x = a and x = b is given by A = |A1| + A2. So you split the interval at the points where the curve crosses the axis, integrate over each piece, and add the absolute values - never just integrate straight across (which would cancel the pieces).",
+      "quote": "the area A bounded by the curve y = f(x), x-axis and the ordinates x = a and x = b is given by  A = |A1| + A2 .",
+      "explanation": "PART 1 — Splitting at the crossing point.\nWhen a curve y = f(x) crosses the x-axis at some point x = c between a and b, the curve is below the axis on [a, c] giving a negative integral A1, and above the axis on [c, b] giving a positive integral A2. You must split the interval at c and integrate each piece separately; integrating straight across lets the pieces cancel.\n\nPART 2 — The formula A = |A1| + A2.\nThe total bounded area is A = |A1| + A2, where A1 = integral from a to c of f(x) dx (negative) and A2 = integral from c to b of f(x) dx (positive). Taking |A1| converts the negative piece to a positive area before adding.\n\nPART 3 — Worked example: y = x - 1 from x = 0 to x = 2 (crosses axis at x = 1).\nA1 = integral from 0 to 1 of (x - 1) dx = [x^2/2 - x] from 0 to 1 = (1/2 - 1) - 0 = -1/2. A2 = integral from 1 to 2 of (x - 1) dx = [x^2/2 - x] from 1 to 2 = (2 - 2) - (1/2 - 1) = 0 - (-1/2) = 1/2. Total A = |-1/2| + 1/2 = 1/2 + 1/2 = 1.",
       "keyMoves": [
         "Find where the curve crosses the x-axis and split the interval there",
         "Integrate over each sub-interval separately",
@@ -133,7 +133,7 @@
       "brief": "Use symmetry and integration of sqrt(a^2 - x^2) to recover the circle's area pi a^2.",
       "sec": 2,
       "quote": "$$x^2 + y^2 = a^2$$",
-      "explanation": "For the circle x^2 + y^2 = a^2, solving gives y = +/- sqrt(a^2 - x^2). Using symmetry, the whole area is 4 times the first-quadrant area (where y is positive): A = 4 times the integral from 0 to a of sqrt(a^2 - x^2) dx. Evaluating the standard integral gives 4 times (a^2/2)(pi/2) = pi a^2, the familiar area of a circle - now derived by integration rather than quoted as a formula.",
+      "explanation": "PART 1 — Setting up using symmetry.\nFor the circle x^2 + y^2 = a^2 (centred at the origin, radius a), the upper half satisfies y = sqrt(a^2 - x^2) and the lower half y = -sqrt(a^2 - x^2). By the four-fold symmetry of the circle, the total area equals 4 times the first-quadrant area (where y >= 0 and x from 0 to a).\n\nPART 2 — Evaluating the integral.\nA = 4 times integral from 0 to a of sqrt(a^2 - x^2) dx. Using the standard result integral of sqrt(a^2 - x^2) dx = (x/2)sqrt(a^2 - x^2) + (a^2/2) arcsin(x/a) + C, evaluated from 0 to a: at x = a the expression gives (a^2/2)(pi/2) = pi*a^2/4; at x = 0 the expression gives 0. So the first-quadrant area is pi*a^2/4.\n\nPART 3 — Final result.\nA = 4 times (pi*a^2/4) = pi*a^2. This confirms the familiar formula using integration. For a = 3: area = pi(9) = 9*pi.",
       "keyMoves": [
         "Solve the circle equation for y = sqrt(a^2 - x^2) in the first quadrant",
         "Use symmetry: total area = 4 times the first-quadrant area",
@@ -157,7 +157,7 @@
       "brief": "Use symmetry and integration to get the area pi a b enclosed by an ellipse.",
       "sec": 2,
       "quote": "Find the area enclosed by the ellipse",
-      "explanation": "For the ellipse with equation x^2/a^2 + y^2/b^2 = 1, solving gives y = +/- (b/a) sqrt(a^2 - x^2). By the ellipse's symmetry about both axes, the total area is 4 times the first-quadrant region: A = 4 times the integral from 0 to a of (b/a) sqrt(a^2 - x^2) dx, which evaluates to pi a b. The method mirrors the circle but carries the factor b/a, and the circle is the special case a = b.",
+      "explanation": "PART 1 — Expressing y from the ellipse equation.\nFor the ellipse x^2/a^2 + y^2/b^2 = 1 (semi-axes a along x, b along y), solving gives y = (b/a)sqrt(a^2 - x^2) in the upper half. The ellipse has the same four-fold symmetry as the circle, so the total area = 4 times the first-quadrant area.\n\nPART 2 — Evaluating the integral.\nA = 4 times integral from 0 to a of (b/a)sqrt(a^2 - x^2) dx = (4b/a) times integral from 0 to a of sqrt(a^2 - x^2) dx. From the circle calculation, integral from 0 to a of sqrt(a^2 - x^2) dx = pi*a^2/4. Therefore A = (4b/a)(pi*a^2/4) = pi*a*b.\n\nPART 3 — Interpreting the result.\nThe area of the ellipse is pi*a*b. When a = b the ellipse becomes a circle and the formula correctly reduces to pi*a^2. For an ellipse with semi-axes a = 5 and b = 3: area = pi(5)(3) = 15*pi.",
       "keyMoves": [
         "Solve the ellipse equation for y in the first quadrant",
         "Use symmetry: total area = 4 times the first-quadrant area",
@@ -181,7 +181,7 @@
       "brief": "Set up and evaluate the definite integral(s) for the area of a region bounded by given curves, axes and lines.",
       "sec": 8,
       "quote": "the area under simple curves, area between lines and arcs of circles, parabolas and ellipses",
-      "explanation": "The chapter's goal is to find the area under simple curves, and the area between lines and arcs of circles, parabolas and ellipses (standard forms only). The general method: sketch the region; decide whether vertical strips (integrate y dx) or horizontal strips (integrate x dy) are simpler; split the interval where the curve crosses an axis or where two curves intersect; integrate each piece; and add the pieces (taking absolute values for parts below the axis) to get the total bounded area. This capstone draws together the strip idea, both orientations, the sign handling, and the standard circle/ellipse results.",
+      "explanation": "PART 1 — The general strategy.\nTo find the area of any region bounded by curves and/or lines: (1) sketch the region and identify every boundary; (2) find the intersection or crossing points that will serve as limits of integration; (3) decide whether vertical strips (integrate y dx along the x-axis) or horizontal strips (integrate x dy along the y-axis) are simpler.\n\nPART 2 — Handling sign and splitting.\nSplit the interval at every point where a curve crosses the x-axis or where two bounding curves swap their relative position. Integrate each piece separately and add their absolute values so that no area cancels. For the area between two curves y = f(x) (top) and y = g(x) (bottom), with f(x) >= g(x) on [a, b], the area = integral from a to b of (f(x) - g(x)) dx.\n\nPART 3 — Worked example: area between y = x^2 and y = x from x = 0 to x = 1.\nIntersection: x^2 = x gives x = 0 and x = 1. On [0, 1], x >= x^2 (top curve is y = x). Area = integral from 0 to 1 of (x - x^2) dx = [x^2/2 - x^3/3] from 0 to 1 = (1/2 - 1/3) - 0 = 3/6 - 2/6 = 1/6.",
       "keyMoves": [
         "Sketch the region and find intersection / crossing points for the limits",
         "Choose vertical (y dx) or horizontal (x dy) strips",

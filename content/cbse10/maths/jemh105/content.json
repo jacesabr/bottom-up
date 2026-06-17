@@ -14,7 +14,7 @@
       "brief": "Use the AP definition, the nth-term formula, and the sum formula together to answer term, count, and sum questions about real-world and pure-number lists.",
       "sec": 1,
       "quote": "In this chapter, we shall discuss one of these patterns in which succeeding terms are obtained by adding a fixed number to the preceding terms. We shall also see how to find their nth terms and the sum of n consecutive terms, and use this knowledge in solving some daily life problems.",
-      "explanation": "This is the chapter's top skill: given a situation, recognise/model it as an AP, extract a and d, then apply the right tool (nth term aₙ = a + (n−1)d or sum Sₙ = n/2[2a+(n−1)d]) to find the unknown. It composes every sub-skill below.",
+      "explanation": "PART 1 — Recognise/model as an AP and extract a and d.\nGiven a situation or list, first confirm it is an AP (constant difference between consecutive terms) and identify the first term a and common difference d. For word problems, the fixed step is d and the starting value is a.\n\nPART 2 — Choose the right tool: nth-term vs sum.\nFor a single term at position n, use a_n = a + (n-1)d. For the total of the first n terms, use S_n = n/2[2a + (n-1)d] (or n/2(a+l) when first and last terms are known). Picking the sum formula when only one term is asked (or vice versa) is the main error.",
       "keyMoves": [
         "Identify whether the list is an AP and find a and d",
         "Choose nth-term vs sum formula based on what is asked",
@@ -50,7 +50,7 @@
       "brief": "Recognise that an AP is a list where each term after the first is the previous term plus a fixed number d, the common difference.",
       "sec": 1,
       "quote": "So, an arithmetic progression is a list of numbers in which each term is obtained by adding a fixed number to the preceding term except the first term.",
-      "explanation": "The definitional skill: a list is an AP exactly when the gap between consecutive terms is constant. d can be positive, negative, or zero. This underlies the AP-test and every formula.",
+      "explanation": "PART 1 — An AP has a constant gap d between consecutive terms.\nA list is an AP exactly when each term after the first equals the previous term plus a fixed number d (the common difference): a_{k+1} = a_k + d. The gap between any two consecutive terms is the same throughout.\n\nPART 2 — d can be positive, negative, or zero.\nd > 0 gives an increasing AP (2, 5, 8, ...), d < 0 a decreasing one (10, 7, 4, ...), and d = 0 a constant list (3, 3, 3, ...). Crucially, AP means ADDING a fixed number — not multiplying (that would be a GP).",
       "keyMoves": [
         "State that succeeding term = preceding term + d",
         "Recognise d may be positive, negative, or zero"
@@ -71,7 +71,7 @@
       "brief": "Find the common difference by subtracting any term from the term that immediately follows it: d = a_{k+1} − a_k.",
       "sec": 1,
       "quote": "d = aₖ₊₁ – aₖ",
-      "explanation": "To get d, subtract the kth term from the (k+1)th term — always next-minus-previous, even when the next term is smaller (giving a negative d). E.g. Example 1: d = 1/2 − 3/2 = −1.",
+      "explanation": "PART 1 — d = (later term) - (earlier term), always next minus previous.\nTo find the common difference, subtract any term from the term immediately after it: d = a_{k+1} - a_k. The order matters: it is ALWAYS next-minus-previous, never previous-minus-next.\n\nPART 2 — Keep the sign even when the result is negative.\nIf the next term is smaller, d is negative — that is correct, not an error. Example: for 3/2, 1/2, ..., d = 1/2 - 3/2 = -1. Subtracting larger-from-smaller regardless of position would flip the sign and give the wrong d.",
       "keyMoves": [
         "Pick two consecutive terms",
         "Subtract the earlier from the later: later − earlier",
@@ -96,7 +96,7 @@
       "brief": "Check that a₂−a₁, a₃−a₂, a₄−a₃, … are all equal; if any differs, the list is not an AP.",
       "sec": 1,
       "quote": "As a₂ – a₁ ≠ a₃ – a₂, the given list of numbers does not form an AP.",
-      "explanation": "Compute several consecutive differences. If aₖ₊₁ − aₖ is the same for every k, it is an AP with that common difference; if even one differs, it is not. Demonstrated in Example 2 across four lists.",
+      "explanation": "PART 1 — Compute several consecutive differences, not just one.\nTo test if a list is an AP, compute a2-a1, a3-a2, a4-a3, and so on (at least three differences). If they are ALL equal, the list is an AP with that common difference.\n\nPART 2 — One unequal difference means it is NOT an AP.\nIf even a single difference differs from the others, the list is not an AP. Checking only the first difference is risky — e.g. 1, 1, 1, 2, 2, 2 has a first difference of 0 but is not an AP. Always verify several differences match.",
       "keyMoves": [
         "Compute at least the first three consecutive differences",
         "Compare them for equality",
@@ -121,7 +121,7 @@
       "brief": "Once d is known, generate subsequent terms by repeatedly adding d to the last term.",
       "sec": 1,
       "quote": "The next two terms are: 22 + 6 = 28 and 28 + 6 = 34.",
-      "explanation": "After confirming the list is an AP and finding d, the next term is last-term + d, and the one after is that + d again. Used in Example 2(i),(ii).",
+      "explanation": "PART 1 — Add d to the last known term to get the next term.\nOnce you know d, extend the AP by adding d to the most recent term: next = last + d. Then the one after is that result + d again, and so on.\n\nPART 2 — Continue from the last term, with the correct sign of d.\nAlways add to the LAST term, not restart from the first. Watch the sign of d: if d is negative, the terms decrease. Example: AP 4, 10, 16, 22 with d=6; next terms are 22+6=28 and 28+6=34.",
       "keyMoves": [
         "Take the last known term",
         "Add d to get the next term",
@@ -146,7 +146,7 @@
       "brief": "Given the first term a and common difference d, write out the AP a, a+d, a+2d, a+3d, ….",
       "sec": 1,
       "quote": "if the first term a is 6 and the common difference d is 3, then the AP is\n6, 9, 12, 15, . . .",
-      "explanation": "The general form a, a+d, a+2d, … lets you build the whole list from just a and d. The minimum information needed to know an AP is both a and d together.",
+      "explanation": "PART 1 — Build the list as a, a+d, a+2d, a+3d, ...\nGiven the first term a and common difference d, write the AP by repeatedly adding d: a, a+d, a+2d, a+3d, and so on. Example: a=6, d=3 gives 6, 9, 12, 15, ...\n\nPART 2 — You need BOTH a and d.\nKnowing a alone or d alone does not determine the AP — both are required. The kth term is a + (k-1)d. Add d successively to the correct (most recent) term, not to a each time.",
       "keyMoves": [
         "Write a as the first term",
         "Add d successively to produce a+d, a+2d, …"
@@ -170,7 +170,7 @@
       "brief": "Read off a as the first number in the list.",
       "sec": 1,
       "quote": "Since a is the first term, it can easily be written.",
-      "explanation": "The first term a is simply the first entry of the list. This is a basic but independently-required move feeding d-computation and both formulas (e.g. Example 1: a = 3/2).",
+      "explanation": "PART 1 — a is the first entry of the list.\nThe first term a is simply the first number in the AP. Example: in 3/2, 1/2, -1/2, ..., a = 3/2. This basic value feeds the d-computation and both the nth-term and sum formulas.\n\nPART 2 — Mind reversed-order problems.\nDo not mistake the second term for a. In 'kth term from the last' problems where you reverse the AP, the new first term a becomes the original LAST term — so a can change depending on the direction you read the list.",
       "keyMoves": [
         "Locate the first number in the given list",
         "Record it as a"
@@ -191,7 +191,7 @@
       "brief": "Compute any term of an AP by substituting a, n, and d into aₙ = a + (n−1)d.",
       "sec": 2,
       "quote": "So, the nth term aₙ of the AP with first term a and common difference d is given by aₙ = a + (n – 1) d.",
-      "explanation": "The central formula for the position-n term. Example 3: a=2, d=5, n=10 gives a₁₀ = 2 + 9×5 = 47. Note the multiplier is (n−1), not n.",
+      "explanation": "PART 1 — a_n = a + (n-1)d, with multiplier (n-1).\nTo find the term at position n, substitute a, d, and n into a_n = a + (n-1)d. The multiplier on d is (n-1), NOT n — because the first term already uses zero d's. Example: a=2, d=5, n=10 gives a_10 = 2 + 9(5) = 47.\n\nPART 2 — Substitute carefully, keeping a and d distinct.\nIdentify which value is a (first term) and which is d (common difference) before substituting. A frequent error is using n instead of (n-1), which overshoots by one d.",
       "keyMoves": [
         "Identify a, d, and n",
         "Substitute into a + (n−1)d",
@@ -217,7 +217,7 @@
       "brief": "Set aₙ equal to the target value and solve a + (n−1)d = value for n.",
       "sec": 2,
       "quote": "we have – 81 = 21 + (n – 1)(– 3)",
-      "explanation": "When asked 'which term is X', plug X for aₙ and solve the resulting linear equation for n. Example 4: −81 = 21 + (n−1)(−3) → n = 35.",
+      "explanation": "PART 1 — Set a_n equal to the target value and solve for n.\nTo find WHICH term equals a given value X, substitute X for a_n in a + (n-1)d = X and solve the linear equation for n. Example: -81 = 21 + (n-1)(-3) gives -102 = (n-1)(-3), so n-1 = 34, n = 35.\n\nPART 2 — Solve for n, not for a_n, and watch sign of d.\nThe unknown is the position n, so isolate n. When d is negative, be careful with signs while transposing. The answer n is a position number (e.g. 'the 35th term').",
       "keyMoves": [
         "Set a + (n−1)d equal to the target",
         "Solve the linear equation for n",
@@ -242,7 +242,7 @@
       "brief": "A number is a term of the AP only if solving a + (n−1)d = value yields a positive integer n.",
       "sec": 2,
       "quote": "But n should be a positive integer (Why?). So, 301 is not a term of the given list of numbers.",
-      "explanation": "Example 6: solving 301 = 5 + (n−1)6 gives n = 151/3, not an integer, so 301 is not in the list. The membership decision hinges on whether n comes out as a positive whole number.",
+      "explanation": "PART 1 — Solve a + (n-1)d = value, then test whether n is a positive integer.\nTo decide if a number is a term of the AP, solve for n as usual. The number IS a term only if n comes out as a positive whole number.\n\nPART 2 — A fractional or non-positive n means NOT a member.\nExample: 301 = 5 + (n-1)6 gives n = 151/3, which is not an integer — so 301 is NOT a term. Concluding membership from any solved n (even a fraction) is the error; n must be a positive integer.",
       "keyMoves": [
         "Solve for n as in find-which-term",
         "Check whether n is a positive integer",
@@ -267,7 +267,7 @@
       "brief": "Write each known term as a + (k−1)d, then solve the pair of simultaneous equations for a and d.",
       "sec": 2,
       "quote": "a₃ = a + (3 – 1) d = a + 2d = 5   (1)\nand a₇ = a + (7 – 1) d = a + 6d = 9   (2)",
-      "explanation": "When two terms are known, each gives one linear equation in a and d; solving the system yields both. Example 5: a+2d=5, a+6d=9 → a=3, d=1. Also Example 16 (a₃=600, a₇=700 → a=550, d=25).",
+      "explanation": "PART 1 — Write each known term as a + (k-1)d.\nWhen two terms are given, express each as an equation: the kth term is a + (k-1)d. Example: a3 = 5 gives a + 2d = 5; a7 = 9 gives a + 6d = 9. Use (k-1), not k.\n\nPART 2 — Subtract to eliminate a, find d, then back-substitute.\nSubtract the two equations to cancel a: (a+6d) - (a+2d) = 9 - 5 gives 4d = 4, d = 1. Then a = 5 - 2(1) = 3. So a = 3, d = 1. The main errors are writing a + kd instead of a + (k-1)d, and arithmetic slips when subtracting.",
       "keyMoves": [
         "Express each known term via a + (k−1)d",
         "Subtract the equations to eliminate a and find d",
@@ -292,7 +292,7 @@
       "brief": "Treat the last term as aₙ = l, solve l = a + (n−1)d for n to get the term count.",
       "sec": 2,
       "quote": "i.e., n = 29 + 1 = 30\nSo, there are 30 two-digit numbers divisible by 3.",
-      "explanation": "Given first term, common difference, and last term, the count n comes from l = a + (n−1)d. Example 7: 99 = 12 + (n−1)3 → n = 30. Also Example 10 (flower-bed rows = 10).",
+      "explanation": "PART 1 — Treat the last term as a_n = l and solve l = a + (n-1)d for n.\nTo count the terms of a finite AP, set the last term l equal to a + (n-1)d and solve for n. Example: for 12, 15, ..., 99 with d=3, 99 = 12 + (n-1)(3) gives 87 = 3(n-1), n-1 = 29, n = 30.\n\nPART 2 — Remember the +1 (off-by-one).\nAfter isolating n-1, ADD 1 to get n. Forgetting this +1 undercounts by one. The count n is the number of terms (here 30), not n-1 (which is 29).",
       "keyMoves": [
         "Identify a, d, and the last term l",
         "Solve l = a + (n−1)d for n",
@@ -317,7 +317,7 @@
       "brief": "Either count total terms then convert to a position from the start, or reverse the AP (new a = l, new d = −d) and take the kth term.",
       "sec": 2,
       "quote": "If we write the given AP in the reverse order, then a = – 62 and d = 3 (Why?)",
-      "explanation": "Example 8: the 11th term from the last of 10,7,4,…,−62. Method A: 25 terms total, so 11th-from-last = 15th-from-start = −32. Method B: reverse to a=−62, d=3, then a₁₁ = −32.",
+      "explanation": "PART 1 — Method A: convert to a position from the start.\nFirst count the total terms n. The kth term from the last is the (n - k + 1)th term from the start. Example: 10, 7, 4, ..., -62 has 25 terms, so the 11th from the last is the (25 - 11 + 1) = 15th from the start = -32.\n\nPART 2 — Method B: reverse the AP.\nReverse the list so the new first term a = l (the original last term) and the new common difference is -d (negated). Then the kth term from the original last is just the kth term of the reversed AP. Example: reversed a = -62, d = +3, so a_11 = -62 + 10(3) = -32. Watch the off-by-one and the sign of d when reversing.",
       "keyMoves": [
         "Either count n then compute position (n − k + 1) from the start",
         "Or reverse the AP: a becomes l, d becomes −d, then apply nth-term"
@@ -341,7 +341,7 @@
       "brief": "Translate a uniformly-changing quantity (salary, interest, plant rows, production) into an AP and extract a and d.",
       "sec": 2,
       "quote": "It is an AP as the difference between the consecutive terms in the list is 80, i.e., d = 80. Also, a = 80.",
-      "explanation": "Word problems where a quantity changes by a fixed amount each step form an AP. Example 9 (simple interest 80,160,240,…), Example 10 (rose plants), Example 16 (TV production). The skill is setting up a and d from the words before computing.",
+      "explanation": "PART 1 — A fixed change per step signals an AP; extract a and d.\nWhen a quantity changes by the SAME amount each step, it forms an AP. Identify the starting value as a and the repeated fixed change as d. Example: simple interest growing by Rs 80 each year is an AP with d = 80, a = 80.\n\nPART 2 — Map the question onto a_n or S_n, and beware of GP traps.\nOnce a and d are set, use a_n for a single term and S_n for a total. Caution: only ADDITIVE (fixed-amount) changes are APs — compound interest or doubling is MULTIPLICATIVE (a GP), not an AP. Label the first term carefully.",
       "keyMoves": [
         "Identify the repeating fixed change as d",
         "Identify the starting value as a",
@@ -367,7 +367,7 @@
       "brief": "When the nth term is given as an expression in n, generate the first few terms to read off a and confirm constant d.",
       "sec": 3,
       "quote": "List of numbers becomes 5, 7, 9, 11, . . .\nHere, 7 – 5 = 9 – 7 = 11 – 9 = 2 and so on.",
-      "explanation": "Example 15: aₙ = 3 + 2n gives a₁=5, a₂=7, a₃=9, so a=5 and d=2. A linear formula in n always yields an AP whose d is the coefficient of n. This feeds the sum formula.",
+      "explanation": "PART 1 — Substitute n = 1, 2, 3 into the given formula to list terms.\nWhen the nth term is given as a formula in n, generate the first few terms by substituting n = 1, 2, 3. Example: a_n = 3 + 2n gives a_1 = 5, a_2 = 7, a_3 = 9.\n\nPART 2 — Read a from a_1 and confirm constant d.\nThe first term a is a_1 (compute it; do NOT just read the constant term). Confirm the differences are equal to get d. For a LINEAR formula a_n = pn + q, the common difference d is the coefficient of n (here d = 2), and a_1 = p + q (here 5). A non-linear formula need not give an AP.",
       "keyMoves": [
         "Substitute n=1,2,3 into the given formula",
         "Read off a from a₁",
@@ -392,7 +392,7 @@
       "brief": "Find the sum of the first n terms by substituting a, n, d into Sₙ = n/2[2a + (n−1)d].",
       "sec": 3,
       "quote": "So, the sum of the first n terms of an AP is given by\nS = n/2 [2a + (n – 1) d]",
-      "explanation": "The primary sum formula. Example 11: a=8, d=−5, n=22 gives S = 11(16−105) = −979. Used whenever a, d, and n are the known quantities.",
+      "explanation": "PART 1 — S_n = n/2 [2a + (n-1)d], used when a, d, n are known.\nThe sum of the first n terms is S_n = n/2 [2a + (n-1)d]. Substitute the first term a, common difference d, and number of terms n. Example: a=8, d=-5, n=22 gives S = 22/2 [16 + 21(-5)] = 11(16 - 105) = 11(-89) = -979.\n\nPART 2 — Keep the n/2 factor and use (n-1).\nTwo common slips: dropping the leading n/2, and using n instead of (n-1) inside the bracket. Simplify the bracket carefully with signs (a negative d makes the bracket smaller).",
       "keyMoves": [
         "Identify a, d, n",
         "Substitute into n/2[2a+(n−1)d]",
@@ -418,7 +418,7 @@
       "brief": "When the first and last terms are known, use Sₙ = n/2(a + l) to find the sum.",
       "sec": 3,
       "quote": "S = n/2 (a + l)",
-      "explanation": "This form avoids needing d. Example 14(i): sum of first 1000 integers = 1000/2 (1+1000) = 500500. Useful when a and l are given but d is not.",
+      "explanation": "PART 1 — S_n = n/2 (a + l), using first term a and last term l.\nWhen you know the first term a, the last term l, and the number of terms n, the sum is S_n = n/2 (a + l). This avoids needing the common difference d. Example: sum of the first 1000 positive integers = 1000/2 (1 + 1000) = 500 * 1001 = 500500.\n\nPART 2 — Use this form only when the last term is known.\nThis is the right formula when a and l are given but d is not. Do not confuse l (the last term) with d (the common difference). If the last term is unknown, use S_n = n/2[2a + (n-1)d] instead.",
       "keyMoves": [
         "Identify a (first), l (last), and n",
         "Substitute into n/2(a+l)"
@@ -442,7 +442,7 @@
       "brief": "Set Sₙ = n/2[2a+(n−1)d] equal to the target sum and solve the resulting quadratic for n.",
       "sec": 3,
       "quote": "or n² – 17n + 52 = 0\nor (n – 4)(n – 13) = 0\nor n = 4 or 13",
-      "explanation": "Example 13: 78 = n/2[48+(n−1)(−3)] becomes n²−17n+52=0, giving n=4 or 13 (both admissible). The sum equation in n is generally quadratic, so factor and accept positive-integer roots.",
+      "explanation": "PART 1 — Set S_n equal to the target sum and rearrange to a quadratic in n.\nWhen the sum is given, set n/2[2a + (n-1)d] equal to the target and simplify. Because of the (n-1) and the n/2, this becomes a QUADRATIC equation in n. Example: 78 = n/2[48 + (n-1)(-3)] simplifies to n^2 - 17n + 52 = 0.\n\nPART 2 — Factor and keep positive-integer roots (both may be valid).\nFactor the quadratic: (n-4)(n-13) = 0, so n = 4 or n = 13. Both are positive integers, so BOTH are admissible answers here. Discard only negative or fractional roots; do not throw away a valid second root.",
       "keyMoves": [
         "Set the sum formula equal to the target",
         "Rearrange to a quadratic in n",
@@ -467,7 +467,7 @@
       "brief": "Use a known Sₙ together with the sum formula to solve for the missing a, d, or term.",
       "sec": 3,
       "quote": "so, 1050 = 14/2 [20 + 13d] = 140 + 91d\ni.e., 910 = 91d",
-      "explanation": "Example 12: S₁₄=1050, a=10 → solve for d=10, then find a₂₀=200. Knowing any three of S, a, d, n lets you find the fourth and then any term.",
+      "explanation": "PART 1 — Plug the known sum into the formula and solve for the unknown.\nGiven a known S_n along with some of a, d, n, substitute into S_n = n/2[2a + (n-1)d] and solve the resulting equation for the missing quantity (often d). Example: S_14 = 1050, a = 10: 1050 = 14/2[20 + 13d] = 140 + 91d, so 910 = 91d, d = 10.\n\nPART 2 — Use the result to find a requested term.\nKnowing any three of S, a, d, n lets you find the fourth; then use the nth-term formula for any term. Example: with a=10, d=10, a_20 = 10 + 19(10) = 200. Do not stop at d if a further term is asked.",
       "keyMoves": [
         "Plug known values into the sum formula",
         "Solve the linear equation for the unknown (often d)",
@@ -493,7 +493,7 @@
       "brief": "Isolate the unknown by transposing and dividing to solve equations like −105 = −3n.",
       "sec": 2,
       "quote": "– 105 = – 3n\nSo, n = 35",
-      "explanation": "Generic numeracy reused throughout: rearranging a + (n−1)d = value or sum equations down to the unknown. Appears in nearly every worked example.",
+      "explanation": "PART 1 — Collect the unknown on one side, constants on the other.\nGather all terms with the unknown on one side and all constants on the other by transposing (flipping signs across the equals sign). Example: -105 = -3n already has the unknown isolated as a term.\n\nPART 2 — Divide by the coefficient, tracking signs.\nDivide both sides by the coefficient of the unknown. Example: -105 = -3n gives n = -105/-3 = 35. Watch signs when dividing by a negative coefficient. This generic algebra is reused throughout the AP formulas.",
       "keyMoves": [
         "Collect the unknown on one side",
         "Divide by its coefficient",
@@ -517,7 +517,7 @@
       "brief": "Eliminate one variable from two linear equations to find both unknowns.",
       "sec": 2,
       "quote": "Solving the pair of equations (1) and (2), we get\na = 3, d = 1",
-      "explanation": "Generic algebra reused when two terms of an AP give two equations in a and d (Examples 5, 16). Subtract to eliminate a, solve for d, back-substitute.",
+      "explanation": "PART 1 — Subtract the two equations to eliminate one variable.\nWhen two terms of an AP give two equations in a and d, align them and SUBTRACT to cancel a (which has coefficient 1 in both). Example: a + 6d = 9 minus a + 2d = 5 gives 4d = 4, so d = 1.\n\nPART 2 — Back-substitute for the other variable.\nPut the found value back into either original equation to get the second unknown. With d = 1, a + 2(1) = 5 gives a = 3. The common errors are adding instead of subtracting, and substituting into the wrong equation.",
       "keyMoves": [
         "Align the two equations",
         "Subtract to eliminate one variable",
@@ -541,7 +541,7 @@
       "brief": "Express n²+bn+c as (n−p)(n−q)=0 to find the roots.",
       "sec": 3,
       "quote": "or (n – 4)(n – 13) = 0",
-      "explanation": "Generic skill reused when a sum condition produces a quadratic (Example 13). Find two numbers multiplying to c and summing to −b, then read off roots.",
+      "explanation": "PART 1 — Find a factor pair of c that sums to the middle coefficient.\nFor n^2 + bn + c = 0, find two integers p and q such that p*q = c and p + q = -b (the negation of b). Example: n^2 - 17n + 52 = 0 needs p*q = 52 and p + q = 17; the pair is 4 and 13.\n\nPART 2 — Write the product of two binomials and read off the roots.\nOnce p and q are found, write n^2 - 17n + 52 = (n - 4)(n - 13) = 0, then set each factor to zero: n = 4 or n = 13. Keep both roots if both are positive integers; discard only negative or fractional solutions.",
       "keyMoves": [
         "Find factor pair of the constant summing to the middle coefficient",
         "Write as product of two binomials",

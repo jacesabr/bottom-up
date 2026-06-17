@@ -144,7 +144,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch02:relation",
-        "jee:maths:maths-ch02:count-cartesian-product"
+        "jee:maths:maths-ch02:count-cartesian-product",
+        "jee:maths:maths-ch01:count-subsets-and-power-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -168,7 +169,8 @@
         "Accepting a relation as a function when some element of A has no image"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:relation"
+        "jee:maths:maths-ch02:relation",
+        "jee:maths:maths-ch02:domain-range-codomain"
       ],
       "sameConcept": [],
       "teachingInsights": []

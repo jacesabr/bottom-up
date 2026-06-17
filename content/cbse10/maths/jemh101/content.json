@@ -180,7 +180,8 @@
         "Multiplying HCF and LCM instead of dividing when solving for the unknown"
       ],
       "prereqs": [
-        "cbse10:maths:jemh101:compute-hcf-prime-factorisation"
+        "cbse10:maths:jemh101:compute-hcf-prime-factorisation",
+        "cbse10:maths:jemh101:compute-lcm-prime-factorisation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -253,7 +254,8 @@
         "Failing to isolate the relation n·b² = a² before invoking the lemma"
       ],
       "prereqs": [
-        "cbse10:maths:jemh101:interpret-divides-relation"
+        "cbse10:maths:jemh101:interpret-divides-relation",
+        "cbse10:maths:jemh101:set-up-contradiction-rational-assumption"
       ],
       "sameConcept": [],
       "teachingInsights": []

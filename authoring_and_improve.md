@@ -40,6 +40,48 @@ math exam in the corpus (cbse10, cbse12, jee).
 5. **Always `--skip-authored` when re-running or batching a chapter.** Without it the tool does a clean-slate
    re-author (deletes + rewrites existing authored gates) — intended only when you deliberately force-rewrite
    one node.
+6. **§A applies to EVERY authoring path — no exemptions.** The prereq-sufficiency sweep (#1) is mandatory
+   whether a node is authored by `generate-gates.ts`, by a Claude Code session by hand, or by a Sonnet
+   sub-agent. **A node authored without its §A sweep is incomplete and goes on the prereq-sweep backlog (§G),
+   even if its gates are correct.** Sub-agents/in-session authoring MUST inventory load-bearing terms, prove
+   each is taught upstream, and propose any needed bridge node for approval *before* writing it (§A Step 4).
+7. **★ MANDATORY Phase-2 research+improve pass before the corpus is "done" (do NOT skip — recorded so it
+   cannot be quietly dropped).** Authoring is explicitly **two-phase**, by sanctioned decision (2026-06-17):
+   - **Phase 1 (completeness, in progress):** every node gets correct, math-verified, NCERT-*content*-grounded
+     5-gate sets + the §A prereq sweep. Speed-justified shortcut: Phase 1 may skip fresh **web research** and
+     per-gate `source` provenance (the in-session/sub-agent path has `source = NULL`). High-quality completeness
+     is the Phase-1 win.
+   - **Phase 2 (research + foundational deepening, REQUIRED, not optional):** once the corpus is complete, do a
+     full re-pass over EVERY node that did Phase-1-only authoring: (a) read the chapter's NCERT OCR
+     `source/*.txt` (foundational grounding) and Web-research authoritative exam/question-bank sources
+     (Claude Code WebSearch/WebFetch is fine — no Firecrawl/API needed), (b) improve content + gates against
+     that evidence, (c) **populate `source` on every gate**, and (d) clear the §A prereq-sweep backlog for any
+     node that skipped it. **The corpus is NOT "done" until Phase 2 has run on all Phase-1 nodes.** Track the
+     Phase-1-only chapters in §G so Phase 2 has a worklist.
+   - **Phase 2 is DEFERRED on purpose (decision 2026-06-17): spend NO compute on it now.** Phase 2 is simply
+     **a future full re-run of this `authoring_and_improve` process over the entire corpus** — it can be run
+     anytime later. During Phase 1 do not do any web research or source-backfill; just keep completing nodes.
+
+---
+
+## ⚠⚠ HARD RULES — model & no-API (these OVERRIDE the §pipeline / §E text below)
+
+> Added 2026-06-17 by explicit, repeated user instruction. Where these conflict with older text in this file
+> (which still documents the `generate-gates.ts --model` pipeline), **these win.**
+
+**HR-1 — Claude Code LOCAL work ONLY; NEVER call an external API for authoring.** All authoring happens inside
+Claude Code: in-session reasoning + **Sonnet sub-agents** (the Agent tool, `model: sonnet`) writing gates
+straight to Neon via the Neon MCP and editing `content.json` with local file tools. **Do NOT call the Anthropic
+API, `generate-gates.ts` / `claudeAuthor()` (they spend `ANTHROPIC_API_KEY`), Firecrawl, or any other external
+AI/research API for authoring** — those credits are reserved for the live product, never for bulk authoring
+(global memory `feedback_no-api-for-ai`). `tools/load-content.ts` (local toposort/upsert) and the Neon MCP are
+fine — they are not AI/API spend.
+
+**HR-2 — Author on SONNET; never burn OPUS on bulk.** Generation of explanations + gates runs on **Sonnet
+sub-agents**. The orchestrating **Opus** session must **NOT** do massive authoring/processing itself (it burns
+Opus usage) — Opus **orchestrates + AUDITS only** (read every gate, recompute arithmetic, run/approve the §A
+sweep, fix issues). Opus is sanctioned for the verify/audit pass, **not** the batch authoring. **Haiku is still
+forbidden for authoring** (bad arithmetic — constraint #2). So: **Sonnet authors, Opus audits, Haiku never.**
 
 ---
 
@@ -400,6 +442,29 @@ concept (in DB)
   expression (not a clean integer), grading falls to LLM-equivalence rather than the integer CAS path — prefer
   a clean exact value, or make the item `written`.
 
+> ### ⛔ GATE ENCODING — EXACT SHAPES THE LIVE GRADERS DEPEND ON (do NOT drift)
+> Verified against `src/core/teach-loop.ts` + `src/web/components/NodeView.tsx` (2026-06-17). When authoring
+> gates by hand / via sub-agent in raw SQL (not through `upsertGate`), you MUST reproduce these EXACTLY, or the
+> gate renders `[object Object]` and never grades correct in the app:
+>
+> - **`mcq.expected`** = `{"kind":"mcq","correct":"<FULL TEXT of the winning option>","options":["<full text A>","<full text B>","<full text C>","<full text D>"]}`.
+>   `options` is an **ARRAY OF PLAIN STRINGS** (the full option text). `correct` is the **EXACT FULL STRING** of
+>   the winning option — it must be byte-identical to one element of `options`. **NEVER** use `[{"key","text"}]`
+>   objects, and **NEVER** make `correct` a letter ("A"/"B"). The frontend does `options.map(o => radio value=o)`
+>   and the grader does `norm(answer) === norm(expected.correct)`; both assume string === option string.
+> - **`equation.expected`** = `{"kind":"symbolic","equivalentTo":"<clean integer if possible>","ideal":"<exact answer>"}`
+>   AND set the **`ideal_answer` column** to the same exact answer (the CAS/LLM grader reads the COLUMN, not the
+>   jsonb, on the non-integer path).
+> - **`explain.expected`** = `{"kind":"written","ideal":"<model answer>","rubric":"<criteria>"}` AND set the
+>   **`rubric` column** (and ideally `ideal_answer` column) — `gradeWritten` reads the COLUMNS, not the jsonb.
+> - **`sketch1`/`sketch2`.expected** = `{"kind":"sketch","ideal":"<what to draw>","rubric":"<criteria>"}` AND set
+>   BOTH the **`rubric` and `ideal_answer` columns** — `gradeSketch` (vision) reads the COLUMNS; null columns
+>   silently degrade to a generic "is this a correct labelled diagram" rubric.
+>
+> Self-check after a chapter: every `mcq` row must satisfy `jsonb_typeof(expected->'options')='array'` AND
+> `jsonb_typeof(expected->'options'->0)='string'` AND `expected->>'correct'` ∈ the options array; every
+> `sketch`/`explain` row must have a non-null `rubric` column. (Diagnostic SQL in §G.)
+
 **`generate-gates.ts` reads concepts from the DB**, so load the corpus first:
 ```bash
 node_modules/.bin/tsx tools/load-content.ts            # every exam/subject under content/
@@ -572,24 +637,119 @@ Counts below are live as of **2026-06-17** (DB query). ✅ = every node 5-gate a
 | `jemh102` | cbse10 | 21 | 21 | 2026-06-17 | ✅ Polynomials — full |
 | `jemh103` | cbse10 | 21 | 21 | 2026-06-17 | ✅ Linear Equations (pair) — full |
 | `jemh104` | cbse10 | 19 | 19 | 2026-06-17 | ✅ Quadratic Equations — full (hand, 5-gate) |
-| `jemh105` | cbse10 | 20 | 22 | 2026-06-17 | Arithmetic Progressions — IN PROGRESS (2 left: solve-simultaneous-equations, factor-quadratic) |
+| `jemh105` | cbse10 | 22 | 22 | 2026-06-17 | ✅ Arithmetic Progressions — full (hand, 5-gate) |
+| `jemh106` | cbse10 | 22 | 22 | 2026-06-17 | ✅ Triangles/Similarity — full (Sonnet sub-agent authored, Opus-audited; 1 MCQ defect fixed; §A: no bridges) |
+| `jemh107` | cbse10 | 22 | 22 | 2026-06-17 | ✅ Coordinate Geometry — full (Sonnet authored, Opus-audited 44/44; 1 MCQ tightened; §A: no bridges) |
+| `jemh108` | cbse10 | 11 | 11 | 2026-06-17 | ✅ Introduction to Trigonometry — full (Sonnet authored, Opus-audited 22/22 clean; §A: no bridges) |
+| `jemh109` | cbse10 | 19 | 19 | 2026-06-17 | ✅ Applications of Trigonometry — full (Sonnet authored, Opus-audited 38/38 clean; §A: no bridges) |
+| `jemh110` | cbse10 | 20 | 20 | 2026-06-17 | ✅ Circles — full (Sonnet authored, Opus-audited 40/40 clean; §A: no bridges; mcq encoding fixed) |
+| `jemh111` | cbse10 | 13 | 13 | 2026-06-17 | ✅ Areas Related to Circles — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 26/26 clean; §A: no bridges) |
+| `jemh112` | cbse10 | 24 | 24 | 2026-06-17 | ✅ Surface Areas & Volumes — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 48/48 clean; combination-TSA follows NCERT sum-of-CSA convention; §A: no bridges) |
+| `jemh113` | cbse10 | 23 | 23 | 2026-06-17 | ✅ Statistics — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 46/46 clean incl. all grouped-mean/median/mode formulas; §A: no bridges) |
+| `jemh114` | cbse10 | 16 | 16 | 2026-06-17 | ✅ Probability — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 32/32; agent self-caught+fixed 3 equal-value-fraction MCQs, verified; §A: no bridges). cbse10 COMPLETE (jemh101-114). |
 | `mathematics-ch01` | cbse12 | 14 | 14 | 2026-06-17 | ✅ Relations & Functions — full |
 | `mathematics-ch02` | cbse12 | 13 | 13 | 2026-06-17 | ✅ Inverse Trig Functions — full |
 | `mathematics-ch03` | cbse12 | 16 | 16 | 2026-06-17 | ✅ Matrices — full |
 | `mathematics-ch04` | cbse12 | 13 | 13 | 2026-06-17 | ✅ Determinants — full (hand, 5-gate) |
 | `mathematics-ch05` | cbse12 | 16 | 16 | 2026-06-17 | ✅ Continuity & Differentiability — full (hand, 5-gate) |
 | `mathematics-ch06` | cbse12 | 12 | 12 | 2026-06-17 | ✅ Application of Derivatives — full (hand, 5-gate) |
-| `mathematics-ch07` | cbse12 | 9 | 11 | 2026-06-17 | Integrals — IN PROGRESS (2 left: ftc-area-function, fundamental-theorem-evaluation) |
+| `mathematics-ch07` | cbse12 | 11 | 11 | 2026-06-17 | ✅ Integrals — full (hand + Sonnet finish, audited) |
+| `mathematics-ch08` | cbse12 | 8 | 8 | 2026-06-17 | ✅ Application of Integrals — full (Sonnet authored, Opus-audited clean; §A: no bridges) |
+| `mathematics-ch09` | cbse12 | 11 | 11 | 2026-06-17 | ✅ Differential Equations — full (Sonnet authored, Opus-audited 22/22 clean; §A: no bridges) |
+| `mathematics-ch10` | cbse12 | 13 | 13 | 2026-06-17 | ✅ Vector Algebra — full (Sonnet authored, Opus-audited 26/26 clean; §A: no bridges) |
+| `mathematics-ch11` | cbse12 | 10 | 10 | 2026-06-17 | ✅ 3D Geometry (Lines) — full (Sonnet authored, Opus-audited 20/20 clean; §A: no bridges; mcq encoding fixed) |
+| `mathematics-ch12` | cbse12 | 15 | 15 | 2026-06-17 | ✅ Linear Programming — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 30/30 clean; §A: no bridges) |
+| `mathematics-ch13` | cbse12 | 9 | 9 | 2026-06-17 | ✅ Probability — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 18/18 clean incl. Bayes 70/193, total-prob 0.0345; §A: no bridges). cbse12 COMPLETE. |
+| `mathematics-ch11` | cbse12 | 10 | 10 | 2026-06-17 | ✅ Three Dimensional Geometry (Lines) — full (Sonnet in-session, 50 gates; §A: no bridges; 20/20 MCQ+equation answers independently verified) |
+| `mathematics-ch12` | cbse12 | 15 | 15 | 2026-06-17 | ✅ Linear Programming — full (Sonnet in-session, 75 gates; §A: no bridges; self-check 0,0) |
 | `maths-ch01` | jee | 18 | 18 | 2026-06-17 | ✅ Sets — full |
 | `maths-ch02` | jee | 14 | 14 | 2026-06-17 | ✅ Relations & Functions — full |
 | `maths-ch03` | jee | 23 | 23 | 2026-06-17 | ✅ Trigonometric Functions — full (hand, 5-gate) |
 | `maths-ch04` | jee | 18 | 18 | 2026-06-17 | ✅ Complex Numbers & Quadratics — full (hand, 5-gate) |
-| `maths-ch05` | jee | 10 | 11 | 2026-06-17 | Linear Inequalities — IN PROGRESS (1 left: solve-and-apply-linear-inequalities goal) |
+| `maths-ch05` | jee | 11 | 11 | 2026-06-17 | ✅ Linear Inequalities — full (hand, 5-gate, audited) |
+| `maths-ch06` | jee | 12 | 12 | 2026-06-17 | ✅ Permutations & Combinations — full (Sonnet authored, Opus-audited 24/24 clean; §A: no bridges) |
+| `maths-ch07` | jee | 12 | 12 | 2026-06-17 | ✅ Binomial Theorem — full (Sonnet authored, Opus-audited 24/24 clean; §A: no bridges) |
+| `maths-ch08` | jee | 12 | 12 | 2026-06-17 | ✅ Sequences & Series — full (Sonnet authored, Opus-audited 24/24 clean; §A: no bridges) |
+| `maths-ch09` | jee | 16 | 16 | 2026-06-17 | ✅ Straight Lines — full (Sonnet authored, Opus-audited 32/32 clean; agent self-fixed inclination 2-correct MCQ; §A: no bridges; mcq encoding fixed) |
+| `maths-ch10` | jee | 19 | 19 | 2026-06-17 | ✅ Conic Sections — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 38/38 clean incl. eccentricity/latus-rectum; §A: no bridges) |
+| `maths-ch11` | jee | 12 | 12 | 2026-06-17 | ✅ Intro to 3D Geometry — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 24/24 clean incl. equidistant-plane derivation; §A: no bridges) |
+| `maths-ch12` | jee | 16 | 16 | 2026-06-17 | ✅ Limits & Derivatives — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 32/32; 1 two-correct MCQ fixed [15/10≡3/2]; §A: no bridges) |
+| `maths-ch13` | jee | 12 | 12 | 2026-06-17 | ✅ Statistics — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 24/24 incl. variance/SD; 1 ambiguous MCQ fixed [symmetric-vs-spread]; §A: no bridges) |
+| `maths-ch14` | jee | 17 | 17 | 2026-06-17 | ✅ Probability — full (Sonnet authored w/ corrected encoding, self-check 0,0; Opus-audited 34/34 clean; agent self-fixed slot-naming sketch→sketch1/2, verified 5 gates/node; §A: no bridges). jee COMPLETE (maths-ch01-14). |
+| `maths-ch09` | jee | 16 | 16 | 2026-06-17 | ✅ Straight Lines — full (Sonnet sub-agent authored, Opus-audited 32/32 MCQ+equation; 1 MCQ defect fixed (inclination MCQ had 2 valid options); §A: no bridges — trig/angle/ordered-pair prereqs satisfied by ch01–ch03 upstream; source=NULL Phase-1) |
+| `maths-ch11` | jee | 12 | 12 | 2026-06-17 | ✅ Introduction to 3D Geometry — full (Sonnet sub-agent authored, Opus-audited 12/12 MCQ + 12/12 equation all verified; §A: no bridges — all terms in-chapter or upstream ch09; self-check 0,0; source=NULL Phase-1) |
+| `maths-ch10` | jee | 19 | 19 | 2026-06-17 | ✅ Conic Sections — full (Sonnet sub-agent authored, Opus-audited 38/38 MCQ+equation; §A: no bridges — distance formula satisfied by ch09, completing-the-square by ch04; source=NULL Phase-1; self-check 0,0) |
+| `jemh110` | cbse10 | 20 | 20 | 2026-06-17 | ✅ Circles — full (Sonnet sub-agent authored, Opus-audited 40/40 MCQ+equation; §A: no bridges — all terms satisfied in-chapter or via jemh106:apply-aaa-aa-criterion cross-chapter prereq; source=NULL Phase-1) |
+| `jemh111` | cbse10 | 13 | 13 | 2026-06-17 | ✅ Areas Related to Circles — full (Sonnet sub-agent authored, Opus-audited 26/26 MCQ+equation clean; §A: no bridges — trig ratios satisfied by jemh108, perpendicular-bisects-chord by jemh110; source=NULL Phase-1) |
 
-**Not yet started (loaded + book gate only):** cbse10 `jemh106`–`jemh114`; cbse12 `mathematics-ch08`–`ch13`;
-jee `maths-ch06`–`maths-ch14`. Point the pipeline (with `--skip-authored`) at these — the done chapters above
-will be skipped automatically.
+| `jemh112` | cbse10 | 24 | 24 | 2026-06-17 | ✅ Surface Areas and Volumes — full (Sonnet in-session, 120 gates; §A: no bridges — Pythagoras from jemh107, Class-IX formulas inline-glossed; self-check 0,0; source=NULL Phase-1) |
+
+| `maths-ch12` | jee | 16 | 16 | 2026-06-17 | ✅ Limits and Derivatives — full (Sonnet sub-agent authored, Opus-audited 32/32 MCQ+equation clean; §A: no bridges — polynomials/trig from ch01–ch03 upstream, binomial theorem inline-glossed; self-check 0,0; source=NULL Phase-1) |
+| `maths-ch13` | jee | 12 | 12 | 2026-06-17 | ✅ Statistics — full (Sonnet in-session, 60 gates, 12 nodes × 5 slots; §A: no bridges — all terms either standard pre-JEE arithmetic or taught within chapter DAG; self-check 0,0; source=NULL Phase-1) |
+
+| `jemh114` | cbse10 | 16 | 16 | 2026-06-17 | ✅ Probability — full (Sonnet sub-agent authored, Opus-audited 16/16 MCQ+equation; 3 MCQ defects fixed post-audit [12/52≡3/13, 2/6≡1/3, 26/52≡1/2 duplicate-value distractors]; §A: no bridges — fraction arithmetic from jemh101, area from jemh111, counting from primary school; self-check 0,0; source=NULL Phase-1) |
+
+| `maths-ch14` | jee | 17 | 17 | 2026-06-17 | ✅ Probability — full (Sonnet in-session, 85 gates; §A: no bridges — all set-ops from ch01, combinations from ch06, sample-space inline-glossed in bedrock node; self-check 0,0; source=NULL Phase-1) |
+
+**✅ PHASE-1 CORPUS COMPLETE (2026-06-17).** Every maths chapter is authored + Opus-audited: **cbse10
+`jemh101`–`jemh114` (14), cbse12 `mathematics-ch01`–`ch13` (13), jee `maths-ch01`–`maths-ch14` (14) = 41
+chapters.** Nothing left "not yet started." Final corpus verification (all `kind='authored'`): **3088 gates
+across 644 concepts; 0 mcq bad-shape, 0 mcq correct-not-in-options, 0 stray slots, 0 null sketch rubrics.**
+The only nodes without exactly 5 gates are the 70 legitimate "honest sketch-skips" in the original pipeline
+chapters (jemh101–103, ch01–03, jee ch01–02) — 3–4 gates each, pre-existing, not a defect. Every
+Sonnet-sub-agent chapter authored this session has exactly 5 gates/node, correct encoding, and source=NULL
+(Phase-1). **Remaining work is Phase 2 only** (constraint #7, deferred): web/NCERT-OCR research + per-gate
+`source` + rigorous §A backlog clear — a future full re-run, no compute spent now.
 
 **Prereq-sweep backlog:** all rows above were authored before §A became mandatory — they accepted "prereqs ok"
 without the rigorous term sweep. Revisit each, run §A, and apply AUTHOR-bridge / DEFER / INLINE-GLOSS as needed
 (light prose-softening on existing audited prose, not full re-gating).
+
+**✅ TARGETED IMPROVEMENT PASS over the 8 original-pipeline chapters (2026-06-17)** — `jemh101/102/103`,
+cbse12 `ch01/02/03`, jee `maths-ch01/02`. These predate both the 5-gate standard and the mandatory §A sweep,
+so we cherry-picked the two highest-value author-and-improve passes WITHOUT a full re-run (Sonnet authored,
+Opus audited each). Results (DB-verified — figures are ground truth; note two sub-agents over-reported their
+own sketch counts in prose, corrected here):
+- **Deserved-sketch pass:** **58 sketch gates** added to pre-existing nodes where a drawing materially teaches
+  (Venn diagrams in Sets; inverse-trig graphs + restricted-domain diagrams; arrow/grid diagrams for
+  relations/functions; number-lines + factor-trees in Real Numbers; m×n grid / diagonal structure in
+  Matrices). Conservatively SKIPPED nodes that are purely symbolic/notational OR whose visual is already owned
+  by a dedicated graph node (jemh102 & jemh103 correctly got 0 — their graphical content lives in
+  `interpret-zero-as-x-intercept`/`count-zeroes-from-graph` and `identify-consistent-inconsistent-dependent`/
+  `solve-graphically`). Per-chapter sketches added: jemh101 9, jemh102 0, jemh103 0, ch01 8, ch02 18, ch03 4,
+  jee-ch01 10, jee-ch02 9.
+- **§A prereq pass:** **1 bridge node created** — `jee:maths:maths-ch01:count-subsets-and-power-set` (teaches
+  power set + the 2^n-subsets rule, which was USED in `determine-subset-relations`'s gate but taught nowhere;
+  now wired upstream of it, and already consumed cross-chapter by `jee:maths:maths-ch02:count-relations`). Plus
+  **10 missing prereq EDGES** fixed in content.json (jemh101 2, jemh102 1, jemh103 4, ch03 1, jee-ch02 2).
+  No other bridges needed — remaining assumed terms were genuine prior-grade bedrock or in-chapter upstream.
+- **Net:** corpus 3088→**3151** authored gates, 644→**645** concepts. Final verification across ALL authored
+  gates: 0 mcq bad-shape, 0 correct-not-in-options, 0 stray slots, 0 null sketch rubrics. The remaining
+  sub-5-gate nodes are deliberate, justified sketch-skips (purely symbolic concepts). This pass did NOT touch
+  any existing explanation or gate, and did NOT do web research (still Phase-1; source=NULL on new gates).
+
+**⚠ GATE-ENCODING FIX (2026-06-17) — resolved corpus-wide.** Discovered every chapter authored this session
+by hand/sub-agent encoded `mcq.expected.options` in a BROKEN shape (`[{key,text}]` array or `{A:..}` object
+with `correct` = a letter) instead of the live-grader contract (string array + full-text `correct`). The math
+was correct; the encoding rendered `[object Object]` and never graded in the app. Also sketch gates had null
+`rubric`/`ideal_answer` columns (degraded vision grading). **Fixed by deterministic bulk SQL** (4 transforms,
+no re-authoring): shape-A array→strings, shape-B object→strings, sketch rubric/ideal column backfill, explain
+ideal backfill. Verified 0 bad-shape / 0 correct-not-in-options / 0 null-sketch-rubric across all completed
+chapters. Root cause (drifted shape) corrected in the ⛔ GATE ENCODING callout in §pipeline above. Diagnostic
+to re-run after ANY chapter:
+```sql
+-- every authored mcq must be array-of-strings with correct ∈ options; sketch/explain must have rubric
+SELECT count(*) FILTER (WHERE NOT (jsonb_typeof(expected->'options')='array' AND jsonb_typeof(expected->'options'->0)='string')) AS bad_shape,
+       count(*) FILTER (WHERE jsonb_typeof(expected->'options')='array' AND NOT (expected->'options' ? (expected->>'correct'))) AS correct_not_in_opts
+FROM gates WHERE answer_type='mcq' AND kind='authored';
+```
+
+**Phase-1-only worklist (for the MANDATORY Phase-2 research pass — constraint #7).** These chapters were
+authored in the 2026-06-17 in-session/Sonnet-sub-agent completeness pass: math-verified + NCERT-*content*-
+grounded, but with **NO fresh web research, `source = NULL` on every gate, and NO rigorous §A term-sweep /
+bridge-node creation.** Phase 2 owes all of them: web+NCERT-OCR research, per-gate `source`, and the §A sweep.
+- cbse10: `jemh104`, `jemh105`, `jemh110`, `jemh111`
+- cbse12: `mathematics-ch04`, `ch05`, `ch06`, `ch07`, `ch12`
+- jee: `maths-ch03`, `maths-ch04`, `maths-ch05`, `maths-ch10`, `maths-ch11`, `maths-ch12`, `maths-ch14`
+- (Going forward, NEW chapters in this pass DO get the §A sweep + bridge nodes per constraint #6 — only the
+  web-research/`source` half is deferred to Phase 2. Add each new chapter here as it is authored.)

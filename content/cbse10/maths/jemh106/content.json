@@ -14,7 +14,7 @@
       "brief": "Use similarity criteria (AAA/AA, SSS, SAS) to prove two triangles similar, then use the proportional sides / equal angles to find unknown lengths, angles, or prove further results.",
       "sec": 4,
       "quote": "We now take some examples to illustrate the use of these criteria.",
-      "explanation": "This is the chapter's top skill: given a configuration, select and apply a similarity criterion to establish a similarity, then exploit the consequences (equal corresponding angles and proportional corresponding sides) to answer the question. Every other skill in the chapter is a sub-skill or prerequisite of doing this correctly.",
+      "explanation": "PART 1 — Identify the triangles and their vertex correspondence.\nBefore choosing a criterion, name the two triangles you are comparing and match their vertices: the vertex opposite the largest side of one pairs with the vertex opposite the largest side of the other. For example, in a figure where angle P = angle S and angle Q = angle T, the correspondence is P↔S, Q↔T, R↔U.\n\nPART 2 — Choose and apply the criterion (AA, SSS, or SAS).\nAA: two pairs of equal angles suffice (the third follows automatically). SSS: all three ratios of corresponding sides are equal. SAS: one equal included angle and the two sides framing it are proportional. State the similarity as Delta ABC ~ Delta DEF, ordering vertices by correspondence.\n\nPART 3 — State the similarity symbolically with correct correspondence.\nWrite Delta ABC ~ Delta DEF only when A↔D, B↔E, C↔F; a mis-ordered name corrupts every ratio that follows. After establishing the similarity, read off AB/DE = BC/EF = CA/FD and angle A = angle D, angle B = angle E, angle C = angle F to finish the problem.\n\nPART 4 — Read off equal angles and proportional sides to finish the problem.\nOnce Delta ABC ~ Delta DEF is written correctly, the ratio chain AB/DE = BC/EF = CA/FD gives any unknown length by cross-multiplication, and the angle equalities supply any unknown angle directly.",
       "keyMoves": [
         "Identify the two candidate triangles and their correct vertex correspondence",
         "Choose the applicable criterion (AA/AAA, SSS, SAS) from the available data",
@@ -48,7 +48,7 @@
       "brief": "State that two figures are similar if they have the same shape but not necessarily the same size, and that all congruent figures are similar but not conversely.",
       "sec": 1,
       "quote": "Two similar figures have the same shape but not necessarily the same size.",
-      "explanation": "The foundational concept the whole chapter rests on. A student must distinguish 'same shape' (similar) from 'same shape AND size' (congruent). All circles, all squares, all equilateral triangles are similar.",
+      "explanation": "PART 1 — Same shape, not necessarily same size.\nTwo figures are similar if they have the same shape but may differ in size. A photograph enlarged to poster size is similar to the original; a toy car is similar to the real car. The key test: every angle is preserved and every length scales by the same factor.\n\nPART 2 — Congruent figures are a special case of similar.\nCongruent figures have equal shape AND equal size, so the scale factor is 1. All congruent figures are therefore similar, but two similar figures need not be congruent. For example, any two circles are always similar; two circles are congruent only when their radii are equal.",
       "keyMoves": [
         "Check whether two figures have the same shape",
         "Recognise congruent figures are a special case of similar"
@@ -69,7 +69,7 @@
       "brief": "Two polygons of the same number of sides are similar iff (i) corresponding angles are equal AND (ii) corresponding sides are in the same ratio.",
       "sec": 1,
       "quote": "Two polygons of the same number of sides are similar, if (i) their corresponding angles are equal and (ii) their corresponding sides are in the same ratio (or proportion).",
-      "explanation": "The general definition of similarity for polygons. Both conditions are needed for polygons in general; the chapter later shows that for triangles either one implies the other.",
+      "explanation": "PART 1 — Condition 1: all corresponding angles must be equal.\nMatch the vertices in order. Every angle at a vertex of one polygon must equal the angle at the corresponding vertex of the other. For quadrilaterals ABCD and PQRS to be similar, angle A = angle P, angle B = angle Q, angle C = angle R, and angle D = angle S must all hold.\n\nPART 2 — Condition 2: all corresponding sides must be in the same ratio.\nAll four pairs of corresponding sides must satisfy AB/PQ = BC/QR = CD/RS = DA/SP. Both conditions together are necessary for general polygons; for triangles the chapter proves that either condition alone suffices.",
       "keyMoves": [
         "Verify all corresponding angles are equal",
         "Verify all corresponding sides are in the same ratio"
@@ -94,7 +94,7 @@
       "brief": "Recognise via the square/rectangle and square/rhombus counterexamples that neither equal angles alone nor proportional sides alone make two polygons similar.",
       "sec": 2,
       "quote": "Thus, either of the above two conditions (i) and (ii) of similarity of two polygons is not sufficient for them to be similar.",
-      "explanation": "Guards against the common error of declaring polygons similar from a single condition. A square and a rectangle have equal angles but unequal side ratios; a square and a rhombus have proportional sides but unequal angles.",
+      "explanation": "PART 1 — Equal angles alone do not guarantee similarity.\nA square and a rectangle both have all four angles equal to 90 degrees, but their side ratios differ (a 2×3 rectangle has ratio 2:3 while a unit square has ratio 1:1), so they are not similar. Equal angles are necessary but not sufficient.\n\nPART 2 — Proportional sides alone do not guarantee similarity.\nA square and a rhombus can have sides in the ratio 1:1, but a rhombus has angles other than 90 degrees while the square has all 90 degrees, so they are not similar. Both conditions — equal angles AND proportional sides — must be verified before declaring two polygons similar.",
       "keyMoves": [
         "Test BOTH conditions before concluding similarity for general polygons",
         "Use a counterexample to reject a one-condition claim"
@@ -116,7 +116,7 @@
       "brief": "Match up vertices \\(A' \\leftrightarrow A, B' \\leftrightarrow B,\\) etc. and then the corresponding angles and corresponding sides so ratios and equalities are written between matching parts.",
       "sec": 2,
       "quote": "vertex A′ corresponds to vertex A, vertex B′ corresponds to vertex B, vertex C′ corresponds to vertex C and vertex D′ corresponds to vertex D",
-      "explanation": "Before any ratio or angle comparison can be written, a student must establish which part matches which. Getting correspondence wrong corrupts every later equation.",
+      "explanation": "PART 1 — List the vertex-to-vertex correspondence.\nName the pairing explicitly: A↔P, B↔Q, C↔R. The correspondence is usually implied by the order in a similarity statement (Delta ABC ~ Delta PQR means A pairs with P) or by equal angles identifying the matching vertex.\n\nPART 2 — Pair sides and angles from the correspondence.\nOnce vertices are matched, corresponding sides are the ones joining matched vertex pairs: AB corresponds to PQ, BC to QR, CA to RP. Corresponding angles sit at matched vertices: angle A corresponds to angle P. Writing ratios or equalities between non-corresponding parts is the most common error in similarity problems.",
       "keyMoves": [
         "List the vertex-to-vertex correspondence",
         "Pair corresponding sides and corresponding angles from that correspondence"
@@ -136,7 +136,7 @@
       "brief": "Use the ~ symbol and order the vertices so that corresponding vertices match (Δ ABC ~ Δ DEF means A↔D, B↔E, C↔F).",
       "sec": 4,
       "quote": "we cannot write Δ ABC ~ Δ EDF or Δ ABC ~ Δ FED. However, we can write Δ BAC ~ Δ EDF.",
-      "explanation": "The order of letters in a similarity statement encodes the correspondence. Writing \\(\\Delta ABC \\sim \\Delta EDF\\) when \\(A \\leftrightarrow D\\) is wrong, even though it is 'the same two triangles'. This skill is constantly used to then read off correct side ratios.",
+      "explanation": "PART 1 — The '~' symbol encodes the vertex correspondence.\nDelta ABC ~ Delta DEF means the first-listed vertex of one triangle corresponds to the first-listed vertex of the other: A↔D, B↔E, C↔F. This determines which sides and angles are 'corresponding' for all later ratio and equality steps.\n\nPART 2 — Order the vertices correctly; any rearrangement that preserves matching is valid.\nIf the true correspondence is A↔E, B↔D, C↔F, then Delta ABC ~ Delta EDF is correct. Delta ABC ~ Delta DEF with that same data is wrong even though the same two triangles are involved. For example, if angle B = angle D and angle A = angle E, write Delta BAC ~ Delta DEF (matching B first to D, A to E, C to F).",
       "keyMoves": [
         "Use '~' for 'is similar to'",
         "Order vertices so matching vertices line up in both names"
@@ -156,7 +156,7 @@
       "brief": "When a line is parallel to one side of a triangle and meets the other two sides, conclude the two sides are divided in the same ratio.",
       "sec": 3,
       "quote": "Theorem 6.1 : If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, the other two sides are divided in the same ratio.",
-      "explanation": "BPT is the workhorse for ratio problems. Given DE ‖ BC in Δ ABC, immediately write AD/DB = AE/EC. Used in Examples 1 and 2.",
+      "explanation": "PART 1 — Spot the parallel line cutting the two sides.\nIn triangle ABC, if line DE is drawn parallel to BC and meets AB at D and AC at E, the theorem guarantees that D and E divide the two sides in the same ratio: AD/DB = AE/EC. The trigger is always 'a line parallel to one side intersects the other two sides'.\n\nPART 2 — Write the equal-ratio equation immediately.\nOnce DE || BC is confirmed, write AD/DB = AE/EC. This can be rearranged: adding 1 to both sides gives AB/DB = AC/EC (part-to-whole forms). For example, if AD = 3, DB = 5, AE = x and EC = 10, then 3/5 = x/10 gives x = 6.",
       "keyMoves": [
         "Spot a line parallel to one side cutting the other two",
         "Write the equal ratio of the two divided sides"
@@ -181,7 +181,7 @@
       "brief": "Join BE, CD, drop perpendiculars, express area ratios as AD/DB and AE/EC, and use that ar(BDE)=ar(DEC) (same base, same parallels) to conclude AD/DB = AE/EC.",
       "sec": 3,
       "quote": "Note that Δ BDE and DEC are on the same base DE and between the same parallels BC and DE.",
-      "explanation": "The chapter's proof of Theorem 6.1. The crucial step is recognising two triangles on the same base and between the same parallels have equal area, which links the two area-ratio equations. (Using the notation: ar(BDE) = ar(DEC))",
+      "explanation": "PART 1 — Express area ratios using the two perpendicular heights.\nJoin BE and CD. In triangle ADE, ar(ADE)/ar(BDE) = (1/2 * DE * h1)/(1/2 * DE * h2) where h1 = height from A and h2 = height from B to DE, so ar(ADE)/ar(BDE) = AD/DB. Similarly ar(ADE)/ar(DEC) = AE/EC. This gives two separate ratio equations both equal to ar(ADE).\n\nPART 2 — Use equal areas of same-base same-parallels triangles to combine.\nTriangles BDE and DEC share base DE and lie between the same parallels BC and DE, so ar(BDE) = ar(DEC). Substituting: ar(ADE)/ar(BDE) = ar(ADE)/ar(DEC), which means AD/DB = AE/EC — the BPT result.\n\nPART 3 — Conclude with the BPT statement.\nThe equal-area fact is the pivot: it replaces one denominator with the other, linking the two ratio equations into a single proportion. Without recognising ar(BDE) = ar(DEC), the proof has no way to connect AD/DB to AE/EC.",
       "keyMoves": [
         "Express triangle areas as ½ base × height",
         "Form the two ratio equations (1) and (2)",
@@ -205,7 +205,7 @@
       "brief": "If a line divides two sides of a triangle in the same ratio, conclude that the line is parallel to the third side.",
       "sec": 3,
       "quote": "Theorem 6.2 : If a line divides any two sides of a triangle in the same ratio, then the line is parallel to the third side.",
-      "explanation": "The reverse direction of BPT. Given AD/DB = AE/EC (or PS/SQ = PT/TR), conclude the line is parallel to the third side. Used in Example 3 and Exercise 6.2 Q2.",
+      "explanation": "PART 1 — Compute the two division ratios.\nGiven a line PQ cutting two sides of a triangle at S and T, compute PS/SQ and PT/TR from the given lengths. For example, if PS = 4, SQ = 2, PT = 6, TR = 3, then PS/SQ = 2 and PT/TR = 2.\n\nPART 2 — Conclude parallelism if the ratios are equal.\nIf PS/SQ = PT/TR, Theorem 6.2 (Converse BPT) guarantees ST || QR. If the ratios differ, ST is not parallel to QR. This is the reverse of BPT: equal ratios imply parallelism, rather than parallelism implying equal ratios.",
       "keyMoves": [
         "Compute the two division ratios",
         "If equal, declare the line parallel to the third side"
@@ -229,7 +229,7 @@
       "brief": "Given numeric segment lengths, compute PE/EQ and PF/FR; if equal the segment is parallel to the third side, otherwise it is not.",
       "sec": 3,
       "quote": "For each of the following cases, state whether EF ‖ QR :",
-      "explanation": "The numerical application of the converse of BPT (Exercise 6.2 Q2). The student divides given lengths and compares the two fractions to decide parallelism.",
+      "explanation": "PART 1 — Compute PE/EQ and PF/FR as decimals or fractions.\nSubstitute the given numeric lengths. For example if PE = 3.9, EQ = 3, PF = 4, FR = 4, then PE/EQ = 3.9/3 = 1.3 and PF/FR = 4/4 = 1. Because 1.3 ≠ 1 the segment is not parallel to QR.\n\nPART 2 — Compare and state the conclusion.\nIf both ratios simplify to the same value, conclude EF || QR by the converse of BPT. If they differ, conclude EF is not parallel to QR. Always show both ratio computations and state which case applies; omitting the comparison step loses marks.",
       "keyMoves": [
         "Compute PE/EQ and PF/FR as numbers",
         "Compare; equal ⇒ parallel, unequal ⇒ not parallel"
@@ -250,7 +250,9 @@
       "brief": "From AD/DB = AE/EC, invert to DB/AD = EC/AE, add 1 to both sides to get AB/AD = AC/AE, hence AD/AB = AE/AC.",
       "sec": 3,
       "quote": "or, DB/AD + 1 = EC/AE + 1",
-      "explanation": "A generic algebraic manipulation of proportions used to convert part-to-part ratios into part-to-whole ratios (Example 1). Adding 1 merges DB/AD into AB/AD because DB+AD = AB.",
+      "explanation": "PART 1 — Invert both sides of the proportion.\nStarting from AD/DB = AE/EC, take reciprocals of both sides to get DB/AD = EC/AE. This is valid because if two fractions are equal their reciprocals are equal.\n\nPART 2 — Add 1 to both sides and recombine.\nAdd 1: DB/AD + 1 = EC/AE + 1, giving (DB + AD)/AD = (EC + AE)/AE. Since DB + AD = AB and EC + AE = AC, this becomes AB/AD = AC/AE, or equivalently AD/AB = AE/AC. For example, if AD = 3, DB = 5, AE = 6, EC = 10: DB/AD = 5/3, adding 1: (5+3)/3 = 8/3, so AB/AD = 8/3 and AD/AB = 3/8.",
+
+
       "keyMoves": [
         "Invert both sides of the proportion",
         "Add 1 to both sides",
@@ -272,7 +274,7 @@
       "brief": "If corresponding angles of two triangles are equal (or just two angles each), conclude the triangles are similar.",
       "sec": 4,
       "quote": "Theorem 6.3 : If in two triangles, corresponding angles are equal, then their corresponding sides are in the same ratio (or proportion) and hence the two triangles are similar.",
-      "explanation": "The angle-based criterion. By the angle-sum property, two equal angle pairs (AA) already force the third, so AA suffices. Used in Examples 4 and 7. Requires sourcing angles from alternate/vertically-opposite/common angle facts.",
+      "explanation": "PART 1 — Find two pairs of equal corresponding angles.\nSource the angle equalities from the figure: alternate angles when lines are parallel, vertically opposite angles at a crossing, or a common angle shared by both triangles. In Example 4, angle P = angle S (alternate angles, PQ || RS) and angle POQ = angle SOR (vertically opposite), giving two pairs.\n\nPART 2 — Invoke AA to declare similarity.\nTwo equal angle pairs suffice: the angle-sum property forces the third pair equal automatically (180° - angle1 - angle2 is the same in both triangles). Write Delta PQO ~ Delta SRO (matched by correspondence), then the theorem guarantees corresponding sides are proportional.",
       "keyMoves": [
         "Find two pairs of equal corresponding angles",
         "Invoke AA (or AAA) to declare similarity"
@@ -297,7 +299,7 @@
       "brief": "Produce the equal-angle facts an AA proof needs: alternate angles and corresponding angles from parallels, vertically opposite angles, and a shared/common angle. (Using notation: ∠ P = ∠ S for alternate angles)",
       "sec": 4,
       "quote": "So, ∠ P = ∠ S     (Alternate angles)",
-      "explanation": "AA similarity proofs depend on supplying valid reasons for each angle equality. Example 4 uses alternate angles (\\(PQ \\parallel RS\\)) and vertically opposite angles; Example 7 uses a common angle \\(\\angle E = \\angle E\\) and two right angles.",
+      "explanation": "PART 1 — Alternate and corresponding angles from parallel lines.\nWhen two lines are cut by a transversal and the lines are parallel, alternate interior angles are equal and corresponding angles are equal. State the parallel lines as the reason: 'angle P = angle S (alternate angles, PQ || RS)'.\n\nPART 2 — Vertically opposite and common angles.\nAt any intersection, the two pairs of opposite angles are equal — no parallel-line condition is needed. A shared vertex or shared side produces a 'common angle' that equals itself: angle E = angle E. In Example 7, the right-angle condition (lamp-post and girl are vertical) supplies two more equal angles, so AA is complete from right angle + common light-source angle.",
       "keyMoves": [
         "Use alternate/corresponding angles when lines are parallel",
         "Use vertically opposite angles at an intersection",
@@ -319,7 +321,7 @@
       "brief": "If the three pairs of corresponding sides are in the same ratio, conclude the triangles are similar.",
       "sec": 4,
       "quote": "Theorem 6.4 : If in two triangles, sides of one triangle are proportional to (i.e., in the same ratio of) the sides of the other triangle, then their corresponding angles are equal and hence the two triangles are similar.",
-      "explanation": "The side-based criterion. Match each side with its corresponding side, form the three ratios, and if all equal declare similarity. Used in Example 5 and Example 8(iii).",
+      "explanation": "PART 1 — Match sides by correspondence (shortest to shortest, etc.).\nOrder the sides of each triangle from shortest to longest (or use a known correspondence) to pair them correctly. In Example 5: AB = 3.8, BC = 6, CA = 3*sqrt(3) paired with RQ = 7.6, QP = 12, PR = 6*sqrt(3).\n\nPART 2 — Compute all three ratios and confirm equality.\nAB/RQ = 3.8/7.6 = 1/2, BC/QP = 6/12 = 1/2, CA/PR = 3*sqrt(3)/(6*sqrt(3)) = 1/2. All three ratios equal 1/2, so by SSS similarity Delta ABC ~ Delta RQP (vertices matched so each ratio pair is AB/RQ, BC/QP, CA/PR).",
       "keyMoves": [
         "Order sides by correspondence (smallest-to-smallest etc.)",
         "Form all three side ratios",
@@ -344,7 +346,7 @@
       "brief": "Divide each pair of corresponding sides and simplify to check whether all the ratios are equal (e.g. \\(\\frac{3.8}{7.6} = \\frac{1}{2}\\)).",
       "sec": 4,
       "quote": "AB/RQ = 3.8/7.6 = 1/2 , BC/QP = 6/12 = 1/2 and CA/PR = 3√3/6√3 = 1/2",
-      "explanation": "The arithmetic backbone of SSS and SAS. Example 5 computes three ratios and finds each equals 1/2. The student must simplify fractions, including surd ratios like \\(\\frac{3\\sqrt{3}}{6\\sqrt{3}}\\).",
+      "explanation": "PART 1 — Form each corresponding-side fraction and simplify.\nWrite the ratio as (side of first triangle)/(corresponding side of second triangle). Simplify numerically: 3.8/7.6 = 38/76 = 1/2; 6/12 = 1/2. For surds, cancel the common surd factor first: 3*sqrt(3) / (6*sqrt(3)) = 3/6 = 1/2 (the sqrt(3) cancels).\n\nPART 2 — Check all simplified ratios match.\nIf AB/DE = BC/EF = CA/FD (all simplify to the same value), the sides are proportional and the SSS or SAS criterion can be applied. If even one ratio differs, the sides are not proportional and the criterion fails for that assignment of correspondence.",
       "keyMoves": [
         "Form each corresponding-side fraction",
         "Simplify to lowest terms (including surds)",
@@ -366,7 +368,7 @@
       "brief": "If one angle of a triangle equals one angle of another and the sides including those angles are proportional, conclude the triangles are similar.",
       "sec": 4,
       "quote": "Theorem 6.5 : If one angle of a triangle is equal to one angle of the other triangle and the sides including these angles are proportional, then the two triangles are similar.",
-      "explanation": "The mixed criterion. The equal angle must be the INCLUDED angle between the two proportional sides. Used in Example 6 (OA/OC = OD/OB with vertically opposite \\(\\angle AOD = \\angle COB\\)) and Example 8(i).",
+      "explanation": "PART 1 — Identify the equal included angle.\nThe equal angle must be sandwiched between the two sides whose ratio you will check. In Example 6, angle AOD = angle COB (vertically opposite angles); the sides including angle AOD in triangle AOD are OA and OD; the sides including angle COB in triangle COB are OC and OB.\n\nPART 2 — Confirm the two including sides are in the same ratio.\nCheck OA/OC = OD/OB (both sides of angle AOD in numerator, both sides of angle COB in denominator). If so, declare Delta AOD ~ Delta COB by SAS. Note: OA/OC = OD/OB is rearranged from the product OA*OB = OC*OD by dividing both sides by OC*OB.",
       "keyMoves": [
         "Identify the equal angle and check it is included between the two sides",
         "Confirm the two including sides are in the same ratio",
@@ -393,7 +395,7 @@
       "brief": "From OA · OB = OC · OD derive OA/OC = OD/OB so SAS can be applied.",
       "sec": 4,
       "quote": "So, OA/OC = OD/OB     (1)",
-      "explanation": "A specific algebraic move (Example 6) turning a product equality into a proportion of the two sides that include the equal angle, the precondition for SAS.",
+      "explanation": "PART 1 — Divide both sides of the product equation to isolate the needed ratio.\nGiven OA * OB = OC * OD, divide both sides by OC * OB: (OA * OB)/(OC * OB) = (OC * OD)/(OC * OB), which simplifies to OA/OC = OD/OB. This is the ratio form needed for SAS (OA and OD are on one side; OC and OB on the other).\n\nPART 2 — Pair the ratio with the sides that frame the equal angle.\nIn triangle AOD the sides flanking angle AOD are OA and OD. In triangle COB the sides flanking angle COB are OC and OB. The ratio OA/OC = OD/OB pairs exactly those including sides, satisfying SAS. The wrong grouping OA/OB = OC/OD would pair non-including sides and cannot be used.",
       "keyMoves": [
         "Divide both sides to isolate the needed ratio",
         "Pair the ratio with the sides including the equal angle"
@@ -413,7 +415,7 @@
       "brief": "Once Δ ABC ~ Δ PQR is established, write AB/PQ = BC/QR = CA/RP and ∠ A = ∠ P, ∠ B = ∠ Q, ∠ C = ∠ R.",
       "sec": 4,
       "quote": "So, AB/PQ = BC/QR = CA/RP     (1)",
-      "explanation": "The payoff step: a similarity statement is converted into usable equal-angle and equal-ratio equations (Example 8). Correct correspondence is essential to write these correctly.",
+      "explanation": "PART 1 — Use the matched vertex order to write side ratios.\nFrom Delta ABC ~ Delta PQR, read the ratio chain AB/PQ = BC/QR = CA/RP. The rule: take the two vertices that bound a side in one triangle, read the same-position vertices in the second triangle, and form the ratio. AB is bounded by A and B; the matching vertices in Delta PQR are P and Q, giving AB/PQ.\n\nPART 2 — Use the matched vertex order to write angle equalities.\nAngle at the first vertex of one triangle equals the angle at the first vertex of the other: angle A = angle P, angle B = angle Q, angle C = angle R. These equalities are direct consequences of the similarity statement and can be used immediately to find unknown angles or to supply angle equality for a further proof.",
       "keyMoves": [
         "Use the matched vertex order to write side ratios",
         "Use the matched vertex order to write angle equalities"
@@ -436,7 +438,7 @@
       "brief": "Match the unknown angle to its equal corresponding angle in the similar triangle, then compute it (e.g. via 180° − ∠A − ∠B).",
       "sec": 4,
       "quote": "But ∠ C = 180° – ∠ A – ∠ B     (Angle sum property)",
-      "explanation": "Example 5: after SSS gives Δ ABC ~ Δ RQP, ∠P equals ∠C, which is found by the angle-sum property as 180°−80°−60°=40°. Combines correspondence-reading with angle arithmetic.",
+      "explanation": "PART 1 — Identify which known angle the unknown corresponds to.\nAfter establishing Delta ABC ~ Delta RQP by SSS, angle P corresponds to angle C (third vertex in each). Given angle A = 80° and angle B = 60°, compute angle C = 180° - 80° - 60° = 40° by the angle-sum property of a triangle.\n\nPART 2 — Transfer the value to the unknown by correspondence.\nSince angle P = angle C and angle C = 40°, conclude angle P = 40°. The correspondence step is essential: without knowing which vertex of Delta RQP matches C, you cannot assign the value correctly.",
       "keyMoves": [
         "Identify which angle the unknown corresponds to",
         "Compute the known angle by 180° minus the other two",
@@ -460,7 +462,7 @@
       "brief": "Set up the equal-ratio equation from the similar triangles and solve for the unknown side (cross-multiply and isolate).",
       "sec": 4,
       "quote": "i.e., (4.8 + x)/x = 3.6/0.9     (90 cm = 90/100 m = 0.9 m)",
-      "explanation": "Example 7 (lamp-post/shadow): after AA similarity, BE/DE = AB/CD gives \\(\\frac{4.8+x}{x} = \\frac{3.6}{0.9}\\), which the student cross-multiplies \\(4.8+x = 4x\\) and solves to \\(x = 1.6\\) m. The core 'application' computation.",
+      "explanation": "PART 1 — Write the proportion from the similarity.\nFrom Delta ABE ~ Delta CDE (AA), the corresponding sides give BE/DE = AB/CD. Substituting: BE = 4.8 + x (total shadow + girl-to-lamp distance), DE = x (girl shadow), AB = 3.6 m (lamp height), CD = 0.9 m (girl height, converting 90 cm = 0.9 m). The proportion becomes (4.8 + x)/x = 3.6/0.9.\n\nPART 2 — Cross-multiply and solve the linear equation.\nSimplify 3.6/0.9 = 4. Cross-multiplying: 4.8 + x = 4x, so 4.8 = 3x, giving x = 1.6 m. Always check units are consistent before substituting; mixing metres and centimetres is the most common error here.",
       "keyMoves": [
         "Write the proportion of corresponding sides",
         "Convert units consistently (90 cm = 0.9 m)",
@@ -485,7 +487,7 @@
       "brief": "Translate a lamp-post-and-shadow or pole-and-tower scenario into two similar right triangles sharing the sun/light angle, then use proportionality.",
       "sec": 4,
       "quote": "So, the shadow of the girl after walking for 4 seconds is 1.6 m long.",
-      "explanation": "Indirect measurement (Example 7, Exercise 6.3 Q15). The student sets up two triangles (object+shadow), justifies similarity by the shared angle and right angles, then solves the proportion. This is the chapter's signature application.",
+      "explanation": "PART 1 — Draw the two right triangles from the scenario.\nA vertical lamp-post AB and a vertical girl CD both cast shadows from the same light source E at ground level. Triangle ABE has the lamp-post as one side and its total shadow as the base; triangle CDE has the girl as one side and her shadow as the base. Both triangles share the same light angle at E.\n\nPART 2 — Justify similarity and solve.\nAngle AEB = angle CED (same light source, same angle — common angle at E), and angle ABE = angle CDE = 90° (vertical objects), so Delta ABE ~ Delta CDE by AA. Set up AB/CD = BE/DE (corresponding sides) and substitute the given values. For a 3.6 m lamp, 0.9 m girl, 4.8 m distance walked: (4.8 + x)/x = 3.6/0.9 = 4, giving x = 1.6 m.",
       "keyMoves": [
         "Draw the two right triangles from the scenario",
         "Justify similarity (shared angle, right angles)",
@@ -510,7 +512,7 @@
       "brief": "Use AB = 2·AM and PQ = 2·PN to reduce side ratios to median-segment ratios, enabling SAS/SSS on the median sub-triangles.",
       "sec": 4,
       "quote": "But AB = 2 AM and PQ = 2 PN     (As CM and RN are medians)",
-      "explanation": "Example 8: a median bisects its side, so AM = AB/2; substituting into AB/PQ = CA/RP gives AM/PN = CA/RP, letting SAS prove △ AMC ~ △ PNR and then CM/RN = AB/PQ. Also appears in Exercise 6.3 Q16 and the SQP median sub-question.",
+      "explanation": "PART 1 — Replace each full side by twice its median-foot segment.\nIf CM is the median to AB in triangle ABC, then M is the midpoint of AB, so AM = AB/2, i.e., AB = 2*AM. Similarly, if RN is the median to PQ in triangle PQR, then PN = PQ/2, i.e., PQ = 2*PN. Substituting into AB/PQ = 2*AM / (2*PN) = AM/PN preserves the ratio.\n\nPART 2 — Apply SAS or SSS to the median sub-triangles.\nNow triangle AMC and triangle PNR have AM/PN = CA/RP (given) and angle A = angle P (given), so by SAS Delta AMC ~ Delta PNR. Reading off corresponding sides: CM/RN = AC/PR = AB/PQ. This proves the medians are in the same ratio as the sides.",
       "keyMoves": [
         "Replace a full side by twice its median-foot segment",
         "Cancel the 2 to keep the same ratio for the half-segments",

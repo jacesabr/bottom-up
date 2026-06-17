@@ -14,7 +14,7 @@
       "brief": "Read dy/dx as the rate of change of y with respect to x, and chain rates through a common variable.",
       "sec": 1,
       "quote": "represents the rate of change of *y* with respect to *x*",
-      "explanation": "When a quantity y varies with x via y = f(x), the derivative dy/dx (or f'(x)) represents the rate of change of y with respect to x, and its value at x0 gives that rate at that instant. When several quantities vary with time t, the rate of change of y with respect to x can be calculated from the rates of y and x both with respect to t: dy/dx = (dy/dt)/(dx/dt). This underlies related-rates problems (expanding circles, inflating balloons, sliding ladders).",
+      "explanation": "PART 1 — dy/dx is the rate of change of y with respect to x.\nFor y = f(x), the derivative dy/dx measures how fast y changes per unit change in x; evaluated at x0 it gives the instantaneous rate there. A positive value means y is increasing, negative means decreasing.\n\nPART 2 — Chain rates through a common variable (related rates).\nWhen several quantities vary with time t, link their rates: dy/dx = (dy/dt)/(dx/dt). This is the basis of related-rates problems (expanding circle: dA/dt = (dA/dr)(dr/dt) = 2 pi r dr/dt). Track which rate is given and which is wanted.",
       "keyMoves": [
         "Read dy/dx as how fast y changes per unit change in x",
         "Evaluate at a point for the instantaneous rate",
@@ -36,7 +36,7 @@
       "brief": "Define f increasing on I if x1 < x2 implies f(x1) <= f(x2), decreasing if f(x1) >= f(x2).",
       "sec": 2,
       "quote": "increasing on I if  $x_1 < x_2$  in I  $\\Rightarrow f(x_1) \\le f(x_2)$  for all",
-      "explanation": "Let I be an interval in the domain of f. Then f is increasing on I if for all x1, x2 in I, x1 < x2 implies f(x1) <= f(x2); decreasing on I if x1 < x2 implies f(x1) >= f(x2). With strict inequalities (f(x1) < f(x2) or f(x1) > f(x2)) the function is strictly increasing or strictly decreasing. So increasing/decreasing is about how the output orders as the input grows.",
+      "explanation": "PART 1 — Increasing: bigger input gives a bigger-or-equal output.\nf is increasing on an interval I if, for all x1 < x2 in I, f(x1) <= f(x2). f is decreasing if x1 < x2 implies f(x1) >= f(x2). Increasing/decreasing describes how the OUTPUT orders as the input grows.\n\nPART 2 — Strict versions use strict inequalities.\nWith f(x1) < f(x2) the function is strictly increasing; with f(x1) > f(x2), strictly decreasing. Note 'increasing' is NOT the same as 'positive' — a function can be negative everywhere yet increasing (e.g. y = x for x < 0).",
       "keyMoves": [
         "Take any two points x1 < x2 in the interval",
         "Compare f(x1) and f(x2)",
@@ -58,7 +58,7 @@
       "brief": "Apply: f is increasing where f'(x) >= 0 and decreasing where f'(x) <= 0.",
       "sec": 2,
       "quote": "*f* is increasing in [*a*,*b*] if  $f'(x) \\ge 0$  for each",
-      "explanation": "First derivative test for monotonicity (Theorem 1): let f be continuous on [a, b] and differentiable on (a, b). Then f is increasing in [a, b] if f'(x) >= 0 for each x in (a, b), and decreasing if f'(x) <= 0. More strongly, if f'(x) > 0 throughout the interior, f is strictly increasing (similarly < 0 for strictly decreasing). So you find the intervals of increase/decrease by determining where the derivative is positive or negative.",
+      "explanation": "PART 1 — The sign of f'(x) determines increasing/decreasing.\nFor f continuous on [a,b] and differentiable on (a,b): f is increasing where f'(x) >= 0 and decreasing where f'(x) <= 0. If f'(x) > 0 throughout, f is strictly increasing; if f'(x) < 0 throughout, strictly decreasing.\n\nPART 2 — Find intervals by solving the derivative inequality.\nTo find where f increases/decreases, compute f'(x), then solve f'(x) > 0 and f'(x) < 0. Example: f(x) = x^2 has f'(x) = 2x, so f decreases on (-inf, 0) and increases on (0, inf). The key error is using the sign of f(x) instead of f'(x).",
       "keyMoves": [
         "Compute f'(x)",
         "Find where f'(x) >= 0 (increasing) and f'(x) <= 0 (decreasing)",
@@ -83,7 +83,7 @@
       "brief": "f has a maximum value at c if f(c) > f(x) for all x in I; a minimum if f(c) < f(x).",
       "sec": 3,
       "quote": "f is said to have a maximum value in I, if there exists a point c in I such that f(c) > f(x), for all  $x \\in I$ .",
-      "explanation": "Let f be defined on an interval I. Then f has a maximum value in I if there is a point c with f(c) > f(x) for all x in I; f(c) is the maximum value and c is a point of maximum value. Similarly f has a minimum value at a point c if f(c) < f(x) for all x in I. A maximum or minimum value is called an extreme value, and the point an extreme point. These are global notions over the whole interval I.",
+      "explanation": "PART 1 — Maximum/minimum VALUE is f(c), attained at a point c.\nf has a maximum value in I if some point c has f(c) >= f(x) for all x in I; then f(c) is the maximum value and c is the point of maximum. Similarly a minimum value f(c) satisfies f(c) <= f(x) for all x. A max or min value is called an extreme value.\n\nPART 2 — Distinguish the point c from the value f(c).\nThe point c is WHERE the extreme occurs; the value f(c) is the extreme value itself. Do not confuse them. Also, not every function on an interval attains a maximum or minimum (e.g. f(x) = x on an open interval).",
       "keyMoves": [
         "Look for a point c whose value beats all others in I (maximum) or is below all others (minimum)",
         "Report f(c) as the maximum/minimum value",
@@ -105,7 +105,7 @@
       "brief": "Recognise a local maximum/minimum at an interior point c where f(c) is greatest/least nearby.",
       "sec": 3,
       "quote": "The value f(c) is called the *local maximum value* of f.",
-      "explanation": "Let c be an interior point of the domain of f. If f(c) is greater than the values of f at all points near c (in some interval (c - h, c + h)), then c is a point of local maxima and f(c) is the local maximum value. If f(c) is less than all nearby values, c is a point of local minima with local minimum value f(c). Local extrema are about behaviour in a small neighbourhood, unlike absolute extrema over the whole domain.",
+      "explanation": "PART 1 — Local extrema compare f(c) with NEARBY values only.\nAt an interior point c, if f(c) is greater than f at all points in some small interval (c-h, c+h), then c is a local maximum and f(c) is the local maximum value. If f(c) is less than all nearby values, c is a local minimum. Only a small neighbourhood matters.\n\nPART 2 — Local is not the same as absolute.\nA local maximum need not be the largest value over the whole domain — it is just the largest NEARBY. A function can have several local maxima/minima. Look for them at interior points, not at the end points of the interval.",
       "keyMoves": [
         "Restrict attention to a small neighbourhood of an interior point c",
         "Compare f(c) with nearby values",
@@ -129,7 +129,7 @@
       "brief": "Apply Theorem 2: at a local maxima/minima, either f'(c) = 0 or f is not differentiable at c.",
       "sec": 3,
       "quote": "If f has a local maxima or a local minima at x = c, then either f'(c) = 0 or f is not differentiable at c.",
-      "explanation": "Theorem 2: if f has a local maxima or a local minima at an interior point x = c, then either f'(c) = 0 or f is not differentiable at c. This says local extrema can only occur where the derivative vanishes or fails to exist. The converse is false - f'(c) = 0 does not guarantee a local extremum (e.g. f(x) = x^3 has f'(0) = 0 but 0 is neither a maximum nor a minimum, it is a point of inflexion).",
+      "explanation": "PART 1 — Local extrema occur only where f'(c) = 0 or f' fails to exist.\nIf f has a local maximum or minimum at an interior point c, then either f'(c) = 0 or f is not differentiable at c. So you search for local extrema ONLY at such points — they are the only candidates.\n\nPART 2 — The converse is FALSE.\nf'(c) = 0 does NOT guarantee a local extremum. Counterexample: f(x) = x^3 has f'(0) = 0 but x=0 is neither a max nor a min — it is a point of inflexion. So you must test each candidate, not assume f'(c)=0 means an extremum.",
       "keyMoves": [
         "Search for local extrema only where f'(c) = 0 or f' fails to exist",
         "Do NOT conclude an extremum just because f'(c) = 0",
@@ -154,7 +154,7 @@
       "brief": "Find critical points: where f'(x) = 0 or f is not differentiable.",
       "sec": 3,
       "quote": "either f'(c) = 0 or f is not differentiable is called a *critical point* of f.",
-      "explanation": "A point c in the domain of f at which either f'(c) = 0 or f is not differentiable is called a critical point of f. By Theorem 2, all local extrema occur at critical points, so the critical points are the only candidates for local maxima and minima (and, together with end points, for absolute extrema on a closed interval). Finding critical points is therefore the first step in any optimisation.",
+      "explanation": "PART 1 — Critical points: f'(c) = 0 OR f not differentiable at c.\nA critical point is any domain point where the derivative is zero or fails to exist. Find them by solving f'(x) = 0 AND noting points where f' does not exist (e.g. corners). Both sources count.\n\nPART 2 — Critical points are the only candidates for local extrema.\nBy Fermat, every local extremum is a critical point — so finding critical points is the first step in any optimisation. But not every critical point is an extremum (x^3 at 0). On a closed interval, the candidates for absolute extrema are the critical points TOGETHER WITH the end points.",
       "keyMoves": [
         "Solve f'(x) = 0 for stationary points",
         "Add points where f is not differentiable",
@@ -178,7 +178,7 @@
       "brief": "Use the sign change of f' across a critical point to decide maxima, minima or inflexion.",
       "sec": 3,
       "quote": "Let f be continuous at a critical point c in I.",
-      "explanation": "First Derivative Test (Theorem 3): let f be a function on an open interval I, continuous at a critical point c in I. If f'(x) changes sign from positive to negative as x increases through c, then c is a point of local maxima. If f'(x) changes from negative to positive, c is a point of local minima. If f'(x) does not change sign, c is neither (a point of inflexion). So you inspect the sign of the derivative just left and just right of each critical point.",
+      "explanation": "PART 1 — Inspect the sign of f' just left and just right of c.\nAt a critical point c, check the sign of f'(x) immediately before and after c. Sign change + to - means a local maximum. Sign change - to + means a local minimum. No sign change means neither (a point of inflexion).\n\nPART 2 — Look at the sign AROUND c, not at c itself.\nf'(c) is 0 (or undefined) at the critical point, so its value there tells you nothing — you must test points just to the left and right. A handy memory: f' going from rising-permitting (+) to falling-permitting (-) is a peak (max).",
       "keyMoves": [
         "Find the critical points c",
         "Check the sign of f'(x) just left and just right of c",
@@ -202,7 +202,7 @@
       "brief": "At f'(c) = 0, use the sign of f''(c) to decide local maxima (<0) or minima (>0).",
       "sec": 3,
       "quote": "x = c is a point of local maxima if f'(c) = 0 and f''(c) < 0",
-      "explanation": "Second Derivative Test (Theorem 4): let f be twice differentiable at c. Then x = c is a point of local maxima if f'(c) = 0 and f''(c) < 0 (the value f(c) is the local maximum value); x = c is a point of local minima if f'(c) = 0 and f''(c) > 0. If f''(c) = 0 the test fails and you fall back on the first derivative test. This test is often easier than the first derivative test when the second derivative is easy to compute.",
+      "explanation": "PART 1 — At f'(c) = 0, the sign of f''(c) classifies the point.\nIf f'(c) = 0 and f''(c) < 0, then c is a local MAXIMUM (curve concave down, a peak). If f'(c) = 0 and f''(c) > 0, then c is a local MINIMUM (concave up, a valley). Memory aid: negative second derivative = frown = maximum.\n\nPART 2 — f''(c) = 0 is inconclusive.\nIf f''(c) = 0 the second derivative test fails — fall back on the first derivative test (sign change of f'). Do not swap the signs: f''(c) > 0 gives a MINIMUM, not a maximum.",
       "keyMoves": [
         "Find c with f'(c) = 0",
         "Compute f''(c): negative gives local maxima, positive gives local minima",
@@ -226,7 +226,7 @@
       "brief": "Recognise the absolute maximum/minimum as the greatest/least value of f over the whole interval.",
       "sec": 3,
       "quote": "is called *absolute maximum* value",
-      "explanation": "The greatest value of f on an interval is called its absolute maximum value (also global maximum or greatest value), and the least value is the absolute minimum value (global minimum or least value). Unlike local extrema, these compare f(c) against ALL values on the interval, not just nearby ones. The absolute extrema may occur at interior critical points or at the end points of the interval, and may differ from any local extrema.",
+      "explanation": "PART 1 — Absolute (global) extrema compare against ALL values on the interval.\nThe absolute maximum value is the GREATEST value of f over the whole interval; the absolute minimum is the LEAST. Unlike local extrema (which only beat nearby points), absolute extrema beat every other value on the interval.\n\nPART 2 — They can occur at interior critical points OR at end points.\nThe absolute max/min may be at an interior critical point or at an end point a or b of the interval. So end points must be checked. An absolute extremum need not coincide with any local extremum.",
       "keyMoves": [
         "Compare values over the entire interval, not just locally",
         "Identify the single greatest value (absolute maximum) and least value (absolute minimum)",
@@ -250,7 +250,7 @@
       "brief": "Apply Theorem 5: a continuous function on a closed interval attains both its absolute maximum and minimum.",
       "sec": 3,
       "quote": "Then f has the absolute maximum value and f attains it at least once in I.",
-      "explanation": "Theorem 5: let f be a continuous function on a closed interval I = [a, b]. Then f has the absolute maximum value and attains it at least once in I, and likewise has the absolute minimum value and attains it at least once in I. This guarantees that the search for absolute extrema on a closed interval will succeed - they exist. (On an open interval continuity alone does not guarantee this.)",
+      "explanation": "PART 1 — A continuous function on a CLOSED interval attains both extrema.\nThe Extreme Value Theorem: if f is continuous on a closed interval [a, b], then f has an absolute maximum value and an absolute minimum value, each attained at least once in [a, b]. So the search for absolute extrema is guaranteed to succeed.\n\nPART 2 — The closed interval and continuity are both essential.\nOn an OPEN interval (or with a discontinuity), this guarantee can fail — e.g. f(x) = x on (0, 1) attains neither its sup nor its inf. Always check the interval is closed and f is continuous before invoking the theorem.",
       "keyMoves": [
         "Check the function is continuous on the closed interval [a, b]",
         "Conclude both absolute maximum and absolute minimum exist and are attained",
@@ -274,7 +274,7 @@
       "brief": "Apply the working rule: evaluate f at all critical points and at the end points, then pick the greatest and least.",
       "sec": 3,
       "quote": "Step 1: Find all critical points of f in the interval, i.e., find points x where either f'(x) = 0 or f is not differentiable.",
-      "explanation": "Working rule for absolute extrema on a closed interval [a, b] (guaranteed to exist by Theorem 5). Step 1: find all critical points of f in the interval, i.e. points x where either f'(x) = 0 or f is not differentiable. Step 2/3: evaluate f at each of these critical points and at the end points a and b. Step 4: the largest of these values is the absolute maximum value and the smallest is the absolute minimum value. This capstone combines critical points, the derivative tests and the extreme-value guarantee to solve applied optimisation problems.",
+      "explanation": "PART 1 — The working rule: critical points AND end points, then compare values.\nTo find absolute extrema of f on a closed interval [a, b]: Step 1, find all critical points in (a, b) (where f'(x) = 0 or f' does not exist). Step 2, evaluate f at every critical point AND at both end points a and b. Step 3, the LARGEST of these values is the absolute maximum, the SMALLEST is the absolute minimum.\n\nPART 2 — Compare actual values; do not skip the end points.\nThe key is to compare the actual function VALUES, not to use a derivative test. The two common errors are forgetting to evaluate f at the end points, and using the second derivative test (which finds local extrema) instead of directly comparing values. This capstone combines critical points and the EVT guarantee for optimisation.",
       "keyMoves": [
         "List all critical points in [a, b] (f'(x) = 0 or f' not defined)",
         "Evaluate f at every critical point and at both end points a and b",

@@ -1,69 +1,116 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import ExamSelect from './components/ExamSelect';
-import SubjectSelect from './components/SubjectSelect';
-import ChapterList from './components/ChapterList';
+import Home from './components/Home';
+import AdminDashboard from './components/AdminDashboard';
+import AuthModal from './components/AuthModal';
 import ChapterMap from './components/ChapterMap';
 import NodeView from './components/NodeView';
 import PaperView from './components/PaperView';
+import { getStoredUser, clearUser, type AuthUser } from './lib/auth';
 
 // Prod bakes in VITE_API_URL (render.yaml). In dev, fall back to the relative '/api' so requests go
 // through Vite's proxy (vite.config.ts → API_PORT) — no hardcoded port that can drift from the API.
 const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
-type View = 'exam' | 'subject' | 'chapters' | 'nodes' | 'node' | 'paper';
+type View = 'home' | 'nodes' | 'node' | 'paper';
+
+// Anonymous browsing id (so the home map renders before login). Once logged in, the account's user
+// id IS the learnerId, so all progress ties to the account.
+function anonId(): string {
+  const id = localStorage.getItem('learnerId');
+  const isUuid = id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+  if (isUuid) return id as string;
+  const newId = crypto.randomUUID();
+  localStorage.setItem('learnerId', newId);
+  return newId;
+}
 
 export default function App() {
-  const [learnerId] = useState(() => {
-    const id = localStorage.getItem('learnerId');
-    const isUuid = id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
-    if (isUuid) return id as string;
-    const newId = crypto.randomUUID();
-    localStorage.setItem('learnerId', newId);
-    return newId;
-  });
+  const [user, setUser] = useState<AuthUser | null>(() => getStoredUser());
+  const [anon] = useState(anonId);
+  const learnerId = user?.id ?? anon;
 
-  const [view, setView] = useState<View>('exam');
+  const [view, setView] = useState<View>('home');
   const [exam, setExam] = useState('cbse10');
   const [subject, setSubject] = useState('maths');
   const [chapterId, setChapterId] = useState<string | null>(null);
   const [conceptId, setConceptId] = useState<string | null>(null);
 
+  // Auth gate: a logged-out learner who clicks a chapter gets the modal first. We stash the intended
+  // destination and replay it after a successful login/register.
+  const [authOpen, setAuthOpen] = useState(false);
+  const [pendingNav, setPendingNav] = useState<null | (() => void)>(null);
+
+  // Operator dashboard lives behind the #admin hash (its own basic-auth login).
+  const [isAdmin, setIsAdmin] = useState(() => typeof location !== 'undefined' && location.hash === '#admin');
+  useEffect(() => {
+    const onHash = () => setIsAdmin(location.hash === '#admin');
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+  if (isAdmin) {
+    return (
+      <div className="app">
+        <main className="app-main">
+          <AdminDashboard apiBase={API_BASE} />
+        </main>
+      </div>
+    );
+  }
+
+  const goChapter = (e: string, s: string, id: string) => {
+    setExam(e);
+    setSubject(s);
+    setChapterId(id);
+    setView('nodes');
+  };
+
+  const handlePickChapter = (e: string, s: string, id: string) => {
+    if (!user) {
+      setPendingNav(() => () => goChapter(e, s, id));
+      setAuthOpen(true);
+      return;
+    }
+    goChapter(e, s, id);
+  };
+
+  const handleTakePaper = (e: string, s: string) => {
+    if (!user) {
+      setPendingNav(() => () => { setExam(e); setSubject(s); setView('paper'); });
+      setAuthOpen(true);
+      return;
+    }
+    setExam(e);
+    setSubject(s);
+    setView('paper');
+  };
+
+  const onAuthed = (u: AuthUser) => {
+    setUser(u);
+    setAuthOpen(false);
+    const next = pendingNav;
+    setPendingNav(null);
+    if (next) next();
+  };
+
+  const onLogout = () => {
+    clearUser();
+    setUser(null);
+    setView('home');
+  };
+
   return (
     <div className="app">
       <main className="app-main">
-        {view === 'exam' && (
-          <ExamSelect
-            onSelect={(e) => {
-              setExam(e);
-              setView('subject');
-            }}
-          />
-        )}
-
-        {view === 'subject' && (
-          <SubjectSelect
-            exam={exam}
-            onBack={() => setView('exam')}
-            onSelect={(s) => {
-              setSubject(s);
-              setView('chapters');
-            }}
-          />
-        )}
-
-        {view === 'chapters' && (
-          <ChapterList
+        {view === 'home' && (
+          <Home
             learnerId={learnerId}
-            exam={exam}
-            subject={subject}
             apiBase={API_BASE}
-            onPick={(id) => {
-              setChapterId(id);
-              setView('nodes');
-            }}
-            onTakePaper={() => setView('paper')}
-            onBack={() => setView('subject')}
+            user={user}
+            onPickChapter={handlePickChapter}
+            onTakePaper={handleTakePaper}
+            onLoginClick={() => { setPendingNav(null); setAuthOpen(true); }}
+            onLogout={onLogout}
           />
         )}
 
@@ -73,10 +120,10 @@ export default function App() {
             exam={exam}
             subject={subject}
             apiBase={API_BASE}
-            onBack={() => setView('chapters')}
-            onRevise={(conceptId, chapterId) => {
-              setChapterId(chapterId);
-              setConceptId(conceptId);
+            onBack={() => setView('home')}
+            onRevise={(cId, chId) => {
+              setChapterId(chId);
+              setConceptId(cId);
               setView('node');
             }}
           />
@@ -91,7 +138,7 @@ export default function App() {
               setConceptId(id);
               setView('node');
             }}
-            onBack={() => setView('chapters')}
+            onBack={() => setView('home')}
           />
         )}
 
@@ -104,6 +151,14 @@ export default function App() {
           />
         )}
       </main>
+
+      {authOpen && (
+        <AuthModal
+          apiBase={API_BASE}
+          onAuthed={onAuthed}
+          onClose={() => { setAuthOpen(false); setPendingNav(null); }}
+        />
+      )}
     </div>
   );
 }

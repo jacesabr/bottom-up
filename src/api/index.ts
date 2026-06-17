@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { initializeDatabase } from '../db/index.js';
 import routes from './routes.js';
+import adminRoutes from './admin.js';
 
 const app = express();
 // Render injects PORT; fall back to API_PORT / 3030 locally.
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 });
 
 // Routes (mounted FIRST so the server serves even if the seed-load hiccups)
+app.use('/api/admin', adminRoutes);
 app.use('/api', routes);
 
 // Health check

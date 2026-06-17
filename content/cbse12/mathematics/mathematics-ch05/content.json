@@ -14,7 +14,7 @@
       "brief": "Decide whether f is continuous at c by checking the limit at c equals f(c).",
       "sec": 1,
       "quote": "Then f is continuous at c if",
-      "explanation": "Let f be a real function and let c be a point in its domain. Then f is continuous at c if the limit of f(x) as x approaches c equals f(c). More elaborately, the left-hand limit, right-hand limit and the value f(c) must all exist and be equal. If f is not continuous at c, f is discontinuous at c and c is a point of discontinuity. Intuitively, f is continuous at c if its graph can be drawn around c without lifting the pen.",
+      "explanation": "PART 1 — Continuity at c requires limit = value.\nf is continuous at a point c in its domain if lim(x->c) f(x) = f(c). Three things must hold: the left-hand limit, the right-hand limit, and f(c) must all exist and be EQUAL to one another. If any fails, f is discontinuous at c.\n\nPART 2 — Check both one-sided limits, not just f(c).\nA common error is checking only that f(c) is defined. You must also confirm lim(x->c-) f(x) = lim(x->c+) f(x) = f(c). Intuitively, f is continuous at c if its graph passes through c without a break, jump, or hole.",
       "keyMoves": [
         "Compute the left-hand and right-hand limits at c",
         "Check both limits are equal (so the limit exists) and equal f(c)",
@@ -36,7 +36,7 @@
       "brief": "Recognise a continuous function as one continuous at every point of its domain.",
       "sec": 2,
       "quote": "A real function *f* is said to be continuous if it is continuous at every point in the domain of *f*.",
-      "explanation": "A real function f is said to be continuous if it is continuous at every point in the domain of f. For a function on a closed interval [a, b], continuity must hold at every interior point and at the end points (using one-sided limits there). Polynomial, rational (on their domains), and the standard trig functions are continuous functions.",
+      "explanation": "PART 1 — Continuous everywhere on the domain.\nA function f is continuous (as a whole) if it is continuous at EVERY point of its domain, not just at one point. A single point of continuity is not enough to call the function continuous.\n\nPART 2 — Handle interval end points with one-sided limits; know the standard continuous families.\nOn a closed interval [a,b], require continuity at every interior point and at the end points using the appropriate one-sided limit. Polynomials, rational functions (wherever the denominator is non-zero), and the standard trig functions are all continuous on their domains.",
       "keyMoves": [
         "Check continuity at every point of the domain",
         "Handle interval end points with one-sided limits",
@@ -60,7 +60,7 @@
       "brief": "Use that sums, differences, products and quotients (denominator nonzero) of continuous functions are continuous.",
       "sec": 2,
       "quote": "Suppose f and g be two real functions continuous at a real number c.",
-      "explanation": "Suppose f and g are two real functions continuous at a real number c. Then f + g, f - g and f.g are continuous at c, and f/g is continuous at c provided g(c) is not zero. This algebra of continuous functions lets you build continuity of complicated expressions from simple continuous pieces (e.g. every polynomial is continuous, and a rational function is continuous wherever its denominator is non-zero).",
+      "explanation": "PART 1 — Sums, differences, products of continuous functions are continuous.\nIf f and g are both continuous at c, then f + g, f - g, and f*g are all continuous at c. So you can build continuity of complicated expressions from simple continuous building blocks (constants, x, sin x, etc.).\n\nPART 2 — Quotients are continuous only where the denominator is non-zero.\nf/g is continuous at c provided g(c) != 0. This is the key caveat: a rational function is continuous everywhere EXCEPT where its denominator vanishes. For example (x+1)/(x-2) is continuous for all x except x = 2.",
       "keyMoves": [
         "Identify continuous building-block functions",
         "Combine them by +, -, x to keep continuity",
@@ -84,7 +84,7 @@
       "brief": "Apply: if g is continuous at c and f is continuous at g(c), then f o g is continuous at c.",
       "sec": 2,
       "quote": "If g is continuous at c and if f is continuous at g(c), then  $(f \\circ g)$  is continuous at c.",
-      "explanation": "Suppose f and g are real functions such that the composite f o g is defined at c. If g is continuous at c and f is continuous at g(c), then (f o g) is continuous at c. This lets you deduce continuity of functions like sin(x^2): it is the composite of sin (continuous) with x^2 (continuous), hence continuous.",
+      "explanation": "PART 1 — Composite continuity: inner continuous at c, outer continuous at g(c).\nIf g is continuous at c AND f is continuous at g(c), then the composite (f o g)(x) = f(g(x)) is continuous at c. The outer function must be checked at the OUTPUT of the inner function, g(c), not at c.\n\nPART 2 — Apply to decompose complicated functions.\nWrite the function as a composite and check each piece. Example: sin(x^2) is f(g(x)) with g(x)=x^2 (continuous) and f(u)=sin u (continuous). Both are continuous, so sin(x^2) is continuous everywhere. The common error is checking f at c instead of at g(c).",
       "keyMoves": [
         "Express the function as a composite f o g",
         "Check g is continuous at c and f is continuous at g(c)",
@@ -108,7 +108,7 @@
       "brief": "Define f'(c) as the limit of the difference quotient as h tends to 0.",
       "sec": 3,
       "quote": "The derivative of f at c is defined by",
-      "explanation": "Suppose f is a real function and c is a point in its domain. The derivative of f at c is defined by the limit as h tends to 0 of [f(c + h) - f(c)] / h, provided this limit exists; it is denoted f'(c). The function f'(x) = limit as h tends to 0 of [f(x + h) - f(x)] / h, wherever the limit exists, is the derivative of f, also written dy/dx or y'. The process of finding the derivative is called differentiation.",
+      "explanation": "PART 1 — The derivative is the limit of the difference quotient.\nf'(c) = lim(h->0) [f(c+h) - f(c)] / h, provided this limit exists. The quotient [f(c+h) - f(c)]/h is the average rate of change over a small interval h; its limit as h->0 is the instantaneous rate of change.\n\nPART 2 — The derivative as a function, and notation.\nLetting c vary gives the derivative function f'(x) = lim(h->0) [f(x+h) - f(x)]/h, also written dy/dx or y'. The process of finding it is differentiation. Always keep the 'provided the limit exists' caution — at some points the limit may fail to exist.",
       "keyMoves": [
         "Form the difference quotient [f(c + h) - f(c)] / h",
         "Take the limit as h tends to 0",
@@ -130,7 +130,7 @@
       "brief": "f is differentiable at c if the difference-quotient limit exists; equivalently both one-sided derivatives agree.",
       "sec": 3,
       "quote": "we say that a function f is differentiable at a point c in its domain if both",
-      "explanation": "If the limit of [f(c + h) - f(c)] / h as h tends to 0 does not exist, f is not differentiable at c. We say a function f is differentiable at a point c in its domain if both the left-hand and right-hand derivatives at c exist and are equal (so the difference-quotient limit exists). For example, f(x) = |x| is not differentiable at 0 because the one-sided derivatives are -1 and +1.",
+      "explanation": "PART 1 — Differentiable means the difference-quotient limit exists.\nf is differentiable at c if lim(h->0)[f(c+h)-f(c)]/h exists. Equivalently, the left-hand derivative (h->0-) and right-hand derivative (h->0+) both exist and are EQUAL. If they differ, f is not differentiable at c.\n\nPART 2 — Corners break differentiability.\nA classic example: f(x) = |x| at x=0. The left derivative is -1 and the right derivative is +1; since -1 != +1, |x| is not differentiable at 0 (even though it is continuous there). Sharp corners are points of non-differentiability.",
       "keyMoves": [
         "Compute the left-hand and right-hand derivative limits at c",
         "Check they exist and are equal",
@@ -154,7 +154,7 @@
       "brief": "Apply the corollary: every differentiable function is continuous (but not conversely).",
       "sec": 3,
       "quote": "Every differentiable function is continuous.",
-      "explanation": "Every differentiable function is continuous: if f is differentiable at c then it is continuous at c. The converse is false - a function can be continuous yet not differentiable (e.g. |x| is continuous everywhere but not differentiable at 0). So differentiability is the stronger condition; use it to immediately conclude continuity, but never to conclude differentiability from continuity.",
+      "explanation": "PART 1 — Differentiable implies continuous.\nIf f is differentiable at c, then f is continuous at c. So differentiability is the STRONGER condition: whenever a function has a derivative at a point, it is automatically continuous there. Use this to conclude continuity quickly.\n\nPART 2 — The converse is FALSE.\nContinuous does NOT imply differentiable. |x| is continuous everywhere but not differentiable at 0 (corner). So you may go differentiable => continuous, but never continuous => differentiable. A non-differentiable point (like a corner) can still be a point of continuity.",
       "keyMoves": [
         "From differentiability at c, conclude continuity at c",
         "Do NOT reverse the implication",
@@ -179,7 +179,7 @@
       "brief": "Use df/dx = (dv/dt)(dt/dx) for f = v o u with t = u(x).",
       "sec": 3,
       "quote": "Let *f* be a real valued function which is a composite of two",
-      "explanation": "The chain rule (Theorem 4): let f be a real valued function which is a composite of two functions u and v, f = v o u, with t = u(x). If both dt/dx and dv/dt exist, then df/dx = (dv/dt)(dt/dx). So you differentiate the outer function with respect to the inner variable and multiply by the derivative of the inner. For example, for f(x) = sin(x^2), put t = x^2: df/dx = cos(t) . 2x = 2x cos(x^2). The rule extends to composites of three or more functions.",
+      "explanation": "PART 1 — Differentiate outer-by-inner, then multiply by the inner derivative.\nFor a composite f = v o u with t = u(x), df/dx = (dv/dt)(dt/dx). Differentiate the outer function with respect to the inner variable t, then multiply by dt/dx (the derivative of the inner function). Example: f(x) = sin(x^2), put t = x^2: df/dx = cos(t) * 2x = 2x cos(x^2).\n\nPART 2 — Do not forget the inner derivative; extend to deeper composites.\nThe most common error is stopping at cos(x^2) and forgetting the *2x factor. For three layers, multiply all the link derivatives: d/dx sin(cos(x^2)) = cos(cos(x^2)) * (-sin(x^2)) * 2x.",
       "keyMoves": [
         "Identify the inner function t = u(x) and outer function v",
         "Compute dv/dt and dt/dx",
@@ -203,7 +203,7 @@
       "brief": "Differentiate both sides of an implicit relation w.r.t. x, treating y as a function of x via the chain rule.",
       "sec": 3,
       "quote": "Derivatives of implicit functions",
-      "explanation": "When y is given implicitly by a relation in x and y (not solved for y), you find dy/dx by differentiating both sides with respect to x, applying the chain rule to every term involving y (each y differentiates to dy/dx times the outer derivative), then solving the resulting equation for dy/dx. This avoids having to solve the relation for y explicitly.",
+      "explanation": "PART 1 — Differentiate both sides w.r.t. x, treating y as a function of x.\nWhen y is given implicitly (the relation is not solved for y), differentiate both sides with respect to x. Every term in y picks up a dy/dx factor by the chain rule: d/dx(y^2) = 2y dy/dx, d/dx(sin y) = cos y dy/dx.\n\nPART 2 — Collect dy/dx terms and solve algebraically.\nAfter differentiating, gather all terms containing dy/dx on one side, factor out dy/dx, and divide to isolate it. Example: x^2 + y^2 = 25 gives 2x + 2y dy/dx = 0, so dy/dx = -x/y. The main error is forgetting the dy/dx factor on a y-term.",
       "keyMoves": [
         "Differentiate both sides of the relation with respect to x",
         "Apply the chain rule to terms in y (introduce dy/dx)",
@@ -227,7 +227,7 @@
       "brief": "Use the chain rule on inverse trig functions to obtain their derivatives.",
       "sec": 3,
       "quote": "Derivatives of inverse trigonometric functions",
-      "explanation": "Inverse trigonometric functions are continuous, and their derivatives are found using the chain rule (often by writing y = sin-inverse x, so sin y = x, and differentiating). This yields standard results such as the derivative of sin-inverse x being 1/sqrt(1 - x^2). These derivatives, combined with the chain rule, let you differentiate composite expressions involving inverse trig functions.",
+      "explanation": "PART 1 — Derive inverse-trig derivatives by implicit differentiation.\nWrite y = arcsin x, so sin y = x. Differentiate both sides: cos y dy/dx = 1, so dy/dx = 1/cos y = 1/sqrt(1 - sin^2 y) = 1/sqrt(1 - x^2). This gives the standard result d/dx(arcsin x) = 1/sqrt(1 - x^2).\n\nPART 2 — Standard results and chain-rule use.\nKey derivatives: d/dx(arcsin x) = 1/sqrt(1-x^2), d/dx(arccos x) = -1/sqrt(1-x^2), d/dx(arctan x) = 1/(1+x^2). For composites, apply the chain rule: d/dx arctan(x^2) = 1/(1+x^4) * 2x. Do NOT confuse d/dx(arcsin x) with 1/cos x.",
       "keyMoves": [
         "Write y = (inverse trig) of x and convert to the direct trig relation",
         "Differentiate implicitly / by chain rule to isolate dy/dx",
@@ -251,7 +251,7 @@
       "brief": "Recognise the exponential function with base b > 1, with domain R and positive range.",
       "sec": 4,
       "quote": "The exponential function with positive base b > 1 is the function",
-      "explanation": "The exponential function with positive base b > 1 is the function y = b^x. Its domain is all of R, its range is the positive reals, the point (0, 1) is always on the graph (b^0 = 1), and it is ever increasing. With base e (a number between 2 and 3) we get the natural exponential function y = e^x. The natural exponential is special in calculus because it is unchanged by differentiation.",
+      "explanation": "PART 1 — y = b^x (b > 1): domain all reals, range positive reals.\nThe exponential function with base b > 1 is y = b^x. Its domain is all of R, its range is the POSITIVE reals (b^x is always > 0, never zero or negative), it passes through (0, 1) since b^0 = 1, and it is strictly increasing.\n\nPART 2 — The natural exponential e^x.\nWith base e (a constant between 2 and 3) we get y = e^x, the natural exponential. It is special in calculus because it is unchanged by differentiation: d/dx(e^x) = e^x. Note b^x can never be negative or zero.",
       "keyMoves": [
         "Recognise y = b^x with b > 1 as an exponential function",
         "State its domain R and range the positive reals",
@@ -275,7 +275,7 @@
       "brief": "Define log_b a = x to mean b^x = a; the log function is the inverse of the exponential.",
       "sec": 4,
       "quote": "we say logarithm of *a* to base *b* is *x* if  $b^x = a$ .",
-      "explanation": "Let b > 1 be a real number. We say the logarithm of a to base b is x if b^x = a, written log_b a = x. So log_b a = x exactly when b^x = a - the logarithm is the inverse of the exponential function. For example log_2 8 = 3 because 2^3 = 8. The domain of the log function is the positive reals (logarithms of non-positive numbers are undefined). In this chapter log x means the natural logarithm (base e).",
+      "explanation": "PART 1 — Logarithm is the inverse of the exponential: log_b a = x means b^x = a.\nFor base b > 1, log_b a = x is defined to mean b^x = a. So the log answers 'to what power must b be raised to get a?'. Example: log_2 8 = 3 because 2^3 = 8. Converting between log and exponential form is the key skill.\n\nPART 2 — Domain is the positive reals; default base is e here.\nThe argument of a logarithm must be positive — log of zero or a negative number is undefined. In this chapter log x means the NATURAL logarithm (base e), so log e = 1 and log 1 = 0.",
       "keyMoves": [
         "Translate log_b a = x into the exponential statement b^x = a",
         "Restrict the argument of log to positive reals",
@@ -299,7 +299,7 @@
       "brief": "Use d/dx(e^x) = e^x and d/dx(log x) = 1/x.",
       "sec": 4,
       "quote": "The derivative of  $e^x$  w.r.t., x is  $e^x$ ; i.e.,  $\\frac{d}{dx}(e^x) = e^x$ .",
-      "explanation": "The natural exponential is unchanged by differentiation: the derivative of e^x with respect to x is e^x. The derivative of log x (natural log) with respect to x is 1/x. Combined with the chain rule these give derivatives of expressions like e^(-x), sin(log x) and e^(cos x). These two derivatives are central to logarithmic differentiation and to differential equations.",
+      "explanation": "PART 1 — The two key derivatives: d/dx(e^x) = e^x and d/dx(log x) = 1/x.\nThe natural exponential is unchanged by differentiation: d/dx(e^x) = e^x. The natural logarithm differentiates to d/dx(log x) = 1/x. These are memorised base results.\n\nPART 2 — Combine with the chain rule for composites.\nFor e^(g(x)) use e^(g(x)) * g'(x); for log(g(x)) use g'(x)/g(x). Examples: d/dx(e^(2x)) = 2e^(2x); d/dx(log(x^2)) = 2x/x^2 = 2/x. The common error is writing d/dx(e^x) = x e^(x-1) (treating it as a power) — e^x is NOT a power function.",
       "keyMoves": [
         "Use d/dx(e^x) = e^x",
         "Use d/dx(log x) = 1/x",
@@ -324,7 +324,7 @@
       "brief": "Take logs of both sides before differentiating, especially for variable-base-variable-exponent forms.",
       "sec": 5,
       "quote": "Logarithmic Differentiation",
-      "explanation": "Logarithmic differentiation handles functions that are awkward to differentiate directly - in particular y = (f(x))^(g(x)) with both base and exponent variable. The method: take the natural logarithm of both sides, use log laws to bring the exponent down, then differentiate both sides with respect to x (the left side gives (1/y) dy/dx by the chain rule), and finally solve for dy/dx (multiplying by y). It also simplifies products and quotients of many factors.",
+      "explanation": "PART 1 — Take logs of both sides, then differentiate.\nLogarithmic differentiation handles y = (f(x))^(g(x)) with BOTH base and exponent variable (the power rule and exponential rule both fail here). Take log of both sides: log y = g(x) log f(x). Then differentiate: the left side gives (1/y) dy/dx by the chain rule.\n\nPART 2 — Solve for dy/dx and substitute y back.\nAfter differentiating, multiply through by y to isolate dy/dx, then replace y with the original (f(x))^(g(x)). Example: y = x^x gives log y = x log x, so (1/y) dy/dx = log x + 1, hence dy/dx = x^x (log x + 1). The common error is treating a variable exponent as a constant power.",
       "keyMoves": [
         "Take log of both sides: log y = g(x) log f(x)",
         "Differentiate both sides w.r.t. x, using (1/y) dy/dx on the left",
@@ -348,7 +348,7 @@
       "brief": "For x = f(t), y = g(t), find dy/dx = (dy/dt) / (dx/dt).",
       "sec": 6,
       "quote": "is said to be parametric form with t as a parameter.",
-      "explanation": "A relation between two variables x and y expressed in the form x = f(t), y = g(t) is said to be parametric form, with t the parameter. To differentiate, compute dx/dt and dy/dt separately, then dy/dx = (dy/dt) / (dx/dt), provided dx/dt is not zero. This gives the slope of the parametric curve without eliminating the parameter.",
+      "explanation": "PART 1 — Differentiate x and y separately with respect to t.\nWhen x = f(t) and y = g(t) (parametric form, t the parameter), compute dx/dt and dy/dt each in terms of t.\n\nPART 2 — Form dy/dx = (dy/dt)/(dx/dt), not the reciprocal.\nThe slope is dy/dx = (dy/dt)/(dx/dt), provided dx/dt is not 0. Example: x = t^2, y = t^3 gives dx/dt = 2t, dy/dt = 3t^2, so dy/dx = 3t^2/2t = 3t/2. The common error is inverting it to (dx/dt)/(dy/dt) — dy/dt goes on TOP.",
       "keyMoves": [
         "Differentiate x = f(t) and y = g(t) with respect to t",
         "Form dy/dx = (dy/dt) / (dx/dt)",
@@ -372,7 +372,7 @@
       "brief": "Differentiate the first derivative again to obtain d2y/dx2, using the full differentiation toolkit.",
       "sec": 7,
       "quote": "which is called the *second order derivative* of y w.r.t. x",
-      "explanation": "Differentiating dy/dx once more with respect to x gives d/dx(dy/dx), which is called the second order derivative of y with respect to x, denoted d2y/dx2 (or f''(x), y'' or y_2). To compute it you first find the first derivative dy/dx (using the chain rule, implicit, parametric, logarithmic, or exponential/log rules as needed), then differentiate that result again. Higher order derivatives are defined similarly. This is the capstone that draws on every differentiation technique in the chapter.",
+      "explanation": "PART 1 — Differentiate twice: the second derivative is d/dx of the first derivative.\nThe second-order derivative d2y/dx2 (also f''(x), y'', or y_2) is found by differentiating dy/dx again with respect to x. Step 1: find dy/dx using whatever technique fits (chain, product, implicit, parametric, log, exp/log). Step 2: differentiate that result once more.\n\nPART 2 — Differentiate, do not square.\nThe second derivative is d/dx(dy/dx), NOT (dy/dx)^2. Re-apply product and chain rules when differentiating the first derivative. Example: y = x^4 gives dy/dx = 4x^3, then d2y/dx2 = 12x^2. This capstone draws on every differentiation rule in the chapter.",
       "keyMoves": [
         "Find the first derivative dy/dx with the appropriate technique",
         "Differentiate dy/dx again with respect to x",

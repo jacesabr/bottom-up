@@ -15,11 +15,10 @@
       "brief": "Identify an optimisation problem as one that seeks to maximise or minimise a quantity such as profit or cost.",
       "sec": 1,
       "quote": "Such type of problems which seek to maximise (or, minimise) profit (or, cost) form a general class of problems called",
-      "explanation": "Problems that seek to maximise (or minimise) profit (or cost) form a general class called optimisation problems. An optimisation problem may involve finding maximum profit, minimum cost, or minimum use of resources. The furniture dealer who wants to choose how many tables and chairs to buy so as to maximise his total profit is a typical example. Linear programming problems are a special, very important class of optimisation problems.",
+      "explanation": "PART 1 — Spot the quantity being optimised.\nAn optimisation problem seeks to make some quantity as large or as small as possible. That quantity might be profit, cost, area, time, or use of resources — the hallmark is the word \"maximise\" or \"minimise.\" For example, a furniture dealer wants to maximise his total profit from selling tables and chairs.\n\nPART 2 — Recognise optimisation as a class of problems.\nProblems that seek to maximise (or minimise) profit (or cost) form a general class called optimisation problems. An optimisation problem may involve finding maximum profit, minimum cost, or minimum use of resources. Linear programming problems are a very important special class of optimisation problems.",
       "keyMoves": [
         "Spot the quantity to be made as large or as small as possible (profit, cost, resources)",
-        "Recognise this maximise/minimise goal as the hallmark of an optimisation problem",
-        "Note that linear programming problems are a special class of optimisation problems"
+        "Recognise this maximise/minimise goal as the hallmark of an optimisation problem"
       ],
       "misconceptions": [
         "Thinking optimisation only ever means maximising (it also covers minimising)",
@@ -37,11 +36,10 @@
       "brief": "Form the linear objective function Z = ax + by that must be maximised or minimised.",
       "sec": 2,
       "quote": "Linear function Z = ax + by, where *a*, *b* are constants, which has to be maximised or minimized is called a linear **objective function**.",
-      "explanation": "The objective function is the linear function Z = ax + by, where a and b are constants, that has to be maximised or minimised. In the furniture example Z = 250x + 75y (the total profit) is the objective function. It encodes exactly the quantity the optimisation problem is trying to make as large (or small) as possible, written as a linear expression in the variables.",
+      "explanation": "PART 1 — Identify the quantity to optimise and express it linearly.\nThe objective function is a linear function Z = ax + by, where a and b are constants, that has to be maximised or minimised. \"Linear\" means it has no x^2, xy, or other non-linear terms — just constant multiples of the decision variables added together.\n\nPART 2 — Label the function Z.\nIn the furniture example, total profit = 250x + 75y, so Z = 250x + 75y is the objective function. It encodes exactly the quantity the optimisation problem tries to make as large (or small) as possible. Always write it in the form Z = ax + by and name it the objective function.",
       "keyMoves": [
         "Identify the quantity to optimise (e.g. total profit or cost)",
-        "Express it as a linear function Z = ax + by with constant coefficients",
-        "Label this Z the objective function"
+        "Express it as a linear function Z = ax + by with constant coefficients"
       ],
       "misconceptions": [
         "Including non-linear terms (like xy or x^2) in the objective function",
@@ -61,11 +59,10 @@
       "brief": "Recognise the variables x and y in the objective function as the decision variables.",
       "sec": 2,
       "quote": "Variables x and y are called **decision variables**.",
-      "explanation": "The variables x and y appearing in the objective function are called the decision variables: they represent the choices the problem must decide on (for example, the number of tables x and chairs y to buy). Choosing their values determines the value of the objective function, subject to the constraints.",
+      "explanation": "PART 1 — Read off the unknowns the problem must choose.\nThe variables x and y appearing in the objective function are the quantities the problem must decide on. In the furniture example x = number of tables and y = number of chairs to buy. Their values are unknown until we solve the LPP — hence they are called decision variables.\n\nPART 2 — Note the non-negativity constraint on decision variables.\nDecision variables represent real-world quantities (items bought, hours worked), so they cannot be negative. This is recorded as x >= 0, y >= 0 and is always included. Choosing specific values for x and y determines the value of the objective function Z.",
       "keyMoves": [
         "Read off the unknown quantities the problem must choose",
-        "Name them x and y",
-        "Recognise these as the decision variables of the LPP"
+        "Recognise these as the decision variables, always restricted to be non-negative"
       ],
       "misconceptions": [
         "Treating the constants a, b in Z = ax + by as the decision variables",
@@ -85,11 +82,10 @@
       "brief": "Express the restrictions on the variables as linear inequalities called constraints.",
       "sec": 2,
       "quote": "The linear inequalities or equations or restrictions on the variables of a linear programming problem are called **constraints**.",
-      "explanation": "The linear inequalities or equations or restrictions on the variables of a linear programming problem are called constraints. In the furniture example the limited investment (5x + y <= 100) and the limited storage (x + y <= 60) are the constraints. They restrict which combinations of decision-variable values are allowed.",
+      "explanation": "PART 1 — Translate each real limit into a linear inequality.\nEvery practical restriction on the decision variables becomes a constraint. A limited budget of Rs 50,000 with tables at Rs 2500 and chairs at Rs 500 gives 2500x + 500y <= 50000, simplified to 5x + y <= 100. A storage limit of 60 pieces gives x + y <= 60. Each constraint is a linear inequality or equation in x and y.\n\nPART 2 — Collect the constraints as a system.\nAll the constraints together restrict which combinations of (x, y) are allowed. They must all be linear — no x^2, no xy. In an LPP, the constraints and the non-negativity conditions x >= 0, y >= 0 together define the set of allowed decisions.",
       "keyMoves": [
         "Translate each real limit (money, storage, time) into a linear inequality in x and y",
-        "Collect these inequalities as the constraints of the problem",
-        "Keep all relations linear"
+        "Collect these inequalities as the constraints of the problem, keeping all relations linear"
       ],
       "misconceptions": [
         "Writing a constraint as an equation when the limit is really an inequality (or vice versa)",
@@ -108,12 +104,11 @@
       "role": "bedrock",
       "brief": "Recognise the conditions x >= 0, y >= 0 as the non-negative restrictions on the decision variables.",
       "sec": 2,
-      "quote": "The conditions  $x \\ge 0$ ,  $y \\ge 0$  are called non-negative restrictions.",
-      "explanation": "The conditions x >= 0 and y >= 0 are called non-negative restrictions. They are part of the constraints of every LPP in this chapter: the decision variables (such as numbers of tables and chairs) cannot be negative. They confine the feasible region to the first quadrant.",
+      "quote": "The conditions x >= 0, y >= 0 are called non-negative restrictions.",
+      "explanation": "PART 1 — Add x >= 0 and y >= 0 to every LPP.\nThe conditions x >= 0 and y >= 0 are called non-negative restrictions. They must be included in every linear programming problem because the decision variables represent physical quantities (like numbers of items) that cannot be negative. They are always listed alongside the other constraints.\n\nPART 2 — Recognise their geometric effect.\nGraphically, x >= 0 confines the solution to the right half-plane (right of the y-axis) and y >= 0 confines it to the upper half-plane (above the x-axis). Together they restrict the feasible region to the first quadrant, where both coordinates are non-negative.",
       "keyMoves": [
-        "Add x >= 0 and y >= 0 to every LPP",
-        "Recognise these as the non-negative restrictions",
-        "Use them to confine the feasible region to the first quadrant"
+        "Add x >= 0 and y >= 0 to every LPP as the non-negative restrictions",
+        "Recognise that they confine the feasible region to the first quadrant"
       ],
       "misconceptions": [
         "Forgetting to include x >= 0, y >= 0 among the constraints",
@@ -133,11 +128,10 @@
       "brief": "State an LPP as finding the optimal value of a linear objective function subject to linear constraints and non-negativity.",
       "sec": 2,
       "quote": "subject to the conditions that the variables are **non-negative** and satisfy a set of linear inequalities (called **linear constraints**).",
-      "explanation": "A Linear Programming Problem is one concerned with finding the optimal value (maximum or minimum) of a linear function (the objective function) of several variables, subject to the conditions that the variables are non-negative and satisfy a set of linear inequalities (called linear constraints). The word linear means all the relations used are linear; programming refers to determining a particular plan of action. The standard form is: maximise/minimise Z = ax + by subject to the linear constraints and x, y >= 0.",
+      "explanation": "PART 1 — State the structure of an LPP.\nA Linear Programming Problem (LPP) is one concerned with finding the optimal value (maximum or minimum) of a linear objective function Z = ax + by, subject to the conditions that the variables are non-negative and satisfy a set of linear constraints (linear inequalities). The word \"linear\" means all relations used are linear; \"programming\" means determining a plan of action.\n\nPART 2 — Write the standard form.\nThe standard form is: Maximise (or Minimise) Z = ax + by, subject to the linear constraints and x >= 0, y >= 0. For the furniture problem: Maximise Z = 250x + 75y subject to 5x + y <= 100, x + y <= 60, x >= 0, y >= 0. All three pieces — the objective function, the constraints, and the non-negativity conditions — are required to state the LPP fully.",
       "keyMoves": [
         "State the objective function to be optimised",
-        "List the linear constraints",
-        "Add the non-negativity conditions to complete the LPP"
+        "List the linear constraints and add the non-negativity conditions to complete the LPP"
       ],
       "misconceptions": [
         "Calling a problem an LPP when the objective or a constraint is non-linear",
@@ -158,11 +152,11 @@
       "brief": "Recognise the feasible region as the common region determined by all the constraints including non-negativity.",
       "sec": 2,
       "quote": "The common region determined by all the constraints including non-negative constraints",
-      "explanation": "The feasible region (or solution region) is the common region determined by all the constraints including the non-negative constraints x, y >= 0 of a linear programming problem. It is the intersection of all the half-planes the inequalities define. The region other than the feasible region is the infeasible region. Graphically it is found by shading the region common to all constraints.",
+      "explanation": "PART 1 — Graph each constraint as a half-plane.\nEach linear inequality defines a half-plane (one side of a straight line, including the line itself if the inequality is <= or >=). To find which side: substitute a test point (usually the origin) and check whether the inequality holds. Shade the side where it holds.\n\nPART 2 — Take the common region of all half-planes.\nThe feasible region (also called the solution region) is the intersection of all the half-planes determined by the constraints, including x >= 0 and y >= 0. In the furniture problem it is the region OABC bounded by the two constraint lines and the axes. Every point inside this region satisfies all the constraints simultaneously.\n\nPART 3 — Identify infeasible points.\nAny point that lies outside the feasible region is an infeasible solution — it violates at least one constraint. For example, (25, 40) is infeasible in the furniture problem because it fails the storage constraint x + y <= 60.",
       "keyMoves": [
         "Graph each constraint as a half-plane",
-        "Take the region common to all the half-planes (including x,y >= 0)",
-        "Call this common region the feasible region"
+        "Take the region common to all half-planes (including x >= 0, y >= 0)",
+        "Identify points outside this region as infeasible"
       ],
       "misconceptions": [
         "Shading the region of a single constraint instead of the common region of all",
@@ -182,11 +176,10 @@
       "brief": "Identify points within and on the boundary of the feasible region as feasible solutions, others as infeasible.",
       "sec": 2,
       "quote": "Points within and on the boundary of the feasible region represent feasible solutions of the constraints.",
-      "explanation": "Points within and on the boundary of the feasible region represent feasible solutions of the constraints. For example (10, 50), (0, 60) and (20, 0) are feasible solutions of the furniture problem. Any point outside the feasible region is an infeasible solution; for instance (25, 40) is infeasible. Every feasible solution satisfies all the constraints simultaneously.",
+      "explanation": "PART 1 — Check whether a point is feasible.\nA point (x, y) is a feasible solution if it lies within or on the boundary of the feasible region — that is, if it satisfies every constraint simultaneously. Boundary points count as feasible. For example (10, 50), (0, 60) and (20, 0) are all feasible solutions of the furniture problem.\n\nPART 2 — Classify an infeasible point.\nAny point outside the feasible region is an infeasible solution because it violates at least one constraint. For instance, (25, 40) is infeasible for the furniture problem: x + y = 65 > 60 violates the storage constraint. Always check every constraint, not just one.",
       "keyMoves": [
         "Check whether a point lies within or on the boundary of the feasible region",
-        "If so, call it a feasible solution",
-        "If it lies outside, call it an infeasible solution"
+        "If so call it feasible; if it lies outside (violates any constraint) call it infeasible"
       ],
       "misconceptions": [
         "Excluding boundary points from the feasible solutions (the boundary is included)",
@@ -206,11 +199,10 @@
       "brief": "Identify an optimal solution as a feasible point that gives the optimal (max or min) value of the objective function.",
       "sec": 2,
       "quote": "Any point in the feasible region that gives the optimal value (maximum or minimum) of the objective function is called an **optimal solution**.",
-      "explanation": "Any point in the feasible region that gives the optimal value (maximum or minimum) of the objective function is called an optimal solution. In the furniture problem the optimal solution is (10, 50), giving the maximum profit Rs 6250. An optimal solution is always a feasible solution; it is the one (or ones) achieving the best objective value.",
+      "explanation": "PART 1 — Restrict attention to feasible points.\nOnly feasible solutions are candidates for the optimal solution; a point outside the feasible region is not eligible regardless of the Z value it produces. Among all feasible points, we seek the one (or ones) that give the best value of Z.\n\nPART 2 — Identify the optimal solution by its Z value.\nAn optimal solution is a feasible point that gives the maximum or minimum value of the objective function. In the furniture problem, (10, 50) gives Z = 250(10) + 75(50) = 2500 + 3750 = 6250, which is the maximum profit; so (10, 50) is the optimal solution. There may be more than one optimal solution if two points give the same best Z value.",
       "keyMoves": [
-        "Restrict attention to feasible points",
-        "Find the one(s) giving the largest (or smallest) value of Z",
-        "Call such a point an optimal solution"
+        "Restrict attention to feasible points only",
+        "Find the feasible point(s) giving the largest (or smallest) value of Z and call them optimal solutions"
       ],
       "misconceptions": [
         "Looking for the optimal value outside the feasible region",
@@ -230,14 +222,14 @@
       "brief": "Classify a feasible region as bounded if it can be enclosed within a circle, otherwise unbounded.",
       "sec": 2,
       "quote": "A feasible region of a system of linear inequalities is said to be bounded if it can be enclosed within a circle. Otherwise, it is called unbounded.",
-      "explanation": "A feasible region of a system of linear inequalities is said to be bounded if it can be enclosed within a circle; otherwise it is unbounded. Unbounded means the feasible region extends indefinitely in some direction. This distinction matters because for a bounded region the objective function attains both a maximum and a minimum, while for an unbounded region a max or min may fail to exist.",
+      "explanation": "PART 1 — Check whether the region can be enclosed in a circle.\nA feasible region is bounded if the entire region can be enclosed within some circle (however large). This is equivalent to saying the region is a finite polygon — it does not extend to infinity in any direction. For example, the furniture problem's region OABC is a finite quadrilateral, so it is bounded.\n\nPART 2 — Recognise an unbounded region.\nIf the feasible region extends indefinitely in at least one direction — if some portion of it goes off to infinity — it is unbounded. This happens when some constraints are >= inequalities with no upper bound cutting the region off. For example, if the only constraints are x + y >= 10 and x, y >= 0, the region extends to infinity.\n\nPART 3 — Understand the consequence for the optimum.\nFor a bounded region, the objective function always attains both a maximum and a minimum. For an unbounded region, a maximum or minimum of Z may not exist; but if it does exist, Theorem 1 guarantees it occurs at a corner point.",
       "keyMoves": [
         "Sketch the feasible region",
-        "Check whether some circle can enclose the whole region",
-        "If yes it is bounded; if it runs off to infinity it is unbounded"
+        "Check whether some circle can enclose the whole region (bounded) or it extends to infinity (unbounded)",
+        "Note that boundedness guarantees both a max and a min exist"
       ],
       "misconceptions": [
-        "Calling a large region unbounded just because it looks big (it must extend indefinitely)",
+        "Calling a large but finite region unbounded just because it looks big",
         "Assuming an unbounded region always lacks an optimum (it may still have one)"
       ],
       "prereqs": [
@@ -254,11 +246,10 @@
       "brief": "Identify corner points (vertices) as intersections of two boundary lines of the feasible region.",
       "sec": 2,
       "quote": "A corner point of a feasible region is a point in the region which is the intersection of two boundary lines.",
-      "explanation": "A corner point (vertex) of a feasible region is a point in the region that is the intersection of two boundary lines. The corner points are found either by inspection or by solving the two line equations meeting there. For the furniture problem they are O(0,0), A(20,0), B(10,50) and C(0,60). Corner points are central because the optimal value of an LPP occurs at one of them.",
+      "explanation": "PART 1 — Locate where boundary lines of the feasible region intersect.\nA corner point (vertex) of a feasible region is a point in the region where two boundary lines meet. Boundary lines come from the constraint equations (replace <= with =). For the furniture problem, the boundary lines are 5x + y = 100, x + y = 60, x = 0 and y = 0.\n\nPART 2 — Find the coordinates by solving pairs of equations.\nTo find a corner point, solve the pair of equations of the two boundary lines meeting there. For example, solving 5x + y = 100 and x + y = 60 simultaneously: subtracting gives 4x = 40, so x = 10, y = 50. The four corner points of the furniture problem are O(0,0), A(20,0), B(10,50) and C(0,60).",
       "keyMoves": [
-        "Find where the boundary lines of the feasible region intersect",
-        "Solve the two line equations meeting at each vertex (or read off by inspection)",
-        "List these intersection points as the corner points"
+        "Identify the boundary lines of the feasible region",
+        "Solve each pair of intersecting boundary lines simultaneously to find the corner point coordinates"
       ],
       "misconceptions": [
         "Taking an interior point as a corner point",
@@ -278,15 +269,14 @@
       "brief": "Use Theorem 1: when Z has an optimal value it must occur at a corner point of the feasible region.",
       "sec": 2,
       "quote": "this optimal value must occur at a corner point",
-      "explanation": "Theorem 1 states that for a feasible region R (a convex polygon) and objective function Z = ax + by, when Z has an optimal value (maximum or minimum), this optimal value must occur at a corner point (vertex) of the feasible region. This is what justifies only testing the finitely many vertices instead of the infinitely many feasible points.",
+      "explanation": "PART 1 — State Theorem 1.\nTheorem 1: Let R be the feasible region (convex polygon) for an LPP and Z = ax + by be the objective function. When Z has an optimal value (maximum or minimum), this optimal value must occur at a corner point (vertex) of the feasible region. The proof is beyond the scope of this chapter.\n\nPART 2 — Use Theorem 1 to reduce the search.\nBecause the feasible region has only finitely many corner points, Theorem 1 reduces finding the optimum from searching infinitely many feasible points to checking finitely many vertices. If Z is to be maximised, compute Z at each vertex, take the largest value — that is the maximum. Theorem 1 only locates the optimum when one exists; it does not guarantee existence.",
       "keyMoves": [
         "Recall that the feasible region has finitely many corner points",
-        "Invoke Theorem 1: any optimal value of Z occurs at a corner point",
-        "Therefore restrict the search for the optimum to the vertices"
+        "Invoke Theorem 1: any optimal value of Z occurs at a corner point, so restrict the search to vertices"
       ],
       "misconceptions": [
         "Searching the interior of the region for the optimum",
-        "Forgetting that Theorem 1 only locates the optimum WHEN one exists"
+        "Forgetting that Theorem 1 only locates the optimum WHEN one exists, not that one always exists"
       ],
       "prereqs": [
         "cbse12:mathematics:mathematics-ch12:corner-point",
@@ -302,12 +292,12 @@
       "role": "intermediate",
       "brief": "Use Theorem 2: if R is bounded, Z has both a maximum and a minimum, each at a corner point.",
       "sec": 2,
-      "quote": "If R is **bounded**\\*\\*, then the objective function Z has both a **maximum** and a **minimum** value on R and each of these occurs at a corner point",
-      "explanation": "Theorem 2 states that if the feasible region R is bounded, then the objective function Z has both a maximum and a minimum value on R, and each of these occurs at a corner point (vertex) of R. If R is unbounded a maximum or minimum may not exist; but if it does, it must occur at a corner point. So boundedness guarantees that simply comparing the values of Z at the vertices gives both extremes.",
+      "quote": "If R is **bounded**, then the objective function Z has both a **maximum** and a **minimum** value on R and each of these occurs at a corner point",
+      "explanation": "PART 1 — State Theorem 2.\nTheorem 2: Let R be the feasible region for an LPP and Z = ax + by the objective function. If R is bounded, then Z has both a maximum and a minimum value on R, and each of these occurs at a corner point (vertex) of R. This theorem guarantees existence, not just location.\n\nPART 2 — Apply it: just compare Z at the vertices.\nWhen the feasible region is bounded, you can find both the maximum and minimum of Z simply by evaluating Z at each corner point and reading off the largest (M) and smallest (m) values. No further check is needed. In Example 2 of NCERT, with bounded region ABC, Z = 200x + 500y at A(0,5) = 2500, at B(4,3) = 2300, at C(0,6) = 3000; so minimum = 2300 at B(4,3).\n\nPART 3 — Handle the unbounded case.\nIf the feasible region is unbounded, M or m might not be the actual maximum or minimum. An additional open-half-plane check (Step 3(ii) of the Corner Point Method) is needed to confirm.",
       "keyMoves": [
         "Check whether the feasible region is bounded",
-        "If bounded, conclude Z attains both a max and a min, each at a vertex",
-        "If unbounded, test further whether the extremum exists before claiming it"
+        "If bounded, conclude Z attains both a max and a min, each at a vertex, and just compare vertex values",
+        "If unbounded, use the open-half-plane check before claiming the extremum"
       ],
       "misconceptions": [
         "Assuming an unbounded region always has both a max and a min",
@@ -328,11 +318,10 @@
       "brief": "Detect that when two corner points give the same optimal value, every point on the segment joining them is also optimal.",
       "sec": 2,
       "quote": "every point on the line segment joining these points will also give the same maximum (or minimum) value.",
-      "explanation": "If two corner points produce the same maximum (or minimum) value of the objective function, then every point on the line segment joining these points will also give the same maximum (or minimum) value. For example, in one problem Z = 3x + 9y attains its maximum 180 at both C(15,15) and D(0,20), and hence at every point of segment CD. This is the case of multiple optimal solutions.",
+      "explanation": "PART 1 — Detect when two corner points share the same optimal value.\nWhile evaluating Z at the corner points, if two distinct vertices produce the same optimal value (both maximum or both minimum), the problem has multiple optimal solutions. For example in NCERT Example 3, Z = 3x + 9y gives Z = 180 at both C(15,15) and D(0,20).\n\nPART 2 — Conclude that every point on the joining segment is also optimal.\nIf two corner points C and D both give the same optimal value of Z, then every point on the line segment CD also gives that same value. This is because Z is linear, so it varies linearly (in fact constantly) along the segment between two points where it takes the same value. Report the solution as: the optimum is 180 attained at every point of segment CD.",
       "keyMoves": [
         "Notice when two distinct corner points share the same optimal Z value",
-        "Conclude every point on the segment joining them is also optimal",
-        "Report multiple optimal solutions rather than a single one"
+        "Conclude every point on the segment joining them is also optimal, and report multiple solutions"
       ],
       "misconceptions": [
         "Reporting only one corner point when the optimum is attained at two",
@@ -352,11 +341,11 @@
       "brief": "Solve a linear programming problem graphically by evaluating Z at the corner points of the feasible region.",
       "sec": 2,
       "quote": "Evaluate the objective function Z = ax + by at each corner point.",
-      "explanation": "The Corner Point Method solves an LPP graphically: (1) find the feasible region and determine its corner points (vertices) by inspection or by solving the intersecting line equations; (2) evaluate the objective function Z = ax + by at each corner point, letting M and m be the largest and smallest values; (3) if the region is bounded, M and m are the maximum and minimum of Z; if unbounded, an extra open-half-plane check decides whether M or m is actually attained. This capstone combines the formulation, the feasible region, its corner points and the two theorems into the complete solution procedure.",
+      "explanation": "PART 1 — Find the feasible region and its corner points.\nFirst, graph all the constraints (including x >= 0, y >= 0) to identify the feasible region. Then find the corner points (vertices) either by inspection or by solving each pair of intersecting boundary lines simultaneously. For example, for Maximise Z = 4x + y subject to x + y <= 50, 3x + y <= 90, x >= 0, y >= 0: the corner points are O(0,0), A(30,0), B(20,30) and C(0,50).\n\nPART 2 — Evaluate Z at each corner point.\nCompute the value of Z = ax + by at every corner point. Let M denote the largest value and m the smallest. For the above example: Z at O = 0, at A = 120, at B = 110, at C = 50; so M = 120 at A(30,0).\n\nPART 3 — Read off the optimum using the bounded/unbounded rule.\nIf the feasible region is bounded, M is the maximum and m is the minimum of Z. If unbounded, check whether the open half-plane ax + by > M (for maximum) or ax + by < m (for minimum) has any common point with the feasible region; if not, M or m is the optimum; if yes, no finite optimum exists. Report the optimal solution and the optimal value.",
       "keyMoves": [
         "Find the feasible region and its corner points",
-        "Evaluate Z = ax + by at every corner point and take the largest M and smallest m",
-        "Read off the optimum (using the bounded/unbounded rule) and report the optimal point(s)"
+        "Evaluate Z = ax + by at every corner point and identify M (largest) and m (smallest)",
+        "Apply the bounded/unbounded rule to read off the optimum, then report the optimal point(s)"
       ],
       "misconceptions": [
         "Reading off the optimum from an interior point instead of the vertices",

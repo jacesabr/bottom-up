@@ -215,7 +215,8 @@
         "Adding only the diagonal or some entries rather than all corresponding ones"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:order"
+        "cbse12:mathematics:mathematics-ch03:order",
+        "cbse12:mathematics:mathematics-ch03:zero-matrix"
       ],
       "sameConcept": [],
       "teachingInsights": []

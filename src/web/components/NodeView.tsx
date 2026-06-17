@@ -345,7 +345,7 @@ export default function NodeView({
 
             {!done && readyForGate && !gate && (
               <div className="gate-cta">
-                You've shown all the key ideas. <button className="btn-primary sm" onClick={poseNextGate}>Take the checks →</button>
+                <button className="btn-primary sm" onClick={poseNextGate}>I'm ready →</button>
               </div>
             )}
 

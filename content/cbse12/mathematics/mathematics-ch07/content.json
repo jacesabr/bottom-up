@@ -14,7 +14,7 @@
       "brief": "Recognise an antiderivative of f as a function whose derivative is f.",
       "sec": 1,
       "quote": "The functions that could possibly have given function as a derivative are called anti derivatives (or primitive) of the function.",
-      "explanation": "Given a function f, the functions that could possibly have f as their derivative are called antiderivatives (or primitives) of f. So F is an antiderivative of f if F'(x) = f(x). Because the derivative of a constant is zero, antiderivatives are not unique: if F is one antiderivative, so is F + C for any constant C. This is the basic object that integration produces.",
+      "explanation": "PART 1 — F is an antiderivative of f if F'(x) = f(x).\nAn antiderivative (or primitive) of f is any function F whose derivative is f. To find one, ask 'what function differentiates to f?'. Example: an antiderivative of 2x is x^2, because d/dx(x^2) = 2x.\n\nPART 2 — Antiderivatives are not unique: add + C.\nSince the derivative of any constant is 0, if F is an antiderivative then so is F + C for every constant C. So x^2, x^2 + 1, x^2 - 7 are all antiderivatives of 2x. Always include the arbitrary constant C; the antiderivative is a whole family, not a single function.",
       "keyMoves": [
         "Ask which function differentiates to the given f",
         "Recognise F is an antiderivative when F'(x) = f(x)",
@@ -36,7 +36,7 @@
       "brief": "Understand integration (antidifferentiation) as the reverse of differentiation.",
       "sec": 1,
       "quote": "Integration is the inverse process of differentiation.",
-      "explanation": "Integration is the inverse process of differentiation: instead of differentiating a function, you are given the derivative and asked to recover the original function (its primitive). This process is also called antidifferentiation. Knowing the standard derivatives therefore immediately gives the standard integrals (read in reverse), and every differentiation rule has an integration counterpart.",
+      "explanation": "PART 1 — Integration reverses differentiation.\nGiven a derivative, integration recovers the original function (the antiderivative). It is the inverse operation, also called antidifferentiation. So every standard derivative, read backwards, is a standard integral: since d/dx(sin x) = cos x, the integral of cos x is sin x + C.\n\nPART 2 — Every differentiation rule has an integration counterpart.\nThe chain rule reversed becomes substitution; the product rule reversed becomes integration by parts. When reversing, never forget the constant of integration C — it is the one piece differentiation discards.",
       "keyMoves": [
         "Read each derivative rule backwards to get an integral",
         "Recover the original function from its derivative",
@@ -60,7 +60,7 @@
       "brief": "Read the integral sign of f dx as the whole family of antiderivatives F(x) + C.",
       "sec": 2,
       "quote": "which will represent the entire class of anti derivatives read as the indefinite integral of *f* with respect to *x*.",
-      "explanation": "The symbol consisting of the integral sign with f(x) dx represents the entire class of antiderivatives, read as the indefinite integral of f with respect to x. Symbolically the integral of f(x) dx = F(x) + C, where F is any one antiderivative and C is the arbitrary constant of integration. So the indefinite integral is a whole family of functions, not a single one.",
+      "explanation": "PART 1 — The integral sign denotes the WHOLE family of antiderivatives.\nThe symbol integral of f(x) dx means 'all antiderivatives of f', read as the indefinite integral of f with respect to x. It equals F(x) + C, where F is any one antiderivative and C is the arbitrary constant. So it is a family of functions, not a single number.\n\nPART 2 — Always write + C.\nThe indefinite integral is NOT a number (that is the definite integral). It is a set of functions, so the answer must carry the constant of integration C. Dropping C gives only one member of the family, which is incomplete.",
       "keyMoves": [
         "Read the integral of f dx as 'all antiderivatives of f'",
         "Write the answer as F(x) + C",
@@ -84,7 +84,7 @@
       "brief": "Two indefinite integrals with the same derivative differ only by a constant.",
       "sec": 2,
       "quote": "Two indefinite integrals with the same derivative lead to the same family of curves and so they are equivalent.",
-      "explanation": "Two indefinite integrals with the same derivative lead to the same family of curves and so they are equivalent. This is why the same integral can sometimes be written in apparently different forms that differ only by a constant. It justifies the single arbitrary constant C and underlies the linearity property: the integral of (f + g) is the sum of the integrals, and constants factor out.",
+      "explanation": "PART 1 — Same derivative means same family (differ only by a constant).\nIf two functions have the same derivative, they differ only by a constant. So two indefinite integrals of the same function are equivalent — they represent the same family of curves. This is why the same integral can appear in different-looking forms that differ by a constant.\n\nPART 2 — Verify answers by differentiating; use linearity.\nTo check an integral, differentiate it: if you recover the integrand, it is correct (any constant difference is fine). This also justifies linearity: the integral of (f + g) is the sum of the integrals, and constant multipliers factor out of the integral sign.",
       "keyMoves": [
         "Compare two answers by differentiating them",
         "If their derivatives match, the answers differ only by a constant",
@@ -108,7 +108,7 @@
       "brief": "Substitute a new variable whose derivative occurs in the integrand to simplify the integral.",
       "sec": 3,
       "quote": "This change of variable formula is one of the important tools available to us in the name of integration by substitution.",
-      "explanation": "Integration by substitution is a change-of-variable technique: you substitute a new variable t for part of the integrand (typically a function whose derivative also appears in the integrand), so that dt absorbs that derivative and the integral becomes a standard one. For example, for the integral involving x^2 + 1, put t = x^2 + 1 so 2x dx = dt. After integrating in t you substitute back. Guessing the right substitution is the key skill.",
+      "explanation": "PART 1 — Substitute t for an inner function whose derivative also appears.\nIntegration by substitution reverses the chain rule. Choose t = (an inner function) whose derivative ALSO appears in the integrand, so that dt absorbs it. Example: for the integral of 2x*(x^2+1) dx, put t = x^2 + 1, then dt = 2x dx.\n\nPART 2 — Integrate in t, then substitute back to x.\nRewrite the whole integral in terms of t (the integral above becomes the integral of t dt = t^2/2 + C), integrate, then replace t with its expression in x: (x^2+1)^2/2 + C. The two common errors are not converting dx into dt and forgetting to substitute back at the end.",
       "keyMoves": [
         "Spot a function whose derivative also appears in the integrand",
         "Set t equal to that function; replace its derivative dx by dt",
@@ -132,7 +132,7 @@
       "brief": "Call a rational function proper if degree of numerator < degree of denominator, otherwise improper.",
       "sec": 5,
       "quote": "then the rational function is called proper, otherwise, it is called improper.",
-      "explanation": "A rational function is the ratio P(x)/Q(x) of polynomials with Q(x) not zero. If the degree of P(x) is less than the degree of Q(x), then the rational function is called proper; otherwise it is called improper. An improper rational function can first be reduced (by polynomial division) to a polynomial plus a proper rational function before integrating. Recognising proper vs improper is the gateway to partial fractions.",
+      "explanation": "PART 1 — Compare the DEGREES of numerator and denominator.\nA rational function is P(x)/Q(x) with Q(x) != 0. It is PROPER if deg(P) < deg(Q), and IMPROPER if deg(P) >= deg(Q). Compare degrees (highest powers), not leading coefficients. Example: (x+1)/(x^2-4) is proper (1 < 2); (x^2)/(x-1) is improper (2 >= 1).\n\nPART 2 — Reduce an improper one by division first.\nBefore applying partial fractions, an improper rational function must be reduced by polynomial long division to a polynomial PLUS a proper rational function. Applying partial fractions directly to an improper fraction (without dividing first) is the common error.",
       "keyMoves": [
         "Compare the degree of the numerator with that of the denominator",
         "Proper if numerator degree is smaller; improper otherwise",
@@ -156,7 +156,7 @@
       "brief": "Split a proper rational function into simpler fractions, then integrate each piece.",
       "sec": 5,
       "quote": "It is always possible to write the integrand as a sum of simpler rational functions by a method called partial fraction decomposition.",
-      "explanation": "For a proper rational function it is always possible to write the integrand as a sum of simpler rational functions by a method called partial fraction decomposition. You match the denominator's factor structure to the standard table of partial fraction forms, solve for the unknown numerators, and then integrate each simple fraction (each giving a log or arctan-type term). This converts a hard rational integral into several easy ones.",
+      "explanation": "PART 1 — Decompose a proper rational function into simpler fractions.\nA proper rational function can be written as a sum of simpler fractions. Factor the denominator, then write one partial fraction per factor using the standard forms: a linear factor (x-a) gives A/(x-a); a repeated factor (x-a)^2 gives A/(x-a) + B/(x-a)^2; an irreducible quadratic gives (Ax+B)/(quadratic). Solve for the unknown constants.\n\nPART 2 — Integrate each simple fraction.\nEach piece integrates easily: A/(x-a) gives A log|x-a|, and quadratic pieces give arctan/log terms. Example: 1/((x-1)(x-2)) = -1/(x-1) + 1/(x-2), integrating to log|x-2| - log|x-1| + C. Confirm the fraction is proper first (divide if not).",
       "keyMoves": [
         "Confirm the rational function is proper (reduce first if not)",
         "Write it as a sum of standard partial fractions and solve for the constants",
@@ -180,7 +180,7 @@
       "brief": "Use the integration-by-parts formula: integral of first x (integral of second) minus integral of (derivative of first x integral of second).",
       "sec": 6,
       "quote": "If we take f as the first function and g as the second function",
-      "explanation": "Integration by parts handles integrals of a product of two functions. If we take f as the first function and g as the second function, then the integral of the product equals (first function) times (integral of the second function) minus the integral of [(derivative of the first function) times (integral of the second function)]. For example, the integral of x cos x is x sin x minus the integral of sin x, giving x sin x + cos x + C. Choosing which factor is 'first' (often by the ILATE order) is the key decision; the method does not work for every product.",
+      "explanation": "PART 1 — The formula: integral of (first)(second) = first*(integral of second) - integral of [(deriv of first)(integral of second)].\nFor a product, pick a FIRST function (to differentiate) and a SECOND (to integrate). Then integral of u*v dx = u*(integral of v) - integral of [(du/dx)*(integral of v)] dx. Example: integral of x cos x dx = x sin x - integral of sin x dx = x sin x + cos x + C.\n\nPART 2 — Choose the first function by ILATE.\nChoose the first function (to differentiate) by the ILATE order: Inverse-trig, Log, Algebraic, Trig, Exponential. Picking the wrong first function can make the integral harder. Integration by parts does not work for every product — it is for products where one factor simplifies on differentiating.",
       "keyMoves": [
         "Choose a first function (to differentiate) and a second (to integrate)",
         "Apply: integral = (first)(integral of second) - integral of [(derivative of first)(integral of second)]",
@@ -204,7 +204,7 @@
       "brief": "Recognise the definite integral as a unique number, with lower limit a and upper limit b.",
       "sec": 7,
       "quote": "The definite integral is introduced either as the limit of a sum or if it has an anti derivative F in the interval [a, b], then its value is the difference between the values of F at the end points, i.e., F(b) - F(a).",
-      "explanation": "The definite integral of f from a to b has a unique value; a is the lower limit and b the upper limit. It is introduced either as the limit of a sum, or - if f has an antiderivative F on [a, b] - as the difference between the values of F at the end points, F(b) - F(a). The first description connects it to area under the curve; the second is what makes it practical to compute.",
+      "explanation": "PART 1 — The definite integral is a single NUMBER, with limits a and b.\nThe definite integral of f from a to b has a unique value (a number, not a family). Here a is the lower limit and b the upper limit. It is introduced as the limit of a sum (connecting it to area under the curve) or, when f has an antiderivative F, as F(b) - F(a).\n\nPART 2 — No + C; mind the order of limits.\nUnlike the indefinite integral, a definite integral takes NO constant of integration (it is a number). Swapping the limits negates the value: the integral from b to a is the negative of the integral from a to b.",
       "keyMoves": [
         "Identify the lower limit a and upper limit b",
         "Recognise the definite integral as a single number (an area)",
@@ -228,7 +228,7 @@
       "brief": "Apply Theorem 1: the derivative of the area function equals the integrand.",
       "sec": 8,
       "quote": "Then A'(x) = f(x), for all  $x \\in [a, b]$ .",
-      "explanation": "First Fundamental Theorem of Calculus (Theorem 1): let f be continuous on [a, b] and let A(x) be the area function (the definite integral of f from a to x). Then A'(x) = f(x) for all x in [a, b]. In words, differentiating the area-so-far function gives back the integrand - integration and differentiation undo each other. This is what links the limit-of-a-sum view of the integral to antiderivatives.",
+      "explanation": "PART 1 — The area function A(x) = integral of f from a to x.\nFor f continuous on [a, b], define the area-so-far function A(x) as the definite integral of f from the fixed lower limit a up to a variable upper limit x. A(x) measures the accumulated area under f from a to x.\n\nPART 2 — Differentiating the area function gives back f: A'(x) = f(x).\nThe First Fundamental Theorem says A'(x) = f(x) for all x in [a, b]. So differentiation undoes the accumulation of area — integration and differentiation are inverse. Note A'(x) is f(x) (the integrand at x), NOT f(a) or a constant; this is what links area to antiderivatives.",
       "keyMoves": [
         "Form the area function A(x) = integral of f from a to x",
         "Differentiate it: A'(x) = f(x)",
@@ -252,7 +252,7 @@
       "brief": "Apply Theorem 2: the definite integral equals F(b) - F(a) for any antiderivative F of f.",
       "sec": 8,
       "quote": "Let f be continuous function defined on the closed interval [a, b] and F be",
-      "explanation": "Second Fundamental Theorem of Calculus (Theorem 2): let f be a continuous function defined on the closed interval [a, b] and let F be an antiderivative of f. Then the definite integral of f from a to b equals F(b) - F(a). So to evaluate any definite integral you find an antiderivative F (using substitution, parts, partial fractions, or standard integrals - no constant of integration needed) and subtract its value at the lower limit from its value at the upper limit. This is the capstone that turns the whole chapter's antiderivative techniques into a tool for evaluating definite integrals.",
+      "explanation": "PART 1 — Find any antiderivative F of the integrand (no + C needed).\nBy the Second Fundamental Theorem, if f is continuous on [a, b] and F is any antiderivative of f (meaning F'(x) = f(x)), then the definite integral of f from a to b equals F(b) - F(a). Find F using whichever technique applies — standard integrals, substitution, integration by parts, or partial fractions — and omit the constant of integration since it cancels.\n\nPART 2 — Evaluate F(b) - F(a), upper limit minus lower limit.\nSubstitute the upper limit b into F, then subtract F evaluated at the lower limit a. Example: definite integral of x^2 from 1 to 3 has antiderivative F(x) = x^3/3; so the answer is F(3) - F(1) = 27/3 - 1/3 = 26/3. The order is F(b) - F(a), NOT F(a) - F(b) — reversing the subtraction gives the wrong sign.",
       "keyMoves": [
         "Find any one antiderivative F of the integrand f (constant C not needed)",
         "Evaluate F at the upper limit b and the lower limit a",

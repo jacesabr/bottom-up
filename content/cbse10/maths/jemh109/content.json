@@ -14,7 +14,7 @@
       "brief": "Given a real-world height/distance situation, model it as right triangle(s), pick the correct trig ratio, and solve for the unknown length.",
       "sec": 4,
       "quote": "The height or length of an object or the distance between two distant objects can be determined with the help of trigonometric ratios.",
-      "explanation": "This is the chapter's top skill. A worded situation (tower, pole, ladder, shadow, building, bridge) is turned into one or more right triangles, the known angle of elevation/depression and known side are identified, the right trigonometric ratio is selected to relate the unknown to the known, and the resulting equation is solved. Composite problems (two triangles, observer height, flagstaff) decompose into these sub-skills.",
+      "explanation": "PART 1 — Read the scene and identify what is unknown.\nA word problem describes a real situation: a tower, a ladder, a ship, a flagstaff. Your first job is to name the asked quantity (a height, a distance, a length of rope) and decide which segments of the figure correspond to it. The rest of the method is mechanical once you know what you need.\n\nPART 2 — Draw and label the right triangle(s).\nSketch the scene: vertical object as one leg, ground (or horizontal) as the other leg, right angle at the base. Mark the known angle of elevation or depression, the given side length, and the unknown. Composite problems (flagstaff, two ships, shadow) produce two triangles sharing a common side — label both.\n\nPART 3 — Choose the trig ratio and solve.\nSelect the ratio that links exactly the known side to the unknown side (tan when opposite and adjacent, sin/cos when the hypotenuse is involved). Write the equation, substitute the exact value (tan60=sqrt(3), tan30=1/sqrt(3), sin60=sqrt(3)/2), isolate the unknown, and finally combine sub-lengths or add the observer's height if needed. Example: tower seen at 60 degrees from 15 m away gives tan(60)=height/15, so height = 15*sqrt(3) m.",
       "keyMoves": [
         "Read the situation and decide what length is asked",
         "Draw the right triangle(s) and label known angle and known side",
@@ -45,7 +45,7 @@
       "brief": "Translate the verbal scene into a right triangle, marking the right angle, the given angle, the known side, and the unknown side.",
       "sec": 0,
       "quote": "First let us draw a simple diagram to represent the problem (see Fig. 9.4). Here AB represents the tower, CB is the distance of the point from the tower and ∠ ACB is the angle of elevation.",
-      "explanation": "Every solution begins by drawing the figure: identifying which segment is the vertical object, which is the horizontal distance, where the right angle sits (at the foot), and which angle is given. Without a correct labelled triangle the rest of the method cannot proceed.",
+      "explanation": "PART 1 — Identify the physical setup.\nEvery heights-and-distances problem describes a physical scene: a vertical object (tower, pole, chimney), a horizontal ground distance, and an observer at some point. Before writing any equation, decide which segment is the vertical leg, which is the horizontal leg, and where the right angle sits (always at the base of the vertical object on level ground).\n\nPART 2 — Sketch and label the triangle.\nDraw the vertical side AB (object), the horizontal side BC (ground distance), and the right angle at B. Mark the observer's position (C or A depending on the problem), write in the given angle at that vertex, and label the unknown side with a letter. Example: tower AB, observer at C, angle ACB = 60 degrees, BC = 15 m — the triangle is a right triangle with the right angle at B.\n\nPART 3 — Identify opposite and adjacent relative to the given angle.\nFrom the observer's vertex, the opposite side is the one across the triangle (usually the height) and the adjacent is the side next to the angle (usually the ground distance). Getting this labelling correct determines which trig ratio to apply next.",
       "keyMoves": [
         "Represent the vertical object as one leg and ground distance as the other leg",
         "Mark the right angle at the base",
@@ -71,7 +71,7 @@
       "brief": "Recognise the angle of elevation as the angle the upward line of sight makes with the horizontal.",
       "sec": 0,
       "quote": "The angle of elevation of the point viewed is the angle formed by the line of sight with the horizontal when it is above the horizontal level, i.e., the case when we raise our head to look at the object",
-      "explanation": "The angle of elevation is formed at the observer's eye between the horizontal and the upward line of sight to a point above. Correctly identifying it tells you which vertex of the triangle carries the known angle.",
+      "explanation": "PART 1 — What is the angle of elevation?\nWhen an observer looks up at an object (the top of a tower, a kite, a plane), the line of sight rises above the horizontal. The angle between the horizontal at the observer's eye and this upward line of sight is called the angle of elevation. It is always measured at the observer's position, and it is always above the horizontal.\n\nPART 2 — Locating it in the triangle.\nIn the right triangle, the angle of elevation sits at the observer's vertex (the far end of the horizontal base). The horizontal base is the adjacent side, and the height of the object is the opposite side. Example: an observer on the ground looks up at a tower top; the angle between the ground (horizontal) and the line to the top is 60 degrees — that is the angle of elevation, and it sits at the base vertex C of triangle ABC.\n\nPART 3 — Common mistake to avoid.\nDo not measure the angle from the vertical — that gives the complement (30 degrees when the elevation is 60 degrees). The reference is always the horizontal.",
       "keyMoves": [
         "Locate the line of sight from observer to the high point",
         "Measure its angle above the horizontal"
@@ -92,7 +92,7 @@
       "brief": "Recognise the angle of depression as the angle the downward line of sight makes with the horizontal.",
       "sec": 0,
       "quote": "the angle of depression of a point on the object being viewed is the angle formed by the line of sight with the horizontal when the point is below the horizontal level, i.e., the case when we lower our head to look at the point being viewed",
-      "explanation": "When looking down at a point, the angle below the horizontal is the angle of depression. It is needed for problems observed from a height (lighthouse, multi-storey building, bridge).",
+      "explanation": "PART 1 — What is the angle of depression?\nWhen an observer is at a height (top of a lighthouse, roof of a building, cliff) and looks down at a point below, the line of sight goes below the horizontal. The angle between the horizontal at the observer's eye and this downward line of sight is the angle of depression. Like the elevation angle, it is measured from the horizontal — but downward.\n\nPART 2 — Drawing it correctly.\nDraw a horizontal line at the observer's high position. The line of sight goes down to the object on the ground. The angle between the horizontal and this line of sight, measured downward, is the angle of depression. Example: a lighthouse keeper at height 75 m looks down at a ship; the line of sight drops 30 degrees below the horizontal — the angle of depression is 30 degrees.\n\nPART 3 — Why the horizontal reference matters.\nThe angle of depression is NOT the angle inside the right triangle at the top vertex directly — to use it in the triangle you must transfer it using alternate angles (covered in the next node). Always draw the horizontal at the top to avoid placing it in the wrong position.",
       "keyMoves": [
         "Locate the horizontal at the observer's eye",
         "Measure the angle down to the line of sight"
@@ -113,7 +113,7 @@
       "brief": "Use that the angle of depression equals the alternate interior angle at the lower point because the two horizontals are parallel.",
       "sec": 2,
       "quote": "Observe that PB is a transversal to the parallel lines PQ and BD. Therefore, ∠ QPB and ∠ PBD are alternate angles, and so are equal. So, ∠ PBD = 30°.",
-      "explanation": "An angle of depression is measured at the top against the upper horizontal; to use it inside the right triangle you transfer it to the bottom point as an equal alternate angle (the two horizontals being parallel). This is the key move that makes depression problems solvable.",
+      "explanation": "PART 1 — Why you need to transfer the angle.\nThe angle of depression is measured at the top (observer's eye) between the upper horizontal and the line of sight going down. But in the right triangle the useful angle is at the bottom vertex (the observed point). These two angles are equal because the upper horizontal and the ground are parallel lines cut by the line of sight as a transversal.\n\nPART 2 — Alternate interior angles theorem.\nWhen a transversal crosses two parallel lines, alternate interior angles are equal. Here: the upper horizontal at P and the ground BD are parallel; the line of sight PB is the transversal; angle QPB (depression at top) and angle PBD (angle at bottom inside triangle) are alternate interior angles, so angle PBD = angle QPB. Now you can use angle PBD directly inside the right triangle.\n\nPART 3 — Worked example.\nAn observer at P, 75 m high, sees a ship at B with angle of depression 30 degrees. Horizontal PQ is parallel to ground BD. So angle PBD = 30 degrees (alternate angles). In right triangle PBD: tan(30) = PD/BD = 75/BD, giving BD = 75/tan(30) = 75*sqrt(3) m.",
       "keyMoves": [
         "Recognise the two horizontals are parallel",
         "Treat the line of sight as a transversal",
@@ -137,7 +137,7 @@
       "brief": "Pick tan of the known angle when the unknown and known sides are the side opposite and the side adjacent to that angle.",
       "sec": 0,
       "quote": "tan A = BC/AB    or    cot A = AB/BC, which on solving would give us BC.",
-      "explanation": "When the height (opposite the angle) and the horizontal ground distance (adjacent) are the two relevant sides, tangent relates them. Choosing the ratio that involves exactly the known side and the unknown side is the core ratio-selection skill.",
+      "explanation": "PART 1 — When to pick tangent.\nTangent = opposite / adjacent. Choose tan when neither the unknown nor the known side is the hypotenuse — that is, when the problem involves a height (opposite the angle) and a horizontal ground distance (adjacent to the angle). If the hypotenuse appears, switch to sin or cos.\n\nPART 2 — Applying tan in a tower problem.\nTower AB, observer at C, angle ACB = 60 degrees, BC = 15 m (adjacent), AB = ? (opposite). tan(60) = AB/BC, so sqrt(3) = AB/15, giving AB = 15*sqrt(3) m. The hypotenuse AC never appears and is never needed.\n\nPART 3 — Using cot for the reverse case.\nIf the height is known and the base is unknown, you can use cot = adjacent/opposite instead of inverting tan. cot(60) = BC/AB = 1/sqrt(3), so BC = AB/sqrt(3). Both tan and cot are valid; cot avoids the fraction-flip step.",
       "keyMoves": [
         "Identify opposite and adjacent sides relative to the known angle",
         "Use tan = opposite/adjacent to link them"
@@ -161,7 +161,7 @@
       "brief": "Pick sin of the known angle when the relevant sides are the side opposite the angle and the hypotenuse.",
       "sec": 0,
       "quote": "Now, can you think which trigonometric ratio should we consider?\n\nIt should be sin 60°.",
-      "explanation": "In the ladder problem the unknown is the hypotenuse and the known is the vertical side opposite the angle, so sine is the correct ratio. Recognising that the hypotenuse forces sin (or cos) rather than tan is the failable choice.",
+      "explanation": "PART 1 — When to pick sine.\nSine = opposite / hypotenuse. Choose sin when the two relevant sides are the side opposite the known angle and the hypotenuse (the slant side — a ladder, a rope, a wire). If neither side is the hypotenuse, use tan instead.\n\nPART 2 — Ladder problem example.\nA ladder BC leans against a vertical pole BD. The ladder makes angle 60 degrees with the ground. The vertical height BD = 3.7 m (opposite to 60 degrees) is known; the ladder length BC (hypotenuse) is unknown. sin(60) = BD/BC = 3.7/BC. So BC = 3.7/sin(60) = 3.7/(sqrt(3)/2) = 7.4/sqrt(3) = 7.4*sqrt(3)/3 ≈ 4.28 m.\n\nPART 3 — Why not tan here?\ntan(60) = BD/DC gives the horizontal foot distance DC, not the ladder length. The ladder is the hypotenuse connecting the top of the pole to the foot on the ground, so sin is the correct ratio for its length.",
       "keyMoves": [
         "Note the hypotenuse is one of the two relevant sides",
         "Pair it with the opposite side via sin = opposite/hypotenuse"
@@ -185,7 +185,7 @@
       "brief": "Substitute the exact value of sin, cos, tan, or cot at 30°, 45°, or 60°.",
       "sec": 0,
       "quote": "Now,    tan 60° = AB/BC\n\ni.e.,    √3 = AB/15",
-      "explanation": "Each solution replaces the trig function of the standard angle by its exact value (tan60=√3, tan45=1, tan30=1/√3, sin60=√3/2, cot60=1/√3). Getting this value wrong derails the whole computation.",
+      "explanation": "PART 1 — The standard angle table for this chapter.\nEvery problem in this chapter uses an angle of 30, 45, or 60 degrees. Their exact trig values are: tan(30)=1/sqrt(3), sin(30)=1/2, cos(30)=sqrt(3)/2; tan(45)=1, sin(45)=1/sqrt(2), cos(45)=1/sqrt(2); tan(60)=sqrt(3), sin(60)=sqrt(3)/2, cos(60)=1/2. The reciprocals: cot(30)=sqrt(3), cot(45)=1, cot(60)=1/sqrt(3).\n\nPART 2 — Memory strategy.\ntriangle with angles 30-60-90 has sides 1 : sqrt(3) : 2 (short : medium : hypotenuse). So tan(30)=1/sqrt(3), tan(60)=sqrt(3). The 45-45-90 triangle has sides 1:1:sqrt(2), giving tan(45)=1.\n\nPART 3 — Example substitution.\nA problem sets up sqrt(3) = AB/15 from tan(60). Substituting the exact value sqrt(3) (not the decimal 1.73) keeps the answer exact: AB = 15*sqrt(3). Only convert to a decimal at the very end, and only when the problem asks for an approximate answer.",
       "keyMoves": [
         "Identify the standard angle (30, 45, 60)",
         "Recall the exact value of the required ratio"
@@ -208,7 +208,7 @@
       "brief": "Write the equation 'ratio of known angle = (one side)/(other side)' with the known length substituted.",
       "sec": 0,
       "quote": "Now,    tan 60° = AB/BC\n\ni.e.,    √3 = AB/15",
-      "explanation": "After choosing the ratio and recalling its value, you equate it to the side-ratio with the known length plugged in, producing a single-unknown equation. This is the bridge from geometry to algebra.",
+      "explanation": "PART 1 — Translate the geometry into an equation.\nOnce you have identified the angle, the known side, and the unknown side, write: ratio(angle) = side_A / side_B. Then substitute the exact value of the trig ratio on the left and the known length on the correct side of the fraction. The result is a one-variable equation.\n\nPART 2 — Worked example.\nTriangle with angle 60 degrees at C, BC = 15 m (adjacent, known), AB = h (opposite, unknown). tan(60) = AB/BC gives sqrt(3) = h/15. Substituting tan(60)=sqrt(3) and BC=15 produces the equation sqrt(3) = h/15, which has one unknown h.\n\nPART 3 — Common errors.\nInverting the ratio gives sqrt(3) = 15/h instead of h/15 — always double-check which side is opposite and which is adjacent before writing the fraction. Also, substitute the known length into the right position; putting 15 in the numerator when it is the adjacent would give the wrong equation.",
       "keyMoves": [
         "Write ratio(angle) = side/side",
         "Substitute the standard-angle value and the known length"
@@ -233,7 +233,7 @@
       "brief": "Rearrange the equation (multiply/divide) to isolate the unknown length.",
       "sec": 0,
       "quote": "i.e.,    √3 = AB/15\n\ni.e.,    AB = 15√3",
-      "explanation": "Once √3 = AB/15 is set up, multiply both sides by 15 to get AB = 15√3. Generic algebraic isolation of one variable, reused across all examples.",
+      "explanation": "PART 1 — Isolating a numerator unknown.\nIf the equation is ratio_value = unknown/known, multiply both sides by known: unknown = ratio_value * known. Example: sqrt(3) = AB/15 gives AB = 15*sqrt(3). This is the most common form in this chapter.\n\nPART 2 — Isolating a denominator unknown.\nIf the equation is ratio_value = known/unknown (e.g., sin(60) = 3.7/BC), cross-multiply: unknown = known/ratio_value. Example: sqrt(3)/2 = 3.7/BC gives BC = 3.7*2/sqrt(3) = 7.4/sqrt(3).\n\nPART 3 — Keep surds exact until the final step.\nLeave answers like 15*sqrt(3) or 7.4/sqrt(3) in exact form throughout. Only convert to a decimal (using sqrt(3) approx 1.732) at the very end when an approximate answer is required.",
       "keyMoves": [
         "Cross-multiply or multiply through to clear the fraction",
         "Isolate the unknown"
@@ -254,7 +254,7 @@
       "brief": "From sin(angle) = opposite/hypotenuse with the opposite known, solve for the hypotenuse.",
       "sec": 0,
       "quote": "So,    BD/BC = sin 60°    or    3.7/BC = √3/2\n\nTherefore,    BC = (3.7 × 2)/√3 = 4.28 m (approx.)",
-      "explanation": "Rearranging 3.7/BC = √3/2 gives BC = (3.7×2)/√3 ≈ 4.28 m — the ladder length. Isolating a denominator unknown and approximating with √3 = 1.73 is the specific skill demonstrated.",
+      "explanation": "PART 1 — Setting up the sine equation for the hypotenuse.\nWhen the hypotenuse is the unknown, sin(angle) = opposite/hypotenuse rearranges to hypotenuse = opposite/sin(angle). Example: a ladder BC leans against a pole of height BD = 3.7 m at angle 60 degrees. sin(60) = BD/BC gives BC = BD/sin(60) = 3.7/(sqrt(3)/2).\n\nPART 2 — Simplifying the fraction.\n3.7 / (sqrt(3)/2) = 3.7 * 2/sqrt(3) = 7.4/sqrt(3). Rationalise: 7.4/sqrt(3) = 7.4*sqrt(3)/3 = (7.4*1.732)/3 approx 12.82/3 approx 4.28 m. So the ladder length is approximately 4.28 m.\n\nPART 3 — Why rationalise or approximate?\nLeaving 7.4/sqrt(3) is exact but the problem says take sqrt(3) = 1.732, so substitute and divide: 7.4*1.732/3 = 12.82/3 = 4.27 m (rounding to 4.28 m using more decimal places of sqrt(3)).",
       "keyMoves": [
         "Cross-multiply to move the hypotenuse to the numerator",
         "Approximate the surd to a decimal"
@@ -278,7 +278,7 @@
       "brief": "Use cot(angle) = adjacent/opposite to find the horizontal distance from the foot.",
       "sec": 0,
       "quote": "Now,    DC/BD = cot 60° = 1/√3\n\ni.e.,    DC = 3.7/√3 = 2.14 m (approx.)",
-      "explanation": "The distance of the ladder's foot from the pole is found by cot60 = DC/BD = 1/√3, giving DC = 3.7/√3 ≈ 2.14 m. Demonstrates selecting cot for adjacent-over-opposite.",
+      "explanation": "PART 1 — When cot is the right choice.\ncot(angle) = adjacent/opposite. Use cot when you know the opposite side (height) and want the adjacent side (horizontal base). This avoids writing tan and then inverting: cot(60) = 1/sqrt(3) directly gives the ratio adjacent/opposite.\n\nPART 2 — Worked example.\nPole height BD = 3.7 m (opposite to 60 degrees at C). Foot of ladder D is distance DC from base of pole (adjacent). cot(60) = DC/BD = 1/sqrt(3), so DC = BD/sqrt(3) = 3.7/sqrt(3). Rationalise: DC = 3.7*sqrt(3)/3 = (3.7*1.732)/3 approx 6.408/3 approx 2.14 m.\n\nPART 3 — Relation to tan.\ncot(60) = 1/tan(60) = 1/sqrt(3). You could equally write tan(60) = BD/DC = 3.7/DC, so DC = 3.7/sqrt(3) — same result. cot is just the shorthand; both approaches are correct.",
       "keyMoves": [
         "Identify adjacent and opposite relative to the angle",
         "Apply cot = adjacent/opposite and solve"
@@ -301,7 +301,7 @@
       "brief": "When the angle is measured from an observer's eye, add the eye height to the computed leg to get the full object height.",
       "sec": 1,
       "quote": "We have    AB = AE + BE = AE + 1.5",
-      "explanation": "The right triangle only gives the part of the object above the observer's eye level (AE). The full height is AE plus the observer's height (1.5 m), giving 30 m for the chimney. Forgetting this step is a classic error.",
+      "explanation": "PART 1 — Why the triangle does not give the full height.\nWhen an observer of height 1.5 m looks up at a chimney, the line of sight starts at eye level (1.5 m above the ground), not at the ground. The right triangle gives only the part of the chimney above eye level — call it AE. The total chimney height AB = AE + BE = AE + 1.5.\n\nPART 2 — Worked example.\nObserver is 1.5 m tall, 28.5 m from the base of a chimney. Angle of elevation of the top = 45 degrees. tan(45) = AE/28.5, so 1 = AE/28.5, giving AE = 28.5 m. Total height = AE + 1.5 = 28.5 + 1.5 = 30 m.\n\nPART 3 — General rule.\nWhenever the problem says the angle is observed from a person's eye, or gives the observer's height, add that height to the triangle result. If the problem says the observer stands at ground level with eye at height h, add h to the computed leg.",
       "keyMoves": [
         "Recognise the triangle's vertical leg starts at eye level",
         "Add observer height to the leg"
@@ -324,7 +324,7 @@
       "brief": "When two angles are given for one base or one object, build two right triangles sharing a common side and write an equation from each.",
       "sec": 1,
       "quote": "Note that there are two right triangles PAB and PAD. We are required to find the length of the flagstaff, i.e., DB and the distance of the building from the point P, i.e., PA.",
-      "explanation": "Composite problems (flagstaff, shadow, two ships, two poles) need two triangles that share a side (the common base PA or common height AB). Each triangle yields one equation; together they pin down the unknowns. Setting up both triangles correctly is the key composite-modelling skill.",
+      "explanation": "PART 1 — Recognising the two-triangle structure.\nSome problems give two angles from the same base point to two different heights (bottom and top of a flagstaff), or two angles from two different points to the same height. Each angle-height pair defines one right triangle. The two triangles share a common side — the base PA or the common height AB — which is the algebraic link between the two equations.\n\nPART 2 — Setting up the two equations.\nLabel the shared side as a variable (say x for the base PA). Write a trig equation for each triangle: for the lower angle, tan(lower) = AB/PA = h1/x; for the upper angle, tan(upper) = (AB+DB)/PA = h2/x. Two equations, two unknowns — solve by substitution or division.\n\nPART 3 — Example (flagstaff).\nP is 30 m from the base. Angle to bottom of flag (B) is 30 degrees, angle to top (A) is 60 degrees. Triangle PAB: tan(60) = AB/30, so AB = 30*sqrt(3). Triangle PAD: tan(30) = DB/30 = 1/sqrt(3), so ... wait — actually tan(30) relates to the angle to the top of the pole below the flag. Set up both triangles carefully with the shared base PA = 30 m.",
       "keyMoves": [
         "Identify the shared side between the two triangles",
         "Write a separate trig equation for each angle"
@@ -349,7 +349,7 @@
       "brief": "Eliminate one unknown by substituting one trig equation into the other and solve for the remaining unknown.",
       "sec": 1,
       "quote": "From (1), we have    h = x√3\n\nPutting this value in (2), we get (x√3)√3 = x + 40, i.e., 3x = x + 40\n\ni.e.,    x = 20",
-      "explanation": "In the shadow problem the two equations h = x√3 and 1/√3 = h/(x+40) are combined by substitution to give 3x = x+40, so x = 20 and h = 20√3. Substitution and simplification of surds is the algebraic engine for two-triangle problems.",
+      "explanation": "PART 1 — Express one variable from the first equation.\nIn the shadow problem, a tree of height h casts a shadow of length x m on flat ground. The sun's angle of elevation is 60 degrees from the tip of the shadow. From triangle 1: tan(60) = h/x gives h = x*sqrt(3). This expresses h in terms of x.\n\nPART 2 — Substitute into the second equation.\nA second angle of 30 degrees is observed from a point 40 m beyond the shadow tip: tan(30) = h/(x+40), so 1/sqrt(3) = h/(x+40), giving h = (x+40)/sqrt(3). Now substitute h = x*sqrt(3): x*sqrt(3) = (x+40)/sqrt(3). Multiply both sides by sqrt(3): x*(sqrt(3))^2 = x+40, so 3x = x+40, giving 2x = 40, x = 20.\n\nPART 3 — Recover both unknowns and verify.\nx = 20 m (shadow length), h = 20*sqrt(3) m (tree height). Check: tan(60) = 20*sqrt(3)/20 = sqrt(3) -- correct; tan(30) = 20*sqrt(3)/60 = sqrt(3)/3 = 1/sqrt(3) -- correct. Note: sqrt(3)*sqrt(3) = 3, not sqrt(6); this is the most common algebra error in this step.",
       "keyMoves": [
         "Express one variable from the first equation",
         "Substitute into the second and simplify the surds",
@@ -374,7 +374,7 @@
       "brief": "Multiply numerator and denominator by the conjugate to remove a surd from the denominator.",
       "sec": 2,
       "quote": "This gives    PD = 8/(√3 – 1) = 8(√3 + 1)/((√3 – 1)(√3 + 1)) = 4(√3 + 1) m.",
-      "explanation": "To simplify 8/(√3−1), multiply top and bottom by the conjugate (√3+1); the denominator becomes (√3)²−1² = 2, giving 4(√3+1). Needed whenever the answer has a surd in the denominator.",
+      "explanation": "PART 1 — When rationalisation is needed.\nAfter solving two-triangle problems, the answer often has the form a/(sqrt(3)-1) or a/(sqrt(3)+1) — a surd in the denominator. This is not the simplest form. Rationalise by multiplying numerator and denominator by the conjugate of the denominator.\n\nPART 2 — The conjugate trick.\nThe conjugate of (sqrt(3)-1) is (sqrt(3)+1). Their product is (sqrt(3))^2 - 1^2 = 3 - 1 = 2 (difference of squares). So: 8/(sqrt(3)-1) * (sqrt(3)+1)/(sqrt(3)+1) = 8*(sqrt(3)+1)/2 = 4*(sqrt(3)+1) m.\n\nPART 3 — Worked step-by-step.\nPD = 8/(sqrt(3)-1). Multiply: numerator = 8*(sqrt(3)+1); denominator = (sqrt(3)-1)*(sqrt(3)+1) = 3-1 = 2. So PD = 8*(sqrt(3)+1)/2 = 4*(sqrt(3)+1) = 4*sqrt(3)+4 m. If sqrt(3) = 1.732: PD = 4*1.732+4 = 6.928+4 = 10.928 m.",
       "keyMoves": [
         "Multiply by conjugate over itself",
         "Use (a−b)(a+b)=a²−b² in the denominator"
@@ -395,7 +395,7 @@
       "brief": "Substitute the given value of √3 (e.g. 1.732) to convert an exact surd answer to a decimal.",
       "sec": 1,
       "quote": "i.e.,    x = 10 (√3 – 1) = 7.32",
-      "explanation": "Using \\( \\sqrt{3} = 1.732 \\), \\( x = 10(\\sqrt{3} – 1) = 10(0.732) = 7.32 \\) m. Converting an exact surd into the required decimal value (when the problem supplies \\( \\sqrt{3} \\)) is a routine but failable final step.",
+      "explanation": "PART 1 — When to convert to a decimal.\nProblems that say 'Use sqrt(3) = 1.732' or 'Take sqrt(2) = 1.414' are telling you to give a decimal answer. Keep the exact surd form through all algebra; only substitute in the last step.\n\nPART 2 — Worked example.\nExact answer: x = 10*(sqrt(3)-1). Substitute sqrt(3) = 1.732: x = 10*(1.732-1) = 10*0.732 = 7.32 m. Do the subtraction first, then multiply — reversing the order gives the same result but the subtraction-then-multiply order is less error-prone.\n\nPART 3 — Common mistakes.\nUsing sqrt(3) = 1.73 (only 2 decimal places) gives 10*0.73 = 7.3 m — slightly off. Always use the value given in the problem (usually 1.732). Also watch the order: 10*(sqrt(3)-1) is NOT the same as 10*sqrt(3)-1 = 17.32-1 = 16.32; the parentheses must be applied first.",
       "keyMoves": [
         "Substitute the supplied value of √3",
         "Carry out the arithmetic carefully"
@@ -416,7 +416,7 @@
       "brief": "Add or subtract the computed pieces (sub-lengths) to produce the final asked height/width/distance.",
       "sec": 2,
       "quote": "Now,    AB = BD + AD = 3 + 3√3 = 3 (1 + √3) m.",
-      "explanation": "For the river-width problem the width AB is the sum of the two computed parts AD and BD: 3√3 + 3 = 3(1+√3). Many problems ask for a total that is the sum (or difference) of two triangle results, so assembling the pieces correctly is essential.",
+      "explanation": "PART 1 — When the answer is a sum of two sub-lengths.\nIn river-width or two-point problems, the total distance you need is broken into two parts by the point directly below a common object. Each part comes from one right triangle. The final answer is the sum (or difference) of the two computed lengths.\n\nPART 2 — Worked example (river width).\nA tree on a river bank is observed from two points A and B on the opposite bank. C is the foot of the tree, D is the point on the bank directly opposite. CD is perpendicular to AB. From A: angle = 60 degrees, so AD = CD/tan(60) = CD/sqrt(3). From B: angle = 30 degrees, so BD = CD/tan(30) = CD*sqrt(3). If CD = 3 m: AD = 3/sqrt(3) = sqrt(3) m, BD = 3*sqrt(3) m. Width AB = AD + BD = sqrt(3) + 3*sqrt(3) = 4*sqrt(3) m.\n\nPART 3 — Factoring the final answer.\nWhen both sub-lengths share a common factor, factor it out: e.g., AD = 3 m, BD = 3*sqrt(3) m gives AB = 3+3*sqrt(3) = 3*(1+sqrt(3)) m. This compact form is the expected final answer.",
       "keyMoves": [
         "Identify which sub-lengths add to the target",
         "Sum (or subtract) and factor if useful"
@@ -440,7 +440,7 @@
       "brief": "Recognise that when the angle is 45°, the opposite and adjacent legs are equal (tan45 = 1).",
       "sec": 2,
       "quote": "Also, in right ∆ PBD, ∠ B = 45°. So, BD = PD = 3 m.",
-      "explanation": "Because tan45 = 1, the two legs of a right triangle with a 45° angle are equal, so BD = PD = 3 m directly. Spotting this shortcut avoids extra algebra in 45° cases.",
+      "explanation": "PART 1 — The 45-degree special case.\nIn a right triangle with one angle equal to 45 degrees, the other non-right angle is also 45 degrees. This means the triangle is isosceles: the two legs (opposite and adjacent) are equal. Equivalently, tan(45) = 1, so opposite/adjacent = 1, giving opposite = adjacent.\n\nPART 2 — Using it to skip algebra.\nWhen you see a 45-degree angle in a right triangle, immediately write: opposite leg = adjacent leg. Example: in right triangle PBD with angle B = 45 degrees and one leg BD = 3 m, the other leg PD = BD = 3 m. No equation to solve.\n\nPART 3 — Worked problem context.\nA tower PD of unknown height is observed from point B at an angle of elevation of 45 degrees. BD = 3 m (given horizontal distance). tan(45) = PD/BD gives PD = BD*1 = 3 m. The equal-legs shortcut saves one step: you can simply write PD = 3 m directly.",
       "keyMoves": [
         "Note the angle is 45°",
         "Set the opposite leg equal to the adjacent leg"

@@ -11,10 +11,10 @@
       "slug": "find-measures-of-central-tendency-grouped-data",
       "title": "Find mean, mode and median of grouped data",
       "role": "goal",
-      "brief": "Compute the three measures of central tendency (mean, mode, median) for a grouped frequency distribution.",
+      "brief": "Given a grouped frequency distribution, produce its mean, mode, and median by choosing the right formula for each measure.",
       "sec": 0,
       "quote": "In this chapter, we shall extend the study of these three measures, i.e., mean, median and mode from ungrouped data to that of grouped data.",
-      "explanation": "This is the chapter's top skill: given a grouped frequency distribution, produce its mean (by an appropriate method), its mode, and its median. It composes every sub-skill below — class marks, the three mean methods, the modal-class/mode formula, cumulative frequency and the median formula.",
+      "explanation": "PART 1 — Choose which measure(s) are required.\nRead the question carefully: 'average' or 'typical value' usually means mean; 'middle-most observation' means median; 'most frequent/popular' means mode. Choosing wrongly gives a correct calculation of the wrong thing — always name the measure before computing.\n\nPART 2 — Build the working table.\nFor the mean, add a class-mark column (xᵢ) and an fᵢxᵢ column (or dᵢ/uᵢ columns for the shortcut methods). For the mode, just identify the modal class. For the median, build a cumulative-frequency column and find n/2.\n\nPART 3 — Apply the correct formula.\nMean: x̄ = Σfᵢxᵢ / Σfᵢ (or the assumed-mean/step-deviation shortcuts). Mode: l + ((f₁−f₀)/(2f₁−f₀−f₂))×h. Median: l + ((n/2 − cf)/f)×h. Substitute carefully.\n\nPART 4 — Interpret the result.\nState the value with appropriate units (marks, years, kg, etc.) and, if the question asks for comparison, use the empirical relation 3 Median = Mode + 2 Mean to cross-check or estimate a missing measure.",
       "keyMoves": [
         "Choose which measure(s) are required",
         "Build the working table (class marks / cf as needed)",
@@ -44,10 +44,10 @@
       "slug": "compute-class-mark",
       "title": "Compute the class mark (mid-point) of a class interval",
       "role": "intermediate",
-      "brief": "Find the representative xᵢ of a class as the average of its lower and upper limits.",
+      "brief": "The class mark xᵢ is the mid-point of a class interval: (lower limit + upper limit) / 2.",
       "sec": 1,
       "quote": "Class mark = (Upper class limit + Lower class limit) / 2",
-      "explanation": "Each class interval is represented by its mid-point (class mark), assuming the frequency is centred there. For 10-25 the class mark is (10+25)/2 = 17.5. These class marks serve as the xᵢ for every mean method.",
+      "explanation": "PART 1 — Add the two class limits.\nFor a class interval such as 10–25, add the lower limit (10) and the upper limit (25) to get 35. This sum represents twice the mid-point.\n\nPART 2 — Divide by 2 to get the class mark.\nDivide the sum by 2: 35 / 2 = 17.5. This value xᵢ = 17.5 represents the entire class in every mean formula. Every row in your mean table needs one class mark computed this way.",
       "keyMoves": [
         "Add the lower and upper class limits",
         "Divide by 2"
@@ -66,10 +66,10 @@
       "slug": "compute-mean-direct-method",
       "title": "Compute mean of grouped data by the direct method",
       "role": "intermediate",
-      "brief": "Use x̄ = Σfᵢxᵢ / Σfᵢ with class marks as xᵢ.",
+      "brief": "Multiply each class mark by its frequency, sum the products, then divide by the total frequency: x̄ = Σfᵢxᵢ / Σfᵢ.",
       "sec": 1,
       "quote": "x̄ = Σfᵢxᵢ / Σfᵢ = 1860.0 / 30 = 62",
-      "explanation": "Multiply each class mark xᵢ by its frequency fᵢ, sum the products, sum the frequencies, and divide. In Example 1's grouped form Σfᵢxᵢ = 1860, Σfᵢ = 30, so x̄ = 62.",
+      "explanation": "PART 1 — Form the fᵢxᵢ column.\nFor each class, compute the product fᵢ × xᵢ where xᵢ is the class mark. If a class 10–25 has frequency 3 and class mark 17.5, its product is 52.5. Write this product in a new column alongside each row.\n\nPART 2 — Sum to get Σfᵢxᵢ and Σfᵢ.\nAdd all the fᵢxᵢ products to get Σfᵢxᵢ. Also add all frequencies to get Σfᵢ (which equals n, the total number of observations). In NCERT Example 1's grouped data, Σfᵢxᵢ = 1860 and Σfᵢ = 30.\n\nPART 3 — Divide Σfᵢxᵢ by Σfᵢ.\nThe mean x̄ = Σfᵢxᵢ / Σfᵢ = 1860 / 30 = 62. This is the direct method — straightforward but arithmetically heavy for large values.",
       "keyMoves": [
         "Form the fᵢxᵢ column",
         "Sum to get Σfᵢxᵢ and Σfᵢ",
@@ -92,10 +92,10 @@
       "slug": "compute-fx-product-and-sum",
       "title": "Build the fᵢxᵢ column and its total Σfᵢxᵢ",
       "role": "bedrock",
-      "brief": "Multiply each frequency by its class mark and total the column.",
+      "brief": "Multiply each frequency by its class mark row by row, then total both the fᵢxᵢ column and the fᵢ column.",
       "sec": 1,
       "quote": "Total | Σfᵢ = 30 | | Σfᵢxᵢ = 1860.0",
-      "explanation": "The mechanical tabulation step: compute fᵢxᵢ for every row and add them to get Σfᵢxᵢ, and separately add the fᵢ to get Σfᵢ. This feeds the direct-method division.",
+      "explanation": "PART 1 — Row by row, multiply fᵢ × xᵢ.\nFor each class interval in the table, compute the product of the frequency and the class mark. For example, if f₃ = 6 and x₃ = 32.5, then f₃x₃ = 195. Write this result in the fᵢxᵢ column for that row.\n\nPART 2 — Add the fᵢxᵢ column and add the fᵢ column separately.\nSum all the products in the fᵢxᵢ column to get Σfᵢxᵢ. Independently sum the frequencies to get Σfᵢ = n. Both totals are used in the division x̄ = Σfᵢxᵢ / Σfᵢ. An arithmetic slip in any row corrupts the entire mean, so check each product before summing.",
       "keyMoves": [
         "Row by row multiply fᵢ × xᵢ",
         "Add the fᵢxᵢ column",
@@ -114,17 +114,17 @@
       "slug": "choose-assumed-mean",
       "title": "Choose an assumed mean 'a'",
       "role": "bedrock",
-      "brief": "Pick a convenient class mark (usually the central one) as 'a'.",
+      "brief": "Pick a convenient class mark — usually the central one — as the assumed mean a to simplify the arithmetic.",
       "sec": 1,
       "quote": "The first step is to choose one among the xᵢ's as the assumed mean, and denote it by 'a'.",
-      "explanation": "To shrink the arithmetic, choose one of the class marks as the assumed mean a, preferably a central one (e.g. a = 47.5). The final mean does not depend on the choice of a.",
+      "explanation": "PART 1 — Identify all the class marks.\nList the xᵢ values for every class in the table. These are the only valid candidates for the assumed mean a, since a must be one of the class marks.\n\nPART 2 — Select a central xᵢ as a.\nChoose approximately the middle class mark, e.g. a = 47.5 when the marks range from 17.5 to 77.5. A central choice minimises the size of the deviations dᵢ = xᵢ − a, making the arithmetic easier. Importantly, the final mean is the same regardless of which class mark you pick — a is a computational shortcut, not part of the answer.",
       "keyMoves": [
         "Identify the class marks",
         "Select a central xᵢ as a"
       ],
       "misconceptions": [
         "Believing the answer changes with a different a",
-        "Choosing a value that is not a class mark when convenience demands one"
+        "Choosing a value that is not a class mark"
       ],
       "prereqs": [],
       "sameConcept": [],
@@ -135,10 +135,10 @@
       "slug": "compute-deviation-di",
       "title": "Compute deviations dᵢ = xᵢ − a",
       "role": "bedrock",
-      "brief": "Subtract the assumed mean from each class mark.",
+      "brief": "Subtract the assumed mean a from every class mark to get signed deviations dᵢ.",
       "sec": 1,
       "quote": "i.e., dᵢ = xᵢ – a = xᵢ – 47.5",
-      "explanation": "Each deviation dᵢ is the signed difference between the class mark and the assumed mean. With a = 47.5, class mark 17.5 gives dᵢ = −30; 62.5 gives +15. Signs matter.",
+      "explanation": "PART 1 — Subtract a from each xᵢ.\nWith a = 47.5, go through every class mark and compute dᵢ = xᵢ − 47.5. Class mark 17.5 gives d = −30; class mark 47.5 gives d = 0; class mark 62.5 gives d = +15. The sign (negative or positive) is essential and must not be dropped.\n\nPART 2 — Keep the sign (negative below a, positive above).\nClass marks smaller than a give negative deviations; those above a give positive deviations. These signed values are used in the formula x̄ = a + Σfᵢdᵢ / Σfᵢ. Dropping a negative sign turns a below-average class into an above-average one and corrupts the mean.",
       "keyMoves": [
         "Subtract a from each xᵢ",
         "Keep the sign (negative below a, positive above)"
@@ -158,10 +158,10 @@
       "slug": "compute-mean-assumed-mean-method",
       "title": "Compute mean by the assumed mean method",
       "role": "intermediate",
-      "brief": "Use x̄ = a + Σfᵢdᵢ / Σfᵢ.",
+      "brief": "Use x̄ = a + Σfᵢdᵢ / Σfᵢ where dᵢ = xᵢ − a are the deviations from an assumed mean.",
       "sec": 1,
       "quote": "x̄ = 47.5 + 435/30 = 47.5 + 14.5 = 62.",
-      "explanation": "Form fᵢdᵢ, sum to Σfᵢdᵢ, divide by Σfᵢ, and add back the assumed mean a. With a = 47.5, Σfᵢdᵢ = 435, Σfᵢ = 30, x̄ = 62 — the same as the direct method.",
+      "explanation": "PART 1 — Form fᵢdᵢ and sum it.\nFor each class, multiply its frequency fᵢ by its deviation dᵢ. The products can be negative. Sum all fᵢdᵢ values to get Σfᵢdᵢ. With a = 47.5 on the NCERT marks data, Σfᵢdᵢ = 435 and Σfᵢ = 30.\n\nPART 2 — Divide Σfᵢdᵢ by Σfᵢ.\nCompute the average deviation: 435 / 30 = 14.5.\n\nPART 3 — Add a.\nThe mean is x̄ = a + (Σfᵢdᵢ / Σfᵢ) = 47.5 + 14.5 = 62. This matches the direct method because x̄ − a equals the average deviation. Never forget to add a back — leaving out a gives only the correction, not the mean.",
       "keyMoves": [
         "Form fᵢdᵢ and sum it",
         "Divide Σfᵢdᵢ by Σfᵢ",
@@ -185,10 +185,10 @@
       "slug": "compute-step-deviation-ui",
       "title": "Compute step deviations uᵢ = (xᵢ − a)/h",
       "role": "bedrock",
-      "brief": "Divide each deviation by the class size h to get small integers.",
+      "brief": "Divide each deviation dᵢ by the class size h to produce small integer step deviations uᵢ.",
       "sec": 1,
       "quote": "So, let uᵢ = (xᵢ – a)/h, where a is the assumed mean and h is the class size.",
-      "explanation": "When all dᵢ share a common factor (the class size h), divide by h to get small uᵢ. With h = 15, dᵢ = −30 gives uᵢ = −2; dᵢ = 45 gives uᵢ = 3.",
+      "explanation": "PART 1 — Identify the class size h.\nWhen all classes have equal width, h is the common width. For classes 10–25, 25–40, 40–55, … with width 15, h = 15. This is the value you will divide by.\n\nPART 2 — Divide each dᵢ by h.\nWith dᵢ = xᵢ − a already computed, divide by h: uᵢ = dᵢ / h. For dᵢ = −30 and h = 15, uᵢ = −2; for dᵢ = 45, uᵢ = 3. The uᵢ are small integers (or simple fractions for unequal classes), making multiplication by fᵢ much easier. You must later multiply back by h in the final formula.",
       "keyMoves": [
         "Identify the class size h",
         "Divide each dᵢ by h"
@@ -209,10 +209,10 @@
       "slug": "compute-mean-step-deviation-method",
       "title": "Compute mean by the step-deviation method",
       "role": "intermediate",
-      "brief": "Use x̄ = a + h(Σfᵢuᵢ / Σfᵢ).",
+      "brief": "Use x̄ = a + h × (Σfᵢuᵢ / Σfᵢ) where uᵢ = (xᵢ − a)/h.",
       "sec": 1,
       "quote": "x̄ = 47.5 + 15 × (29/30)",
-      "explanation": "Form fᵢuᵢ, sum to Σfᵢuᵢ, divide by Σfᵢ, multiply by h, and add a. With a = 47.5, h = 15, Σfᵢuᵢ = 29, Σfᵢ = 30: x̄ = 47.5 + 15×(29/30) = 62.",
+      "explanation": "PART 1 — Form and sum fᵢuᵢ.\nMultiply each frequency fᵢ by its step deviation uᵢ. Sum all products to get Σfᵢuᵢ. With a = 47.5, h = 15 on the NCERT marks data, Σfᵢuᵢ = 29 and Σfᵢ = 30.\n\nPART 2 — Divide Σfᵢuᵢ by Σfᵢ.\nCompute the average step deviation: 29 / 30.\n\nPART 3 — Multiply by h then add a.\nScale back: x̄ = a + h × (Σfᵢuᵢ / Σfᵢ) = 47.5 + 15 × (29/30) = 47.5 + 14.5 = 62. Forgetting to multiply by h gives a meaninglessly small correction; forgetting to add a gives only the scaled correction.",
       "keyMoves": [
         "Form and sum fᵢuᵢ",
         "Divide by Σfᵢ",
@@ -238,10 +238,10 @@
       "slug": "apply-step-deviation-unequal-classes",
       "title": "Apply step-deviation method when class sizes are unequal",
       "role": "intermediate",
-      "brief": "Choose a suitable divisor h and still use the step-deviation formula on unequal classes.",
+      "brief": "Even with unequal class widths, choose a suitable divisor h and apply x̄ = a + h × (Σfᵢuᵢ / Σfᵢ).",
       "sec": 1,
       "quote": "Here, the class size varies, and the xᵢ are large. Let us still apply the step-deviation method with a = 200 and h = 20.",
-      "explanation": "Even with unequal class widths, the step-deviation method works by taking h as a suitable divisor of the deviations. In Example 3, a = 200, h = 20 gives non-integer uᵢ such as −3.75 yet the formula yields x̄ = 152.89.",
+      "explanation": "PART 1 — Compute class marks of unequal classes.\nFind xᵢ = (lower + upper)/2 for each class as usual, even when class widths differ. In NCERT Example 3, the classes have varying widths but each still has a definite mid-point.\n\nPART 2 — Pick a and a suitable divisor h.\nChoose a = 200 (a central class mark) and h = 20 (a convenient divisor of most deviations). The uᵢ = (xᵢ − a)/h may be non-integers such as −3.75 when widths differ — that is acceptable.\n\nPART 3 — Apply x̄ = a + h × (Σfᵢuᵢ / Σfᵢ).\nWith Σfᵢuᵢ = −106 and Σfᵢ = 45: x̄ = 200 + 20 × (−106/45) = 200 − 47.11 = 152.89. Unequal class size does not invalidate the formula; it only means uᵢ are fractions rather than small integers.",
       "keyMoves": [
         "Compute class marks of unequal classes",
         "Pick a and a divisor h",
@@ -250,7 +250,7 @@
       ],
       "misconceptions": [
         "Assuming step-deviation needs equal classes",
-        "Rounding non-integer uᵢ wrongly"
+        "Rounding non-integer uᵢ prematurely"
       ],
       "prereqs": [],
       "sameConcept": [],
@@ -261,10 +261,10 @@
       "slug": "choose-appropriate-mean-method",
       "title": "Choose an appropriate method to find the mean",
       "role": "intermediate",
-      "brief": "Decide between direct, assumed-mean and step-deviation based on the size of xᵢ and fᵢ.",
+      "brief": "When xᵢ and fᵢ are small use the direct method; when they are large, switch to assumed-mean or step-deviation.",
       "sec": 1,
       "quote": "If xᵢ and fᵢ are sufficiently small, then the direct method is an appropriate choice. If xᵢ and fᵢ are numerically large numbers, then we can go for the assumed mean method or step-deviation method.",
-      "explanation": "All three methods give the same mean; the choice is about ease of arithmetic. Small numbers → direct; large numbers → assumed-mean or step-deviation.",
+      "explanation": "PART 1 — Inspect the magnitudes of xᵢ and fᵢ.\nGlance at the class marks and frequencies. If both are two-digit numbers or smaller, the direct method (x̄ = Σfᵢxᵢ / Σfᵢ) is manageable. If xᵢ values are in the hundreds or thousands, hand arithmetic becomes error-prone.\n\nPART 2 — Pick the least laborious method.\nFor large xᵢ: use the assumed-mean method (subtracting a central mark reduces the numbers significantly). If classes are equal-width AND the deviations are multiples of h: use step-deviation (further reduces to small integers uᵢ). All three methods produce the same mean — the choice is purely about minimising arithmetic effort.",
       "keyMoves": [
         "Inspect magnitudes of xᵢ and fᵢ",
         "Pick the least laborious method"
@@ -284,10 +284,10 @@
       "slug": "identify-modal-class",
       "title": "Identify the modal class",
       "role": "bedrock",
-      "brief": "Locate the class with the maximum frequency.",
+      "brief": "Scan the frequency column for the maximum value; the class interval with that maximum frequency is the modal class.",
       "sec": 2,
       "quote": "Here the maximum class frequency is 8, and the class corresponding to this frequency is 3 – 5. So, the modal class is 3 – 5.",
-      "explanation": "In grouped data the mode lies inside the class of greatest frequency. Scan the frequency column for the maximum; its class is the modal class.",
+      "explanation": "PART 1 — Find the maximum frequency.\nLook down the fᵢ column and pick out the largest value. In the NCERT household-size example, the frequencies are 7, 8, 2, 2, 1 — the maximum is 8.\n\nPART 2 — Read off its class interval.\nThe class corresponding to frequency 8 is 3–5. That class is the modal class. All five parameters for the mode formula (l, h, f₁, f₀, f₂) are extracted relative to this class in the next step.",
       "keyMoves": [
         "Find the maximum frequency",
         "Read off its class interval"
@@ -305,10 +305,10 @@
       "slug": "read-modal-formula-parameters",
       "title": "Read off l, h, f₁, f₀, f₂ for the mode formula",
       "role": "bedrock",
-      "brief": "Extract the lower limit, class size, modal frequency and the preceding/succeeding frequencies.",
+      "brief": "Extract the modal class's lower limit l, class size h, modal frequency f₁, and the frequencies immediately before (f₀) and after (f₂) it.",
       "sec": 2,
       "quote": "frequency (f₁) of the modal class = 8,\nfrequency (f₀) of class preceding the modal class = 7,\nfrequency (f₂) of class succeeding the modal class = 2.",
-      "explanation": "Before substituting, identify l = lower limit of the modal class, h = class size, f₁ = modal frequency, f₀ = frequency of the class just before, f₂ = frequency of the class just after.",
+      "explanation": "PART 1 — Read l and h from the modal class.\nThe lower boundary of the modal class is l. If the modal class is 3–5, then l = 3 and h = 5 − 3 = 2. Use actual boundaries (after converting to continuous if needed).\n\nPART 2 — Read f₁, f₀, f₂ from the table.\nf₁ is the frequency of the modal class itself (8). f₀ is the frequency of the class immediately before the modal class (7). f₂ is the frequency of the class immediately after (2). 'Before' and 'after' mean the adjacent rows in the table — not the class two rows away.",
       "keyMoves": [
         "Read l and h from the modal class",
         "Read f₁, f₀, f₂ from the table"
@@ -329,10 +329,10 @@
       "slug": "apply-mode-formula",
       "title": "Apply the grouped-data mode formula",
       "role": "intermediate",
-      "brief": "Compute Mode = l + ((f₁−f₀)/(2f₁−f₀−f₂)) × h.",
+      "brief": "Substitute l, f₁, f₀, f₂, h into Mode = l + ((f₁−f₀)/(2f₁−f₀−f₂)) × h.",
       "sec": 2,
       "quote": "Mode = l + ( (f₁ – f₀) / (2f₁ – f₀ – f₂) ) × h",
-      "explanation": "Substitute the read-off values into the formula. In Example 5: 3 + ((8−7)/(16−7−2))×2 = 3 + 2/7 = 3.286.",
+      "explanation": "PART 1 — Substitute l, f₁, f₀, f₂, h.\nFor NCERT Example 5 (household-size data): l = 3, h = 2, f₁ = 8, f₀ = 7, f₂ = 2.\n\nPART 2 — Evaluate the denominator 2f₁ − f₀ − f₂.\nThe denominator is 2(8) − 7 − 2 = 16 − 9 = 7. Note the formula subtracts both f₀ and f₂ from 2f₁ — a common error is to add f₂ instead.\n\nPART 3 — Compute the fraction, multiply by h, then add l.\nNumerator = 8 − 7 = 1. Fraction = 1/7. Multiply by h: (1/7) × 2 = 2/7 ≈ 0.286. Add l: Mode = 3 + 2/7 ≈ 3.286.",
       "keyMoves": [
         "Substitute l, f₁, f₀, f₂, h",
         "Evaluate the denominator 2f₁−f₀−f₂",
@@ -356,10 +356,10 @@
       "slug": "compute-cumulative-frequency-less-than",
       "title": "Build a less-than cumulative frequency column",
       "role": "bedrock",
-      "brief": "Add successive frequencies to get the running total up to each upper limit.",
+      "brief": "Starting from the first class, add each successive frequency to the running total to build the cumulative frequency (cf) column.",
       "sec": 4,
       "quote": "The cumulative frequency of a class is the frequency obtained by adding the frequencies of all the classes preceding the given class.",
-      "explanation": "Running totals: cf of a class = sum of all frequencies up to and including that class. For marks data, less than 20 = 5+3 = 8, less than 30 = 8+4 = 12, and so on up to n.",
+      "explanation": "PART 1 — Start with the first frequency.\nThe cf of the first class equals its own frequency. If the first class 10–20 has frequency 5, then its cf is 5.\n\nPART 2 — Add each next frequency cumulatively.\nFor each subsequent class, cf = previous cf + current fᵢ. Example: if frequencies are 5, 3, 4, 3, …, then the cf column is 5, 8, 12, 15, … The final cf must equal n = Σfᵢ, which is a built-in check. This cf column is used both to identify the median class (find n/2 in the cf column) and to read the parameter 'cf' in the median formula.",
       "keyMoves": [
         "Start with the first frequency",
         "Add each next frequency cumulatively"
@@ -378,10 +378,10 @@
       "slug": "convert-cf-table-to-frequencies",
       "title": "Recover class frequencies from a cumulative-frequency table",
       "role": "intermediate",
-      "brief": "Subtract consecutive cumulative frequencies to get each class frequency.",
+      "brief": "Given a cumulative-frequency table, subtract consecutive cf values to recover each class's frequency.",
       "sec": 3,
       "quote": "Therefore, the number of girls with height in the interval 140 - 145 = 11 – 4 = 7.",
-      "explanation": "Given a less-than (or below) cumulative table, the frequency of a class is the difference between its cf and the previous cf. E.g. 145-150 frequency = 29 − 11 = 18. Needed before applying the median formula.",
+      "explanation": "PART 1 — Identify the class boundaries from the upper limits.\nA 'less than' cf table lists upper limits (less than 145, less than 150, …). The class 140–145 spans from the previous upper limit to the current one.\n\nPART 2 — Subtract the previous cf from each cf.\nFrequency of class = cf of this class − cf of the previous class. From NCERT Example 6: cf below 145 = 11, cf below 140 = 4, so frequency of 140–145 = 11 − 4 = 7. Perform this subtraction for every class. The first class's frequency equals its cf directly.",
       "keyMoves": [
         "Identify the class boundaries from the upper limits",
         "Subtract the previous cf from each cf"
@@ -401,10 +401,10 @@
       "slug": "identify-median-class",
       "title": "Identify the median class using n/2",
       "role": "bedrock",
-      "brief": "Find n/2, then the class whose cf is just ≥ n/2.",
+      "brief": "Compute n/2, then find the class whose cumulative frequency is the smallest value greater than or equal to n/2.",
       "sec": 3,
       "quote": "We now locate the class whose cumulative frequency is greater than (and nearest to) n/2. This is called the median class.",
-      "explanation": "Compute n/2 (here 53/2 = 26.5), then scan cumulative frequencies for the first one that is greater than and nearest to n/2. That class (60-70, cf 29) is the median class.",
+      "explanation": "PART 1 — Compute n/2.\nAdd all frequencies to get n, then halve it. If n = 53, then n/2 = 26.5. This is the 'target' value you will hunt for in the cf column.\n\nPART 2 — Find the smallest cf that is ≥ n/2, and name that class the median class.\nScan down the cumulative frequency column. The first cf value that equals or exceeds 26.5 identifies the median class. In the NCERT marks example, the cf column is …22, 29, 40… — 29 is the first value ≥ 26.5, so the class 60–70 (with cf 29) is the median class.",
       "keyMoves": [
         "Compute n/2",
         "Find the smallest cf that is ≥ n/2",
@@ -426,10 +426,10 @@
       "slug": "read-median-formula-parameters",
       "title": "Read off l, cf, f, h for the median formula",
       "role": "bedrock",
-      "brief": "Extract lower limit of median class, preceding cf, median-class frequency, and class size.",
+      "brief": "From the identified median class, extract its lower limit l, class size h, its own frequency f, and the cumulative frequency cf of the class immediately before it.",
       "sec": 3,
       "quote": "where l = lower limit of median class,\nn = number of observations,\ncf = cumulative frequency of class preceding the median class,\nf = frequency of median class,\nh = class size (assuming class size to be equal).",
-      "explanation": "Before substituting, identify l (lower limit of median class), cf (cumulative frequency of the class before the median class), f (frequency of the median class), and h (class size).",
+      "explanation": "PART 1 — Read l and h from the median class.\nThe lower boundary of the median class is l. If the median class is 60–70, then l = 60 and h = 10. Use actual boundaries (continuous classes).\n\nPART 2 — Read f of the median class and cf of the preceding class.\nf is the frequency of the median class itself (not its cf). cf is the cumulative frequency of the class just before the median class — not the median class's own cf. In the marks example: median class 60–70 has f = 7; the class before it has cf = 22, so cf (parameter) = 22.",
       "keyMoves": [
         "Read l and h from the median class",
         "Read f of the median class",
@@ -451,10 +451,10 @@
       "slug": "apply-median-formula",
       "title": "Apply the grouped-data median formula",
       "role": "intermediate",
-      "brief": "Compute Median = l + ((n/2 − cf)/f) × h.",
+      "brief": "Substitute l, n, cf, f, h into Median = l + ((n/2 − cf)/f) × h.",
       "sec": 3,
       "quote": "Median = l + ( ((n/2) – cf) / f ) × h,",
-      "explanation": "Substitute the parameters. In the marks example: 60 + ((26.5 − 22)/7)×10 = 60 + 45/7 = 66.4.",
+      "explanation": "PART 1 — Substitute n/2, cf, f, h, l.\nFor the NCERT marks example: l = 60, n/2 = 26.5, cf = 22 (cf of the class before the median class), f = 7, h = 10.\n\nPART 2 — Compute n/2 − cf, then divide by f and multiply by h.\n26.5 − 22 = 4.5. Then (4.5 / 7) × 10 = 45/7 ≈ 6.43.\n\nPART 3 — Add l.\nMedian = 60 + 6.43 = 66.43 ≈ 66.4. Never use n (total) instead of n/2, and never add cf instead of subtracting it — either error gives a wildly wrong answer.",
       "keyMoves": [
         "Substitute n/2, cf, f, h, l",
         "Compute n/2 − cf",
@@ -480,10 +480,10 @@
       "slug": "convert-discontinuous-to-continuous-classes",
       "title": "Convert inclusive (discontinuous) classes to continuous classes",
       "role": "intermediate",
-      "brief": "Adjust boundaries by 0.5 so classes are continuous before applying mode/median formulas.",
+      "brief": "When class intervals like 118–126, 127–135 have a gap, shift each boundary by half the gap (0.5) to make them continuous before applying mode or median formulas.",
       "sec": 4,
       "quote": "For calculating mode and median for grouped data, it should be ensured that the class intervals are continuous before applying the formulae.",
-      "explanation": "Formulas assume continuous classes. Inclusive classes like 118-126, 127-135 must be converted (e.g. to 117.5-126.5, 126.5-135.5) by shifting each boundary by half the gap before computing mode or median.",
+      "explanation": "PART 1 — Find the gap between consecutive class limits.\nExamine two adjacent classes, e.g. 118–126 and 127–135. The upper limit of the first is 126 and the lower limit of the second is 127 — gap = 1. Half the gap = 0.5.\n\nPART 2 — Subtract half the gap from lower limits and add to upper limits.\nAdjust every boundary: 118 − 0.5 = 117.5 becomes the new lower limit; 126 + 0.5 = 126.5 becomes the new upper limit; and so on. The adjusted classes 117.5–126.5, 126.5–135.5, … are continuous. Now l in the mode/median formula is the adjusted lower boundary, not the original one.",
       "keyMoves": [
         "Find the gap between consecutive class limits",
         "Subtract half the gap from lower limits and add to upper limits"
@@ -501,10 +501,10 @@
       "slug": "find-unknown-frequencies-from-median",
       "title": "Find missing frequencies given the median and total",
       "role": "intermediate",
-      "brief": "Use the total-frequency equation plus the median formula to solve for two unknowns.",
+      "brief": "When two frequencies x and y are unknown, use Σf = n (one equation) and the median formula at the given median value (second equation) to solve for both.",
       "sec": 3,
       "quote": "525 = 500 + ( (50 – 36 – x) / 20 ) × 100",
-      "explanation": "With two unknown frequencies x and y, use Σf = n to get one equation (x+y = 24) and substitute into the median formula at the known median to solve for x (here x = 9), then back-substitute for y (y = 15).",
+      "explanation": "PART 1 — Form cumulative frequencies in terms of x.\nExpress the cf column symbolically. If x is the missing frequency of a particular class, every cf at and below it involves x. This lets you write 'cf of the class before the median class' as an expression in x.\n\nPART 2 — Write the x + y = k equation from Σf = n.\nSum all frequencies (some with x and y) and set equal to n. In NCERT Example 8, x + y + (others) = 100 gives x + y = 24.\n\nPART 3 — Substitute into the median formula at the given median to solve for x, then y.\nMedian = 525 is given; the median class is 500–600. Substituting: 525 = 500 + ((50 − 36 − x)/20) × 100 gives x = 9. Back-substitute: y = 24 − 9 = 15.",
       "keyMoves": [
         "Form cumulative frequencies in terms of x",
         "Write x+y = n equation",
@@ -526,10 +526,10 @@
       "slug": "use-empirical-mode-mean-median-relation",
       "title": "Use the empirical relation 3 Median = Mode + 2 Mean",
       "role": "intermediate",
-      "brief": "Estimate one measure from the other two via the empirical relationship.",
+      "brief": "The empirical relationship 3 Median = Mode + 2 Mean lets you estimate one measure when the other two are known.",
       "sec": 3,
       "quote": "3 Median = Mode + 2 Mean",
-      "explanation": "There is an empirical relationship linking the three measures of central tendency: 3 Median = Mode + 2 Mean. Given any two, the third can be estimated.",
+      "explanation": "PART 1 — Substitute the two known measures.\nIf Mean = 35.4 and Median = 35.75, substitute into 3 × Median = Mode + 2 × Mean: 3 × 35.75 = Mode + 2 × 35.4 → 107.25 = Mode + 70.8 → Mode = 36.45.\n\nPART 2 — Solve for the unknown one.\nRearrange as needed: Mode = 3 Median − 2 Mean; or Median = (Mode + 2 Mean)/3; or Mean = (3 Median − Mode)/2. Remember: this is an empirical approximation, not an exact algebraic law, so it is used for estimation or cross-checking, not as a proof.",
       "keyMoves": [
         "Substitute the two known measures",
         "Solve for the unknown one"
@@ -547,10 +547,10 @@
       "slug": "select-appropriate-measure-of-central-tendency",
       "title": "Select the appropriate measure of central tendency",
       "role": "intermediate",
-      "brief": "Choose mean, median or mode based on the data and the question's intent.",
+      "brief": "Choose mean when all values contribute equally, median when extremes distort the picture, or mode when the most frequent value matters.",
       "sec": 3,
       "quote": "In situations which require establishing the most frequent value or most popular item, the mode is the best choice",
-      "explanation": "Mean uses all observations but is affected by extreme values; median (the middle-most value) is better with extremes; mode identifies the most frequent/popular item. The choice depends on the situation.",
+      "explanation": "PART 1 — Identify whether extreme values distort the mean.\nThe mean uses every observation, so one very high or very low value shifts it significantly. In such cases — exam scores with a few outliers, income data — the median better represents a typical observation because it is unaffected by extremes.\n\nPART 2 — Decide if a typical or a most-frequent value is needed.\nIf the question asks for the most popular shoe size, the most common commute time, or the most sold item — mode is required. If it asks for the 'average' in a balanced dataset, the mean works well. If it asks for the middle-most observation, choose median.\n\nPART 3 — Pick mean, median, or mode accordingly.\nState your choice and justify it briefly. 'We use mode because we want the most frequently occurring household size' is a complete, exam-worthy answer.",
       "keyMoves": [
         "Identify whether extremes distort the mean",
         "Decide if a typical or a most-frequent value is wanted",

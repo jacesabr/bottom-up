@@ -14,7 +14,7 @@
       "brief": "Top skill: given coordinates of points, use the distance formula and the section formula to find distances, classify figures, locate points, and divide segments.",
       "sec": 0,
       "quote": "In this chapter, you will learn how to find the distance between the two points whose coordinates are given. You will also study how to find the coordinates of the point which divides a line segment joining two given points in a given ratio.",
-      "explanation": "The chapter's two engines are the distance formula and the section formula. Every worked example applies one or both of these to a configuration of points: testing for triangles/squares/collinearity, finding equidistant points, dividing segments in a ratio, and finding unknown vertices of parallelograms.",
+      "explanation": "PART 1 — Two master tools.\nThis chapter gives you exactly two formulas: the distance formula and the section formula. Every problem — classifying triangles, testing collinearity, dividing segments, locating parallelogram vertices — reduces to one or both of these tools.\n\nPART 2 — Choosing the right tool.\nDistance formula answers \"how far apart?\"; section formula answers \"where is the dividing point?\". For P(1,7), Q(4,3), R(−1,0): compute PQ, QR, PR with the distance formula, then compare sides/diagonals to classify.\n\nPART 3 — Interpreting the result.\nA numeric answer only counts when you tie it back to the geometric claim: equal sides means isosceles; two equal squared distances summing to the third means a right angle; equal midpoints of two diagonals means a parallelogram.",
       "keyMoves": [
         "Read off coordinates of the given points",
         "Decide whether the task needs the distance formula, the section formula, or both",
@@ -54,7 +54,7 @@
       "brief": "Compute PQ = √[(x₂ − x₁)² + (y₂ − y₁)²] for points P(x₁,y₁) and Q(x₂,y₂).",
       "sec": 1,
       "quote": "PQ = √[(x₂ – x₁)² + (y₂ – y₁)²],",
-      "explanation": "The core distance formula derived from the Pythagoras theorem on the right triangle formed by horizontal and vertical legs between the two points. Plug the two coordinate pairs in, subtract, square, sum, and take the positive square root.",
+      "explanation": "PART 1 — The formula.\nFor two points P(x1,y1) and Q(x2,y2), the distance is PQ = sqrt((x2-x1)^2 + (y2-y1)^2). This comes directly from the Pythagoras theorem applied to the right triangle whose horizontal leg is |x2-x1| and vertical leg is |y2-y1|.\n\nPART 2 — Worked example.\nFor P(2,3) and Q(5,7): differences are 5-2=3 and 7-3=4; squares are 9 and 16; sum is 25; PQ = sqrt(25) = 5. Distance is always the positive root.\n\nPART 3 — Key caution.\nNever mix x and y differences (no (x2-y1)); always square the signed difference so negatives become positive; the final answer is non-negative.",
       "keyMoves": [
         "Identify (x1,y1) and (x2,y2)",
         "Form the differences x2−x1 and y2−y1",
@@ -82,7 +82,7 @@
       "brief": "Form x₂ – x₁ and y₂ – y₁ correctly when coordinates can be negative, e.g. (3 + 2) for 3 − (−2).",
       "sec": 1,
       "quote": "PQ = √[(3 + 2)² + (2 + 3)²] = √(5² + 5²) = √50 = 7.07 (approx.)",
-      "explanation": "Before squaring, you subtract the coordinates. Subtracting a negative coordinate becomes addition. Getting these signed differences right is the most common failure point in the distance formula.",
+      "explanation": "PART 1 — Signed subtraction.\nWhen coordinates can be negative, care is needed: x2 - x1 means substitute the actual signed values. For P(3,-2) and Q(-1,4): x2-x1 = -1-3 = -4 and y2-y1 = 4-(-2) = 6. Notice subtracting a negative becomes addition.\n\nPART 2 — The critical slip.\nStudents write 3 - (-2) = 1, dropping the double-negative. The correct step is 3 - (-2) = 3 + 2 = 5. Always convert subtraction of a negative to addition before proceeding.\n\nPART 3 — Reduce before squaring.\nArrive at a single signed number first (e.g. -4 or 6), then square it. Squaring a partially-simplified expression like -(1+3) leads to errors.",
       "keyMoves": [
         "Substitute coordinates with their signs into (x2 − x1)",
         "Convert subtraction of a negative into addition",
@@ -104,7 +104,7 @@
       "brief": "Square each difference and add: e.g. 5² + 5² = 50; (−4)² + (−6)² = 52.",
       "sec": 1,
       "quote": "QR = √[(– 2 – 2)² + (– 3 – 3)²] = √[(– 4)² + (– 6)²] = √52 = 7.21 (approx.)",
-      "explanation": "Once the differences are formed, square them (a negative squared is positive) and add to get the quantity under the radical. A squared negative becoming positive is a frequent slip.",
+      "explanation": "PART 1 — Squaring is always positive.\nFor differences (-4) and (-6): (-4)^2 = 16 and (-6)^2 = 36. A negative number squared gives a positive result. Sum = 16 + 36 = 52, so the distance is sqrt(52).\n\nPART 2 — Common error.\nStudents write (-4)^2 = -16, keeping the negative sign. The rule is (negative)^2 = positive, always. QR = sqrt((-2-2)^2 + (-3-3)^2) = sqrt(16+36) = sqrt(52).\n\nPART 3 — Simplify the radical.\nsqrt(52) = sqrt(4*13) = 2*sqrt(13) approximately 7.21. Factor out perfect squares before reporting the distance.",
       "keyMoves": [
         "Square each signed difference",
         "Note (negative)² is positive",
@@ -126,7 +126,7 @@
       "brief": "Special case OP = √(x² + y²) for the distance of P(x,y) from O(0,0).",
       "sec": 1,
       "quote": "OP = √(x² + y²) .",
-      "explanation": "When one point is the origin, the differences are just x and y, so the distance simplifies to √(x² + y²). It is the distance formula with x1 = y1 = 0.",
+      "explanation": "PART 1 — Special case: one endpoint at origin.\nWhen one point is O(0,0) and the other is P(x,y), the general formula gives OP = sqrt((x-0)^2 + (y-0)^2) = sqrt(x^2 + y^2). The zero differences disappear, leaving the simplest form.\n\nPART 2 — Worked example.\nFor P(3,4): OP = sqrt(3^2 + 4^2) = sqrt(9+16) = sqrt(25) = 5. For Q(-5,12): OQ = sqrt(25+144) = sqrt(169) = 13.\n\nPART 3 — Still a distance formula application.\nDo not treat this as a separate formula to memorise independently; recognise it as the distance formula with one endpoint fixed at the origin, so x1=0 and y1=0 drop out.",
       "keyMoves": [
         "Recognise one point is (0,0)",
         "Drop to √(x² + y²)",
@@ -150,7 +150,7 @@
       "brief": "Compute the three side lengths by distance; use the converse of Pythagoras (PQ²+PR²=QR²) to identify a right triangle, or equal sides for isosceles.",
       "sec": 1,
       "quote": "Also, PQ² + PR² = QR², by the converse of Pythagoras theorem, we have ∠ P = 90°. Therefore, PQR is a right triangle.",
-      "explanation": "After finding all three side lengths with the distance formula, compare them: two equal sides means isosceles; if the sum of squares of two sides equals the square of the third, the converse of Pythagoras gives a right angle.",
+      "explanation": "PART 1 — Compute all three sides.\nFor triangle P(1,4), Q(4,0), R(-1,0): PQ = sqrt(9+16)=5, QR = sqrt(25+0)=5, PR = sqrt(4+16)=sqrt(20). Since PQ=QR, the triangle is isosceles.\n\nPART 2 — Converse of Pythagoras for a right angle.\nIf a^2 + b^2 = c^2 for the three side lengths, the angle opposite side c is 90 degrees. Check with squares to avoid messy radicals: compare (PQ)^2+(PR)^2 vs (QR)^2.\n\nPART 3 — Order of checks.\nCheck equal-sides first (isosceles/equilateral); then check the Pythagoras condition on the squares. Both conditions can hold simultaneously — an isosceles right triangle.",
       "keyMoves": [
         "Find all three side lengths",
         "Check whether any two sides are equal (isosceles)",
@@ -175,7 +175,7 @@
       "brief": "Three points form a triangle iff the sum of any two distances exceeds the third (not collinear).",
       "sec": 1,
       "quote": "Since the sum of any two of these distances is greater than the third distance, therefore, the points P, Q and R form a triangle.",
-      "explanation": "Distances between the three points are computed; if the sum of any two exceeds the third, the points are non-collinear and a genuine triangle exists.",
+      "explanation": "PART 1 — Triangle inequality test.\nThree points form a triangle if and only if they are non-collinear, which holds when the sum of any two pairwise distances is strictly greater than the third. If sum equals the third, the points lie on a line.\n\nPART 2 — Worked example.\nFor P(2,3), Q(5,7), R(0,1): PQ=5, PR=sqrt(4+4)=2*sqrt(2), QR=sqrt(25+36)=sqrt(61). Check all three triangle-inequality sums; if all hold, a triangle exists.\n\nPART 3 — Collinear case.\nIf AB + BC = AC exactly, point B lies between A and C on the line. This is also how to test collinearity using distances: the sum of the two shorter distances equals the longest.",
       "keyMoves": [
         "Compute the three pairwise distances",
         "Check the triangle inequality (sum of two > third)",
@@ -198,7 +198,7 @@
       "brief": "All four sides equal AND both diagonals equal ⇒ square.",
       "sec": 1,
       "quote": "Since, AB = BC = CD = DA and AC = BD, all the four sides of the quadrilateral ABCD are equal and its diagonals AC and BD are also equal. Therefore, ABCD is a square.",
-      "explanation": "Compute the four side lengths and the two diagonals with the distance formula. If all sides are equal and both diagonals are equal, the quadrilateral is a square.",
+      "explanation": "PART 1 — Four sides and two diagonals.\nFor A(0,0), B(1,1), C(0,2), D(-1,1): compute AB, BC, CD, DA (sides) and AC, BD (diagonals) using the distance formula. Listing all six distances is the full work.\n\nPART 2 — The square criterion.\nAll four sides equal AND both diagonals equal means the quadrilateral is a square. Equal sides alone gives only a rhombus; equal diagonals alone gives only a rectangle.\n\nPART 3 — Worked example.\nAB=sqrt(2), BC=sqrt(2), CD=sqrt(2), DA=sqrt(2); AC=2, BD=2. All sides equal, both diagonals equal, so ABCD is a square.",
       "keyMoves": [
         "Find the four side lengths",
         "Find both diagonal lengths",
@@ -222,7 +222,7 @@
       "brief": "Points A,B,C are collinear when AB + BC = AC.",
       "sec": 1,
       "quote": "Since, AB + BC = 3√2 + 2√2 = 5√2 = AC, we can say that the points A, B and C are collinear.",
-      "explanation": "Compute the three distances. If the two shorter distances sum exactly to the longest, the middle point lies on the segment joining the other two, so the points are collinear.",
+      "explanation": "PART 1 — Collinearity by distance sum.\nThree points A, B, C are collinear when the middle point lies on the line between the outer two. The algebraic test is: the sum of the two shorter distances equals the largest. If AB + BC = AC, then A, B, C are collinear.\n\nPART 2 — Worked example from the textbook.\nA(1,1), B(2,2), C(3,3): AB = sqrt(2), BC = sqrt(2), AC = 2*sqrt(2). Since AB + BC = sqrt(2)+sqrt(2) = 2*sqrt(2) = AC, the three points are collinear.\n\nPART 3 — Identify the middle point.\nAlways check which pair of distances sums to the third; the point shared by those two pairs is the middle one. Do not approximate — surds must cancel exactly.",
       "keyMoves": [
         "Compute AB, BC, AC",
         "Check whether AB + BC equals AC",
@@ -246,7 +246,7 @@
       "brief": "Equidistant means AP = BP, so set AP² = BP² and expand.",
       "sec": 1,
       "quote": "We are given that AP = BP. So, AP² = BP²",
-      "explanation": "To find points equidistant from two given points, equate the two squared distances (squaring removes the radicals), expand both sides, and simplify; the squared variable terms cancel leaving a linear relation.",
+      "explanation": "PART 1 — Why square both sides.\nAP = BP is equivalent to AP^2 = BP^2 because distances are non-negative. Squaring removes the square-root signs, converting two distance expressions into quadratics that can be expanded and simplified.\n\nPART 2 — Worked example.\nFor A(2,3) and B(6,7), with equidistant point P(x,y): AP^2 = (x-2)^2+(y-3)^2 and BP^2 = (x-6)^2+(y-7)^2. Setting equal: x^2-4x+4+y^2-6y+9 = x^2-12x+36+y^2-14y+49.\n\nPART 3 — Linear result.\nThe x^2 and y^2 terms cancel, leaving the linear relation 8x+8y = 72, i.e. x+y = 9. This is the perpendicular bisector of AB.",
       "keyMoves": [
         "Write AP² = BP² using the distance formula",
         "Expand both squared-distance expressions",
@@ -270,7 +270,7 @@
       "brief": "Expand AP²=BP² for (x,y) equidistant from two points and reduce to a linear relation like x − y = 2.",
       "sec": 1,
       "quote": "i.e.,     x² – 14x + 49 + y² – 2y + 1 = x² – 6x + 9 + y² – 10y + 25",
-      "explanation": "With P = (x,y) general, expanding AP² = BP² and cancelling the common x² and y² yields a linear equation in x and y, which is the perpendicular bisector of the segment.",
+      "explanation": "PART 1 — Full expansion for a general point.\nFor P(x,y) equidistant from A(7,1) and B(3,5): expand AP^2 = x^2-14x+49+y^2-2y+1 and BP^2 = x^2-6x+9+y^2-10y+25. This careful expansion is where arithmetic errors occur.\n\nPART 2 — Cancellation step.\nSet AP^2 = BP^2 and cancel x^2 and y^2 from both sides. Remaining: -14x+49-2y+1 = -6x+9-10y+25, which rearranges to -8x+8y = -16, giving x-y = 2.\n\nPART 3 — Interpret the result.\nThe relation x - y = 2 is the equation of the perpendicular bisector of segment AB. Any point on this line is equidistant from A(7,1) and B(3,5).",
       "keyMoves": [
         "Substitute P(x,y) and the two fixed points",
         "Expand all four squared binomials",
@@ -294,7 +294,7 @@
       "brief": "A point on the y-axis is (0,y); set its squared distances equal and solve the single linear equation for y.",
       "sec": 1,
       "quote": "We know that a point on the y-axis is of the form (0, y). So, let the point P(0, y) be equidistant from A and B.",
-      "explanation": "Use the axis constraint to fix one coordinate (x=0 on the y-axis), write the squared-distance equality, and solve the resulting one-variable linear equation for the free coordinate.",
+      "explanation": "PART 1 — Axis form of the unknown point.\nA point on the y-axis has x-coordinate zero, so write it as P(0,y). A point on the x-axis is Q(x,0). This single constraint reduces the two-unknown equidistant problem to one unknown.\n\nPART 2 — Worked example.\nFind P(0,y) equidistant from A(6,5) and B(-4,3). Set AP^2 = BP^2: (0-6)^2+(y-5)^2 = (0+4)^2+(y-3)^2; 36+y^2-10y+25 = 16+y^2-6y+9; 61-10y = 25-6y; 36 = 4y; y = 9. So P = (0,9).\n\nPART 3 — Verify.\nAP = sqrt(36+16) = sqrt(52); BP = sqrt(16+36) = sqrt(52). Equal, confirming P(0,9) is correct.",
       "keyMoves": [
         "Write the point in axis form (0,y) or (x,0)",
         "Set up the squared-distance equality",
@@ -319,7 +319,7 @@
       "brief": "P dividing \\(A(x_1,y_1)\\)–\\(B(x_2,y_2)\\) in ratio \\(m_1:m_2\\) internally is \\(\\left(\\frac{m_1x_2+m_2x_1}{m_1+m_2}, \\frac{m_1y_2+m_2y_1}{m_1+m_2}\\right)\\).",
       "sec": 3,
       "quote": "( (m₁x₂ + m₂x₁)/(m₁ + m₂) , (m₁y₂ + m₂y₁)/(m₁ + m₂) )",
-      "explanation": "Given the two endpoints and a ratio \\(m_1 : m_2\\), substitute into the section formula. Note the cross pattern: \\(m_1\\) multiplies the second point's coordinate and \\(m_2\\) the first point's.",
+      "explanation": "PART 1 — The section formula stated.\nFor A(x1,y1) and B(x2,y2) with ratio m1:m2, the point P dividing AB internally is P = ((m1*x2+m2*x1)/(m1+m2), (m1*y2+m2*y1)/(m1+m2)). The cross pattern is: m1 goes with the far endpoint (x2,y2) and m2 with the near endpoint (x1,y1).\n\nPART 2 — Worked example.\nA(1,0), B(5,4), ratio 3:1. x = (3*5+1*1)/(3+1) = 16/4 = 4; y = (3*4+1*0)/4 = 12/4 = 3. So P = (4,3).\n\nPART 3 — Why the cross pattern.\nP is closer to B when m1 > m2, so B's coordinates are weighted more (by m1). Getting the cross pattern wrong (m1 with x1) is the most common error; always double-check which ratio weight multiplies which point.",
       "keyMoves": [
         "Identify (x1,y1), (x2,y2), and ratio m1:m2",
         "Substitute into the weighted-average formula",
@@ -343,7 +343,7 @@
       "brief": "Plug concrete numbers into the section formula, e.g. ratio 3:1 of (4,−3) and (8,5) gives (7,3).",
       "sec": 3,
       "quote": "x = (3(8) + 1(4))/(3 + 1) = 7 ,   y = (3(5) + 1(–3))/(3 + 1) = 3",
-      "explanation": "The direct computation: substitute the ratio numbers and coordinates into the section formula and evaluate to get the dividing point.",
+      "explanation": "PART 1 — Plug and evaluate.\nFor A(4,-3), B(8,5), ratio 3:1: x = (3*8+1*4)/(3+1) = (24+4)/4 = 28/4 = 7; y = (3*5+1*(-3))/4 = (15-3)/4 = 12/4 = 3. The dividing point is (7,3).\n\nPART 2 — Watch signs with negative coordinates.\nWhen y1 is negative, the product m2*y1 is negative. In the example above: 1*(-3) = -3, and 15+(-3) = 12. Missing that sign gives 15+3=18 and the wrong answer y=4.5.\n\nPART 3 — Final step.\nAlways write the result as an ordered pair (x,y) and sanity-check that the point lies between the two given endpoints on the number line for each coordinate.",
       "keyMoves": [
         "Substitute m1, m2 and coordinates",
         "Evaluate numerator and denominator for x then y",
@@ -367,7 +367,7 @@
       "brief": "Set the point's known coordinate equal to the section formula and solve for k (using k:1 form).",
       "sec": 3,
       "quote": "i.e.,     7k = 2",
-      "explanation": "When the dividing point is known but the ratio is not, use the k:1 form, equate one coordinate to its section-formula expression, and solve the resulting equation for k to recover the ratio k:1.",
+      "explanation": "PART 1 — Let the ratio be k:1.\nWrite the unknown ratio as k:1 (one known part). The section formula x-coordinate becomes (k*x2+1*x1)/(k+1). Equate this to the known x-coordinate of the dividing point and solve for k.\n\nPART 2 — Worked example.\nA(1,0), B(5,2), dividing point (3,1). Using x: (5k+1)/(k+1) = 3; 5k+1 = 3k+3; 2k = 2; k = 1. Ratio is 1:1 (midpoint). Verify with y: (2k+0)/(k+1) = 2/2 = 1. Correct.\n\nPART 3 — The linear equation trick.\nMultiply through by (k+1) to clear the denominator, collect k terms on one side: you get an equation of the form ak=b, so k=b/a. Report the ratio as k:1 or equivalently b:a.",
       "keyMoves": [
         "Let the ratio be k:1",
         "Equate a known coordinate to its section-formula expression",
@@ -392,7 +392,7 @@
       "brief": "On the y-axis abscissa = 0, so set the x-section expression to 0 and solve for k.",
       "sec": 3,
       "quote": "This point lies on the y-axis, and we know that on the y-axis the abscissa is 0.",
-      "explanation": "The axis imposes a coordinate condition (x=0 on the y-axis, y=0 on the x-axis). Set the corresponding section-formula coordinate to zero and solve for k to get the ratio, then back-substitute for the intersection point.",
+      "explanation": "PART 1 — Axis condition.\nWhen the y-axis divides segment AB, the x-coordinate of the dividing point is zero. With ratio k:1, the x-section formula gives (k*x2+x1)/(k+1) = 0, so k*x2+x1 = 0, so k = -x1/x2.\n\nPART 2 — Worked example.\nA(-3,4) and B(5,2). y-axis divides in ratio k:1; set x=0: (5k-3)/(k+1)=0; 5k=3; k=3/5. Ratio is 3:5. Then y = (3/5*2+4)/(3/5+1) = (6/5+4)/(8/5) = (26/5)/(8/5) = 26/8 = 13/4. Intersection is (0,13/4).\n\nPART 3 — Remember to find the point.\nDo not stop at finding k (the ratio). The question often also asks for the coordinates of the intersection, which requires substituting k back into the y-formula.",
       "keyMoves": [
         "Use k:1 form for the unknown ratio",
         "Set the axis-fixed coordinate's expression to 0",
@@ -417,7 +417,7 @@
       "brief": "Trisection points divide AB in ratios 1:2 and 2:1; apply the section formula twice.",
       "sec": 3,
       "quote": "Therefore, P divides AB internally in the ratio 1 : 2.",
-      "explanation": "Trisection produces three equal parts, so the first point divides AB in 1:2 and the second in 2:1. Apply the section formula with each ratio to get both trisection points.",
+      "explanation": "PART 1 — What trisection means.\nTrisection splits segment AB into three equal parts using two interior points P and Q. P is one-third of the way from A to B (ratio 1:2), and Q is two-thirds of the way (ratio 2:1).\n\nPART 2 — Worked example.\nA(-3,2) and B(3,8). For P (ratio 1:2): x=(1*3+2*(-3))/(1+2)=(3-6)/3=-1; y=(1*8+2*2)/3=(8+4)/3=4. So P=(-1,4). For Q (ratio 2:1): x=(2*3+1*(-3))/3=(6-3)/3=1; y=(2*8+1*2)/3=(16+2)/3=6. So Q=(1,6).\n\nPART 3 — Verify spacing.\nAP = sqrt(4+4)=2*sqrt(2); PQ = sqrt(4+4)=2*sqrt(2); QB = sqrt(4+4)=2*sqrt(2). All three gaps equal — trisection confirmed.",
       "keyMoves": [
         "Recognise trisection means ratios 1:2 and 2:1",
         "Apply the section formula for the 1:2 point",
@@ -441,7 +441,7 @@
       "brief": "Midpoint of \\(A(x_1,y_1)\\), \\(B(x_2,y_2)\\) is \\(((x_1+x_2)/2, (y_1+y_2)/2)\\), the \\(1:1\\) special case of the section formula.",
       "sec": 3,
       "quote": "( (x₁ + x₂)/2 , (y₁ + y₂)/2 ).",
-      "explanation": "The midpoint divides a segment in ratio 1:1, so the section formula collapses to the simple average of the endpoint coordinates.",
+      "explanation": "PART 1 — Midpoint as 1:1 section.\nThe midpoint M of segment AB divides it in ratio 1:1. Substituting m1=m2=1 into the section formula: M = ((1*x2+1*x1)/2, (1*y2+1*y1)/2) = ((x1+x2)/2, (y1+y2)/2).\n\nPART 2 — Worked example.\nMidpoint of A(3,-2) and B(7,4): x=(3+7)/2=5; y=(-2+4)/2=1. Midpoint = (5,1). Quick computation: just average each coordinate pair.\n\nPART 3 — Common errors.\nSubtracting instead of adding (finding a difference instead of an average) and halving only one coordinate are the two typical slips. Always divide both the x-sum and y-sum by 2.",
       "keyMoves": [
         "Average the two x-coordinates",
         "Average the two y-coordinates",
@@ -465,7 +465,7 @@
       "brief": "In a parallelogram the diagonals bisect each other, so midpoint of one diagonal = midpoint of the other; solve for the unknown.",
       "sec": 3,
       "quote": "So, the coordinates of the mid-point of AC = coordinates of the mid-point of BD",
-      "explanation": "For a parallelogram ABCD taken in order, diagonals AC and BD share a midpoint. Equate the midpoint of AC to the midpoint of BD and solve the resulting equation for the unknown coordinate.",
+      "explanation": "PART 1 — Diagonals bisect each other.\nIn any parallelogram, the two diagonals cut each other exactly in half. So midpoint of AC = midpoint of BD. This gives two equations (one for x, one for y) to solve for any unknown vertex.\n\nPART 2 — Worked example.\nA(1,2), B(4,0), C(x,y), D(2,4) form parallelogram ABCD. Midpoint of AC = ((1+x)/2, (2+y)/2); midpoint of BD = ((4+2)/2, (0+4)/2) = (3,2). Setting equal: (1+x)/2=3 so x=5; (2+y)/2=2 so y=2. Thus C=(5,2).\n\nPART 3 — Correct diagonal pairing.\nFor ABCD in order, the diagonals are AC (vertices 1 and 3) and BD (vertices 2 and 4). A common error is to equate a side midpoint to a diagonal midpoint — always pick the two non-adjacent vertex pairs.",
       "keyMoves": [
         "Write midpoint of AC",
         "Write midpoint of BD with the unknown",
@@ -490,7 +490,7 @@
       "brief": "In a right triangle the hypotenuse squared equals the sum of the squares of the legs.",
       "sec": 1,
       "quote": "PQ² = PT² + QT²",
-      "explanation": "The foundation of the distance formula: a right triangle with legs PT and QT has hypotenuse PQ satisfying PQ² = PT² + QT². The horizontal and vertical gaps between two points are the legs.",
+      "explanation": "PART 1 — Statement.\nIn a right triangle with legs a and b and hypotenuse c: c^2 = a^2 + b^2. This means the square of the hypotenuse equals the sum of the squares of the two perpendicular sides.\n\nPART 2 — Geometric bridge to coordinate geometry.\nFor two points P(x1,y1) and Q(x2,y2), draw horizontal leg PT = |x2-x1| and vertical leg QT = |y2-y1|. PQ is the hypotenuse, so PQ^2 = (x2-x1)^2 + (y2-y1)^2. This derivation IS the distance formula.\n\nPART 3 — Converse.\nIf a^2 + b^2 = c^2 for three sides of a triangle, then the angle opposite side c is exactly 90 degrees. This converse is used to classify right triangles from their side lengths.",
       "keyMoves": [
         "Identify the two perpendicular legs",
         "Square and add them",
@@ -512,7 +512,7 @@
       "brief": "A point is (x, y): x is the abscissa (distance from y-axis), y the ordinate; axis points are (x,0) or (0,y).",
       "sec": 0,
       "quote": "The coordinates of a point on the x-axis are of the form (x, 0), and of a point on the y-axis are of the form (0, y).",
-      "explanation": "The bedrock of the chapter: every point is an ordered pair (x,y). Points on the x-axis have y=0 and points on the y-axis have x=0. All formulas operate on these ordered pairs.",
+      "explanation": "PART 1 — The ordered pair.\nEvery point in the plane is written as (x,y) where x is the abscissa (horizontal distance from the y-axis) and y is the ordinate (vertical distance from the x-axis). The order matters: (3,5) and (5,3) are different points.\n\nPART 2 — Axis points.\nA point on the x-axis has no vertical displacement: it is (x,0). A point on the y-axis has no horizontal displacement: it is (0,y). These forms are used directly in equidistant and section problems.\n\nPART 3 — Reading coordinates.\nFrom a grid, first read the horizontal displacement (positive right, negative left) for x, then the vertical displacement (positive up, negative down) for y. Swapping them is the most basic error in coordinate geometry.",
       "keyMoves": [
         "Identify the abscissa (x) and ordinate (y)",
         "Use (x,0) for x-axis points and (0,y) for y-axis points",
@@ -534,7 +534,7 @@
       "brief": "If (x,y) = (a,b) then x = a and y = b — split a coordinate equation into two scalar equations.",
       "sec": 3,
       "quote": "Recall that if (x, y) = (a, b) then x = a and y = b.",
-      "explanation": "When two points are stated equal, each coordinate must match. This lets you split one vector equation into two ordinary equations to solve for unknowns (as in ratio and parallelogram problems).",
+      "explanation": "PART 1 — Component-wise equality.\nTwo ordered pairs are equal if and only if both their components are equal: (a,b) = (c,d) means a=c AND b=d. This splits one coordinate equation into two independent scalar equations.\n\nPART 2 — Application in parallelogram problems.\nIf midpoint of AC = midpoint of BD, then ((x1+x3)/2, (y1+y3)/2) = ((x2+x4)/2, (y2+y4)/2). Component-wise: (x1+x3)/2 = (x2+x4)/2 and (y1+y3)/2 = (y2+y4)/2. Each gives one equation to solve.\n\nPART 3 — Application in ratio problems.\nWhen the dividing point is (4,3) and the section formula gives ((3x2+x1)/4, (3y2+y1)/4), equating componentwise gives one equation for x and one for y — either can be used to find k.",
       "keyMoves": [
         "Match first coordinates: x = a",
         "Match second coordinates: y = b",
