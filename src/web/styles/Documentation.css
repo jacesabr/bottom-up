@@ -64,9 +64,11 @@
   overflow: hidden;
 }
 
+/* Height is set by JS to the content's height (Documentation.tsx → fit) so the page scrolls as one
+   document — no nested inner scrollbar. min-height is just a pre-load fallback. */
 .docs-frame {
   width: 100%;
-  height: calc(100vh - 120px);
+  min-height: 50vh;
   border: none;
   display: block;
 }
