@@ -59,14 +59,12 @@ export default function Home({
     <div className="home">
       <header className="home-top">
         <div className="home-brand">
-          <span className="home-logo">∑</span>
           <div>
             <div className="home-title">Sarthi</div>
             <div className="home-tag">Build it up, concept by concept — then sit one clean exam.</div>
           </div>
         </div>
         <div className="home-account">
-          <a className="home-docs" href="#docs">📖 Docs</a>
           {user ? (
             <>
               <span className="home-hi">Hi, <strong>{user.username}</strong></span>

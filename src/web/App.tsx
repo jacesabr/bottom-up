@@ -3,6 +3,7 @@ import './App.css';
 import Home from './components/Home';
 import AdminDashboard from './components/AdminDashboard';
 import Documentation from './components/Documentation';
+import TopNav from './components/TopNav';
 import AuthModal from './components/AuthModal';
 import ChapterMap from './components/ChapterMap';
 import NodeView from './components/NodeView';
@@ -53,7 +54,7 @@ export default function App() {
   }, []);
   // Analytics: init PostHog once + identify an already-logged-in learner (no-op until the key is set).
   useEffect(() => {
-    initAnalytics();
+    initAnalytics('sarthi');
     if (user) aIdentify(user.id, { username: user.username });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -64,6 +65,7 @@ export default function App() {
     return (
       <div className="app">
         <main className="app-main">
+          <TopNav active="admin" />
           <AdminDashboard apiBase={API_BASE} />
         </main>
       </div>
@@ -73,6 +75,7 @@ export default function App() {
     return (
       <div className="app">
         <main className="app-main">
+          <TopNav active="docs" />
           <Documentation onBack={() => { location.hash = ''; }} />
         </main>
       </div>
@@ -126,6 +129,7 @@ export default function App() {
   return (
     <div className="app">
       <main className="app-main">
+        {view === 'home' && <TopNav active="home" />}
         {view === 'home' && (
           <Home
             learnerId={learnerId}

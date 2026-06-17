@@ -1,0 +1,66 @@
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto 22px;
+  padding: 10px 14px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  flex-wrap: wrap;
+}
+
+.topnav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.topnav-logo {
+  flex: 0 0 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topnav-name { font-size: 0.95rem; font-weight: 800; letter-spacing: -0.01em; }
+
+.topnav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.topnav-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: var(--dim);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 13px;
+  border-radius: 10px;
+  transition: all 0.15s ease;
+}
+.topnav-tab:hover { color: var(--ink); background: var(--bg); }
+.topnav-tab.active { color: var(--accent); background: var(--accent-soft); }
+.topnav-tab.locked { color: var(--lock); }
+.topnav-tab.locked:hover { color: var(--dim); }
+.topnav-lock { font-size: 0.72rem; }
+
+@media (max-width: 640px) {
+  .topnav { gap: 8px; }
+  .topnav-name { display: none; }
+  .topnav-tabs { gap: 2px; }
+  .topnav-tab { padding: 7px 9px; font-size: 0.84rem; }
+}

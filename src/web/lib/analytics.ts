@@ -9,7 +9,7 @@ const KEY = import.meta.env.VITE_POSTHOG_KEY as string | undefined;
 const HOST = (import.meta.env.VITE_POSTHOG_HOST as string) || 'https://us.i.posthog.com';
 let started = false;
 
-export function initAnalytics(): void {
+export function initAnalytics(appName?: string): void {
   if (started || !KEY) return;
   started = true;
   posthog.init(KEY, {
@@ -18,6 +18,9 @@ export function initAnalytics(): void {
     autocapture: true, // captures clicks/inputs automatically — "all the data" with no tagging
     person_profiles: 'identified_only',
   });
+  // Both apps share ONE PostHog project — tag every event with `app` so you can split them in the
+  // dashboard (Breakdown by `app`, or filter an insight to one app).
+  if (appName) posthog.register({ app: appName });
 }
 
 export function aIdentify(id: string, props?: Record<string, unknown>): void {
