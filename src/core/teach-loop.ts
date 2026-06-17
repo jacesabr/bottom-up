@@ -349,7 +349,7 @@ export async function respond(
     figure = figures[0];
   }
 
-  // Corpus gap: the tutor couldn't answer from our content — log it for review (→ corpus_gap.md).
+  // Corpus gap: the tutor couldn't answer from our content — log it for review (→ docs/corpus_gap.md).
   if (turn.corpusGap?.missing) {
     await db.insert(buEvent).values({
       learnerId,

@@ -168,7 +168,7 @@ export const buFigure = pgTable('bu_figure', {
 });
 
 // Corpus gaps: when the tutor can't answer from the concept's material, we log what was missing so
-// we can review occasionally and decide whether to research + add content. Exported to corpus_gap.md.
+// we can review occasionally and decide whether to research + add content. Exported to docs/corpus_gap.md.
 export const buCorpusGap = pgTable('bu_corpus_gap', {
   id: uuid('id').primaryKey().defaultRandom(),
   conceptId: text('concept_id').notNull(),

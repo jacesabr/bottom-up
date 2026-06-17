@@ -5,7 +5,7 @@ clean past-paper exam. A standalone product, **separate from the Socratic tutor*
 and *reuses* the same infra (Render / Neon / Drizzle, graders, node-agent, ModelRouter), but is its own app and
 its own screen.
 
-**New here? Read in this order:** this README → `bottom_up.md` (the build spec) → `change_log.md` (decisions).
+**New here? Read in this order:** this README → `bottom_up.md` (the build spec) → `docs/change_log.md` (decisions).
 Open `docs/exam-prep-overview.html` for the one-screen, plain-language explainer (it becomes the in-app
 "How it works" documentation page).
 
@@ -43,10 +43,14 @@ already imported in `content/jemh101.slice.json`:
 bottom-up/
   README.md                  ← start here
   bottom_up.md               ← the build spec (scope, data, AI flow, models/deploy, done-when)
-  change_log.md              ← running decisions log
+  authoring_and_improve.md   ← the authoring & content-improvement playbook (single source of truth)
   content/
     jemh101.slice.json       ← imported 3-node seed (concepts + gates) from the Socratic corpus
-  docs/
+  docs/                      ← the rest of the docs
+    change_log.md            ← running decisions log
+    DEPLOYMENT.md            ← deploy guide
+    NIM_STUDY.md             ← the Haiku→self-hosted-GPU model study (run via tools/nim-study.mjs)
+    corpus_gap.md            ← generated: content the tutor couldn't answer (tools/export-corpus-gaps.ts)
     exam-prep-overview.html  ← plain-language explainer → in-app "How it works" page
   # src/, db/ added by the build — see bottom_up.md §5
 ```

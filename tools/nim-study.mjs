@@ -18,7 +18,7 @@
  *
  * OUTPUT: tools/nim-study/results.json  (raw)
  *         tools/nim-study/report.html   (open this to inspect — Haiku vs each NIM, side by side)
- * Then Claude Code reads report.html and writes the verdict into NIM_STUDY.md.
+ * Then Claude Code reads report.html and writes the verdict into docs/NIM_STUDY.md.
  */
 import 'dotenv/config';
 import fs from 'fs';
@@ -168,7 +168,7 @@ function renderHtml(study) {
 </style></head><body>
 <h1>NIM model study — Haiku vs candidate NVIDIA NIM models</h1>
 <div class="sub">Generated ${esc(study.generatedAt)} · prompt source: <b>${esc(study.source)}</b> · ${study.items.length} prompts · ${modelCols.length} candidate models.
-Haiku column = the response captured in production (no re-call). Candidate columns = fresh free-NIM calls. Inspect, then write the verdict in NIM_STUDY.md.</div>
+Haiku column = the response captured in production (no re-call). Candidate columns = fresh free-NIM calls. Inspect, then write the verdict in docs/NIM_STUDY.md.</div>
 <table><thead><tr>${head}</tr></thead><tbody>
 ${rows}
 </tbody></table></body></html>`;
@@ -205,7 +205,7 @@ async function main() {
   fs.writeFileSync(path.join(OUT_DIR, 'results.json'), JSON.stringify(study, null, 2));
   fs.writeFileSync(path.join(OUT_DIR, 'report.html'), renderHtml(study));
   console.log(`\nWrote tools/nim-study/results.json and tools/nim-study/report.html`);
-  console.log('Open report.html to inspect, then record the verdict in NIM_STUDY.md.');
+  console.log('Open report.html to inspect, then record the verdict in docs/NIM_STUDY.md.');
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

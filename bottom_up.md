@@ -306,7 +306,7 @@ Derived views (fast reads for UI + analytics):
 | `bu_node_checklist` | learner × concept × keyMove | `demonstrated, demonstratedAt, evidence` (**the line that proved it**) | the live checklist + evidence in Details |
 | `bu_gate_attempt` | each gate try | `gateId, attemptNo, prompt, learnerAnswer, correct, gradedBy, ms` | which gate is cleared; per-question history; gate fail-rates |
 | `bu_chat_summary` | learner × concept | rolling `summary` + `watermark` + `turnsSummarized` | resume from **summary + recent turns** (bounds context growth across sessions) |
-| `bu_corpus_gap` | gap occurrence | `question, missing, resolved` | review queue: what our content couldn't answer → exported to `corpus_gap.md` |
+| `bu_corpus_gap` | gap occurrence | `question, missing, resolved` | review queue: what our content couldn't answer → exported to `docs/corpus_gap.md` |
 | `bu_chapter_progress` | learner × chapter | `status, conceptsPassed, conceptsTotal` | chapter circles; strict-linear chapter unlock |
 
 `status` on a node is **derived** if no perf row exists yet: `available` when all in-chapter prereqs are passed,

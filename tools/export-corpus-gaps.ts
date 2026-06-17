@@ -1,8 +1,8 @@
 /**
- * Regenerate corpus_gap.md from the bu_corpus_gap table — the persistent, summarized list of places
+ * Regenerate docs/corpus_gap.md from the bu_corpus_gap table — the persistent, summarized list of places
  * where the tutor couldn't answer from our content. Review occasionally to decide what to research + add.
  *
- *   tsx tools/export-corpus-gaps.ts            # write corpus_gap.md
+ *   tsx tools/export-corpus-gaps.ts            # write docs/corpus_gap.md
  *   tsx tools/export-corpus-gaps.ts --open     # also print to stdout
  */
 import 'dotenv/config';
@@ -61,7 +61,7 @@ async function main() {
   }
 
   const out = lines.join('\n');
-  const file = path.join(process.cwd(), 'corpus_gap.md');
+  const file = path.join(process.cwd(), 'docs', 'corpus_gap.md');
   await fs.writeFile(file, out, 'utf8');
   console.log(`Wrote ${file} (${totalGaps} gaps, ${totalConcepts} concepts).`);
   if (process.argv.includes('--open')) console.log('\n' + out);

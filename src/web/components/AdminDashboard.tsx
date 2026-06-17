@@ -96,7 +96,7 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
           </section>
 
           <section className="admin-card">
-            <h3>LLM usage by model <span className="hint">— the Haiku-vs-NIM picture. Run <code>node tools/nim-study.mjs</code> for the quality study (see NIM_STUDY.md).</span></h3>
+            <h3>LLM usage by model <span className="hint">— the Haiku-vs-NIM picture. Run <code>node tools/nim-study.mjs</code> for the quality study (see docs/NIM_STUDY.md).</span></h3>
             <table>
               <thead><tr><th>Provider</th><th>Model</th><th>Purpose</th><th>Calls</th><th>Avg ms</th><th>Prompt tok</th><th>Compl tok</th><th>Errors</th></tr></thead>
               <tbody>
