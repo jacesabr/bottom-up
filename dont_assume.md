@@ -71,3 +71,40 @@ For each course, in teaching order, for each node: list the terms/symbols/facts 
 flag any not introduced by an earlier node in **the same course** → for each flag, add a refresher or author
 a bridge node → re-check downstream so the now-taught idea is assumed correctly thereafter. Maths is mostly
 refreshers + the occasional missed prereq node; **IE is expected to spawn many new prerequisite nodes.**
+
+---
+
+## 4. Execution plan — RUN LATER (not yet). Opus-directed, no external API.
+
+> Status: **planned, not started.** Do not run until told. When run, use **Claude Code Sonnet subagents only**
+> — never the Anthropic API (global rule `feedback_no-api-for-ai`).
+
+**Operating model — Opus directs, Sonnet executes.** Opus (the main session) acts as director: it owns the
+node-by-node work-list, dispatches Sonnet subagents one slice at a time, reviews each agent's returned report
+against the expected count, and refuses partial/lazy work. Sonnet agents do the reading + authoring. Opus does
+not let an agent "sample", "do the first N", or summarise instead of covering — every node is accounted for.
+
+**Anti-laziness guardrails (mandatory):**
+- **Total coverage, no sampling.** Every node in every course is processed, in teaching order. No "top N", no
+  "representative subset", no silent truncation. If a slice is too big for one agent, split it — don't drop it.
+- **Auditable counts.** Each agent returns: nodes examined, terms flagged, refreshers added, bridge nodes
+  authored, with ids. Opus reconciles totals against the course's node count before marking a course done.
+- **Loop-until-dry verification.** After a generate pass, a fresh verification agent re-audits the same course
+  for any remaining assumed-but-untaught term; repeat until two consecutive passes find nothing new.
+- **Downstream re-check.** When a bridge node is added, re-verify that every later node depending on it now
+  resolves cleanly (the new node must actually close the gap, in order).
+- **Per-course isolation enforced.** A term taught in CBSE 10 does NOT satisfy a CBSE 12 / JEE gap — each
+  course's audit only counts its OWN earlier nodes as "taught."
+
+**Phase 1 — AUDIT (produce, then stop for review).** For each course, Sonnet agents emit a gap report:
+`node id → [assumed-but-untaught terms] → proposed action (refresher | bridge-node, with a one-line spec)`.
+Opus assembles the per-course reports into one document and surfaces the **volume** — especially how many new
+IE nodes are implied — for human greenlight. **No content is written in Phase 1.**
+
+**Phase 2 — GENERATE (only on approval).** Work the approved gap list, in teaching order: maths → mostly
+in-node refreshers + the rare missed prereq node; IE → bridge nodes (role `bedrock`) for each gap. Write to the
+DB **and** `content/*.json`, union-only, kept in sync (§A). Then run the loop-until-dry verification above.
+
+**Order of attack when run:** maths first (CBSE 10 → CBSE 12 → JEE) as the lower-risk warm-up, then IE
+(largest expansion) once the maths method is proven. Mirror any IE-side process change into
+`authoring_process.md`.
