@@ -8,6 +8,7 @@ import ChapterMap from './components/ChapterMap';
 import NodeView from './components/NodeView';
 import PaperView from './components/PaperView';
 import { getStoredUser, clearUser, type AuthUser } from './lib/auth';
+import { track } from './lib/track';
 
 // Prod bakes in VITE_API_URL (render.yaml). In dev, fall back to the relative '/api' so requests go
 // through Vite's proxy (vite.config.ts → API_PORT) — no hardcoded port that can drift from the API.
@@ -49,6 +50,8 @@ export default function App() {
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
+  // One anonymous page-visit beacon per app load (for the admin Traffic panel).
+  useEffect(() => { track(API_BASE, (typeof location !== 'undefined' && location.hash) || 'home'); }, []);
   if (route === '#admin') {
     return (
       <div className="app">

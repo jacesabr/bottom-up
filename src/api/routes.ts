@@ -1,6 +1,6 @@
 import express from 'express';
 import { db } from '../db/index.js';
-import { buNodePerformance } from '../db/schema.js';
+import { buNodePerformance, buVisit } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures } from '../core/teach-loop.js';
 import { LANGUAGES } from '../core/languages.js';
@@ -87,6 +87,30 @@ router.get('/learner/:learnerId/home', async (req, res) => {
   } catch (err) {
     console.error('Error building home:', err);
     res.status(500).json({ error: 'Failed to load home' });
+  }
+});
+
+// Anonymous page-visit beacon (ungated, fire-and-forget). Logs raw web traffic for the admin Traffic
+// panel. No cookies/PII — visitorId is a random localStorage id; learnerId is set only once logged in.
+router.post('/track', (req, res) => {
+  try {
+    const { path, referrer, visitorId, learnerId } = req.body || {};
+    const isUuid = (s: unknown) => typeof s === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(s);
+    if (visitorId) {
+      void db
+        .insert(buVisit)
+        .values({
+          visitorId: String(visitorId).slice(0, 64),
+          learnerId: isUuid(learnerId) ? (learnerId as string) : null,
+          path: path ? String(path).slice(0, 120) : null,
+          referrer: referrer ? String(referrer).slice(0, 300) : null,
+          ua: req.headers['user-agent'] ? String(req.headers['user-agent']).slice(0, 200) : null,
+        })
+        .catch(() => {});
+    }
+    res.json({ ok: true });
+  } catch {
+    res.json({ ok: false });
   }
 });
 

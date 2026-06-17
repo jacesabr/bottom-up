@@ -1,6 +1,6 @@
 import express from 'express';
 import { db } from '../db/index.js';
-import { users, buEvent, buGateAttempt, buLlmCall, buNodePerformance } from '../db/schema.js';
+import { users, buEvent, buGateAttempt, buLlmCall, buNodePerformance, buVisit } from '../db/schema.js';
 import { sql, eq, and, desc } from 'drizzle-orm';
 import { getConceptById } from '../core/content-cache.js';
 
@@ -60,6 +60,42 @@ router.get('/overview', async (_req, res) => {
   } catch (err) {
     console.error('admin/overview error:', err);
     res.status(500).json({ error: 'overview failed' });
+  }
+});
+
+// Traffic + growth funnel for the Traffic panel. Visits/uniques/referrers come from bu_visit; the
+// funnel + DAU/WAU come from the existing event/user tables. Raw SQL keeps the aggregates compact.
+router.get('/traffic', async (_req, res) => {
+  try {
+    const rows = (q: ReturnType<typeof sql>) => db.execute(q).then((r: any) => (r.rows ?? r) as any[]);
+    const [visits] = await rows(sql`
+      select count(*)::int total,
+             count(*) filter (where ts > now() - interval '7 days')::int last7,
+             count(distinct visitor_id)::int uniq,
+             count(distinct visitor_id) filter (where ts > now() - interval '7 days')::int uniq7
+      from bu_visit`);
+    const byDay = await rows(sql`
+      select to_char(date_trunc('day', ts),'YYYY-MM-DD') as "day", count(*)::int as visits,
+             count(distinct visitor_id)::int as uniques
+      from bu_visit where ts > now() - interval '14 days' group by 1 order by 1 desc`);
+    const referrers = await rows(sql`
+      select coalesce(nullif(referrer,''),'(direct)') as ref, count(*)::int as n
+      from bu_visit group by 1 order by 2 desc limit 8`);
+    const signupsByDay = await rows(sql`
+      select to_char(date_trunc('day', created_at),'YYYY-MM-DD') as "day", count(*)::int as n
+      from users where username is not null and created_at > now() - interval '14 days' group by 1 order by 1 desc`);
+    const [funnel] = await rows(sql`
+      select (select count(distinct visitor_id) from bu_visit)::int visitors,
+             (select count(*) from users where username is not null)::int signups,
+             (select count(distinct learner_id) from bu_event where type='enter_node')::int activated,
+             (select count(distinct learner_id) from bu_node_performance where status='passed')::int passed`);
+    const [activeUsers] = await rows(sql`
+      select (select count(distinct learner_id) from bu_event where ts > now() - interval '1 day')::int dau,
+             (select count(distinct learner_id) from bu_event where ts > now() - interval '7 days')::int wau`);
+    res.json({ visits, byDay, referrers, signupsByDay, funnel, active: activeUsers });
+  } catch (err) {
+    console.error('admin/traffic error:', err);
+    res.status(500).json({ error: 'traffic failed' });
   }
 });
 

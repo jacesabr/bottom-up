@@ -13,6 +13,7 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
   const [err, setErr] = useState<string | null>(null);
 
   const [overview, setOverview] = useState<any>(null);
+  const [traffic, setTraffic] = useState<any>(null);
   const [conversations, setConversations] = useState<any[]>([]);
   const [calls, setCalls] = useState<any[]>([]);
   const [openConvo, setOpenConvo] = useState<any>(null);
@@ -30,8 +31,9 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
 
   const load = useCallback(async () => {
     try {
-      const [o, c, l] = await Promise.all([authedFetch('/overview'), authedFetch('/conversations'), authedFetch('/llm-calls')]);
+      const [o, t, c, l] = await Promise.all([authedFetch('/overview'), authedFetch('/traffic'), authedFetch('/conversations'), authedFetch('/llm-calls')]);
       setOverview(o);
+      setTraffic(t);
       setConversations(c.conversations ?? []);
       setCalls(l.calls ?? []);
       setErr(null);
@@ -107,6 +109,66 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
               </tbody>
             </table>
           </section>
+        </>
+      )}
+
+      {traffic && (
+        <>
+          <section className="admin-kpis">
+            <Kpi label="Visits · 7d" value={traffic.visits?.last7 ?? 0} />
+            <Kpi label="Visits · all" value={traffic.visits?.total ?? 0} />
+            <Kpi label="Unique visitors" value={traffic.visits?.uniq ?? 0} />
+            <Kpi label="Active today" value={traffic.active?.dau ?? 0} />
+            <Kpi label="Active · 7d" value={traffic.active?.wau ?? 0} />
+          </section>
+
+          <section className="admin-card">
+            <h3>Signup funnel <span className="hint">— visitors who convert through to passing a node</span></h3>
+            <div className="funnel">
+              {[
+                ['Visitors', traffic.funnel?.visitors],
+                ['Signups', traffic.funnel?.signups],
+                ['Activated', traffic.funnel?.activated],
+                ['Passed a node', traffic.funnel?.passed],
+              ].map(([label, v], i, arr) => {
+                const top = Number(arr[0][1] || 0);
+                const pct = top > 0 ? Math.round((Number(v || 0) / top) * 100) : 0;
+                return (
+                  <div key={i} className="funnel-step">
+                    <div className="funnel-v">{v ?? 0}</div>
+                    <div className="funnel-l">{label}</div>
+                    <div className="funnel-pct">{pct}%</div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          <div className="admin-row">
+            <section className="admin-card admin-half">
+              <h3>Traffic by day <span className="hint">(last 14d)</span></h3>
+              <table>
+                <thead><tr><th>Day</th><th>Visits</th><th>Uniques</th><th>Signups</th></tr></thead>
+                <tbody>
+                  {(traffic.byDay ?? []).length === 0 && <tr><td colSpan={4} className="muted">No visits yet.</td></tr>}
+                  {(traffic.byDay ?? []).map((d: any) => {
+                    const su = (traffic.signupsByDay ?? []).find((s: any) => s.day === d.day);
+                    return <tr key={d.day}><td>{d.day}</td><td>{d.visits}</td><td>{d.uniques}</td><td>{su?.n ?? 0}</td></tr>;
+                  })}
+                </tbody>
+              </table>
+            </section>
+            <section className="admin-card admin-half">
+              <h3>Top referrers</h3>
+              <table>
+                <thead><tr><th>Source</th><th>Visits</th></tr></thead>
+                <tbody>
+                  {(traffic.referrers ?? []).length === 0 && <tr><td colSpan={2} className="muted">No referrers yet.</td></tr>}
+                  {(traffic.referrers ?? []).map((r: any, i: number) => <tr key={i}><td className="mono">{r.ref}</td><td>{r.n}</td></tr>)}
+                </tbody>
+              </table>
+            </section>
+          </div>
         </>
       )}
 

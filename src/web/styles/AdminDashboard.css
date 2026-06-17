@@ -24,6 +24,18 @@
 .admin-card th { color: var(--dim); font-weight: 700; }
 .admin-card .muted { color: var(--lock); }
 .mono { font-family: ui-monospace, monospace; font-size: 0.78rem; }
+
+.admin-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.admin-half { flex: 1 1 320px; }
+
+.funnel { display: flex; gap: 10px; flex-wrap: wrap; }
+.funnel-step {
+  flex: 1 1 120px; text-align: center; background: var(--bg);
+  border: 1px solid var(--rule); border-radius: 12px; padding: 12px 10px;
+}
+.funnel-v { font-size: 1.4rem; font-weight: 800; }
+.funnel-l { font-size: 0.78rem; color: var(--dim); }
+.funnel-pct { font-size: 0.72rem; font-weight: 700; color: var(--accent); margin-top: 2px; }
 button.link { background: none; border: none; color: var(--accent); cursor: pointer; font: inherit; font-weight: 600; padding: 0; }
 
 .admin-overlay { position: fixed; inset: 0; background: rgba(28,27,25,0.45); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 100; }

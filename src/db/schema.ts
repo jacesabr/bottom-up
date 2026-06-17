@@ -154,6 +154,19 @@ export const buLlmCall = pgTable('bu_llm_call', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 
+// Anonymous page-visit log — raw web traffic for the admin Traffic panel (visits, unique visitors,
+// referrers, by-day). `visitorId` is a random id kept in the browser's localStorage (no cookies, no
+// PII); `learnerId` is filled only once the visitor logs in, so we can tie a visit to an account.
+export const buVisit = pgTable('bu_visit', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  ts: timestamp('ts', { withTimezone: true }).defaultNow(),
+  visitorId: text('visitor_id').notNull(),
+  learnerId: uuid('learner_id'),
+  path: text('path'), // which view/route was opened
+  referrer: text('referrer'),
+  ua: text('ua'), // truncated user-agent
+});
+
 // Textbook figures: a Haiku-vision captioning pass maps each extracted page image to the concept(s)
 // it illustrates, so the tutor can serve the right whole-page figure inline (no cropping needed).
 export const buFigure = pgTable('bu_figure', {
