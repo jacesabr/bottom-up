@@ -143,7 +143,9 @@
         "Thinking a unit vector has no direction"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch10:magnitude"
+        "cbse12:mathematics:mathematics-ch10:magnitude",
+        "cbse12:mathematics:mathematics-ch10:vector-definition",
+        "cbse12:mathematics:mathematics-ch10:zero-vector"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -289,7 +291,9 @@
         "Forgetting the cos(theta) factor or summing only some component products"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch10:component-form"
+        "cbse12:mathematics:mathematics-ch10:magnitude",
+        "cbse12:mathematics:mathematics-ch10:component-form",
+        "cbse12:mathematics:mathematics-ch10:unit-vector"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -313,12 +317,14 @@
         "Assuming a x b = b x a (it is anticommutative)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch10:scalar-product",
-        "cbse12:mathematics:mathematics-ch10:section-formula",
         "cbse12:mathematics:mathematics-ch10:direction-cosines",
         "cbse12:mathematics:mathematics-ch10:zero-vector",
-        "cbse12:mathematics:mathematics-ch10:collinear-vectors",
-        "cbse12:mathematics:mathematics-ch10:equal-vectors"
+        "cbse12:mathematics:mathematics-ch10:section-formula",
+        "cbse12:mathematics:mathematics-ch10:equal-vectors",
+        "cbse12:mathematics:mathematics-ch10:magnitude",
+        "cbse12:mathematics:mathematics-ch10:unit-vector",
+        "cbse12:mathematics:mathematics-ch10:scalar-product",
+        "cbse12:mathematics:mathematics-ch10:collinear-vectors"
       ],
       "sameConcept": [],
       "teachingInsights": []

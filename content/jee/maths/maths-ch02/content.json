@@ -24,7 +24,12 @@
         "Treating (p, q) and (q, p) as the same pair",
         "Matching the entries in the wrong order, or equating only one component"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch01:define-a-well-defined-set",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:decide-when-two-sets-are-equal",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -47,7 +52,11 @@
         "Forgetting that if one factor is the null set the whole product is empty"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:ordered-pair"
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch01:identify-the-empty-set",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -71,7 +80,8 @@
         "Thinking the count depends on the order of the factors (it is pq either way)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:cartesian-product"
+        "jee:maths:maths-ch02:cartesian-product",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -95,7 +105,11 @@
         "Confusing the relation (a subset) with the whole cartesian product"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:cartesian-product"
+        "jee:maths:maths-ch02:cartesian-product",
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch01:determine-subset-relations",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:write-a-set-in-set-builder-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +133,11 @@
         "Including in the domain elements of A that are not the first element of any pair"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:relation"
+        "jee:maths:maths-ch02:relation",
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch01:determine-subset-relations",
+        "jee:maths:maths-ch02:cartesian-product",
+        "jee:maths:maths-ch01:compute-the-union-of-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -170,7 +188,9 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch02:relation",
-        "jee:maths:maths-ch02:domain-range-codomain"
+        "jee:maths:maths-ch02:domain-range-codomain",
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch02:cartesian-product"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -194,7 +214,10 @@
         "Forgetting to exclude values that make a denominator zero when finding the domain"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:function"
+        "jee:maths:maths-ch02:function",
+        "jee:maths:maths-ch02:domain-range-codomain",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers",
+        "jee:maths:maths-ch01:write-intervals-as-subsets-of-r"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -218,7 +241,11 @@
         "Drawing the line so that it does not pass through the origin"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:real-function"
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch02:function",
+        "jee:maths:maths-ch02:constant-function",
+        "jee:maths:maths-ch02:domain-range-codomain",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -242,7 +269,12 @@
         "Drawing the constant-function graph as a slanted line rather than horizontal"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:real-function"
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch02:function",
+        "jee:maths:maths-ch02:domain-range-codomain",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch02:polynomial-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -266,7 +298,9 @@
         "Thinking the coefficients must be integers (they may be any real numbers)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:real-function"
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch02:function",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -290,7 +324,13 @@
         "Thinking a rational function is defined for every real number"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:polynomial-function"
+        "jee:maths:maths-ch02:polynomial-function",
+        "jee:maths:maths-ch02:function",
+        "jee:maths:maths-ch02:algebra-of-functions",
+        "jee:maths:maths-ch02:domain-range-codomain",
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch01:compute-the-difference-of-sets",
+        "jee:maths:maths-ch01:write-intervals-as-subsets-of-r"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -314,7 +354,9 @@
         "Combining functions whose domains differ without restricting to the common domain X"
       ],
       "prereqs": [
-        "jee:maths:maths-ch02:real-function"
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch02:domain-range-codomain",
+        "jee:maths:maths-ch02:function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -347,7 +389,10 @@
         "jee:maths:maths-ch02:constant-function",
         "jee:maths:maths-ch02:polynomial-function",
         "jee:maths:maths-ch02:rational-function",
-        "jee:maths:maths-ch02:algebra-of-functions"
+        "jee:maths:maths-ch02:algebra-of-functions",
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch02:cartesian-product",
+        "jee:maths:maths-ch02:relation"
       ],
       "sameConcept": [],
       "teachingInsights": []

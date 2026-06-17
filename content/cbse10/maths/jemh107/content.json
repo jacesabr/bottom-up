@@ -330,7 +330,8 @@
         "Putting the ratio in the wrong order"
       ],
       "prereqs": [
-        "cbse10:maths:jemh107:read-point-coordinates"
+        "cbse10:maths:jemh107:read-point-coordinates",
+        "cbse10:maths:jemh106:find-unknown-length-via-proportion"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -379,7 +380,8 @@
       ],
       "prereqs": [
         "cbse10:maths:jemh107:apply-section-formula",
-        "cbse10:maths:jemh107:equate-ordered-pairs"
+        "cbse10:maths:jemh107:equate-ordered-pairs",
+        "cbse10:maths:jemh106:find-unknown-length-via-proportion"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -404,7 +406,8 @@
       ],
       "prereqs": [
         "cbse10:maths:jemh107:apply-section-formula",
-        "cbse10:maths:jemh107:read-point-coordinates"
+        "cbse10:maths:jemh107:read-point-coordinates",
+        "cbse10:maths:jemh106:find-unknown-length-via-proportion"
       ],
       "sameConcept": [],
       "teachingInsights": []

@@ -1,325 +1,344 @@
 {
- "exam": "jee",
- "subject": "maths",
- "chapter": "maths-c12-ch04",
- "title": "Determinants",
- "book": "NCERT Class 12 Mathematics Part I",
- "goal": "jee:maths:maths-c12-ch04:invertible-iff-nonsingular",
- "nodes": [
-  {
-   "id": "jee:maths:maths-c12-ch04:determinant-definition",
-   "slug": "determinant-definition",
-   "title": "Define the determinant of a square matrix",
-   "role": "bedrock",
-   "brief": "Recognise the determinant as a unique number associated with each square matrix, written |A| or det A.",
-   "sec": 2,
-   "quote": "f(A) is called the determinant of A. It is also denoted by |A| or det A",
-   "explanation": "The determinant is a function that associates each square matrix with a unique number (real or complex). If f(A) = k for a square matrix A, then f(A) is called the determinant of A, denoted |A|, det A, or the symbol Delta. Note |A| is read as 'determinant of A', not 'modulus of A', and only square matrices have determinants.",
-   "keyMoves": [
-    "Recognise the determinant as a single number attached to a square matrix",
-    "Write it as |A|, det A or Delta",
-    "Remember only square matrices have determinants"
-   ],
-   "misconceptions": [
-    "Reading |A| as the modulus of A",
-    "Trying to take the determinant of a non-square matrix"
-   ],
-   "prereqs": [],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:determinant-order-two",
-   "slug": "determinant-order-two",
-   "title": "Evaluate a 2 x 2 determinant",
-   "role": "intermediate",
-   "brief": "Compute a second-order determinant as a11 a22 - a21 a12.",
-   "sec": 2,
-   "quote": "a_{11}a_{22} - a_{21}a_{12}",
-   "explanation": "For a 2 x 2 matrix with entries a11, a12 in the first row and a21, a22 in the second, the determinant is defined as a11 a22 - a21 a12 - the product of the main-diagonal entries minus the product of the off-diagonal entries. For example, the determinant of [2, 4; -1, 2] is 2(2) - 4(-1) = 8. (The determinant of a 1 x 1 matrix [a] is just a.)",
-   "keyMoves": [
-    "Multiply the main-diagonal entries a11 and a22",
-    "Subtract the product of the off-diagonal entries a21 and a12",
-    "Report the single number a11 a22 - a21 a12"
-   ],
-   "misconceptions": [
-    "Adding the two products instead of subtracting",
-    "Subtracting in the wrong order (off-diagonal minus diagonal)"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:determinant-definition"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:minor",
-   "slug": "minor",
-   "title": "Find the minor of an element",
-   "role": "intermediate",
-   "brief": "Form the minor M_ij of a_ij by deleting its row and column and taking the resulting determinant.",
-   "sec": 4,
-   "quote": "Minor of an element  $a_{ij}$  of a determinant is the determinant obtained by deleting its *i*th row and *j*th column in which element  $a_{ij}$  lies.",
-   "explanation": "The minor M_ij of an element a_ij of a determinant is the determinant obtained by deleting the i-th row and j-th column in which a_ij lies. So for a 3 x 3 determinant, each minor is a 2 x 2 determinant. Minors are the building blocks for cofactors and for expanding a determinant.",
-   "keyMoves": [
-    "Locate the element a_ij in its row i and column j",
-    "Delete that whole row and that whole column",
-    "Evaluate the smaller determinant that remains as M_ij"
-   ],
-   "misconceptions": [
-    "Deleting only the single element rather than the whole row and column",
-    "Confusing the minor (a determinant) with the element itself"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:determinant-order-two"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:cofactor",
-   "slug": "cofactor",
-   "title": "Find the cofactor of an element",
-   "role": "intermediate",
-   "brief": "Form the cofactor A_ij = (-1)^(i+j) M_ij by attaching the chequerboard sign to the minor.",
-   "sec": 4,
-   "quote": "Cofactor of an element  $a_{ij}$ , denoted by  $A_{ij}$  is defined by  $A_{ij} = (-1)^{i+j} M_{ij}$ , where  $M_{ij}$  is minor of  $a_{ij}$ .",
-   "explanation": "The cofactor A_ij of an element a_ij is defined by A_ij = (-1)^(i+j) M_ij, where M_ij is the minor of a_ij. The factor (-1)^(i+j) is +1 when i + j is even and -1 when i + j is odd (the chequerboard sign pattern). Cofactors are used to expand a determinant and to build the adjoint of a matrix.",
-   "keyMoves": [
-    "Compute the minor M_ij",
-    "Multiply by (-1)^(i+j): + when i + j is even, - when odd",
-    "Report A_ij = (-1)^(i+j) M_ij"
-   ],
-   "misconceptions": [
-    "Forgetting the sign factor and equating the cofactor to the minor",
-    "Getting the sign wrong for positions where i + j is odd"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:minor"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:determinant-order-three",
-   "slug": "determinant-order-three",
-   "title": "Expand a 3 x 3 determinant along a row or column",
-   "role": "intermediate",
-   "brief": "Evaluate a third-order determinant by cofactor expansion along any row or column.",
-   "sec": 2,
-   "quote": "Hence, expanding a determinant along any row or column gives same value.",
-   "explanation": "A 3 x 3 determinant is evaluated by expressing it in terms of second-order determinants - expansion along a row or column. You multiply each element of the chosen row (or column) by its cofactor and add. There are six ways (three rows, three columns) and all give the same value: expanding a determinant along any row or column gives the same value. For easier calculation, expand along the row or column with the most zeros.",
-   "keyMoves": [
-    "Choose a row or column (ideally one with zeros)",
-    "Multiply each entry by its cofactor and sum",
-    "Trust that any row/column expansion gives the same answer"
-   ],
-   "misconceptions": [
-    "Forgetting the alternating signs while expanding",
-    "Thinking different rows/columns give different determinant values"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:cofactor"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:area-of-triangle",
-   "slug": "area-of-triangle",
-   "title": "Find the area of a triangle using a determinant",
-   "role": "intermediate",
-   "brief": "Use the determinant of vertex coordinates to get triangle area; collinear points give a zero determinant.",
-   "sec": 3,
-   "quote": "The area of the triangle formed by three collinear points is zero.",
-   "explanation": "The area of a triangle with vertices (x1,y1), (x2,y2), (x3,y3) equals one half the absolute value of the determinant whose rows are (x1, y1, 1), (x2, y2, 1), (x3, y3, 1). Because area is positive we take the absolute value of the determinant. A key consequence: the area of the triangle formed by three collinear points is zero, so setting the determinant to zero is the condition for three points to be collinear (and gives the equation of a line through two points).",
-   "keyMoves": [
-    "Form the determinant with rows (x_i, y_i, 1) for the three vertices",
-    "Take one half of its absolute value for the area",
-    "Set the determinant to zero to test collinearity / find a line"
-   ],
-   "misconceptions": [
-    "Forgetting the factor 1/2 or the absolute value",
-    "Thinking collinear points give a non-zero area"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:determinant-order-three"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:adjoint",
-   "slug": "adjoint",
-   "title": "Find the adjoint of a square matrix",
-   "role": "intermediate",
-   "brief": "Form adj A as the transpose of the matrix of cofactors.",
-   "sec": 5,
-   "quote": "The adjoint of a square matrix  $A = [a_{ij}]_{n \\times n}$  is defined as the transpose of the matrix  $[A_{ij}]_{n \\times n}$ , where  $A_{ij}$  is the cofactor of the element  $a_{ij}$ .",
-   "explanation": "The adjoint of a square matrix A = [a_ij] is defined as the transpose of the matrix of cofactors [A_ij], where A_ij is the cofactor of a_ij; it is written adj A. So you build the cofactor matrix and then transpose it. For a 2 x 2 matrix the adjoint is obtained by swapping the diagonal entries and changing the signs of the off-diagonal entries. The adjoint is the gateway to the inverse.",
-   "keyMoves": [
-    "Compute the cofactor A_ij of every element",
-    "Arrange them into the cofactor matrix [A_ij]",
-    "Transpose it to get adj A"
-   ],
-   "misconceptions": [
-    "Forgetting to transpose the cofactor matrix",
-    "Using the minors instead of the signed cofactors"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:cofactor"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:adjoint-identity",
-   "slug": "adjoint-identity",
-   "title": "Use the identity A(adj A) = (adj A)A = |A| I",
-   "role": "intermediate",
-   "brief": "Apply the key theorem linking a matrix, its adjoint, and its determinant.",
-   "sec": 5,
-   "quote": "\\mathbf{A}(adj \\mathbf{A}) = (adj \\mathbf{A}) \\mathbf{A} = |\\mathbf{A}|\\mathbf{I},",
-   "explanation": "For any square matrix A of order n, A(adj A) = (adj A)A = |A| I, where I is the identity matrix of order n. This follows because the sum of products of the elements of a row (or column) with the corresponding cofactors equals |A|, and is zero otherwise. This identity is exactly what lets you build the inverse: dividing through by |A| (when it is non-zero) gives A times (1/|A|) adj A = I.",
-   "keyMoves": [
-    "Recall A(adj A) = (adj A)A = |A| I",
-    "Recognise the off-diagonal sums of element times cofactor vanish",
-    "Divide by |A| (when non-zero) to head toward the inverse"
-   ],
-   "misconceptions": [
-    "Writing A(adj A) = I instead of |A| I",
-    "Dividing by |A| even when |A| = 0"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:adjoint"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:singular-matrix",
-   "slug": "singular-matrix",
-   "title": "Recognise a singular matrix",
-   "role": "bedrock",
-   "brief": "Identify a singular matrix as a square matrix with determinant zero.",
-   "sec": 5,
-   "quote": "A square matrix A is said to be singular if  $|\\mathbf{A}| = 0$ .",
-   "explanation": "A square matrix A is said to be singular if |A| = 0. For example, [1, 2; 4, 8] has determinant 1(8) - 2(4) = 0, so it is singular. Singularity is the obstruction to invertibility: a singular matrix has no inverse.",
-   "keyMoves": [
-    "Compute the determinant |A|",
-    "If |A| = 0, declare A singular",
-    "Conclude a singular matrix has no inverse"
-   ],
-   "misconceptions": [
-    "Calling a matrix singular when its determinant is non-zero",
-    "Thinking a singular matrix can still be inverted"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:determinant-order-two"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:non-singular-matrix",
-   "slug": "non-singular-matrix",
-   "title": "Recognise a non-singular matrix",
-   "role": "bedrock",
-   "brief": "Identify a non-singular matrix as a square matrix with non-zero determinant.",
-   "sec": 5,
-   "quote": "A square matrix A is said to be non-singular if  $|A| \\neq 0$",
-   "explanation": "A square matrix A is said to be non-singular if |A| is not equal to 0. Non-singularity is exactly the condition that lets you invert a matrix: a non-singular matrix has a well-defined inverse, found as (1/|A|) adj A. The determinant being non-zero also guarantees A(adj A) can be scaled to the identity.",
-   "keyMoves": [
-    "Compute the determinant |A|",
-    "If |A| is not 0, declare A non-singular",
-    "Conclude a non-singular matrix is invertible"
-   ],
-   "misconceptions": [
-    "Confusing the non-singular condition (|A| not 0) with singular (|A| = 0)",
-    "Thinking any square matrix is automatically non-singular"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:determinant-order-two"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:determinant-of-product",
-   "slug": "determinant-of-product",
-   "title": "Use the product rule |AB| = |A| |B|",
-   "role": "intermediate",
-   "brief": "Apply the theorem that the determinant of a product is the product of the determinants.",
-   "sec": 5,
-   "quote": "|AB| = |A| |B|",
-   "explanation": "The determinant of the product of two square matrices of the same order equals the product of their determinants: |AB| = |A| |B|. A direct consequence used in proving invertibility: from AB = I we get |A| |B| = |I| = 1, which forces |A| to be non-zero. The product of two non-singular matrices is therefore non-singular.",
-   "keyMoves": [
-    "Apply |AB| = |A| |B| for square matrices of the same order",
-    "Use |I| = 1 to deduce |A| |B| = 1 from AB = I",
-    "Conclude products of non-singular matrices stay non-singular"
-   ],
-   "misconceptions": [
-    "Writing |AB| = |A| + |B| instead of the product",
-    "Applying the rule to non-square or mismatched matrices"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:determinant-order-two"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:consistent-system",
-   "slug": "consistent-system",
-   "title": "Classify a system as consistent or inconsistent",
-   "role": "intermediate",
-   "brief": "Call a system consistent if a solution exists, inconsistent if none does.",
-   "sec": 6,
-   "quote": "A system of equations is said to be *consistent* if its solution (one or more) exists.",
-   "explanation": "A system of linear equations is said to be consistent if its solution (one or more) exists, and inconsistent if no solution exists. Writing the system as AX = B, when A is non-singular (|A| not 0) the system has the unique solution X = A-inverse B and is consistent; when |A| = 0 you examine (adj A)B - if (adj A)B is not the zero matrix the system is inconsistent. This is the application of determinants and inverses to solving linear systems.",
-   "keyMoves": [
-    "Write the system as AX = B",
-    "If |A| is not 0, solve uniquely by X = A-inverse B (consistent)",
-    "If |A| = 0, test (adj A)B to decide consistency"
-   ],
-   "misconceptions": [
-    "Calling an inconsistent system consistent because equations 'look solvable'",
-    "Using X = A-inverse B when |A| = 0 (the inverse does not exist)"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:adjoint-identity"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch04:invertible-iff-nonsingular",
-   "slug": "invertible-iff-nonsingular",
-   "title": "Invert a matrix via A-inverse = (1/|A|) adj A using non-singularity",
-   "role": "goal",
-   "brief": "Use the criterion 'A is invertible iff A is non-singular' and the formula A-inverse = (1/|A|) adj A.",
-   "sec": 5,
-   "quote": "A square matrix A is invertible if and only if A is nonsingular matrix.",
-   "explanation": "The capstone result: a square matrix A is invertible if and only if A is non-singular (|A| not 0). The proof uses |AB| = |A| |B| (so AB = I forces |A| not 0) and the adjoint identity A(adj A) = |A| I, which gives the explicit inverse A-inverse = (1/|A|) adj A whenever |A| is non-zero. To invert a matrix: check |A| not 0, compute adj A from the cofactors, and divide by |A|. The same machinery solves a linear system AX = B by X = A-inverse B.",
-   "keyMoves": [
-    "Check |A| is non-zero (non-singular) so the inverse exists",
-    "Compute adj A (transpose of the cofactor matrix)",
-    "Form A-inverse = (1/|A|) adj A, and solve AX = B by X = A-inverse B"
-   ],
-   "misconceptions": [
-    "Attempting to invert a singular matrix (|A| = 0)",
-    "Forgetting to divide the adjoint by the determinant"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch04:adjoint-identity",
-    "jee:maths:maths-c12-ch04:non-singular-matrix",
-    "jee:maths:maths-c12-ch04:singular-matrix",
-    "jee:maths:maths-c12-ch04:determinant-of-product",
-    "jee:maths:maths-c12-ch04:area-of-triangle",
-    "jee:maths:maths-c12-ch04:consistent-system"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  }
- ]
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-c12-ch04",
+  "title": "Determinants",
+  "book": "NCERT Class 12 Mathematics Part I",
+  "goal": "jee:maths:maths-c12-ch04:invertible-iff-nonsingular",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-c12-ch04:determinant-definition",
+      "slug": "determinant-definition",
+      "title": "Define the determinant of a square matrix",
+      "role": "bedrock",
+      "brief": "Recognise the determinant as a unique number associated with each square matrix, written |A| or det A.",
+      "sec": 2,
+      "quote": "f(A) is called the determinant of A. It is also denoted by |A| or det A",
+      "explanation": "The determinant is a function that associates each square matrix with a unique number (real or complex). If f(A) = k for a square matrix A, then f(A) is called the determinant of A, denoted |A|, det A, or the symbol Delta. Note |A| is read as 'determinant of A', not 'modulus of A', and only square matrices have determinants.",
+      "keyMoves": [
+        "Recognise the determinant as a single number attached to a square matrix",
+        "Write it as |A|, det A or Delta",
+        "Remember only square matrices have determinants"
+      ],
+      "misconceptions": [
+        "Reading |A| as the modulus of A",
+        "Trying to take the determinant of a non-square matrix"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:square-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:determinant-order-two",
+      "slug": "determinant-order-two",
+      "title": "Evaluate a 2 x 2 determinant",
+      "role": "intermediate",
+      "brief": "Compute a second-order determinant as a11 a22 - a21 a12.",
+      "sec": 2,
+      "quote": "a_{11}a_{22} - a_{21}a_{12}",
+      "explanation": "For a 2 x 2 matrix with entries a11, a12 in the first row and a21, a22 in the second, the determinant is defined as a11 a22 - a21 a12 - the product of the main-diagonal entries minus the product of the off-diagonal entries. For example, the determinant of [2, 4; -1, 2] is 2(2) - 4(-1) = 8. (The determinant of a 1 x 1 matrix [a] is just a.)",
+      "keyMoves": [
+        "Multiply the main-diagonal entries a11 and a22",
+        "Subtract the product of the off-diagonal entries a21 and a12",
+        "Report the single number a11 a22 - a21 a12"
+      ],
+      "misconceptions": [
+        "Adding the two products instead of subtracting",
+        "Subtracting in the wrong order (off-diagonal minus diagonal)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:determinant-definition",
+        "jee:maths:maths-c12-ch03:equality-of-matrices"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:minor",
+      "slug": "minor",
+      "title": "Find the minor of an element",
+      "role": "intermediate",
+      "brief": "Form the minor M_ij of a_ij by deleting its row and column and taking the resulting determinant.",
+      "sec": 4,
+      "quote": "Minor of an element  $a_{ij}$  of a determinant is the determinant obtained by deleting its *i*th row and *j*th column in which element  $a_{ij}$  lies.",
+      "explanation": "The minor M_ij of an element a_ij of a determinant is the determinant obtained by deleting the i-th row and j-th column in which a_ij lies. So for a 3 x 3 determinant, each minor is a 2 x 2 determinant. Minors are the building blocks for cofactors and for expanding a determinant.",
+      "keyMoves": [
+        "Locate the element a_ij in its row i and column j",
+        "Delete that whole row and that whole column",
+        "Evaluate the smaller determinant that remains as M_ij"
+      ],
+      "misconceptions": [
+        "Deleting only the single element rather than the whole row and column",
+        "Confusing the minor (a determinant) with the element itself"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:determinant-order-two",
+        "jee:maths:maths-c12-ch03:order"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:cofactor",
+      "slug": "cofactor",
+      "title": "Find the cofactor of an element",
+      "role": "intermediate",
+      "brief": "Form the cofactor A_ij = (-1)^(i+j) M_ij by attaching the chequerboard sign to the minor.",
+      "sec": 4,
+      "quote": "Cofactor of an element  $a_{ij}$ , denoted by  $A_{ij}$  is defined by  $A_{ij} = (-1)^{i+j} M_{ij}$ , where  $M_{ij}$  is minor of  $a_{ij}$ .",
+      "explanation": "The cofactor A_ij of an element a_ij is defined by A_ij = (-1)^(i+j) M_ij, where M_ij is the minor of a_ij. The factor (-1)^(i+j) is +1 when i + j is even and -1 when i + j is odd (the chequerboard sign pattern). Cofactors are used to expand a determinant and to build the adjoint of a matrix.",
+      "keyMoves": [
+        "Compute the minor M_ij",
+        "Multiply by (-1)^(i+j): + when i + j is even, - when odd",
+        "Report A_ij = (-1)^(i+j) M_ij"
+      ],
+      "misconceptions": [
+        "Forgetting the sign factor and equating the cofactor to the minor",
+        "Getting the sign wrong for positions where i + j is odd"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:minor"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:determinant-order-three",
+      "slug": "determinant-order-three",
+      "title": "Expand a 3 x 3 determinant along a row or column",
+      "role": "intermediate",
+      "brief": "Evaluate a third-order determinant by cofactor expansion along any row or column.",
+      "sec": 2,
+      "quote": "Hence, expanding a determinant along any row or column gives same value.",
+      "explanation": "A 3 x 3 determinant is evaluated by expressing it in terms of second-order determinants - expansion along a row or column. You multiply each element of the chosen row (or column) by its cofactor and add. There are six ways (three rows, three columns) and all give the same value: expanding a determinant along any row or column gives the same value. For easier calculation, expand along the row or column with the most zeros.",
+      "keyMoves": [
+        "Choose a row or column (ideally one with zeros)",
+        "Multiply each entry by its cofactor and sum",
+        "Trust that any row/column expansion gives the same answer"
+      ],
+      "misconceptions": [
+        "Forgetting the alternating signs while expanding",
+        "Thinking different rows/columns give different determinant values"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:cofactor",
+        "jee:maths:maths-c12-ch04:minor"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:area-of-triangle",
+      "slug": "area-of-triangle",
+      "title": "Find the area of a triangle using a determinant",
+      "role": "intermediate",
+      "brief": "Use the determinant of vertex coordinates to get triangle area; collinear points give a zero determinant.",
+      "sec": 3,
+      "quote": "The area of the triangle formed by three collinear points is zero.",
+      "explanation": "The area of a triangle with vertices (x1,y1), (x2,y2), (x3,y3) equals one half the absolute value of the determinant whose rows are (x1, y1, 1), (x2, y2, 1), (x3, y3, 1). Because area is positive we take the absolute value of the determinant. A key consequence: the area of the triangle formed by three collinear points is zero, so setting the determinant to zero is the condition for three points to be collinear (and gives the equation of a line through two points).",
+      "keyMoves": [
+        "Form the determinant with rows (x_i, y_i, 1) for the three vertices",
+        "Take one half of its absolute value for the area",
+        "Set the determinant to zero to test collinearity / find a line"
+      ],
+      "misconceptions": [
+        "Forgetting the factor 1/2 or the absolute value",
+        "Thinking collinear points give a non-zero area"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:determinant-order-three",
+        "jee:maths:maths-c12-ch04:determinant-order-two",
+        "jee:maths:maths-ch09:slope-from-two-points",
+        "jee:maths:maths-ch02:ordered-pair"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:adjoint",
+      "slug": "adjoint",
+      "title": "Find the adjoint of a square matrix",
+      "role": "intermediate",
+      "brief": "Form adj A as the transpose of the matrix of cofactors.",
+      "sec": 5,
+      "quote": "The adjoint of a square matrix  $A = [a_{ij}]_{n \\times n}$  is defined as the transpose of the matrix  $[A_{ij}]_{n \\times n}$ , where  $A_{ij}$  is the cofactor of the element  $a_{ij}$ .",
+      "explanation": "The adjoint of a square matrix A = [a_ij] is defined as the transpose of the matrix of cofactors [A_ij], where A_ij is the cofactor of a_ij; it is written adj A. So you build the cofactor matrix and then transpose it. For a 2 x 2 matrix the adjoint is obtained by swapping the diagonal entries and changing the signs of the off-diagonal entries. The adjoint is the gateway to the inverse.",
+      "keyMoves": [
+        "Compute the cofactor A_ij of every element",
+        "Arrange them into the cofactor matrix [A_ij]",
+        "Transpose it to get adj A"
+      ],
+      "misconceptions": [
+        "Forgetting to transpose the cofactor matrix",
+        "Using the minors instead of the signed cofactors"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:cofactor",
+        "jee:maths:maths-c12-ch03:transpose"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:adjoint-identity",
+      "slug": "adjoint-identity",
+      "title": "Use the identity A(adj A) = (adj A)A = |A| I",
+      "role": "intermediate",
+      "brief": "Apply the key theorem linking a matrix, its adjoint, and its determinant.",
+      "sec": 5,
+      "quote": "\\mathbf{A}(adj \\mathbf{A}) = (adj \\mathbf{A}) \\mathbf{A} = |\\mathbf{A}|\\mathbf{I},",
+      "explanation": "For any square matrix A of order n, A(adj A) = (adj A)A = |A| I, where I is the identity matrix of order n. This follows because the sum of products of the elements of a row (or column) with the corresponding cofactors equals |A|, and is zero otherwise. This identity is exactly what lets you build the inverse: dividing through by |A| (when it is non-zero) gives A times (1/|A|) adj A = I.",
+      "keyMoves": [
+        "Recall A(adj A) = (adj A)A = |A| I",
+        "Recognise the off-diagonal sums of element times cofactor vanish",
+        "Divide by |A| (when non-zero) to head toward the inverse"
+      ],
+      "misconceptions": [
+        "Writing A(adj A) = I instead of |A| I",
+        "Dividing by |A| even when |A| = 0"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:adjoint",
+        "jee:maths:maths-c12-ch03:identity-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:singular-matrix",
+      "slug": "singular-matrix",
+      "title": "Recognise a singular matrix",
+      "role": "bedrock",
+      "brief": "Identify a singular matrix as a square matrix with determinant zero.",
+      "sec": 5,
+      "quote": "A square matrix A is said to be singular if  $|\\mathbf{A}| = 0$ .",
+      "explanation": "A square matrix A is said to be singular if |A| = 0. For example, [1, 2; 4, 8] has determinant 1(8) - 2(4) = 0, so it is singular. Singularity is the obstruction to invertibility: a singular matrix has no inverse.",
+      "keyMoves": [
+        "Compute the determinant |A|",
+        "If |A| = 0, declare A singular",
+        "Conclude a singular matrix has no inverse"
+      ],
+      "misconceptions": [
+        "Calling a matrix singular when its determinant is non-zero",
+        "Thinking a singular matrix can still be inverted"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:determinant-order-two",
+        "jee:maths:maths-c12-ch04:determinant-definition",
+        "jee:maths:maths-c12-ch03:invertible-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:non-singular-matrix",
+      "slug": "non-singular-matrix",
+      "title": "Recognise a non-singular matrix",
+      "role": "bedrock",
+      "brief": "Identify a non-singular matrix as a square matrix with non-zero determinant.",
+      "sec": 5,
+      "quote": "A square matrix A is said to be non-singular if  $|A| \\neq 0$",
+      "explanation": "A square matrix A is said to be non-singular if |A| is not equal to 0. Non-singularity is exactly the condition that lets you invert a matrix: a non-singular matrix has a well-defined inverse, found as (1/|A|) adj A. The determinant being non-zero also guarantees A(adj A) can be scaled to the identity.",
+      "keyMoves": [
+        "Compute the determinant |A|",
+        "If |A| is not 0, declare A non-singular",
+        "Conclude a non-singular matrix is invertible"
+      ],
+      "misconceptions": [
+        "Confusing the non-singular condition (|A| not 0) with singular (|A| = 0)",
+        "Thinking any square matrix is automatically non-singular"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:determinant-order-two",
+        "jee:maths:maths-c12-ch04:determinant-definition",
+        "jee:maths:maths-c12-ch03:invertible-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:determinant-of-product",
+      "slug": "determinant-of-product",
+      "title": "Use the product rule |AB| = |A| |B|",
+      "role": "intermediate",
+      "brief": "Apply the theorem that the determinant of a product is the product of the determinants.",
+      "sec": 5,
+      "quote": "|AB| = |A| |B|",
+      "explanation": "The determinant of the product of two square matrices of the same order equals the product of their determinants: |AB| = |A| |B|. A direct consequence used in proving invertibility: from AB = I we get |A| |B| = |I| = 1, which forces |A| to be non-zero. The product of two non-singular matrices is therefore non-singular.",
+      "keyMoves": [
+        "Apply |AB| = |A| |B| for square matrices of the same order",
+        "Use |I| = 1 to deduce |A| |B| = 1 from AB = I",
+        "Conclude products of non-singular matrices stay non-singular"
+      ],
+      "misconceptions": [
+        "Writing |AB| = |A| + |B| instead of the product",
+        "Applying the rule to non-square or mismatched matrices"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:determinant-order-two",
+        "jee:maths:maths-c12-ch04:determinant-definition",
+        "jee:maths:maths-c12-ch03:matrix-multiplication"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:consistent-system",
+      "slug": "consistent-system",
+      "title": "Classify a system as consistent or inconsistent",
+      "role": "intermediate",
+      "brief": "Call a system consistent if a solution exists, inconsistent if none does.",
+      "sec": 6,
+      "quote": "A system of equations is said to be *consistent* if its solution (one or more) exists.",
+      "explanation": "A system of linear equations is said to be consistent if its solution (one or more) exists, and inconsistent if no solution exists. Writing the system as AX = B, when A is non-singular (|A| not 0) the system has the unique solution X = A-inverse B and is consistent; when |A| = 0 you examine (adj A)B - if (adj A)B is not the zero matrix the system is inconsistent. This is the application of determinants and inverses to solving linear systems.",
+      "keyMoves": [
+        "Write the system as AX = B",
+        "If |A| is not 0, solve uniquely by X = A-inverse B (consistent)",
+        "If |A| = 0, test (adj A)B to decide consistency"
+      ],
+      "misconceptions": [
+        "Calling an inconsistent system consistent because equations 'look solvable'",
+        "Using X = A-inverse B when |A| = 0 (the inverse does not exist)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:adjoint-identity",
+        "jee:maths:maths-c12-ch04:determinant-definition",
+        "jee:maths:maths-c12-ch03:matrix-multiplication"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch04:invertible-iff-nonsingular",
+      "slug": "invertible-iff-nonsingular",
+      "title": "Invert a matrix via A-inverse = (1/|A|) adj A using non-singularity",
+      "role": "goal",
+      "brief": "Use the criterion 'A is invertible iff A is non-singular' and the formula A-inverse = (1/|A|) adj A.",
+      "sec": 5,
+      "quote": "A square matrix A is invertible if and only if A is nonsingular matrix.",
+      "explanation": "The capstone result: a square matrix A is invertible if and only if A is non-singular (|A| not 0). The proof uses |AB| = |A| |B| (so AB = I forces |A| not 0) and the adjoint identity A(adj A) = |A| I, which gives the explicit inverse A-inverse = (1/|A|) adj A whenever |A| is non-zero. To invert a matrix: check |A| not 0, compute adj A from the cofactors, and divide by |A|. The same machinery solves a linear system AX = B by X = A-inverse B.",
+      "keyMoves": [
+        "Check |A| is non-zero (non-singular) so the inverse exists",
+        "Compute adj A (transpose of the cofactor matrix)",
+        "Form A-inverse = (1/|A|) adj A, and solve AX = B by X = A-inverse B"
+      ],
+      "misconceptions": [
+        "Attempting to invert a singular matrix (|A| = 0)",
+        "Forgetting to divide the adjoint by the determinant"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:adjoint-identity",
+        "jee:maths:maths-c12-ch04:non-singular-matrix",
+        "jee:maths:maths-c12-ch04:singular-matrix",
+        "jee:maths:maths-c12-ch04:determinant-of-product",
+        "jee:maths:maths-c12-ch04:area-of-triangle",
+        "jee:maths:maths-c12-ch04:consistent-system",
+        "jee:maths:maths-c12-ch03:invertible-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
 }

@@ -71,7 +71,8 @@
         "Confusing the diagonal with a whole row or column"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:order"
+        "cbse12:mathematics:mathematics-ch03:order",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -95,7 +96,8 @@
         "Calling a non-square matrix diagonal"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:square-matrix"
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +121,9 @@
         "Forgetting that the identity is the special scalar matrix with k = 1"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:diagonal-matrix"
+        "cbse12:mathematics:mathematics-ch03:diagonal-matrix",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -143,7 +147,12 @@
         "Forgetting the identity must be square"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:scalar-matrix"
+        "cbse12:mathematics:mathematics-ch03:scalar-matrix",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch03:zero-matrix",
+        "cbse12:mathematics:mathematics-ch03:diagonal-matrix",
+        "cbse12:mathematics:mathematics-ch03:matrix-multiplication"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -167,7 +176,8 @@
         "Confusing the zero matrix with the identity matrix"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:matrix-definition"
+        "cbse12:mathematics:mathematics-ch03:matrix-definition",
+        "cbse12:mathematics:mathematics-ch03:order"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -191,7 +201,8 @@
         "Equating entries in the wrong positions"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:order"
+        "cbse12:mathematics:mathematics-ch03:order",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -216,7 +227,9 @@
       ],
       "prereqs": [
         "cbse12:mathematics:mathematics-ch03:order",
-        "cbse12:mathematics:mathematics-ch03:zero-matrix"
+        "cbse12:mathematics:mathematics-ch03:zero-matrix",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition",
+        "cbse12:mathematics:mathematics-ch03:equality-of-matrices"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -240,7 +253,9 @@
         "Forgetting the difference subtracts corresponding entries"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:matrix-addition"
+        "cbse12:mathematics:mathematics-ch03:matrix-addition",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition",
+        "cbse12:mathematics:mathematics-ch03:order"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -264,7 +279,10 @@
         "Attempting AB when the inner dimensions do not match"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:scalar-multiplication"
+        "cbse12:mathematics:mathematics-ch03:scalar-multiplication",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition",
+        "cbse12:mathematics:mathematics-ch03:order",
+        "cbse12:mathematics:mathematics-ch03:matrix-addition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -288,7 +306,9 @@
         "Thinking that if AB is defined then BA must be too"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:matrix-multiplication"
+        "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+        "cbse12:mathematics:mathematics-ch03:order",
+        "cbse12:mathematics:mathematics-ch03:equality-of-matrices"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -312,7 +332,11 @@
         "Keeping the same order m x n for the transpose"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:matrix-multiplication"
+        "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition",
+        "cbse12:mathematics:mathematics-ch03:order",
+        "cbse12:mathematics:mathematics-ch03:matrix-addition",
+        "cbse12:mathematics:mathematics-ch03:scalar-multiplication"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -336,7 +360,9 @@
         "Confusing symmetric (A' = A) with skew-symmetric (A' = -A)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:transpose"
+        "cbse12:mathematics:mathematics-ch03:transpose",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -360,7 +386,11 @@
         "Mixing up the sign condition with symmetry (A' = A)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch03:transpose"
+        "cbse12:mathematics:mathematics-ch03:transpose",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch03:scalar-multiplication",
+        "cbse12:mathematics:mathematics-ch03:equality-of-matrices",
+        "cbse12:mathematics:mathematics-ch03:zero-matrix"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -390,7 +420,8 @@
         "cbse12:mathematics:mathematics-ch03:non-commutative-multiplication",
         "cbse12:mathematics:mathematics-ch03:zero-matrix",
         "cbse12:mathematics:mathematics-ch03:symmetric-matrix",
-        "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix"
+        "cbse12:mathematics:mathematics-ch03:skew-symmetric-matrix",
+        "cbse12:mathematics:mathematics-ch03:square-matrix"
       ],
       "sameConcept": [],
       "teachingInsights": []

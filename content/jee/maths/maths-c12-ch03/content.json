@@ -1,398 +1,416 @@
 {
- "exam": "jee",
- "subject": "maths",
- "chapter": "maths-c12-ch03",
- "title": "Matrices",
- "book": "NCERT Class 12 Mathematics Part I",
- "goal": "jee:maths:maths-c12-ch03:invertible-matrix",
- "nodes": [
-  {
-   "id": "jee:maths:maths-c12-ch03:matrix-definition",
-   "slug": "matrix-definition",
-   "title": "Define a matrix as a rectangular array",
-   "role": "bedrock",
-   "brief": "Recognise a matrix as an ordered rectangular array of numbers or functions, whose entries are its elements.",
-   "sec": 2,
-   "quote": "A *matrix* is an ordered rectangular array of numbers or functions.",
-   "explanation": "A matrix is an ordered rectangular array of numbers or functions; the numbers or functions are called the elements (or entries) of the matrix. The horizontal lines of elements are the rows and the vertical lines are the columns. Matrices give a compact way to record tabular data - for example the notebooks and pens owned by several people - and are denoted by capital letters.",
-   "keyMoves": [
-    "Lay the data out as a rectangular array enclosed in brackets",
-    "Read off rows (horizontal) and columns (vertical)",
-    "Call each individual entry an element of the matrix"
-   ],
-   "misconceptions": [
-    "Confusing a matrix (an array) with a single number",
-    "Mixing up which direction is a row and which is a column"
-   ],
-   "prereqs": [],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:order",
-   "slug": "order",
-   "title": "State the order of a matrix",
-   "role": "bedrock",
-   "brief": "Describe a matrix with m rows and n columns as an m x n matrix, with mn elements.",
-   "sec": 2,
-   "quote": "A matrix having *m* rows and *n* columns is called a matrix of *order*  $m \\times n$",
-   "explanation": "A matrix having m rows and n columns is called a matrix of order m x n (read 'm by n'). The order tells you the shape of the array; the total number of elements equals mn. For example a 3 x 2 matrix has 3 rows, 2 columns and 6 elements. The element a_ij sits in the i-th row and j-th column.",
-   "keyMoves": [
-    "Count the rows m and the columns n",
-    "Write the order as m x n",
-    "Find the number of elements as mn"
-   ],
-   "misconceptions": [
-    "Writing the order as columns x rows instead of rows x columns",
-    "Confusing the order with the number of elements"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:matrix-definition"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:square-matrix",
-   "slug": "square-matrix",
-   "title": "Recognise a square matrix",
-   "role": "bedrock",
-   "brief": "Identify a square matrix as one with equal numbers of rows and columns (m = n).",
-   "sec": 3,
-   "quote": "A matrix in which the number of rows are equal to the number of columns, is said to be a *square matrix*.",
-   "explanation": "A matrix in which the number of rows equals the number of columns is a square matrix; an m x n matrix is square when m = n, and is then called a square matrix of order n. The entries a_11, a_22, ..., a_nn form its diagonal. Square matrices are the only ones that can have an identity, powers, and (sometimes) an inverse.",
-   "keyMoves": [
-    "Check whether the number of rows equals the number of columns",
-    "If m = n, call it a square matrix of order n",
-    "Identify the diagonal entries a_11, a_22, ..., a_nn"
-   ],
-   "misconceptions": [
-    "Calling any rectangular matrix square",
-    "Confusing the diagonal with a whole row or column"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:order"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:diagonal-matrix",
-   "slug": "diagonal-matrix",
-   "title": "Recognise a diagonal matrix",
-   "role": "intermediate",
-   "brief": "Identify a diagonal matrix as a square matrix whose non-diagonal elements are all zero.",
-   "sec": 3,
-   "quote": "is said to be a *diagonal matrix* if all its non diagonal elements are zero",
-   "explanation": "A square matrix B = [b_ij] is a diagonal matrix if all its non-diagonal elements are zero, i.e. b_ij = 0 whenever i is not equal to j. Only the entries on the main diagonal may be non-zero. For example, diag(-1, 2) is a 2 x 2 diagonal matrix. Diagonal matrices of the same order multiply commutatively.",
-   "keyMoves": [
-    "Confirm the matrix is square",
-    "Check every off-diagonal entry is zero",
-    "Allow the diagonal entries to be any values"
-   ],
-   "misconceptions": [
-    "Requiring the diagonal entries to be equal (that is a scalar matrix)",
-    "Calling a non-square matrix diagonal"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:square-matrix"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:scalar-matrix",
-   "slug": "scalar-matrix",
-   "title": "Recognise a scalar matrix",
-   "role": "intermediate",
-   "brief": "Identify a scalar matrix as a diagonal matrix whose diagonal elements are all equal.",
-   "sec": 3,
-   "quote": "A diagonal matrix is said to be a *scalar matrix* if its diagonal elements are equal",
-   "explanation": "A diagonal matrix is a scalar matrix if its diagonal elements are equal: b_ij = 0 when i is not equal to j, and b_ii = k (a constant) when i = j. So a scalar matrix is a constant times the identity. When k = 1 the scalar matrix becomes the identity matrix; every identity matrix is therefore a scalar matrix.",
-   "keyMoves": [
-    "Confirm the matrix is diagonal",
-    "Check all the diagonal entries are equal to the same constant k",
-    "Recognise it as k times the identity matrix"
-   ],
-   "misconceptions": [
-    "Allowing unequal diagonal entries in a scalar matrix",
-    "Forgetting that the identity is the special scalar matrix with k = 1"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:diagonal-matrix"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:identity-matrix",
-   "slug": "identity-matrix",
-   "title": "Recognise the identity matrix",
-   "role": "intermediate",
-   "brief": "Identify the identity matrix as a square matrix with 1s on the diagonal and 0s elsewhere.",
-   "sec": 3,
-   "quote": "A square matrix in which elements in the diagonal are all 1 and rest are all zero is called an *identity matrix*.",
-   "explanation": "A square matrix in which the diagonal elements are all 1 and the rest are all zero is the identity matrix, written I_n (or simply I). Formally a_ij = 1 when i = j and a_ij = 0 when i is not equal to j. For every square matrix A of the same order, IA = AI = A, so I is the multiplicative identity for matrices.",
-   "keyMoves": [
-    "Place 1s along the whole diagonal",
-    "Set every off-diagonal entry to 0",
-    "Use IA = AI = A as the identity property"
-   ],
-   "misconceptions": [
-    "Confusing the identity matrix with the zero matrix",
-    "Forgetting the identity must be square"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:scalar-matrix"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:zero-matrix",
-   "slug": "zero-matrix",
-   "title": "Recognise the zero (null) matrix",
-   "role": "bedrock",
-   "brief": "Identify the zero matrix as one in which all elements are zero.",
-   "sec": 3,
-   "quote": "A matrix is said to be zero matrix or null matrix if all its elements are zero.",
-   "explanation": "A matrix is a zero matrix (or null matrix) if all its elements are zero; it is denoted by O and may have any order. The zero matrix is the additive identity: A + O = O + A = A. Note a product of two non-zero matrices can be the zero matrix, so AB = O does not force A = O or B = O.",
-   "keyMoves": [
-    "Check every entry of the matrix is zero",
-    "Denote it O and infer its order from context",
-    "Use A + O = A as the additive-identity property"
-   ],
-   "misconceptions": [
-    "Thinking AB = O forces one of A, B to be the zero matrix",
-    "Confusing the zero matrix with the identity matrix"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:matrix-definition"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:equality-of-matrices",
-   "slug": "equality-of-matrices",
-   "title": "Test two matrices for equality",
-   "role": "intermediate",
-   "brief": "Two matrices are equal iff they have the same order and equal corresponding elements.",
-   "sec": 3,
-   "quote": "each element of A is equal to the corresponding element of B, that is  $a_{ij} = b_{ij}$  for all *i* and *j*.",
-   "explanation": "Two matrices A = [a_ij] and B = [b_ij] are equal if (i) they are of the same order and (ii) each element of A equals the corresponding element of B, that is a_ij = b_ij for all i and j. This lets you solve for unknown entries: if two matrices are stated equal, equate corresponding entries and solve the resulting equations.",
-   "keyMoves": [
-    "Check the two matrices have the same order",
-    "Equate corresponding entries a_ij = b_ij",
-    "Solve the resulting equations for any unknowns"
-   ],
-   "misconceptions": [
-    "Calling matrices of different orders equal because they share some entries",
-    "Equating entries in the wrong positions"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:order"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:matrix-addition",
-   "slug": "matrix-addition",
-   "title": "Add two matrices of the same order",
-   "role": "intermediate",
-   "brief": "Add matrices entrywise; the operation is defined only for matrices of the same order.",
-   "sec": 4,
-   "quote": "the sum of the two matrices A and B is *defined* as a matrix  $C = [c_{ij}]_{m \\times n}$ , where  $c_{ij} = a_{ij} + b_{ij}$",
-   "explanation": "If A = [a_ij] and B = [b_ij] are two matrices of the same order m x n, their sum is the matrix C = [c_ij] of order m x n with c_ij = a_ij + b_ij - you add corresponding elements. Addition is defined ONLY when the two matrices have the same order. Matrix addition is commutative and associative, with the zero matrix as identity and -A as the additive inverse of A.",
-   "keyMoves": [
-    "Check both matrices have the same order",
-    "Add corresponding entries: c_ij = a_ij + b_ij",
-    "Report the sum, of the same order"
-   ],
-   "misconceptions": [
-    "Trying to add matrices of different orders",
-    "Adding only the diagonal or some entries rather than all corresponding ones"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:order"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:scalar-multiplication",
-   "slug": "scalar-multiplication",
-   "title": "Multiply a matrix by a scalar",
-   "role": "intermediate",
-   "brief": "Multiply a matrix by a scalar k by multiplying every element by k.",
-   "sec": 4,
-   "quote": "kA is another matrix which is obtained by multiplying each element of A by the scalar k.",
-   "explanation": "If A = [a_ij] is a matrix and k is a scalar, then kA is the matrix obtained by multiplying each element of A by k; the (i, j)-th element of kA is k a_ij. The negative of a matrix is -A = (-1)A, and the difference A - B = A + (-1)B is computed entrywise. Scalar multiplication distributes: k(A + B) = kA + kB and (k + l)A = kA + lA.",
-   "keyMoves": [
-    "Multiply every entry of A by the scalar k",
-    "Use -A = (-1)A for the negative",
-    "Compute A - B as A + (-1)B, entrywise"
-   ],
-   "misconceptions": [
-    "Multiplying only the diagonal or first row by k",
-    "Forgetting the difference subtracts corresponding entries"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:matrix-addition"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:matrix-multiplication",
-   "slug": "matrix-multiplication",
-   "title": "Multiply two matrices",
-   "role": "intermediate",
-   "brief": "Multiply A by B when columns of A = rows of B, taking row-by-column dot products.",
-   "sec": 4,
-   "quote": "The *product* of two matrices A and B is *defined* if the number of columns of A is equal to the number of rows of B.",
-   "explanation": "The product AB is defined only if the number of columns of A equals the number of rows of B. If A is m x n and B is n x p, then AB = C is m x p, and the (i, k)-th element c_ik is found by taking the i-th row of A and the k-th column of B, multiplying element-wise and summing: c_ik = sum over j of a_ij b_jk. To get each entry you dot a row of A with a column of B.",
-   "keyMoves": [
-    "Check columns of A equal rows of B before multiplying",
-    "For each (i, k) entry, dot row i of A with column k of B",
-    "Read off the product order as (rows of A) x (columns of B)"
-   ],
-   "misconceptions": [
-    "Multiplying entrywise like addition instead of row-by-column",
-    "Attempting AB when the inner dimensions do not match"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:scalar-multiplication"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:non-commutative-multiplication",
-   "slug": "non-commutative-multiplication",
-   "title": "Recognise that matrix multiplication is not commutative",
-   "role": "intermediate",
-   "brief": "Understand that AB need not equal BA, and AB may be defined while BA is not.",
-   "sec": 4,
-   "quote": "Thus matrix multiplication is not commutative.",
-   "explanation": "Matrix multiplication is not commutative: even when both AB and BA are defined, generally AB is not equal to BA. Moreover, AB may be defined while BA is not (the orders need not match both ways). This does not mean AB is never equal to BA - for instance diagonal matrices of the same order do commute - but you cannot assume commutativity. Matrix multiplication is, however, associative and distributive over addition.",
-   "keyMoves": [
-    "Do not assume AB = BA",
-    "Check separately whether each of AB and BA is even defined",
-    "Use associativity (AB)C = A(BC) and distributivity, which DO hold"
-   ],
-   "misconceptions": [
-    "Assuming AB = BA as for ordinary numbers",
-    "Thinking that if AB is defined then BA must be too"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:matrix-multiplication"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:transpose",
-   "slug": "transpose",
-   "title": "Form the transpose of a matrix",
-   "role": "intermediate",
-   "brief": "Form A' (or A^T) by interchanging the rows and columns of A.",
-   "sec": 5,
-   "quote": "the matrix obtained by interchanging the rows and columns of A is called the transpose of A.",
-   "explanation": "If A = [a_ij] is an m x n matrix, the matrix obtained by interchanging the rows and columns of A is its transpose, written A' or A^T; it has order n x m. The properties are (A')' = A, (kA)' = kA', (A + B)' = A' + B', and (AB)' = B'A' (note the order reverses on a product).",
-   "keyMoves": [
-    "Turn each row of A into the corresponding column of A'",
-    "Swap the order: an m x n matrix transposes to n x m",
-    "Apply (AB)' = B'A' with the factors reversed"
-   ],
-   "misconceptions": [
-    "Writing (AB)' = A'B' instead of B'A'",
-    "Keeping the same order m x n for the transpose"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:matrix-multiplication"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:symmetric-matrix",
-   "slug": "symmetric-matrix",
-   "title": "Recognise a symmetric matrix",
-   "role": "intermediate",
-   "brief": "Identify a symmetric matrix as a square matrix with A' = A.",
-   "sec": 6,
-   "quote": "A square matrix  $A = [a_{ij}]$  is said to be *symmetric* if A' = A",
-   "explanation": "A square matrix A = [a_ij] is symmetric if A' = A, i.e. a_ji = a_ij for all i and j - the matrix equals its own transpose, so it is mirror-symmetric across the main diagonal. For any square matrix A, A + A' is symmetric, and any square matrix can be written as the sum of a symmetric matrix (1/2)(A + A') and a skew-symmetric matrix.",
-   "keyMoves": [
-    "Confirm the matrix is square",
-    "Check a_ij = a_ji for all entries (A' = A)",
-    "Use (1/2)(A + A') to extract the symmetric part of any square matrix"
-   ],
-   "misconceptions": [
-    "Testing symmetry on a non-square matrix",
-    "Confusing symmetric (A' = A) with skew-symmetric (A' = -A)"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:transpose"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:skew-symmetric-matrix",
-   "slug": "skew-symmetric-matrix",
-   "title": "Recognise a skew-symmetric matrix",
-   "role": "intermediate",
-   "brief": "Identify a skew-symmetric matrix as a square matrix with A' = -A and zero diagonal.",
-   "sec": 6,
-   "quote": "A square matrix  $A = [a_{ij}]$  is said to be *skew symmetric* matrix if A' = -A",
-   "explanation": "A square matrix A = [a_ij] is skew-symmetric if A' = -A, i.e. a_ji = -a_ij for all i and j. Putting i = j gives a_ii = -a_ii, so 2 a_ii = 0, meaning all diagonal elements of a skew-symmetric matrix are zero. For any square matrix A, A - A' is skew-symmetric, providing the skew-symmetric part (1/2)(A - A') in the symmetric + skew-symmetric decomposition.",
-   "keyMoves": [
-    "Confirm the matrix is square",
-    "Check a_ji = -a_ij (A' = -A); the diagonal must be all zeros",
-    "Use (1/2)(A - A') to extract the skew-symmetric part of any square matrix"
-   ],
-   "misconceptions": [
-    "Allowing non-zero diagonal entries in a skew-symmetric matrix",
-    "Mixing up the sign condition with symmetry (A' = A)"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:transpose"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch03:invertible-matrix",
-   "slug": "invertible-matrix",
-   "title": "Define an invertible matrix and its inverse",
-   "role": "goal",
-   "brief": "Recognise an invertible square matrix A as one with a square B of the same order satisfying AB = BA = I; B = A-inverse is unique.",
-   "sec": 7,
-   "quote": "If A is a square matrix of order *m*, and if there exists another square matrix B of the same order *m*, such that AB = BA = I, then B is called the *inverse* matrix of A",
-   "explanation": "If A is a square matrix of order m and there exists another square matrix B of the same order with AB = BA = I, then B is the inverse matrix of A, denoted A-inverse, and A is said to be invertible. Only square matrices can have inverses (both products must be defined and equal I). The inverse, when it exists, is unique, and for invertible A and B of the same order (AB)-inverse = B-inverse A-inverse (the order reverses). This is the capstone: it brings together equality, multiplication and the identity matrix into the criterion AB = BA = I.",
-   "keyMoves": [
-    "Require A and B to be square of the same order",
-    "Verify BOTH AB = I and BA = I to confirm B = A-inverse",
-    "Apply uniqueness and (AB)-inverse = B-inverse A-inverse"
-   ],
-   "misconceptions": [
-    "Checking only AB = I and not BA = I",
-    "Expecting a rectangular (non-square) matrix to have an inverse"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch03:matrix-multiplication",
-    "jee:maths:maths-c12-ch03:identity-matrix",
-    "jee:maths:maths-c12-ch03:equality-of-matrices",
-    "jee:maths:maths-c12-ch03:non-commutative-multiplication",
-    "jee:maths:maths-c12-ch03:zero-matrix",
-    "jee:maths:maths-c12-ch03:symmetric-matrix",
-    "jee:maths:maths-c12-ch03:skew-symmetric-matrix"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  }
- ]
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-c12-ch03",
+  "title": "Matrices",
+  "book": "NCERT Class 12 Mathematics Part I",
+  "goal": "jee:maths:maths-c12-ch03:invertible-matrix",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-c12-ch03:matrix-definition",
+      "slug": "matrix-definition",
+      "title": "Define a matrix as a rectangular array",
+      "role": "bedrock",
+      "brief": "Recognise a matrix as an ordered rectangular array of numbers or functions, whose entries are its elements.",
+      "sec": 2,
+      "quote": "A *matrix* is an ordered rectangular array of numbers or functions.",
+      "explanation": "A matrix is an ordered rectangular array of numbers or functions; the numbers or functions are called the elements (or entries) of the matrix. The horizontal lines of elements are the rows and the vertical lines are the columns. Matrices give a compact way to record tabular data - for example the notebooks and pens owned by several people - and are denoted by capital letters.",
+      "keyMoves": [
+        "Lay the data out as a rectangular array enclosed in brackets",
+        "Read off rows (horizontal) and columns (vertical)",
+        "Call each individual entry an element of the matrix"
+      ],
+      "misconceptions": [
+        "Confusing a matrix (an array) with a single number",
+        "Mixing up which direction is a row and which is a column"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers",
+        "jee:maths:maths-ch02:function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:order",
+      "slug": "order",
+      "title": "State the order of a matrix",
+      "role": "bedrock",
+      "brief": "Describe a matrix with m rows and n columns as an m x n matrix, with mn elements.",
+      "sec": 2,
+      "quote": "A matrix having *m* rows and *n* columns is called a matrix of *order*  $m \\times n$",
+      "explanation": "A matrix having m rows and n columns is called a matrix of order m x n (read 'm by n'). The order tells you the shape of the array; the total number of elements equals mn. For example a 3 x 2 matrix has 3 rows, 2 columns and 6 elements. The element a_ij sits in the i-th row and j-th column.",
+      "keyMoves": [
+        "Count the rows m and the columns n",
+        "Write the order as m x n",
+        "Find the number of elements as mn"
+      ],
+      "misconceptions": [
+        "Writing the order as columns x rows instead of rows x columns",
+        "Confusing the order with the number of elements"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:matrix-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:square-matrix",
+      "slug": "square-matrix",
+      "title": "Recognise a square matrix",
+      "role": "bedrock",
+      "brief": "Identify a square matrix as one with equal numbers of rows and columns (m = n).",
+      "sec": 3,
+      "quote": "A matrix in which the number of rows are equal to the number of columns, is said to be a *square matrix*.",
+      "explanation": "A matrix in which the number of rows equals the number of columns is a square matrix; an m x n matrix is square when m = n, and is then called a square matrix of order n. The entries a_11, a_22, ..., a_nn form its diagonal. Square matrices are the only ones that can have an identity, powers, and (sometimes) an inverse.",
+      "keyMoves": [
+        "Check whether the number of rows equals the number of columns",
+        "If m = n, call it a square matrix of order n",
+        "Identify the diagonal entries a_11, a_22, ..., a_nn"
+      ],
+      "misconceptions": [
+        "Calling any rectangular matrix square",
+        "Confusing the diagonal with a whole row or column"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:order",
+        "jee:maths:maths-c12-ch03:matrix-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:diagonal-matrix",
+      "slug": "diagonal-matrix",
+      "title": "Recognise a diagonal matrix",
+      "role": "intermediate",
+      "brief": "Identify a diagonal matrix as a square matrix whose non-diagonal elements are all zero.",
+      "sec": 3,
+      "quote": "is said to be a *diagonal matrix* if all its non diagonal elements are zero",
+      "explanation": "A square matrix B = [b_ij] is a diagonal matrix if all its non-diagonal elements are zero, i.e. b_ij = 0 whenever i is not equal to j. Only the entries on the main diagonal may be non-zero. For example, diag(-1, 2) is a 2 x 2 diagonal matrix. Diagonal matrices of the same order multiply commutatively.",
+      "keyMoves": [
+        "Confirm the matrix is square",
+        "Check every off-diagonal entry is zero",
+        "Allow the diagonal entries to be any values"
+      ],
+      "misconceptions": [
+        "Requiring the diagonal entries to be equal (that is a scalar matrix)",
+        "Calling a non-square matrix diagonal"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:square-matrix",
+        "jee:maths:maths-c12-ch03:matrix-definition",
+        "jee:maths:maths-c12-ch03:order"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:scalar-matrix",
+      "slug": "scalar-matrix",
+      "title": "Recognise a scalar matrix",
+      "role": "intermediate",
+      "brief": "Identify a scalar matrix as a diagonal matrix whose diagonal elements are all equal.",
+      "sec": 3,
+      "quote": "A diagonal matrix is said to be a *scalar matrix* if its diagonal elements are equal",
+      "explanation": "A diagonal matrix is a scalar matrix if its diagonal elements are equal: b_ij = 0 when i is not equal to j, and b_ii = k (a constant) when i = j. So a scalar matrix is a constant times the identity. When k = 1 the scalar matrix becomes the identity matrix; every identity matrix is therefore a scalar matrix.",
+      "keyMoves": [
+        "Confirm the matrix is diagonal",
+        "Check all the diagonal entries are equal to the same constant k",
+        "Recognise it as k times the identity matrix"
+      ],
+      "misconceptions": [
+        "Allowing unequal diagonal entries in a scalar matrix",
+        "Forgetting that the identity is the special scalar matrix with k = 1"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:diagonal-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:identity-matrix",
+      "slug": "identity-matrix",
+      "title": "Recognise the identity matrix",
+      "role": "intermediate",
+      "brief": "Identify the identity matrix as a square matrix with 1s on the diagonal and 0s elsewhere.",
+      "sec": 3,
+      "quote": "A square matrix in which elements in the diagonal are all 1 and rest are all zero is called an *identity matrix*.",
+      "explanation": "A square matrix in which the diagonal elements are all 1 and the rest are all zero is the identity matrix, written I_n (or simply I). Formally a_ij = 1 when i = j and a_ij = 0 when i is not equal to j. For every square matrix A of the same order, IA = AI = A, so I is the multiplicative identity for matrices.",
+      "keyMoves": [
+        "Place 1s along the whole diagonal",
+        "Set every off-diagonal entry to 0",
+        "Use IA = AI = A as the identity property"
+      ],
+      "misconceptions": [
+        "Confusing the identity matrix with the zero matrix",
+        "Forgetting the identity must be square"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:scalar-matrix",
+        "jee:maths:maths-c12-ch03:matrix-multiplication",
+        "jee:maths:maths-c12-ch03:square-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:zero-matrix",
+      "slug": "zero-matrix",
+      "title": "Recognise the zero (null) matrix",
+      "role": "bedrock",
+      "brief": "Identify the zero matrix as one in which all elements are zero.",
+      "sec": 3,
+      "quote": "A matrix is said to be zero matrix or null matrix if all its elements are zero.",
+      "explanation": "A matrix is a zero matrix (or null matrix) if all its elements are zero; it is denoted by O and may have any order. The zero matrix is the additive identity: A + O = O + A = A. Note a product of two non-zero matrices can be the zero matrix, so AB = O does not force A = O or B = O.",
+      "keyMoves": [
+        "Check every entry of the matrix is zero",
+        "Denote it O and infer its order from context",
+        "Use A + O = A as the additive-identity property"
+      ],
+      "misconceptions": [
+        "Thinking AB = O forces one of A, B to be the zero matrix",
+        "Confusing the zero matrix with the identity matrix"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:matrix-definition",
+        "jee:maths:maths-c12-ch03:order"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:equality-of-matrices",
+      "slug": "equality-of-matrices",
+      "title": "Test two matrices for equality",
+      "role": "intermediate",
+      "brief": "Two matrices are equal iff they have the same order and equal corresponding elements.",
+      "sec": 3,
+      "quote": "each element of A is equal to the corresponding element of B, that is  $a_{ij} = b_{ij}$  for all *i* and *j*.",
+      "explanation": "Two matrices A = [a_ij] and B = [b_ij] are equal if (i) they are of the same order and (ii) each element of A equals the corresponding element of B, that is a_ij = b_ij for all i and j. This lets you solve for unknown entries: if two matrices are stated equal, equate corresponding entries and solve the resulting equations.",
+      "keyMoves": [
+        "Check the two matrices have the same order",
+        "Equate corresponding entries a_ij = b_ij",
+        "Solve the resulting equations for any unknowns"
+      ],
+      "misconceptions": [
+        "Calling matrices of different orders equal because they share some entries",
+        "Equating entries in the wrong positions"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:order",
+        "jee:maths:maths-c12-ch03:matrix-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:matrix-addition",
+      "slug": "matrix-addition",
+      "title": "Add two matrices of the same order",
+      "role": "intermediate",
+      "brief": "Add matrices entrywise; the operation is defined only for matrices of the same order.",
+      "sec": 4,
+      "quote": "the sum of the two matrices A and B is *defined* as a matrix  $C = [c_{ij}]_{m \\times n}$ , where  $c_{ij} = a_{ij} + b_{ij}$",
+      "explanation": "If A = [a_ij] and B = [b_ij] are two matrices of the same order m x n, their sum is the matrix C = [c_ij] of order m x n with c_ij = a_ij + b_ij - you add corresponding elements. Addition is defined ONLY when the two matrices have the same order. Matrix addition is commutative and associative, with the zero matrix as identity and -A as the additive inverse of A.",
+      "keyMoves": [
+        "Check both matrices have the same order",
+        "Add corresponding entries: c_ij = a_ij + b_ij",
+        "Report the sum, of the same order"
+      ],
+      "misconceptions": [
+        "Trying to add matrices of different orders",
+        "Adding only the diagonal or some entries rather than all corresponding ones"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:order",
+        "jee:maths:maths-c12-ch03:equality-of-matrices"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:scalar-multiplication",
+      "slug": "scalar-multiplication",
+      "title": "Multiply a matrix by a scalar",
+      "role": "intermediate",
+      "brief": "Multiply a matrix by a scalar k by multiplying every element by k.",
+      "sec": 4,
+      "quote": "kA is another matrix which is obtained by multiplying each element of A by the scalar k.",
+      "explanation": "If A = [a_ij] is a matrix and k is a scalar, then kA is the matrix obtained by multiplying each element of A by k; the (i, j)-th element of kA is k a_ij. The negative of a matrix is -A = (-1)A, and the difference A - B = A + (-1)B is computed entrywise. Scalar multiplication distributes: k(A + B) = kA + kB and (k + l)A = kA + lA.",
+      "keyMoves": [
+        "Multiply every entry of A by the scalar k",
+        "Use -A = (-1)A for the negative",
+        "Compute A - B as A + (-1)B, entrywise"
+      ],
+      "misconceptions": [
+        "Multiplying only the diagonal or first row by k",
+        "Forgetting the difference subtracts corresponding entries"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:matrix-addition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:matrix-multiplication",
+      "slug": "matrix-multiplication",
+      "title": "Multiply two matrices",
+      "role": "intermediate",
+      "brief": "Multiply A by B when columns of A = rows of B, taking row-by-column dot products.",
+      "sec": 4,
+      "quote": "The *product* of two matrices A and B is *defined* if the number of columns of A is equal to the number of rows of B.",
+      "explanation": "The product AB is defined only if the number of columns of A equals the number of rows of B. If A is m x n and B is n x p, then AB = C is m x p, and the (i, k)-th element c_ik is found by taking the i-th row of A and the k-th column of B, multiplying element-wise and summing: c_ik = sum over j of a_ij b_jk. To get each entry you dot a row of A with a column of B.",
+      "keyMoves": [
+        "Check columns of A equal rows of B before multiplying",
+        "For each (i, k) entry, dot row i of A with column k of B",
+        "Read off the product order as (rows of A) x (columns of B)"
+      ],
+      "misconceptions": [
+        "Multiplying entrywise like addition instead of row-by-column",
+        "Attempting AB when the inner dimensions do not match"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:scalar-multiplication",
+        "jee:maths:maths-c12-ch03:matrix-addition",
+        "jee:maths:maths-c12-ch03:order"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:non-commutative-multiplication",
+      "slug": "non-commutative-multiplication",
+      "title": "Recognise that matrix multiplication is not commutative",
+      "role": "intermediate",
+      "brief": "Understand that AB need not equal BA, and AB may be defined while BA is not.",
+      "sec": 4,
+      "quote": "Thus matrix multiplication is not commutative.",
+      "explanation": "Matrix multiplication is not commutative: even when both AB and BA are defined, generally AB is not equal to BA. Moreover, AB may be defined while BA is not (the orders need not match both ways). This does not mean AB is never equal to BA - for instance diagonal matrices of the same order do commute - but you cannot assume commutativity. Matrix multiplication is, however, associative and distributive over addition.",
+      "keyMoves": [
+        "Do not assume AB = BA",
+        "Check separately whether each of AB and BA is even defined",
+        "Use associativity (AB)C = A(BC) and distributivity, which DO hold"
+      ],
+      "misconceptions": [
+        "Assuming AB = BA as for ordinary numbers",
+        "Thinking that if AB is defined then BA must be too"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:matrix-multiplication"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:transpose",
+      "slug": "transpose",
+      "title": "Form the transpose of a matrix",
+      "role": "intermediate",
+      "brief": "Form A' (or A^T) by interchanging the rows and columns of A.",
+      "sec": 5,
+      "quote": "the matrix obtained by interchanging the rows and columns of A is called the transpose of A.",
+      "explanation": "If A = [a_ij] is an m x n matrix, the matrix obtained by interchanging the rows and columns of A is its transpose, written A' or A^T; it has order n x m. The properties are (A')' = A, (kA)' = kA', (A + B)' = A' + B', and (AB)' = B'A' (note the order reverses on a product).",
+      "keyMoves": [
+        "Turn each row of A into the corresponding column of A'",
+        "Swap the order: an m x n matrix transposes to n x m",
+        "Apply (AB)' = B'A' with the factors reversed"
+      ],
+      "misconceptions": [
+        "Writing (AB)' = A'B' instead of B'A'",
+        "Keeping the same order m x n for the transpose"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:matrix-multiplication",
+        "jee:maths:maths-c12-ch03:matrix-definition",
+        "jee:maths:maths-c12-ch03:order"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:symmetric-matrix",
+      "slug": "symmetric-matrix",
+      "title": "Recognise a symmetric matrix",
+      "role": "intermediate",
+      "brief": "Identify a symmetric matrix as a square matrix with A' = A.",
+      "sec": 6,
+      "quote": "A square matrix  $A = [a_{ij}]$  is said to be *symmetric* if A' = A",
+      "explanation": "A square matrix A = [a_ij] is symmetric if A' = A, i.e. a_ji = a_ij for all i and j - the matrix equals its own transpose, so it is mirror-symmetric across the main diagonal. For any square matrix A, A + A' is symmetric, and any square matrix can be written as the sum of a symmetric matrix (1/2)(A + A') and a skew-symmetric matrix.",
+      "keyMoves": [
+        "Confirm the matrix is square",
+        "Check a_ij = a_ji for all entries (A' = A)",
+        "Use (1/2)(A + A') to extract the symmetric part of any square matrix"
+      ],
+      "misconceptions": [
+        "Testing symmetry on a non-square matrix",
+        "Confusing symmetric (A' = A) with skew-symmetric (A' = -A)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:transpose",
+        "jee:maths:maths-c12-ch03:square-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:skew-symmetric-matrix",
+      "slug": "skew-symmetric-matrix",
+      "title": "Recognise a skew-symmetric matrix",
+      "role": "intermediate",
+      "brief": "Identify a skew-symmetric matrix as a square matrix with A' = -A and zero diagonal.",
+      "sec": 6,
+      "quote": "A square matrix  $A = [a_{ij}]$  is said to be *skew symmetric* matrix if A' = -A",
+      "explanation": "A square matrix A = [a_ij] is skew-symmetric if A' = -A, i.e. a_ji = -a_ij for all i and j. Putting i = j gives a_ii = -a_ii, so 2 a_ii = 0, meaning all diagonal elements of a skew-symmetric matrix are zero. For any square matrix A, A - A' is skew-symmetric, providing the skew-symmetric part (1/2)(A - A') in the symmetric + skew-symmetric decomposition.",
+      "keyMoves": [
+        "Confirm the matrix is square",
+        "Check a_ji = -a_ij (A' = -A); the diagonal must be all zeros",
+        "Use (1/2)(A - A') to extract the skew-symmetric part of any square matrix"
+      ],
+      "misconceptions": [
+        "Allowing non-zero diagonal entries in a skew-symmetric matrix",
+        "Mixing up the sign condition with symmetry (A' = A)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:transpose",
+        "jee:maths:maths-c12-ch03:square-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch03:invertible-matrix",
+      "slug": "invertible-matrix",
+      "title": "Define an invertible matrix and its inverse",
+      "role": "goal",
+      "brief": "Recognise an invertible square matrix A as one with a square B of the same order satisfying AB = BA = I; B = A-inverse is unique.",
+      "sec": 7,
+      "quote": "If A is a square matrix of order *m*, and if there exists another square matrix B of the same order *m*, such that AB = BA = I, then B is called the *inverse* matrix of A",
+      "explanation": "If A is a square matrix of order m and there exists another square matrix B of the same order with AB = BA = I, then B is the inverse matrix of A, denoted A-inverse, and A is said to be invertible. Only square matrices can have inverses (both products must be defined and equal I). The inverse, when it exists, is unique, and for invertible A and B of the same order (AB)-inverse = B-inverse A-inverse (the order reverses). This is the capstone: it brings together equality, multiplication and the identity matrix into the criterion AB = BA = I.",
+      "keyMoves": [
+        "Require A and B to be square of the same order",
+        "Verify BOTH AB = I and BA = I to confirm B = A-inverse",
+        "Apply uniqueness and (AB)-inverse = B-inverse A-inverse"
+      ],
+      "misconceptions": [
+        "Checking only AB = I and not BA = I",
+        "Expecting a rectangular (non-square) matrix to have an inverse"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch03:matrix-multiplication",
+        "jee:maths:maths-c12-ch03:identity-matrix",
+        "jee:maths:maths-c12-ch03:equality-of-matrices",
+        "jee:maths:maths-c12-ch03:non-commutative-multiplication",
+        "jee:maths:maths-c12-ch03:zero-matrix",
+        "jee:maths:maths-c12-ch03:symmetric-matrix",
+        "jee:maths:maths-c12-ch03:skew-symmetric-matrix",
+        "jee:maths:maths-c12-ch01:invertible-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
 }

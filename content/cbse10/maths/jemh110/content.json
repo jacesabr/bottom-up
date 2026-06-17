@@ -413,8 +413,7 @@
       "prereqs": [
         "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
         "cbse10:maths:jemh110:use-perpendicular-bisects-chord",
-        "cbse10:maths:jemh110:solve-right-triangle-pythagoras",
-        "cbse10:maths:jemh106:apply-aaa-aa-criterion"
+        "cbse10:maths:jemh110:solve-right-triangle-pythagoras"
       ],
       "sameConcept": [],
       "teachingInsights": []

@@ -25,7 +25,10 @@
         "Forgetting that reversing the line direction reverses the signs",
         "Ignoring the constraint l^2 + m^2 + n^2 = 1"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:direction-cosines",
+        "cbse12:mathematics:mathematics-ch10:magnitude"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -48,7 +51,8 @@
         "Confusing direction ratios with direction cosines (which are normalised)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch11:direction-cosines"
+        "cbse12:mathematics:mathematics-ch11:direction-cosines",
+        "cbse12:mathematics:mathematics-ch10:component-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -96,7 +100,10 @@
         "Using a position vector of the wrong point for a"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch11:direction-ratios"
+        "cbse12:mathematics:mathematics-ch10:position-vector",
+        "cbse12:mathematics:mathematics-ch11:direction-ratios",
+        "cbse12:mathematics:mathematics-ch10:vector-definition",
+        "cbse12:mathematics:mathematics-ch10:component-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -145,6 +152,7 @@
         "Forgetting the absolute value, giving an obtuse angle"
       ],
       "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:scalar-product",
         "cbse12:mathematics:mathematics-ch11:vector-equation-line"
       ],
       "sameConcept": [],
@@ -169,7 +177,9 @@
         "Testing the points instead of the direction ratios"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch11:angle-between-lines"
+        "cbse12:mathematics:mathematics-ch10:vector-product",
+        "cbse12:mathematics:mathematics-ch11:angle-between-lines",
+        "cbse12:mathematics:mathematics-ch10:scalar-product"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -193,6 +203,7 @@
         "Thinking any two non-parallel lines must intersect (true in 2D, not 3D)"
       ],
       "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:vector-product",
         "cbse12:mathematics:mathematics-ch11:perpendicular-parallel-lines"
       ],
       "sameConcept": [],
@@ -241,6 +252,7 @@
         "Forgetting to take the absolute value / dividing by the wrong magnitude"
       ],
       "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:vector-product",
         "cbse12:mathematics:mathematics-ch11:shortest-distance-definition",
         "cbse12:mathematics:mathematics-ch11:cartesian-equation-line"
       ],

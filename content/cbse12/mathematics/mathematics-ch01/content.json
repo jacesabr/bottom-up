@@ -71,7 +71,8 @@
         "Forgetting that the universal relation includes pairs (a, a) as well"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch01:relation-definition"
+        "cbse12:mathematics:mathematics-ch01:relation-definition",
+        "cbse12:mathematics:mathematics-ch01:empty-relation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +120,8 @@
         "Confusing symmetry (reverse the pair) with reflexivity (self-pair)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch01:relation-definition"
+        "cbse12:mathematics:mathematics-ch01:relation-definition",
+        "cbse12:mathematics:mathematics-ch01:reflexive-relation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -143,7 +145,9 @@
         "Assuming a relation that is reflexive and symmetric is automatically transitive"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch01:relation-definition"
+        "cbse12:mathematics:mathematics-ch01:relation-definition",
+        "cbse12:mathematics:mathematics-ch01:reflexive-relation",
+        "cbse12:mathematics:mathematics-ch01:symmetric-relation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -193,7 +197,11 @@
         "Believing [0] and [1] are equal in the mod-2 example; they are distinct classes"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch01:equivalence-relation"
+        "cbse12:mathematics:mathematics-ch01:equivalence-relation",
+        "cbse12:mathematics:mathematics-ch01:relation-definition",
+        "cbse12:mathematics:mathematics-ch01:reflexive-relation",
+        "cbse12:mathematics:mathematics-ch01:symmetric-relation",
+        "cbse12:mathematics:mathematics-ch01:transitive-relation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -241,7 +249,8 @@
         "Concluding onto from a few values without covering ALL of Y"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch01:relation-definition"
+        "cbse12:mathematics:mathematics-ch01:relation-definition",
+        "cbse12:mathematics:mathematics-ch01:one-one-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -315,7 +324,8 @@
         "Believing every function has an inverse"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch01:composition-of-functions"
+        "cbse12:mathematics:mathematics-ch01:composition-of-functions",
+        "cbse12:mathematics:mathematics-ch01:bijective-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -343,7 +353,9 @@
         "cbse12:mathematics:mathematics-ch01:invertible-function",
         "cbse12:mathematics:mathematics-ch01:empty-relation",
         "cbse12:mathematics:mathematics-ch01:universal-relation",
-        "cbse12:mathematics:mathematics-ch01:equivalence-class"
+        "cbse12:mathematics:mathematics-ch01:equivalence-class",
+        "cbse12:mathematics:mathematics-ch01:one-one-function",
+        "cbse12:mathematics:mathematics-ch01:onto-function"
       ],
       "sameConcept": [],
       "teachingInsights": []

@@ -136,7 +136,9 @@
         "Assuming any two-way outcome (starts/doesn't, makes/misses) is 50-50",
         "Treating 'red or blue' as equally likely when counts differ"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse10:maths:jemh114:probability-range-bounds"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },

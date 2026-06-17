@@ -24,7 +24,10 @@
         "Treating the average velocity over a finite interval as the velocity at a single instant",
         "Thinking only one side (left or right) of the instant matters when closing in"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-as-tan-inclination",
+        "jee:maths:maths-ch02:real-function"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -46,7 +49,10 @@
         "Assuming lim x->a f(x) must equal f(a)",
         "Concluding no limit exists merely because f(a) is undefined"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch08:find-the-general-term"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -93,7 +99,8 @@
         "Using the algebra rules when one of the individual limits does not exist"
       ],
       "prereqs": [
-        "jee:maths:maths-ch12:intuitive-limit"
+        "jee:maths:maths-ch12:intuitive-limit",
+        "jee:maths:maths-ch02:algebra-of-functions"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -117,7 +124,9 @@
         "Mishandling negative or zero powers when substituting"
       ],
       "prereqs": [
-        "jee:maths:maths-ch12:algebra-of-limits"
+        "jee:maths:maths-ch12:algebra-of-limits",
+        "jee:maths:maths-ch12:intuitive-limit",
+        "jee:maths:maths-ch02:polynomial-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -141,7 +150,8 @@
         "Cancelling a factor without noting it is the cause of the 0/0, or treating non-zero/0 as 0/0"
       ],
       "prereqs": [
-        "jee:maths:maths-ch12:limits-of-polynomials"
+        "jee:maths:maths-ch12:limits-of-polynomials",
+        "jee:maths:maths-ch02:rational-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -165,7 +175,9 @@
         "Using the formula when a is not positive for non-integer n"
       ],
       "prereqs": [
-        "jee:maths:maths-ch12:limits-of-rational-functions"
+        "jee:maths:maths-ch12:limits-of-rational-functions",
+        "jee:maths:maths-ch07:state-binomial-theorem",
+        "jee:maths:maths-ch12:intuitive-limit"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -189,7 +201,9 @@
         "Forgetting the inequality must hold throughout a neighbourhood of the point"
       ],
       "prereqs": [
-        "jee:maths:maths-ch12:algebra-of-limits"
+        "jee:maths:maths-ch12:algebra-of-limits",
+        "jee:maths:maths-ch12:intuitive-limit",
+        "jee:maths:maths-ch05:apply-rules-for-solving"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -213,7 +227,9 @@
         "Forgetting to match the argument scaling, e.g. treating (sin 4x)/x as 1 instead of 4"
       ],
       "prereqs": [
-        "jee:maths:maths-ch12:sandwich-theorem"
+        "jee:maths:maths-ch12:sandwich-theorem",
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:pythagorean-identity"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -238,7 +254,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch12:one-sided-limits-and-existence",
-        "jee:maths:maths-ch12:limits-of-rational-functions"
+        "jee:maths:maths-ch12:limits-of-rational-functions",
+        "jee:maths:maths-ch12:intuitive-limit",
+        "jee:maths:maths-ch12:instantaneous-rate-as-slope-of-tangent",
+        "jee:maths:maths-ch02:real-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -263,7 +282,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch12:derivative-first-principle",
-        "jee:maths:maths-ch12:instantaneous-rate-as-slope-of-tangent"
+        "jee:maths:maths-ch12:instantaneous-rate-as-slope-of-tangent",
+        "jee:maths:maths-ch09:slope-as-tan-inclination"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -287,7 +307,8 @@
         "Getting the sign or order wrong in the quotient rule numerator (u'v - uv')"
       ],
       "prereqs": [
-        "jee:maths:maths-ch12:derivative-first-principle"
+        "jee:maths:maths-ch12:derivative-first-principle",
+        "jee:maths:maths-ch02:algebra-of-functions"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -312,7 +333,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch12:derivative-first-principle",
-        "jee:maths:maths-ch12:algebra-of-derivatives"
+        "jee:maths:maths-ch12:algebra-of-derivatives",
+        "jee:maths:maths-ch07:state-binomial-theorem"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -337,7 +359,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch12:power-rule",
-        "jee:maths:maths-ch12:limits-of-polynomials"
+        "jee:maths:maths-ch12:limits-of-polynomials",
+        "jee:maths:maths-ch02:polynomial-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -363,7 +386,10 @@
       "prereqs": [
         "jee:maths:maths-ch12:trigonometric-limits",
         "jee:maths:maths-ch12:derivative-first-principle",
-        "jee:maths:maths-ch12:algebra-of-derivatives"
+        "jee:maths:maths-ch12:algebra-of-derivatives",
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:sine-sum-difference"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -390,7 +416,9 @@
         "jee:maths:maths-ch12:derivative-as-slope-of-tangent",
         "jee:maths:maths-ch12:derivative-of-polynomials",
         "jee:maths:maths-ch12:derivatives-of-trig-functions",
-        "jee:maths:maths-ch12:standard-limit-xn-minus-an"
+        "jee:maths:maths-ch12:standard-limit-xn-minus-an",
+        "jee:maths:maths-ch12:derivative-first-principle",
+        "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities"
       ],
       "sameConcept": [],
       "teachingInsights": []

@@ -1,276 +1,293 @@
 {
- "exam": "jee",
- "subject": "maths",
- "chapter": "maths-c12-ch09",
- "title": "Differential Equations",
- "book": "NCERT Class 12 Mathematics Part I",
- "goal": "jee:maths:maths-c12-ch09:solve-linear-de",
- "nodes": [
-  {
-   "id": "jee:maths:maths-c12-ch09:differential-equation",
-   "slug": "differential-equation",
-   "title": "Define a differential equation",
-   "role": "bedrock",
-   "brief": "Recognise a differential equation as one involving derivatives of a dependent variable.",
-   "sec": 2,
-   "quote": "an equation involving derivative (derivatives) of the dependent variable with respect to independent variable (variables) is called a differential equation.",
-   "explanation": "An equation involving the derivative (or derivatives) of the dependent variable with respect to the independent variable (or variables) is called a differential equation. If it involves derivatives with respect to only one independent variable it is an ordinary differential equation. So unlike an algebraic equation, a differential equation links a function to its rates of change.",
-   "keyMoves": [
-    "Check the equation contains at least one derivative of the dependent variable",
-    "Identify the dependent and independent variables",
-    "Classify it as ordinary if there is a single independent variable"
-   ],
-   "misconceptions": [
-    "Calling an equation with no derivatives a differential equation",
-    "Confusing the dependent and independent variables"
-   ],
-   "prereqs": [],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:order",
-   "slug": "order",
-   "title": "Find the order of a differential equation",
-   "role": "bedrock",
-   "brief": "Define the order as the order of the highest-order derivative present.",
-   "sec": 2,
-   "quote": "Order of a differential equation is defined as the order of the highest order derivative",
-   "explanation": "The order of a differential equation is defined as the order of the highest order derivative of the dependent variable involved in it. For example, an equation whose highest derivative is y' has order 1, one with y'' has order 2, and so on. The order is read off directly from the highest derivative, regardless of any powers.",
-   "keyMoves": [
-    "Identify every derivative appearing in the equation",
-    "Pick the one of highest order",
-    "Report that order as the order of the equation"
-   ],
-   "misconceptions": [
-    "Confusing order (highest derivative) with degree (highest power)",
-    "Counting the power of a derivative as the order"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:differential-equation"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:degree",
-   "slug": "degree",
-   "title": "Find the degree of a differential equation",
-   "role": "intermediate",
-   "brief": "Define the degree (when it exists) as the highest power of the highest-order derivative, in polynomial form.",
-   "sec": 2,
-   "quote": "we mean the highest power (positive integral index) of the highest order derivative involved in the given differential equation.",
-   "explanation": "The degree is defined only when the differential equation is a polynomial equation in the derivatives y', y'', etc. When so, the degree is the highest power (positive integral index) of the highest order derivative involved. If the equation is not a polynomial in the derivatives (e.g. a derivative appears inside a sine or a fractional power that cannot be cleared), the degree is not defined.",
-   "keyMoves": [
-    "Check the equation is a polynomial in the derivatives",
-    "Locate the highest order derivative",
-    "Read its highest power as the degree (else degree is not defined)"
-   ],
-   "misconceptions": [
-    "Defining a degree for a non-polynomial-in-derivatives equation",
-    "Taking the power of a lower-order derivative as the degree"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:order"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:general-solution",
-   "slug": "general-solution",
-   "title": "Recognise the general solution",
-   "role": "intermediate",
-   "brief": "Identify the general solution (primitive) as the solution containing arbitrary constants.",
-   "sec": 3,
-   "quote": "The solution which contains arbitrary constants is called the *general solution* (*primitive*) of the differential equation.",
-   "explanation": "A solution of a differential equation is a function whose substitution satisfies the equation. The solution which contains arbitrary constants is called the general solution (or primitive) of the differential equation. The number of independent arbitrary constants equals the order of the equation (one for first order, two for second order, etc.). It represents a whole family of solution curves.",
-   "keyMoves": [
-    "Find a function that satisfies the equation",
-    "Keep the arbitrary constants in the answer",
-    "Match the number of constants to the order of the equation"
-   ],
-   "misconceptions": [
-    "Dropping the arbitrary constants from the general solution",
-    "Using fewer constants than the order of the equation"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:order"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:particular-solution",
-   "slug": "particular-solution",
-   "title": "Find a particular solution from conditions",
-   "role": "intermediate",
-   "brief": "Obtain a particular solution by fixing the arbitrary constants using given conditions.",
-   "sec": 3,
-   "quote": "The solution free from arbitrary constants i.e., the solution obtained from the general solution by giving particular values to the arbitrary constants is called a *particular solution* of the differential equation.",
-   "explanation": "The solution free from arbitrary constants - obtained from the general solution by giving particular values to the arbitrary constants - is called a particular solution of the differential equation. You use the given initial or boundary conditions to solve for the constants, then substitute them back into the general solution. The particular solution is one specific curve from the family.",
-   "keyMoves": [
-    "Start from the general solution with its constants",
-    "Substitute the given conditions to solve for the constants",
-    "Put the constant values back to get the particular solution"
-   ],
-   "misconceptions": [
-    "Leaving arbitrary constants in a particular solution",
-    "Applying conditions before finding the general solution"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:general-solution"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:variables-separable",
-   "slug": "variables-separable",
-   "title": "Solve a variables-separable equation",
-   "role": "intermediate",
-   "brief": "When dy/dx = g(x)h(y), separate the variables and integrate both sides.",
-   "sec": 4,
-   "quote": "the differential equation (1) is said to be of variable separable type.",
-   "explanation": "If dy/dx can be written as a product g(x)h(y) - a function of x times a function of y - then the differential equation is said to be of variable separable type. To solve it, rearrange to dy/h(y) = g(x) dx (separating the variables onto opposite sides) and integrate both sides. The arbitrary constant from integration gives the general solution.",
-   "keyMoves": [
-    "Check dy/dx factors as g(x) times h(y)",
-    "Separate: move all y-terms with dy to one side, x-terms with dx to the other",
-    "Integrate both sides and add the constant"
-   ],
-   "misconceptions": [
-    "Trying to separate when the right side does not factor",
-    "Forgetting the constant of integration"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:general-solution"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:homogeneous-function",
-   "slug": "homogeneous-function",
-   "title": "Recognise a homogeneous function",
-   "role": "intermediate",
-   "brief": "Identify a homogeneous function of degree n by F(kx, ky) = k^n F(x, y).",
-   "sec": 4,
-   "quote": "A function F(x, y) is said to be homogeneous function of degree n if",
-   "explanation": "A function F(x, y) is said to be a homogeneous function of degree n if multiplying both inputs by a factor scales the output by that factor to the power n - equivalently F(x, y) can be written as x^n times a function of (y/x). For example x^2 + xy is homogeneous of degree 2. Recognising the degree (especially degree zero) is what tells you a differential equation is homogeneous.",
-   "keyMoves": [
-    "Replace x, y by kx, ky and factor out a power of k",
-    "The power of k is the degree n",
-    "Equivalently, write F as x^n times a function of y/x"
-   ],
-   "misconceptions": [
-    "Calling a non-homogeneous function homogeneous",
-    "Getting the degree wrong by miscounting the power of k"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:differential-equation"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:homogeneous-differential-equation",
-   "slug": "homogeneous-differential-equation",
-   "title": "Solve a homogeneous differential equation",
-   "role": "intermediate",
-   "brief": "Recognise dy/dx = F(x,y) homogeneous when F is degree zero; solve by the substitution y = vx.",
-   "sec": 4,
-   "quote": "A differential equation of the form  $\\frac{dy}{dx} = F(x, y)$  is said to be *homogenous* if F(x, y) is a homogenous function of degree zero.",
-   "explanation": "A differential equation of the form dy/dx = F(x, y) is said to be homogeneous if F(x, y) is a homogeneous function of degree zero (so F can be written as a function of y/x). To solve, substitute y = vx, so dy/dx = v + x dv/dx; the equation becomes variables-separable in v and x. After integrating you replace v by y/x to get the general solution. (If the equation is dx/dy = F with F degree zero, substitute x = vy instead.)",
-   "keyMoves": [
-    "Check F(x, y) is homogeneous of degree zero (a function of y/x)",
-    "Substitute y = vx, dy/dx = v + x dv/dx",
-    "Separate variables in v and x, integrate, then put v = y/x"
-   ],
-   "misconceptions": [
-    "Applying the y = vx substitution when F is not degree zero",
-    "Forgetting to back-substitute v = y/x at the end"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:homogeneous-function",
-    "jee:maths:maths-c12-ch09:variables-separable"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:linear-differential-equation",
-   "slug": "linear-differential-equation",
-   "title": "Recognise a first order linear differential equation",
-   "role": "intermediate",
-   "brief": "Identify the standard form dy/dx + Py = Q with P, Q functions of x only.",
-   "sec": 4,
-   "quote": "where, P and Q are constants or functions of x only, is known as a first order linear differential equation.",
-   "explanation": "A differential equation of the form dy/dx + Py = Q, where P and Q are constants or functions of x only, is known as a first order linear differential equation. The dependent variable y and its derivative appear to the first power and are not multiplied together. Putting an equation into this standard form (identifying P and Q) is the first step before applying the integrating-factor method. A companion form is dx/dy + P1 x = Q1 with P1, Q1 functions of y only.",
-   "keyMoves": [
-    "Rearrange the equation into the form dy/dx + Py = Q",
-    "Read off P and Q as functions of x only",
-    "Recognise the companion form dx/dy + P1 x = Q1 when needed"
-   ],
-   "misconceptions": [
-    "Calling an equation linear when y and y' are multiplied together",
-    "Misidentifying P or Q after failing to put the equation in standard form"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:differential-equation"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:integrating-factor",
-   "slug": "integrating-factor",
-   "title": "Compute the integrating factor",
-   "role": "intermediate",
-   "brief": "Form the integrating factor I.F. = e^(integral of P dx) for a linear equation.",
-   "sec": 4,
-   "quote": "This function  $g(x) = e^{\\int P dx}$  is called *Integrating Factor* (I.F.) of the given differential equation.",
-   "explanation": "For a first order linear equation dy/dx + Py = Q, multiplying through by g(x) = e^(integral of P dx) turns the left-hand side into the derivative of a product. This function g(x) = e^(integral of P dx) is called the Integrating Factor (I.F.) of the differential equation. Computing the I.F. is the key step that makes a linear equation directly integrable.",
-   "keyMoves": [
-    "Identify P from the standard form dy/dx + Py = Q",
-    "Compute the integral of P dx",
-    "Form I.F. = e^(integral of P dx)"
-   ],
-   "misconceptions": [
-    "Using Q instead of P in the integrating factor",
-    "Forgetting the exponential in I.F. = e^(integral of P dx)"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:linear-differential-equation"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch09:solve-linear-de",
-   "slug": "solve-linear-de",
-   "title": "Solve a first order linear differential equation",
-   "role": "goal",
-   "brief": "Apply the standard steps: write standard form, find the I.F., then y(I.F.) = integral of (Q x I.F.) dx + C.",
-   "sec": 4,
-   "quote": "Steps involved to solve first order linear differential equation:",
-   "explanation": "Steps involved to solve a first order linear differential equation: (i) write it in the standard form dy/dx + Py = Q and identify P and Q; (ii) find the Integrating Factor I.F. = e^(integral of P dx); (iii) write the solution as y(I.F.) = integral of (Q times I.F.) dx + C. Applying initial conditions then gives a particular solution. (For the form dx/dy + P1 x = Q1 the roles of x and y swap.) This capstone combines the linear-form recognition, the integrating factor, and integration into the full solution method.",
-   "keyMoves": [
-    "Put the equation in standard form and read off P and Q",
-    "Compute the integrating factor I.F. = e^(integral of P dx)",
-    "Write y(I.F.) = integral of (Q x I.F.) dx + C and solve"
-   ],
-   "misconceptions": [
-    "Forgetting to multiply Q by the I.F. inside the integral",
-    "Skipping the standard-form step and misidentifying P, Q"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch09:integrating-factor",
-    "jee:maths:maths-c12-ch09:homogeneous-differential-equation",
-    "jee:maths:maths-c12-ch09:particular-solution",
-    "jee:maths:maths-c12-ch09:degree"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  }
- ]
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-c12-ch09",
+  "title": "Differential Equations",
+  "book": "NCERT Class 12 Mathematics Part I",
+  "goal": "jee:maths:maths-c12-ch09:solve-linear-de",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-c12-ch09:differential-equation",
+      "slug": "differential-equation",
+      "title": "Define a differential equation",
+      "role": "bedrock",
+      "brief": "Recognise a differential equation as one involving derivatives of a dependent variable.",
+      "sec": 2,
+      "quote": "an equation involving derivative (derivatives) of the dependent variable with respect to independent variable (variables) is called a differential equation.",
+      "explanation": "An equation involving the derivative (or derivatives) of the dependent variable with respect to the independent variable (or variables) is called a differential equation. If it involves derivatives with respect to only one independent variable it is an ordinary differential equation. So unlike an algebraic equation, a differential equation links a function to its rates of change.",
+      "keyMoves": [
+        "Check the equation contains at least one derivative of the dependent variable",
+        "Identify the dependent and independent variables",
+        "Classify it as ordinary if there is a single independent variable"
+      ],
+      "misconceptions": [
+        "Calling an equation with no derivatives a differential equation",
+        "Confusing the dependent and independent variables"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:derivative-definition",
+        "jee:maths:maths-c12-ch07:antiderivative"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:order",
+      "slug": "order",
+      "title": "Find the order of a differential equation",
+      "role": "bedrock",
+      "brief": "Define the order as the order of the highest-order derivative present.",
+      "sec": 2,
+      "quote": "Order of a differential equation is defined as the order of the highest order derivative",
+      "explanation": "The order of a differential equation is defined as the order of the highest order derivative of the dependent variable involved in it. For example, an equation whose highest derivative is y' has order 1, one with y'' has order 2, and so on. The order is read off directly from the highest derivative, regardless of any powers.",
+      "keyMoves": [
+        "Identify every derivative appearing in the equation",
+        "Pick the one of highest order",
+        "Report that order as the order of the equation"
+      ],
+      "misconceptions": [
+        "Confusing order (highest derivative) with degree (highest power)",
+        "Counting the power of a derivative as the order"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:differential-equation",
+        "jee:maths:maths-c12-ch05:second-order-derivative"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:degree",
+      "slug": "degree",
+      "title": "Find the degree of a differential equation",
+      "role": "intermediate",
+      "brief": "Define the degree (when it exists) as the highest power of the highest-order derivative, in polynomial form.",
+      "sec": 2,
+      "quote": "we mean the highest power (positive integral index) of the highest order derivative involved in the given differential equation.",
+      "explanation": "The degree is defined only when the differential equation is a polynomial equation in the derivatives y', y'', etc. When so, the degree is the highest power (positive integral index) of the highest order derivative involved. If the equation is not a polynomial in the derivatives (e.g. a derivative appears inside a sine or a fractional power that cannot be cleared), the degree is not defined.",
+      "keyMoves": [
+        "Check the equation is a polynomial in the derivatives",
+        "Locate the highest order derivative",
+        "Read its highest power as the degree (else degree is not defined)"
+      ],
+      "misconceptions": [
+        "Defining a degree for a non-polynomial-in-derivatives equation",
+        "Taking the power of a lower-order derivative as the degree"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:order",
+        "jee:maths:maths-ch02:polynomial-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:general-solution",
+      "slug": "general-solution",
+      "title": "Recognise the general solution",
+      "role": "intermediate",
+      "brief": "Identify the general solution (primitive) as the solution containing arbitrary constants.",
+      "sec": 3,
+      "quote": "The solution which contains arbitrary constants is called the *general solution* (*primitive*) of the differential equation.",
+      "explanation": "A solution of a differential equation is a function whose substitution satisfies the equation. The solution which contains arbitrary constants is called the general solution (or primitive) of the differential equation. The number of independent arbitrary constants equals the order of the equation (one for first order, two for second order, etc.). It represents a whole family of solution curves.",
+      "keyMoves": [
+        "Find a function that satisfies the equation",
+        "Keep the arbitrary constants in the answer",
+        "Match the number of constants to the order of the equation"
+      ],
+      "misconceptions": [
+        "Dropping the arbitrary constants from the general solution",
+        "Using fewer constants than the order of the equation"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:order",
+        "jee:maths:maths-c12-ch09:differential-equation",
+        "jee:maths:maths-c12-ch07:indefinite-integral"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:particular-solution",
+      "slug": "particular-solution",
+      "title": "Find a particular solution from conditions",
+      "role": "intermediate",
+      "brief": "Obtain a particular solution by fixing the arbitrary constants using given conditions.",
+      "sec": 3,
+      "quote": "The solution free from arbitrary constants i.e., the solution obtained from the general solution by giving particular values to the arbitrary constants is called a *particular solution* of the differential equation.",
+      "explanation": "The solution free from arbitrary constants - obtained from the general solution by giving particular values to the arbitrary constants - is called a particular solution of the differential equation. You use the given initial or boundary conditions to solve for the constants, then substitute them back into the general solution. The particular solution is one specific curve from the family.",
+      "keyMoves": [
+        "Start from the general solution with its constants",
+        "Substitute the given conditions to solve for the constants",
+        "Put the constant values back to get the particular solution"
+      ],
+      "misconceptions": [
+        "Leaving arbitrary constants in a particular solution",
+        "Applying conditions before finding the general solution"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:general-solution",
+        "jee:maths:maths-c12-ch07:definite-integral"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:variables-separable",
+      "slug": "variables-separable",
+      "title": "Solve a variables-separable equation",
+      "role": "intermediate",
+      "brief": "When dy/dx = g(x)h(y), separate the variables and integrate both sides.",
+      "sec": 4,
+      "quote": "the differential equation (1) is said to be of variable separable type.",
+      "explanation": "If dy/dx can be written as a product g(x)h(y) - a function of x times a function of y - then the differential equation is said to be of variable separable type. To solve it, rearrange to dy/h(y) = g(x) dx (separating the variables onto opposite sides) and integrate both sides. The arbitrary constant from integration gives the general solution.",
+      "keyMoves": [
+        "Check dy/dx factors as g(x) times h(y)",
+        "Separate: move all y-terms with dy to one side, x-terms with dx to the other",
+        "Integrate both sides and add the constant"
+      ],
+      "misconceptions": [
+        "Trying to separate when the right side does not factor",
+        "Forgetting the constant of integration"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:general-solution",
+        "jee:maths:maths-c12-ch09:differential-equation",
+        "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:homogeneous-function",
+      "slug": "homogeneous-function",
+      "title": "Recognise a homogeneous function",
+      "role": "intermediate",
+      "brief": "Identify a homogeneous function of degree n by F(kx, ky) = k^n F(x, y).",
+      "sec": 4,
+      "quote": "A function F(x, y) is said to be homogeneous function of degree n if",
+      "explanation": "A function F(x, y) is said to be a homogeneous function of degree n if multiplying both inputs by a factor scales the output by that factor to the power n - equivalently F(x, y) can be written as x^n times a function of (y/x). For example x^2 + xy is homogeneous of degree 2. Recognising the degree (especially degree zero) is what tells you a differential equation is homogeneous.",
+      "keyMoves": [
+        "Replace x, y by kx, ky and factor out a power of k",
+        "The power of k is the degree n",
+        "Equivalently, write F as x^n times a function of y/x"
+      ],
+      "misconceptions": [
+        "Calling a non-homogeneous function homogeneous",
+        "Getting the degree wrong by miscounting the power of k"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:differential-equation",
+        "jee:maths:maths-ch02:real-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:homogeneous-differential-equation",
+      "slug": "homogeneous-differential-equation",
+      "title": "Solve a homogeneous differential equation",
+      "role": "intermediate",
+      "brief": "Recognise dy/dx = F(x,y) homogeneous when F is degree zero; solve by the substitution y = vx.",
+      "sec": 4,
+      "quote": "A differential equation of the form  $\\frac{dy}{dx} = F(x, y)$  is said to be *homogenous* if F(x, y) is a homogenous function of degree zero.",
+      "explanation": "A differential equation of the form dy/dx = F(x, y) is said to be homogeneous if F(x, y) is a homogeneous function of degree zero (so F can be written as a function of y/x). To solve, substitute y = vx, so dy/dx = v + x dv/dx; the equation becomes variables-separable in v and x. After integrating you replace v by y/x to get the general solution. (If the equation is dx/dy = F with F degree zero, substitute x = vy instead.)",
+      "keyMoves": [
+        "Check F(x, y) is homogeneous of degree zero (a function of y/x)",
+        "Substitute y = vx, dy/dx = v + x dv/dx",
+        "Separate variables in v and x, integrate, then put v = y/x"
+      ],
+      "misconceptions": [
+        "Applying the y = vx substitution when F is not degree zero",
+        "Forgetting to back-substitute v = y/x at the end"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:homogeneous-function",
+        "jee:maths:maths-c12-ch09:variables-separable",
+        "jee:maths:maths-c12-ch07:integration-by-substitution"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:linear-differential-equation",
+      "slug": "linear-differential-equation",
+      "title": "Recognise a first order linear differential equation",
+      "role": "intermediate",
+      "brief": "Identify the standard form dy/dx + Py = Q with P, Q functions of x only.",
+      "sec": 4,
+      "quote": "where, P and Q are constants or functions of x only, is known as a first order linear differential equation.",
+      "explanation": "A differential equation of the form dy/dx + Py = Q, where P and Q are constants or functions of x only, is known as a first order linear differential equation. The dependent variable y and its derivative appear to the first power and are not multiplied together. Putting an equation into this standard form (identifying P and Q) is the first step before applying the integrating-factor method. A companion form is dx/dy + P1 x = Q1 with P1, Q1 functions of y only.",
+      "keyMoves": [
+        "Rearrange the equation into the form dy/dx + Py = Q",
+        "Read off P and Q as functions of x only",
+        "Recognise the companion form dx/dy + P1 x = Q1 when needed"
+      ],
+      "misconceptions": [
+        "Calling an equation linear when y and y' are multiplied together",
+        "Misidentifying P or Q after failing to put the equation in standard form"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:differential-equation",
+        "jee:maths:maths-c12-ch05:derivative-definition",
+        "jee:maths:maths-ch05:recognise-linear-inequality"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:integrating-factor",
+      "slug": "integrating-factor",
+      "title": "Compute the integrating factor",
+      "role": "intermediate",
+      "brief": "Form the integrating factor I.F. = e^(integral of P dx) for a linear equation.",
+      "sec": 4,
+      "quote": "This function  $g(x) = e^{\\int P dx}$  is called *Integrating Factor* (I.F.) of the given differential equation.",
+      "explanation": "For a first order linear equation dy/dx + Py = Q, multiplying through by g(x) = e^(integral of P dx) turns the left-hand side into the derivative of a product. This function g(x) = e^(integral of P dx) is called the Integrating Factor (I.F.) of the differential equation. Computing the I.F. is the key step that makes a linear equation directly integrable.",
+      "keyMoves": [
+        "Identify P from the standard form dy/dx + Py = Q",
+        "Compute the integral of P dx",
+        "Form I.F. = e^(integral of P dx)"
+      ],
+      "misconceptions": [
+        "Using Q instead of P in the integrating factor",
+        "Forgetting the exponential in I.F. = e^(integral of P dx)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:linear-differential-equation",
+        "jee:maths:maths-c12-ch07:integration-by-substitution",
+        "jee:maths:maths-c12-ch05:derivative-of-exp-and-log"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch09:solve-linear-de",
+      "slug": "solve-linear-de",
+      "title": "Solve a first order linear differential equation",
+      "role": "goal",
+      "brief": "Apply the standard steps: write standard form, find the I.F., then y(I.F.) = integral of (Q x I.F.) dx + C.",
+      "sec": 4,
+      "quote": "Steps involved to solve first order linear differential equation:",
+      "explanation": "Steps involved to solve a first order linear differential equation: (i) write it in the standard form dy/dx + Py = Q and identify P and Q; (ii) find the Integrating Factor I.F. = e^(integral of P dx); (iii) write the solution as y(I.F.) = integral of (Q times I.F.) dx + C. Applying initial conditions then gives a particular solution. (For the form dx/dy + P1 x = Q1 the roles of x and y swap.) This capstone combines the linear-form recognition, the integrating factor, and integration into the full solution method.",
+      "keyMoves": [
+        "Put the equation in standard form and read off P and Q",
+        "Compute the integrating factor I.F. = e^(integral of P dx)",
+        "Write y(I.F.) = integral of (Q x I.F.) dx + C and solve"
+      ],
+      "misconceptions": [
+        "Forgetting to multiply Q by the I.F. inside the integral",
+        "Skipping the standard-form step and misidentifying P, Q"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch09:integrating-factor",
+        "jee:maths:maths-c12-ch09:homogeneous-differential-equation",
+        "jee:maths:maths-c12-ch09:particular-solution",
+        "jee:maths:maths-c12-ch09:degree",
+        "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
 }

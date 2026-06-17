@@ -251,8 +251,6 @@
       "sec": 3,
       "quote": "or, DB/AD + 1 = EC/AE + 1",
       "explanation": "PART 1 — Invert both sides of the proportion.\nStarting from AD/DB = AE/EC, take reciprocals of both sides to get DB/AD = EC/AE. This is valid because if two fractions are equal their reciprocals are equal.\n\nPART 2 — Add 1 to both sides and recombine.\nAdd 1: DB/AD + 1 = EC/AE + 1, giving (DB + AD)/AD = (EC + AE)/AE. Since DB + AD = AB and EC + AE = AC, this becomes AB/AD = AC/AE, or equivalently AD/AB = AE/AC. For example, if AD = 3, DB = 5, AE = 6, EC = 10: DB/AD = 5/3, adding 1: (5+3)/3 = 8/3, so AB/AD = 8/3 and AD/AB = 3/8.",
-
-
       "keyMoves": [
         "Invert both sides of the proportion",
         "Add 1 to both sides",
@@ -474,7 +472,8 @@
       ],
       "prereqs": [
         "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
-        "cbse10:maths:jemh106:compute-side-ratios"
+        "cbse10:maths:jemh106:compute-side-ratios",
+        "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
       ],
       "sameConcept": [],
       "teachingInsights": []

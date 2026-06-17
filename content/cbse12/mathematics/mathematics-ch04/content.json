@@ -24,7 +24,10 @@
         "Reading |A| as the modulus of A",
         "Trying to take the determinant of a non-square matrix"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch03:matrix-definition",
+        "cbse12:mathematics:mathematics-ch03:square-matrix"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -47,7 +50,9 @@
         "Subtracting in the wrong order (off-diagonal minus diagonal)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:determinant-definition"
+        "cbse12:mathematics:mathematics-ch04:determinant-definition",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -71,7 +76,10 @@
         "Confusing the minor (a determinant) with the element itself"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+        "cbse12:mathematics:mathematics-ch04:determinant-order-two",
+        "cbse12:mathematics:mathematics-ch03:matrix-definition",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch04:determinant-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +127,9 @@
         "Thinking different rows/columns give different determinant values"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:cofactor"
+        "cbse12:mathematics:mathematics-ch04:cofactor",
+        "cbse12:mathematics:mathematics-ch04:determinant-order-two",
+        "cbse12:mathematics:mathematics-ch04:minor"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -143,7 +153,11 @@
         "Thinking collinear points give a non-zero area"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:determinant-order-three"
+        "cbse12:mathematics:mathematics-ch04:determinant-order-three",
+        "cbse12:mathematics:mathematics-ch04:determinant-definition",
+        "cbse12:mathematics:mathematics-ch04:minor",
+        "cbse12:mathematics:mathematics-ch04:cofactor",
+        "cbse12:mathematics:mathematics-ch04:singular-matrix"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -167,7 +181,10 @@
         "Using the minors instead of the signed cofactors"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:cofactor"
+        "cbse12:mathematics:mathematics-ch04:cofactor",
+        "cbse12:mathematics:mathematics-ch03:transpose",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch04:minor"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -191,7 +208,14 @@
         "Dividing by |A| even when |A| = 0"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:adjoint"
+        "cbse12:mathematics:mathematics-ch04:adjoint",
+        "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+        "cbse12:mathematics:mathematics-ch03:identity-matrix",
+        "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+        "cbse12:mathematics:mathematics-ch04:determinant-definition",
+        "cbse12:mathematics:mathematics-ch04:cofactor",
+        "cbse12:mathematics:mathematics-ch04:non-singular-matrix",
+        "cbse12:mathematics:mathematics-ch04:singular-matrix"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -215,7 +239,10 @@
         "Thinking a singular matrix can still be inverted"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+        "cbse12:mathematics:mathematics-ch04:determinant-order-two",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch04:determinant-definition",
+        "cbse12:mathematics:mathematics-ch04:non-singular-matrix"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -239,7 +266,9 @@
         "Thinking any square matrix is automatically non-singular"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+        "cbse12:mathematics:mathematics-ch04:determinant-order-two",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch04:determinant-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -263,7 +292,14 @@
         "Applying the rule to non-square or mismatched matrices"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:determinant-order-two"
+        "cbse12:mathematics:mathematics-ch04:determinant-order-two",
+        "cbse12:mathematics:mathematics-ch03:square-matrix",
+        "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+        "cbse12:mathematics:mathematics-ch03:identity-matrix",
+        "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+        "cbse12:mathematics:mathematics-ch04:determinant-definition",
+        "cbse12:mathematics:mathematics-ch04:non-singular-matrix",
+        "cbse12:mathematics:mathematics-ch04:singular-matrix"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -287,7 +323,13 @@
         "Using X = A-inverse B when |A| = 0 (the inverse does not exist)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch04:adjoint-identity"
+        "cbse12:mathematics:mathematics-ch04:adjoint-identity",
+        "cbse12:mathematics:mathematics-ch03:matrix-multiplication",
+        "cbse12:mathematics:mathematics-ch03:zero-matrix",
+        "cbse12:mathematics:mathematics-ch04:determinant-order-three",
+        "cbse12:mathematics:mathematics-ch04:non-singular-matrix",
+        "cbse12:mathematics:mathematics-ch04:singular-matrix",
+        "cbse12:mathematics:mathematics-ch04:adjoint"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -316,7 +358,11 @@
         "cbse12:mathematics:mathematics-ch04:singular-matrix",
         "cbse12:mathematics:mathematics-ch04:determinant-of-product",
         "cbse12:mathematics:mathematics-ch04:area-of-triangle",
-        "cbse12:mathematics:mathematics-ch04:consistent-system"
+        "cbse12:mathematics:mathematics-ch04:consistent-system",
+        "cbse12:mathematics:mathematics-ch04:adjoint",
+        "cbse12:mathematics:mathematics-ch03:invertible-matrix",
+        "cbse12:mathematics:mathematics-ch03:identity-matrix",
+        "cbse12:mathematics:mathematics-ch03:matrix-multiplication"
       ],
       "sameConcept": [],
       "teachingInsights": []

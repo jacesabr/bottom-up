@@ -24,7 +24,9 @@
         "Treating dy/dx as a fixed number rather than a rate that can vary",
         "Forgetting the chain link when both quantities depend on time"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch05:derivative-definition"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -46,7 +48,11 @@
         "Confusing increasing (output grows) with the function being positive",
         "Mixing up strict and non-strict versions"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch01:one-one-function",
+        "cbse12:mathematics:mathematics-ch06:rate-of-change"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -69,8 +75,10 @@
         "Forgetting the continuity/differentiability hypotheses"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch06:increasing-decreasing-definition",
-        "cbse12:mathematics:mathematics-ch06:rate-of-change"
+        "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch06:rate-of-change",
+        "cbse12:mathematics:mathematics-ch06:increasing-decreasing-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -93,7 +101,9 @@
         "Confusing the point c with the value f(c)",
         "Assuming every function on an interval attains a maximum/minimum"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch06:increasing-decreasing-definition"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -116,7 +126,8 @@
         "Looking for local extrema at end points rather than interior points"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch06:maximum-minimum-value"
+        "cbse12:mathematics:mathematics-ch06:maximum-minimum-value",
+        "cbse12:mathematics:mathematics-ch06:absolute-extrema-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -141,7 +152,9 @@
       ],
       "prereqs": [
         "cbse12:mathematics:mathematics-ch06:local-maxima-minima",
-        "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test"
+        "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test",
+        "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -165,7 +178,11 @@
         "Assuming every critical point is automatically an extremum"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch06:fermat-stationary"
+        "cbse12:mathematics:mathematics-ch06:fermat-stationary",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
+        "cbse12:mathematics:mathematics-ch06:local-maxima-minima",
+        "cbse12:mathematics:mathematics-ch06:absolute-extrema-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -189,7 +206,11 @@
         "Calling a no-sign-change point an extremum"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch06:critical-point"
+        "cbse12:mathematics:mathematics-ch06:critical-point",
+        "cbse12:mathematics:mathematics-ch06:local-maxima-minima",
+        "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test",
+        "cbse12:mathematics:mathematics-ch06:fermat-stationary",
+        "cbse12:mathematics:mathematics-ch06:increasing-decreasing-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -213,7 +234,11 @@
         "Forgetting the test is inconclusive when f''(c) = 0"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch06:critical-point"
+        "cbse12:mathematics:mathematics-ch06:critical-point",
+        "cbse12:mathematics:mathematics-ch06:local-maxima-minima",
+        "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+        "cbse12:mathematics:mathematics-ch06:first-derivative-test",
+        "cbse12:mathematics:mathematics-ch06:fermat-stationary"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -237,7 +262,9 @@
         "Ignoring end points when seeking absolute extrema"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch06:maximum-minimum-value"
+        "cbse12:mathematics:mathematics-ch06:maximum-minimum-value",
+        "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test",
+        "cbse12:mathematics:mathematics-ch06:increasing-decreasing-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -261,7 +288,8 @@
         "Thinking the extrema might not be attained even when f is continuous on [a, b]"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch06:absolute-extrema-definition"
+        "cbse12:mathematics:mathematics-ch06:absolute-extrema-definition",
+        "cbse12:mathematics:mathematics-ch05:continuous-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -285,9 +313,10 @@
         "Using the second derivative test instead of comparing actual values for absolute extrema"
       ],
       "prereqs": [
+        "cbse12:mathematics:mathematics-ch06:second-derivative-test",
+        "cbse12:mathematics:mathematics-ch05:continuous-function",
         "cbse12:mathematics:mathematics-ch06:extreme-value-theorem",
         "cbse12:mathematics:mathematics-ch06:first-derivative-test",
-        "cbse12:mathematics:mathematics-ch06:second-derivative-test",
         "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test"
       ],
       "sameConcept": [],

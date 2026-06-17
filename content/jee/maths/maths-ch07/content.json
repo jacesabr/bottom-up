@@ -24,7 +24,13 @@
         "Thinking the expansion of (a+b)^n has n terms rather than n+1",
         "Letting the exponents of a and b vary independently instead of keeping their sum equal to n"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:pascal-identity",
+        "jee:maths:maths-ch06:combination-symmetry",
+        "jee:maths:maths-ch04:algebraic-identities"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -47,7 +53,12 @@
         "Believing you must build every earlier Pascal row to get a coefficient"
       ],
       "prereqs": [
-        "jee:maths:maths-ch07:binomial-expansions-pattern"
+        "jee:maths:maths-ch07:binomial-expansions-pattern",
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:pascal-identity",
+        "jee:maths:maths-ch06:combination-symmetry",
+        "jee:maths:maths-ch07:pascals-triangle-expand"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -71,7 +82,11 @@
         "Misaligning the row entries with the wrong powers of a and b"
       ],
       "prereqs": [
-        "jee:maths:maths-ch07:binomial-expansions-pattern"
+        "jee:maths:maths-ch07:binomial-expansions-pattern",
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:pascal-identity",
+        "jee:maths:maths-ch06:combination-symmetry"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -96,7 +111,11 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch07:binomial-coefficients-ncr",
-        "jee:maths:maths-ch07:pascals-triangle-expand"
+        "jee:maths:maths-ch07:pascals-triangle-expand",
+        "jee:maths:maths-ch07:binomial-expansions-pattern",
+        "jee:maths:maths-ch06:pascal-identity",
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:factorial-notation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -120,7 +139,13 @@
         "Mishandling negative or fractional parts when squaring or cubing them"
       ],
       "prereqs": [
-        "jee:maths:maths-ch07:state-binomial-theorem"
+        "jee:maths:maths-ch07:state-binomial-theorem",
+        "jee:maths:maths-ch07:binomial-coefficients-ncr",
+        "jee:maths:maths-ch07:binomial-expansions-pattern",
+        "jee:maths:maths-ch07:expand-x-minus-y",
+        "jee:maths:maths-ch07:special-case-one-plus-x",
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:factorial-notation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -144,7 +169,10 @@
         "Forgetting that an even power of (-y) is positive, so (-1)^r flips only on odd r"
       ],
       "prereqs": [
-        "jee:maths:maths-ch07:state-binomial-theorem"
+        "jee:maths:maths-ch07:state-binomial-theorem",
+        "jee:maths:maths-ch07:binomial-coefficients-ncr",
+        "jee:maths:maths-ch07:binomial-expansions-pattern",
+        "jee:maths:maths-ch07:pascals-triangle-expand"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -168,7 +196,10 @@
         "Forgetting nC0 (the 1 term) when summing the coefficients"
       ],
       "prereqs": [
-        "jee:maths:maths-ch07:state-binomial-theorem"
+        "jee:maths:maths-ch07:state-binomial-theorem",
+        "jee:maths:maths-ch07:binomial-coefficients-ncr",
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch01:count-subsets-and-power-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -192,7 +223,8 @@
         "Confusing this zero alternating sum with the 2^n total sum from (1+x)^n"
       ],
       "prereqs": [
-        "jee:maths:maths-ch07:special-case-one-plus-x"
+        "jee:maths:maths-ch07:special-case-one-plus-x",
+        "jee:maths:maths-ch07:state-binomial-theorem"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -216,7 +248,8 @@
         "Losing the alternating signs when the second part is negative"
       ],
       "prereqs": [
-        "jee:maths:maths-ch07:expand-x-minus-y"
+        "jee:maths:maths-ch07:expand-x-minus-y",
+        "jee:maths:maths-ch07:state-binomial-theorem"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -240,7 +273,11 @@
         "Treating a truncated sum as exact rather than as a bound or approximation"
       ],
       "prereqs": [
-        "jee:maths:maths-ch07:special-case-one-plus-x"
+        "jee:maths:maths-ch07:special-case-one-plus-x",
+        "jee:maths:maths-ch07:state-binomial-theorem",
+        "jee:maths:maths-ch07:expand-binomial",
+        "jee:maths:maths-ch07:binomial-coefficients-ncr",
+        "jee:maths:maths-ch06:combinations-ncr"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -264,7 +301,8 @@
         "Mis-identifying which low-order terms stay outside the factored bracket"
       ],
       "prereqs": [
-        "jee:maths:maths-ch07:special-case-one-plus-x"
+        "jee:maths:maths-ch07:special-case-one-plus-x",
+        "jee:maths:maths-ch07:state-binomial-theorem"
       ],
       "sameConcept": [],
       "teachingInsights": []

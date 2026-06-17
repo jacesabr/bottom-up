@@ -25,7 +25,9 @@
         "Forgetting that the strip height is the curve value y = f(x)",
         "Using a finite width instead of the infinitesimal dx"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch07:definite-integral"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -48,6 +50,7 @@
         "Using the wrong limits a and b for the region"
       ],
       "prereqs": [
+        "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
         "cbse12:mathematics:mathematics-ch08:elementary-area"
       ],
       "sameConcept": [],
@@ -96,7 +99,9 @@
         "Assuming the integral always equals the area without checking the sign"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis"
+        "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis",
+        "cbse12:mathematics:mathematics-ch07:definite-integral",
+        "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -144,6 +149,7 @@
         "Keeping the negative root for y in the first quadrant"
       ],
       "prereqs": [
+        "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
         "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis"
       ],
       "sameConcept": [],

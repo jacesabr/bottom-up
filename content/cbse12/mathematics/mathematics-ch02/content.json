@@ -24,7 +24,13 @@
         "Thinking every function automatically has an inverse",
         "Believing sin, cos, tan are invertible over all of R"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch01:one-one-function",
+        "cbse12:mathematics:mathematics-ch01:onto-function",
+        "cbse12:mathematics:mathematics-ch01:bijective-function",
+        "cbse12:mathematics:mathematics-ch01:invertible-function",
+        "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -47,7 +53,11 @@
         "Treating f-inverse as 1/f"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective"
+        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
+        "cbse12:mathematics:mathematics-ch01:bijective-function",
+        "cbse12:mathematics:mathematics-ch01:composition-of-functions",
+        "cbse12:mathematics:mathematics-ch01:invertible-function",
+        "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -71,7 +81,10 @@
         "Confusing different branches with different functions entirely"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
+        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
+        "cbse12:mathematics:mathematics-ch01:bijective-function",
+        "cbse12:mathematics:mathematics-ch01:invertible-function",
+        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -95,7 +108,10 @@
         "Allowing sin-inverse values outside [-pi/2, pi/2]"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:branch"
+        "cbse12:mathematics:mathematics-ch02:branch",
+        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
+        "cbse12:mathematics:mathematics-ch01:one-one-function",
+        "cbse12:mathematics:mathematics-ch01:onto-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +135,9 @@
         "Returning a negative cos-inverse value"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:branch"
+        "cbse12:mathematics:mathematics-ch02:branch",
+        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
+        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -143,7 +161,11 @@
         "Confusing the tan-inverse range with the cot-inverse range (0, pi)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:branch"
+        "cbse12:mathematics:mathematics-ch02:branch",
+        "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
+        "cbse12:mathematics:mathematics-ch01:one-one-function",
+        "cbse12:mathematics:mathematics-ch01:onto-function",
+        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -167,7 +189,10 @@
         "Returning a negative cot-inverse value"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:branch"
+        "cbse12:mathematics:mathematics-ch02:branch",
+        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
+        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
+        "cbse12:mathematics:mathematics-ch01:bijective-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -191,7 +216,11 @@
         "Allowing inputs in (-1, 1), which are outside the domain"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:branch"
+        "cbse12:mathematics:mathematics-ch02:branch",
+        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
+        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
+        "cbse12:mathematics:mathematics-ch01:bijective-function",
+        "cbse12:mathematics:mathematics-ch02:cos-inverse-principal"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -239,7 +268,9 @@
         "Carrying the same confusion into cos-inverse, tan-inverse, etc."
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:sin-inverse-principal"
+        "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:principal-value-defn",
+        "cbse12:mathematics:mathematics-ch01:invertible-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -265,7 +296,11 @@
       "prereqs": [
         "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
         "cbse12:mathematics:mathematics-ch02:cos-inverse-principal",
-        "cbse12:mathematics:mathematics-ch02:tan-inverse-principal"
+        "cbse12:mathematics:mathematics-ch02:tan-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:branch",
+        "cbse12:mathematics:mathematics-ch02:cosec-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:sec-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:cot-inverse-principal"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -318,7 +353,12 @@
         "cbse12:mathematics:mathematics-ch02:cot-inverse-principal",
         "cbse12:mathematics:mathematics-ch02:cosec-inverse-principal",
         "cbse12:mathematics:mathematics-ch02:sec-inverse-principal",
-        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
+        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
+        "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:cos-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:tan-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:principal-value-defn",
+        "cbse12:mathematics:mathematics-ch02:branch"
       ],
       "sameConcept": [],
       "teachingInsights": []

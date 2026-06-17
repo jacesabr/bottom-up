@@ -1,398 +1,427 @@
 {
- "exam": "jee",
- "subject": "maths",
- "chapter": "maths-c12-ch05",
- "title": "Continuity and Differentiability",
- "book": "NCERT Class 12 Mathematics Part I",
- "goal": "jee:maths:maths-c12-ch05:second-order-derivative",
- "nodes": [
-  {
-   "id": "jee:maths:maths-c12-ch05:continuity-at-a-point",
-   "slug": "continuity-at-a-point",
-   "title": "Test continuity of a function at a point",
-   "role": "bedrock",
-   "brief": "Decide whether f is continuous at c by checking the limit at c equals f(c).",
-   "sec": 1,
-   "quote": "Then f is continuous at c if",
-   "explanation": "Let f be a real function and let c be a point in its domain. Then f is continuous at c if the limit of f(x) as x approaches c equals f(c). More elaborately, the left-hand limit, right-hand limit and the value f(c) must all exist and be equal. If f is not continuous at c, f is discontinuous at c and c is a point of discontinuity. Intuitively, f is continuous at c if its graph can be drawn around c without lifting the pen.",
-   "keyMoves": [
-    "Compute the left-hand and right-hand limits at c",
-    "Check both limits are equal (so the limit exists) and equal f(c)",
-    "Declare continuity at c only if limit = f(c)"
-   ],
-   "misconceptions": [
-    "Checking only that f(c) is defined, ignoring the limit",
-    "Forgetting both one-sided limits must match"
-   ],
-   "prereqs": [],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:continuous-function",
-   "slug": "continuous-function",
-   "title": "Define a continuous function",
-   "role": "bedrock",
-   "brief": "Recognise a continuous function as one continuous at every point of its domain.",
-   "sec": 2,
-   "quote": "A real function *f* is said to be continuous if it is continuous at every point in the domain of *f*.",
-   "explanation": "A real function f is said to be continuous if it is continuous at every point in the domain of f. For a function on a closed interval [a, b], continuity must hold at every interior point and at the end points (using one-sided limits there). Polynomial, rational (on their domains), and the standard trig functions are continuous functions.",
-   "keyMoves": [
-    "Check continuity at every point of the domain",
-    "Handle interval end points with one-sided limits",
-    "Declare f continuous only if it is continuous everywhere on its domain"
-   ],
-   "misconceptions": [
-    "Calling a function continuous from continuity at a single point",
-    "Ignoring points of discontinuity outside a chosen interval"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:continuity-at-a-point"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:algebra-of-continuous-functions",
-   "slug": "algebra-of-continuous-functions",
-   "title": "Combine continuous functions algebraically",
-   "role": "intermediate",
-   "brief": "Use that sums, differences, products and quotients (denominator nonzero) of continuous functions are continuous.",
-   "sec": 2,
-   "quote": "Suppose f and g be two real functions continuous at a real number c.",
-   "explanation": "Suppose f and g are two real functions continuous at a real number c. Then f + g, f - g and f.g are continuous at c, and f/g is continuous at c provided g(c) is not zero. This algebra of continuous functions lets you build continuity of complicated expressions from simple continuous pieces (e.g. every polynomial is continuous, and a rational function is continuous wherever its denominator is non-zero).",
-   "keyMoves": [
-    "Identify continuous building-block functions",
-    "Combine them by +, -, x to keep continuity",
-    "For a quotient, require the denominator to be non-zero at the point"
-   ],
-   "misconceptions": [
-    "Forgetting the g(c) not 0 condition for the quotient",
-    "Assuming a combination is discontinuous when its pieces are continuous"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:continuous-function"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:composite-continuity",
-   "slug": "composite-continuity",
-   "title": "Use continuity of a composite function",
-   "role": "intermediate",
-   "brief": "Apply: if g is continuous at c and f is continuous at g(c), then f o g is continuous at c.",
-   "sec": 2,
-   "quote": "If g is continuous at c and if f is continuous at g(c), then  $(f \\circ g)$  is continuous at c.",
-   "explanation": "Suppose f and g are real functions such that the composite f o g is defined at c. If g is continuous at c and f is continuous at g(c), then (f o g) is continuous at c. This lets you deduce continuity of functions like sin(x^2): it is the composite of sin (continuous) with x^2 (continuous), hence continuous.",
-   "keyMoves": [
-    "Express the function as a composite f o g",
-    "Check g is continuous at c and f is continuous at g(c)",
-    "Conclude f o g is continuous at c"
-   ],
-   "misconceptions": [
-    "Checking f at the wrong point instead of at g(c)",
-    "Assuming a composite of continuous functions could be discontinuous"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:continuous-function"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:derivative-definition",
-   "slug": "derivative-definition",
-   "title": "Define the derivative of a function",
-   "role": "bedrock",
-   "brief": "Define f'(c) as the limit of the difference quotient as h tends to 0.",
-   "sec": 3,
-   "quote": "The derivative of f at c is defined by",
-   "explanation": "Suppose f is a real function and c is a point in its domain. The derivative of f at c is defined by the limit as h tends to 0 of [f(c + h) - f(c)] / h, provided this limit exists; it is denoted f'(c). The function f'(x) = limit as h tends to 0 of [f(x + h) - f(x)] / h, wherever the limit exists, is the derivative of f, also written dy/dx or y'. The process of finding the derivative is called differentiation.",
-   "keyMoves": [
-    "Form the difference quotient [f(c + h) - f(c)] / h",
-    "Take the limit as h tends to 0",
-    "If the limit exists, call it f'(c); the rule x -> f'(x) is the derivative function"
-   ],
-   "misconceptions": [
-    "Forgetting the 'provided the limit exists' caution",
-    "Confusing the average rate (difference quotient) with the instantaneous derivative"
-   ],
-   "prereqs": [],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:differentiable-at-a-point",
-   "slug": "differentiable-at-a-point",
-   "title": "Test differentiability at a point",
-   "role": "intermediate",
-   "brief": "f is differentiable at c if the difference-quotient limit exists; equivalently both one-sided derivatives agree.",
-   "sec": 3,
-   "quote": "we say that a function f is differentiable at a point c in its domain if both",
-   "explanation": "If the limit of [f(c + h) - f(c)] / h as h tends to 0 does not exist, f is not differentiable at c. We say a function f is differentiable at a point c in its domain if both the left-hand and right-hand derivatives at c exist and are equal (so the difference-quotient limit exists). For example, f(x) = |x| is not differentiable at 0 because the one-sided derivatives are -1 and +1.",
-   "keyMoves": [
-    "Compute the left-hand and right-hand derivative limits at c",
-    "Check they exist and are equal",
-    "Declare differentiable at c only when the single limit exists"
-   ],
-   "misconceptions": [
-    "Assuming a continuous function is automatically differentiable",
-    "Ignoring a corner where one-sided derivatives differ (e.g. |x| at 0)"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:derivative-definition"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:differentiable-implies-continuous",
-   "slug": "differentiable-implies-continuous",
-   "title": "Use that differentiable implies continuous",
-   "role": "intermediate",
-   "brief": "Apply the corollary: every differentiable function is continuous (but not conversely).",
-   "sec": 3,
-   "quote": "Every differentiable function is continuous.",
-   "explanation": "Every differentiable function is continuous: if f is differentiable at c then it is continuous at c. The converse is false - a function can be continuous yet not differentiable (e.g. |x| is continuous everywhere but not differentiable at 0). So differentiability is the stronger condition; use it to immediately conclude continuity, but never to conclude differentiability from continuity.",
-   "keyMoves": [
-    "From differentiability at c, conclude continuity at c",
-    "Do NOT reverse the implication",
-    "Cite |x| at 0 as continuous-but-not-differentiable"
-   ],
-   "misconceptions": [
-    "Believing continuous implies differentiable",
-    "Thinking a non-differentiable point cannot be a continuous point"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:differentiable-at-a-point",
-    "jee:maths:maths-c12-ch05:continuity-at-a-point"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:chain-rule",
-   "slug": "chain-rule",
-   "title": "Differentiate composite functions by the chain rule",
-   "role": "intermediate",
-   "brief": "Use df/dx = (dv/dt)(dt/dx) for f = v o u with t = u(x).",
-   "sec": 3,
-   "quote": "Let *f* be a real valued function which is a composite of two",
-   "explanation": "The chain rule (Theorem 4): let f be a real valued function which is a composite of two functions u and v, f = v o u, with t = u(x). If both dt/dx and dv/dt exist, then df/dx = (dv/dt)(dt/dx). So you differentiate the outer function with respect to the inner variable and multiply by the derivative of the inner. For example, for f(x) = sin(x^2), put t = x^2: df/dx = cos(t) . 2x = 2x cos(x^2). The rule extends to composites of three or more functions.",
-   "keyMoves": [
-    "Identify the inner function t = u(x) and outer function v",
-    "Compute dv/dt and dt/dx",
-    "Multiply: df/dx = (dv/dt)(dt/dx)"
-   ],
-   "misconceptions": [
-    "Forgetting to multiply by the derivative of the inner function",
-    "Differentiating the outer function with respect to x instead of t"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:derivative-definition"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:implicit-differentiation",
-   "slug": "implicit-differentiation",
-   "title": "Differentiate implicit functions",
-   "role": "intermediate",
-   "brief": "Differentiate both sides of an implicit relation w.r.t. x, treating y as a function of x via the chain rule.",
-   "sec": 3,
-   "quote": "Derivatives of implicit functions",
-   "explanation": "When y is given implicitly by a relation in x and y (not solved for y), you find dy/dx by differentiating both sides with respect to x, applying the chain rule to every term involving y (each y differentiates to dy/dx times the outer derivative), then solving the resulting equation for dy/dx. This avoids having to solve the relation for y explicitly.",
-   "keyMoves": [
-    "Differentiate both sides of the relation with respect to x",
-    "Apply the chain rule to terms in y (introduce dy/dx)",
-    "Solve the equation algebraically for dy/dx"
-   ],
-   "misconceptions": [
-    "Forgetting the dy/dx factor when differentiating a term in y",
-    "Trying to solve the relation for y first when it is not necessary"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:chain-rule"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:inverse-trig-derivatives",
-   "slug": "inverse-trig-derivatives",
-   "title": "Differentiate inverse trigonometric functions",
-   "role": "intermediate",
-   "brief": "Use the chain rule on inverse trig functions to obtain their derivatives.",
-   "sec": 3,
-   "quote": "Derivatives of inverse trigonometric functions",
-   "explanation": "Inverse trigonometric functions are continuous, and their derivatives are found using the chain rule (often by writing y = sin-inverse x, so sin y = x, and differentiating). This yields standard results such as the derivative of sin-inverse x being 1/sqrt(1 - x^2). These derivatives, combined with the chain rule, let you differentiate composite expressions involving inverse trig functions.",
-   "keyMoves": [
-    "Write y = (inverse trig) of x and convert to the direct trig relation",
-    "Differentiate implicitly / by chain rule to isolate dy/dx",
-    "Use the standard inverse-trig derivative formulas in larger problems"
-   ],
-   "misconceptions": [
-    "Confusing the derivative of sin-inverse x with 1/cos x",
-    "Dropping the chain-rule factor for a composite inverse-trig expression"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:chain-rule"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:exponential-function",
-   "slug": "exponential-function",
-   "title": "Define the exponential function",
-   "role": "intermediate",
-   "brief": "Recognise the exponential function with base b > 1, with domain R and positive range.",
-   "sec": 4,
-   "quote": "The exponential function with positive base b > 1 is the function",
-   "explanation": "The exponential function with positive base b > 1 is the function y = b^x. Its domain is all of R, its range is the positive reals, the point (0, 1) is always on the graph (b^0 = 1), and it is ever increasing. With base e (a number between 2 and 3) we get the natural exponential function y = e^x. The natural exponential is special in calculus because it is unchanged by differentiation.",
-   "keyMoves": [
-    "Recognise y = b^x with b > 1 as an exponential function",
-    "State its domain R and range the positive reals",
-    "Single out the natural exponential e^x with base e"
-   ],
-   "misconceptions": [
-    "Thinking the exponential function can be negative or zero",
-    "Confusing the base b with the variable x"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:continuous-function"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:logarithm-function",
-   "slug": "logarithm-function",
-   "title": "Define the logarithm as the inverse of the exponential",
-   "role": "intermediate",
-   "brief": "Define log_b a = x to mean b^x = a; the log function is the inverse of the exponential.",
-   "sec": 4,
-   "quote": "we say logarithm of *a* to base *b* is *x* if  $b^x = a$ .",
-   "explanation": "Let b > 1 be a real number. We say the logarithm of a to base b is x if b^x = a, written log_b a = x. So log_b a = x exactly when b^x = a - the logarithm is the inverse of the exponential function. For example log_2 8 = 3 because 2^3 = 8. The domain of the log function is the positive reals (logarithms of non-positive numbers are undefined). In this chapter log x means the natural logarithm (base e).",
-   "keyMoves": [
-    "Translate log_b a = x into the exponential statement b^x = a",
-    "Restrict the argument of log to positive reals",
-    "Use base e (natural log) when the base is unspecified in this chapter"
-   ],
-   "misconceptions": [
-    "Taking the logarithm of a non-positive number",
-    "Confusing log_b a with a^b or b^a"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:exponential-function"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:derivative-of-exp-and-log",
-   "slug": "derivative-of-exp-and-log",
-   "title": "Differentiate e^x and log x",
-   "role": "intermediate",
-   "brief": "Use d/dx(e^x) = e^x and d/dx(log x) = 1/x.",
-   "sec": 4,
-   "quote": "The derivative of  $e^x$  w.r.t., x is  $e^x$ ; i.e.,  $\\frac{d}{dx}(e^x) = e^x$ .",
-   "explanation": "The natural exponential is unchanged by differentiation: the derivative of e^x with respect to x is e^x. The derivative of log x (natural log) with respect to x is 1/x. Combined with the chain rule these give derivatives of expressions like e^(-x), sin(log x) and e^(cos x). These two derivatives are central to logarithmic differentiation and to differential equations.",
-   "keyMoves": [
-    "Use d/dx(e^x) = e^x",
-    "Use d/dx(log x) = 1/x",
-    "Combine with the chain rule for composite exponential/log expressions"
-   ],
-   "misconceptions": [
-    "Writing d/dx(e^x) = x e^(x-1) as if it were a power",
-    "Forgetting the chain-rule factor for e^(g(x)) or log(g(x))"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:logarithm-function",
-    "jee:maths:maths-c12-ch05:chain-rule"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:logarithmic-differentiation",
-   "slug": "logarithmic-differentiation",
-   "title": "Differentiate using logarithmic differentiation",
-   "role": "intermediate",
-   "brief": "Take logs of both sides before differentiating, especially for variable-base-variable-exponent forms.",
-   "sec": 5,
-   "quote": "Logarithmic Differentiation",
-   "explanation": "Logarithmic differentiation handles functions that are awkward to differentiate directly - in particular y = (f(x))^(g(x)) with both base and exponent variable. The method: take the natural logarithm of both sides, use log laws to bring the exponent down, then differentiate both sides with respect to x (the left side gives (1/y) dy/dx by the chain rule), and finally solve for dy/dx (multiplying by y). It also simplifies products and quotients of many factors.",
-   "keyMoves": [
-    "Take log of both sides: log y = g(x) log f(x)",
-    "Differentiate both sides w.r.t. x, using (1/y) dy/dx on the left",
-    "Solve for dy/dx and substitute y back"
-   ],
-   "misconceptions": [
-    "Treating a variable exponent as a constant power",
-    "Forgetting the (1/y) dy/dx factor from differentiating log y"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:derivative-of-exp-and-log"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:parametric-differentiation",
-   "slug": "parametric-differentiation",
-   "title": "Differentiate functions in parametric form",
-   "role": "intermediate",
-   "brief": "For x = f(t), y = g(t), find dy/dx = (dy/dt) / (dx/dt).",
-   "sec": 6,
-   "quote": "is said to be parametric form with t as a parameter.",
-   "explanation": "A relation between two variables x and y expressed in the form x = f(t), y = g(t) is said to be parametric form, with t the parameter. To differentiate, compute dx/dt and dy/dt separately, then dy/dx = (dy/dt) / (dx/dt), provided dx/dt is not zero. This gives the slope of the parametric curve without eliminating the parameter.",
-   "keyMoves": [
-    "Differentiate x = f(t) and y = g(t) with respect to t",
-    "Form dy/dx = (dy/dt) / (dx/dt)",
-    "Require dx/dt not 0"
-   ],
-   "misconceptions": [
-    "Computing dy/dx as (dx/dt)/(dy/dt) (inverted)",
-    "Differentiating y with respect to x directly without the parameter"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:chain-rule"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  },
-  {
-   "id": "jee:maths:maths-c12-ch05:second-order-derivative",
-   "slug": "second-order-derivative",
-   "title": "Find the second order derivative",
-   "role": "goal",
-   "brief": "Differentiate the first derivative again to obtain d2y/dx2, using the full differentiation toolkit.",
-   "sec": 7,
-   "quote": "which is called the *second order derivative* of y w.r.t. x",
-   "explanation": "Differentiating dy/dx once more with respect to x gives d/dx(dy/dx), which is called the second order derivative of y with respect to x, denoted d2y/dx2 (or f''(x), y'' or y_2). To compute it you first find the first derivative dy/dx (using the chain rule, implicit, parametric, logarithmic, or exponential/log rules as needed), then differentiate that result again. Higher order derivatives are defined similarly. This is the capstone that draws on every differentiation technique in the chapter.",
-   "keyMoves": [
-    "Find the first derivative dy/dx with the appropriate technique",
-    "Differentiate dy/dx again with respect to x",
-    "Report d2y/dx2 (= f''(x))"
-   ],
-   "misconceptions": [
-    "Squaring the first derivative instead of differentiating it again",
-    "Forgetting to re-apply product/chain rules when differentiating dy/dx"
-   ],
-   "prereqs": [
-    "jee:maths:maths-c12-ch05:implicit-differentiation",
-    "jee:maths:maths-c12-ch05:inverse-trig-derivatives",
-    "jee:maths:maths-c12-ch05:logarithmic-differentiation",
-    "jee:maths:maths-c12-ch05:parametric-differentiation",
-    "jee:maths:maths-c12-ch05:differentiable-implies-continuous",
-    "jee:maths:maths-c12-ch05:algebra-of-continuous-functions",
-    "jee:maths:maths-c12-ch05:composite-continuity"
-   ],
-   "sameConcept": [],
-   "teachingInsights": []
-  }
- ]
+  "exam": "jee",
+  "subject": "maths",
+  "chapter": "maths-c12-ch05",
+  "title": "Continuity and Differentiability",
+  "book": "NCERT Class 12 Mathematics Part I",
+  "goal": "jee:maths:maths-c12-ch05:second-order-derivative",
+  "nodes": [
+    {
+      "id": "jee:maths:maths-c12-ch05:continuity-at-a-point",
+      "slug": "continuity-at-a-point",
+      "title": "Test continuity of a function at a point",
+      "role": "bedrock",
+      "brief": "Decide whether f is continuous at c by checking the limit at c equals f(c).",
+      "sec": 1,
+      "quote": "Then f is continuous at c if",
+      "explanation": "Let f be a real function and let c be a point in its domain. Then f is continuous at c if the limit of f(x) as x approaches c equals f(c). More elaborately, the left-hand limit, right-hand limit and the value f(c) must all exist and be equal. If f is not continuous at c, f is discontinuous at c and c is a point of discontinuity. Intuitively, f is continuous at c if its graph can be drawn around c without lifting the pen.",
+      "keyMoves": [
+        "Compute the left-hand and right-hand limits at c",
+        "Check both limits are equal (so the limit exists) and equal f(c)",
+        "Declare continuity at c only if limit = f(c)"
+      ],
+      "misconceptions": [
+        "Checking only that f(c) is defined, ignoring the limit",
+        "Forgetting both one-sided limits must match"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:intuitive-limit",
+        "jee:maths:maths-ch12:algebra-of-limits",
+        "jee:maths:maths-ch12:one-sided-limits-and-existence"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:continuous-function",
+      "slug": "continuous-function",
+      "title": "Define a continuous function",
+      "role": "bedrock",
+      "brief": "Recognise a continuous function as one continuous at every point of its domain.",
+      "sec": 2,
+      "quote": "A real function *f* is said to be continuous if it is continuous at every point in the domain of *f*.",
+      "explanation": "A real function f is said to be continuous if it is continuous at every point in the domain of f. For a function on a closed interval [a, b], continuity must hold at every interior point and at the end points (using one-sided limits there). Polynomial, rational (on their domains), and the standard trig functions are continuous functions.",
+      "keyMoves": [
+        "Check continuity at every point of the domain",
+        "Handle interval end points with one-sided limits",
+        "Declare f continuous only if it is continuous everywhere on its domain"
+      ],
+      "misconceptions": [
+        "Calling a function continuous from continuity at a single point",
+        "Ignoring points of discontinuity outside a chosen interval"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:continuity-at-a-point",
+        "jee:maths:maths-ch02:real-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:algebra-of-continuous-functions",
+      "slug": "algebra-of-continuous-functions",
+      "title": "Combine continuous functions algebraically",
+      "role": "intermediate",
+      "brief": "Use that sums, differences, products and quotients (denominator nonzero) of continuous functions are continuous.",
+      "sec": 2,
+      "quote": "Suppose f and g be two real functions continuous at a real number c.",
+      "explanation": "Suppose f and g are two real functions continuous at a real number c. Then f + g, f - g and f.g are continuous at c, and f/g is continuous at c provided g(c) is not zero. This algebra of continuous functions lets you build continuity of complicated expressions from simple continuous pieces (e.g. every polynomial is continuous, and a rational function is continuous wherever its denominator is non-zero).",
+      "keyMoves": [
+        "Identify continuous building-block functions",
+        "Combine them by +, -, x to keep continuity",
+        "For a quotient, require the denominator to be non-zero at the point"
+      ],
+      "misconceptions": [
+        "Forgetting the g(c) not 0 condition for the quotient",
+        "Assuming a combination is discontinuous when its pieces are continuous"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:continuous-function",
+        "jee:maths:maths-c12-ch05:continuity-at-a-point",
+        "jee:maths:maths-ch02:algebra-of-functions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:composite-continuity",
+      "slug": "composite-continuity",
+      "title": "Use continuity of a composite function",
+      "role": "intermediate",
+      "brief": "Apply: if g is continuous at c and f is continuous at g(c), then f o g is continuous at c.",
+      "sec": 2,
+      "quote": "If g is continuous at c and if f is continuous at g(c), then  $(f \\circ g)$  is continuous at c.",
+      "explanation": "Suppose f and g are real functions such that the composite f o g is defined at c. If g is continuous at c and f is continuous at g(c), then (f o g) is continuous at c. This lets you deduce continuity of functions like sin(x^2): it is the composite of sin (continuous) with x^2 (continuous), hence continuous.",
+      "keyMoves": [
+        "Express the function as a composite f o g",
+        "Check g is continuous at c and f is continuous at g(c)",
+        "Conclude f o g is continuous at c"
+      ],
+      "misconceptions": [
+        "Checking f at the wrong point instead of at g(c)",
+        "Assuming a composite of continuous functions could be discontinuous"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:continuous-function",
+        "jee:maths:maths-c12-ch01:composition-of-functions"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:derivative-definition",
+      "slug": "derivative-definition",
+      "title": "Define the derivative of a function",
+      "role": "bedrock",
+      "brief": "Define f'(c) as the limit of the difference quotient as h tends to 0.",
+      "sec": 3,
+      "quote": "The derivative of f at c is defined by",
+      "explanation": "Suppose f is a real function and c is a point in its domain. The derivative of f at c is defined by the limit as h tends to 0 of [f(c + h) - f(c)] / h, provided this limit exists; it is denoted f'(c). The function f'(x) = limit as h tends to 0 of [f(x + h) - f(x)] / h, wherever the limit exists, is the derivative of f, also written dy/dx or y'. The process of finding the derivative is called differentiation.",
+      "keyMoves": [
+        "Form the difference quotient [f(c + h) - f(c)] / h",
+        "Take the limit as h tends to 0",
+        "If the limit exists, call it f'(c); the rule x -> f'(x) is the derivative function"
+      ],
+      "misconceptions": [
+        "Forgetting the 'provided the limit exists' caution",
+        "Confusing the average rate (difference quotient) with the instantaneous derivative"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch12:derivative-first-principle",
+        "jee:maths:maths-ch12:instantaneous-rate-as-slope-of-tangent"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:differentiable-at-a-point",
+      "slug": "differentiable-at-a-point",
+      "title": "Test differentiability at a point",
+      "role": "intermediate",
+      "brief": "f is differentiable at c if the difference-quotient limit exists; equivalently both one-sided derivatives agree.",
+      "sec": 3,
+      "quote": "we say that a function f is differentiable at a point c in its domain if both",
+      "explanation": "If the limit of [f(c + h) - f(c)] / h as h tends to 0 does not exist, f is not differentiable at c. We say a function f is differentiable at a point c in its domain if both the left-hand and right-hand derivatives at c exist and are equal (so the difference-quotient limit exists). For example, f(x) = |x| is not differentiable at 0 because the one-sided derivatives are -1 and +1.",
+      "keyMoves": [
+        "Compute the left-hand and right-hand derivative limits at c",
+        "Check they exist and are equal",
+        "Declare differentiable at c only when the single limit exists"
+      ],
+      "misconceptions": [
+        "Assuming a continuous function is automatically differentiable",
+        "Ignoring a corner where one-sided derivatives differ (e.g. |x| at 0)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:derivative-definition",
+        "jee:maths:maths-ch12:one-sided-limits-and-existence"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:differentiable-implies-continuous",
+      "slug": "differentiable-implies-continuous",
+      "title": "Use that differentiable implies continuous",
+      "role": "intermediate",
+      "brief": "Apply the corollary: every differentiable function is continuous (but not conversely).",
+      "sec": 3,
+      "quote": "Every differentiable function is continuous.",
+      "explanation": "Every differentiable function is continuous: if f is differentiable at c then it is continuous at c. The converse is false - a function can be continuous yet not differentiable (e.g. |x| is continuous everywhere but not differentiable at 0). So differentiability is the stronger condition; use it to immediately conclude continuity, but never to conclude differentiability from continuity.",
+      "keyMoves": [
+        "From differentiability at c, conclude continuity at c",
+        "Do NOT reverse the implication",
+        "Cite |x| at 0 as continuous-but-not-differentiable"
+      ],
+      "misconceptions": [
+        "Believing continuous implies differentiable",
+        "Thinking a non-differentiable point cannot be a continuous point"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:differentiable-at-a-point",
+        "jee:maths:maths-c12-ch05:continuity-at-a-point",
+        "jee:maths:maths-c12-ch05:continuous-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:chain-rule",
+      "slug": "chain-rule",
+      "title": "Differentiate composite functions by the chain rule",
+      "role": "intermediate",
+      "brief": "Use df/dx = (dv/dt)(dt/dx) for f = v o u with t = u(x).",
+      "sec": 3,
+      "quote": "Let *f* be a real valued function which is a composite of two",
+      "explanation": "The chain rule (Theorem 4): let f be a real valued function which is a composite of two functions u and v, f = v o u, with t = u(x). If both dt/dx and dv/dt exist, then df/dx = (dv/dt)(dt/dx). So you differentiate the outer function with respect to the inner variable and multiply by the derivative of the inner. For example, for f(x) = sin(x^2), put t = x^2: df/dx = cos(t) . 2x = 2x cos(x^2). The rule extends to composites of three or more functions.",
+      "keyMoves": [
+        "Identify the inner function t = u(x) and outer function v",
+        "Compute dv/dt and dt/dx",
+        "Multiply: df/dx = (dv/dt)(dt/dx)"
+      ],
+      "misconceptions": [
+        "Forgetting to multiply by the derivative of the inner function",
+        "Differentiating the outer function with respect to x instead of t"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:derivative-definition",
+        "jee:maths:maths-ch12:algebra-of-derivatives"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:implicit-differentiation",
+      "slug": "implicit-differentiation",
+      "title": "Differentiate implicit functions",
+      "role": "intermediate",
+      "brief": "Differentiate both sides of an implicit relation w.r.t. x, treating y as a function of x via the chain rule.",
+      "sec": 3,
+      "quote": "Derivatives of implicit functions",
+      "explanation": "When y is given implicitly by a relation in x and y (not solved for y), you find dy/dx by differentiating both sides with respect to x, applying the chain rule to every term involving y (each y differentiates to dy/dx times the outer derivative), then solving the resulting equation for dy/dx. This avoids having to solve the relation for y explicitly.",
+      "keyMoves": [
+        "Differentiate both sides of the relation with respect to x",
+        "Apply the chain rule to terms in y (introduce dy/dx)",
+        "Solve the equation algebraically for dy/dx"
+      ],
+      "misconceptions": [
+        "Forgetting the dy/dx factor when differentiating a term in y",
+        "Trying to solve the relation for y first when it is not necessary"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:chain-rule",
+        "jee:maths:maths-ch10:circle-standard-equation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:inverse-trig-derivatives",
+      "slug": "inverse-trig-derivatives",
+      "title": "Differentiate inverse trigonometric functions",
+      "role": "intermediate",
+      "brief": "Use the chain rule on inverse trig functions to obtain their derivatives.",
+      "sec": 3,
+      "quote": "Derivatives of inverse trigonometric functions",
+      "explanation": "Inverse trigonometric functions are continuous, and their derivatives are found using the chain rule (often by writing y = sin-inverse x, so sin y = x, and differentiating). This yields standard results such as the derivative of sin-inverse x being 1/sqrt(1 - x^2). These derivatives, combined with the chain rule, let you differentiate composite expressions involving inverse trig functions.",
+      "keyMoves": [
+        "Write y = (inverse trig) of x and convert to the direct trig relation",
+        "Differentiate implicitly / by chain rule to isolate dy/dx",
+        "Use the standard inverse-trig derivative formulas in larger problems"
+      ],
+      "misconceptions": [
+        "Confusing the derivative of sin-inverse x with 1/cos x",
+        "Dropping the chain-rule factor for a composite inverse-trig expression"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:chain-rule",
+        "jee:maths:maths-c12-ch02:principal-value-defn",
+        "jee:maths:maths-c12-ch02:sin-inverse-principal",
+        "jee:maths:maths-c12-ch02:cos-inverse-principal",
+        "jee:maths:maths-c12-ch02:tan-inverse-principal"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:exponential-function",
+      "slug": "exponential-function",
+      "title": "Define the exponential function",
+      "role": "intermediate",
+      "brief": "Recognise the exponential function with base b > 1, with domain R and positive range.",
+      "sec": 4,
+      "quote": "The exponential function with positive base b > 1 is the function",
+      "explanation": "The exponential function with positive base b > 1 is the function y = b^x. Its domain is all of R, its range is the positive reals, the point (0, 1) is always on the graph (b^0 = 1), and it is ever increasing. With base e (a number between 2 and 3) we get the natural exponential function y = e^x. The natural exponential is special in calculus because it is unchanged by differentiation.",
+      "keyMoves": [
+        "Recognise y = b^x with b > 1 as an exponential function",
+        "State its domain R and range the positive reals",
+        "Single out the natural exponential e^x with base e"
+      ],
+      "misconceptions": [
+        "Thinking the exponential function can be negative or zero",
+        "Confusing the base b with the variable x"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:continuous-function",
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch08:find-the-general-term"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:logarithm-function",
+      "slug": "logarithm-function",
+      "title": "Define the logarithm as the inverse of the exponential",
+      "role": "intermediate",
+      "brief": "Define log_b a = x to mean b^x = a; the log function is the inverse of the exponential.",
+      "sec": 4,
+      "quote": "we say logarithm of *a* to base *b* is *x* if  $b^x = a$ .",
+      "explanation": "Let b > 1 be a real number. We say the logarithm of a to base b is x if b^x = a, written log_b a = x. So log_b a = x exactly when b^x = a - the logarithm is the inverse of the exponential function. For example log_2 8 = 3 because 2^3 = 8. The domain of the log function is the positive reals (logarithms of non-positive numbers are undefined). In this chapter log x means the natural logarithm (base e).",
+      "keyMoves": [
+        "Translate log_b a = x into the exponential statement b^x = a",
+        "Restrict the argument of log to positive reals",
+        "Use base e (natural log) when the base is unspecified in this chapter"
+      ],
+      "misconceptions": [
+        "Taking the logarithm of a non-positive number",
+        "Confusing log_b a with a^b or b^a"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:exponential-function",
+        "jee:maths:maths-c12-ch01:invertible-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:derivative-of-exp-and-log",
+      "slug": "derivative-of-exp-and-log",
+      "title": "Differentiate e^x and log x",
+      "role": "intermediate",
+      "brief": "Use d/dx(e^x) = e^x and d/dx(log x) = 1/x.",
+      "sec": 4,
+      "quote": "The derivative of  $e^x$  w.r.t., x is  $e^x$ ; i.e.,  $\\frac{d}{dx}(e^x) = e^x$ .",
+      "explanation": "The natural exponential is unchanged by differentiation: the derivative of e^x with respect to x is e^x. The derivative of log x (natural log) with respect to x is 1/x. Combined with the chain rule these give derivatives of expressions like e^(-x), sin(log x) and e^(cos x). These two derivatives are central to logarithmic differentiation and to differential equations.",
+      "keyMoves": [
+        "Use d/dx(e^x) = e^x",
+        "Use d/dx(log x) = 1/x",
+        "Combine with the chain rule for composite exponential/log expressions"
+      ],
+      "misconceptions": [
+        "Writing d/dx(e^x) = x e^(x-1) as if it were a power",
+        "Forgetting the chain-rule factor for e^(g(x)) or log(g(x))"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:logarithm-function",
+        "jee:maths:maths-c12-ch05:chain-rule",
+        "jee:maths:maths-c12-ch05:derivative-definition",
+        "jee:maths:maths-c12-ch05:exponential-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:logarithmic-differentiation",
+      "slug": "logarithmic-differentiation",
+      "title": "Differentiate using logarithmic differentiation",
+      "role": "intermediate",
+      "brief": "Take logs of both sides before differentiating, especially for variable-base-variable-exponent forms.",
+      "sec": 5,
+      "quote": "Logarithmic Differentiation",
+      "explanation": "Logarithmic differentiation handles functions that are awkward to differentiate directly - in particular y = (f(x))^(g(x)) with both base and exponent variable. The method: take the natural logarithm of both sides, use log laws to bring the exponent down, then differentiate both sides with respect to x (the left side gives (1/y) dy/dx by the chain rule), and finally solve for dy/dx (multiplying by y). It also simplifies products and quotients of many factors.",
+      "keyMoves": [
+        "Take log of both sides: log y = g(x) log f(x)",
+        "Differentiate both sides w.r.t. x, using (1/y) dy/dx on the left",
+        "Solve for dy/dx and substitute y back"
+      ],
+      "misconceptions": [
+        "Treating a variable exponent as a constant power",
+        "Forgetting the (1/y) dy/dx factor from differentiating log y"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:derivative-of-exp-and-log",
+        "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:parametric-differentiation",
+      "slug": "parametric-differentiation",
+      "title": "Differentiate functions in parametric form",
+      "role": "intermediate",
+      "brief": "For x = f(t), y = g(t), find dy/dx = (dy/dt) / (dx/dt).",
+      "sec": 6,
+      "quote": "is said to be parametric form with t as a parameter.",
+      "explanation": "A relation between two variables x and y expressed in the form x = f(t), y = g(t) is said to be parametric form, with t the parameter. To differentiate, compute dx/dt and dy/dt separately, then dy/dx = (dy/dt) / (dx/dt), provided dx/dt is not zero. This gives the slope of the parametric curve without eliminating the parameter.",
+      "keyMoves": [
+        "Differentiate x = f(t) and y = g(t) with respect to t",
+        "Form dy/dx = (dy/dt) / (dx/dt)",
+        "Require dx/dt not 0"
+      ],
+      "misconceptions": [
+        "Computing dy/dx as (dx/dt)/(dy/dt) (inverted)",
+        "Differentiating y with respect to x directly without the parameter"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:chain-rule",
+        "jee:maths:maths-ch10:parabola-standard-equation",
+        "jee:maths:maths-ch10:ellipse-standard-equation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-c12-ch05:second-order-derivative",
+      "slug": "second-order-derivative",
+      "title": "Find the second order derivative",
+      "role": "goal",
+      "brief": "Differentiate the first derivative again to obtain d2y/dx2, using the full differentiation toolkit.",
+      "sec": 7,
+      "quote": "which is called the *second order derivative* of y w.r.t. x",
+      "explanation": "Differentiating dy/dx once more with respect to x gives d/dx(dy/dx), which is called the second order derivative of y with respect to x, denoted d2y/dx2 (or f''(x), y'' or y_2). To compute it you first find the first derivative dy/dx (using the chain rule, implicit, parametric, logarithmic, or exponential/log rules as needed), then differentiate that result again. Higher order derivatives are defined similarly. This is the capstone that draws on every differentiation technique in the chapter.",
+      "keyMoves": [
+        "Find the first derivative dy/dx with the appropriate technique",
+        "Differentiate dy/dx again with respect to x",
+        "Report d2y/dx2 (= f''(x))"
+      ],
+      "misconceptions": [
+        "Squaring the first derivative instead of differentiating it again",
+        "Forgetting to re-apply product/chain rules when differentiating dy/dx"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:implicit-differentiation",
+        "jee:maths:maths-c12-ch05:inverse-trig-derivatives",
+        "jee:maths:maths-c12-ch05:logarithmic-differentiation",
+        "jee:maths:maths-c12-ch05:parametric-differentiation",
+        "jee:maths:maths-c12-ch05:differentiable-implies-continuous",
+        "jee:maths:maths-c12-ch05:algebra-of-continuous-functions",
+        "jee:maths:maths-c12-ch05:composite-continuity",
+        "jee:maths:maths-c12-ch05:derivative-definition",
+        "jee:maths:maths-c12-ch05:chain-rule"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    }
+  ]
 }

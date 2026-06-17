@@ -71,7 +71,8 @@
         "Assuming a combination is discontinuous when its pieces are continuous"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:continuous-function"
+        "cbse12:mathematics:mathematics-ch05:continuous-function",
+        "cbse12:mathematics:mathematics-ch05:continuity-at-a-point"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -95,7 +96,10 @@
         "Assuming a composite of continuous functions could be discontinuous"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:continuous-function"
+        "cbse12:mathematics:mathematics-ch05:continuous-function",
+        "cbse12:mathematics:mathematics-ch01:composition-of-functions",
+        "cbse12:mathematics:mathematics-ch05:continuity-at-a-point",
+        "cbse12:mathematics:mathematics-ch05:algebra-of-continuous-functions"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -118,7 +122,9 @@
         "Forgetting the 'provided the limit exists' caution",
         "Confusing the average rate (difference quotient) with the instantaneous derivative"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch05:continuity-at-a-point"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -141,7 +147,8 @@
         "Ignoring a corner where one-sided derivatives differ (e.g. |x| at 0)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:derivative-definition"
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch05:continuity-at-a-point"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -166,7 +173,8 @@
       ],
       "prereqs": [
         "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
-        "cbse12:mathematics:mathematics-ch05:continuity-at-a-point"
+        "cbse12:mathematics:mathematics-ch05:continuity-at-a-point",
+        "cbse12:mathematics:mathematics-ch05:continuous-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -190,7 +198,8 @@
         "Differentiating the outer function with respect to x instead of t"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:derivative-definition"
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch01:composition-of-functions"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -214,7 +223,9 @@
         "Trying to solve the relation for y first when it is not necessary"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:chain-rule"
+        "cbse12:mathematics:mathematics-ch05:chain-rule",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -238,7 +249,14 @@
         "Dropping the chain-rule factor for a composite inverse-trig expression"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:chain-rule"
+        "cbse12:mathematics:mathematics-ch05:chain-rule",
+        "cbse12:mathematics:mathematics-ch05:implicit-differentiation",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:tan-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:cos-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:not-reciprocal",
+        "cbse12:mathematics:mathematics-ch02:principal-value-defn"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -262,7 +280,8 @@
         "Confusing the base b with the variable x"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:continuous-function"
+        "cbse12:mathematics:mathematics-ch05:continuous-function",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -286,7 +305,9 @@
         "Confusing log_b a with a^b or b^a"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:exponential-function"
+        "cbse12:mathematics:mathematics-ch05:exponential-function",
+        "cbse12:mathematics:mathematics-ch01:invertible-function",
+        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -311,7 +332,9 @@
       ],
       "prereqs": [
         "cbse12:mathematics:mathematics-ch05:logarithm-function",
-        "cbse12:mathematics:mathematics-ch05:chain-rule"
+        "cbse12:mathematics:mathematics-ch05:chain-rule",
+        "cbse12:mathematics:mathematics-ch05:exponential-function",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -359,7 +382,8 @@
         "Differentiating y with respect to x directly without the parameter"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:chain-rule"
+        "cbse12:mathematics:mathematics-ch05:chain-rule",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []

@@ -249,7 +249,9 @@
         "Dropping a negative sign giving y = −19/29",
         "Not reducing the fraction"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse10:maths:jemh102:find-zero-of-linear-polynomial"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },

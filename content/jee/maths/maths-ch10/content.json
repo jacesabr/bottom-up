@@ -24,7 +24,9 @@
         "Thinking the four conics are unrelated curves rather than slices of one cone",
         "Forgetting the cone is double-napped (extends both ways from the vertex)"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-from-two-points"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -47,7 +49,8 @@
         "Forgetting that a hyperbola requires the plane to cut both nappes"
       ],
       "prereqs": [
-        "jee:maths:maths-ch10:section-of-a-cone"
+        "jee:maths:maths-ch10:section-of-a-cone",
+        "jee:maths:maths-ch03:measure-angle-by-rotation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -70,7 +73,10 @@
         "Confusing the radius (centre-to-edge) with the diameter (edge-to-edge)",
         "Thinking the centre lies on the circle"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch09:distance-of-point-from-line",
+        "jee:maths:maths-ch02:ordered-pair"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -93,7 +99,9 @@
         "Forgetting to square the radius on the right-hand side"
       ],
       "prereqs": [
-        "jee:maths:maths-ch10:circle-definition"
+        "jee:maths:maths-ch10:circle-definition",
+        "jee:maths:maths-ch09:slope-from-two-points",
+        "jee:maths:maths-ch03:pythagorean-identity"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -117,7 +125,8 @@
         "Reading the centre as (+4, +5) instead of (-4, -5) from (x + 4)^2 + (y + 5)^2"
       ],
       "prereqs": [
-        "jee:maths:maths-ch10:circle-standard-equation"
+        "jee:maths:maths-ch10:circle-standard-equation",
+        "jee:maths:maths-ch04:algebraic-identities"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -140,7 +149,10 @@
         "Letting the focus lie on the directrix (that gives a degenerate straight line)",
         "Confusing the directrix (a line) with the axis (also a line, but through the focus)"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch09:distance-of-point-from-line",
+        "jee:maths:maths-ch10:circle-definition"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -163,7 +175,8 @@
         "Getting the opening direction wrong by ignoring the sign of the coefficient"
       ],
       "prereqs": [
-        "jee:maths:maths-ch10:parabola-definition"
+        "jee:maths:maths-ch10:parabola-definition",
+        "jee:maths:maths-ch09:distance-of-point-from-line"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -210,7 +223,10 @@
         "Using the difference of focal distances (that defines a hyperbola, not an ellipse)",
         "Taking the constant sum to be less than the distance between the foci"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch10:circle-definition",
+        "jee:maths:maths-ch09:distance-of-point-from-line"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -233,7 +249,8 @@
         "Confusing the semi-axes a, b with the full axis lengths 2a, 2b"
       ],
       "prereqs": [
-        "jee:maths:maths-ch10:ellipse-definition"
+        "jee:maths:maths-ch10:ellipse-definition",
+        "jee:maths:maths-ch03:pythagorean-identity"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -257,7 +274,8 @@
         "Expecting e >= 1 for an ellipse (that holds for a hyperbola)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch10:ellipse-abc-relation"
+        "jee:maths:maths-ch10:ellipse-abc-relation",
+        "jee:maths:maths-ch10:ellipse-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -329,7 +347,10 @@
         "Using the sum of focal distances (that defines an ellipse, not a hyperbola)",
         "Confusing the transverse axis (through the foci) with the conjugate axis"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch10:circle-definition",
+        "jee:maths:maths-ch09:distance-of-point-from-line"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -352,7 +373,8 @@
         "Taking the transverse axis to be the conjugate axis"
       ],
       "prereqs": [
-        "jee:maths:maths-ch10:hyperbola-definition"
+        "jee:maths:maths-ch10:hyperbola-definition",
+        "jee:maths:maths-ch03:pythagorean-identity"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -401,7 +423,9 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch10:hyperbola-abc-relation",
-        "jee:maths:maths-ch10:hyperbola-eccentricity"
+        "jee:maths:maths-ch10:hyperbola-eccentricity",
+        "jee:maths:maths-ch10:hyperbola-definition",
+        "jee:maths:maths-ch10:ellipse-standard-equation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -457,7 +481,9 @@
         "jee:maths:maths-ch10:ellipse-standard-equation",
         "jee:maths:maths-ch10:ellipse-latus-rectum",
         "jee:maths:maths-ch10:hyperbola-standard-equation",
-        "jee:maths:maths-ch10:hyperbola-latus-rectum"
+        "jee:maths:maths-ch10:hyperbola-latus-rectum",
+        "jee:maths:maths-ch09:distance-of-point-from-line",
+        "jee:maths:maths-ch09:slope-from-two-points"
       ],
       "sameConcept": [],
       "teachingInsights": []

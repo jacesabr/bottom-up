@@ -24,7 +24,9 @@
         "Thinking optimisation only ever means maximising (it also covers minimising)",
         "Confusing the quantity to optimise with the limits placed on the choices"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch06:maximum-minimum-value"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -69,7 +71,8 @@
         "Forgetting that the decision variables are restricted to be non-negative"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch12:objective-function"
+        "cbse12:mathematics:mathematics-ch12:objective-function",
+        "cbse12:mathematics:mathematics-ch12:optimisation-problem"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -139,7 +142,10 @@
       ],
       "prereqs": [
         "cbse12:mathematics:mathematics-ch12:objective-function",
-        "cbse12:mathematics:mathematics-ch12:non-negative-restrictions"
+        "cbse12:mathematics:mathematics-ch12:non-negative-restrictions",
+        "cbse12:mathematics:mathematics-ch12:optimisation-problem",
+        "cbse12:mathematics:mathematics-ch12:decision-variables",
+        "cbse12:mathematics:mathematics-ch12:constraints"
       ],
       "sameConcept": [],
       "teachingInsights": []

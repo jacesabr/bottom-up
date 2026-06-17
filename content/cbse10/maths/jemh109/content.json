@@ -220,7 +220,9 @@
       "prereqs": [
         "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle",
         "cbse10:maths:jemh109:solve-for-unknown-side",
-        "cbse10:maths:jemh108:define-trig-ratios"
+        "cbse10:maths:jemh108:define-trig-ratios",
+        "cbse10:maths:jemh109:identify-angle-of-elevation",
+        "cbse10:maths:jemh109:identify-angle-of-depression"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -311,7 +313,10 @@
         "Subtracting instead of adding the observer height"
       ],
       "prereqs": [
-        "cbse10:maths:jemh109:set-up-trig-equation"
+        "cbse10:maths:jemh109:set-up-trig-equation",
+        "cbse10:maths:jemh109:draw-and-label-right-triangle",
+        "cbse10:maths:jemh109:solve-for-unknown-side",
+        "cbse10:maths:jemh109:combine-segment-lengths-for-total"
       ],
       "sameConcept": [],
       "teachingInsights": []

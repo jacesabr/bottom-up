@@ -95,7 +95,8 @@
         "Confusing arc length with chord length"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:radian-measure"
+        "jee:maths:maths-ch03:radian-measure",
+        "jee:maths:maths-ch03:degree-radian-conversion"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -144,7 +145,13 @@
         "Believing sine and cosine are only defined for acute angles in a triangle"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:radian-measure"
+        "jee:maths:maths-ch03:radian-measure",
+        "jee:maths:maths-ch03:measure-angle-by-rotation",
+        "jee:maths:maths-ch03:degree-measure",
+        "jee:maths:maths-ch03:degree-radian-conversion",
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch03:arc-length-formula",
+        "jee:maths:maths-ch02:real-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -192,7 +199,9 @@
         "Forgetting that tan and sec are undefined at odd multiples of pi/2"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:define-trig-functions-unit-circle"
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch02:algebra-of-functions",
+        "jee:maths:maths-ch02:rational-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -242,7 +251,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch03:define-trig-functions-unit-circle",
-        "jee:maths:maths-ch03:reciprocal-trig-functions"
+        "jee:maths:maths-ch03:reciprocal-trig-functions",
+        "jee:maths:maths-ch03:measure-angle-by-rotation",
+        "jee:maths:maths-ch03:degree-radian-conversion",
+        "jee:maths:maths-ch03:pythagorean-identity"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -267,7 +279,9 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch03:reciprocal-trig-functions",
-        "jee:maths:maths-ch03:pythagorean-identity"
+        "jee:maths:maths-ch03:pythagorean-identity",
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch02:domain-range-codomain"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -292,7 +306,13 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch03:define-trig-functions-unit-circle",
-        "jee:maths:maths-ch03:domain-and-range"
+        "jee:maths:maths-ch03:domain-and-range",
+        "jee:maths:maths-ch03:reciprocal-trig-functions",
+        "jee:maths:maths-ch03:sign-of-trig-functions",
+        "jee:maths:maths-ch03:degree-radian-conversion",
+        "jee:maths:maths-ch03:negative-angle-identities",
+        "jee:maths:maths-ch03:measure-angle-by-rotation",
+        "jee:maths:maths-ch03:radian-measure"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -317,7 +337,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch03:pythagorean-derived-identities",
-        "jee:maths:maths-ch03:sign-of-trig-functions"
+        "jee:maths:maths-ch03:sign-of-trig-functions",
+        "jee:maths:maths-ch03:pythagorean-identity",
+        "jee:maths:maths-ch03:reciprocal-trig-functions",
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -366,7 +389,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch03:define-trig-functions-unit-circle",
-        "jee:maths:maths-ch03:negative-angle-identities"
+        "jee:maths:maths-ch03:negative-angle-identities",
+        "jee:maths:maths-ch03:pythagorean-identity",
+        "jee:maths:maths-ch03:sign-of-trig-functions",
+        "jee:maths:maths-ch03:degree-radian-conversion"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -390,7 +416,13 @@
         "Forgetting the sign change in sin(pi + x) = -sin x"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:cosine-sum-difference"
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:sign-of-trig-functions",
+        "jee:maths:maths-ch03:negative-angle-identities",
+        "jee:maths:maths-ch03:radian-measure",
+        "jee:maths:maths-ch03:periodicity-and-graphs",
+        "jee:maths:maths-ch03:degree-radian-conversion"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -414,7 +446,13 @@
         "Distributing as sin(x + y) = sin x + sin y"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:cofunction-identities"
+        "jee:maths:maths-ch03:cofunction-identities",
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:negative-angle-identities",
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:pythagorean-identity",
+        "jee:maths:maths-ch03:sign-of-trig-functions",
+        "jee:maths:maths-ch03:find-remaining-trig-values"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -440,7 +478,9 @@
       "prereqs": [
         "jee:maths:maths-ch03:sine-sum-difference",
         "jee:maths:maths-ch03:cosine-sum-difference",
-        "jee:maths:maths-ch03:reciprocal-trig-functions"
+        "jee:maths:maths-ch03:reciprocal-trig-functions",
+        "jee:maths:maths-ch02:algebra-of-functions",
+        "jee:maths:maths-ch03:domain-and-range"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -466,7 +506,8 @@
       "prereqs": [
         "jee:maths:maths-ch03:cosine-sum-difference",
         "jee:maths:maths-ch03:sine-sum-difference",
-        "jee:maths:maths-ch03:tangent-sum-difference"
+        "jee:maths:maths-ch03:tangent-sum-difference",
+        "jee:maths:maths-ch03:pythagorean-identity"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -490,7 +531,11 @@
         "Swapping the coefficients between the sin 3x and cos 3x formulas"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:double-angle-identities"
+        "jee:maths:maths-ch03:double-angle-identities",
+        "jee:maths:maths-ch03:sine-sum-difference",
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:tangent-sum-difference",
+        "jee:maths:maths-ch03:pythagorean-identity"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -515,7 +560,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch03:cosine-sum-difference",
-        "jee:maths:maths-ch03:sine-sum-difference"
+        "jee:maths:maths-ch03:sine-sum-difference",
+        "jee:maths:maths-ch03:reciprocal-trig-functions"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -539,7 +585,9 @@
         "Confusing 2 sin x cos y with 2 cos x sin y (different difference terms)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:sum-to-product-identities"
+        "jee:maths:maths-ch03:sum-to-product-identities",
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:sine-sum-difference"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -572,7 +620,16 @@
         "jee:maths:maths-ch03:cofunction-identities",
         "jee:maths:maths-ch03:tangent-sum-difference",
         "jee:maths:maths-ch03:triple-angle-identities",
-        "jee:maths:maths-ch03:product-to-sum-identities"
+        "jee:maths:maths-ch03:product-to-sum-identities",
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:pythagorean-identity",
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:sine-sum-difference",
+        "jee:maths:maths-ch03:double-angle-identities",
+        "jee:maths:maths-ch03:sum-to-product-identities",
+        "jee:maths:maths-ch03:sign-of-trig-functions",
+        "jee:maths:maths-ch03:negative-angle-identities",
+        "jee:maths:maths-ch03:reciprocal-trig-functions"
       ],
       "sameConcept": [],
       "teachingInsights": []

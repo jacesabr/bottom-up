@@ -24,7 +24,10 @@
         "Confusing the event (a subset) with a single outcome (a sample point)",
         "Listing outcomes that do not actually satisfy the described condition"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch01:determine-subset-relations",
+        "jee:maths:maths-ch01:compute-the-union-of-sets"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -71,7 +74,8 @@
         "Forgetting that the sure event is the entire sample space, not just a large subset"
       ],
       "prereqs": [
-        "jee:maths:maths-ch14:event-as-subset"
+        "jee:maths:maths-ch14:event-as-subset",
+        "jee:maths:maths-ch01:identify-the-empty-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +123,9 @@
         "Failing to list every outcome that satisfies the description, undercounting the sample points"
       ],
       "prereqs": [
-        "jee:maths:maths-ch14:simple-event"
+        "jee:maths:maths-ch14:simple-event",
+        "jee:maths:maths-ch14:event-a-and-b",
+        "jee:maths:maths-ch14:event-a-or-b"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -143,7 +149,8 @@
         "Forgetting that the complement is taken relative to the full sample space S"
       ],
       "prereqs": [
-        "jee:maths:maths-ch14:event-as-subset"
+        "jee:maths:maths-ch14:event-as-subset",
+        "jee:maths:maths-ch01:find-the-complement-of-a-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -167,7 +174,8 @@
         "Listing an outcome that is in neither A nor B"
       ],
       "prereqs": [
-        "jee:maths:maths-ch14:event-as-subset"
+        "jee:maths:maths-ch14:event-as-subset",
+        "jee:maths:maths-ch01:compute-the-union-of-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -191,7 +199,8 @@
         "Confusing the intersection (and) with the union (or)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch14:event-as-subset"
+        "jee:maths:maths-ch14:event-as-subset",
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -216,7 +225,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch14:event-a-and-b",
-        "jee:maths:maths-ch14:complementary-event"
+        "jee:maths:maths-ch14:complementary-event",
+        "jee:maths:maths-ch01:compute-the-difference-of-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -240,7 +250,8 @@
         "Thinking mutually exclusive is the same as exhaustive"
       ],
       "prereqs": [
-        "jee:maths:maths-ch14:event-a-and-b"
+        "jee:maths:maths-ch14:event-a-and-b",
+        "jee:maths:maths-ch01:identify-the-empty-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -265,7 +276,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch14:event-a-or-b",
-        "jee:maths:maths-ch14:mutually-exclusive-events"
+        "jee:maths:maths-ch14:mutually-exclusive-events",
+        "jee:maths:maths-ch01:choose-a-universal-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -289,7 +301,8 @@
         "Applying the additivity axiom to events that are not mutually exclusive"
       ],
       "prereqs": [
-        "jee:maths:maths-ch14:mutually-exclusive-events"
+        "jee:maths:maths-ch14:mutually-exclusive-events",
+        "jee:maths:maths-ch14:event-as-subset"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -338,7 +351,9 @@
         "Miscounting n(A) or n(S), e.g. by double counting or missing arrangements"
       ],
       "prereqs": [
-        "jee:maths:maths-ch14:probability-of-an-event"
+        "jee:maths:maths-ch14:probability-of-an-event",
+        "jee:maths:maths-ch14:event-as-subset",
+        "jee:maths:maths-ch06:combinations-ncr"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -364,7 +379,9 @@
       "prereqs": [
         "jee:maths:maths-ch14:event-a-or-b",
         "jee:maths:maths-ch14:event-a-and-b",
-        "jee:maths:maths-ch14:probability-of-an-event"
+        "jee:maths:maths-ch14:probability-of-an-event",
+        "jee:maths:maths-ch01:compute-the-union-of-sets",
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -420,7 +437,8 @@
         "jee:maths:maths-ch14:exhaustive-events",
         "jee:maths:maths-ch14:equally-likely-outcomes",
         "jee:maths:maths-ch14:probability-a-or-b",
-        "jee:maths:maths-ch14:probability-not-a"
+        "jee:maths:maths-ch14:probability-not-a",
+        "jee:maths:maths-ch06:solve-counting-problems"
       ],
       "sameConcept": [],
       "teachingInsights": []

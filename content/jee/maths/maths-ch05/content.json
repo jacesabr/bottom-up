@@ -46,7 +46,13 @@
         "Treating an inequality as having a single solution like an equation",
         "Ignoring which number set the variable ranges over when listing the solution set"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch05:inequality-meaning",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers",
+        "jee:maths:maths-ch05:apply-rules-for-solving",
+        "jee:maths:maths-ch01:write-intervals-as-subsets-of-r"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -68,7 +74,9 @@
         "Forgetting to reverse the inequality sign after multiplying or dividing by a negative number",
         "Reversing the sign when adding or subtracting, or when multiplying by a positive number"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch05:inequality-meaning"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -115,7 +123,9 @@
         "Forgetting the condition that the coefficient of the variable must be non-zero"
       ],
       "prereqs": [
-        "jee:maths:maths-ch05:classify-inequalities"
+        "jee:maths:maths-ch05:classify-inequalities",
+        "jee:maths:maths-ch05:inequality-meaning",
+        "jee:maths:maths-ch02:polynomial-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -141,7 +151,9 @@
       "prereqs": [
         "jee:maths:maths-ch05:understand-solutions",
         "jee:maths:maths-ch05:apply-rules-for-solving",
-        "jee:maths:maths-ch05:recognise-linear-inequality"
+        "jee:maths:maths-ch05:recognise-linear-inequality",
+        "jee:maths:maths-ch01:write-intervals-as-subsets-of-r",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -165,7 +177,11 @@
         "Shading the wrong side of the endpoint"
       ],
       "prereqs": [
-        "jee:maths:maths-ch05:solve-linear-one-variable"
+        "jee:maths:maths-ch05:solve-linear-one-variable",
+        "jee:maths:maths-ch05:inequality-meaning",
+        "jee:maths:maths-ch05:understand-solutions",
+        "jee:maths:maths-ch05:classify-inequalities",
+        "jee:maths:maths-ch01:write-intervals-as-subsets-of-r"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -189,7 +205,11 @@
         "Stopping at the algebra without interpreting the answer in the problem's context"
       ],
       "prereqs": [
-        "jee:maths:maths-ch05:solve-linear-one-variable"
+        "jee:maths:maths-ch05:solve-linear-one-variable",
+        "jee:maths:maths-ch05:inequality-meaning",
+        "jee:maths:maths-ch05:apply-rules-for-solving",
+        "jee:maths:maths-ch05:solve-double-inequality",
+        "jee:maths:maths-ch05:represent-on-number-line"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -214,7 +234,9 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch05:apply-rules-for-solving",
-        "jee:maths:maths-ch05:solve-linear-one-variable"
+        "jee:maths:maths-ch05:solve-linear-one-variable",
+        "jee:maths:maths-ch05:classify-inequalities",
+        "jee:maths:maths-ch05:represent-on-number-line"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -239,7 +261,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch05:solve-linear-one-variable",
-        "jee:maths:maths-ch05:represent-on-number-line"
+        "jee:maths:maths-ch05:represent-on-number-line",
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -267,7 +290,14 @@
         "jee:maths:maths-ch05:represent-on-number-line",
         "jee:maths:maths-ch05:solve-word-problems",
         "jee:maths:maths-ch05:solve-double-inequality",
-        "jee:maths:maths-ch05:solve-system-of-inequalities"
+        "jee:maths:maths-ch05:solve-system-of-inequalities",
+        "jee:maths:maths-ch05:inequality-meaning",
+        "jee:maths:maths-ch05:apply-rules-for-solving",
+        "jee:maths:maths-ch05:understand-solutions",
+        "jee:maths:maths-ch05:classify-inequalities",
+        "jee:maths:maths-ch05:recognise-linear-inequality",
+        "jee:maths:maths-ch01:write-intervals-as-subsets-of-r",
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []

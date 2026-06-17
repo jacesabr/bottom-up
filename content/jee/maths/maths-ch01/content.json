@@ -71,7 +71,8 @@
         "Thinking the order of elements changes the set"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:use-set-membership"
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:define-a-well-defined-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -95,7 +96,9 @@
         "Misreading the colon ':' as anything other than 'such that'"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:write-a-set-in-roster-form"
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:define-a-well-defined-set",
+        "jee:maths:maths-ch01:use-set-membership"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +122,10 @@
         "Calling a set empty when in fact some element does satisfy its property"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:write-a-set-in-set-builder-form"
+        "jee:maths:maths-ch01:write-a-set-in-set-builder-form",
+        "jee:maths:maths-ch01:define-a-well-defined-set",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -143,7 +149,8 @@
         "Thinking every infinite set can be displayed in roster form (the reals cannot)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:identify-the-empty-set"
+        "jee:maths:maths-ch01:identify-the-empty-set",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -167,7 +174,11 @@
         "Declaring two sets equal after matching only one direction of inclusion"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:write-a-set-in-set-builder-form",
+        "jee:maths:maths-ch01:define-a-well-defined-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -191,7 +202,10 @@
         "Confusing the number of subsets (2^n) with the number of proper subsets (2^n - 1)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:decide-when-two-sets-are-equal"
+        "jee:maths:maths-ch01:decide-when-two-sets-are-equal",
+        "jee:maths:maths-ch01:identify-the-empty-set",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -216,7 +230,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch01:decide-when-two-sets-are-equal",
-        "jee:maths:maths-ch01:count-subsets-and-power-set"
+        "jee:maths:maths-ch01:count-subsets-and-power-set",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:identify-the-empty-set",
+        "jee:maths:maths-ch01:define-a-well-defined-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -240,7 +257,11 @@
         "Believing N is a subset of the irrationals T"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:determine-subset-relations"
+        "jee:maths:maths-ch01:determine-subset-relations",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:write-a-set-in-set-builder-form",
+        "jee:maths:maths-ch01:identify-the-empty-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -264,7 +285,10 @@
         "Writing the end points as belonging to an interval that has them as +/- infinity"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers"
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers",
+        "jee:maths:maths-ch01:write-a-set-in-set-builder-form",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:identify-the-empty-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -288,7 +312,12 @@
         "Thinking there is a single absolute universal set rather than one chosen per context"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:determine-subset-relations"
+        "jee:maths:maths-ch01:determine-subset-relations",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers",
+        "jee:maths:maths-ch01:define-a-well-defined-set",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -312,7 +341,11 @@
         "Forgetting that the rectangle (U) bounds all the subset circles"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:choose-a-universal-set"
+        "jee:maths:maths-ch01:choose-a-universal-set",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:determine-subset-relations",
+        "jee:maths:maths-ch01:compute-the-union-of-sets",
+        "jee:maths:maths-ch01:write-a-set-in-set-builder-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -336,7 +369,14 @@
         "Mixing up union (or) with intersection (and)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:determine-subset-relations"
+        "jee:maths:maths-ch01:determine-subset-relations",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:identify-the-empty-set",
+        "jee:maths:maths-ch01:choose-a-universal-set",
+        "jee:maths:maths-ch01:write-a-set-in-set-builder-form",
+        "jee:maths:maths-ch01:decide-when-two-sets-are-equal",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -360,7 +400,12 @@
         "Confusing intersection (common to both, 'and') with union ('or')"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:compute-the-union-of-sets"
+        "jee:maths:maths-ch01:compute-the-union-of-sets",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:identify-the-empty-set",
+        "jee:maths:maths-ch01:represent-sets-with-venn-diagrams",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -384,7 +429,12 @@
         "Including in A - B elements that are not in A in the first place"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:compute-the-intersection-of-sets"
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:decide-when-two-sets-are-equal",
+        "jee:maths:maths-ch01:compute-the-union-of-sets",
+        "jee:maths:maths-ch01:represent-sets-with-venn-diagrams"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -409,7 +459,12 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch01:compute-the-difference-of-sets",
-        "jee:maths:maths-ch01:choose-a-universal-set"
+        "jee:maths:maths-ch01:choose-a-universal-set",
+        "jee:maths:maths-ch01:use-set-membership",
+        "jee:maths:maths-ch01:identify-the-empty-set",
+        "jee:maths:maths-ch01:write-a-set-in-roster-form",
+        "jee:maths:maths-ch01:compute-the-union-of-sets",
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -433,7 +488,10 @@
         "Leaving the operation unchanged when distributing the complement over a union or intersection"
       ],
       "prereqs": [
-        "jee:maths:maths-ch01:find-the-complement-of-a-set"
+        "jee:maths:maths-ch01:find-the-complement-of-a-set",
+        "jee:maths:maths-ch01:compute-the-union-of-sets",
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets",
+        "jee:maths:maths-ch01:choose-a-universal-set"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -471,7 +529,8 @@
         "jee:maths:maths-ch01:compute-the-intersection-of-sets",
         "jee:maths:maths-ch01:compute-the-difference-of-sets",
         "jee:maths:maths-ch01:find-the-complement-of-a-set",
-        "jee:maths:maths-ch01:apply-de-morgans-laws"
+        "jee:maths:maths-ch01:apply-de-morgans-laws",
+        "jee:maths:maths-ch01:define-a-well-defined-set"
       ],
       "sameConcept": [],
       "teachingInsights": []

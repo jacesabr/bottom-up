@@ -24,7 +24,11 @@
         "Measuring the angle clockwise or from the y-axis instead of anticlockwise from the positive x-axis",
         "Allowing inclinations greater than 180 degrees"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch03:measure-angle-by-rotation",
+        "jee:maths:maths-ch03:degree-measure"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -47,7 +51,9 @@
         "Confusing the inclination angle itself with the slope (forgetting to take the tangent)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch09:inclination-of-a-line"
+        "jee:maths:maths-ch09:inclination-of-a-line",
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:degree-radian-conversion"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -71,7 +77,8 @@
         "Being inconsistent about the order of the points in the numerator and denominator"
       ],
       "prereqs": [
-        "jee:maths:maths-ch09:slope-as-tan-inclination"
+        "jee:maths:maths-ch09:slope-as-tan-inclination",
+        "jee:maths:maths-ch02:ordered-pair"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +126,8 @@
         "Taking the reciprocal without the negative sign"
       ],
       "prereqs": [
-        "jee:maths:maths-ch09:slope-from-two-points"
+        "jee:maths:maths-ch09:slope-from-two-points",
+        "jee:maths:maths-ch09:angle-between-two-lines"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -143,7 +151,9 @@
         "Using the formula when 1 + m1 m2 = 0 (perpendicular lines), where it is undefined"
       ],
       "prereqs": [
-        "jee:maths:maths-ch09:slope-from-two-points"
+        "jee:maths:maths-ch09:slope-from-two-points",
+        "jee:maths:maths-ch09:slope-as-tan-inclination",
+        "jee:maths:maths-ch03:tangent-sum-difference"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -191,7 +201,9 @@
         "Picking the wrong sign for the constant relative to the axis"
       ],
       "prereqs": [
-        "jee:maths:maths-ch09:slope-as-tan-inclination"
+        "jee:maths:maths-ch09:slope-as-tan-inclination",
+        "jee:maths:maths-ch09:slope-from-two-points",
+        "jee:maths:maths-ch09:inclination-of-a-line"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -215,7 +227,8 @@
         "Dropping the subtraction and writing y = m(x - x0) when y0 is non-zero"
       ],
       "prereqs": [
-        "jee:maths:maths-ch09:slope-as-tan-inclination"
+        "jee:maths:maths-ch09:slope-as-tan-inclination",
+        "jee:maths:maths-ch09:slope-from-two-points"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -264,7 +277,9 @@
         "Forgetting the sign of c when the line cuts the negative y-axis"
       ],
       "prereqs": [
-        "jee:maths:maths-ch09:point-slope-form"
+        "jee:maths:maths-ch09:point-slope-form",
+        "jee:maths:maths-ch09:slope-from-two-points",
+        "jee:maths:maths-ch02:real-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -288,7 +303,8 @@
         "Setting the right-hand side to 0 instead of 1"
       ],
       "prereqs": [
-        "jee:maths:maths-ch09:two-point-form"
+        "jee:maths:maths-ch09:two-point-form",
+        "jee:maths:maths-ch09:slope-intercept-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -313,7 +329,9 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch09:slope-intercept-form",
-        "jee:maths:maths-ch09:intercept-form"
+        "jee:maths:maths-ch09:intercept-form",
+        "jee:maths:maths-ch09:two-point-form",
+        "jee:maths:maths-ch05:recognise-linear-inequality"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -337,7 +355,8 @@
         "Dividing by A^2 + B^2 instead of its square root, or applying the formula without first putting the line in general form"
       ],
       "prereqs": [
-        "jee:maths:maths-ch09:general-equation-of-a-line"
+        "jee:maths:maths-ch09:general-equation-of-a-line",
+        "jee:maths:maths-ch03:pythagorean-identity"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -362,7 +381,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch09:distance-of-point-from-line",
-        "jee:maths:maths-ch09:parallel-lines-equal-slopes"
+        "jee:maths:maths-ch09:parallel-lines-equal-slopes",
+        "jee:maths:maths-ch09:general-equation-of-a-line"
       ],
       "sameConcept": [],
       "teachingInsights": []

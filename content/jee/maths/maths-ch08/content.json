@@ -24,7 +24,9 @@
         "Thinking the terms of a sequence need not be in any particular order",
         "Believing every sequence must come from a single algebraic formula"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch02:function"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -47,7 +49,8 @@
         "Believing a sequence written with '...' must always be infinite, even when it terminates at a stated last term"
       ],
       "prereqs": [
-        "jee:maths:maths-ch08:define-a-sequence"
+        "jee:maths:maths-ch08:define-a-sequence",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -71,7 +74,8 @@
         "Forgetting to apply a recurrence step by step and trying to jump straight to a_n"
       ],
       "prereqs": [
-        "jee:maths:maths-ch08:define-a-sequence"
+        "jee:maths:maths-ch08:define-a-sequence",
+        "jee:maths:maths-ch02:polynomial-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -95,7 +99,8 @@
         "Treating 'series' as the final number rather than the indicated sum"
       ],
       "prereqs": [
-        "jee:maths:maths-ch08:find-the-general-term"
+        "jee:maths:maths-ch08:find-the-general-term",
+        "jee:maths:maths-ch08:define-a-sequence"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +124,8 @@
         "Allowing a zero term, which is not permitted in a G.P."
       ],
       "prereqs": [
-        "jee:maths:maths-ch08:define-a-sequence"
+        "jee:maths:maths-ch08:define-a-sequence",
+        "jee:maths:maths-ch08:find-the-general-term"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -167,7 +173,8 @@
         "Confusing the G.P. nth term with the A.P. nth term a + (n-1)d"
       ],
       "prereqs": [
-        "jee:maths:maths-ch08:identify-first-term-and-common-ratio"
+        "jee:maths:maths-ch08:identify-first-term-and-common-ratio",
+        "jee:maths:maths-ch07:state-binomial-theorem"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -216,7 +223,8 @@
         "Taking the geometric mean of numbers of opposite sign, where sqrt(ab) is not real"
       ],
       "prereqs": [
-        "jee:maths:maths-ch08:recognise-a-geometric-progression"
+        "jee:maths:maths-ch08:recognise-a-geometric-progression",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -265,7 +273,8 @@
         "Forgetting the equality case A = G occurs only when a = b"
       ],
       "prereqs": [
-        "jee:maths:maths-ch08:compute-the-geometric-mean"
+        "jee:maths:maths-ch08:compute-the-geometric-mean",
+        "jee:maths:maths-ch05:apply-rules-for-solving"
       ],
       "sameConcept": [],
       "teachingInsights": []

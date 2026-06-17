@@ -178,8 +178,7 @@
         "Not drawing the perpendicular and trying to use OA as height"
       ],
       "prereqs": [
-        "cbse10:maths:jemh111:use-rhs-congruence-bisect",
-        "cbse10:maths:jemh110:use-perpendicular-bisects-chord"
+        "cbse10:maths:jemh111:use-rhs-congruence-bisect"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -226,8 +225,7 @@
         "Misremembering cos 60° as √3/2"
       ],
       "prereqs": [
-        "cbse10:maths:jemh111:use-rhs-congruence-bisect",
-        "cbse10:maths:jemh108:recall-30-60-ratios"
+        "cbse10:maths:jemh111:use-rhs-congruence-bisect"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -251,8 +249,7 @@
         "Misremembering sin 60° as 1/2"
       ],
       "prereqs": [
-        "cbse10:maths:jemh111:use-rhs-congruence-bisect",
-        "cbse10:maths:jemh108:recall-30-60-ratios"
+        "cbse10:maths:jemh111:use-rhs-congruence-bisect"
       ],
       "sameConcept": [],
       "teachingInsights": []

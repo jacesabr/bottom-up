@@ -24,7 +24,10 @@
         "Treating i as just another real number whose square is positive",
         "Forgetting to substitute i^2 = -1 and leaving i^2 in an answer"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers",
+        "jee:maths:maths-ch02:polynomial-function"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -47,7 +50,8 @@
         "Confusing the imaginary part with ib instead of the real coefficient b"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:imaginary-unit-i"
+        "jee:maths:maths-ch04:imaginary-unit-i",
+        "jee:maths:maths-ch01:name-subsets-of-the-real-numbers"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -71,7 +75,8 @@
         "Thinking Re z or Im z can be complex rather than real numbers"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:complex-number-form"
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:imaginary-unit-i"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -95,7 +100,8 @@
         "Matching the real part of one side with the imaginary part of the other"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:real-imaginary-parts"
+        "jee:maths:maths-ch04:real-imaginary-parts",
+        "jee:maths:maths-ch04:complex-number-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +125,9 @@
         "Mishandling signs when negating z2 in a subtraction"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:complex-number-form"
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:imaginary-unit-i",
+        "jee:maths:maths-ch04:real-imaginary-parts"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -144,7 +152,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch04:complex-number-form",
-        "jee:maths:maths-ch04:imaginary-unit-i"
+        "jee:maths:maths-ch04:imaginary-unit-i",
+        "jee:maths:maths-ch04:real-imaginary-parts",
+        "jee:maths:maths-ch04:add-subtract-complex",
+        "jee:maths:maths-ch04:powers-of-i"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -168,7 +179,8 @@
         "Reducing the exponent modulo 2 instead of modulo 4"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:imaginary-unit-i"
+        "jee:maths:maths-ch04:imaginary-unit-i",
+        "jee:maths:maths-ch04:complex-number-form"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -192,7 +204,11 @@
         "Omitting the sign change on the imaginary part (-b in the numerator)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:multiply-complex"
+        "jee:maths:maths-ch04:multiply-complex",
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:conjugate",
+        "jee:maths:maths-ch04:modulus",
+        "jee:maths:maths-ch04:real-imaginary-parts"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -216,7 +232,13 @@
         "Forgetting to rationalise by the conjugate, leaving i in the denominator"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:multiplicative-inverse"
+        "jee:maths:maths-ch04:multiplicative-inverse",
+        "jee:maths:maths-ch04:multiply-complex",
+        "jee:maths:maths-ch04:conjugate",
+        "jee:maths:maths-ch04:modulus",
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:real-imaginary-parts",
+        "jee:maths:maths-ch04:modulus-conjugate-properties"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -264,7 +286,8 @@
         "Concluding sqrt(-2)*sqrt(-3) = sqrt(6) instead of -sqrt(6)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:square-root-negative-real"
+        "jee:maths:maths-ch04:square-root-negative-real",
+        "jee:maths:maths-ch04:imaginary-unit-i"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -289,7 +312,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch04:multiply-complex",
-        "jee:maths:maths-ch04:powers-of-i"
+        "jee:maths:maths-ch04:powers-of-i",
+        "jee:maths:maths-ch04:imaginary-unit-i",
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:add-subtract-complex"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -313,7 +339,10 @@
         "Forgetting to square the imaginary coefficient (using b instead of b^2)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:complex-number-form"
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:imaginary-unit-i",
+        "jee:maths:maths-ch04:real-imaginary-parts",
+        "jee:maths:maths-ch03:pythagorean-identity"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -337,7 +366,8 @@
         "Thinking the conjugate changes the modulus (|z-bar| = |z|)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:complex-number-form"
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:real-imaginary-parts"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -362,7 +392,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch04:modulus",
-        "jee:maths:maths-ch04:conjugate"
+        "jee:maths:maths-ch04:conjugate",
+        "jee:maths:maths-ch04:multiply-complex",
+        "jee:maths:maths-ch04:multiplicative-inverse",
+        "jee:maths:maths-ch04:add-subtract-complex"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -386,7 +419,11 @@
         "Thinking the modulus is a coordinate rather than the distance to the origin"
       ],
       "prereqs": [
-        "jee:maths:maths-ch04:modulus"
+        "jee:maths:maths-ch04:modulus",
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:real-imaginary-parts",
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch02:cartesian-product"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -411,7 +448,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch04:argand-plane",
-        "jee:maths:maths-ch04:conjugate"
+        "jee:maths:maths-ch04:conjugate",
+        "jee:maths:maths-ch04:modulus",
+        "jee:maths:maths-ch04:real-imaginary-parts",
+        "jee:maths:maths-ch04:add-subtract-complex"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -446,7 +486,11 @@
         "jee:maths:maths-ch04:equality-of-complex-numbers",
         "jee:maths:maths-ch04:modulus-conjugate-properties",
         "jee:maths:maths-ch04:argand-plane",
-        "jee:maths:maths-ch04:conjugate-geometry"
+        "jee:maths:maths-ch04:conjugate-geometry",
+        "jee:maths:maths-ch04:imaginary-unit-i",
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:real-imaginary-parts",
+        "jee:maths:maths-ch04:conjugate"
       ],
       "sameConcept": [],
       "teachingInsights": []

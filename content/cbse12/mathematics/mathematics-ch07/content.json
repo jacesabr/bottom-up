@@ -24,7 +24,9 @@
         "Thinking the antiderivative is unique (forgetting + C)",
         "Confusing the antiderivative with the derivative"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch05:derivative-definition"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -47,7 +49,9 @@
         "Forgetting the constant of integration when reversing"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch07:antiderivative"
+        "cbse12:mathematics:mathematics-ch07:antiderivative",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch05:chain-rule"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -71,7 +75,8 @@
         "Treating the indefinite integral as a single number"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch07:antiderivative"
+        "cbse12:mathematics:mathematics-ch07:antiderivative",
+        "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -95,7 +100,10 @@
         "Treating differently-constant answers as contradictory"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch07:indefinite-integral"
+        "cbse12:mathematics:mathematics-ch07:indefinite-integral",
+        "cbse12:mathematics:mathematics-ch07:antiderivative",
+        "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +127,11 @@
         "Not substituting the original variable back at the end"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation"
+        "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation",
+        "cbse12:mathematics:mathematics-ch05:chain-rule",
+        "cbse12:mathematics:mathematics-ch07:antiderivative",
+        "cbse12:mathematics:mathematics-ch07:indefinite-integral",
+        "cbse12:mathematics:mathematics-ch07:same-derivative-same-family"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -191,7 +203,13 @@
         "Assuming integration by parts works for every product of functions"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation"
+        "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation",
+        "cbse12:mathematics:mathematics-ch07:antiderivative",
+        "cbse12:mathematics:mathematics-ch07:indefinite-integral",
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log",
+        "cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives",
+        "cbse12:mathematics:mathematics-ch07:integration-by-substitution"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -215,7 +233,9 @@
         "Swapping the lower and upper limits without changing sign"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch07:antiderivative"
+        "cbse12:mathematics:mathematics-ch07:antiderivative",
+        "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation",
+        "cbse12:mathematics:mathematics-ch07:indefinite-integral"
       ],
       "sameConcept": [],
       "teachingInsights": []

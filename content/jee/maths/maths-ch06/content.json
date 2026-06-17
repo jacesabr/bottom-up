@@ -24,7 +24,12 @@
         "Adding the counts (m + n) instead of multiplying them",
         "Keeping the count fixed when repetition is not allowed, instead of reducing it at each step"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch02:cartesian-product",
+        "jee:maths:maths-ch02:count-cartesian-product",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -46,7 +51,12 @@
         "Treating arrangements like AB and BA as the same when order actually matters",
         "Confusing an arrangement (order matters) with a selection (order does not)"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch06:multiplication-principle",
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch01:classify-finite-and-infinite-sets"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -68,7 +78,9 @@
         "Taking 0! = 0 instead of 0! = 1",
         "Treating (a+b)! as a! + b! or a!b! instead of leaving factorials of sums unsimplified"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch06:multiplication-principle"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -118,7 +130,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch06:permutation-definition",
-        "jee:maths:maths-ch06:multiplication-principle"
+        "jee:maths:maths-ch06:multiplication-principle",
+        "jee:maths:maths-ch06:permutations-distinct-npr"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -142,7 +155,10 @@
         "Dividing by the number of repeats p instead of by p!"
       ],
       "prereqs": [
-        "jee:maths:maths-ch06:permutations-distinct-npr"
+        "jee:maths:maths-ch06:permutations-distinct-npr",
+        "jee:maths:maths-ch06:multiplication-principle",
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:permutation-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -165,7 +181,11 @@
         "Counting AB and BA as two outcomes when order is irrelevant",
         "Treating a selection (combination) as if it were an arrangement (permutation)"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch06:multiplication-principle",
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:permutation-definition"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -189,7 +209,9 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch06:combination-definition",
-        "jee:maths:maths-ch06:permutations-distinct-npr"
+        "jee:maths:maths-ch06:permutations-distinct-npr",
+        "jee:maths:maths-ch06:permutation-definition",
+        "jee:maths:maths-ch06:factorial-notation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -214,7 +236,10 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch06:relate-permutations-combinations",
-        "jee:maths:maths-ch06:factorial-notation"
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:multiplication-principle",
+        "jee:maths:maths-ch06:combination-definition",
+        "jee:maths:maths-ch06:permutations-distinct-npr"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -238,7 +263,9 @@
         "Believing rejecting (n-r) objects gives a different count from selecting r"
       ],
       "prereqs": [
-        "jee:maths:maths-ch06:combinations-ncr"
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:combination-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -262,7 +289,10 @@
         "Adding the combinations as if the formula were a simple sum of fractions without combining over a common denominator"
       ],
       "prereqs": [
-        "jee:maths:maths-ch06:combinations-ncr"
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:combination-definition",
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:multiplication-principle"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -292,7 +322,11 @@
         "jee:maths:maths-ch06:permutations-not-all-distinct",
         "jee:maths:maths-ch06:combinations-ncr",
         "jee:maths:maths-ch06:combination-symmetry",
-        "jee:maths:maths-ch06:pascal-identity"
+        "jee:maths:maths-ch06:pascal-identity",
+        "jee:maths:maths-ch06:factorial-notation",
+        "jee:maths:maths-ch06:permutation-definition",
+        "jee:maths:maths-ch06:combination-definition",
+        "jee:maths:maths-ch06:relate-permutations-combinations"
       ],
       "sameConcept": [],
       "teachingInsights": []

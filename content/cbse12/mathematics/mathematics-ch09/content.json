@@ -24,7 +24,9 @@
         "Calling an equation with no derivatives a differential equation",
         "Confusing the dependent and independent variables"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch05:derivative-definition"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -95,7 +97,9 @@
         "Using fewer constants than the order of the equation"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch09:order"
+        "cbse12:mathematics:mathematics-ch07:indefinite-integral",
+        "cbse12:mathematics:mathematics-ch09:order",
+        "cbse12:mathematics:mathematics-ch07:antiderivative"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -143,6 +147,7 @@
         "Forgetting the constant of integration"
       ],
       "prereqs": [
+        "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
         "cbse12:mathematics:mathematics-ch09:general-solution"
       ],
       "sameConcept": [],
@@ -191,8 +196,9 @@
         "Forgetting to back-substitute v = y/x at the end"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch09:homogeneous-function",
-        "cbse12:mathematics:mathematics-ch09:variables-separable"
+        "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
+        "cbse12:mathematics:mathematics-ch09:variables-separable",
+        "cbse12:mathematics:mathematics-ch09:homogeneous-function"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -240,7 +246,10 @@
         "Forgetting the exponential in I.F. = e^(integral of P dx)"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch09:linear-differential-equation"
+        "cbse12:mathematics:mathematics-ch09:linear-differential-equation",
+        "cbse12:mathematics:mathematics-ch05:exponential-function",
+        "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log",
+        "cbse12:mathematics:mathematics-ch07:integration-by-parts"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -264,10 +273,13 @@
         "Skipping the standard-form step and misidentifying P, Q"
       ],
       "prereqs": [
+        "cbse12:mathematics:mathematics-ch09:particular-solution",
+        "cbse12:mathematics:mathematics-ch05:logarithmic-differentiation",
+        "cbse12:mathematics:mathematics-ch09:degree",
         "cbse12:mathematics:mathematics-ch09:integrating-factor",
         "cbse12:mathematics:mathematics-ch09:homogeneous-differential-equation",
-        "cbse12:mathematics:mathematics-ch09:particular-solution",
-        "cbse12:mathematics:mathematics-ch09:degree"
+        "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log",
+        "cbse12:mathematics:mathematics-ch07:integration-by-parts"
       ],
       "sameConcept": [],
       "teachingInsights": []

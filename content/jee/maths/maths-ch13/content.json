@@ -24,7 +24,10 @@
         "Believing two data sets with the same mean must be equally spread",
         "Thinking central tendency alone fully summarises a data set"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch08:define-a-sequence",
+        "jee:maths:maths-ch08:form-a-series-with-sigma-notation"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -71,7 +74,8 @@
         "Thinking mean deviation can only be measured about the mean, not the median"
       ],
       "prereqs": [
-        "jee:maths:maths-ch13:why-dispersion"
+        "jee:maths:maths-ch13:why-dispersion",
+        "jee:maths:maths-ch08:form-a-series-with-sigma-notation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -119,7 +123,8 @@
         "Reading the median straight off the values without using cumulative frequencies"
       ],
       "prereqs": [
-        "jee:maths:maths-ch13:mean-deviation-ungrouped"
+        "jee:maths:maths-ch13:mean-deviation-ungrouped",
+        "jee:maths:maths-ch13:mean-deviation-definition"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -216,7 +221,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch13:standard-deviation",
-        "jee:maths:maths-ch13:mean-deviation-continuous"
+        "jee:maths:maths-ch13:mean-deviation-continuous",
+        "jee:maths:maths-ch13:mean-deviation-discrete"
       ],
       "sameConcept": [],
       "teachingInsights": []

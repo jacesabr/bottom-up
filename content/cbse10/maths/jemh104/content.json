@@ -66,7 +66,8 @@
       "prereqs": [
         "cbse10:maths:jemh104:rearrange-to-standard-form",
         "cbse10:maths:jemh104:expand-and-simplify-expression",
-        "cbse10:maths:jemh102:classify-polynomial-by-degree"
+        "cbse10:maths:jemh102:classify-polynomial-by-degree",
+        "cbse10:maths:jemh102:identify-degree-of-polynomial"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -91,7 +92,8 @@
         "Not writing terms in descending degree order"
       ],
       "prereqs": [
-        "cbse10:maths:jemh104:expand-and-simplify-expression"
+        "cbse10:maths:jemh104:expand-and-simplify-expression",
+        "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -115,7 +117,9 @@
         "Mis-expanding the cube (x+2)³",
         "Sign errors in the difference-of-squares product"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse10:maths:jemh102:evaluate-polynomial-at-a-value"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -140,7 +144,8 @@
       ],
       "prereqs": [
         "cbse10:maths:jemh104:rearrange-to-standard-form",
-        "cbse10:maths:jemh104:expand-and-simplify-expression"
+        "cbse10:maths:jemh104:expand-and-simplify-expression",
+        "cbse10:maths:jemh103:form-equations-from-word-problem"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -164,7 +169,9 @@
         "Concluding a value is a root when the result is non-zero",
         "Substituting into only one side and not comparing to zero"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse10:maths:jemh102:verify-cubic-zero-by-substitution"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -188,7 +195,8 @@
         "Using b·c instead of a·c for the product"
       ],
       "prereqs": [
-        "cbse10:maths:jemh104:identify-coefficients-abc"
+        "cbse10:maths:jemh104:identify-coefficients-abc",
+        "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term"
       ],
       "sameConcept": [
         "cbse10:maths:jemh102:factorise-quadratic-by-splitting-middle-term"
@@ -240,7 +248,8 @@
         "Adding the factors instead of treating each independently"
       ],
       "prereqs": [
-        "cbse10:maths:jemh104:factor-by-grouping"
+        "cbse10:maths:jemh104:factor-by-grouping",
+        "cbse10:maths:jemh102:find-zeroes-from-factors"
       ],
       "sameConcept": [
         "cbse10:maths:jemh102:find-zeroes-from-factors"
@@ -320,7 +329,8 @@
       ],
       "prereqs": [
         "cbse10:maths:jemh104:split-middle-term",
-        "cbse10:maths:jemh104:factor-by-grouping"
+        "cbse10:maths:jemh104:factor-by-grouping",
+        "cbse10:maths:jemh102:factorise-using-difference-of-squares"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -418,7 +428,8 @@
         "Concluding 'no real roots' for D=0"
       ],
       "prereqs": [
-        "cbse10:maths:jemh104:compute-discriminant"
+        "cbse10:maths:jemh104:compute-discriminant",
+        "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations"
       ],
       "sameConcept": [],
       "teachingInsights": []

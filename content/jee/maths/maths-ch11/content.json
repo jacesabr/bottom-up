@@ -24,7 +24,10 @@
         "Thinking two axes (as in the plane) are enough to locate a point in space",
         "Confusing an axis (a line) with a coordinate plane (determined by a pair of axes)"
       ],
-      "prereqs": [],
+      "prereqs": [
+        "jee:maths:maths-ch02:ordered-pair",
+        "jee:maths:maths-ch09:slope-from-two-points"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -71,7 +74,8 @@
         "Treating (x, y, z) as an unordered set, so that e.g. (1, 2, 3) and (3, 2, 1) name the same point"
       ],
       "prereqs": [
-        "jee:maths:maths-ch11:coordinate-axes-and-planes"
+        "jee:maths:maths-ch11:coordinate-axes-and-planes",
+        "jee:maths:maths-ch02:ordered-pair"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -95,7 +99,8 @@
         "Confusing a point in a plane (one zero coordinate) with a point on an axis (two zero coordinates)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch11:coordinates-of-a-point"
+        "jee:maths:maths-ch11:coordinates-of-a-point",
+        "jee:maths:maths-ch11:coordinate-axes-and-planes"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -144,7 +149,9 @@
         "Forgetting to square the coordinate differences, or taking a negative square root"
       ],
       "prereqs": [
-        "jee:maths:maths-ch11:coordinates-of-a-point"
+        "jee:maths:maths-ch11:coordinates-of-a-point",
+        "jee:maths:maths-ch03:pythagorean-identity",
+        "jee:maths:maths-ch09:slope-from-two-points"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -294,7 +301,8 @@
         "jee:maths:maths-ch11:test-collinearity",
         "jee:maths:maths-ch11:classify-triangle-by-distances",
         "jee:maths:maths-ch11:equation-of-set-of-points",
-        "jee:maths:maths-ch11:centroid-coordinates"
+        "jee:maths:maths-ch11:centroid-coordinates",
+        "jee:maths:maths-ch11:distance-between-two-points"
       ],
       "sameConcept": [],
       "teachingInsights": []
