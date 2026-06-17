@@ -43,9 +43,28 @@ export function invalidateContentCache(): void {
   conceptsByChapter = null;
 }
 
+// Pedagogical chapter order = (school year, chapter number). The JEE corpus mixes Class 11 chapters
+// (`…maths-chNN`) and Class 12 ones (`…maths-c12-chNN`); a plain id sort puts `c12` BEFORE `ch` (digit
+// '1' < letter 'h'), which would teach Class 12 before Class 11 — backwards for a build-up course. We
+// derive the year from a `-cNN-` marker (Class 11 has none → year 0, so it sorts first) and the chapter
+// number from `chNN`, falling back to the id. Single-year subjects (cbse10/cbse12) are unaffected.
+function chapterOrderKey(id: string): [number, number] {
+  const ym = id.match(/-c(\d\d)-/);
+  const year = ym ? parseInt(ym[1], 10) : 0;
+  const nm = id.match(/ch(\d+)(?!\d)/);
+  const num = nm ? parseInt(nm[1], 10) : 0;
+  return [year, num];
+}
+
 export async function getChaptersForSubject(subjectId: string): Promise<Chapter[]> {
   await ensureLoaded();
-  return chaptersCache!.filter((c) => c.subjectId === subjectId).sort((a, b) => a.id.localeCompare(b.id));
+  return chaptersCache!
+    .filter((c) => c.subjectId === subjectId)
+    .sort((a, b) => {
+      const [ay, an] = chapterOrderKey(a.id);
+      const [by, bn] = chapterOrderKey(b.id);
+      return ay - by || an - bn || a.id.localeCompare(b.id);
+    });
 }
 
 export async function getChapter(chapterId: string): Promise<Chapter | undefined> {
