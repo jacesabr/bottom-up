@@ -14,9 +14,9 @@ const router = express.Router();
 // The math courses shown on the home page (the only subject we surface for now). Each is an
 // exam+subject pair; `subject` differs per exam because the corpus is keyed differently.
 const MATH_COURSES = [
-  { key: 'cbse10:maths', exam: 'cbse10', subject: 'maths', title: 'CBSE 10 · Maths' },
-  { key: 'cbse12:mathematics', exam: 'cbse12', subject: 'mathematics', title: 'CBSE 12 · Maths' },
-  { key: 'jee:maths', exam: 'jee', subject: 'maths', title: 'JEE · Maths' },
+  { key: 'cbse10:maths', exam: 'cbse10', subject: 'maths', title: 'CBSE 10 · Maths', who: 'For Class 10 — CBSE board maths, built from the ground up.' },
+  { key: 'cbse12:mathematics', exam: 'cbse12', subject: 'mathematics', title: 'CBSE 12 · Maths', who: 'For Class 12 — CBSE board maths. Assumes Class 11 is already familiar.' },
+  { key: 'jee:maths', exam: 'jee', subject: 'maths', title: 'JEE · Maths', who: 'For Class 11 onward — starts at Class 11, runs into Class 12, deeper than boards. Ideal if you start in Class 11.' },
 ] as const;
 
 // ---- Auth (simple username/password; the returned user id becomes the client's learnerId) ----

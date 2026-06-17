@@ -15,6 +15,7 @@ interface Course {
   exam: string;
   subject: string;
   title: string;
+  who?: string;
   passed: number;
   total: number;
   pct: number;
@@ -102,6 +103,7 @@ export default function Home({
             <h2>{c.title} <span className="course-chcount">— {c.chapters.length} chapters</span></h2>
             <span className="course-pct">{c.pct}% complete</span>
           </div>
+          {c.who && <p className="course-who">{c.who}</p>}
 
           <div className="map">
             {c.chapters.map((ch) => {
