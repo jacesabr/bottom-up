@@ -66,6 +66,7 @@ export default function Home({
           </div>
         </div>
         <div className="home-account">
+          <a className="home-docs" href="/how-it-works.html" target="_blank" rel="noreferrer">📖 Docs</a>
           {user ? (
             <>
               <span className="home-hi">Hi, <strong>{user.username}</strong></span>

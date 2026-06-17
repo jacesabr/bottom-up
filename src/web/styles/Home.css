@@ -48,6 +48,14 @@
   gap: 10px;
   white-space: nowrap;
 }
+.home-docs {
+  font-size: 0.85rem;
+  color: var(--dim);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 9px;
+}
+.home-docs:hover { color: var(--ink); background: var(--bg); }
 .home-hi { font-size: 0.85rem; color: var(--dim); }
 .home-login,
 .home-logout {
