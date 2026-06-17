@@ -30,16 +30,28 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
   );
 
   const load = useCallback(async () => {
-    try {
-      const [o, t, c, l] = await Promise.all([authedFetch('/overview'), authedFetch('/traffic'), authedFetch('/conversations'), authedFetch('/llm-calls')]);
-      setOverview(o);
-      setTraffic(t);
-      setConversations(c.conversations ?? []);
-      setCalls(l.calls ?? []);
-      setErr(null);
-    } catch (e) {
-      setErr(e instanceof Error ? e.message : 'Failed to load');
-      if (String(e).includes('credentials')) { sessionStorage.removeItem('adminAuth'); setAuth(null); }
+    setErr(null);
+    // Load each panel independently — a single slow/failed endpoint (e.g. the API mid-restart) must
+    // not blank the whole dashboard.
+    const [o, t, c, l] = await Promise.allSettled([
+      authedFetch('/overview'),
+      authedFetch('/traffic'),
+      authedFetch('/conversations'),
+      authedFetch('/llm-calls'),
+    ]);
+    if (o.status === 'fulfilled') setOverview(o.value);
+    if (t.status === 'fulfilled') setTraffic(t.value);
+    if (c.status === 'fulfilled') setConversations(c.value.conversations ?? []);
+    if (l.status === 'fulfilled') setCalls(l.value.calls ?? []);
+    const fails = [o, t, c, l].filter((r) => r.status === 'rejected') as PromiseRejectedResult[];
+    if (fails.some((r) => String(r.reason).includes('credentials'))) {
+      sessionStorage.removeItem('adminAuth');
+      setAuth(null);
+      setErr('Wrong admin credentials.');
+    } else if (fails.length === 4) {
+      setErr("Couldn't reach the admin API — it may be restarting. Tap Refresh in a moment.");
+    } else if (fails.length) {
+      setErr(`${fails.length} panel(s) didn't load — tap Refresh to retry.`);
     }
   }, [authedFetch]);
 
@@ -78,7 +90,7 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
   return (
     <div className="admin">
       <header className="admin-head">
-        <h1>Bottom-Up · Admin</h1>
+        <h1>Sarthi · Admin</h1>
         <div>
           <button onClick={load}>Refresh</button>
           <button onClick={() => { sessionStorage.removeItem('adminAuth'); setAuth(null); }}>Log out</button>
