@@ -205,13 +205,23 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
     const perfRows = await db.select().from(buNodePerformance).where(eq(buNodePerformance.learnerId, learnerId));
 
     const statusOf = new Map(perfRows.map((p) => [p.conceptId, p.status]));
-    const passed = new Set(perfRows.filter((p) => p.status === 'passed').map((p) => p.conceptId));
 
+    // Strict-linear within a chapter: exactly ONE node is open — the lowest-order not-yet-passed node
+    // (keeping its in-progress state if the learner already started it). Passing it opens the next; all
+    // later nodes stay locked. (concepts arrive sorted by order from the content cache.)
+    const inProgress = new Set(['teaching', 'awaiting_gate', 'needs_reteach']);
+    let activeAssigned = false;
     const nodes = concepts.map((concept) => {
       const existing = statusOf.get(concept.id);
       let status: string;
-      if (existing) status = existing; // passed | teaching | awaiting_gate | needs_reteach
-      else status = concept.prereqs.every((p) => passed.has(p)) ? 'available' : 'locked';
+      if (existing === 'passed') {
+        status = 'passed';
+      } else if (!activeAssigned) {
+        status = existing && inProgress.has(existing) ? existing : 'available';
+        activeAssigned = true;
+      } else {
+        status = 'locked';
+      }
       return { id: concept.id, slug: concept.slug, title: concept.title, role: concept.role, order: concept.order, status };
     });
 
