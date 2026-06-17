@@ -3,7 +3,7 @@ import { MathText } from '../lib/MathText';
 import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
-import { speakSmart, recordAndTranscribe, stopSpeaking } from '../lib/voice';
+import { speakSmart, speakLanguageInvites, recordAndTranscribe, stopSpeaking } from '../lib/voice';
 import '../styles/NodeView.css';
 
 interface LangOpt {
@@ -60,12 +60,13 @@ export default function NodeView({
   const [langs, setLangs] = useState<LangOpt[]>([]);
   const [lang, setLang] = useState<string>(() => localStorage.getItem('lang') || 'en');
   const [listening, setListening] = useState(false);
-  const [autoRead, setAutoRead] = useState<boolean>(() => localStorage.getItem('autoRead') === '1');
+  const [autoRead, setAutoRead] = useState<boolean>(() => localStorage.getItem('autoRead') !== '0'); // default ON
   // Voice provider override (testing): '' = auto by language (English→ElevenLabs, Indic→Sarvam).
   const [ttsProvider, setTtsProvider] = useState<string>(() => localStorage.getItem('ttsProvider') || '');
   const [showLangPrompt, setShowLangPrompt] = useState(false);
   const stopListenRef = useRef<(() => void) | null>(null);
   const spokenCount = useRef(0);
+  const invitedNode = useRef(false); // has the one-time language-switch invite played for this node yet?
 
   const scroller = useRef<HTMLDivElement>(null);
   const padRef = useRef<ScratchpadHandle>(null);
@@ -134,6 +135,7 @@ export default function NodeView({
         setMessages([...history, { role: 'tutor', text: data.message }]);
         // Don't auto-read the whole replayed transcript — only the new opening line (index = history.length).
         spokenCount.current = history.length;
+        invitedNode.current = false; // re-arm the one-time language invite for this freshly-loaded node
         setChecklist(data.checklist ?? []);
         setReadyForGate(!!data.readyForGate);
       } finally {
@@ -150,17 +152,31 @@ export default function NodeView({
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
   }, [messages, busy]);
 
-  // Global read-aloud: when on, speak each NEW tutor message via the server voice chain.
+  // Global read-aloud: when on, speak each NEW tutor message via the server voice chain. Right after
+  // the FIRST message of a node is read, play a one-time invite (in each Sarvam language) telling the
+  // learner how to switch languages — once per node, not on every message.
   useEffect(() => {
     if (!autoRead) {
       spokenCount.current = messages.length;
       return;
     }
-    for (let i = spokenCount.current; i < messages.length; i++) {
-      const m = messages[i];
-      if (m.role === 'tutor' && m.text) speakSmart(m.text, lang, speechCode, apiBase, ttsProvider || undefined);
-    }
-    spokenCount.current = messages.length;
+    const start = spokenCount.current;
+    spokenCount.current = messages.length; // claim these now so a re-render doesn't re-speak them
+    let cancelled = false;
+    void (async () => {
+      for (let i = start; i < messages.length; i++) {
+        const m = messages[i];
+        if (m.role !== 'tutor' || !m.text) continue;
+        await speakSmart(m.text, lang, speechCode, apiBase, ttsProvider || undefined);
+        if (cancelled) return;
+        if (!invitedNode.current) {
+          invitedNode.current = true;
+          await speakLanguageInvites(apiBase, lang, ttsProvider || undefined);
+          if (cancelled) return;
+        }
+      }
+    })();
+    return () => { cancelled = true; };
   }, [messages, autoRead, speechCode, ttsProvider]);
 
   const send = async () => {

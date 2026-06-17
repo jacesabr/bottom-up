@@ -141,6 +141,10 @@ export function stripForSpeech(text: string): string {
   // 6) Named operators / Greek / symbols → words.
   const sym: [RegExp, string][] = [
     [/\\times/g, ' times '],
+    [/×/g, ' times '], // Unicode multiplication sign (U+00D7) — models often emit it literally
+    [/÷/g, ' divided by '], // Unicode division sign
+    [/·/g, ' times '], // middle dot used as multiply
+    [/−/g, ' minus '], // Unicode minus sign (U+2212)
     [/\\div/g, ' divided by '],
     [/\\cdot/g, ' times '],
     [/\\pm/g, ' plus or minus '],
@@ -163,6 +167,7 @@ export function stripForSpeech(text: string): string {
   for (const [re, rep] of sym) t = t.replace(re, rep);
 
   // 7) Inline arithmetic operators between operands (multiplication handled up front in step 0).
+  t = t.replace(/(\d)\s*[xX]\s*(?=\d)/g, '$1 times '); // "2 x 2" — literal letter x between numbers → times
   t = t.replace(/([0-9a-zA-Z)\]])\s*\/\s*([0-9a-zA-Z(\[])/g, '$1 over $2'); // a/b → a over b
   t = t.replace(/([0-9a-zA-Z)\]])\s*\+\s*([0-9a-zA-Z(\[])/g, '$1 plus $2'); // x + 2 → x plus 2
   t = t.replace(/([0-9a-zA-Z)\]])\s*=\s*([0-9a-zA-Z(\[-])/g, '$1 equals $2'); // x=2 → x equals 2
@@ -362,6 +367,47 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
     }
     // A short rest between chunks so sentences/paragraphs don't run together.
     if (myGen === speakGen && i < chunks.length - 1) await new Promise((r) => setTimeout(r, 140));
+  }
+}
+
+// Short spoken invitations, each IN its own language, telling the learner how to switch to it.
+// Played ONCE per node, right after the opening message is read aloud (see NodeView).
+const LANG_INVITES: Record<string, { lang: string; text: string }> = {
+  hi: { lang: 'hi', text: 'हिंदी में सीखने के लिए, ऊपर बीच में दिए गए भाषा बॉक्स पर टैप करें।' },
+  pa: { lang: 'pa', text: 'ਪੰਜਾਬੀ ਵਿੱਚ ਸਿੱਖਣ ਲਈ, ਉੱਪਰ ਵਿਚਕਾਰਲੇ ਭਾਸ਼ਾ ਬਾਕਸ ਉੱਤੇ ਟੈਪ ਕਰੋ।' },
+  ta: { lang: 'ta', text: 'தமிழில் கற்க, மேலே நடுவில் உள்ள மொழிப் பெட்டியைத் தட்டவும்.' },
+  bn: { lang: 'bn', text: 'বাংলায় শিখতে, উপরে মাঝখানের ভাষা বাক্সে ট্যাপ করুন।' },
+};
+
+/**
+ * After the opening message is read, play a one-time invitation in each Sarvam language (except the
+ * one already in use) telling the learner to tap the language box to switch. Chains after the current
+ * speech (does NOT bump speakGen), and bails the moment anything new is spoken or stopSpeaking runs.
+ */
+export async function speakLanguageInvites(apiBase: string, currentLang: string, provider?: string) {
+  const myGen = speakGen;
+  for (const code of ['hi', 'pa', 'ta', 'bn']) {
+    if (code === currentLang) continue;
+    if (myGen !== speakGen) return;
+    const inv = LANG_INVITES[code];
+    try {
+      const res = await fetch(`${apiBase}/tts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: inv.text, lang: inv.lang, provider }),
+      });
+      const d = await res.json();
+      if (myGen !== speakGen) return;
+      if (d?.audioBase64) {
+        const audio = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.audioBase64}`);
+        currentAudio = audio;
+        const played = await playToEnd(audio);
+        if (myGen !== speakGen) return;
+        if (played) await new Promise((r) => setTimeout(r, 200)); // brief gap between languages
+      }
+    } catch {
+      /* skip a language that fails to synthesise */
+    }
   }
 }
 
