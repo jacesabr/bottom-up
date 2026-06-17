@@ -269,6 +269,12 @@
 }
 .speak-btn:hover { opacity: 1; }
 .notation-btn.mic.listening { background: var(--accent); color: #fff; border-color: var(--accent); }
+/* Glow while the chapter-intro gate is waiting for the learner to say "start". */
+.notation-btn.mic.glow { background: var(--accent); color: #fff; border-color: var(--accent); animation: micGlow 1.3s ease-in-out infinite; }
+@keyframes micGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 89, 31, 0.55); }
+  50% { box-shadow: 0 0 0 9px rgba(217, 89, 31, 0); }
+}
 
 .notation-btn.read.on { background: var(--green-soft); border-color: #bcd6c4; color: var(--green); }
 

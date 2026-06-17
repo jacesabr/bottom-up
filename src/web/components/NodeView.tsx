@@ -25,6 +25,13 @@ interface Check {
   demonstrated: boolean;
 }
 
+// Shown once at the start of a chapter (the "say/type start" gate), before any teaching. Kept in plain
+// English so read-aloud is clean; the spoken language OPTIONS are played separately in each language.
+const INTRO_PROMPT =
+  'Before we begin: you can learn in English, Hindi, Punjabi, Tamil or Bengali. ' +
+  'Set your preferred language using the box at the top of the page. ' +
+  'When you are ready, type "start" below — or tap the glowing microphone and say "start".';
+
 function slotLabel(slot?: string, answerType?: string): string {
   if (slot === 'sketch1' || slot === 'sketch2' || answerType === 'sketch') return 'draw it';
   if (slot === 'explain' || answerType === 'written') return 'explain in words';
@@ -49,6 +56,7 @@ export default function NodeView({
   const [readyForGate, setReadyForGate] = useState(false);
   const [busy, setBusy] = useState(true);
   const [input, setInput] = useState('');
+  const [awaitingStart, setAwaitingStart] = useState(false); // chapter-intro "say/type start" gate is open
   const [showEq, setShowEq] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
@@ -66,7 +74,7 @@ export default function NodeView({
   const [showLangPrompt, setShowLangPrompt] = useState(false);
   const stopListenRef = useRef<(() => void) | null>(null);
   const spokenCount = useRef(0);
-  const invitedNode = useRef(false); // has the one-time language-switch invite played for this node yet?
+  const heldOpening = useRef<string | null>(null); // chapter-intro gate: teaching message held until "start"
 
   const scroller = useRef<HTMLDivElement>(null);
   const padRef = useRef<ScratchpadHandle>(null);
@@ -132,10 +140,21 @@ export default function NodeView({
           role: h.role,
           text: h.text,
         }));
-        setMessages([...history, { role: 'tutor', text: data.message }]);
-        // Don't auto-read the whole replayed transcript — only the new opening line (index = history.length).
-        spokenCount.current = history.length;
-        invitedNode.current = false; // re-arm the one-time language invite for this freshly-loaded node
+        // Chapter-intro gate: the first fresh node opened in a chapter (this session) holds the teaching
+        // message behind a language + "say/type start" gate. The flag is only committed once they start,
+        // so changing language mid-gate (which re-runs this effect) keeps the gate up.
+        const gateKey = 'chapGate:' + conceptId.split(':').slice(0, -1).join(':');
+        if (history.length === 0 && !sessionStorage.getItem(gateKey)) {
+          heldOpening.current = data.message;
+          setMessages([{ role: 'tutor', text: INTRO_PROMPT }]);
+          spokenCount.current = 1; // the gate effect voices this — keep the message effect off it
+          setAwaitingStart(true);
+        } else {
+          setMessages([...history, { role: 'tutor', text: data.message }]);
+          // Don't auto-read the whole replayed transcript — only the new opening line (index = history.length).
+          spokenCount.current = history.length;
+          setAwaitingStart(false);
+        }
         setChecklist(data.checklist ?? []);
         setReadyForGate(!!data.readyForGate);
       } finally {
@@ -152,36 +171,56 @@ export default function NodeView({
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
   }, [messages, busy]);
 
-  // Global read-aloud: when on, speak each NEW tutor message via the server voice chain. Right after
-  // the FIRST message of a node is read, play a one-time invite (in each Sarvam language) telling the
-  // learner how to switch languages — once per node, not on every message.
+  // Global read-aloud: when on, speak each NEW tutor message via the server voice chain.
   useEffect(() => {
     if (!autoRead) {
       spokenCount.current = messages.length;
       return;
     }
-    const start = spokenCount.current;
-    spokenCount.current = messages.length; // claim these now so a re-render doesn't re-speak them
+    for (let i = spokenCount.current; i < messages.length; i++) {
+      const m = messages[i];
+      if (m.role === 'tutor' && m.text) speakSmart(m.text, lang, speechCode, apiBase, ttsProvider || undefined);
+    }
+    spokenCount.current = messages.length;
+  }, [messages, autoRead, speechCode, ttsProvider]);
+
+  // Chapter-intro gate: speak the language OPTIONS first (each in its own language), then read the
+  // "set your language, then say/type start" prompt. Re-voices if they change language while the gate is up.
+  useEffect(() => {
+    if (!awaitingStart || !autoRead) return;
     let cancelled = false;
     void (async () => {
-      for (let i = start; i < messages.length; i++) {
-        const m = messages[i];
-        if (m.role !== 'tutor' || !m.text) continue;
-        await speakSmart(m.text, lang, speechCode, apiBase, ttsProvider || undefined);
-        if (cancelled) return;
-        if (!invitedNode.current) {
-          invitedNode.current = true;
-          await speakLanguageInvites(apiBase, lang, ttsProvider || undefined);
-          if (cancelled) return;
-        }
-      }
+      await speakLanguageInvites(apiBase, lang, ttsProvider || undefined);
+      if (cancelled) return;
+      await speakSmart(INTRO_PROMPT, lang, speechCode, apiBase, ttsProvider || undefined);
     })();
     return () => { cancelled = true; };
-  }, [messages, autoRead, speechCode, ttsProvider]);
+  }, [awaitingStart, autoRead, speechCode, ttsProvider]);
+
+  // Chapter-intro gate: "start" reveals the held teaching message; anything else gently re-prompts.
+  const beginLesson = (saidText: string) => {
+    setAwaitingStart(false);
+    stopSpeaking(); // cut the language options if they're still playing
+    sessionStorage.setItem('chapGate:' + conceptId.split(':').slice(0, -1).join(':'), '1');
+    const opening = heldOpening.current ?? '';
+    heldOpening.current = null;
+    setMessages((m) => [...m, { role: 'learner', text: saidText }, { role: 'tutor', text: opening }]);
+  };
 
   const send = async () => {
     const text = input.trim();
     if (!text || busy) return;
+    if (awaitingStart) {
+      setInput('');
+      if (/start/i.test(text)) beginLesson(text);
+      else
+        setMessages((m) => [
+          ...m,
+          { role: 'learner', text },
+          { role: 'tutor', text: 'Whenever you are ready, just type "start" — or tap the glowing mic and say it.' },
+        ]);
+      return;
+    }
     setInput('');
     setShowEq(false);
     setMessages((m) => [...m, { role: 'learner', text }]);
@@ -468,7 +507,7 @@ export default function NodeView({
                     <option value="deepgram">Deepgram</option>
                   </select>
                   <button
-                    className={listening ? 'notation-btn mic listening' : 'notation-btn mic'}
+                    className={`notation-btn mic${listening ? ' listening' : ''}${awaitingStart ? ' glow' : ''}`}
                     onClick={toggleMic}
                     title={listening ? 'Tap to stop and turn your speech into text' : `Speak your answer (${langs.find((l) => l.code === lang)?.native || 'English'})`}
                   >

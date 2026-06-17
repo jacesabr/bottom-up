@@ -83,20 +83,31 @@ export default function NodeDetails({
 
         {d && !d.error && (
           <div className="details-body">
-            {d.notes && (
-              <section className="d-notes">
-                <div className="d-label">Tutor's notes — where you are</div>
-                <p className="d-notes-summary">{d.notes.summary}</p>
-                {d.notes.stickingPoints.length > 0 && (
-                  <ul className="d-sticking">
-                    {d.notes.stickingPoints.map((s: string, i: number) => (
-                      <li key={i}>{s}</li>
+            {d.notes && (() => {
+              const focus = d.notes.currentFocus ?? '';
+              const progress = focus ? d.notes.summary.replace(focus, '').trim() : d.notes.summary;
+              const points: { label: string; text: string }[] = [];
+              if (progress) points.push({ label: 'Where you are', text: progress });
+              if (focus) points.push({ label: 'Working on', text: focus });
+              for (const s of d.notes.stickingPoints) points.push({ label: 'Watch out', text: s });
+              if (d.notes.nextStep) points.push({ label: 'Next step', text: d.notes.nextStep });
+              return (
+                <section className="d-notes">
+                  <div className="d-label">Tutor's notes — where you are</div>
+                  <ol className="d-notes-list">
+                    {points.map((p, i) => (
+                      <li key={i} className="d-note-point">
+                        <div className="d-note-badge">{i + 1}</div>
+                        <div className="d-note-text">
+                          <span className="d-note-label">{p.label}</span>
+                          <MathText>{p.text}</MathText>
+                        </div>
+                      </li>
                     ))}
-                  </ul>
-                )}
-                <div className="d-nextstep">Next: {d.notes.nextStep}</div>
-              </section>
-            )}
+                  </ol>
+                </section>
+              );
+            })()}
 
             {d.sessionSummary && (
               <section>
