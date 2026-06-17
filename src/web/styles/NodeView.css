@@ -272,7 +272,19 @@
 
 .notation-btn.read.on { background: var(--green-soft); border-color: #bcd6c4; color: var(--green); }
 
-/* Full chat-area overlay while the mic is recording — impossible to miss. */
+.tts-provider {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 6px 8px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--dim);
+  cursor: pointer;
+}
+
+/* Overlay while the mic is recording — scoped to the chat pane (its position:relative parent),
+   so it covers ONLY the tutor box, never the whole page. */
 .recording-overlay {
   position: absolute;
   inset: 0;

@@ -191,6 +191,12 @@ export function stripForSpeech(text: string): string {
   //      Lowercase maths vars (x, y) are pronounced fine, so we leave those alone.
   t = phoneticiseCapitalLetters(t);
 
+  // 10c) Structural pauses the voice should HONOUR (done before whitespace is collapsed in step 11):
+  //   - paragraph breaks (blank line) → a full sentence stop, so the chunker splits and the voice rests.
+  //   - long dashes (—, –, --, ---) → a comma pause (these are written to "give space").
+  t = t.replace(/\n[ \t]*\n+/g, '. ');
+  t = t.replace(/\s*(—|–|--+)\s*/g, ', ');
+
   // 11) Tidy whitespace and collapse any doubled/space-before punctuation so pauses land right.
   t = t
     .replace(/\s+/g, ' ')
@@ -313,12 +319,14 @@ function playToEnd(audio: HTMLAudioElement): Promise<boolean> {
  * chunks that are synthesised and played in order — so long replies aren't cut off. Falls back to
  * the browser voice if the server returns nothing.
  */
-export async function speakSmart(text: string, langCode: string, speechLang: string, apiBase: string) {
+export async function speakSmart(text: string, langCode: string, speechLang: string, apiBase: string, provider?: string) {
   stopSpeaking();
   const myGen = speakGen; // stopSpeaking already bumped it; capture the live generation
   const clean = stripForSpeech(text);
   if (!clean) return;
-  const chunks = chunkForSpeech(clean);
+  // Smaller, ~1–2 sentence chunks: a native voice (ElevenLabs/Deepgram) reads them cleanly and a
+  // dropped chunk can never lose a whole paragraph. Sentence boundaries also give natural pauses.
+  const chunks = chunkForSpeech(clean, 240);
 
   for (let i = 0; i < chunks.length; i++) {
     if (myGen !== speakGen) return; // superseded by a newer utterance / stop
@@ -327,7 +335,7 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
       const res = await fetch(`${apiBase}/tts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: chunks[i], lang: langCode }),
+        body: JSON.stringify({ text: chunks[i], lang: langCode, provider }),
       });
       const d = await res.json();
       if (myGen !== speakGen) return;
@@ -352,6 +360,8 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
       if (myGen === speakGen) speak(chunks.slice(i).join(' '), speechLang);
       return;
     }
+    // A short rest between chunks so sentences/paragraphs don't run together.
+    if (myGen === speakGen && i < chunks.length - 1) await new Promise((r) => setTimeout(r, 140));
   }
 }
 

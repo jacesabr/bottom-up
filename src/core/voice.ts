@@ -43,56 +43,81 @@ export interface TtsResult {
   provider: string;
 }
 
-/** TTS chain: Sarvam (Indic) → ElevenLabs (if key) → Deepgram Aura (English only) → null (client uses browser TTS). */
-export async function synthesize(text: string, langCode: string): Promise<TtsResult | null> {
+async function sarvamTTS(text: string, langCode: string): Promise<TtsResult | null> {
+  if (!SARVAM) return null;
+  try {
+    const res = await axios.post(
+      'https://api.sarvam.ai/text-to-speech',
+      // pace < 1 reads a touch slower so commas/periods land and sentences are easier to follow.
+      { text: text.slice(0, 1500), target_language_code: lang(langCode).speech, speaker: 'anushka', model: 'bulbul:v2', pace: 0.9 },
+      { headers: sarvamHeaders, timeout: 20_000 }
+    );
+    const a = res.data?.audios?.[0];
+    return a ? { audioBase64: a, mime: 'audio/wav', provider: 'sarvam' } : null;
+  } catch {
+    return null;
+  }
+}
+
+async function elevenTTS(text: string): Promise<TtsResult | null> {
+  if (!ELEVENLABS) return null;
+  try {
+    const voiceId = process.env.ELEVENLABS_VOICE_ID || 'EXAVITQu4vr4xnSDxMaL';
+    const res = await axios.post(
+      `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
+      { text: text.slice(0, 1500), model_id: 'eleven_multilingual_v2' },
+      { headers: { 'xi-api-key': ELEVENLABS, 'Content-Type': 'application/json' }, responseType: 'arraybuffer', timeout: 20_000 }
+    );
+    return { audioBase64: Buffer.from(res.data).toString('base64'), mime: 'audio/mpeg', provider: 'elevenlabs' };
+  } catch {
+    return null;
+  }
+}
+
+async function deepgramTTS(text: string): Promise<TtsResult | null> {
+  if (!DEEPGRAM) return null;
+  try {
+    const res = await axios.post(
+      'https://api.deepgram.com/v1/speak?model=aura-asteria-en',
+      { text: text.slice(0, 1500) },
+      { headers: { Authorization: `Token ${DEEPGRAM}`, 'Content-Type': 'application/json' }, responseType: 'arraybuffer', timeout: 20_000 }
+    );
+    return { audioBase64: Buffer.from(res.data).toString('base64'), mime: 'audio/mpeg', provider: 'deepgram' };
+  } catch {
+    return null;
+  }
+}
+
+export type TtsProvider = 'elevenlabs' | 'sarvam' | 'deepgram';
+
+/**
+ * TTS chain, ordered by language for "best of all worlds":
+ *   - ENGLISH → ElevenLabs (state-of-the-art, natural pacing) → Deepgram Aura → Sarvam.
+ *     (Sarvam's Indic voice reading English runs fast and sometimes drops/garbles a chunk, so it's last.)
+ *   - INDIC   → Sarvam (the Indic specialist) → ElevenLabs (multilingual).
+ * `force` pins a single provider (the testing toggle); if it yields nothing we fall back to the
+ * language default so the learner still hears the reply. Returns null → client uses browser TTS.
+ */
+export async function synthesize(text: string, langCode: string, force?: TtsProvider): Promise<TtsResult | null> {
   const isEnglish = langCode === 'en';
-
-  // 1) Sarvam — best for Indian languages (and fine for English).
-  if (SARVAM) {
-    try {
-      const res = await axios.post(
-        'https://api.sarvam.ai/text-to-speech',
-        // pace < 1 reads a touch slower so commas/periods land and sentences are easier to follow.
-        { text: text.slice(0, 1500), target_language_code: lang(langCode).speech, speaker: 'anushka', model: 'bulbul:v2', pace: 0.9 },
-        { headers: sarvamHeaders, timeout: 20_000 }
-      );
-      const a = res.data?.audios?.[0];
-      if (a) return { audioBase64: a, mime: 'audio/wav', provider: 'sarvam' };
-    } catch {
-      /* fall through */
-    }
+  const byName: Record<TtsProvider, () => Promise<TtsResult | null>> = {
+    elevenlabs: () => elevenTTS(text),
+    deepgram: () => deepgramTTS(text),
+    sarvam: () => sarvamTTS(text, langCode),
+  };
+  if (force && byName[force]) {
+    const forced = await byName[force]();
+    if (forced) return forced;
+    // forced provider unavailable/failed — fall through to the default chain.
   }
-
-  // 2) ElevenLabs — multilingual (dormant until a key is added).
-  if (ELEVENLABS) {
-    try {
-      const voiceId = process.env.ELEVENLABS_VOICE_ID || 'EXAVITQu4vr4xnSDxMaL';
-      const res = await axios.post(
-        `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
-        { text: text.slice(0, 1500), model_id: 'eleven_multilingual_v2' },
-        { headers: { 'xi-api-key': ELEVENLABS, 'Content-Type': 'application/json' }, responseType: 'arraybuffer', timeout: 20_000 }
-      );
-      return { audioBase64: Buffer.from(res.data).toString('base64'), mime: 'audio/mpeg', provider: 'elevenlabs' };
-    } catch {
-      /* fall through */
-    }
+  const chain: Array<() => Promise<TtsResult | null>> = isEnglish
+    ? [byName.elevenlabs, byName.deepgram, byName.sarvam]
+    : [byName.sarvam, byName.elevenlabs];
+  for (const attempt of chain) {
+    const r = await attempt();
+    if (r) return r;
   }
-
-  // 3) Deepgram Aura — English only, decent fallback for en.
-  if (DEEPGRAM && isEnglish) {
-    try {
-      const res = await axios.post(
-        'https://api.deepgram.com/v1/speak?model=aura-asteria-en',
-        { text: text.slice(0, 1500) },
-        { headers: { Authorization: `Token ${DEEPGRAM}`, 'Content-Type': 'application/json' }, responseType: 'arraybuffer', timeout: 20_000 }
-      );
-      return { audioBase64: Buffer.from(res.data).toString('base64'), mime: 'audio/mpeg', provider: 'deepgram' };
-    } catch {
-      /* fall through */
-    }
-  }
-
-  return null; // client falls back to the browser's built-in TTS
+  return null;
 }
 
 // ---------- Speech-to-text (mic) ----------

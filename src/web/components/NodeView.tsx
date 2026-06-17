@@ -61,6 +61,8 @@ export default function NodeView({
   const [lang, setLang] = useState<string>(() => localStorage.getItem('lang') || 'en');
   const [listening, setListening] = useState(false);
   const [autoRead, setAutoRead] = useState<boolean>(() => localStorage.getItem('autoRead') === '1');
+  // Voice provider override (testing): '' = auto by language (English→ElevenLabs, Indic→Sarvam).
+  const [ttsProvider, setTtsProvider] = useState<string>(() => localStorage.getItem('ttsProvider') || '');
   const [showLangPrompt, setShowLangPrompt] = useState(false);
   const stopListenRef = useRef<(() => void) | null>(null);
   const spokenCount = useRef(0);
@@ -156,10 +158,10 @@ export default function NodeView({
     }
     for (let i = spokenCount.current; i < messages.length; i++) {
       const m = messages[i];
-      if (m.role === 'tutor' && m.text) speakSmart(m.text, lang, speechCode, apiBase);
+      if (m.role === 'tutor' && m.text) speakSmart(m.text, lang, speechCode, apiBase, ttsProvider || undefined);
     }
     spokenCount.current = messages.length;
-  }, [messages, autoRead, speechCode]);
+  }, [messages, autoRead, speechCode, ttsProvider]);
 
   const send = async () => {
     const text = input.trim();
@@ -437,6 +439,18 @@ export default function NodeView({
                   >
                     {autoRead ? '🔊 Read aloud: on' : '🔈 Read aloud: off'}
                   </button>
+                  {/* Voice provider — testing toggle. Auto picks the best per language. */}
+                  <select
+                    className="tts-provider"
+                    value={ttsProvider}
+                    onChange={(e) => { setTtsProvider(e.target.value); localStorage.setItem('ttsProvider', e.target.value); }}
+                    title="Voice engine (testing). Auto = ElevenLabs for English, Sarvam for Indian languages."
+                  >
+                    <option value="">Voice: Auto</option>
+                    <option value="elevenlabs">ElevenLabs</option>
+                    <option value="sarvam">Sarvam</option>
+                    <option value="deepgram">Deepgram</option>
+                  </select>
                   <button
                     className={listening ? 'notation-btn mic listening' : 'notation-btn mic'}
                     onClick={toggleMic}
