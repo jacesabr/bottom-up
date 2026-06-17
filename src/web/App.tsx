@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Home from './components/Home';
 import AdminDashboard from './components/AdminDashboard';
+import Documentation from './components/Documentation';
 import AuthModal from './components/AuthModal';
 import ChapterMap from './components/ChapterMap';
 import NodeView from './components/NodeView';
@@ -41,18 +42,27 @@ export default function App() {
   const [authOpen, setAuthOpen] = useState(false);
   const [pendingNav, setPendingNav] = useState<null | (() => void)>(null);
 
-  // Operator dashboard lives behind the #admin hash (its own basic-auth login).
-  const [isAdmin, setIsAdmin] = useState(() => typeof location !== 'undefined' && location.hash === '#admin');
+  // Hash routes: #admin (operator dashboard, basic-auth) and #docs (documentation hub).
+  const [route, setRoute] = useState(() => (typeof location !== 'undefined' ? location.hash : ''));
   useEffect(() => {
-    const onHash = () => setIsAdmin(location.hash === '#admin');
+    const onHash = () => setRoute(location.hash);
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
-  if (isAdmin) {
+  if (route === '#admin') {
     return (
       <div className="app">
         <main className="app-main">
           <AdminDashboard apiBase={API_BASE} />
+        </main>
+      </div>
+    );
+  }
+  if (route === '#docs') {
+    return (
+      <div className="app">
+        <main className="app-main">
+          <Documentation onBack={() => { location.hash = ''; }} />
         </main>
       </div>
     );

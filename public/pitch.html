@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarthi — Seed Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ece4d2; --plate:#f3ecdb; --ink:#221a10; --ink-2:#5a4f3c; --ink-3:#8a7f68;
+    --line:#cdbe9d; --line-soft:#d9cdac;
+    --coral:#d16f52; --coral-deep:#ad4f2c; --cream:#f7f0e1;
+    --green:#5e7a4f; --green-deep:#41602f;
+    --maxw:920px;
+    --serif:"Newsreader",Georgia,serif; --ui:"Hanken Grotesk",-apple-system,system-ui,sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);
+    font-optical-sizing:auto;font-size:1.06rem;line-height:1.7;-webkit-font-smoothing:antialiased;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");}
+  ::selection{background:var(--coral);color:var(--cream)}
+  a{color:var(--coral-deep)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px 120px}
+  .ui{font-family:var(--ui)}
+
+  /* nav */
+  header.top{position:sticky;top:0;z-index:20;background:rgba(236,228,210,.92);backdrop-filter:blur(6px);
+    display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--ink);
+    max-width:var(--maxw);margin:0 auto;padding-left:30px;padding-right:30px}
+  header.top .mark{font-family:var(--ui);font-weight:700;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase}
+  header.top .mark b{color:var(--coral-deep)}
+  header.top nav{display:flex;gap:18px;flex-wrap:wrap}
+  header.top nav a{font-family:var(--ui);font-weight:600;font-size:.66rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-2);text-decoration:none}
+  header.top nav a:hover{color:var(--coral-deep)}
+  @media(max-width:680px){header.top nav{display:none}}
+
+  /* hero */
+  .hero{text-align:center;padding:78px 0 40px}
+  .eyebrow{font-family:var(--ui);font-weight:600;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--coral-deep)}
+  .hero h1{font-weight:500;font-size:clamp(3rem,9vw,5.6rem);line-height:.98;letter-spacing:-.02em;margin:26px 0 18px}
+  .hero .sub{font-style:italic;font-size:clamp(1.15rem,3vw,1.5rem);color:var(--ink-2);max-width:24em;margin:0 auto}
+  .status-pill{display:inline-flex;gap:10px;align-items:center;margin-top:34px;font-family:var(--ui);
+    font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);
+    background:var(--plate);border:1px solid var(--line);border-radius:40px;padding:9px 18px}
+  .status-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(94,122,79,.18)}
+
+  /* sections */
+  section.sec{padding:64px 0 8px;border-top:1px solid var(--line)}
+  .kicker{font-family:var(--ui);font-weight:700;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral-deep);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+  .kicker .n{font-style:italic;font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--coral);letter-spacing:0;text-transform:none}
+  h2{font-weight:500;font-size:clamp(1.9rem,4.6vw,2.9rem);line-height:1.08;letter-spacing:-.012em;margin-bottom:8px}
+  .claim{font-style:italic;font-size:1.18rem;color:var(--ink-2);margin:14px 0 8px;line-height:1.45}
+  p{margin:1em 0}
+  .lede{font-size:1.18rem;line-height:1.62}
+  em{font-style:italic;color:var(--coral-deep)} strong{font-weight:600}
+
+  /* big stat row */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:34px 0}
+  .stat{background:var(--plate);border:1px solid var(--line);border-radius:4px;padding:20px 16px;text-align:center}
+  .stat .big{font-weight:500;font-size:2.1rem;line-height:1;color:var(--coral-deep);letter-spacing:-.01em}
+  .stat .cap{font-family:var(--ui);font-weight:500;font-size:.64rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin-top:10px;line-height:1.4}
+  @media(max-width:680px){.stats{grid-template-columns:1fr 1fr}}
+
+  /* table */
+  table{width:100%;border-collapse:collapse;margin:26px 0;font-size:.96rem}
+  th,td{text-align:left;padding:13px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-family:var(--ui);font-weight:700;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+  td b{color:var(--coral-deep);font-weight:600}
+  tr:last-child td{border-bottom:1px solid var(--line)}
+
+  /* funnel */
+  .funnel{margin:28px 0;display:flex;flex-direction:column;gap:6px}
+  .fbar{position:relative;background:var(--coral);color:var(--cream);border-radius:3px;padding:12px 18px;
+    font-family:var(--ui);font-weight:600;font-size:.84rem;display:flex;justify-content:space-between;align-items:center;margin:0 auto}
+  .fbar span.lab{opacity:.9}
+  .fbar b{font-size:1rem}
+  .fbar.f1{width:100%;background:var(--coral)}
+  .fbar.f2{width:80%;background:#c4644a}
+  .fbar.f3{width:55%;background:#b65840}
+  .fbar.f4{width:14%;background:var(--coral-deep);min-width:200px}
+  .funnel .cap{font-family:var(--ui);font-size:.74rem;color:var(--ink-3);text-align:center;margin-top:8px}
+
+  /* loop steps */
+  .loop{counter-reset:s;margin:24px 0;display:grid;gap:0}
+  .loop li{list-style:none;position:relative;padding:16px 0 16px 54px;border-top:1px solid var(--line-soft)}
+  .loop li:last-child{border-bottom:1px solid var(--line-soft)}
+  .loop li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:15px;
+    font-family:var(--ui);font-weight:700;font-size:.8rem;color:var(--cream);background:var(--coral);
+    width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .loop li b{display:block;font-weight:600;margin-bottom:2px}
+  .loop li span{font-size:.95rem;color:var(--ink-2)}
+
+  /* moat cards */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+  @media(max-width:680px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--plate);border:1px solid var(--line);border-radius:5px;padding:22px}
+  .card h4{font-size:1.18rem;font-weight:600;margin-bottom:6px}
+  .card p{font-size:.95rem;color:var(--ink-2);margin:.4em 0}
+  .tag{font-family:var(--ui);font-weight:700;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;
+    padding:3px 8px;border-radius:3px;display:inline-block;margin-top:8px}
+  .tag.real{background:var(--green);color:var(--cream)}
+  .tag.plan{background:#d9a23f;color:#3a2c08}
+  .tag.risk{background:var(--coral-deep);color:var(--cream)}
+
+  /* honesty ledger */
+  .ledger{margin:24px 0;border:1px solid var(--line);border-radius:5px;overflow:hidden}
+  .ledger .row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line-soft)}
+  .ledger .row:first-child{border-top:none}
+  .ledger .cell{padding:14px 18px;font-size:.94rem}
+  .ledger .yes{background:rgba(94,122,79,.08)}
+  .ledger .no{background:rgba(173,79,44,.06);border-left:1px solid var(--line-soft);color:var(--ink-2)}
+  .ledger .h{font-family:var(--ui);font-weight:700;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
+  .ledger .yes .h{color:var(--green-deep)} .ledger .no .h{color:var(--coral-deep)}
+  @media(max-width:680px){.ledger .row{grid-template-columns:1fr}.ledger .no{border-left:none}}
+
+  /* hinge panel */
+  .hinge{margin:64px 0 8px;padding:48px 32px;text-align:center;border-radius:4px;color:var(--cream);
+    background-color:var(--coral);
+    background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0 1px,transparent 1px 32px),repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 32px);}
+  .hinge .e{font-family:var(--ui);font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+  .hinge .big{font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:500;line-height:1.16;margin-top:16px;max-width:18em;margin-left:auto;margin-right:auto}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:26px}
+  .chips span{font-family:var(--ui);font-weight:600;font-size:.66rem;letter-spacing:.04em;
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:6px 13px}
+
+  /* ask */
+  .milestones{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+  @media(max-width:680px){.milestones{grid-template-columns:1fr}}
+  .ms{background:var(--plate);border:1px solid var(--line);border-radius:5px;padding:22px}
+  .ms .num{font-style:italic;font-size:2rem;color:var(--coral);line-height:1}
+  .ms h4{font-weight:600;font-size:1.05rem;margin:8px 0 4px}
+  .ms p{font-size:.92rem;color:var(--ink-2);margin:0}
+  .blank{background:rgba(173,79,44,.06);border:1px dashed var(--coral);border-radius:5px;padding:18px 22px;font-size:.96rem;color:var(--ink-2);margin:18px 0}
+  .blank b{color:var(--coral-deep)}
+
+  .note{border-left:3px solid var(--coral);padding:6px 0 6px 22px;margin:30px 0;font-size:1rem;color:var(--ink-2)}
+  .note b{font-style:italic;color:var(--coral-deep)}
+
+  footer{border-top:1px solid var(--ink);margin-top:70px;padding-top:26px;text-align:center}
+  footer .epi{font-style:italic;font-size:1.15rem;color:var(--ink-2)}
+  footer .src{font-family:var(--ui);font-size:.72rem;color:var(--ink-3);margin-top:18px;line-height:1.9}
+  footer .src a{color:var(--ink-3);text-decoration:none;border-bottom:1px solid var(--line)}
+  .quietnote{font-family:var(--ui);font-size:.72rem;color:var(--ink-3);text-align:center;margin-top:30px;font-style:normal}
+  .cite{font-family:var(--ui);font-size:.62rem;font-weight:700;color:var(--coral-deep);text-decoration:none;
+    vertical-align:super;margin-left:3px;border-bottom:none}
+  .cite:hover{text-decoration:underline}
+  a.inl{color:var(--coral-deep);text-decoration:none;border-bottom:1px dotted var(--coral)}
+  a.inl:hover{border-bottom-style:solid}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="mark"><b>Sarthi</b> · Seed</div>
+  <nav>
+    <a href="#problem">Problem</a>
+    <a href="#insight">Insight</a>
+    <a href="#product">Product</a>
+    <a href="#moat">Why we win</a>
+    <a href="#market">Market</a>
+    <a href="#status">Status</a>
+    <a href="#ask">Ask</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">Seed round · 2026</div>
+    <h1>Sarthi</h1>
+    <p class="sub">Personal coaching for the price of a tiffin. A debugger for understanding.</p>
+    <p style="font-size:1.22rem;line-height:1.5;color:var(--ink);max-width:30em;margin:34px auto 0;border-top:1px solid var(--line);padding-top:30px">Students don't fail for lack of effort. They fail on <strong style="color:var(--coral-deep)">one prerequisite they're missing</strong> — and no one ever finds it. <strong style="color:var(--coral-deep)">Sarthi finds it, teaches it, and re-asks the question.</strong> A 1-on-1 tutor that costs ₹1,000 a month instead of ₹3 lakh a year.</p>
+    <div class="status-pill"><span class="dot"></span> Live MVP · 4 exams · pre-launch · ask: ₹10 lakh</div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="sec" id="problem">
+    <div class="kicker"><span class="n">01</span> The problem</div>
+    <h2>A machine that enrolls millions and fails almost all of them.</h2>
+    <p class="claim">70+ lakh students a year sit JEE, NEET and the CBSE boards. Around 1% land an IIT seat — and they don't fail for lack of effort.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="big">~39L</div><div class="cap">CBSE 10+12 candidates / yr (2024)<a class="cite" href="https://news.careers360.com/cbse-board-exam-2023-close-39-lakh-write-class-10-12-board-exams-from-tomorrow/amp" target="_blank" rel="noopener" title="Careers360">↗</a></div></div>
+      <div class="stat"><div class="big">~14L</div><div class="cap">JEE Main appeared / yr<a class="cite" href="https://blog.meniit.com/how-many-students-appeared-for-jee-main-2024" target="_blank" rel="noopener" title="meniit">↗</a></div></div>
+      <div class="stat"><div class="big">~20L</div><div class="cap">NEET-UG appeared / yr<a class="cite" href="https://www.collegedekho.com/articles/neet-passing-marks-2025/" target="_blank" rel="noopener" title="CollegeDekho">↗</a></div></div>
+      <div class="stat"><div class="big">≈1%</div><div class="cap">of JEE Main takers reach an IIT seat<a class="cite" href="https://news.careers360.com/total-engineering-seats-in-india-iit-jee-advanced-2025-qualifiers-compete-for-17700-btech-josaa-counselling-delhi-kgp-bombay/amp" target="_blank" rel="noopener" title="Careers360">↗</a></div></div>
+    </div>
+
+    <div class="funnel">
+      <div class="fbar f1"><span class="lab">JEE Main — appear</span><b>~14,20,000</b></div>
+      <div class="fbar f2"><span class="lab">Advance to JEE Advanced</span><b>2,50,000</b></div>
+      <div class="fbar f3"><span class="lab">Qualify JEE Advanced</span><b>~54,000</b></div>
+      <div class="fbar f4"><span class="lab">Get an IIT seat</span><b>~17,700</b></div>
+      <div class="cap">Only ~1 in 3 Advanced qualifiers even gets a seat<a class="cite" href="https://news.careers360.com/total-engineering-seats-in-india-iit-jee-advanced-2025-qualifiers-compete-for-17700-btech-josaa-counselling-delhi-kgp-bombay/amp" target="_blank" rel="noopener" title="Careers360">↗</a>. Same shape for NEET: ~20L appear<a class="cite" href="https://www.collegedekho.com/articles/neet-passing-marks-2025/" target="_blank" rel="noopener" title="CollegeDekho">↗</a>, govt MBBS seats ≈ 1 lakh.</div>
+    </div>
+
+    <p>They lose marks to <em>one hidden prerequisite gap</em> — a single missing idea three steps below the question — that nobody ever diagnoses. The bottleneck isn't effort. It's diagnosis.</p>
+  </section>
+
+  <!-- WHY BROKEN -->
+  <section class="sec" id="broken">
+    <div class="kicker"><span class="n">02</span> Why it stays broken</div>
+    <h2>The thing that works has never been affordable.</h2>
+    <p class="lede">One-to-one, mastery-based tutoring reliably beats the classroom — the best human tutors by roughly <strong>0.8 standard deviations</strong> (<a class="inl" href="https://www.educationnext.org/two-sigma-tutoring-separating-science-fiction-from-science-fact/" target="_blank" rel="noopener">Bloom's honest figure</a>, not the inflated "<a class="inl" href="https://en.wikipedia.org/wiki/Bloom%27s_2_sigma_problem" target="_blank" rel="noopener">2-sigma</a>" the EdTech world likes to quote). Bloom called it a <em>problem</em> for one reason: no society can afford a tutor for every child.</p>
+    <p>India's answer is the coaching factory — and it is buckling:</p>
+    <div class="stats">
+      <div class="stat"><div class="big">₹58,000<span style="font-size:1rem"> cr</span></div><div class="cap">India coaching industry, growing 15–20%/yr<a class="cite" href="https://www.imarcgroup.com/india-coaching-institutes-market" target="_blank" rel="noopener" title="IMARC">↗</a></div></div>
+      <div class="stat"><div class="big">₹1.5–5L</div><div class="cap">spent per student, per year<a class="cite" href="https://thediplomat.com/2024/02/student-suicides-in-kotas-coaching-factories-point-to-indias-broken-education-system/" target="_blank" rel="noopener" title="The Diplomat">↗</a></div></div>
+      <div class="stat"><div class="big">2L+</div><div class="cap">students migrate to Kota each year<a class="cite" href="https://thediplomat.com/2024/02/student-suicides-in-kotas-coaching-factories-point-to-indias-broken-education-system/" target="_blank" rel="noopener" title="The Diplomat">↗</a></div></div>
+      <div class="stat"><div class="big">26</div><div class="cap">student suicides in Kota, 2023<a class="cite" href="https://thediplomat.com/2024/02/student-suicides-in-kotas-coaching-factories-point-to-indias-broken-education-system/" target="_blank" rel="noopener" title="The Diplomat">↗</a></div></div>
+    </div>
+    <p>Expensive, impersonal, one-size-fits-all, often funded on loans. The market is enormous precisely <em>because</em> the need is universal and the current solution is broken.</p>
+  </section>
+
+  <!-- INSIGHT -->
+  <section class="sec" id="insight">
+    <div class="kicker"><span class="n">03</span> The insight</div>
+    <h2>Don't teach topics. Start from the question and descend to the gap.</h2>
+    <p class="claim">Sit the student in front of a real past-paper question. The moment they break, walk them <em>down</em> to the exact prerequisite they're missing — then bring them back.</p>
+    <p>That is the diagnosis the system never performs. It's Feynman's principle turned into control flow: <em>what you cannot reconstruct, you do not understand</em> — find the bedrock idea, rebuild from there.</p>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="sec" id="product">
+    <div class="kicker"><span class="n">04</span> The product — live today</div>
+    <h2>The loop.</h2>
+    <ul class="loop">
+      <li><b>Pose a real board question</b><span>The exam paper is the spine — actual past-paper questions, in order.</span></li>
+      <li><b>Detect the struggle</b><span>When the student stalls, the engine reads the gap — not their mood.</span></li>
+      <li><b>Descend the concept graph</b><span>A "director" routes down a prerequisite graph to the precise missing concept, anywhere in the subject.</span></li>
+      <li><b>Teach it, then prove it</b><span>Conversational teaching, then a deterministic gate — MCQ/numeric/symbolic graded by code; answer keys never leave the server.</span></li>
+      <li><b>Teleport back</b><span>On mastery, jump straight back to the original question and re-ask it. Pass → advance to the next.</span></li>
+    </ul>
+    <p class="note"><b>Not a ChatGPT wrapper.</b> The LLM is swappable behind a router; the "brain" is the authored concept graph plus the orchestration. Strip the model out and the pedagogy still stands.</p>
+  </section>
+
+  <!-- MOAT -->
+  <section class="sec" id="moat">
+    <div class="kicker"><span class="n">05</span> Why we win</div>
+    <h2>An engine, not a course.</h2>
+    <div class="cards">
+      <div class="card">
+        <h4>Exam-first descent engine</h4>
+        <p>Spine walk + whole-graph directed descent + deterministic-first grading + teleport-back. The architecture, not the content, is the bet.</p>
+        <span class="tag real">Built &amp; live in code</span>
+      </div>
+      <div class="card">
+        <h4>Content-agnostic</h4>
+        <p>One engine already runs <strong>4 exams</strong> — CBSE 10 &amp; 12, JEE, NEET. ~5,900 concept nodes, 75 papers, 2,364 mapped questions. A new exam is a corpus, not a rebuild.</p>
+        <span class="tag real">4 exams seeded &amp; served</span>
+      </div>
+      <div class="card">
+        <h4>₹0 inference today</h4>
+        <p>Production runs on NVIDIA NIM's free tier — and the router is provider-agnostic, so we're never locked in. Even at paid mid-tier, cost/student stays well under the price.</p>
+        <span class="tag risk">Edge &amp; risk — we treat it as both</span>
+      </div>
+      <div class="card">
+        <h4>The data flywheel</h4>
+        <p>Verified concept graphs + teaching exemplars mined from real sessions → cheaper <em>and</em> better with scale. The moat is the data, not the code.</p>
+        <span class="tag plan">Designed · logging now · not yet earning</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET -->
+  <section class="sec" id="market">
+    <div class="kicker"><span class="n">06</span> The market</div>
+    <h2>Built bottom-up, not "1% of a billion."</h2>
+    <table>
+      <tr><th>Capture of ~70L in-scope aspirants/yr</th><th>Paying users</th><th>at ₹1,000/mo</th></tr>
+      <tr><td>0.5%</td><td>35,000</td><td><b>~₹21 cr ARR</b></td></tr>
+      <tr><td>1%</td><td>70,000</td><td><b>~₹42 cr ARR</b></td></tr>
+      <tr><td>5%</td><td>3,50,000</td><td><b>~₹210 cr ARR</b></td></tr>
+    </table>
+    <p>At ₹1,000/month against ₹1.5–5 lakh/year for coaching, Sarthi is a <strong>90–95% price cut</strong> — the wedge is affordability. <span class="ui" style="font-size:.8rem;color:var(--ink-3)">(Illustrative unit economics, not a forecast.)</span></p>
+
+    <div class="hinge">
+      <div class="e">What comes next</div>
+      <div class="big">The hard part is the engine. Every exam after the first is a corpus.</div>
+      <div class="chips">
+        <span>SAT / PSAT</span><span>AP &amp; A-Levels</span><span>GCSE</span><span>GRE / GMAT</span>
+        <span>Civil-service exams</span><span>Olympiads</span><span>Licensure</span><span>State boards worldwide</span>
+      </div>
+    </div>
+    <p style="margin-top:30px">India's big exams are the proving ground, not the ceiling. Every high-stakes test on earth has the same shape — a fixed syllabus, a bank of past papers, and students who lose marks to a hidden prerequisite gap.</p>
+  </section>
+
+  <!-- BUSINESS MODEL -->
+  <section class="sec" id="model">
+    <div class="kicker"><span class="n">07</span> Business model</div>
+    <h2>Metered today by necessity. Funding is what makes it free.</h2>
+    <p>Right now the product is <strong>metered</strong> — 50 free questions, then ₹1,000/month — and it's <strong>live in production</strong>: Dodo Payments in <strong>live_mode</strong>, webhook-reconciled. <span class="ui" style="font-size:.82rem;color:var(--ink-3)">(Verified against the live Render config.)</span> Pre-funding, we can't subsidise free access, so the meter stays on to keep it sustainable.</p>
+    <p>The raise changes that. With runway plus incorporation unlocking free compute credits <span class="ui" style="font-size:.82rem;color:var(--ink-3)">(see the ask)</span>, we make the product <strong>free</strong> and put it in students' hands — and focus entirely on improving it. Monetisation is already proven-buildable (it's live today), so when growth justifies our own infrastructure, we turn it back on at scale. The pricing follows the reason: <em>sustainable now → free to grow → revenue at scale.</em></p>
+  </section>
+
+  <!-- STATUS / HONESTY -->
+  <section class="sec" id="status">
+    <div class="kicker"><span class="n">08</span> Honest status</div>
+    <h2>Where we actually are.</h2>
+    <p class="claim">The proof at seed is a working engine — not numbers we don't have. Here's the unvarnished line between the two.</p>
+    <div class="ledger">
+      <div class="row">
+        <div class="cell yes"><div class="h">True today ✓</div>Live API + web; billing armed (Dodo, live_mode) — revenue is a switch, not a build.</div>
+        <div class="cell no"><div class="h">Not yet</div>Pre-launch: ~1 learner, 0 paying, ₹0 revenue. Nobody's been invited in yet.</div>
+      </div>
+      <div class="row">
+        <div class="cell yes"><div class="h">True today ✓</div>4 exams, ~5,900 nodes, 75 papers, deterministic grading working.</div>
+        <div class="cell no"><div class="h">Not yet</div>No retention or learning-outcome data.</div>
+      </div>
+      <div class="row">
+        <div class="cell yes"><div class="h">True today ✓</div>CBSE-10 papers verbatim-verified vs official PDFs.</div>
+        <div class="cell no"><div class="h">Not yet</div>CBSE-12 / JEE / NEET at a "structural + basic-key" bar — not full content sign-off.</div>
+      </div>
+      <div class="row">
+        <div class="cell yes"><div class="h">True today ✓</div>Descent + teleport-back working end-to-end.</div>
+        <div class="cell no"><div class="h">Not yet</div>Data flywheel designed &amp; logging — not yet earning.</div>
+      </div>
+    </div>
+    <p class="note"><b>Why we lead with this.</b> Every limitation we volunteer before you find it raises our credibility on everything else. The hard part — a diagnose-and-descend engine running four exam corpora — is already live.</p>
+  </section>
+
+  <!-- COMPETITION -->
+  <section class="sec" id="competition">
+    <div class="kicker"><span class="n">09</span> Competition</div>
+    <h2>Everyone has competition — here's ours.</h2>
+    <table>
+      <tr><th>Player</th><th>What they are</th><th>Why we're different</th></tr>
+      <tr><td><b>BYJU'S / Physics Wallah</b></td><td>Content + recorded/live classes at scale</td><td>Delivery, not per-student diagnosis; our ₹0-marginal model undercuts their economics</td></tr>
+      <tr><td><b>Khan Academy</b></td><td>Excellent free content library</td><td>Not exam-spine adaptive; no descend-to-the-gap diagnosis</td></tr>
+      <tr><td><b>Raw ChatGPT</b></td><td>General chatbot</td><td>No spine, no verified graph, no deterministic grading, no fail-closed answer-key safety</td></tr>
+    </table>
+  </section>
+
+  <!-- ASK -->
+  <section class="sec" id="ask">
+    <div class="kicker"><span class="n">10</span> The ask</div>
+    <h2>₹10 lakh to put a focused team on the product — compute is free.</h2>
+    <p class="claim">This is a capital-efficient raise. Almost the entire cost is people; almost none of it is infrastructure — because the compute is covered by startup credits.</p>
+
+    <div class="cards">
+      <div class="card">
+        <h4>Where it goes — people</h4>
+        <p><strong>Founder full-time</strong> + a small team of <strong>2–3</strong> focused purely on product experience.</p>
+        <p>No marketing team yet. The job right now is to make the product excellent and get it into students' hands — free.</p>
+        <span class="tag real">~100% salaries &amp; founder runway</span>
+      </div>
+      <div class="card">
+        <h4>What it doesn't go to — servers</h4>
+        <p>Compute is effectively ₹0: <strong>NVIDIA Inception (~$10k credits)</strong> on incorporation, plus standard startup-credit programs (AWS Activate, Google for Startups, Azure).</p>
+        <p>That's what lets us offer the product <em>free</em> while we grow.</p>
+        <span class="tag risk">Free now · own servers only once revenue justifies them</span>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:8px">The sequence: <strong>raise ₹10L → incorporate (unlocks ~$10k+ in compute credits) → go full-time with a tiny team → make the product free and focus purely on improving it → grow real usage → re-introduce the ₹1,000/mo meter (already built &amp; live) at scale, before credits run out and we'd need our own servers.</strong> Revenue arrives before the cost does.</p>
+
+    <div class="milestones">
+      <div class="ms"><div class="num">I</div><h4>Make the product excellent</h4><p>Content sign-off across CBSE-12/JEE/NEET, fix tracked model issues, and ship Socratic teach-back node gates.</p></div>
+      <div class="ms"><div class="num">II</div><h4>Get real usage — free</h4><p>Put it in aspirants' hands at no cost; instrument retention &amp; learning-outcome data (we have ~0 today).</p></div>
+      <div class="ms"><div class="num">III</div><h4>Re-introduce revenue at scale</h4><p>When usage justifies our own infrastructure, turn the already-built ₹1,000/mo meter back on — proving willingness-to-pay before free compute is exhausted.</p></div>
+    </div>
+    <p class="quietnote">Team / "why us" slide to be added by the founder.</p>
+  </section>
+
+  <footer>
+    <span class="epi">Start from the outcome, descend to first principles, ascend with understanding.</span>
+    <div class="src">
+      Every figure links to its source inline (↗). Product claims grounded in PROJECT-CONTEXT.md &amp; SOCRATIC-SPEC.md — no overclaim.
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
