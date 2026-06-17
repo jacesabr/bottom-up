@@ -9,6 +9,7 @@ import NodeView from './components/NodeView';
 import PaperView from './components/PaperView';
 import { getStoredUser, clearUser, type AuthUser } from './lib/auth';
 import { track } from './lib/track';
+import { initAnalytics, aIdentify, aReset, aPage, aCapture } from './lib/analytics';
 
 // Prod bakes in VITE_API_URL (render.yaml). In dev, fall back to the relative '/api' so requests go
 // through Vite's proxy (vite.config.ts → API_PORT) — no hardcoded port that can drift from the API.
@@ -50,9 +51,15 @@ export default function App() {
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
-  // Anonymous page-visit beacon — fires per page (view or hash route) for the admin Traffic panel.
+  // Analytics: init PostHog once + identify an already-logged-in learner (no-op until the key is set).
+  useEffect(() => {
+    initAnalytics();
+    if (user) aIdentify(user.id, { username: user.username });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  // Page beacon — fires per page (view or hash route): self-hosted Traffic panel + PostHog $pageview.
   const page = route === '#docs' ? 'docs' : route === '#admin' ? 'admin' : view;
-  useEffect(() => { track(API_BASE, page); }, [page]);
+  useEffect(() => { track(API_BASE, page); aPage(page); }, [page]);
   if (route === '#admin') {
     return (
       <div className="app">
@@ -101,6 +108,8 @@ export default function App() {
 
   const onAuthed = (u: AuthUser) => {
     setUser(u);
+    aIdentify(u.id, { username: u.username });
+    aCapture('register_or_login');
     setAuthOpen(false);
     const next = pendingNav;
     setPendingNav(null);
@@ -109,6 +118,7 @@ export default function App() {
 
   const onLogout = () => {
     clearUser();
+    aReset();
     setUser(null);
     setView('home');
   };
