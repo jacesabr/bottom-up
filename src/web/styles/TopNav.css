@@ -58,6 +58,35 @@
 .topnav-tab.locked:hover { color: var(--dim); }
 .topnav-lock { font-size: 0.72rem; }
 
+/* Auth control — sits at the end of the bar, next to Admin. */
+.topnav-login {
+  margin-left: 6px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.topnav-login:hover { background: #c24d18; }
+.topnav-auth { display: inline-flex; align-items: center; gap: 8px; margin-left: 6px; }
+.topnav-hi { font-size: 0.85rem; color: var(--dim); }
+.topnav-logout {
+  border: 1px solid var(--rule);
+  background: #fff;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.topnav-logout:hover { background: var(--bg); }
+
 @media (max-width: 640px) {
   .topnav { gap: 8px; }
   .topnav-name { display: none; }

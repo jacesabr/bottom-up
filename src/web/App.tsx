@@ -129,7 +129,14 @@ export default function App() {
   return (
     <div className="app">
       <main className="app-main">
-        {view === 'home' && <TopNav active="home" />}
+        {view === 'home' && (
+          <TopNav
+            active="home"
+            user={user}
+            onLoginClick={() => { setPendingNav(null); setAuthOpen(true); }}
+            onLogout={onLogout}
+          />
+        )}
         {view === 'home' && (
           <Home
             learnerId={learnerId}

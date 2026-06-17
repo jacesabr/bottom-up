@@ -58,25 +58,6 @@ export default function Home({
 
   return (
     <div className="home">
-      <header className="home-top">
-        <div className="home-brand">
-          <div>
-            <div className="home-title">Sarthi</div>
-            <div className="home-tag">Build it up, concept by concept — then sit one clean exam.</div>
-          </div>
-        </div>
-        <div className="home-account">
-          {user ? (
-            <>
-              <span className="home-hi">Hi, <strong>{user.username}</strong></span>
-              <button className="home-logout" onClick={onLogout}>Log out</button>
-            </>
-          ) : (
-            <button className="home-login" onClick={onLoginClick}>Log in / Register</button>
-          )}
-        </div>
-      </header>
-
       {/* Progress tracker: one card per course with its completion %. */}
       <section className="prog-strip">
         {loading

@@ -3,8 +3,7 @@ import '../styles/TopNav.css';
 /**
  * The site-wide top tab bar. Always visible so learners can reach Documentation and operators can
  * reach the (locked) Admin panel. Tabs are hash routes handled by App: '' is the learn/home view,
- * the rest are #docs / #admin. Admin shows a 🔒 — it's Basic-auth gated server-side; the lock just
- * signals "staff only".
+ * the rest are #docs / #admin. The Log in / Register control sits at the end, next to Admin.
  */
 type TabId = 'home' | 'docs' | 'admin';
 
@@ -14,7 +13,17 @@ const TABS: { id: TabId; label: string; hash: string; locked?: boolean }[] = [
   { id: 'admin', label: 'Admin', hash: '#admin', locked: true },
 ];
 
-export default function TopNav({ active }: { active: TabId }) {
+export default function TopNav({
+  active,
+  user,
+  onLoginClick,
+  onLogout,
+}: {
+  active: TabId;
+  user?: { username: string } | null;
+  onLoginClick?: () => void;
+  onLogout?: () => void;
+}) {
   return (
     <nav className="topnav" aria-label="Primary">
       <a className="topnav-brand" href="#" onClick={() => { location.hash = ''; }}>
@@ -33,6 +42,16 @@ export default function TopNav({ active }: { active: TabId }) {
             {t.locked && <span className="topnav-lock" aria-label="staff only">🔒</span>}
           </a>
         ))}
+        {onLoginClick && (
+          user ? (
+            <span className="topnav-auth">
+              <span className="topnav-hi">Hi, <strong>{user.username}</strong></span>
+              <button className="topnav-logout" onClick={onLogout}>Log out</button>
+            </span>
+          ) : (
+            <button className="topnav-login" onClick={onLoginClick}>Log in / Register</button>
+          )
+        )}
       </div>
     </nav>
   );
