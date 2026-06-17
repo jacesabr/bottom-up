@@ -149,6 +149,16 @@
   white-space: nowrap;
 }
 
+/* Past-paper button locked until the whole course is complete. */
+.take-paper-btn.locked {
+  background: #efece7;
+  color: var(--lock);
+  cursor: not-allowed;
+  font-weight: 600;
+}
+.take-paper-btn.locked:hover { background: #efece7; }
+.take-paper-btn.locked:active { transform: none; }
+
 @media (max-width: 768px) {
   .home-top { flex-wrap: wrap; }
 }

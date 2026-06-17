@@ -127,9 +127,19 @@ export default function Home({
             <span className="l-lock">locked</span>
           </div>
 
-          <button className="take-paper-btn" onClick={() => onTakePaper(c.exam, c.subject)}>
-            📝 Sit a past board paper — then revise what you miss →
-          </button>
+          {(() => {
+            // The past board paper unlocks only once EVERY node in the course is passed.
+            const allDone = c.total > 0 && c.passed >= c.total;
+            return allDone ? (
+              <button className="take-paper-btn" onClick={() => onTakePaper(c.exam, c.subject)}>
+                📝 Sit a past board paper — then revise what you miss →
+              </button>
+            ) : (
+              <button className="take-paper-btn locked" disabled title="Finish every chapter to unlock the past board paper">
+                🔒 Finish all {c.total} nodes to unlock the past board paper ({c.passed}/{c.total})
+              </button>
+            );
+          })()}
         </section>
       ))}
     </div>
