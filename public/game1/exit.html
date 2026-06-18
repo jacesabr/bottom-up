@@ -533,20 +533,36 @@ function setReactor(level) {
   if (level > 0) scheduleAlarm(); else clearTimeout(alarmTimer);
 }
 
-// "My Sister" track — plays on the true ending, ducks the reactor synth under it.
-let sisterPlaying = false;
+// "My Sister" track — plays when you choose to stay, ducks the reactor synth under it.
+let sisterPlaying = false, sisterFade = null;
+const SISTER_VOL = 0.85;
 function synthVol() { return muted ? 0 : (sisterPlaying ? 0.22 : 0.9); }
-function playSister() {
+function playSister(fadeMs = 0) {
   sisterPlaying = true;
   if (masterGain) masterGain.gain.value = synthVol();
-  if (sisterMusic) {
-    sisterMusic.volume = muted ? 0 : 0.85;
-    sisterMusic.currentTime = 0;
+  if (!sisterMusic) return;
+  clearInterval(sisterFade);
+  sisterMusic.currentTime = 0;
+  const target = muted ? 0 : SISTER_VOL;
+  if (fadeMs > 0 && !muted) {
+    // fade up over the quiet so it breathes in rather than slamming on
+    sisterMusic.volume = 0;
+    sisterMusic.play().catch(() => {});
+    const steps = 40, every = fadeMs / steps;
+    let i = 0;
+    sisterFade = setInterval(() => {
+      i++;
+      sisterMusic.volume = Math.min(target, (i / steps) * target);
+      if (i >= steps) clearInterval(sisterFade);
+    }, every);
+  } else {
+    sisterMusic.volume = target;
     sisterMusic.play().catch(() => {});
   }
 }
 function stopSister() {
   sisterPlaying = false;
+  clearInterval(sisterFade);
   if (sisterMusic) { sisterMusic.pause(); sisterMusic.currentTime = 0; }
   if (masterGain) masterGain.gain.value = synthVol();
 }
@@ -554,7 +570,7 @@ function stopSister() {
 document.getElementById('mute-btn').addEventListener('click', () => {
   muted = !muted;
   if (masterGain) masterGain.gain.value = synthVol();
-  if (sisterMusic) sisterMusic.volume = muted ? 0 : 0.85;
+  if (sisterMusic) { clearInterval(sisterFade); sisterMusic.volume = muted ? 0 : SISTER_VOL; }
   document.getElementById('mute-btn').innerHTML = muted ? '[ &#9788; ]' : '[ &#9834; ]';
 });
 
@@ -837,7 +853,10 @@ async function onStay() {
   document.body.classList.remove('meltdown');
   reactorEl.className = 'stable-good';
   reactorEl.querySelector('.lvl').textContent = 'HOLDING';
-  playSister();
+  // the music fades up into the quiet; hold on the visual and let it breathe
+  // before any words land
+  playSister(3000);
+  await sleep(2600);
   await typeLines([
     ["You sit back down beside your friend. The tunnel can wait.", 'story'],
     ["The alarm fades. It is quiet now — just the two of you, and the dark.", 'story'],
