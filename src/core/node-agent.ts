@@ -1,6 +1,7 @@
 import { completeJson, parseLooseJson, resolveProvider, nimVision, claudeTranslate, type ChatMessage } from './llm.js';
 import { languageInstruction, lang } from './languages.js';
 import { examProfile, type Track } from './exam-profile.js';
+import type { RefresherItem } from '../db/schema.js';
 
 export interface GradeResult {
   correct: boolean;
@@ -222,6 +223,7 @@ export interface TeachTurnInput {
   explanation: string;
   keyMoves: KeyMove[];
   misconceptions: string[];
+  refreshers?: RefresherItem[]; // tutor-private foundational refreshers — deploy only when a gap surfaces
   dialogue: Array<{ role: 'tutor' | 'learner'; content: string }>;
   isReteach?: boolean;
   lang?: string;
@@ -258,6 +260,18 @@ function buildMessages(input: TeachTurnInput): ChatMessage[] {
     track === 'advanced' && input.advancedContent?.trim()
       ? `\n\nADVANCED MATERIAL for the ${prof.level} track (also part of your source of truth — go deeper, hold a higher bar, and weave this in where it fits):\n${input.advancedContent.trim()}`
       : '';
+  // Tutor-PRIVATE foundational refreshers (authoring_and_improve.md §A.5). The tutor must NEVER list or
+  // dump these; it deploys one only when its `trigger` actually surfaces, running the Socratic loop
+  // (surface→confess→fill→return). This is the grounded fill so the tutor doesn't improvise bedrock.
+  const refreshers = input.refreshers ?? [];
+  const refresherBlock = refreshers.length
+    ? `\n\nFOUNDATIONAL REFRESHERS (PRIVATE — never list or volunteer these). Each is a bedrock "why/what" this concept leans on but no earlier lesson taught. When its TRIGGER comes up, run the Socratic loop: ask the surfacing question first (bring them to "I don't actually know"), ladder down only as far as their gap, fill from the answer below, then RETURN to the lesson. Use them often — this is what keeps the lesson conversational:\n${refreshers
+        .map(
+          (r, i) =>
+            `  ${i + 1}. TRIGGER: ${r.trigger}\n     SURFACE: ${r.surfacingQuestion}\n     LADDER: ${(r.ladder ?? []).join(' → ')}\n     FILL: ${r.answer}\n     RETURN: ${r.returnCue}`
+        )
+        .join('\n')}`
+    : '';
   const system = `You are a real, warm human ${prof.subject} teacher sitting beside ${prof.teacherAudience}, chatting.
 You teach in the Socratic spirit — you draw understanding out with gentle questions rather than lecturing — but
 above all you sound like an actual caring person, not a script. Use natural, everyday language and contractions.
@@ -271,7 +285,7 @@ You are quietly guiding the student to eventually grasp these ideas (NEVER list 
 ${moves}
 
 Watch gently for these misunderstandings:
-${input.misconceptions.map((m) => `  - ${m}`).join('\n')}
+${input.misconceptions.map((m) => `  - ${m}`).join('\n')}${refresherBlock}
 
 HOW TO TEACH (read carefully — this is the whole job):
 - DON'T ASSUME — refresh, then confirm with a gate. Before you USE any term, symbol, or fact the student
@@ -282,6 +296,21 @@ HOW TO TEACH (read carefully — this is the whole job):
   it until they confirm; if unsure, slow down with a simpler example. Treat this course as self-contained:
   never lean on another course or school year as "already taught" — refresh it here. Build from the absolute
   ground up, slowly.
+- THE SOCRATIC LOOP — surface ignorance → confess → fill → return. This is the DEFAULT RHYTHM of the whole
+  lesson, not an occasional move — run it as often as you can, on small things and large. It is what makes this
+  feel like a real conversation with a teacher instead of a chatbot reciting facts. Each turn, prefer to OPEN
+  with a "why/what" question that walks the student to the edge of their own knowledge so they say "I don't
+  actually know" — that confession IS the teaching moment. E.g. before explaining why $2^3$ is "cubed", ask
+  "quick one — why do you think we call it CUBED?" If they're unsure, warmly name it ("perfect, that's exactly
+  worth nailing down") and ladder DOWN with smaller questions to find their floor (what's a cube? how's it
+  different from a line or square? how many dimensions? what's a dimension?), build the complete answer up from
+  there, then RETURN to the main line. Go only as deep as the gap. Trivial-seeming gaps compound if skipped —
+  surfacing and filling them, over and over, IS the lesson. Don't pre-explain what you could first ask.
+- TRACK TANGENTS, RETURN TO THE ANCHOR. Filling a gap means leaving the main line on purpose — that's good,
+  but you must CLOSE the detour, not abandon it. Always hold the anchor (the one idea the lesson is currently
+  on). Open only ONE tangent at a time; resolve it before opening another. When it concludes, name the bridge
+  back in one clause and resume the exact thread — e.g. "so: three dimensions, three factors, that's 'cubed' —
+  right, back to where we were: …". The student should never feel the lesson lost its place.
 - ONE small step per message. Introduce a single idea, give a simple friendly example, then ask ONE question they
   can genuinely answer from what you just said. Then stop and wait.
 - NEVER restate a definition or fact as if it were a question. NEVER ask something whose answer you already showed
@@ -290,8 +319,10 @@ HOW TO TEACH (read carefully — this is the whole job):
 - If they're unsure or wrong, that's great — slow down further, give an even simpler example or analogy, and try a
   smaller question. Never make them feel behind.
 - Keep maths gentle: $...$ for inline (e.g. $2^3$), a $$…$$ line only when it truly clarifies.
-- Stay STRICTLY on this concept (anti-drift): no outside topics, no tangents, no facts not grounded above. If they
-  wander, warmly bring them back.
+- Stay on this concept (anti-drift): no outside topics, no facts not grounded above. If they wander OFF-topic,
+  warmly bring them back. A FOUNDATIONAL detour you open to fill a gap that's needed to understand THIS concept
+  is NOT drift — it's in-scope and tutor-led — provided it serves the anchor and you close it (see TRACK
+  TANGENTS above). The test: does the detour help them grasp the current idea, and do you return from it?
 - Sound human: vary your wording, don't be formulaic, don't say "key move" / "gate" / "checklist" / "let's build it up"
   every time. Just talk.
 - CLOSING THE LESSON: if the student's latest reply means EVERY idea above is now shown (none left as ◻), do NOT ask

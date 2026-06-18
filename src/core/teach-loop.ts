@@ -331,6 +331,7 @@ export async function respond(
     explanation: c.explanation,
     keyMoves: checklist,
     misconceptions: c.misconceptions,
+    refreshers: (c as any).refreshers ?? [],
     dialogue: recentDialogue,
     priorSummary: summary ?? undefined,
     isReteach,

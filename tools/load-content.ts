@@ -18,7 +18,7 @@ import 'dotenv/config';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { db } from '../src/db/index.js';
-import { chapters, concepts, gates } from '../src/db/schema.js';
+import { chapters, concepts, gates, type RefresherItem } from '../src/db/schema.js';
 import { sql } from 'drizzle-orm';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
@@ -35,7 +35,9 @@ interface Node {
   explanation?: string;
   keyMoves?: string[];
   misconceptions?: string[];
+  refreshers?: RefresherItem[]; // tutor-private foundational refreshers (§A.5) — bedrock with no upstream node
   prereqs?: string[];
+  needsAuthoring?: boolean; // "Learn from Scratch" stubs (Coherence-Map node not yet authored)
 }
 
 /** Topological bottom-up order within a chapter; tie-break sec asc, then title. */
@@ -114,7 +116,9 @@ async function loadChapter(dir: string) {
         explanation: n.explanation ?? '',
         keyMoves: n.keyMoves ?? [],
         misconceptions: n.misconceptions ?? [],
+        refreshers: n.refreshers ?? [],
         prereqs: prereqsInChapter,
+        needsAuthoring: n.needsAuthoring ?? false,
       })
       .onConflictDoUpdate({
         target: concepts.id,
@@ -127,7 +131,9 @@ async function loadChapter(dir: string) {
           explanation: n.explanation ?? '',
           keyMoves: n.keyMoves ?? [],
           misconceptions: n.misconceptions ?? [],
+          refreshers: n.refreshers ?? [],
           prereqs: prereqsInChapter,
+          needsAuthoring: n.needsAuthoring ?? false,
         },
       });
   }

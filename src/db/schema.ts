@@ -1,6 +1,19 @@
 import { pgTable, text, uuid, timestamp, boolean, integer, jsonb } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 
+/**
+ * A tutor-private foundational refresher (authoring_and_improve.md §A.5). Bedrock the node leans on but
+ * no upstream node teaches — the tutor surfaces the gap (`surfacingQuestion`), ladders down (`ladder`),
+ * fills it (`answer`), then returns (`returnCue`). Deployed only when `trigger` actually surfaces.
+ */
+export interface RefresherItem {
+  trigger: string; // the term/symbol/fact that fires this refresher when the node uses it
+  surfacingQuestion: string; // the "why/what" asked first, to bring the student to their point of ignorance
+  ladder: string[]; // smaller and smaller sub-questions, to locate the floor of the gap
+  answer: string; // the comprehensive, ground-up fill
+  returnCue: string; // one-clause bridge back to the main line
+}
+
 export const users = pgTable('users', {
   id: uuid('id').primaryKey().defaultRandom(),
   email: text('email').unique(),
@@ -35,10 +48,19 @@ export const concepts = pgTable('concepts', {
   explanation: text('explanation').notNull(),
   keyMoves: text('key_moves').array().notNull(),
   misconceptions: text('misconceptions').array().notNull(),
+  // Tutor-private foundational refreshers for pre-curriculum bedrock the node leans on but no upstream
+  // node teaches (e.g. *why* 2³ is "cubed"). Powers the runtime Socratic loop (surface→confess→fill→return,
+  // dont_assume.md §2a) — NEVER shown to the learner unprompted; deployed only when that gap surfaces.
+  // See authoring_and_improve.md §A.5 (the FOURTH §A outcome).
+  refreshers: jsonb('refreshers').$type<RefresherItem[]>().notNull().default(sql`'[]'::jsonb`),
   prereqs: text('prereqs').array().notNull(), // concept IDs
   // Advanced-track overlay (e.g. JEE Advanced): extra reading/depth shown ONLY on the advanced track.
   // Empty for almost all nodes; hand-filled where a higher bar / board-provided extra resources apply.
   advancedContent: text('advanced_content'),
+  // "Learn from Scratch" only: a node imported from the Coherence Map whose lesson/gates are not yet
+  // authored. It shows as "coming soon" and is never the active node (so the authored first-N stay walkable).
+  // Always false for the exam-prep corpora (every node there is authored).
+  needsAuthoring: boolean('needs_authoring').notNull().default(false),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 });
 

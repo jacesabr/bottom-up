@@ -422,6 +422,30 @@
         "Confusing 'a divides p' with 'p divides a'",
         "Allowing a remainder while still claiming divisibility"
       ],
+      "refreshers": [
+        {
+          "trigger": "The word \"multiple\" — 'a is a multiple of p'",
+          "surfacingQuestion": "Before we unpack 'divides': when I say 6 is a 'multiple' of 2, what do I mean by that?",
+          "ladder": [
+            "What do you get if you multiply 2 by 1, then by 2, then by 3, then by 4?",
+            "Is 6 in that list?",
+            "Is 7 in that list?"
+          ],
+          "answer": "A multiple of a number is what you get by multiplying it by a whole number. The multiples of 2 are 2, 4, 6, 8, 10, … So 6 is a multiple of 2 because 6 = 2 × 3, but 7 is not a multiple of 2 because no whole number times 2 gives 7. Saying 'a is a multiple of p' is exactly the same as saying 'p divides a'.",
+          "returnCue": "So 'multiple of p' and 'p divides it' are two ways to say the same thing — back to reading p | a."
+        },
+        {
+          "trigger": "\"No remainder\" / dividing exactly",
+          "surfacingQuestion": "We need the idea of dividing 'with no remainder'. Quick one: if you share 7 sweets equally between 2 children, what's left over — and what's that leftover called?",
+          "ladder": [
+            "How many whole sweets does each child get?",
+            "How many sweets are left in your hand?",
+            "What if you had 6 sweets instead of 7 — anything left over then?"
+          ],
+          "answer": "When you divide, the remainder is what's left after taking out as many equal groups as possible. 7 ÷ 2 gives 3 each with 1 left over — remainder 1. 6 ÷ 2 gives 3 each with nothing left — remainder 0. 'p divides a' means the remainder is exactly 0: a splits into p-sized groups perfectly, like 6 into 2s.",
+          "returnCue": "So 'p divides a' = remainder 0. Now back to writing that as a = p × k."
+        }
+      ],
       "prereqs": [],
       "sameConcept": [],
       "teachingInsights": []
@@ -443,6 +467,32 @@
       "misconceptions": [
         "Evaluating 2³ as 2 × 3 = 6 instead of 2 × 2 × 2 = 8",
         "Adding exponents when multiplying different prime powers (2³ × 3² is not 6⁵)"
+      ],
+      "refreshers": [
+        {
+          "trigger": "Naming a power aloud — calling 2³ \"2 cubed\" or 2² \"2 squared\"",
+          "surfacingQuestion": "Quick one before we go on: why do you think we call 2³ \"2 cubed\"? Where does the word 'cubed' come from?",
+          "ladder": [
+            "What shape is a cube?",
+            "How is a cube different from a flat square, or from a straight line?",
+            "How many dimensions does a cube have — and what does 'dimension' even mean?",
+            "If a cube has side 2, how many 2's do you multiply to get its volume?"
+          ],
+          "answer": "A 'dimension' is just an independent direction you can move in. A line has 1 dimension (length only), a square has 2 (length and width), a cube has 3 (length, width, height). The volume of a cube with side 2 is 2 × 2 × 2 — three 2's, one for each of its three dimensions — which is exactly 2³. That's why we say 'cubed': the little 3 matches the 3 dimensions of a cube. In the same way 2² = 2 × 2 is the area of a 2-by-2 square, so we say 'squared'.",
+          "returnCue": "So: three dimensions → three 2's → '2 cubed'. Right, back to what we were doing — multiplying these prime powers together."
+        },
+        {
+          "trigger": "The word \"prime\" — prime number, prime power, prime factor",
+          "surfacingQuestion": "We keep saying 'prime' — quick check so we're together: what actually makes a number prime? Is 6 prime?",
+          "ladder": [
+            "What's a 'factor' of a number?",
+            "Which whole numbers divide 6 exactly?",
+            "Which whole numbers divide 7 exactly?",
+            "So what's special about 7 that 6 doesn't have?"
+          ],
+          "answer": "A factor of a number divides it exactly, with nothing left over. A prime number (bigger than 1) has exactly two factors: 1 and itself — like 2, 3, 5, 7, 11. A number with more factors is 'composite' — 6 is composite because 1, 2, 3 and 6 all divide it. (1 is neither prime nor composite.) So when we write a 'prime power' like 2³, the base 2 is one of these building-block primes.",
+          "returnCue": "Good — so our bases here (2, 3, 5) are all primes. Back to evaluating and multiplying their powers."
+        }
       ],
       "prereqs": [],
       "sameConcept": [],

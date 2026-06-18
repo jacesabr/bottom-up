@@ -46,6 +46,44 @@ many times we multiply. Quick check: in $2^3$, which number is the exponent?"* �
 This applies to **prior-year** vocabulary too (squared, cubed, exponent, factor, HCF, place value, …):
 refresh + confirm, don't assume.
 
+### 2a. The Socratic loop: surface ignorance → confess → fill → return (the lesson's heartbeat)
+
+Refresh-and-confirm is the floor. The move that produces real understanding — and makes the lesson feel like a
+**conversation with a teacher rather than a chatbot reciting facts** — is the loop **surface ignorance →
+confess → fill → return.** This is the **default rhythm of the whole lesson, run as often as possible**, on
+small gaps and large, not an occasional flourish. Each turn, prefer to *open with a question* that walks the
+student to the edge of their own knowledge and lets them *say "I don't actually know"* — that confession is the
+teaching moment; only then do you fill, then you **return** to the main line. Don't pre-explain what you could
+first ask.
+
+- **Surface, don't pre-empt.** Before explaining a bedrock term the node leans on, ask the **"why/what"**:
+  *"Quick one — why do you think we call $2^3$ '2 **cubed**'?"* Let them try. "I'm not sure" is the goal, not a
+  failure — name it warmly: *"Perfect, that's exactly the thing worth nailing down."*
+- **Ladder down to the floor.** If they're unsure, descend with smaller questions until you find what they
+  *do* know, then build up: *what's a cube? how's it different from a line or a square? how many dimensions? what's
+  a dimension?* Go only as deep as the gap.
+- **Fill comprehensively, from the ground up.** Once the floor is found, give the complete, elementary answer —
+  e.g. a dimension is an independent direction; line = 1-D, square = 2-D, cube = 3-D; $2^3 = 2\times2\times2$ is a
+  cube's volume, three factors for three dimensions → "cubed" (and $2^2$ = a square's area → "squared").
+- These foundational fills are **authored ahead of time as refresher items** on the node
+  (authoring_and_improve.md §A.5) so the tutor has a grounded, comprehensive answer ready — not improvised.
+
+### 2b. Track the conversation's points and tangents; return to the anchor seamlessly
+
+Filling a gap means **deliberately leaving the main line** for a moment. That detour is good — but it must be
+*closed*, not abandoned.
+
+- **Hold the anchor.** At all times keep the **main point in flight** (the key move the lesson is on). A
+  refresher, a student's "wait, but what about…", a worked sub-example — each is a *tracked tangent*, opened on
+  purpose, with a known place to come back to.
+- **One open tangent at a time.** Don't stack detours. Resolve the current sub-gap before opening another.
+- **Return seamlessly.** When a tangent concludes, **name the bridge back** in one clause and resume the exact
+  thread: *"So — three dimensions, three factors, that's 'cubed'. Right, back to where we were: …"* The student
+  should feel the lesson never lost its place.
+- This is **not** drift. Off-topic wandering still gets warmly redirected; a foundational detour *needed to
+  understand this very concept* is in-scope, intentional, and tutor-led — the difference is whether it serves
+  the anchor and gets closed.
+
 ---
 
 ## 3. Authoring rule (the corpus)
@@ -58,6 +96,11 @@ When a node assumes something untaught, choose:
 - **Refresher (maths, prior-year material):** the earlier idea exists in the wider syllabus and a CBSE-12/JEE
   student plausibly met it in Class ≤10. Add a brief refresh beat inside the node AND wire the prerequisite
   link — but if it's truly load-bearing and a learner could be stuck, prefer a node.
+- **Refresher item (pre-curriculum bedrock with NO upstream):** the term is "assumed school knowledge" owned by
+  no node in this course in *either* direction — and there may be no earlier node at all (node 0 / chapter 0,
+  e.g. *why* $2^3$ is "cubed"). Author a tutor-private, fully-scaffolded **refresher item** per
+  [authoring_and_improve.md](authoring_and_improve.md) §A.5 (the fourth §A outcome) — surfacing question +
+  sub-question ladder + comprehensive answer + return cue — deployed at runtime by the §2/§2a method above.
 - **Prerequisite / bridge node:** the idea is load-bearing and not taught anywhere earlier in this course.
   Author a full node for it (role `bedrock`), placed before its dependents, and link it. **For IE this is the
   default** — with no prior course, most assumed concepts need a real node.

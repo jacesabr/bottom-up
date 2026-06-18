@@ -24,6 +24,19 @@
         "Treating a vague collection ('ten talented writers') as a set when its membership cannot be decided",
         "Thinking any collection of objects automatically qualifies as a set"
       ],
+      "refreshers": [
+        {
+          "trigger": "\"Object / element / member\" of a set — used interchangeably",
+          "surfacingQuestion": "I'll keep saying a set is a collection of 'objects' or 'elements'. Quick check: what kind of things are allowed to be 'elements' of a set — just numbers?",
+          "ladder": [
+            "Could the letters a, e, i, o, u form a set?",
+            "Could the rivers of India form a set?",
+            "So does an 'element' have to be a number?"
+          ],
+          "answer": "An element (also called a member or object) of a set is simply a thing that is in it — and it can be almost anything: numbers, letters, rivers, people, even other sets. 'Object', 'element' and 'member' all mean the same thing here. So {a, e, i, o, u} has five elements (letters), and 'the rivers of India' has rivers as its elements.",
+          "returnCue": "So 'element' just means a thing in the set, whatever it is. Now, back to deciding when such a collection counts as a well-defined set."
+        }
+      ],
       "prereqs": [],
       "sameConcept": [],
       "teachingInsights": []
@@ -45,6 +58,19 @@
       "misconceptions": [
         "Confusing membership (in, element of a set) with the subset relation (subset of, set inside a set)",
         "Writing 15 in P for the prime factors of 30 when 15 is not itself a prime factor"
+      ],
+      "refreshers": [
+        {
+          "trigger": "\"Prime factor\" / \"composite\" — used in the prime-factors-of-30 example",
+          "surfacingQuestion": "Our example uses the prime factors of 30. Quick one: 15 divides 30, so why isn't 15 a prime factor of 30?",
+          "ladder": [
+            "What does it mean for one number to be a 'factor' of another?",
+            "What makes a number 'prime'?",
+            "Is 15 prime, or can you split it into smaller factors?"
+          ],
+          "answer": "A factor of a number divides it exactly. A prime number has only two factors, 1 and itself (2, 3, 5, 7, 11, …); a number with more factors is composite. 15 divides 30, but 15 = 3 × 5 is composite, not prime — so it's a factor of 30 but not a prime factor. The prime factors of 30 are 2, 3 and 5, which is why P = {2, 3, 5}.",
+          "returnCue": "So 'prime factor' means a factor that is itself prime. Back to writing membership: which of these belong to P?"
+        }
       ],
       "prereqs": [
         "jee:maths:maths-ch01:define-a-well-defined-set"

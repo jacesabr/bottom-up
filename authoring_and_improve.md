@@ -230,6 +230,62 @@ has only seen the upstream nodes actually hits an undefined term — or worse, a
 
 ---
 
+## A.5 ★ Refresher items — the FOURTH outcome, for bedrock gaps with NO upstream node
+
+**The gap §A's three outcomes miss.** AUTHOR-bridge assumes the idea belongs in this course's DAG; DEFER
+assumes a downstream owner; INLINE-GLOSS is a one-clause aside. But the **very first node of the very first
+chapter** (`jemh101` node 0) still leans on **pre-curriculum bedrock the syllabus never teaches and never
+will** — "assumed school knowledge" that has no earlier node to point at and never gets one. Worked trigger
+(real): a node uses $2^3$ and calls it **"2 cubed."** *Why* is it called cubed? There is no upstream node,
+this *is* node 0, and we will not add a "what is a dimension" node to a Real Numbers chapter. Yet a student who
+can't say why "cubed" is a real gap — trivial-seeming, but the kind that quietly compounds. This is **not**
+bridge material and it is **more than a gloss.** It is the fourth §A outcome:
+
+4. **REFRESHER ITEM** — the term is genuine pre-curriculum bedrock (assumed prior-grade common knowledge,
+   owned by no node in this course in either direction). Do **not** author a node and do **not** just gloss
+   it. Author a small, **tutor-private, fully-scaffolded refresher** the tutor deploys *only when the gap
+   surfaces* (§ runtime method in [dont_assume.md](dont_assume.md) §2): it surfaces the gap with a "why/what"
+   question, lets the student hit and **confess** the gap, then **fills** it with a laddered explanation, then
+   **returns** to the node's main line. Applies **even at node 0 / chapter 0** — "no earlier node" is never an
+   excuse to skip it.
+
+### What a refresher item contains (author all five)
+For the `2³ = "cubed"` worked example:
+
+1. **Trigger** — the term/symbol/fact that, when the node uses it, should fire the refresher: `"cubed" / xⁿ named as a power`.
+2. **Surfacing question** (the "why", asked *before* explaining) — *"Quick one before we go on: why do you think we call $2^3$ '2 **cubed**'?"* Designed to walk the student to the floor of their own ignorance and have them say "I don't actually know."
+3. **Sub-question ladder** (smaller and smaller, to *locate* the floor) — *What's a cube? How's a cube different from a line or a square? How many dimensions does a cube have? What's a dimension?* The tutor descends only as far as the student's gap.
+4. **Comprehensive answer** (what a complete fill looks like, grounded in elementary truth) — A **dimension** is an independent direction you can move in. A line is **1-D**, a square **2-D**, a cube **3-D**. $2^3 = 2\times2\times2$ is the volume of a cube of side 2 — **three** factors for **three** dimensions — which is exactly *why* we say "cubed"; likewise $2^2 = 2\times2$ is the **area** of a square of side 2, so "**squared**."
+5. **Return cue** (the seamless hand-back) — *"So: three dimensions → three factors → 'cubed'. Right, back to where we were —  …"* Returns to the exact key move that was in flight.
+
+### How to produce them while authoring
+During the §A inventory (Step 1–3), every load-bearing term you classify as **"assumed prior-grade common
+knowledge"** (rather than a course concept) gets a refresher item written for it — not a silent pass. Build
+them from elementary truth (no NCERT citation required; this is below the curriculum), keep each to one
+foundational idea, and write the four prose parts above. A node is **not done** until its bedrock-assumed
+terms each have a refresher item, the same way it is not done until its course-level prereqs are sufficient.
+
+**Author generously.** The runtime **Socratic loop** (`surface ignorance → confess → fill → return`,
+[dont_assume.md](dont_assume.md) §2a) is meant to fire **as often as possible** — it's the lesson's heartbeat,
+what keeps it conversational instead of chatbot-y. The tutor can only run that loop where it has a grounded,
+comprehensive answer ready. So **err toward more refresher items, not fewer**: every "why/what" a curious
+student might reasonably ask about a term the node uses (why cubed? why is this prime? what's a factor really?)
+is a loop the tutor can run only if you authored the fill. Sparse refreshers → the tutor either bluffs or
+skips the gap; rich refreshers → frequent, genuine surface-confess-fill-return turns.
+
+### Where they're stored (the adjustment the next authoring run makes)
+Refreshers are **tutor-private** — like `misconceptions`, the tutor must NEVER dump them unprompted; it
+deploys one only when that gap actually surfaces. Target shape: a **`refreshers[]` field on the concept,
+parallel to `misconceptions`** (each item `{ trigger, surfacingQuestion, ladder[], answer, returnCue }`),
+threaded into `TeachTurnInput` and rendered into the tutor system prompt as a private "deploy only when this
+gap surfaces" block. That field does not exist yet — **adding it + populating node 0 of `jemh101` with the
+`"cubed"` refresher is the canonical first task of the next authoring run.** Until the field lands, hold new
+refresher scaffolds in this section so they are not lost. This is exactly the "adjust the node to contain this
+information" work; the runtime behaviour that consumes it is already specified in
+[dont_assume.md](dont_assume.md) §2.
+
+---
+
 ## B. The strict process for authoring a bridge / prereq node (high quality, no shortcuts)
 
 A bridge node is a **normal node** held to the **same bar as any other** — it is not a throwaway stub. Author

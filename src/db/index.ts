@@ -53,6 +53,7 @@ export async function initializeDatabase() {
           explanation: concept.explanation,
           keyMoves: concept.keyMoves,
           misconceptions: concept.misconceptions,
+          refreshers: concept.refreshers ?? [],
           prereqs: concept.prereqs,
         });
         console.log(`Loaded concept: ${concept.slug}`);
