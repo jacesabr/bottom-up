@@ -1,4 +1,6 @@
 import express from 'express';
+import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 import { db } from '../db/index.js';
 import { users, buEvent, buGateAttempt, buLlmCall, buNodePerformance, buVisit } from '../db/schema.js';
 import { sql, eq, and, desc } from 'drizzle-orm';
@@ -177,6 +179,20 @@ router.get('/llm-calls', async (_req, res) => {
   } catch (err) {
     console.error('admin/llm-calls error:', err);
     res.status(500).json({ error: 'llm-calls failed' });
+  }
+});
+
+// The System Guide (living architecture doc). Served ONLY through this Basic-auth'd route — the file
+// lives at docs/architecture.html (NOT public/), so it is never reachable as a static URL. The admin
+// UI fetches this with the auth header and renders it into a sandboxed iframe via srcdoc.
+const GUIDE_PATH = fileURLToPath(new URL('../../docs/architecture.html', import.meta.url));
+router.get('/guide', async (_req, res) => {
+  try {
+    const html = await readFile(GUIDE_PATH, 'utf8');
+    res.type('html').send(html);
+  } catch (err) {
+    console.error('admin/guide error:', err);
+    res.status(500).json({ error: 'guide unavailable' });
   }
 });
 

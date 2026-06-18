@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import '../styles/AdminDashboard.css';
 
 /**
@@ -12,11 +12,27 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
   const [p, setP] = useState('');
   const [err, setErr] = useState<string | null>(null);
 
+  const [tab, setTab] = useState<'dashboard' | 'guide'>('dashboard');
   const [overview, setOverview] = useState<any>(null);
   const [traffic, setTraffic] = useState<any>(null);
   const [conversations, setConversations] = useState<any[]>([]);
   const [calls, setCalls] = useState<any[]>([]);
   const [openConvo, setOpenConvo] = useState<any>(null);
+
+  // System Guide tab: the living architecture doc. It is NOT a public static file — we fetch it
+  // through the Basic-auth'd /admin/guide endpoint and render the HTML into a sandboxed iframe via
+  // srcdoc, then size the iframe to its content so the page scrolls as one document.
+  const [guideHtml, setGuideHtml] = useState<string | null>(null);
+  const guideRef = useRef<HTMLIFrameElement>(null);
+  const fitGuide = useCallback(() => {
+    const f = guideRef.current;
+    try {
+      const doc = f?.contentWindow?.document;
+      if (doc) f!.style.height = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight) + 'px';
+    } catch {
+      /* same-origin expected — ignore if not */
+    }
+  }, []);
 
   const authedFetch = useCallback(
     async (path: string) => {
@@ -57,6 +73,28 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
 
   useEffect(() => { if (auth) load(); }, [auth, load]);
 
+  // Fetch the System Guide HTML through the auth'd endpoint (it's never a public URL).
+  const loadGuide = useCallback(async () => {
+    try {
+      const res = await fetch(`${apiBase}/admin/guide`, { headers: { Authorization: `Basic ${auth}` } });
+      if (res.status === 401) { sessionStorage.removeItem('adminAuth'); setAuth(null); setErr('Wrong admin credentials.'); return; }
+      if (!res.ok) throw new Error(`API ${res.status}`);
+      setGuideHtml(await res.text());
+    } catch {
+      setErr("Couldn't load the system guide — tap System guide again in a moment.");
+    }
+  }, [apiBase, auth]);
+  useEffect(() => { if (auth && tab === 'guide' && guideHtml === null) loadGuide(); }, [auth, tab, guideHtml, loadGuide]);
+
+  // Keep the guide iframe sized to its content on resize + catch late layout (fonts) for a couple seconds.
+  useEffect(() => {
+    if (tab !== 'guide') return;
+    window.addEventListener('resize', fitGuide);
+    const t = setInterval(fitGuide, 1200);
+    const stop = setTimeout(() => clearInterval(t), 3000);
+    return () => { window.removeEventListener('resize', fitGuide); clearInterval(t); clearTimeout(stop); };
+  }, [tab, fitGuide]);
+
   const submitLogin = (e: React.FormEvent) => {
     e.preventDefault();
     const token = btoa(`${u}:${p}`);
@@ -91,11 +129,30 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
     <div className="admin">
       <header className="admin-head">
         <h1>Sarthi · Admin</h1>
+        <div className="admin-tabs">
+          <button className={tab === 'dashboard' ? 'active' : ''} onClick={() => setTab('dashboard')}>Dashboard</button>
+          <button className={tab === 'guide' ? 'active' : ''} onClick={() => setTab('guide')}>System guide</button>
+        </div>
         <div>
-          <button onClick={load}>Refresh</button>
+          {tab === 'dashboard' && <button onClick={load}>Refresh</button>}
           <button onClick={() => { sessionStorage.removeItem('adminAuth'); setAuth(null); }}>Log out</button>
         </div>
       </header>
+
+      {tab === 'guide' && (
+        guideHtml === null
+          ? <div className="admin-card muted">Loading the system guide…</div>
+          : <iframe
+              ref={guideRef}
+              title="System guide"
+              srcDoc={guideHtml}
+              className="admin-guide-frame"
+              onLoad={fitGuide}
+              scrolling="no"
+            />
+      )}
+
+      {tab === 'dashboard' && <>
       {err && <div className="admin-err">{err}</div>}
 
       {overview && (
@@ -252,6 +309,7 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
           </div>
         </div>
       )}
+      </>}
     </div>
   );
 }
