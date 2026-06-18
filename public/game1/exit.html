@@ -790,7 +790,7 @@ async function onGetOnBoat() {
     reactorEl.querySelector('.lvl').textContent = 'CLEAR';
     confirmTone();
     await typeLines([
-      ["Congratulations, you escaped!", 'success'],
+      ["Congratulations, you escaped to a new world!", 'success'],
       ["", 'blank', 0],
       ["Do you want to play again?", 'system'],
     ]);
@@ -826,29 +826,23 @@ async function onLightMatch() {
   setScene('note');
   await typeLines([
     ["The match flares. For a moment, you can see the note.", 'story'],
+    ["It says: \"Don't leave me here.\"", 'love'],
     ["", 'blank', 0],
   ]);
-  await addLine('// SYSTEM LOCKED — RE-AUTHENTICATE TO CONTINUE', 'warn'); await blank(120);
-  showMath(1, async () => {            // the note is encrypted — decode it
-    await typeLines([
-      ["The note says: \"Don't leave me here.\"", 'love'],
-      ["", 'blank', 0],
-    ]);
-    await sleep(800);
-    setReactor(-1);
-    confirmTone(); chord();
-    await typeLines([
-      ["The reactor goes quiet. The override holds.", 'system'],
-      ["WASHINGTON TWP. REACTOR — CORE STABILIZED.", 'success'],
-      ["", 'blank', 0],
-      ["\"I love you,\" you say.", 'love'],
-      ["\"I love you too,\" they answer.", 'love'],
-      ["", 'blank', 0],
-    ]);
-    await sleep(900);
-    await typeLines([["Do you want to play again?", 'system']]);
-    gamePhase = 99;
-  });
+  await sleep(900);
+  setReactor(-1);
+  confirmTone(); chord();
+  await typeLines([
+    ["The reactor goes quiet. The override holds.", 'system'],
+    ["WASHINGTON TWP. REACTOR — CORE STABILIZED.", 'success'],
+    ["", 'blank', 0],
+    ["\"I love you,\" you say.", 'love'],
+    ["\"I love you too,\" they answer.", 'love'],
+    ["", 'blank', 0],
+  ]);
+  await sleep(900);
+  await typeLines([["Do you want to play again?", 'system']]);
+  gamePhase = 99;
 }
 
 // ── Input handling ────────────────────────────────────────────────────────────
