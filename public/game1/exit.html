@@ -296,17 +296,13 @@
   #math-ready-btn:hover { background: rgba(255,170,0,0.08); }
   #math-box .question { font-size: 14px; color: #fff; margin-bottom: 6px; line-height: 1.7; white-space: pre-wrap; }
   #math-box .context { font-size: 11px; color: #777; margin-bottom: 16px; line-height: 1.5; }
-  #math-typed-row { display: flex; gap: 8px; align-items: center; }
+  #math-typed-row { display: flex; gap: 8px; align-items: center; border-top: 1px solid rgba(255,170,0,0.25); padding-top: 12px; }
+  .math-prompt { color: var(--amber); font-size: 15px; text-shadow: 0 0 6px rgba(255,170,0,0.5); }
   #math-answer {
-    flex: 1; background: transparent; border: 1px solid var(--amber); color: var(--amber);
-    font-family: 'Share Tech Mono', monospace; font-size: 15px; padding: 6px 10px; outline: none;
+    flex: 1; background: transparent; border: none; outline: none; color: #fff;
+    font-family: 'Share Tech Mono', monospace; font-size: 15px; padding: 2px 0;
+    caret-color: var(--amber);
   }
-  #math-submit {
-    background: transparent; border: 1px solid var(--amber); color: var(--amber);
-    font-family: 'Share Tech Mono', monospace; font-size: 12px; padding: 6px 14px;
-    cursor: pointer; letter-spacing: 2px; white-space: nowrap;
-  }
-  #math-submit:hover { background: rgba(255,170,0,0.1); }
   #math-mc-row { display: flex; flex-direction: column; gap: 7px; }
   .mc-btn {
     background: transparent; border: 1px solid #444; color: #aaa;
@@ -366,8 +362,8 @@
       <div class="question" id="math-question"></div>
       <div class="context" id="math-context"></div>
       <div id="math-typed-row">
-        <input id="math-answer" type="text" inputmode="numeric" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type the access code, then Enter">
-        <button id="math-submit">ENTER</button>
+        <span class="math-prompt">&#62;</span>
+        <input id="math-answer" type="text" inputmode="numeric" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type the answer, then Enter">
       </div>
       <div id="math-error"></div>
       <div id="math-attempts"></div>
@@ -683,7 +679,6 @@ function hideMath() {
   awaitingMath = false; currentGate = null; mathCallback = null;
 }
 
-document.getElementById('math-submit').addEventListener('click', checkTyped);
 mathAns.addEventListener('keydown', e => {
   if (e.key === 'Enter') { checkTyped(); return; }
   if (e.key.length === 1) tick(0.9);     // typewriter click as they type the answer
