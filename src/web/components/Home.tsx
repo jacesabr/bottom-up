@@ -86,44 +86,84 @@ export default function Home({
           </div>
           {c.who && <p className="course-who">{c.who}</p>}
 
-          <div className="map">
-            {c.chapters.map((ch) => {
-              const visual = ch.status === 'complete' ? 'done' : ch.status === 'active' ? 'available' : 'locked';
-              return (
-                <div
-                  key={ch.id}
-                  className={`c ${visual}`}
-                  onClick={() => ch.status !== 'locked' && onPickChapter(c.exam, c.subject, ch.id)}
-                  title={ch.title}
-                >
-                  <div className="dot">{ch.status === 'complete' ? '' : ch.index}</div>
-                  <div className="nm">{ch.title}</div>
-                </div>
-              );
-            })}
-          </div>
+          {c.exam === 'scratch' ? (
+            <ClassLadder course={c} onPick={onPickChapter} />
+          ) : (
+            <>
+              <div className="map">
+                {c.chapters.map((ch) => {
+                  const visual = ch.status === 'complete' ? 'done' : ch.status === 'active' ? 'available' : 'locked';
+                  return (
+                    <div
+                      key={ch.id}
+                      className={`c ${visual}`}
+                      onClick={() => ch.status !== 'locked' && onPickChapter(c.exam, c.subject, ch.id)}
+                      title={ch.title}
+                    >
+                      <div className="dot">{ch.status === 'complete' ? '' : ch.index}</div>
+                      <div className="nm">{ch.title}</div>
+                    </div>
+                  );
+                })}
+              </div>
 
-          <div className="legend">
-            <span className="l-done">done</span>
-            <span className="l-now">you're here</span>
-            <span className="l-lock">locked</span>
-          </div>
+              <div className="legend">
+                <span className="l-done">done</span>
+                <span className="l-now">you're here</span>
+                <span className="l-lock">locked</span>
+              </div>
 
-          {(() => {
-            // The past board paper unlocks only once EVERY node in the course is passed.
-            const allDone = c.total > 0 && c.passed >= c.total;
-            return allDone ? (
-              <button className="take-paper-btn" onClick={() => onTakePaper(c.exam, c.subject)}>
-                📝 Sit a past board paper — then revise what you miss →
-              </button>
-            ) : (
-              <button className="take-paper-btn locked" disabled title="Finish every chapter to unlock the past board paper">
-                🔒 Finish all {c.total} nodes to unlock the past board paper ({c.passed}/{c.total})
-              </button>
-            );
-          })()}
+              {(() => {
+                // The past board paper unlocks only once EVERY node in the course is passed.
+                const allDone = c.total > 0 && c.passed >= c.total;
+                return allDone ? (
+                  <button className="take-paper-btn" onClick={() => onTakePaper(c.exam, c.subject)}>
+                    📝 Sit a past board paper — then revise what you miss →
+                  </button>
+                ) : (
+                  <button className="take-paper-btn locked" disabled title="Finish every chapter to unlock the past board paper">
+                    🔒 Finish all {c.total} nodes to unlock the past board paper ({c.passed}/{c.total})
+                  </button>
+                );
+              })()}
+            </>
+          )}
         </section>
       ))}
+    </div>
+  );
+}
+
+/**
+ * The "Learn from Scratch" class ladder — a glowing slideshow of class levels you climb. Highest class
+ * sits at the top; tap any rung to jump straight into that class (we assume prior mastery and refresh
+ * what's needed). Every rung is open — you can start at Kindergarten or jump up toward Grade 11 level.
+ */
+function ClassLadder({
+  course,
+  onPick,
+}: {
+  course: Course;
+  onPick: (exam: string, subject: string, chapterId: string) => void;
+}) {
+  // Server returns chapters low→high (Kindergarten first). A ladder climbs upward, so render top→bottom.
+  const rungs = [...course.chapters].reverse();
+  return (
+    <div className="class-ladder">
+      <div className="ladder-rail" />
+      {rungs.map((ch) => (
+        <button
+          key={ch.id}
+          className={`rung ${ch.status === 'complete' ? 'done' : 'open'}`}
+          onClick={() => onPick(course.exam, course.subject, ch.id)}
+          title={`Start ${ch.title}`}
+        >
+          <span className="rung-no">{ch.status === 'complete' ? '✓' : ch.index}</span>
+          <span className="rung-name">{ch.title.replace(' · Maths', '')}</span>
+          <span className="rung-go">Start →</span>
+        </button>
+      ))}
+      <div className="ladder-hint">Climb to any class — start where you like; we'll refresh whatever you need.</div>
     </div>
   );
 }

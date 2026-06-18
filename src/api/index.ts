@@ -3,10 +3,14 @@ import express from 'express';
 import { initializeDatabase } from '../db/index.js';
 import routes from './routes.js';
 import adminRoutes from './admin.js';
+import { padRouter, mobilePageHandler } from './pad.js';
 
 const app = express();
 // Render injects PORT; fall back to API_PORT / 3030 locally.
 const PORT = process.env.PORT || process.env.API_PORT || 3030;
+
+// Honour x-forwarded-proto behind Render's proxy so the QR pairing URL is built as https, not http.
+app.set('trust proxy', true);
 
 app.use(express.json({ limit: '8mb' })); // scratchpad images arrive as base64 data URLs
 
@@ -24,7 +28,12 @@ app.use((req, res, next) => {
 
 // Routes (mounted FIRST so the server serves even if the seed-load hiccups)
 app.use('/api/admin', adminRoutes);
+app.use('/api', padRouter); // QR phone→scratchpad image relay
 app.use('/api', routes);
+
+// Phone camera-capture page (scanned from the desktop QR). Served from the API origin so its upload
+// POST is same-origin; not under /api because it returns HTML, not JSON.
+app.get('/m/:token', mobilePageHandler);
 
 // Health check
 app.get('/health', (req, res) => {

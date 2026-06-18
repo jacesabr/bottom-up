@@ -246,7 +246,8 @@ function socratesOpening(c: any, _nextMoveText?: string, returning = false, hasP
     // Gentle reminder for a learner who's been here before — assume they may have forgotten.
     return (
       `Welcome back. 🙂 Quick reminder: tap **Details** (top-right) anytime, use the **scratchpad** for rough working ` +
-      `(then **Attach** it or hit **Help me**), and you can **🎤 speak** instead of typing or have replies **read aloud**.\n\n` +
+      `(or **📷 scan** a photo of working you did on paper, straight onto it), then **Attach** it or hit **Help me** — ` +
+      `and you can **🎤 speak** instead of typing or have replies **read aloud**.\n\n` +
       q
     );
   }
@@ -254,8 +255,9 @@ function socratesOpening(c: any, _nextMoveText?: string, returning = false, hasP
   return (
     `Hi there. 🙂 I'm your tutor — I won't lecture at you; I'll ask little questions and we'll figure it out together, ` +
     `step by step. There's no failing here, so relax.\n\n` +
-    `A couple of handy things: tap **Details** (top-right) anytime, jot rough working on the **scratchpad** (then **Attach** ` +
-    `it or hit **Help me**), and you can **🎤 speak** instead of typing or have my replies **read aloud**.\n\n` +
+    `A couple of handy things: tap **Details** (top-right) anytime, jot rough working on the **scratchpad** — or **📷 scan** ` +
+    `a photo of working you did on paper straight onto it — then **Attach** it or hit **Help me**, and you can **🎤 speak** ` +
+    `instead of typing or have my replies **read aloud**.\n\n` +
     q
   );
 }

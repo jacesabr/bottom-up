@@ -37,12 +37,13 @@ const INTRO_LANG_SPEECH =
 const INTRO_MIC_SPEECH = 'When you are ready, type "start" below — or tap the microphone and say "start".';
 
 // UI elements we glow one-at-a-time as the tutor's welcome mentions them aloud.
-type HiTarget = 'lang' | 'mic' | 'details' | 'scratchpad' | 'attach' | 'helpme' | 'readaloud';
+type HiTarget = 'lang' | 'mic' | 'details' | 'scratchpad' | 'attach' | 'helpme' | 'readaloud' | 'qr';
 
 // Bold tokens in the welcome message → the tool each one points at. Matched as **token** in the text.
 const WELCOME_TOOLS: { token: string; target: HiTarget }[] = [
   { token: 'Details', target: 'details' },
   { token: 'scratchpad', target: 'scratchpad' },
+  { token: '📷 scan', target: 'qr' },
   { token: 'Attach', target: 'attach' },
   { token: 'Help me', target: 'helpme' },
   { token: '🎤 speak', target: 'mic' },
@@ -619,11 +620,20 @@ export default function NodeView({
         <section className="pad-pane">
           <Scratchpad
             ref={padRef}
+            apiBase={apiBase}
             onAttach={sketchSend}
             onSend={sketchSend}
             onHelp={sketchHelp}
             className={glowPad ? 'glow' : undefined}
-            highlight={highlight?.target === 'attach' ? 'attach' : highlight?.target === 'helpme' ? 'helpme' : null}
+            highlight={
+              highlight?.target === 'attach'
+                ? 'attach'
+                : highlight?.target === 'helpme'
+                  ? 'helpme'
+                  : highlight?.target === 'qr'
+                    ? 'qr'
+                    : null
+            }
           />
         </section>
       </div>

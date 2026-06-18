@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+import QRCode from 'qrcode';
 import '../styles/Scratchpad.css';
 
 export interface ScratchpadHandle {
@@ -9,6 +10,10 @@ export interface ScratchpadHandle {
  * Canvas scratchpad (chat | scratchpad split), modelled on Socratic's ScratchpadCanvas:
  * native HTML5 canvas, pen + hand(pan) tools, zoom, clear. The canvas sizes itself to its
  * container (via ResizeObserver) so it fills the pane instead of forcing a tall page.
+ *
+ * Phone upload: the 📷 Scan button shows a QR code. Scanning it on a phone opens a camera page
+ * (served by the API); the snapped photo is relayed back and drawn onto the canvas as a background
+ * layer (resized to fit), so the learner can keep working on it, then Attach / Help me / Send.
  */
 const INK = '#1c1b19';
 
@@ -17,11 +22,12 @@ interface ScratchpadProps {
   onHelp?: (jpegDataUrl: string) => void;
   onSend?: (jpegDataUrl: string) => void;
   className?: string;
-  highlight?: 'attach' | 'helpme' | null; // glow a specific action when the tutor mentions it
+  apiBase: string;
+  highlight?: 'attach' | 'helpme' | 'qr' | null; // glow a specific control when the tutor mentions it
 }
 
 const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratchpad(
-  { onAttach, onHelp, onSend, className, highlight },
+  { onAttach, onHelp, onSend, className, apiBase, highlight },
   ref
 ) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -29,9 +35,17 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
   const drawing = useRef(false);
   const last = useRef<{ x: number; y: number } | null>(null);
   const strokes = useRef<Array<Array<{ x: number; y: number }>>>([]);
+  const bgImage = useRef<HTMLImageElement | null>(null); // photo scanned in from a phone (background layer)
   const [tool, setTool] = useState<'pen' | 'hand'>('pen');
   const [zoom, setZoom] = useState(1);
   const [dirty, setDirty] = useState(false);
+
+  // QR phone-upload session state.
+  const [qrOpen, setQrOpen] = useState(false);
+  const [qrImg, setQrImg] = useState<string | null>(null); // QR rendered as a PNG data URL
+  const [scanStatus, setScanStatus] = useState<'connecting' | 'waiting' | 'received' | 'error'>('connecting');
+  const tokenRef = useRef<string | null>(null);
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const exportJpeg = (): string | null => {
     const canvas = canvasRef.current;
@@ -51,6 +65,14 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
     if (!ctx) return;
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Photo scanned from a phone sits behind the ink, scaled to fit (contain) and centred.
+    const bg = bgImage.current;
+    if (bg && bg.width && bg.height) {
+      const scale = Math.min(canvas.width / bg.width, canvas.height / bg.height);
+      const w = bg.width * scale;
+      const h = bg.height * scale;
+      ctx.drawImage(bg, (canvas.width - w) / 2, (canvas.height - h) / 2, w, h);
+    }
     ctx.strokeStyle = INK;
     ctx.lineWidth = 2;
     ctx.lineJoin = 'round';
@@ -60,6 +82,17 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
       stroke.forEach((p, i) => (i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y)));
       ctx.stroke();
     }
+  };
+
+  // Draw an incoming phone photo as the background layer (resized to the canvas), then enable actions.
+  const loadBackground = (dataUrl: string) => {
+    const img = new Image();
+    img.onload = () => {
+      bgImage.current = img;
+      redraw();
+      setDirty(true);
+    };
+    img.src = dataUrl;
   };
 
   // Size the canvas to its container; re-fit on resize (keeps strokes).
@@ -135,15 +168,79 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
 
   const clear = () => {
     strokes.current = [];
+    bgImage.current = null;
     redraw();
     setDirty(false);
   };
+
+  // ---- QR phone-upload session ----
+  const stopPolling = () => {
+    if (pollRef.current) {
+      clearInterval(pollRef.current);
+      pollRef.current = null;
+    }
+  };
+
+  const closeScan = () => {
+    setQrOpen(false);
+    stopPolling();
+    const token = tokenRef.current;
+    tokenRef.current = null;
+    setQrImg(null);
+    if (token) {
+      fetch(`${apiBase}/pad-session/${token}`, { method: 'DELETE' }).catch(() => {});
+    }
+  };
+
+  const openScan = async () => {
+    setQrOpen(true);
+    setScanStatus('connecting');
+    setQrImg(null);
+    try {
+      const res = await fetch(`${apiBase}/pad-session`, { method: 'POST' });
+      const { token, url } = await res.json();
+      tokenRef.current = token;
+      setQrImg(await QRCode.toDataURL(url, { width: 240, margin: 1 }));
+      setScanStatus('waiting');
+      // Poll for the phone's upload; load it onto the canvas and close once it lands.
+      stopPolling();
+      pollRef.current = setInterval(async () => {
+        const t = tokenRef.current;
+        if (!t) return;
+        try {
+          const r = await fetch(`${apiBase}/pad-upload/${t}`);
+          if (!r.ok) return;
+          const d = await r.json();
+          if (d.image) {
+            loadBackground(d.image);
+            setScanStatus('received');
+            stopPolling();
+            setTimeout(closeScan, 900);
+          }
+        } catch {
+          /* transient network blip — keep polling */
+        }
+      }, 1800);
+    } catch {
+      setScanStatus('error');
+    }
+  };
+
+  // Tear down the session if the component unmounts mid-scan.
+  useEffect(() => () => { stopPolling(); }, []);
 
   return (
     <div className={`scratchpad${className ? ` ${className}` : ''}`}>
       <div className="scratchpad-toolbar">
         <button className={tool === 'pen' ? 'sp-btn active' : 'sp-btn'} onClick={() => setTool('pen')}>✏️ Pen</button>
         <button className={tool === 'hand' ? 'sp-btn active' : 'sp-btn'} onClick={() => setTool('hand')}>✋ Hand</button>
+        <button
+          className={`sp-btn sp-scan${highlight === 'qr' ? ' glow' : ''}`}
+          onClick={openScan}
+          title="Scan a QR code with your phone to add a photo of your paper working"
+        >
+          📷 Scan
+        </button>
         <div className="sp-zoom">
           <button className="sp-btn" onClick={() => setZoom((z) => Math.max(0.5, +(z - 0.1).toFixed(1)))}>−</button>
           <span>{Math.round(zoom * 100)}%</span>
@@ -173,7 +270,33 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
         <button className={`sp-btn${highlight === 'helpme' ? ' glow' : ''}`} onClick={handOff(onHelp)} disabled={!dirty} title="Ask the tutor to look at your working">💡 Help me</button>
         <button className="sp-btn sp-send" onClick={handOff(onSend)} disabled={!dirty} title="Send this working to the chat">📨 Send</button>
       </div>
-      <div className="scratchpad-hint">Rough working — sketch, then Attach / ask for Help / Send it to chat.</div>
+      <div className="scratchpad-hint">Rough working — sketch, 📷 scan from your phone, then Attach / ask for Help / Send it to chat.</div>
+
+      {qrOpen && (
+        <div className="sp-qr-overlay" onClick={closeScan}>
+          <div className="sp-qr-card" onClick={(e) => e.stopPropagation()}>
+            <button className="sp-qr-close" onClick={closeScan} aria-label="Close">✕</button>
+            <h3>📷 Scan to add a photo</h3>
+            <p>Point your phone camera at this code, snap your paper working, and it'll land here on the scratchpad — ready to keep working on, Attach, or ask for Help.</p>
+            <div className="sp-qr-box">
+              {scanStatus === 'received' ? (
+                <div className="sp-qr-done">✅<span>Got it!</span></div>
+              ) : scanStatus === 'error' ? (
+                <div className="sp-qr-err">Couldn't start the scan link. Close and try again.</div>
+              ) : qrImg ? (
+                <img src={qrImg} alt="QR code — scan with your phone" />
+              ) : (
+                <div className="sp-qr-loading">Preparing code…</div>
+              )}
+            </div>
+            <div className="sp-qr-status">
+              {scanStatus === 'waiting' && '⏳ Waiting for your photo…'}
+              {scanStatus === 'connecting' && 'Setting up…'}
+              {scanStatus === 'received' && 'Adding it to your scratchpad…'}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 });

@@ -49,12 +49,22 @@ export function invalidateContentCache(): void {
 // derive the year from a `-cNN-` marker (Class 11 has none → year 0, so it sorts first) and the chapter
 // number from `chNN`, falling back to the id. Single-year subjects (cbse10/cbse12) are unaffected.
 function chapterOrderKey(id: string): [number, number] {
+  // "Learn from Scratch": chapters are class levels (k, g1..g8, hs-*). Order them as a climbing ladder
+  // (Kindergarten → Grade 8 → High School domains), not alphabetically (which would dump 'k' after 'g8').
+  const sm = id.match(/^scratch:maths:(.+)$/);
+  if (sm) return [SCRATCH_BAND_RANK[sm[1]] ?? 99, 0];
   const ym = id.match(/-c(\d\d)-/);
   const year = ym ? parseInt(ym[1], 10) : 0;
   const nm = id.match(/ch(\d+)(?!\d)/);
   const num = nm ? parseInt(nm[1], 10) : 0;
   return [year, num];
 }
+
+// Class-ladder order for the "Learn from Scratch" course (lower = earlier/younger).
+const SCRATCH_BAND_RANK: Record<string, number> = {
+  k: 0, g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 6, g7: 7, g8: 8,
+  'hs-number': 9, 'hs-algebra': 10, 'hs-functions': 11, 'hs-geometry': 12, 'hs-stats': 13,
+};
 
 export async function getChaptersForSubject(subjectId: string): Promise<Chapter[]> {
   await ensureLoaded();

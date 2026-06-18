@@ -16,3 +16,10 @@ pnpm-lock.yaml
 
 # NIM study generated reports
 tools/nim-study/
+
+# "Learn from Scratch" — downloaded concept map + generated corpus + spike tooling.
+# Kept LOCAL on disk (zcode reads from here) but not pushed until we decide to ship the section.
+curriculum/
+content/scratch/
+tools/build-scratch-section.ts
+research/

@@ -79,3 +79,41 @@
 .scratchpad-actions { display: flex; gap: 6px; margin-top: 8px; justify-content: flex-end; }
 .sp-send { background: var(--accent); color: #fff; border-color: var(--accent); }
 .sp-send:hover:not(:disabled) { background: #b8480f; }
+
+/* ---- QR phone-upload modal ---- */
+.sp-qr-overlay {
+  position: fixed; inset: 0; z-index: 50;
+  background: rgba(28, 27, 25, 0.55);
+  display: grid; place-items: center;
+  padding: 20px;
+}
+.sp-qr-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 26px 26px 22px;
+  max-width: 380px; width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+.sp-qr-card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+.sp-qr-card p { margin: 0 0 18px; color: var(--dim); font-size: 0.9rem; line-height: 1.45; }
+.sp-qr-close {
+  position: absolute; top: 12px; right: 12px;
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid var(--rule); background: var(--card);
+  cursor: pointer; font-size: 0.9rem; color: var(--dim);
+}
+.sp-qr-close:hover { border-color: var(--accent); color: var(--accent); }
+.sp-qr-box {
+  width: 240px; height: 240px; margin: 0 auto;
+  display: grid; place-items: center;
+  border-radius: 12px; background: #fff;
+}
+.sp-qr-box img { width: 240px; height: 240px; display: block; }
+.sp-qr-loading, .sp-qr-err { color: var(--dim); font-size: 0.9rem; padding: 0 18px; }
+.sp-qr-err { color: #c0392b; }
+.sp-qr-done { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 48px; color: #2e7d32; }
+.sp-qr-done span { font-size: 1rem; }
+.sp-qr-status { margin-top: 16px; font-size: 0.92rem; color: var(--accent); min-height: 1.3em; font-weight: 600; }

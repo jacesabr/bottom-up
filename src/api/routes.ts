@@ -17,7 +17,11 @@ const MATH_COURSES = [
   { key: 'cbse10:maths', exam: 'cbse10', subject: 'maths', title: 'CBSE 10 · Maths', who: 'For Class 10 — CBSE board maths, built from the ground up.' },
   { key: 'cbse12:mathematics', exam: 'cbse12', subject: 'mathematics', title: 'CBSE 12 · Maths', who: 'For Class 12 — CBSE board maths. Assumes Class 11 is already familiar.' },
   { key: 'jee:maths', exam: 'jee', subject: 'maths', title: 'JEE · Maths', who: 'For Class 11 onward — starts at Class 11, runs into Class 12, deeper than boards. Ideal if you start in Class 11.' },
+  { key: 'scratch:maths', exam: 'scratch', subject: 'maths', title: 'Learn from Scratch · Maths', who: 'All of school maths as one map — Kindergarten to end of high school. Climb to any class and start there; we refresh whatever you need.' },
 ] as const;
+
+// Courses whose chapters are class levels you may enter in any order (no strict-linear unlock wall).
+const OPEN_LADDER_EXAMS = new Set(['scratch']);
 
 // ---- Auth (simple username/password; the returned user id becomes the client's learnerId) ----
 
@@ -71,7 +75,10 @@ router.get('/learner/:learnerId/home', async (req, res) => {
             const complete = chTotal > 0 && chPassed === chTotal;
             let status: 'complete' | 'active' | 'locked';
             if (complete) status = 'complete';
-            else if (!activeAssigned) {
+            else if (OPEN_LADDER_EXAMS.has(course.exam)) {
+              // Class ladder: every level is open to climb into; none are locked behind the prior one.
+              status = 'active';
+            } else if (!activeAssigned) {
               status = 'active';
               activeAssigned = true;
             } else status = 'locked';
@@ -238,7 +245,11 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
     const nodes = concepts.map((concept) => {
       const existing = statusOf.get(concept.id);
       let status: string;
-      if (existing === 'passed') {
+      if (concept.needsAuthoring) {
+        // "Learn from Scratch" stub: imported from the Coherence Map but not yet authored. Never the
+        // active node — it shows as "coming soon" and does not block the authored nodes before it.
+        status = 'coming_soon';
+      } else if (existing === 'passed') {
         status = 'passed';
       } else if (!activeAssigned) {
         status = existing && inProgress.has(existing) ? existing : 'available';

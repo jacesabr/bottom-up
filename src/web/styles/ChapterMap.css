@@ -177,6 +177,25 @@
   cursor: not-allowed;
 }
 
+/* "Learn from Scratch" node imported from the map but not yet authored — dashed "coming soon" chip. */
+.c.soon {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.c.soon .dot {
+  border: 1px dashed var(--dim);
+  background: transparent;
+  color: var(--dim);
+}
+.c.soon .dot::after {
+  content: 'soon';
+  position: absolute;
+  right: -8px;
+  top: -10px;
+  font-size: 0.5rem;
+  color: var(--dim);
+}
+
 .legend {
   display: flex;
   gap: 15px;

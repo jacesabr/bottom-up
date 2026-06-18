@@ -6,7 +6,8 @@ interface Node {
   slug: string;
   title: string;
   order: number;
-  status: 'locked' | 'available' | 'passed';
+  // 'coming_soon' = a "Learn from Scratch" node imported from the map but not yet authored.
+  status: 'locked' | 'available' | 'passed' | 'coming_soon';
 }
 
 interface ChapterMapProps {
@@ -85,24 +86,26 @@ export default function ChapterMap({
                 return nodes.map((node) => {
                   const isCurrent = current && node.id === current.id;
                   // passed → green ✓ ; current open node → green + glow ; other unlocked → green ;
-                  // everything still locked → faded + 🔒
+                  // not-yet-authored → faded "soon" ; everything still locked → faded + 🔒
                   const visual =
                     node.status === 'passed'
                       ? 'done'
-                      : isCurrent
-                        ? 'current'
-                        : isOpen(node)
-                          ? 'open'
-                          : 'locked';
+                      : node.status === 'coming_soon'
+                        ? 'soon'
+                        : isCurrent
+                          ? 'current'
+                          : isOpen(node)
+                            ? 'open'
+                            : 'locked';
                   const clickable = node.status === 'passed' || isOpen(node);
                   return (
                     <div
                       key={node.id}
                       className={`c ${visual}`}
                       onClick={() => clickable && onNodeClick(node.id)}
-                      title={node.title}
+                      title={node.status === 'coming_soon' ? `${node.title} — coming soon` : node.title}
                     >
-                      <div className="dot">{node.status === 'passed' ? '' : node.order}</div>
+                      <div className="dot">{node.status === 'passed' ? '' : node.status === 'coming_soon' ? '…' : node.order}</div>
                       <div className="nm">{node.title.split('·')[0].trim()}</div>
                     </div>
                   );

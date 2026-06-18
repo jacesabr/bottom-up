@@ -29,7 +29,17 @@ import { concepts as conceptsTable, gates } from '../src/db/schema.js';
 import { eq, and } from 'drizzle-orm';
 import { claudeAuthor, parseLooseJson, type ChatMessage } from '../src/core/llm.js';
 
-const FIRECRAWL_KEY = process.env.FIRECRAWL_API_KEY;
+/** Ordered Firecrawl keys: FIRECRAWL_API_KEY then FIRECRAWL_API_KEY_2.._9 (pooled fallback set in .env). */
+function firecrawlKeys(): string[] {
+  const keys: string[] = [];
+  const push = (k?: string) => { if (k && !keys.includes(k)) keys.push(k); };
+  push(process.env.FIRECRAWL_API_KEY);
+  for (let i = 2; i <= 9; i++) push(process.env[`FIRECRAWL_API_KEY_${i}`]);
+  return keys;
+}
+const FIRECRAWL_KEYS = firecrawlKeys();
+/** Rotate to a different key on rate-limit / credit / auth errors. */
+const shouldRotateKey = (e: any) => [401, 402, 403, 429].includes(e?.response?.status);
 const DRY = process.argv.includes('--dry');
 // Curated authoring: --strong (Opus) for correct maths/phrasing; --model <id> to override; --improve-content
 // to rewrite the node's teaching content (explanation/keyMoves/misconceptions) from NCERT + research first.
@@ -98,29 +108,36 @@ function rankHits(hits: ResearchHit[]): ResearchHit[] {
 }
 
 async function research(topic: string, profile: ExamProfile): Promise<ResearchHit[]> {
-  if (!FIRECRAWL_KEY) return [];
+  if (!FIRECRAWL_KEYS.length) return [];
   // Target authoritative question banks / NCERT exemplar / previous-year papers, and explicitly steer
   // away from video/social. Over-fetch (10) then domain-filter + rank down to the best 4.
   const query = `${topic} ${profile.searchTag} (NCERT exemplar OR previous year board questions OR solved question bank) -site:youtube.com -site:instagram.com -site:tiktok.com`;
-  try {
-    const res = await axios.post(
-      'https://api.firecrawl.dev/v1/search',
-      { query, limit: 10 },
-      { headers: { Authorization: `Bearer ${FIRECRAWL_KEY}`, 'Content-Type': 'application/json' }, timeout: 40_000 }
-    );
-    const data = res.data?.data ?? [];
-    const all: ResearchHit[] = data.map((d: any) => ({
-      title: d.title ?? '',
-      url: d.url ?? '',
-      snippet: (d.description ?? d.markdown ?? '').slice(0, 600),
-    }));
-    const ranked = rankHits(all);
-    // If filtering removed everything (rare), fall back to the unfiltered top few rather than nothing.
-    return (ranked.length ? ranked : all).slice(0, 4);
-  } catch (e: any) {
-    console.warn(`  research failed: ${e?.message}`);
-    return [];
+  for (let i = 0; i < FIRECRAWL_KEYS.length; i++) {
+    try {
+      const res = await axios.post(
+        'https://api.firecrawl.dev/v1/search',
+        { query, limit: 10 },
+        { headers: { Authorization: `Bearer ${FIRECRAWL_KEYS[i]}`, 'Content-Type': 'application/json' }, timeout: 40_000 }
+      );
+      const data = res.data?.data ?? [];
+      const all: ResearchHit[] = data.map((d: any) => ({
+        title: d.title ?? '',
+        url: d.url ?? '',
+        snippet: (d.description ?? d.markdown ?? '').slice(0, 600),
+      }));
+      const ranked = rankHits(all);
+      // If filtering removed everything (rare), fall back to the unfiltered top few rather than nothing.
+      return (ranked.length ? ranked : all).slice(0, 4);
+    } catch (e: any) {
+      if (shouldRotateKey(e) && i < FIRECRAWL_KEYS.length - 1) {
+        console.warn(`  firecrawl key #${i + 1} failed (HTTP ${e?.response?.status}); rotating to next key`);
+        continue;
+      }
+      console.warn(`  research failed: ${e?.message}`);
+      return [];
+    }
   }
+  return [];
 }
 
 const SLOTS = [
