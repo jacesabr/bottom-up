@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import Game1Overlay from './Game1Overlay';
+import { useEffect, useState } from 'react';
+import ExitGameOverlay from './ExitGameOverlay';
 import '../styles/ChapterMap.css';
 
 interface Node {
@@ -31,8 +31,6 @@ export default function ChapterMap({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [gameOpen, setGameOpen] = useState(false);
-  const [gameAudioBlocked, setGameAudioBlocked] = useState(false);
-  const gameAudioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const fetchChapter = async () => {
@@ -69,29 +67,6 @@ export default function ChapterMap({
     nodes.find((n) => inProgress.includes(n.status)) ??
     nodes.find((n) => isOpen(n));
   const showGameUnlock = chapterId === 'cbse10:maths:jemh101';
-
-  const openGame = async () => {
-    const audio = gameAudioRef.current;
-    setGameOpen(true);
-    if (!audio) return;
-    try {
-      audio.volume = 0.6;
-      await audio.play();
-      setGameAudioBlocked(false);
-    } catch {
-      setGameAudioBlocked(true);
-    }
-  };
-
-  const closeGame = () => {
-    const audio = gameAudioRef.current;
-    if (audio) {
-      audio.pause();
-      audio.currentTime = 0;
-    }
-    setGameOpen(false);
-    setGameAudioBlocked(false);
-  };
 
   return (
     <div className="chapter-map">
@@ -135,11 +110,11 @@ export default function ChapterMap({
                         <button
                           type="button"
                           className="game-unlock"
-                          onClick={openGame}
-                          title="Open Land of Ecodelia"
+                          onClick={() => setGameOpen(true)}
+                          title="Open eXit"
                         >
                         <span className="game-unlock-badge">game unlocked</span>
-                        <span className="game-unlock-title">Land of Ecodelia</span>
+                        <span className="game-unlock-title">eXit</span>
                       </button>
                     )}
                   </div>
@@ -157,15 +132,7 @@ export default function ChapterMap({
         </div>
       </div>
 
-      <audio ref={gameAudioRef} src="/game1/music.mp3" loop preload="auto" />
-      {gameOpen && (
-        <Game1Overlay
-          audioBlocked={gameAudioBlocked}
-          audioRef={gameAudioRef}
-          onAudioBlockedChange={setGameAudioBlocked}
-          onClose={closeGame}
-        />
-      )}
+      {gameOpen && <ExitGameOverlay onClose={() => setGameOpen(false)} />}
     </div>
   );
 }
