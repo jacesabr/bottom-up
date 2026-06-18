@@ -367,21 +367,14 @@
 <!-- Math challenge overlay (non-canon teaching layer) -->
 <div id="math-overlay">
   <div id="math-box">
-    <div id="math-teach-panel">
-      <h2>// REACTOR OVERRIDE &mdash; KEY REQUIRED</h2>
-      <div id="math-concept-label"></div>
-      <div id="math-teach-body"></div>
-      <button id="math-ready-btn">I UNDERSTAND &mdash; SHOW THE CHALLENGE</button>
-    </div>
-    <div id="math-question-panel" style="display:none">
-      <h2>// SECURITY CHECKPOINT</h2>
+    <div id="math-question-panel">
+      <h2>// SYSTEM LOCKED &mdash; RE-AUTHENTICATE</h2>
       <div class="question" id="math-question"></div>
       <div class="context" id="math-context"></div>
       <div id="math-typed-row">
-        <input id="math-answer" type="text" autocomplete="off" placeholder="enter answer">
-        <button id="math-submit">SUBMIT</button>
+        <input id="math-answer" type="text" inputmode="numeric" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type the access code, then Enter">
+        <button id="math-submit">ENTER</button>
       </div>
-      <div id="math-mc-row" style="display:none"></div>
       <div id="math-error"></div>
       <div id="math-attempts"></div>
     </div>
@@ -401,10 +394,6 @@ const mathCtx    = document.getElementById('math-context');
 const mathAns    = document.getElementById('math-answer');
 const mathErr    = document.getElementById('math-error');
 const mathAtts   = document.getElementById('math-attempts');
-const teachPanel = document.getElementById('math-teach-panel');
-const questionPanel = document.getElementById('math-question-panel');
-const typedRow   = document.getElementById('math-typed-row');
-const mcRow      = document.getElementById('math-mc-row');
 const reactorEl  = document.getElementById('reactor-status');
 
 // ── State ─────────────────────────────────────────────────────────────────────
@@ -683,64 +672,28 @@ const mathGates = [
   },
 ];
 
+// Auto-lockout: the system locks and just asks the question. No concept panel —
+// the answer is typed on the keyboard, and a hint is offered alongside.
 function showMath(gateIdx, callback) {
   awaitingMath = true; mathCallback = callback; mathAttempts = 0;
   currentGate = mathGates[gateIdx];
-  document.getElementById('math-concept-label').textContent = currentGate.concept;
-  const teachBody = document.getElementById('math-teach-body');
-  teachBody.innerHTML = '';
-  for (const item of currentGate.teach) {
-    const span = document.createElement('span');
-    span.className = item.type === 'rule' ? 'rule' : item.type === 'watchout' ? 'watchout' : '';
-    span.textContent = item.text;
-    teachBody.appendChild(span);
-    if (item.type === 'plain') teachBody.appendChild(document.createElement('br'));
-  }
-  teachPanel.style.display = 'block';
-  questionPanel.style.display = 'none';
+  mathQ.textContent = currentGate.questionText;
+  mathCtx.textContent = currentGate.hint ? ('hint: ' + currentGate.hint) : '';
   mathErr.textContent = ''; mathAtts.textContent = ''; mathAns.value = '';
   overlay.classList.add('show');
+  setTimeout(() => mathAns.focus(), 80);
 }
-
-document.getElementById('math-ready-btn').addEventListener('click', () => {
-  teachPanel.style.display = 'none';
-  questionPanel.style.display = 'block';
-  mathQ.textContent = currentGate.questionText;
-  mathCtx.textContent = currentGate.storyContext;
-  if (currentGate.type === 'mc') {
-    typedRow.style.display = 'none'; mcRow.style.display = 'flex'; mcRow.innerHTML = '';
-    for (const ch of currentGate.choices) {
-      const btn = document.createElement('button');
-      btn.className = 'mc-btn';
-      btn.textContent = ch.label + '.  ' + ch.text;
-      btn.addEventListener('click', () => handleMcClick(btn, ch.value));
-      mcRow.appendChild(btn);
-    }
-  } else {
-    typedRow.style.display = 'flex'; mcRow.style.display = 'none';
-    setTimeout(() => mathAns.focus(), 80);
-  }
-});
 
 function hideMath() {
   overlay.classList.remove('show');
   awaitingMath = false; currentGate = null; mathCallback = null;
 }
 
-function handleMcClick(btn, value) {
-  if (value === currentGate.answer) {
-    btn.classList.add('correct'); mathErr.textContent = ''; confirmTone();
-    setTimeout(async () => { await addLine('// CHECKPOINT CLEARED', 'success'); await blank(); const cb = mathCallback; hideMath(); await cb(); refreshCommands(); }, 500);
-  } else {
-    btn.classList.add('wrong'); mathAttempts++; blip(180, 0.18, 'sawtooth', 0.08);
-    mathErr.textContent = '✗  Not quite. Try again.';
-    if (mathAttempts >= 2) mathAtts.textContent = 'Hint: ' + currentGate.hint;
-    setTimeout(() => btn.classList.remove('wrong'), 600);
-  }
-}
-
 document.getElementById('math-submit').addEventListener('click', checkTyped);
-mathAns.addEventListener('keydown', e => { if (e.key === 'Enter') checkTyped(); });
+mathAns.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { checkTyped(); return; }
+  if (e.key.length === 1) tick(0.9);     // typewriter click as they type the answer
+});
 async function checkTyped() {
   const val = parseFloat(mathAns.value.trim());
   if (isNaN(val)) { mathErr.textContent = 'Enter a number.'; return; }
@@ -779,6 +732,7 @@ async function onMoveBarrel() {
   await addLine('> move barrel', 'input'); await blank(80);
   setScene('tunnel');
   await typeLines([["The barrel rolls aside and you find a secret tunnel.", 'story'], ["", 'blank', 0]]);
+  await addLine('// SYSTEM LOCKED — RE-AUTHENTICATE TO CONTINUE', 'warn'); await blank(120);
   showMath(0, async () => {
     await typeLines([
       ["The combination lock clicks open.", 'story'],
@@ -826,20 +780,20 @@ async function onLook() {
 }
 async function onGetOnBoat() {
   await addLine('> get on boat', 'input'); await blank(80);
-  setReactor(3);
+  await addLine('// SYSTEM LOCKED — RE-AUTHENTICATE TO CONTINUE', 'warn'); await blank(120);
   showMath(2, async () => {
     setScene('island');
-    await typeLines([["Congratulations, you're heading to a new world!", 'success'], ["", 'blank', 0]]);
-    await sleep(900);
-    setReactor(3);
+    // a clean win — no commentary on the friend, no telling them what they missed
+    clearTimeout(alarmTimer); meltLevel = 0;
+    document.body.classList.remove('meltdown');
+    reactorEl.className = 'stable-good';
+    reactorEl.querySelector('.lvl').textContent = 'CLEAR';
+    confirmTone();
     await typeLines([
-      ["WASHINGTON TWP. REACTOR — CORE BREACH IN PROGRESS.", 'warn'],
-      ["The water ahead glows wrong. Behind you, your friend is still down there.", 'story'],
-      ["You left them. This was never the way out.", 'warn'],
+      ["Congratulations, you escaped!", 'success'],
       ["", 'blank', 0],
+      ["Do you want to play again?", 'system'],
     ]);
-    await sleep(700);
-    await typeLines([["Do you want to play again?", 'system']]);
     gamePhase = 99;
   });
 }
@@ -874,7 +828,8 @@ async function onLightMatch() {
     ["The match flares. For a moment, you can see the note.", 'story'],
     ["", 'blank', 0],
   ]);
-  showMath(1, async () => {            // gate context: "decode your friend's note"
+  await addLine('// SYSTEM LOCKED — RE-AUTHENTICATE TO CONTINUE', 'warn'); await blank(120);
+  showMath(1, async () => {            // the note is encrypted — decode it
     await typeLines([
       ["The note says: \"Don't leave me here.\"", 'love'],
       ["", 'blank', 0],
@@ -883,13 +838,11 @@ async function onLightMatch() {
     setReactor(-1);
     confirmTone(); chord();
     await typeLines([
-      ["The override accepts the choice it was always waiting for.", 'system'],
-      ["WASHINGTON TWP. REACTOR — MELTDOWN AVERTED. CORE STABILIZED.", 'success'],
+      ["The reactor goes quiet. The override holds.", 'system'],
+      ["WASHINGTON TWP. REACTOR — CORE STABILIZED.", 'success'],
       ["", 'blank', 0],
       ["\"I love you,\" you say.", 'love'],
       ["\"I love you too,\" they answer.", 'love'],
-      ["", 'blank', 0],
-      ["You are not alone — and you didn't have to leave anyone behind to get here.", 'story'],
       ["", 'blank', 0],
     ]);
     await sleep(900);
