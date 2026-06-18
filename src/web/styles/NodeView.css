@@ -272,6 +272,25 @@
   0%, 100% { box-shadow: 0 0 0 0 rgba(217, 89, 31, 0.45); }
   50% { box-shadow: 0 0 0 7px rgba(217, 89, 31, 0); }
 }
+/* A mentioned tool's word "comes out" of the chat and glows as it's spoken, then settles. */
+.bubble-text strong.glow-word {
+  color: var(--accent);
+  background: rgba(217, 89, 31, 0.12);
+  border-radius: 4px;
+  padding: 0 3px;
+  display: inline-block;
+  animation: wordGlow 1.3s ease-in-out infinite;
+}
+@keyframes wordGlow {
+  0%, 100% { transform: scale(1); text-shadow: 0 0 0 rgba(217, 89, 31, 0); }
+  50% { transform: scale(1.14); text-shadow: 0 0 10px rgba(217, 89, 31, 0.65); }
+}
+/* Glow the Details / Read-aloud buttons when each is the tool being mentioned. */
+.details-btn.glow,
+.notation-btn.read.glow {
+  border-color: var(--accent); color: var(--accent);
+  animation: micGlow 1.3s ease-in-out infinite;
+}
 /* Update comment — mic glow is now driven by highlight state, not awaitingStart */
 .speak-btn {
   background: none; border: none; cursor: pointer; font-size: 0.78rem;

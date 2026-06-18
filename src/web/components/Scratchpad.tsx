@@ -17,10 +17,11 @@ interface ScratchpadProps {
   onHelp?: (jpegDataUrl: string) => void;
   onSend?: (jpegDataUrl: string) => void;
   className?: string;
+  highlight?: 'attach' | 'helpme' | null; // glow a specific action when the tutor mentions it
 }
 
 const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratchpad(
-  { onAttach, onHelp, onSend, className },
+  { onAttach, onHelp, onSend, className, highlight },
   ref
 ) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -168,8 +169,8 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
         />
       </div>
       <div className="scratchpad-actions">
-        <button className="sp-btn" onClick={handOff(onAttach)} disabled={!dirty} title="Attach this working to your reply">➕ Attach</button>
-        <button className="sp-btn" onClick={handOff(onHelp)} disabled={!dirty} title="Ask the tutor to look at your working">💡 Help me</button>
+        <button className={`sp-btn${highlight === 'attach' ? ' glow' : ''}`} onClick={handOff(onAttach)} disabled={!dirty} title="Attach this working to your reply">➕ Attach</button>
+        <button className={`sp-btn${highlight === 'helpme' ? ' glow' : ''}`} onClick={handOff(onHelp)} disabled={!dirty} title="Ask the tutor to look at your working">💡 Help me</button>
         <button className="sp-btn sp-send" onClick={handOff(onSend)} disabled={!dirty} title="Send this working to the chat">📨 Send</button>
       </div>
       <div className="scratchpad-hint">Rough working — sketch, then Attach / ask for Help / Send it to chat.</div>

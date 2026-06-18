@@ -36,6 +36,23 @@ const INTRO_LANG_SPEECH =
   'Set your preferred language using the box at the top of the page.';
 const INTRO_MIC_SPEECH = 'When you are ready, type "start" below — or tap the microphone and say "start".';
 
+// UI elements we glow one-at-a-time as the tutor's welcome mentions them aloud.
+type HiTarget = 'lang' | 'mic' | 'details' | 'scratchpad' | 'attach' | 'helpme' | 'readaloud';
+
+// Bold tokens in the welcome message → the tool each one points at. Matched as **token** in the text.
+const WELCOME_TOOLS: { token: string; target: HiTarget }[] = [
+  { token: 'Details', target: 'details' },
+  { token: 'scratchpad', target: 'scratchpad' },
+  { token: 'Attach', target: 'attach' },
+  { token: 'Help me', target: 'helpme' },
+  { token: '🎤 speak', target: 'mic' },
+  { token: 'read aloud', target: 'readaloud' },
+];
+
+// The welcome message is the only one that walks through the tools (it bolds **Details** and **scratchpad**).
+const isWelcomeMessage = (text?: string) =>
+  !!text && text.includes('**Details**') && text.includes('**scratchpad**');
+
 function slotLabel(slot?: string, answerType?: string): string {
   if (slot === 'sketch1' || slot === 'sketch2' || answerType === 'sketch') return 'draw it';
   if (slot === 'explain' || answerType === 'written') return 'explain in words';
@@ -61,13 +78,14 @@ export default function NodeView({
   const [busy, setBusy] = useState(true);
   const [input, setInput] = useState('');
   const [awaitingStart, setAwaitingStart] = useState(false); // chapter-intro "say/type start" gate is open
-  const [highlight, setHighlight] = useState<'lang' | 'mic' | null>(null); // which UI element to glow during intro
+  // Which UI element to glow as it's mentioned aloud, plus the bold word in the chat to glow with it.
+  const [highlight, setHighlight] = useState<{ target: HiTarget; word: string } | null>(null);
   const [glowPadKeyword, setGlowPadKeyword] = useState(false); // scratchpad glow from tutor message keywords
   const [showEq, setShowEq] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
   const [gate, setGate] = useState<any>(null);
-  const glowPad = gate?.answerType === 'sketch' || glowPadKeyword;
+  const glowPad = gate?.answerType === 'sketch' || glowPadKeyword || highlight?.target === 'scratchpad';
   const [gateAnswer, setGateAnswer] = useState('');
   const [gateFeedback, setGateFeedback] = useState<{ ok: boolean; text: string } | null>(null);
   const [done, setDone] = useState(false);
@@ -178,10 +196,14 @@ export default function NodeView({
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
   }, [messages, busy]);
 
-  // Glow the scratchpad for 4 s when the tutor mentions sketch / scratchpad / help me.
+  // Leaving the node (unmount): cut any read-aloud that's still playing so it doesn't follow us out.
+  useEffect(() => () => stopSpeaking(), []);
+
+  // Glow the scratchpad for 4 s when the tutor mentions sketch / scratchpad / help me mid-lesson.
+  // The welcome message is excluded — its tool mentions are glowed in sync with the read-aloud below.
   useEffect(() => {
     const last = messages[messages.length - 1];
-    if (!last || last.role !== 'tutor' || !last.text) return;
+    if (!last || last.role !== 'tutor' || !last.text || isWelcomeMessage(last.text)) return;
     const t = last.text.toLowerCase();
     if (t.includes('scratchpad') || t.includes('sketch') || t.includes('help me')) {
       setGlowPadKeyword(true);
@@ -190,7 +212,36 @@ export default function NodeView({
     }
   }, [messages]);
 
-  // Global read-aloud: when on, speak each NEW tutor message via the server voice chain.
+  // Split the welcome message into segments so the tool it mentions glows (word + button) exactly as
+  // it's spoken: a clearing lead-in, then one segment per tool (first mention only), each holding a beat.
+  const buildWelcomeSegments = (text: string): SpeakSegment[] => {
+    const segs: SpeakSegment[] = [];
+    for (const para of text.split(/\n\n+/)) {
+      const found = WELCOME_TOOLS.map((t) => ({ ...t, idx: para.indexOf('**' + t.token + '**') }))
+        .filter((t) => t.idx >= 0)
+        .sort((a, b) => a.idx - b.idx);
+      if (found.length === 0) {
+        segs.push({ text: para, lang, speechLang: speechCode, onStart: () => setHighlight(null) });
+        continue;
+      }
+      if (found[0].idx > 0)
+        segs.push({ text: para.slice(0, found[0].idx), lang, speechLang: speechCode, onStart: () => setHighlight(null) });
+      found.forEach((f, k) => {
+        const end = k + 1 < found.length ? found[k + 1].idx : para.length;
+        segs.push({
+          text: para.slice(f.idx, end),
+          lang,
+          speechLang: speechCode,
+          onStart: () => setHighlight({ target: f.target, word: f.token }),
+          pauseAfterMs: 250, // a brief beat so the glow registers — short enough not to feel choppy
+        });
+      });
+    }
+    return segs;
+  };
+
+  // Global read-aloud: when on, speak each NEW tutor message via the server voice chain. The welcome
+  // message is read as a glow-synced sequence; everything else is read straight through.
   useEffect(() => {
     if (!autoRead) {
       spokenCount.current = messages.length;
@@ -198,7 +249,12 @@ export default function NodeView({
     }
     for (let i = spokenCount.current; i < messages.length; i++) {
       const m = messages[i];
-      if (m.role === 'tutor' && m.text) speakSmart(m.text, lang, speechCode, apiBase, ttsProvider || undefined);
+      if (m.role !== 'tutor' || !m.text) continue;
+      if (isWelcomeMessage(m.text)) {
+        void speakSequence(buildWelcomeSegments(m.text), apiBase, ttsProvider || undefined).then(() => setHighlight(null));
+      } else {
+        speakSmart(m.text, lang, speechCode, apiBase, ttsProvider || undefined);
+      }
     }
     spokenCount.current = messages.length;
   }, [messages, autoRead, speechCode, ttsProvider]);
@@ -214,12 +270,12 @@ export default function NodeView({
         text: LANG_INVITES[code].text,
         lang: LANG_INVITES[code].lang,
         speechLang: LANG_INVITES[code].lang + '-IN',
-        onStart: () => setHighlight('lang'),
+        onStart: () => setHighlight({ target: 'lang', word: '' }),
       }));
     const segments: SpeakSegment[] = [
       ...langInviteSegments,
-      { text: INTRO_LANG_SPEECH, lang, speechLang: speechCode, onStart: () => setHighlight('lang') },
-      { text: INTRO_MIC_SPEECH, lang, speechLang: speechCode, onStart: () => setHighlight('mic') },
+      { text: INTRO_LANG_SPEECH, lang, speechLang: speechCode, onStart: () => setHighlight({ target: 'lang', word: '' }) },
+      { text: INTRO_MIC_SPEECH, lang, speechLang: speechCode, onStart: () => setHighlight({ target: 'mic', word: '' }) },
     ];
     void speakSequence(segments, apiBase, ttsProvider || undefined);
     return () => { stopSpeaking(); setHighlight(null); };
@@ -238,6 +294,8 @@ export default function NodeView({
   const send = async () => {
     const text = input.trim();
     if (!text || busy) return;
+    stopSpeaking(); // a reply means they're moving on — cut any read-aloud still playing
+    setHighlight(null);
     if (awaitingStart) {
       setInput('');
       if (/start/i.test(text)) beginLesson(text);
@@ -270,6 +328,8 @@ export default function NodeView({
 
   const sketchHelp = async (img: string) => {
     if (busy) return;
+    stopSpeaking();
+    setHighlight(null);
     setMessages((m) => [...m, { role: 'learner', image: img, text: 'Here is my working — can you help?' }]);
     setBusy(true);
     try {
@@ -287,6 +347,8 @@ export default function NodeView({
 
   const sketchSend = async (img: string) => {
     if (busy) return;
+    stopSpeaking();
+    setHighlight(null);
     setMessages((m) => [...m, { role: 'learner', image: img }]);
     setBusy(true);
     try {
@@ -369,7 +431,7 @@ export default function NodeView({
         </div>
         {langs.length > 0 && (
           <select
-            className={`lang-select${highlight === 'lang' ? ' glow' : ''}`}
+            className={`lang-select${highlight?.target === 'lang' ? ' glow' : ''}`}
             value={lang}
             onChange={(e) => changeLang(e.target.value)}
             title="Teach, speak & type in this language"
@@ -381,7 +443,7 @@ export default function NodeView({
             ))}
           </select>
         )}
-        <button className="details-btn" onClick={() => setShowDetails(true)}>ⓘ Details</button>
+        <button className={`details-btn${highlight?.target === 'details' ? ' glow' : ''}`} onClick={() => setShowDetails(true)}>ⓘ Details</button>
       </div>
 
       <div className="tutor-grid">
@@ -409,7 +471,11 @@ export default function NodeView({
                 <div className="bubble-label">{m.role === 'tutor' ? 'Tutor' : 'You'}</div>
                 <div className="bubble-text">
                   {m.image && <img className="bubble-img" src={m.image} alt="handwritten working" />}
-                  {m.text && <MathText>{m.text}</MathText>}
+                  {m.text && (
+                    <MathText glowWord={isWelcomeMessage(m.text) ? highlight?.word || undefined : undefined}>
+                      {m.text}
+                    </MathText>
+                  )}
                   {m.figure && (
                     <figure className="tutor-figure">
                       <img src={`${apiBase}/${m.figure.url}`} alt={m.figure.caption} loading="lazy" />
@@ -511,7 +577,7 @@ export default function NodeView({
                 />
                 <div className="reply-actions">
                   <button
-                    className={autoRead ? 'notation-btn read on' : 'notation-btn read'}
+                    className={`notation-btn read${autoRead ? ' on' : ''}${highlight?.target === 'readaloud' ? ' glow' : ''}`}
                     onClick={() => {
                       const next = !autoRead;
                       setAutoRead(next);
@@ -535,7 +601,7 @@ export default function NodeView({
                     <option value="deepgram">Deepgram</option>
                   </select>
                   <button
-                    className={`notation-btn mic${listening ? ' listening' : ''}${highlight === 'mic' ? ' glow' : ''}`}
+                    className={`notation-btn mic${listening ? ' listening' : ''}${highlight?.target === 'mic' ? ' glow' : ''}`}
                     onClick={toggleMic}
                     title={listening ? 'Tap to stop and turn your speech into text' : `Speak your answer (${langs.find((l) => l.code === lang)?.native || 'English'})`}
                   >
@@ -557,6 +623,7 @@ export default function NodeView({
             onSend={sketchSend}
             onHelp={sketchHelp}
             className={glowPad ? 'glow' : undefined}
+            highlight={highlight?.target === 'attach' ? 'attach' : highlight?.target === 'helpme' ? 'helpme' : null}
           />
         </section>
       </div>

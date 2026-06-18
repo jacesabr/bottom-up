@@ -38,6 +38,15 @@
 .sp-btn:hover { border-color: var(--accent); }
 .sp-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 .sp-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+/* Glow an action button when the tutor's welcome mentions it aloud. */
+.sp-btn.glow {
+  border-color: var(--accent); color: var(--accent); opacity: 1;
+  animation: spBtnGlow 1.3s ease-in-out infinite;
+}
+@keyframes spBtnGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 89, 31, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(217, 89, 31, 0); }
+}
 
 .sp-zoom {
   display: flex;

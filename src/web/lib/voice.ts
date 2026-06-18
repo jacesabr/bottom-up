@@ -198,9 +198,12 @@ export function stripForSpeech(text: string): string {
 
   // 10c) Structural pauses the voice should HONOUR (done before whitespace is collapsed in step 11):
   //   - paragraph breaks (blank line) → a full sentence stop, so the chunker splits and the voice rests.
-  //   - long dashes (—, –, --, ---) → a comma pause (these are written to "give space").
+  //   - spaced dashes (—, –, --, ----) → a sentence stop too. These are written to "give space", but
+  //     a comma is barely honoured by the neural voices; a period makes the chunker split there so the
+  //     voice takes a real breath. (Tight hyphens like "top-right" have no surrounding space → untouched.)
   t = t.replace(/\n[ \t]*\n+/g, '. ');
-  t = t.replace(/\s*(—|–|--+)\s*/g, ', ');
+  t = t.replace(/\s*(—|–)\s*/g, '. '); // em/en dash — never part of a word, always a pause
+  t = t.replace(/\s+--+\s+/g, '. '); // spaced hyphen-runs ("----") — but not tight hyphens like "top-right"
 
   // 11) Tidy whitespace and collapse any doubled/space-before punctuation so pauses land right.
   t = t
@@ -323,6 +326,7 @@ export type SpeakSegment = {
   lang: string;       // TTS language code sent to the server
   speechLang: string; // BCP-47 code for browser fallback
   onStart?: () => void; // called just before this segment begins playing
+  pauseAfterMs?: number; // extra silence after this segment (default 200) — a beat to let a glow land
 };
 
 /**
@@ -333,36 +337,43 @@ export type SpeakSegment = {
 export async function speakSequence(segments: SpeakSegment[], apiBase: string, provider?: string) {
   stopSpeaking();
   const myGen = speakGen;
-  for (const seg of segments) {
+
+  // Synthesise EVERY chunk up front, in parallel, before playing any. Doing the TTS requests
+  // concurrently (rather than one segment at a time, in series) means the only gaps the listener
+  // hears between segments are the intended pauseAfterMs beats — not network/synthesis latency.
+  // onStart still fires at PLAY time (below), so glows stay in sync with the spoken word.
+  const prepared = segments.map((seg) => {
+    const chunks = chunkForSpeech(stripForSpeech(seg.text), 240);
+    const audio = chunks.map((c) =>
+      fetch(`${apiBase}/tts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: c, lang: seg.lang, provider }),
+      })
+        .then((r) => r.json())
+        .then((d) => (d?.audioBase64 ? { b64: d.audioBase64 as string, mime: d.mime as string | undefined } : null))
+        .catch(() => null)
+    );
+    return { seg, chunks, audio };
+  });
+
+  for (const { seg, chunks, audio } of prepared) {
     if (myGen !== speakGen) return;
     seg.onStart?.();
-    const clean = stripForSpeech(seg.text);
-    if (!clean) continue;
-    const chunks = chunkForSpeech(clean, 240);
+    if (chunks.length === 0) continue;
     for (let i = 0; i < chunks.length; i++) {
       if (myGen !== speakGen) return;
       let ok = false;
-      try {
-        const res = await fetch(`${apiBase}/tts`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: chunks[i], lang: seg.lang, provider }),
-        });
-        const d = await res.json();
+      const d = await audio[i];
+      if (myGen !== speakGen) return;
+      if (d) {
+        const a = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.b64}`);
+        currentAudio = a;
+        const played = await playToEnd(a);
         if (myGen !== speakGen) return;
-        if (d?.audioBase64) {
-          const audio = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.audioBase64}`);
-          currentAudio = audio;
-          const played = await playToEnd(audio);
-          if (myGen !== speakGen) return;
-          if (played) {
-            ok = true;
-          } else {
-            await browserSpeakOne(chunks[i], seg.speechLang, myGen);
-            ok = true;
-          }
-        }
-      } catch { /* skip failed chunk */ }
+        if (played) ok = true;
+        else { await browserSpeakOne(chunks[i], seg.speechLang, myGen); ok = true; }
+      }
       if (!ok) {
         if (myGen === speakGen) speak(chunks.slice(i).join(' '), seg.speechLang);
         return;
@@ -370,7 +381,7 @@ export async function speakSequence(segments: SpeakSegment[], apiBase: string, p
       if (myGen === speakGen && i < chunks.length - 1)
         await new Promise((r) => setTimeout(r, 140));
     }
-    if (myGen === speakGen) await new Promise((r) => setTimeout(r, 200)); // gap between segments
+    if (myGen === speakGen) await new Promise((r) => setTimeout(r, seg.pauseAfterMs ?? 200)); // gap between segments
   }
 }
 
