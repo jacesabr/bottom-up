@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Game1Overlay from './Game1Overlay';
 import '../styles/ChapterMap.css';
 
 interface Node {
@@ -7,7 +8,7 @@ interface Node {
   title: string;
   order: number;
   // 'coming_soon' = a "Learn from Scratch" node imported from the map but not yet authored.
-  status: 'locked' | 'available' | 'passed' | 'coming_soon';
+  status: 'locked' | 'available' | 'passed' | 'coming_soon' | 'teaching' | 'awaiting_gate' | 'needs_reteach';
 }
 
 interface ChapterMapProps {
@@ -29,6 +30,9 @@ export default function ChapterMap({
   const [nodes, setNodes] = useState<Node[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [gameOpen, setGameOpen] = useState(false);
+  const [gameAudioBlocked, setGameAudioBlocked] = useState(false);
+  const gameAudioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const fetchChapter = async () => {
@@ -49,19 +53,49 @@ export default function ChapterMap({
     fetchChapter();
   }, [learnerId, chapterId, apiBase]);
 
-  if (loading) return <div className="chapter-map loading">Loading concepts…</div>;
+  if (loading) return <div className="chapter-map loading">Loading concepts...</div>;
   if (error) {
     return (
       <div className="chapter-map">
-        <button className="back-btn" onClick={onBack}>← Back</button>
+        <button className="back-btn" onClick={onBack}>Back</button>
         <div className="map-error">Couldn't load concepts: {error}. Is the API running on :3030?</div>
       </div>
     );
   }
 
+  const inProgress = ['teaching', 'awaiting_gate', 'needs_reteach'];
+  const isOpen = (n: Node) => n.status === 'available' || inProgress.includes(n.status);
+  const current =
+    nodes.find((n) => inProgress.includes(n.status)) ??
+    nodes.find((n) => isOpen(n));
+  const showGameUnlock = chapterId === 'cbse10:maths:jemh101';
+
+  const openGame = async () => {
+    const audio = gameAudioRef.current;
+    setGameOpen(true);
+    if (!audio) return;
+    try {
+      audio.volume = 0.6;
+      await audio.play();
+      setGameAudioBlocked(false);
+    } catch {
+      setGameAudioBlocked(true);
+    }
+  };
+
+  const closeGame = () => {
+    const audio = gameAudioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+    setGameOpen(false);
+    setGameAudioBlocked(false);
+  };
+
   return (
     <div className="chapter-map">
-      <button className="back-btn" onClick={onBack}>← Back</button>
+      <button className="back-btn" onClick={onBack}>Back</button>
 
       <div className="step">
         <div className="num">3</div>
@@ -74,43 +108,43 @@ export default function ChapterMap({
           <div className="map-wrap">
             <div className="map-title">{chapter?.title}</div>
             <div className="map">
-              {(() => {
-                const inProgress = ['teaching', 'awaiting_gate', 'needs_reteach'];
-                const isOpen = (n: Node) =>
-                  n.status === 'available' || inProgress.includes(n.status);
-                // The ONE glowing node = where the learner is working: an in-progress node, else
-                // the first open (lowest-order unlocked, not-yet-passed) node — the natural next step.
-                const current =
-                  nodes.find((n) => inProgress.includes(n.status)) ??
-                  nodes.find((n) => isOpen(n));
-                return nodes.map((node) => {
-                  const isCurrent = current && node.id === current.id;
-                  // passed → green ✓ ; current open node → green + glow ; other unlocked → green ;
-                  // not-yet-authored → faded "soon" ; everything still locked → faded + 🔒
-                  const visual =
-                    node.status === 'passed'
-                      ? 'done'
-                      : node.status === 'coming_soon'
-                        ? 'soon'
-                        : isCurrent
-                          ? 'current'
-                          : isOpen(node)
-                            ? 'open'
-                            : 'locked';
-                  const clickable = node.status === 'passed' || isOpen(node);
-                  return (
+              {nodes.map((node, index) => {
+                const isCurrent = current && node.id === current.id;
+                const visual =
+                  node.status === 'passed'
+                    ? 'done'
+                    : node.status === 'coming_soon'
+                      ? 'soon'
+                      : isCurrent
+                        ? 'current'
+                        : isOpen(node)
+                          ? 'open'
+                          : 'locked';
+                const clickable = node.status === 'passed' || isOpen(node);
+                return (
+                  <div key={node.id} className="map-entry">
                     <div
-                      key={node.id}
                       className={`c ${visual}`}
                       onClick={() => clickable && onNodeClick(node.id)}
-                      title={node.status === 'coming_soon' ? `${node.title} — coming soon` : node.title}
+                      title={node.status === 'coming_soon' ? `${node.title} - coming soon` : node.title}
                     >
-                      <div className="dot">{node.status === 'passed' ? '' : node.status === 'coming_soon' ? '…' : node.order}</div>
+                      <div className="dot">{node.status === 'passed' ? '' : node.status === 'coming_soon' ? '...' : node.order}</div>
                       <div className="nm">{node.title.split('·')[0].trim()}</div>
                     </div>
-                  );
-                });
-              })()}
+                    {showGameUnlock && index === 0 && (
+                        <button
+                          type="button"
+                          className="game-unlock"
+                          onClick={openGame}
+                          title="Open Land of Ecodelia"
+                        >
+                        <span className="game-unlock-badge">game unlocked</span>
+                        <span className="game-unlock-title">Land of Ecodelia</span>
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <div className="legend">
               <span className="l-done">done</span>
@@ -118,10 +152,20 @@ export default function ChapterMap({
               <span className="l-cur">you're here</span>
               <span className="l-lock">locked</span>
             </div>
-            <div className="hint">Green = unlocked (the glowing one is where you are now), 🔒 faded = still locked. Open &amp; done concepts are clickable.</div>
+            <div className="hint">Green = unlocked (the glowing one is where you are now), locked faded = still locked. Open and done concepts are clickable.</div>
           </div>
         </div>
       </div>
+
+      <audio ref={gameAudioRef} src="/game1/music.mp3" loop preload="auto" />
+      {gameOpen && (
+        <Game1Overlay
+          audioBlocked={gameAudioBlocked}
+          audioRef={gameAudioRef}
+          onAudioBlockedChange={setGameAudioBlocked}
+          onClose={closeGame}
+        />
+      )}
     </div>
   );
 }

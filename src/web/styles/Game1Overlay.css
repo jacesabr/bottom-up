@@ -1,0 +1,190 @@
+.game1-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(12, 71, 39, 0.36), rgba(0, 0, 0, 0) 34%),
+    #020403;
+  color: #35ff62;
+  overflow: hidden;
+  font-family: "Courier New", Consolas, monospace;
+}
+
+.game1-scanlines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0,
+    rgba(255, 255, 255, 0.05) 1px,
+    rgba(0, 0, 0, 0.14) 2px,
+    rgba(0, 0, 0, 0.14) 4px
+  );
+  mix-blend-mode: screen;
+  opacity: 0.28;
+}
+
+.game1-close {
+  position: fixed;
+  right: 18px;
+  top: 16px;
+  z-index: 2;
+  border: 1px solid rgba(53, 255, 98, 0.55);
+  background: rgba(0, 0, 0, 0.72);
+  color: #35ff62;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font: 700 0.78rem "Courier New", Consolas, monospace;
+  cursor: pointer;
+}
+
+.game1-close:hover,
+.game1-actions button:hover,
+.game1-list button:hover {
+  background: rgba(53, 255, 98, 0.12);
+}
+
+.game1-terminal {
+  position: relative;
+  z-index: 1;
+  width: min(920px, calc(100vw - 28px));
+  min-height: min(680px, calc(100vh - 28px));
+  margin: 14px auto;
+  padding: clamp(24px, 5vw, 58px);
+  border: 1px solid rgba(53, 255, 98, 0.32);
+  background: rgba(1, 8, 4, 0.86);
+  box-shadow:
+    0 0 0 1px rgba(53, 255, 98, 0.08),
+    0 0 48px rgba(53, 255, 98, 0.18) inset,
+    0 0 80px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game1-terminal h1 {
+  margin: 0 0 22px;
+  color: #78ff8e;
+  font-size: clamp(1.35rem, 3vw, 2.35rem);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-shadow: 0 0 16px rgba(53, 255, 98, 0.65);
+}
+
+.game1-subtitle,
+.game1-prompt,
+.game1-hint,
+.game1-hidden,
+.game1-feedback,
+.game1-ending p,
+.game1-audio {
+  font-size: clamp(0.92rem, 2vw, 1.08rem);
+  line-height: 1.55;
+}
+
+.game1-subtitle,
+.game1-prompt {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.game1-hint {
+  max-width: 760px;
+  margin-bottom: 28px;
+  color: #a8ffb7;
+}
+
+.game1-hidden {
+  margin-top: 22px;
+  color: #8fffa4;
+}
+
+.game1-list {
+  display: grid;
+  gap: 11px;
+  width: min(640px, 100%);
+}
+
+.game1-list.compact {
+  width: min(460px, 100%);
+}
+
+.game1-list button,
+.game1-actions button {
+  min-height: 44px;
+  border: 1px solid rgba(53, 255, 98, 0.28);
+  background: transparent;
+  color: #35ff62;
+  border-radius: 6px;
+  padding: 10px 12px;
+  text-align: left;
+  font: 700 0.95rem "Courier New", Consolas, monospace;
+  cursor: pointer;
+}
+
+.game1-list button span {
+  display: inline-block;
+  width: 22px;
+}
+
+.game1-list button.selected {
+  border-color: #35ff62;
+  background: rgba(53, 255, 98, 0.1);
+  box-shadow: 0 0 18px rgba(53, 255, 98, 0.24);
+}
+
+.game1-feedback {
+  margin-top: 22px;
+  font-weight: 700;
+}
+
+.game1-feedback.good {
+  color: #78ff8e;
+}
+
+.game1-feedback.bad {
+  color: #ff5656;
+}
+
+.game1-ending {
+  display: grid;
+  gap: 13px;
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.game1-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.game1-actions button {
+  min-width: min(260px, 100%);
+  text-align: center;
+}
+
+.game1-audio {
+  position: absolute;
+  left: 18px;
+  top: 14px;
+  color: #ffdf6e;
+  font-weight: 700;
+}
+
+@media (max-width: 680px) {
+  .game1-terminal {
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    border: 0;
+    padding: 78px 18px 32px;
+  }
+
+  .game1-close {
+    right: 12px;
+    top: 12px;
+  }
+}

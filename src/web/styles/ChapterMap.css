@@ -84,6 +84,12 @@
   margin-bottom: 12px;
 }
 
+.map-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
 .c {
   width: 74px;
   text-align: center;
@@ -196,6 +202,45 @@
   color: var(--dim);
 }
 
+.game-unlock {
+  width: 118px;
+  min-height: 70px;
+  border: 1px solid #bcd6c4;
+  background: #f2fbf4;
+  color: var(--green);
+  border-radius: 8px;
+  padding: 8px 9px;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 0 0 3px rgba(63, 125, 79, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.game-unlock:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(63, 125, 79, 0.15);
+}
+
+.game-unlock-badge,
+.game-unlock-title {
+  display: block;
+}
+
+.game-unlock-badge {
+  margin-bottom: 6px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.game-unlock-title {
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
 .legend {
   display: flex;
   gap: 15px;
@@ -234,4 +279,14 @@
   font-size: 0.78rem;
   color: var(--accent);
   font-weight: 600;
+}
+
+@media (max-width: 520px) {
+  .map-entry {
+    width: 100%;
+  }
+
+  .game-unlock {
+    flex: 1;
+  }
 }
