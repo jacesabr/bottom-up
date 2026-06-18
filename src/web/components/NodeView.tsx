@@ -3,7 +3,7 @@ import { MathText } from '../lib/MathText';
 import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
-import { speakSmart, speakLanguageInvites, recordAndTranscribe, stopSpeaking } from '../lib/voice';
+import { speakSmart, speakSequence, LANG_INVITES, type SpeakSegment, recordAndTranscribe, stopSpeaking } from '../lib/voice';
 import '../styles/NodeView.css';
 
 interface LangOpt {
@@ -25,12 +25,16 @@ interface Check {
   demonstrated: boolean;
 }
 
-// Shown once at the start of a chapter (the "say/type start" gate), before any teaching. Kept in plain
-// English so read-aloud is clean; the spoken language OPTIONS are played separately in each language.
+// Shown once at the start of a chapter (the "say/type start" gate), before any teaching.
 const INTRO_PROMPT =
   'Before we begin: you can learn in English, Hindi, Punjabi, Tamil or Bengali. ' +
   'Set your preferred language using the box at the top of the page. ' +
-  'When you are ready, type "start" below — or tap the glowing microphone and say "start".';
+  'When you are ready, type "start" below — or tap the microphone and say "start".';
+// Speech-only: split so the lang-select glows during the language sentence and the mic glows during the start sentence.
+const INTRO_LANG_SPEECH =
+  'Before we begin: you can learn in English, Hindi, Punjabi, Tamil or Bengali. ' +
+  'Set your preferred language using the box at the top of the page.';
+const INTRO_MIC_SPEECH = 'When you are ready, type "start" below — or tap the microphone and say "start".';
 
 function slotLabel(slot?: string, answerType?: string): string {
   if (slot === 'sketch1' || slot === 'sketch2' || answerType === 'sketch') return 'draw it';
@@ -57,10 +61,13 @@ export default function NodeView({
   const [busy, setBusy] = useState(true);
   const [input, setInput] = useState('');
   const [awaitingStart, setAwaitingStart] = useState(false); // chapter-intro "say/type start" gate is open
+  const [highlight, setHighlight] = useState<'lang' | 'mic' | null>(null); // which UI element to glow during intro
+  const [glowPadKeyword, setGlowPadKeyword] = useState(false); // scratchpad glow from tutor message keywords
   const [showEq, setShowEq] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
   const [gate, setGate] = useState<any>(null);
+  const glowPad = gate?.answerType === 'sketch' || glowPadKeyword;
   const [gateAnswer, setGateAnswer] = useState('');
   const [gateFeedback, setGateFeedback] = useState<{ ok: boolean; text: string } | null>(null);
   const [done, setDone] = useState(false);
@@ -171,6 +178,18 @@ export default function NodeView({
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
   }, [messages, busy]);
 
+  // Glow the scratchpad for 4 s when the tutor mentions sketch / scratchpad / help me.
+  useEffect(() => {
+    const last = messages[messages.length - 1];
+    if (!last || last.role !== 'tutor' || !last.text) return;
+    const t = last.text.toLowerCase();
+    if (t.includes('scratchpad') || t.includes('sketch') || t.includes('help me')) {
+      setGlowPadKeyword(true);
+      const timer = setTimeout(() => setGlowPadKeyword(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [messages]);
+
   // Global read-aloud: when on, speak each NEW tutor message via the server voice chain.
   useEffect(() => {
     if (!autoRead) {
@@ -184,18 +203,27 @@ export default function NodeView({
     spokenCount.current = messages.length;
   }, [messages, autoRead, speechCode, ttsProvider]);
 
-  // Chapter-intro gate: speak the language OPTIONS first (each in its own language), then read the
-  // "set your language, then say/type start" prompt. Re-voices if they change language while the gate is up.
+  // Chapter-intro gate: play the language invites (each in its own language, lang-select glows),
+  // then the "set language" sentence (still lang-select), then the mic sentence (mic glows).
+  // Re-fires when language or voice settings change while the gate is still up.
   useEffect(() => {
     if (!awaitingStart || !autoRead) return;
-    let cancelled = false;
-    void (async () => {
-      await speakLanguageInvites(apiBase, lang, ttsProvider || undefined);
-      if (cancelled) return;
-      await speakSmart(INTRO_PROMPT, lang, speechCode, apiBase, ttsProvider || undefined);
-    })();
-    return () => { cancelled = true; };
-  }, [awaitingStart, autoRead, speechCode, ttsProvider]);
+    const langInviteSegments: SpeakSegment[] = (['hi', 'pa', 'ta', 'bn'] as const)
+      .filter((code) => code !== lang)
+      .map((code) => ({
+        text: LANG_INVITES[code].text,
+        lang: LANG_INVITES[code].lang,
+        speechLang: LANG_INVITES[code].lang + '-IN',
+        onStart: () => setHighlight('lang'),
+      }));
+    const segments: SpeakSegment[] = [
+      ...langInviteSegments,
+      { text: INTRO_LANG_SPEECH, lang, speechLang: speechCode, onStart: () => setHighlight('lang') },
+      { text: INTRO_MIC_SPEECH, lang, speechLang: speechCode, onStart: () => setHighlight('mic') },
+    ];
+    void speakSequence(segments, apiBase, ttsProvider || undefined);
+    return () => { stopSpeaking(); setHighlight(null); };
+  }, [awaitingStart, autoRead, lang, speechCode, ttsProvider]);
 
   // Chapter-intro gate: "start" reveals the held teaching message; anything else gently re-prompts.
   const beginLesson = (saidText: string) => {
@@ -341,7 +369,7 @@ export default function NodeView({
         </div>
         {langs.length > 0 && (
           <select
-            className="lang-select"
+            className={`lang-select${highlight === 'lang' ? ' glow' : ''}`}
             value={lang}
             onChange={(e) => changeLang(e.target.value)}
             title="Teach, speak & type in this language"
@@ -507,7 +535,7 @@ export default function NodeView({
                     <option value="deepgram">Deepgram</option>
                   </select>
                   <button
-                    className={`notation-btn mic${listening ? ' listening' : ''}${awaitingStart ? ' glow' : ''}`}
+                    className={`notation-btn mic${listening ? ' listening' : ''}${highlight === 'mic' ? ' glow' : ''}`}
                     onClick={toggleMic}
                     title={listening ? 'Tap to stop and turn your speech into text' : `Speak your answer (${langs.find((l) => l.code === lang)?.native || 'English'})`}
                   >
@@ -528,6 +556,7 @@ export default function NodeView({
             onAttach={sketchSend}
             onSend={sketchSend}
             onHelp={sketchHelp}
+            className={glowPad ? 'glow' : undefined}
           />
         </section>
       </div>

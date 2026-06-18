@@ -318,6 +318,62 @@ function playToEnd(audio: HTMLAudioElement): Promise<boolean> {
   });
 }
 
+export type SpeakSegment = {
+  text: string;
+  lang: string;       // TTS language code sent to the server
+  speechLang: string; // BCP-47 code for browser fallback
+  onStart?: () => void; // called just before this segment begins playing
+};
+
+/**
+ * Speak an ordered list of segments, calling each segment's onStart() immediately before it plays.
+ * Calls stopSpeaking() once at the top (interrupts any current speech). Bails silently if a newer
+ * speech call supersedes this one (same speakGen guard used by speakSmart).
+ */
+export async function speakSequence(segments: SpeakSegment[], apiBase: string, provider?: string) {
+  stopSpeaking();
+  const myGen = speakGen;
+  for (const seg of segments) {
+    if (myGen !== speakGen) return;
+    seg.onStart?.();
+    const clean = stripForSpeech(seg.text);
+    if (!clean) continue;
+    const chunks = chunkForSpeech(clean, 240);
+    for (let i = 0; i < chunks.length; i++) {
+      if (myGen !== speakGen) return;
+      let ok = false;
+      try {
+        const res = await fetch(`${apiBase}/tts`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: chunks[i], lang: seg.lang, provider }),
+        });
+        const d = await res.json();
+        if (myGen !== speakGen) return;
+        if (d?.audioBase64) {
+          const audio = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.audioBase64}`);
+          currentAudio = audio;
+          const played = await playToEnd(audio);
+          if (myGen !== speakGen) return;
+          if (played) {
+            ok = true;
+          } else {
+            await browserSpeakOne(chunks[i], seg.speechLang, myGen);
+            ok = true;
+          }
+        }
+      } catch { /* skip failed chunk */ }
+      if (!ok) {
+        if (myGen === speakGen) speak(chunks.slice(i).join(' '), seg.speechLang);
+        return;
+      }
+      if (myGen === speakGen && i < chunks.length - 1)
+        await new Promise((r) => setTimeout(r, 140));
+    }
+    if (myGen === speakGen) await new Promise((r) => setTimeout(r, 200)); // gap between segments
+  }
+}
+
 /**
  * Read aloud via the server TTS chain (good Indic voices). The text is cleaned of markdown/LaTeX
  * FIRST (so it never says "dollar" / "asterisk" / "backslash"), then split into sentence-sized
@@ -371,8 +427,8 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
 }
 
 // Short spoken invitations, each IN its own language, telling the learner how to switch to it.
-// Played ONCE per node, right after the opening message is read aloud (see NodeView).
-const LANG_INVITES: Record<string, { lang: string; text: string }> = {
+// Played ONCE per chapter, right before the "say start" gate (see NodeView).
+export const LANG_INVITES: Record<string, { lang: string; text: string }> = {
   hi: { lang: 'hi', text: 'हिंदी में सीखने के लिए, ऊपर बीच में दिए गए भाषा बॉक्स पर टैप करें।' },
   pa: { lang: 'pa', text: 'ਪੰਜਾਬੀ ਵਿੱਚ ਸਿੱਖਣ ਲਈ, ਉੱਪਰ ਵਿਚਕਾਰਲੇ ਭਾਸ਼ਾ ਬਾਕਸ ਉੱਤੇ ਟੈਪ ਕਰੋ।' },
   ta: { lang: 'ta', text: 'தமிழில் கற்க, மேலே நடுவில் உள்ள மொழிப் பெட்டியைத் தட்டவும்.' },

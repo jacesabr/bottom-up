@@ -4,14 +4,14 @@
 
 ### Prerequisites
 - Node.js 20+
-- pnpm
-- PostgreSQL 16 (or Neon Postgres)
+- npm (do NOT use pnpm — repo has no pnpm-lock.yaml and no packageManager field by design)
+- Neon Postgres (production) or any PostgreSQL 15+ for local
 
 ### Setup
 
 1. **Install dependencies:**
    ```bash
-   pnpm install
+   npm install
    ```
 
 2. **Set up environment variables:**
@@ -22,14 +22,14 @@
 
 3. **Initialize database:**
    ```bash
-   pnpm db:generate
-   pnpm db:migrate
-   pnpm db:push
+   npm run db:generate
+   npm run db:migrate
+   npm run db:push
    ```
 
 4. **Run development servers:**
    ```bash
-   pnpm dev
+   npm run dev
    ```
 
    This starts:
@@ -114,7 +114,7 @@ Render will auto-deploy both services. Check the dashboard for build logs.
 
 ### Offline Mock Test
 ```bash
-pnpm test
+npm test
 ```
 
 ### Manual Testing (Local)
@@ -136,5 +136,5 @@ pnpm test
 ✅ **Real users → Claude Haiku** (configured in ModelRouter profile)
 ✅ **All testing → NVIDIA NIM or mock** (never Haiku in test suites)
 ✅ **Event-sourced performance** (append-only bu_event table)
-✅ **3 nodes only for now** (scale after genuinely good loop)
+✅ **Full corpus live** (cbse10 14 ch, cbse12 13 ch, jee 14 ch — 645 concepts, 3151 gates; Phase-1 complete 2026-06-17)
 ✅ **Copy Socratic styling** (cream palette, Tutor shell layout, math rendering)

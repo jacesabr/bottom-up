@@ -16,10 +16,11 @@ interface ScratchpadProps {
   onAttach?: (jpegDataUrl: string) => void;
   onHelp?: (jpegDataUrl: string) => void;
   onSend?: (jpegDataUrl: string) => void;
+  className?: string;
 }
 
 const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratchpad(
-  { onAttach, onHelp, onSend },
+  { onAttach, onHelp, onSend, className },
   ref
 ) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -138,7 +139,7 @@ const Scratchpad = forwardRef<ScratchpadHandle, ScratchpadProps>(function Scratc
   };
 
   return (
-    <div className="scratchpad">
+    <div className={`scratchpad${className ? ` ${className}` : ''}`}>
       <div className="scratchpad-toolbar">
         <button className={tool === 'pen' ? 'sp-btn active' : 'sp-btn'} onClick={() => setTool('pen')}>✏️ Pen</button>
         <button className={tool === 'hand' ? 'sp-btn active' : 'sp-btn'} onClick={() => setTool('hand')}>✋ Hand</button>

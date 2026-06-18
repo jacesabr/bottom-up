@@ -98,22 +98,19 @@ forbidden for authoring** (bad arithmetic — constraint #2). So: **Sonnet autho
 - End-to-end flow: **Exam → Subject → chapter map → in-chapter node map → teaching chat → in-chat gate checks
   → pass unlocks dependents → strict-linear chapter unlock → final past-paper exam.**
 
-### Authoring stands at (2026-06-17 — in-session hand authoring, NO API)
-See the §G ledger for exact counts (refreshed 2026-06-17 from a live DB query, not the stale 2026-06-16
-snapshot). **Many more chapters are now FULLY 5-gate authored than the old ledger implied** — authored directly
-in a Claude Code session (hand-written gates straight into Neon, `kind='authored'`, no `generate-gates.ts`, no
-ANTHROPIC_API_KEY spend), so they were never reflected here until now. **Fully authored (every node):**
-cbse10 `jemh101`–`jemh104`; cbse12 `mathematics-ch01`–`ch06`; jee `maths-ch01`–`ch04`. **In progress:**
-cbse10 `jemh105` (20/22), cbse12 `ch07` (9/11), jee `maths-ch05` (10/11).
+### Authoring stands at (Phase-1 COMPLETE — 2026-06-17)
+**✅ All three maths exams are fully 5-gate authored and Opus-audited.** cbse10 `jemh101`–`jemh114` (14 ch),
+cbse12 `mathematics-ch01`–`ch13` (13 ch), jee `maths-ch01`–`maths-ch14` (14 ch) = **41 chapters, 645 concepts,
+3151 authored gates.** 0 bad-shape MCQs, 0 null sketch rubrics. See §G for the full per-chapter ledger.
 
-> **DUPLICATE-WORK GUARD (read before running the pipeline).** A node counts as already-authored iff it has
-> any `gates` row with `kind='authored'` (the upsert id is `<conceptId>:<slot>`). **`generate-gates.ts`
-> `--skip-authored` skips exactly those concepts** — so it will NOT revisit or clobber any hand-authored node.
-> **Always pass `--skip-authored`** when re-running/extending (without it the tool clean-slate re-authors:
-> deletes + rewrites). The hand-authored nodes carry the full 5-gate set (no honest sketch-skips), whereas the
-> 2026-06-16 pipeline nodes legitimately have 3–4 gates (contrived sketches skipped) — both are "authored" and
-> both are skipped. **Next:** finish the three in-progress chapters, then continue cbse10 `jemh106+`,
-> cbse12 `ch08+`, jee `maths-ch06+`; run the §A prereq sweep on every node.
+All authoring was done directly in Claude Code sessions (Sonnet sub-agents writing gates straight to Neon via
+the Neon MCP + editing `content.json` with local file tools). **`generate-gates.ts` was never used for the bulk
+of this corpus** — references to it in §pipeline and §B describe the originally-planned tool-based workflow,
+kept for historical context and as a reference for the gate-encoding contract. The actual workflow that produced
+the corpus is **HR-1/HR-2 above**: Sonnet sub-agents author, Opus orchestrates + audits, no external API spend.
+
+> **Next work is Phase 2 only** (constraint #7, intentionally deferred): web + NCERT-OCR research, per-gate
+> `source` backfill, and the full §A prereq-sweep on Phase-1-only chapters. No compute spent on this now.
 
 ### Remaining ideas / TODOs (not yet done)
 - **Textbook-PDF reference viewer.** We deliberately do **not** crop figures (too costly); instead, make the
@@ -272,7 +269,14 @@ by toposort from `prereqs`):
 
 ---
 
-## ★ The PROVEN authoring pipeline (use this)
+## ★ The authoring pipeline — HISTORICAL REFERENCE (tool not used for live corpus)
+
+> **Note (2026-06-17):** The `generate-gates.ts` tool described below was the originally-planned pipeline but
+> was NOT used to produce the live Phase-1 corpus (HR-1: no external API spend for authoring). The actual
+> workflow is Claude Code in-session + Sonnet sub-agents + Neon MCP. This section is kept because: (a) the
+> gate-encoding contract (§D ⛔ callout) and quality rules here are still authoritative; (b) it documents the
+> scope-guard, arithmetic self-check, and clean-slate logic that the sub-agent authoring mirrors manually.
+> If `generate-gates.ts` is ever revived, these flags remain valid.
 
 After a content audit (§F) exposed bad maths and unimproved content from the old cheap path, the pipeline was
 upgraded and proven on cbse10 `manipulate-prime-powers` and cbse12 `relation-definition`. The recipe:
@@ -396,8 +400,7 @@ written → `gradeWritten` (rubric), sketch → `gradeSketch` (NIM vision vs rub
 cleared**; passing recomputes availability and unlocks dependents.
 
 ### Gold reference — what "comprehensive" looked like (cbse10 `jemh101`, first 3 nodes)
-The bar to match, per gate (these are the proven, in-scope sets — **73 authored gates across 17 concepts** for
-the chapter):
+The bar to match, per gate (these are the proven, in-scope sets — chapter has **18 nodes, 90 authored gates** total):
 - **`know-prime-composite-coprime`** — mcq on what *coprime* means; explain *why* HCF of coprimes = 1; sketch =
   Venn / number-line; equation = reduce a fraction to lowest terms.
 - **`prime-factorise-integer`** — **sketch1 = factor tree for 360, sketch2 = factor tree for 1260, mcq =

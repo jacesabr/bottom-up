@@ -1,12 +1,12 @@
 # bottom_up.md — Bottom-Up Exam-Prep (build spec / Claude Code instruction file)
 
-> **Status:** planning → ready to build. Written 2026-06-15 from a Cowork design session.
-> **What this is:** a NEW, standalone surface ("exam-prep") that teaches a subject **chapter by chapter,
+> **Status:** built, deployed, and scaled. Originally written 2026-06-15; vertical slice done same day; full corpus complete 2026-06-17.
+> **What this is:** a standalone exam-prep product that teaches a subject **chapter by chapter,
 > concept by concept, bottom-up**, gates each concept, and ends in a clean board-paper exam.
 > It is **separate from the Socratic tutor** — it copies the CBSE math corpus + reuses the existing infra
 > (Render/Neon/Drizzle, graders, node-agent, ModelRouter) and **Socratic's frontend styling/layout**, but is its
 > own app/flow, not a change to `Tutor.tsx`.
-> **Scope of THIS milestone:** **3 teaching nodes only.** Get the teaching loop genuinely good, then scale.
+> **Corpus (Phase-1 complete 2026-06-17):** 3151 authored gates across 645 concepts; cbse10 (14 ch), cbse12 (13 ch), jee (14 ch). Phase 2 (web research + per-gate source) is deferred — see `authoring_and_improve.md` §7.
 
 ---
 
@@ -19,7 +19,7 @@
   several sibling nodes can be available at once — the learner sees a **frontier**, not a single forced path.
 - **Chapter complete = every concept's gate passed.** Strict-linear chapter unlock (finish a chapter to open the next).
 - **Final exam = a real past board paper.** Clean — no teaching mid-exam. Afterward we **flag the weak concepts**
-  to the learner to revise. (Final-exam build is a LATER milestone; not in this 3-node slice.)
+  to the learner to revise. (**Built and live** — past-paper button unlocks once every node in the course is passed.)
 - **No descent inside exam-prep.** Bottom-up means a concept's prerequisites are already passed, so a failed gate
   localises the gap to *this* concept → **re-teach in place** (never route away).
 - **One gate per node. No 2nd/variant gate, no fail diagnosis** (decided). On fail: re-teach the concept
@@ -352,7 +352,7 @@ remembers where *you* are, on *this* concept, without the cost growing unbounded
   - `teachTurn` (teaching persona), `gradeWritten`, `gradeEquation`, `gradeSketch` (graders), `helpWithSketch` (scratchpad hint). cbse10 wording is byte-identical (no regression).
   - `generate-gates.ts` was already exam-aware (author persona + research tag).
   - *(Generic, left as-is: `translateText`, `summarizeConversation`.)*
-- **Final-exam papers staged** under `content/<exam>/_papers/` (format `paper.json`, `questions[]`): cbse10 maths-basic/standard, cbse12 mathematics SQP, jee `jeemain-2026-apr02-s1` (Main) + `jeeadv-2024-p1` (Advanced). These are **not yet wired into a runtime exam flow** — that's the final-exam milestone (see below).
+- **Final-exam papers** under `content/<exam>/_papers/` (format `paper.json`, `questions[]`): cbse10 maths-basic/standard, cbse12 mathematics SQP, jee `jeemain-2026-apr02-s1` (Main) + `jeeadv-2024-p1` (Advanced). **Fully wired** — `papers.ts` loads and grades them; weak-concept review is surfaced after each exam.
 
 ### Verified corpus fact (the basis for the canonical plan)
 The same NCERT book appears under multiple exams as **byte-identical copies** (same node slugs, same explanation MD5):
@@ -366,5 +366,5 @@ The same NCERT book appears under multiple exams as **byte-identical copies** (s
 - **Exams become pointers/manifests:** an exam = "which canonical courses it includes + which section flag to surface." JEE Main reads the base; **JEE Advanced is a separate selectable track** (decided) that reads base + advanced overlay. Updating advanced content = editing that node's advanced fields — one home, no drift.
 - **The dependency:** this only becomes literal "one truth" once today's **duplicate chapters collapse to canonical nodes** (CBSE-12 ↔ JEE class-12 maths). That's a migration (repoint conceptIds), not re-authoring — the one real cost, deferred.
 
-### Final-exam papers (milestone, not built)
-`paper.json` files are staged per exam. The runtime flow that serves a clean past paper, grades it, and flags weak concepts (bottom_up.md §0) is still a later milestone — the papers are in place for when it's built. JEE has both Main and Advanced papers, matching the advanced-track decision.
+### Final-exam papers (built and live — 2026-06-16)
+`paper.json` files are staged per exam and fully wired into the runtime. `papers.ts` serves each clean past paper, grades submissions (deterministic + subjective marking), and flags weak concepts to the learner for revision. JEE has both Main and Advanced papers, matching the advanced-track decision.

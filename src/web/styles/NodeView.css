@@ -262,14 +262,24 @@
 .lang-select {
   padding: 5px 8px; border: 1px solid var(--rule); border-radius: 8px;
   background: var(--card); font-size: 0.85rem; cursor: pointer; color: var(--ink);
+  transition: border-color 0.2s;
 }
+.lang-select.glow {
+  border-color: var(--accent); background: rgba(217,89,31,0.07);
+  animation: langGlow 1.3s ease-in-out infinite;
+}
+@keyframes langGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 89, 31, 0.45); }
+  50% { box-shadow: 0 0 0 7px rgba(217, 89, 31, 0); }
+}
+/* Update comment — mic glow is now driven by highlight state, not awaitingStart */
 .speak-btn {
   background: none; border: none; cursor: pointer; font-size: 0.78rem;
   margin-left: 6px; opacity: 0.7; padding: 0;
 }
 .speak-btn:hover { opacity: 1; }
 .notation-btn.mic.listening { background: var(--accent); color: #fff; border-color: var(--accent); }
-/* Glow while the chapter-intro gate is waiting for the learner to say "start". */
+/* Glow when the mic is mentioned in the chapter-intro invite sequence. */
 .notation-btn.mic.glow { background: var(--accent); color: #fff; border-color: var(--accent); animation: micGlow 1.3s ease-in-out infinite; }
 @keyframes micGlow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(217, 89, 31, 0.55); }
