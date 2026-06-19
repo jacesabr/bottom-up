@@ -90,6 +90,68 @@ forbidden for authoring** (bad arithmetic — constraint #2). So: **Sonnet autho
 > Absorbs the old `continue_authoring.md` front matter. Newest status at the top; the detailed per-chapter
 > record is §G. Edit this section before you stop.
 
+### ▶▶ PHASE-2 — source + refresher + §A sweep COMPLETE (2026-06-19, DB-verified)
+**Final corpus audit (DB, all `kind='authored'`):** **3151 gates · 0 null source · 0 social/junk source · 0 mcq encoding defects · 0 null sketch/explain rubrics.** Refreshers: **212 concepts populated (0 malformed — every item has all 5 keys), up from 6 at run start.** All **41 maths chapters** (cbse10 jemh101–114, cbse12 ch01–13, jee ch01–14) now have every authored gate carrying ≥1 WebFetch-verified authoritative source, and a generous tutor-private refresher set on first-using bedrock concepts. §A prereq sweep run on every chapter (reports captured in `phase2/dossiers/` for cloud chapters; in agent transcripts for local).
+
+**What was DONE this run:**
+- **Sources:** every authored gate sourced; agents used WebSearch→WebFetch and were required to verify each URL loads + is on-topic before writing (many honestly dropped 404/expired-TLS/blocked URLs rather than inventing). Reputable maths-ed domains only; **video/social/forum dropped**. A final deterministic SQL pass stripped 81 residual youtube/scribd/chegg/careers360/collegedunia fragments left embedded (alongside good URLs) on the 5 original-pipeline chapters (jemh101/102, cbse12 ch01/02, jee ch01/02), keeping the good URLs (guarded so no row was emptied).
+- **Refreshers:** authored generously (§A.5) on pre-curriculum bedrock per chapter, written only where `refreshers='[]'` (pre-existing ones never overwritten).
+- **§A sweep:** load-bearing-term inventory + AUTHOR-bridge/DEFER/INLINE-GLOSS/REFRESHER classification per chapter. **No bridge node was auto-created** (constraint #6) — proposals are queued for the human decision below.
+- **Orchestration:** Opus orchestrator + parallel Opus sub-agents (user directive). **Cloud (remote-isolation worktree) agents** produced JSON dossiers for cbse12 ch04–13 + jee ch03/06/07/08/09/12/13/14 (applied via idempotent batch-appliers); **local agents** (Neon MCP) self-applied for all cbse10 + the rate-limit-failed jee chapters. Cloud hit a server-side rate limit at ~20 concurrent remotes (jee ch04/05/10/11 died early) → those were completed locally; nothing lost.
+
+**What is NOT done (still open):**
+- **`contentNote` improvements NOT applied.** Dossiers/agents flagged precise, evidence-grounded content fixes (e.g. cbse12 ch12 stray `uv''` typo in product-rule prose; jee ch08 mis-scoped `state-binomial-theorem` prereq on a GP node; cbse12 ch11 `direction-cosines` example vs NCERT; dead `ncert.nic.in/ncerts/l/*.pdf` links on some old rows). These were collected, NOT edited (Phase-2 was scoped to additive source+refresher). **Worklist for a follow-up content pass.**
+- **Bridge proposals pending human decision** (see "BRIDGE PROPOSALS" below) — refresher-vs-bridge call.
+- **Adversarial source re-verification** running as a Workflow (sampled re-fetch) at closeout.
+
+---
+
+### ▶▶ PHASE-2 RUN — started 2026-06-19 (original plan / resumable log)
+**This is the deferred Phase-2 (constraint #7), now explicitly triggered by the user.** Goal: per-gate `source`
+backfill (web-researched, authoritative, *verified*), generous `refreshers[]` population, and the rigorous §A
+prereq sweep + bridge proposals across the whole corpus. Orchestration = **Opus orchestrator (this session) +
+parallel Opus sub-agents** (user directive 2026-06-19: *"use opus highest model … for any parallel agents,
+token usage no concern"* — this OVERRIDES HR-2's Sonnet default; the cost rationale was waived).
+
+**Ground-truth state at run start (verified by DB query, NOT from the ledger):**
+- 806 concept rows total (645 = the maths exam corpus; ~161 = other/coherence-map/`maths-c12-ch*` nodes, out of Phase-2 scope).
+- 3151 authored gates. **`source`: 418 populated / 2733 NULL.** The 418 are the 8 original-pipeline chapters' Firecrawl-era sources (jemh101/102/103, cbse12 ch01/02/03, jee ch01/02) — and they are *mediocre* (include youtube/facebook/stackexchange). Phase-2 replaces NULLs with verified authoritative URLs and may improve the old ones.
+- **`refreshers`: 6 concepts populated** (order-0/1 of jemh101, cbse12-ch01, jee-ch01). ~640 maths concepts still empty.
+- **refreshers field is LANDED + wired** (schema + DB + tutor prompt) — see §A.5 corrected note. The doc's old "field does not exist yet" was stale.
+
+**Per-gate `source` coverage at run start (DB):** cbse10 jemh101 73/82, jemh102 60/85, jemh103 39/94, jemh104–114 **0**. cbse12 ch01 58/66, ch02 45/63, ch03 41/70, ch04–13 **0**. jee ch01 70/85, ch02 32/61, ch03–14 **0**.
+
+**Method this run (per chapter, by a single Opus agent):** read content.json (+ NCERT OCR `source/*.txt` where present — cbse12 & jee have it, **cbse10 has none → web-only**); for each concept find 2–4 REAL sources via WebSearch+WebFetch (**verify each by fetching; NEVER invent a URL** — global "eyes-on" rule); write verified URLs to that concept's gates lacking a source (` | `-separated, matching existing format; never overwrite a non-null source); author `refreshers[]` for genuine pre-curriculum bedrock (only where currently `[]`); run the §A term sweep and **PROPOSE** bridges/DEFERs/glosses (the orchestrator approves + authors bridges — agents never create nodes or edit `prereqs`). Sub-agents must not touch any gate prompt/ideal_answer/expected/options.
+
+**Channel split:** **CLOUD** (remote Opus agents, no DB) produce a JSON dossier I apply locally → assigned the **cbse12 (13) + jee (14) = 27** OCR chapters. **LOCAL** (Opus agents with Neon MCP) write additive parts directly → assigned the **cbse10 (14)** no-OCR chapters (closely audited). Neon project `fragrant-fire-62588797`.
+
+**Chapter ledger (update as we go) — verified by DB query, newest checkpoint:**
+| channel | chapters | status |
+|---|---|---|
+| local | **cbse10 jemh104–114 (11 ch)** | ✅ **DONE + DB-verified**: every authored gate src_null=0, 0 social, 0 mcq bad-shape, 0 mcq-correct-missing; 3–7 refreshers/chapter; §A sweeps returned **no bridges** (all gaps = refreshers / inline-gloss / clean defer to earlier chapter) |
+| cloud→applied | **cbse12 mathematics-ch04** | ✅ DONE: 65 gates sourced (0 null), 6 concepts refreshed; dossier `phase2/dossiers/`; §A no bridges |
+| cloud→applied | **jee maths-ch03** | ✅ DONE: 115 gates sourced (0 null), 5 refreshers; **§A PROPOSED 3 BRIDGES — pending approval (see below)** |
+| cloud (in flight) | cbse12 ch05–13 (9) | 🟡 dossier agents running (Opus, remote) |
+| cloud (in flight) | jee ch04–14 (11) | 🟡 dossier agents running (Opus, remote) |
+| local (in flight) | cbse10 jemh101,102,103 | 🟡 partial-source backfill + **social-source replacement** (jemh101 had 22 youtube/fb sources, jemh103 55 null) |
+| pending | cbse12 ch01–03, jee ch01–02 | ⏳ partial chapters (have OCR + partial Firecrawl source); queue after main cloud wave applied |
+
+**Apply pipeline for cloud dossiers:** dossiers land in each remote agent's git worktree (`.claude/worktrees/agent-<id>/phase2/*.dossier.json`). Cycle: `cp` all worktree dossiers → `phase2/dossiers/` → run ONE idempotent batch-applier (guards `source IS NULL` / `refreshers='[]'` make re-runs safe) → DB-audit counts. Applier writes ONLY `source` + `refreshers`; it IGNORES `prereqSweep` (bridges need orchestrator approval) and `contentNote`.
+
+**⚠ BRIDGE PROPOSALS AWAITING APPROVAL (constraint #6 — agents propose, orchestrator authors):**
+- **jee `maths-ch03` (Trig)** proposed 3: (1) *coordinate plane: axes/origin/quadrants/signed coords* (consumed by define-trig-functions-unit-circle, sign-of-trig-functions, find-remaining-trig-values, negative-angle-identities); (2) *circle basics: radius/arc/chord/circumference=2πr* (radian-measure, arc-length-formula, define-trig-functions-unit-circle); (3) *Pythagoras + unit-circle eqn a²+b²=1* (pythagorean-identity, define-trig-functions-unit-circle). **Open question for the human:** for a JEE aspirant these are Class-9/10 pre-curriculum geometry — likely better as REFRESHERS than as upstream bridge nodes (ch09 Straight Lines / ch10 Conics own coordinate geometry *downstream* of ch03, so a true upstream bridge would re-order the DAG). **DECISION DEFERRED to user.** Until decided, ch03's additive source+refresher work is applied; no bridge authored.
+
+**Audit gate (constraint #4) — SATISFIED:** pilot 4 (jemh104/105 local, cbse12-ch04/jee-ch03 cloud) were audited — independently WebFetched sample source URLs (real + on-topic: geeksforgeeks AP-sum, vedantu discriminant), DB-confirmed encoding untouched, refreshers eyeballed — *before* the full fleet was launched.
+
+**Companion live-product fix this run (user directive 2026-06-19):** **NIM fallback for live student interaction
+when Anthropic is exhausted.** Implemented + verified in [llm.ts](src/core/llm.ts): `completeJson` now catches a
+Claude failure (429/quota, 401/403 credit, 5xx/529 overload, network/timeout, missing key) and falls back to the
+free NIM text model `meta/llama-3.3-70b-instruct`; 4xx client bugs still surface. Student **vision** already runs
+on NIM `nvidia/nemotron-nano-12b-v2-vl` via `nimVision` (the agreed vision half — effectively always-on). NIM-
+primary has no fallback (free floor). Verified: `LLM_PROVIDER=claude` + dead Anthropic key → `completeJson`
+returned NIM output; `tsc --noEmit` clean on llm.ts. **NOT yet committed/deployed** — holding for a checkpoint
+(affects live students). To deploy: `git push` then `POST /v1/services/srv-d8nuodbeo5us738ehh9g/deploys`.
+
 ### Live now (verified)
 - **App (frontend):** https://bottom-up-web.onrender.com
 - **API:** https://bottom-up-api.onrender.com (`/health` → `{"status":"ok"}`)
@@ -278,11 +340,19 @@ Refreshers are **tutor-private** — like `misconceptions`, the tutor must NEVER
 deploys one only when that gap actually surfaces. Target shape: a **`refreshers[]` field on the concept,
 parallel to `misconceptions`** (each item `{ trigger, surfacingQuestion, ladder[], answer, returnCue }`),
 threaded into `TeachTurnInput` and rendered into the tutor system prompt as a private "deploy only when this
-gap surfaces" block. That field does not exist yet — **adding it + populating node 0 of `jemh101` with the
-`"cubed"` refresher is the canonical first task of the next authoring run.** Until the field lands, hold new
-refresher scaffolds in this section so they are not lost. This is exactly the "adjust the node to contain this
-information" work; the runtime behaviour that consumes it is already specified in
-[dont_assume.md](dont_assume.md) §2.
+gap surfaces" block.
+
+> **✅ LANDED (verified 2026-06-19, not just designed).** The `refreshers` field NOW EXISTS and is wired
+> end-to-end: `concepts.refreshers jsonb NOT NULL DEFAULT '[]'` in [schema.ts](src/db/schema.ts) **and** in the
+> live Neon DB (`information_schema` confirms the column); `RefresherItem` typed in schema.ts; threaded through
+> `TeachTurnInput.refreshers` and rendered into the tutor system prompt as the private "FOUNDATIONAL REFRESHERS
+> (PRIVATE — never list)" block in [node-agent.ts](src/core/node-agent.ts#L263-L288). The canonical first task
+> (node 0 of `jemh101`, the `"cubed"` refresher) is **done** — `manipulate-prime-powers` carries the cubed +
+> prime refreshers. As of 2026-06-19 **6 concepts** are populated (the order-0/1 nodes of the three original
+> gold chapters: `jemh101`, cbse12 `mathematics-ch01`, jee `maths-ch01`). The remaining ~640 maths concepts
+> still have empty `refreshers` — **populating them generously is part of the Phase-2 run now in progress**
+> (see the Phase-2 log at the top of this file). The runtime that consumes it is specified in
+> [dont_assume.md](dont_assume.md) §2.
 
 ---
 

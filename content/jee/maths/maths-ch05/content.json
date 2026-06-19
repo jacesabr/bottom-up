@@ -24,6 +24,19 @@
         "Treating an inequality as an equation because it relates two expressions",
         "Confusing the strict symbols (<, >) with the inclusive ones (less-or-equal, greater-or-equal)"
       ],
+      "refreshers": [
+        {
+          "trigger": "\"Greater than\" / \"less than\" as an order on numbers — and how it behaves for negatives",
+          "surfacingQuestion": "Before we name the symbols, a quick gut check: which is the larger number, -3 or -2? And what does it actually mean for one number to be 'greater than' another?",
+          "ladder": [
+            "If you owe ₹3 versus owe ₹2, which leaves you worse off — i.e. which is the smaller amount of money?",
+            "On a number line, which sits further to the LEFT: -3 or -2?",
+            "So between -3 and -2, which one is the greater number?"
+          ],
+          "answer": "For any two real numbers, exactly one is larger: a is 'greater than' b (written a > b) when a lies to the RIGHT of b on the number line, and 'less than' (a < b) when it lies to the LEFT. For positive numbers this matches counting: 5 > 3. For negatives it can feel backwards — -2 > -3, because -2 is to the right of -3 (a debt of ₹2 is less severe than a debt of ₹3). This ordering is the whole foundation of inequalities: notice 3 > 2 but -3 < -2, which is exactly why multiplying an inequality by a negative number will later flip its direction.",
+          "returnCue": "So 'greater' just means further right on the number line, even for negatives. Now let's put names to the four symbols that record this ordering: <, >, ≤, ≥."
+        }
+      ],
       "prereqs": [],
       "sameConcept": [],
       "teachingInsights": []
@@ -176,6 +189,19 @@
         "Using a filled circle for a strict inequality (or an open circle for an inclusive one)",
         "Shading the wrong side of the endpoint"
       ],
+      "refreshers": [
+        {
+          "trigger": "\"Number line\" — the picture of the real numbers we draw the solution on",
+          "surfacingQuestion": "We're about to draw the answer on a 'number line'. Quick check: if I draw a straight line and mark 0 in the middle, where do the negative numbers go, and which direction makes numbers bigger?",
+          "ladder": [
+            "Picture a ruler or a thermometer laid flat — where is 0, and where is 1?",
+            "As you move to the RIGHT from 0, do the numbers get bigger or smaller?",
+            "So where would -2 sit relative to 0, and relative to +3?"
+          ],
+          "answer": "A number line is a straight line on which every real number is a single point. We fix 0 somewhere, put the positive numbers to the right (1, 2, 3, …) and the negative numbers to the left (-1, -2, -3, …), equally spaced. Moving RIGHT means bigger, moving LEFT means smaller — so 3 is to the right of 1, and -2 is to the left of 0. Every real number, including fractions like 5/2, has exactly one spot. This is why we can show 'all x less than 3' as a shaded stretch of the line rather than listing numbers.",
+          "returnCue": "So the number line is just the reals drawn as points, bigger to the right. Now: on it, how do we mark whether the endpoint itself is included — open circle versus filled circle?"
+        }
+      ],
       "prereqs": [
         "jee:maths:maths-ch05:solve-linear-one-variable",
         "jee:maths:maths-ch05:inequality-meaning",
@@ -203,6 +229,19 @@
       "misconceptions": [
         "Mapping 'at least'/'at most' to strict signs instead of the inclusive ones",
         "Stopping at the algebra without interpreting the answer in the problem's context"
+      ],
+      "refreshers": [
+        {
+          "trigger": "\"Average\" (mean) of a set of marks — assumed in the exam-marks word problems",
+          "surfacingQuestion": "These problems hinge on an 'average of at least 60'. Quick check: if a student scores 62 and 48 in two tests, how do you work out their average, and what would the average of three tests be?",
+          "ladder": [
+            "For two numbers, what do you do first — add them or divide them?",
+            "After adding 62 and 48 to get 110, what do you divide by — 2 or 3?",
+            "If a third mark x is added, what is the average of all three written as a formula?"
+          ],
+          "answer": "The average (arithmetic mean) of a list of numbers is their SUM divided by HOW MANY there are. For 62 and 48: (62 + 48) / 2 = 55. For three marks 62, 48 and x it is (62 + 48 + x) / 3. So 'an average of at least 60 over three exams' becomes (62 + 48 + x)/3 ≥ 60 — multiply out by 3 to get 110 + x ≥ 180, then x ≥ 70. The key is dividing by the COUNT of items (here 3, the number of exams), not by 2.",
+          "returnCue": "So average = sum ÷ count, and 'at least 60' is the ≥ we built earlier. Let's set up the inequality for this marks problem and solve it."
+        }
       ],
       "prereqs": [
         "jee:maths:maths-ch05:solve-linear-one-variable",

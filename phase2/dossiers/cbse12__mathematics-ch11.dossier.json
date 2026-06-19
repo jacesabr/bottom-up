@@ -1,0 +1,337 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch11",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:direction-cosines",
+      "sources": [
+        {
+          "title": "Direction Cosines in 3D Geometry: Explanation & Formulas (Vedantu)",
+          "url": "https://www.vedantu.com/maths/direction-cosines",
+          "verified": "The direction cosines are linked by the relation l² + m² + n² = 1."
+        },
+        {
+          "title": "Three Dimensional Geometry Class 12 Notes (BYJU'S)",
+          "url": "https://byjus.com/maths/three-dimensional-geometry-for-class-12/",
+          "verified": "Any three numbers which are proportional to the direction cosines of a line are called the direction ratios of the line."
+        },
+        {
+          "title": "Direction Cosine - Formula, Definition, Example (Cuemath)",
+          "url": "https://www.cuemath.com/geometry/direction-cosine/",
+          "verified": "the cosine of the angle made by the line in the three-dimensional space, with the x-axis, y-axis, z-axis respectively"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Optional polish: the source's Example 1 uses angles 90/60/30 (l=0, m=1/2, n=sqrt(3)/2), whereas the node's running example uses 60/90/30 (l=1/2, m=0, n=sqrt(3)/2). Both are correct and satisfy l^2+m^2+n^2=1, but the node could note it is using its own angle assignment rather than NCERT Example 1 so a student cross-checking against the textbook is not confused."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:direction-ratios",
+      "sources": [
+        {
+          "title": "Three Dimensional Geometry Class 12 Notes (BYJU'S)",
+          "url": "https://byjus.com/maths/three-dimensional-geometry-for-class-12/",
+          "verified": "l = ±a/√(a² + b² + c²), m = ±b/√(a² + b² + c²), n = ±c/√(a² + b² + c²)"
+        },
+        {
+          "title": "Direction Cosines and Direction Ratios (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/direction-cosines-and-direction-ratios/",
+          "verified": "the directional cosines of the line joining AB are, (x_2 - x_1)/AB, (y_2 - y_1)/AB, (z_2 - z_1)/AB"
+        },
+        {
+          "title": "Find Direction Ratios and Direction Cosines Easily (Vedantu)",
+          "url": "https://www.vedantu.com/maths/how-to-find-direction-ratios-and-direction-cosines",
+          "verified": "Any proportional multiples (ka, kb, kc) are also valid DRs."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:direction-cosines-two-points",
+      "sources": [
+        {
+          "title": "Direction Cosines and Direction Ratios (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/direction-cosines-and-direction-ratios/",
+          "verified": "AB = √((x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2)"
+        },
+        {
+          "title": "Direction Cosine - Formula, Definition, Example (Cuemath)",
+          "url": "https://www.cuemath.com/geometry/direction-cosine/",
+          "verified": "Direction Cosines = ((x₂ - x₁)/√[(x₂ - x₁)² + (y₂ - y₁)² + (z₂ - z₁)²], ...)"
+        },
+        {
+          "title": "Find Direction Ratios and Direction Cosines Easily (Vedantu)",
+          "url": "https://www.vedantu.com/maths/how-to-find-direction-ratios-and-direction-cosines",
+          "verified": "From two points A(x₁,y₁,z₁) and B(x₂,y₂,z₂): DRs = (x₂−x₁, y₂−y₁, z₂−z₁)."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Computing PQ = sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2) to normalise the direction ratios into direction cosines.",
+          "surfacingQuestion": "Before we divide, we need the length PQ. How do you find the distance between two points when they have THREE coordinates each, like P(-2, 4, -5) and Q(1, 2, 3)?",
+          "ladder": [
+            "In 2D, the distance between (x1, y1) and (x2, y2) is sqrt((x2-x1)^2 + (y2-y1)^2) -- it comes straight from Pythagoras' theorem on the horizontal and vertical gaps.",
+            "In 3D we just add the third (z) gap under the same square root: distance = sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2).",
+            "So compute each coordinate difference first: x2-x1 = 1-(-2) = 3, y2-y1 = 2-4 = -2, z2-z1 = 3-(-5) = 8.",
+            "Square and add: 3^2 + (-2)^2 + 8^2 = 9 + 4 + 64 = 77.",
+            "Take the square root: PQ = sqrt(77)."
+          ],
+          "answer": "The 3D distance formula is PQ = sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2), the Pythagorean theorem extended to three coordinates. For P(-2, 4, -5) and Q(1, 2, 3): differences are 3, -2, 8; squares sum to 9 + 4 + 64 = 77; so PQ = sqrt(77). This is exactly the number you divide each direction ratio by to get the direction cosines.",
+          "returnCue": "Now that we have PQ = sqrt(77), divide each difference (3, -2, 8) by it to get the direction cosines 3/sqrt(77), -2/sqrt(77), 8/sqrt(77)."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:vector-equation-line",
+      "sources": [
+        {
+          "title": "Equation of a Line in 3D: Cartesian and Vector Form (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/equation-of-a-line-in-3d/",
+          "verified": "vector(l) = vector(p) + λ vector(d)"
+        },
+        {
+          "title": "Three Dimensional Geometry Class 12 Notes (BYJU'S)",
+          "url": "https://byjus.com/maths/three-dimensional-geometry-for-class-12/",
+          "verified": "The vector equation of the line that passes through two points, in which whose position vector is a and parallel to the vector b is given by r = a + λ b"
+        },
+        {
+          "title": "Three Dimensional Geometry Class 12 Notes Maths Chapter 11 (Learn CBSE)",
+          "url": "https://www.learncbse.in/three-dimensional-geometry-class-12-notes/",
+          "verified": "r = a + λb where a represents the position vector of a point on the line and b is a parallel direction vector."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+      "sources": [
+        {
+          "title": "Equation of a Line in 3D: Cartesian and Vector Form (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/equation-of-a-line-in-3d/",
+          "verified": "(x - x₁)/a = (y - y₁)/b = (z - z₁)/c"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 11 (Cuemath)",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-11-three-dimensional-geometry/",
+          "verified": "you will study vector and cartesian equations of a line in space"
+        },
+        {
+          "title": "Three Dimensional Geometry Class 12 (Teachoo)",
+          "url": "https://www.teachoo.com/subjects/cbse-maths/class-12th/ch11-12th-three-dimensional-geometry/",
+          "verified": "Equation of Line ... both vector and Cartesian approaches"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:angle-between-lines",
+      "sources": [
+        {
+          "title": "Angles Between two Lines in 3D Space (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/angles-between-two-lines-in-3d-space/",
+          "verified": "∅ = cos⁻¹{(b₁ . b₂) / (|b₁| × |b₂|)}"
+        },
+        {
+          "title": "Angle Between Two Lines - Formula, Examples (Cuemath)",
+          "url": "https://www.cuemath.com/geometry/angle-between-two-lines/",
+          "verified": "cos θ = (a_1a_2 + b_1b_2 + c_1c_2)/(√(a_1^2 + b_1^2 + c_1^2) √(a_2^2 + b_2^2 + c_2^2))"
+        },
+        {
+          "title": "Direction Cosines And Angle Between Two Lines (BYJU'S)",
+          "url": "https://byjus.com/maths/direction-cosines/",
+          "verified": "If L1 and L2 having the direction ratios as a1, b1, c1 and a2, b2, c2 respectively are perpendicular to each other, then θ = 90°. Therefore a1a2 + b1b2 + c1c2 = 0"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:perpendicular-parallel-lines",
+      "sources": [
+        {
+          "title": "Direction Cosines And Angle Between Two Lines (BYJU'S)",
+          "url": "https://byjus.com/maths/direction-cosines/",
+          "verified": "If L1 and L2 having the direction ratios as a1, b1, c1 and a2, b2, c2 respectively are parallel to each other, then θ = 0°. Therefore a_1/a_2 = b_1/b_2 = c_1/c_2"
+        },
+        {
+          "title": "Three Dimensional Geometry Class 12 Notes (BYJU'S)",
+          "url": "https://byjus.com/maths/three-dimensional-geometry-for-class-12/",
+          "verified": "Skew lines are the lines that lie in different planes. They are neither parallel and nor intersecting."
+        },
+        {
+          "title": "Three Dimensional Geometry Class 12 (Teachoo)",
+          "url": "https://www.teachoo.com/subjects/cbse-maths/class-12th/ch11-12th-three-dimensional-geometry/",
+          "verified": "Angle between two lines ... along with parallel and skew lines."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Evidence-grounded fix: PART 3 says 'parallelism sets the cross product to zero (sin 0 = 0)', but the node's stated test for parallelism (and the NCERT condition a1/a2 = b1/b2 = c1/c2) is proportionality of direction ratios, not a cross-product computation. The cross-product framing is an aside that is not used in the keyMoves and may invite students to compute b1 x b2 unnecessarily for a parallelism test. Recommend trimming the 'cross product = 0' clause or clearly labelling it as an equivalent characterisation, keeping the operational test as proportionality."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:skew-lines",
+      "sources": [
+        {
+          "title": "Skew Lines | Definition, Formula & Examples (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/skew-lines/",
+          "verified": "A pair of non-intersecting, non-parallel, and non-coplanar lines are known as skew lines."
+        },
+        {
+          "title": "Three Dimensional Geometry Class 12 Notes (BYJU'S)",
+          "url": "https://byjus.com/maths/three-dimensional-geometry-for-class-12/",
+          "verified": "Skew lines are the lines that lie in different planes. They are neither parallel and nor intersecting."
+        },
+        {
+          "title": "Three Dimensional Geometry Class 12 Notes Maths Chapter 11 (Learn CBSE)",
+          "url": "https://www.learncbse.in/three-dimensional-geometry-class-12-notes/",
+          "verified": "Two non-parallel and non-intersecting straight lines, are called skew lines."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:shortest-distance-definition",
+      "sources": [
+        {
+          "title": "Three Dimensional Geometry Class 12 Notes (BYJU'S)",
+          "url": "https://byjus.com/maths/three-dimensional-geometry-for-class-12/",
+          "verified": "The shortest distance between two skew lines is the line segment perpendicular to both lines."
+        },
+        {
+          "title": "Write the formula to find the shortest distance ... (Vedantu Q&A)",
+          "url": "https://www.vedantu.com/question-answer/write-the-formula-to-find-the-shortest-distance-class-12-maths-cbse-5faa10abdd6ab203d4fc8689",
+          "verified": "the length of the line segment that ... perpendicularly with both lines"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 11 (Vedantu)",
+          "url": "https://www.vedantu.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-11",
+          "verified": "the shortest distance between two skew lines"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch11:shortest-distance-skew-lines",
+      "sources": [
+        {
+          "title": "Shortest Distance Between Two Skew Lines (in 3D) (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/shortest-distance-between-two-skew-lines-in-3d/",
+          "verified": "d = |((a_2 - a_1) · (b_1 × b_2)|/|b_1 × b_2|"
+        },
+        {
+          "title": "Write the formula to find the shortest distance ... (Vedantu Q&A)",
+          "url": "https://www.vedantu.com/question-answer/write-the-formula-to-find-the-shortest-distance-class-12-maths-cbse-5faa10abdd6ab203d4fc8689",
+          "verified": "d = |((b_1 × b_2) · (a_2 - a_1)) / |b_1 × b_2||"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 11 (Vedantu)",
+          "url": "https://www.vedantu.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-11",
+          "verified": "d = |(b₁ × b₂) · (a₂ − a₁)| / |b₁ × b₂|"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Computing the cross product b1 x b2 via the 3x3 determinant |i j k; 2 -1 1; 3 -5 2| to get the common-perpendicular direction.",
+          "surfacingQuestion": "We need b1 x b2 = (2i - j + k) x (3i - 5j + 2k). Expanding the cross product means evaluating a 3x3 determinant with i, j, k in the top row. How do you expand a 3x3 determinant along its first row?",
+          "ladder": [
+            "A 3x3 determinant |a1 a2 a3; b1 b2 b3; c1 c2 c3| expands along the top row as a1*(b2*c3 - b3*c2) - a2*(b1*c3 - b3*c1) + a3*(b1*c2 - b2*c1). Note the alternating + - + signs.",
+            "Each 2x2 minor is 'main diagonal minus anti-diagonal': for |p q; r s| it is ps - qr.",
+            "For our determinant the top row is i, j, k, the second row is 2, -1, 1, the third row is 3, -5, 2.",
+            "i-coefficient: (-1)(2) - (1)(-5) = -2 + 5 = 3. j-coefficient (with the MINUS sign in front): -[(2)(2) - (1)(3)] = -(4 - 3) = -1. k-coefficient: (2)(-5) - (-1)(3) = -10 + 3 = -7.",
+            "So b1 x b2 = 3i - j - 7k, and |b1 x b2| = sqrt(3^2 + (-1)^2 + (-7)^2) = sqrt(9 + 1 + 49) = sqrt(59)."
+          ],
+          "answer": "Expand the 3x3 determinant along the top row with alternating signs + - +: i[(-1)(2) - (1)(-5)] - j[(2)(2) - (1)(3)] + k[(2)(-5) - (-1)(3)] = i(3) - j(1) + k(-7) = 3i - j - 7k. Its magnitude is sqrt(9 + 1 + 49) = sqrt(59). Watch the middle term's leading minus sign -- it is the most common slip.",
+          "returnCue": "With b1 x b2 = 3i - j - 7k and a2 - a1 = i - k, take the dot product (3)(1) + (-1)(0) + (-7)(-1) = 10, then divide by sqrt(59): d = 10/sqrt(59)."
+        }
+      ],
+      "contentNote": "Verified against NCERT Example 9: a1 = i + j, b1 = 2i - j + k, a2 = 2i + j - k, b2 = 3i - 5j + 2k, a2 - a1 = i - k, b1 x b2 = 3i - j - 7k, |b1 x b2| = sqrt(59), numerator |3 - 0 + 7| = 10, d = 10/sqrt(59). The node's worked example is fully correct. Minor source-fidelity caution: the NCERT OCR prints the boxed final formula as '(a2 x a1)' (a typo in the scan) but the derivation and worked numbers use (a2 - a1); the node correctly uses (a2 - a1), matching the chapter Summary which also prints (a2 - a1). No change needed -- flagged only so a future editor does not 'correct' the node toward the OCR typo."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "direction angles alpha, beta, gamma (angles a directed line makes with the x-, y-, z-axes)",
+      "cosine of an angle (trigonometric ratio)",
+      "cos of standard angles 0, 30, 45, 60, 90, 135 degrees",
+      "supplementary angle (pi - theta) and the sign change cos(pi - theta) = -cos(theta)",
+      "unit vector and the identity l^2 + m^2 + n^2 = 1",
+      "proportionality / 'numbers proportional to' (a = lambda*l)",
+      "ratio equality a1/a2 = b1/b2 = c1/c2",
+      "distance between two points in 3D: PQ = sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2) (Pythagoras extended)",
+      "position vector of a point (ch10)",
+      "component form of a vector a*i + b*j + c*k and the unit vectors i, j, k (ch10)",
+      "magnitude of a vector |b| = sqrt(a^2+b^2+c^2) (ch10)",
+      "scalar (dot) product b1.b2 = a1a2+b1b2+c1c2 and b1.b2 = |b1||b2|cos theta (ch10)",
+      "vector (cross) product b1 x b2 and its perpendicularity to both factors (ch10)",
+      "3x3 determinant expansion along a row (used to compute the cross product) (ch04 determinants)",
+      "parameter / parametric description of points (lambda ranging over the reals)",
+      "solving a linear system to test whether two lines share a common point (intersection test in skew-lines)",
+      "plane / coplanar vs non-coplanar (geometric intuition, used to define skew lines)",
+      "acute vs obtuse angle and why the absolute value forces the acute angle",
+      "absolute value of a real number"
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "position vector",
+        "owner": "cbse12:mathematics:mathematics-ch10:position-vector",
+        "softening": "Already listed as a prereq on vector-equation-line. Defer upstream to ch10; when first writing r = a + lambda*b, gloss 'a' in one clause as 'the position vector (the arrow from the origin to a known point on the line)' so the reader is not blocked."
+      },
+      {
+        "term": "component form / unit vectors i, j, k",
+        "owner": "cbse12:mathematics:mathematics-ch10:component-form",
+        "softening": "Prereq on direction-ratios and vector-equation-line. Defer to ch10; one-line reminder that the coefficients of i, j, k are exactly the direction ratios a, b, c."
+      },
+      {
+        "term": "magnitude of a vector |b|",
+        "owner": "cbse12:mathematics:mathematics-ch10:magnitude",
+        "softening": "Prereq on direction-cosines. Defer to ch10; the node already cautions 'b should not be confused with |b|' -- keep that NCERT Remark."
+      },
+      {
+        "term": "scalar (dot) product",
+        "owner": "cbse12:mathematics:mathematics-ch10:scalar-product",
+        "softening": "Prereq on angle-between-lines and perpendicular-parallel-lines. Defer to ch10; gloss in passing that a1a2+b1b2+c1c2 IS the dot product of the two direction vectors so the angle formula is just b1.b2/(|b1||b2|) in coordinates."
+      },
+      {
+        "term": "vector (cross) product b1 x b2",
+        "owner": "cbse12:mathematics:mathematics-ch10:vector-product",
+        "softening": "Prereq on skew-lines, perpendicular-parallel-lines, shortest-distance-skew-lines (also tagged sameConcept on the goal node). Defer to ch10; gloss that b1 x b2 is automatically perpendicular to both b1 and b2, which is exactly why it points along the common perpendicular / line of shortest distance."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "direction angles (alpha, beta, gamma)",
+        "where": "direction-cosines (PART 1)",
+        "gloss": "One clause: 'alpha, beta, gamma are the angles the directed line makes with the positive x-, y-, z-axes.' The node already does this; keep it -- this is the chapter's own bedrock, taught here, not deferred."
+      },
+      {
+        "term": "supplementary angle / sign flip on reversal",
+        "where": "direction-cosines (PART 3)",
+        "gloss": "Inline: 'reversing the line replaces each angle by its supplement pi - theta, and cos(pi - theta) = -cos(theta), so l, m, n flip sign.' The node states the conclusion; adding the one-line reason cos(pi-theta) = -cos(theta) makes it self-contained without a full refresher."
+      },
+      {
+        "term": "proportional / direction numbers",
+        "where": "direction-ratios (PART 1)",
+        "gloss": "Inline: 'proportional means a = lambda*l, b = lambda*m, c = lambda*n for one common non-zero multiplier lambda.' Already present in the node."
+      },
+      {
+        "term": "acute angle via absolute value",
+        "where": "angle-between-lines (PART 1)",
+        "gloss": "Inline: 'the |...| forces a non-negative cosine, i.e. the acute angle between the lines, since a line has no preferred direction.' Already present; keep."
+      },
+      {
+        "term": "coplanar / non-coplanar",
+        "where": "skew-lines (PART 1)",
+        "gloss": "Inline: 'coplanar = lying in one common flat plane; skew lines are non-coplanar, so no single plane contains both.' The node already glosses this with the room/ceiling-diagonal example; keep."
+      },
+      {
+        "term": "intersection test (solving for a common point)",
+        "where": "skew-lines (PART 3)",
+        "gloss": "Inline: 'to check non-intersection, set the two parametric point-expressions equal and see whether the resulting system in (lambda, mu) has no solution.' The node states this at a high level; a one-line concrete cue would help."
+      }
+    ],
+    "notes": "No AUTHOR-bridge is needed for this chapter. Every load-bearing idea is either (a) owned and taught here in ch11 (direction angles, direction cosines/ratios, the equations of a line, skew lines, shortest distance), (b) a legitimately upstream vectors concept from ch10 that should be DEFERRED with a one-clause softening (position vector, component form, magnitude, dot product, cross product) and is already correctly tagged in each node's prereqs, (c) determinant expansion from ch04 (used only to compute the cross product) -- DEFER to ch04 / INLINE-GLOSS at point of use, or (d) genuine pre-curriculum bedrock (3D distance formula = Pythagoras extended; 3x3 determinant mechanics; cos of standard/supplementary angles; proportionality; absolute value) handled by INLINE-GLOSS plus the two REFRESHERS attached to direction-cosines-two-points (the 3D distance formula) and shortest-distance-skew-lines (3x3-determinant cross-product expansion). These two are the only places a student is likely to stall on a skill assumed-known-but-rusty rather than a chapter concept, hence refreshers rather than glosses. The chapter's stated narrative is correct that NO plane nodes are authored: the NCERT OCR mentions planes only in the chapter introduction ('equations of lines and planes', 'distance of a point from a plane') as forward-looking scope, but the rationalised source body covers ONLY lines (Sections 11.2-11.5), so the 11-node line-only scope faithfully matches the source."
+  }
+}

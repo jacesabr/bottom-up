@@ -1,0 +1,356 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch06",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:rate-of-change",
+      "sources": [
+        {
+          "title": "Rate of Change of Quantities - BYJU'S",
+          "url": "https://byjus.com/maths/rate-of-change-of-quantities/",
+          "verified": "If two variables, say x and y, changes with respect to another variable t, i.e., if x = f(t) and y = f(t) then according to the Chain Rule: dy/dx = (dy/dt)/(dx/dt)"
+        },
+        {
+          "title": "Application of Derivatives (rate of change) - Vedantu",
+          "url": "https://www.vedantu.com/maths/application-of-derivatives",
+          "verified": "Derivatives can be used to determine the rate of change of quantities."
+        },
+        {
+          "title": "NCERT Solutions Class 12 Maths Chapter 6 Application of Derivatives - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-6-application-of-derivatives/",
+          "verified": "NCERT Solutions Class 12 Maths Chapter 6 mainly focuses on the rate of change of quantity, increasing/decreasing functions, tangents, normals, approximations, maxima, and minima."
+        },
+        {
+          "title": "NCERT Exemplar Class 12 Mathematics, Chapter 6 Application of Derivatives - NCERT (ncert.nic.in)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep206.pdf",
+          "verified": "6.1.1 Rate of change of quantities — For the function y = f(x), d/dx (f(x)) represents the rate of change of y with respect to x. (Read directly from the saved PDF, page 1, under the Chapter 6 APPLICATION OF DERIVATIVES heading.)"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must use a geometric/mensuration formula (area of a circle A = pi r^2, volume of a cube V = x^3, surface area S = 6x^2, sphere volume, cone volume) before differentiating it in a rate-of-change problem.",
+          "surfacingQuestion": "Before we can find how fast the area of a circle grows, we need the formula that links its area to its radius. What is the area of a circle of radius r?",
+          "ladder": [
+            "What measurement of the circle does the area depend on?",
+            "Recall the constant pi and how it appears in circle formulas.",
+            "Area = pi times (which measurement, squared)?"
+          ],
+          "answer": "The area of a circle of radius r is A = pi r^2. (Other formulas we will reuse: circumference C = 2 pi r; cube volume V = x^3 and surface area S = 6 x^2 for edge x; sphere volume V = (4/3) pi r^3; cone volume V = (1/3) pi r^2 h.) These are the rules y = f(x) we differentiate to get a rate of change.",
+          "returnCue": "Now that we have A = pi r^2, differentiate with respect to the changing variable to get the rate of change."
+        }
+      ],
+      "contentNote": "Part 2 (related rates) and the NCERT worked examples (Examples 2, 3) chain rates explicitly via the Chain Rule, but the prereqs list omits cbse12:mathematics:mathematics-ch05:chain-rule (the owner concept). Recommend adding chain-rule to prereqs so the related-rates link dy/dx = (dy/dt)/(dx/dt) has its upstream owner. Optionally mention 'marginal cost / marginal revenue' as the economics instances of rate of change (NCERT Examples 5-6), which the explanation currently does not name."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:increasing-decreasing-definition",
+      "sources": [
+        {
+          "title": "Increasing and Decreasing Functions - Shaalaa.com",
+          "url": "https://www.shaalaa.com/concept-notes/increasing-and-decreasing-functions_81",
+          "verified": "A function f(x) is said to be an increasing function on (a, b) if x1 < x2 implies f(x1) <= f(x2)."
+        },
+        {
+          "title": "NCERT Exemplar Class 12 Mathematics, Chapter 6 Application of Derivatives - NCERT (ncert.nic.in)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep206.pdf",
+          "verified": "6.1.4 Increasing/decreasing functions — A continuous function in an interval (a, b) is (i) strictly increasing if for all x1, x2 in (a, b), x1 < x2 implies f(x1) < f(x2). (Read directly from the saved PDF, page 2.)"
+        },
+        {
+          "title": "Increasing and Decreasing Functions - Unacademy (CBSE Class 12)",
+          "url": "https://unacademy.com/content/cbse-class-12/study-material/mathematics/increasing-and-decreasing-functions/",
+          "verified": "An increasing function is one where the value of f(x) increases with an increase in variable x."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The misconception 'increasing is not the same as positive' is well chosen and matches the NCERT spirit. Consider noting the NCERT distinction that 'increasing' (<=) and 'strictly increasing' (<) are separate clauses of Definition 1, plus the 'constant on I' case (f(x)=c), which the explanation lists strict versions of but does not name the constant case the way NCERT Definition 1(iii) does."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:monotonicity-derivative-test",
+      "sources": [
+        {
+          "title": "Increasing and Decreasing Functions (Theorem 1, derivative sign test) - Shaalaa.com",
+          "url": "https://www.shaalaa.com/concept-notes/increasing-and-decreasing-functions_81",
+          "verified": "f'(x) > 0 implies increasing, f'(x) < 0 implies decreasing."
+        },
+        {
+          "title": "Application of Derivatives Class 12 Notes (Theorem: f increasing if f'(x) >= 0) - Learn CBSE",
+          "url": "https://www.learncbse.in/application-of-derivatives-class-12-notes/",
+          "verified": "f is increasing in [a, b] if f'(x) > 0 for each x in (a, b) and similarly for decreasing functions with f'(x) < 0."
+        },
+        {
+          "title": "NCERT Exemplar Class 12 Mathematics, Chapter 6 (6.1.5 Theorem) - NCERT (ncert.nic.in)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep206.pdf",
+          "verified": "6.1.5 Theorem: Let f be a continuous function on [a, b] and differentiable in (a, b) then (i) f is increasing in [a, b] if f'(x) > 0 for each x in (a, b). (Read directly from the saved PDF, page 2.)"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must find the intervals where f'(x) > 0 vs f'(x) < 0 by factoring f'(x), placing its roots on the number line, and testing the sign of the factored product in each interval (NCERT Examples 11, 33).",
+          "surfacingQuestion": "We have f'(x) = 12(x - 3)(x + 2). To see where this is positive or negative, we split the number line at the roots and test each piece. Where does this product equal zero, and what are the resulting intervals?",
+          "ladder": [
+            "Set each factor to zero: what values of x make (x - 3) = 0 and (x + 2) = 0?",
+            "Mark those two roots on a number line; how many intervals do they create?",
+            "Pick a test number inside each interval and find the sign of each factor there.",
+            "Multiply the signs: two negatives or two positives give +, a mix gives -."
+          ],
+          "answer": "The roots are x = 3 and x = -2, splitting the line into (-inf, -2), (-2, 3) and (3, inf). Testing a point in each: on (-inf, -2) both factors are negative so the product is positive (f increasing); on (-2, 3) the factors have opposite signs so the product is negative (f decreasing); on (3, inf) both are positive so the product is positive (f increasing). This sign-on-a-number-line method is how we read off intervals from any factored f'(x).",
+          "returnCue": "With the sign of f'(x) known on each interval, label each interval as increasing (f' > 0) or decreasing (f' < 0)."
+        }
+      ],
+      "contentNote": "Accurate and well-aligned with NCERT Theorem 1. The explanation could add that the continuity-on-[a,b] / differentiability-on-(a,b) hypotheses are exactly what the misconception flags; NCERT's Remark also gives the strict-inequality generalisation (f'(x) > 0 on the open interval, f continuous, implies increasing) which underlies the worked examples."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:maximum-minimum-value",
+      "sources": [
+        {
+          "title": "How to Find Maximum and Minimum Values of a Function - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/how-to-find-maximum-and-minimum-values-of-a-function/",
+          "verified": "If the function f(x) <= f(a) for all x in D then f(a) is the maximum value of the function."
+        },
+        {
+          "title": "NCERT Exemplar Class 12 Mathematics, Chapter 6 (6.1.6 Maxima and minima) - NCERT (ncert.nic.in)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep206.pdf",
+          "verified": "A function f defined over [a, b] is said to have maximum (or absolute maximum) at x = c, if f(x) <= f(c) for all x in [a, b]. (Read directly from the saved PDF, page 2.)"
+        },
+        {
+          "title": "Maximum and Minimum Values of a Function in a Closed Interval - BYJU'S",
+          "url": "https://byjus.com/maths/maximum-and-minimum-values-of-a-function-in-a-closed-interval/",
+          "verified": "Suppose f is a continuous function on an interval I = [a, b] such that f has the absolute maximum value, and f attains it at least once in I."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The point-vs-value distinction (c vs f(c)) is the right emphasis and matches NCERT Definition 3. NCERT also defines 'extreme value' as a value that is either a maximum or minimum value, and 'extreme point' for c; the explanation mentions extreme value but not 'extreme point' — minor addition only."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:local-maxima-minima",
+      "sources": [
+        {
+          "title": "Local Maxima and Minima (neighbourhood definition) - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/local-maxima-and-minima/",
+          "verified": "f(a) >= f(a - h) and f(a) >= f(a + h) where h > 0, then a is called the Local maximum point."
+        },
+        {
+          "title": "Local Maxima and Minima Definition, Formula, Examples - Vedantu",
+          "url": "https://www.vedantu.com/maths/local-maxima-and-minima",
+          "verified": "A local maximum point on a function is a point (x,y) on the graph of the function whose y coordinate is greater than all other y coordinates on the graph at points close by."
+        },
+        {
+          "title": "NCERT Exemplar Class 12 Mathematics, Chapter 6 (Local Maximum/Local Minimum) - NCERT (ncert.nic.in)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep206.pdf",
+          "verified": "A point c in the interior of the domain of f is called local maxima, if there exists an h > 0, such that f(c) > f(x), for all x in (c - h, c + h). The value f(c) is called the local maximum value of f. (Read directly from the saved PDF, page 2.)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correctly stresses (a) the neighbourhood-only comparison and (b) interior points (not endpoints). One precision note: NCERT Definition 4 requires c to be an INTERIOR point of the domain; the explanation says 'interior point' in Part 1 but the keyMoves could state the interior-point requirement explicitly to reinforce why endpoints are excluded (they cannot be local extrema by this definition, though they can be absolute extrema)."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:fermat-stationary",
+      "sources": [
+        {
+          "title": "Application of Derivatives Class 12 Notes (Theorem 2 necessary condition) - Learn CBSE",
+          "url": "https://www.learncbse.in/application-of-derivatives-class-12-notes/",
+          "verified": "If f has local maxima or local minima at x = c, then either f'(c) = 0 or f is not differentiable at c."
+        },
+        {
+          "title": "NCERT Exemplar Class 12 Mathematics, Chapter 6 (Critical point of f) - NCERT (ncert.nic.in)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep206.pdf",
+          "verified": "6.1.7 Critical point of f: A point c in the domain of a function f at which either f'(c) = 0 or f is not differentiable is called a critical point of f. (Read directly from the saved PDF, page 2.)"
+        },
+        {
+          "title": "First Derivative Test / critical points - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/first-derivative-test/",
+          "verified": "If the sign of the first derivative changes from positive to negative as you move from left to right around the critical point, the function has a local maximum at that critical point."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Excellent capture of the necessary condition and the false-converse counterexample (x^3 at 0, a point of inflexion). Matches NCERT Theorem 2 and its Remark exactly. No change needed; the keyMoves correctly forbid concluding an extremum from f'(c)=0 alone."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:critical-point",
+      "sources": [
+        {
+          "title": "First Derivative Test (definition of critical point) - BYJU'S",
+          "url": "https://byjus.com/maths/first-derivative-test/",
+          "verified": "A critical point of the function f is the point c in the domain of a function f at which f'(c) = 0 or f is not differentiable."
+        },
+        {
+          "title": "NCERT Exemplar Class 12 Mathematics, Chapter 6 (6.1.7 Critical point of f) - NCERT (ncert.nic.in)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep206.pdf",
+          "verified": "6.1.7 Critical point of f: A point c in the domain of a function f at which either f'(c) = 0 or f is not differentiable is called a critical point of f. (Read directly from the saved PDF, page 2.)"
+        },
+        {
+          "title": "Derivative Test / critical points - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/first-derivative-test/",
+          "verified": "Critical points are identified by solving f'(x) = 0 or finding where f'(x) is undefined."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Strong: includes BOTH sources of critical points (f'=0 and non-differentiable/corners) and notes critical points + endpoints are the closed-interval candidates. Matches NCERT Example 28 (f = 12x^(4/3) - 6x^(1/3) has a critical point at x=0 where f' is undefined). The non-differentiable-point reminder is exactly the common-error fix."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:first-derivative-test",
+      "sources": [
+        {
+          "title": "First Derivative Test for Maxima and Minima - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/first-derivative-test/",
+          "verified": "If the sign of the first derivative changes from positive to negative as you move from left to right around the critical point, the function has a local maximum at that critical point."
+        },
+        {
+          "title": "First Derivative Test - BYJU'S",
+          "url": "https://byjus.com/maths/first-derivative-test/",
+          "verified": "A critical point of the function f is the point c in the domain of a function f at which f'(c) = 0 or f is not differentiable."
+        },
+        {
+          "title": "Application of Derivatives Class 12 Notes (First Derivative Test) - Learn CBSE",
+          "url": "https://www.learncbse.in/application-of-derivatives-class-12-notes/",
+          "verified": "If f'(x) changes sign from positive to negative as x increases through c, then c is a point of local maxima."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correctly states the three outcomes (+ to - maxima, - to + minima, no change inflexion) and the key insight to test the sign AROUND c, not AT c. Matches NCERT Theorem 3 and Examples 17-18. Good."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:second-derivative-test",
+      "sources": [
+        {
+          "title": "Second Derivative Test - Vedantu",
+          "url": "https://www.vedantu.com/maths/second-derivative-test",
+          "verified": "If it is negative, the point is a relative maximum, whereas if it is positive, the point is a relative minimum."
+        },
+        {
+          "title": "Application of Derivatives Class 12 Notes (Second Derivative Test) - Learn CBSE",
+          "url": "https://www.learncbse.in/application-of-derivatives-class-12-notes/",
+          "verified": "f''(c) < 0 indicates a local maximum, f''(c) > 0 indicates a local minimum, and the test fails when f''(c) = 0."
+        },
+        {
+          "title": "First Derivative Test For Maxima and Minima (incl. second derivative test) - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/first-derivative-test/",
+          "verified": "If f''(c) < 0, then f(x) has a local maximum at x = c. If f''(c) > 0, then f(x) has a local minimum at x = c."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate, including the memory aid (negative second derivative = frown = maximum) and the fail case f''(c)=0 with fallback to the first derivative test. Matches NCERT Theorem 4 and Example 21 (f = 2x^3 - 6x^2 + 6x + 5 where f''(1)=0 so the test fails). Prereq second-order-derivative (ch05) is correctly listed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:absolute-extrema-definition",
+      "sources": [
+        {
+          "title": "Absolute Maxima and Minima - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/absolute-minima-and-maxima/",
+          "verified": "Absolute maxima and absolute minima are the highest and lowest values of a function on its entire domain or on a given interval."
+        },
+        {
+          "title": "Maximum and Minimum Values of a Function in a Closed Interval (absolute / global) - BYJU'S",
+          "url": "https://byjus.com/maths/maximum-and-minimum-values-of-a-function-in-a-closed-interval/",
+          "verified": "Suppose f is a continuous function on an interval I = [a, b] such that f has the absolute maximum value, and f attains it at least once in I."
+        },
+        {
+          "title": "NCERT Exemplar Class 12 Mathematics, Chapter 6 (absolute maximum/minimum) - NCERT (ncert.nic.in)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep206.pdf",
+          "verified": "A function f defined over [a, b] is said to have maximum (or absolute maximum) at x = c, if f(x) <= f(c) for all x in [a, b]. (Read directly from the saved PDF, page 2.)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correctly separates absolute (whole-interval) from local (nearby) extrema and stresses that endpoints are candidates. Matches NCERT 6.4.1 (f = x+2 on (0,1) vs [0,1]) and the Fig 6.19 discussion where the absolute extrema occur at endpoints a and d, distinct from the local extrema at b and c."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:extreme-value-theorem",
+      "sources": [
+        {
+          "title": "Extreme Value Theorem - Formula, Examples, Proof, Statement - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/extreme-value-theorem-formula-examples-proof-statement/",
+          "verified": "If a real-value function f is continuous at closed interval [p, q] then, there exists two points r and s in the given interval which gives the maximum value f(r) and minimum value f(s) for the given function f(x)."
+        },
+        {
+          "title": "Maximum and Minimum Values of a Function in a Closed Interval (Theorem 5) - BYJU'S",
+          "url": "https://byjus.com/maths/maximum-and-minimum-values-of-a-function-in-a-closed-interval/",
+          "verified": "Suppose f is a continuous function on an interval I = [a, b] such that f has the absolute maximum value, and f attains it at least once in I."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correctly states the theorem AND its hypotheses (closed interval + continuity), with the right counterexample (f(x)=x on (0,1) attains neither). Matches NCERT Theorem 5. The misconception 'applying to an open interval' is the key error to guard against. Prereq continuous-function (ch05) is correctly listed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch06:absolute-extrema-closed-interval",
+      "sources": [
+        {
+          "title": "Maximum and Minimum Values of a Function in a Closed Interval (working rule) - BYJU'S",
+          "url": "https://byjus.com/maths/maximum-and-minimum-values-of-a-function-in-a-closed-interval/",
+          "verified": "Step 1: Identify all critical points of the function f in the given interval, i.e., these are the values of x where either f'(x) = 0 or f is not differentiable."
+        },
+        {
+          "title": "Absolute Maxima and Minima (closed-interval procedure) - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/absolute-minima-and-maxima/",
+          "verified": "Found by: (1) locating critical points where f'(x) = 0, (2) evaluating the function at those points and interval endpoints, and (3) comparing all values to identify which is largest (maximum) and smallest (minimum)."
+        },
+        {
+          "title": "NCERT Solutions Class 12 Maths Chapter 6 (closed-interval absolute extrema) - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-6-application-of-derivatives/",
+          "verified": "NCERT Solutions Class 12 Maths Chapter 6 mainly focuses on the rate of change of quantity, increasing/decreasing functions, tangents, normals, approximations, maxima, and minima."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "This goal concept is faithful to the NCERT Working Rule (Steps 1-4) and to Examples 27-28. The two flagged errors (forgetting endpoints; using the second derivative test instead of comparing values) are exactly NCERT's emphasis. Strong as-is."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "derivative dy/dx and f'(x) (rate of change) - OWNED upstream by cbse12:mathematics:mathematics-ch05:derivative-definition",
+      "differentiable / non-differentiable at a point (corners, e.g. |x|) - OWNED by cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
+      "second-order derivative f''(x) - OWNED by cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "continuous function on an interval - OWNED by cbse12:mathematics:mathematics-ch05:continuous-function",
+      "Chain Rule (to chain rates dy/dx = (dy/dt)/(dx/dt) and to differentiate composites in optimisation) - OWNED by cbse12:mathematics:mathematics-ch05:chain-rule (but NOT listed in ch06 rate-of-change prereqs)",
+      "one-one function (monotonic <-> injective link) - OWNED by cbse12:mathematics:mathematics-ch01:one-one-function",
+      "Mean Value Theorem - NOT taught anywhere upstream (absent from ch05 nodes and source); used only inside the PROOF of Theorem 1, not as a student-wielded tool",
+      "solving polynomial / trigonometric inequalities by factoring and the sign-on-a-number-line method - pre-curriculum bedrock, taught nowhere upstream",
+      "mensuration formulas: area/circumference of circle, volume & surface area of cube / sphere / cone / cylinder - pre-curriculum bedrock",
+      "Pythagoras theorem and similar-triangle ratios (used to set up RP^2+RQ^2, shadow, inscribed-cylinder problems) - pre-curriculum bedrock",
+      "interval notation: open (a,b) vs closed [a,b], neighbourhood (c-h, c+h), and the union of intervals - pre-curriculum bedrock",
+      "point of inflexion / inflection - introduced and owned within this chapter (first-derivative-test, fermat-stationary); not a prereq",
+      "turning point - introduced within this chapter (descriptive term for local extrema); not a prereq"
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "Chain Rule",
+        "owner": "cbse12:mathematics:mathematics-ch05:chain-rule",
+        "softening": "Add chain-rule to the prereqs of rate-of-change (and it transitively supports the optimisation worked examples). When a rate-of-change problem chains through time, surface a one-line reminder 'recall the Chain Rule: dy/dx = (dy/dt)/(dx/dt)' rather than re-teaching it; the concept is fully owned in ch05."
+      },
+      {
+        "term": "Mean Value Theorem",
+        "owner": "none upstream (proof scaffolding only)",
+        "softening": "Do NOT make this a prereq or a bridge for students. NCERT itself uses MVT only to PROVE Theorem 1 and immediately licenses students to use the f'-sign result as a stated theorem. If MVT surfaces, gloss it as 'the theorem behind why the sign of f' controls increasing/decreasing - you may use the result directly' and move on. Flag for the upstream ch05 editor that MVT/Rolle is absent if a later chapter needs it as a usable tool."
+      },
+      {
+        "term": "differentiable / non-differentiable at a point (corner points)",
+        "owner": "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
+        "softening": "Already a listed prereq of critical-point and fermat-stationary. When a critical point arises from non-differentiability (e.g. |x| at 0, x^(1/3) at 0), give a one-line nudge 'recall f' fails to exist at a corner/cusp' instead of re-deriving; concept owned in ch05."
+      },
+      {
+        "term": "continuous function on [a,b]",
+        "owner": "cbse12:mathematics:mathematics-ch05:continuous-function",
+        "softening": "Already a listed prereq of extreme-value-theorem and absolute-extrema-closed-interval. Surface only a reminder of the definition; do not re-teach."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "extreme value / extreme point",
+        "gloss": "An extreme value is just a value that is either a maximum value or a minimum value of f on the interval; the point where it occurs is an extreme point. (NCERT Definition 3(c).)"
+      },
+      {
+        "term": "point of inflexion (inflection)",
+        "gloss": "A critical point where f' does NOT change sign as x passes through it - neither a peak nor a valley (e.g. x^3 at 0). Introduce inline the first time it appears in the first-derivative-test; it is owned within this chapter, not a prereq."
+      },
+      {
+        "term": "turning point",
+        "gloss": "An informal name for a point where the graph changes from increasing to decreasing or vice-versa - i.e. a local maximum or local minimum. Gloss once near local-maxima-minima."
+      },
+      {
+        "term": "neighbourhood (c-h, c+h)",
+        "gloss": "A small open interval around c (for some h > 0); 'nearby points' in the local-extrema definitions means points in such a neighbourhood. One-line gloss at local-maxima-minima."
+      },
+      {
+        "term": "monotonic function",
+        "gloss": "A function that is either increasing throughout an interval or decreasing throughout it (NCERT Note). Useful because a monotonic function on a closed interval attains its extrema at the endpoints. Gloss inline; relates to the OWNED one-one-function (a strictly monotonic function is one-one)."
+      }
+    ]
+  }
+}

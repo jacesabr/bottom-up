@@ -1,0 +1,354 @@
+{
+  "chapter": "jee:maths:maths-ch09",
+  "concepts": [
+    {
+      "id": "jee:maths:maths-ch09:inclination-of-a-line",
+      "sources": [
+        {
+          "title": "Gradient definition - explanation and examples - Cuemath",
+          "url": "https://www.cuemath.com/geometry/gradient-definition/",
+          "verified": "The gradient or slope of a line inclined at an angle θ is equal to the tangent of the angle θ."
+        },
+        {
+          "title": "Slope Of A Line And Angle Between Two Lines - BYJU'S",
+          "url": "https://byjus.com/maths/slope-of-line/",
+          "verified": "The slope of a line is given as m = tan θ."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The node lists prereq jee:maths:maths-ch02:ordered-pair, but the explanation/keyMoves never invoke a coordinate pair — inclination is defined purely as the anticlockwise angle from the positive x-axis. The genuinely load-bearing prereqs here are angle-by-rotation and degree-measure (both ch03). Consider whether ordered-pair earns its place for this specific concept (it is real bedrock for the chapter as a whole, but not for measuring an inclination angle)."
+    },
+    {
+      "id": "jee:maths:maths-ch09:slope-as-tan-inclination",
+      "sources": [
+        {
+          "title": "Slope Of A Line And Angle Between Two Lines - BYJU'S",
+          "url": "https://byjus.com/maths/slope-of-line/",
+          "verified": "The slope of a line is given as m = tan θ."
+        },
+        {
+          "title": "Gradient definition - explanation and examples - Cuemath",
+          "url": "https://www.cuemath.com/geometry/gradient-definition/",
+          "verified": "The gradient or slope of a line inclined at an angle θ is equal to the tangent of the angle θ."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Strong, NCERT-faithful. The node correctly insists slope of a vertical line is 'undefined' not 'infinity' (matches NCERT 'The slope of a line whose inclination is 90° is not defined.'). One precision point: the prereq jee:maths:maths-ch03:degree-radian-conversion is not actually exercised — the worked reasoning uses degrees only (tan 45, tan 90, tan 0). Harmless but not load-bearing for this concept."
+    },
+    {
+      "id": "jee:maths:maths-ch09:slope-from-two-points",
+      "sources": [
+        {
+          "title": "Finding Slope From Two Points - Cuemath",
+          "url": "https://www.cuemath.com/geometry/finding-slope-from-two-points/",
+          "verified": "m = (y₂ - y₁) / (x₂ - x₁)"
+        },
+        {
+          "title": "Slope of a Line: Definition, Types, Formulas, Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/slope-of-line/",
+          "verified": "Slope = (y₂ - y₁)/(x₂ - x₁)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate and well-matched to NCERT's m = (y2 - y1)/(x2 - x1). The 'order is arbitrary provided it is consistent' point and the x1 = x2 (vertical) undefined case are both correct and directly address the listed misconceptions."
+    },
+    {
+      "id": "jee:maths:maths-ch09:parallel-lines-equal-slopes",
+      "sources": [
+        {
+          "title": "Slope of Parallel Lines - Definition, Formula, Derivation - Cuemath",
+          "url": "https://www.cuemath.com/geometry/slope-of-parallel-lines/",
+          "verified": "Slope of parallel lines are equal."
+        },
+        {
+          "title": "Parallel and Perpendicular Lines - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/parallel-and-perpendicular-lines/",
+          "verified": "Parallel lines have the same slope."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Solid. The node's PART 3 correctly handles the vertical-line edge case (both vertical lines parallel though slope undefined) which NCERT itself elides — a genuine improvement over the source's bare statement."
+    },
+    {
+      "id": "jee:maths:maths-ch09:perpendicular-lines-slope-product",
+      "sources": [
+        {
+          "title": "Parallel and Perpendicular Lines - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/parallel-and-perpendicular-lines/",
+          "verified": "m1 ⋅ m2 = −1, where m1 and m2 are slopes."
+        },
+        {
+          "title": "Slope Of A Line And Angle Between Two Lines - BYJU'S",
+          "url": "https://byjus.com/maths/slope-of-line/",
+          "verified": "Two lines are perpendicular when m₁ m₂ = -1"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Verified there is NO prereq cycle with angle-between-two-lines (that node does not list perpendicular as a prereq). Pedagogical note: NCERT derives perpendicularity (9.2.2) BEFORE the angle-between formula (9.2.3), yet this node makes angle-between-two-lines a prerequisite of perpendicularity, reversing NCERT's teaching order. The PART 2 justification ('tangent identity gives m2 = -1/m1') does lean on the angle idea, so the edge is defensible, but worth a second look."
+    },
+    {
+      "id": "jee:maths:maths-ch09:angle-between-two-lines",
+      "sources": [
+        {
+          "title": "Angle Between Two Lines - Formula, Examples - Cuemath",
+          "url": "https://www.cuemath.com/geometry/angle-between-two-lines/",
+          "verified": "tan θ = |(m₁ - m₂)/(1 + m₁m₂)|"
+        },
+        {
+          "title": "Angle Between Two Lines Formula and Examples - Vedantu",
+          "url": "https://www.vedantu.com/maths/angle-between-two-lines",
+          "verified": "tanθ = |(m₂ − m₁) / (1 + m₁m₂)|"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate. The node correctly flags the 1 + m1 m2 = 0 (perpendicular) degenerate case where the formula is undefined, matching NCERT's repeated 'as 1 + m1 m2 ≠ 0' caveat. The two sources order the numerator differently (m1-m2 vs m2-m1); both are correct because of the absolute value — note, not an error."
+    },
+    {
+      "id": "jee:maths:maths-ch09:collinearity-by-slope",
+      "sources": [
+        {
+          "title": "Collinear Points - Definition, Formula, Examples - Cuemath",
+          "url": "https://www.cuemath.com/geometry/collinear-points/",
+          "verified": "If the 3 slopes are equal, then the three points are collinear."
+        },
+        {
+          "title": "Collinear Points: Definition, Formula & How to Find Collinearity - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/collinear-points/",
+          "verified": "Three points are collinear if the slopes between each pair of points are equal."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "PART 3 (and later the distance-of-point-from-line derivation) uses 'area of triangle ABC = 0' as an equivalent collinearity test, but the area-from-coordinates formula is taught in no jee ch01-ch08 node — it is pre-curriculum (Class IX/X) bedrock that NCERT §9.1 recalls.",
+          "surfacingQuestion": "Quick check before we use it: if a triangle has vertices A(x1,y1), B(x2,y2), C(x3,y3), how do you get its area straight from the coordinates — and what does it mean if that area comes out 0?",
+          "ladder": [
+            "Recall from earlier classes: the area is (1/2) times the absolute value of a specific combination of the coordinates.",
+            "Write each vertex's x times the difference of the OTHER two vertices' y-coordinates: x1(y2 - y3) + x2(y3 - y1) + x3(y1 - y2).",
+            "Take half the absolute value of that sum — the absolute value keeps area positive regardless of vertex order.",
+            "Now ask: a 'triangle' with zero area has its three vertices squashed onto one line. So area = 0 is exactly the condition for A, B, C to be collinear."
+          ],
+          "answer": "Area of triangle ABC = (1/2)|x1(y2 - y3) + x2(y3 - y1) + x3(y1 - y2)|. For A(1,1), B(2,3), C(3,5): (1/2)|1(3-5) + 2(5-1) + 3(1-3)| = (1/2)|-2 + 8 - 6| = (1/2)(0) = 0, so the three points are collinear. In general, area = 0 if and only if the points lie on one straight line — the same conclusion the equal-slopes test gives.",
+          "returnCue": "With the zero-area test in hand, you now have two equivalent ways to confirm collinearity: equal adjacent slopes (slope AB = slope BC) or area of triangle ABC = 0. Back to the slope test."
+        }
+      ],
+      "contentNote": "PART 3 cross-links to the area-of-triangle-from-coordinates test (area = 0 iff collinear), matching NCERT's own Remark. However the area-of-triangle formula is NOT taught in any jee ch01-ch08 node — handled here by the attached refresher. Alternatively, anchor PART 3 on the slope-equality test alone."
+    },
+    {
+      "id": "jee:maths:maths-ch09:horizontal-and-vertical-lines",
+      "sources": [
+        {
+          "title": "Horizontal Line - Slope, Equation - Cuemath",
+          "url": "https://www.cuemath.com/geometry/horizontal-line/",
+          "verified": "the equation of a horizontal line through any point (a,b) is of the form: y = b, where b is constant."
+        },
+        {
+          "title": "What are Vertical Lines: Definition, Equation, Slope and Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/vertical-line/",
+          "verified": "The slope of a vertical line is undefined."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correct. The node's a/-a and b/-b sign convention is faithful to NCERT 9.3.1 ('either y = a or y = -a ... Choice of sign will depend upon the position of the line'). The PART 1/PART 2 examples and the swap-of-forms misconception are well targeted."
+    },
+    {
+      "id": "jee:maths:maths-ch09:point-slope-form",
+      "sources": [
+        {
+          "title": "Point-slope Form - Straight Lines | Class 11 Maths - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/point-slope-form-straight-lines-class-11-maths/",
+          "verified": "(y − y1) = m (x − x1)"
+        },
+        {
+          "title": "Equation of a Straight Line: Forms, Slope & Example Problems - Vedantu",
+          "url": "https://www.vedantu.com/maths/equation-of-a-straight-line",
+          "verified": "y - y₁ = m(x - x₁)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate and matches NCERT Example 5 (line through (-2,3) with slope -4 gives 4x + y + 5 = 0). The misconception 'writing y - x0 = m(x - y0)' is a genuinely common student slip; good to call out."
+    },
+    {
+      "id": "jee:maths:maths-ch09:two-point-form",
+      "sources": [
+        {
+          "title": "Two Point Form - Formula, Derivation, Examples - Cuemath",
+          "url": "https://www.cuemath.com/geometry/two-point-form/",
+          "verified": "y-y₁= (y₂-y₁)/(x₂-x₁)(x-x₁)"
+        },
+        {
+          "title": "Equation of a Straight Line - Vedantu",
+          "url": "https://www.vedantu.com/maths/equation-of-a-straight-line",
+          "verified": "the two-point form derived by substituting the slope formula into the point-slope equation"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correct. NCERT Example 6 for points (1,-1) and (3,5) gives '-3x + y + 4 = 0' (equivalently 3x - y - 4 = 0). The node's analogous example P1(1,-1), P2(3,5) reaches '3x - y - 4 = 0' — the same line, internally consistent and correct."
+    },
+    {
+      "id": "jee:maths:maths-ch09:slope-intercept-form",
+      "sources": [
+        {
+          "title": "Slope Intercept Form Equation - BYJU'S",
+          "url": "https://byjus.com/maths/slope-intercept-form/",
+          "verified": "The graph of the linear equation y = mx + c is a line with m as slope, m and c as the y-intercept."
+        },
+        {
+          "title": "Equation of a Straight Line - Vedantu",
+          "url": "https://www.vedantu.com/maths/equation-of-a-straight-line",
+          "verified": "y = mx + c"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate, including the less-common x-intercept variant y = m(x - d) which NCERT teaches as Case II of 9.3.4. The prereq jee:maths:maths-ch02:real-function is loosely defensible (y as a function of x) but is not actually load-bearing for the algebra here; the real dependencies are point-slope-form and slope-from-two-points."
+    },
+    {
+      "id": "jee:maths:maths-ch09:intercept-form",
+      "sources": [
+        {
+          "title": "Intercept Form - Definition, Formula, Equation, Examples - Cuemath",
+          "url": "https://www.cuemath.com/geometry/intercept-form/",
+          "verified": "The intercept form of the equation of a line has an equation x/a + y/b = 1, where 'a' is the x-intercept, and 'b' is the y-intercept."
+        },
+        {
+          "title": "Intercept Form of a Straight Line - BYJU'S",
+          "url": "https://byjus.com/maths/intercept-form/",
+          "verified": "the equation of the line making intercepts a and b on x-and y-axis, respectively, is given as x/a + y/b = 1"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correct and matches NCERT 9.3.5. PART 1 rightly notes both intercepts must be non-zero and a line through the origin cannot be written in intercept form — a real exam trap NCERT does not state explicitly. The 'right-hand side = 1 not 0' misconception is well chosen."
+    },
+    {
+      "id": "jee:maths:maths-ch09:general-equation-of-a-line",
+      "sources": [
+        {
+          "title": "Standard Form of a Line - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/standard-form-of-a-straight-line/",
+          "verified": "the slope of the Ax + By + C = 0 is -A/B, and the y-intercept is -C/B."
+        },
+        {
+          "title": "General Form Of A Straight Line Equation - Cuemath (JEE)",
+          "url": "https://www.cuemath.com/jee/general-form-equation-straight-line/",
+          "verified": "Most general form: Ax+By+C=0 where A,B,C∈ℝ and at least one of A,B is non-zero"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate. The slope = -A/B (not A/B) misconception is precisely the sign error students make, and the 'A and B not both zero' condition matches NCERT verbatim. Prereq jee:maths:maths-ch05:recognise-linear-inequality is only loosely related (recognising a linear expression); the core dependencies are the specific forms (slope-intercept, intercept, two-point)."
+    },
+    {
+      "id": "jee:maths:maths-ch09:distance-of-point-from-line",
+      "sources": [
+        {
+          "title": "How to Find the Distance between Two Points - BYJU'S (JEE)",
+          "url": "https://byjus.com/jee/distance-formula/",
+          "verified": "The distance formula from a point to line is as given below: PQ= |Ax₁ + By₁ + C|/√(A² + B²)"
+        },
+        {
+          "title": "Distance of a Point From a Line - Definition, Derivation, Examples - Cuemath",
+          "url": "https://www.cuemath.com/geometry/distance-of-a-point-from-a-line/",
+          "verified": "the distance from a point (x₁,y₁) to the line Ax + By + C = 0 is given by = |Ax₁ + By₁ + C| / √(A² + B²)"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "The denominator sqrt(A^2 + B^2) is the Euclidean magnitude of (A,B); the underlying distance-between-two-points formula is pre-curriculum (Class X) bedrock recalled by NCERT §9.1 and is taught in no jee ch01-ch08 node.",
+          "surfacingQuestion": "Before the point-to-line formula: how do you find the straight-line distance between two points P(x1,y1) and Q(x2,y2) on the plane?",
+          "ladder": [
+            "Drop a horizontal and a vertical segment to form a right triangle with PQ as its hypotenuse.",
+            "The horizontal leg has length |x2 - x1| and the vertical leg has length |y2 - y1|.",
+            "Apply Pythagoras to the right triangle: PQ^2 = (x2 - x1)^2 + (y2 - y1)^2.",
+            "Take the positive square root: PQ = sqrt((x2 - x1)^2 + (y2 - y1)^2). The same sqrt-of-sum-of-squares shape reappears as sqrt(A^2 + B^2) when measuring the length of the coefficient pair (A,B)."
+          ],
+          "answer": "PQ = sqrt((x2 - x1)^2 + (y2 - y1)^2). Example (NCERT §9.1): distance between (6,-4) and (3,0) is sqrt((3-6)^2 + (0+4)^2) = sqrt(9 + 16) = sqrt(25) = 5 units. The denominator sqrt(A^2 + B^2) in the point-to-line formula is this same Euclidean magnitude applied to the line's coefficient pair (A, B).",
+          "returnCue": "Now |Ax1 + By1 + C| divided by sqrt(A^2 + B^2) reads as 'value at the point, scaled by the length of (A,B)'. Back to the perpendicular-distance formula."
+        }
+      ],
+      "contentNote": "Correct and matches NCERT Example 9 ((3,-5) from 3x-4y-26=0 gives d = 3/5). The misconception 'dividing by A^2+B^2 instead of its square root' is a frequent error. The prereq jee:maths:maths-ch03:pythagorean-identity is mislabelled in spirit — what is actually used is the Euclidean magnitude/distance sqrt(A^2+B^2), not the trig identity sin^2+cos^2=1. A coordinate distance-formula refresher (attached here) fits better than that prereq edge."
+    },
+    {
+      "id": "jee:maths:maths-ch09:distance-between-parallel-lines",
+      "sources": [
+        {
+          "title": "How to Find the Distance between Two Parallel Lines - BYJU'S (JEE)",
+          "url": "https://byjus.com/jee/distance-between-2-parallel-lines/",
+          "verified": "Distance between two parallel lines is given by d = |c1−c2|/√(a2 + b2)."
+        },
+        {
+          "title": "Distance Between Two Parallel Lines - Find Shortest Distance - Cuemath",
+          "url": "https://www.cuemath.com/geometry/distance-between-two-parallel-lines/",
+          "verified": "d = |c_2 - c_1| / sqrt(a^2 + b^2)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correct, matches NCERT Example 10 (3x-4y+7=0 and 3x-4y+5=0 gives 2/5). PART 1's insistence on matching A,B coefficients BEFORE applying the formula is exactly the misconception JEE exploits (e.g. 9x+6y-7=0 vs 3x+2y+6=0 in Misc. Ex. 20 must be scaled first). Strong node."
+    },
+    {
+      "id": "jee:maths:maths-ch09:represent-a-line-algebraically",
+      "sources": [
+        {
+          "title": "Straight Lines (JEE) - the general equation of a straight line - BYJU'S",
+          "url": "https://byjus.com/jee/straight-lines/",
+          "verified": "ax + by + c = 0 ... the general equation of a straight line"
+        },
+        {
+          "title": "Straight Lines: Definition, Equation & Examples - Vedantu (JEE Main)",
+          "url": "https://www.vedantu.com/jee-main/maths-straight-lines",
+          "verified": "Straight Lines"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Many JEE straight-line problems built on this synthesis node need the section formula and mid-point formula (median, right bisector, point dividing a segment, image-in-mirror); §9.1 recalls these from earlier classes and they appear in no jee ch01-ch08 node.",
+          "surfacingQuestion": "Two recall facts the problems lean on: where is the point that divides the segment from (x1,y1) to (x2,y2) in the ratio m:n, and where is the mid-point of that segment?",
+          "ladder": [
+            "Start with the mid-point as the easy case: it sits exactly halfway, so average the x's and average the y's.",
+            "Mid-point = ((x1 + x2)/2, (y1 + y2)/2).",
+            "For a general internal ratio m:n, weight the FAR point's coordinate by m and the NEAR point's by n, then divide by (m + n).",
+            "Internal division point = ((m x2 + n x1)/(m + n), (m y2 + n y1)/(m + n)). Setting m = n recovers the mid-point."
+          ],
+          "answer": "Mid-point of (x1,y1),(x2,y2) = ((x1 + x2)/2, (y1 + y2)/2). Point dividing internally in ratio m:n = ((m x2 + n x1)/(m + n), (m y2 + n y1)/(m + n)). Example (NCERT §9.1): the point dividing A(1,-3), B(-3,9) in ratio 1:3 is x = (1·(-3) + 3·1)/(1+3) = 0, y = (1·9 + 3·(-3))/(1+3) = 0, i.e. the origin (0,0).",
+          "returnCue": "With mid-point and section formulas refreshed, you can set up medians, right bisectors and division-ratio conditions, then feed the resulting point into the equation-of-a-line forms. Back to choosing the right form for the problem."
+        }
+      ],
+      "contentNote": "Chapter goal/synthesis node; reads well. It explicitly frames the five equation forms as a toolkit to choose among (stated misconception 'reaching for one fixed form') and ties slope-relations + distance formulas together. The worked example 'distance of (-2,3) from 12x-5y+1=0 = 38/13' is arithmetically correct. No content change needed."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "coordinate plane / XY-plane (the 2D Cartesian plane on which all points and lines live)",
+      "x-axis and y-axis (positive direction of x-axis is the reference for inclination)",
+      "ordered pair / coordinates (x, y); abscissa and ordinate",
+      "plotting a point from its coordinates; the four quadrants and sign conventions",
+      "distance between two points = sqrt((x2-x1)^2 + (y2-y1)^2)",
+      "section formula and mid-point formula (used in exercises/examples: median, right bisector, image-in-mirror)",
+      "area of a triangle from coordinates = (1/2)|x1(y2-y3)+x2(y3-y1)+x3(y1-y2)| (used in the distance-of-point-from-line derivation and the collinearity zero-area test)",
+      "angle measured by rotation; degree measure; anticlockwise convention (REAL upstream nodes: ch03 measure-angle-by-rotation, degree-measure)",
+      "tangent function and its values tan 0, tan 45, tan 60, tan 90 undefined (REAL upstream node: ch03 define-trig-functions-unit-circle)",
+      "tangent of sum/difference of angles tan(A±B) (REAL upstream node: ch03 tangent-sum-difference); underpins angle-between-lines and perpendicularity derivations",
+      "cot and the identity tan(alpha+90) = -cot alpha (used in the perpendicularity derivation)",
+      "negative reciprocal; absolute value; square root and Euclidean magnitude sqrt(A^2+B^2)",
+      "linear expression / linear equation in two variables (REAL upstream node touched by ch05 recognise-linear-inequality)",
+      "supplementary angles (theta + phi = 180) at an intersection"
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      "Normal form of a line (x cos w + y sin w = p) — surfaced by several JEE-oriented sources as a standard sixth form, but NOT a node here and NOT in the NCERT 9.x body. Owner: a later/Advanced straight-lines treatment. Softening: if a student raises it, note it is the perpendicular-from-origin form and is out of scope for these 16 nodes; do not introduce it as a prerequisite.",
+      "Pair of straight lines / second-degree form ax^2+2hxy+by^2=0 and its angle formula tan = |2 sqrt(h^2-ab)/(a+b)| — appears in JEE search results but is a separate topic. Owner: conics / pair-of-lines material. Softening: explicitly out of scope; angle-between-two-lines here is strictly the two-slopes case.",
+      "Concurrency of three lines, foot of perpendicular, image of a point in a line, family of lines through an intersection — appear only in NCERT Miscellaneous Examples/Exercise (Examples 11-16, Misc. Ex.), not as taught nodes. Owner: an advanced problem-solving layer on top of the goal node. Softening: treat as applications of the 16 nodes, not new prerequisites."
+    ],
+    "inlineGlosses": [
+      "abscissa / ordinate — gloss inline at inclination-of-a-line / horizontal-and-vertical-lines: 'abscissa = x-coordinate, ordinate = y-coordinate'. NCERT uses 'ordinate' in 9.3.1 without redefining.",
+      "gradient — gloss inline at slope-as-tan-inclination: 'gradient is just another name for slope' (NCERT: 'tan θ is called the slope or gradient'). Sources use 'gradient' freely.",
+      "negative reciprocal — gloss inline at perpendicular-lines-slope-product: 'the negative reciprocal of p/q is -q/p'. The node already does this in PART 3; keep it.",
+      "supplementary angles — gloss inline at angle-between-two-lines: 'two angles that add to 180 degrees'. Used implicitly when deriving phi = 180 - theta.",
+      "tan(alpha + 90) = -cot alpha — gloss inline at perpendicular-lines-slope-product PART 2 if the derivation is shown; it is the one trig step the perpendicularity result hinges on."
+    ],
+    "preCurriculumBedrockNotTaughtUpstream": [
+      "coordinate plane / axes / plotting points / quadrants — assumed by ch02 (uses x-axis, quadrants, y=x graphs without defining the plane) and by ch09 §9.1 ('We are familiar with two-dimensional coordinate geometry from earlier classes ... coordinate axes, coordinate plane, plotting of points'). CLASSIFY: pre-curriculum bedrock (Class IX/X), flagged as assumed. NOT an AUTHOR-bridge candidate (genuine prior-grade bedrock, not a missing course concept).",
+      "distance formula sqrt((x2-x1)^2+(y2-y1)^2) — VERIFIED absent from jee ch01-ch08 (grep found zero matches). NCERT §9.1 recalls it as 'earlier classes'. CLASSIFY: pre-curriculum bedrock -> REFRESHER attached to distance-of-point-from-line (first node leaning on Euclidean distance/magnitude).",
+      "section formula & mid-point formula — VERIFIED absent upstream. NCERT §9.1 recalls them. CLASSIFY: pre-curriculum bedrock -> REFRESHER attached at the goal node (they surface in median/right-bisector/image exercises rather than one taught node).",
+      "area of triangle from coordinates (1/2)|...| — VERIFIED absent upstream. NCERT §9.1 recalls it and uses it in the distance-of-point-from-line derivation and the collinearity Remark. CLASSIFY: pre-curriculum bedrock -> REFRESHER attached to collinearity-by-slope (first node invoking the zero-area test)."
+    ],
+    "missingCourseConceptVsBedrock": "No load-bearing idea was found that is (a) genuinely required by these 16 nodes AND (b) taught nowhere upstream AND (c) not prior-grade bedrock. Every internal dependency (inclination, tan, tan-sum/difference, degree measure, ordered pair, linear expression) resolves to a REAL existing node in jee ch02/ch03/ch05. Therefore NO AUTHOR-bridge is proposed. The only true gaps are the Class IX/X coordinate-geometry bedrock items (distance, section/mid-point, area-of-triangle, the plane/axes), correctly handled as pre-curriculum REFRESHERS rather than bridges."
+  }
+}

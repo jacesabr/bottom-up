@@ -1,0 +1,362 @@
+{
+  "chapter": "jee:maths:maths-ch08",
+  "concepts": [
+    {
+      "id": "jee:maths:maths-ch08:define-a-sequence",
+      "sources": [
+        {
+          "title": "Sequences - Sequences in Math Along with Rules, Formulas, and Examples (Cuemath)",
+          "url": "https://www.cuemath.com/algebra/sequences/",
+          "verified": "A sequence is a list of numbers (or elements) that exhibits a particular pattern."
+        },
+        {
+          "title": "Sequence and Series: Definitions, Formulas & Examples (Vedantu JEE Main)",
+          "url": "https://www.vedantu.com/jee-main/maths-sequence-and-series",
+          "verified": "A sequence is an ordered list of numbers arranged according to a definite rule."
+        },
+        {
+          "title": "Sequence And Series Basics (BYJU'S)",
+          "url": "https://byjus.com/maths/sequence-and-series/",
+          "verified": "A sequence is an arrangement of any objects or a set of numbers in a particular order followed by some rule."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student treats the subscript notation a_1, a_2, ..., a_n as unfamiliar, or cannot read 'a_n' as 'the value at position n'.",
+          "surfacingQuestion": "Before we list terms, what does the little number written below the 'a' (the subscript) in a_3 tell you?",
+          "ladder": [
+            "When we write a_1, a_2, a_3, the small number n is the POSITION of the term in the list, not its value.",
+            "So a_1 is the first term, a_2 is the second term, and a_5 would be the fifth term — wherever it happens to sit in the list.",
+            "The value living at that position is whatever the rule produces; position (the subscript) and value (the number) are two different things."
+          ],
+          "answer": "The subscript in a_n is the position index: a_n means 'the term sitting at position n in the sequence.' For the sequence 2, 4, 8, 16, the term a_1 = 2 (position 1), a_3 = 8 (position 3). The subscript labels WHERE the term is; the term itself is the value at that place.",
+          "returnCue": "Now that subscripts just mark position, let's see a sequence as a function whose input is the position n and whose output is the term a_n."
+        }
+      ],
+      "contentNote": "prereqs lists jee:maths:maths-ch02:function, which is correct (sequence as a function on N), but the load-bearing idea actually used here is the natural numbers N as the domain/index set. Consider adding a brief inline gloss naming N = {1, 2, 3, ...} as the index set when the 'sequence as a function' framing is introduced in PART 3, since students often have the function concept but not the habit of using N specifically as the domain."
+    },
+    {
+      "id": "jee:maths:maths-ch08:classify-finite-and-infinite-sequences",
+      "sources": [
+        {
+          "title": "Sequences - Sequences in Math (Cuemath)",
+          "url": "https://www.cuemath.com/algebra/sequences/",
+          "verified": "A sequence having a finite number of terms is called a finite sequence."
+        },
+        {
+          "title": "Sequence And Series Basics (BYJU'S)",
+          "url": "https://byjus.com/maths/sequence-and-series/",
+          "verified": "A finite sequence is a sequence that contains the last term such as a1, a2, a3, a4, a5, a6……an."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Misconception 2 ('a sequence written with ... must always be infinite, even when it terminates at a stated last term') is well chosen and matches the NCERT source, which writes the finite ancestors sequence as 2, 4, 8, 16, ..., 1024 with an ellipsis yet a stated last term. The explanation could anchor this misconception directly to that NCERT example (a_1=2, ..., a_10=1024 is finite despite the '...') for evidence-grounded reinforcement."
+    },
+    {
+      "id": "jee:maths:maths-ch08:find-the-general-term",
+      "sources": [
+        {
+          "title": "Sequence and Series Class 11 Notes (eSaral)",
+          "url": "https://www.esaral.com/sequence-and-series-class-11-notes/",
+          "verified": "The nth term of a Geometric Progression is Tₙ = arⁿ⁻¹, where a is the first term and r is the common ratio."
+        },
+        {
+          "title": "Types of Sequence and Series (BYJU'S JEE)",
+          "url": "https://byjus.com/jee/sequence-and-series-introduction/",
+          "verified": "The nth term is denoted by an or Tn, and it is the general term of sequence/series."
+        },
+        {
+          "title": "Sequences - Sequences in Math (Cuemath)",
+          "url": "https://www.cuemath.com/algebra/sequences/",
+          "verified": "Sequences can be described in different ways, such as an explicit formula, a recurrence relation, or a table of values."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "prereqs includes jee:maths:maths-ch02:polynomial-function, appropriate because Example 2's general term a_n = (n-1)(2-n)(3+n) requires evaluating a polynomial in n. The explanation's PART 2 example (a_n = (n-1)(2-n)(3+n), find a_4 = -42) is sound; note the NCERT source evaluates the SAME formula at n=20 to get -7866, so a content alignment with the source value (or a sentence pointing to the NCERT a_20) would tie it to the textbook."
+    },
+    {
+      "id": "jee:maths:maths-ch08:form-a-series-with-sigma-notation",
+      "sources": [
+        {
+          "title": "Sigma Notation Made Easy: Definition, Examples & Formulas (Vedantu)",
+          "url": "https://www.vedantu.com/maths/sigma-notation",
+          "verified": "Sigma notation is a convenient method to represent an infinite number of terms."
+        },
+        {
+          "title": "Types of Sequence and Series (BYJU'S JEE)",
+          "url": "https://byjus.com/jee/sequence-and-series-introduction/",
+          "verified": "The summation of all the terms of the sequence is called a series."
+        },
+        {
+          "title": "Sequence and Series: Definitions, Formulas & Examples (Vedantu JEE Main)",
+          "url": "https://www.vedantu.com/jee-main/maths-sequence-and-series",
+          "verified": "A series is the sum of the terms of a sequence."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student has not seen the summation symbol before and reads sum_{k=1}^{n} a_k as an unknown object rather than an instruction to add.",
+          "surfacingQuestion": "When you see the big Greek letter Σ (sigma) with k=1 written below and n written above, what is it telling you to do?",
+          "ladder": [
+            "Σ is just shorthand for 'add up'. The thing to its right (here a_k) is the term to be added.",
+            "The 'k = 1' underneath says start the index k at 1; the 'n' on top says stop when k reaches n.",
+            "So you plug k = 1, 2, 3, ..., n into a_k in turn and add all those results. The letter k is a placeholder (a dummy index) and could just as well be i or j."
+          ],
+          "answer": "sum_{k=1}^{n} a_k means: substitute k = 1, then 2, then 3, ..., up to n into the expression a_k, and add all the results. For example sum_{k=1}^{4} (2k-1) = 1 + 3 + 5 + 7 = 16. The lower limit (k=1) is the start, the upper limit (n) is the stop, and k is a dummy index that disappears once the sum is written out.",
+          "returnCue": "With Σ understood as 'add these terms', let's compress the series of a sequence into sigma form and keep separate the series (the indicated sum) from its value."
+        }
+      ],
+      "contentNote": "Good fidelity to NCERT, including the Remark that 'series' refers to the indicated sum not the resulting number (1+3+5+7 is the series; 16 is its sum). The example uses 1+3+5+7 = sum_{k=1}^{4}(2k-1); the NCERT Remark uses the same 1+3+5+7 with sum 16 — strongly aligned."
+    },
+    {
+      "id": "jee:maths:maths-ch08:recognise-a-geometric-progression",
+      "sources": [
+        {
+          "title": "Geometric Progression (GP) - Formulas, n^th Term, Sum (Cuemath)",
+          "url": "https://www.cuemath.com/algebra/what-are-geometric-progressions/",
+          "verified": "A geometric progression is a special type of progression where the successive terms bear a constant ratio known as a common ratio."
+        },
+        {
+          "title": "Geometric Progression | Formula, nth Term, Sum, Examples, Properties (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/what-is-geometric-progression/",
+          "verified": "Geometric Progression (GP) is a sequence of numbers where each term after the first is found by multiplying the previous term by a constant called the common ratio."
+        },
+        {
+          "title": "Geometric Progression (BYJU'S)",
+          "url": "https://byjus.com/maths/geometric-progression/",
+          "verified": "Each succeeding term is produced by multiplying each preceding term by a fixed number, which is called a common ratio."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Strong: PART 3 correctly contrasts A.P. (constant difference) vs G.P. (constant ratio) and flags the no-zero-term rule. The NCERT-sourced example (1/9, -1/27, 1/81 with r = -1/3) is reproduced accurately. No change needed."
+    },
+    {
+      "id": "jee:maths:maths-ch08:identify-first-term-and-common-ratio",
+      "sources": [
+        {
+          "title": "What is the common ratio in Geometric Progression? (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/what-is-the-common-ratio-in-geometric-progression/",
+          "verified": "In geometric progression, the common ratio is the ratio between any term in the sequence and divided by the previous term."
+        },
+        {
+          "title": "Geometric Progression (BYJU'S)",
+          "url": "https://byjus.com/maths/geometric-progression/",
+          "verified": "The common multiple between each successive term and preceding term in a GP is the common ratio."
+        },
+        {
+          "title": "Geometric Progression (GP) - Formulas, n^th Term, Sum (Cuemath)",
+          "url": "https://www.cuemath.com/algebra/what-are-geometric-progressions/",
+          "verified": "A geometric progression is a special type of progression where the successive terms bear a constant ratio known as a common ratio."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Misconception 2 (computing the ratio as a_1/a_2 and inverting r) is a precise, common error and worth keeping. The standard-form framing a, ar, ar^2, ... matches NCERT line 176. No change needed."
+    },
+    {
+      "id": "jee:maths:maths-ch08:find-the-nth-term-of-a-gp",
+      "sources": [
+        {
+          "title": "All about General Term or Nth Term of Geometric Progression (Unacademy JEE)",
+          "url": "https://unacademy.com/content/jee/study-material/mathematics/nth-term-of-geometric-progression/",
+          "verified": "The formula x sub n equals a times r to the n - 1 power, where an is the first term in the sequence and r is the common ratio, yields the general term, or nth term, of any geometric sequence."
+        },
+        {
+          "title": "Geometric Progression (GP) - Formulas, n^th Term, Sum (Cuemath)",
+          "url": "https://www.cuemath.com/algebra/what-are-geometric-progressions/",
+          "verified": "The formula for the nth term of the geometric progression is: an = arn-1"
+        },
+        {
+          "title": "Geometric Progression | Formula, nth Term, Sum (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/what-is-geometric-progression/",
+          "verified": "The general term or nth term of a geometric sequence a, ar, ar2, ar3, ar4 is given by: an = arn-1"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "prereqs lists jee:maths:maths-ch07:state-binomial-theorem, which looks mis-scoped. The actual prerequisite skill in this node is manipulating integer powers (laws of exponents) and equating exponents to solve, e.g. 4^(n-1) = 4^8 => n-1=8, and dividing a_6/a_3 = r^3. The binomial theorem is not used anywhere in the explanation or its examples. Recommend replacing the ch07 binomial-theorem prereq with a laws-of-exponents / integer-powers concept (see prereqSweep), or removing it; the binomial theorem is not load-bearing for ar^(n-1)."
+    },
+    {
+      "id": "jee:maths:maths-ch08:sum-n-terms-of-a-gp",
+      "sources": [
+        {
+          "title": "Geometric Progression Sum Of Gp (BYJU'S)",
+          "url": "https://byjus.com/maths/geometric-progression-sum-of-gp/",
+          "verified": "S_n = a(r^n – 1)/(r - 1); Where r ≠ 1"
+        },
+        {
+          "title": "Geometric Sum Formula - What Is Geometric Sum Formula? (Cuemath)",
+          "url": "https://www.cuemath.com/geometric-sum-formula/",
+          "verified": "Thus we derive at the sum of n terms of GP as Sn=a(r^n−1)/(r−1)"
+        },
+        {
+          "title": "Geometric Progression | Formula, nth Term, Sum (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/what-is-geometric-progression/",
+          "verified": "Sn = a(1 - rn)/(1 - r), if r < 1"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Excellent derivation fidelity (multiply by r, subtract, factor) matching NCERT 8.4.2. The r=1 special case (S_n = na) and the worked solve-for-n example (3(2^n-1)=765 => n=8) are correct. Misconception 1 (applying the r!=1 formula when r=1, dividing by zero) is precisely the right caution. No change needed."
+    },
+    {
+      "id": "jee:maths:maths-ch08:compute-the-geometric-mean",
+      "sources": [
+        {
+          "title": "Geometric Mean For Iit JEE (BYJU'S)",
+          "url": "https://byjus.com/jee/geometric-mean-for-iit-jee/",
+          "verified": "GM (b) = √(ac) (Where, a and c > 0)"
+        },
+        {
+          "title": "Geometric Mean Formula - What Is Geometric Mean Formula? (Cuemath)",
+          "url": "https://www.cuemath.com/geometric-mean-formula/",
+          "verified": "geometric mean of 4 and 36 yields √(4 × 36) = 12"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student is unsure what the square root symbol sqrt(x) means or how to take the square root of a product like sqrt(ab) = sqrt(16) for a=2, b=8.",
+          "surfacingQuestion": "We need sqrt(ab). What number does sqrt(16) stand for, and how would you check your answer?",
+          "ladder": [
+            "sqrt(x) asks: which non-negative number, when multiplied by itself, gives x?",
+            "So sqrt(16) is the number whose square is 16. Since 4 x 4 = 16, sqrt(16) = 4.",
+            "To find sqrt(ab), first multiply a and b, then take the square root of that single product. For a=2, b=8: ab = 16, so sqrt(16) = 4."
+          ],
+          "answer": "The square root sqrt(x) is the non-negative number that squares to x. sqrt(16) = 4 because 4^2 = 16; you can check by squaring your answer. For the geometric mean we compute ab first, then its square root: G.M. of 2 and 8 is sqrt(2*8) = sqrt(16) = 4, and 2, 4, 8 indeed have common ratio 2.",
+          "returnCue": "With square roots clear, the geometric mean of a and b is just sqrt(ab) — the middle term that makes a, G, b a G.P."
+        }
+      ],
+      "contentNote": "Misconception 2 (taking the G.M. of numbers of opposite sign, where sqrt(ab) is not real) is a good guard and matches the NCERT restriction to two POSITIVE numbers. The verification that a, G, b is a G.P. via equal ratios (G/a = b/G = sqrt(b/a)) is a nice, correct addition beyond the bare NCERT definition. No change needed."
+    },
+    {
+      "id": "jee:maths:maths-ch08:insert-geometric-means",
+      "sources": [
+        {
+          "title": "Find N Geometric Means between A and B (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/dsa/find-n-geometric-means-between-a-and-b/",
+          "verified": "R = (B/A)1/(N+1)"
+        },
+        {
+          "title": "Geometric Mean For Iit JEE (BYJU'S)",
+          "url": "https://byjus.com/jee/geometric-mean-for-iit-jee/",
+          "verified": "If 'n' number of geometric means G1, G2, G3, G4, . . . , Gn are inserted between two numbers a and b, such that the resulting sequence a, G1, G2, G3, G4, . . ., Gn, b forms the geometric progression"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student does not know how to solve r^(n+1) = b/a for r, i.e. is unfamiliar with taking an (n+1)th root / fractional exponent.",
+          "surfacingQuestion": "We reach r^4 = 256 and need r. How do you undo a fourth power to get r on its own?",
+          "ladder": [
+            "Raising to a power and taking that same root are inverse operations: to undo r^4, take the fourth root of both sides.",
+            "The fourth root of 256 is the number that, raised to the 4th power, gives 256. Since 4^4 = 256, r = 4. (A negative root r = -4 also satisfies r^4 = 256.)",
+            "In general, to undo r^(n+1) = b/a, raise both sides to the power 1/(n+1): r = (b/a)^(1/(n+1))."
+          ],
+          "answer": "To solve r^(n+1) = b/a for r, take the (n+1)th root, i.e. raise both sides to the power 1/(n+1): r = (b/a)^(1/(n+1)). For r^4 = 256, the fourth root gives r = 4 (since 4^4 = 256), with r = -4 as the other real root when the index is even. Roots and powers are inverse operations.",
+          "returnCue": "Now that you can extract r by an (n+1)th root, set b as the (n+2)th term, solve r = (b/a)^(1/(n+1)), and build the inserted means G_k = a r^k."
+        }
+      ],
+      "contentNote": "Correct and well-aligned with NCERT 8.4.3: b is the (n+2)th term, b = a r^(n+1), r = (b/a)^(1/(n+1)), means G_1=ar,...,G_n=ar^n. The worked example (3 means between 1 and 256 => r=4, means 4,16,64) matches NCERT Example 12. Misconception 1 (treating b as the (n+1)th rather than (n+2)th term) is the precise high-value error. Good."
+    },
+    {
+      "id": "jee:maths:maths-ch08:relate-am-and-gm",
+      "sources": [
+        {
+          "title": "AM GM Inequality | Formula, Relationship & Solved Examples (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/am-gm-inequality/",
+          "verified": "A.M ≥ G.M"
+        },
+        {
+          "title": "Arithmetic Mean - Geometric Mean (Brilliant Math & Science Wiki)",
+          "url": "https://brilliant.org/wiki/arithmetic-mean-geometric-mean/",
+          "verified": "The arithmetic mean of non-negative real numbers is greater than or equal to the geometric mean of the same list."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "prereqs lists jee:maths:maths-ch05:apply-rules-for-solving (linear inequalities). The node's PART 1 derivation A - G = (sqrt(a)-sqrt(b))^2/2 >= 0 actually leans on the fact that a square is non-negative more than on inequality-solving rules; that 'square >= 0' idea is bedrock (see prereqSweep). PART 2 reconstruction via (a-b)^2 = (a+b)^2 - 4ab matches NCERT Example 13 exactly (A=10, G=8 => a,b = 16,4). Consider an inline gloss that (sqrt(a)-sqrt(b))^2 >= 0 because any real square is non-negative, since that is the real load-bearing fact."
+    },
+    {
+      "id": "jee:maths:maths-ch08:solve-geometric-progression-problems",
+      "sources": [
+        {
+          "title": "Geometric Progression Sum Of Gp (BYJU'S)",
+          "url": "https://byjus.com/maths/geometric-progression-sum-of-gp/",
+          "verified": "many real-life patterns, like growth of populations or money doubling, follow this principle"
+        },
+        {
+          "title": "Sum of Geometric Progression (GP) Formula & Examples (Vedantu)",
+          "url": "https://www.vedantu.com/maths/geometric-progression-sum-of-gp",
+          "verified": "Sₙ = a(1 − rⁿ) / (1 − r), when r ≠ 1"
+        },
+        {
+          "title": "Geometric Progression (GP) - Formulas, n^th Term, Sum (Cuemath)",
+          "url": "https://www.cuemath.com/algebra/what-are-geometric-progressions/",
+          "verified": "Sn = a(1 − rn)/(1 − r) for r ≠ 1, and Sn = an for r = 1"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Good capstone framing (identify a, r; pick the right tool; interpret in context). PART 3's compound-interest / depreciation / doubling contexts match NCERT Exercise 8.2 word problems (Q30 bacteria doubling, Q31 Rs 500 at 10% compounded, Q17 depreciation 20%). One precision note: the PART 2 worked example states r=2 'by trial' for r^3+r^2+r+1=15; it is fine but could note that 1+r+r^2+r^3 is itself the GP-sum identity (S_4 with a=1) to reinforce the toolkit rather than relying on trial."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "natural numbers N = {1, 2, 3, ...} as the index/domain set (define-a-sequence, classify-finite-and-infinite-sequences)",
+      "function / domain (sequence as a function on N) — owned by jee:maths:maths-ch02:function (already a prereq)",
+      "finite vs infinite SETS — owned by jee:maths:maths-ch01:classify-finite-and-infinite-sets (already a prereq)",
+      "subscript / index notation a_n (the subscript denotes position)",
+      "summation symbol Sigma and dummy index k (sigma notation)",
+      "ratio / division of two numbers, including signed and fractional ratios (recognise-GP, common ratio)",
+      "non-zero divisor / division-by-zero is undefined (GP terms must be non-zero; r=1 case in sum formula)",
+      "laws of exponents and integer powers; ar^(n-1); equating equal bases to solve exponents (4^(n-1)=4^8 => n-1=8)",
+      "square root sqrt of a non-negative number (geometric mean sqrt(ab))",
+      "nth root / fractional (rational) exponent x^(1/(n+1)) (inserting geometric means)",
+      "a real square is non-negative: (sqrt(a)-sqrt(b))^2 >= 0 (AM-GM derivation)",
+      "the algebraic identity (a-b)^2 = (a+b)^2 - 4ab (reconstructing two numbers from A and G)",
+      "solving a simple linear system a+b = S, a-b = D (relate-AM-GM, Example 13)",
+      "quadratic equation roots (Exercise 8.2 Q32, miscellaneous Q9 link AM/GM to a quadratic) — owned by jee:maths:maths-ch04 quadratics, not load-bearing for the 12 core nodes",
+      "percentage growth/decay factor (1 +/- p/100) for compound interest and depreciation (solve-GP-problems contexts)"
+    ],
+    "bridgesProposed": [
+      {
+        "term": "laws of exponents / integer powers and equating exponents",
+        "classification": "AUTHOR-bridge",
+        "rationale": "find-the-nth-term-of-a-gp and sum-n-terms-of-a-gp both rely on manipulating ar^(n-1), reading ar^16 = ar^(16-1)-style patterns, and solving by equating equal bases (e.g. 4^(n-1) = 4^8 => n-1 = 8; 2^n = 256 = 2^8 => n = 8). The current prereq for find-the-nth-term is jee:maths:maths-ch07:state-binomial-theorem, which is NOT what these steps use. There is no upstream node in jee maths ch01-ch07 that explicitly teaches the laws of exponents / solving exponential equations by equal bases as a discrete skill, so a short author bridge ('to solve a^x = a^y for x when the bases match, set the exponents equal; recall a^m * a^n = a^(m+n) and a^m / a^n = a^(m-n)') should be inserted at first use in find-the-nth-term-of-a-gp. This is pre-curriculum bedrock from earlier classes, hence bridge rather than defer."
+      }
+    ],
+    "defers": [
+      {
+        "term": "quadratic equations and their roots",
+        "owner": "jee:maths:maths-ch04 (Quadratic equations / Complex numbers and quadratic equations)",
+        "softening": "Only appears in Exercise 8.2 Q32 (form a quadratic from given A.M.=8, G.M.=5) and Miscellaneous Q9; NOT used in any of the 12 core teaching nodes. Defer with a one-line note 'forming/solving the quadratic is covered with quadratic equations' rather than teaching it here. The core relate-AM-GM node avoids quadratics by using the linear system a+b, a-b instead."
+      },
+      {
+        "term": "arithmetic progression (A.P.) and arithmetic mean (A.M.)",
+        "owner": "Class 11 NCERT prior treatment of A.P. (and prior class); within this curriculum the chapter assumes A.P. is already known (NCERT line 17: 'In previous class, we have studied about arithmetic progression (A.P)').",
+        "softening": "recognise-a-geometric-progression contrasts G.P. (constant ratio) against A.P. (constant difference), and relate-am-and-gm uses A.M. = (a+b)/2. The A.M. formula is simple enough to inline-gloss; the broader A.P. machinery should be deferred to its owner with a soft reference ('just as an A.P. has a constant difference, ...'). No bridge needed because A.M. = (a+b)/2 is glossed inline."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "arithmetic mean A = (a+b)/2",
+        "attachTo": "jee:maths:maths-ch08:relate-am-and-gm",
+        "gloss": "The arithmetic mean of a and b is their ordinary average, A = (a+b)/2 — the number exactly halfway between them. (Already stated in the node; keep as a one-line inline reminder rather than a full prereq.)"
+      },
+      {
+        "term": "common ratio as a signed/fractional value",
+        "attachTo": "jee:maths:maths-ch08:recognise-a-geometric-progression",
+        "gloss": "The ratio r can be negative (e.g. -1/3, giving alternating signs) or a proper fraction (e.g. 0.01); 'constant ratio' does not mean r > 1. Inline-gloss using the NCERT examples 1/9, -1/27, 1/81 (r = -1/3) and .01, .0001, ... (r = 0.01)."
+      },
+      {
+        "term": "percentage growth/decay factor (1 +/- p/100)",
+        "attachTo": "jee:maths:maths-ch08:solve-geometric-progression-problems",
+        "gloss": "A quantity that changes by a fixed percentage p each period multiplies by (1 + p/100) for growth (compound interest) or (1 - p/100) for decay (depreciation) each step, so successive values form a G.P. with that factor as r. Inline-gloss at the application step; do not treat as a separate prereq node."
+      },
+      {
+        "term": "square is non-negative: (sqrt(a)-sqrt(b))^2 >= 0",
+        "attachTo": "jee:maths:maths-ch08:relate-am-and-gm",
+        "gloss": "Any real number squared is >= 0, so (sqrt(a)-sqrt(b))^2 >= 0; this single fact is what forces A - G >= 0. Inline-gloss this in PART 1 rather than relying on the ch05 inequality-rules prereq, which is not the operative idea."
+      },
+      {
+        "term": "sqrt / nth root of a non-negative number",
+        "attachTo": "jee:maths:maths-ch08:compute-the-geometric-mean",
+        "gloss": "sqrt(x) is the non-negative number whose square is x; an (n+1)th root undoes an (n+1)th power. Covered by the refreshers attached to compute-the-geometric-mean and insert-geometric-means; an inline reminder suffices for readers who have the idea."
+      }
+    ]
+  }
+}

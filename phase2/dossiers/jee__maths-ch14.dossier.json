@@ -1,0 +1,448 @@
+{
+  "chapter": "jee:maths:maths-ch14",
+  "concepts": [
+    {
+      "id": "jee:maths:maths-ch14:event-as-subset",
+      "sources": [
+        {
+          "title": "Probability — NCERT Exemplar Problems, Class 11, Chapter 16",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep216.pdf",
+          "verified": "An event is a subset of a sample space S."
+        },
+        {
+          "title": "Types of Events in Probability — BYJU'S",
+          "url": "https://byjus.com/maths/types-of-events-in-probability/",
+          "verified": "An event is a subset of the sample space, i.e., E is a subset of S."
+        },
+        {
+          "title": "Events in Probability — Types, Examples, Definition — Cuemath",
+          "url": "https://www.cuemath.com/data/events-in-probability/",
+          "verified": "Events in probability are a subset of the sample space."
+        },
+        {
+          "title": "Types of Events in Probability — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/types-of-events-in-probability/",
+          "verified": "It is now clear that events are subsets of the sample space."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:occurrence-of-an-event",
+      "sources": [
+        {
+          "title": "Types of Events in Probability — BYJU'S",
+          "url": "https://byjus.com/maths/types-of-events-in-probability/",
+          "verified": "For any event to occur, the outcome of the experiment must be an element of the set of event E."
+        },
+        {
+          "title": "Class 11 Mathematics: Event — Deeksha Learning (JEE)",
+          "url": "https://deekshalearning.com/jee-coaching/class-11-mathematics-event/",
+          "verified": "An event occurs when the actual outcome of an experiment belongs to the set representing that event."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student is asked to decide whether an event E has occurred but is unsure what the single 'actual outcome' of one performance of the experiment even is — confuses the whole sample space, or the whole event E, with the one outcome that actually happened.",
+          "surfacingQuestion": "You toss a coin twice and the sample space is S = {HH, HT, TH, TT}. You perform the experiment once and see heads then tails. How many of those four outcomes actually happened on this one performance, and which one?",
+          "ladder": [
+            "A random experiment is any action whose result can't be predicted in advance but whose full list of possible results IS known ahead of time. That known full list is the sample space S.",
+            "Each single entry in S (like HT) is one possible result, called an outcome or sample point.",
+            "When you actually perform the experiment ONE time, it produces exactly ONE of those outcomes — never zero, never two. We call that single realised outcome omega.",
+            "So in two coin tosses, even though S lists four possibilities, a single run lands on just one of them; seeing heads-then-tails means omega = HT."
+          ],
+          "answer": "Exactly one outcome happened: omega = HT. A single performance of any random experiment always yields exactly one sample point from S, no matter how many outcomes S contains. The other three outcomes (HH, TH, TT) were possible but did not occur this time.",
+          "returnCue": "Now that omega is the single outcome that actually happened, test occurrence by checking just one thing: is omega inside the event subset E? If omega is in E, E occurred; if not, it didn't."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:impossible-and-sure-events",
+      "sources": [
+        {
+          "title": "Probability — NCERT Exemplar Problems, Class 11, Chapter 16",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep216.pdf",
+          "verified": "In fact φ is called an impossible event and S, i.e., the whole sample space is called a sure event."
+        },
+        {
+          "title": "Events in Probability — Types, Examples, Definition — Cuemath",
+          "url": "https://www.cuemath.com/data/events-in-probability/",
+          "verified": "The empty set ϕ is an impossible event and the sample space S is a sure event."
+        },
+        {
+          "title": "Types of Events in Probability — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/types-of-events-in-probability/",
+          "verified": "An event that consists of the entire sample space is called a sure event"
+        },
+        {
+          "title": "Types of Events in Probability Explained With Examples — Vedantu",
+          "url": "https://www.vedantu.com/maths/types-of-events-in-probability",
+          "verified": "These kinds of events are impossible and can be described by an empty set ∅"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:simple-event",
+      "sources": [
+        {
+          "title": "Probability — NCERT Exemplar Problems, Class 11, Chapter 16",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep216.pdf",
+          "verified": "If an event E has only one sample point of a sample space, i.e., a single outcome of an experiment, it is called a simple or elementary event."
+        },
+        {
+          "title": "Types of Events in Probability — BYJU'S",
+          "url": "https://byjus.com/maths/types-of-events-in-probability/",
+          "verified": "Any event consisting of a single point of the sample space is known as a simple event."
+        },
+        {
+          "title": "Types of Events in Probability — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/types-of-events-in-probability/",
+          "verified": "Any event that comprises a single result from the sample space is known as a simple event."
+        },
+        {
+          "title": "What are Simple and Compound Events in Probability — BYJU'S (JEE)",
+          "url": "https://byjus.com/jee/what-are-simple-and-compound-events-in-probability/",
+          "verified": "An event that has a single point of the sample space is known as a simple event"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:compound-event",
+      "sources": [
+        {
+          "title": "Probability — NCERT Exemplar Problems, Class 11, Chapter 16",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep216.pdf",
+          "verified": "If an event has more than one sample point it is called a compound event"
+        },
+        {
+          "title": "Types of Events in Probability — BYJU'S",
+          "url": "https://byjus.com/maths/types-of-events-in-probability/",
+          "verified": "If any event consists of more than one single point of the sample space then such an event is called a compound event."
+        },
+        {
+          "title": "Types of Events in Probability — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/types-of-events-in-probability/",
+          "verified": "Any event that comprises more than a single result or more than a single point from the sample space"
+        },
+        {
+          "title": "What are Simple and Compound Events in Probability — BYJU'S (JEE)",
+          "url": "https://byjus.com/jee/what-are-simple-and-compound-events-in-probability/",
+          "verified": "If an event has more than one sample point, it is termed as a compound event"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The prereqs list event-a-and-b and event-a-or-b as prerequisites of compound-event, but the NCERT source introduces the compound event (14.1.2, item 3) BEFORE the algebra of events (14.1.3, which defines union/intersection). A compound event only needs the idea of 'more than one sample point' — it does not depend on union/intersection. Consider relaxing those two forward-pointing prereqs to avoid a dependency cycle (the union/intersection nodes are conceptually downstream of, not upstream of, the simple/compound distinction)."
+    },
+    {
+      "id": "jee:maths:maths-ch14:complementary-event",
+      "sources": [
+        {
+          "title": "Complementary Events — Examples, Definition, Rule — Cuemath",
+          "url": "https://www.cuemath.com/data/complementary-events/",
+          "verified": "the complement of an event can be defined as the set of outcomes in which it does not occur"
+        },
+        {
+          "title": "What are Complementary Events in Probability — BYJU'S (JEE)",
+          "url": "https://byjus.com/jee/what-are-complementary-events-in-probability/",
+          "verified": "A' denotes the complementary event of A. A' = S – A."
+        },
+        {
+          "title": "Algebra of Events in Probability — BYJU'S",
+          "url": "https://byjus.com/maths/algebra-of-events/",
+          "verified": "there corresponds another event A′ called the complementary event to A. It is also called the event 'not A'."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:event-a-or-b",
+      "sources": [
+        {
+          "title": "Algebra of Events in Probability — BYJU'S",
+          "url": "https://byjus.com/maths/algebra-of-events/",
+          "verified": "Event 'A or B' = A ∪ B = {ω: ω ∈ A or ω ∈ B}"
+        },
+        {
+          "title": "Events in Probability — Types, Examples, Definition — Cuemath",
+          "url": "https://www.cuemath.com/data/events-in-probability/",
+          "verified": "The outcomes of either event or both will be the result. The union symbol (∪) is used to denote the OR event."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:event-a-and-b",
+      "sources": [
+        {
+          "title": "Algebra of Events in Probability — BYJU'S",
+          "url": "https://byjus.com/maths/algebra-of-events/",
+          "verified": "the set A ∩ B denotes the event 'A and B'."
+        },
+        {
+          "title": "Events in Probability — Types, Examples, Definition — Cuemath",
+          "url": "https://www.cuemath.com/data/events-in-probability/",
+          "verified": "The common outcomes of both events will be the result. It is denoted by the intersection symbol '∩'."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:event-a-but-not-b",
+      "sources": [
+        {
+          "title": "Algebra of Events in Probability — BYJU'S",
+          "url": "https://byjus.com/maths/algebra-of-events/",
+          "verified": "It is the set of all those elements which are in A but not in B."
+        },
+        {
+          "title": "Probability — NCERT Exemplar Problems, Class 11, Chapter 16",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep216.pdf",
+          "verified": "An event A – B is the set of all those elements of the same space S which are in A but not in B, i.e., A – B = A ∩ B′."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:mutually-exclusive-events",
+      "sources": [
+        {
+          "title": "Mutually Exclusive Events — Definition, Formula, Examples — Cuemath",
+          "url": "https://www.cuemath.com/data/mutually-exclusive-events/",
+          "verified": "Note that there is no common element in mutually exclusive events."
+        },
+        {
+          "title": "Mutually Exclusive Events — BYJU'S",
+          "url": "https://byjus.com/maths/mutually-exclusive-events/",
+          "verified": "two events are said to be mutually exclusive if they cannot occur at the same time or simultaneously"
+        },
+        {
+          "title": "Mutually Exclusive Events: Definition, Formula, and Examples — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/mutually-exclusive-events/",
+          "verified": "Mutually exclusive events are those events that cannot happen at the same time; if one occurs, the other cannot."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:exhaustive-events",
+      "sources": [
+        {
+          "title": "Exhaustive Events — Definition, Venn Diagram, Examples — Cuemath",
+          "url": "https://www.cuemath.com/data/exhaustive-events/",
+          "verified": "the union of the exhaustive events gives the entire sample space"
+        },
+        {
+          "title": "What are Exhaustive Events in Probability? — BYJU'S",
+          "url": "https://byjus.com/maths/exhaustive-events/",
+          "verified": "called exhaustive events if at least one of them necessarily occurs whenever the experiment is performed"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:axioms-of-probability",
+      "sources": [
+        {
+          "title": "Axiomatic Definition of Probability Explained with Examples — Vedantu",
+          "url": "https://www.vedantu.com/maths/axiomatic-definition-of-probability",
+          "verified": "Probability can be defined as a set function P(E) which assigns to every event E a number"
+        },
+        {
+          "title": "Axiomatic Approach to Probability — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/axiomatic-approach-to-probability/",
+          "verified": "For any given event X, the probability of that event must be greater than or equal to 0."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:probability-of-an-event",
+      "sources": [
+        {
+          "title": "Probability — Definition, Formula, Types — BYJU'S",
+          "url": "https://byjus.com/maths/probability/",
+          "verified": "P(E) = Number of favourable outcomes/Total Number of outcomes"
+        },
+        {
+          "title": "Probability — Definitions, Formula, Types — Cuemath",
+          "url": "https://www.cuemath.com/data/probability/",
+          "verified": "the ratio of the number of favorable outcomes to the total number of outcomes"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:equally-likely-outcomes",
+      "sources": [
+        {
+          "title": "Probability — Definitions, Formula, Types — Cuemath",
+          "url": "https://www.cuemath.com/data/probability/",
+          "verified": "the ratio of the number of favorable outcomes to the total number of outcomes"
+        },
+        {
+          "title": "Probability: Definition, Formulas, Types & JEE PYQs — Allen",
+          "url": "https://allen.in/jee/maths/probability",
+          "verified": "Equally likely events have the same probability of occurring in a given situation or experiment"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:probability-a-or-b",
+      "sources": [
+        {
+          "title": "P(A U B) Formula in Probability — Cuemath",
+          "url": "https://www.cuemath.com/probability-a-union-b-formula/",
+          "verified": "P(A∪B) = P(A) + P(B) - P(A∩B)"
+        },
+        {
+          "title": "NCERT Solutions for Class 11 Maths Chapter 16 Probability — Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-11-maths-chapter-16-probability/",
+          "verified": "P(A or B) = P(A) + P(B) – P(A and B)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:probability-not-a",
+      "sources": [
+        {
+          "title": "Probability — By Complement — Brilliant Math & Science Wiki",
+          "url": "https://brilliant.org/wiki/probability-by-complement/",
+          "verified": "the probabilities of an event and its complement must always total to 1"
+        },
+        {
+          "title": "What are Complementary Events in Probability — BYJU'S (JEE)",
+          "url": "https://byjus.com/jee/what-are-complementary-events-in-probability/",
+          "verified": "The sum of probability of occurrence of an event and the probability of occurrence of the complement of that event is always 1."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch14:solve-probability-problems",
+      "sources": [
+        {
+          "title": "NCERT Solutions for Class 11 Maths Chapter 16 Probability — Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-11-maths-chapter-16-probability/",
+          "verified": "sample space, sample points, events, and their types like impossible events, sure events and complementary events"
+        },
+        {
+          "title": "Class 11 NCERT Solutions Chapter 16 Probability Exercise 16.3 — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/class-11-ncert-solutions-chapter-16-probability-exercise-16-3/",
+          "verified": "Let A be the event of getting at least one tail"
+        },
+        {
+          "title": "Chapter 14 Class 11 Probability — NCERT Solutions — Teachoo",
+          "url": "https://www.teachoo.com/subjects/cbse-maths/class-11th/ch16-11th-probability/",
+          "verified": "Finding Sample Space, Studying different Types of Events, Mutually Exclusive and Exhaustive events"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "random experiment — an action whose outcome cannot be predicted in advance though its full set of possible outcomes is known; assumed prior knowledge, NCERT 14.1 opens 'We have studied about random experiment and sample space'. Pre-curriculum bedrock (earlier classes), not a node in jee ch01-ch13.",
+      "sample space S — the set of all possible outcomes of a random experiment, serving as the universal set for the experiment; assumed prior knowledge alongside random experiment. Pre-curriculum bedrock.",
+      "outcome / sample point (omega) — a single element of the sample space, one possible result of one performance; assumed prior knowledge. Pre-curriculum bedrock.",
+      "subset / subset relation (E subset of S) — needed to say an event is a subset of S. Owned upstream by jee:maths:maths-ch01:determine-subset-relations (DEFER to ch01).",
+      "empty set phi — the impossible event. Owned upstream by jee:maths:maths-ch01:identify-the-empty-set (DEFER to ch01).",
+      "universal set — sample space plays the role of universal set. Owned upstream by jee:maths:maths-ch01:choose-a-universal-set (DEFER to ch01).",
+      "union of sets (A union B) — the event 'A or B'. Owned upstream by jee:maths:maths-ch01:compute-the-union-of-sets (DEFER to ch01).",
+      "intersection of sets (A intersect B) — the event 'A and B'. Owned upstream by jee:maths:maths-ch01:compute-the-intersection-of-sets (DEFER to ch01).",
+      "complement of a set (A') — the event 'not A' = S - A. Owned upstream by jee:maths:maths-ch01:find-the-complement-of-a-set (DEFER to ch01).",
+      "set difference (A - B) — the event 'A but not B'. Owned upstream by jee:maths:maths-ch01:compute-the-difference-of-sets (DEFER to ch01).",
+      "disjoint sets — basis for mutually exclusive events (A intersect B = phi). Covered implicitly by ch01 set operations / empty set (DEFER to ch01).",
+      "De Morgan's law ((E union F)' = E' intersect F') — used in NCERT Example 7(a) to express 'both will not qualify'. Owned upstream by ch01 set algebra; appears only in a worked example, not a node definition (DEFER to ch01, soften by inline restatement at point of use).",
+      "combinations nCr — counting favourable/total outcomes for cards, committees, lotteries (NCERT Examples 8, 10, 12; Misc). Owned upstream by jee:maths:maths-ch06:combinations-ncr (DEFER to ch06).",
+      "permutations nPr / n! — counting ordered outcomes (NCERT Example 9 cities 4!, Example 12 relay 5P3). Owned upstream by ch06 (DEFER to ch06). Used in goal-node worked examples.",
+      "power set of S — domain of the probability function P in the axiomatic definition. Owned upstream by ch01 (DEFER to ch01); restate inline as 'the set of all events (all subsets of S)' which the explanation already does.",
+      "real-valued function with domain and range / interval [0,1] — framing of P as a function. Pre-curriculum / ch02 relations-and-functions bedrock; restate inline, no bridge needed.",
+      "fraction arithmetic with unlike denominators (e.g. 1/4 + 9/28 = 4/7) — needed in probability-of-an-event worked example. Pre-curriculum bedrock; arithmetic, no node."
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "subset / subset relation",
+        "owner": "jee:maths:maths-ch01:determine-subset-relations",
+        "softening": "event-as-subset already opens by building S as a set and testing membership; one clause 'a subset is any collection of S's outcomes (Sets, ch01)' suffices — no re-teaching."
+      },
+      {
+        "term": "empty set phi",
+        "owner": "jee:maths:maths-ch01:identify-the-empty-set",
+        "softening": "impossible-and-sure-events introduces phi as 'the set with no outcomes'; a half-sentence pointer to ch01 is enough."
+      },
+      {
+        "term": "universal set",
+        "owner": "jee:maths:maths-ch01:choose-a-universal-set",
+        "softening": "say 'S is the universal set for this experiment (Sets, ch01)' once when S is first introduced."
+      },
+      {
+        "term": "union of sets",
+        "owner": "jee:maths:maths-ch01:compute-the-union-of-sets",
+        "softening": "event-a-or-b recomputes a union elementwise in its worked example; cite ch01 for the operation and proceed."
+      },
+      {
+        "term": "intersection of sets",
+        "owner": "jee:maths:maths-ch01:compute-the-intersection-of-sets",
+        "softening": "event-a-and-b recomputes an intersection elementwise; cite ch01 and proceed."
+      },
+      {
+        "term": "complement of a set",
+        "owner": "jee:maths:maths-ch01:find-the-complement-of-a-set",
+        "softening": "complementary-event already gives A' = S - A explicitly; cite ch01 for the complement operation."
+      },
+      {
+        "term": "set difference",
+        "owner": "jee:maths:maths-ch01:compute-the-difference-of-sets",
+        "softening": "event-a-but-not-b recomputes A - B elementwise and gives A - B = A intersect B'; cite ch01."
+      },
+      {
+        "term": "De Morgan's law",
+        "owner": "jee:maths:maths-ch01 (set algebra / De Morgan)",
+        "softening": "appears only in solve-probability-problems' worked example (Anil/Ashima); restate the single identity (E union F)' = E' intersect F' inline at the point of use rather than assuming recall."
+      },
+      {
+        "term": "combinations nCr",
+        "owner": "jee:maths:maths-ch06:combinations-ncr",
+        "softening": "equally-likely-outcomes lists combinations-ncr as a prereq already; when a card/committee count appears, cite ch06 and show the nCr setup explicitly."
+      },
+      {
+        "term": "permutations nPr and n!",
+        "owner": "jee:maths:maths-ch06 (permutations / solve-counting-problems)",
+        "softening": "solve-probability-problems lists ch06:solve-counting-problems as a prereq; for ordered-outcome examples (relay race, city visit order) cite ch06 and show the nPr / n! count."
+      },
+      {
+        "term": "power set of S",
+        "owner": "jee:maths:maths-ch01 (power set)",
+        "softening": "axioms-of-probability already restates power set as 'the set of all events (every subset of S)'; keep that gloss and add a one-word ch01 pointer."
+      }
+    ],
+    "inlineGlosses": [
+      "power set of S = 'the set of all events, i.e. every subset of S' — already present in axioms-of-probability explanation; keep it.",
+      "real-valued function on [0,1] = 'a rule P that assigns each event a number between 0 and 1' — gloss inline in axioms-of-probability; do not assume formal functions vocabulary.",
+      "disjoint = 'no shared outcome, i.e. A intersect B = phi' — gloss inline in mutually-exclusive-events (the explanation already does this).",
+      "inclusive 'or' = 'A, or B, or both' — gloss inline in event-a-or-b to pre-empt the exclusive-or misconception (already present).",
+      "De Morgan identity (E union F)' = E' intersect F' = ''not (E or F)' is the same as 'not E and not F'' — gloss inline where used in the goal node's qualify-examination example."
+    ]
+  }
+}

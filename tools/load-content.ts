@@ -131,7 +131,11 @@ async function loadChapter(dir: string) {
           explanation: n.explanation ?? '',
           keyMoves: n.keyMoves ?? [],
           misconceptions: n.misconceptions ?? [],
-          refreshers: n.refreshers ?? [],
+          // refreshers (§A.5) are authored directly into the DB for most chapters and are NOT mirrored
+          // into every content.json. A plain overwrite would wipe them on every reload, so PRESERVE an
+          // existing non-empty refreshers set and only take content.json's value when it actually has one
+          // (e.g. a freshly-authored bridge node, or a chapter whose refreshers ARE mirrored in content.json).
+          refreshers: sql`CASE WHEN jsonb_array_length(excluded.refreshers) > 0 THEN excluded.refreshers ELSE ${concepts.refreshers} END`,
           prereqs: prereqsInChapter,
           needsAuthoring: n.needsAuthoring ?? false,
         },

@@ -1,0 +1,280 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch08",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch08:elementary-area",
+      "sources": [
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 8 Application of Integrals - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-8-application-of-integrals/",
+          "verified": "The area under the curve can be thought of as being composed of a large number of very thin vertical stripes. By integrating this region between some specific limits we can now determine the complete area required."
+        },
+        {
+          "title": "Area Under The Curve - Types, Formulas, Solved Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/area-under-the-curve/",
+          "verified": "Area Under Curve is area enclosed by curve and the coordinate axes, it is calculated by taking very small rectangles and then taking their sum if we take infinitely small rectangles then their sum is calculated by taking the limit"
+        },
+        {
+          "title": "CBSE Class 12 Maths Notes Chapter 8 Application of Integrals - PW",
+          "url": "https://www.pw.live/school-prep/exams/cbse-class-12-maths-notes-chapter-8",
+          "verified": "Students learn to calculate the area under curves and between curves, which is useful in geometry, physics, and engineering."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The misconception list is solid. Consider explicitly noting in PART 2 that dx is the *width* (an infinitesimal increment of x) and y = f(x) is the *height*, since the second misconception (finite vs infinitesimal width) is exactly the place beginners stumble; one extra clause naming dx as the limit of a finite strip width would reinforce the bedrock framing the node is meant to teach."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch08:area-under-curve-x-axis",
+      "sources": [
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 8 Application of Integrals - BYJU'S",
+          "url": "https://byjus.com/ncert-solutions-class-12-maths/chapter-8-application-of-integrals/",
+          "verified": "The area of the region bounded by the curve y = f(x), x-axis and the lines x = a and x = b"
+        },
+        {
+          "title": "Application of Integrals - Complete Guide For Class 12 Math Chapter 8 - Teachoo",
+          "url": "https://www.teachoo.com/subjects/cbse-maths/class-12th/ch8-12th-application-of-integrals/",
+          "verified": "Area of simple curves - Using ∫ x dy and ∫ y dx"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 8 Application of Integrals - learnCBSE",
+          "url": "https://www.learncbse.in/ncert-solutions-for-class-12th-maths-chapter-8-application-of-integrals/",
+          "verified": "Area under Simple Curves"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student computes A = integral from 0 to 2 of x dx = 2 but cannot tell whether the answer is sensible, or asks 'how do I know 2 is right?'",
+          "surfacingQuestion": "Before we trust the integral, let's sanity-check it with plain geometry. The region under y = x from x = 0 to x = 2 is a triangle. What is the area of a triangle, in terms of its base and height?",
+          "ladder": [
+            "What shape is the region between the line y = x, the x-axis, and x = 2? (It's a right triangle.)",
+            "What is its base along the x-axis, and what is its height at x = 2?",
+            "Recall the area formula for a triangle.",
+            "Plug in base = 2 and height = 2."
+          ],
+          "answer": "The area of a triangle is (1/2) x base x height. Here the base is 2 (along the x-axis from 0 to 2) and the height is 2 (the value of y = x at x = 2). So area = (1/2)(2)(2) = 2. This matches the integral integral from 0 to 2 of x dx = 2, confirming that 'area under a curve' by integration agrees with the elementary-geometry area you already know.",
+          "returnCue": "Good - the integral and the triangle formula agree. From here on we use integration because most curves are NOT triangles or rectangles, and elementary formulas can't handle them. Back to setting up A = integral from a to b of f(x) dx."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch08:area-with-respect-to-y-axis",
+      "sources": [
+        {
+          "title": "Application of Integrals Class 12 Notes CBSE Maths Chapter 8 - Extramarks",
+          "url": "https://www.extramarks.com/studymaterials/cbse/cbse-class-12-maths-revision-notes-chapter-8/",
+          "verified": "The area of the given region bounded between the curve x = g (y), y-axis and the lines y = c, y = d is given as"
+        },
+        {
+          "title": "Ex 8.1, 4 (MCQ) - Area bounded by y2 = 4x, y-axis and line y = 3 - Teachoo",
+          "url": "https://www.teachoo.com/3337/730/Ex-8.1--13---Area-bounded-by-y2--4x--y-axis-and-line-y--3/category/Ex-8.1/",
+          "verified": "Area of AOB = ∫₀³ x dy"
+        },
+        {
+          "title": "Area Under The Curve - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/area-under-the-curve/",
+          "verified": "Area Under Curve is area enclosed by curve and the coordinate axes"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The node's worked example (x = y^2, y from 0 to 2, giving 8/3) is clean. The canonical NCERT/board version of this concept is y^2 = 4x bounded by the y-axis and y = 3 (giving 9/4) - see Teachoo source - which is the exact MCQ in EXERCISE 8.1 Q4 of the source OCR. Consider aligning or cross-referencing the example to the board's parabola-vs-y-axis case so students recognise it on the exam."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch08:area-below-axis-numerical",
+      "sources": [
+        {
+          "title": "Example 3 - Find area bounded by y = 3x + 2, x = -1, 1 - Teachoo",
+          "url": "https://www.teachoo.com/3356/732/Example-12---Find-area-bounded-by-y--3x---2--x---1--1/category/Examples/",
+          "verified": "Since Area ACB is below x-axis, it will come negative , Hence, we take modulus"
+        },
+        {
+          "title": "Area Under The Curve - Types, Formulas, Solved Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/area-under-the-curve/",
+          "verified": "Area Under Curve is area enclosed by curve and the coordinate axes"
+        },
+        {
+          "title": "CBSE Class 12 Maths Notes Chapter 8 Application of Integrals - PW",
+          "url": "https://www.pw.live/school-prep/exams/cbse-class-12-maths-notes-chapter-8",
+          "verified": "Students learn to calculate the area under curves and between curves, which is useful in geometry, physics, and engineering."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch08:area-above-and-below-axis",
+      "sources": [
+        {
+          "title": "Example 3 - Find area bounded by y = 3x + 2, x = -1, 1 - Teachoo",
+          "url": "https://www.teachoo.com/3356/732/Example-12---Find-area-bounded-by-y--3x---2--x---1--1/category/Examples/",
+          "verified": "Since Area ACB is below x-axis, it will come negative , Hence, we take modulus"
+        },
+        {
+          "title": "Application of Integrals - Complete Guide For Class 12 Math Chapter 8 - Teachoo",
+          "url": "https://www.teachoo.com/subjects/cbse-maths/class-12th/ch8-12th-application-of-integrals/",
+          "verified": "Area between two or three curves"
+        },
+        {
+          "title": "Area Between Two Curves - Formula, Definition, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/area-between-two-curves/",
+          "verified": "Area = ∫ₐᵇ [f(x) - g(x)] dx"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The node's worked example (y = x - 1 on [0,2], giving total area 1) is correct and pedagogically tidy. The actual NCERT Example for this concept is y = 3x + 2 on [-1, 1] (crosses at x = -2/3), giving |A1| + A2 = 1/6 + 25/6 = 13/3 - present verbatim in the source OCR (Example 3) and in the Teachoo source. Worth aligning the example to the textbook case so the |A1| + A2 split matches what students see on the board."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch08:area-of-circle",
+      "sources": [
+        {
+          "title": "Example 1 - Find area enclosed by circle x2 + y2 = a2 - Teachoo",
+          "url": "https://www.teachoo.com/3345/732/Example-1---Find-area-enclosed-by-circle-x2---y2--a2/category/Examples/",
+          "verified": "Area of circle = 4 × Area of Region OBAO = 4 × ∫₀ᵃ y dx"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 8 - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-8-application-of-integrals/",
+          "verified": "The area under the curve can be thought of as being composed of a large number of very thin vertical stripes."
+        },
+        {
+          "title": "Class 12 Maths Chapter 8 Application Of Integrals - Vedantu",
+          "url": "https://www.vedantu.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-8",
+          "verified": "you'll learn how to find the area under curves, between lines, circles, parabolas, or ellipses using definite integrals"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student does not recognise x^2 + y^2 = a^2 as a circle, or cannot solve it for y, or asks why we can multiply the first-quadrant area by 4.",
+          "surfacingQuestion": "The equation x^2 + y^2 = a^2 is a standard-form curve you met earlier. What curve is it, where is its centre, and what is its radius?",
+          "ladder": [
+            "x^2 + y^2 = a^2 is the equation of a circle. What is its centre and radius?",
+            "Solve x^2 + y^2 = a^2 for y. (Move x^2 across, then take the square root - remember both signs.)",
+            "In the first quadrant, is y positive or negative, so which sign of the root do we keep?",
+            "A circle centred at the origin looks identical in all four quadrants. If you know the area in the first quadrant, how do you get the whole circle's area?"
+          ],
+          "answer": "x^2 + y^2 = a^2 is a circle centred at the origin (0, 0) with radius a. Solving for y gives y = +/- sqrt(a^2 - x^2); in the first quadrant y >= 0 so we keep y = + sqrt(a^2 - x^2). Because the circle is symmetric about both the x-axis and the y-axis, the four quadrant-pieces have equal area, so the total area = 4 x (first-quadrant area). That is why we compute integral from 0 to a of sqrt(a^2 - x^2) dx and multiply by 4.",
+          "returnCue": "Now that the circle, its upper-half equation y = sqrt(a^2 - x^2), and the 4-fold symmetry are clear, back to the integral: A = 4 integral from 0 to a of sqrt(a^2 - x^2) dx = pi a^2."
+        }
+      ],
+      "contentNote": "PART 2 quietly relies on the closed-form result ∫ sqrt(a^2 - x^2) dx = (x/2)sqrt(a^2 - x^2) + (a^2/2) arcsin(x/a) + C, which is NOT explicitly established anywhere upstream (verified: not in ch07 nodes). The node states the formula inline, which is correct and consistent with the chapter narrative's decision to teach this sub-skill within the area nodes. Keep that inline statement; optionally flag the result as a standard integral the student should memorise, and note it can be derived via the x = a sin(theta) substitution (ch07 substitution) for completeness."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch08:area-of-ellipse",
+      "sources": [
+        {
+          "title": "Example 2 - Find area enclosed by ellipse x2/a2 + y2/b2 = 1 - Teachoo",
+          "url": "https://www.teachoo.com/3346/732/Example-2---Find-area-enclosed-by-ellipse-x2-a2---y2-b2--1-/category/Examples/",
+          "verified": "Since Ellipse is symmetrical about both x-axis and y-axis ∴ Area of ellipse = 4 × Area of OAB = 4 × ∫₀ᵃ y dx"
+        },
+        {
+          "title": "Area of Ellipse: Formula with Solved Examples - Vedantu",
+          "url": "https://www.vedantu.com/maths/area-of-ellipse",
+          "verified": "Formula for the area of an ellipse: A = π · a · b"
+        },
+        {
+          "title": "Class 12 Maths Chapter 8 Application Of Integrals - Vedantu",
+          "url": "https://www.vedantu.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-8",
+          "verified": "you'll learn how to find the area under curves, between lines, circles, parabolas, or ellipses using definite integrals"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student is unsure what x^2/a^2 + y^2/b^2 = 1 represents, what a and b mean, or how to solve it for y.",
+          "surfacingQuestion": "The equation x^2/a^2 + y^2/b^2 = 1 is the standard form of a conic you met in Class 11. What curve is it, and what do the numbers a and b tell you about its shape?",
+          "ladder": [
+            "x^2/a^2 + y^2/b^2 = 1 is the equation of an ellipse centred at the origin. What do a and b measure?",
+            "Where does the ellipse cross the x-axis (set y = 0)? Where does it cross the y-axis (set x = 0)?",
+            "Solve x^2/a^2 + y^2/b^2 = 1 for y. (Isolate y^2/b^2, then take the square root.)",
+            "In the first quadrant, which sign of the root do you keep, and is the ellipse symmetric about both axes like a circle?"
+          ],
+          "answer": "x^2/a^2 + y^2/b^2 = 1 is an ellipse centred at the origin. 'a' is the semi-axis along x (the ellipse meets the x-axis at x = +/- a) and 'b' is the semi-axis along y (it meets the y-axis at y = +/- b). Solving for y: y^2/b^2 = 1 - x^2/a^2, so y = +/- (b/a) sqrt(a^2 - x^2); in the first quadrant keep y = + (b/a) sqrt(a^2 - x^2). Like the circle, the ellipse is symmetric about both axes, so the total area = 4 x (first-quadrant area). When a = b it becomes a circle of radius a.",
+          "returnCue": "With the ellipse, its semi-axes a and b, and the upper-half equation y = (b/a) sqrt(a^2 - x^2) in hand, back to the integral: A = 4 integral from 0 to a of (b/a) sqrt(a^2 - x^2) dx = pi a b."
+        }
+      ],
+      "contentNote": "Strong node; the reduction to the circle's first-quadrant integral (pi*a^2/4) is the elegant correct move and matches the NCERT solution. The misconception 'Dropping the factor b/a from the ellipse's y' is well chosen. No change needed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch08:area-bounded-by-curves",
+      "sources": [
+        {
+          "title": "Area Between Two Curves - Formula, Definition, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/area-between-two-curves/",
+          "verified": "Area = ∫ₐᵇ [f(x) - g(x)] dx"
+        },
+        {
+          "title": "Application of Integrals - Complete Guide For Class 12 Math Chapter 8 - Teachoo",
+          "url": "https://www.teachoo.com/subjects/cbse-maths/class-12th/ch8-12th-application-of-integrals/",
+          "verified": "Area between two or three curves - Example: Area of region enclosed between x2 + y2 = 4 and (x – 2)2 + y2 = 4."
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 8 - learnCBSE",
+          "url": "https://www.learncbse.in/ncert-solutions-for-class-12th-maths-chapter-8-application-of-integrals/",
+          "verified": "Area between Two Curves"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 8 Application of Integrals - BYJU'S",
+          "url": "https://byjus.com/ncert-solutions-class-12-maths/chapter-8-application-of-integrals/",
+          "verified": "The area of the region bounded by the curve y = f(x), x-axis and the lines x = a and x = b"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student jumps straight to integrating without finding the limits, or cannot find where two curves meet / which curve is on top, e.g. for y = x^2 and y = x.",
+          "surfacingQuestion": "Before integrating, we need the limits and we need to know which curve is the upper one. To find where two curves meet, what do you do with their two equations?",
+          "ladder": [
+            "Two curves cross where they have the same x and the same y. How do you find those points algebraically? (Set the two expressions for y equal.)",
+            "For y = x^2 and y = x, set x^2 = x and solve. What are the x-values?",
+            "Pick a test point between those x-values, say x = 1/2: compute y = x and y = x^2 there. Which is larger?",
+            "So on [0, 1], which curve is the 'top' (larger y) and which is the 'bottom', and what are the integration limits?"
+          ],
+          "answer": "Set the curves equal to find intersections: x^2 = x gives x^2 - x = 0, x(x - 1) = 0, so x = 0 and x = 1 - these are the limits. Test at x = 1/2: y = x gives 0.5, y = x^2 gives 0.25, so y = x is the upper curve and y = x^2 is the lower curve on [0, 1]. Sketching the two curves confirms this. The area is then integral from 0 to 1 of (top - bottom) dx = integral from 0 to 1 of (x - x^2) dx = 1/6.",
+          "returnCue": "With the crossing points (limits) found and the top/bottom curves identified by a sketch or test point, you're ready to set up integral of (f - g) dx. This 'sketch, find intersections, decide top vs bottom' routine is the first step for every bounded-region problem."
+        }
+      ],
+      "contentNote": "Excellent goal node - the y = x^2 vs y = x worked example (area 1/6) is the textbook archetype. One addition worth considering: the strategy text mentions choosing horizontal strips but the area-between-two-curves formula is only given for vertical strips (f(x) top minus g(x) bottom). For symmetry, add the horizontal analogue (right curve minus left curve, integral of (x_right - x_left) dy) since some board problems (e.g. parabola vs line bounded by y-axis) are far easier that way."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "definite integral (integral from a to b) - OWNED upstream: cbse12:mathematics:mathematics-ch07:definite-integral",
+      "Fundamental Theorem of Calculus / evaluating F(b) - F(a) - OWNED upstream: cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+      "definite integral as the limit of a sum - OWNED upstream: ch07:definite-integral (source explicitly says 'In the previous chapter, we have studied definite integral as the limit of a sum')",
+      "integration by substitution (e.g. x = a sin theta for the circle/ellipse integrals) - OWNED upstream: cbse12:mathematics:mathematics-ch07:integration-by-substitution",
+      "closed-form result integral of sqrt(a^2 - x^2) dx = (x/2)sqrt(a^2 - x^2) + (a^2/2) arcsin(x/a) - NOT explicitly owned anywhere upstream (absent from ch07); taught inline within the circle node per chapter narrative",
+      "inverse sine / arcsin / sin^-1 (appears in the sqrt(a^2-x^2) antiderivative and at x=a where sin^-1(1) = pi/2) - OWNED upstream: cbse12:mathematics:mathematics-ch02 Inverse Trigonometric Functions (e.g. branch/value of sin^-1)",
+      "equation of a circle x^2 + y^2 = a^2 (standard form, centre origin) - PRE-CURRICULUM bedrock: Class 11 Conic Sections; not re-taught in cbse12 ch01-ch08",
+      "equation of an ellipse x^2/a^2 + y^2/b^2 = 1 (standard form) and meaning of semi-axes a, b - PRE-CURRICULUM bedrock: Class 11 Conic Sections",
+      "solving a curve equation for y (or x): y = +/- sqrt(a^2 - x^2), y = (b/a)sqrt(a^2-x^2) - PRE-CURRICULUM bedrock: algebra (square roots, transposition) from earlier classes",
+      "symmetry of a curve about the x- and y-axes (four-fold symmetry -> area = 4 x first-quadrant area) - PRE-CURRICULUM bedrock: coordinate geometry / Class 11 Conic Sections symmetry",
+      "elementary-geometry area formulas: triangle (1/2 base x height), rectangle, circle (pi r^2) used as sanity checks - PRE-CURRICULUM bedrock: earlier-class mensuration (source itself appeals to these in 8.1 Introduction)",
+      "the four-quadrant Cartesian plane, ordinates, x-axis/y-axis, first quadrant - PRE-CURRICULUM bedrock: Class 9-11 coordinate geometry",
+      "graph sketching of standard curves (line, parabola y^2=4x, |x+3|, sin x, cos x, x^3, x|x|) to locate limits and crossing points - PRE-CURRICULUM bedrock: functions/graphing from earlier classes (load-bearing for the goal node and exercises)",
+      "absolute value / modulus |.| as numerical (non-negative) value - PRE-CURRICULUM bedrock: earlier-class number sense"
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "definite integral and its evaluation via the Fundamental Theorem of Calculus, including definite integral as the limit of a sum",
+        "owner": "cbse12:mathematics:mathematics-ch07:definite-integral, cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+        "softening": "All ch08 area work IS the definite integral applied; the source opens by referencing ch07 ('In the previous chapter, we have studied definite integral as the limit of a sum and how to evaluate definite integral using Fundamental Theorem of Calculus'). When a learner stalls on the integration mechanics rather than the area set-up, soften with: 'Setting up A = integral of y dx is the new skill here; actually evaluating that integral is exactly the Fundamental-Theorem work from Chapter 7 (Integrals) - revisit that node if the evaluation step is the sticking point.' Do not re-teach FTC inside ch08."
+      },
+      {
+        "term": "integration by substitution (needed to derive integral of sqrt(a^2 - x^2) via x = a sin theta)",
+        "owner": "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
+        "softening": "The circle/ellipse nodes quote the closed form of integral of sqrt(a^2 - x^2) rather than deriving it. If a learner asks where that antiderivative comes from, defer the derivation to ch07 substitution with the trig substitution x = a sin theta, rather than expanding it inline. Keep ch08 focused on the area set-up and the symmetry factor."
+      },
+      {
+        "term": "inverse sine (sin^-1 / arcsin) appearing in the antiderivative of sqrt(a^2 - x^2) and the value sin^-1(1) = pi/2",
+        "owner": "cbse12:mathematics:mathematics-ch02 (Inverse Trigonometric Functions)",
+        "softening": "Where the circle area evaluates (a^2/2) sin^-1(1) = (a^2/2)(pi/2), treat sin^-1 as known from Chapter 2; soften only by reminding 'sin^-1(1) = pi/2' inline as a one-line value recall, not a re-derivation of the inverse-trig branch."
+      }
+    ],
+    "inlineGlosses": [
+      "ordinate(s): one-line gloss 'the vertical line x = a (the y-value boundary line)' - the NCERT source uses 'ordinates x = a, x = b' and learners may read it as a y-coordinate; a 5-word parenthetical at first use in area-under-curve-x-axis prevents the limit-of-integration confusion.",
+      "elementary area / elementary strip: already glossed well in the elementary-area node ('dA = y dx ... the building block'); no separate gloss needed elsewhere - just reuse the term consistently.",
+      "numerical value (of an area): inline gloss 'i.e. the absolute value |...|, since area is always positive' - the source phrase 'only the numerical value ... is taken into consideration' is opaque to many students; the area-below-axis-numerical node already does this well, so propagate the same one-liner anywhere 'numerical value' recurs.",
+      "semi-axes a, b of an ellipse: inline gloss 'a = half the width along x, b = half the height along y' at first use in area-of-ellipse, since the standard-form parameters are Class 11 bedrock not re-taught here."
+    ]
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch12",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:optimisation-problem",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "Such type of problems which seek to maximise (or, minimise) profit (or, cost) form a general class of problems called optimisation problems."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "A problem, which seeks to maximise or minimise a linear function subject to certain constraints"
+        },
+        {
+          "title": "Linear Programming for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/linear-programming-for-class-12/",
+          "verified": "A problem which seeks to maximize or minimize a linear function subject to certain constraints as determined by a set of linear inequalities"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:objective-function",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "Linear function Z = ax + by, where a, b are constants, which has to be maximised or minimized is called a linear objective function."
+        },
+        {
+          "title": "Linear Programming for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/linear-programming-for-class-12/",
+          "verified": "A linear function of the form Z = ax + by, where a and b are constant, which has to be minimized or maximized"
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "A linear function z = px + qy (p and q are constants) which has to be maximised or minimised"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:decision-variables",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "Variables x and y are called decision variables."
+        },
+        {
+          "title": "Linear Programming for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/linear-programming-for-class-12/",
+          "verified": "The variables x and y are called decision variables"
+        },
+        {
+          "title": "CBSE Notes Class 12 Maths Chapter 12 Linear Programming - Vedantu",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-12-linear-programming",
+          "verified": "x and y are called decision variables"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:constraints",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "The linear inequalities or equations or restrictions on the variables of a linear programming problem are called constraints."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "The linear inequalities or equations or restrictions on the variables of the linear programming problem"
+        },
+        {
+          "title": "Linear Programming for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/linear-programming-for-class-12/",
+          "verified": "The linear inequalities or equations or restrictions on the variables of LPP are called constraints"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:non-negative-restrictions",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "The conditions x >= 0, y >= 0 are called non-negative restrictions."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "The conditions x ≥ 0, y ≥ 0 are called non-negative restrictions."
+        },
+        {
+          "title": "Linear Programming for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/linear-programming-for-class-12/",
+          "verified": "the conditions x ≥ 0, y ≥ 0 are called non-negative constraints"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:linear-programming-problem",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "subject to the conditions that the variables are non-negative and satisfy a set of linear inequalities (called linear constraints)."
+        },
+        {
+          "title": "Class 12 Maths Chapter 12 Linear Programming - NCERT Solutions, Vedantu",
+          "url": "https://www.vedantu.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-12",
+          "verified": "If an optimal solution exists, it must occur at a vertex (or corner point) of the feasible region."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "One in which we have to find optimal value (maximum or minimum) of a linear function of several variables"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:feasible-region",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "The common region determined by all the constraints including non-negative constraints x, y >= 0 of a linear programming problem is called the feasible region"
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "The common region determined by all the constraints including non-negative constraints x,y>0"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 12 Linear Programming - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-12-linear-programming/",
+          "verified": "It is the common region determined by all the constraints including the non-negative constraints x ≥ 0, y ≥ 0"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student is asked to shade the region of a single inequality (e.g. x + y <= 60) or to find the common region of all constraints, but cannot graph one inequality as a half-plane or does not know to use a test point.",
+          "surfacingQuestion": "Before we combine the constraints, take just one: x + y <= 60. On the xy-plane, which points satisfy it - and how would you shade them?",
+          "ladder": [
+            "First draw the boundary line x + y = 60 (it passes through (60, 0) and (0, 60)). This line splits the plane into two halves.",
+            "An inequality with <= or >= includes the line itself, so draw it solid (a strict < or > would be dashed).",
+            "Pick a test point not on the line - the origin (0, 0) is easiest. Substitute it: is 0 + 0 <= 60 true?",
+            "Since 0 <= 60 is true, the origin's side is the wanted half-plane, so shade the side containing (0, 0). If the test had been false, you would shade the other side."
+          ],
+          "answer": "The graph of a linear inequality in two variables is a half-plane bounded by the line you get when the inequality is made an equation. Draw that boundary line (solid for <= or >=, dashed for < or >), then test one point off the line - usually the origin (0,0). If the inequality holds for the test point, shade the side containing it; if not, shade the other side. For x + y <= 60: the line x + y = 60 is solid, (0,0) gives 0 <= 60 which is true, so the half-plane on the origin's side (below-left of the line) is the solution.",
+          "returnCue": "Now apply this to every constraint of the LPP at once, and the region where ALL the shaded half-planes overlap is the feasible region."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:feasible-solution",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "Points within and on the boundary of the feasible region represent feasible solutions of the constraints."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "Points within and on the boundary of the feasible region represent feasible solutions"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 12 Linear Programming - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-12-linear-programming/",
+          "verified": "These are the points within and on the boundary of the feasible region."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:optimal-solution",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "Any point in the feasible region that gives the optimal value (maximum or minimum) of the objective function is called an optimal solution."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "Any point in the feasible region that gives the optimal value of the objective function"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 12 Linear Programming - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-12-linear-programming/",
+          "verified": "The point in the feasible region that gives the optimal value (maximum or minimum) of the objective function."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:bounded-unbounded-region",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "A feasible region of a system of linear inequalities is said to be bounded if it can be enclosed within a circle. Otherwise, it is called unbounded."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "A feasible region said to be bounded, if it can be enclosed within a circle. Otherwise, it is called unbounded."
+        },
+        {
+          "title": "Linear Programming for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/linear-programming-for-class-12/",
+          "verified": "A feasible region is said to be bounded if it can be enclosed within a circle. Otherwise, it is unbounded."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:corner-point",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "A corner point of a feasible region is a point in the region which is the intersection of two boundary lines."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "A point in the region which is the intersection of two boundary lines."
+        },
+        {
+          "title": "Linear Programming for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/linear-programming-for-class-12/",
+          "verified": "The point of intersection of two boundary lines, which form the region"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:optimal-at-corner-theorem",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "When Z has an optimal value (maximum or minimum), where the variables x and y are subject to constraints described by linear inequalities, this optimal value must occur at a corner point (vertex) of the feasible region."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "must occur at a corner point (vertex) of the feasible region."
+        },
+        {
+          "title": "Class 12 Maths Chapter 12 Linear Programming - NCERT Solutions, Vedantu",
+          "url": "https://www.vedantu.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-12",
+          "verified": "If an optimal solution exists, it must occur at a vertex (or corner point) of the feasible region."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "If R is bounded, then the objective function Z has both a maximum and a minimum value on R and each of these occurs at a corner point (vertex) of R."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "If R is bounded, then z has both a maximum and a minimum value on R and each"
+        },
+        {
+          "title": "Graphical Solution of Linear Programming Problems - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/graphical-solution-of-linear-programming-problems/",
+          "verified": "If the feasible region is bounded, then N and n are the maximum and minimum values of the objective function."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "then every point on the line segment joining these points will also give the same maximum (or minimum) value."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "If two corner points produce the same maximum or minimum, then any point on the line segment joining these two points is also an optimal solution"
+        },
+        {
+          "title": "CBSE Notes Class 12 Maths Chapter 12 Linear Programming - Vedantu",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-12-linear-programming",
+          "verified": "If an objective function R is bounded, every point on the line segment"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "PART 1 sources NCERT Example 3 as Z = 3x + 9y giving Z = 180 at both C(15,15) and D(0,20) and calls this the 'maximum'. NCERT Example 3's actual remark on multiple solutions is about the MAXIMUM at C(15,15) and D(0,20) (value 180), while the MINIMUM 60 is unique at B(5,5). The node text is correct, but worth noting the same example also yields a unique minimum - a clean illustration that 'multiple optimal' can apply to the max while the min stays single. Consider adding one sentence distinguishing the two so students do not over-generalise that BOTH ends must be multiple."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch12:corner-point-method",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Mathematics Part II, Chapter 12: Linear Programming (official textbook PDF, Reprint 2026-27)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf",
+          "verified": "Evaluate the objective function Z = ax + by at each corner point. Let M and m, respectively denote the largest and smallest values of these points."
+        },
+        {
+          "title": "Graphical Solution of Linear Programming Problems - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/graphical-solution-of-linear-programming-problems/",
+          "verified": "Evaluate the objective function at each corner point of the feasible region."
+        },
+        {
+          "title": "Linear Programming Class 12 Notes Maths Chapter 12 - Learn CBSE",
+          "url": "https://www.learncbse.in/linear-programming-class-12-notes/",
+          "verified": "The corner point method says that, if a maximum or minimum value exists, then it will occur at a corner point"
+        },
+        {
+          "title": "Class 12 Maths Chapter 12 Linear Programming - NCERT Solutions, Vedantu",
+          "url": "https://www.vedantu.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-12",
+          "verified": "For a bounded region, the largest of these values is the maximum and the smallest is the minimum."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must find a corner point such as the intersection of 5x + y = 100 and x + y = 60 but cannot solve two linear equations in two unknowns simultaneously (by elimination or substitution).",
+          "surfacingQuestion": "Two boundary lines meet at a corner. Say they are 5x + y = 100 and x + y = 60 - how do you find the exact point (x, y) where both hold at once?",
+          "ladder": [
+            "Both equations are true at the corner, so you can combine them. Line them up: 5x + y = 100 and x + y = 60.",
+            "Eliminate one variable by subtracting the second equation from the first: (5x + y) - (x + y) = 100 - 60, which leaves 4x = 40.",
+            "Solve the single-variable equation: x = 40 / 4 = 10.",
+            "Back-substitute x = 10 into either original equation, e.g. x + y = 60 gives 10 + y = 60, so y = 50. The corner point is (10, 50)."
+          ],
+          "answer": "To find where two lines intersect, solve their equations simultaneously. By elimination: write both equations, then add or subtract suitable multiples so one variable cancels. For 5x + y = 100 and x + y = 60, subtracting gives 4x = 40, so x = 10; substituting back into x + y = 60 gives y = 50. The intersection (corner point) is (10, 50). (Substitution works too: from x + y = 60 write y = 60 - x, put it into 5x + y = 100 to get 5x + 60 - x = 100, so 4x = 40, x = 10, y = 50.)",
+          "returnCue": "Use exactly this elimination/substitution to nail down every corner point, then evaluate Z = ax + by at each one."
+        }
+      ],
+      "contentNote": "PART 1's worked example (Maximise Z = 4x + y subject to x + y <= 50, 3x + y <= 90) is NCERT Example 1 verbatim and its corner values are correct (O=0, A(30,0)=120, B(20,30)=110, C(0,50)=50; max 120 at A). Accurate. No change needed; flagged only to confirm the example is faithful to source."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "linear inequality in two variables (e.g. 5x + y <= 100) - graphed as a half-plane; explicitly cited by the chapter as Class XI content ('In Class XI, we have studied linear inequalities ... in two variables')",
+      "half-plane / which side of a line an inequality picks out, via a test point (origin) - the engine behind feasible-region construction; pre-curriculum (Class XI linear inequalities)",
+      "system of linear inequalities solved graphically: the common (overlap) region of several half-planes - explicitly cited as Class XI; directly underlies 'feasible region'",
+      "graphing a straight line ax + by = c from two intercepts/points (boundary line of each constraint) - Class IX-XI coordinate geometry bedrock",
+      "solving two linear equations in two variables simultaneously (elimination/substitution) to get an intersection point - needed for corner-point coordinates; Class IX-X algebra bedrock",
+      "the first quadrant and the meaning of x >= 0, y >= 0 geometrically (right/upper half-planes) - Class XI/coordinate-geometry bedrock; supports non-negative-restrictions",
+      "maximum/minimum value of a quantity (general optimisation idea) - in-course prereq, owned by cbse12 ch06 (maximum-minimum-value), already wired as a prereq edge on optimisation-problem",
+      "linear vs non-linear expression (no x^2, xy terms) - Class XI/algebra bedrock; supports the 'linear' qualifier on objective function and constraints",
+      "convex region / convex polygon (used in Theorem 1 statement and the closing Remark 'the feasible region is always a convex region') - terminology bedrock, lightly used, only needs an inline gloss"
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "maximum and minimum value of a quantity (optimisation idea)",
+        "owner": "cbse12:mathematics:mathematics-ch06:maximum-minimum-value",
+        "softening": "Already represented as an explicit prereq edge on optimisation-problem (prereqs lists cbse12:mathematics:mathematics-ch06:maximum-minimum-value). No new action: the in-course owner exists upstream, so this is a clean DEFER, not a bridge. Soften at point of use with a one-line reminder that 'maximise/minimise' here is the same optimise-a-quantity idea met in Application of Derivatives, now done graphically rather than by calculus."
+      }
+    ],
+    "inlineGlosses": [
+      "convex region / convex polygon: gloss inline at optimal-at-corner-theorem (Theorem 1 calls R a 'convex polygon') and at the chapter's closing remark - 'a region is convex if the straight segment joining any two of its points lies entirely inside the region; the feasible region of an LPP is always such a region.' Not load-bearing enough for a full refresher; one clause suffices.",
+      "boundary line of a constraint: gloss at constraints / corner-point - 'the boundary line of a constraint is obtained by replacing its inequality sign with =, e.g. 5x + y <= 100 has boundary line 5x + y = 100.' Pre-empts confusion between the inequality (a region) and its edge (a line).",
+      "open half-plane (in the unbounded check ax + by > M): gloss at bounded-max-min-theorem / corner-point-method - 'open half-plane = the strict-inequality side of a line, NOT including the line itself.' Distinguishes it from the closed half-planes used to build the feasible region."
+    ]
+  }
+}

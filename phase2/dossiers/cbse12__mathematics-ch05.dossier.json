@@ -1,0 +1,422 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch05",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:continuity-at-a-point",
+      "sources": [
+        {
+          "title": "NCERT Exemplar - Continuity and Differentiability (Chapter 5 Overview)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep205.pdf",
+          "verified": "Let f be a real function on a subset of the real numbers and let c be a point in the domain of f. Then f is continuous at c if lim x->c f(x) = f(c)"
+        },
+        {
+          "title": "Continuity and Differentiability for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/continuity-and-differentiability-for-class-12/",
+          "verified": "The continuity of a real function (f) on a subset of the real numbers is defined when the function exists at point c and is given as lim x->c f(x) = f(c)"
+        },
+        {
+          "title": "Class 12 NCERT Solutions Mathematics Chapter 5 Exercise 5.2 - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/class-12-ncert-solutions-mathematics-part-i-chapter-5-continuity-and-differentiability-exercise-5-2/",
+          "verified": "a function f(x) is continuous at x=a if lim x->a f(x)=f(a)"
+        },
+        {
+          "title": "Continuity and Differentiability Class 12 Notes Maths Chapter 5 - Learn CBSE",
+          "url": "https://www.learncbse.in/continuity-and-differentiability-class-12-notes/",
+          "verified": "A function f(x) is said to be continuous at a point x = a, if Left hand limit of f(x) at(x = a) = Right hand limit of f(x) at (x = a) = Value of f(x) at (x = a)"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student computes f(c) but does not know how to evaluate lim(x->c) f(x), or treats 'the limit' as just 'plugging in c'.",
+          "surfacingQuestion": "Before we test continuity, what does lim(x->c) f(x) actually mean, and is it the same thing as f(c)?",
+          "ladder": [
+            "What value does f(x) get CLOSE to as x gets close to c (from either side) - not the value AT c?",
+            "If x approaches c from the left (values just below c) versus from the right (values just above c), do you get the same target value?",
+            "When those two one-sided targets agree, that common value is the limit. Now: is that limit forced to equal f(c)?"
+          ],
+          "answer": "A limit describes where a function is HEADING as the input closes in on a point, which can be different from where the function actually IS at that point. Write lim(x->c) f(x) = L to mean: as x takes values closer and closer to c (but not equal to c), the outputs f(x) get arbitrarily close to the single number L. Two one-sided versions matter: the left-hand limit lim(x->c-) f(x) uses inputs just below c, and the right-hand limit lim(x->c+) f(x) uses inputs just above c. The (two-sided) limit L exists only when BOTH one-sided limits exist and are equal to each other. Crucially, the limit ignores the actual value f(c) - you can have a function with a hole or jump at c where the limit exists but does not equal f(c), or where f(c) is defined but the limit is not. Evaluating a limit is often (for nice functions like polynomials) the same as substituting x = c, but that is a RESULT of continuity, not the definition: for a piecewise function you must check each side separately. Example: for f(x) = (x^2-1)/(x-1), f(1) is undefined (0/0), yet lim(x->1) f(x) = lim(x->1)(x+1) = 2 exists. So 'the limit at c' and 'the value at c' are two separate quantities; continuity is precisely the statement that they coincide.",
+          "returnCue": "Now that the limit and the value f(c) are clearly two separate quantities, testing continuity at c is just checking whether they are equal."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:continuous-function",
+      "sources": [
+        {
+          "title": "NCERT Exemplar - Continuity and Differentiability (Chapter 5 Overview)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep205.pdf",
+          "verified": "f is said to be continuous in an open interval (a, b) if it is continuous at every point in this interval."
+        },
+        {
+          "title": "Continuity and Differentiability for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/continuity-and-differentiability-for-class-12/",
+          "verified": "A real function (f) is said to be continuous if it is continuous at every point in the domain of f."
+        },
+        {
+          "title": "Continuity and Differentiability Class 12 Notes Maths Chapter 5 - Learn CBSE",
+          "url": "https://www.learncbse.in/continuity-and-differentiability-class-12-notes/",
+          "verified": "A function y = f(x) is said to be continuous in an interval (a, b), where a < b if and only if f(x) is continuous at every point in that interval."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The brief and Part 2 list 'rational functions (wherever the denominator is non-zero), and the standard trig functions are all continuous on their domains' but never name the greatest integer function [x] as the canonical example of a function that is NOT continuous on R. NCERT devotes Example 15 (and Exercise 5.1 Q19) to proving [x] is discontinuous at every integer. Adding a one-line note that the greatest integer (step) function jumps at every integer would give students the standard counterexample CBSE boards test repeatedly."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:algebra-of-continuous-functions",
+      "sources": [
+        {
+          "title": "Algebra of Continuous Functions | Class 12 Maths - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/algebra-of-continuous-functions-continuity-and-differentiability-class-12-maths/",
+          "verified": "f/g is continuous at a, provided g(a) != 0"
+        },
+        {
+          "title": "Continuity and Differentiability Class 12 Notes Maths Chapter 5 - Learn CBSE",
+          "url": "https://www.learncbse.in/continuity-and-differentiability-class-12-notes/",
+          "verified": "(f/g) is continuous at x = c, [provide g(c) != 0]"
+        },
+        {
+          "title": "Algebra of Continuous Functions - BYJU'S",
+          "url": "https://byjus.com/maths/algebra-of-continuous-functions/",
+          "verified": "If f and g are two real functions that are continuous at a point 'a', where 'a' is a real number. Then the product of the two functions f and g is also continuous at 'a'."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:composite-continuity",
+      "sources": [
+        {
+          "title": "NCERT Exemplar - Continuity and Differentiability (Chapter 5 Overview)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep205.pdf",
+          "verified": "Let f and g be real valued functions such that (fog) is defined at a. If g is continuous at a and f is continuous at g (a), then (fog) is continuous at a."
+        },
+        {
+          "title": "Algebra of Continuous Functions | Class 12 Maths - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/algebra-of-continuous-functions-continuity-and-differentiability-class-12-maths/",
+          "verified": "If f is continuous at g(x0) and g is continuous at x0 then fog is continuous at x0."
+        },
+        {
+          "title": "Continuity And Differentiability - Definition, Formula, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/continuity-and-differentiability/",
+          "verified": "If g(x) is continuous at x = c and the function f(x) is continuous at g(c), then fog(x) is continuous at x = c."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:derivative-definition",
+      "sources": [
+        {
+          "title": "NCERT Exemplar - Continuity and Differentiability (Chapter 5 Overview)",
+          "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep205.pdf",
+          "verified": "The function defined by f'(x) = lim h->0 [f(x+h) - f(x)]/h, wherever the limit exists, is defined to be the derivative of f at x."
+        },
+        {
+          "title": "First Principle of Derivatives - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/first-principle-of-derivatives/",
+          "verified": "f'(x) = lim h->0 [f(x+h) - f(x)]/h"
+        },
+        {
+          "title": "Continuity And Differentiability - Definition, Formula, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/continuity-and-differentiability/",
+          "verified": "f'(x) = Lim h->0 [f(x + h) - f(x)]/h"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student is asked to find f'(c) from the definition but cannot interpret [f(c+h)-f(c)]/h geometrically, or treats it as a fixed fraction rather than a quantity whose limit is taken.",
+          "surfacingQuestion": "What does the fraction [f(c+h) - f(c)] / h measure on the graph of f, before we let h shrink to 0?",
+          "ladder": [
+            "Pick two points on the graph: (c, f(c)) and (c+h, f(c+h)). What is the rise (change in y) between them, and what is the run (change in x)?",
+            "Rise over run is the slope of the straight line through those two points (a secant line). Write that slope using f and h.",
+            "Now imagine h getting smaller and smaller so the second point slides toward the first. What line does the secant approach, and what is its slope called?"
+          ],
+          "answer": "The difference quotient [f(c+h) - f(c)] / h is the slope of the secant line joining the two points (c, f(c)) and (c+h, f(c+h)) on the graph of f. Here the numerator f(c+h) - f(c) is the rise (the change in the output) and the denominator h is the run (the change in the input, since (c+h) - c = h). So this fraction is exactly 'rise over run' = average rate of change of f over the interval from c to c+h. It is NOT a single fixed number until h is chosen; it is a quantity that depends on h. As h -> 0, the second point (c+h, f(c+h)) slides along the curve toward the first point (c, f(c)), and the secant line pivots until it becomes the tangent line at (c, f(c)). The limiting slope is the slope of that tangent, which is the instantaneous rate of change - this is precisely f'(c). We must use a limit (not just set h = 0) because at h = 0 the fraction is 0/0, which is undefined; the limit captures the value the slope is heading toward as the interval shrinks. So: average rate of change (secant slope) over a small interval, taken to the limit, becomes the instantaneous rate of change (tangent slope) = the derivative.",
+          "returnCue": "With the difference quotient understood as a secant slope heading toward the tangent slope, the limit definition of f'(c) is just that tangent slope written precisely."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
+      "sources": [
+        {
+          "title": "Left Hand And Right Hand Derivatives - Cuemath",
+          "url": "https://www.cuemath.com/jee/left-hand-and-right-hand-derivatives-limits-continuity-differentiability/",
+          "verified": "If at a particular point x = a, the LHD and RHD have equal numerical values, we say that f(x) is differentiable at x = a."
+        },
+        {
+          "title": "Differentiability of a Function | Class 12 Maths - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/differentiability-of-a-function-class-12-maths/",
+          "verified": "Converse is not true (e.g., |x| is continuous but not differentiable at 0)."
+        },
+        {
+          "title": "Continuity and Differentiability Class 12 Notes Maths Chapter 5 - Learn CBSE",
+          "url": "https://www.learncbse.in/continuity-and-differentiability-class-12-notes/",
+          "verified": "A function f(x) is said to be differentiable at a point x = a, if Left hand derivative at (x = a) = Right hand derivative at (x = a)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous",
+      "sources": [
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 5 Continuity and Differentiability - BYJU'S",
+          "url": "https://byjus.com/ncert-solutions-class-12-maths/chapter-5-continuity-and-differentiability/",
+          "verified": "Every differentiable function is continuous, but the converse is not true."
+        },
+        {
+          "title": "CBSE Notes Class 12 Maths Chapter 5 Continuity and Differentiability - Vedantu",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-5-continuity-and-differentiability",
+          "verified": "If a function is differentiable at a given point, it must be continuous at that same point. However, the inverse is not always true."
+        },
+        {
+          "title": "Continuity and Differentiability Class 12 Notes Maths Chapter 5 - Learn CBSE",
+          "url": "https://www.learncbse.in/continuity-and-differentiability-class-12-notes/",
+          "verified": "Every differentiable function is continuous but every continuous function is not differentiable."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:chain-rule",
+      "sources": [
+        {
+          "title": "Continuity and Differentiability for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/continuity-and-differentiability-for-class-12/",
+          "verified": "Suppose t = u(x) and if both dt/dx and dv/dt exist, we have df/dx = (dv/dt). (dt/dx)"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 5 Exercise 5.2 - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-5-exercise-5-2/",
+          "verified": "If t = v(x) and both dt/dx and dv/dt exist then df/dx =dv/dt. dt/dx."
+        },
+        {
+          "title": "CBSE Notes Class 12 Maths Chapter 5 Continuity and Differentiability - Vedantu",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-5-continuity-and-differentiability",
+          "verified": "In general if y = f(u) then dy/dx = f'(u) . du/dx"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:implicit-differentiation",
+      "sources": [
+        {
+          "title": "Derivatives of Implicit Functions | Class 12 Maths - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/derivatives-of-implicit-functions-continuity-and-differentiability-class-12-maths/",
+          "verified": "Collect all terms involving the derivative dy/dx on one side of the equation."
+        },
+        {
+          "title": "Implicit Function Differentiation - Vedantu",
+          "url": "https://www.vedantu.com/maths/implicit-function-differentiation",
+          "verified": "we will perform Differentiation of implicit functions on both sides and each term w.r.t x."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives",
+      "sources": [
+        {
+          "title": "Inverse Trig Derivatives (Derivatives of Inverse Trig Functions) - Cuemath",
+          "url": "https://www.cuemath.com/calculus/inverse-trig-derivatives/",
+          "verified": "The derivative of arcsin x is d/dx(arcsin x) = 1/sqrt(1-x^2), when -1 < x < 1"
+        },
+        {
+          "title": "Derivatives of Inverse Trigonometric Functions | Class 12 Maths - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/derivatives-of-inverse-trigonometric-functions-class-12-maths/",
+          "verified": "The Derivative of Inverse Trigonometric Function as Implicit Function"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Part 2 omits the DOMAIN restrictions that NCERT gives explicitly in Table 5.3: d/dx(arcsin x) = 1/sqrt(1-x^2) and d/dx(arccos x) = -1/sqrt(1-x^2) hold only for x in (-1, 1), while d/dx(arctan x) = 1/(1+x^2) holds for all real x. Without the (-1,1) restriction the arcsin/arccos formulas are undefined at the endpoints (the derivative blows up as x -> +/-1). Adding the domains prevents students from quoting the formula at x = 1 or x = -1, a common board-exam slip."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:exponential-function",
+      "sources": [
+        {
+          "title": "Exponential Function - Definition, Formula, Properties - BYJU'S",
+          "url": "https://byjus.com/maths/exponential-functions/",
+          "verified": "The domain of exponential function will be the set of entire real numbers R and the range are said to be the set of all the positive real numbers."
+        },
+        {
+          "title": "Exponential Function - Formula, Asymptotes, Domain, Range - Cuemath",
+          "url": "https://www.cuemath.com/calculus/exponential-functions/",
+          "verified": "an exponential function is a function of form f (x) = ax, where \"x\" is a variable and \"a\" is a constant which is called the base"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student is unsure what b^x means when x is not a whole number (e.g. b^(1/2), b^(-3), b^0), or treats b^x as multiplying b by x.",
+          "surfacingQuestion": "What does the base raised to a power, b^x, actually mean - and how do we make sense of it when x is a fraction, is negative, or is zero?",
+          "ladder": [
+            "For a positive whole number n, what does b^n mean in terms of repeated multiplication, and what is b^0?",
+            "If we want b^m * b^n = b^(m+n) to keep working, what must b^(-n) equal, and what must b^(1/n) equal?",
+            "Putting those together, how would you read off the value of something like b^(2/3) or b^(-1/2)?"
+          ],
+          "answer": "Raising a base b > 0 to a power x, written b^x, generalises repeated multiplication so that one single rule, b^m * b^n = b^(m+n), holds for ALL exponents. Start with positive whole numbers: b^n = b * b * ... * b (n factors). Three extensions follow by insisting the addition rule keeps working: (1) ZERO exponent: since b^n * b^0 must equal b^(n+0) = b^n, we need b^0 = 1 (true for any b > 0). (2) NEGATIVE exponent: since b^n * b^(-n) = b^0 = 1, we get b^(-n) = 1 / b^n - a negative power means 'reciprocal'. (3) FRACTIONAL exponent: since (b^(1/n))^n = b^(n/n) = b^1 = b, the number b^(1/n) is the n-th root of b; more generally b^(m/n) = (n-th root of b)^m. So b^(1/2) = sqrt(b), b^(-3) = 1/b^3, b^(2/3) = (cube root of b)^2. Note b^x is NOT 'b times x' - it is repeated/extended multiplication. Because b > 0, every one of these results is a positive number (roots of a positive number are positive, reciprocals of positives are positive), which is exactly why the exponential function y = b^x only ever takes positive values and can fill out any real-number exponent on its smooth, ever-rising graph.",
+          "returnCue": "With b^x defined for every real exponent and always positive, the exponential function y = b^x (b > 1) with domain R and positive range is just this rule viewed as a function of x."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:logarithm-function",
+      "sources": [
+        {
+          "title": "Logarithmic Functions - Definition, Formula, Properties - BYJU'S",
+          "url": "https://byjus.com/maths/logarithmic-functions/",
+          "verified": "In mathematics, the logarithmic function is an inverse function to exponentiation."
+        },
+        {
+          "title": "Logarithmic Functions - Formula, Domain, Range, Graph - Cuemath",
+          "url": "https://www.cuemath.com/algebra/logarithmic-functions/",
+          "verified": "Logarithmic functions are closely related to exponential functions and are considered as an inverse of the exponential function."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The keyMoves and explanation give the log<->exponential conversion (log_b a = x means b^x = a) but do not state the three log laws that the very next concept (logarithmic differentiation) depends on: log(mn) = log m + log n, log(m/n) = log m - log n, and log(m^k) = k log m. NCERT proves all three in section 5.4 (product rule, quotient, and log_b p^n = n log p) precisely so they can be used in Example 27/29. Listing these three laws here would make this node properly load-bearing for logarithmic-differentiation downstream."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log",
+      "sources": [
+        {
+          "title": "Differentiation of e to the Power x - Formula, Proof, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/differentiation-of-e-to-the-power-x/",
+          "verified": "d(ex)/dx = ex"
+        },
+        {
+          "title": "Derivative of log x - Formula, Proof | Derivatives of Logs - Cuemath",
+          "url": "https://www.cuemath.com/calculus/derivative-of-log-x/",
+          "verified": "Replacing loge x with ln x back, we get d/dx (ln x) = 1/x."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The node states d/dx(log x) = 1/x but does not flag that 'log' here means the NATURAL logarithm (base e), as NCERT explicitly stipulates ('In this chapter, log x denotes the logarithm function to base e'). For a base-10 or general base b, d/dx(log_b x) = 1/(x ln b), NOT 1/x. A one-line reminder that the clean 1/x result is specific to natural log (base e) would prevent students from misapplying it to log base 10."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:logarithmic-differentiation",
+      "sources": [
+        {
+          "title": "How do you differentiate y = x^x? - Vedantu",
+          "url": "https://www.vedantu.com/question-answer/how-do-you-differentiate-yxx-class-12-maths-cbse-601072ad03e4507026fb3878",
+          "verified": "So, taking natural log, i.e., log to the base e, both the sides, we get,"
+        },
+        {
+          "title": "Logarithmic Differentiation - Cuemath",
+          "url": "https://www.cuemath.com/calculus/logarithmic-differentiation/",
+          "verified": "Logarithmic differentiation is used to differentiate large functions, with the use of logarithms and chain rule of differentiation."
+        },
+        {
+          "title": "Logarithmic Differentiation - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/logarithmic-differentiation/",
+          "verified": "Step 1: Taking log on both sides log(y) = log(x^x)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The explanation correctly handles y = (f(x))^(g(x)) but does not state NCERT's explicit caveat that the technique requires f(x) > 0 (and y > 0): 'f(x) and u(x) must always be positive as otherwise their logarithms are not defined.' Since log is only defined for positive arguments, taking log of both sides silently assumes positivity. Adding this positivity condition matches the NCERT summary point and is a frequent board-exam discussion point."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:parametric-differentiation",
+      "sources": [
+        {
+          "title": "Derivatives of Function in Parametric Form - Vedantu",
+          "url": "https://www.vedantu.com/maths/derivatives-of-function-in-parametric-form",
+          "verified": "dy/dx = (dy/dt)/(dx/dt), given that dx/dt != 0"
+        },
+        {
+          "title": "Derivatives of Functions in Parametric Forms - Unacademy",
+          "url": "https://unacademy.com/content/cbse-class-12/study-material/mathematics/derivatives-of-functions-in-parametric-forms/",
+          "verified": "dy/dx = (dy/dt)/(dx/dt), where dx/dt != 0"
+        },
+        {
+          "title": "CBSE Class 12 Maths Continuity and Differentiability Formulas - Vedantu",
+          "url": "https://www.vedantu.com/formula/cbse-class-12-maths-continuity-and-differentiability-formulas",
+          "verified": "To differentiate y = g(t) and x = f(t) separately by 't', dy/dx = (dy/dt) (dt/dx)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch05:second-order-derivative",
+      "sources": [
+        {
+          "title": "Second Order Derivatives: Rules, Formula and Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/second-order-derivatives/",
+          "verified": "The second derivative of a function f(x) is usually denoted as f\"(x). It is also denoted by d2y/dx2 or D2y or y\" if y = f(x)."
+        },
+        {
+          "title": "Second Order Derivatives in Continuity and Differentiability | Class 12 Maths - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/second-order-derivatives-in-continuity-and-differentiability-class-12-maths/",
+          "verified": "Its second derivative is simply the derivative of the first derivative: f''(x) = d/dx (f'(x)) = d2y/dx2"
+        },
+        {
+          "title": "Second Order Derivative: Definition, Rules & Examples - Vedantu",
+          "url": "https://www.vedantu.com/maths/second-order-derivative",
+          "verified": "d/dx(dy/dx), often known as the second-order derivative of y w.r.t x."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The example uses y = x^4 (a simple power), but the node's whole purpose as the chapter capstone is to combine techniques. The NCERT worked examples for second derivatives are richer - e.g. y = A sin x + B cos x proving d2y/dx2 + y = 0, and y = sin^(-1) x proving (1-x^2) y2 - x y1 = 0 - which require re-applying product/chain rules on the first derivative. Mentioning one such 'prove the differential equation' example (the most common board-exam form of this concept) would better reflect that second-order derivatives are usually tested via identities, not just by differentiating a monomial twice."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "limit of a function (two-sided limit) - the entire continuity definition lim(x->c) f(x) = f(c) rests on it; taught in Class 11, NO cbse12 node defines it",
+      "left-hand limit and right-hand limit (one-sided limits) - needed for piecewise continuity, endpoint continuity, and the LHD/RHD test; Class 11, no node teaches it",
+      "limit at infinity / infinite limit (the symbol +/- infinity is NOT a real number) - NCERT Example 9 uses lim(x->0+) 1/x = +infinity; Class 11 background, no node",
+      "algebra of limits (limit of sum/product/quotient) - the proof of Theorem 1 (algebra of continuous functions) cites 'the theorem on limits'; Class 11, no node",
+      "difference quotient / first principle of derivative - the derivative-definition node IS this, so it is taught here, not missing",
+      "average rate of change vs instantaneous rate of change / secant and tangent slope - the geometric meaning of the derivative; Class 11 intro, no node",
+      "product rule (uv)' = u'v + uv' and quotient rule - explicitly recalled by NCERT 5.3 as 'established as part of algebra of derivatives'; used in second-order, logarithmic, parametric; Class 11, no node teaches the rules themselves",
+      "standard derivatives table: d/dx(x^n)=nx^(n-1), d/dx(sin x)=cos x, d/dx(cos x)=-sin x, d/dx(tan x)=sec^2 x - NCERT Table 5.3, assumed from Class 11; no node",
+      "modulus / absolute value function |x| and its piecewise form - the canonical corner example for non-differentiability; Class 11, no node",
+      "greatest integer (step) function [x] - canonical discontinuity example (NCERT Ex 15, Q19); Class 11, no node",
+      "composition of functions (f o g) - DEFER target, taught in ch01:composition-of-functions",
+      "invertible / bijective function and its inverse - needed for log as inverse of exp; DEFER targets ch01:invertible-function and ch02:inverse-of-bijective",
+      "principal value of inverse trig functions (sin^-1, cos^-1, tan^-1) - DEFER targets in ch02",
+      "trigonometric identities: sin(A+B)=sinA cosB+cosA sinB, sin^2+cos^2=1, double-angle, half-angle (tan(x/2)) - used in continuity-of-sine proof and inverse-trig simplifications; Class 11, no node",
+      "laws of logarithms: log(mn)=log m+log n, log(m/n)=log m - log n, log(m^k)=k log m, change of base - proved/used in 5.4-5.5; partly proved in chapter, but the laws themselves are pre-curriculum (Class 11)",
+      "laws of exponents / rules for b^x with fractional, negative, zero exponents - foundation for exponential function; Class 11, no node",
+      "polynomial function and rational function (definition) - used pervasively; Class 11 bedrock, no node",
+      "binomial theorem expansion - NCERT chain-rule motivation expands (2x+1)^3; Class 11, no node, but only motivational here",
+      "n-th root and radical notation (sqrt) - appears in inverse-trig derivatives and many examples; Class 11 bedrock"
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "Composition of functions (f o g)(x) = f(g(x))",
+        "owner": "cbse12:mathematics:mathematics-ch01:composition-of-functions",
+        "softening": "Already listed as a prereq on composite-continuity and chain-rule. No new action: the owner node exists upstream in ch01. When surfaced, a one-line reminder 'recall f o g means apply g first, then f' suffices; the inner/outer language is reinforced in the chain-rule explanation itself."
+      },
+      {
+        "term": "Invertible (bijective) function and its inverse",
+        "owner": "cbse12:mathematics:mathematics-ch01:invertible-function (and cbse12:mathematics:mathematics-ch02:inverse-of-bijective)",
+        "softening": "Already listed as prereqs on logarithm-function. The log-as-inverse-of-exp idea needs only the intuition 'an inverse undoes the original function'; the formal bijective/one-one-onto machinery lives in ch01/ch02 and need not be re-derived here. Gloss inline as 'the log undoes the exponential' and defer the rigor."
+      },
+      {
+        "term": "Principal value / branch of inverse trig functions (sin^-1, cos^-1, tan^-1)",
+        "owner": "cbse12:mathematics:mathematics-ch02:sin-inverse-principal, cos-inverse-principal, tan-inverse-principal, principal-value-defn, not-reciprocal",
+        "softening": "All five are already listed as prereqs on inverse-trig-derivatives. The derivative derivation only needs: the principal-branch range (e.g. y in (-pi/2, pi/2) for arcsin, which fixes the sign of cos y as positive). Defer the full principal-value construction to ch02; surface just the relevant range when choosing the +sqrt sign."
+      }
+    ],
+    "inlineGlosses": [
+      "Greatest integer function [x]: gloss in continuous-function as 'the step function that rounds DOWN to the nearest integer; it jumps by 1 at every integer, so it is discontinuous there' - one sentence, no full node needed.",
+      "Modulus function |x|: gloss in differentiable-at-a-point as '|x| equals x for x>=0 and -x for x<0; its V-shaped graph has a sharp corner at 0' - the piecewise form is all that is needed for the LHD/RHD calculation.",
+      "Standard derivative d/dx(x^n)=nx^(n-1), d/dx(sin x)=cos x, d/dx(cos x)=-sin x, d/dx(tan x)=sec^2 x: gloss as a recall table wherever first used (chain-rule, second-order); these are Class 11 results quoted without re-derivation, exactly as NCERT Table 5.3 does.",
+      "Product rule (uv)'=u'v+uv' and quotient rule (u/v)'=(u'v-uv')/v^2: gloss as 'recall from Class 11' at first use in second-order-derivative and logarithmic-differentiation; NCERT itself merely recalls them.",
+      "Trig identity sin^2 y + cos^2 y = 1 (and double/half-angle): inline-gloss in inverse-trig-derivatives where cos y = sqrt(1 - sin^2 y) = sqrt(1-x^2) is used; just cite the Pythagorean identity in passing.",
+      "+/- infinity is not a real number: inline-gloss in continuity-at-a-point if the 1/x near 0 example is used - 'we write the limit as +infinity to say the value grows without bound; the limit does not exist as a real number.'"
+    ]
+  }
+}

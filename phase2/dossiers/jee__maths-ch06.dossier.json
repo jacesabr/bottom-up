@@ -1,0 +1,308 @@
+{
+  "chapter": "jee:maths:maths-ch06",
+  "concepts": [
+    {
+      "id": "jee:maths:maths-ch06:multiplication-principle",
+      "sources": [
+        {
+          "title": "Fundamental Principle of Counting - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/fundamental-principle-of-counting/",
+          "verified": "If an event can occur in m different ways, following which another event can occur in n different ways, then the total number of occurrences of the events in the given order is m × n."
+        },
+        {
+          "title": "Fundamental Principle of Counting - BYJU'S",
+          "url": "https://byjus.com/maths/fundamental-principle-counting/",
+          "verified": "If an event can occur in m different ways, and another event can occur in n different ways, then the total number of occurrences of the events is m × n."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch06:permutation-definition",
+      "sources": [
+        {
+          "title": "Permutation - Vedantu (Maths)",
+          "url": "https://www.vedantu.com/maths/permutation",
+          "verified": "A permutation is an ordered arrangement of objects."
+        },
+        {
+          "title": "Difference Between Permutation and Combination - Cuemath",
+          "url": "https://www.cuemath.com/algebra/difference-between-permutation-and-combination/",
+          "verified": "Permutations are used when order/sequence of arrangement is needed. Combinations are used to find the number of possible groups which can be formed."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch06:factorial-notation",
+      "sources": [
+        {
+          "title": "Factorial in Maths - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/factorial/",
+          "verified": "The factorial of a number is the product of all positive integers from that number down to 1."
+        },
+        {
+          "title": "Factorial Notation - Cuemath",
+          "url": "https://www.cuemath.com/numbers/factorial-notation/",
+          "verified": "The value of 0! is equal to 1. 0! = 1"
+        },
+        {
+          "title": "Factorial - Cuemath",
+          "url": "https://www.cuemath.com/numbers/factorial/",
+          "verified": "n! = 1 · 2 · 3 · ... · n = Product of the first n positive integers"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First appearance of the symbol n! (factorial) when deriving nPr or evaluating ratios of factorials, before any cancellation step is shown.",
+          "surfacingQuestion": "You keep meeting the symbol like 4! or 5!. Before we use it, do you know what the exclamation mark actually tells you to do to the number in front of it?",
+          "ladder": [
+            "Start small: how many ways can you line up 3 distinct books on a shelf? You have 3 choices for the first slot, then 2, then 1 — so 3 × 2 × 1 = 6.",
+            "That falling product 3 × 2 × 1 is written 3!. In general n! means n × (n-1) × (n-2) × ... × 2 × 1, the product of all positive integers from n down to 1.",
+            "Compute a few so the values stick: 1! = 1, 2! = 2, 3! = 6, 4! = 24, 5! = 120.",
+            "One special convention you must memorise: 0! = 1 (NOT 0). There is exactly one way to arrange nothing, so the empty product is 1.",
+            "Notice the self-referential shortcut: 5! = 5 × 4!, and 5! = 5 × 4 × 3!. Peeling off the front factors like this is how we will cancel factorials later, e.g. 7!/5! = (7 × 6 × 5!)/5! = 42."
+          ],
+          "answer": "n! (read 'n factorial') is the product of every positive integer from n down to 1: n! = n × (n-1) × (n-2) × ... × 2 × 1. So 1! = 1, 2! = 2, 3! = 6, 4! = 24, 5! = 120, 6! = 720, 7! = 5040. By convention 0! = 1, not 0. The recursion n! = n(n-1)! lets you expose and cancel a common factorial block in a ratio (for example 7!/5! = 7 × 6 = 42).",
+          "returnCue": "Now that n! just means 'multiply down to 1' and 0! = 1, let's use it to write the permutation count nPr compactly."
+        }
+      ],
+      "contentNote": "Misconceptions list captures 0! = 0 and (a+b)! errors well. Consider adding the very common JEE algebra trap that the source itself exercises in Example 8 / Exercise 6.2 Q4: solving equations like 1/8! + 1/9! = x/10! requires factoring out the smallest factorial (1/8!(1 + 1/9) = x/(10·9·8!)) rather than adding factorials directly — reinforces the recursion n! = n(n-1)! as the enabling move."
+    },
+    {
+      "id": "jee:maths:maths-ch06:permutations-distinct-npr",
+      "sources": [
+        {
+          "title": "nPr Formula - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/npr-formula/",
+          "verified": "P (n, r) = n!/(n - r)!"
+        },
+        {
+          "title": "nPr Formula - Cuemath",
+          "url": "https://www.cuemath.com/npr-formula/",
+          "verified": "P (n, r) (or) n P r (or) n P r = n! / (n - r)!"
+        },
+        {
+          "title": "Permutations and Combinations - BYJU'S (JEE)",
+          "url": "https://byjus.com/jee/permutations-and-combinations/",
+          "verified": "The permutation value by taking r objects out of n objects at a time will be represented by n(n -1)(n – 2)(n – 3)………….(n – r + 1), which is written as nPr, which can also be written as n!/(n-r)!"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch06:permutations-with-repetition",
+      "sources": [
+        {
+          "title": "Permutation - BYJU'S (Maths)",
+          "url": "https://byjus.com/maths/permutation/",
+          "verified": "n × n × n × ……(r times) = nr"
+        },
+        {
+          "title": "Permutations and Combinations - Vedantu (JEE Main)",
+          "url": "https://www.vedantu.com/jee-main/maths-permutations-and-combinations",
+          "verified": "If repetition is allowed, the permutation of objects will be n × n × n × ……(r times) = n^r"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First time the count n^r (n raised to the power r) is written for repetition-allowed arrangements — attach here since exponent/power notation as repeated multiplication is not established anywhere in jee maths ch01–ch05.",
+          "surfacingQuestion": "We just wrote the answer as 4^4 instead of 4×4×4×4. Are you fully comfortable with what the small raised number (the exponent) is telling you to do?",
+          "ladder": [
+            "A power is just shorthand for repeated multiplication of the same base. 4^4 means 'multiply 4 by itself 4 times': 4 × 4 × 4 × 4.",
+            "Compute it: 4 × 4 = 16, × 4 = 64, × 4 = 256. So 4^4 = 256.",
+            "The base is the number being multiplied (here 4 = number of available letters); the exponent counts how many factors there are (here 4 = number of positions to fill).",
+            "Order matters in the notation: n^r and r^n are different. 4^4 happens to coincide, but 6^3 = 216 while 3^6 = 729 — base = number of choices per slot, exponent = number of slots.",
+            "Tie it back: r positions, each independently fillable in n ways, gives n × n × ... × n (r times) = n^r by the multiplication principle."
+          ],
+          "answer": "The exponent in n^r means repeated multiplication of the base n by itself r times: n^r = n × n × ... × n with r factors. The base n is how many choices each position has; the exponent r is how many positions there are. So 4^4 = 4×4×4×4 = 256 and 6^3 = 6×6×6 = 216. Keep the order straight: n^r (choices-to-the-slots) is not r^n.",
+          "returnCue": "With n^r read as 'n choices, r times over', the repetition-allowed count falls straight out of the multiplication principle — back to arranging with reuse."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch06:permutations-not-all-distinct",
+      "sources": [
+        {
+          "title": "Permutation and Combination of Alike Objects - Vedantu (JEE Main)",
+          "url": "https://www.vedantu.com/jee-main/maths-permutation-and-combination-of-alike-objects",
+          "verified": "The number of distinct permutations is given by n!/(n_1! n_2! ··· n_k!)"
+        },
+        {
+          "title": "Permutation and Combination - BYJU'S (Maths)",
+          "url": "https://byjus.com/maths/permutation-and-combination/",
+          "verified": "The permutation will be given by n!/(k₁! × k₂! × k₃! × …. × kₐ!)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Explanation is strong (ALLAHABAD, INDEPENDENCE worked fully). Could surface the source's classic 'do NOT come together' twist (MISSISSIPPI, Exercise 6.3 Q10) as a complement-method companion to the 'block' technique: arrangements where identical objects are never adjacent = total − (treated-as-block). This pairs the divide-by-p! rule with the complement principle the goal node leans on."
+    },
+    {
+      "id": "jee:maths:maths-ch06:combination-definition",
+      "sources": [
+        {
+          "title": "Combinations - Cuemath",
+          "url": "https://www.cuemath.com/data/combinations/",
+          "verified": "Combinations are selections made by taking some or all of a number of objects, irrespective of their arrangements."
+        },
+        {
+          "title": "Difference Between Permutation and Combination - BYJU'S",
+          "url": "https://byjus.com/maths/difference-between-permutation-and-combination/",
+          "verified": "The order is quite irrelevant."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch06:relate-permutations-combinations",
+      "sources": [
+        {
+          "title": "Difference Between Permutation and Combination - Cuemath",
+          "url": "https://www.cuemath.com/algebra/difference-between-permutation-and-combination/",
+          "verified": "^nP_r = r! × ^nC_r"
+        },
+        {
+          "title": "nCr Formula - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/ncr-formula/",
+          "verified": "nCr = nPr/r!, which shows how combinations relate to permutations."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch06:combinations-ncr",
+      "sources": [
+        {
+          "title": "nCr Formula - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/ncr-formula/",
+          "verified": "nCr = n! / (r! × (n - r)!)"
+        },
+        {
+          "title": "nCr Formula - Cuemath",
+          "url": "https://www.cuemath.com/ncr-formula/",
+          "verified": "C(n, r)=n ! /[r !(n-r) !]"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch06:combination-symmetry",
+      "sources": [
+        {
+          "title": "nCr Formula - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/ncr-formula/",
+          "verified": "nCr is the same as nCn-r, which means that choosing r items out of n items is equivalent to choosing (n-r) items out of n items."
+        },
+        {
+          "title": "Combinations - Cuemath",
+          "url": "https://www.cuemath.com/data/combinations/",
+          "verified": "^n{C_r} = ^n{C_{n-r}}"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch06:pascal-identity",
+      "sources": [
+        {
+          "title": "Binomial Theorem - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/binomial-theorem/",
+          "verified": "nCr + nCr-1 = n+1Cr"
+        },
+        {
+          "title": "Pascal's Triangle Formula - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/pascals-triangle-formula/",
+          "verified": "binom{p}{q} = binom{p-1}{q-1} + binom{p-1}{q}"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Note that the chapter's source `quote` field for this node ('selecting r objects out of n objects is same as rejecting') is actually the text supporting the SYMMETRY identity (Remark 4), not Pascal's rule (Theorem 6). The explanation body is correct; only the lifted quote is mismatched. Consider re-anchoring the quote to the Theorem 6 line in kemh106.txt: 'nCr + nCr-1 = n+1Cr'."
+    },
+    {
+      "id": "jee:maths:maths-ch06:solve-counting-problems",
+      "sources": [
+        {
+          "title": "Difference Between Permutation and Combination - Cuemath",
+          "url": "https://www.cuemath.com/algebra/difference-between-permutation-and-combination/",
+          "verified": "Permutations are used when order/sequence of arrangement is needed. Combinations are used to find the number of possible groups which can be formed."
+        },
+        {
+          "title": "Permutation and Combination - BYJU'S (Maths)",
+          "url": "https://byjus.com/maths/permutation-and-combination/",
+          "verified": "permutation relates to the act of arranging all the members of a set into some sequence or order"
+        },
+        {
+          "title": "Problems on Permutation and Combination - BYJU'S (JEE)",
+          "url": "https://byjus.com/jee/problems-on-permutation-and-combination/",
+          "verified": "There are sums in this chapter that involve selection and arrangement i) with repetitions and ii) with no repetitions."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Excellent decision-first framing and block/fix/complement toolkit. One JEE-staple technique present in the source but not surfaced in keyMoves: the gap/slot method for 'no two alike together' (Miscellaneous Example 24 — seat 5 girls first in 5! ways, then place 3 boys in the 6 inter-girl gaps via 6P3 = 14400). Worth listing as a fourth assembly technique alongside block / fixed-position / complement, since it is the canonical counter-pattern to the 'block' technique."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "n! / factorial — product of first n natural numbers, with 0! = 1 and recursion n! = n(n-1)!. PRE-CURRICULUM BEDROCK: not defined anywhere in jee maths ch01–ch05; first introduced in this chapter (sec 6.3.2). Owned here by factorial-notation.",
+      "exponent / power n^r — repeated multiplication, base vs exponent. PRE-CURRICULUM BEDROCK: powers are used (n^r in permutations-with-repetition; also 2^n implicit in combinatorial sums) but never formally defined in ch01–ch05 (ch04 uses powers of i but assumes the notation). Treat as arithmetic bedrock; gloss/refresh at first use.",
+      "multiplication principle / fundamental principle of counting — first-class concept OWNED in this chapter (multiplication-principle). Load-bearing for every downstream node. No upstream owner needed.",
+      "addition principle (mutually exclusive cases) — used implicitly in Example 4 (at-least-2-flags) and throughout combination case-splitting/goal node, but never given its own concept node. Candidate INLINE-GLOSS (see below).",
+      "ordered pair / order matters — supplied upstream by jee:maths:maths-ch02:ordered-pair (listed prereq). Available; DEFER/refer, no bridge needed.",
+      "Cartesian product and its count |A×B| = |A||B| — supplied upstream by jee:maths:maths-ch02:cartesian-product and count-cartesian-product (listed prereqs of multiplication-principle). This is the natural set-theoretic seed of the multiplication principle. Available upstream.",
+      "finite set / counting elements of a finite set — supplied upstream by jee:maths:maths-ch01:classify-finite-and-infinite-sets (listed prereq). Available.",
+      "natural numbers / positive integers — pre-curriculum bedrock, assumed known; needed to state n! and n^r. No action.",
+      "set / selection / subset (a combination is essentially an r-subset) — supplied upstream by jee:maths:maths-ch01 (count-subsets-and-power-set, determine-subset-relations). Available; supports combination-definition implicitly.",
+      "solving quadratic equations by factoring — used in worked Examples 12–13 (nP5 = 42·nP3 → n²−7n−30 = 0; 5·4Pr = 6·5P(r-1) → r²−11r+24 = 0) and Exercise 6.3. This is a downstream solving skill, not a counting idea — algebra prerequisite assumed from earlier algebra, not owned in ch01–ch05 (which are sets/relations/trig/complex/linear-inequalities). Flag as ASSUMED-ALGEBRA-BEDROCK; not a missing course concept to bridge here, but worth an inline reminder if equation-solving items appear.",
+      "vowel / consonant — domain vocabulary used in many worded problems (EQUATION, DAUGHTER, INVOLUTE). Non-mathematical; assume known, no action.",
+      "playing-card deck structure (52 cards, 4 suits of 13, 26 red/26 black, face cards) — real-world context for nCr examples (Example 19). Domain knowledge; INLINE-GLOSS only if a card item is authored."
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "ordered pair / 'order matters'",
+        "owner": "jee:maths:maths-ch02:ordered-pair",
+        "softening": "When first distinguishing ROSE from ROES, briefly recall '(a,b) is an ordered pair — position carries meaning — just as you saw with Cartesian products in ch02', then proceed. No re-teaching."
+      },
+      {
+        "term": "Cartesian product count |A×B| = |A|×|B|",
+        "owner": "jee:maths:maths-ch02:count-cartesian-product",
+        "softening": "Frame the pant-shirt example as 'this is exactly counting the pairs in the set Pants × Shirts, which ch02 showed has |Pants|×|Shirts| elements' — anchors the multiplication principle to an already-owned result rather than presenting it as brand-new."
+      },
+      {
+        "term": "finite set / how many elements",
+        "owner": "jee:maths:maths-ch01:classify-finite-and-infinite-sets",
+        "softening": "One clause: 'all the collections we count here are finite sets (ch01), so a definite whole-number count exists.' No expansion."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "addition principle",
+        "gloss": "If a task splits into cases that cannot happen at the same time (mutually exclusive), the total count is the SUM of the case counts — the companion to the multiplication principle (which combines successive independent choices by product). Used the moment a problem says 'at least', 'or', or 'either ... or' (e.g. Example 4: 2-flag OR 3-flag OR 4-flag OR 5-flag signals = 20+60+120+120). Gloss inline at first case-split (Example 4 / combinations-ncr) rather than spawning a node.",
+        "attachTo": "jee:maths:maths-ch06:multiplication-principle"
+      },
+      {
+        "term": "power / exponent n^r",
+        "gloss": "n^r is repeated multiplication: n times itself r times. Base n = choices per slot, exponent r = number of slots. (Covered by the refresher on permutations-with-repetition; a one-line gloss suffices if the refresher is skipped on replay.)",
+        "attachTo": "jee:maths:maths-ch06:permutations-with-repetition"
+      },
+      {
+        "term": "playing-card deck composition",
+        "gloss": "A standard deck has 52 cards = 4 suits (spades, hearts, diamonds, clubs) × 13 ranks; 26 red (hearts, diamonds) + 26 black (spades, clubs); 12 face cards (J, Q, K of each suit); 4 aces. Gloss only inside any nCr item that uses cards (cf. source Example 19).",
+        "attachTo": "jee:maths:maths-ch06:combinations-ncr"
+      },
+      {
+        "term": "factoring a quadratic to solve nPr/nCr equations",
+        "gloss": "Equation-style items (nP5 = 42·nP3, 5·4Pr = 6·5P(r-1)) reduce, after cancelling common factorial blocks, to a quadratic in n or r solved by factoring; reject the root that violates the domain (n,r non-negative integers, r≤n). Algebra is assumed bedrock; remind inline rather than bridging.",
+        "attachTo": "jee:maths:maths-ch06:permutations-distinct-npr"
+      }
+    ]
+  }
+}

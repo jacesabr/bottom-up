@@ -1,0 +1,453 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch10",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:vector-definition",
+      "sources": [
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 10 Vector Algebra - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-10-vector-algebra/",
+          "verified": "a quantity having both direction and magnitude is called a vector"
+        },
+        {
+          "title": "NCERT Solutions Class 12 Maths Chapter 10 Vector Algebra - BYJU'S",
+          "url": "https://byjus.com/ncert-solutions-class-12-maths/chapter-10-vector-algebra/",
+          "verified": "2 meters north-west is a vector quantity as it has both magnitude and direction"
+        },
+        {
+          "title": "Vector Algebra - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/vector-algebra/",
+          "verified": "Vectors are the quantities that have both magnitude and direction"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:magnitude",
+      "sources": [
+        {
+          "title": "Magnitude of a Vector - Formula, How to Find? - Cuemath",
+          "url": "https://www.cuemath.com/magnitude-of-a-vector-formula/",
+          "verified": "The magnitude of a vector A is the length of the vector A"
+        },
+        {
+          "title": "Magnitude of a Vector - Definition, Formula, Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/magnitude-of-a-vector/",
+          "verified": "The magnitude of a vector (sometimes called the length or norm) is a measure of how long the vector is"
+        },
+        {
+          "title": "Magnitude of a Vector - Vedantu",
+          "url": "https://www.vedantu.com/maths/magnitude-of-a-vector",
+          "verified": "magnitude of a vector is the 'length' or 'size' of the vector"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must compute |a| = sqrt(x^2 + y^2 + z^2) but does not see why the square root of a sum of squared coordinates gives a length.",
+          "surfacingQuestion": "Before we measure a vector in 3-D, recall the plane: a point is at (3, 4). How far is it from the origin (0, 0)?",
+          "ladder": [
+            "Drop a perpendicular from (3, 4) to the x-axis. You get a right triangle with horizontal leg 3 and vertical leg 4.",
+            "What does the Pythagoras theorem say about the hypotenuse of a right triangle with legs 3 and 4?",
+            "So the distance from the origin is sqrt(3^2 + 4^2). What number is that?",
+            "In 3-D we apply Pythagoras twice, which is why a third squared term z^2 appears under the root."
+          ],
+          "answer": "The distance from the origin to (3, 4) is sqrt(3^2 + 4^2) = sqrt(9 + 16) = sqrt(25) = 5. By Pythagoras, the straight-line distance is the square root of the sum of the squared coordinates; extending this to 3-D gives sqrt(x^2 + y^2 + z^2), which is exactly the magnitude of a vector with components x, y, z.",
+          "returnCue": "That square-root-of-summed-squares is precisely |a| = sqrt(x^2 + y^2 + z^2). Now let us find the magnitude of the given vector."
+        }
+      ],
+      "contentNote": "explanation PART 2 silently uses the '3-D distance formula' and PART 3 references squaring components; the misconception list flags negative magnitudes but never names the Pythagoras theorem, which the NCERT text explicitly invokes ('by applying the Pythagoras theorem twice'). Consider one sentence tying the formula to Pythagoras so the formula reads as derived, not decreed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:position-vector",
+      "sources": [
+        {
+          "title": "Position Vector - Definition, Formula, Examples - Cuemath",
+          "url": "https://www.cuemath.com/geometry/position-vector/",
+          "verified": "a vector that indicates either the position or the location of any given point with respect to any arbitrary reference point like the origin"
+        },
+        {
+          "title": "Vector Algebra for Class 12 - Vedantu",
+          "url": "https://www.vedantu.com/maths/vector-algebra-for-class-12",
+          "verified": "A position vector identifies the location of a point P(x, y, z) relative to the origin, denoted as OP = xi + yj + zk"
+        },
+        {
+          "title": "Vector Algebra for Class 12 - BYJU'S",
+          "url": "https://byjus.com/maths/vector-algebra-for-class-12/",
+          "verified": "The position vector is given with respect to the origin O (0,0,0), where the coordinate of point (say P) is P(x,y,z)"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must place a point P(x, y, z) and the origin O(0, 0, 0) in a 3-D coordinate system but has not recalled the right-handed rectangular axes from Class XI.",
+          "surfacingQuestion": "A position vector starts at the origin O. In 3-D, how many axes meet at O, and what are the coordinates of a point P written as?",
+          "ladder": [
+            "In 2-D a point is given by two numbers (x, y) measured along the x- and y-axes. How many axes does 3-D add?",
+            "The three axes x, y, z are mutually perpendicular and meet at the origin O(0, 0, 0). A point P is then named by three numbers (x, y, z).",
+            "So 'the position of P' just records how far to go along x, then y, then z, starting from O."
+          ],
+          "answer": "Three mutually perpendicular axes (x, y, z) meet at the origin O(0, 0, 0) in the right-handed rectangular coordinate system. A point P is written P(x, y, z), where x, y, z are its distances along the three axes. The position vector OP simply carries you from O to that point P.",
+          "returnCue": "With O at the origin and P at (x, y, z), the position vector is OP = x i + y j + z k. Let us write it for the given point."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:direction-cosines",
+      "sources": [
+        {
+          "title": "Direction Cosines and Direction Ratios - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/direction-cosines-and-direction-ratios/",
+          "verified": "The cosines of these angles, cos(alpha), cos(beta), and cos(gamma), are called directional cosines of the directed line OA"
+        },
+        {
+          "title": "How to Find Direction Ratios and Direction Cosines - Vedantu",
+          "url": "https://www.vedantu.com/maths/how-to-find-direction-ratios-and-direction-cosines",
+          "verified": "Let the position vector make a positive angle of alpha, beta, and gamma with the positive x, y, and z-axis respectively"
+        },
+        {
+          "title": "Direction Cosines And Angle Between Two Lines - BYJU'S",
+          "url": "https://byjus.com/maths/direction-cosines/",
+          "verified": "the cosines of the angles between the three coordinate axes and the vector"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must take l = cos(alpha) = a1/|a| but is shaky on what cosine of an angle means as a ratio in a right triangle.",
+          "surfacingQuestion": "Direction cosines are cosines of the angles a vector makes with the axes. In a right-angled triangle, what ratio of sides does cos of an angle equal?",
+          "ladder": [
+            "In a right triangle, an acute angle has an adjacent side, an opposite side, and the hypotenuse.",
+            "Cosine of that angle is which ratio: opposite/hypotenuse, or adjacent/hypotenuse?",
+            "For the vector r and the x-axis, the 'adjacent' side is the x-component and the 'hypotenuse' is the length |r|, so cos(alpha) = x/|r|."
+          ],
+          "answer": "In a right-angled triangle, cos(angle) = adjacent / hypotenuse. For a vector r making angle alpha with the x-axis, the side adjacent to alpha is the x-component a1 and the hypotenuse is the magnitude |r|, so the direction cosine is cos(alpha) = a1/|r| (and likewise m = a2/|r|, n = a3/|r|).",
+          "returnCue": "That is why each direction cosine is a component divided by the magnitude. Now compute l, m, n for the given vector."
+        }
+      ],
+      "contentNote": "explanation defines direction RATIOS in PART 3 only as 'the raw components 3, 4, 0' and as 'not divided by the magnitude'. The NCERT source is subtler: direction ratios are any numbers proportional to the direction cosines (lr, mr, nr with a, b, c general), so a^2+b^2+c^2 need not equal 1. The current note is correct for the case dr = components, but consider adding that any scalar multiple of the components is also a valid set of direction ratios, matching the NCERT 'proportional to the direction cosines' framing."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:zero-vector",
+      "sources": [
+        {
+          "title": "Vector Algebra Class 12 Notes Maths Chapter 10 - Learn CBSE",
+          "url": "https://www.learncbse.in/vector-algebra-class-12-notes/",
+          "verified": "A vector, whose initial and terminal points coincide and magnitude is zero, is called a null vector"
+        },
+        {
+          "title": "Zero Vector (Null Vector) - Definition, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/zero-vector/",
+          "verified": "A vector that has zero length and an undefined direction is called a zero vector or null vector"
+        },
+        {
+          "title": "Zero Vector - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/zero-vector/",
+          "verified": "acts like the additive identity for vectors. (Adding it to any vector leaves the vector unchanged.)"
+        },
+        {
+          "title": "Types of Vectors - BYJU'S",
+          "url": "https://byjus.com/maths/types-of-vectors/",
+          "verified": "the magnitude of the vector is zero and the starting point coincides with the terminal point"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:unit-vector",
+      "sources": [
+        {
+          "title": "Unit Vector - Formula, Definition, Calculate, Notation - Cuemath",
+          "url": "https://www.cuemath.com/calculus/unit-vector/",
+          "verified": "A unit vector is a vector that has the magnitude equal to 1"
+        },
+        {
+          "title": "Unit Vector: Definition, Formula, Steps & Solved Examples - Vedantu",
+          "url": "https://www.vedantu.com/maths/vector-unit",
+          "verified": "A vector unit (or unit vector) is defined as any vector that has a magnitude (length) of exactly 1"
+        },
+        {
+          "title": "Unit Vector - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/unit-vector/",
+          "verified": "Unit vectors are the vectors that have a magnitude (length) of exactly 1"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:collinear-vectors",
+      "sources": [
+        {
+          "title": "Collinear Vectors - Definitions, Conditions, Examples - Cuemath",
+          "url": "https://www.cuemath.com/geometry/collinear-vectors/",
+          "verified": "Two vectors p and q are considered to be collinear vectors if there exists a scalar 'n' such that p = n . q"
+        },
+        {
+          "title": "Collinear Vectors Definition Formula Examples - Vedantu",
+          "url": "https://www.vedantu.com/maths/collinear-vectors",
+          "verified": "vectors that lie along the same straight line or are parallel to the same line"
+        },
+        {
+          "title": "Types of Vectors - BYJU'S",
+          "url": "https://byjus.com/maths/types-of-vectors/",
+          "verified": "Vectors that lie along the same line or parallel lines are known to be collinear vectors"
+        },
+        {
+          "title": "Types of Vectors - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/types-of-vectors/",
+          "verified": "Vectors are said to be Collinear Vectors if they lie on the same line"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "explanation PART 3 gives the component test a1/b1 = a2/b2 = a3/b3 and correctly handles zero components, but inverts the NCERT convention. NCERT writes b = lambda a (so b1/a1 = b2/a2 = b3/a3 = lambda), matching the scalar-multiplication remark and the later cross-product collinearity link. The math is equivalent; aligning the ratio direction with NCERT (and with this concept's own PART 2 statement a = lambda b) would remove a subtle a-vs-b inconsistency between PART 2 and PART 3."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:equal-vectors",
+      "sources": [
+        {
+          "title": "Equal Vector - Definition, Formula, Angle, Examples - Cuemath",
+          "url": "https://www.cuemath.com/algebra/equal-vector/",
+          "verified": "two or more vectors are said to be equal vectors if their length is the same and they all point in the same direction"
+        },
+        {
+          "title": "Equal Vectors - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/equal-vectors/",
+          "verified": "two vectors are said to be equal if they have the same length and direction; otherwise, they are unequal vectors"
+        },
+        {
+          "title": "NCERT Solutions Class 12 Maths Chapter 10 Vector Algebra - BYJU'S",
+          "url": "https://byjus.com/ncert-solutions-class-12-maths/chapter-10-vector-algebra/",
+          "verified": "the magnitude and direction of two vectors are the same, regardless of the positions of their initial points"
+        },
+        {
+          "title": "Types of Vectors - BYJU'S",
+          "url": "https://byjus.com/maths/types-of-vectors/",
+          "verified": "Two or more vectors are said to be equal when their magnitude is equal and also their direction is the same"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:parallelogram-law",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Maths Chapter 10 - Vector Algebra (official textbook PDF)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh204.pdf",
+          "verified": "This is known as the triangle law of vector addition"
+        },
+        {
+          "title": "Triangle Law of Vector Addition - Cuemath",
+          "url": "https://www.cuemath.com/calculus/triangle-law-of-vector-addition/",
+          "verified": "the head-to-tail method for the addition of vectors"
+        },
+        {
+          "title": "Parallelogram Law of Vector Addition - Cuemath",
+          "url": "https://www.cuemath.com/calculus/parallelogram-law-of-vector-addition/",
+          "verified": "The parallelogram law of vector addition is a method that is used to find the sum of two vectors"
+        },
+        {
+          "title": "Parallelogram Law of Vector Addition - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/parallelogram-law/",
+          "verified": "two vectors represented as the two adjacent sides of a parallelogram with their tails meeting at the common point"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The concept title and explanation cover the triangle law and parallelogram law thoroughly, but the chapter's separate NCERT section 10.5 'Multiplication of a vector by a scalar' (lambda a, with |lambda a| = |lambda||a|, direction same/opposite by sign of lambda) is not its own node and is only touched implicitly. Scalar multiplication is load-bearing for unit-vector, collinear-vectors, component-form and section-formula. Consider adding a short PART noting lambda a here, or an inline gloss where component-form first scales a vector, since no upstream cbse12 chapter teaches scaling of a geometric vector."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:component-form",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Maths Chapter 10 - Vector Algebra (official textbook PDF)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh204.pdf",
+          "verified": "This form of any vector is called its component form"
+        },
+        {
+          "title": "Components of a Vector - Cuemath",
+          "url": "https://www.cuemath.com/geometry/components-of-a-vector/",
+          "verified": "the values a, b, c are called the scalar components of vector A, and ai, bj, ck, are called the vector components"
+        },
+        {
+          "title": "Components of Vector - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/components-of-vector/",
+          "verified": "The values a, b, and c are known as the scalar components of vector A"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:section-formula",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Maths Chapter 10 - Vector Algebra (official textbook PDF)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh204.pdf",
+          "verified": "the position vector of the point R which divides P and Q internally in the ratio of m : n"
+        },
+        {
+          "title": "Section Formula In Vector Algebra - BYJU'S",
+          "url": "https://byjus.com/maths/section-formula-algebra/",
+          "verified": "position vector of point R dividing P and Q internally in the ratio m:n is given by OR = (mb + na)/(m + n)"
+        },
+        {
+          "title": "Section Formula: Internal and External Division, Midpoint Formula - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/section-formula/",
+          "verified": "Internal Division ... External Section Formula ... Section Formula for Midpoint"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "explanation PART 1 and the NCERT summary both write internal division as r = (m q + n p)/(m + n) i.e. (m b + n a)/(m + n), which is correct and consistent. Good. One precision point: PART 2's external formula r = (m q - n p)/(m - n) is correct, but worth a one-line caution that m != n is required (else the denominator is zero), paralleling the NCERT 'PR/QR = m/n' setup. Minor; content is sound."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:scalar-product",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Maths Chapter 10 - Vector Algebra (official textbook PDF)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh204.pdf",
+          "verified": "a . b = |a||b| cos(theta), where theta is the angle between a and b"
+        },
+        {
+          "title": "Dot Product of Two Vectors - Cuemath",
+          "url": "https://www.cuemath.com/algebra/dot-product/",
+          "verified": "the dot product of two vectors is the product of their Euclidean magnitudes and the cosine of the angle between them"
+        },
+        {
+          "title": "Scalar Product - Formula, Properties, Derivation - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/scalar-product-of-vectors/",
+          "verified": "The scalar product of two vectors A and B is defined as: A . B = |A| |B| cos theta"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must read off cos(theta) for the angle between two vectors and recall standard values (cos 0 = 1, cos 90 = 0, cos 180 = -1) but is rusty on the cosine function.",
+          "surfacingQuestion": "The dot product hinges on cos(theta). What are cos(0 degrees), cos(90 degrees) and cos(180 degrees)?",
+          "ladder": [
+            "When two vectors point exactly the same way, the angle between them is 0 degrees. What is cos(0)?",
+            "When they are perpendicular, the angle is 90 degrees. What is cos(90)?",
+            "When they point exactly opposite, the angle is 180 degrees. What is cos(180)?",
+            "Notice cos(90) = 0 is why perpendicular vectors have a dot product of zero."
+          ],
+          "answer": "cos(0 degrees) = 1, cos(90 degrees) = 0, and cos(180 degrees) = -1. So a . b is largest and positive when vectors are parallel, exactly zero when they are perpendicular (the perpendicularity test), and most negative when they are anti-parallel.",
+          "returnCue": "Because cos(90 degrees) = 0, a . b = 0 means the vectors are perpendicular. Now use a . b = |a||b| cos(theta) on the given vectors."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch10:vector-product",
+      "sources": [
+        {
+          "title": "NCERT Class 12 Maths Chapter 10 - Vector Algebra (official textbook PDF)",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh204.pdf",
+          "verified": "The vector product of two nonzero vectors a and b, is denoted by a x b and defined as a x b = |a||b| sin(theta) n-hat"
+        },
+        {
+          "title": "Cross Product of Two Vectors - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/cross-product/",
+          "verified": "The cross product is anticommutative, meaning A x B = -(B x A)"
+        },
+        {
+          "title": "Vector product or cross product of two vectors - BYJU'S",
+          "url": "https://byjus.com/jee/cross-product/",
+          "verified": "A x B = AB sin theta ... Where n-hat is the unit vector"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must expand the i j k / a1 a2 a3 / b1 b2 b3 determinant for the cross product but does not connect it to 3x3 determinant expansion.",
+          "surfacingQuestion": "The cross product is computed by expanding a 3x3 determinant along the top row. How do you expand a 3x3 determinant along its first row using minors and the + - + sign pattern?",
+          "ladder": [
+            "A 3x3 determinant is expanded along row 1 as (first entry) x (its 2x2 minor) - (second entry) x (its minor) + (third entry) x (its minor).",
+            "The minor of an entry is the 2x2 determinant left after deleting that entry's row and column.",
+            "Here row 1 holds i, j, k, so each gets multiplied by the 2x2 minor formed from the a- and b-rows, with signs +, -, +.",
+            "A 2x2 determinant [p q; r s] evaluates to ps - qr."
+          ],
+          "answer": "Expanding along the first row, det = (entry1)(minor1) - (entry2)(minor2) + (entry3)(minor3), where each minor is the 2x2 determinant from deleting that entry's row and column, and a 2x2 determinant [p q; r s] = ps - qr. Applied to the cross product, the i-coefficient is (a2 b3 - a3 b2), the j-coefficient is -(a1 b3 - a3 b1), and the k-coefficient is (a1 b2 - a2 b1).",
+          "returnCue": "That + - + cofactor expansion is exactly how a x b is computed. Now expand the determinant for the given a and b."
+        }
+      ],
+      "contentNote": "explanation PART 2 gives the expanded component formula but does not present the determinant array (i j k / a1 a2 a3 / b1 b2 b3) that NCERT uses as the primary computational device and that section-defining examples (22-25) all use. keyMoves does say 'compute it as the i, j, k determinant', so the skill is named but never shown. Consider showing the determinant array once, since the 3x3 expansion mechanic is owned upstream by ch04 (determinant-order-three / minor / cofactor) and should be cross-linked rather than re-derived."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "magnitude / length of a directed segment (defined in-chapter, vector-definition -> magnitude)",
+      "direction of a quantity (in-chapter, vector-definition)",
+      "scalar vs vector distinction (in-chapter, vector-definition)",
+      "3-D right-handed rectangular coordinate system and axes x, y, z (PRE-CURRICULUM: Class XI; NCERT text says 'From Class XI, recall'; NOT taught in cbse12 ch01-ch09)",
+      "coordinates of a point P(x, y, z) (PRE-CURRICULUM: Class XI 3-D / Class IX-X 2-D coordinate geometry)",
+      "origin O(0,0,0) (PRE-CURRICULUM: coordinate geometry bedrock)",
+      "distance formula sqrt(x^2 + y^2 + z^2) (PRE-CURRICULUM: Class XI; NCERT text says 'Using distance formula (from Class XI)')",
+      "Pythagoras theorem (PRE-CURRICULUM: Class IX-X geometry; NCERT derives magnitude 'by applying the Pythagoras theorem twice')",
+      "trigonometric cosine / sine of an angle as ratios and standard values cos 0, cos 90, cos 180, sin theta (PRE-CURRICULUM: Class X-XI trigonometry; underpins direction-cosines, scalar-product, vector-product)",
+      "angle between two rays/lines, radian measure 0 <= theta <= pi (PRE-CURRICULUM: Class XI)",
+      "ratio and proportion / dividing a segment in a ratio m:n (PRE-CURRICULUM: Class X coordinate-geometry section formula; reused vectorially in section-formula)",
+      "weighted average (PRE-CURRICULUM bedrock; underpins section-formula intuition)",
+      "scalar multiplication of a vector lambda a, |lambda a| = |lambda| |a| (IN-CHAPTER but NOT a standalone node: NCERT section 10.5; load-bearing for unit-vector, collinear-vectors, component-form, section-formula)",
+      "unit vectors i, j, k along axes (in-chapter, introduced with component-form / unit-vector)",
+      "3x3 determinant expansion along a row; minor; cofactor; 2x2 determinant ps - qr (COURSE-CONCEPT UPSTREAM: cbse12 ch04 determinant-order-three, minor, cofactor; load-bearing for vector-product determinant formula)",
+      "area of a triangle / parallelogram (PRE-CURRICULUM geometry; cross product gives |a x b| = parallelogram area, half for triangle)",
+      "right-handed system / right-hand rule for n-hat (PRE-CURRICULUM physics/geometry convention; introduced in-chapter at section 10.6.3)",
+      "free vector / parallel translation (in-chapter Remark, section 10.3; underpins equal-vectors)"
+    ],
+    "bridgesProposed": [
+      {
+        "term": "right-handed coordinate system and the right-hand rule for n-hat",
+        "classification": "AUTHOR-bridge",
+        "rationale": "The orientation convention that fixes the DIRECTION of a x b (a, b, n-hat form a right-handed system) is taught nowhere upstream in cbse12 ch01-ch09 and is only a physics/Class-XI convention, not a derivable maths result. The chapter introduces it verbally at 10.6.3 but the vector-product node assumes it. A short author bridge ('curl the right hand from a toward b; the thumb points along n-hat') is warranted because it is genuinely new and load-bearing for the goal concept, yet not a recallable pre-curriculum fact a refresher could surface."
+      }
+    ],
+    "defers": [
+      {
+        "term": "3x3 determinant expansion (minor / cofactor / + - + row expansion)",
+        "owner": "cbse12:mathematics:mathematics-ch04 (determinant-order-three, minor, cofactor)",
+        "softening": "When the cross-product determinant array first appears, add a one-line cross-reference: 'This is the same row-expansion you used for 3x3 determinants in the Determinants chapter (expand along the i, j, k row using minors and the + - + signs).' Do not re-teach; defer ownership to ch04 and link. A refresher (provided on vector-product) covers students who jump straight to this chapter."
+      },
+      {
+        "term": "scalar multiplication of a vector lambda a (and |lambda a| = |lambda||a|)",
+        "owner": "cbse12:mathematics:mathematics-ch10 itself (NCERT section 10.5) - but currently NOT a standalone node",
+        "softening": "This is in-chapter content in NCERT yet has no concept node. Rather than a new node mid-graph, defer to the parallelogram-law / component-form nodes with an inline mention so unit-vector (a/|a|), collinear-vectors (a = lambda b), and section-formula (m b + n a) all have a named referent. Owner stays within ch10."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "directed line segment",
+        "gloss": "an arrow drawn from an initial point to a terminal point; its length is the magnitude and its arrowhead gives the direction",
+        "attachTo": "vector-definition",
+        "rationale": "Used as the visual model for a vector but is a one-phrase idea; gloss inline rather than refresh."
+      },
+      {
+        "term": "free vector",
+        "gloss": "a vector that may be slid (translated) parallel to itself anywhere in space without changing, since only its magnitude and direction matter, not its position",
+        "attachTo": "equal-vectors",
+        "rationale": "NCERT Remark term that underpins why equal vectors at different positions are the same vector; a single clause suffices."
+      },
+      {
+        "term": "direction angles alpha, beta, gamma",
+        "gloss": "the angles a vector makes with the positive x-, y-, z-axes respectively",
+        "attachTo": "direction-cosines",
+        "rationale": "Needed to state direction cosines; defined in one phrase, no ladder required."
+      },
+      {
+        "term": "resultant",
+        "gloss": "the single vector equal to the sum of two or more vectors",
+        "attachTo": "parallelogram-law",
+        "rationale": "Appears in addition contexts; trivial one-phrase synonym for the sum."
+      },
+      {
+        "term": "projection of a v(onto a line or vector b)",
+        "gloss": "the signed length |a| cos(theta) of a's shadow along that direction, computed as (a . b)/|b|",
+        "attachTo": "scalar-product",
+        "rationale": "Referenced in scalar-product PART 3; one clause ties it to the dot product already being taught, no separate refresher needed."
+      },
+      {
+        "term": "right-handed system / n-hat",
+        "gloss": "n-hat is the unit vector perpendicular to both a and b whose direction is fixed by the right-hand rule (curl fingers from a to b, thumb gives n-hat)",
+        "attachTo": "vector-product",
+        "rationale": "Inline gloss to accompany the AUTHOR-bridge; states the convention compactly at point of use."
+      }
+    ]
+  }
+}

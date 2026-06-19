@@ -47,11 +47,50 @@ export interface ChatMessage {
   content: string;
 }
 
-/** Call the active provider for a JSON completion. Returns raw text (caller parses). */
+/**
+ * Should a primary-provider (Claude) failure trigger the free-NIM fallback for LIVE student
+ * continuity? Yes for exhaustion/transient/availability failures — rate-limit & quota (429),
+ * overloaded (529), server (5xx), auth/credit exhaustion (401/403), and any network/timeout
+ * (no HTTP response, incl. a missing/empty ANTHROPIC_API_KEY). NOT for genuine client bugs
+ * (400/404/422) — NIM would reject those too, and silently masking them hides a real defect.
+ */
+function shouldFallbackToNim(err: unknown): boolean {
+  const e = err as { response?: { status?: number }; code?: string };
+  const status = e?.response?.status;
+  if (typeof status === 'number') {
+    if (status === 408 || status === 409 || status === 429 || status === 529) return true;
+    if (status === 401 || status === 403) return true; // credit/quota exhaustion often surfaces here
+    return status >= 500; // 5xx → fall back; 4xx client bugs → surface
+  }
+  return true; // no HTTP response: network/DNS/timeout/missing-key → fall back
+}
+
+/**
+ * Call the active provider for a JSON completion. Returns raw text (caller parses).
+ *
+ * LIVE FALLBACK (user directive 2026-06-19): when the primary live-student provider is Claude and
+ * Anthropic is exhausted/unavailable, fall back to the free NIM text model
+ * (meta/llama-3.3-70b-instruct — the agreed text half of the vision+text fallback set) so the
+ * student's turn still completes. Student VISION already runs on NIM (nemotron-nano-12b-v2-vl) via
+ * nimVision, so the agreed vision fallback is effectively always-on. The Claude failure is recorded
+ * (claudeComplete logs ok:false) and the subsequent NIM call is recorded too, so a fallback shows as
+ * two adjacent bu_llm_call rows. NIM-primary has no fallback (it is the free floor; falling up to
+ * Claude would spend money unexpectedly).
+ */
 export async function completeJson(messages: ChatMessage[], opts?: { maxTokens?: number }): Promise<string> {
   const provider = resolveProvider();
-  if (provider === 'nvidia') return nimComplete(messages, opts?.maxTokens ?? 1024, true);
-  if (provider === 'claude') return claudeComplete(messages, opts?.maxTokens ?? 1024);
+  const maxTokens = opts?.maxTokens ?? 1024;
+  if (provider === 'nvidia') return nimComplete(messages, maxTokens, true);
+  if (provider === 'claude') {
+    try {
+      return await claudeComplete(messages, maxTokens);
+    } catch (err) {
+      if (process.env.NVIDIA_API_KEY && shouldFallbackToNim(err)) {
+        return nimComplete(messages, maxTokens, true); // free NIM keeps the live student served
+      }
+      throw err;
+    }
+  }
   throw new Error('mock'); // caller catches and uses its offline path
 }
 

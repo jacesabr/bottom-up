@@ -1,0 +1,290 @@
+{
+  "chapter": "jee:maths:maths-ch07",
+  "concepts": [
+    {
+      "id": "jee:maths:maths-ch07:binomial-expansions-pattern",
+      "sources": [
+        {
+          "title": "Binomial Theorem For Positive Integral Indices - BYJU'S",
+          "url": "https://byjus.com/maths/binomial-theorem-for-positive-integral-indices/",
+          "verified": "the total number of terms in the expansion is one more than the index"
+        },
+        {
+          "title": "Binomial Theorem | Formula, Proof, Binomial Expansion and Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/binomial-theorem/",
+          "verified": "(a + b)ⁿ = ⁿC₀ aⁿb⁰ + ⁿC₁ aⁿ⁻¹b¹ + ⁿC₂ aⁿ⁻²b² + .... + ⁿCᵣ aⁿ⁻ʳbʳ + .... + ⁿCₙ a⁰bⁿ"
+        },
+        {
+          "title": "Binomial Theorem - Formula, Expansion, Proof, Examples - Cuemath",
+          "url": "https://www.cuemath.com/algebra/binomial-theorem/",
+          "verified": "Tr+1 = nCr xn-ryr"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The NCERT source (line 23) carries an OCR typo in the (a+b)^4 line: it prints '...+4ab^3+b^3' but the final term must be b^4 (the brief/explanation in content.json already give the correct '+ b^4'). Worth a one-line authoring note so any downstream item-writer who consults the raw OCR is not misled by the stray b^3."
+    },
+    {
+      "id": "jee:maths:maths-ch07:binomial-coefficients-ncr",
+      "sources": [
+        {
+          "title": "Binomial Theorem - Formula, Expansion, Proof, Examples - Cuemath",
+          "url": "https://www.cuemath.com/algebra/binomial-theorem/",
+          "verified": "nCr = n! / [r! (n - r)!]"
+        },
+        {
+          "title": "Pascal's Triangle - BYJU'S",
+          "url": "https://byjus.com/maths/pascals-triangle/",
+          "verified": "Each new number lies between two numbers and below them, and its value is the sum of the two numbers above it."
+        },
+        {
+          "title": "Binomial Theorem | Formula, Proof, Binomial Expansion and Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/binomial-theorem/",
+          "verified": "(a + b)ⁿ = ⁿC₀ aⁿb⁰ + ⁿC₁ aⁿ⁻¹b¹ + ⁿC₂ aⁿ⁻²b² + .... + ⁿCᵣ aⁿ⁻ʳbʳ + .... + ⁿCₙ a⁰bⁿ"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch07:pascals-triangle-expand",
+      "sources": [
+        {
+          "title": "Pascal’s Triangle & Binomial Theorem Explained - Vedantu",
+          "url": "https://www.vedantu.com/maths/pascals-triangle-binomial-theorem",
+          "verified": "Pascal's Triangle is a triangular arrangement of numbers where each number is the sum of the two numbers directly above it."
+        },
+        {
+          "title": "Pascal's Triangle - BYJU'S",
+          "url": "https://byjus.com/maths/pascals-triangle/",
+          "verified": "Each new number lies between two numbers and below them, and its value is the sum of the two numbers above it."
+        },
+        {
+          "title": "Binomial Theorem For Positive Integral Indices - BYJU'S",
+          "url": "https://byjus.com/maths/binomial-theorem-for-positive-integral-indices/",
+          "verified": "the total number of terms in the expansion is one more than the index"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "PART 3 worked example expands (2x + 3y)^4, but the NCERT source's Pascal's-triangle worked example is (2x + 3y)^5 (row 1 5 10 10 5 1, giving 32x^5 + 240x^4y + ... + 243y^5). The content.json example is mathematically correct on its own, but if the goal is to mirror the textbook's index-5 demonstration, consider citing the source's (2x+3y)^5 result so a student moving between text and tutor sees the same numbers."
+    },
+    {
+      "id": "jee:maths:maths-ch07:state-binomial-theorem",
+      "sources": [
+        {
+          "title": "JEE Binomial Theorem | Brilliant Math & Science Wiki",
+          "url": "https://brilliant.org/wiki/jee-binomial-theorem/",
+          "verified": "If n is a positive integer, then (x+y)^n=^nC_0x^ny^0+^nC_1 x^{n-1}y^1+^nC_2x^{n-2}y^2+⋯+^nC_n x^0y^n."
+        },
+        {
+          "title": "Binomial Theorem | Formula, Proof, Binomial Expansion and Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/binomial-theorem/",
+          "verified": "(a + b)ⁿ = ⁿC₀ aⁿb⁰ + ⁿC₁ aⁿ⁻¹b¹ + ⁿC₂ aⁿ⁻²b² + .... + ⁿCᵣ aⁿ⁻ʳbʳ + .... + ⁿCₙ a⁰bⁿ"
+        },
+        {
+          "title": "Binomial Theorem - JEE Main - Vedantu",
+          "url": "https://www.vedantu.com/jee-main/maths-binomial-theorem",
+          "verified": "The general term Tk+1 in the binomial expansion is given by Tk+1 = C(n, k) × an-k × bk"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The NCERT OCR of the induction proof (source lines 94-119) is badly garbled (e.g. repeated 'kC0' where 'kC1', 'kCr' are meant, and a dropped exponent in (a+b)^{k+1}). content.json PART 3 reconstructs the proof correctly using kCr + kC(r-1) = (k+1)Cr; no change needed, but flag that the raw source cannot be quoted verbatim for the proof step."
+    },
+    {
+      "id": "jee:maths:maths-ch07:expand-binomial",
+      "sources": [
+        {
+          "title": "Binomial Expansion Formula - Derivation, Examples - Cuemath",
+          "url": "https://www.cuemath.com/binomial-expansion-formula/",
+          "verified": "(x + y)n = nC₀ xn y0 + nC₁ xn - 1 y1 + nC₂ xn-2 y2 + nC₃ xn - 3 y3 + ... + nCₙ x0yn"
+        },
+        {
+          "title": "Binomial Expansion Formulas - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/binomial-expansion-formula/",
+          "verified": "In the expansion of (x-a)n we have alternate positive and negative terms and sign of last term depends on the value of n (odd or even)."
+        },
+        {
+          "title": "Binomial Theorem - Formula, Expansion, Proof, Examples - Cuemath",
+          "url": "https://www.cuemath.com/algebra/binomial-theorem/",
+          "verified": "Tr+1 = nCr xn-ryr"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch07:expand-x-minus-y",
+      "sources": [
+        {
+          "title": "Binomial Expansion Formulas - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/binomial-expansion-formula/",
+          "verified": "In the expansion of (x-a)n we have alternate positive and negative terms and sign of last term depends on the value of n (odd or even)."
+        },
+        {
+          "title": "JEE Binomial Theorem | Brilliant Math & Science Wiki",
+          "url": "https://brilliant.org/wiki/jee-binomial-theorem/",
+          "verified": "If n is a positive integer, then (x+y)^n=^nC_0x^ny^0+^nC_1 x^{n-1}y^1+^nC_2x^{n-2}y^2+⋯+^nC_n x^0y^n."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch07:special-case-one-plus-x",
+      "sources": [
+        {
+          "title": "Sum Of Binomial Coefficients - Study Material for IIT JEE | askIITians",
+          "url": "https://www.askiitians.com/iit-jee-algebra/binomial-theorem-for-a-positive-integral-index/sum-of-binomial-coefficients.aspx",
+          "verified": "2n = nC0 + nC1 x + nC2 +...+ nCn."
+        },
+        {
+          "title": "Binomial Theorem | Formula, Proof, Binomial Expansion and Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/binomial-theorem/",
+          "verified": "C1 + C2 + C3 + C4 + .......Cn = 2n"
+        },
+        {
+          "title": "Binomial Theorem - Formula, Expansion, Proof, Examples - Cuemath",
+          "url": "https://www.cuemath.com/algebra/binomial-theorem/",
+          "verified": "(a+b)n= ∑nr=0nCr an-rbr"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch07:special-case-one-minus-x",
+      "sources": [
+        {
+          "title": "Binomial Theorem | Formula, Proof, Binomial Expansion and Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/binomial-theorem/",
+          "verified": "C0 - C1 + C2 - C3 + C4 - C5 + .... = 0"
+        },
+        {
+          "title": "Sum Of Binomial Coefficients - Study Material for IIT JEE | askIITians",
+          "url": "https://www.askiitians.com/iit-jee-algebra/binomial-theorem-for-a-positive-integral-index/sum-of-binomial-coefficients.aspx",
+          "verified": "2n = nC0 + nC1 x + nC2 +...+ nCn."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "PART 3 asserts sum of even-indexed coefficients = sum of odd-indexed coefficients = 2^(n-1). This is correct for n >= 1. Optionally note the edge case n = 0, where the alternating-sum identity is excluded (0^0), so the 2^(n-1) split applies only for n >= 1 — the content already restricts the alternating sum to n >= 1, so this is consistent."
+    },
+    {
+      "id": "jee:maths:maths-ch07:evaluate-numerical-power",
+      "sources": [
+        {
+          "title": "Binomial Theorem Formula Class 11 - Solved Examples - Cuemath",
+          "url": "https://www.cuemath.com/maths/binomial-theorem-formula-class-11/",
+          "verified": "(97)4 = (100 – 3)4 = 4C0 (100)4 - 4C1 (100)3 3 + 4C2 (100)2 32 - 4C3 (100)1 33 + 4C4 34"
+        },
+        {
+          "title": "Binomial Theorem - JEE - BYJU'S",
+          "url": "https://byjus.com/jee/binomial-theorem/",
+          "verified": "The binomial theorem has a wide range of applications in Mathematics, like finding the remainder, finding the digits of a number, etc."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch07:compare-by-first-terms",
+      "sources": [
+        {
+          "title": "Approximation using Binomial Expansion - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/approximation-using-binomial-expansion/",
+          "verified": "If x is small in the expression (1 + x)^n, we can approximate: (1 + x)^n ≈ 1 + nx"
+        },
+        {
+          "title": "Binomial Theorem - JEE - BYJU'S",
+          "url": "https://byjus.com/jee/binomial-theorem/",
+          "verified": "The binomial theorem has a wide range of applications in Mathematics, like finding the remainder, finding the digits of a number, etc."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch07:divisibility-proof",
+      "sources": [
+        {
+          "title": "Application Of Binomial Expression - Study Material for IIT JEE | askIITians",
+          "url": "https://www.askiitians.com/iit-jee-algebra/binomial-theorem-for-a-positive-integral-index/application-of-binomial-expression.aspx",
+          "verified": "In any divisibility problem, we have to identify x and n."
+        },
+        {
+          "title": "Binomial Theorem - JEE - BYJU'S",
+          "url": "https://byjus.com/jee/binomial-theorem/",
+          "verified": "The binomial theorem has a wide range of applications in Mathematics, like finding the remainder, finding the digits of a number, etc."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch07:apply-binomial-theorem",
+      "sources": [
+        {
+          "title": "Binomial Theorem - JEE Main - Vedantu",
+          "url": "https://www.vedantu.com/jee-main/maths-binomial-theorem",
+          "verified": "The general term Tk+1 in the binomial expansion is given by Tk+1 = C(n, k) × an-k × bk"
+        },
+        {
+          "title": "JEE Binomial Theorem | Brilliant Math & Science Wiki",
+          "url": "https://brilliant.org/wiki/jee-binomial-theorem/",
+          "verified": "If n is a positive integer, then (x+y)^n=^nC_0x^ny^0+^nC_1 x^{n-1}y^1+^nC_2x^{n-2}y^2+⋯+^nC_n x^0y^n."
+        },
+        {
+          "title": "Binomial Theorem - Formula, Expansion, Proof, Examples - Cuemath",
+          "url": "https://www.cuemath.com/algebra/binomial-theorem/",
+          "verified": "(a+b)n= ∑nr=0nCr an-rbr"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "binomial / binomial expression (a+b) — a two-term algebraic sum; used throughout. Pre-curriculum bedrock from earlier algebra (squares/cubes of a+b, a-b).",
+      "positive integral index / exponent n — the power to which the binomial is raised. Bedrock (laws of exponents from earlier classes).",
+      "combination nCr = n!/(r!(n-r)!) — OWNED upstream by jee:maths:maths-ch06:combinations-ncr. Load-bearing for every concept.",
+      "factorial n! — OWNED upstream by jee:maths:maths-ch06:factorial-notation.",
+      "Pascal identity nCr + nC(r-1) = (n+1)Cr — OWNED upstream by jee:maths:maths-ch06:pascal-identity; used in the induction proof of the theorem.",
+      "combination symmetry nCr = nC(n-r), nC0 = nCn = 1 — OWNED upstream by jee:maths:maths-ch06:combination-symmetry.",
+      "algebraic identities (a+b)^2, (a+b)^3 — OWNED upstream by jee:maths:maths-ch04:algebraic-identities (and pre-curriculum); the launch point of the chapter.",
+      "principle of mathematical induction — NOT owned by any prerequisite concept listed in content.json; ch04 is complex numbers, ch06 is permutations/combinations. Induction is its own NCERT Class 11 chapter (Ch 4 'Principle of Mathematical Induction' in the older syllabus). Used only to PROVE the theorem in state-binomial-theorem PART 3.",
+      "power set / number of subsets = 2^n — OWNED upstream by jee:maths:maths-ch01:count-subsets-and-power-set; used as the combinatorial interpretation in special-case-one-plus-x PART 3.",
+      "laws of exponents: x^m * x^n = x^(m+n), (x^m)^n = x^(mn), x^(-r) = 1/x^r — pre-curriculum bedrock; load-bearing in expand-binomial (e.g. (x^2)^(4-r)(3/x)^r = x^(8-3r)) and evaluate-numerical-power.",
+      "divisor / quotient / remainder (a = bq + r) — pre-curriculum bedrock (Euclidean division); load-bearing in divisibility-proof.",
+      "sigma / summation notation — used in the compact form of the theorem; pre-curriculum bedrock, gloss-able inline.",
+      "negative-number powers: (-y)^r = (-1)^r y^r, even power positive / odd power negative — pre-curriculum bedrock; load-bearing in expand-x-minus-y and special-case-one-minus-x."
+    ],
+    "bridgesProposed": [
+      {
+        "term": "principle of mathematical induction",
+        "classification": "AUTHOR-bridge (soft, optional)",
+        "attachTo": "jee:maths:maths-ch07:state-binomial-theorem",
+        "rationale": "Induction is the one load-bearing idea used in this chapter (the proof in PART 3) that is taught NOWHERE in the listed upstream concepts (ch01 sets, ch04 complex numbers, ch06 permutations/combinations). However it is needed ONLY to justify the theorem's proof, never to apply it. Recommend a one-paragraph AUTHOR-bridge that states the base-case + inductive-step shape of an induction argument and explicitly softens it as 'proof-only — you can apply the theorem without it.' Do NOT make induction a hard gate for any downstream apply/expand concept."
+      }
+    ],
+    "defers": [
+      {
+        "term": "binomial theorem for rational / negative index, general term T(r+1), middle term, term independent of x, greatest coefficient",
+        "owner": "later JEE binomial-theorem coverage (these are standard JEE Main/Advanced extensions beyond this NCERT chapter, which is restricted to positive integral indices)",
+        "softening": "The chapter explicitly says 'In this Chapter, we study binomial theorem for positive integral indices only.' Defer general-term/middle-term/independent-term machinery to the JEE-extension layer; here, keep the scope to positive integral n. Soften by naming that the general-term formula T(r+1) = nCr a^(n-r) b^r exists and is the workhorse for JEE, but is not required to meet this chapter's goal."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "sigma notation Σ",
+        "gloss": "Σ(k=0 to n) f(k) is shorthand for the sum f(0) + f(1) + ... + f(n); in the theorem it just collects the n+1 terms into one symbol."
+      },
+      {
+        "term": "binomial coefficients",
+        "gloss": "the numbers nCr that multiply each term in the expansion; 'binomial coefficient' is simply the name for nCr when it appears in (a+b)^n (NCERT Observation 2)."
+      },
+      {
+        "term": "index",
+        "gloss": "another word for the exponent n in (a+b)^n; 'one more than the index' means n+1."
+      }
+    ]
+  }
+}

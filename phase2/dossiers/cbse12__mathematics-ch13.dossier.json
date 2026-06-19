@@ -1,0 +1,238 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch13",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch13:conditional-probability",
+      "sources": [
+        {
+          "title": "Probability Class 12 Notes Maths Chapter 13 - Learn CBSE",
+          "url": "https://www.learncbse.in/probability-class-12-notes/",
+          "verified": "P(E/F) = P(E∩F)/P(F)"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 13 Probability - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-13-probability/",
+          "verified": "If A and B are two events with the same sample space, then the conditional probability of event A given that B has occurred is calculated by the formula P(A|B) = P(A ∩ B)/P(B), provided P(B) ≠ 0."
+        },
+        {
+          "title": "Conditional Probability | Definition, Formula, Properties and Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/conditional-probability/",
+          "verified": "P (A | B) = P(A ∩ B) / P(B)"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 13 - BYJU'S",
+          "url": "https://byjus.com/ncert-solutions-class-12-maths/chapter-13-probability/",
+          "verified": "P(A|B) = P(A ∩ B) / P(B)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch13:conditional-probability-complement",
+      "sources": [
+        {
+          "title": "Probability Class 12 Notes Maths Chapter 13 - Learn CBSE",
+          "url": "https://www.learncbse.in/probability-class-12-notes/",
+          "verified": "P(F'/G) = 1 – P(F/G)"
+        },
+        {
+          "title": "Conditional Probability | Definition, Formula, Properties and Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/conditional-probability/",
+          "verified": "P(A' | B ) = 1 - P( A | B )"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "GeeksforGeeks explicitly flags the sibling pitfall P(A | B') ≠ 1 - P(A | B). The node's misconception list already covers 'wrong conditioning order'; consider adding the more common student error of negating the conditioning event (computing P(E|F') instead of P(E'|F)) as a third misconception, since it is the dual of the one already listed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch13:multiplication-rule",
+      "sources": [
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 13 Probability - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-13-probability/",
+          "verified": "P(A ∩ B) = P(A) P(B|A)."
+        },
+        {
+          "title": "Probability Class 12 Notes Maths Chapter 13 - Learn CBSE",
+          "url": "https://www.learncbse.in/probability-class-12-notes/",
+          "verified": "P(E ∩ F) = P(E) . P(F/E), where P(F) ≠ 0"
+        },
+        {
+          "title": "Dependent and Independent Events in Probability - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/dependent-and-independent-events-probability/",
+          "verified": "P(A∩B) = P(A)⋅P(B∣A)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch13:independent-events",
+      "sources": [
+        {
+          "title": "Probability for Class 12 - Definition, Formula, Examples - Vedantu",
+          "url": "https://www.vedantu.com/maths/probability-for-class-12",
+          "verified": "P(A ∩ B) = P(A) × P(B)"
+        },
+        {
+          "title": "Dependent and Independent Events in Probability - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/dependent-and-independent-events-probability/",
+          "verified": "Independent events are events whose outcomes do not affect each other."
+        },
+        {
+          "title": "Mutually Exclusive Events vs Independent Events - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/mutually-exclusive-events-vs-independent-events/",
+          "verified": "Mutually exclusive events cannot occur simultaneously, while independent events do not influence each other's probabilities."
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 13 - BYJU'S",
+          "url": "https://byjus.com/ncert-solutions-class-12-maths/chapter-13-probability/",
+          "verified": "P(A ∩ B) = P(A). P(B)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch13:mutually-independent-events",
+      "sources": [
+        {
+          "title": "Independence / Mutually Independent Events - probabilitycourse.com",
+          "url": "https://www.probabilitycourse.com/chapter1/1_4_1_independence.php",
+          "verified": "Three events A, B, and C are independent if all of the following conditions hold"
+        },
+        {
+          "title": "Mutually Exclusive Events vs Independent Events - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/mutually-exclusive-events-vs-independent-events/",
+          "verified": "P(A and B) = P(A) × P(B)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The probabilitycourse.com source corroborates the node's central claim: all four conditions (three pairwise + the triple product) are required, and pairwise independence alone is insufficient. No content change needed; the node is accurate."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch13:partition-sample-space",
+      "sources": [
+        {
+          "title": "Probability Class 12 Notes Maths Chapter 13 - Learn CBSE",
+          "url": "https://www.learncbse.in/probability-class-12-notes/",
+          "verified": "Ei ∩ Ej = Φ; i ≠ j"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 13 Probability - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-13-probability/",
+          "verified": "Let {E1, E2, ...,En) be a partition of a sample space and suppose that each of E1, E2, ..., En has a nonzero probability."
+        },
+        {
+          "title": "Theorem Of Total Probability - Cuemath",
+          "url": "https://www.cuemath.com/numbers/theorem-of-total-probability/",
+          "verified": "E1, E2, E3, ......En is a set of exhaustive events of a sample space S"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch13:total-probability-theorem",
+      "sources": [
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 13 Probability - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-13-probability/",
+          "verified": "P(A) = P(E1) P (A|E1) + P (E2) P (A|E2) + ... + P (En) P(A|En)"
+        },
+        {
+          "title": "Total Probability Theorem - BYJU'S",
+          "url": "https://byjus.com/maths/total-probability-theorem/",
+          "verified": "P(A) = Σ P(C_k)P(A|C_k)"
+        },
+        {
+          "title": "Theorem Of Total Probability - Cuemath",
+          "url": "https://www.cuemath.com/numbers/theorem-of-total-probability/",
+          "verified": "P(A) = P(E1)P(A/E1) + P(E2)P(A/E2) + ......P(En)P(A/En)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch13:random-variable",
+      "sources": [
+        {
+          "title": "Random Variables and its Probability Distributions - BYJU'S",
+          "url": "https://byjus.com/maths/random-variables-and-its-probability-distributions/",
+          "verified": "In probability, a random variable is a real valued function whose domain is the sample space of the random experiment."
+        },
+        {
+          "title": "Probability Class 12 Notes Maths Chapter 13 - Learn CBSE",
+          "url": "https://www.learncbse.in/probability-class-12-notes/",
+          "verified": "A random variable is a real-valued function, whose domain is the sample space of a random experiment."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch13:bayes-theorem",
+      "sources": [
+        {
+          "title": "Bayes Theorem Questions with Solutions for CBSE Class 12 - Testbook",
+          "url": "https://testbook.com/maths/bayes-theorem-questions",
+          "verified": "P(Eᵢ | A) = [P(Eᵢ) × P(A | Eᵢ)] / [P(E₁) × P(A | E₁) + P(E₂) × P(A | E₂) + … + P(Eₙ) × P(A | Eₙ)]"
+        },
+        {
+          "title": "Probability for Class 12 - Definition, Formula, Examples - Vedantu",
+          "url": "https://www.vedantu.com/maths/probability-for-class-12",
+          "verified": "P(E₁|A) = [P(E₁) P(A|E₁)] / Σᵢ P(Eᵢ)P(A|Eᵢ)"
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 13 - BYJU'S",
+          "url": "https://byjus.com/ncert-solutions-class-12-maths/chapter-13-probability/",
+          "verified": "By using Bayes' theorem, we have"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must form the denominator of Bayes' theorem (the total probability of A) by summing weighted likelihoods over every hypothesis, but treats the priors P(Ei) as if they were equal or omits a hypothesis.",
+          "surfacingQuestion": "Before we invert anything: if there are several mutually exclusive 'causes' that could each produce the observed event A, how do you compute the overall probability P(A) of seeing A at all?",
+          "ladder": [
+            "Each cause Ei has a known chance of occurring on its own — its prior probability P(Ei). Across all causes these priors add to 1.",
+            "Given a particular cause Ei, the event A happens with conditional probability P(A|Ei) (the likelihood).",
+            "The chance that A happens THROUGH cause Ei is the product P(Ei)·P(A|Ei).",
+            "Since exactly one cause occurs, add these products over every cause to get the total: P(A) = Σ P(Ei)P(A|Ei). This sum is exactly the denominator in Bayes' theorem."
+          ],
+          "answer": "P(A) = P(E1)P(A|E1) + P(E2)P(A|E2) + ... + P(En)P(A|En). Bayes' theorem then divides the single term P(Ei)P(A|Ei) for the cause you care about by this whole sum: P(Ei|A) = P(Ei)P(A|Ei) / [Σ_j P(Ej)P(A|Ej)].",
+          "returnCue": "Now that the denominator is just the total probability of A built from priors times likelihoods, apply Bayes' theorem to flip P(A|Ei) into the posterior P(Ei|A)."
+        }
+      ],
+      "contentNote": ""
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "sample space S and outcomes/elementary events (Class 11 Probability) — PRE-CURRICULUM BEDROCK; domain of every definition in the chapter (conditional probability, random variable, partition).",
+      "event as a subset of S, and P(E) classical/axiomatic probability for equally likely outcomes (Class 11) — PRE-CURRICULUM BEDROCK; assumed throughout, used to compute every P(E), P(F), P(E∩F).",
+      "intersection E∩F (and 'EF' notation), union E∪F, complement E' (Class 11 Sets + Probability) — PRE-CURRICULUM BEDROCK; the conditional-probability and complement nodes are built directly on these.",
+      "addition rule P(E∪F)=P(E)+P(F)-P(E∩F) (Class 11) — PRE-CURRICULUM BEDROCK; used in Property 2 of conditional probability and in Example 14.",
+      "mutually exclusive (disjoint) events, P(A∩B)=0 (Class 11) — PRE-CURRICULUM BEDROCK; load-bearing for the independent-vs-mutually-exclusive contrast and for the 'pairwise disjoint' clause of a partition.",
+      "exhaustive events / events whose union is S (Class 11) — PRE-CURRICULUM BEDROCK; the second defining clause of a partition.",
+      "Venn diagram reasoning over S (Class 11 Sets) — PRE-CURRICULUM BEDROCK; used to justify Property 2, Example 13 (E∩F vs E∩F'), and the {E∩F', E∩F, E'∩F, E'∩F'} partition.",
+      "with-replacement vs without-replacement sampling, standard 52-card deck, fair die/coin models (Class 11) — PRE-CURRICULUM BEDROCK; the worked examples of the multiplication rule depend on updating counts after a draw.",
+      "real-valued function and domain (Class 11 Relations & Functions / Class 12 ch01 Relations and Functions) — COVERED UPSTREAM (cbse12 ch01); load-bearing for the random-variable definition. Inline-gloss only.",
+      "sum of an infinite geometric progression a/(1-r), |r|<1 (Class 11 Sequences & Series) — PRE-CURRICULUM BEDROCK; appears ONLY in Miscellaneous Example 23 (A/B throw a die alternately). Not load-bearing for any of the 9 graded nodes; the NCERT text itself defers it with 'Refer A.1.3 of Class XI Text book'."
+    ],
+    "bridgesProposed": [
+      "NONE. Every load-bearing term in this chapter is either pre-curriculum bedrock from Class 11 (basic probability: sample space, event, P(E), ∩/∪/complement, addition rule, mutually exclusive, exhaustive, sampling models) or is taught upstream within cbse12 (real-valued function & domain in ch01 Relations and Functions). There is no idea that is taught NOWHERE upstream, so no AUTHOR-bridge is warranted. The chapter is self-contained for everything genuinely new (conditional probability, multiplication rule, independence, partition, total probability, Bayes)."
+    ],
+    "defers": [
+      "Infinite geometric series sum a/(1-r) — DEFER to Class 11 Sequences & Series (owner). Softening: it surfaces only in Miscellaneous Example 23, which is not one of the nine graded concept nodes; NCERT itself defers it explicitly ('Refer A.1.3 of Class XI Text book'). Do not gate on it.",
+      "Mean, variance, and Binomial distribution of a random variable — DEFER (out of scope for this node set). The Introduction names them, but the rationalised node graph stops at the bare definition of a random variable; these are owned by the later probability-distribution material and are not load-bearing for any node here."
+    ],
+    "inlineGlosses": [
+      "'real-valued function whose domain is the sample space' (random-variable node): one-line gloss — 'a rule that attaches exactly one real number to each outcome in S' — sufficient; the function/domain machinery is already owned by cbse12 ch01, so no refresher needed.",
+      "'pairwise disjoint' (partition node): one-line gloss — 'no two of the pieces share any outcome (every pair has empty intersection)'.",
+      "'exhaustive' (partition / total-probability nodes): one-line gloss — 'together the pieces use up all of S (their union is S)'.",
+      "'prior' vs 'posterior' / 'a posteriori' probability (bayes-theorem node): one-line gloss — 'prior P(Ei) = the chance of a cause before seeing the evidence; posterior P(Ei|A) = the updated chance after the event A is observed'. NCERT introduces this terminology in the Remark after the proof; a gloss anchors the otherwise-Latin vocabulary."
+    ]
+  }
+}

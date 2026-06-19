@@ -1,0 +1,338 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch09",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:differential-equation",
+      "sources": [
+        {
+          "title": "Differential Equation Definition - BYJU'S",
+          "url": "https://byjus.com/maths/differential-equation/",
+          "verified": "A differential equation is an equation which contains one or more terms and the derivatives of one variable (i.e., dependent variable) with respect to the other variable (i.e., independent variable)"
+        },
+        {
+          "title": "Differential Equations | Definition, Formula, Types, Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/differential-equations/",
+          "verified": "Differential Equations are mathematical equations that relate a function to its derivatives, showing how a quantity changes with respect to another quantity."
+        },
+        {
+          "title": "Differential Equations Class 12 Notes Maths Chapter 9 - Learn CBSE",
+          "url": "https://www.learncbse.in/differential-equations-class-12-notes/",
+          "verified": "Order of a differential equation is defined as the order of the highest order derivative of the dependent variable with respect to the independent variable involved in the given differential equation."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Learner cannot reliably point to the dependent vs independent variable in dy/dx, or treats y^2 + x = 5 as a differential equation.",
+          "surfacingQuestion": "In the equation dy/dx = 2x, which letter is the dependent variable (the one that changes because the other does) and which is the independent variable (the one we are free to choose)?",
+          "ladder": [
+            "Recall: a function y = f(x) takes an input x and produces an output y. Which one do we get to pick freely, and which one is then determined for us?",
+            "x is chosen freely, so x is the independent variable; y is computed from x, so y is the dependent variable.",
+            "A derivative dy/dx measures how the dependent variable y changes per unit change in the independent variable x. So if you SEE dy/dx, then y depends on x.",
+            "Now look at y^2 + x = 5: does any derivative (dy/dx, y'') appear anywhere? No. So it is just an algebraic equation, not a differential equation."
+          ],
+          "answer": "In dy/dx = 2x, x is the independent variable (chosen freely) and y is the dependent variable (its value follows from x). The equation IS a differential equation because the derivative dy/dx appears. By contrast y^2 + x = 5 contains no derivative, so it is NOT a differential equation.",
+          "returnCue": "Now that variable roles are clear, return to: an equation involving at least one derivative of the dependent variable with respect to the independent variable is a differential equation."
+        }
+      ],
+      "contentNote": "The explanation lists examples of ODE vs PDE correctly. One precision worth adding from the NCERT source (Section 9.2): NCERT motivates the whole subject by noting dy/dx = g(x) where y = f(x) is itself 'an equation of the form (1) ... known as a differential equation' — i.e. the chapter frames a differential equation as the inverse problem of differentiation. Tying the definition back to 'find a function whose derivative is g' would connect this concept to the integration prereqs it actually rests on."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:order",
+      "sources": [
+        {
+          "title": "Differential Equations Class 12 Notes Maths Chapter 9 - Learn CBSE",
+          "url": "https://www.learncbse.in/differential-equations-class-12-notes/",
+          "verified": "Order of a differential equation is defined as the order of the highest order derivative of the dependent variable with respect to the independent variable involved in the given differential equation."
+        },
+        {
+          "title": "Differential Equations - Definition, Formula, Types, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/differential-equation/",
+          "verified": "The order of a differential equation is the highest order of the derivative appearing in the equation."
+        },
+        {
+          "title": "Differential Equations Class 12 Topics - BYJU'S",
+          "url": "https://byjus.com/maths/differential-equations-for-class-12/",
+          "verified": "The highest order of the derivative present in the dependent variable with respect to the independent variable in the given differential equation."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate. PART 3 worked example 'y''' - 4y' + y = 0' is fine but the parenthetical '(implied in between? no - just y''' and y')' reads as an editing artefact and should be removed; just state the highest derivative present is y''' so order = 3."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:degree",
+      "sources": [
+        {
+          "title": "Differential Equations Class 12 Notes Maths Chapter 9 - Learn CBSE",
+          "url": "https://www.learncbse.in/differential-equations-class-12-notes/",
+          "verified": "The highest exponent of the highest order derivative is called the degree of a differential equation provided exponent of each derivative and the unknown variable appearing in the differential equation is a non-negative integer."
+        },
+        {
+          "title": "Differential Equations - Definition, Formula, Types, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/differential-equation/",
+          "verified": "The degree of the differential equation is the power of the highest ordered derivative present in the equation."
+        },
+        {
+          "title": "Degree of Differential Equation: Definition, Order & Examples - Vedantu",
+          "url": "https://www.vedantu.com/maths/degree-of-differential-equation",
+          "verified": "The degree of a differential equation refers to the exponent or the power of the highest order derivative involved in that particular differential equation"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Learner is unsure what 'polynomial in the derivatives' or 'positive integral index' means, e.g. cannot say why sin(d2y/dx2) or sqrt(dy/dx) blocks the degree.",
+          "surfacingQuestion": "Which of these is a polynomial in x: (a) 3x^2 - 5x + 1, (b) sin(x) + 1, (c) x^(1/2) + 2? What feature makes only (a) a polynomial?",
+          "ladder": [
+            "A polynomial is a sum of terms in which the variable appears only raised to whole-number (0, 1, 2, 3, ...) powers - never inside sin, cos, log, e^(...), and never under a root.",
+            "So 3x^2 - 5x + 1 is a polynomial; sin(x)+1 has the variable inside sine, and x^(1/2) has a fractional power - neither is a polynomial.",
+            "The same test applies with the derivatives y', y'' playing the role of the 'variable'. (d2y/dx2)^3 + (dy/dx)^2 + y = 0 is a polynomial in the derivatives.",
+            "But sin(d2y/dx2) puts the derivative inside sine, and sqrt(dy/dx) puts it under a root - so those are NOT polynomials in the derivatives, and degree is not defined (unless the root can be cleared by squaring)."
+          ],
+          "answer": "Only (a) 3x^2 - 5x + 1 is a polynomial, because the variable appears only to whole-number powers and never inside a transcendental function or under a radical. Degree of a differential equation is defined ONLY when the equation is a polynomial in the derivatives; if the highest-order derivative sits inside sin/cos/log/exp or under an un-clearable root, degree is not defined.",
+          "returnCue": "With 'polynomial in the derivatives' clear, return to: degree = the highest positive-integer power of the highest-order derivative, defined only in that polynomial form."
+        }
+      ],
+      "contentNote": "Strong and correct, including the radical case dy/dx = sqrt(1 + d2y/dx2) becoming degree 2 after squaring. Worth echoing the NCERT 'Note': 'Order and degree (if defined) of a differential equation are always positive integers' - a high-yield board fact that anchors why fractional/negative powers are excluded."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:general-solution",
+      "sources": [
+        {
+          "title": "Differential Equations Class 12 Notes Maths Chapter 9 - Learn CBSE",
+          "url": "https://www.learncbse.in/differential-equations-class-12-notes/",
+          "verified": "The solution which contains as many arbitrary constants as the order of the differential equation, is called the general solution of the differential equation."
+        },
+        {
+          "title": "Differential Equations Class 12 Topics - BYJU'S",
+          "url": "https://byjus.com/maths/differential-equations-for-class-12/",
+          "verified": "The solution which contains arbitrary constants is called the general solution of the differential equation."
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 9 Differential Equations - Cuemath",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-9-differential-equations/",
+          "verified": "verifying the solution of a differential equation, and forming such an equation from the general solution"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correct and well-illustrated. The NCERT motivating example for general solution is y = a sin(x + b) for d2y/dx2 + y = 0 (two arbitrary constants a, b matching order 2); adding that canonical second-order example alongside the first-order y = Ce^(2x) would mirror the source and reinforce 'number of constants = order'."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:particular-solution",
+      "sources": [
+        {
+          "title": "Differential Equations Class 12 Notes Maths Chapter 9 - Learn CBSE",
+          "url": "https://www.learncbse.in/differential-equations-class-12-notes/",
+          "verified": "A solution obtained by giving particular values to arbitrary constants in the general solution of a differential equation, is called the particular solution."
+        },
+        {
+          "title": "Differential Equations Class 12 Topics - BYJU'S",
+          "url": "https://byjus.com/maths/differential-equations-for-class-12/",
+          "verified": "The solution which contains arbitrary constants is called the general solution of the differential equation."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Procedure and worked examples are correct. The second-order example (y = C1 e^x + C2 e^(-x) with y(0)=2, y'(0)=0) is a good extension but goes slightly beyond the typical CBSE first-order-DE solving scope of Section 9.4; keep it but flag that board questions on particular solutions are almost always first order, pinned by a single condition such as 'y = 1 when x = 0'."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:variables-separable",
+      "sources": [
+        {
+          "title": "Separable Differential Equations: Definition, Examples and Steps - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/separable-differential-equations/",
+          "verified": "Separate the dependent and the independent variable on either side of the equal sign."
+        },
+        {
+          "title": "Separable Differential Equations - Definition, Examples, Solution, IVP - Cuemath",
+          "url": "https://www.cuemath.com/calculus/separable-differential-equations/",
+          "verified": "A separable differential equation is defined to be a differential equation that can be written in the form dy/dx = f(x) g(y)."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correct, with a clean worked example (dy/dx = xy -> y = Ae^(x^2/2)). One inline gloss the NCERT source itself flags (the Leibniz note after Example 8) deserves a sentence here: treating dx and dy as separable symbols ('dy/h(y) = g(x) dx') is a Leibniz notational convenience, not literal fraction algebra - students who have only seen dy/dx as one indivisible symbol stumble on this exact move."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:homogeneous-function",
+      "sources": [
+        {
+          "title": "Homogeneous Function - Definition, Formula, Examples - Cuemath",
+          "url": "https://www.cuemath.com/algebra/homogeneous-function/",
+          "verified": "f(kx, ky) = knf(x, y)"
+        },
+        {
+          "title": "Homogeneous Differential Equation - BYJU'S",
+          "url": "https://byjus.com/maths/homogeneous-differential-equation/",
+          "verified": "A function of form F(x,y) which can be written in the form kn F(x,y) is said to be a homogeneous function of degree n, for k≠0."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate, and the degree-zero case plus the y/x rewrite test are exactly what the DE application needs. Matches the NCERT examples F1=y^2+2xy (degree 2), F2=2x-3y (degree 1), F3=cos(y/x) (degree 0); citing F4 = sin x + cos y as the standard NON-homogeneous counterexample (cannot be written as lambda^n F) would sharpen the 'don't call a non-homogeneous function homogeneous' misconception."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:homogeneous-differential-equation",
+      "sources": [
+        {
+          "title": "Homogeneous Differential Equation - Formula, Definition, Solution, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/homogeneous-differential-equation/",
+          "verified": "Further the differentiation of y = vx, with respect to x we get dy/dx = v + x.dv/dx."
+        },
+        {
+          "title": "Homogeneous Differential Equation: Definition, Solution & Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/homogeneous-differential-equations/",
+          "verified": "We can solve a homogeneous differential equation of the form dx/dy = f(x, y) where, f(x, y) is a homogeneous function, by simply replacing x/y to v or putting y = vx."
+        },
+        {
+          "title": "Homogeneous Differential Equation - BYJU'S",
+          "url": "https://byjus.com/maths/homogeneous-differential-equation/",
+          "verified": "Here, the change of variable y = ux directs to an equation of the form; dx/x = h(u) du which could be easily integrated."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Method (y=vx -> separable in v,x -> back-substitute) is correct and the worked example dy/dx=(x+y)/x is clean. Worth adding the companion substitution the NCERT Note gives: when the equation is naturally dx/dy = F(x,y) of degree zero, substitute x = vy instead (NCERT Example 12 uses exactly this). The current keyMoves only mention y=vx, but Exercise 9.4 and board papers include dx/dy-form problems."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:linear-differential-equation",
+      "sources": [
+        {
+          "title": "Linear Differential Equation - Formula, Derivation, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/linear-differential-equation/",
+          "verified": "The standard form of a linear differential equation is dy/dx + Py = Q, and it contains the variable y, and its derivatives."
+        },
+        {
+          "title": "Linear Differential Equation - Derivation, Formula & Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/linear-differential-equation/",
+          "verified": "dy/dx +Py = Q"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correct, including the companion form dx/dy + P1 x = Q1. The 'linear' misconception is well chosen (y and y' must each be first power and not multiplied together). Could add the NCERT examples of the dx/dy form (dx/dy + x = cos y) to make the companion form concrete, since several Exercise 9.5 problems such as 'y dx + (x - y^2) dy = 0' only become linear in the dx/dy orientation."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:integrating-factor",
+      "sources": [
+        {
+          "title": "Integrating Factor - BYJU'S",
+          "url": "https://byjus.com/maths/integrating-factor/",
+          "verified": "μ = e ∫ p(x) dx"
+        },
+        {
+          "title": "Linear Differential Equation - Formula, Derivation, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/linear-differential-equation/",
+          "verified": "Integrating Factor (I.F) = e^(∫P.dx)"
+        },
+        {
+          "title": "Linear Differential Equation - Derivation, Formula & Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/linear-differential-equation/",
+          "verified": "I.F = e∫P⋅dx"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Excellent: PART 2 derives WHY I.F. = e^(integral P dx) (forcing the LHS to be d/dx[y*I.F.]), which is the conceptual core most notes skip. The simplification examples (P=2x -> e^(x^2); P=-3/x -> 1/x^3) correctly exercise the e^(ln u)=u step. No change needed; just ensure the e^(log f(x)) = f(x) simplification (NCERT Example 15, e^(2 log x) = x^2) is surfaced since it is the single most error-prone I.F. step on boards."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch09:solve-linear-de",
+      "sources": [
+        {
+          "title": "How To Solve Linear Differential Equation - BYJU'S",
+          "url": "https://byjus.com/maths/how-to-solve-linear-differential-equation/",
+          "verified": "To obtain the integrating factor, integrate P (obtained in step 1) with respect to x and put this integral as a power to e."
+        },
+        {
+          "title": "Linear Differential Equation - Derivation, Formula & Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/linear-differential-equation/",
+          "verified": "y × I.F = ∫Q × I.F dt + C"
+        },
+        {
+          "title": "Linear Differential Equation - Formula, Derivation, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/linear-differential-equation/",
+          "verified": "The standard form of a linear differential equation is dy/dx + Py = Q, and it contains the variable y, and its derivatives."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The three-step procedure and worked example (dy/dx + (1/x)y = x -> y = x^2/3 + C/x) match NCERT exactly. The companion-form coverage (x*I.F. = integral(Q1*I.F.) dy + C) is correct and is the high-value board case (NCERT Examples 16 and 22). Note the solution formula often needs integration-by-parts on integral(Q*I.F.) dx (NCERT Example 14: integral e^(-x) cos x dx, Example 17: integral 2x sin x dx) - so the ch07 integration-by-parts prereq is genuinely load-bearing here, not decorative."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "derivative / dy/dx / higher-order derivative (y', y'', y_n) - OWNED upstream: cbse12 ch05 derivative-definition, second-order-derivative",
+      "indefinite integral / antiderivative / constant of integration C - OWNED upstream: cbse12 ch07 antiderivative, indefinite-integral, same-derivative-same-family",
+      "integration by substitution - OWNED upstream: cbse12 ch07 integration-by-substitution (load-bearing in separable + homogeneous DE)",
+      "integration by parts - OWNED upstream: cbse12 ch07 integration-by-parts (load-bearing in solve-linear-de worked examples 14, 17, 22)",
+      "partial fractions - OWNED upstream: cbse12 ch07 partial-fractions (used in homogeneous DE Example 10 to integrate (v-1)/(v^2+v+1))",
+      "exponential & logarithm functions; derivative/integral of e^x and log x - OWNED upstream: cbse12 ch05 exponential-function, logarithm-function, derivative-of-exp-and-log",
+      "logarithmic differentiation; e^(log f(x)) = f(x) simplification - OWNED upstream: cbse12 ch05 logarithmic-differentiation",
+      "inverse trig functions tan^-1 and the standard integrals 1/(1+x^2)=tan^-1 x, derivative of inverse trig - OWNED upstream: cbse12 ch05 inverse-trig-derivatives + ch07 integral tables",
+      "function; dependent vs independent variable - PRE-CURRICULUM bedrock (Class XI / earlier); NO owner in cbse12 - refresher attached to differential-equation",
+      "polynomial; positive integral index / exponent / power - PRE-CURRICULUM bedrock (Class IX-X); NO owner in cbse12 - refresher attached to degree",
+      "slope of tangent to a curve = dy/dx - PRE-CURRICULUM bedrock (Class XI application of derivative); used in many ch09 application problems (Examples 8, 13, 18); INLINE-GLOSS",
+      "standard trig values/identities: sec, cosec, cot, half-angle (1-cos x)/(1+cos x), and integrals cot x dx = log|sin x| - PRE-CURRICULUM trig bedrock (Class XI); the integration facts are ch07-owned but the trig identities themselves are bedrock; INLINE-GLOSS where used (Exercise 9.3 Q1, Example 17)",
+      "Leibniz notation: treating dx and dy as separable symbols - notational convention explicitly flagged by NCERT; INLINE-GLOSS attached to variables-separable",
+      "rate of change / proportional growth (dP/dt = kP) for application word-problems - bridges calculus to modelling; the modelling SET-UP is novel to ch09 but the calculus is owned; AUTHOR-bridge candidate only for the modelling framing, not the math"
+    ],
+    "bridgesProposed": [
+      {
+        "term": "modelling set-up: 'rate of X is proportional to X' -> dX/dt = kX",
+        "classification": "AUTHOR-bridge",
+        "rationale": "The translation of a verbal growth/decay statement (bank interest 5% per year, bacteria growth proportional to count - NCERT Examples 9, 22 and Exercise 9.3 Q19-22) into a differential equation is taught NOWHERE upstream: ch05-ch08 cover differentiation/integration mechanics but not the word-problem-to-DE modelling step. The underlying calculus (separable integration) IS owned by ch07, so the bridge should teach ONLY the framing 'rate of change = derivative; proportional-to means = constant times the quantity', then hand off to the separable-DE machinery. Attach to variables-separable (first concept where application problems appear).",
+        "softening": "Keep narrow: one or two lines establishing 'the rate at which P changes = dP/dt' and 'proportional to P means dP/dt = kP'; do not re-teach integration."
+      }
+    ],
+    "defers": [
+      {
+        "term": "derivative / dy/dx / higher-order derivatives",
+        "owner": "cbse12:mathematics:mathematics-ch05:derivative-definition (and second-order-derivative)",
+        "softening": "On first use in differential-equation/order, a one-clause reminder 'dy/dx is the derivative you met in Chapter 5' suffices; do not re-derive."
+      },
+      {
+        "term": "indefinite integral / antiderivative / constant of integration",
+        "owner": "cbse12:mathematics:mathematics-ch07:indefinite-integral, antiderivative, same-derivative-same-family",
+        "softening": "When 'integrate both sides' first appears (variables-separable), name the operation as the Chapter 7 antiderivative and note the arbitrary constant C is the same constant from indefinite integration."
+      },
+      {
+        "term": "integration by substitution",
+        "owner": "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
+        "softening": "Cite as the technique already known when the y=vx substitution produces an integral in v (homogeneous DE) or for e^(-x^2/2) substitutions (linear DE Example 18)."
+      },
+      {
+        "term": "integration by parts",
+        "owner": "cbse12:mathematics:mathematics-ch07:integration-by-parts",
+        "softening": "Flag in solve-linear-de that evaluating integral(Q*I.F.) dx often requires Chapter 7 integration by parts (Examples 14, 17, 22); no re-teaching, just a pointer."
+      },
+      {
+        "term": "partial fractions",
+        "owner": "cbse12:mathematics:mathematics-ch07:partial-fractions",
+        "softening": "Mention only at the point a homogeneous-DE integral needs it (Example 10); soften by saying 'split using partial fractions from Chapter 7'."
+      },
+      {
+        "term": "exponential & logarithm functions; derivative/integral of e^x and log x",
+        "owner": "cbse12:mathematics:mathematics-ch05:exponential-function, logarithm-function, derivative-of-exp-and-log",
+        "softening": "The integrating-factor concept rests on e^(integral P dx) and log identities; defer the function facts to Chapter 5, only foregrounding the e^(log f(x)) = f(x) move which is the new application."
+      },
+      {
+        "term": "inverse trig functions and standard integrals (tan^-1, 1/(1+x^2))",
+        "owner": "cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives + cbse12:mathematics:mathematics-ch07 integral tables",
+        "softening": "Used in separable Example 5 (tan^-1) and homogeneous Example 10; cite the standard integral as already established in Chapters 5/7."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "slope of the tangent = dy/dx",
+        "gloss": "Many application problems open with 'the slope of the tangent to the curve at (x, y) is ...'. Gloss in one line: the slope of the tangent at a point IS the derivative dy/dx at that point (from Chapter 6 / Class XI), so such a sentence is literally giving you the differential equation.",
+        "attachTo": "cbse12:mathematics:mathematics-ch09:variables-separable"
+      },
+      {
+        "term": "Leibniz notation: separating dx and dy",
+        "gloss": "When we write dy/h(y) = g(x) dx we are treating dx and dy as separate symbols. NCERT explicitly notes this is a flexible Leibniz convention: 'we can deal with symbols dy and dx exactly as if they were ordinary numbers.' It is a licensed shortcut, not literal fraction division - worth one reassuring line for students who learned dy/dx as one indivisible symbol.",
+        "attachTo": "cbse12:mathematics:mathematics-ch09:variables-separable"
+      },
+      {
+        "term": "trig identities used in integration (cot x, sec x, half-angle)",
+        "gloss": "Standard results like integral cot x dx = log|sin x| (linear DE Example 17), integral sec x leading to log|sec x + tan x|, and the half-angle simplification (1 - cos x)/(1 + cos x) = tan^2(x/2) (Exercise 9.3 Q1) are Class XI trigonometry/Chapter 7 integration facts. Gloss the specific identity at the point of use rather than assuming recall.",
+        "attachTo": "cbse12:mathematics:mathematics-ch09:variables-separable"
+      },
+      {
+        "term": "e^(log f(x)) = f(x) (and e^(a log x) = x^a)",
+        "gloss": "The integrating factor almost always simplifies via this log-exp inverse identity, e.g. e^(2 log x) = e^(log x^2) = x^2 (NCERT Example 15) or e^(-log y) = 1/y (Example 16). Gloss it explicitly the first time an I.F. is simplified, since it is the single most error-prone step in solving linear DEs.",
+        "attachTo": "cbse12:mathematics:mathematics-ch09:integrating-factor"
+      }
+    ]
+  }
+}

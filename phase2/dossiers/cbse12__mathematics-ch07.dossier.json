@@ -1,0 +1,342 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch07",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:antiderivative",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "The functions that could possibly have given function as a derivative are called anti derivatives (or primitive) of the function."
+        },
+        {
+          "title": "Antiderivative - Calculating | How to Find Antiderivative? — Cuemath",
+          "url": "https://www.cuemath.com/calculus/antiderivatives/",
+          "verified": "An antiderivative, F, of a function, f, can be defined as a function that can be differentiated to obtain the original function, f."
+        },
+        {
+          "title": "Antiderivatives | Formula, Definition and Solved Examples — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/antiderivatives/",
+          "verified": "An antiderivative is a function that reverses the process of differentiation."
+        },
+        {
+          "title": "Integrals for Class 12 — Concepts — BYJU'S",
+          "url": "https://byjus.com/maths/integrals-for-class-12/",
+          "verified": "Integration ( or antiderivative of a function) makes it possible to obtain the original function."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Solid. The +C non-uniqueness in PART 2 mirrors NCERT exactly ('anti derivatives ... are not unique'). Optional: the worked example uses 2x -> x^2, but the NCERT motivating triple is d/dx(sin x)=cos x, d/dx(x^3/3)=x^2, d/dx(e^x)=e^x; aligning the example with one of those (e.g. x^2 from x^3/3) would tie the bedrock node directly to the source quotes students will see again in section 7.2."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "Integration is the inverse process of differentiation."
+        },
+        {
+          "title": "Integrals for Class 12 — Concepts — BYJU'S",
+          "url": "https://byjus.com/maths/integrals-for-class-12/",
+          "verified": "Integration is called the inverse process of differentiation."
+        },
+        {
+          "title": "Antiderivatives | Formula, Definition and Solved Examples — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/antiderivatives/",
+          "verified": "An antiderivative is a function that reverses the process of differentiation."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate and well-scoped. PART 2's claim that 'chain rule reversed becomes substitution; product rule reversed becomes integration by parts' is correct and is borne out later in the chapter (section 7.3.1 derives substitution as the change-of-variable formula; section 7.6 derives by-parts from the product rule). No change needed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:indefinite-integral",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "We introduce a new symbol, namely, ∫ f (x) dx which will represent the entire class of anti derivatives read as the indefinite integral of f with respect to x."
+        },
+        {
+          "title": "Indefinite Integrals | Definition, Formulas, Properties & Examples — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/indefinite-integrals/",
+          "verified": "a constant added to any function doesn't affect its derivative, which is why the result of integration always includes a constant C"
+        },
+        {
+          "title": "Integrals Class 12 Maths: Concepts, Formulas & Solutions — Vedantu",
+          "url": "https://www.vedantu.com/maths/integrals",
+          "verified": "Indefinite integral: Represents a family of antiderivatives and includes a constant of integration, written as ∫f(x) dx = F(x) + C."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correct. The 'NOT a number (that is the definite integral)' contrast in PART 2 is pedagogically valuable and consistent with section 7.7. No change needed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:same-derivative-same-family",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "Remark Functions with same derivatives differ by a constant."
+        },
+        {
+          "title": "Indefinite Integrals | Definition, Formulas, Properties & Examples — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/indefinite-integrals/",
+          "verified": "a constant added to any function doesn't affect its derivative, which is why the result of integration always includes a constant C"
+        },
+        {
+          "title": "Integrals Class 12 Maths: Concepts, Formulas & Solutions — Vedantu",
+          "url": "https://www.vedantu.com/maths/integrals",
+          "verified": "Indefinite integral: Represents a family of antiderivatives and includes a constant of integration, written as ∫f(x) dx = F(x) + C."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate; the node correctly couples the 'same derivative => differ by a constant' remark (NCERT property II) with the linearity properties (NCERT properties III-V) in PART 2. The 'verify by differentiating' key move is exactly the inspection/check spirit of the source. No change needed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "This change of variable formula is one of the important tools available to us in the name of integration by substitution."
+        },
+        {
+          "title": "Integration by Substitution: Step-by-Step Guide with Examples — Vedantu",
+          "url": "https://www.vedantu.com/maths/integration-by-substitution",
+          "verified": "It is essential to notice here that you should make a substitution for a function whose derivative also appears in the integrals"
+        },
+        {
+          "title": "Integration by Substitution Method - Formula, Examples & Questions — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/integration-by-substitution/",
+          "verified": "d/dx [F {g(x)} + c] = F'(g(x))g'(x) = f {g(x)} g'(x)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Excellent worked example (t = x^2+1 for ∫ 2x(x^2+1) dx) matches NCERT Example 5(ii) in spirit. The two stated misconceptions ('not converting dx into dt' and 'not substituting back') are precisely the errors NCERT flags. No change needed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:proper-improper-rational",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "If the degree of P(x) is less than the degree of Q(x), then the rational function is called proper, otherwise, it is called improper."
+        },
+        {
+          "title": "Integration by Partial Fractions - Method, Examples & Practice Problems — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/integration-by-partial-fractions/",
+          "verified": "If degree f(x) < degree g(x), then f(x)/g(x) is called a proper rational function."
+        },
+        {
+          "title": "Integration using Partial Fractions — BYJU'S",
+          "url": "https://byjus.com/maths/partial-fractions/",
+          "verified": "If not, perform polynomial long division first"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student must compare the degree of the numerator with the degree of the denominator to classify a rational function as proper or improper, but may not recall that 'degree' means the highest power of x.",
+          "surfacingQuestion": "In the polynomial 3x^2 - 5x + 7, what is its 'degree'?",
+          "ladder": [
+            "A polynomial is a sum of terms, each a constant times a power of x: e.g. 7 (= 7x^0), -5x (= -5x^1), 3x^2.",
+            "The 'degree' of a polynomial is the highest power of x that appears with a non-zero coefficient.",
+            "So in 3x^2 - 5x + 7, the powers present are 2, 1, and 0. The highest is 2.",
+            "Watch the leading coefficient is irrelevant to the degree: 100x + 1 has degree 1, while x^2 has degree 2, even though 100 > 1."
+          ],
+          "answer": "The degree of 3x^2 - 5x + 7 is 2, because the highest power of x present is x^2. Degree counts the highest exponent of x, not the size of any coefficient. (Examples: x^2/(x-1) has numerator degree 2 and denominator degree 1, so it is improper; (x+1)/(x^2-4) has numerator degree 1 < denominator degree 2, so it is proper.)",
+          "returnCue": "Now that 'degree' = highest power of x, compare deg(numerator) with deg(denominator): proper if numerator's is smaller, improper otherwise."
+        }
+      ],
+      "contentNote": "Correct and matches NCERT 7.5 verbatim. The flagged misconception 'comparing leading coefficients instead of degrees' is well-chosen. The node's only stated prereq is integration-inverse-of-differentiation; the genuinely load-bearing prior skill is 'degree of a polynomial' (pre-curriculum bedrock) — see attached refresher."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:partial-fractions",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "It is always possible to write the integrand as a sum of simpler rational functions by a method called partial fraction decomposition."
+        },
+        {
+          "title": "Integration by Partial Fractions - Method, Examples & Practice Problems — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/integration-by-partial-fractions/",
+          "verified": "If degree f(x) < degree g(x), then f(x)/g(x) is called a proper rational function."
+        },
+        {
+          "title": "Integration using Partial Fractions — BYJU'S",
+          "url": "https://byjus.com/maths/partial-fractions/",
+          "verified": "If not, perform polynomial long division first"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Partial fraction decomposition requires first factoring the denominator into linear and quadratic factors; a student who cannot factor a quadratic like x^2 - 5x + 6 cannot set up the decomposition.",
+          "surfacingQuestion": "How would you write x^2 - 5x + 6 as a product of two factors (x - ?)(x - ?)?",
+          "ladder": [
+            "To factor x^2 + bx + c into (x - p)(x - q), look for two numbers p and q whose product is c and whose sum is -b (i.e. p + q = -b, pq = c).",
+            "For x^2 - 5x + 6: we need two numbers that multiply to +6 and add to +5 (since -b = 5).",
+            "Try pairs that multiply to 6: 1 and 6 (sum 7), 2 and 3 (sum 5). The pair 2 and 3 works.",
+            "So x^2 - 5x + 6 = (x - 2)(x - 3). Check by expanding: (x - 2)(x - 3) = x^2 - 5x + 6."
+          ],
+          "answer": "x^2 - 5x + 6 = (x - 2)(x - 3). Factoring a monic quadratic x^2 + bx + c means finding two numbers with product c and sum b; here product 6 and sum -5 gives -2 and -3, so the factors are (x - 2) and (x - 3). The factored denominator is what each partial fraction is written over: 1/((x-2)(x-3)) = A/(x-2) + B/(x-3).",
+          "returnCue": "With the denominator factored into (x - 2)(x - 3), write one partial fraction per factor (A/(x-2) + B/(x-3)) and solve for the constants."
+        }
+      ],
+      "contentNote": "Accurate. The standard forms quoted in PART 1 (A/(x-a); A/(x-a)+B/(x-a)^2; (Ax+B)/quadratic) exactly match NCERT Table 7.2. Worked example 1/((x-1)(x-2)) = -1/(x-1)+1/(x-2) is correct. Genuine pre-curriculum bedrock for this node is 'factoring polynomials/quadratics' — refresher attached; this is owned upstream conceptually (Class 10 algebra) and is not taught in cbse12 ch01-ch06."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:integration-by-parts",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "The integral of the product of two functions = (first function) × (integral of the second function) – Integral of [(differential coefficient of the first function) × (integral of the second function)]"
+        },
+        {
+          "title": "Integration by Parts Rule: Easy Steps & Examples — Vedantu",
+          "url": "https://www.vedantu.com/maths/integration-by-parts-rule",
+          "verified": "The term which is closer to I is differentiated first and the term which is closer to E is integrated first."
+        },
+        {
+          "title": "Integration by Parts - Formula, Derivation, Applications, Examples — Cuemath",
+          "url": "https://www.cuemath.com/calculus/integration-by-parts/",
+          "verified": "∫ u dv = uv - ∫ v du"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Correct. PART 2's ILATE ordering (Inverse-trig, Log, Algebraic, Trig, Exponential) is the standard mnemonic; note NCERT itself does not name 'ILATE' but states the equivalent rule (Remark iii: take power-of-x/polynomial as first function, but if an inverse-trig or log function is present take that as first) — the node's ILATE framing is the widely-taught generalisation and is fine. Worked example ∫ x cos x dx = x sin x + cos x + C matches NCERT Example 17 exactly."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:definite-integral",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "The definite integral is introduced either as the limit of a sum or if it has an anti derivative F in the interval [a, b], then its value is the difference between the values of F at the end points, i.e., F(b) - F(a)."
+        },
+        {
+          "title": "Definite Integral - Calculate, Formula, Properties — Cuemath",
+          "url": "https://www.cuemath.com/calculus/definite-integral/",
+          "verified": "A definite integral is the area under a curve between two fixed limits. The definite integral is represented as ∫ᵇₐf(x)dx, where a is the lower limit and b is the upper limit"
+        },
+        {
+          "title": "Integrals for Class 12 — Concepts — BYJU'S",
+          "url": "https://byjus.com/maths/integrals-for-class-12/",
+          "verified": "A definite integral is denoted by ∫ab f(x) dx, where a is called the lower limit of the integral and b is called the upper limit of the integral."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Accurate. PART 2's two contrasts (no +C; swapping limits negates the value) are both correct and exam-relevant; the sign-flip property is confirmed by Cuemath ('∫ᵇₐ f dx = -∫ₐᵇ f dx'). The 'single NUMBER vs family' contrast against the indefinite integral is the key takeaway. No change needed."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:ftc-area-function",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "Let f be a continuous function on the closed interval [a, b] and let A(x) be the area function. Then A'(x) = f(x), for all x ∈ [a, b]."
+        },
+        {
+          "title": "Fundamental Theorem of Calculus — BYJU'S",
+          "url": "https://byjus.com/maths/fundamental-theorem-calculus/",
+          "verified": "Then A′(x) = f(x), for all x ∈ [a, b]."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "The area function A(x) = integral of f from a to x is defined as 'the accumulated area under the curve'; a student who does not picture a definite integral as area under a curve cannot grasp why differentiating accumulated area returns the height f(x).",
+          "surfacingQuestion": "When we write the definite integral of f from a to b, what geometric quantity does it measure?",
+          "ladder": [
+            "Draw the graph of y = f(x). Mark two vertical lines at x = a and x = b.",
+            "The definite integral of f from a to b is the area of the region trapped between the curve y = f(x), the x-axis, and those two vertical lines (taking area above the axis as positive).",
+            "Now let the right edge move: instead of fixing it at b, let it sit at a variable point x. The trapped area now grows or shrinks as x moves — so the area is a function of x, written A(x).",
+            "Intuitively, when x increases by a tiny step, the extra sliver of area added is roughly (height of curve) × (width of step) = f(x) × (small step). Dividing the extra area by the step size gives back the height f(x) — that is exactly A'(x) = f(x)."
+          ],
+          "answer": "The definite integral of f from a to b measures the (signed) area of the region bounded by the curve y = f(x), the x-axis, and the vertical lines x = a and x = b. Letting the upper limit be a variable x makes that area a function A(x), the 'area-so-far' function. Because each tiny increase in x adds a thin strip of area of height f(x), the rate at which the accumulated area grows equals the curve's height: A'(x) = f(x). This is the First Fundamental Theorem of Calculus.",
+          "returnCue": "Holding the picture 'integral = area under the curve', read A(x) as area-so-far and A'(x) = f(x) as: the speed at which area accumulates equals the curve's current height."
+        }
+      ],
+      "contentNote": "Correct. The flagged misconception 'thinking A'(x) gives f(a) or a constant rather than f(x)' is the precise trap and is well-chosen. PART 1's definition of A(x) as the definite integral from fixed a to variable x matches NCERT 7.8.1 exactly. The continuity hypothesis is correctly retained. 'Area under a curve' is pre-curriculum geometric intuition load-bearing here — refresher attached."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
+      "sources": [
+        {
+          "title": "Integrals (NCERT Class XII Mathematics Part I, Chapter 7) — ncert.nic.in",
+          "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+          "verified": "Let f be continuous function defined on the closed interval [a, b] and F be an anti derivative of f. Then ∫ₐᵇ f(x) dx = [F(x)]ₐᵇ = F(b) - F(a)."
+        },
+        {
+          "title": "Fundamental Theorem of Calculus — BYJU'S",
+          "url": "https://byjus.com/maths/fundamental-theorem-calculus/",
+          "verified": "F(b)- F(a) = a∫b f(x) dx"
+        },
+        {
+          "title": "Integrals for Class 12 — Concepts — BYJU'S",
+          "url": "https://byjus.com/maths/integrals-for-class-12/",
+          "verified": "∫ab f(x) dx= [F(x)]ab = F(b) – F(a)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Goal node is accurate and complete. Worked example (∫ x^2 from 1 to 3 = 26/3) is arithmetically correct and matches the structure of NCERT Example 25(i). PART 1's instruction to omit +C 'since it cancels' is justified verbatim by NCERT's step list ('There is no need to keep integration constant C ... the arbitrary constant disappears'). The flagged sign error F(a)-F(b) is the canonical exam mistake. No change needed."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "derivative / f'(x) (the operation integration reverses) — owned upstream: cbse12:mathematics:mathematics-ch05:derivative-definition",
+      "chain rule (reversed -> substitution) — owned upstream: cbse12:mathematics:mathematics-ch05:chain-rule",
+      "product rule (reversed -> integration by parts) — owned upstream: ch05 product/derivative rules",
+      "derivatives of e^x and log x (needed to read standard integrals backwards and for by-parts of log x) — owned upstream: cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log",
+      "inverse-trig derivatives (1/(1+x^2) -> arctan; 1/sqrt(1-x^2) -> arcsin) — owned upstream: cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives",
+      "standard derivatives of sin, cos, tan, sec, etc. (read backwards as standard integrals) — owned upstream: ch05 differentiation",
+      "degree of a polynomial (proper vs improper classification) — pre-curriculum bedrock (Class 9-10 algebra)",
+      "polynomial long division (reducing an improper rational function) — pre-curriculum bedrock (Class 9-10 algebra)",
+      "factoring polynomials / quadratics into linear & quadratic factors (partial-fraction setup) — pre-curriculum bedrock (Class 10 algebra)",
+      "rational function P(x)/Q(x), Q(x) != 0 — pre-curriculum bedrock (Class 10-11 algebra)",
+      "natural logarithm log|x| and its absolute-value domain (appears in nearly every integral answer) — pre-curriculum bedrock (Class 11 logarithms) reinforced by ch05",
+      "area under a curve / area bounded by a graph (definite integral & area function) — pre-curriculum geometric intuition",
+      "trigonometric identities (cos 2x, product-to-sum, sin^3x) used to recast integrands in 7.3.2 — pre-curriculum bedrock (Class 11 trigonometry); note: not surfaced as a node in this chapter's content.json",
+      "completing the square (for ax^2+bx+c integrals in 7.4) — pre-curriculum bedrock (Class 10-11 algebra); not surfaced as a node",
+      "continuity of a function on [a,b] (hypothesis of both FTCs) — owned upstream: cbse12 ch05 continuity"
+    ],
+    "bridgesProposed": [
+      "NONE. No load-bearing idea in this chapter is taught nowhere upstream. The most foundational dependency — that integration reverses differentiation — is explicitly the inverse of cbse12:mathematics:mathematics-ch05 differentiation and is itself one of this chapter's bedrock nodes (integration-inverse-of-differentiation), so it needs no author-bridge. All other course concepts are owned by ch05 (differentiation, chain/product rules, exp/log & inverse-trig derivatives, continuity); the remainder are pre-curriculum bedrock handled via refreshers, not bridges."
+    ],
+    "defers": [
+      {
+        "term": "derivative / f'(x) and the meaning of differentiation",
+        "owner": "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "softening": "The antiderivative and inverse-of-differentiation nodes lean on 'what function differentiates to f?'. Defer the formal definition to ch05; soften with a one-line reminder ('recall f'(x) is the derivative from Chapter 5') rather than re-teaching."
+      },
+      {
+        "term": "chain rule",
+        "owner": "cbse12:mathematics:mathematics-ch05:chain-rule",
+        "softening": "Integration-by-substitution is 'the chain rule run backwards'. Defer the chain rule itself to ch05; soften by naming it as the rule being reversed when introducing substitution."
+      },
+      {
+        "term": "product rule of differentiation",
+        "owner": "cbse12:mathematics:mathematics-ch05 (product/derivative rules)",
+        "softening": "Integration-by-parts is derived by integrating the product rule (NCERT 7.6). Defer the product rule to ch05; soften by quoting d/dx(uv)=u v'+v u' as a recalled fact at the start of the by-parts node."
+      },
+      {
+        "term": "derivatives of e^x, a^x, log|x| and inverse-trig functions",
+        "owner": "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log, cbse12:mathematics:mathematics-ch05:inverse-trig-derivatives",
+        "softening": "The table of standard integrals is just these ch05 derivatives read backwards. Defer ownership to ch05; soften by presenting each standard integral beside its known derivative."
+      },
+      {
+        "term": "continuity of f on [a,b]",
+        "owner": "cbse12:mathematics:mathematics-ch05 (continuity)",
+        "softening": "Both FTC nodes carry a continuity hypothesis. Defer the definition to ch05; soften with a brief 'f must be continuous (no breaks) on [a,b]' gloss where the theorems are stated."
+      }
+    ],
+    "inlineGlosses": [
+      "proper / improper rational function: gloss inline at proper-improper-rational — 'proper = numerator's highest power is smaller than the denominator's; improper otherwise' (the node already does this well; keep one-line).",
+      "integrand / variable of integration / constant of integration: gloss inline at indefinite-integral using NCERT Table 7.1 wording ('integrand' = f(x) inside the integral sign; 'C' = any real constant).",
+      "lower limit / upper limit a, b: gloss inline at definite-integral ('a = lower limit, b = upper limit of the integral').",
+      "irreducible quadratic factor: gloss inline at partial-fractions — 'a quadratic that cannot be factored into real linear factors (e.g. x^2+1)', so its partial fraction takes the (Ax+B)/quadratic form.",
+      "log|x| (absolute value in the log): gloss inline wherever 1/x integrates to log|x| — 'the |x| keeps the log defined for negative x as well', per NCERT Example 1(iii)."
+    ]
+  }
+}

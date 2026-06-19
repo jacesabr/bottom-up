@@ -1,0 +1,456 @@
+{
+  "chapter": "cbse12:mathematics:mathematics-ch04",
+  "concepts": [
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:determinant-definition",
+      "sources": [
+        {
+          "title": "CBSE Class 12 Maths Notes Chapter 4 Determinants (Revision Notes)",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-4-determinants",
+          "verified": "Page states 'We can define the determinant of a matrix as a scalar value that can be calculated from the elements of a square matrix' and covers order-2/order-3, minors, cofactors, adjoint, inverse."
+        },
+        {
+          "title": "NCERT Solutions for Class 12 Maths Chapter 4 Determinants (BYJU'S)",
+          "url": "https://byjus.com/ncert-solutions-class-12-maths/chapter-4-determinants/",
+          "verified": "Page describes 'finding the determinant of a 2x2 matrix, or 3x3 matrix ... minors, and co-factors ... adjoint, and the inverse of a matrix.'"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student is unsure what a 'number (real or complex)' or 'scalar' means when told the determinant is one.",
+          "surfacingQuestion": "When we say the determinant is just 'a number', what kinds of numbers are we allowing?",
+          "ladder": [
+            "Think about ordinary numbers you already use: 3, -2, 0, 1.5, the square root of 2. These are real numbers - any point on the number line.",
+            "A 'scalar' is just a fancy word for a single such number, used to contrast with a whole array of numbers like a matrix.",
+            "'Real or complex' means the determinant is allowed to be a real number, or in rarer cases a complex number (involving the square root of -1). For this chapter, with real entries, the determinant will always come out a real number.",
+            "The key point: a determinant collapses a whole square grid of numbers down to one single value."
+          ],
+          "answer": "A scalar is one single number. 'Real or complex' just says the value is an ordinary number on the number line (and, in advanced cases, possibly a complex number). For Class 12 determinants with real entries you always get one real number.",
+          "returnCue": "So |A| is one number, not a matrix - now let's see how to compute that number."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:determinant-order-two",
+      "sources": [
+        {
+          "title": "Determinants CBSE Class 12 (study material) - Unacademy",
+          "url": "https://unacademy.com/content/cbse-class-12/study-material/mathematics/determinants/",
+          "verified": "Search-confirmed CBSE Class 12 page: 'the determinant equals a1*b2 - a2*b1' for a 2x2; 'Only square matrices ... have determinants.'"
+        },
+        {
+          "title": "CBSE Class 12 Maths Notes Chapter 4 Determinants (Vedantu)",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-4-determinants",
+          "verified": "Confirmed page contains dedicated second-order determinant section with the a11*a22 - a12*a21 expansion."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student does not know which entries form the 'main diagonal' versus the 'off-diagonal' of a 2x2.",
+          "surfacingQuestion": "In the grid [[a, b],[c, d]], which two entries sit on the main diagonal?",
+          "ladder": [
+            "Write the 2x2 with its row/column positions: a is (1,1) top-left, b is (1,2) top-right, c is (2,1) bottom-left, d is (2,2) bottom-right.",
+            "The MAIN diagonal runs top-left to bottom-right: that is a and d (positions where row index = column index).",
+            "The OFF (or anti-) diagonal runs top-right to bottom-left: that is b and c.",
+            "The 2x2 determinant rule is 'main-diagonal product minus off-diagonal product' = a*d - b*c."
+          ],
+          "answer": "Main diagonal = top-left and bottom-right (a and d); off-diagonal = top-right and bottom-left (b and c). Determinant = a*d - b*c.",
+          "returnCue": "With the diagonals identified, the formula a11*a22 - a21*a12 is just diagonal-product minus off-diagonal-product."
+        }
+      ],
+      "contentNote": "The brief, quote and keyMoves write the off-diagonal product as a21*a12 while the NCERT 2x2 formula it cites is a11*a22 - a21*a12; PART 1 of the explanation instead writes a11*a22 - a12*a21. Both are numerically identical (a21*a12 = a12*a21), but the misconception 'subtracting in the wrong order (off-diagonal minus diagonal)' could read as if a21*a12 vs a12*a21 order matters - it does not. Suggest a one-line note that the off-diagonal factors commute, so the only thing that matters is diagonal-product FIRST, then subtract."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:minor",
+      "sources": [
+        {
+          "title": "Minors and Co-factors - concept notes (Shaalaa)",
+          "url": "https://www.shaalaa.com/concept-notes/minors-and-co-factors_58",
+          "verified": "Search-confirmed: 'Minor for any element a_ij is the determinant of the matrix formed by deleting the i-th row and j-th column.'"
+        },
+        {
+          "title": "Determinant of 3x3 Matrix - Formula with Solved Examples (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/determinant-of-3x3-matrix/",
+          "verified": "Page explains 'The minor M_ij is the determinant of the smaller matrix you get after deleting row i and column j' and shows worked 3x3 examples."
+        },
+        {
+          "title": "NCERT Solutions Class 12 Maths Chapter 4 (covers minors & cofactors) - Vedantu notes",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-4-determinants",
+          "verified": "Page states 'Minor is represented as M_{ij}' within the minors/cofactors section."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:cofactor",
+      "sources": [
+        {
+          "title": "Minors and Co-factors - concept notes (Shaalaa)",
+          "url": "https://www.shaalaa.com/concept-notes/minors-and-co-factors_58",
+          "verified": "Search-confirmed: 'The cofactor of any element a_ij is equal to (-1)^(i+j) M_ij, where M_ij is the minor.'"
+        },
+        {
+          "title": "Determinant of 3x3 Matrix - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/determinant-of-3x3-matrix/",
+          "verified": "Page gives 'The cofactor C_ij = (-1)^(i+j) times the minor' and shows the +,-,+ checkerboard sign pattern in worked expansions."
+        },
+        {
+          "title": "CBSE Class 12 Maths Notes Chapter 4 (cofactor A_ij = (-1)^(i+j) M_ij) - Vedantu",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-4-determinants",
+          "verified": "Page states cofactors are defined as 'A_{ij} = (-1)^{i+j} M_{ij}'."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student is unsure how (-1)^(i+j) produces +1 or -1 and how 'even/odd i+j' maps to the checkerboard.",
+          "surfacingQuestion": "Why does (-1) raised to the power (i+j) only ever give +1 or -1, and how do you know which?",
+          "ladder": [
+            "Recall raising -1 to a power: (-1)^2 = 1, (-1)^3 = -1, (-1)^4 = 1. Multiplying -1 an even number of times gives +1; an odd number of times gives -1.",
+            "So (-1)^(i+j) = +1 whenever the sum i+j is even, and -1 whenever i+j is odd. You never have to actually compute a big power - just check even or odd.",
+            "Position (1,1): i+j = 2 (even) -> +. Position (1,2): i+j = 3 (odd) -> -. Position (2,2): i+j = 4 (even) -> +.",
+            "Lay these signs out on the grid and you get the checkerboard: + - + / - + - / + - +, always starting with + at the top-left."
+          ],
+          "answer": "(-1)^(i+j) is +1 when i+j is even and -1 when i+j is odd, because multiplying -1 an even number of times cancels to +1. Top-left is always +, and signs alternate from there.",
+          "returnCue": "Now the cofactor is just 'this + or - sign' times the minor."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:determinant-order-three",
+      "sources": [
+        {
+          "title": "Determinant of 3x3 Matrix - Formula with Solved Examples (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/determinant-of-3x3-matrix/",
+          "verified": "Page: 'Expand the Matrix along the elements of the first row' with the a11(minor) - a12(minor) + a13(minor) alternating pattern."
+        },
+        {
+          "title": "CBSE Class 12 Maths Notes Chapter 4 Determinants (Vedantu)",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-4-determinants",
+          "verified": "Confirmed page has dedicated second- and third-order determinant sections 'with detailed expansion methods.'"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:area-of-triangle",
+      "sources": [
+        {
+          "title": "Area of a Triangle using Determinants (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/area-of-triangle-using-determinants/",
+          "verified": "Page: 'Area of Triangle = 1/2 |determinant of matrix with vertices|' and 'if three points are collinear ... the value of the determinant will also be zero.'"
+        },
+        {
+          "title": "Finding Determinant and Using It to Find the Area of a Triangle (BYJU'S)",
+          "url": "https://byjus.com/maths/finding-determinant-and-using-it-to-find-the-area-of-a-triangle/",
+          "verified": "Page: 'since we are talking about area ... we take the absolute value of the determinant' and collinear points give a straight line so the determinant is zero."
+        },
+        {
+          "title": "NCERT Solutions Class 12 Maths Chapter 4 Exercise 4.3 - Area of triangle (Cuemath)",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-4-exercise-4-3/",
+          "verified": "Page focuses on area of triangle via determinants and states 'The area of the triangle formed by three collinear points is zero.'"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student does not recall what 'vertices (x1,y1),(x2,y2),(x3,y3)' mean or how a point becomes a row of the determinant.",
+          "surfacingQuestion": "What does a vertex like (x1, y1) actually tell you, and why does it become a row [x1, y1, 1]?",
+          "ladder": [
+            "A point in the coordinate plane is written (x, y): x says how far across (horizontal), y says how far up (vertical). A triangle's three corners are its three vertices.",
+            "To use the determinant, each vertex (xi, yi) is laid down as a row, and a third column of 1's is appended: (x1,y1,1), (x2,y2,1), (x3,y3,1).",
+            "The '1' column is what makes the 3x3 determinant encode the standard area formula 1/2[x1(y2-y3)+x2(y3-y1)+x3(y1-y2)]; without it the rows would only be 2 wide and you could not form a 3x3 determinant.",
+            "So you are just re-packaging the three coordinate pairs (plus a column of 1's) into a 3x3 grid."
+          ],
+          "answer": "A vertex (x,y) is a point: x is the horizontal coordinate, y the vertical. Each vertex becomes a row, and a column of 1's is added so the three points fill a 3x3 determinant that reproduces the area formula.",
+          "returnCue": "With the three vertices loaded as rows (and the 1's column), take half the absolute value of the determinant for the area."
+        },
+        {
+          "trigger": "Student asks why 'absolute value' is needed and what absolute value even is.",
+          "surfacingQuestion": "What does the absolute value bars |...| do to a number, and why must area use them?",
+          "ladder": [
+            "Absolute value strips the sign: |5| = 5 and |-5| = 5. It returns the size/magnitude, never negative.",
+            "The bare determinant of the coordinates can come out negative (it depends on whether the vertices are listed clockwise or anticlockwise).",
+            "Area is a physical size - it can never be negative - so we wrap the determinant in absolute value to throw away any minus sign.",
+            "Note this is a DIFFERENT use of the same bars than |A| for a determinant; here |determinant value| genuinely means 'make it non-negative.'"
+          ],
+          "answer": "Absolute value makes a number non-negative (|-5| = 5). Since the coordinate determinant can be negative depending on vertex order, and area cannot be negative, we take the absolute value before multiplying by 1/2.",
+          "returnCue": "So area = 1/2 times the non-negative size of that determinant."
+        }
+      ],
+      "contentNote": "PART 2 conflates two distinct uses of D=0: (a) the collinearity TEST for three given points, and (b) using D=0 to find the EQUATION of the line through two fixed points by treating the third vertex as a variable (x,y). The NCERT Example 7 does exactly (b). The keyMove 'Set the determinant to zero to test collinearity / find a line' is correct but terse; consider splitting into two sub-moves so students do not think a single computation does both at once."
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:adjoint",
+      "sources": [
+        {
+          "title": "Adjoint and Inverse of Matrix for Class 12 (PhysicsCatalyst)",
+          "url": "https://physicscatalyst.com/maths/adjoint-and-inverse-of-matrix.php",
+          "verified": "Page defines adjoint as 'the transpose of the matrix [A_ij]_{n x n}, where A_ij is the cofactor of the element a_ij.'"
+        },
+        {
+          "title": "CBSE Class 12 Maths Notes Chapter 4 Determinants (Vedantu)",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-4-determinants",
+          "verified": "Page: 'The matrix obtained after taking the transpose of the matrix of cofactors of the given matrix is called the adjoint.'"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student has forgotten what 'transpose' does to a matrix (a ch03 prereq, but commonly shaky here).",
+          "surfacingQuestion": "What does taking the transpose of a matrix physically do to its entries?",
+          "ladder": [
+            "Transpose means flip the matrix across its main diagonal (top-left to bottom-right).",
+            "Concretely, the entry in row i, column j moves to row j, column i: rows become columns and columns become rows.",
+            "For a 2x2 [[a,b],[c,d]] the transpose is [[a,c],[b,d]] - a and d (on the diagonal) stay put, while b and c swap.",
+            "For the adjoint, you build the cofactor matrix [A_ij] and then transpose it, so the (i,j) entry of adj A becomes the cofactor A_ji."
+          ],
+          "answer": "Transpose flips the matrix over its main diagonal: the (i,j) entry moves to position (j,i), so rows and columns are swapped. Diagonal entries stay fixed.",
+          "returnCue": "So adj A = transpose of the cofactor matrix - build the cofactors, then flip across the diagonal."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:adjoint-identity",
+      "sources": [
+        {
+          "title": "Adjoint and Inverse of Matrix for Class 12 (PhysicsCatalyst)",
+          "url": "https://physicscatalyst.com/maths/adjoint-and-inverse-of-matrix.php",
+          "verified": "Page states the fundamental identity 'A(adj A) = (adj A) A = |A| I' with verification, then derives A^-1 = (1/|A|) adj A."
+        },
+        {
+          "title": "NCERT Solutions Class 12 Maths Chapter 4 Exercise 4.5 (Cuemath)",
+          "url": "https://www.cuemath.com/ncert-solutions/ncert-solutions-class-12-maths-chapter-4-exercise-4-5/",
+          "verified": "Page presents 'A(adj A)=(adj A)A=|A|I' as the first theorem of the exercise and uses it for inverse-by-adjoint problems."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:singular-matrix",
+      "sources": [
+        {
+          "title": "Non Singular Matrix - Definition, Formula, Properties and Examples (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/non-singular-matrix/",
+          "verified": "Page comparison table: singular matrices have 'determinant equal to zero' and 'are not invertible'; non-singular have non-zero determinant and 'are invertible.'"
+        },
+        {
+          "title": "CBSE Class 12 Maths Notes Chapter 4 Determinants (Vedantu)",
+          "url": "https://www.vedantu.com/revision-notes/cbse-class-12-maths-notes-chapter-4-determinants",
+          "verified": "Confirmed page 'covers ... singular and non-singular matrices' alongside the A^-1 = 1/|A| adj(A) formula."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:non-singular-matrix",
+      "sources": [
+        {
+          "title": "Non Singular Matrix - Definition, Formula, Properties and Examples (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/non-singular-matrix/",
+          "verified": "Page: 'A non-singular matrix (also called an invertible matrix) is a square matrix whose determinant is a non-zero value.'"
+        },
+        {
+          "title": "Invertible Matrix - Meaning, Properties & Examples for Class 12 (Vedantu)",
+          "url": "https://www.vedantu.com/maths/invertible-matrice",
+          "verified": "Page: 'An invertible matrix (also called a nonsingular matrix) is a square matrix that has an inverse' and 'If determinant = 0, it's called a singular or non-invertible matrix.'"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:determinant-of-product",
+      "sources": [
+        {
+          "title": "Product of Determinants - Definition, Solved Example Problems (Brainkart)",
+          "url": "https://www.brainkart.com/article/Product-of-Determinants_36071/",
+          "verified": "Page: 'If A and B are square matrices of the same order n, then |AB| = |A| |B| holds.'"
+        },
+        {
+          "title": "Invertible Matrix - Theorems, Properties, Definition, Examples (Cuemath)",
+          "url": "https://www.cuemath.com/algebra/invertible-matrix/",
+          "verified": "Page states the property in its determinant proof section: 'det(A . B) = det(A) x det(B)'."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:consistent-system",
+      "sources": [
+        {
+          "title": "Consistent and Inconsistent Systems of Linear Equations (GeeksforGeeks)",
+          "url": "https://www.geeksforgeeks.org/maths/consistent-and-inconsistent-systems-of-linear-equations-1/",
+          "verified": "Page: 'A consistent system of linear equations is one that has at least one solution' and 'inconsistent if it has no solutions' (unique vs infinitely many distinguished)."
+        },
+        {
+          "title": "CBSE Class 12: Solving system of linear equations in two or three variables (Unacademy)",
+          "url": "https://unacademy.com/content/cbse-class-12/study-material/mathematics/solving-system-of-linear-equations-in-two-or-three-variables/",
+          "verified": "Search-confirmed CBSE Class 12 page on solving AX=B systems and classifying consistency, matching NCERT Exercise 4.5."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student is unclear what 'a solution exists' means for a system, i.e. what counts as a solution.",
+          "surfacingQuestion": "When we say a system of equations 'has a solution', what exactly are we claiming exists?",
+          "ladder": [
+            "A solution is a set of values (one per unknown) that makes EVERY equation in the system true at the same time.",
+            "For two lines, a solution is a point (x,y) that lies on both lines - their intersection.",
+            "Three possibilities: exactly one such point (unique solution), infinitely many shared points (lines coincide), or none (parallel, never meet).",
+            "Consistent = at least one solution exists (the first two cases). Inconsistent = no solution exists (the last case)."
+          ],
+          "answer": "A solution is values for the unknowns that satisfy all equations simultaneously. 'Consistent' means at least one such set exists (unique or infinitely many); 'inconsistent' means none does.",
+          "returnCue": "Now use |A| to decide which case AX=B falls into."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch04:invertible-iff-nonsingular",
+      "sources": [
+        {
+          "title": "Invertible Matrix - Theorems, Properties, Definition, Examples (Cuemath)",
+          "url": "https://www.cuemath.com/algebra/invertible-matrix/",
+          "verified": "Page: 'A square matrix A is invertible, only if its determinant is a non-zero value, |A| != 0' and uses det(AB)=det(A)det(B) in the proof."
+        },
+        {
+          "title": "Invertible Matrix - Meaning, Properties & Examples for Class 12 (Vedantu)",
+          "url": "https://www.vedantu.com/maths/invertible-matrice",
+          "verified": "Page gives A^-1 = (1/det(A)) adj(A) and 'If determinant != 0, the matrix is invertible. If determinant = 0, it's ... singular or non-invertible.'"
+        },
+        {
+          "title": "Adjoint and Inverse of Matrix for Class 12 (PhysicsCatalyst)",
+          "url": "https://physicscatalyst.com/maths/adjoint-and-inverse-of-matrix.php",
+          "verified": "Page derives A^-1 = (1/|A|) adj A from A(adj A) = |A| I for non-singular A, matching NCERT Theorem 4."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      {
+        "term": "square matrix",
+        "whereTaught": "Earlier chapter - cbse12:mathematics:mathematics-ch03:square-matrix (and matrix-definition).",
+        "classification": "DEFER (owned upstream; already listed as a prereq across ch04 nodes)."
+      },
+      {
+        "term": "matrix / entry a_ij / order n x n",
+        "whereTaught": "Earlier chapter - cbse12:mathematics:mathematics-ch03:matrix-definition and :order.",
+        "classification": "DEFER (owned upstream)."
+      },
+      {
+        "term": "transpose",
+        "whereTaught": "Earlier chapter - cbse12:mathematics:mathematics-ch03:transpose (prereq of adjoint).",
+        "classification": "DEFER (owned upstream); a refresher is attached to the adjoint node for students who are shaky."
+      },
+      {
+        "term": "matrix multiplication / AB",
+        "whereTaught": "Earlier chapter - cbse12:mathematics:mathematics-ch03:matrix-multiplication.",
+        "classification": "DEFER (owned upstream)."
+      },
+      {
+        "term": "identity matrix I",
+        "whereTaught": "Earlier chapter - cbse12:mathematics:mathematics-ch03:identity-matrix.",
+        "classification": "DEFER (owned upstream)."
+      },
+      {
+        "term": "zero matrix O",
+        "whereTaught": "Earlier chapter - cbse12:mathematics:mathematics-ch03:zero-matrix (used in consistent-system's (adj A)B test).",
+        "classification": "DEFER (owned upstream)."
+      },
+      {
+        "term": "invertible matrix / inverse A^-1 (AB=BA=I)",
+        "whereTaught": "Earlier chapter - cbse12:mathematics:mathematics-ch03:invertible-matrix; ch04 supplies the determinant CRITERION and the explicit adjoint formula.",
+        "classification": "DEFER (definition owned upstream; ch04 extends it)."
+      },
+      {
+        "term": "main diagonal / off-diagonal (of a matrix)",
+        "whereTaught": "Related term 'diagonal' appears via ch03:diagonal-matrix, but 'main diagonal vs off-diagonal of a 2x2' as used in determinant-order-two / adjoint is not explicitly taught.",
+        "classification": "INLINE-GLOSS (minor, one-off positional vocabulary); a refresher is also attached to determinant-order-two."
+      },
+      {
+        "term": "scalar / number (real or complex)",
+        "whereTaught": "Nowhere upstream in ch01-ch04; pre-curriculum bedrock (real numbers from earlier classes).",
+        "classification": "REFRESHER (attached to determinant-definition)."
+      },
+      {
+        "term": "modulus / absolute value |x|",
+        "whereTaught": "Nowhere upstream; pre-curriculum bedrock. Load-bearing in area-of-triangle (essential) and contrasted in determinant-definition.",
+        "classification": "REFRESHER (attached to area-of-triangle)."
+      },
+      {
+        "term": "(-1)^(i+j) / even-odd parity giving a sign",
+        "whereTaught": "Nowhere upstream as a stated idea; elementary exponent bedrock.",
+        "classification": "REFRESHER (attached to cofactor)."
+      },
+      {
+        "term": "coordinates / vertices (x,y) in the plane",
+        "whereTaught": "Nowhere upstream in ch01-ch04; pre-curriculum coordinate-geometry bedrock (class 9-11).",
+        "classification": "REFRESHER (attached to area-of-triangle)."
+      },
+      {
+        "term": "system of linear equations / a solution exists / consistency",
+        "whereTaught": "Linear equations are pre-12 bedrock; the AX=B matrix encoding builds on ch03 matrix-multiplication. The meaning of 'a solution' is not taught in ch01-ch04.",
+        "classification": "REFRESHER (meaning-of-solution refresher attached to consistent-system); the AX=B encoding itself DEFERs to ch03."
+      },
+      {
+        "term": "linearly dependent rows/columns",
+        "whereTaught": "Nowhere upstream; appears only as an enrichment remark in singular-matrix PART 2 ('rows ... are linearly dependent').",
+        "classification": "INLINE-GLOSS (out-of-syllabus enrichment aside; soften or gloss rather than build a node - see defers)."
+      },
+      {
+        "term": "determinant value depends on row/column choice (six expansions agree)",
+        "whereTaught": "Taught within THIS chapter at determinant-order-three (lower-order, a prereq of consuming nodes).",
+        "classification": "Self-contained in chapter (no action)."
+      },
+      {
+        "term": "minor / cofactor / adjoint",
+        "whereTaught": "Taught within THIS chapter (minor -> cofactor -> adjoint, ascending order).",
+        "classification": "Self-contained in chapter (no action)."
+      }
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "transpose",
+        "owner": "cbse12:mathematics:mathematics-ch03:transpose",
+        "softening": "adjoint node already lists ch03:transpose as a prereq; no wording change needed. (A safety-net refresher is attached to the adjoint node.)"
+      },
+      {
+        "term": "matrix multiplication / identity matrix / zero matrix / invertible matrix",
+        "owner": "cbse12:mathematics:mathematics-ch03:{matrix-multiplication, identity-matrix, zero-matrix, invertible-matrix}",
+        "softening": "All are already declared prereqs on the consuming ch04 nodes (adjoint-identity, consistent-system, determinant-of-product, invertible-iff-nonsingular). No softening needed."
+      },
+      {
+        "term": "linearly dependent rows/columns",
+        "owner": "Not in the CBSE Class 12 determinants syllabus (linear independence is a later/college topic).",
+        "softening": "In singular-matrix PART 2, keep this as a parenthetical intuition only (as it already is) and phrase it concretely ('e.g. row 2 = 4 times row 1') rather than introducing the formal term 'linearly dependent', so no undefined concept is load-bearing."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "main diagonal / off-diagonal",
+        "gloss": "Main diagonal = the entries running top-left to bottom-right (positions where row index = column index, e.g. a11 and a22); off-diagonal (anti-diagonal) = top-right to bottom-left (a12 and a21)."
+      },
+      {
+        "term": "Delta (the symbol used for a determinant)",
+        "gloss": "The Greek capital letter Delta is one of the standard symbols for a determinant, used interchangeably with |A| and det A in NCERT; it does not introduce any new operation."
+      },
+      {
+        "term": "chequerboard / checkerboard sign pattern",
+        "gloss": "The grid of + and - signs from (-1)^(i+j): + - + / - + - / + - + for a 3x3, always starting with + at the top-left; it is just a visual shortcut for the sign factor on each cofactor."
+      },
+      {
+        "term": "dependent system (consistent with infinitely many solutions)",
+        "gloss": "A consistent system can have either exactly one solution or infinitely many; the 'infinitely many' case (when |A| = 0 and (adj A)B = O) is sometimes called a dependent system - still consistent, just not unique."
+      }
+    ]
+  }
+}

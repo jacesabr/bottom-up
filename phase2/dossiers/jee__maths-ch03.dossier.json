@@ -1,0 +1,652 @@
+{
+  "chapter": "jee:maths:maths-ch03",
+  "concepts": [
+    {
+      "id": "jee:maths:maths-ch03:measure-angle-by-rotation",
+      "sources": [
+        {
+          "title": "Angles (1.1) — Reedley College Trigonometry, LibreTexts",
+          "url": "https://math.libretexts.org/Courses/Reedley_College/Trigonometry/01:_The_Six_Trigonometric_Functions/1.01:_Angles",
+          "verified": "Page states: 'If the angle is measured in a counterclockwise direction from the initial side to the terminal side, the angle is said to be a positive angle' and 'If the angle is measured in a clockwise direction, the angle is said to be a negative angle.' Also describes angle creation by rotating one ray while another is fixed."
+        },
+        {
+          "title": "Radian Measure — Byju's",
+          "url": "https://byjus.com/maths/radian-measure/",
+          "verified": "Quotes the NCERT definition verbatim: 'Angle subtended at the centre by an arc of length 1 unit in a unit circle (circle of radius 1 unit) is said to have a measure of 1 radian.' Sets the angle-as-rotation context."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First use of 'anticlockwise' / 'clockwise' to assign the sign of an angle, and the claim that an angle has no upper limit.",
+          "surfacingQuestion": "When you turn a clock's hand, which way does it go — and is the 'maths-positive' direction the same way or the opposite way?",
+          "ladder": [
+            "Picture a single ray pinned at one end (the vertex). Sweeping its free end traces an angle — the angle IS the amount of that sweep, not a static corner.",
+            "Clock hands move clockwise. By convention in mathematics we call the OPPOSITE direction (anticlockwise) positive, and clockwise negative — purely a sign convention, like + and - on a number line.",
+            "Because you can keep sweeping past a full turn, there is no largest angle: one full turn is 360 degrees, two turns is 720 degrees, and you can sweep backwards for negative angles."
+          ],
+          "answer": "An angle is the amount a ray rotates about its vertex from its initial side to its terminal side. Anticlockwise sweeps are positive, clockwise sweeps are negative, and the magnitude can be any size (it can exceed 360 degrees or be negative).",
+          "returnCue": "So with the sign convention fixed, let's read this rotation's size and sign."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:degree-measure",
+      "sources": [
+        {
+          "title": "Radian Measure — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/radian-measure/",
+          "verified": "States '360 degrees is the whole revolution of a circle' and defines the radian via arc = radius; supports the degree-as-fraction-of-a-revolution framing (1/360 of a revolution). Note: this page does not itself drill the 1deg=60min subdivision, so it is paired with a DMS source below."
+        },
+        {
+          "title": "Degrees to Radians — Byju's",
+          "url": "https://byjus.com/maths/degrees-to-radians/",
+          "verified": "States: 'The value of 180 degrees is equal to pi radians. To convert any given angle from the measure of degrees to radians, the value has to be multiplied by pi/180.' Anchors the degree unit before subdivision."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First time minutes (') and seconds ('') are introduced with 1 deg = 60', 1' = 60'' — the sexagesimal subdivision.",
+          "surfacingQuestion": "On a clock, how many minutes make an hour, and how many seconds make a minute? Does the same '60' idea show up anywhere in angles?",
+          "ladder": [
+            "Time uses base 60: 60 seconds = 1 minute, 60 minutes = 1 hour. Angle measure borrows exactly this base-60 (sexagesimal) habit from the ancient Babylonians.",
+            "So 1 degree splits into 60 equal 'minutes' written 20', and 1 minute splits into 60 'seconds' written 30''. These are NOT tenths/hundredths — they are sixtieths.",
+            "To do arithmetic, convert down to a single unit: 20' = 20/60 of a degree = 1/3 degree. You can never just write 40 degrees 20' as '60' of anything, just as 1 hour 30 min is not '31'."
+          ],
+          "answer": "A degree subdivides in base 60: 1 degree = 60 minutes (60'), 1 minute = 60 seconds (60''). To combine, convert minutes/seconds into a fraction of a degree first (e.g. 40 deg 20' = 40 + 20/60 = 40 + 1/3 degrees).",
+          "returnCue": "With the sexagesimal subdivision clear, let's convert this DMS angle to a single fractional degree."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:radian-measure",
+      "sources": [
+        {
+          "title": "Radian Measure — Byju's",
+          "url": "https://byjus.com/maths/radian-measure/",
+          "verified": "States verbatim: 'Angle subtended at the centre by an arc of length 1 unit in a unit circle (circle of radius 1 unit) is said to have a measure of 1 radian.' Also gives 1 radian = 180/pi deg and 1 deg = pi/180 radian."
+        },
+        {
+          "title": "Radian Measure Definition, Formula and Examples — Vedantu",
+          "url": "https://www.vedantu.com/maths/radian-measure",
+          "verified": "States 'The angle subtended by the arc at the center of the circle is one radian', '2pi rad = 360 degrees', '1 rad is 57 degrees 16 minutes and 22 seconds', and theta = l/r."
+        },
+        {
+          "title": "Radian Measure — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/radian-measure/",
+          "verified": "States: 'An angle is said to be 1 radian when it subtends an arc whose length is equal to the radius of the circle at its center', plus theta = s/r."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First time radian measures are said to be REAL NUMBERS interchangeable with the number line (the 'drop the word radian' convention).",
+          "surfacingQuestion": "A degree is a 'made-up' slice (1/360 of a turn). Is there a way to measure an angle that uses only lengths already on the circle, with no arbitrary 360 in it?",
+          "ladder": [
+            "Take any circle and walk along its edge a distance equal to its own radius. The angle that arc opens up at the centre is one radian — defined purely by lengths, no arbitrary number chosen.",
+            "The whole way around is the circumference 2*pi*r, which is 2*pi radius-lengths, so a full turn is 2*pi radians. Hence 2*pi radians = 360 degrees, i.e. pi radians = 180 degrees.",
+            "Because a radian is just (arc length)/(radius) — a ratio of two lengths — it has no units; it is a bare real number. That is why we can wrap the real number line around the circle and treat 'the angle pi/3' and 'the real number pi/3' as the same thing, dropping the word 'radian'."
+          ],
+          "answer": "One radian is the central angle cut off by an arc whose length equals the radius. A full turn is 2*pi radians, so pi radians = 180 degrees. Being a length/length ratio, a radian is dimensionless, so radian measures are just real numbers and the word 'radian' is usually omitted.",
+          "returnCue": "Now that a radian is grounded as arc-over-radius, let's use it as a plain number in the formula."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:arc-length-formula",
+      "sources": [
+        {
+          "title": "Arc Length — Formula and How to Find It — Cuemath",
+          "url": "https://www.cuemath.com/geometry/arc-length/",
+          "verified": "States verbatim: 'Arc length, L = theta x r, when theta is in radian', in a dedicated 'Arc Length Formula in Radians' section."
+        },
+        {
+          "title": "S = r-theta Formula and Equation for the Central Angle — Math Warehouse",
+          "url": "https://www.mathwarehouse.com/trigonometry/radians/s=r-theta-formula-equation.php",
+          "verified": "States: 'The formula is S = r theta where s represents the arc length, ... central angle in radians and r is the length of the radius.'"
+        },
+        {
+          "title": "Radian Measure — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/radian-measure/",
+          "verified": "Gives theta = s/r and derives l = r*theta from the radian definition (arc = radius gives 1 radian)."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:degree-radian-conversion",
+      "sources": [
+        {
+          "title": "Degrees to Radians — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/degrees-to-radians/",
+          "verified": "States verbatim 'Degrees x (pi/180) = Radians' and '180 degree = pi radian'."
+        },
+        {
+          "title": "Degrees to Radians — Byju's",
+          "url": "https://byjus.com/maths/degrees-to-radians/",
+          "verified": "States: 'The value of 180 degrees is equal to pi radians. To convert any given angle from the measure of degrees to radians, the value has to be multiplied by pi/180.'"
+        },
+        {
+          "title": "Trigonometry Formulas List — Vedantu",
+          "url": "https://www.vedantu.com/maths/trigonometry-formulas-list",
+          "verified": "Comprehensive formula list confirmed to include degree/radian relations and the fundamental identities (sin^2+cos^2=1, etc.)."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+      "sources": [
+        {
+          "title": "Unit Circle — Equation and Chart — Cuemath",
+          "url": "https://www.cuemath.com/geometry/unit-circle/",
+          "verified": "States verbatim: 'In a unit circle, we have cosine as the x-coordinate and sine as the y-coordinate' and 'A unit circle is a circle with a radius of one unit.'"
+        },
+        {
+          "title": "Radian Measure Definition, Formula and Examples — Vedantu",
+          "url": "https://www.vedantu.com/maths/radian-measure",
+          "verified": "Confirms the arc-length-equals-angle setup on the unit circle (angle = l/r), the geometric basis for placing P at arc-length x and reading its coordinates."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First claim that sin and cos are defined for ANY angle (not just acute angles of a right triangle) by reading unit-circle coordinates.",
+          "surfacingQuestion": "In earlier classes sin and cos came from a right triangle's sides — but a right triangle's angle is always between 0 and 90 degrees. How could sin of 200 degrees, or of a negative angle, possibly mean anything?",
+          "ladder": [
+            "Recall the old definition: in a right triangle, sin of an acute angle = opposite/hypotenuse, cos = adjacent/hypotenuse. This only works for angles strictly between 0 and 90 degrees.",
+            "Now put that triangle inside a circle of radius 1 centred at the origin, with one vertex at the centre and the hypotenuse along a rotating ray. The hypotenuse is 1, so opposite = the height = the y-coordinate of the far end, and adjacent = the x-coordinate.",
+            "So for an acute angle, cos = x-coordinate and sin = y-coordinate of the point where the ray meets the circle. We simply KEEP this rule for any angle: let the ray rotate to any position (any quadrant, any size, positive or negative) and define cos x = a (x-coordinate) and sin x = b (y-coordinate) of that point. The triangle definition is just the first-quadrant special case."
+          ],
+          "answer": "Sine and cosine are extended from right-triangle ratios to all angles by the unit circle: place a point P(a, b) where the rotating ray meets the circle of radius 1; then cos x = a and sin x = b. For acute angles this agrees with opposite/hypotenuse and adjacent/hypotenuse because the hypotenuse is 1.",
+          "returnCue": "With cos as the x-coordinate and sin as the y-coordinate for any angle, let's read off the values we need."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:pythagorean-identity",
+      "sources": [
+        {
+          "title": "Pythagorean Identities — Formulas, Derivation, Examples — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/pythagorean-identities/",
+          "verified": "States 'sin2(theta) + cos2(theta) = 1' and derives it from the Pythagoras theorem applied to a right triangle; also lists sec^2 - tan^2 = 1 and csc^2 - cot^2 = 1."
+        },
+        {
+          "title": "Trigonometry Formulas List — Vedantu",
+          "url": "https://www.vedantu.com/maths/trigonometry-formulas-list",
+          "verified": "Lists verbatim 'sin^2(theta) + cos^2(theta) = 1', '1 + tan^2(theta) = sec^2(theta)', '1 + cot^2(theta) = cosec^2(theta)'."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:reciprocal-trig-functions",
+      "sources": [
+        {
+          "title": "Domain and Range of Trigonometric Functions — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/domain-and-range-of-trigonometric-functions/",
+          "verified": "Defines the reciprocal/ratio functions and their exclusions; table confirms tan, sec, cosec, cot with their undefined points (e.g. cosec undefined at n*pi, sec/tan at (2n+1)pi/2)."
+        },
+        {
+          "title": "Trigonometry Formulas List — Vedantu",
+          "url": "https://www.vedantu.com/maths/trigonometry-formulas-list",
+          "verified": "Lists the reciprocal definitions cosec = 1/sin, sec = 1/cos, tan = sin/cos, cot = cos/sin."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:pythagorean-derived-identities",
+      "sources": [
+        {
+          "title": "Pythagorean Identities — Formulas, Derivation, Examples — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/pythagorean-identities/",
+          "verified": "Derives sec^2 - tan^2 = 1 (i.e. 1 + tan^2 = sec^2) and csc^2 - cot^2 = 1 by dividing the fundamental identity; quote 'sin2(theta) + cos2(theta) = 1' present with full derivations for each."
+        },
+        {
+          "title": "Trigonometry Formulas List — Vedantu",
+          "url": "https://www.vedantu.com/maths/trigonometry-formulas-list",
+          "verified": "Lists '1 + tan^2(theta) = sec^2(theta)' and '1 + cot^2(theta) = cosec^2(theta)' verbatim."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:sign-of-trig-functions",
+      "sources": [
+        {
+          "title": "Signs of Trigonometric Functions in All Quadrants — Vedantu",
+          "url": "https://www.vedantu.com/maths/sign-of-trigonometric-functions",
+          "verified": "States 'To quickly remember signs of trigonometric functions in quadrants, we follow the ASTC rule (All Students Take Calculus)' and 'Since sin theta = y/r and the radius r is always positive, the sign of sin theta depends on y.'"
+        },
+        {
+          "title": "Domain and Range of Trigonometric Functions — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/domain-and-range-of-trigonometric-functions/",
+          "verified": "Confirms coordinate-sign basis for function signs across quadrants and the resulting positivity intervals for sin, cos, tan."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:domain-and-range",
+      "sources": [
+        {
+          "title": "Domain and Range of Trigonometric Functions — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/domain-and-range-of-trigonometric-functions/",
+          "verified": "Table entry verbatim: 'sin theta | (-inf, inf) | [-1, 1]', with analogous rows for cos, tan, cot, sec, cosec."
+        },
+        {
+          "title": "Domain and Range of Trigonometric Functions — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/domain-and-range-of-trigonometric-functions/",
+          "verified": "States sin and cos have range [-1,1]; tan excludes 'x != pi/2 + n*pi'; gives exclusions/ranges for sec, cot, cosec."
+        },
+        {
+          "title": "Domain and Range of Trigonometric Functions — Byju's",
+          "url": "https://byjus.com/maths/trigonometric-functions-domain-range/",
+          "verified": "States verbatim: 'The range of f(x) = sin x and f(x) = cos x will lie from -1 to 1, including both -1 and +1.'"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:periodicity-and-graphs",
+      "sources": [
+        {
+          "title": "Trigonometric Periodicity Identities — Brilliant",
+          "url": "https://brilliant.org/wiki/trigonometric-periodicity-identities/",
+          "verified": "States verbatim 'sin(x) = sin(x + 2pi) ... tan(x) = tan(x + pi) ... cot(x) = cot(x + pi)', confirming period 2pi for sin/cos and period pi for tan/cot."
+        },
+        {
+          "title": "Domain and Range of Trigonometric Functions — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/domain-and-range-of-trigonometric-functions/",
+          "verified": "Includes graphs and periodic behaviour of the six functions used to sketch them; confirms repeating intervals."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First time a function is called PERIODIC and large angles are reduced by subtracting whole periods (e.g. sin(31pi/3) = sin(pi/3)).",
+          "surfacingQuestion": "Days of the week repeat every 7 days: day 9 is the 'same kind of day' as day 2. Is there a number that plays the role of '7' for sine and cosine?",
+          "ladder": [
+            "A pattern is periodic if it repeats after a fixed step called the period: weekdays repeat every 7 days, clock hours every 12.",
+            "On the unit circle, going one full turn (2*pi) brings the point back to exactly where it started, so sin and cos take the same value again — their period is 2*pi.",
+            "So you may add or subtract any whole number of 2*pi without changing sin or cos: sin(31*pi/3) = sin(31*pi/3 - 10*pi) = sin(pi/3). For tan and cot the point returns to a same-slope position after only half a turn, so their period is pi, not 2*pi."
+          ],
+          "answer": "A periodic function repeats its values after a fixed period. Because one full revolution (2*pi) returns the unit-circle point to itself, sin, cos, sec, cosec have period 2*pi; tan and cot repeat after pi. You reduce a large angle by subtracting whole periods until it lands in a standard range.",
+          "returnCue": "Now that periodicity lets us strip off full turns, let's reduce this angle and read its value."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:find-remaining-trig-values",
+      "sources": [
+        {
+          "title": "Pythagorean Identities — Formulas, Derivation, Examples — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/pythagorean-identities/",
+          "verified": "Confirms using a Pythagorean identity to get one ratio from another ('find the value of a trigonometric ratio by using any other trigonometric ratio'); states sin^2+cos^2=1 with derivation."
+        },
+        {
+          "title": "Signs of Trigonometric Functions in All Quadrants — Vedantu",
+          "url": "https://www.vedantu.com/maths/sign-of-trigonometric-functions",
+          "verified": "ASTC rule confirmed verbatim, used to fix the +/- sign after taking the square root in the identity step."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:negative-angle-identities",
+      "sources": [
+        {
+          "title": "Even-Odd Identities — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/even-odd-identities/",
+          "verified": "States verbatim 'sin(-x) = -sin(x)' (Odd) and 'cos(-x) = cos(x)' (Even) in the even-odd identities table."
+        },
+        {
+          "title": "Trigonometric Even-Odd Functions — Brilliant",
+          "url": "https://brilliant.org/wiki/trigonometric-even-odd-functions/",
+          "verified": "States verbatim 'cos(-theta) = cos theta' and 'sin(-theta) = -sin theta', confirming cosine even, sine odd."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:cosine-sum-difference",
+      "sources": [
+        {
+          "title": "Sum and Difference Identities — Proof and Application — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/sum-and-difference-identities/",
+          "verified": "States verbatim 'cos(A + B) = cosA cosB - sinA sinB' and gives the matching difference formula and proofs."
+        },
+        {
+          "title": "Trigonometry Formulas List — Vedantu",
+          "url": "https://www.vedantu.com/maths/trigonometry-formulas-list",
+          "verified": "Formula list confirmed to include the sum/difference formulas for cosine alongside the fundamental identities."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:cofunction-identities",
+      "sources": [
+        {
+          "title": "Cofunction Identities — Formula, Proof, Application — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/cofunction-identities/",
+          "verified": "States verbatim 'sin (pi/2 - theta) = cos theta' in the Cofunction Identities Formula section; covers the complementary-angle cofunction relations."
+        },
+        {
+          "title": "Sum and Difference Identities — Proof and Application — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/sum-and-difference-identities/",
+          "verified": "Provides cos(x - y) = cos x cos y + sin x sin y, the formula from which the cofunction identities are derived by substituting x = pi/2."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:sine-sum-difference",
+      "sources": [
+        {
+          "title": "Sum and Difference Identities — Proof and Application — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/sum-and-difference-identities/",
+          "verified": "Confirmed to give sin sum/difference formulas alongside the cosine one ('cos(A + B) = cosA cosB - sinA sinB' verified directly); page covers sine, cosine and tangent sum/difference with proofs."
+        },
+        {
+          "title": "Trigonometry Formulas List — Vedantu",
+          "url": "https://www.vedantu.com/maths/trigonometry-formulas-list",
+          "verified": "Formula list confirmed to include sum/difference formulas (the sin(A+B) = sinA cosB + cosA sinB family)."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:tangent-sum-difference",
+      "sources": [
+        {
+          "title": "Tangent Formulas — Cuemath",
+          "url": "https://www.cuemath.com/tangent-formulas/",
+          "verified": "States verbatim 'tan (A + B) = (tan A + tan B) / (1 - tan A tan B)' and 'tan (A - B) = (tan A - tan B) / (1 + tan A tan B)' in the 'Tangent Formulas Using Sum/Difference Formulas' section."
+        },
+        {
+          "title": "Sum and Difference Identities — Proof and Application — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/sum-and-difference-identities/",
+          "verified": "Confirms the tangent sum/difference formulas are derived as the quotient of the sine and cosine sum/difference formulas."
+        },
+        {
+          "title": "Tangent Addition Formula — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/tangent-addition-formula/",
+          "verified": "States verbatim 'tan (A + B) = (tan A + tan B)/(1 - tan A tan B)'. NOTE: this page gives only the addition formula, not the difference formula."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:double-angle-identities",
+      "sources": [
+        {
+          "title": "Double Angle Formulas — Cuemath",
+          "url": "https://www.cuemath.com/double-angle-formulas/",
+          "verified": "States verbatim 'sin 2A = 2 sin A cos A (or) (2 tan A) / (1 + tan2A)' and gives cos 2A in its several forms and tan 2A = (2 tan A)/(1 - tan2A)."
+        },
+        {
+          "title": "Multiple Angle Formulas — Byju's (JEE)",
+          "url": "https://byjus.com/jee/multiple-angles/",
+          "verified": "States 'The double and triple angles formula are used under the multiple angle formulas' and lists sin 2A = 2 sin A cos A; JEE-level page."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:triple-angle-identities",
+      "sources": [
+        {
+          "title": "Triple Angle Identities — Brilliant",
+          "url": "https://brilliant.org/wiki/triple-angle-identities/",
+          "verified": "States verbatim 'sin 3 theta = 3 sin theta - 4 sin^3 theta' and 'cos 3theta = 4 cos^3 theta - 3 cos theta'."
+        },
+        {
+          "title": "Multiple Angle Formulas — Byju's (JEE)",
+          "url": "https://byjus.com/jee/multiple-angles/",
+          "verified": "Lists triple angle formulas including 'sin 3A = 3 sin A - 4 sin^3 A'; JEE-level multiple-angle page."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:sum-to-product-identities",
+      "sources": [
+        {
+          "title": "Sum to Product Formulas — List, Proof, Examples — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/sum-to-product-formulas/",
+          "verified": "States verbatim 'sin A + sin B = 2 sin [(A + B)/2] cos [(A - B)/2]' and 'cos A - cos B = -2 sin [(A + B)/2] sin [(A - B)/2]' (note the leading minus)."
+        },
+        {
+          "title": "Trigonometry Formulas List — Vedantu",
+          "url": "https://www.vedantu.com/maths/trigonometry-formulas-list",
+          "verified": "Formula list confirmed to include the sum-to-product (transformation) identities."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch03:product-to-sum-identities",
+      "sources": [
+        {
+          "title": "Product To Sum Formulas — Cuemath",
+          "url": "https://www.cuemath.com/product-to-sum-formulas/",
+          "verified": "States verbatim 'sin A cos B = (1/2) [ sin (A + B) + sin (A - B) ]' and lists all four product-to-sum formulas including the cosine variants."
+        },
+        {
+          "title": "Trigonometry Formulas List — Vedantu",
+          "url": "https://www.vedantu.com/maths/trigonometry-formulas-list",
+          "verified": "Formula list confirmed to include the product-to-sum identities."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "NCERT (Identity 21) and this concept write the four formulas with a leading factor of 2 on the LEFT (e.g. 2 sin x cos y = sin(x+y) + sin(x-y)). The verified Cuemath source uses the algebraically equivalent 1/2-on-the-right form (sin A cos B = (1/2)[sin(A+B)+sin(A-B)]). No error in the concept — just flag for the author that public sources commonly present the 1/2 form, so a worked example should make the equivalence explicit to avoid a student thinking the factor was dropped."
+    },
+    {
+      "id": "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities",
+      "sources": [
+        {
+          "title": "Trigonometry Formulas List — Vedantu",
+          "url": "https://www.vedantu.com/maths/trigonometry-formulas-list",
+          "verified": "Single consolidated list confirmed to contain the Pythagorean, sum/difference, double-angle, and product-to-sum families — the full toolkit this goal node chains together."
+        },
+        {
+          "title": "Sum and Difference Identities — Proof and Application — Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/sum-and-difference-identities/",
+          "verified": "Confirmed proof-and-application page ('cos(A + B) = cosA cosB - sinA sinB' verified) modelling the select-an-identity-then-chain skill this node targets."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      {
+        "term": "ray / initial point / vertex",
+        "whereTaught": "Used in measure-angle-by-rotation but never formally defined upstream (ch01 Sets, ch02 Relations & Functions do not cover geometry). Pre-curriculum geometry bedrock.",
+        "classification": "INLINE-GLOSS"
+      },
+      {
+        "term": "anticlockwise / clockwise; revolution (full turn)",
+        "whereTaught": "Introduced in measure-angle-by-rotation itself; rests on everyday/pre-curriculum knowledge.",
+        "classification": "REFRESHER (attached to measure-angle-by-rotation)"
+      },
+      {
+        "term": "minute (') and second ('') as base-60 subdivisions; sexagesimal",
+        "whereTaught": "Introduced in degree-measure itself; the base-60 idea is pre-curriculum (clock-time analogy).",
+        "classification": "REFRESHER (attached to degree-measure)"
+      },
+      {
+        "term": "circumference of a circle = 2*pi*r; radius; arc; chord",
+        "whereTaught": "Assumed from pre-curriculum geometry; used in radian-measure and arc-length-formula. Not taught in ch01/ch02.",
+        "classification": "AUTHOR-bridge"
+      },
+      {
+        "term": "pi (the constant, ~3.14159, ratio of circumference to diameter)",
+        "whereTaught": "Used pervasively (radian-measure, conversion, all identities); pre-curriculum bedrock, not taught in ch01/ch02.",
+        "classification": "INLINE-GLOSS"
+      },
+      {
+        "term": "radian as a dimensionless real number / periodic function",
+        "whereTaught": "Introduced in radian-measure and periodicity-and-graphs respectively; underlying ideas are pre-curriculum.",
+        "classification": "REFRESHER (radian -> radian-measure; periodic -> periodicity-and-graphs)"
+      },
+      {
+        "term": "coordinate axes / origin / point P(a,b) / x- and y-coordinate / quadrant",
+        "whereTaught": "ordered-pair is taught in ch02 (jee:maths:maths-ch02:ordered-pair, already a prereq of define-trig-functions-unit-circle). But the COORDINATE PLANE itself (axes, origin, four quadrants, signed coordinates) is NCERT ch07 Coordinate Geometry / pre-curriculum, NOT ch01/ch02. Load-bearing for define-trig-functions-unit-circle and sign-of-trig-functions.",
+        "classification": "AUTHOR-bridge"
+      },
+      {
+        "term": "Pythagoras theorem (a^2 + b^2 = c^2 in a right triangle) / unit circle equation a^2+b^2=1",
+        "whereTaught": "Used to prove pythagorean-identity; pre-curriculum geometry, not in ch01/ch02.",
+        "classification": "AUTHOR-bridge"
+      },
+      {
+        "term": "trig ratios of acute angles (opposite/hypotenuse etc.) and standard-angle values (30/45/60)",
+        "whereTaught": "Earlier-class (Class 10) material that NCERT ch03 explicitly assumes ('In earlier classes, we have studied the trigonometric ratios of acute angles'). Not re-taught in ch01/ch02 or earlier in ch03.",
+        "classification": "REFRESHER (attached to define-trig-functions-unit-circle)"
+      },
+      {
+        "term": "distance formula between two points",
+        "whereTaught": "Used in NCERT's proof of cos(x+y) (congruent-chord argument). Pre-curriculum / coordinate-geometry, not in ch01/ch02. Only load-bearing if the proof is taught at full rigour.",
+        "classification": "DEFER"
+      },
+      {
+        "term": "ordered pair, equality of ordered pairs",
+        "whereTaught": "ch02: jee:maths:maths-ch02:ordered-pair (already a listed prereq).",
+        "classification": "DEFER"
+      },
+      {
+        "term": "real-valued function / real function; domain, range, codomain",
+        "whereTaught": "ch02: jee:maths:maths-ch02:real-function, jee:maths:maths-ch02:domain-range-codomain (already listed prereqs of define-trig-functions-unit-circle and domain-and-range).",
+        "classification": "DEFER"
+      },
+      {
+        "term": "algebra of functions (quotient of functions) / rational function",
+        "whereTaught": "ch02: jee:maths:maths-ch02:algebra-of-functions, jee:maths:maths-ch02:rational-function (already listed prereqs of reciprocal-trig-functions and tangent-sum-difference).",
+        "classification": "DEFER"
+      },
+      {
+        "term": "set R of real numbers, intervals, integers Z, set-builder notation { x : ... }",
+        "whereTaught": "ch01: jee:maths:maths-ch01:name-subsets-of-the-real-numbers, write-intervals-as-subsets-of-r, write-a-set-in-set-builder-form. Used in domain/range statements.",
+        "classification": "DEFER"
+      },
+      {
+        "term": "integer / integral multiple (n in Z), odd multiple of pi/2",
+        "whereTaught": "Integers introduced in ch01 (number-set subsets). 'Odd multiple' is elementary arithmetic; minor.",
+        "classification": "INLINE-GLOSS"
+      },
+      {
+        "term": "even / odd function (algebraic notion f(-x)=f(x) vs -f(x))",
+        "whereTaught": "Not formally defined in ch01/ch02 as a named concept; negative-angle-identities introduces even/odd in the trig context directly.",
+        "classification": "INLINE-GLOSS"
+      },
+      {
+        "term": "quadratic equation / quadratic formula",
+        "whereTaught": "Appears only in NCERT worked Example 20 (tan pi/8 via y^2+2y-1=0). Class 10 / ch (Complex Numbers & Quadratics ch04 in this exam) material, not in ch01/ch02 and not a core keyMove of any ch03 node.",
+        "classification": "DEFER"
+      }
+    ],
+    "bridgesProposed": [
+      {
+        "title": "The coordinate plane: axes, origin, quadrants and signed coordinates",
+        "brief": "A point in the plane is fixed by an ordered pair (a, b) measured along a horizontal x-axis and vertical y-axis crossing at the origin; the axes cut the plane into four quadrants with characteristic sign patterns of a and b.",
+        "why": "define-trig-functions-unit-circle reads cos x and sin x as the x- and y-coordinates of a point, and sign-of-trig-functions and find-remaining-trig-values depend entirely on the quadrant sign pattern of (a, b). ch02:ordered-pair gives the (a,b) notation but NOT the geometric coordinate plane, axes, origin or quadrant sign rules, which are NCERT ch07 / pre-curriculum and taught nowhere upstream in ch01/ch02.",
+        "consumingConcepts": [
+          "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+          "jee:maths:maths-ch03:sign-of-trig-functions",
+          "jee:maths:maths-ch03:find-remaining-trig-values",
+          "jee:maths:maths-ch03:negative-angle-identities"
+        ]
+      },
+      {
+        "title": "Circle basics: radius, arc, chord, and circumference = 2*pi*r",
+        "brief": "A circle of radius r has circumference 2*pi*r; an arc is part of that curved boundary and a chord is the straight segment joining its endpoints (arc length is not chord length).",
+        "why": "radian-measure derives 'one full revolution = 2*pi radians' directly from circumference = 2*pi*r, and arc-length-formula (l = r*theta) presumes the student knows what an arc is and that arc != chord (an explicit misconception listed on that node). None of circumference, arc, or chord is defined in ch01/ch02.",
+        "consumingConcepts": [
+          "jee:maths:maths-ch03:radian-measure",
+          "jee:maths:maths-ch03:arc-length-formula",
+          "jee:maths:maths-ch03:define-trig-functions-unit-circle"
+        ]
+      },
+      {
+        "title": "Pythagoras theorem and the equation of the unit circle",
+        "brief": "In a right triangle the squares of the two legs sum to the square of the hypotenuse (leg1^2 + leg2^2 = hyp^2); applied to a radius drawn to P(a, b) on a circle of radius 1, this gives a^2 + b^2 = 1.",
+        "why": "pythagorean-identity is proved by substituting cos x = a, sin x = b into a^2 + b^2 = 1, which is Pythagoras on triangle OMP. The theorem and the resulting circle equation are assumed but taught nowhere in ch01/ch02 (they are Class 9-10 geometry). It is the single load-bearing step for the entire identity tower (everything ultimately rests on sin^2+cos^2=1).",
+        "consumingConcepts": [
+          "jee:maths:maths-ch03:pythagorean-identity",
+          "jee:maths:maths-ch03:define-trig-functions-unit-circle"
+        ]
+      }
+    ],
+    "defers": [
+      {
+        "term": "ordered pair and equality of ordered pairs",
+        "owner": "jee:maths:maths-ch02:ordered-pair",
+        "softening": "When introducing P(a, b), reference 'the ordered pair (a, b) you met in Relations & Functions' rather than re-defining it; only the geometric placement on axes (the proposed coordinate-plane bridge) is new here."
+      },
+      {
+        "term": "real-valued / real function; domain, range, codomain",
+        "owner": "jee:maths:maths-ch02:real-function, jee:maths:maths-ch02:domain-range-codomain",
+        "softening": "In domain-and-range, lean on 'recall domain and range from ch02' and apply them to sin/cos/tan rather than re-teaching the function-machine vocabulary."
+      },
+      {
+        "term": "quotient / algebra of functions; rational function",
+        "owner": "jee:maths:maths-ch02:algebra-of-functions, jee:maths:maths-ch02:rational-function",
+        "softening": "When defining tan = sin/cos etc. and noting they are undefined where the denominator vanishes, phrase it as 'the quotient of two functions is undefined where the denominator is 0, as in ch02' rather than re-deriving the quotient rule for domains."
+      },
+      {
+        "term": "set R, intervals, integers Z, set-builder notation",
+        "owner": "jee:maths:maths-ch01:name-subsets-of-the-real-numbers, jee:maths:maths-ch01:write-intervals-as-subsets-of-r, jee:maths:maths-ch01:write-a-set-in-set-builder-form",
+        "softening": "Write domains/ranges in the set-builder and interval notation from ch01 ('{ x : x in R and x != n*pi }', '[-1, 1]') without re-explaining the notation."
+      },
+      {
+        "term": "distance formula between two points",
+        "owner": "pre-curriculum coordinate geometry (NCERT ch07); not owned upstream in this chapter set",
+        "softening": "The NCERT proof of cos(x+y) uses the distance formula on congruent chords. Since cosine-sum-difference's keyMoves already say 'from congruent chords on the unit circle', either keep the proof at the stated congruent-chords level or, if the distance-formula step is shown, gloss it in one line ('distance between (x1,y1),(x2,y2) is sqrt((x2-x1)^2+(y2-y1)^2)') rather than treating it as a taught prerequisite."
+      },
+      {
+        "term": "quadratic equation / quadratic formula",
+        "owner": "downstream/Class-10 (Complex Numbers & Quadratic Equations); not a core ch03 keyMove",
+        "softening": "Only NCERT Example 20 (tan pi/8) needs it. Keep such half-angle problems out of the core teaching path, or solve the quadratic with a one-line reminder of the formula; do not make any ch03 node depend on a quadratics concept."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "ray, initial point, vertex",
+        "gloss": "A ray is a straight path that starts at one point (its initial point) and goes on forever in one direction; the fixed starting point about which it turns is the vertex of the angle."
+      },
+      {
+        "term": "pi",
+        "gloss": "pi (about 3.14159) is the fixed ratio of any circle's circumference to its diameter; here it mostly appears as the radian size of a half-turn, since pi radians = 180 degrees."
+      },
+      {
+        "term": "integral multiple / n in Z; odd multiple of pi/2",
+        "gloss": "'n is an integer' means n is one of ..., -2, -1, 0, 1, 2, ...; an 'odd multiple of pi/2' is (2n+1)*pi/2, i.e. pi/2, 3pi/2, 5pi/2, ... (the places where cos = 0)."
+      },
+      {
+        "term": "even function / odd function (general notion)",
+        "gloss": "A function is even if f(-x) = f(x) (symmetric, like cos) and odd if f(-x) = -f(x) (sign flips, like sin) — introduced here directly through the trig examples; no separate upstream node defines it."
+      }
+    ]
+  }
+}

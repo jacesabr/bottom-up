@@ -1,0 +1,448 @@
+{
+  "chapter": "jee:maths:maths-ch13",
+  "concepts": [
+    {
+      "id": "jee:maths:maths-ch13:why-dispersion",
+      "sources": [
+        {
+          "title": "Measures of Dispersion — Cuemath",
+          "url": "https://www.cuemath.com/data/measures-of-dispersion/",
+          "verified": "States verbatim 'Two distinct data sets can have the same measure of central tendency, i.e., they can have the same mean or median. However, their levels of variability might be completely different.' and 'Measures of dispersion can be defined as positive real numbers that measure how homogeneous or heterogeneous the given data is.' — exactly the why-dispersion motivation (same centre, different spread)."
+        },
+        {
+          "title": "Measures of Dispersion — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/measures-of-dispersion/",
+          "verified": "States 'Measures of dispersion are numerical values that describe the extent of variation among data points.' and lists the four measures Range, Quartile Deviation, Mean Deviation, Standard Deviation matching NCERT's set."
+        },
+        {
+          "title": "Dispersion in Statistics — Byju's",
+          "url": "https://byjus.com/maths/dispersion/",
+          "verified": "States 'Statistical dispersion means the extent to which numerical data is likely to vary about an average value.' and that 'the measures of dispersion help to interpret the variability of data i.e. to know how much homogenous or heterogeneous the data is'; lists range, standard deviation, quartile deviation, mean deviation."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First reliance on the reader already knowing mean and median (the chapter opens 'Recall mean (arithmetic mean), median and mode are three measures of central tendency') to argue that they are not enough.",
+          "surfacingQuestion": "Two cricketers both average 53 runs over ten innings — same mean, same median. Does that prove they are equally reliable, or could one be wildly up-and-down while the other is steady?",
+          "ladder": [
+            "Recall what the mean and median tell you: the mean is the total runs divided by the number of innings (sum / count), and the median is the middle score once the innings are sorted in order. Both are single numbers that point at the 'centre' of the scores.",
+            "Now picture batsman A scoring 0, 117, 5, 91, ... and batsman B scoring 52, 53, 50, 53, ... Both can land on a centre of 53, yet A's scores fling far from 53 while B's huddle close to it. The centre is blind to this.",
+            "So a centre answers 'where do the scores sit?' but says nothing about 'how scattered are they around that spot?'. That second question needs its own number — a measure of spread."
+          ],
+          "answer": "The mean (sum of observations / number of observations) and the median (the middle value of the sorted data) only locate the centre of a data set. Two sets can share the same mean and median yet be scattered completely differently, so we need a second, separate number — a measure of dispersion — to describe how far the observations spread out from that centre.",
+          "returnCue": "So the centre alone is not enough — let's pin down that second number, the measure of dispersion."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:range",
+      "sources": [
+        {
+          "title": "Measures of Dispersion — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/measures-of-dispersion/",
+          "verified": "Defines range verbatim as 'The difference between the largest and the smallest values in the distribution' and gives the formula 'R = L - S' where L is the largest and S the smallest value."
+        },
+        {
+          "title": "Measures of Dispersion — Cuemath",
+          "url": "https://www.cuemath.com/data/measures-of-dispersion/",
+          "verified": "States verbatim 'Range can be defined as the difference between the maximum value and the minimum value.' — matches NCERT 'Range = Maximum value − Minimum value.'"
+        },
+        {
+          "title": "Dispersion in Statistics — Byju's",
+          "url": "https://byjus.com/maths/dispersion/",
+          "verified": "Gives the range as Maximum value − Minimum value with a worked instance (84 − 45 = 39), confirming the max-minus-min computation."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:mean-deviation-definition",
+      "sources": [
+        {
+          "title": "Mean Deviation Formula — Cuemath",
+          "url": "https://www.cuemath.com/mean-deviation-formula/",
+          "verified": "States verbatim 'mean deviation or mean absolute deviation is the average deviation of a data point from the mean, median, or mode of the data set' and gives the ungrouped form MAD = Σ|xᵢ − μ|/n — the definition this concept teaches (mean of absolute deviations about a central value)."
+        },
+        {
+          "title": "Mean Deviation — Vedantu",
+          "url": "https://www.vedantu.com/maths/mean-deviation",
+          "verified": "States 'A mean deviation is defined as the average of the absolute differences between each value in a data set and a central measure (mean or median)' and explains why absolute values are used: 'We use absolute values in mean deviation to prevent positive and negative deviations from canceling each other out. Without absolute values: The sum of deviations from the mean would be zero.' — directly supports PART 1/PART 2 of the concept."
+        },
+        {
+          "title": "Mean Deviation About the Median — Byju's",
+          "url": "https://byjus.com/maths/mean-deviation-about-median/",
+          "verified": "States verbatim 'The mean deviation about a median value M is the mean of the absolute values of the deviations of the observations from M.' — confirms mean deviation can be taken about the median as well as the mean (addresses the listed misconception)."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First use of the absolute-value notation |x − a| to mean 'distance from a, sign dropped' — and the claim that signed deviations about the mean sum to zero.",
+          "surfacingQuestion": "If you stand 3 steps left of a mark and your friend stands 3 steps right, how far is each of you from the mark — and what do you get if you add a 'left is minus, right is plus' version of those two distances?",
+          "ladder": [
+            "The absolute value |n| of a number just strips off any minus sign: |−5| = 5 and |5| = 5. On a number line it is simply the distance from 0, never negative.",
+            "So |x − a| is the distance between the value x and the fixed point a, regardless of which side x is on: |4 − 9| = 5 and |13 − 9| = 4, both positive.",
+            "If instead you kept the signs (x − a) and added them up around the mean, the left-of-centre negatives exactly cancel the right-of-centre positives and you always get 0 — useless as a spread. Dropping the signs first (taking |x − a|) is what stops the cancellation."
+          ],
+          "answer": "The absolute value |x − a| is the distance between x and a with the sign removed (always ≥ 0). Signed deviations (x − a) about the mean cancel out to a total of 0, so before averaging we take |x − a| of each deviation; their average is the mean deviation.",
+          "returnCue": "With absolute value pinned as 'distance, sign dropped', let's average those distances to get the mean deviation."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:mean-deviation-ungrouped",
+      "sources": [
+        {
+          "title": "Mean Deviation — Vedantu",
+          "url": "https://www.vedantu.com/maths/mean-deviation",
+          "verified": "Gives the ungrouped formula MD = Σ|xᵢ − a|/n and the exact step list: find the mean, subtract it from each value, take absolute values |xᵢ − x̄|, add them, divide by n — the step-wise calculation this concept teaches."
+        },
+        {
+          "title": "Mean Deviation Formula — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/mean-deviation-formula/",
+          "verified": "Gives Individual Series formulas verbatim: M.D = Σ|X − X̄|/N (about mean) and M.D = Σ|X − M|/N (about median), where N is the number of data points and M the median."
+        },
+        {
+          "title": "Mean Deviation Formula — Cuemath",
+          "url": "https://www.cuemath.com/mean-deviation-formula/",
+          "verified": "Confirms the ungrouped forms MAD = Σ|xᵢ − μ|/n (about mean) and MAD = Σ|xᵢ − M|/n (about median), with μ = (x₁+…+xₙ)/n."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First instruction to 'sort the data into ascending order and take the middle value' as the median for an odd/even count of raw observations.",
+          "surfacingQuestion": "Eleven runners finish a race. If you want the 'middle' finisher, which position do you point to — and what would you do if there were ten runners and no single middle?",
+          "ladder": [
+            "First line the values up smallest to largest. The median is the value sitting in the middle of that ordered line — it splits the data into a lower half and an upper half.",
+            "If the count n is odd there is one exact middle: the ((n+1)/2)-th value. For 11 sorted values that is the 6th one.",
+            "If n is even there are two middle values (the (n/2)-th and (n/2 + 1)-th); the median is their average. For 30 sorted values, average the 15th and 16th."
+          ],
+          "answer": "To get the median, sort the observations in ascending order. If n is odd, the median is the ((n+1)/2)-th value; if n is even, it is the mean of the (n/2)-th and (n/2+1)-th values. The data MUST be sorted first — reading the middle of an unsorted list gives the wrong median.",
+          "returnCue": "Now that the median is fixed as the middle of the sorted data, let's take the absolute deviations about it."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:mean-deviation-discrete",
+      "sources": [
+        {
+          "title": "Mean Deviation Formula — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/mean-deviation-formula/",
+          "verified": "Gives the Discrete Series formulas verbatim: M.D = Σf|X − X̄|/Σf (about mean) and M.D = Σf|X − M|/Σf (about median) — frequency-weighted deviations divided by Σf = N, exactly this concept."
+        },
+        {
+          "title": "Mean Deviation Formula — Cuemath",
+          "url": "https://www.cuemath.com/mean-deviation-formula/",
+          "verified": "Gives grouped (frequency distribution) forms MAD = Σfᵢ|xᵢ − μ|/Σfᵢ with μ = Σxᵢfᵢ/Σfᵢ, and the median analogue MAD = Σfᵢ|xᵢ − M|/Σfᵢ — the discrete weighting rule."
+        },
+        {
+          "title": "Mean Deviation About the Median — Byju's",
+          "url": "https://byjus.com/maths/mean-deviation-about-median/",
+          "verified": "Describes locating the median in a discrete distribution via cumulative frequency, identifying 'the cumulative frequency greater than or equal to N/2' — the cumulative-frequency step this concept requires for M.D.(M)."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First time a frequency f_i is treated as a weight (multiplying every term by f_i and dividing by N = Σf_i) and the cumulative-frequency column is built to locate the median.",
+          "surfacingQuestion": "If a value of 5 occurs 8 times in a table, do you write '5' once when adding things up, or do you count it 8 times — and how would you tell where the 'middle' of all those repeats sits?",
+          "ladder": [
+            "A frequency f_i just says how many times the value x_i appears. So when you total anything, the value x_i contributes f_i times — that is why every term carries a factor f_i and the grand total of observations is N = f₁ + f₂ + … (not the number of distinct values).",
+            "To average over all observations you therefore divide by N = Σf_i, not by how many rows the table has. Averaging over the distinct rows is the classic mistake.",
+            "To find the middle observation, build a running total of frequencies — the cumulative frequency. The value whose cumulative frequency first reaches or passes N/2 is where the median sits, because that is the row containing the middle item(s)."
+          ],
+          "answer": "Frequency f_i is how often x_i occurs, so it acts as a weight: every term is multiplied by f_i and the total count is N = Σf_i (divide by N, never by the number of distinct values). The median is located with cumulative frequencies — the first value whose running total reaches or exceeds N/2.",
+          "returnCue": "With f_i understood as a weight and the cumulative-frequency trick for the median in hand, let's run the discrete M.D. calculation."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:mean-deviation-continuous",
+      "sources": [
+        {
+          "title": "Mean Deviation in Continuous Frequency — Vedantu",
+          "url": "https://www.vedantu.com/maths/mean-deviation-continuous-frequency",
+          "verified": "States to 'Assume the entire group is centred at a mid-point of the group', gives M.A.D(x̄) = (Σf|x − x̄|)/N with x̄ = (Σxᵢfᵢ)/N using class midpoints, and the grouped median M = l + (((Σfᵢ)/2) − cf)/f × h with 'cf stands for cumulative frequency preceding the median class, l is the lower value of the median class, h is the length of the median class, f is the frequency of the median class.' — exactly this concept's mid-point method and median-class formula."
+        },
+        {
+          "title": "Mean Deviation About the Median — Byju's",
+          "url": "https://byjus.com/maths/mean-deviation-about-median/",
+          "verified": "Gives the continuous median formula 'Median = l + [(N/2 − C)/f] × h' with C 'Cumulative frequency of class preceding the median class' — the same median-class formula NCERT uses for grouped M.D.(M)."
+        },
+        {
+          "title": "Mean Deviation Formula — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/mean-deviation-formula/",
+          "verified": "Provides the frequency-distribution mean-deviation forms M.D = Σf|X − X̄|/Σf and Σf|X − M|/Σf used once each continuous class is replaced by its mid-point value X."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First time a class interval like 10–20 is replaced by its mid-point 15, and the median-class formula M = l + ((N/2 − C)/f)·h is applied to grouped data.",
+          "surfacingQuestion": "A table says 8 students scored 'between 30 and 40' but never says each exact mark. To do arithmetic with that group, what single number could fairly stand in for all 8 — and where in that interval would it be?",
+          "ladder": [
+            "When data come grouped into intervals (classes) such as 30–40, we no longer know each exact value. The fair single stand-in is the mid-point: (lower limit + upper limit)/2, so for 30–40 it is 35. We pretend all 8 observations sit at 35.",
+            "With every class swapped for its mid-point and its frequency, the table is now just a discrete frequency distribution — mid-points play the role of x_i.",
+            "The median can no longer be read off a single value; it lies inside one class (the median class, the first whose cumulative frequency reaches N/2). The formula M = l + ((N/2 − C)/f)·h slides from that class's lower boundary l a fraction of its width h, where C is the cumulative frequency just before the class and f its frequency."
+          ],
+          "answer": "For grouped (continuous) data, replace each class by its mid-point (lower + upper)/2 and treat the result as a discrete distribution. The median falls inside the median class and is found by M = l + ((N/2 − C)/f)·h, where l = lower boundary of the median class, C = cumulative frequency of the previous class, f = the median class's frequency, h = class width.",
+          "returnCue": "With class mid-points standing in for the data and the median-class formula ready, let's compute the continuous mean deviation."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:variance",
+      "sources": [
+        {
+          "title": "Variance and Standard Deviation — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/variance-and-standard-deviation/",
+          "verified": "States variance is 'the average of the squared difference from the mean', gives the population formula σ² = Σ(xᵢ − x̄)²/n, and explains why we square: 'As each term in the variance formula is firstly squared and then their mean is found, it is always a non-negative value.' — supports PART 1 (squaring removes signs) and PART 2 (average, divide by n)."
+        },
+        {
+          "title": "Variance and Standard Deviation — Cuemath",
+          "url": "https://www.cuemath.com/data/variance-and-standard-deviation/",
+          "verified": "States variance is 'the average squared deviations from the mean' and 'a measure of how data points vary from the mean'. NOTE: this page writes the SAMPLE form σ² = Σ(xᵢ − x̄)²/(n−1); NCERT/JEE use the population divisor n, so cite this only for the conceptual definition, not the divisor."
+        },
+        {
+          "title": "Statistics for JEE — Byju's",
+          "url": "https://byjus.com/jee/statistics/",
+          "verified": "JEE-level page lists Variance among the absolute measures of dispersion and gives the population variance formula 'σ² = Σ(xᵢ − μ)²/N' (matching NCERT's /n form) alongside the sample (n−1) version."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First time deviations are squared, (x_i − x̄)², to force them non-negative (as an alternative to taking absolute values).",
+          "surfacingQuestion": "We already killed the minus signs by taking distances |x − a|. Squaring a number also makes it non-negative — what does (−3)² come to, and (3)²?",
+          "ladder": [
+            "Squaring means multiplying a number by itself: (−3)² = (−3)(−3) = 9 and (3)² = 9. A negative times a negative is positive, so any real number squared is ≥ 0.",
+            "So just like absolute value, squaring turns every deviation (x_i − x̄) into something non-negative — no more cancellation when we add them up.",
+            "Squaring is preferred over absolute value here because squares behave nicely in algebra (you can expand and simplify them), which is why variance, built from squared deviations, becomes the foundation for later statistics."
+          ],
+          "answer": "Squaring a number multiplies it by itself, and since a negative times a negative is positive, (x_i − x̄)² ≥ 0 for every observation. This makes squared deviations a sign-free measure of spread (like |x − x̄|), with the bonus that squares are easy to manipulate algebraically — which is why variance is defined as the average of the squared deviations.",
+          "returnCue": "Now that squaring is grounded as 'always non-negative and algebra-friendly', let's average the squared deviations to define variance."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:standard-deviation",
+      "sources": [
+        {
+          "title": "Standard Deviation — Cuemath",
+          "url": "https://www.cuemath.com/data/standard-deviation/",
+          "verified": "States verbatim 'Standard deviation is the positive square root of the variance.' and 'Standard deviation is expressed in the same units as the original values (e.g., minutes or meters).' with σ = √((1/N)Σ(Xᵢ − μ)²) — supports both the positive-square-root definition and the units argument."
+        },
+        {
+          "title": "Variance and Standard Deviation — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/variance-and-standard-deviation/",
+          "verified": "States 'Standard deviation is the square root of the variance of the given data set', the relation '√(Variance) = Standard Deviation', and the population SD formula σ = √(Σ(xᵢ − x̄)²/n)."
+        },
+        {
+          "title": "Statistics for JEE — Byju's",
+          "url": "https://byjus.com/jee/statistics/",
+          "verified": "JEE-level page lists Standard deviation among the measures of dispersion and gives σ = √(Σ(x − μ)²/N) (population form matching NCERT)."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "First time the positive square root is taken to undo the squaring in the variance (σ = √(variance)).",
+          "surfacingQuestion": "If the variance came out as 8 'squared-metres', what operation turns that back into a plain length in metres, and should the answer be positive or negative?",
+          "ladder": [
+            "A square root undoes a square: since 5² = 25, √25 = 5. It asks 'what non-negative number, squared, gives this?'.",
+            "Variance was built by squaring deviations, so its units are squared (m² if data are in metres). Taking the square root peels the squaring off and brings the units back to plain metres — comparable with the mean.",
+            "By convention we keep the POSITIVE root (a spread can't be negative): √8 = 2√2 ≈ 2.83, not −2.83. That positive root is the standard deviation."
+          ],
+          "answer": "The square root is the inverse of squaring (√25 = 5 because 5² = 25). Because variance is in squared units, its positive square root — the standard deviation σ = √(variance) — restores the original units of the data and is always taken as the non-negative root.",
+          "returnCue": "With the positive square root understood, let's read the standard deviation off the variance."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:sd-frequency-distribution",
+      "sources": [
+        {
+          "title": "Standard Deviation in Frequency Distribution Series — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/data-science/standard-deviation-in-frequency-distribution-series/",
+          "verified": "Gives the Direct Method formula σ = √(Σf(X − X̄)²/N) and the Short-Cut Method σ = √(Σfd²/N − (Σfd/N)²) where d are deviations from an assumed value — the frequency-weighted SD and its computational shortcut this concept teaches."
+        },
+        {
+          "title": "Standard Deviation — Cuemath",
+          "url": "https://www.cuemath.com/data/standard-deviation/",
+          "verified": "Gives the grouped/frequency standard deviation formula σ = √((1/N)Σfᵢ(xᵢ − x̄)²) for n observations xᵢ with frequencies fᵢ — the direct frequency-weighted form."
+        },
+        {
+          "title": "Statistics for JEE — Byju's",
+          "url": "https://byjus.com/jee/statistics/",
+          "verified": "JEE-level statistics page presenting the variance/standard-deviation formulas with Σ over observations; supports the frequency-distribution application at JEE level (mid-points for continuous classes)."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "NCERT's exam-favoured computational form is σ = (1/N)·√(N·Σfᵢxᵢ² − (Σfᵢxᵢ)²) (formula (3) in the source, Example 11). The verified GeeksforGeeks page states the algebraically-equivalent variance-of-the-mean-square form σ = √(Σfd²/N − (Σfd/N)²). Worth a one-line note for the author that public sources usually present the '(Σfx²)/N − x̄²' arrangement, while NCERT keeps N inside the root and divides by N once outside — a student should see the two are identical so they don't think a factor of N was dropped (the listed misconception)."
+    },
+    {
+      "id": "jee:maths:maths-ch13:sd-shortcut-method",
+      "sources": [
+        {
+          "title": "Standard Deviation in Frequency Distribution Series — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/data-science/standard-deviation-in-frequency-distribution-series/",
+          "verified": "Gives the Step-Deviation Method formula σ = √(Σfd'²/N − (Σfd'/N)²) × C, where d' are step deviations and C is 'a common factor of the class intervals' — exactly the change-of-origin-and-scale shortcut (y_i = (x_i − A)/h, then multiply back by h = C)."
+        },
+        {
+          "title": "Standard Deviation Formula, Definition, Methods — Physics Wallah",
+          "url": "https://www.pw.live/school-prep/exams/standard-deviation-formula",
+          "verified": "Describes the step-deviation (shortcut) method: choose an assumed mean A, form d = x − A, then step deviations d' = d/i with i the class width / common factor, and recover σ by multiplying the y-calculation by i — the recover-via-h step this concept teaches."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:variance-under-transformation",
+      "sources": [
+        {
+          "title": "Standard Deviation: Meaning, Coefficient, Merits and Demerits — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/standard-deviation-meaning-coefficient-of-standard-deviation-merits-and-demerits/",
+          "verified": "States verbatim 'Standard Deviation is independent of change of origin. It means that the value of standard deviation remains the same if a constant is added or subtracted from all observations in a series.' and 'Standard Deviation is affected by the change of scale. It means that if a constant is multiplied or divided to/by all of the observations, then the standard deviation will also get multiplied or divided by this constant.' — precisely the add-a-constant (unchanged) and multiply-by-k rules."
+        },
+        {
+          "title": "Variance and Standard Deviation — Cuemath",
+          "url": "https://www.cuemath.com/data/variance-and-standard-deviation/",
+          "verified": "Confirms variance is 'the average squared deviations from the mean'; together with the squared-deviation definition this grounds why scaling by k scales each squared deviation by k² (variance → k²·variance) while a shift leaves deviations, hence variance, unchanged."
+        },
+        {
+          "title": "Statistics for JEE — Byju's",
+          "url": "https://byjus.com/jee/statistics/",
+          "verified": "JEE-level page giving the variance definition σ² = Σ(xᵢ − μ)²/N from which the transformation rules (Var(X + c) = Var(X), Var(kX) = k²Var(X)) follow; supports the JEE framing of this concept."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch13:analyse-dispersion",
+      "sources": [
+        {
+          "title": "Statistics for JEE — Byju's",
+          "url": "https://byjus.com/jee/statistics/",
+          "verified": "JEE-level overview listing all the absolute measures of dispersion (Range, Variance, Standard deviation, Quartiles and Quartile deviation, Mean and Mean deviation) with their formulas — the full toolkit this goal node selects from for any data type."
+        },
+        {
+          "title": "Measures of Dispersion — Cuemath",
+          "url": "https://www.cuemath.com/data/measures-of-dispersion/",
+          "verified": "Supports comparing data sets: 'As the data becomes more diverse, the value of the measure of dispersion increases', notes 'data set B is more variable than data set A', defines the coefficient of variation ('the ratio of the standard deviation to the mean of the data set... expressed as a percentage') and states relative measures are used when 'data of separate data sets have different units and need to be compared' — the choose-and-compare skill of this node."
+        },
+        {
+          "title": "Measures of Dispersion — GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/measures-of-dispersion/",
+          "verified": "Enumerates Range, Quartile Deviation, Mean Deviation and Standard Deviation with their formulas, giving the per-data-type measure menu this goal node picks among."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      {
+        "term": "mean (arithmetic mean) = sum of observations / number of observations; x̄ = (1/n)Σxᵢ",
+        "whereTaught": "Pre-curriculum bedrock (Class 10 and earlier). NCERT ch13 opens 'Recall mean (arithmetic mean), median and mode are three measures of central tendency.' Not taught as a node in jee ch01–ch12 (ch08 Sequences & Series defines sequences/series and sigma notation but never the statistical mean). The prompt explicitly classifies mean/median/mode as pre-curriculum.",
+        "classification": "REFRESHER (attached to why-dispersion, the first node that leans on knowing the mean/median)"
+      },
+      {
+        "term": "median = middle value of sorted data ( ((n+1)/2)-th if n odd; mean of two middle values if n even )",
+        "whereTaught": "Pre-curriculum bedrock (Class 10). Used from mean-deviation-ungrouped onward. Not a node in ch01–ch12.",
+        "classification": "REFRESHER (attached to mean-deviation-ungrouped, first node to actually compute a median)"
+      },
+      {
+        "term": "mode",
+        "whereTaught": "Pre-curriculum bedrock (Class 10); mentioned only in passing in the intro ('mean, median and mode') and not load-bearing for any keyMove in ch13.",
+        "classification": "INLINE-GLOSS"
+      },
+      {
+        "term": "absolute value |x|; |x − a| as distance on the number line",
+        "whereTaught": "Pre-curriculum bedrock (introduced around Class 7–9; also appears in jee ch01 as |x| in modulus inequalities, but not formally owned as a ch01 node). Load-bearing for the entire mean-deviation family (definition + all four computation nodes).",
+        "classification": "REFRESHER (attached to mean-deviation-definition, the first node to use |x − a|)"
+      },
+      {
+        "term": "squaring a number; (x − x̄)² ≥ 0 (negative × negative = positive)",
+        "whereTaught": "Pre-curriculum arithmetic/algebra bedrock (Class 7–8). Load-bearing for variance and everything downstream.",
+        "classification": "REFRESHER (attached to variance)"
+      },
+      {
+        "term": "square root; positive square root √; √ undoes squaring",
+        "whereTaught": "Pre-curriculum bedrock (Class 8). Load-bearing for standard-deviation (σ = √variance) and all SD nodes.",
+        "classification": "REFRESHER (attached to standard-deviation)"
+      },
+      {
+        "term": "frequency f_i; frequency distribution table; N = Σf_i as total count; frequency as a weight",
+        "whereTaught": "Pre-curriculum bedrock (Class 9–10 data handling). Load-bearing for mean-deviation-discrete, mean-deviation-continuous, sd-frequency-distribution. Taught nowhere in ch01–ch12.",
+        "classification": "REFRESHER (attached to mean-deviation-discrete, the first frequency-distribution node)"
+      },
+      {
+        "term": "cumulative frequency; locating the median via cumulative frequency ≥ N/2",
+        "whereTaught": "Pre-curriculum bedrock (Class 9–10). Load-bearing for the median branch of mean-deviation-discrete and mean-deviation-continuous.",
+        "classification": "REFRESHER (folded into the mean-deviation-discrete frequency refresher)"
+      },
+      {
+        "term": "class interval / class limits / class width h; class mid-point = (lower + upper)/2; continuous frequency distribution",
+        "whereTaught": "Pre-curriculum bedrock (Class 9–10). Load-bearing for mean-deviation-continuous and the continuous case of sd-frequency-distribution / sd-shortcut-method.",
+        "classification": "REFRESHER (attached to mean-deviation-continuous)"
+      },
+      {
+        "term": "grouped-data median formula M = l + ((N/2 − C)/f)·h",
+        "whereTaught": "Pre-curriculum (Class 10). NCERT ch13 restates it inline ('Let us recall the process of finding median for a continuous frequency distribution'). Load-bearing for M.D.(M) of grouped data.",
+        "classification": "INLINE-GLOSS (NCERT already restates the formula; gloss the symbols l, C, f, h rather than a full refresher — but it is also covered by the mean-deviation-continuous refresher)"
+      },
+      {
+        "term": "summation / sigma notation Σ; finite series of observations",
+        "whereTaught": "jee:maths:maths-ch08:form-a-series-with-sigma-notation and jee:maths:maths-ch08:define-a-sequence — these ARE the declared prereqs of why-dispersion and mean-deviation-definition.",
+        "classification": "DEFER (owner ch08)"
+      },
+      {
+        "term": "sum of squares of first n natural numbers = n(n+1)(2n+1)/6",
+        "whereTaught": "jee ch08 (Sequences & Series special sums) — appears only in NCERT's set-B motivating example for variance, not in any ch13 keyMove.",
+        "classification": "DEFER (owner ch08; non-core, only in a motivating aside)"
+      },
+      {
+        "term": "linear transformation y = kx + a; change of origin (shift) and change of scale",
+        "whereTaught": "The transformation idea is introduced within variance-under-transformation and sd-shortcut-method themselves; the underlying notion of adding/multiplying a constant to every term is pre-curriculum algebra.",
+        "classification": "INLINE-GLOSS"
+      }
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "summation / sigma notation Σ; sequence and series of observations",
+        "owner": "jee:maths:maths-ch08:form-a-series-with-sigma-notation, jee:maths:maths-ch08:define-a-sequence",
+        "softening": "These are already the listed prereqs of why-dispersion and mean-deviation-definition. When writing Σ|xᵢ − x̄|, Σfᵢxᵢ etc., reference 'the sigma notation from Sequences & Series' rather than re-explaining the summation symbol; only its use as 'add this expression over all observations' is the new application."
+      },
+      {
+        "term": "sum of squares of first n natural numbers Σi² = n(n+1)(2n+1)/6",
+        "owner": "jee:maths:maths-ch08 (special series / sums of powers)",
+        "softening": "Used only in NCERT's set-B aside that motivates dividing the sum of squares by n. Keep it out of the core teaching path; if it appears, cite it as 'the special sum from Sequences & Series' with a one-line reminder, and do not make any ch13 node depend on a ch08 sums-of-powers concept."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "mode",
+        "gloss": "The mode is simply the most frequently occurring value in a data set. It is named in passing alongside mean and median as a measure of centre but is not used in any dispersion calculation in this chapter."
+      },
+      {
+        "term": "grouped-data median formula M = l + ((N/2 − C)/f)·h",
+        "gloss": "For grouped data the median lies inside the 'median class' (the first class whose cumulative frequency reaches N/2). Then M = l + ((N/2 − C)/f)·h, where l is that class's lower boundary, C the cumulative frequency of the class before it, f the median class's frequency, and h the class width. NCERT restates this inline, so only the symbols need glossing."
+      },
+      {
+        "term": "linear change y = kx + a (change of origin a, change of scale k)",
+        "gloss": "Adding a constant a to every observation is a 'change of origin' (it slides the data along the number line); multiplying every observation by k is a 'change of scale' (it stretches or shrinks the data). Variance ignores the shift a and is multiplied by k² under the scaling."
+      },
+      {
+        "term": "homogeneous / heterogeneous data (terms used by some sources)",
+        "gloss": "Homogeneous data are tightly clustered (small dispersion); heterogeneous data are widely scattered (large dispersion). NCERT itself uses 'consistent/spread out' rather than these words, so prefer NCERT's phrasing if a source's wording is quoted."
+      }
+    ]
+  }
+}

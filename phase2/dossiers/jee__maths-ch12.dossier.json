@@ -1,0 +1,426 @@
+{
+  "chapter": "jee:maths:maths-ch12",
+  "concepts": [
+    {
+      "id": "jee:maths:maths-ch12:instantaneous-rate-as-slope-of-tangent",
+      "sources": [
+        {
+          "title": "Average and Instantaneous Rate of Change - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/average-and-instantaneous-rate-of-change/",
+          "verified": "The slope of the tangent line at a point represents the instantaneous rate of change, or derivative, at that point."
+        },
+        {
+          "title": "Tangents & Normals: Derivative Application & JEE Formula - Allen",
+          "url": "https://allen.in/jee/maths/tangents-and-normals-application-of-derivatives",
+          "verified": "The derivative of a function f(x) at a specific point x=a gives the slope of the tangent line to the curve y=f(x) at that point."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "Student reads 'average velocity over an interval = distance / time' and treats velocity at the single instant t=2 the same way, or stalls because they cannot picture the chord slope on the s-t graph.",
+          "surfacingQuestion": "If a body's position is s = 4.9t^2 metres at time t seconds, how would you work out its AVERAGE speed between t = 2 s and t = 2.1 s — before we worry about the speed at the exact instant t = 2?",
+          "ladder": [
+            "Average speed over an interval is (change in position) / (change in time). What two positions do you need first?",
+            "Compute s at t = 2.1 and at t = 2 using s = 4.9t^2. (s(2.1) = 4.9(4.41) = 21.609 m, s(2) = 4.9(4) = 19.6 m.)",
+            "Now form (21.609 - 19.6) / (2.1 - 2). What number comes out, and what are its units?",
+            "On a graph of s against t, the two points (2, 19.6) and (2.1, 21.609) are joined by a straight line (a chord). The fraction you just computed IS the slope of that chord — rise over run. Can you see that?"
+          ],
+          "answer": "Average speed = (21.609 - 19.6) / (2.1 - 2) = 2.009 / 0.1 = 20.09 m/s. This is exactly the slope of the chord joining (2, 19.6) and (2.1, 21.609) on the s-t graph: rise (2.009 m) over run (0.1 s). As the second time is pulled closer to 2 (2.05, 2.01, ...), these chord slopes settle toward 19.6 m/s, the instantaneous speed at t = 2 — the slope of the TANGENT at that point.",
+          "returnCue": "So the average rate of change is just the slope of a chord; shrinking the interval rotates that chord into the tangent. Now back to forming [s(t+h) - s(t)]/h and letting h shrink."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch12:intuitive-limit",
+      "sources": [
+        {
+          "title": "Limits - Formula, Meaning, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/limits/",
+          "verified": "Limits in maths are defined as the values that a function approaches the output for the given input values."
+        },
+        {
+          "title": "Limits by Direct Substitution - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/limits-by-direct-substitution/",
+          "verified": "for any a for which f(a) is defined, lim(x->a)f(x) = f(a)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The brief and quote are slightly mismatched: the quote (\"...the value f(x) should assume at x = 0\") comes from NCERT's f(x)=x^2 example at x->0, while the worked PART 1-2 use h(x)=(x^2-4)/(x-2) at x->2. This is fine, but consider noting explicitly that h(2) is the textbook's flagship 0/0 case so the lift into one-sided-limits and rational-function limits is seamless. Evidence: NCERT lines 92-113."
+    },
+    {
+      "id": "jee:maths:maths-ch12:one-sided-limits-and-existence",
+      "sources": [
+        {
+          "title": "One-Sided Limits: Left and Right Hand Limits with Solved Example - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/one-sided-limits/",
+          "verified": "If both one-sided limits exist and are equal at a point, then the two-sided limit at that point exists and is equal to the common value."
+        },
+        {
+          "title": "Concepts & Formulas: Limits And Derivatives - SATHEE JEE (IIT Kanpur)",
+          "url": "https://satheejee.iitk.ac.in/concepts-and-formulas-to-remember/maths_11/limits_topic/",
+          "verified": "lim_{x->a}f(x) exists, if (i) lim_{x->a^-}f(x) and lim_{x->a^+}f(x) both exist (ii) lim_{x->a^-}f(x) = lim_{x->a^+}f(x)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The step-function example uses g(x)=1 for x<=0 and 2 for x>0, matching NCERT Fig 12.3 (lines 119-137). Strong as written. Optional: NCERT's Illustration 9/10 (lines 329-394) show the subtle cases LHL!=RHL with f(a) defined, and limit different from f(a) even when both exist — worth one sentence to pre-empt the listed misconception 'limit exists because f(a) is defined'."
+    },
+    {
+      "id": "jee:maths:maths-ch12:algebra-of-limits",
+      "sources": [
+        {
+          "title": "Algebra Of Limits - BYJU'S",
+          "url": "https://byjus.com/jee/algebra-of-limits/",
+          "verified": "The limits of the product of any two given functions is the same as the product of the limits of that given function."
+        },
+        {
+          "title": "Algebra of Limits: Rules, Properties & Examples Explained - Vedantu",
+          "url": "https://www.vedantu.com/jee-main/maths-algebra-of-limits",
+          "verified": "Quotient Law: If M != 0, then lim[f(x)/g(x)] = L/M"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch12:limits-of-polynomials",
+      "sources": [
+        {
+          "title": "Limits of Polynomial and Rational Functions - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/limits-of-polynomial-and-rational-functions/",
+          "verified": "lim x->a f(x) = f(a)"
+        },
+        {
+          "title": "Limits by Direct Substitution - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/limits-by-direct-substitution/",
+          "verified": "for any a for which f(a) is defined, lim(x->a)f(x) = f(a)"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch12:limits-of-rational-functions",
+      "sources": [
+        {
+          "title": "Limits of Polynomial and Rational Functions - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/limits-of-polynomial-and-rational-functions/",
+          "verified": "If the result is in the form 0/0, then we must rewrite the functions such that we can cancel the factors causing the limit to be in the form 0/0."
+        },
+        {
+          "title": "Indeterminate Form - Meaning | Indeterminate Forms of Limits - Cuemath",
+          "url": "https://www.cuemath.com/calculus/indeterminate-form/",
+          "verified": "lim x -> 2 (x2 - 4) / (x - 2) = lim x -> 2 [(x + 2)(x - 2)] / (x - 2) = lim x -> 2 (x + 2) = 4"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The PART 3 'non-zero over zero => limit does not exist' is correct for the NCERT scope, but at JEE level the values may diverge to +inf or -inf depending on side (e.g. 1/(x-1) at x->1: LHL=-inf, RHL=+inf). The NCERT text itself only claims 'the limit does not exist' (lines 458, 514-516), so the concept is faithful; just be aware the misconception list could add 'assuming non-zero/0 always gives +inf' if difficulty is to be raised. Evidence: NCERT lines 454-464, Example 2(iii)."
+    },
+    {
+      "id": "jee:maths:maths-ch12:standard-limit-xn-minus-an",
+      "sources": [
+        {
+          "title": "Standard Limits Formulas - BYJU'S",
+          "url": "https://byjus.com/jee/standard-limits/",
+          "verified": "lim_{x->a} (x^n - a^n)/(x - a) = na^(n-1)"
+        },
+        {
+          "title": "Limits of Polynomial and Rational Functions - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/limits-of-polynomial-and-rational-functions/",
+          "verified": "If the result is in the form 0/0, then we must rewrite the functions such that we can cancel the factors causing the limit to be in the form 0/0."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "NCERT Example 3(ii) (lines 564, 575-585) applies the rational-n extension to compute lim x->0 (sqrt(1+x)-1)/x = 1/2 via the substitution y=1+x, n=1/2, a=1. The explanation states the rational-n remark but does not surface a surd example; adding the sqrt(1+x) case would directly model the listed 'a must be positive for non-integer n' misconception. Evidence: NCERT Remark after Theorem 2 (line 548) and Example 3(ii)."
+    },
+    {
+      "id": "jee:maths:maths-ch12:sandwich-theorem",
+      "sources": [
+        {
+          "title": "Squeeze Theorem - Formula, Proof, Examples | Sandwich Theorem - Cuemath",
+          "url": "https://www.cuemath.com/calculus/squeeze-theorem/",
+          "verified": "g(x) <= f(x) <= h(x) and suppose lim x -> a g(x) = lim x -> a h(x) = L, then lim x -> a f(x) = L"
+        },
+        {
+          "title": "Sandwich Theorem (Squeeze Theorem): Statement, Proof & Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/sandwich-theorem/",
+          "verified": "Let functions f(x), g(x), and h(x) be real values functions such that h(x) <= f(x) <= g(x). If lim(x->a)h(x)=lim(x->a)g(x)=L, then lim(x->a)f(x)=L"
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "The geometric proof of cos x < (sin x)/x < 1 compares Area of triangle OAC < Area of sector OAC < Area of triangle OAB. A student who has forgotten that a sector's area is (x/2pi)*pi*r^2 = (1/2)r^2 x (x in radians) cannot follow the middle term and the whole squeeze collapses.",
+          "surfacingQuestion": "In a circle of radius r, a sector is cut out by a central angle of x radians. What is the area of that sector, and how does it compare to the area of the whole circle?",
+          "ladder": [
+            "The whole circle (central angle 2pi radians) has area pi r^2. A sector is a fraction of the circle. What fraction does an angle of x radians represent?",
+            "The fraction is x / (2pi). So the sector area is that fraction times the full area: (x / 2pi) * pi r^2.",
+            "Simplify (x / 2pi) * pi r^2. The pi cancels and the 2 stays in the denominator.",
+            "On the unit circle r = 1, so the sector area becomes just x/2. Keep this — it is the MIDDLE term in OAC < sector < OAB."
+          ],
+          "answer": "Sector area = (x / 2pi) * pi r^2 = (1/2) r^2 x, with x measured in RADIANS. On the unit circle (r = 1) this is x/2. This is precisely the middle quantity in NCERT's inequality (1/2)OA.CD < (x/2pi).pi.(OA)^2 < (1/2)OA.AB, which after using CD = sin x and AB = tan x gives sin x < x < tan x and hence cos x < (sin x)/x < 1.",
+          "returnCue": "With the sector area = x/2 in hand, the triangle-sector-triangle sandwich gives sin x < x < tan x. Now back to using the Sandwich Theorem on cos x <= (sin x)/x <= 1."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch12:trigonometric-limits",
+      "sources": [
+        {
+          "title": "Limits of Trigonometric Functions Formulas - BYJU'S",
+          "url": "https://byjus.com/maths/limits-of-trigonometric-functions/",
+          "verified": "lim(x->0) sin x/x = 1"
+        },
+        {
+          "title": "Limits of Trigonometric Functions - Comprehensive JEE Chapter - Deeksha Learning",
+          "url": "https://deekshalearning.com/jee-coaching/class-11-mathematics-limits-of-trigonometric-functions/",
+          "verified": "lim(x->0) (sin x / x) = 1"
+        },
+        {
+          "title": "Limits of Trigonometric Functions: Formulas, Graph & Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/limits-of-trigonometric-functions/",
+          "verified": "The Sandwich Theorem... is a fundamental concept in calculus used to find the limit of a function."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "The misconception '(sin x)/x -> 1 with x in degrees' fires when a student does not realise the whole result depends on x being in radians. The radian-vs-degree distinction is pre-curriculum bedrock (ch03 owns it) but is silently assumed by every trig limit here.",
+          "surfacingQuestion": "When we write lim x->0 (sin x)/x = 1, in what unit is the angle x being measured — degrees or radians — and does it actually matter?",
+          "ladder": [
+            "Recall the geometric proof: it used 'arc length = r * x' and 'sector area = (1/2) r^2 x'. Those formulas are only true when x is in a particular unit. Which one?",
+            "Arc length = r*theta and sector area = (1/2)r^2*theta hold only when theta is in RADIANS (180 degrees = pi radians). In degrees you'd carry an extra pi/180 factor everywhere.",
+            "If x were in degrees, sin x for small x is about (pi/180)x, so (sin x)/x would tend to pi/180 ~ 0.01745, NOT 1. Try x = 1 degree: sin(1 deg) ~ 0.01745, so (sin x)/x ~ 0.01745.",
+            "So the clean answer 1 only appears in radians. Whenever you use (sin x)/x -> 1, silently assume radians."
+          ],
+          "answer": "x must be in RADIANS. The result lim x->0 (sin x)/x = 1 comes from the radian-based facts arc = r*x and sector area = (1/2)r^2 x. In degrees, sin x ~ (pi/180)x for small x, so (sin x)/x -> pi/180 ~ 0.01745, not 1. Always convert degrees to radians (multiply by pi/180) before applying any standard trig limit or trig derivative.",
+          "returnCue": "Radians locked in. Now back to rewriting trig expressions into (sin u)/u pieces and combining with the product/quotient rules."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch12:derivative-first-principle",
+      "sources": [
+        {
+          "title": "First Principle of Derivatives: Formula, Derivation & JEE - Allen",
+          "url": "https://allen.in/jee/maths/first-principle-of-derivatives",
+          "verified": "f'(x) = lim(h->0) [f(x+h)-f(x)]/h"
+        },
+        {
+          "title": "First Principle of Derivatives: Definition, Examples & Formula - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/first-principle-of-derivatives/",
+          "verified": "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch12:derivative-as-slope-of-tangent",
+      "sources": [
+        {
+          "title": "Average and Instantaneous Rate of Change - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/average-and-instantaneous-rate-of-change/",
+          "verified": "The slope of the tangent line at a point represents the instantaneous rate of change, or derivative, at that point."
+        },
+        {
+          "title": "Tangents & Normals: Derivative Application & JEE Formula - Allen",
+          "url": "https://allen.in/jee/maths/tangents-and-normals-application-of-derivatives",
+          "verified": "The derivative of a function f(x) at a specific point x=a gives the slope of the tangent line to the curve y=f(x) at that point."
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "PART 3 reads f'(a) = tan(psi) where psi is the inclination of the tangent. This relies squarely on ch09 slope-as-tan-inclination (already a prereq). The concept is faithful to NCERT lines 822-836. No change needed."
+    },
+    {
+      "id": "jee:maths:maths-ch12:algebra-of-derivatives",
+      "sources": [
+        {
+          "title": "Product Rule of Derivatives: Definition, Formula, Proof & Examples - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/product-rule-derivatives/",
+          "verified": "If u(x) and v(x) are functions, the product rule is (uv)' = u'v + uv'."
+        },
+        {
+          "title": "Quotient Rule - Formula, Proof, Definition, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/quotient-rule/",
+          "verified": "f'(x) = [u(x)/v(x)]' = [v(x) x u'(x) - u(x) x v'(x)]/[v(x)]^2"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Explanation PART 3 has a stray double-prime typo: 'u'v MINUS uv'' in that order' (should be uv'). The keyMoves render it correctly as (u'v - uv')/v^2. Worth fixing the prose so the sign/order emphasis is not muddied by the typo. Evidence: content.json explanation field for this node."
+    },
+    {
+      "id": "jee:maths:maths-ch12:power-rule",
+      "sources": [
+        {
+          "title": "Power Rule - Formula, Proof, Applications | Power Rule Derivative - Cuemath",
+          "url": "https://www.cuemath.com/calculus/power-rule/",
+          "verified": "d(xn)/dx = nxn-1"
+        },
+        {
+          "title": "CBSE Class 11 Maths Chapter 13 - Limits and Derivatives Formulas - Vedantu",
+          "url": "https://www.vedantu.com/formula/cbse-class-11-maths-limits-and-derivatives-formulas",
+          "verified": "\\dfrac{d}{dx}(x^n) = nx^{n-1}"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch12:derivative-of-polynomials",
+      "sources": [
+        {
+          "title": "Derivatives of Polynomial Functions - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/derivatives-of-polynomial-functions/",
+          "verified": "The old power of the variable is multiplied by the coefficient of the variable, and the new power of the variable is decreased by 1 from the old power."
+        },
+        {
+          "title": "Derivatives of polynomials and trigonometric functions - BYJU'S",
+          "url": "https://byjus.com/maths/derivative-of-polynomials-and-trigonometric-functions/",
+          "verified": "In this article, you will understand how to find the derivatives of different types of polynomial functions and trigonometric functions along with formulas and examples."
+        }
+      ],
+      "refreshers": [
+        {
+          "trigger": "NCERT Example 14 (lines 980-984) evaluates f'(1) for f = 1 + x + ... + x^50 as 1 + 2 + 3 + ... + 50 = 50*51/2 = 1275. A student who has forgotten the arithmetic-series sum 1+2+...+n = n(n+1)/2 will add fifty terms by hand or stall.",
+          "surfacingQuestion": "Quick gap-check before we finish: what is the sum 1 + 2 + 3 + ... + 50, and is there a formula that avoids adding all fifty numbers?",
+          "ladder": [
+            "There is a one-line formula for 1 + 2 + ... + n. Do you remember it? (Hint: pair the first and last terms.)",
+            "Pair them: (1+50) + (2+49) + (3+48) + ... Each pair sums to 51, and there are 25 pairs. So the total is 25 * 51.",
+            "That pairing generalises to 1 + 2 + ... + n = n(n+1)/2. Plug in n = 50.",
+            "n(n+1)/2 with n = 50 gives 50*51/2 = 2550/2 = 1275."
+          ],
+          "answer": "1 + 2 + ... + n = n(n+1)/2 (the arithmetic-series sum). For n = 50: 50*51/2 = 1275. So once f'(x) = 1 + 2x + 3x^2 + ... + 50x^49 is found, substituting x = 1 turns every power into 1 and the value is just this sum, 1275.",
+          "returnCue": "Series sum recovered: 1+2+...+50 = 1275. Now back to differentiating each polynomial term and then substituting x = a."
+        }
+      ],
+      "contentNote": ""
+    },
+    {
+      "id": "jee:maths:maths-ch12:derivatives-of-trig-functions",
+      "sources": [
+        {
+          "title": "Differentiation of Trigonometric Functions - Trig Derivatives - Cuemath",
+          "url": "https://www.cuemath.com/trigonometry/differentiation-of-trigonometric-functions/",
+          "verified": "Derivation of sin x: (sin x)' = cos x"
+        },
+        {
+          "title": "Differentiation of Trigonometric Functions - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/maths/differentiation-of-trigonometric-functions/",
+          "verified": "(d/dx) tan x = sec^2x"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "The first-principle derivation of sin x uses the factorisation sin(x+h) - sin x = 2 cos(x + h/2) sin(h/2) (NCERT Example 16, line 997). That is the sum-to-product / sin A - sin B identity from ch03 (already prereq'd via sine-sum-difference). The explanation states it as a given; if students struggle, the ch03 sum-to-product transform is the load-bearing step, not the limit. Faithful as written."
+    },
+    {
+      "id": "jee:maths:maths-ch12:differentiate-functions-via-limits",
+      "sources": [
+        {
+          "title": "Derivatives of polynomials and trigonometric functions - BYJU'S",
+          "url": "https://byjus.com/maths/derivative-of-polynomials-and-trigonometric-functions/",
+          "verified": "In this article, you will understand how to find the derivatives of different types of polynomial functions and trigonometric functions along with formulas and examples."
+        },
+        {
+          "title": "JEE Advanced Maths Method of Differentiation - Previous Year Questions with Solutions - BYJU'S",
+          "url": "https://byjus.com/jee/method-of-differentiation-jee-advanced-previous-year-questions-with-solutions/",
+          "verified": "The JEE Advanced Maths method of differentiation previous year questions and solutions are given on this page."
+        },
+        {
+          "title": "Quotient Rule - Formula, Proof, Definition, Examples - Cuemath",
+          "url": "https://www.cuemath.com/calculus/quotient-rule/",
+          "verified": "f'(x) = [u(x)/v(x)]' = [v(x) x u'(x) - u(x) x v'(x)]/[v(x)]^2"
+        }
+      ],
+      "refreshers": [],
+      "contentNote": "Same stray double-prime typo as algebra-of-derivatives: PART 2 writes the product rule as '(uv)'=u'v+uv'' '. Cosmetic; keyMoves are correct. The worked d/dx[(x^2+1)/cos x] example is accurate and a good capstone. Evidence: content.json explanation field for this node."
+    }
+  ],
+  "prereqSweep": {
+    "loadBearingTerms": [
+      "average rate of change = (change in output)/(change in input) [bedrock arithmetic; informally pre-curriculum]",
+      "slope of a line = tan(inclination angle) [owned: jee ch09 slope-as-tan-inclination]",
+      "chord / secant vs tangent line on a curve [ch09 straight-line geometry; intuitive]",
+      "function, domain, value f(a), real-valued function [owned: jee ch02 real-function]",
+      "algebra of functions: f+g, f-g, fg, f/g [owned: jee ch02 algebra-of-functions]",
+      "polynomial function and its degree [owned: jee ch02 polynomial-function]",
+      "rational function g(x)/h(x) [owned: jee ch02 rational-function]",
+      "factoring polynomials; difference of squares; factor theorem (x-a) [owned: jee ch02 polynomials / pre-curriculum factorisation]",
+      "indeterminate form 0/0 (named here, not upstream) [introduced in-chapter]",
+      "binomial theorem expansion of (x+h)^n [owned: jee ch07 state-binomial-theorem]",
+      "factorisation x^n - a^n = (x-a)(x^(n-1)+...+a^(n-1)) [in-chapter, Theorem 2 proof]",
+      "inequalities and manipulating/reciprocating them [owned: jee ch05 apply-rules-for-solving]",
+      "radian measure of angles; 180 deg = pi radians [owned: jee ch03 trig; pre-curriculum bedrock]",
+      "unit circle definition of sin, cos, tan [owned: jee ch03 define-trig-functions-unit-circle]",
+      "area of a circular sector = (1/2) r^2 theta (theta in radians) [pre-curriculum geometry bedrock; not an owned course concept]",
+      "area of a triangle = (1/2) base * height [pre-curriculum bedrock]",
+      "Pythagorean identity sin^2+cos^2=1 [owned: jee ch03 pythagorean-identity]",
+      "sin(A+B), cos(A+B) and sin A - sin B sum-to-product [owned: jee ch03 sine-sum-difference, cosine-sum-difference]",
+      "1 - cos x = 2 sin^2(x/2) (half-angle) [owned: jee ch03 trig identities]",
+      "sum of first n natural numbers 1+2+...+n = n(n+1)/2 [owned: jee ch08/ch09 sequences-series; pre-curriculum bedrock]",
+      "limit notation lim x->a and one-sided x->a^-, x->a^+ [introduced in-chapter]",
+      "derivative notations f'(x), dy/dx, d/dx(f), D(f) [introduced in-chapter]"
+    ],
+    "bridgesProposed": [],
+    "defers": [
+      {
+        "term": "limit at infinity / lim x->0 1/x^2 = +infinity",
+        "owner": "NCERT explicitly defers this (Illustration 8, line 327: 'we will not come across such limits in this course'). Belongs to a later continuity/limits-at-infinity unit, not this chapter.",
+        "softening": "If a student raises 1/x^2 blowing up, acknowledge it grows without bound and name it informally as 'tends to +infinity', then defer: formal infinite limits and L'Hopital are out of scope for this chapter and handled later."
+      },
+      {
+        "term": "L'Hopital's rule for 0/0 forms",
+        "owner": "Later calculus (differentiation applications). This chapter resolves 0/0 strictly by factor-and-cancel and the standard (x^n-a^n)/(x-a) limit.",
+        "softening": "If a student already knows L'Hopital, allow it as a check but require the factor-cancel / standard-limit method as the in-scope technique, since the chapter's derivatives are themselves being built here."
+      },
+      {
+        "term": "formal epsilon-delta definition of a limit",
+        "owner": "Higher analysis. NCERT is explicitly intuitive ('naive definition of limit', line 11).",
+        "softening": "Keep the intuitive 'value f(x) should assume' framing; do not introduce epsilon-delta. If asked for rigour, note it exists in higher courses and is not required here."
+      },
+      {
+        "term": "chain rule / derivative of composite functions",
+        "owner": "Class 12 Continuity and Differentiability. NCERT ch12 Miscellaneous items like sin(x+1), (ax+b)^n are done by first principles or expansion, NOT the chain rule.",
+        "softening": "If a student reaches for the chain rule on (ax+b)^n or sin(x+a), accept the correct answer but show the in-scope route (binomial expansion / sum formula then term-by-term) since the chain rule is not yet established."
+      },
+      {
+        "term": "continuity and differentiability (formal link)",
+        "owner": "Class 12. This chapter only computes limits and derivatives; it does not formally define continuity or prove differentiable => continuous.",
+        "softening": "Use 'the limit equals the function value' descriptively without invoking the continuity theorem; defer the formal connection."
+      }
+    ],
+    "inlineGlosses": [
+      {
+        "term": "indeterminate form 0/0",
+        "gloss": "When substituting x=a makes both numerator and denominator 0, the expression 0/0 has no determined value yet (the limit may still exist) — it signals 'do more work' (factor and cancel), not 'the answer is 0 or undefined'."
+      },
+      {
+        "term": "difference quotient",
+        "gloss": "The fraction [f(x+h) - f(x)]/h: the change in f over the change in x; its h->0 limit is the derivative."
+      },
+      {
+        "term": "secant / chord vs tangent",
+        "gloss": "A chord (secant) cuts the curve at two points P and Q; the tangent touches at one point P. As Q slides to P the chord rotates into the tangent."
+      },
+      {
+        "term": "Leibnitz (product) rule",
+        "gloss": "Another name for the product rule (uv)' = u'v + uv'; 'Leibnitz rule' and 'product rule' are the same thing in this chapter."
+      },
+      {
+        "term": "instantaneous rate of change",
+        "gloss": "The rate of change at a single instant, obtained as the limiting value of average rates over intervals shrinking to that instant — equal to the slope of the tangent."
+      },
+      {
+        "term": "left-hand limit / right-hand limit notation (a^-, a^+)",
+        "gloss": "x->a^- means x creeps toward a through values just BELOW a; x->a^+ means through values just ABOVE a."
+      }
+    ],
+    "refreshersAttached": [
+      "jee:maths:maths-ch12:instantaneous-rate-as-slope-of-tangent — average rate of change as chord slope (pre-curriculum arithmetic/graph bedrock)",
+      "jee:maths:maths-ch12:sandwich-theorem — area of a circular sector = (1/2)r^2 x in radians (pre-curriculum geometry bedrock)",
+      "jee:maths:maths-ch12:trigonometric-limits — radian vs degree for (sin x)/x -> 1 (pre-curriculum angle-measure bedrock)",
+      "jee:maths:maths-ch12:derivative-of-polynomials — arithmetic-series sum 1+2+...+n = n(n+1)/2 (pre-curriculum bedrock used in Example 14)"
+    ],
+    "notes": "No AUTHOR-bridges are warranted: every load-bearing course concept is owned upstream (ch02 functions/polynomials/rational; ch03 trig definitions, sum/difference and half-angle identities; ch05 inequalities; ch07 binomial theorem; ch08/09 sequences-series and slope-as-tan-inclination). The only genuinely pre-curriculum bedrock items (radian measure, sector area, arithmetic-series sum, average rate of change as chord slope) are handled by REFRESHERS rather than bridges. Two in-chapter terms (indeterminate 0/0 form, derivative/limit notations) are introduced here and covered by inline glosses."
+  }
+}
