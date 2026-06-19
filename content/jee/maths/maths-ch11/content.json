@@ -7,6 +7,50 @@
   "goal": "jee:maths:maths-ch11:locate-and-measure-points-in-3d-space",
   "nodes": [
     {
+      "id": "jee:maths:maths-ch11:distance-formula-2d",
+      "slug": "distance-formula-2d",
+      "title": "Recall the distance between two points in the coordinate plane",
+      "role": "bedrock",
+      "sec": 1,
+      "brief": "A point in the plane is an ordered pair (x, y), and the distance between two such points is sqrt((x2-x1)^2 + (y2-y1)^2).",
+      "quote": "d = sqrt((x2 - x1)^2 + (y2 - y1)^2)",
+      "explanation": "PART 1 — Read a plane point as an ordered pair of coordinates.\nIn the coordinate plane, two perpendicular axes meet at the origin, and a point P is fixed by an ordered pair (x, y): x is its signed distance along the horizontal axis and y its signed distance along the vertical axis. The order matters, so (1, 2) and (2, 1) are different points. This coordinate point is the object the distance formula acts on.\n\nPART 2 — Subtract matching coordinates to get the horizontal and vertical gaps.\nFor two points P(x1, y1) and Q(x2, y2), form the two differences (x2 - x1) and (y2 - y1). These are the lengths of the horizontal and vertical legs of the right triangle whose hypotenuse is the segment PQ. For P(1, 2) and Q(4, 6) the gaps are 3 and 4.\n\nPART 3 — Square the two gaps, add, and take the positive square root.\nThe distance is d = sqrt((x2 - x1)^2 + (y2 - y1)^2). Square each gap, add the two squares, then take the positive root. For P(1, 2) and Q(4, 6): d = sqrt(3^2 + 4^2) = sqrt(9 + 16) = sqrt(25) = 5. Swapping P and Q leaves d unchanged because each difference is squared.",
+      "keyMoves": [
+        "Read a point in the plane as an ordered pair (x, y) of coordinates",
+        "Subtract matching coordinates to get the horizontal gap (x2-x1) and vertical gap (y2-y1)",
+        "Square each gap, add the two squares, and take the positive square root to get d = sqrt((x2-x1)^2 + (y2-y1)^2)"
+      ],
+      "misconceptions": [
+        "Adding the coordinate differences instead of summing their squares (using (x2-x1)+(y2-y1) rather than the squares)",
+        "Subtracting an x from a y (mismatching coordinates) instead of x with x and y with y"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch11:pythagoras-theorem",
+      "slug": "pythagoras-theorem",
+      "title": "Recall the Pythagoras theorem and its converse",
+      "role": "bedrock",
+      "sec": 1,
+      "brief": "In a right triangle the square of the hypotenuse equals the sum of the squares of the other two sides; conversely, if the largest side squared equals the sum of the other two squares, the angle opposite it is a right angle.",
+      "quote": "the square of the hypotenuse is equal to the sum of the squares of the other two sides",
+      "explanation": "PART 1 — State the theorem: hypotenuse squared equals the sum of the other two squares.\nIn a right-angled triangle with legs a and b and hypotenuse c (the side opposite the right angle, always the longest), the three sides satisfy a^2 + b^2 = c^2. Given the two legs you find the hypotenuse by c = sqrt(a^2 + b^2): for legs 3 and 4, c = sqrt(9 + 16) = sqrt(25) = 5.\n\nPART 2 — State the converse: the relation forces a right angle.\nThe converse runs the other way. If the three side lengths of a triangle satisfy (largest side)^2 = (sum of the squares of the other two), then the triangle is right-angled, with the right angle opposite that largest side. So a triangle with sides 5, 12, 13 is right-angled because 5^2 + 12^2 = 25 + 144 = 169 = 13^2.\n\nPART 3 — Test a triangle by squaring all three sides and comparing the largest.\nTo decide whether a triangle is right-angled, square all three side lengths, pick out the largest square, and check whether it equals the sum of the other two squares. Equality means a right angle; if the largest square is bigger the triangle is obtuse, if smaller it is acute. Always test the LARGEST side on its own — pairing the wrong sides gives a false negative.",
+      "keyMoves": [
+        "State the theorem: in a right triangle, hypotenuse^2 = leg1^2 + leg2^2 (so c = sqrt(a^2 + b^2))",
+        "State the converse: if (largest side)^2 = sum of the other two squares, the triangle is right-angled (right angle opposite the largest side)",
+        "Test a triangle by squaring all three sides and checking the largest square against the sum of the other two"
+      ],
+      "misconceptions": [
+        "Treating a^2 + b^2 = c^2 as true for any triangle, not only a right-angled one",
+        "Putting a leg (not the longest side) on its own side of the equation when applying the converse"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch11:coordinate-axes-and-planes",
       "slug": "coordinate-axes-and-planes",
       "title": "Set up the three coordinate axes and three coordinate planes in space",
@@ -150,6 +194,7 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch11:coordinates-of-a-point",
+        "jee:maths:maths-ch11:distance-formula-2d",
         "jee:maths:maths-ch03:pythagorean-identity",
         "jee:maths:maths-ch09:slope-from-two-points"
       ],
@@ -223,7 +268,8 @@
         "Confusing the isosceles test (two equal sides) with the right-angle test (Pythagoras relation)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch11:distance-between-two-points"
+        "jee:maths:maths-ch11:distance-between-two-points",
+        "jee:maths:maths-ch11:pythagoras-theorem"
       ],
       "sameConcept": [],
       "teachingInsights": []

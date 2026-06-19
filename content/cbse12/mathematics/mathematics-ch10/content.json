@@ -7,6 +7,32 @@
   "goal": "cbse12:mathematics:mathematics-ch10:vector-product",
   "nodes": [
     {
+      "id": "cbse12:mathematics:mathematics-ch10:right-hand-rule",
+      "slug": "right-hand-rule",
+      "title": "Fix a perpendicular direction by the right-hand rule",
+      "role": "bedrock",
+      "brief": "Use the right-hand rule to pick which of the two perpendicular directions the unit vector n-hat points.",
+      "sec": 2,
+      "quote": "in a right handed coordinate system, the thumb of the right hand points in the direction of the positive z-axis when the fingers are curled in the direction away from the positive x-axis toward the positive y-axis",
+      "explanation": "PART 1 — A plane has two perpendicular directions, and we must choose one.\nGiven two non-parallel vectors a and b, they span a flat plane. A line perpendicular to that plane can point either of two opposite ways — straight \"up\" out of the plane or straight \"down\" through it. Both are equally perpendicular, so \"the unit vector n-hat perpendicular to both a and b\" is ambiguous until we add a rule that picks ONE of the two. Nothing in the lengths or the angle between a and b decides this; it is a choice of orientation that must be supplied separately.\n\nPART 2 — The right-hand rule makes the choice.\nThe convention is the right-hand rule. Point the fingers of your RIGHT hand along the first vector a, then curl them through the smaller angle toward the second vector b; your outstretched thumb then points along n-hat. Equivalently, in the standard right-handed coordinate frame the thumb points along the positive z-axis when the fingers curl from the positive x-axis toward the positive y-axis. The three directions a, b, n-hat in that order form a right-handed system — the same handedness as x, y, z. Using the LEFT hand would give the opposite, wrong direction.\n\nPART 3 — The order matters: swapping the vectors flips n-hat.\nBecause the rule curls from the FIRST named vector to the SECOND, reversing the order reverses the thumb. Curling from a to b gives a thumb pointing one way (call it n-hat); curling from b to a gives the thumb pointing exactly opposite, namely -n-hat. So the right-hand rule does not just find a perpendicular line — it assigns a definite sense to it that depends on the order in which the two vectors are taken. Worked check: lay a along the x-axis and b along the y-axis; curling right-hand fingers from x toward y, the thumb points up the positive z-axis, so n-hat = +z. Take them in the other order (b then a) and the thumb points down the negative z-axis.",
+      "keyMoves": [
+        "Recognise a plane spanned by two vectors has two opposite perpendicular directions, so one must be chosen",
+        "Point right-hand fingers along the first vector and curl toward the second; the thumb gives n-hat",
+        "Note that reversing the order of the two vectors reverses n-hat (a-to-b gives n-hat, b-to-a gives -n-hat)"
+      ],
+      "misconceptions": [
+        "Using the left hand (or curling from the second vector to the first), which gives the opposite direction",
+        "Thinking the perpendicular direction is unique, ignoring that the order of the vectors fixes its sense"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": [],
+      "source": {
+        "ref": "NCERT Class 12 Mathematics Part II, Ch. 10 Vector Algebra, §10.6.3 Vector (cross) product, Fig 10.22-10.23",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh204.pdf"
+      }
+    },
+    {
       "id": "cbse12:mathematics:mathematics-ch10:vector-definition",
       "slug": "vector-definition",
       "title": "Define a vector",
@@ -324,7 +350,8 @@
         "cbse12:mathematics:mathematics-ch10:magnitude",
         "cbse12:mathematics:mathematics-ch10:unit-vector",
         "cbse12:mathematics:mathematics-ch10:scalar-product",
-        "cbse12:mathematics:mathematics-ch10:collinear-vectors"
+        "cbse12:mathematics:mathematics-ch10:collinear-vectors",
+        "cbse12:mathematics:mathematics-ch10:right-hand-rule"
       ],
       "sameConcept": [],
       "teachingInsights": []

@@ -7,6 +7,110 @@
   "goal": "cbse12:mathematics:mathematics-ch02:principal-value-evaluation",
   "nodes": [
     {
+      "id": "cbse12:mathematics:mathematics-ch02:trig-ratios-and-standard-values",
+      "slug": "trig-ratios-and-standard-values",
+      "title": "Recall sine, cosine, tangent as ratios and the standard-angle values",
+      "role": "bedrock",
+      "brief": "Recall from Class XI that sin, cos, tan are side ratios in a right triangle, and the exact values at the standard angles 0, pi/6, pi/4, pi/3, pi/2.",
+      "sec": 1,
+      "explanation": "PART 1 — The three ratios in a right triangle.\nFor an acute angle theta in a right triangle, sine, cosine and tangent are fixed ratios of its sides: sin(theta) = opposite / hypotenuse, cos(theta) = adjacent / hypotenuse, tan(theta) = opposite / adjacent. Because the ratios depend only on the angle and not on the triangle's size, each angle has one definite sine, cosine and tangent.\n\nPART 2 — The five standard angles and their exact values.\nFive angles appear again and again, so their values are worth knowing by heart. For sine across 0, pi/6, pi/4, pi/3, pi/2 the pattern is sqrt(0)/2, sqrt(1)/2, sqrt(2)/2, sqrt(3)/2, sqrt(4)/2 — that is, 0, 1/2, 1/sqrt(2), sqrt(3)/2, 1. Cosine runs the same list in reverse: 1, sqrt(3)/2, 1/sqrt(2), 1/2, 0.\n\nPART 3 — Reading off tangent and using these for inverse trig.\nSince tan(theta) = sin(theta) / cos(theta), the standard tangents follow: tan(0) = 0, tan(pi/6) = 1/sqrt(3), tan(pi/4) = 1, tan(pi/3) = sqrt(3), and tan(pi/2) is undefined (cos(pi/2) = 0). To evaluate an inverse trig value such as sin-inverse(1/sqrt(2)), you must recognise 1/sqrt(2) as the sine of the standard angle pi/4 — these exact values are the raw material every principal-value calculation reads off.",
+      "keyMoves": [
+        "Write sin = opposite/hypotenuse, cos = adjacent/hypotenuse, tan = opposite/adjacent for a right triangle",
+        "Recall sin at 0, pi/6, pi/4, pi/3, pi/2 as 0, 1/2, 1/sqrt(2), sqrt(3)/2, 1 (and cos as the reverse)",
+        "Read tan(theta) = sin(theta)/cos(theta) to get 0, 1/sqrt(3), 1, sqrt(3), undefined"
+      ],
+      "misconceptions": [
+        "Mixing up the sine and cosine values at the standard angles (e.g. taking cos(pi/6) as 1/2 instead of sqrt(3)/2)",
+        "Thinking tan(pi/2) has a finite value rather than being undefined"
+      ],
+      "prereqs": [],
+      "source": {
+        "ref": "NCERT Class XI Mathematics, Chapter 3 Trigonometric Functions / standard-angle table",
+        "url": "https://www.cuemath.com/trigonometry/trigonometric-ratios-of-standard-angles/"
+      },
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:radian-measure",
+      "slug": "radian-measure",
+      "title": "Measure angles in radians and convert with pi rad = 180 degrees",
+      "role": "bedrock",
+      "brief": "Recall from Class XI that an angle can be measured in radians, where a full revolution is 2pi rad and pi rad = 180 degrees.",
+      "sec": 1,
+      "explanation": "PART 1 — What a radian is.\nA radian is the angle subtended at the centre of a circle by an arc equal in length to the radius. Because the full circumference is 2*pi*r, one complete revolution measures 2pi radians; radians are the natural, unit-free measure of angle used throughout calculus.\n\nPART 2 — The conversion pi rad = 180 degrees.\nA straight angle is half a revolution, so it equals pi radians; the same straight angle is 180 degrees. This gives the master relation pi rad = 180 degrees, from which 1 radian = 180/pi degrees and 1 degree = pi/180 radians. To convert, multiply degrees by pi/180 to get radians, or multiply radians by 180/pi to get degrees.\n\nPART 3 — The standard angles in radians.\nApplying the conversion: 30 degrees = pi/6, 45 degrees = pi/4, 60 degrees = pi/3, 90 degrees = pi/2, 180 degrees = pi. Every domain and range of an inverse trigonometric function is stated in radians — for instance sin-inverse takes values in [-pi/2, pi/2] — so the answer pi/4 is simply the radian name of the 45-degree angle.",
+      "keyMoves": [
+        "Treat a full revolution as 2pi radians and a straight angle as pi radians",
+        "Convert with degrees times pi/180 = radians, and radians times 180/pi = degrees",
+        "Name the standard angles in radians: pi/6, pi/4, pi/3, pi/2, pi"
+      ],
+      "misconceptions": [
+        "Treating pi as if it were 180 in a numerical answer rather than pi rad = 180 degrees as a conversion",
+        "Forgetting which factor to use and multiplying degrees by 180/pi instead of pi/180"
+      ],
+      "prereqs": [],
+      "source": {
+        "ref": "NCERT Class XI Mathematics, Chapter 3 Trigonometric Functions / radian measure (pi rad = 180 degrees)",
+        "url": "https://www.cuemath.com/geometry/radians-to-degrees/"
+      },
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:reciprocal-trig-identities",
+      "slug": "reciprocal-trig-identities",
+      "title": "Recall cosec, sec, cot as reciprocals of sin, cos, tan",
+      "role": "bedrock",
+      "brief": "Recall from Class XI that cosec x = 1/sin x, sec x = 1/cos x and cot x = 1/tan x = cos x / sin x.",
+      "sec": 1,
+      "explanation": "PART 1 — The three reciprocal definitions.\nThe cosecant, secant and cotangent functions are defined as the reciprocals of sine, cosine and tangent of the same angle: cosec x = 1/sin x, sec x = 1/cos x, and cot x = 1/tan x. Equivalently cot x = cos x / sin x, since tan x = sin x / cos x. They carry no new geometric content — they are simply the reciprocals.\n\nPART 2 — Where each reciprocal is undefined.\nA reciprocal blows up wherever its denominator is zero. So cosec x is undefined when sin x = 0 (at integer multiples of pi), sec x is undefined when cos x = 0 (at odd multiples of pi/2), and cot x is undefined when sin x = 0 (again at multiples of pi). This is exactly why the inverse functions cosec-inverse and sec-inverse have domains that exclude the interval (-1, 1): a reciprocal can never land strictly between -1 and 1.\n\nPART 3 — Turning a reciprocal equation into a sine or cosine equation.\nThe reciprocal definitions let you rewrite any cosec, sec or cot condition in terms of sin, cos or tan. For example cosec y = -2 means 1/sin y = -2, so sin y = -1/2; and cot y = -1/sqrt(3) means cos y / sin y = -1/sqrt(3). This rewriting is the first move in evaluating cosec-inverse, sec-inverse and cot-inverse, because the standard values you know are for sine, cosine and tangent.",
+      "keyMoves": [
+        "Write cosec x = 1/sin x, sec x = 1/cos x, cot x = 1/tan x = cos x/sin x",
+        "Locate where each reciprocal is undefined (denominator zero)",
+        "Rewrite a reciprocal equation as a sin/cos/tan equation before solving"
+      ],
+      "misconceptions": [
+        "Pairing the reciprocals wrongly, e.g. taking sec x = 1/sin x instead of 1/cos x",
+        "Confusing the reciprocal 1/sin x with the inverse function sin-inverse x"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:trig-ratios-and-standard-values"
+      ],
+      "source": {
+        "ref": "NCERT Class XI Mathematics, Chapter 3 Trigonometric Functions / reciprocal relations",
+        "url": "https://www.cuemath.com/trigonometry/reciprocal-identities/"
+      },
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch02:allied-angle-identities",
+      "slug": "allied-angle-identities",
+      "title": "Recall the allied-angle identities sin(pi - x) = sin x, cos(2pi - x) = cos x",
+      "role": "bedrock",
+      "brief": "Recall from Class XI that allied angles such as pi - x and 2pi - x give related ratios, e.g. sin(pi - x) = sin x and cos(2pi - x) = cos x.",
+      "sec": 1,
+      "explanation": "PART 1 — What an allied angle is.\nAngles that differ from a given angle x by a multiple of pi/2 or pi (such as pi - x, pi + x, 2pi - x, -x) are called allied angles. Their trigonometric ratios equal the ratio of x up to a sign, and the sign is fixed by the quadrant in which the allied angle lands. This lets you trade an awkward angle for a standard one.\n\nPART 2 — The identities used most for inverse trig.\nThe supplement identity sin(pi - x) = sin x holds because pi - x lies in the second quadrant, where sine stays positive. Similarly cos(2pi - x) = cos x and cos(-x) = cos x (cosine is even), while sin(-x) = -sin x (sine is odd), and the negative-angle rule tan(-x) = -tan x. A useful consequence is -cot(x) = cot(pi - x), since cotangent is negative in the second quadrant.\n\nPART 3 — Reducing an out-of-range angle into a principal range.\nThese identities are what let you pull an angle back into a principal value branch. For example sin(3pi/5) is hard to read directly, but sin(3pi/5) = sin(pi - 3pi/5) = sin(2pi/5), and 2pi/5 lies in [-pi/2, pi/2]; likewise -1/sqrt(3) = -cot(pi/3) = cot(pi - pi/3) = cot(2pi/3), moving the angle into (0, pi). Without allied-angle identities, the reduction step inside a principal-value evaluation could not be carried out.",
+      "keyMoves": [
+        "Recognise pi - x, 2pi - x, -x as allied angles of x",
+        "Apply sin(pi - x) = sin x, cos(2pi - x) = cos x, cos(-x) = cos x, sin(-x) = -sin x",
+        "Use an allied-angle identity to move an angle into the required principal range"
+      ],
+      "misconceptions": [
+        "Getting the sign wrong, e.g. writing sin(pi - x) = -sin x instead of +sin x",
+        "Assuming every trig ratio is even, e.g. taking sin(-x) = sin x instead of -sin x"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch02:trig-ratios-and-standard-values"
+      ],
+      "source": {
+        "ref": "NCERT Class XI Mathematics, Chapter 3 Trigonometric Functions / allied (related) angles",
+        "url": "https://www.cuemath.com/trigonometry/allied-angles/"
+      },
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
       "slug": "inverse-needs-bijective",
       "title": "Recall that an inverse exists only for a one-one and onto function",
@@ -111,7 +215,9 @@
         "cbse12:mathematics:mathematics-ch02:branch",
         "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
         "cbse12:mathematics:mathematics-ch01:one-one-function",
-        "cbse12:mathematics:mathematics-ch01:onto-function"
+        "cbse12:mathematics:mathematics-ch01:onto-function",
+        "cbse12:mathematics:mathematics-ch02:trig-ratios-and-standard-values",
+        "cbse12:mathematics:mathematics-ch02:radian-measure"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -137,7 +243,9 @@
       "prereqs": [
         "cbse12:mathematics:mathematics-ch02:branch",
         "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
-        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective"
+        "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
+        "cbse12:mathematics:mathematics-ch02:trig-ratios-and-standard-values",
+        "cbse12:mathematics:mathematics-ch02:radian-measure"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -165,7 +273,9 @@
         "cbse12:mathematics:mathematics-ch02:sin-inverse-principal",
         "cbse12:mathematics:mathematics-ch01:one-one-function",
         "cbse12:mathematics:mathematics-ch01:onto-function",
-        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective"
+        "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
+        "cbse12:mathematics:mathematics-ch02:trig-ratios-and-standard-values",
+        "cbse12:mathematics:mathematics-ch02:radian-measure"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -192,7 +302,8 @@
         "cbse12:mathematics:mathematics-ch02:branch",
         "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
         "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
-        "cbse12:mathematics:mathematics-ch01:bijective-function"
+        "cbse12:mathematics:mathematics-ch01:bijective-function",
+        "cbse12:mathematics:mathematics-ch02:reciprocal-trig-identities"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -220,7 +331,8 @@
         "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",
         "cbse12:mathematics:mathematics-ch02:inverse-of-bijective",
         "cbse12:mathematics:mathematics-ch01:bijective-function",
-        "cbse12:mathematics:mathematics-ch02:cos-inverse-principal"
+        "cbse12:mathematics:mathematics-ch02:cos-inverse-principal",
+        "cbse12:mathematics:mathematics-ch02:reciprocal-trig-identities"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -244,7 +356,8 @@
         "Allowing inputs in (-1, 1), which are outside the domain"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:branch"
+        "cbse12:mathematics:mathematics-ch02:branch",
+        "cbse12:mathematics:mathematics-ch02:reciprocal-trig-identities"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -324,7 +437,8 @@
         "Forgetting to reduce an out-of-range angle before applying the identity"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch02:principal-value-defn"
+        "cbse12:mathematics:mathematics-ch02:principal-value-defn",
+        "cbse12:mathematics:mathematics-ch02:allied-angle-identities"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -358,7 +472,10 @@
         "cbse12:mathematics:mathematics-ch02:cos-inverse-principal",
         "cbse12:mathematics:mathematics-ch02:tan-inverse-principal",
         "cbse12:mathematics:mathematics-ch02:principal-value-defn",
-        "cbse12:mathematics:mathematics-ch02:branch"
+        "cbse12:mathematics:mathematics-ch02:branch",
+        "cbse12:mathematics:mathematics-ch02:trig-ratios-and-standard-values",
+        "cbse12:mathematics:mathematics-ch02:radian-measure",
+        "cbse12:mathematics:mathematics-ch02:allied-angle-identities"
       ],
       "sameConcept": [],
       "teachingInsights": []

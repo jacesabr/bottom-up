@@ -7,6 +7,84 @@
   "goal": "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities",
   "nodes": [
     {
+      "id": "jee:maths:maths-ch03:coordinate-plane-basics",
+      "slug": "coordinate-plane-basics",
+      "title": "Locate a point in the Cartesian plane by its ordered pair (x, y)",
+      "role": "bedrock",
+      "brief": "Pin any point in the plane with two perpendicular number lines, reading its position as the ordered pair (x, y) whose signs name the quadrant.",
+      "sec": 0,
+      "quote": "The X-axis runs horizontally while the Y-axis runs vertically. They intersect at right angles to create four regions; the origin (0, 0) lies on both axes.",
+      "explanation": "PART 1 — Two perpendicular number lines fix the origin and split the plane into four quadrants.\nDraw a horizontal x-axis and a vertical y-axis crossing at right angles. Their crossing point is the origin, with coordinates (0, 0). The two axes divide the plane into four regions called quadrants, numbered I, II, III, IV anticlockwise starting from the upper right.\n\nPART 2 — An ordered pair (x, y) names one point; the order matters.\nA point is written as an ordered pair (x, y): the first number is the x-coordinate (horizontal distance from the y-axis) and the second is the y-coordinate (vertical distance from the x-axis). The order is fixed — (3, 5) and (5, 3) are different points. Reading x first then y is a convention you never reverse.\n\nPART 3 — The signs of x and y tell you the quadrant.\nRight of the origin x is positive, left it is negative; above the origin y is positive, below it is negative. So quadrant I is (+, +), II is (−, +), III is (−, −), IV is (+, −). Knowing only the pair of signs already locates which quarter of the plane the point lives in.",
+      "keyMoves": [
+        "Draw the x-axis and y-axis as perpendicular number lines meeting at the origin (0, 0)",
+        "Plot a point from its ordered pair (x, y): go x along the horizontal, then y along the vertical",
+        "Read off the quadrant from the signs of x and y (I: +,+; II: -,+; III: -,-; IV: +,-)"
+      ],
+      "misconceptions": [
+        "Reversing the order and plotting (x, y) as if it were (y, x)",
+        "Thinking the origin (0, 0) belongs to a quadrant (it lies on both axes, in none)"
+      ],
+      "prereqs": [],
+      "source": {
+        "ref": "Cuemath — Quadrant (Cartesian Plane); Byju's — Cartesian Plane",
+        "url": "https://www.cuemath.com/geometry/quadrant/"
+      },
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:circle-basics",
+      "slug": "circle-basics",
+      "title": "Identify the radius, chord and arc of a circle and use circumference = 2 pi r",
+      "role": "bedrock",
+      "brief": "Name the parts of a circle — radius, chord, arc — and measure the whole way around it with circumference = 2 pi r, keeping the curved arc distinct from the straight chord.",
+      "sec": 0,
+      "quote": "Circumference = 2 pi r; an arc is the curved part of the circumference, while a chord is a straight line segment joining two points on the circle.",
+      "explanation": "PART 1 — The radius reaches from centre to rim.\nA circle is the set of points a fixed distance from a centre. That fixed distance, from the centre to any point on the circle, is the radius r. Every radius of a single circle has the same length.\n\nPART 2 — A chord cuts straight across; an arc follows the curve.\nA chord is a straight line segment joining two points on the circle. An arc is the curved piece of the circle between those same two points, running along the rim. They are different lengths between the same endpoints — the chord is the shortcut, the arc is the curved route — so an arc is never equal to its chord.\n\nPART 3 — Circumference = 2 pi r measures the whole rim.\nThe circumference is the total distance once around the circle: C = 2 pi r (equivalently pi times the diameter). It is the length of the full arc all the way around. For a circle of radius 1 the circumference is 2 pi.",
+      "keyMoves": [
+        "Measure the radius r as the distance from the centre to any point on the circle",
+        "Distinguish a chord (straight segment between two points) from an arc (curved part of the rim)",
+        "Compute the distance around the circle with circumference = 2 pi r"
+      ],
+      "misconceptions": [
+        "Treating the arc length and the chord length between two points as equal",
+        "Using diameter instead of radius in 2 pi r (the diameter form is pi*d, not 2*pi*d)"
+      ],
+      "prereqs": [],
+      "source": {
+        "ref": "Cuemath — Parts of a Circle; Wikipedia — Circumference",
+        "url": "https://www.cuemath.com/geometry/parts-of-circle/"
+      },
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch03:pythagoras-theorem",
+      "slug": "pythagoras-theorem",
+      "title": "Apply Pythagoras a^2 + b^2 = c^2 and read off x^2 + y^2 = 1 on the unit circle",
+      "role": "bedrock",
+      "brief": "Relate the two legs and the hypotenuse of a right triangle by a^2 + b^2 = c^2, and see why a point (x, y) on the unit circle obeys x^2 + y^2 = 1.",
+      "sec": 1,
+      "quote": "The area of the square on the hypotenuse equals the sum of the areas of the squares on the other two sides: a^2 + b^2 = c^2.",
+      "explanation": "PART 1 — In a right triangle the two legs and the hypotenuse satisfy a^2 + b^2 = c^2.\nA right triangle has one 90 degree angle. The side opposite that right angle is the hypotenuse — the longest side — call its length c. The other two sides (the legs) have lengths a and b. Pythagoras' theorem states a^2 + b^2 = c^2.\n\nPART 2 — Solve for the missing side by taking a square root.\nGiven any two of the three lengths, the third follows: c = sqrt(a^2 + b^2), or a = sqrt(c^2 - b^2). A length is always the positive root. For example, legs 3 and 4 give hypotenuse sqrt(9 + 16) = sqrt(25) = 5.\n\nPART 3 — On the unit circle this becomes x^2 + y^2 = 1.\nDrop a perpendicular from a point (x, y) on a circle of radius 1 centred at the origin: the horizontal leg has length |x|, the vertical leg |y|, and the hypotenuse is the radius 1. Pythagoras then gives x^2 + y^2 = 1 — the equation every point of the unit circle satisfies.",
+      "keyMoves": [
+        "Identify the hypotenuse as the side opposite the right angle and the two legs as a and b",
+        "Apply a^2 + b^2 = c^2 and take the positive square root to find a missing side",
+        "See a unit-circle point (x, y) as a right triangle with legs |x|, |y| and hypotenuse 1, giving x^2 + y^2 = 1"
+      ],
+      "misconceptions": [
+        "Writing a + b = c (adding the sides) instead of squaring: a^2 + b^2 = c^2",
+        "Putting a leg in the hypotenuse's place, e.g. a^2 + c^2 = b^2 when c is the hypotenuse"
+      ],
+      "prereqs": [],
+      "source": {
+        "ref": "Wikipedia — Pythagorean theorem; Wikipedia — Pythagorean trigonometric identity",
+        "url": "https://en.wikipedia.org/wiki/Pythagorean_theorem"
+      },
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch03:measure-angle-by-rotation",
       "slug": "measure-angle-by-rotation",
       "title": "Measure an angle by the rotation of a ray and assign its sign",
@@ -71,7 +149,8 @@
         "Believing radians and real numbers are different kinds of quantity"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:measure-angle-by-rotation"
+        "jee:maths:maths-ch03:measure-angle-by-rotation",
+        "jee:maths:maths-ch03:circle-basics"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -96,7 +175,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch03:radian-measure",
-        "jee:maths:maths-ch03:degree-radian-conversion"
+        "jee:maths:maths-ch03:degree-radian-conversion",
+        "jee:maths:maths-ch03:circle-basics"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -151,7 +231,10 @@
         "jee:maths:maths-ch03:degree-radian-conversion",
         "jee:maths:maths-ch02:ordered-pair",
         "jee:maths:maths-ch03:arc-length-formula",
-        "jee:maths:maths-ch02:real-function"
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch03:coordinate-plane-basics",
+        "jee:maths:maths-ch03:circle-basics",
+        "jee:maths:maths-ch03:pythagoras-theorem"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -175,7 +258,8 @@
         "Forgetting the quadrant when taking the square root to fix the sign"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:define-trig-functions-unit-circle"
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:pythagoras-theorem"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -254,7 +338,8 @@
         "jee:maths:maths-ch03:reciprocal-trig-functions",
         "jee:maths:maths-ch03:measure-angle-by-rotation",
         "jee:maths:maths-ch03:degree-radian-conversion",
-        "jee:maths:maths-ch03:pythagorean-identity"
+        "jee:maths:maths-ch03:pythagorean-identity",
+        "jee:maths:maths-ch03:coordinate-plane-basics"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -340,7 +425,8 @@
         "jee:maths:maths-ch03:sign-of-trig-functions",
         "jee:maths:maths-ch03:pythagorean-identity",
         "jee:maths:maths-ch03:reciprocal-trig-functions",
-        "jee:maths:maths-ch03:define-trig-functions-unit-circle"
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:coordinate-plane-basics"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -364,7 +450,8 @@
         "Writing sin(-x) = sin x (sine is odd, not even)"
       ],
       "prereqs": [
-        "jee:maths:maths-ch03:define-trig-functions-unit-circle"
+        "jee:maths:maths-ch03:define-trig-functions-unit-circle",
+        "jee:maths:maths-ch03:coordinate-plane-basics"
       ],
       "sameConcept": [],
       "teachingInsights": []

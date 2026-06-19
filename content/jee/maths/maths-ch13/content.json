@@ -32,6 +32,52 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-ch13:grouped-data-vocabulary",
+      "slug": "grouped-data-vocabulary",
+      "title": "Read the parts of a grouped (class-interval) frequency table",
+      "role": "bedrock",
+      "brief": "Identify the class interval, its lower and upper class limits, the class width h, the class mid-point, the frequency f_i, and the cumulative frequency of a grouped data table.",
+      "sec": 2,
+      "quote": "the data are classified into different class-intervals without gaps alongwith their respective frequencies.",
+      "explanation": "PART 1 — A class interval and its two limits.\nWhen many observations are grouped, the number line is cut into consecutive bands called class intervals, written like 20–30. The smaller endpoint, 20, is the lower class limit; the larger endpoint, 30, is the upper class limit. Every observation that falls inside the band is counted in that one class, so the intervals run consecutively without gaps.\n\nPART 2 — Class width and class mid-point.\nThe class width h is the size of one interval: h = upper class limit − lower class limit. For the class 20–30, h = 30 − 20 = 10. The class mid-point is the value at the centre of the interval, x = (lower class limit + upper class limit)/2; for 20–30 it is (20 + 30)/2 = 25. The mid-point is the single value we use to represent every observation in that class.\n\nPART 3 — Frequency and cumulative frequency.\nThe frequency f_i is how many observations fall in the i-th class. The cumulative frequency of a class is the running total of frequencies up to and including that class: add the current class's frequency to the cumulative frequency of the class before it. For frequencies 6, 7, 15, 16 the cumulative frequencies are 6, 13, 28, 44. The grand total of all frequencies is written N = sum of f_i, and the final cumulative frequency always equals N.",
+      "keyMoves": [
+        "Read off the lower and upper class limits from an interval such as 20–30",
+        "Compute the class width h = upper limit − lower limit and the mid-point (lower + upper)/2",
+        "Build the cumulative frequency column as a running total of the frequencies f_i, ending at N = Σf_i"
+      ],
+      "misconceptions": [
+        "Confusing the class mid-point with one of the class limits when picking the representative value",
+        "Treating cumulative frequency as the frequency of a single class instead of the running total up to that class"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch13:grouped-median-formula",
+      "slug": "grouped-median-formula",
+      "title": "Find the median of grouped data by the class-interval formula",
+      "role": "bedrock",
+      "brief": "Locate the median class using cumulative frequency, then apply M = l + ((N/2 − C)/f)·h to find the median of a continuous frequency distribution.",
+      "sec": 2,
+      "quote": "the median of continuous frequency distribution is obtained by first identifying the class in which median lies (median class) and then applying the formula",
+      "explanation": "PART 1 — Locate the median class.\nFor grouped data the median is not a listed value; it lies inside a class. First build the cumulative frequency column and find N/2, where N is the total of all frequencies. The median class is the first class whose cumulative frequency is greater than or equal to N/2. For example, with frequencies 6, 7, 15, 16, 4, 2 the total is N = 50, so N/2 = 25; the cumulative frequencies are 6, 13, 28, 44, 48, 50, and the first to reach 25 is the third class (cumulative 28), so that class is the median class.\n\nPART 2 — Read off the four ingredients.\nFrom the median class take: l, its lower class limit; f, its own frequency; h, its class width; and C, the cumulative frequency of the class just before the median class. In the example the median class is 20–30, so l = 20, f = 15, h = 10, and C = 13 (the cumulative frequency of the preceding class 10–20).\n\nPART 3 — Apply the median formula.\nThe grouped-data median is M = l + ((N/2 − C)/f)·h. The fraction (N/2 − C)/f says how far into the median class the middle observation sits, and multiplying by the width h converts that fraction into a position on the original scale. In the example M = 20 + ((25 − 13)/15)·10 = 20 + (12/15)·10 = 20 + 8 = 28.",
+      "keyMoves": [
+        "Compute N/2 and find the median class: the first class with cumulative frequency ≥ N/2",
+        "Read l (lower limit), f (frequency), h (width) of that class and C (cumulative frequency before it)",
+        "Apply M = l + ((N/2 − C)/f)·h"
+      ],
+      "misconceptions": [
+        "Using N instead of N/2, or using the median class's own cumulative frequency in place of C (the preceding class's)",
+        "Substituting the class mid-point for l rather than the lower class limit of the median class"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:grouped-data-vocabulary"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch13:range",
       "slug": "range",
       "title": "Compute the range of a data set as maximum minus minimum",
@@ -124,7 +170,8 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch13:mean-deviation-ungrouped",
-        "jee:maths:maths-ch13:mean-deviation-definition"
+        "jee:maths:maths-ch13:mean-deviation-definition",
+        "jee:maths:maths-ch13:grouped-data-vocabulary"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -148,7 +195,9 @@
         "Treating grouped data like a discrete list and skipping the median-class formula"
       ],
       "prereqs": [
-        "jee:maths:maths-ch13:mean-deviation-discrete"
+        "jee:maths:maths-ch13:mean-deviation-discrete",
+        "jee:maths:maths-ch13:grouped-data-vocabulary",
+        "jee:maths:maths-ch13:grouped-median-formula"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -222,7 +271,8 @@
       "prereqs": [
         "jee:maths:maths-ch13:standard-deviation",
         "jee:maths:maths-ch13:mean-deviation-continuous",
-        "jee:maths:maths-ch13:mean-deviation-discrete"
+        "jee:maths:maths-ch13:mean-deviation-discrete",
+        "jee:maths:maths-ch13:grouped-data-vocabulary"
       ],
       "sameConcept": [],
       "teachingInsights": []

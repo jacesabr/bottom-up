@@ -7,6 +7,87 @@
   "goal": "cbse12:mathematics:mathematics-ch01:invertible-iff-bijective",
   "nodes": [
     {
+      "id": "cbse12:mathematics:mathematics-ch01:cartesian-product",
+      "slug": "cartesian-product",
+      "title": "Form the Cartesian product A x B",
+      "role": "bedrock",
+      "brief": "Build A × B as the set of ALL ordered pairs (a, b) with a in A and b in B — the full grid from which any relation is later carved.",
+      "sec": 1,
+      "quote": "we define mathematically a relation R from A to B as an arbitrary subset of  $A \\times B$ .",
+      "explanation": "PART 1 — What the Cartesian product is.\nThe Cartesian product A × B is the set of ALL ordered pairs (a, b) whose first entry a comes from A and whose second entry b comes from B. Nothing is left out: every possible a is paired with every possible b. For A = {1, 2} and B = {x, y}, A × B = {(1, x), (1, y), (2, x), (2, y)} — all four pairings, with no rule deciding which to keep.\n\nPART 2 — Order of the entries matters.\nEach element of A × B is an ordered pair, so (a, b) is not the same as (b, a) unless a = b. The first slot is always reserved for an element of A and the second slot for an element of B. This is why A × B and B × A are generally different sets: for the example above, B × A would contain (x, 1), which is a different pair from (1, x).\n\nPART 3 — Counting: |A × B| = |A| × |B|.\nTo count the pairs, note that each of the |A| choices for the first entry can be matched with each of the |B| choices for the second entry. By multiplying the choices, |A × B| = |A| × |B|. For A = {1, 2} (size 2) and B = {x, y} (size 2) this gives 2 × 2 = 4, matching the four pairs listed above; for sizes 3 and 4 it would give 12.\n\nPART 4 — Why this is the universe of a relation.\nA × B is the complete pool of pairings, before any selection is made. Later, a relation from A to B will be defined as any chosen subset of this pool — you keep some pairs and discard the rest. So A × B is the fixed universe inside which every relation lives.",
+      "keyMoves": [
+        "List every ordered pair (a, b) with a in A and b in B — pair each element of A with each element of B",
+        "Keep the order: the first entry is from A, the second from B, so (a, b) differs from (b, a) unless a = b",
+        "Count the pairs by multiplying: |A × B| = |A| × |B|"
+      ],
+      "misconceptions": [
+        "Treating (a, b) and (b, a) as the same pair, so A × B and B × A get confused",
+        "Thinking A × B already selects 'related' pairs, rather than holding ALL pairings as the universe"
+      ],
+      "refreshers": [
+        {
+          "trigger": "The word \"set\" (and \"element\") — A and B are sets, A × B is a set of pairs",
+          "surfacingQuestion": "A × B is built from two sets A and B. Quick check so we're aligned: what do we actually mean by a 'set' in maths?",
+          "ladder": [
+            "Could you give me an everyday example of a collection of things?",
+            "If I write {1, 2}, what are 1 and 2 to that set?",
+            "Is {1, 2, 2} any different from {1, 2}?"
+          ],
+          "answer": "A set is just a well-defined collection of distinct objects, written in curly braces, e.g. {1, 2} or {x, y}. The objects in it are its elements. Repeats don't count ({1, 2, 2} = {1, 2}) and order doesn't matter ({1, 2} = {2, 1}). So A and B here are simply two such bags of distinct things.",
+          "returnCue": "Good — so A and B are just collections. Now we pair their elements up to build A × B."
+        },
+        {
+          "trigger": "Ordered pair notation (a, b) — and why order matters",
+          "surfacingQuestion": "Every member of A × B is a pair like (a, b). Quick one: is the pair (1, x) the same thing as (x, 1), or different?",
+          "ladder": [
+            "Think of a seat described by (row, column) — is (3, 5) the same seat as (5, 3)?",
+            "So does the order inside the brackets matter?",
+            "How is that different from the set {1, x} versus {x, 1}?"
+          ],
+          "answer": "An ordered pair (a, b) keeps a in first place and b in second, and the order matters: (1, x) ≠ (x, 1). It is exactly like map coordinates or a (row, column) seat. This is the opposite of a set, where {1, x} = {x, 1}. That is why A × B (first entry from A) differs from B × A (first entry from B).",
+          "returnCue": "So order is the whole point of a pair. Now let's list every ordered pair in A × B."
+        }
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse12:mathematics:mathematics-ch01:identity-function",
+      "slug": "identity-function",
+      "title": "Recognise the identity function I_X",
+      "role": "bedrock",
+      "brief": "Identify the identity function I_X on a set X: the function that sends every element to itself, I_X(x) = x for all x in X.",
+      "sec": 4,
+      "quote": "Consider the identity function  $I_N : N \\to N$  defined as  $I_N(x) = x \\forall x \\in N$ .",
+      "explanation": "PART 1 — What the identity function does.\nThe identity function on a set X, written I_X, is the function I_X : X → X defined by I_X(x) = x for EVERY x in X. It leaves every input completely unchanged — the output is always exactly the input. On the natural numbers, I_N(5) = 5, I_N(17) = 17, and so on for every element.\n\nPART 2 — One identity function per set.\nThe subscript names the set the identity acts on, so I_X and I_Y are different functions whenever X and Y differ: I_X : X → X and I_Y : Y → Y. Each has the same simple rule 'return the input', but on its own set. The identity function is always one-one and onto: distinct inputs give distinct (unchanged) outputs, and every element of X is hit by itself.\n\nPART 3 — Why it is the 'do nothing' function under composition.\nThe identity matters because composing any function f : X → Y with the matching identity changes nothing: f ∘ I_X = f and I_Y ∘ f = f. It plays the same role for composition that 0 plays for addition or 1 plays for multiplication — a neutral element. This is exactly why the identity appears when we test whether one function undoes another: g undoes f precisely when the round trip g ∘ f returns every input unchanged, i.e. equals I_X.",
+      "keyMoves": [
+        "Apply the rule I_X(x) = x: the output is always exactly the input, unchanged",
+        "Match the subscript to the set — I_X acts on X, I_Y acts on Y; they are different functions",
+        "Use I_X as the 'do nothing' function under composition: f ∘ I_X = f and I_Y ∘ f = f"
+      ],
+      "misconceptions": [
+        "Confusing the identity function I_X(x) = x with the constant function (which sends every input to one fixed value)",
+        "Forgetting the identity is tied to a specific set, so I_X and I_Y are treated as the same function"
+      ],
+      "refreshers": [
+        {
+          "trigger": "The word \"function\" — a rule sending each input to exactly one output",
+          "surfacingQuestion": "The identity is a kind of function. Quick check so we're aligned: what does it mean for something to be a 'function' from X to Y?",
+          "ladder": [
+            "If you put one input in, how many outputs are you allowed to get back?",
+            "Can two different inputs send to the same output?",
+            "Can one input send to two different outputs at once?"
+          ],
+          "answer": "A function f : X → Y is a rule that assigns to EACH input x in X exactly one output f(x) in Y. Every input must get an output, and no input may have two outputs. (Two different inputs are allowed to share an output, but one input can never split into two.) The identity function obeys this with the simplest possible rule: f(x) = x.",
+          "returnCue": "Good — so a function just assigns one output to each input. The identity's rule is to hand the input straight back."
+        }
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "cbse12:mathematics:mathematics-ch01:relation-definition",
       "slug": "relation-definition",
       "title": "Define a relation as a subset of A x B",
@@ -59,7 +140,9 @@
           "returnCue": "So a relation is just one such choice of pairs out of A × B. Let's pick some and see."
         }
       ],
-      "prereqs": [],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch01:cartesian-product"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },
@@ -384,7 +467,8 @@
       ],
       "prereqs": [
         "cbse12:mathematics:mathematics-ch01:composition-of-functions",
-        "cbse12:mathematics:mathematics-ch01:bijective-function"
+        "cbse12:mathematics:mathematics-ch01:bijective-function",
+        "cbse12:mathematics:mathematics-ch01:identity-function"
       ],
       "sameConcept": [],
       "teachingInsights": []

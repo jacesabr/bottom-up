@@ -7,6 +7,34 @@
   "goal": "jee:maths:maths-ch07:apply-binomial-theorem",
   "nodes": [
     {
+      "id": "jee:maths:maths-ch07:principle-of-mathematical-induction",
+      "slug": "principle-of-mathematical-induction",
+      "title": "Prove a statement for all natural numbers by mathematical induction",
+      "role": "bedrock",
+      "brief": "Knock over an infinite line of dominoes with two facts: the first one falls, and each falling domino topples the next — this is the induction engine that later powers the proof of the binomial theorem.",
+      "sec": 1,
+      "quote": "The proof is obtained by applying principle of mathematical induction.",
+      "explanation": "PART 1 — What mathematical induction is.\nMathematical induction is a method for proving that a statement P(n) holds for every natural number n = 1, 2, 3, ... in one stroke, without checking each n separately. Picture an infinite line of dominoes labelled 1, 2, 3, .... If you knock over the first one, and the dominoes are spaced so that each one knocks over the next, then every domino falls. Induction packages exactly that idea into two parts: a base case and an inductive step.\n\nPART 2 — The base case.\nThe base case is the claim that P(1) is true — the very first statement holds. You prove it by direct substitution of n = 1 into P(n) and checking that both sides agree. This is the first domino actually falling; without it, nothing is set in motion, no matter how well the dominoes are spaced.\n\nPART 3 — The inductive step.\nThe inductive step is the claim that whenever P(k) is true for some natural number k, then P(k+1) is also true. You assume P(k) as a hypothesis and use it to derive P(k+1). This is the spacing guarantee: any domino that falls topples its neighbour. The assumption P(k) is called the inductive hypothesis — it is a temporary 'suppose' used only to reach P(k+1).\n\nPART 4 — Why the two parts together prove it for all n.\nOnce both parts hold, the conclusion follows for every natural number. P(1) is true by the base case. Then the inductive step turns P(1) into P(2), P(2) into P(3), and so on without end — every P(n) is reached by finitely many applications of the step starting from P(1). So P(n) is true for all n in N. Both parts are essential: the base case alone proves only one instance, and the inductive step alone proves nothing until some case is known to be true.",
+      "keyMoves": [
+        "Read the claim as a statement P(n) indexed by the natural number n",
+        "Prove the base case P(1) by direct substitution",
+        "Assume P(k) (the inductive hypothesis) and derive P(k+1) from it",
+        "Conclude that P(n) holds for every natural number n once both parts are established"
+      ],
+      "misconceptions": [
+        "Believing the base case alone proves the statement for all n (it proves only P(1))",
+        "Asserting P(k+1) without ever using the inductive hypothesis P(k), so nothing is actually proven (assuming what is to be proven)",
+        "Treating the inductive hypothesis P(k) as the final conclusion rather than a temporary assumption used to reach P(k+1)"
+      ],
+      "prereqs": [],
+      "source": {
+        "ref": "Principle of Mathematical Induction — base case and inductive step",
+        "url": "https://byjus.com/maths/principle-of-mathematical-induction/"
+      },
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch07:binomial-expansions-pattern",
       "slug": "binomial-expansions-pattern",
       "title": "Read off the term, power and coefficient patterns in a binomial expansion",
@@ -110,6 +138,7 @@
         "Letting the powers of a and b fail to sum to n in the general term"
       ],
       "prereqs": [
+        "jee:maths:maths-ch07:principle-of-mathematical-induction",
         "jee:maths:maths-ch07:binomial-coefficients-ncr",
         "jee:maths:maths-ch07:pascals-triangle-expand",
         "jee:maths:maths-ch07:binomial-expansions-pattern",

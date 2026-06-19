@@ -7,6 +7,32 @@
   "goal": "cbse12:mathematics:mathematics-ch09:solve-linear-de",
   "nodes": [
     {
+      "id": "cbse12:mathematics:mathematics-ch09:model-rate-of-change",
+      "slug": "model-rate-of-change",
+      "title": "Translate a rate statement into dX/dt = kX",
+      "role": "bedrock",
+      "brief": "Turn the verbal claim \"the rate of change of X is proportional to X\" into the equation dX/dt = kX.",
+      "sec": 2,
+      "quote": "the rate of growth of bacteria is proportional to the number present",
+      "explanation": "PART 1 — Read \"rate of change\" as a derivative with respect to time.\nWhen a word problem says \"the rate of change of a quantity X\" — how fast a population grows, how fast money accumulates, how fast a substance decays — that phrase means the time-derivative dX/dt. The independent variable is time t and the dependent variable is the quantity X(t) you are tracking. So \"the rate at which the bacteria count changes\" is written dN/dt, \"the rate at which the principal grows\" is written dP/dt, and \"the rate at which a radioactive mass decays\" is written dm/dt. Naming the quantity and writing its time-derivative is always the first move.\n\nPART 2 — Read \"is proportional to X\" as equals a constant times X.\nThe phrase \"A is proportional to B\" means A = k * B for some fixed constant of proportionality k. So \"the rate of change of X is proportional to X\" becomes dX/dt = k * X. The constant k is positive when the quantity grows (interest, an expanding population) and negative when it shrinks (radioactive decay, cooling) — \"decreases at a rate proportional to X\" gives dX/dt = -k*X with k > 0. A stated percentage rate fixes k directly: \"increases at 5% per year\" means the yearly rate is 5/100 of the current amount, so k = 5/100 and dP/dt = (5/100) P.\n\nPART 3 — Assemble the equation and name the constant.\nPut the two readings together: the left side is the time-derivative of the quantity, the right side is the proportionality constant times the quantity, giving dX/dt = kX. Write down what X means, what t measures, and what k is (its sign and, when given, its numerical value). This single equation is the model — the bridge from the English sentence to a mathematical object you can then solve. Worked translation: \"a bacterial culture grows at a rate proportional to the number N present\" becomes dN/dt = kN, k > 0, with t in hours and N the count.",
+      "keyMoves": [
+        "Write the phrase \"rate of change of X\" as the time-derivative dX/dt",
+        "Write \"is proportional to X\" as equals a constant times X (k times X)",
+        "Combine them into dX/dt = kX, fixing the sign and value of k from the wording"
+      ],
+      "misconceptions": [
+        "Writing the rate as proportional to t (or to a constant) instead of to the quantity X itself",
+        "Dropping the proportionality constant k, or giving k the wrong sign for a decreasing quantity"
+      ],
+      "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": [],
+      "source": {
+        "ref": "NCERT Class 12 Mathematics Part II, Ch. 9 Differential Equations, §9.4.1 Example 9 and Exercise 9.3 Q.19-22",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh203.pdf"
+      }
+    },
+    {
       "id": "cbse12:mathematics:mathematics-ch09:differential-equation",
       "slug": "differential-equation",
       "title": "Define a differential equation",
@@ -148,7 +174,8 @@
       ],
       "prereqs": [
         "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
-        "cbse12:mathematics:mathematics-ch09:general-solution"
+        "cbse12:mathematics:mathematics-ch09:general-solution",
+        "cbse12:mathematics:mathematics-ch09:model-rate-of-change"
       ],
       "sameConcept": [],
       "teachingInsights": []

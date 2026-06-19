@@ -7,6 +7,33 @@
   "goal": "jee:maths:maths-ch08:solve-geometric-progression-problems",
   "nodes": [
     {
+      "id": "jee:maths:maths-ch08:apply-laws-of-exponents",
+      "slug": "apply-laws-of-exponents",
+      "title": "Apply the laws of exponents (and solve by equating bases)",
+      "role": "bedrock",
+      "brief": "Combine and simplify powers of the same base with the product, power and quotient rules, then turn an equation like 4^(n-1) = 4^8 into the plain equation n-1 = 8.",
+      "sec": 1,
+      "explanation": "PART 1 — The product rule a^m * a^n = a^(m+n).\nWhen two powers of the SAME base are multiplied, keep the base and ADD the exponents, because you are stacking copies: 2^3 * 2^4 = (2*2*2)*(2*2*2*2) = 2^7. The exponents 3 and 4 add to 7 — you never add the bases.\n\nPART 2 — The power rule (a^m)^n = a^(mn).\nRaising a power to another power means MULTIPLYING the exponents, because the inner block is repeated n times: (5^2)^3 = 5^2 * 5^2 * 5^2 = 5^6, and indeed 2 * 3 = 6. Likewise (a^4)^2 = a^8.\n\nPART 3 — The quotient rule a^m / a^n = a^(m-n).\nDividing powers of the same base SUBTRACTS the exponents, because shared factors cancel: 2^7 / 2^4 = (2*2*2*2*2*2*2)/(2*2*2*2) = 2^3, and 7 - 4 = 3. The base stays the same; only the exponents change.\n\nPART 4 — Solving by equating bases.\nIf a^x = a^y with the same non-zero base a (a not 0 or 1), then the exponents must match: x = y. So 4^(n-1) = 4^8 forces n - 1 = 8, giving n = 9; and rewriting 256 as 2^8 turns 2^n = 256 into 2^n = 2^8, so n = 8.",
+      "keyMoves": [
+        "Multiply powers of the same base by keeping the base and adding the exponents (a^m * a^n = a^(m+n))",
+        "Raise a power to a power by multiplying the exponents ((a^m)^n = a^(mn))",
+        "Divide powers of the same base by subtracting the exponents (a^m / a^n = a^(m-n))",
+        "Solve an exponential equation by writing both sides with one base, then equating the exponents (a^x = a^y => x = y)"
+      ],
+      "misconceptions": [
+        "Adding the bases instead of the exponents (writing 2^3 * 2^4 as 4^7 rather than 2^7)",
+        "Thinking a^m * a^n equals a^(mn) instead of a^(m+n) (multiplying exponents on a product)",
+        "Failing to rewrite a number as a power of the shared base before equating exponents (leaving 256 instead of 2^8)"
+      ],
+      "prereqs": [],
+      "source": {
+        "ref": "NCERT / laws of exponents",
+        "url": "https://www.cuemath.com/algebra/exponent-rules/"
+      },
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch08:define-a-sequence",
       "slug": "define-a-sequence",
       "title": "Define a sequence as an ordered list given by a rule",
@@ -174,6 +201,7 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch08:identify-first-term-and-common-ratio",
+        "jee:maths:maths-ch08:apply-laws-of-exponents",
         "jee:maths:maths-ch07:state-binomial-theorem"
       ],
       "sameConcept": [],
@@ -199,6 +227,7 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch08:find-the-nth-term-of-a-gp",
+        "jee:maths:maths-ch08:apply-laws-of-exponents",
         "jee:maths:maths-ch08:form-a-series-with-sigma-notation"
       ],
       "sameConcept": [],
