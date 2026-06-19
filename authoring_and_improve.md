@@ -90,6 +90,15 @@ forbidden for authoring** (bad arithmetic — constraint #2). So: **Sonnet autho
 > Absorbs the old `continue_authoring.md` front matter. Newest status at the top; the detailed per-chapter
 > record is §G. Edit this section before you stop.
 
+### ▶▶▶ §A BRIDGE NODES — 17 AUTHORED + DB-verified (2026-06-19)
+The user chose **"author all bridge proposals."** Done: **17 new `role='bedrock'` bridge concepts across 9 chapters**, each a small grounded node (PARTS explanation, distinct brief, web-verified source) with a **full 5-gate set** authored to the DB under the ⛔ encoding contract, wired into its consumers' `prereqs`, reloaded via `load-content.ts` (toposort), and audited. Pilot (jee ch08) was validated end-to-end before the per-chapter fan-out.
+- **jee** ch03: `coordinate-plane-basics`, `circle-basics`, `pythagoras-theorem` · ch07: `principle-of-mathematical-induction` · ch08: `apply-laws-of-exponents` · ch11: `distance-formula-2d`, `pythagoras-theorem` · ch13: `grouped-data-vocabulary`, `grouped-median-formula`
+- **cbse12** ch01: `cartesian-product`, `identity-function` · ch02: `trig-ratios-and-standard-values`, `radian-measure`, `reciprocal-trig-identities`, `allied-angle-identities` · ch09: `model-rate-of-change` · ch10: `right-hand-rule`
+
+**Post-bridge corpus audit (DB):** **3236 authored gates · 0 null source · 0 mcq-bad · 0 mcq-correct-missing · 0 null rubric · 0 toposort order-violations** (every in-chapter prereq strictly upstream). **215 concepts carry refreshers** (212 + 3 new bridge refreshers — the [load-content.ts](tools/load-content.ts) durability guard preserved all existing refreshers across the 8 reloads, validated). All 17 bridges: found, `role=bedrock`, exactly 5 gates each. content.json bridge nodes + prereq wiring committed (master `51d7bcd`); gates live in the DB.
+
+> **⚠ ACTIVATION NOTE.** The bridges are in the DB + committed but the LIVE app serves them only after the API process refreshes its in-memory content cache. There is **NO `/api/admin/reload` HTTP route** (the old gotcha below is STALE — it 404s; `invalidateContentCache()` in `content-cache.ts` is not exposed over HTTP). The cache refreshes on **API restart**, which on the free Render tier happens automatically on the next cold-start after idle. **Consequence to weigh:** adding a required node means an in-progress learner whose chapter was "complete" reverts to incomplete until they pass the new bridge (correct bottom-up behaviour, but a visible progress change). To activate deliberately: trigger a Render deploy of `bottom-up-api` (restart → fresh cache).
+
 ### ▶▶ PHASE-2 — source + refresher + §A sweep COMPLETE (2026-06-19, DB-verified)
 **Final corpus audit (DB, all `kind='authored'`):** **3151 gates · 0 null source · 0 social/junk source · 0 mcq encoding defects · 0 null sketch/explain rubrics.** Refreshers: **212 concepts populated (0 malformed — every item has all 5 keys), up from 6 at run start.** All **41 maths chapters** (cbse10 jemh101–114, cbse12 ch01–13, jee ch01–14) now have every authored gate carrying ≥1 WebFetch-verified authoritative source, and a generous tutor-private refresher set on first-using bedrock concepts. §A prereq sweep run on every chapter (reports captured in `phase2/dossiers/` for cloud chapters; in agent transcripts for local).
 
@@ -747,7 +756,12 @@ node_modules/.bin/vite                   # web on :5173
   `VITE_API_URL=https://bottom-up-api.onrender.com/api`.
 - **Deploys don't auto-trigger** (no repo webhook). After `git push`:
   `curl -X POST .../v1/services/{id}/deploys -H "Authorization: Bearer $RENDER_API_KEY" -d '{}'`.
-- After `load-content.ts` against prod, clear the in-memory content cache: `POST /api/admin/reload`.
+- After `load-content.ts` against prod, the in-memory content cache must refresh to serve the changes.
+  **⚠ CORRECTION (2026-06-19): there is NO `POST /api/admin/reload` route — it 404s.** `invalidateContentCache()`
+  exists in `src/core/content-cache.ts` but is **not exposed over HTTP**. The cache only refreshes on **API
+  process restart** (free tier: automatically on the next cold-start after idle; or trigger a Render deploy of
+  `bottom-up-api` to restart on demand). *(TODO worth adding: an authenticated admin route that calls
+  `invalidateContentCache()` + `invalidatePapersCache()` so content changes can go live without a restart.)*
 
 ---
 
