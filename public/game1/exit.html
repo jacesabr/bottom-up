@@ -614,7 +614,6 @@ async function submitMath(raw) {
     mathAttempts++;
     blip(180, 0.18, 'sawtooth', 0.08);
     await addLine('Incorrect.', 'error lockout');
-    if (mathAttempts >= 2 && currentGate.hint) await addLine('hint: ' + currentGate.hint, 'system lockout');
   }
   running = false;
   refreshCommands();
@@ -794,7 +793,7 @@ const flow = {
   '-1': { hint: 'press Enter to begin' },
   '0':  { hint: 'move barrel' },
   '1':  { hint: 'enter tunnel' },
-  '2':  { hint: '' },              // no hint — staying is an easter egg, a choice
+  '2':  { hint: 'leave' },         // nudge to escape; staying is the hidden choice
   '3':  { hint: 'light a match' },
   '4':  { hint: 'look' },
   '5':  { hint: 'get on boat' },
@@ -807,7 +806,7 @@ function refreshCommands() {
   if (awaitingMath) {
     cmdInput.disabled = false;
     cmdInput.placeholder = 'type the answer, then Enter...';
-    setHint(currentGate && currentGate.hint ? currentGate.hint : '');
+    setHint('');                  // no hints on the math questions
     cmdInput.focus();
     return;
   }
@@ -835,8 +834,9 @@ cmdInput.addEventListener('keydown', async (e) => {
   if (e.key === 'Enter') {
     const val = cmdInput.value.trim();
     cmdInput.value = '';
-    if (awaitingMath) await submitMath(val);   // answering the lockout
-    else await runCommand(val);
+    if (awaitingMath) { await submitMath(val); return; }   // answering the lockout
+    if (val === '' && gamePhase !== -1) return;            // ignore stray empty Enters
+    await runCommand(val);
   } else if (e.key.length === 1) {
     tick(0.9);                       // typewriter click as you type
   }
