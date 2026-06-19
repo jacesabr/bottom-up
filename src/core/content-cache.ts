@@ -12,6 +12,7 @@ type Concept = typeof conceptsTable.$inferSelect;
 
 let chaptersCache: Chapter[] | null = null;
 let conceptsByChapter: Map<string, Concept[]> | null = null;
+let conceptsById: Map<string, Concept> | null = null; // O(1) single-concept lookup (ids are unique PKs)
 let loading: Promise<void> | null = null;
 
 async function ensureLoaded(): Promise<void> {
@@ -23,14 +24,17 @@ async function ensureLoaded(): Promise<void> {
         db.select().from(conceptsTable),
       ]);
       const byChapter = new Map<string, Concept[]>();
+      const byId = new Map<string, Concept>();
       for (const c of cons) {
         const arr = byChapter.get(c.chapterId) ?? [];
         arr.push(c);
         byChapter.set(c.chapterId, arr);
+        byId.set(c.id, c);
       }
       for (const arr of byChapter.values()) arr.sort((a, b) => a.order - b.order);
       chaptersCache = chs;
       conceptsByChapter = byChapter;
+      conceptsById = byId;
     })().finally(() => {
       loading = null;
     });
@@ -41,6 +45,7 @@ async function ensureLoaded(): Promise<void> {
 export function invalidateContentCache(): void {
   chaptersCache = null;
   conceptsByChapter = null;
+  conceptsById = null;
 }
 
 // Pedagogical chapter order = (school year, chapter number). The JEE corpus mixes Class 11 chapters
@@ -87,12 +92,8 @@ export async function getConceptsForChapter(chapterId: string): Promise<Concept[
   return conceptsByChapter!.get(chapterId) ?? [];
 }
 
-/** Look up a single concept by id (used to title weak-concept review links). */
+/** Look up a single concept by id (used to title weak-concept review links). O(1) via conceptsById. */
 export async function getConceptById(conceptId: string): Promise<Concept | undefined> {
   await ensureLoaded();
-  for (const arr of conceptsByChapter!.values()) {
-    const found = arr.find((c) => c.id === conceptId);
-    if (found) return found;
-  }
-  return undefined;
+  return conceptsById!.get(conceptId);
 }

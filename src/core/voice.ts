@@ -98,7 +98,12 @@ export type TtsProvider = 'elevenlabs' | 'sarvam' | 'deepgram';
  * `force` pins a single provider (the testing toggle); if it yields nothing we fall back to the
  * language default so the learner still hears the reply. Returns null → client uses browser TTS.
  */
-export async function synthesize(text: string, langCode: string, force?: TtsProvider): Promise<TtsResult | null> {
+export async function synthesize(
+  text: string,
+  langCode: string,
+  force?: TtsProvider,
+  strict = false
+): Promise<TtsResult | null> {
   const isEnglish = langCode === 'en';
   const byName: Record<TtsProvider, () => Promise<TtsResult | null>> = {
     elevenlabs: () => elevenTTS(text),
@@ -108,7 +113,11 @@ export async function synthesize(text: string, langCode: string, force?: TtsProv
   if (force && byName[force]) {
     const forced = await byName[force]();
     if (forced) return forced;
-    // forced provider unavailable/failed — fall through to the default chain.
+    // strict: the caller PINNED this provider for voice CONSISTENCY across a multi-chunk reply — do
+    // NOT silently swap to another vendor's voice mid-utterance (that made consecutive items sound
+    // like different narrators). Return null so the client re-reads just this chunk with the browser.
+    if (strict) return null;
+    // non-strict (e.g. the testing toggle): forced provider failed — fall through to the default chain.
   }
   const chain: Array<() => Promise<TtsResult | null>> = isEnglish
     ? [byName.elevenlabs, byName.deepgram, byName.sarvam]

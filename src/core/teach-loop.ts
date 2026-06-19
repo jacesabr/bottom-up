@@ -505,8 +505,21 @@ async function passedGateIds(learnerId: string, conceptId: string): Promise<Set<
 /** Pose the NEXT uncleared gate in the set (expected/answer never serialised). */
 export async function poseGate(learnerId: string, conceptId: string, track: Track = 'foundation') {
   const set = await gateSet(conceptId, track);
-  if (!set.length) throw new Error(`No gate for concept ${conceptId}`);
   const c = await loadConcept(conceptId);
+  if (!set.length) {
+    // Teach-only node (no gate authored): completing the teaching IS the pass. Don't crash the learner
+    // with a 500 — mark it passed AND log a 'missing_gate' flag so a node that's missing its gate by
+    // mistake can be found and fixed (it surfaces in the admin events feed).
+    await passNode(learnerId, conceptId, c.chapterId);
+    await db.insert(buEvent).values({
+      learnerId,
+      conceptId,
+      chapterId: c.chapterId,
+      type: 'missing_gate',
+      payload: { track },
+    });
+    return { allPassed: true, total: 0, passedCount: 0 };
+  }
   const passed = await passedGateIds(learnerId, conceptId);
 
   const remaining = set.filter((g) => !passed.has(g.id));

@@ -135,7 +135,9 @@ export default function NodeDetails({
               {(() => {
                 const parsed = parseParts(d.concept.explanation);
                 if (!parsed) {
-                  return <p className="d-explain"><MathText>{d.concept.explanation}</MathText></p>;
+                  return d.concept.explanation.split('\n\n').map((para: string, i: number) => (
+                    <p key={i} className="d-explain"><MathText>{para}</MathText></p>
+                  ));
                 }
                 return (
                   <div className="d-parts">

@@ -40,7 +40,7 @@ export async function computeAvailability(learnerId: string, chapterId: string):
   const performanceMap = new Map(performance.map(p => [p.conceptId, p]));
 
   // Compute status for each concept
-  const states = concepts.map(concept => {
+  const states: NodeState[] = concepts.map(concept => {
     const perf = performanceMap.get(concept.id);
 
     if (perf && perf.status === 'passed') {
@@ -55,11 +55,11 @@ export async function computeAvailability(learnerId: string, chapterId: string):
 
     if (perf) {
       // Learner has entered this node
-      return { conceptId: concept.id, status: perf.status };
+      return { conceptId: concept.id, status: perf.status as NodeStatus };
     }
 
     // Node not started: available if all prereqs passed
-    return { conceptId: concept.id, status: allPrereqsPassed ? 'available' : 'locked' };
+    return { conceptId: concept.id, status: (allPrereqsPassed ? 'available' : 'locked') as NodeStatus };
   });
 
   return states;

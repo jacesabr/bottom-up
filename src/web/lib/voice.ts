@@ -167,7 +167,11 @@ export function stripForSpeech(text: string): string {
   for (const [re, rep] of sym) t = t.replace(re, rep);
 
   // 7) Inline arithmetic operators between operands (multiplication handled up front in step 0).
-  t = t.replace(/(\d)\s*[xX]\s*(?=\d)/g, '$1 times '); // "2 x 2" — literal letter x between numbers → times
+  t = t.replace(/(\d)\s*[xX]\s*(?=\d)/g, '$1 times '); // "2x2" / "2 x 2" — x between numbers → times
+  // "a x b" / "3 x n" / "n x 2": a SPACE-flanked literal x with at least one LETTER operand → times.
+  // Operands are kept atomic (a whole number or a single letter) and spaces are required on BOTH
+  // sides, so prose like "the x value", "x and y", or "box x ray" is never mistaken for a product.
+  t = t.replace(/(^|[^A-Za-z])([A-Za-z]|\d+)\s+[xX]\s+(\d+|[A-Za-z])(?![A-Za-z])/g, '$1$2 times $3');
   t = t.replace(/([0-9a-zA-Z)\]])\s*\/\s*([0-9a-zA-Z(\[])/g, '$1 over $2'); // a/b → a over b
   t = t.replace(/([0-9a-zA-Z)\]])\s*\+\s*([0-9a-zA-Z(\[])/g, '$1 plus $2'); // x + 2 → x plus 2
   t = t.replace(/([0-9a-zA-Z)\]])\s*=\s*([0-9a-zA-Z(\[-])/g, '$1 equals $2'); // x=2 → x equals 2
@@ -327,6 +331,7 @@ export type SpeakSegment = {
   speechLang: string; // BCP-47 code for browser fallback
   onStart?: () => void; // called just before this segment begins playing
   pauseAfterMs?: number; // extra silence after this segment (default 200) — a beat to let a glow land
+  audioUrl?: string; // pre-recorded clip to play INSTEAD of live TTS (fixed strings like the language invites)
 };
 
 /**
@@ -338,28 +343,80 @@ export async function speakSequence(segments: SpeakSegment[], apiBase: string, p
   stopSpeaking();
   const myGen = speakGen;
 
-  // Synthesise EVERY chunk up front, in parallel, before playing any. Doing the TTS requests
-  // concurrently (rather than one segment at a time, in series) means the only gaps the listener
-  // hears between segments are the intended pauseAfterMs beats — not network/synthesis latency.
-  // onStart still fires at PLAY time (below), so glows stay in sync with the spoken word.
-  const prepared = segments.map((seg) => {
-    const chunks = chunkForSpeech(stripForSpeech(seg.text), 240);
-    const audio = chunks.map((c) =>
-      fetch(`${apiBase}/tts`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: c, lang: seg.lang, provider }),
+  // Voice CONSISTENCY: pin ONE provider per language for the whole sequence. Each /tts call would
+  // otherwise independently run the server's fallback chain, and under the concurrent prefetch below
+  // a transient rate-limit on the primary vendor makes some chunks fall through to a DIFFERENT
+  // vendor's voice — which is why "every pop-out item used a different voice". We learn the provider
+  // from the first chunk of a language, then force it (strict) for that language's remaining chunks so
+  // the voice can't change mid-flow. Different LANGUAGES still get their own best voice (by design).
+  const pinnedByLang: Record<string, string | undefined> = {};
+  const synth = (text: string, segLang: string): Promise<{ b64: string; mime?: string } | null> => {
+    const pin = provider || pinnedByLang[segLang];
+    return fetch(`${apiBase}/tts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, lang: segLang, provider: pin, strict: !!pin }),
+    })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.provider && !provider && !pinnedByLang[segLang]) pinnedByLang[segLang] = d.provider;
+        return d?.audioBase64 ? { b64: d.audioBase64 as string, mime: d.mime as string | undefined } : null;
       })
-        .then((r) => r.json())
-        .then((d) => (d?.audioBase64 ? { b64: d.audioBase64 as string, mime: d.mime as string | undefined } : null))
-        .catch(() => null)
-    );
-    return { seg, chunks, audio };
-  });
+      .catch(() => null);
+  };
 
-  for (const { seg, chunks, audio } of prepared) {
+  // Chunk each LIVE segment. Segments with a pre-recorded `audioUrl` play that fixed clip instead —
+  // fixed strings (the language invites) never re-synthesise, so they never vary in voice run-to-run.
+  const prepared = segments.map((seg) => ({
+    seg,
+    chunks: seg.audioUrl ? [] : chunkForSpeech(stripForSpeech(seg.text), 240),
+  }));
+
+  // Seed the per-language pin from the FIRST live chunk (awaited) so the concurrent prefetch that
+  // follows reuses one voice per language instead of racing the fallback chain. An explicit
+  // `provider` (the testing toggle) is already a pin, so seeding is skipped then.
+  const seeded = new Map<string, Promise<{ b64: string; mime?: string } | null>>();
+  if (!provider) {
+    const fi = prepared.findIndex((p) => p.chunks.length > 0);
+    if (fi >= 0) {
+      seeded.set(`${fi}:0`, Promise.resolve(await synth(prepared[fi].chunks[0], prepared[fi].seg.lang)));
+      if (myGen !== speakGen) return;
+    }
+  }
+
+  // Prefetch all remaining live chunks concurrently (the voice is pinned now), reusing the seed.
+  const withAudio = prepared.map((p, pIdx) => ({
+    seg: p.seg,
+    chunks: p.chunks,
+    audio: p.chunks.map((c, cIdx) => seeded.get(`${pIdx}:${cIdx}`) ?? synth(c, p.seg.lang)),
+  }));
+
+  for (const { seg, chunks, audio } of withAudio) {
     if (myGen !== speakGen) return;
     seg.onStart?.();
+
+    // Pre-recorded clip: play the fixed file; if it can't load, fall back to live TTS of the text.
+    if (seg.audioUrl) {
+      const a = new Audio(seg.audioUrl);
+      currentAudio = a;
+      const played = await playToEnd(a);
+      if (myGen !== speakGen) return;
+      if (!played) {
+        const d = await synth(seg.text, seg.lang);
+        if (myGen !== speakGen) return;
+        if (d) {
+          const fa = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.b64}`);
+          currentAudio = fa;
+          if (!(await playToEnd(fa))) await browserSpeakOne(stripForSpeech(seg.text), seg.speechLang, myGen);
+        } else {
+          await browserSpeakOne(stripForSpeech(seg.text), seg.speechLang, myGen);
+        }
+        if (myGen !== speakGen) return;
+      }
+      if (myGen === speakGen) await new Promise((r) => setTimeout(r, seg.pauseAfterMs ?? 200));
+      continue;
+    }
+
     if (chunks.length === 0) continue;
     for (let i = 0; i < chunks.length; i++) {
       if (myGen !== speakGen) return;
@@ -375,8 +432,11 @@ export async function speakSequence(segments: SpeakSegment[], apiBase: string, p
         else { await browserSpeakOne(chunks[i], seg.speechLang, myGen); ok = true; }
       }
       if (!ok) {
-        if (myGen === speakGen) speak(chunks.slice(i).join(' '), seg.speechLang);
-        return;
+        // Server produced nothing for THIS chunk (e.g. the pinned voice transiently rate-limited).
+        // Read just this chunk with the browser and keep going, so one miss never drops the rest of
+        // the explanation or swaps the whole tail onto a different cloud voice.
+        await browserSpeakOne(chunks[i], seg.speechLang, myGen);
+        if (myGen !== speakGen) return;
       }
       if (myGen === speakGen && i < chunks.length - 1)
         await new Promise((r) => setTimeout(r, 140));
@@ -399,6 +459,9 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
   // Smaller, ~1–2 sentence chunks: a native voice (ElevenLabs/Deepgram) reads them cleanly and a
   // dropped chunk can never lose a whole paragraph. Sentence boundaries also give natural pauses.
   const chunks = chunkForSpeech(clean, 240);
+  // Pin the provider after the first chunk so every chunk of this reply is the SAME voice (the server
+  // would otherwise re-run its fallback chain per chunk and could swap vendors mid-reply).
+  let pinned = provider || undefined;
 
   for (let i = 0; i < chunks.length; i++) {
     if (myGen !== speakGen) return; // superseded by a newer utterance / stop
@@ -407,10 +470,11 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
       const res = await fetch(`${apiBase}/tts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: chunks[i], lang: langCode, provider }),
+        body: JSON.stringify({ text: chunks[i], lang: langCode, provider: pinned, strict: !!pinned }),
       });
       const d = await res.json();
       if (myGen !== speakGen) return;
+      if (!pinned && d?.provider) pinned = d.provider; // lock the voice for the remaining chunks
       if (d?.audioBase64) {
         const audio = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.audioBase64}`);
         currentAudio = audio;
@@ -428,9 +492,17 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
       /* fall through to browser */
     }
     if (!ok) {
-      // Server returned no audio — read the remaining (already-clean) text with the browser voice.
-      if (myGen === speakGen) speak(chunks.slice(i).join(' '), speechLang);
-      return;
+      if (pinned) {
+        // A provider is pinned (the voice is otherwise working) but this chunk came back empty — read
+        // just this chunk with the browser and continue, so one transient miss neither drops the rest
+        // of the reply nor swaps its voice to a different cloud vendor.
+        await browserSpeakOne(chunks[i], speechLang, myGen);
+        if (myGen !== speakGen) return;
+      } else {
+        // No cloud voice produced anything at all — read the remaining clean text with the browser.
+        if (myGen === speakGen) speak(chunks.slice(i).join(' '), speechLang);
+        return;
+      }
     }
     // A short rest between chunks so sentences/paragraphs don't run together.
     if (myGen === speakGen && i < chunks.length - 1) await new Promise((r) => setTimeout(r, 140));

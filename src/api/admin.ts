@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { db } from '../db/index.js';
 import { users, buEvent, buGateAttempt, buLlmCall, buNodePerformance, buVisit } from '../db/schema.js';
 import { sql, eq, and, desc } from 'drizzle-orm';
-import { getConceptById } from '../core/content-cache.js';
+import { getConceptById, invalidateContentCache } from '../core/content-cache.js';
 
 /**
  * Admin panel API — read-only operator views, gated by HTTP Basic auth (ADMIN_USER/ADMIN_PASSWORD).
@@ -24,6 +24,13 @@ router.use((req, res, next) => {
   }
   res.setHeader('WWW-Authenticate', 'Basic realm="bottom-up admin"');
   return res.status(401).json({ error: 'Auth required' });
+});
+
+// Clear the in-memory content cache after a re-import (tools/load-content.ts) — pick up new/edited
+// nodes WITHOUT a server restart. Behind admin Basic auth (above), never a public endpoint.
+router.post('/reload', (_req, res) => {
+  invalidateContentCache();
+  res.json({ ok: true, message: 'Content cache cleared — next request re-reads from DB.' });
 });
 
 // Headline numbers + LLM-call breakdown by provider/model (the NIM-vs-Haiku usage picture).
