@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { recordLlmCall } from './llm-log.js';
+import { MODELS } from './models.js';
 
 /**
  * ModelRouter — model policy (2026-06-20, user directive):
@@ -52,17 +53,11 @@ function asLlmUnavailable(err: unknown): LlmUnavailableError {
 }
 
 const NIM_BASE = process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1';
-// meta/llama-3.3-70b-instruct: non-reasoning, returns clean JSON in `content` (the nemotron
-// "super" reasoning models strand content as null with json_object on NIM). Fast + warm for tutoring.
-const NIM_MODEL = process.env.MODEL_NODE_NIM || 'meta/llama-3.3-70b-instruct';
-const HAIKU_MODEL = process.env.MODEL_NODE || 'claude-haiku-4-5-20251001';
-// Translation needs a strong multilingual model (NIM is weak on Indian languages). Claude Haiku by
-// default; set MODEL_TRANSLATE=claude-sonnet-4-6 for top quality.
-const TRANSLATE_MODEL = process.env.MODEL_TRANSLATE || 'claude-haiku-4-5-20251001';
+// All model ids live in ./models.ts (MODELS) — the single place to swap a model. Live = NIM.
 
-/** Strong-model completion for translation (Claude). Returns plain text. */
+/** Claude completion for translation (opt-in only; the live translate path uses Sarvam/Google/NIM). */
 export async function claudeTranslate(messages: ChatMessage[], maxTokens = 1000): Promise<string> {
-  return claudeComplete(messages, maxTokens, TRANSLATE_MODEL, 'translate');
+  return claudeComplete(messages, maxTokens, MODELS.claude, 'translate');
 }
 
 export function resolveProvider(): Provider {
@@ -137,7 +132,7 @@ async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boo
     const res = await axios.post(
       `${NIM_BASE}/chat/completions`,
       {
-        model: NIM_MODEL,
+        model: MODELS.text,
         messages,
         temperature: 0.6,
         max_tokens: maxTokens,
@@ -151,13 +146,13 @@ async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boo
     const content = res.data?.choices?.[0]?.message?.content;
     if (!content || !String(content).trim()) throw new Error('Empty NIM content');
     recordLlmCall({
-      provider: 'nvidia', model: NIM_MODEL, purpose: 'tutor', messages,
+      provider: 'nvidia', model: MODELS.text, purpose: 'tutor', messages,
       response: String(content), ms: Date.now() - t0,
       promptTokens: res.data?.usage?.prompt_tokens, completionTokens: res.data?.usage?.completion_tokens,
     });
     return String(content);
   } catch (err) {
-    recordLlmCall({ provider: 'nvidia', model: NIM_MODEL, purpose: 'tutor', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
+    recordLlmCall({ provider: 'nvidia', model: MODELS.text, purpose: 'tutor', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
     throw asLlmUnavailable(err);
   }
 }
@@ -169,7 +164,7 @@ async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boo
 export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens = 400): Promise<string> {
   const key = process.env.NVIDIA_API_KEY;
   if (!key) throw new Error('NVIDIA_API_KEY missing');
-  const model = process.env.MODEL_VISION || 'nvidia/nemotron-nano-12b-v2-vl';
+  const model = MODELS.vision;
   const messages = [
     {
       role: 'user',
@@ -199,15 +194,10 @@ export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens =
   }
 }
 
-// Authoring model. Bulk/default stays cheap (Haiku) per the cost rule, but CURATED authoring of the
-// first nodes uses a frontier model (Opus) for correct maths + phrasing — set MODEL_AUTHOR or pass a
-// model to claudeAuthor(). This is deliberate, small-batch, human-in-the-loop authoring — NOT teaching
-// traffic and NOT a test suite, so it does not violate the "never a test suite on Haiku" rule.
-const AUTHOR_MODEL = process.env.MODEL_AUTHOR || HAIKU_MODEL;
-
-/** Author a JSON completion. Defaults to the configured author model (Haiku); pass a model to override
- *  (e.g. 'claude-opus-4-8' for curated first-node authoring). */
-export async function claudeAuthor(messages: ChatMessage[], maxTokens = 2000, model: string = AUTHOR_MODEL): Promise<string> {
+/** Author a JSON completion (offline curated-authoring tools only — NOT teaching traffic, NOT a test
+ *  suite). Defaults to MODELS.claude; pass a model to override (e.g. 'claude-opus-4-8' for curated
+ *  first-node authoring) or set MODEL_AUTHOR / MODEL_CLAUDE. Small-batch, human-in-the-loop. */
+export async function claudeAuthor(messages: ChatMessage[], maxTokens = 2000, model: string = MODELS.claude): Promise<string> {
   return claudeComplete(messages, maxTokens, model, 'author');
 }
 
@@ -234,24 +224,24 @@ export async function claudeVision(
   try {
     const res = await axios.post(
       'https://api.anthropic.com/v1/messages',
-      { model: HAIKU_MODEL, max_tokens: maxTokens, system: systemPrompt, messages },
+      { model: MODELS.claudeVision, max_tokens: maxTokens, system: systemPrompt, messages },
       { headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'Content-Type': 'application/json' }, timeout: 40_000 }
     );
     const text = res.data?.content?.[0]?.text;
     if (!text) throw new Error('Empty Claude vision content');
     recordLlmCall({
-      provider: 'claude', model: HAIKU_MODEL, purpose: 'figure',
+      provider: 'claude', model: MODELS.claudeVision, purpose: 'figure',
       messages: [{ role: 'system', content: systemPrompt }, ...messages], response: String(text), ms: Date.now() - t0,
       promptTokens: res.data?.usage?.input_tokens, completionTokens: res.data?.usage?.output_tokens,
     });
     return String(text);
   } catch (err) {
-    recordLlmCall({ provider: 'claude', model: HAIKU_MODEL, purpose: 'figure', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
+    recordLlmCall({ provider: 'claude', model: MODELS.claudeVision, purpose: 'figure', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
     throw err;
   }
 }
 
-async function claudeComplete(messages: ChatMessage[], maxTokens: number, model: string = HAIKU_MODEL, purpose = 'tutor'): Promise<string> {
+async function claudeComplete(messages: ChatMessage[], maxTokens: number, model: string = MODELS.claude, purpose = 'tutor'): Promise<string> {
   const key = process.env.ANTHROPIC_API_KEY;
   if (!key) throw new Error('ANTHROPIC_API_KEY missing');
   const system = messages.filter((m) => m.role === 'system').map((m) => m.content).join('\n\n');
