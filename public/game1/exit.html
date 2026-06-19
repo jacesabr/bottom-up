@@ -896,52 +896,64 @@ function sceneDungeon() {
 function archTunnel(bright) {
   const r = rng(13);
   clearScene(0);
-  // faint brick suggestion
-  dither(0, 0, SW, SH, 1, 0.05, r);
-  // arch — outer ring bright, inner black
-  const cx = SW / 2, cy = SH - 6, ro = 78, ri = 60;
-  for (let y = -ro; y <= 0; y++) for (let x = -ro; x <= ro; x++) {
-    const d = Math.hypot(x, y);
-    if (d <= ro && d >= ri) dot(cx + x, cy + y, bright ? 3 : 2);
-    else if (d < ri) dot(cx + x, cy + y, 0);
+  // brick wall, lit (the subject is the dark opening cut into it)
+  const bw = 18, bh = 9;
+  for (let row = 0; row * bh < SH; row++) {
+    const off = (row % 2) * (bw / 2);
+    for (let col = -1; col * bw < SW + bw; col++) {
+      const x = col * bw + off, y = row * bh;
+      fillRect(x + 1, y + 1, bw - 2, bh - 2, r() < 0.45 ? (bright ? 2 : 1) : 1);
+    }
   }
-  // inner glow gradient
-  for (let y = -ri; y <= 0; y++) for (let x = -ri; x <= ri; x++) {
-    const d = Math.hypot(x, y);
-    if (d < ri && r() < (1 - d / ri) * (bright ? 0.5 : 0.2)) dot(cx + x, cy + y, bright ? 2 : 1);
+  // dark arched opening: semicircle on top of a rectangle, with a glowing rim
+  const cx = SW / 2, topY = 22, botY = SH - 4, ro = 56;
+  for (let y = topY; y <= botY; y++) {
+    const half = (y < topY + ro)
+      ? Math.sqrt(Math.max(0, ro * ro - (y - (topY + ro)) * (y - (topY + ro))))
+      : ro;
+    fillRect(cx - half - 3, y, 3, 1, bright ? 4 : 3);   // bright rim
+    fillRect(cx + half, y, 3, 1, bright ? 4 : 3);
+    fillRect(cx - half, y, half * 2, 1, 0);             // dark interior
   }
-  // floor
-  for (let y = SH - 8; y < SH; y += 2) for (let x = (y % 4); x < SW; x += 4) dot(x, y, 1);
+  // faint glow deep inside the tunnel
+  for (let y = botY - 34; y < botY; y++) for (let x = cx - 22; x < cx + 22; x++) {
+    if (r() < 0.07) dot(x, y, r() < 0.5 ? 1 : 2);
+  }
 }
 
 function sceneFriend() {
   const r = rng(21);
   clearScene(0);
-  // bright circular tunnel-mouth light, upper-centre
-  const cx = SW / 2 + 6, cy = 46, R = 44;
+  // dark, ragged tunnel walls
+  dither(0, 0, SW, SH, 1, 0.10, r);
+  dither(0, 0, SW, SH, 2, 0.035, r);
+  // bright circular tunnel-mouth light behind the figure
+  const cx = SW * 0.5, cy = 54, R = 46;
   for (let y = -R; y <= R; y++) for (let x = -R; x <= R; x++) {
     const d = Math.hypot(x, y) / R;
-    if (d <= 1) { const c = d < 0.4 ? 4 : d < 0.7 ? 3 : 2; if (r() > d * 0.5) dot(cx + x, cy + y, c); }
+    if (d <= 1) { const c = d < 0.45 ? 4 : d < 0.75 ? 3 : 2; if (r() > d * 0.45) dot(cx + x, cy + y, c); }
   }
-  // ragged tunnel walls framing the light
-  dither(0, 0, SW, SH, 1, 0.06, r);
-  // crouched friend silhouette in front of the light (black)
-  const fx = cx - 6, fy = cy - 2;
-  fillRect(fx - 8, fy + 6, 30, 50, 0);       // body mass
-  fillRect(fx, fy - 8, 14, 14, 0);           // head
-  fillRect(fx - 14, fy + 30, 44, 30, 0);     // base/ground shadow
-  fillRect(fx + 18, fy + 16, 16, 8, 0);      // outstretched arm
+  // crouched figure silhouette (dark): bowed head, hunched back, knees drawn up
+  const fx = cx, fy = cy + 4;
+  for (let y = -7; y <= 0; y++) for (let x = -5; x <= 5; x++) if (x * x / 26 + y * y / 50 <= 1) dot(fx + x, fy - 15 + y, 0); // head
+  for (let y = 0; y < 24; y++) { const w = 11 - Math.round(y * 0.12); fillRect(fx - w, fy - 7 + y, w * 2, 1, 0); }            // hunched body
+  fillRect(fx - 15, fy + 11, 30, 11, 0);                                                                                       // knees/legs
+  for (let x = -28; x <= 28; x++) if (r() < 0.8) dot(fx + x, fy + 22 + (r() < 0.4 ? 1 : 0), 0);                                // ground
 }
 
 function sceneDark() {
   const r = rng(33);
   clearScene(0);
-  dither(0, 0, SW, SH, 1, 0.04, r);
-  // a few barely-there shapes
-  for (let i = 0; i < 5; i++) {
-    const x = 20 + r() * 180, y = 16 + r() * 80, w = 8 + r() * 22, h = 6 + r() * 14;
-    dither(x, y, x + w, y + h, 1, 0.5, r);
+  dither(0, 0, SW, SH, 1, 0.05, r);
+  // a faint glow low-centre, where your friend and the note are
+  const cx = SW / 2, cy = SH - 28;
+  for (let y = -32; y <= 22; y++) for (let x = -52; x <= 52; x++) {
+    const d = Math.hypot(x, y) / 52;
+    if (d < 1 && r() < (1 - d) * 0.16) dot(cx + x, cy + y, 1);
   }
+  // a barely-there hunched figure in that glow
+  for (let y = 0; y < 22; y++) { const w = 9 - Math.round(y * 0.1); for (let x = -w; x <= w; x++) if (r() < 0.5) dot(cx + x, cy - 6 + y, 1); }
+  for (let x = -4; x <= 4; x++) for (let y = -6; y <= 0; y++) if (r() < 0.45) dot(cx + x, cy - 14 + y, 1); // head
 }
 
 // tiny 3x5 pixel font, enough to letter the note
@@ -1000,72 +1012,101 @@ function sceneNote() {
 function sceneBeach() {
   const r = rng(55);
   clearScene(0);
-  fillRect(0, 0, SW, 40, 1);                  // sky band
-  dither(0, 0, SW, 40, 0, 0.3, r);
-  fillRect(0, 40, SW, 40, 2);                 // sea
-  dither(0, 40, SW, 80, 3, 0.18, r);          // glints
-  dither(0, 40, SW, 80, 0, 0.18, r);
-  fillRect(0, 80, SW, SH - 80, 1);            // sand
-  dither(0, 80, SW, SH, 2, 0.12, r);
-  // palm trees on the shoreline (dark silhouettes against sea + sky)
-  for (const [px, base] of [[24, 86], [SW - 28, 90], [54, 80]]) {
-    for (let i = 0; i < 30; i++) dot(px + Math.round(Math.sin(i / 8) * 3), base - i, 0);   // curved trunk
-    const tx = px + Math.round(Math.sin(30 / 8) * 3), tyTop = base - 29;                    // crown
+  const horizon = 44;
+  // hazy sky with a low sun
+  for (let y = 0; y < horizon; y++) for (let x = 0; x < SW; x++) {
+    const sun = 1 - Math.hypot(x - SW * 0.5, y - 4) / 110;
+    if (r() > 0.14) dot(x, y, sun > 0.6 ? 4 : sun > 0.32 ? 3 : 2);
+  }
+  // sea with a bright sun-glint path down the centre
+  for (let y = horizon; y < 84; y++) fillRect(0, y, SW, 1, 2);
+  for (let y = horizon; y < 84; y++) for (let x = 0; x < SW; x++) {
+    const path = Math.abs(x - SW * 0.5) < 14 ? 0.42 : 0.12;
+    if (r() < path) dot(x, y, 4); else if (r() < 0.12) dot(x, y, 1);
+  }
+  // wet sand foreground
+  for (let y = 84; y < SH; y++) fillRect(0, y, SW, 1, 1);
+  dither(0, 84, SW, SH, 2, 0.12, r);
+  // palm trees along the shore (dark silhouettes)
+  for (const [px, base] of [[26, 92], [SW - 30, 96], [60, 88]]) {
+    for (let i = 0; i < 30; i++) dot(px + Math.round(Math.sin(i / 8) * 3), base - i, 0);
+    const tx = px + Math.round(Math.sin(30 / 8) * 3), top = base - 29;
     for (let a = 0; a < 7; a++) {
       const ang = -0.7 + a * 0.28;
-      for (let i = 0; i < 18; i++) dot(tx + Math.cos(ang) * i * 1.5, tyTop + Math.sin(ang) * i * 1.5 + i * 0.22, 0);
+      for (let i = 0; i < 18; i++) dot(tx + Math.cos(ang) * i * 1.5, top + Math.sin(ang) * i * 1.5 + i * 0.22, 0);
     }
-    for (let i = 0; i < 4; i++) dot(tx + (i - 1.5) * 2, tyTop - 1 + (i % 2), 2);            // coconuts/glint
   }
-  // dark tunnel opening we crawl from (foreground frame, top)
-  for (let y = 0; y < 54; y++) { const w = 70 - y; fillRect(SW / 2 - w, 0, w * 2, 1, 0); }
-  fillRect(SW / 2 - 16, 0, 32, 54, 0);
 }
 
 function sceneBoat() {
   const r = rng(67);
   clearScene(0);
-  fillRect(0, 0, SW, 52, 1);                  // sky
-  fillRect(0, 52, SW, SH - 52, 2);            // water
-  dither(0, 52, SW, SH, 3, 0.16, r);
-  dither(0, 52, SW, SH, 0, 0.16, r);
-  // cliffs left & right (dark)
+  const wl = 70;                              // waterline
+  // sky
+  for (let y = 0; y < wl; y++) for (let x = 0; x < SW; x++) if (r() > 0.45) dot(x, y, y < 26 ? 2 : 3);
+  // water
+  for (let y = wl; y < SH; y++) fillRect(0, y, SW, 1, 2);
+  for (let y = wl; y < SH; y++) for (let x = 0; x < SW; x++) { if (r() < 0.12) dot(x, y, 3); else if (r() < 0.12) dot(x, y, 1); }
+  // dark headlands framing left & right
   for (let y = 0; y < SH; y++) {
-    const lw = Math.max(0, 64 - y * 0.7 + Math.sin(y / 6) * 4);
-    const rw = Math.max(0, 60 - (SH - y) * 0.4 + Math.cos(y / 5) * 5);
+    const lw = Math.max(0, 52 - y * 0.5 + Math.sin(y / 6) * 5);
+    const rw = Math.max(0, 46 - (SH - y) * 0.3 + Math.cos(y / 5) * 5);
     fillRect(0, y, lw, 1, 0); fillRect(SW - rw, y, rw, 1, 0);
   }
-  // boat silhouette centre
-  const bx = SW / 2, by = 78;
-  fillRect(bx - 26, by, 52, 10, 0);           // hull
-  fillRect(bx - 20, by + 10, 40, 4, 0);
-  fillRect(bx - 1, by - 34, 3, 34, 0);        // mast
-  for (let i = 0; i < 22; i++) dot(bx + 1 + i, by - 32 + i, 0); // boom/sail edge
-  fillRect(bx + 2, by - 30, 18, 24, 0);       // sail block
+  // sailboat, centred — tall mast, mainsail + jib, hull
+  const bx = SW / 2;
+  fillRect(bx - 1, wl - 42, 2, 42, 0);                                   // mast
+  for (let row = 0; row < 38; row++) fillRect(bx + 2, wl - 42 + row, Math.round(row * 0.62), 1, 0);     // mainsail
+  for (let row = 0; row < 26; row++) { const w = Math.round(row * 0.46); fillRect(bx - 2 - w, wl - 30 + row, w, 1, 0); } // jib
+  for (let i = 0; i < 7; i++) fillRect(bx - 22 + i * 1.5, wl + i, 44 - i * 3, 1, 0);                     // hull
+  for (let i = 0; i < 10; i++) if (r() < 0.55) fillRect(bx - 7, wl + 8 + i, 14, 1, 1);                   // reflection
 }
 
+// The escape ending: a ship sailing off toward a new world (palm island on the
+// horizon), hazy sky, open sea.
 function sceneIsland() {
   const r = rng(83);
   clearScene(0);
-  fillRect(0, 0, SW, 46, 2);                  // bright hazy sky
-  dither(0, 0, SW, 46, 3, 0.2, r);
-  fillRect(0, 46, SW, SH - 46, 2);            // sea
-  dither(0, 46, SW, SH, 0, 0.2, r);
-  // island land mass (dark) in the middle
-  for (let y = 38; y < 88; y++) {
-    const w = 70 - Math.abs(y - 60) * 1.1 + Math.sin(y / 4) * 4;
-    fillRect(SW / 2 - w, y, w * 2, 1, 0);
+  const horizon = 58;
+  // hazy sky — brightest around a low sun
+  for (let y = 0; y < horizon; y++) for (let x = 0; x < SW; x++) {
+    const sun = 1 - Math.hypot(x - SW * 0.4, y - 6) / 120;
+    const c = sun > 0.6 ? 4 : sun > 0.32 ? 3 : 2;
+    if (r() > 0.14) dot(x, y, c);
   }
-  // palm trees
-  const palms = [SW / 2 - 44, SW / 2 + 40, SW / 2 - 6];
-  for (const px of palms) {
-    for (let i = 0; i < 26; i++) dot(px + Math.round(Math.sin(i / 6) * 3), 70 - i, 0); // trunk
-    for (let a = 0; a < 6; a++) {                                                       // fronds
-      const ang = -0.4 + a * 0.32;
-      for (let i = 0; i < 16; i++) dot(px + Math.cos(ang) * i * 1.4, 44 + Math.sin(ang) * i * 1.4 + i * 0.2, 0);
+  // sea — banded with glints, a touch brighter at the horizon
+  for (let y = horizon; y < SH; y++) fillRect(0, y, SW, 1, (y - horizon) < 5 ? 3 : 2);
+  for (let y = horizon; y < SH; y++) for (let x = 0; x < SW; x++) {
+    if (r() < 0.09) dot(x, y, 4); else if (r() < 0.13) dot(x, y, 1);
+  }
+  // island silhouette sitting on the horizon (left of centre)
+  const iCx = SW * 0.30;
+  for (let y = horizon - 14; y <= horizon + 2; y++) {
+    const t = (y - (horizon - 14)) / 16;
+    const w = 30 + 34 * t;
+    fillRect(iCx - w / 2, y, w, 1, 0);
+  }
+  // palms on the island (dark against the bright sky)
+  for (const px of [iCx - 14, iCx + 1, iCx + 15]) {
+    const base = horizon - 11;
+    for (let i = 0; i < 20; i++) dot(px + Math.round(Math.sin(i / 7) * 2), base - i, 0);
+    const tx = px + Math.round(Math.sin(20 / 7) * 2), top = base - 19;
+    for (let a = 0; a < 6; a++) {
+      const ang = -0.7 + a * 0.3;
+      for (let i = 0; i < 12; i++) dot(tx + Math.cos(ang) * i * 1.4, top + Math.sin(ang) * i * 1.4 + i * 0.2, 0);
     }
   }
-  fillRect(0, 88, SW, SH - 88, 1);            // foreground sand/beach
+  // the ship, sailing away toward the island, with a wake trailing to the viewer
+  const sx = SW * 0.6, sy = horizon + 18;
+  for (let i = 0; i < 46; i++) {
+    const x = sx + 8 + i, yy = sy + 5 + i * 0.32;
+    dot(x, yy, 4); if (r() < 0.5) dot(x, yy + 1, 3);
+  }
+  fillRect(sx - 13, sy, 26, 5, 0);            // hull
+  fillRect(sx - 9, sy + 5, 18, 2, 0);
+  fillRect(sx - 1, sy - 20, 2, 20, 0);        // mast
+  for (let row = 0; row < 18; row++) fillRect(sx + 1, sy - 19 + row, Math.round(row * 0.7), 1, 0); // sail
+  for (let row = 0; row < 14; row++) fillRect(sx - 2 - Math.round(row * 0.5), sy - 15 + row, Math.round(row * 0.5), 1, 0); // jib
 }
 
 function sceneStatic() {
