@@ -18,6 +18,16 @@ for those same prompts, then puts them side-by-side with the already-captured Ha
 
 So: Anthropic is called **zero** times by the study. Only free NIM endpoints are hit.
 
+## Live NIM fallback (now wired — 2026-06-19)
+
+Separate from this offline study, a **live Claude→NIM fallback** is now in production. In `src/core/llm.ts`,
+`completeJson()` (the live tutoring/grading text path) catches an Anthropic failure — rate-limit/quota (429),
+auth/credit (401/403), overload/5xx/529, or network/timeout/missing-key — and retries on the free NIM text
+model **`meta/llama-3.3-70b-instruct`**, so a student's turn still completes when Anthropic is exhausted.
+Student **vision** already runs on **`nvidia/nemotron-nano-12b-v2-vl`** (`nimVision`), so the agreed text+vision
+NIM pair is the effective fallback floor. (4xx client bugs still surface; NIM-primary has no fallback.) This is a
+resilience seam, not a cost switch — the study below still informs an eventual deliberate Haiku→NIM migration.
+
 ## How conversations are captured
 
 - `src/core/llm.ts` records every model call via `recordLlmCall` (`src/core/llm-log.ts`) into the

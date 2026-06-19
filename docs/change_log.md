@@ -116,3 +116,38 @@ gate → performance → offline mock test).
 ## 2026-06-18 — Tutor notes card layout
 
 - NodeDetails: Tutor's notes rendered as numbered, bold-labelled, spaced cards (was raw text block)
+
+---
+
+## 2026-06-19 — Phase-2 complete (sources + refreshers + §A bridges), NIM fallback live, content fixes
+
+**What:** the deferred "Phase-2" authoring/improvement pass run to completion across the whole maths corpus,
+plus a live-product resilience feature and a focused content-fix pass. Orchestrated as parallel Opus
+sub-agents (cloud-isolation research dossiers + local DB-writing agents), Opus-audited. All DB-verified.
+
+- **Per-gate sources — COMPLETE.** Every authored gate (3236 across 41 chapters) now carries web-research-verified
+  authoritative source URLs (WebSearch→WebFetch, each confirmed on-topic; video/social/forum dropped). Legacy
+  pipeline junk repaired: dead `ncert.nic.in/ncerts/l/*.pdf` paths fixed to `textbook/pdf/`, jee Sets re-coded to
+  `kemh101`, bogus `lmr101`→`lemh101`, and youtube/scribd/chegg/careers360 fragments stripped (guarded so no row
+  emptied). Re-verified by an adversarial sampling pass (165 URLs; residue fixed). Resolves the Phase-1/Phase-2 split.
+- **Refreshers — populated 6 → 215 concepts.** Tutor-private foundational refreshers (§A.5) authored generously on
+  pre-curriculum bedrock; jsonb `concepts.refreshers`, threaded into the tutor prompt, deployed only when a gap surfaces.
+- **17 §A "bridge" bedrock nodes** authored across 9 chapters (jee ch03/07/08/11/13; cbse12 ch01/02/09/10) — e.g.
+  coordinate-plane, circle-basics, Pythagoras, laws-of-exponents, mathematical-induction, right-hand-rule. Each is
+  `role='bedrock'` with a full 5-gate set, wired upstream of its consumers (toposort verified: 0 order-violations). LIVE.
+- **NIM fallback for live tutoring** (`src/core/llm.ts`): `completeJson()` falls back Claude→NIM
+  (`meta/llama-3.3-70b-instruct`) on Anthropic exhaustion/429/5xx/auth/timeout so a student turn still completes;
+  student vision already on `nvidia/nemotron-nano-12b-v2-vl`; NIM-primary unchanged (free floor). Verified + LIVE.
+- **Durability fix** (`tools/load-content.ts`): preserves an existing non-empty `concepts.refreshers` on reload
+  (refreshers are DB-authored, not mirrored into every content.json) — reloads no longer wipe them.
+- **7 focused content fixes:** `uv″`→`uv′` typo (jee ch12 ×2), drop mis-scoped `state-binomial-theorem` prereq
+  (jee ch08), add (−1,1) domain restriction to arcsin/arccos derivatives (cbse12 ch05), add missing chain-rule
+  prereq (cbse12 ch06), remove editing-artefact (cbse12 ch09 `order`), lead parallelism test with proportionality
+  of direction ratios (cbse12 ch11), 2×2-determinant notation consistency (cbse12 ch04). Explanations/prereqs only;
+  gates md5-verified unchanged.
+- **Cache/deploy correction:** there is **no** `POST /api/admin/reload` route (the old gotcha was stale; it 404s);
+  the content cache refreshes only on API restart (cold-start or a deploy trigger). All of the above is live
+  (deploy = commit `82eb0d1`, Render status "live"). Full ledger + process: `authoring_and_improve.md`.
+
+**Consequence to note:** activating the bridge nodes means an in-progress learner whose chapter was "complete"
+reverts to incomplete until they pass the new bridge (correct bottom-up behaviour, but a visible progress change).

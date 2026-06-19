@@ -23,17 +23,32 @@ Same corpus + infra, opposite mechanics, different screen.
 5. After all chapters: one clean **past board paper**.
 6. Weak concepts flagged to revise. Every concept + attempt is recorded.
 
-## First milestone — 3 nodes only
-Nail the teaching loop on a 3-node slice of **CBSE 10 · Maths · Ch.1 Real Numbers**, then scale. Seed data is
-already imported in `content/jemh101.slice.json`:
+## Current status (2026-06-19) — maths corpus COMPLETE + live
+The 3-node milestone is long past. The full maths corpus is authored, audited, and live:
+- **41 maths chapters fully authored** — cbse10 `jemh101`–`jemh114` (14), cbse12 `mathematics-ch01`–`ch13` (13),
+  jee `maths-ch01`–`maths-ch14` (14).
+- **3236 authored gates** (5-gate sets per concept: `sketch1`/`sketch2`/`explain`/`mcq`/`equation`, with a few
+  recorded honest skips). DB-verified clean: 0 null source, 0 social/video source, 0 MCQ encoding defects, 0 null
+  sketch/explain rubrics, 0 prerequisite-order violations.
+- **Every authored gate carries web-research-verified authoritative source URLs** (per-gate provenance).
+- **215 concepts carry tutor-private foundational refreshers** (`§A.5`: `{trigger, surfacingQuestion, ladder[],
+  answer, returnCue}`, on `concepts.refreshers`) — surfaced only when a learner's bedrock gap appears.
+- **17 §A prerequisite "bridge" bedrock nodes** authored across 9 chapters (e.g. coordinate plane, Pythagoras,
+  laws of exponents, mathematical induction, right-hand rule), each with a full 5-gate set, wired upstream of
+  their consumers.
 
-1. `know-prime-composite-coprime` (bedrock) → 2. `prime-factorise-integer` → 3. `state-fundamental-theorem-arithmetic`.
+Live now: **https://bottom-up-web.onrender.com** (app) · **https://bottom-up-api.onrender.com** (`/health` → ok).
+The full authoring/improvement process + the per-chapter ledger live in `authoring_and_improve.md`.
 
 ## Models & cost policy (HARD RULE)
-- **Real user traffic → Claude Haiku.**
+- **Real user traffic → Claude Haiku**, with a **live NIM fallback**: if the Anthropic call fails (rate-limit/quota,
+  auth/credit, 5xx/overload, network/timeout), `completeJson()` falls back to the free NIM text model
+  `meta/llama-3.3-70b-instruct` so the student's turn still completes. Student **vision** already runs on NIM
+  `nvidia/nemotron-nano-12b-v2-vl`. NIM-primary has no fallback (it is the free floor). See `src/core/llm.ts`.
 - **All testing → NVIDIA NIM (free)** or the offline `mock` provider. **Never run a test suite on Haiku.**
 - At most **1–2 Haiku messages** for a manual sanity check — never automated.
-- Enforce in the ModelRouter: `prod` profile = Haiku, `test` profile = NVIDIA NIM / mock; refuse Haiku under the test runner.
+- Enforce in the ModelRouter: `prod` profile = Haiku (+NIM fallback), `test` profile = NVIDIA NIM / mock; refuse Haiku under the test runner.
+- **Authoring/content** uses a strong model in-session (curated, human-reviewed); never bulk-burned on a frontier model. See `authoring_and_improve.md`.
 
 ## Deployment
 **Render**, on the **jae** account (same as Socratic) — API service + static web, Neon Postgres. Reuse the infra.
@@ -56,8 +71,14 @@ bottom-up/
 ```
 
 ## Data source
-Content is **imported** from the Socratic repo (`socratic-planning/exams/cbse10/maths/jemh101/`), the single
-source of truth — don't re-author; re-run the import to refresh.
+Content lives under `content/<exam>/<subject>/<chapter>/{content.json, exam.json, source/*.txt}` and is loaded
+into Neon by `tools/load-content.ts` (bottom-up toposort → chapters, concepts, book gate). The concept *brains*
+were originally seeded from the CBSE corpus, but the **5-gate assessment sets, per-gate sources, refreshers, and
+§A bridge nodes were authored/improved in-place** — `authoring_and_improve.md` is the single source of truth for
+that process. Authored gates live in the DB (`kind='authored'`); `content.json` holds the node brain + prereq
+wiring (and is durable across reloads — `load-content.ts` preserves DB-authored refreshers). Note: the
+in-memory content cache only refreshes on **API restart** (there is no `/api/admin/reload` route — see
+`docs/DEPLOYMENT.md`).
 
 ## Build order
 See `bottom_up.md` §5: import → schema → sequencer + availability → teach loop → gate → maps + performance →

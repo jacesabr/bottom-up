@@ -1,12 +1,17 @@
 # bottom_up.md — Bottom-Up Exam-Prep (build spec / Claude Code instruction file)
 
-> **Status:** built, deployed, and scaled. Originally written 2026-06-15; vertical slice done same day; full corpus complete 2026-06-17.
+> **Status:** built, deployed, scaled, and improved — LIVE. Written 2026-06-15; vertical slice same day; full
+> corpus authored 2026-06-17; **Phase-2 complete 2026-06-19** (per-gate web-verified sources + refreshers + §A
+> prerequisite bridge nodes) and a **live Claude→NIM fallback** for tutoring shipped.
 > **What this is:** a standalone exam-prep product that teaches a subject **chapter by chapter,
 > concept by concept, bottom-up**, gates each concept, and ends in a clean board-paper exam.
 > It is **separate from the Socratic tutor** — it copies the CBSE math corpus + reuses the existing infra
 > (Render/Neon/Drizzle, graders, node-agent, ModelRouter) and **Socratic's frontend styling/layout**, but is its
 > own app/flow, not a change to `Tutor.tsx`.
-> **Corpus (Phase-1 complete 2026-06-17):** 3151 authored gates across 645 concepts; cbse10 (14 ch), cbse12 (13 ch), jee (14 ch). Phase 2 (web research + per-gate source) is deferred — see `authoring_and_improve.md` §7.
+> **Corpus (Phase-2 complete 2026-06-19):** **3236 authored gates** across the 41 maths chapters — cbse10 (14 ch),
+> cbse12 (13 ch), jee (14 ch) — every authored gate carrying web-verified authoritative sources, **215 concepts
+> with tutor-private refreshers**, and **17 §A prerequisite "bridge" bedrock nodes** wired upstream. DB-verified
+> clean (0 null source / 0 MCQ encoding defects / 0 null rubrics / 0 toposort order-violations). See `authoring_and_improve.md`.
 
 ---
 
@@ -215,7 +220,11 @@ on the mock model. Then, and only then, scale beyond 3 nodes.
 ## 8. Models, deployment, docs & frontend (decided)
 
 **Models — cost policy (HARD RULE).**
-- **Real user traffic → Claude Haiku** (teaching + any in-band evaluation).
+- **Real user traffic → Claude Haiku** (teaching + any in-band evaluation), **with a live NIM fallback** (added
+  2026-06-19): `completeJson()` falls back to the free NIM text model `meta/llama-3.3-70b-instruct` if the Anthropic
+  call fails with exhaustion/transient errors (429/quota, 401/403, 5xx/529, network/timeout) so the student's turn
+  still completes; student **vision** already runs on `nvidia/nemotron-nano-12b-v2-vl`. NIM-primary has no fallback
+  (free floor); 4xx client bugs still surface. See `src/core/llm.ts`.
 - **All automated testing → NVIDIA NIM (free) or the `mock` provider. NEVER run a test suite on Haiku.**
 - At most **1–2 Haiku messages** for a manual sanity spot-check — never automated, never a suite.
 - ModelRouter: a `prod` profile = Haiku, a `test` profile = NVIDIA NIM / mock; default to NVIDIA NIM / mock and
@@ -264,7 +273,8 @@ Source: `content/<exam>/<subject>/<chapter>/content.json` → loaded by `tools/l
 | `explanation` | the full "brain" — the prose the tutor teaches *from* | the tutor's source of truth each turn; it never invents beyond this (gaps → `bu_corpus_gap`) |
 | `keyMoves: string[]` | the **checklist** — the discrete skills that prove understanding | initialised undemonstrated on entry; the tutor elicits them one at a time; **all demonstrated → ready for the gate** |
 | `misconceptions: string[]` | known traps | handed to the tutor so it watches for them; a hit is logged as `misconception_seen` → "pain points" |
-| `prereqs: id[]` | in-chapter dependencies | the **sequencer** unlocks a node only when every prereq is `passed` (DAG → a frontier of available nodes) |
+| `refreshers: jsonb[]` (§A.5) | **tutor-private foundational refreshers** — `{trigger, surfacingQuestion, ladder[], answer, returnCue}` for pre-curriculum bedrock the node leans on but no upstream node teaches | rendered into the tutor prompt as a PRIVATE "deploy only when this gap surfaces" block; powers the surface→confess→fill→return loop (`dont_assume.md` §2a). **215 concepts populated (2026-06-19).** Preserved across reloads by a `load-content.ts` durability guard. |
+| `prereqs: id[]` | in-chapter dependencies | the **sequencer** unlocks a node only when every prereq is `passed` (DAG → a frontier of available nodes). **§A "bridge" bedrock nodes** (17 authored 2026-06-19) sit upstream here, so a node only depends on ideas genuinely taught earlier. |
 
 The `chapters` row stores `conceptOrder: id[]` (the whole bottom-up walk) + `title`, `subjectId`, `examId`.
 
@@ -346,8 +356,8 @@ remembers where *you* are, on *this* concept, without the cost growing unbounded
 ## 10. Multi-exam, exam-aware AI, papers, and the canonical/overlay plan (added 2026-06-15)
 
 ### What's live now (all maths)
-- **Three maths exams loaded:** cbse10 (14 ch), cbse12 (13 ch), jee (27 ch = class-11 `maths-ch*` + class-12 `maths-c12-ch*`). 805 nodes total in the DB.
-- **First-5 nodes per new exam are 5-gate authored** (cbse12 ch1, jee ch1); cbse10 ch1 was already done. Everything else teaches + gates on its single book gate.
+- **Three maths exams loaded + FULLY authored** (Phase-2 complete 2026-06-19): cbse10 (14 ch), cbse12 (13 ch), and jee's 14 authored `maths-ch*` chapters. *(The class-12 `maths-c12-ch*` set is loaded in the DB but is NOT part of the authored exam corpus — it has no 5-gate sets and is out of scope.)*
+- **Every concept in the 41 authored chapters now has a full 5-gate authored set** — 3236 authored gates, each with web-verified sources; plus 215 concepts with refreshers and 17 §A bridge nodes. (This supersedes the original 2026-06-15 "first-5 nodes only" state.) The per-node **book gate** remains as a loaded fallback.
 - **The AI is exam-aware.** `src/core/exam-profile.ts` maps a `conceptId`'s exam segment → `{ level, teacherAudience, studentLabel, subject }`. It's threaded through **every** AI-instruction site so a JEE/CBSE-12 learner is no longer taught/graded as "Class 10":
   - `teachTurn` (teaching persona), `gradeWritten`, `gradeEquation`, `gradeSketch` (graders), `helpWithSketch` (scratchpad hint). cbse10 wording is byte-identical (no regression).
   - `generate-gates.ts` was already exam-aware (author persona + research tag).

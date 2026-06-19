@@ -46,7 +46,7 @@ bottom-up/
     db/           # Drizzle schema, content loader, database init
     web/          # React frontend (components, styles)
     __tests__/    # Mock offline tests
-  content/        # Imported content bundle (jemh101.slice.json)
+  content/        # content/<exam>/<subject>/<chapter>/{content.json, exam.json, source/*.txt}
   tools/          # Dev scripts
   render.yaml     # Render deployment config
   drizzle.config.ts
@@ -76,15 +76,22 @@ Capture the `DATABASE_URL` connection string.
 # - Runtime: Node
 # - Build command: npm install && npm run build:api
 # - Start command: npm run start
+# - Build command: npm install --include=dev   (tsx must resolve locally — do NOT use `npx tsx`)
+# - Start command: npm start   (= tsx src/api/index.ts)
 # - Environment:
 #   DATABASE_URL: [from Step 1]
-#   ANTHROPIC_API_KEY: [from .env]
-#   NVIDIA_API_KEY: [from .env]
+#   ANTHROPIC_API_KEY: [from .env]   # live tutoring (Haiku)
+#   NVIDIA_API_KEY: [from .env]      # NIM fallback (text) + student vision
+#   LLM_PROVIDER: claude             # real-user path; Claude→NIM fallback on exhaustion (see src/core/llm.ts)
+#   ADMIN_USER / ADMIN_PASSWORD      # gate the /api/admin/* dashboard (Basic auth)
 #   API_PORT: 3030
-# - Auto-deploy: yes
 # - Branch: master
 # - Repo: https://github.com/jacesabr/bottom-up.git
 ```
+
+> **LLM resilience:** with `LLM_PROVIDER=claude`, `completeJson()` falls back to the free NIM text model
+> `meta/llama-3.3-70b-instruct` if Anthropic fails (429/quota, 401/403, 5xx/529, network/timeout) so a student's
+> turn still completes; student vision already uses `nvidia/nemotron-nano-12b-v2-vl`. NIM-primary has no fallback.
 
 ### Step 3: Create Static Site (Frontend)
 
@@ -108,7 +115,24 @@ Push to master branch:
 git push origin master
 ```
 
-Render will auto-deploy both services. Check the dashboard for build logs.
+> **⚠ Deploys do NOT auto-trigger** (no repo webhook). After pushing, trigger a deploy via the Render API:
+> ```bash
+> curl -X POST https://api.render.com/v1/services/srv-d8nuodbeo5us738ehh9g/deploys \
+>   -H "Authorization: Bearer $RENDER_API_KEY" -d '{}'
+> ```
+> (API svc `srv-d8nuodbeo5us738ehh9g`, web `srv-d8nuom4m0tmc73ehufd0`.) Latest live deploy: commit `82eb0d1`.
+
+### Content updates & the in-memory cache
+
+The API caches static content (chapters + concepts) in memory (`src/core/content-cache.ts`). After loading new
+content into the DB (`node_modules/.bin/tsx tools/load-content.ts <exam:subject:chapter>`), the cache must refresh
+to serve it.
+
+> **⚠ There is NO `POST /api/admin/reload` route** (an older note claimed this — it 404s). `invalidateContentCache()`
+> exists but is **not exposed over HTTP**. The cache refreshes **only on API process restart** — free tier: the next
+> cold-start after ~15 min idle; or trigger a deploy (above) to restart on demand. `load-content.ts` preserves
+> existing DB-authored `concepts.refreshers` on reload (durability guard), so reloading never wipes refreshers.
+> *(TODO: add an authenticated admin route that calls `invalidateContentCache()`+`invalidatePapersCache()`.)*
 
 ## Testing
 
@@ -133,8 +157,9 @@ npm test
 
 ## Hard Rules (from spec)
 
-✅ **Real users → Claude Haiku** (configured in ModelRouter profile)
+✅ **Real users → Claude Haiku, with live NIM fallback** (`completeJson` → `meta/llama-3.3-70b-instruct` on Anthropic exhaustion; vision on `nvidia/nemotron-nano-12b-v2-vl`)
 ✅ **All testing → NVIDIA NIM or mock** (never Haiku in test suites)
 ✅ **Event-sourced performance** (append-only bu_event table)
-✅ **Full corpus live** (cbse10 14 ch, cbse12 13 ch, jee 14 ch — 645 concepts, 3151 gates; Phase-1 complete 2026-06-17)
+✅ **Full corpus live** (cbse10 14 ch, cbse12 13 ch, jee 14 ch — **3236 authored gates, all with verified sources**;
+   Phase-2 complete 2026-06-19: per-gate sources + 215 refresher concepts + 17 §A bridge nodes. See `authoring_and_improve.md`.)
 ✅ **Copy Socratic styling** (cream palette, Tutor shell layout, math rendering)

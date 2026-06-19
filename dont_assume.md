@@ -117,10 +117,17 @@ refreshers + the occasional missed prereq node; **IE is expected to spawn many n
 
 ---
 
-## 4. Execution plan — RUN LATER (not yet). Opus-directed, no external API.
+## 4. Execution plan — MATHS DONE (2026-06-19); IE still pending. Opus-directed, no external API.
 
-> Status: **planned, not started.** Do not run until told. When run, use **Claude Code Sonnet subagents only**
-> — never the Anthropic API (global rule `feedback_no-api-for-ai`).
+> Status: **the maths sweep has been RUN** (2026-06-19, Opus-directed in-session sub-agents — by explicit user
+> direction this run used Opus rather than Sonnet; still no Anthropic-API/`generate-gates` spend per
+> `feedback_no-api-for-ai`). Result across all 41 maths chapters: per-gate authoritative **sources** backfilled +
+> verified; **refreshers** populated **6 → 215 concepts** (the §A.5 fourth outcome, now live and threaded into the
+> tutor prompt); **17 §A "bridge" bedrock nodes** authored + wired upstream of their consumers (toposort verified).
+> So the §3 outcomes below (refresher / refresher-item / bridge node) are **realised for maths.** See
+> `authoring_and_improve.md` for the full ledger. **IE (the sibling repo) has NOT had this sweep yet** — that
+> remains the large expansion to run later (mirror process changes into IE's `authoring_process.md`). When run,
+> default to Sonnet subagents unless told otherwise.
 
 **Operating model — Opus directs, Sonnet executes.** Opus (the main session) acts as director: it owns the
 node-by-node work-list, dispatches Sonnet subagents one slice at a time, reviews each agent's returned report
