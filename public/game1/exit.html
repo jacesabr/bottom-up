@@ -860,6 +860,33 @@ function dither(x0, y0, x1, y1, c, density, rand) {
   for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) if (rand() < density) dot(x, y, c);
 }
 
+// A palm-tree silhouette: a gently leaning trunk and fronds that radiate from one
+// crown point, arc out, and droop under their own weight. Drawn in colour `c`.
+function drawPalm(px, baseY, h, c = 0, lean = 1) {
+  let tx = px;
+  for (let i = 0; i <= h; i++) {
+    const t = i / h;
+    tx = px + lean * Math.sin(t * 1.5) * 6 * t;            // S-curve lean
+    const w = t < 0.85 ? 2 : 1;                            // taper near the crown
+    fillRect(tx, baseY - i, w, 1, c);
+  }
+  const top = baseY - h;
+  const N = 9;
+  for (let f = 0; f < N; f++) {
+    const a = (-158 + (f / (N - 1)) * 136) * Math.PI / 180;  // fan over the top
+    const len = 13 + (f % 2) * 4;
+    for (let i = 0; i <= len; i++) {
+      const tt = i / len;
+      const droop = 11 * tt * tt;                          // gravity
+      const fx = tx + Math.cos(a) * len * tt;
+      const fy = top + Math.sin(a) * len * tt + droop;
+      dot(fx, fy, c);
+      if (i > 2 && i % 2 === 0) { dot(fx - Math.sign(Math.cos(a)), fy + 1, c); }  // leaflets
+    }
+  }
+  for (let k = 0; k < 3; k++) dot(tx + (k - 1) * 2, top + 2 + (k % 2), c);          // coconuts
+}
+
 function sceneDungeon() {
   const r = rng(7);
   clearScene(0);
@@ -1012,30 +1039,30 @@ function sceneNote() {
 function sceneBeach() {
   const r = rng(55);
   clearScene(0);
-  const horizon = 44;
-  // hazy sky with a low sun
+  const horizon = 50;
+  const sunx = SW * 0.5, suny = horizon - 3, sr = 13;
+  // sky — hazy, brightening toward the sun on the horizon
   for (let y = 0; y < horizon; y++) for (let x = 0; x < SW; x++) {
-    const sun = 1 - Math.hypot(x - SW * 0.5, y - 4) / 110;
-    if (r() > 0.14) dot(x, y, sun > 0.6 ? 4 : sun > 0.32 ? 3 : 2);
+    const sunD = Math.hypot(x - sunx, (y - suny) * 1.4) / 78;
+    const c = sunD < 0.55 ? 4 : y < horizon * 0.45 ? 2 : 3;
+    if (r() > 0.12) dot(x, y, c);
   }
-  // sea with a bright sun-glint path down the centre
-  for (let y = horizon; y < 84; y++) fillRect(0, y, SW, 1, 2);
-  for (let y = horizon; y < 84; y++) for (let x = 0; x < SW; x++) {
-    const path = Math.abs(x - SW * 0.5) < 14 ? 0.42 : 0.12;
-    if (r() < path) dot(x, y, 4); else if (r() < 0.12) dot(x, y, 1);
+  // sun disc on the horizon
+  for (let y = -sr; y <= sr; y++) for (let x = -sr; x <= sr; x++) if (Math.hypot(x, y) <= sr) dot(sunx + x, suny + y, 4);
+  // sea
+  for (let y = horizon; y < 86; y++) fillRect(0, y, SW, 1, 2);
+  // shimmering sun-glint path widening toward the viewer
+  for (let y = horizon; y < 86; y++) for (let x = 0; x < SW; x++) {
+    const band = 5 + (y - horizon) * 0.6;
+    if (Math.abs(x - sunx) < band) { if (r() < 0.5) dot(x, y, 4); else if (r() < 0.25) dot(x, y, 3); }
+    else if (r() < 0.10) dot(x, y, 3); else if (r() < 0.10) dot(x, y, 1);
   }
-  // wet sand foreground
-  for (let y = 84; y < SH; y++) fillRect(0, y, SW, 1, 1);
-  dither(0, 84, SW, SH, 2, 0.12, r);
-  // palm trees along the shore (dark silhouettes)
-  for (const [px, base] of [[26, 92], [SW - 30, 96], [60, 88]]) {
-    for (let i = 0; i < 30; i++) dot(px + Math.round(Math.sin(i / 8) * 3), base - i, 0);
-    const tx = px + Math.round(Math.sin(30 / 8) * 3), top = base - 29;
-    for (let a = 0; a < 7; a++) {
-      const ang = -0.7 + a * 0.28;
-      for (let i = 0; i < 18; i++) dot(tx + Math.cos(ang) * i * 1.5, top + Math.sin(ang) * i * 1.5 + i * 0.22, 0);
-    }
-  }
+  // sand foreground
+  for (let y = 86; y < SH; y++) fillRect(0, y, SW, 1, 1);
+  dither(0, 86, SW, SH, 2, 0.10, r);
+  // palm trees rooted in the sand (dark silhouettes)
+  drawPalm(34, 102, 48, 0, 1);
+  drawPalm(SW - 42, 106, 42, 0, -1);
 }
 
 function sceneBoat() {
@@ -1087,15 +1114,9 @@ function sceneIsland() {
     fillRect(iCx - w / 2, y, w, 1, 0);
   }
   // palms on the island (dark against the bright sky)
-  for (const px of [iCx - 14, iCx + 1, iCx + 15]) {
-    const base = horizon - 11;
-    for (let i = 0; i < 20; i++) dot(px + Math.round(Math.sin(i / 7) * 2), base - i, 0);
-    const tx = px + Math.round(Math.sin(20 / 7) * 2), top = base - 19;
-    for (let a = 0; a < 6; a++) {
-      const ang = -0.7 + a * 0.3;
-      for (let i = 0; i < 12; i++) dot(tx + Math.cos(ang) * i * 1.4, top + Math.sin(ang) * i * 1.4 + i * 0.2, 0);
-    }
-  }
+  drawPalm(iCx - 13, horizon - 8, 24, 0, 1);
+  drawPalm(iCx + 3, horizon - 8, 28, 0, -1);
+  drawPalm(iCx + 17, horizon - 8, 22, 0, 1);
   // the ship, sailing away toward the island, with a wake trailing to the viewer
   const sx = SW * 0.6, sy = horizon + 18;
   for (let i = 0; i < 46; i++) {
