@@ -308,6 +308,7 @@ let awaitingMath = false;
 let mathAttempts = 0;
 let mathCallback = null;
 let currentGate  = null;
+let mathDisabled = false;   // replays skip the system-lockout math gates
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // ── Audio engine (Web Audio API — original synth, no copyrighted music) ─────────
@@ -583,6 +584,7 @@ const mathGates = [
 // The whole exchange is tagged 'lockout' so it can be wiped once cleared, keeping
 // the story log clean. The answer is typed on the same command line.
 async function showMath(gateIdx, callback) {
+  if (mathDisabled) { await callback(); return; }   // replays skip the lockout
   currentGate = mathGates[gateIdx];
   mathAttempts = 0; mathCallback = callback; awaitingMath = true;
   await addLine('// SYSTEM LOCKED — RE-AUTHENTICATE TO CONTINUE', 'warn lockout');
@@ -744,7 +746,7 @@ async function handleInput(raw) {
 
   if (gamePhase === 99) {            // escape ending offers a replay
     stopSister();
-    if (val === 'yes') { gamePhase = -1; await enterDungeon(); }
+    if (val === 'yes') { mathDisabled = true; gamePhase = -1; await enterDungeon(); }
     else { await addLine('Session terminated.', 'system'); gamePhase = 98; }
     return;
   }
