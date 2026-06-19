@@ -250,71 +250,10 @@
     white-space: nowrap;
   }
 
-  /* Math overlay (non-canon teaching layer, kept from prior version) */
-  #math-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.88);
-    z-index: 500;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-  }
-  #math-overlay.show { display: flex; }
-
-  #math-box {
-    border: 1px solid var(--amber);
-    padding: 26px 30px;
-    max-width: 520px;
-    width: 100%;
-    background: var(--panel);
-    box-shadow: 0 0 40px rgba(255,170,0,0.18);
-  }
-  #math-box h2 {
-    font-family: 'VT323', monospace;
-    font-size: 20px;
-    color: var(--amber);
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-  }
-  #math-concept-label {
-    font-size: 10px; color: #666; letter-spacing: 2px;
-    text-transform: uppercase; margin-bottom: 10px;
-  }
-  #math-teach-body {
-    font-size: 13px; color: #ccc; line-height: 1.8; margin-bottom: 18px;
-    border-left: 2px solid var(--amber); padding-left: 12px;
-  }
-  #math-teach-body .rule { color: var(--amber); font-size: 14px; display: block; margin-bottom: 6px; }
-  #math-teach-body .watchout { color: var(--red); font-size: 12px; display: block; margin-top: 8px; }
-  #math-ready-btn {
-    background: transparent; border: 1px solid var(--amber); color: var(--amber);
-    font-family: 'Share Tech Mono', monospace; font-size: 11px; padding: 7px 16px;
-    cursor: pointer; letter-spacing: 2px; width: 100%;
-  }
-  #math-ready-btn:hover { background: rgba(255,170,0,0.08); }
-  #math-box .question { font-size: 14px; color: #fff; margin-bottom: 6px; line-height: 1.7; white-space: pre-wrap; }
-  #math-box .context { font-size: 11px; color: #777; margin-bottom: 16px; line-height: 1.5; }
-  #math-typed-row { display: flex; gap: 8px; align-items: center; border-top: 1px solid rgba(255,170,0,0.25); padding-top: 12px; }
-  .math-prompt { color: var(--amber); font-size: 15px; text-shadow: 0 0 6px rgba(255,170,0,0.5); }
-  #math-answer {
-    flex: 1; background: transparent; border: none; outline: none; color: #fff;
-    font-family: 'Share Tech Mono', monospace; font-size: 15px; padding: 2px 0;
-    caret-color: var(--amber);
-  }
-  #math-mc-row { display: flex; flex-direction: column; gap: 7px; }
-  .mc-btn {
-    background: transparent; border: 1px solid #444; color: #aaa;
-    font-family: 'Share Tech Mono', monospace; font-size: 13px; padding: 8px 12px;
-    cursor: pointer; text-align: left; transition: border-color 0.15s, color 0.15s;
-  }
-  .mc-btn:hover { border-color: var(--amber); color: var(--amber); }
-  .mc-btn.wrong  { border-color: var(--red); color: var(--red); animation: shake 0.3s; }
-  .mc-btn.correct { border-color: var(--green); color: var(--green); }
-  @keyframes shake { 0%,100% { transform: translateX(0);} 25%{transform:translateX(-4px);} 75%{transform:translateX(4px);} }
-  #math-error { margin-top: 10px; color: var(--red); font-size: 12px; min-height: 16px; }
-  #math-attempts { font-size: 11px; color: #666; margin-top: 6px; }
+  /* lockout lines (the math checkpoint, inline in the terminal) */
+  .line.lockout { color: var(--amber); }
+  .line.lockout.success { color: var(--green); text-shadow: 0 0 8px var(--green); }
+  .line.lockout.error   { color: var(--red); }
 </style>
 </head>
 <body>
@@ -351,25 +290,8 @@
   </div>
 </div>
 
-<!-- "My Sister" plays on the true ending (choosing to stay with your friend) -->
+<!-- "My Sister" plays when the player lights a match for their friend -->
 <audio id="sister-music" src="/game1/my-sister.mp3" loop preload="auto"></audio>
-
-<!-- Math challenge overlay (non-canon teaching layer) -->
-<div id="math-overlay">
-  <div id="math-box">
-    <div id="math-question-panel">
-      <h2>// SYSTEM LOCKED &mdash; RE-AUTHENTICATE</h2>
-      <div class="question" id="math-question"></div>
-      <div class="context" id="math-context"></div>
-      <div id="math-typed-row">
-        <span class="math-prompt">&#62;</span>
-        <input id="math-answer" type="text" inputmode="numeric" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type the answer, then Enter">
-      </div>
-      <div id="math-error"></div>
-      <div id="math-attempts"></div>
-    </div>
-  </div>
-</div>
 
 <script>
 // ── DOM refs ────────────────────────────────────────────────────────────────
@@ -378,12 +300,6 @@ const commandBar = document.getElementById('command-bar');
 const sisterMusic = document.getElementById('sister-music');
 const sceneCanvas = document.getElementById('scene');
 const sceneImg   = document.getElementById('scene-img');
-const overlay    = document.getElementById('math-overlay');
-const mathQ      = document.getElementById('math-question');
-const mathCtx    = document.getElementById('math-context');
-const mathAns    = document.getElementById('math-answer');
-const mathErr    = document.getElementById('math-error');
-const mathAtts   = document.getElementById('math-attempts');
 const reactorEl  = document.getElementById('reactor-status');
 
 // ── State ─────────────────────────────────────────────────────────────────────
@@ -560,14 +476,15 @@ function addLine(text, cls = 'story', delay = 0) {
       const el = document.createElement('div');
       el.className = 'line ' + cls;
       output.appendChild(el);
-      if (cls === 'blank' || cls === 'art') {
+      const base = cls.split(' ')[0];   // allow extra tags, e.g. 'system lockout'
+      if (base === 'blank' || base === 'art') {
         el.textContent = text;
         output.scrollTop = output.scrollHeight;
         res();
       } else {
         // 'input' = the command the terminal "types" for you (slower, louder clack);
         // everything else types at terminal speed. Every character clicks.
-        const isCmd = cls === 'input';
+        const isCmd = base === 'input';
         const speed = isCmd ? 30 : (text.length > 60 ? 9 : 14);
         for (let i = 0; i < text.length; i++) {
           el.textContent += text[i];
@@ -662,40 +579,45 @@ const mathGates = [
   },
 ];
 
-// Auto-lockout: the system locks and just asks the question. No concept panel —
-// the answer is typed on the keyboard, and a hint is offered alongside.
-function showMath(gateIdx, callback) {
-  awaitingMath = true; mathCallback = callback; mathAttempts = 0;
+// Auto-lockout, inline in the terminal: the system locks and asks a question.
+// The whole exchange is tagged 'lockout' so it can be wiped once cleared, keeping
+// the story log clean. The answer is typed on the same command line.
+async function showMath(gateIdx, callback) {
   currentGate = mathGates[gateIdx];
-  mathQ.textContent = currentGate.questionText;
-  mathCtx.textContent = currentGate.hint ? ('hint: ' + currentGate.hint) : '';
-  mathErr.textContent = ''; mathAtts.textContent = ''; mathAns.value = '';
-  overlay.classList.add('show');
-  setTimeout(() => mathAns.focus(), 80);
+  mathAttempts = 0; mathCallback = callback; awaitingMath = true;
+  await addLine('// SYSTEM LOCKED — RE-AUTHENTICATE TO CONTINUE', 'warn lockout');
+  await addLine(currentGate.questionText, 'system lockout');
+  await addLine('', 'blank lockout', 0);
 }
 
-function hideMath() {
-  overlay.classList.remove('show');
-  awaitingMath = false; currentGate = null; mathCallback = null;
-}
-
-mathAns.addEventListener('keydown', e => {
-  if (e.key === 'Enter') { checkTyped(); return; }
-  if (e.key.length === 1) tick(0.9);     // typewriter click as they type the answer
-});
-async function checkTyped() {
-  const val = parseFloat(mathAns.value.trim());
-  if (isNaN(val)) { mathErr.textContent = 'Enter a number.'; return; }
-  if (val === currentGate.answer) {
-    mathErr.textContent = ''; confirmTone();
-    await addLine('// CHECKPOINT CLEARED', 'success'); await blank();
-    const cb = mathCallback; hideMath(); await cb(); refreshCommands();
+async function submitMath(raw) {
+  if (running) return;
+  running = true;
+  if (!actx) initAudio();
+  cmdInput.disabled = true; setHint('');
+  const shown = raw.trim();
+  await addLine('> ' + shown, 'input lockout'); await addLine('', 'blank lockout', 50);
+  const n = parseFloat(shown);
+  if (isNaN(n)) {
+    blip(180, 0.12, 'sawtooth', 0.05);
+    await addLine('Enter a number.', 'error lockout');
+  } else if (n === currentGate.answer) {
+    confirmTone();
+    await addLine('// ACCESS RESTORED', 'success lockout');
+    await sleep(450);
+    // wipe the whole lockout exchange so the terminal log stays readable
+    output.querySelectorAll('.lockout').forEach((el) => el.remove());
+    awaitingMath = false;
+    const cb = mathCallback; mathCallback = null; currentGate = null;
+    await cb();
   } else {
-    mathAttempts++; blip(180, 0.18, 'sawtooth', 0.08);
-    mathErr.textContent = '✗  Incorrect.';
-    if (mathAttempts >= 2) mathAtts.textContent = 'Hint: ' + currentGate.hint;
-    mathAns.value = ''; mathAns.focus();
+    mathAttempts++;
+    blip(180, 0.18, 'sawtooth', 0.08);
+    await addLine('Incorrect.', 'error lockout');
+    if (mathAttempts >= 2 && currentGate.hint) await addLine('hint: ' + currentGate.hint, 'system lockout');
   }
+  running = false;
+  refreshCommands();
 }
 
 // ── Story state machine ──────────────────────────────────────────────────────
@@ -721,13 +643,8 @@ async function onMoveBarrel() {
   await addLine('> move barrel', 'input'); await blank(80);
   setScene('tunnel');
   await typeLines([["The barrel rolls aside and you find a secret tunnel.", 'story'], ["", 'blank', 0]]);
-  await addLine('// SYSTEM LOCKED — RE-AUTHENTICATE TO CONTINUE', 'warn'); await blank(120);
-  showMath(0, async () => {
-    await typeLines([
-      ["The combination lock clicks open.", 'story'],
-      ["", 'blank', 0],
-      ["What do you do?", 'story'],
-    ]);
+  await showMath(0, async () => {
+    await typeLines([["What do you do?", 'story']]);
     gamePhase = 1;
   });
 }
@@ -737,10 +654,10 @@ async function onEnterTunnel() {
   setScene('friend');
   setReactor(2);
   await typeLines([
-    ["You start to escape but your friend is too weak to go with you.", 'story'],
+    ["You start to escape, but your friend is too weak to come with you.", 'story'],
     ["They hand you a note. It is too dark to read it.", 'story'],
     ["", 'blank', 0],
-    ["Do you leave your friend, or stay?", 'story'],
+    ["What do you do?", 'story'],
   ]);
   gamePhase = 2;
 }
@@ -769,8 +686,7 @@ async function onLook() {
 }
 async function onGetOnBoat() {
   await addLine('> get on boat', 'input'); await blank(80);
-  await addLine('// SYSTEM LOCKED — RE-AUTHENTICATE TO CONTINUE', 'warn'); await blank(120);
-  showMath(2, async () => {
+  await showMath(2, async () => {
     setScene('island');
     // a clean win — no commentary on the friend, no telling them what they missed
     clearTimeout(alarmTimer); meltLevel = 0;
@@ -787,51 +703,39 @@ async function onGetOnBoat() {
   });
 }
 
-// STAY branch — ignore the hint. The alarm goes quiet; "My Sister" comes in.
+// The friend beat gives no hint. Leaving escapes; choosing to type "stay" is the
+// whole point. On "stay", the alarm that has run all game goes quiet and the music
+// comes in — then a hint to light a match so you can read the note.
 async function onStay() {
   await addLine('> stay', 'input'); await blank(80);
   setScene('friend');
-  // the alarm that has run since the start finally stops
-  clearTimeout(alarmTimer); meltLevel = 0;
-  document.body.classList.remove('meltdown');
-  reactorEl.className = 'stable-good';
-  reactorEl.querySelector('.lvl').textContent = 'HOLDING';
-  // the music fades up into the quiet; hold on the visual and let it breathe
-  // before any words land
-  playSister(3000);
+  setReactor(-1);             // the reactor alarm that ran the whole game goes quiet
+  playSister(3000);           // "My Sister" fades up over the silence
   await sleep(2600);
   await typeLines([
-    ["You sit back down beside your friend. The tunnel can wait.", 'story'],
+    ["You sit back down beside your friend. You're not going anywhere.", 'story'],
     ["The alarm fades. It is quiet now — just the two of you, and the dark.", 'story'],
     ["", 'blank', 0],
-    ["You still have the note, but you can't read it in the dark.", 'story'],
+    ["You still have their note, but it is too dark to read.", 'story'],
     ["", 'blank', 0],
     ["What do you do?", 'story'],
   ]);
   gamePhase = 3;
 }
+
+// Making light to read the note: its plea, your answer, and the game ends.
 async function onLightMatch() {
   await addLine('> light a match', 'input'); await blank(80);
   setScene('note');
   await typeLines([
-    ["The match flares. For a moment, you can see the note.", 'story'],
-    ["It says: \"Don't leave me here.\"", 'love'],
+    ["The match flares. For a moment, you can read the note.", 'story'],
+    ["It says: \"Promise you will never leave me.\"", 'love'],
     ["", 'blank', 0],
   ]);
-  await sleep(900);
-  setReactor(-1);
-  confirmTone(); chord();
-  await typeLines([
-    ["The reactor goes quiet. The override holds.", 'system'],
-    ["WASHINGTON TWP. REACTOR — CORE STABILIZED.", 'success'],
-    ["", 'blank', 0],
-    ["\"I love you,\" you say.", 'love'],
-    ["\"I love you too,\" they answer.", 'love'],
-    ["", 'blank', 0],
-  ]);
-  await sleep(900);
-  await typeLines([["Do you want to play again?", 'system']]);
-  gamePhase = 99;
+  await sleep(1200);
+  await typeLines([["\"Never,\" you say.", 'love']]);
+  await sleep(2000);
+  gamePhase = 98;             // the game is over
 }
 
 // ── Input handling ────────────────────────────────────────────────────────────
@@ -839,7 +743,7 @@ async function handleInput(raw) {
   const val = raw.trim().toLowerCase();
   if (awaitingMath) return;
 
-  if (gamePhase === 99) {            // play again
+  if (gamePhase === 99) {            // escape ending offers a replay
     stopSister();
     if (val === 'yes') { gamePhase = -1; await enterDungeon(); }
     else { await addLine('Session terminated.', 'system'); gamePhase = 98; }
@@ -847,14 +751,33 @@ async function handleInput(raw) {
   }
   if (gamePhase === -1) { await enterDungeon(); return; }
 
+  // The friend beat has no signposted choice — choosing to "stay" is an easter egg,
+  // a conscious decision the player has to reach on their own. Leaving escapes.
+  if (gamePhase === 2) {
+    if (val === 'leave') { confirmTone(); await onLeave(); }
+    else if (val === 'stay') { confirmTone(); await onStay(); }
+    else if (/\bread\b/.test(val)) {
+      await addLine('> ' + raw.trim(), 'input'); await blank(60);
+      await addLine('It is too dark to read it.', 'story');
+    } else { blip(180, 0.12, 'sawtooth', 0.05); await addLine("You can't do that here.", 'error'); }
+    return;
+  }
+
+  // After staying: make light to read the note.
+  if (gamePhase === 3) {
+    if (/\b(light|match|lighter|fire|flame)\b/.test(val)) { confirmTone(); await onLightMatch(); }
+    else if (/\bread\b/.test(val)) {
+      await addLine('> ' + raw.trim(), 'input'); await blank(60);
+      await addLine('It is too dark to read it.', 'story');
+    } else { blip(180, 0.12, 'sawtooth', 0.05); await addLine("You can't do that here.", 'error'); }
+    return;
+  }
+
   const routes = {
-    '0:move barrel':   onMoveBarrel,
-    '1:enter tunnel':  onEnterTunnel,
-    '2:leave':         onLeave,
-    '2:stay':          onStay,
-    '3:light a match': onLightMatch,
-    '4:look':          onLook,
-    '5:get on boat':   onGetOnBoat,
+    '0:move barrel':  onMoveBarrel,
+    '1:enter tunnel': onEnterTunnel,
+    '4:look':         onLook,
+    '5:get on boat':  onGetOnBoat,
   };
   const fn = routes[gamePhase + ':' + val];
   if (fn) { confirmTone(); await fn(); }
@@ -871,7 +794,7 @@ const flow = {
   '-1': { hint: 'press Enter to begin' },
   '0':  { hint: 'move barrel' },
   '1':  { hint: 'enter tunnel' },
-  '2':  { hint: 'leave' },
+  '2':  { hint: '' },              // no hint — staying is an easter egg, a choice
   '3':  { hint: 'light a match' },
   '4':  { hint: 'look' },
   '5':  { hint: 'get on boat' },
@@ -881,8 +804,15 @@ const flow = {
 function setHint(h) { cbHint.textContent = h ? ('hint: ' + h) : ''; }
 
 function refreshCommands() {
-  const f = !awaitingMath && flow[String(gamePhase)];
-  if (!f) { cmdInput.disabled = true; setHint(''); return; }
+  if (awaitingMath) {
+    cmdInput.disabled = false;
+    cmdInput.placeholder = 'type the answer, then Enter...';
+    setHint(currentGate && currentGate.hint ? currentGate.hint : '');
+    cmdInput.focus();
+    return;
+  }
+  const f = flow[String(gamePhase)];
+  if (!f) { cmdInput.disabled = true; cmdInput.placeholder = ''; setHint(''); return; }
   cmdInput.disabled = false;
   cmdInput.placeholder = gamePhase === -1 ? 'press Enter to begin...' : 'type a command...';
   setHint(f.hint);
@@ -905,9 +835,10 @@ cmdInput.addEventListener('keydown', async (e) => {
   if (e.key === 'Enter') {
     const val = cmdInput.value.trim();
     cmdInput.value = '';
-    await runCommand(val);
+    if (awaitingMath) await submitMath(val);   // answering the lockout
+    else await runCommand(val);
   } else if (e.key.length === 1) {
-    tick(0.9);                       // typewriter click as you type a command
+    tick(0.9);                       // typewriter click as you type
   }
 });
 
@@ -1013,24 +944,57 @@ function sceneDark() {
   }
 }
 
+// tiny 3x5 pixel font, enough to letter the note
+const FONT = {
+  A: ['###', '# #', '###', '# #', '# #'], E: ['###', '#  ', '###', '#  ', '###'],
+  I: ['###', ' # ', ' # ', ' # ', '###'], L: ['#  ', '#  ', '#  ', '#  ', '###'],
+  M: ['# #', '###', '###', '# #', '# #'], N: ['# #', '###', '###', '###', '# #'],
+  O: ['###', '# #', '# #', '# #', '###'], P: ['###', '# #', '###', '#  ', '#  '],
+  R: ['###', '# #', '###', '## ', '# #'], S: ['###', '#  ', '###', '  #', '###'],
+  U: ['# #', '# #', '# #', '# #', '###'], V: ['# #', '# #', '# #', '# #', ' # '],
+  W: ['# #', '# #', '# #', '###', '###'], Y: ['# #', '# #', '###', ' # ', ' # '],
+  ' ': ['   ', '   ', '   ', '   ', '   '],
+};
+function drawText(str, x, y, c) {
+  let cx = x;
+  for (const ch of str.toUpperCase()) {
+    const g = FONT[ch] || FONT[' '];
+    for (let row = 0; row < 5; row++) for (let col = 0; col < 3; col++) if (g[row][col] === '#') dot(cx + col, y + row, c);
+    cx += 4;
+  }
+}
+
 function sceneNote() {
   const r = rng(41);
   clearScene(0);
   dither(0, 0, SW, SH, 1, 0.04, r);
-  // tilted note (bright), slight skew by shifting rows
-  const nx = SW / 2 - 34, ny = 16, nw = 64, nh = 70;
-  for (let y = 0; y < nh; y++) {
-    const sk = Math.round((y - nh / 2) * 0.18);
-    fillRect(nx + sk, ny + y, nw, 1, 3);
+  // paper, slightly tilted (per-row skew), with a drop shadow
+  const nx = SW / 2 - 42, ny = 12, nw = 80, nh = 94;
+  const skew = (y) => Math.round((y - nh / 2) * 0.12);
+  for (let y = 0; y < nh; y++) fillRect(nx + skew(y) + 3, ny + y + 4, nw, 1, 1);   // shadow
+  for (let y = 0; y < nh; y++) fillRect(nx + skew(y), ny + y, nw, 1, 3);           // paper
+  // the note's words, hand-lettered and centred
+  const lines = ['PROMISE', 'YOU WILL', 'NEVER', 'LEAVE ME'];
+  let ty = ny + 14;
+  for (const ln of lines) {
+    const w = ln.length * 4 - 1;
+    drawText(ln, nx + skew(ty - ny) + Math.round((nw - w) / 2), ty, 1);
+    ty += 12;
   }
-  // three scrawled text rows (darker), "don't leave me here"
-  for (const ry of [18, 34, 50]) {
-    const sk = Math.round((ry - nh / 2) * 0.18);
-    for (let x = 6; x < nw - 8; x += 1) if (r() < 0.55) dot(nx + sk + x, ny + ry + (r() < 0.3 ? 1 : 0), 1);
+  // a lit match laid across the note, flame glowing at the tip
+  const tipX = nx + 12, tipY = ny + nh - 16;
+  const endX = nx + nw + 26, endY = ny + nh + 10;
+  for (let i = 0; i <= 60; i++) { const t = i / 60; dot(tipX + (endX - tipX) * t, tipY + (endY - tipY) * t, 2); }
+  for (let y = -8; y <= 2; y++) for (let x = -3; x <= 3; x++) {
+    const d = Math.hypot(x * 1.3, y);
+    if (d < 4.6) { const c = d < 1.6 ? 4 : d < 3 ? 3 : 2; if (r() > d * 0.16) dot(tipX + x, tipY + y - 4, c); }
   }
-  // pencil across the corner
-  for (let i = 0; i < 60; i++) dot(nx + nw - 6 + i, ny + 8 + i, 2);
-  fillRect(nx + nw - 10, ny + 4, 6, 8, 1);
+  // warm glow cast onto the paper from the flame
+  for (let y = 0; y < nh; y++) for (let x = 0; x < nw; x++) {
+    const px = nx + skew(y) + x, py = ny + y;
+    const d = Math.hypot(px - tipX, py - (tipY - 4));
+    if (d < 30 && r() < (1 - d / 30) * 0.22) dot(px, py, 4);
+  }
 }
 
 function sceneBeach() {
@@ -1043,6 +1007,16 @@ function sceneBeach() {
   dither(0, 40, SW, 80, 0, 0.18, r);
   fillRect(0, 80, SW, SH - 80, 1);            // sand
   dither(0, 80, SW, SH, 2, 0.12, r);
+  // palm trees on the shoreline (dark silhouettes against sea + sky)
+  for (const [px, base] of [[24, 86], [SW - 28, 90], [54, 80]]) {
+    for (let i = 0; i < 30; i++) dot(px + Math.round(Math.sin(i / 8) * 3), base - i, 0);   // curved trunk
+    const tx = px + Math.round(Math.sin(30 / 8) * 3), tyTop = base - 29;                    // crown
+    for (let a = 0; a < 7; a++) {
+      const ang = -0.7 + a * 0.28;
+      for (let i = 0; i < 18; i++) dot(tx + Math.cos(ang) * i * 1.5, tyTop + Math.sin(ang) * i * 1.5 + i * 0.22, 0);
+    }
+    for (let i = 0; i < 4; i++) dot(tx + (i - 1.5) * 2, tyTop - 1 + (i % 2), 2);            // coconuts/glint
+  }
   // dark tunnel opening we crawl from (foreground frame, top)
   for (let y = 0; y < 54; y++) { const w = 70 - y; fillRect(SW / 2 - w, 0, w * 2, 1, 0); }
   fillRect(SW / 2 - 16, 0, 32, 54, 0);
