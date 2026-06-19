@@ -238,7 +238,7 @@
       "brief": "Use the chain rule on inverse trig functions to obtain their derivatives.",
       "sec": 3,
       "quote": "Derivatives of inverse trigonometric functions",
-      "explanation": "PART 1 — Derive inverse-trig derivatives by implicit differentiation.\nWrite y = arcsin x, so sin y = x. Differentiate both sides: cos y dy/dx = 1, so dy/dx = 1/cos y = 1/sqrt(1 - sin^2 y) = 1/sqrt(1 - x^2). This gives the standard result d/dx(arcsin x) = 1/sqrt(1 - x^2).\n\nPART 2 — Standard results and chain-rule use.\nKey derivatives: d/dx(arcsin x) = 1/sqrt(1-x^2), d/dx(arccos x) = -1/sqrt(1-x^2), d/dx(arctan x) = 1/(1+x^2). For composites, apply the chain rule: d/dx arctan(x^2) = 1/(1+x^4) * 2x. Do NOT confuse d/dx(arcsin x) with 1/cos x.",
+      "explanation": "PART 1 — Derive inverse-trig derivatives by implicit differentiation.\nWrite y = arcsin x, so sin y = x. Differentiate both sides: cos y dy/dx = 1, so dy/dx = 1/cos y = 1/sqrt(1 - sin^2 y) = 1/sqrt(1 - x^2). This gives the standard result d/dx(arcsin x) = 1/sqrt(1 - x^2).\n\nPART 2 — Standard results and chain-rule use.\nKey derivatives: d/dx(arcsin x) = 1/sqrt(1-x^2), d/dx(arccos x) = -1/sqrt(1-x^2) — both valid for x in the open interval (-1, 1) — while d/dx(arctan x) = 1/(1+x^2) holds for all real x. For composites, apply the chain rule: d/dx arctan(x^2) = 1/(1+x^4) * 2x. Do NOT confuse d/dx(arcsin x) with 1/cos x.",
       "keyMoves": [
         "Write y = (inverse trig) of x and convert to the direct trig relation",
         "Differentiate implicitly / by chain rule to isolate dy/dx",

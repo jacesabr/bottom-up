@@ -39,7 +39,7 @@
       "brief": "Compute a second-order determinant as a11 a22 - a21 a12.",
       "sec": 2,
       "quote": "a_{11}a_{22} - a_{21}a_{12}",
-      "explanation": "PART 1 — The formula: main-diagonal product minus off-diagonal product.\nFor A = [[a11, a12],[a21, a22]], the determinant is |A| = a11*a22 − a12*a21. Multiply the top-left and bottom-right entries (main diagonal), then subtract the product of the top-right and bottom-left entries (off-diagonal). The result is a single number.\n\nPART 2 — Watch sign when the off-diagonal product is negative.\nFor [[2, 4],[−1, 2]], |A| = 2(2) − 4(−1) = 4 + 4 = 8. Subtracting a negative entry gives addition. Do not reverse the subtraction order: a11*a22 − a12*a21 is correct, not a12*a21 − a11*a22.",
+      "explanation": "PART 1 — The formula: main-diagonal product minus off-diagonal product.\nFor A = [[a11, a12],[a21, a22]], the determinant is |A| = a11*a22 − a21*a12. Multiply the top-left and bottom-right entries (main diagonal), then subtract the product of the top-right and bottom-left entries (off-diagonal). The result is a single number.\n\nPART 2 — Watch sign when the off-diagonal product is negative.\nFor [[2, 4],[−1, 2]], |A| = 2(2) − 4(−1) = 4 + 4 = 8. Subtracting a negative entry gives addition. Do not reverse the subtraction order: a11*a22 − a12*a21 is correct, not a12*a21 − a11*a22.",
       "keyMoves": [
         "Multiply the main-diagonal entries a11 and a22",
         "Subtract the product of the off-diagonal entries a21 and a12",

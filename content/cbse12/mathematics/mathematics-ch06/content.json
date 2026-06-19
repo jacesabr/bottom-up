@@ -25,7 +25,8 @@
         "Forgetting the chain link when both quantities depend on time"
       ],
       "prereqs": [
-        "cbse12:mathematics:mathematics-ch05:derivative-definition"
+        "cbse12:mathematics:mathematics-ch05:derivative-definition",
+        "cbse12:mathematics:mathematics-ch05:chain-rule"
       ],
       "sameConcept": [],
       "teachingInsights": []

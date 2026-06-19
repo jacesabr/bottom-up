@@ -201,8 +201,7 @@
       ],
       "prereqs": [
         "jee:maths:maths-ch08:identify-first-term-and-common-ratio",
-        "jee:maths:maths-ch08:apply-laws-of-exponents",
-        "jee:maths:maths-ch07:state-binomial-theorem"
+        "jee:maths:maths-ch08:apply-laws-of-exponents"
       ],
       "sameConcept": [],
       "teachingInsights": []
