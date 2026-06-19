@@ -6,11 +6,15 @@ services:
     region: oregon
     buildCommand: npm install
     startCommand: node_modules/.bin/tsx src/api/index.ts
+    healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production
+      # NVIDIA NIM is the primary model for all traffic (free). No mock / no silent fallback: a NIM
+      # failure surfaces a graceful "temporarily unavailable" message + an admin error-log entry.
+      # Set to 'claude' (and provide ANTHROPIC_API_KEY) only as a deliberate manual override.
       - key: LLM_PROVIDER
-        value: claude
+        value: nvidia
       - key: DATABASE_URL
         sync: false
       - key: NVIDIA_API_KEY

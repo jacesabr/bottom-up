@@ -2,15 +2,54 @@ import axios from 'axios';
 import { recordLlmCall } from './llm-log.js';
 
 /**
- * ModelRouter — cost policy (bottom_up.md §8, HARD RULE):
- *   - real users (prod profile)      → Claude Haiku
- *   - all testing (test profile)     → NVIDIA NIM (free) ; offline → mock
- *   - never run a test suite on Haiku.
- *
- * Profile resolves from env: MODEL_PROFILE / LLM_PROVIDER. Under a test runner
- * (NODE_ENV=test) we refuse Haiku and force NIM/mock.
+ * ModelRouter — model policy (2026-06-20, user directive):
+ *   - ALL traffic (students + tests) → NVIDIA NIM (free) — the PRIMARY model.
+ *   - Claude is opt-in only (LLM_PROVIDER=claude) for a manual override; never under the test runner.
+ *   - There is NO mock provider and NO silent offline fallback anymore. If NIM fails, the call throws
+ *     `LlmUnavailableError`; the API surfaces a plain "app is temporarily down, admin notified" message
+ *     to the student and the failure (with the provider's full error body) is recorded in bu_llm_call,
+ *     visible in the admin panel's Errors view. We never fabricate a tutor turn or a grade.
  */
-export type Provider = 'mock' | 'nvidia' | 'claude';
+export type Provider = 'nvidia' | 'claude';
+
+/**
+ * Thrown when the live model can't produce a result (provider error, timeout, missing key, or an
+ * unparseable reply). The API layer catches this and shows the student a graceful "unavailable"
+ * message instead of a broken/blank turn. `detail` is the full diagnostic (already logged).
+ */
+export class LlmUnavailableError extends Error {
+  detail: string;
+  constructor(detail: string) {
+    super('The tutor is temporarily unavailable.');
+    this.name = 'LlmUnavailableError';
+    this.detail = detail;
+  }
+}
+
+/** Full, loggable diagnostic for a failed provider call — INCLUDING the provider's error body
+ *  (an Anthropic/NIM 400 carries its real reason in response.data, which a bare axios message drops). */
+function errorDetail(err: unknown): string {
+  const e = err as { message?: string; code?: string; response?: { status?: number; data?: unknown } };
+  const parts: string[] = [];
+  if (e?.response?.status) parts.push(`HTTP ${e.response.status}`);
+  if (e?.code) parts.push(String(e.code));
+  if (e?.message) parts.push(e.message);
+  if (e?.response?.data != null) {
+    let body: string;
+    try {
+      body = typeof e.response.data === 'string' ? e.response.data : JSON.stringify(e.response.data);
+    } catch {
+      body = String(e.response.data);
+    }
+    parts.push(`body: ${body.slice(0, 1000)}`);
+  }
+  return parts.join(' · ') || String(err);
+}
+
+/** Re-wrap any failure as LlmUnavailableError (carrying the full diagnostic), unless it already is one. */
+function asLlmUnavailable(err: unknown): LlmUnavailableError {
+  return err instanceof LlmUnavailableError ? err : new LlmUnavailableError(errorDetail(err));
+}
 
 const NIM_BASE = process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1';
 // meta/llama-3.3-70b-instruct: non-reasoning, returns clean JSON in `content` (the nemotron
@@ -29,17 +68,10 @@ export async function claudeTranslate(messages: ChatMessage[], maxTokens = 1000)
 export function resolveProvider(): Provider {
   const isTestRunner = process.env.NODE_ENV === 'test';
   const explicit = (process.env.LLM_PROVIDER || '').toLowerCase();
-
-  if (explicit === 'mock') return 'mock';
-  if (explicit === 'nvidia' || explicit === 'nim') return 'nvidia';
-  if (explicit === 'claude' || explicit === 'haiku') {
-    // Refuse Haiku under a test runner — fall back to NIM (free) or mock.
-    if (isTestRunner) return process.env.NVIDIA_API_KEY ? 'nvidia' : 'mock';
-    return 'claude';
-  }
-  // Default: prefer free NIM when a key exists, else mock. (We are "testing" by default.)
-  if (process.env.NVIDIA_API_KEY) return 'nvidia';
-  return 'mock';
+  // Claude is opt-in only (manual override / authoring parity) and never under the test runner.
+  if (!isTestRunner && (explicit === 'claude' || explicit === 'haiku')) return 'claude';
+  // PRIMARY for everything else (all student traffic + tests): free NVIDIA NIM. No mock fallback.
+  return 'nvidia';
 }
 
 export interface ChatMessage {
@@ -68,30 +100,30 @@ function shouldFallbackToNim(err: unknown): boolean {
 /**
  * Call the active provider for a JSON completion. Returns raw text (caller parses).
  *
- * LIVE FALLBACK (user directive 2026-06-19): when the primary live-student provider is Claude and
- * Anthropic is exhausted/unavailable, fall back to the free NIM text model
- * (meta/llama-3.3-70b-instruct — the agreed text half of the vision+text fallback set) so the
- * student's turn still completes. Student VISION already runs on NIM (nemotron-nano-12b-v2-vl) via
- * nimVision, so the agreed vision fallback is effectively always-on. The Claude failure is recorded
- * (claudeComplete logs ok:false) and the subsequent NIM call is recorded too, so a fallback shows as
- * two adjacent bu_llm_call rows. NIM-primary has no fallback (it is the free floor; falling up to
- * Claude would spend money unexpectedly).
+ * PRIMARY = NVIDIA NIM (free meta/llama-3.3-70b-instruct). It has NO fallback — it is the free floor,
+ * and there is no mock anymore. A NIM failure throws `LlmUnavailableError` (with the full diagnostic),
+ * which the API turns into a graceful "temporarily unavailable, admin notified" message.
+ * The only fallback that remains is for the OPT-IN Claude override (LLM_PROVIDER=claude): a transient
+ * Anthropic failure still drops to free NIM so a manually-Claude session isn't left stranded.
  */
 export async function completeJson(messages: ChatMessage[], opts?: { maxTokens?: number }): Promise<string> {
   const provider = resolveProvider();
   const maxTokens = opts?.maxTokens ?? 1024;
-  if (provider === 'nvidia') return nimComplete(messages, maxTokens, true);
-  if (provider === 'claude') {
-    try {
-      return await claudeComplete(messages, maxTokens);
-    } catch (err) {
-      if (process.env.NVIDIA_API_KEY && shouldFallbackToNim(err)) {
-        return nimComplete(messages, maxTokens, true); // free NIM keeps the live student served
+  try {
+    if (provider === 'claude') {
+      try {
+        return await claudeComplete(messages, maxTokens);
+      } catch (err) {
+        if (process.env.NVIDIA_API_KEY && shouldFallbackToNim(err)) {
+          return await nimComplete(messages, maxTokens, true); // free NIM keeps a forced-Claude session served
+        }
+        throw err;
       }
-      throw err;
     }
+    return await nimComplete(messages, maxTokens, true);
+  } catch (err) {
+    throw asLlmUnavailable(err); // never leak a raw error / never fabricate — surface as unavailable
   }
-  throw new Error('mock'); // caller catches and uses its offline path
 }
 
 async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boolean): Promise<string> {
@@ -125,14 +157,14 @@ async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boo
     });
     return String(content);
   } catch (err) {
-    recordLlmCall({ provider: 'nvidia', model: NIM_MODEL, purpose: 'tutor', messages, ms: Date.now() - t0, ok: false, error: String((err as Error)?.message ?? err) });
-    throw err;
+    recordLlmCall({ provider: 'nvidia', model: NIM_MODEL, purpose: 'tutor', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
+    throw asLlmUnavailable(err);
   }
 }
 
 /**
- * Vision turn for the scratchpad "Help me": NIM's vision model reads the learner's handwritten
- * working (a JPEG data URL) and returns a short grounded hint. Falls back via thrown error.
+ * Vision turn for the scratchpad "Help me" and sketch grading: NIM's vision model reads the learner's
+ * handwritten working (a JPEG data URL). On failure it throws `LlmUnavailableError` (no offline fallback).
  */
 export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens = 400): Promise<string> {
   const key = process.env.NVIDIA_API_KEY;
@@ -162,8 +194,8 @@ export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens =
     });
     return String(content);
   } catch (err) {
-    recordLlmCall({ provider: 'nvidia', model, purpose: 'vision', messages, ms: Date.now() - t0, ok: false, error: String((err as Error)?.message ?? err) });
-    throw err;
+    recordLlmCall({ provider: 'nvidia', model, purpose: 'vision', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
+    throw asLlmUnavailable(err);
   }
 }
 
@@ -214,7 +246,7 @@ export async function claudeVision(
     });
     return String(text);
   } catch (err) {
-    recordLlmCall({ provider: 'claude', model: HAIKU_MODEL, purpose: 'figure', messages, ms: Date.now() - t0, ok: false, error: String((err as Error)?.message ?? err) });
+    recordLlmCall({ provider: 'claude', model: HAIKU_MODEL, purpose: 'figure', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
     throw err;
   }
 }
@@ -249,7 +281,7 @@ async function claudeComplete(messages: ChatMessage[], maxTokens: number, model:
     });
     return String(text);
   } catch (err) {
-    recordLlmCall({ provider: 'claude', model, purpose, messages, ms: Date.now() - t0, ok: false, error: String((err as Error)?.message ?? err) });
+    recordLlmCall({ provider: 'claude', model, purpose, messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
     throw err;
   }
 }

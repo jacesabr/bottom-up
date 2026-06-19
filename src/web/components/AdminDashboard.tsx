@@ -17,7 +17,9 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
   const [traffic, setTraffic] = useState<any>(null);
   const [conversations, setConversations] = useState<any[]>([]);
   const [calls, setCalls] = useState<any[]>([]);
+  const [errors, setErrors] = useState<any[]>([]);
   const [openConvo, setOpenConvo] = useState<any>(null);
+  const [openError, setOpenError] = useState<any>(null);
 
   // System Guide tab: the living architecture doc. It is NOT a public static file — we fetch it
   // through the Basic-auth'd /admin/guide endpoint and render the HTML into a sandboxed iframe via
@@ -49,22 +51,24 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
     setErr(null);
     // Load each panel independently — a single slow/failed endpoint (e.g. the API mid-restart) must
     // not blank the whole dashboard.
-    const [o, t, c, l] = await Promise.allSettled([
+    const [o, t, c, l, e] = await Promise.allSettled([
       authedFetch('/overview'),
       authedFetch('/traffic'),
       authedFetch('/conversations'),
       authedFetch('/llm-calls'),
+      authedFetch('/errors'),
     ]);
     if (o.status === 'fulfilled') setOverview(o.value);
     if (t.status === 'fulfilled') setTraffic(t.value);
     if (c.status === 'fulfilled') setConversations(c.value.conversations ?? []);
     if (l.status === 'fulfilled') setCalls(l.value.calls ?? []);
-    const fails = [o, t, c, l].filter((r) => r.status === 'rejected') as PromiseRejectedResult[];
+    if (e.status === 'fulfilled') setErrors(e.value.errors ?? []);
+    const fails = [o, t, c, l, e].filter((r) => r.status === 'rejected') as PromiseRejectedResult[];
     if (fails.some((r) => String(r.reason).includes('credentials'))) {
       sessionStorage.removeItem('adminAuth');
       setAuth(null);
       setErr('Wrong admin credentials.');
-    } else if (fails.length === 4) {
+    } else if (fails.length === 5) {
       setErr("Couldn't reach the admin API — it may be restarting. Tap Refresh in a moment.");
     } else if (fails.length) {
       setErr(`${fails.length} panel(s) didn't load — tap Refresh to retry.`);
@@ -108,6 +112,15 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
       setOpenConvo(d);
     } catch (e) {
       setErr(e instanceof Error ? e.message : 'Failed to load transcript');
+    }
+  };
+
+  const openErrorDetail = async (id: string) => {
+    try {
+      const d = await authedFetch(`/error/${id}`);
+      setOpenError(d);
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : 'Failed to load error');
     }
   };
 
@@ -248,6 +261,24 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
       )}
 
       <section className="admin-card">
+        <h3>Errors <span className="hint">— failed model calls (what a student saw "temporarily unavailable" for). Newest first; click a row for the full request + diagnostic.</span></h3>
+        <table>
+          <thead><tr><th>Time</th><th>Provider</th><th>Model</th><th>Purpose</th><th>ms</th><th>Error</th><th></th></tr></thead>
+          <tbody>
+            {errors.length === 0 && <tr><td colSpan={7} className="muted">No errors logged — the model has been healthy. 🎉</td></tr>}
+            {errors.map((e) => (
+              <tr key={e.id}>
+                <td>{e.ts ? new Date(e.ts).toLocaleString() : '—'}</td>
+                <td>{e.provider}</td><td>{e.model}</td><td>{e.purpose ?? '—'}</td><td>{e.ms ?? '—'}</td>
+                <td className="mono" style={{ maxWidth: 420, whiteSpace: 'normal', wordBreak: 'break-word', color: '#b00020' }}>{e.error ?? '—'}</td>
+                <td><button className="link" onClick={() => openErrorDetail(e.id)}>view</button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      <section className="admin-card">
         <h3>Recent conversations</h3>
         <table>
           <thead><tr><th>Concept</th><th>Learner</th><th>Turns</th><th>Last</th><th></th></tr></thead>
@@ -276,7 +307,8 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
               <tr key={c.id}>
                 <td>{c.ts ? new Date(c.ts).toLocaleString() : '—'}</td>
                 <td>{c.provider}</td><td>{c.model}</td><td>{c.purpose ?? '—'}</td><td>{c.ms ?? '—'}</td>
-                <td>{c.promptTokens ?? '—'}/{c.completionTokens ?? '—'}</td><td>{c.ok ? '✓' : '✗'}</td>
+                <td>{c.promptTokens ?? '—'}/{c.completionTokens ?? '—'}</td>
+                <td title={c.ok ? '' : c.error ?? ''}>{c.ok ? '✓' : '✗'}</td>
               </tr>
             ))}
           </tbody>
@@ -305,6 +337,28 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
                   </div>
                 ))}
               </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {openError && (
+        <div className="admin-overlay" onClick={() => setOpenError(null)}>
+          <div className="admin-transcript" onClick={(e) => e.stopPropagation()}>
+            <button className="admin-close" onClick={() => setOpenError(null)}>×</button>
+            <h3>Error · {openError.provider}/{openError.model} · {openError.purpose ?? '—'}</h3>
+            <p className="muted">
+              <b>When:</b> {openError.ts ? new Date(openError.ts).toLocaleString() : '—'} · <b>Latency:</b> {openError.ms ?? '—'} ms
+            </p>
+            <p><b>Diagnostic (provider error body included):</b></p>
+            <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', maxHeight: 200, overflow: 'auto', background: '#fbeaea', padding: 8, borderRadius: 6, fontSize: 12 }}>{openError.error ?? '(none)'}</pre>
+            <p><b>Request messages (the prompt that failed):</b></p>
+            <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', maxHeight: 320, overflow: 'auto', background: '#f6f6f6', padding: 8, borderRadius: 6, fontSize: 12 }}>{JSON.stringify(openError.messages, null, 2)}</pre>
+            {openError.response && (
+              <>
+                <p><b>Partial response:</b></p>
+                <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', maxHeight: 200, overflow: 'auto', background: '#f6f6f6', padding: 8, borderRadius: 6, fontSize: 12 }}>{openError.response}</pre>
+              </>
             )}
           </div>
         </div>

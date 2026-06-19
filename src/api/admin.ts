@@ -170,7 +170,7 @@ router.get('/llm-calls', async (_req, res) => {
       .select({
         id: buLlmCall.id, ts: buLlmCall.ts, provider: buLlmCall.provider, model: buLlmCall.model,
         purpose: buLlmCall.purpose, promptTokens: buLlmCall.promptTokens, completionTokens: buLlmCall.completionTokens,
-        ms: buLlmCall.ms, ok: buLlmCall.ok,
+        ms: buLlmCall.ms, ok: buLlmCall.ok, error: buLlmCall.error,
       })
       .from(buLlmCall)
       .orderBy(desc(buLlmCall.ts))
@@ -179,6 +179,44 @@ router.get('/llm-calls', async (_req, res) => {
   } catch (err) {
     console.error('admin/llm-calls error:', err);
     res.status(500).json({ error: 'llm-calls failed' });
+  }
+});
+
+// The operator ERROR LOG: every failed model call, newest first — what failed, when, how long it took,
+// and the FULL diagnostic (the provider's error body is captured in `error`). This is the panel that
+// tells the admin exactly what broke when a student saw the "temporarily unavailable" message.
+router.get('/errors', async (_req, res) => {
+  try {
+    const rows = await db
+      .select({
+        id: buLlmCall.id, ts: buLlmCall.ts, provider: buLlmCall.provider, model: buLlmCall.model,
+        purpose: buLlmCall.purpose, ms: buLlmCall.ms, error: buLlmCall.error,
+        learnerId: buLlmCall.learnerId, conceptId: buLlmCall.conceptId,
+      })
+      .from(buLlmCall)
+      .where(eq(buLlmCall.ok, false))
+      .orderBy(desc(buLlmCall.ts))
+      .limit(100);
+    res.json({ errors: rows });
+  } catch (err) {
+    console.error('admin/errors error:', err);
+    res.status(500).json({ error: 'errors failed' });
+  }
+});
+
+// One failed call in full — the exact request messages + any partial response, for root-causing.
+router.get('/error/:id', async (req, res) => {
+  try {
+    const rows = await db.select().from(buLlmCall).where(eq(buLlmCall.id, req.params.id)).limit(1);
+    if (!rows.length) return res.status(404).json({ error: 'not found' });
+    const r = rows[0];
+    res.json({
+      id: r.id, ts: r.ts, provider: r.provider, model: r.model, purpose: r.purpose,
+      ms: r.ms, ok: r.ok, error: r.error, messages: r.messages, response: r.response,
+    });
+  } catch (err) {
+    console.error('admin/error detail error:', err);
+    res.status(500).json({ error: 'error detail failed' });
   }
 });
 

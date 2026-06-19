@@ -40,14 +40,15 @@ The 3-node milestone is long past. The full maths corpus is authored, audited, a
 Live now: **https://bottom-up-web.onrender.com** (app) · **https://bottom-up-api.onrender.com** (`/health` → ok).
 The full authoring/improvement process + the per-chapter ledger live in `authoring_and_improve.md`.
 
-## Models & cost policy (HARD RULE)
-- **Real user traffic → Claude Haiku**, with a **live NIM fallback**: if the Anthropic call fails (rate-limit/quota,
-  auth/credit, 5xx/overload, network/timeout), `completeJson()` falls back to the free NIM text model
-  `meta/llama-3.3-70b-instruct` so the student's turn still completes. Student **vision** already runs on NIM
-  `nvidia/nemotron-nano-12b-v2-vl`. NIM-primary has no fallback (it is the free floor). See `src/core/llm.ts`.
-- **All testing → NVIDIA NIM (free)** or the offline `mock` provider. **Never run a test suite on Haiku.**
-- At most **1–2 Haiku messages** for a manual sanity check — never automated.
-- Enforce in the ModelRouter: `prod` profile = Haiku (+NIM fallback), `test` profile = NVIDIA NIM / mock; refuse Haiku under the test runner.
+## Models & cost policy (HARD RULE) — NIM-primary, no mock (2026-06-20)
+- **ALL traffic (students + tests) → NVIDIA NIM (free)** — the **primary** model. Text:
+  `meta/llama-3.3-70b-instruct`; vision: `nvidia/nemotron-nano-12b-v2-vl`. Set via `LLM_PROVIDER=nvidia`.
+- **No mock, no silent fallback.** There is no offline `mock` provider and no fabricated tutor turn or grade.
+  If NIM is unavailable, `completeJson()`/`nimVision()` throw `LlmUnavailableError`; the API shows the student a
+  plain **"temporarily unavailable — admin notified"** message, and the failure (with the provider's full error
+  body) is recorded in `bu_llm_call` and shown in the **admin Errors panel**. See `src/core/llm.ts`.
+- **Claude is a manual override only** (`LLM_PROVIDER=claude`, needs `ANTHROPIC_API_KEY`) — never the default,
+  never under the test runner. In that override mode a transient Anthropic failure still drops to free NIM.
 - **Authoring/content** uses a strong model in-session (curated, human-reviewed); never bulk-burned on a frontier model. See `authoring_and_improve.md`.
 
 ## Deployment

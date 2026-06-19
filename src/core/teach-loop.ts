@@ -23,6 +23,24 @@ import { examProfile, type Track } from './exam-profile.js';
  * and bu_node_checklist / bu_node_performance / bu_gate_attempt are fast derived reads.
  */
 
+/**
+ * Shown to the student (as a tutor bubble / gate feedback) when the live model is unavailable and we
+ * therefore can't produce a real turn or grade. We say plainly that the app is down and that it's been
+ * logged for the admin — never a fabricated lesson. The failure itself is recorded in bu_llm_call
+ * (visible in the admin Errors view). English is translated best-effort into the learner's language.
+ */
+export const SERVICE_DOWN_MESSAGE =
+  "⚠️ Sorry — I can't reach the tutor right now, so I can't reply properly. This has been logged automatically and the admin has been notified. Please wait a little and try again.";
+
+export async function serviceDownMessage(langCode = 'en'): Promise<string> {
+  if (!langCode || langCode === 'en') return SERVICE_DOWN_MESSAGE;
+  try {
+    return await translateText(SERVICE_DOWN_MESSAGE, langCode);
+  } catch {
+    return SERVICE_DOWN_MESSAGE;
+  }
+}
+
 async function loadConcept(conceptId: string) {
   const rows = await db.select().from(conceptsTable).where(eq(conceptsTable.id, conceptId));
   if (!rows.length) throw new Error(`Concept not found: ${conceptId}`);
@@ -443,14 +461,9 @@ export async function helpWithSketch(learnerId: string, conceptId: string, image
 The image is the student's handwritten working. Read it, then give ONE short, encouraging hint (1–2 sentences) that nudges them toward${nextMove ? ` this idea: "${nextMove.text}"` : ' finishing'}.
 Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer — just the next nudge.`;
 
-  let message: string;
-  try {
-    message = (await nimVision(prompt, imageDataUrl)).trim();
-  } catch {
-    message = nextMove
-      ? `I can see you're working it out — nice. Try focusing on this next: ${nextMove.text.toLowerCase()}. What do you get?`
-      : `Good progress on paper! Talk me through your final step and we'll check it together.`;
-  }
+  // nimVision throws LlmUnavailableError if the vision model is down — let it propagate so the API
+  // shows the graceful "unavailable" message, rather than a canned hint pretending we read the work.
+  let message = (await nimVision(prompt, imageDataUrl)).trim();
   if (langCode !== 'en') message = await translateText(message, langCode);
 
   await db.insert(buEvent).values({

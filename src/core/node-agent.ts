@@ -1,5 +1,6 @@
-import { completeJson, parseLooseJson, resolveProvider, nimVision, claudeTranslate, type ChatMessage } from './llm.js';
-import { languageInstruction, lang } from './languages.js';
+import axios from 'axios';
+import { completeJson, parseLooseJson, resolveProvider, nimVision, LlmUnavailableError, type ChatMessage } from './llm.js';
+import { lang } from './languages.js';
 import { examProfile, type Track } from './exam-profile.js';
 import type { RefresherItem } from '../db/schema.js';
 
@@ -93,16 +94,12 @@ export async function gradeWritten(
       content: `QUESTION: ${prompt}\n\nWHAT A CORRECT ANSWER NEEDS (rubric): ${rubric || ideal || 'a clear, correct explanation'}\n\nMODEL ANSWER: ${ideal || '(use your judgement)'}\n\nSTUDENT ANSWER: ${answer}\n\nGrade it. Pass if the core idea is correct even if wording is imperfect.`,
     },
   ];
-  try {
-    const raw = await completeJson(messages, { maxTokens: 300 });
-    const p = parseLooseJson<any>(raw);
-    if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
-  } catch {
-    /* fall through */
-  }
-  // Offline fallback: accept a substantive answer.
-  const ok = answer.trim().length > 40;
-  return { correct: ok, feedback: ok ? 'Good — that captures the idea.' : 'Try to explain a bit more fully.' };
+  const raw = await completeJson(messages, { maxTokens: 300 });
+  const p = parseLooseJson<any>(raw);
+  if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
+  // No offline guess: a grade we can't actually compute must not be invented (it would pass or fail a
+  // student on a coin-flip). Surface as unavailable so the API shows the graceful message instead.
+  throw new LlmUnavailableError('gradeWritten: grader returned no parseable verdict');
 }
 
 export interface SubjectiveResult {
@@ -136,18 +133,14 @@ export async function gradeSubjective(
       content: `QUESTION (worth ${maxMarks} marks): ${prompt}\n\nOFFICIAL MARKING SCHEME / MODEL ANSWER: ${markingScheme || '(use your expert judgement of a fully-correct answer)'}\n\nSTUDENT ANSWER: ${answer}\n\nAward an integer number of marks from 0 to ${maxMarks}, following the marking scheme's step-marking.`,
     },
   ];
-  try {
-    const raw = await completeJson(messages, { maxTokens: 320 });
-    const p = parseLooseJson<any>(raw);
-    if (p && typeof p.marksAwarded === 'number') {
-      const m = Math.max(0, Math.min(maxMarks, Math.round(p.marksAwarded)));
-      return { marksAwarded: m, feedback: String(p.feedback || '') };
-    }
-  } catch {
-    /* fall through */
+  const raw = await completeJson(messages, { maxTokens: 320 });
+  const p = parseLooseJson<any>(raw);
+  if (p && typeof p.marksAwarded === 'number') {
+    const m = Math.max(0, Math.min(maxMarks, Math.round(p.marksAwarded)));
+    return { marksAwarded: m, feedback: String(p.feedback || '') };
   }
-  // Offline/grader-unavailable: do NOT invent marks — award 0 and say it couldn't be marked.
-  return { marksAwarded: 0, feedback: '(Could not mark this answer automatically — please review against the marking scheme.)' };
+  // Don't silently award 0 (that fails a possibly-correct student): surface as unavailable.
+  throw new LlmUnavailableError('gradeSubjective: marker returned no parseable marks');
 }
 
 /** Grade a maths answer by checking equivalence to the ideal answer (handles fractions, expressions). */
@@ -163,14 +156,11 @@ export async function gradeEquation(prompt: string, ideal: string | null, answer
       content: `QUESTION: ${prompt}\n\nCORRECT ANSWER: ${ideal || '(use your judgement)'}\n\nSTUDENT ANSWER: ${answer}\n\nIs the student's answer mathematically correct/equivalent? Accept equivalent forms (e.g. 2/3 = 0.667, 2^3·3 = 24).`,
     },
   ];
-  try {
-    const raw = await completeJson(messages, { maxTokens: 250 });
-    const p = parseLooseJson<any>(raw);
-    if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
-  } catch {
-    /* fall through */
-  }
-  return { correct: false, feedback: 'Could not verify — please re-check your answer.' };
+  const raw = await completeJson(messages, { maxTokens: 250 });
+  const p = parseLooseJson<any>(raw);
+  if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
+  // Don't silently mark wrong (that fails a possibly-correct student): surface as unavailable.
+  throw new LlmUnavailableError('gradeEquation: grader returned no parseable verdict');
 }
 
 /** Grade a handwritten/drawn answer (sketch) via vision against the rubric/ideal. */
@@ -188,18 +178,16 @@ export async function gradeSketch(
 QUESTION: ${prompt}
 WHAT A CORRECT DRAWING MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled diagram'}
 Look at the image and decide if it satisfies the requirement. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences on what's right / what to fix>"}`;
-  try {
-    const raw = await nimVision(visionPrompt, imageDataUrl, 350);
-    const p = parseLooseJson<any>(raw);
-    if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
-    // vision returned prose, not JSON — treat a clearly positive read as a pass
-    const lc = raw.toLowerCase();
-    const correct = /correct|right|good|satisfies|complete/.test(lc) && !/incorrect|not |missing|wrong/.test(lc);
-    return { correct, feedback: raw.slice(0, 200) };
-  } catch {
-    // Offline/vision-unavailable fallback: accept the drawing so testing can proceed, but say so.
-    return { correct: true, feedback: '(Vision grader unavailable — accepted your drawing so you can continue.)' };
-  }
+  // nimVision throws LlmUnavailableError if the vision model is down — we let that propagate rather than
+  // accept the drawing blind (the old fallback silently passed EVERY sketch).
+  const raw = await nimVision(visionPrompt, imageDataUrl, 350);
+  const p = parseLooseJson<any>(raw);
+  if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
+  // Vision returned prose, not JSON — interpret a clearly positive read as a pass (this is a REAL
+  // model response, not a failure, so it's fair to use).
+  const lc = raw.toLowerCase();
+  const correct = /correct|right|good|satisfies|complete/.test(lc) && !/incorrect|not |missing|wrong/.test(lc);
+  return { correct, feedback: raw.slice(0, 200) };
 }
 
 /**
@@ -208,7 +196,8 @@ Look at the image and decide if it satisfies the requirement. Return ONLY JSON {
  *   2. report a checklist delta IN the same JSON (no separate judge call)
  *
  * Returns clean, well-formatted prose for the chat bubble plus the structured delta.
- * Uses NVIDIA NIM (free) when testing; falls back to a clean offline mock so the UI never breaks.
+ * Runs on NVIDIA NIM (the primary model). If NIM is unavailable it throws LlmUnavailableError — there is
+ * no mock; the API turns that into a graceful "temporarily unavailable" message for the student.
  */
 
 export interface KeyMove {
@@ -366,25 +355,24 @@ Return ONLY a JSON object, no prose around it (write "message" in natural Englis
 }
 
 export async function teachTurn(input: TeachTurnInput): Promise<TeachTurnOutput> {
-  try {
-    const raw = await completeJson(buildMessages(input), { maxTokens: 700 });
-    const parsed = parseLooseJson<any>(raw);
-    if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
-      const cg = parsed.corpusGap;
-      return {
-        message: parsed.message.trim(),
-        keyMovesDemonstrated: Array.isArray(parsed.keyMovesDemonstrated) ? parsed.keyMovesDemonstrated : [],
-        misconceptionsSeen: Array.isArray(parsed.misconceptionsSeen) ? parsed.misconceptionsSeen : [],
-        readyForGate: !!parsed.readyForGate,
-        provider: resolveProvider(),
-        corpusGap: cg && cg.missing ? { question: String(cg.question ?? ''), missing: String(cg.missing) } : null,
-        figureRef: parsed.figureRef ? String(parsed.figureRef) : null,
-      };
-    }
-  } catch {
-    /* fall through to mock */
+  // NIM-only, no mock: completeJson throws LlmUnavailableError if the model is down. We let that
+  // propagate so the API shows the student a graceful "unavailable" message — we never fabricate a turn.
+  const raw = await completeJson(buildMessages(input), { maxTokens: 700 });
+  const parsed = parseLooseJson<any>(raw);
+  if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
+    const cg = parsed.corpusGap;
+    return {
+      message: parsed.message.trim(),
+      keyMovesDemonstrated: Array.isArray(parsed.keyMovesDemonstrated) ? parsed.keyMovesDemonstrated : [],
+      misconceptionsSeen: Array.isArray(parsed.misconceptionsSeen) ? parsed.misconceptionsSeen : [],
+      readyForGate: !!parsed.readyForGate,
+      provider: resolveProvider(),
+      corpusGap: cg && cg.missing ? { question: String(cg.question ?? ''), missing: String(cg.missing) } : null,
+      figureRef: parsed.figureRef ? String(parsed.figureRef) : null,
+    };
   }
-  return mockTurn(input);
+  // A reply that won't parse into a usable turn is a failure, not a reason to invent one.
+  throw new LlmUnavailableError('teachTurn: model returned no parseable message');
 }
 
 /**
@@ -418,36 +406,3 @@ export async function summarizeConversation(
   return existingSummary ?? `Discussed ${conceptTitle}; ${newTurns.length} turns exchanged.`;
 }
 
-/** Clean offline fallback — readable prose, simple heuristic checklist progress. */
-function mockTurn(input: TeachTurnInput): TeachTurnOutput {
-  const nextMove = input.keyMoves.find((m) => !m.demonstrated);
-  const lastLearner = [...input.dialogue].reverse().find((t) => t.role === 'learner');
-
-  // Opening turn — lead into the topic (the welcome banner is added separately by respond()).
-  if (!lastLearner) {
-    return {
-      message: `${input.brief}\n\nTo get us started: ${questionFor(nextMove?.text)}`,
-      keyMovesDemonstrated: [],
-      misconceptionsSeen: [],
-      readyForGate: false,
-      provider: 'mock',
-    };
-  }
-
-  // Heuristic: a non-trivial reply demonstrates the current move.
-  const demonstrated = lastLearner.content.trim().length > 12 && nextMove ? [{ index: nextMove.index, evidence: lastLearner.content.trim() }] : [];
-  const remaining = input.keyMoves.filter((m) => !m.demonstrated && m.index !== nextMove?.index);
-  const ready = demonstrated.length > 0 && remaining.length === 0;
-
-  const followUp = remaining[0];
-  const message = ready
-    ? `Lovely — that's the idea, and you've got all the core ideas for this one now. Whenever you're ready, I'll give you a few quick checks to lock it in.`
-    : `Good thinking. ${questionFor(followUp?.text)}`;
-
-  return { message, keyMovesDemonstrated: demonstrated, misconceptionsSeen: [], readyForGate: ready, provider: 'mock' };
-}
-
-function questionFor(move?: string): string {
-  if (!move) return 'Can you say a little more about how you see it?';
-  return `Can you explain, in your own words — ${move.toLowerCase()}?`;
-}

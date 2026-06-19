@@ -36,6 +36,11 @@ const INTRO_LANG_SPEECH =
   'Set your preferred language using the box at the top of the page.';
 const INTRO_MIC_SPEECH = 'When you are ready, type "start" below — or tap the microphone and say "start".';
 
+// Shown in the chat when a request fails (server returns systemError, an HTTP error, or the network
+// drops). We never fabricate a tutor reply — we say plainly the app is down and it's been logged.
+const SERVICE_DOWN_TEXT =
+  "⚠️ Sorry — I can't reach the tutor right now, so I can't reply properly. This has been logged automatically and the admin has been notified. Please wait a little and try again.";
+
 // UI elements we glow one-at-a-time as the tutor's welcome mentions them aloud.
 type HiTarget = 'lang' | 'mic' | 'details' | 'scratchpad' | 'attach' | 'helpme' | 'readaloud' | 'qr';
 
@@ -158,9 +163,20 @@ export default function NodeView({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ lang }),
-        });
-        const data = await res.json();
+        }).catch(() => null);
         if (cancelled) return;
+        if (!res || !res.ok) {
+          setMessages([{ role: 'tutor', text: SERVICE_DOWN_TEXT }]);
+          setAwaitingStart(false);
+          return;
+        }
+        const data = await res.json().catch(() => ({} as any));
+        if (cancelled) return;
+        if (data.systemError) {
+          setMessages([{ role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
+          setAwaitingStart(false);
+          return;
+        }
         // Replay any prior conversation for this node, then the opening/continue message last.
         const history: Msg[] = (data.history ?? []).map((h: { role: 'tutor' | 'learner'; text: string }) => ({
           role: h.role,
@@ -265,12 +281,17 @@ export default function NodeView({
   // Re-fires when language or voice settings change while the gate is still up.
   useEffect(() => {
     if (!awaitingStart || !autoRead) return;
+    // The language menu is a set of FIXED strings, each in its own language. We play PRE-RECORDED
+    // clips for them (one consistent voice per language, no per-run TTS variance), with a graceful
+    // fall back to live TTS inside speakSequence if a clip is missing. Once the learner picks a
+    // language, the lesson itself continues live in that single chosen language/voice.
     const langInviteSegments: SpeakSegment[] = (['hi', 'pa', 'ta', 'bn'] as const)
       .filter((code) => code !== lang)
       .map((code) => ({
         text: LANG_INVITES[code].text,
         lang: LANG_INVITES[code].lang,
         speechLang: LANG_INVITES[code].lang + '-IN',
+        audioUrl: `/audio/invites/${code}.wav`,
         onStart: () => setHighlight({ target: 'lang', word: '' }),
       }));
     const segments: SpeakSegment[] = [
@@ -318,10 +339,16 @@ export default function NodeView({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text, lang }),
       });
-      const data = await res.json();
-      setMessages((m) => [...m, { role: 'tutor', text: data.message, figure: data.figure }]);
-      setChecklist(data.checklist ?? []);
-      setReadyForGate(!!data.readyForGate);
+      const data = await res.json().catch(() => ({} as any));
+      const text2 = data.message || (res.ok ? null : SERVICE_DOWN_TEXT);
+      setMessages((m) => [...m, { role: 'tutor', text: text2 ?? SERVICE_DOWN_TEXT, figure: data.figure }]);
+      // Don't overwrite progress on a failed/unavailable turn (no real checklist came back).
+      if (res.ok && !data.systemError) {
+        setChecklist(data.checklist ?? []);
+        setReadyForGate(!!data.readyForGate);
+      }
+    } catch {
+      setMessages((m) => [...m, { role: 'tutor', text: SERVICE_DOWN_TEXT }]);
     } finally {
       setBusy(false);
     }
@@ -339,8 +366,10 @@ export default function NodeView({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ image: img, lang }),
       });
-      const data = await res.json();
-      setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
+      const data = await res.json().catch(() => ({} as any));
+      setMessages((m) => [...m, { role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
+    } catch {
+      setMessages((m) => [...m, { role: 'tutor', text: SERVICE_DOWN_TEXT }]);
     } finally {
       setBusy(false);
     }
@@ -358,10 +387,14 @@ export default function NodeView({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: '[I shared my handwritten working on the scratchpad.]', lang }),
       });
-      const data = await res.json();
-      setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
-      setChecklist(data.checklist ?? []);
-      setReadyForGate(!!data.readyForGate);
+      const data = await res.json().catch(() => ({} as any));
+      setMessages((m) => [...m, { role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
+      if (res.ok && !data.systemError) {
+        setChecklist(data.checklist ?? []);
+        setReadyForGate(!!data.readyForGate);
+      }
+    } catch {
+      setMessages((m) => [...m, { role: 'tutor', text: SERVICE_DOWN_TEXT }]);
     } finally {
       setBusy(false);
     }
@@ -373,13 +406,17 @@ export default function NodeView({
     setGateAnswer('');
     try {
       const res = await fetch(`${base}/gate`, { method: 'POST' });
-      const data = await res.json();
-      if (data.allPassed) {
+      const data = await res.json().catch(() => ({} as any));
+      if (!res.ok) {
+        setGateFeedback({ ok: false, text: data.message || SERVICE_DOWN_TEXT });
+      } else if (data.allPassed) {
         setDone(true);
         setGate(null);
       } else {
         setGate(data);
       }
+    } catch {
+      setGateFeedback({ ok: false, text: SERVICE_DOWN_TEXT });
     } finally {
       setBusy(false);
     }
@@ -402,17 +439,24 @@ export default function NodeView({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ gateId: gate.gateId, answer, lang }),
       });
-      const data = await res.json();
-      setGateFeedback({ ok: data.correct, text: data.feedback || data.message });
-      if (data.allPassed) {
+      const data = await res.json().catch(() => ({} as any));
+      if (!res.ok && !data.feedback && !data.message) {
+        setGateFeedback({ ok: false, text: SERVICE_DOWN_TEXT });
+        return;
+      }
+      setGateFeedback({ ok: !!data.correct, text: data.feedback || data.message || SERVICE_DOWN_TEXT });
+      // systemError → grader was down; keep the same gate so the student can retry, no false pass.
+      if (!data.systemError && data.allPassed) {
         setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
         setDone(true);
         setGate(null);
-      } else if (data.correct) {
+      } else if (!data.systemError && data.correct) {
         // cleared this gate → advance to the next one after a beat
         setTimeout(poseNextGate, 900);
       }
-      // incorrect → keep the same gate, feedback shown, allow retry
+      // incorrect / unavailable → keep the same gate, feedback shown, allow retry
+    } catch {
+      setGateFeedback({ ok: false, text: SERVICE_DOWN_TEXT });
     } finally {
       setBusy(false);
     }

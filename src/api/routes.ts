@@ -2,7 +2,8 @@ import express from 'express';
 import { db } from '../db/index.js';
 import { buNodePerformance, buVisit } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
-import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures } from '../core/teach-loop.js';
+import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures, serviceDownMessage } from '../core/teach-loop.js';
+import { LlmUnavailableError } from '../core/llm.js';
 import { LANGUAGES } from '../core/languages.js';
 import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
 import { computeChapterStatuses } from '../core/sequencer.js';
@@ -134,11 +135,11 @@ router.get('/languages', (_req, res) => {
 // Read-aloud: text → speech (Sarvam → ElevenLabs → Deepgram-Aura → null=browser TTS).
 router.post('/tts', async (req, res) => {
   try {
-    const { text, lang, provider } = req.body || {};
+    const { text, lang, provider, strict } = req.body || {};
     if (!text) return res.status(400).json({ error: 'No text' });
     const { synthesize } = await import('../core/voice.js');
     const force = ['elevenlabs', 'sarvam', 'deepgram'].includes(provider) ? provider : undefined;
-    const out = await synthesize(String(text), lang || 'en', force);
+    const out = await synthesize(String(text), lang || 'en', force, !!strict);
     res.json(out ?? { audioBase64: null }); // null → client uses browser TTS
   } catch (err) {
     console.error('tts error:', err);
@@ -281,6 +282,10 @@ router.post('/learner/:learnerId/node/:conceptId/start', async (req, res) => {
     const turn = await respond(learnerId, conceptId, undefined, true, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation');
     res.json(turn);
   } catch (err) {
+    if (err instanceof LlmUnavailableError) {
+      console.error('start: model unavailable —', err.detail);
+      return res.json({ message: await serviceDownMessage(req.body?.lang || 'en'), readyForGate: false, systemError: true });
+    }
     console.error('Error starting node:', err);
     res.status(500).json({ error: 'Failed to start node' });
   }
@@ -294,6 +299,10 @@ router.post('/learner/:learnerId/node/:conceptId/reply', async (req, res) => {
     const turn = await respond(learnerId, conceptId, message, false, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation');
     res.json(turn);
   } catch (err) {
+    if (err instanceof LlmUnavailableError) {
+      console.error('reply: model unavailable —', err.detail);
+      return res.json({ message: await serviceDownMessage(req.body?.lang || 'en'), readyForGate: false, systemError: true });
+    }
     console.error('Error in reply:', err);
     res.status(500).json({ error: 'Failed to process reply' });
   }
@@ -308,6 +317,10 @@ router.post('/learner/:learnerId/node/:conceptId/help', async (req, res) => {
     const { message } = await helpWithSketch(learnerId, conceptId, image, lang || 'en');
     res.json({ message });
   } catch (err) {
+    if (err instanceof LlmUnavailableError) {
+      console.error('help: vision unavailable —', err.detail);
+      return res.json({ message: await serviceDownMessage(req.body?.lang || 'en'), systemError: true });
+    }
     console.error('Error in help:', err);
     res.status(500).json({ error: 'Failed to help' });
   }
@@ -345,6 +358,11 @@ router.post('/learner/:learnerId/node/:conceptId/gate-answer', async (req, res) 
           : "Not quite — read the feedback and try this one again.",
     });
   } catch (err) {
+    if (err instanceof LlmUnavailableError) {
+      // Grader is down — do NOT record a pass/fail (none was; the grader threw before persisting).
+      console.error('gate-answer: grader unavailable —', err.detail);
+      return res.json({ correct: false, allPassed: false, systemError: true, feedback: await serviceDownMessage(req.body?.lang || 'en') });
+    }
     console.error('Error grading gate:', err);
     res.status(500).json({ error: 'Failed to grade answer' });
   }
@@ -398,6 +416,10 @@ router.post('/learner/:learnerId/paper/:paperId/answer', async (req, res) => {
     const result = await answerPaperQuestion(learnerId, paperId, q, answer);
     res.json(result);
   } catch (err) {
+    if (err instanceof LlmUnavailableError) {
+      console.error('paper answer: marker unavailable —', err.detail);
+      return res.json({ systemError: true, message: await serviceDownMessage() });
+    }
     console.error('Error grading paper answer:', err);
     res.status(500).json({ error: 'Failed to grade answer' });
   }
