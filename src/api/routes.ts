@@ -17,7 +17,12 @@ const MATH_COURSES = [
   { key: 'cbse10:maths', exam: 'cbse10', subject: 'maths', title: 'CBSE 10 · Maths', who: 'For Class 10 — CBSE board maths, built from the ground up.' },
   { key: 'cbse12:mathematics', exam: 'cbse12', subject: 'mathematics', title: 'CBSE 12 · Maths', who: 'For Class 12 — CBSE board maths. Assumes Class 11 is already familiar.' },
   { key: 'jee:maths', exam: 'jee', subject: 'maths', title: 'JEE · Maths', who: 'For Class 11 onward — starts at Class 11, runs into Class 12, deeper than boards. Ideal if you start in Class 11.' },
-  { key: 'scratch:maths', exam: 'scratch', subject: 'maths', title: 'Learn from Scratch · Maths', who: 'All of school maths as one map — Kindergarten to end of high school. Climb to any class and start there; we refresh whatever you need.' },
+  // ── ARCHIVED 2026-06-19 — "Learn from Scratch" hidden from the front end (not yet authored). ──────────
+  // It is removed from the home page ONLY by not being served here. Everything else stays in place and
+  // isolated: the ClassLadder UI (Home.tsx), the `coming_soon`/needsAuthoring handling (ChapterMap.tsx),
+  // the scratch teaching persona (exam-profile.ts SCRATCH_BANDS), OPEN_LADDER_EXAMS, and the whole
+  // content/scratch/* corpus + DB rows. Re-enable by uncommenting this one line.
+  // { key: 'scratch:maths', exam: 'scratch', subject: 'maths', title: 'Learn from Scratch · Maths', who: 'All of school maths as one map — Kindergarten to end of high school. Climb to any class and start there; we refresh whatever you need.' },
 ] as const;
 
 // Courses whose chapters are class levels you may enter in any order (no strict-linear unlock wall).
