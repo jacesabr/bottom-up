@@ -442,7 +442,11 @@ export async function respond(
   return {
     message,
     checklist: updated,
-    readyForGate: allShown || turn.readyForGate,
+    // Completion is server-owned: gate only when the deterministic checklist says EVERY key move is
+    // demonstrated. Do NOT honour the model's own readyForGate guess on a node that has key moves — a
+    // weak model sets it true prematurely (after teaching only some moves), which cut lessons short.
+    // The model's flag is only a fallback for the rare node with no key moves to track.
+    readyForGate: c.keyMoves.length > 0 ? allShown : turn.readyForGate,
     provider: turn.provider,
     figure: figure ? { url: figure.url, caption: figure.caption } : null,
   };
