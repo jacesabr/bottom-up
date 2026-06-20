@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { completeJson, parseLooseJson, resolveProvider, nimVision, LlmUnavailableError, type ChatMessage } from './llm.js';
+import { completeJson, parseLooseJson, repairJsonBackslashes, resolveProvider, nimVision, LlmUnavailableError, type ChatMessage } from './llm.js';
 import { lang } from './languages.js';
 import { examProfile, type Track } from './exam-profile.js';
 import type { RefresherItem } from '../db/schema.js';
@@ -354,10 +354,63 @@ Return ONLY a JSON object, no prose around it (write "message" in natural Englis
   ];
 }
 
-export async function teachTurn(input: TeachTurnInput): Promise<TeachTurnOutput> {
+/**
+ * Pull the (possibly still-growing) "message" value out of a partial JSON stream so the client can
+ * show the tutor turn token-by-token. "message" is the FIRST field in the schema, so its prose arrives
+ * early. We decode it exactly as the final parse will (repair single-backslash LaTeX, then JSON-decode),
+ * tolerating a stream cut mid-escape. Returns null until the opening `"message": "` has streamed in.
+ */
+export function extractStreamingMessage(raw: string): string | null {
+  const m = raw.match(/"message"\s*:\s*"/);
+  if (!m || m.index == null) return null;
+  const start = m.index + m[0].length;
+  let i = start;
+  let end = -1;
+  while (i < raw.length) {
+    if (raw[i] === '\\') {
+      i += 2;
+      continue;
+    } // skip an escaped char (incl. \")
+    if (raw[i] === '"') {
+      end = i;
+      break;
+    }
+    i++;
+  }
+  let inner = end >= 0 ? raw.slice(start, end) : raw.slice(start);
+  // Stream still open: a trailing backslash-run + letters may be an incomplete LaTeX command (`\t`,
+  // `\tim`, `\frac…`) — decoding `\t`/`\n` now would flash a TAB/newline. Trim it; the next token (or
+  // the final authoritative parse) restores it a frame later.
+  if (end < 0) inner = inner.replace(/\\+[a-zA-Z]*$/, '');
+  const fixed = repairJsonBackslashes(inner);
+  try {
+    return JSON.parse(`"${fixed}"`);
+  } catch {
+    try {
+      return JSON.parse(`"${fixed.replace(/\\+$/, '')}"`);
+    } catch {
+      return inner;
+    }
+  }
+}
+
+export async function teachTurn(
+  input: TeachTurnInput,
+  onDelta?: (messageSoFar: string) => void
+): Promise<TeachTurnOutput> {
   // NIM-only, no mock: completeJson throws LlmUnavailableError if the model is down. We let that
   // propagate so the API shows the student a graceful "unavailable" message — we never fabricate a turn.
-  const raw = await completeJson(buildMessages(input), { maxTokens: 700 });
+  let lastSent = '';
+  const onStream = onDelta
+    ? (textSoFar: string) => {
+        const msg = extractStreamingMessage(textSoFar);
+        if (msg != null && msg !== lastSent) {
+          lastSent = msg;
+          onDelta(msg);
+        }
+      }
+    : undefined;
+  const raw = await completeJson(buildMessages(input), { maxTokens: 700, onStream });
   const parsed = parseLooseJson<any>(raw);
   if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
     const cg = parsed.corpusGap;

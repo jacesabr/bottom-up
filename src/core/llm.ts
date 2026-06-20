@@ -101,27 +101,55 @@ function shouldFallbackToNim(err: unknown): boolean {
  * The only fallback that remains is for the OPT-IN Claude override (LLM_PROVIDER=claude): a transient
  * Anthropic failure still drops to free NIM so a manually-Claude session isn't left stranded.
  */
-export async function completeJson(messages: ChatMessage[], opts?: { maxTokens?: number }): Promise<string> {
+export async function completeJson(
+  messages: ChatMessage[],
+  opts?: { maxTokens?: number; onStream?: (textSoFar: string) => void }
+): Promise<string> {
   const provider = resolveProvider();
   const maxTokens = opts?.maxTokens ?? 1024;
+  // Stream from NIM when the caller wants live tokens (the tutor turn). Claude's own streaming isn't
+  // wired here — a forced-Claude session just completes normally, then NIM streams on fallback.
+  const callNim = (model: string) =>
+    opts?.onStream ? nimCompleteStream(messages, maxTokens, opts.onStream, model) : nimComplete(messages, maxTokens, true, model);
+  // PRIMARY NIM model, then the fallback NIM model (a DIFFERENT id) if the primary errors transiently —
+  // a busy/down/missing primary shouldn't strand a student when another free model can answer.
+  const nim = async () => {
+    try {
+      return await callNim(MODELS.text);
+    } catch (err) {
+      if (MODELS.textFallback && MODELS.textFallback !== MODELS.text && isModelRetryable(err)) {
+        return await callNim(MODELS.textFallback);
+      }
+      throw err;
+    }
+  };
   try {
     if (provider === 'claude') {
       try {
         return await claudeComplete(messages, maxTokens);
       } catch (err) {
         if (process.env.NVIDIA_API_KEY && shouldFallbackToNim(err)) {
-          return await nimComplete(messages, maxTokens, true); // free NIM keeps a forced-Claude session served
+          return await nim(); // free NIM keeps a forced-Claude session served
         }
         throw err;
       }
     }
-    return await nimComplete(messages, maxTokens, true);
+    return await nim();
   } catch (err) {
     throw asLlmUnavailable(err); // never leak a raw error / never fabricate — surface as unavailable
   }
 }
 
-async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boolean): Promise<string> {
+/** Should a failed PRIMARY NIM model fall through to the fallback NIM model? Yes for anything transient
+ *  or availability-related (429/5xx/timeout/network/empty/404-deprovisioned); NO for a request-level bug
+ *  (400/422) or auth failure (401/403) — the fallback model would reject those identically. The error may
+ *  arrive raw or already wrapped as LlmUnavailableError, so we inspect the diagnostic string either way. */
+function isModelRetryable(err: unknown): boolean {
+  const d = err instanceof LlmUnavailableError ? err.detail : errorDetail(err);
+  return !/HTTP (400|401|403|422)\b/.test(d);
+}
+
+async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boolean, model: string = MODELS.text): Promise<string> {
   const key = process.env.NVIDIA_API_KEY;
   if (!key) throw new Error('NVIDIA_API_KEY missing');
   // NOTE: no response_format json_object — on NIM it strands content as null for several models.
@@ -132,7 +160,7 @@ async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boo
     const res = await axios.post(
       `${NIM_BASE}/chat/completions`,
       {
-        model: MODELS.text,
+        model,
         messages,
         temperature: 0.6,
         max_tokens: maxTokens,
@@ -146,13 +174,79 @@ async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boo
     const content = res.data?.choices?.[0]?.message?.content;
     if (!content || !String(content).trim()) throw new Error('Empty NIM content');
     recordLlmCall({
-      provider: 'nvidia', model: MODELS.text, purpose: 'tutor', messages,
+      provider: 'nvidia', model, purpose: 'tutor', messages,
       response: String(content), ms: Date.now() - t0,
       promptTokens: res.data?.usage?.prompt_tokens, completionTokens: res.data?.usage?.completion_tokens,
     });
     return String(content);
   } catch (err) {
-    recordLlmCall({ provider: 'nvidia', model: MODELS.text, purpose: 'tutor', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
+    recordLlmCall({ provider: 'nvidia', model, purpose: 'tutor', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
+    throw asLlmUnavailable(err);
+  }
+}
+
+/**
+ * Streaming variant of nimComplete: posts with `stream: true` and parses the OpenAI-style SSE chunks,
+ * calling `onText` with the FULL accumulated text after each delta (so the caller can extract the
+ * growing tutor message and forward it). Returns the complete reply once the stream ends — the caller
+ * still parses that authoritatively. Same 60s patience + error/logging contract as the non-stream path.
+ */
+async function nimCompleteStream(
+  messages: ChatMessage[],
+  maxTokens: number,
+  onText: (textSoFar: string) => void,
+  model: string = MODELS.text
+): Promise<string> {
+  const key = process.env.NVIDIA_API_KEY;
+  if (!key) throw new Error('NVIDIA_API_KEY missing');
+  const t0 = Date.now();
+  let full = '';
+  try {
+    const res = await axios.post(
+      `${NIM_BASE}/chat/completions`,
+      { model, messages, temperature: 0.6, max_tokens: maxTokens, stream: true },
+      {
+        headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+        responseType: 'stream',
+        timeout: 60_000,
+      }
+    );
+    await new Promise<void>((resolve, reject) => {
+      let buf = '';
+      const stream = res.data as NodeJS.ReadableStream;
+      stream.on('data', (chunk: Buffer) => {
+        buf += chunk.toString('utf8');
+        let nl: number;
+        // SSE frames are newline-delimited "data: {json}" lines, terminated by "data: [DONE]".
+        while ((nl = buf.indexOf('\n')) >= 0) {
+          const line = buf.slice(0, nl).trim();
+          buf = buf.slice(nl + 1);
+          if (!line.startsWith('data:')) continue;
+          const payload = line.slice(5).trim();
+          if (!payload || payload === '[DONE]') continue;
+          try {
+            const piece = JSON.parse(payload)?.choices?.[0]?.delta?.content;
+            if (piece) {
+              full += piece;
+              try {
+                onText(full);
+              } catch {
+                /* a listener error must never break the stream */
+              }
+            }
+          } catch {
+            /* ignore keep-alive / partial JSON frames */
+          }
+        }
+      });
+      stream.on('end', () => resolve());
+      stream.on('error', (e: unknown) => reject(e));
+    });
+    if (!full.trim()) throw new Error('Empty NIM stream content');
+    recordLlmCall({ provider: 'nvidia', model, purpose: 'tutor', messages, response: full, ms: Date.now() - t0 });
+    return full;
+  } catch (err) {
+    recordLlmCall({ provider: 'nvidia', model, purpose: 'tutor', messages, ms: Date.now() - t0, ok: false, error: errorDetail(err) });
     throw asLlmUnavailable(err);
   }
 }
@@ -276,12 +370,93 @@ async function claudeComplete(messages: ChatMessage[], maxTokens: number, model:
   }
 }
 
+// Known LaTeX commands that start with "n" — the one escape letter that's also a real line break.
+// (Only these protect a backslash; any other "\n…" is treated as a genuine newline, see below.)
+const N_LATEX = /^(?:nabla|neq|ne|neg|ni|notin|nmid|nleq|ngeq|nu|nearrow|nwarrow|nparallel|nsubseteq|nsupseteq|nrightarrow|nleftarrow)$/;
+
+/**
+ * Repair single-backslash LaTeX in an LLM's JSON reply so JSON.parse keeps the maths intact.
+ *
+ * Models routinely emit JSON-illegal LaTeX — `"$2\times2$"` instead of the legal `"$2\\times2$"`.
+ * JSON.parse then either (a) SILENTLY corrupts it, because `\t \n \r \b \f` are valid JSON escapes
+ * (so `\times` → TAB+"imes" — the "2imes2imes2" bug, in chat AND read-aloud), or (b) THROWS, because
+ * `\s \c \a \p …` are INVALID escapes (so `\sqrt \cdot \pi \alpha` kill the whole tutor turn).
+ *
+ * Fix: double every backslash that begins a LaTeX command, while leaving genuine JSON escapes
+ * (`\" \\ \/ \uXXXX` and real `\n` line breaks) untouched. Already-correct `\\times` is preserved,
+ * so this is a no-op on well-formed JSON. A LaTeX command is always `\`+letters, so a control escape
+ * (`\t \r \b \f`) followed by a NON-letter is kept as-is; only when a letter follows is it LaTeX.
+ */
+export function repairJsonBackslashes(raw: string): string {
+  let out = '';
+  for (let i = 0; i < raw.length; ) {
+    if (raw[i] !== '\\') {
+      out += raw[i];
+      i++;
+      continue;
+    }
+    const next = raw[i + 1];
+    if (next === undefined) {
+      out += '\\\\'; // trailing lone backslash
+      break;
+    }
+    if (next === '\\') {
+      out += '\\\\'; // already-escaped pair — keep, don't reinterpret what follows
+      i += 2;
+      continue;
+    }
+    if (next === '"' || next === '/') {
+      out += '\\' + next; // genuine JSON escapes — must survive verbatim
+      i += 2;
+      continue;
+    }
+    if (next === 'u' && /^[0-9a-fA-F]{4}$/.test(raw.slice(i + 2, i + 6))) {
+      out += raw.slice(i, i + 6); // \uXXXX unicode escape — keep (a \underline etc. falls through)
+      i += 6;
+      continue;
+    }
+    if (next === 'n') {
+      // `\n` is the only escape models really use for line breaks. Keep it as a newline UNLESS the
+      // following lowercase run is EXACTLY a known LaTeX command (\neq, \nabla, \nu …), which we protect.
+      const run = (raw.slice(i + 1).match(/^[a-z]+/) || [''])[0];
+      if (N_LATEX.test(run)) {
+        out += '\\\\';
+        i++;
+      } else {
+        out += '\\n';
+        i += 2;
+      }
+      continue;
+    }
+    if (next === 't' || next === 'r' || next === 'b' || next === 'f') {
+      // \times \rho \beta \frac … (a command: backslash + LETTERS) → double the backslash.
+      // A real \t \r \b \f escape (followed by a non-letter) stays a control char.
+      if (/[A-Za-z]/.test(raw[i + 2] || '')) {
+        out += '\\\\';
+        i++;
+      } else {
+        out += '\\' + next;
+        i += 2;
+      }
+      continue;
+    }
+    // Any other char after the backslash is LaTeX, never a valid/intended JSON escape here:
+    //   a letter → \sqrt \cdot \pi \alpha \Delta …   a non-letter → \( \[ \{ \, \; (delims/spacing).
+    out += '\\\\';
+    i++;
+  }
+  return out;
+}
+
 /** Tolerant JSON extraction from an LLM reply (handles code fences / surrounding prose). */
 export function parseLooseJson<T = any>(raw: string): T | null {
+  // Repair single-backslash LaTeX FIRST: on the silent-corruption case JSON.parse(raw) would
+  // "succeed" with garbled maths, so we must not try the raw string before repairing it.
+  const fixed = repairJsonBackslashes(raw);
   try {
-    return JSON.parse(raw) as T;
+    return JSON.parse(fixed) as T;
   } catch {
-    const m = raw.match(/\{[\s\S]*\}/);
+    const m = fixed.match(/\{[\s\S]*\}/);
     if (m) {
       try {
         return JSON.parse(m[0]) as T;

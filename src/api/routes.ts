@@ -308,6 +308,45 @@ router.post('/learner/:learnerId/node/:conceptId/reply', async (req, res) => {
   }
 });
 
+// Streaming variant of /reply: Server-Sent Events. Emits `delta` frames as the tutor turn is generated
+// (token-by-token, English only), then one authoritative `done` frame carrying the SAME turn shape as
+// /reply (message + checklist + readyForGate + figure). The client falls back to /reply if this fails.
+router.post('/learner/:learnerId/node/:conceptId/reply-stream', async (req, res) => {
+  const { learnerId, conceptId } = req.params;
+  const { message, lang, track } = req.body || {};
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache, no-transform');
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('X-Accel-Buffering', 'no'); // tell any proxy (nginx/Render) not to buffer the stream
+  (res as any).flushHeaders?.();
+  const send = (event: string, data: unknown) => {
+    res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+    (res as any).flush?.();
+  };
+  try {
+    const turn = await respond(
+      learnerId,
+      conceptId,
+      message,
+      false,
+      lang || 'en',
+      track === 'advanced' ? 'advanced' : 'foundation',
+      (messageSoFar) => send('delta', { message: messageSoFar })
+    );
+    send('done', turn);
+  } catch (err) {
+    if (err instanceof LlmUnavailableError) {
+      console.error('reply-stream: model unavailable —', err.detail);
+      send('done', { message: await serviceDownMessage(req.body?.lang || 'en'), readyForGate: false, systemError: true });
+    } else {
+      console.error('Error in reply-stream:', err);
+      send('error', { error: 'Failed to process reply' });
+    }
+  } finally {
+    res.end();
+  }
+});
+
 // "Help me" — vision reads the learner's scratchpad working and returns a grounded hint.
 router.post('/learner/:learnerId/node/:conceptId/help', async (req, res) => {
   try {

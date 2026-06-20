@@ -292,7 +292,8 @@ export async function respond(
   learnerMessage?: string,
   opening = false,
   langCode = 'en',
-  track: Track = 'foundation'
+  track: Track = 'foundation',
+  onDelta?: (messageSoFar: string) => void
 ): Promise<TurnResult> {
   const c = await loadConcept(conceptId);
 
@@ -345,22 +346,27 @@ export async function respond(
   const isOpening = false;
   const figures = await getConceptFigures(conceptId);
 
-  const turn = await teachTurn({
-    conceptTitle: c.title,
-    brief: c.brief,
-    explanation: c.explanation,
-    keyMoves: checklist,
-    misconceptions: c.misconceptions,
-    refreshers: (c as any).refreshers ?? [],
-    dialogue: recentDialogue,
-    priorSummary: summary ?? undefined,
-    isReteach,
-    lang: langCode,
-    figures: figures.map((f) => ({ id: f.id, caption: f.caption })),
-    conceptId,
-    track,
-    advancedContent: (c as any).advancedContent ?? null,
-  });
+  const turn = await teachTurn(
+    {
+      conceptTitle: c.title,
+      brief: c.brief,
+      explanation: c.explanation,
+      keyMoves: checklist,
+      misconceptions: c.misconceptions,
+      refreshers: (c as any).refreshers ?? [],
+      dialogue: recentDialogue,
+      priorSummary: summary ?? undefined,
+      isReteach,
+      lang: langCode,
+      figures: figures.map((f) => ({ id: f.id, caption: f.caption })),
+      conceptId,
+      track,
+      advancedContent: (c as any).advancedContent ?? null,
+    },
+    // Stream live tokens only for English: a non-English turn is translated AFTER it completes, so its
+    // streamed English prose would just be discarded and replaced by the translation on `done`.
+    langCode === 'en' ? onDelta : undefined
+  );
 
   // Resolve a referenced figure to a servable image (shown inline by the client).
   let figure = turn.figureRef ? figures.find((f) => f.id === turn.figureRef) ?? null : null;
