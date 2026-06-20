@@ -283,7 +283,7 @@ export function stopSpeaking() {
   if (ttsSupported()) window.speechSynthesis.cancel();
 }
 
-// ---- Server-backed voice (Sarvam/ElevenLabs/Deepgram), with browser fallback ----
+// ---- Server-backed voice (Sarvam/Deepgram), with browser fallback ----
 
 let currentAudio: HTMLAudioElement | null = null;
 let speakGen = 0; // bumped on every stop/new utterance so stale chunk loops bail out
@@ -533,7 +533,7 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
   const myGen = speakGen; // stopSpeaking already bumped it; capture the live generation
   const clean = stripForSpeech(text);
   if (!clean) return;
-  // Smaller, ~1–2 sentence chunks: a native voice (ElevenLabs/Deepgram) reads them cleanly and a
+  // Smaller, ~1–2 sentence chunks: a native voice (Deepgram) reads them cleanly and a
   // dropped chunk can never lose a whole paragraph. Sentence boundaries also give natural pauses.
   const chunks = chunkForSpeech(clean, 240);
   // Pin the provider after the first chunk so every chunk of this reply is the SAME voice (the server

@@ -101,7 +101,7 @@ export default function NodeView({
   const [lang, setLang] = useState<string>(() => localStorage.getItem('lang') || 'en');
   const [listening, setListening] = useState(false);
   const [autoRead, setAutoRead] = useState<boolean>(() => localStorage.getItem('autoRead') !== '0'); // default ON
-  // Voice provider override (testing): '' = auto by language (English→ElevenLabs, Indic→Sarvam).
+  // Voice provider override (testing): '' = auto by language (English→Deepgram, Indic→Sarvam).
   const [ttsProvider, setTtsProvider] = useState<string>(() => localStorage.getItem('ttsProvider') || '');
   const [showLangPrompt, setShowLangPrompt] = useState(false);
   const stopListenRef = useRef<(() => void) | null>(null);
@@ -722,12 +722,11 @@ export default function NodeView({
                     className="tts-provider"
                     value={ttsProvider}
                     onChange={(e) => { setTtsProvider(e.target.value); localStorage.setItem('ttsProvider', e.target.value); }}
-                    title="Voice engine (testing). Auto = ElevenLabs for English, Sarvam for Indian languages."
+                    title="Voice engine (testing). Auto = Deepgram for English, Sarvam for Indian languages."
                   >
                     <option value="">Voice: Auto</option>
-                    <option value="elevenlabs">ElevenLabs</option>
-                    <option value="sarvam">Sarvam</option>
                     <option value="deepgram">Deepgram</option>
+                    <option value="sarvam">Sarvam</option>
                   </select>
                   <button
                     className={`notation-btn mic${listening ? ' listening' : ''}${highlight?.target === 'mic' ? ' glow' : ''}`}

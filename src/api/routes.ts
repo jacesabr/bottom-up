@@ -132,13 +132,13 @@ router.get('/languages', (_req, res) => {
   res.json({ languages: Object.values(LANGUAGES) });
 });
 
-// Read-aloud: text → speech (Sarvam → ElevenLabs → Deepgram-Aura → null=browser TTS).
+// Read-aloud: text → speech (Deepgram Aura-2 for English, Sarvam for Indic → null=browser TTS).
 router.post('/tts', async (req, res) => {
   try {
     const { text, lang, provider, strict } = req.body || {};
     if (!text) return res.status(400).json({ error: 'No text' });
     const { synthesize } = await import('../core/voice.js');
-    const force = ['elevenlabs', 'sarvam', 'deepgram'].includes(provider) ? provider : undefined;
+    const force = ['sarvam', 'deepgram'].includes(provider) ? provider : undefined;
     const out = await synthesize(String(text), lang || 'en', force, !!strict);
     res.json(out ?? { audioBase64: null }); // null → client uses browser TTS
   } catch (err) {

@@ -3,18 +3,20 @@ import { lang } from './languages.js';
 
 /**
  * Server-side voice + translation providers, each as a fallback CHAIN so no single vendor is a
- * single point of failure or a runaway cost. Sarvam is a smaller company (cost/rate-limit risk), so
- * Deepgram and (when a key exists) ElevenLabs back it up; the browser is the final free fallback.
+ * single point of failure. Sarvam is a smaller company (cost/rate-limit risk), so Deepgram backs it
+ * up; the browser is the final free fallback.
  *
  * Keys (all optional — a provider is simply skipped if its key is absent):
  *   SARVAM_API_KEY      — translate + TTS + STT (Indic specialist)   [verified working]
- *   DEEPGRAM_API_KEY    — STT (strong multilingual) + Aura TTS (English)
- *   ELEVENLABS_API_KEY  — TTS (multilingual). NOTE: free tier = 10k chars/mo; kept as a FALLBACK only
- *                         (not English primary) so its monthly quota cliff can't flip the voice mid-session.
+ *   DEEPGRAM_API_KEY    — STT (strong multilingual) + Aura-2 TTS (English)
  */
 const SARVAM = process.env.SARVAM_API_KEY;
 const DEEPGRAM = process.env.DEEPGRAM_API_KEY;
-const ELEVENLABS = process.env.ELEVENLABS_API_KEY;
+
+// Deepgram English TTS voice. Default = Aura-2 (far more natural than the old Aura-1 "Asteria", which
+// sounded robotic). Swap the voice with no redeploy via DEEPGRAM_TTS_MODEL — e.g. aura-2-andromeda-en
+// (casual/expressive), aura-2-cora-en, aura-2-thalia-en (clear/energetic). Voices: deepgram.com/aura.
+const DEEPGRAM_TTS_MODEL = process.env.DEEPGRAM_TTS_MODEL || 'aura-2-thalia-en';
 
 const sarvamHeaders = { 'api-subscription-key': SARVAM || '', 'Content-Type': 'application/json' };
 
@@ -60,26 +62,11 @@ async function sarvamTTS(text: string, langCode: string): Promise<TtsResult | nu
   }
 }
 
-async function elevenTTS(text: string): Promise<TtsResult | null> {
-  if (!ELEVENLABS) return null;
-  try {
-    const voiceId = process.env.ELEVENLABS_VOICE_ID || 'EXAVITQu4vr4xnSDxMaL';
-    const res = await axios.post(
-      `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
-      { text: text.slice(0, 1500), model_id: 'eleven_multilingual_v2' },
-      { headers: { 'xi-api-key': ELEVENLABS, 'Content-Type': 'application/json' }, responseType: 'arraybuffer', timeout: 20_000 }
-    );
-    return { audioBase64: Buffer.from(res.data).toString('base64'), mime: 'audio/mpeg', provider: 'elevenlabs' };
-  } catch {
-    return null;
-  }
-}
-
 async function deepgramTTS(text: string): Promise<TtsResult | null> {
   if (!DEEPGRAM) return null;
   try {
     const res = await axios.post(
-      'https://api.deepgram.com/v1/speak?model=aura-asteria-en',
+      `https://api.deepgram.com/v1/speak?model=${DEEPGRAM_TTS_MODEL}`,
       { text: text.slice(0, 1500) },
       { headers: { Authorization: `Token ${DEEPGRAM}`, 'Content-Type': 'application/json' }, responseType: 'arraybuffer', timeout: 20_000 }
     );
@@ -89,15 +76,14 @@ async function deepgramTTS(text: string): Promise<TtsResult | null> {
   }
 }
 
-export type TtsProvider = 'elevenlabs' | 'sarvam' | 'deepgram';
+export type TtsProvider = 'sarvam' | 'deepgram';
 
 /**
  * TTS chain, ordered by language for a CONSISTENT, reliable voice (no mid-session vendor swaps):
- *   - ENGLISH → Deepgram Aura (reliable quota, consistent "Asteria") → ElevenLabs → Sarvam.
- *     (ElevenLabs free tier is only ~10k chars/mo, so as PRIMARY it exhausts mid-session and the voice
- *      audibly flips to Deepgram — that's the "voice changed between turns" bug. It's a fallback now, not
- *      primary. Sarvam's Indic voice reading English runs fast/garbles, so it stays last.)
- *   - INDIC   → Sarvam (the Indic specialist) → ElevenLabs (multilingual).
+ *   - ENGLISH → Deepgram Aura-2 (natural, generous free credit, consistent voice) → Sarvam.
+ *     (We upgraded from Aura-1 "Asteria", which sounded robotic, to Aura-2 via DEEPGRAM_TTS_MODEL.
+ *      Sarvam's Indic voice reading English runs fast/garbles, so it's only a last-ditch fallback.)
+ *   - INDIC   → Sarvam (the Indic specialist).
  * `force` pins a single provider (the testing toggle); if it yields nothing we fall back to the
  * language default so the learner still hears the reply. Returns null → client uses browser TTS.
  */
@@ -109,7 +95,6 @@ export async function synthesize(
 ): Promise<TtsResult | null> {
   const isEnglish = langCode === 'en';
   const byName: Record<TtsProvider, () => Promise<TtsResult | null>> = {
-    elevenlabs: () => elevenTTS(text),
     deepgram: () => deepgramTTS(text),
     sarvam: () => sarvamTTS(text, langCode),
   };
@@ -123,8 +108,8 @@ export async function synthesize(
     // non-strict (e.g. the testing toggle): forced provider failed — fall through to the default chain.
   }
   const chain: Array<() => Promise<TtsResult | null>> = isEnglish
-    ? [byName.deepgram, byName.elevenlabs, byName.sarvam]
-    : [byName.sarvam, byName.elevenlabs];
+    ? [byName.deepgram, byName.sarvam]
+    : [byName.sarvam];
   for (const attempt of chain) {
     const r = await attempt();
     if (r) return r;
@@ -190,6 +175,6 @@ export async function transcribe(audio: Buffer, mime: string, langCode: string):
 
 export const voiceProviders = {
   translate: !!SARVAM,
-  tts: !!(SARVAM || ELEVENLABS || DEEPGRAM),
+  tts: !!(SARVAM || DEEPGRAM),
   stt: !!(DEEPGRAM || SARVAM),
 };
