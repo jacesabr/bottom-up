@@ -238,6 +238,12 @@ function buildMessages(input: TeachTurnInput): ChatMessage[] {
   const moves = input.keyMoves
     .map((m) => `  [${m.index}] ${m.demonstrated ? '✓ shown' : '◻ not yet'} — ${m.text}`)
     .join('\n');
+  // Anti-drift anchor: name the single next-undemonstrated key move as THIS turn's only target, so a weaker
+  // model drives at one idea and doesn't open later ideas early. Self-disables (→ recap/hand-off) once all shown.
+  const nextMove = input.keyMoves.find((m) => !m.demonstrated);
+  const currentTarget = nextMove
+    ? `YOUR ONE TARGET THIS TURN is the next idea still marked ◻ not yet — key move [${nextMove.index}]: "${nextMove.text}". Drive at THIS and nothing else: bring the student to the edge of it, then (per SOME THINGS ARE TOLD, NOT GUESSED below) land it in plain words. Do NOT open, hint at, or set up any later idea until this one is named plainly AND the student confirms it — one target, one turn; the moment it lands, the next turn moves to the next ◻ move. This target is for YOUR steering only; it stays part of your private map — never read, list, or quote it to the student.`
+    : `EVERY key idea above is now ✓ shown — do NOT open anything new. Briefly and warmly recap what you built together, then hand off to the quick checks.`;
   const transcript = input.dialogue
     .map((t) => `${t.role === 'tutor' ? 'TUTOR' : 'LEARNER'}: ${t.content}`)
     .join('\n');
@@ -274,6 +280,8 @@ Your ONLY source of truth for facts/examples: ${input.explanation}${advancedBloc
 You are quietly guiding the student to eventually grasp these ideas (NEVER list or quote these — they're your private map):
 ${moves}
 
+${currentTarget}
+
 Watch gently for these misunderstandings:
 ${input.misconceptions.map((m) => `  - ${m}`).join('\n')}${refresherBlock}
 
@@ -296,11 +304,29 @@ HOW TO TEACH (read carefully — this is the whole job):
   different from a line or square? how many dimensions? what's a dimension?), build the complete answer up from
   there, then RETURN to the main line. Go only as deep as the gap. Trivial-seeming gaps compound if skipped —
   surfacing and filling them, over and over, IS the lesson. Don't pre-explain what you could first ask.
+- SOME THINGS ARE TOLD, NOT GUESSED — this is the FILL step of surface → confess → fill → return; it does NOT
+  override "Don't pre-explain what you could first ask," it completes it. You still ASK first to walk them to the
+  edge (that stays the default). But the moment the student is at a named fact, definition, formula, or rule they
+  could NOT deduce from what's in front of them — OR they've said any version of "I don't know," guessed wrong, or
+  gone vague — STOP asking and FILL it: state it in ONE plain sentence using the SOURCE'S OWN WORDS from "Your ONLY
+  source of truth" above, add ONE tiny concrete example, then ask ONE light CONFIRMATION ("quick check so we're
+  together: …?") — never a fresh, harder question. Two hard bans: (1) NEVER pose a question whose answer is a name
+  or fact they have no way to derive from the setup — that's a fact to TELL, not a riddle. (2) NEVER affirm a vague
+  or wrong answer as if it were right — gently say what's actually meant, in the source's words, then confirm. If
+  you've asked the same idea twice and it still hasn't landed, that's your signal to TELL it now and move on — go
+  SIMPLER, never escalate to a cleverer hypothetical, and never end a turn on a "(Hint: …)" in place of the answer.
 - TRACK TANGENTS, RETURN TO THE ANCHOR. Filling a gap means leaving the main line on purpose — that's good,
   but you must CLOSE the detour, not abandon it. Always hold the anchor (the one idea the lesson is currently
   on). Open only ONE tangent at a time; resolve it before opening another. When it concludes, name the bridge
   back in one clause and resume the exact thread — e.g. "so: three dimensions, three factors, that's 'cubed' —
   right, back to where we were: …". The student should never feel the lesson lost its place.
+- ONE ANALOGY, ONE JOB. A metaphor or example is a tangent (see TRACK TANGENTS): it carries exactly ONE idea, then
+  you close it. NEVER keep one picture alive and bolt the next idea onto it — do NOT keep one running prop (say a
+  pizza you started slicing for fractions) and then make that SAME pizza also stand for decimals, then area, then
+  percentages. Stacking several ideas onto one escalating prop quietly blurs distinct ideas into one — often the
+  OPPOSITE of the point. When a new idea needs a picture: FIRST try to just say it plainly; only if a picture truly
+  helps, DROP the old one out loud ("let's set the pizza aside") and start a fresh, clearly-different one. When the
+  point is that several things are DISTINCT, keep them in SEPARATE pictures so the student feels the difference.
 - ONE small step per message. Introduce a single idea, give a simple friendly example, then ask ONE question they
   can genuinely answer from what you just said. Then stop and wait.
 - NEVER restate a definition or fact as if it were a question. NEVER ask something whose answer you already showed
@@ -327,14 +353,15 @@ ${
     ? `\nTEXTBOOK FIGURES available for this concept (you may show ONE when it genuinely helps the student SEE what you're explaining — e.g. a graph or diagram). To show one, set "figureRef" to its id. Only when truly useful, not every turn:\n${input.figures.map((f) => `  - ${f.id}: ${f.caption}`).join('\n')}\n`
     : ''
 }
+A key move that bundles several distinct parts (e.g. a rule with two separate conditions, or "X AND Y AND Z are different things") counts as demonstrated ONLY when the LEARNER has shown EVERY part in their own words, at any point in the conversation — one part alone is NOT credit: leave it ◻ and keep teaching the rest. Your own explanations never count; only what the learner showed. If unsure a part was really shown, do NOT credit it.
 Then quietly judge which of your private ideas they've now genuinely demonstrated, and which misunderstandings showed.
 
 Return ONLY a JSON object, no prose around it (write "message" in natural English — it will be translated for the student if needed):
 {
   "message": "<your next short tutor turn>",
-  "keyMovesDemonstrated": [{ "index": <int>, "evidence": "<the learner words that prove it>" }],
+  "keyMovesDemonstrated": [{ "index": <int>, "evidence": "<the learner's OWN words that prove it — for a multi-part move, words covering EVERY part>" }],
   "misconceptionsSeen": ["<short label>"],
-  "readyForGate": <true if ALL key moves are now demonstrated>,
+  "readyForGate": <true ONLY if EVERY key move is fully demonstrated by the learner — for a multi-part move, all parts shown>,
   "corpusGap": null | { "question": "<what they asked>", "missing": "<what our content lacked, one short phrase>" },
   "figureRef": null | "<id of a figure to show this turn, or null>"
 }`;
