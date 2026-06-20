@@ -178,6 +178,7 @@
 }
 
 .reply-box {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: 14px;
@@ -318,8 +319,8 @@
   cursor: pointer;
 }
 
-/* Overlay while the mic is recording — scoped to the chat pane (its position:relative parent),
-   so it covers ONLY the tutor box, never the whole page. */
+/* Overlay while the mic is recording — scoped to the reply box (its position:relative parent),
+   so it covers ONLY the composer textbox, never the chat history or the whole page. */
 .recording-overlay {
   position: absolute;
   inset: 0;
@@ -327,24 +328,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  border-radius: 16px;
-  background: rgba(255, 251, 245, 0.96);
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(255, 251, 245, 0.97);
   backdrop-filter: blur(2px);
   cursor: pointer;
   animation: overlayIn 0.15s ease-out;
 }
 @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
 .recording-card {
-  max-width: 440px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 560px;
+  text-align: left;
   cursor: default;
 }
+.recording-copy { min-width: 0; }
 .recording-pulse {
   position: relative;
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 20px;
+  flex: none;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -357,32 +362,32 @@
   opacity: 0.25;
   animation: recPulse 1.4s ease-out infinite;
 }
-.recording-mic { font-size: 44px; line-height: 1; }
+.recording-mic { font-size: 26px; line-height: 1; }
 @keyframes recPulse {
   0% { transform: scale(0.8); opacity: 0.35; }
   70% { transform: scale(1.5); opacity: 0; }
   100% { transform: scale(1.5); opacity: 0; }
 }
 .recording-title {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: var(--accent);
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 .recording-sub {
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: 0.85rem;
+  line-height: 1.45;
   color: var(--ink);
-  margin: 0 0 24px;
+  margin: 0 0 10px;
 }
 .recording-stop {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: #fff;
   background: var(--accent);
   border: none;
-  border-radius: 12px;
-  padding: 14px 24px;
+  border-radius: 10px;
+  padding: 9px 18px;
   cursor: pointer;
 }
 .recording-stop:hover { background: #b8480f; }
