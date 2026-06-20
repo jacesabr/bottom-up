@@ -410,7 +410,10 @@ export async function teachTurn(
         }
       }
     : undefined;
-  const raw = await completeJson(buildMessages(input), { maxTokens: 700, onStream });
+  // maxTokens 1000 (was 700): the turn JSON is message + grading evidence; 700 could truncate the tail on
+  // a verbose grading reply, leaving JSON that won't parse — which used to surface as "tutor unavailable"
+  // even though the message had already streamed fine.
+  const raw = await completeJson(buildMessages(input), { maxTokens: 1000, onStream });
   const parsed = parseLooseJson<any>(raw);
   if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
     const cg = parsed.corpusGap;
@@ -424,7 +427,23 @@ export async function teachTurn(
       figureRef: parsed.figureRef ? String(parsed.figureRef) : null,
     };
   }
-  // A reply that won't parse into a usable turn is a failure, not a reason to invent one.
+  // SALVAGE: the authoritative JSON didn't parse into a usable turn (e.g. a truncated/garbled tail), but
+  // the learner has very likely already SEEN the streamed message — don't throw it away as "unavailable".
+  // Recover the message field (from the live stream, else re-extract it from raw) and return a minimal
+  // turn; the grading metadata is just skipped this turn (readyForGate stays false → re-judged next turn).
+  const salvaged = (lastSent || extractStreamingMessage(raw) || '').trim();
+  if (salvaged) {
+    return {
+      message: salvaged,
+      keyMovesDemonstrated: [],
+      misconceptionsSeen: [],
+      readyForGate: false,
+      provider: resolveProvider(),
+      corpusGap: null,
+      figureRef: null,
+    };
+  }
+  // Truly nothing usable came back — surface the graceful unavailable message rather than inventing a turn.
   throw new LlmUnavailableError('teachTurn: model returned no parseable message');
 }
 
