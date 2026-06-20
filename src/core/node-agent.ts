@@ -231,6 +231,7 @@ export interface TeachTurnOutput {
   provider: string;
   corpusGap?: { question: string; missing: string } | null;
   figureRef?: string | null; // id of a textbook figure to show inline this turn
+  enforcedRefresher?: string | null; // set when the refresh-before-use backstop overrode the turn
 }
 
 function buildMessages(input: TeachTurnInput): ChatMessage[] {
@@ -394,6 +395,45 @@ export function extractStreamingMessage(raw: string): string | null {
   }
 }
 
+/**
+ * Refresh-before-use ENFORCEMENT (deterministic backstop for weak teaching models).
+ * The system prompt tells the tutor to deploy a refresher BEFORE using a guarded term, but a small
+ * model (e.g. the NIM 14B primary) often skips it. Post-generation, we detect when a turn introduces a
+ * term guarded by an as-yet-undeployed refresher and force that refresher's surfacing question instead —
+ * so the bedrock check always happens, regardless of model compliance. Guarded terms are the quoted
+ * phrases in each refresher's `trigger` (e.g. 'The word "prime" — …' → "prime").
+ */
+function refresherGuardTerms(r: RefresherItem): string[] {
+  return [...String(r.trigger ?? '').matchAll(/[“"']([^“”"']{1,40})[”"']/g)]
+    .map((m) => m[1].trim().toLowerCase())
+    .filter((t) => t.length > 1);
+}
+function termAppears(text: string, term: string): boolean {
+  const esc = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[^a-z0-9])${esc}([^a-z0-9]|$)`, 'i').test(text);
+}
+/**
+ * The first refresher whose guarded term the NEW message introduces but which has NOT yet been
+ * deployed/seen in the prior conversation — a refresh-before-use violation. null if none.
+ */
+export function pendingRefresher(
+  message: string,
+  refreshers: RefresherItem[] | undefined,
+  priorTutorText: string
+): RefresherItem | null {
+  for (const r of refreshers ?? []) {
+    if (!r?.surfacingQuestion) continue;
+    const terms = refresherGuardTerms(r);
+    if (!terms.length) continue;
+    if (!terms.some((t) => termAppears(message, t))) continue; // term not used this turn
+    const alreadySurfaced = priorTutorText.includes(String(r.surfacingQuestion).slice(0, 30));
+    const seenEarlier = terms.some((t) => termAppears(priorTutorText, t));
+    if (alreadySurfaced || seenEarlier) continue; // already refreshed / introduced earlier
+    return r;
+  }
+  return null;
+}
+
 export async function teachTurn(
   input: TeachTurnInput,
   onDelta?: (messageSoFar: string) => void
@@ -417,7 +457,7 @@ export async function teachTurn(
   const parsed = parseLooseJson<any>(raw);
   if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
     const cg = parsed.corpusGap;
-    return {
+    const out: TeachTurnOutput = {
       message: parsed.message.trim(),
       keyMovesDemonstrated: Array.isArray(parsed.keyMovesDemonstrated) ? parsed.keyMovesDemonstrated : [],
       misconceptionsSeen: Array.isArray(parsed.misconceptionsSeen) ? parsed.misconceptionsSeen : [],
@@ -425,7 +465,23 @@ export async function teachTurn(
       provider: resolveProvider(),
       corpusGap: cg && cg.missing ? { question: String(cg.question ?? ''), missing: String(cg.missing) } : null,
       figureRef: parsed.figureRef ? String(parsed.figureRef) : null,
+      enforcedRefresher: null,
     };
+    // ENFORCE refresh-before-use: if the model used a guarded term without first running its refresher,
+    // override this turn with the refresher's surfacing question (deterministic backstop, §A.5).
+    const priorTutorText = [
+      input.priorSummary ?? '',
+      ...input.dialogue.filter((d) => d.role === 'tutor').map((d) => d.content),
+    ].join('\n');
+    const pending = pendingRefresher(out.message, input.refreshers, priorTutorText);
+    if (pending) {
+      out.message = pending.surfacingQuestion;
+      out.keyMovesDemonstrated = []; // a forced foundational detour — don't credit progress this turn
+      out.readyForGate = false;
+      out.enforcedRefresher = pending.trigger;
+      onDelta?.(out.message); // overwrite any streamed draft with the surfacing question
+    }
+    return out;
   }
   // SALVAGE: the authoritative JSON didn't parse into a usable turn (e.g. a truncated/garbled tail), but
   // the learner has very likely already SEEN the streamed message — don't throw it away as "unavailable".
