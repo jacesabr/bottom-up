@@ -1,4 +1,5 @@
 import express from 'express';
+import { timingSafeEqual } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { db } from '../db/index.js';
@@ -13,6 +14,11 @@ import { getConceptById, invalidateContentCache } from '../core/content-cache.js
  */
 const router = express.Router();
 
+// Constant-time credential compare so the admin password can't be recovered via response timing.
+const safeEqual = (a: string, b: string): boolean => {
+  const ab = Buffer.from(a), bb = Buffer.from(b);
+  return ab.length === bb.length && timingSafeEqual(ab, bb);
+};
 router.use((req, res, next) => {
   const U = process.env.ADMIN_USER;
   const P = process.env.ADMIN_PASSWORD;
@@ -20,7 +26,7 @@ router.use((req, res, next) => {
   const header = req.headers.authorization || '';
   if (header.startsWith('Basic ')) {
     const [u, p] = Buffer.from(header.slice(6), 'base64').toString('utf8').split(':');
-    if (u === U && p === P) return next();
+    if (safeEqual(u || '', U) && safeEqual(p || '', P)) return next();
   }
   res.setHeader('WWW-Authenticate', 'Basic realm="bottom-up admin"');
   return res.status(401).json({ error: 'Auth required' });

@@ -9,6 +9,7 @@ import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../cor
 import { computeChapterStatuses } from '../core/sequencer.js';
 import { listPapers, paperForClient, answerPaperQuestion, paperResult, paperState } from '../core/papers.js';
 import { registerUser, loginUser, AuthError } from '../core/auth.js';
+import { requireNodeAccess } from '../core/access.js';
 
 const router = express.Router();
 
@@ -167,9 +168,10 @@ router.post('/transcribe', async (req, res) => {
 router.get('/figure/:chapterId/:filename', async (req, res) => {
   try {
     const { chapterId, filename } = req.params;
-    if (filename.includes('..') || filename.includes('/') || filename.includes('\\')) {
-      return res.status(400).end();
-    }
+    // Both segments are attacker-controlled (chapterId becomes a path via the `:`→sep replace below),
+    // so reject traversal / unexpected chars in EITHER — keep the read strictly inside content/.
+    const unsafe = (s: string) => s.includes('..') || !/^[\w:.-]+$/.test(s);
+    if (unsafe(chapterId) || unsafe(filename)) return res.status(400).end();
     const fs = await import('fs');
     const path = await import('path');
     const rel = chapterId.replace(/:/g, path.sep);
@@ -184,7 +186,7 @@ router.get('/figure/:chapterId/:filename', async (req, res) => {
 });
 
 // Relevant figures for a concept (the captioned mappings).
-router.get('/concept/:conceptId/figures', async (req, res) => {
+router.get('/concept/:conceptId/figures', requireNodeAccess, async (req, res) => {
   try {
     const figs = await getConceptFigures(req.params.conceptId);
     res.json({ figures: figs });
@@ -274,7 +276,7 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
 });
 
 // Start a node: enter + opening tutor turn (no intro friction — the AI just begins).
-router.post('/learner/:learnerId/node/:conceptId/start', async (req, res) => {
+router.post('/learner/:learnerId/node/:conceptId/start', requireNodeAccess, async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
     const { lang, track } = req.body || {};
@@ -292,7 +294,7 @@ router.post('/learner/:learnerId/node/:conceptId/start', async (req, res) => {
 });
 
 // Learner reply → next tutor turn + checklist + readiness.
-router.post('/learner/:learnerId/node/:conceptId/reply', async (req, res) => {
+router.post('/learner/:learnerId/node/:conceptId/reply', requireNodeAccess, async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
     const { message, lang, track } = req.body;
@@ -311,7 +313,7 @@ router.post('/learner/:learnerId/node/:conceptId/reply', async (req, res) => {
 // Streaming variant of /reply: Server-Sent Events. Emits `delta` frames as the tutor turn is generated
 // (token-by-token, English only), then one authoritative `done` frame carrying the SAME turn shape as
 // /reply (message + checklist + readyForGate + figure). The client falls back to /reply if this fails.
-router.post('/learner/:learnerId/node/:conceptId/reply-stream', async (req, res) => {
+router.post('/learner/:learnerId/node/:conceptId/reply-stream', requireNodeAccess, async (req, res) => {
   const { learnerId, conceptId } = req.params;
   const { message, lang, track } = req.body || {};
   res.setHeader('Content-Type', 'text/event-stream');
@@ -348,7 +350,7 @@ router.post('/learner/:learnerId/node/:conceptId/reply-stream', async (req, res)
 });
 
 // "Help me" — vision reads the learner's scratchpad working and returns a grounded hint.
-router.post('/learner/:learnerId/node/:conceptId/help', async (req, res) => {
+router.post('/learner/:learnerId/node/:conceptId/help', requireNodeAccess, async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
     const { image, lang } = req.body;
@@ -366,7 +368,7 @@ router.post('/learner/:learnerId/node/:conceptId/help', async (req, res) => {
 });
 
 // Pose the gate.
-router.post('/learner/:learnerId/node/:conceptId/gate', async (req, res) => {
+router.post('/learner/:learnerId/node/:conceptId/gate', requireNodeAccess, async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
     const track = req.query.track === 'advanced' ? 'advanced' : 'foundation';
@@ -379,7 +381,7 @@ router.post('/learner/:learnerId/node/:conceptId/gate', async (req, res) => {
 });
 
 // Grade one gate in the set. `answer` is text, or a JPEG data URL for sketch gates.
-router.post('/learner/:learnerId/node/:conceptId/gate-answer', async (req, res) => {
+router.post('/learner/:learnerId/node/:conceptId/gate-answer', requireNodeAccess, async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
     const { gateId, answer, lang, track } = req.body;
@@ -408,7 +410,7 @@ router.post('/learner/:learnerId/node/:conceptId/gate-answer', async (req, res) 
 });
 
 // Details panel: content summary, progress, checklist, pain points.
-router.get('/learner/:learnerId/node/:conceptId/detail', async (req, res) => {
+router.get('/learner/:learnerId/node/:conceptId/detail', requireNodeAccess, async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
     const detail = await getNodeDetail(learnerId, conceptId);
