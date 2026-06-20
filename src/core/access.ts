@@ -1,8 +1,9 @@
 import type { Request, Response, NextFunction } from 'express';
 import { db } from '../db/index.js';
-import { buNodePerformance } from '../db/schema.js';
-import { eq } from 'drizzle-orm';
+import { buNodePerformance, users } from '../db/schema.js';
+import { eq, and } from 'drizzle-orm';
 import { getConceptById, getChapter, getConceptsForChapter, getChaptersForSubject } from './content-cache.js';
+import { verifySession, authEnforced } from './auth.js';
 
 /**
  * Anti-scrape access control. A node's content (explanation, gates, the live teaching) is served ONLY to a
@@ -68,15 +69,51 @@ export async function isNodeAccessible(learnerId: string, conceptId: string): Pr
  * concept-scoped routes that have no learner in the path, the `?learner=` query. 403 if the node isn't
  * reachable for that learner. Fail-closed: any guard error denies (security over availability) but is logged.
  */
+async function isRegisteredAccount(id: string): Promise<boolean> {
+  const r = await db.select({ id: users.id }).from(users).where(eq(users.id, id)).limit(1);
+  return r.length > 0;
+}
+
 export async function requireNodeAccess(req: Request, res: Response, next: NextFunction) {
   const learnerId = req.params.learnerId || (req.query.learner as string) || '';
   const conceptId = req.params.conceptId || '';
   try {
+    // Ownership (anti-impersonation): when auth is ENFORCED (SESSION_SECRET set), a learnerId that belongs
+    // to a registered account may only be used WITH that account's session token. Anonymous ids need none.
+    if (authEnforced()) {
+      const bearer = (req.headers.authorization || '').replace(/^Bearer\s+/i, '');
+      if (verifySession(bearer) !== learnerId && (await isRegisteredAccount(learnerId))) {
+        return res.status(401).json({ error: 'auth_required', message: 'Please log in again.' });
+      }
+    }
     if (await isNodeAccessible(learnerId, conceptId)) return next();
   } catch (err) {
     console.error('requireNodeAccess error:', err);
   }
   return res.status(403).json({ error: 'locked', message: 'This node is locked — finish the ones before it first.' });
+}
+
+/** Guard for the exam-paper routes: owner-bound (when enforced) + the learner must have passed at least
+ *  one node — so a fresh/anonymous identity can't bulk-pull the past-paper question bank. */
+export async function requirePaperAccess(req: Request, res: Response, next: NextFunction) {
+  const learnerId = req.params.learnerId || '';
+  try {
+    if (authEnforced()) {
+      const bearer = (req.headers.authorization || '').replace(/^Bearer\s+/i, '');
+      if (verifySession(bearer) !== learnerId && (await isRegisteredAccount(learnerId))) {
+        return res.status(401).json({ error: 'auth_required', message: 'Please log in again.' });
+      }
+    }
+    const r = await db
+      .select({ c: buNodePerformance.conceptId })
+      .from(buNodePerformance)
+      .where(and(eq(buNodePerformance.learnerId, learnerId), eq(buNodePerformance.status, 'passed')))
+      .limit(1);
+    if (r.length) return next();
+  } catch (err) {
+    console.error('requirePaperAccess error:', err);
+  }
+  return res.status(403).json({ error: 'locked', message: 'Finish at least one lesson before taking a paper.' });
 }
 
 /**

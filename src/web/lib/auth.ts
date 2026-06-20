@@ -8,6 +8,7 @@ export interface AuthUser {
 }
 
 const USER_KEY = 'authUser';
+const TOKEN_KEY = 'sessionToken'; // signed session token; main.tsx attaches it to API requests
 
 export function getStoredUser(): AuthUser | null {
   try {
@@ -27,6 +28,7 @@ export function storeUser(user: AuthUser): void {
 
 export function clearUser(): void {
   localStorage.removeItem(USER_KEY);
+  localStorage.removeItem(TOKEN_KEY);
 }
 
 async function post(apiBase: string, path: string, body: unknown): Promise<AuthUser> {
@@ -37,6 +39,7 @@ async function post(apiBase: string, path: string, body: unknown): Promise<AuthU
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data?.error || 'Something went wrong. Try again.');
+  if (typeof data.token === 'string' && data.token) localStorage.setItem(TOKEN_KEY, data.token);
   return data.user as AuthUser;
 }
 

@@ -1,14 +1,43 @@
-import { scryptSync, randomBytes, timingSafeEqual } from 'crypto';
+import { scryptSync, randomBytes, timingSafeEqual, createHmac } from 'crypto';
 import { sql } from 'drizzle-orm';
 import { db } from '../db/index.js';
 import { users } from '../db/schema.js';
 
 /**
- * Simple username/password auth. No tokens/sessions on the server: a successful register/login
- * returns the user's id, which the client uses as its `learnerId` (so all progress ties to the
- * account). Passwords are scrypt-hashed as "<saltHex>:<hashHex>". This is intentionally minimal —
- * adequate for the current stage, not bank-grade (no rate-limiting, no email verification).
+ * Simple username/password auth. A successful register/login returns the user's id (used by the client
+ * as its `learnerId`) AND a signed session token. Passwords are scrypt-hashed as "<saltHex>:<hashHex>".
+ *
+ * Session token (anti-impersonation): an HMAC-signed `<payload>.<mac>`. ENFORCED only when SESSION_SECRET
+ * is set (authEnforced()) — ships inert; switched on by setting that env var. The content gate then
+ * requires a matching token for any *registered* learnerId; anonymous ids never need one.
  */
+const SESSION_SECRET = process.env.SESSION_SECRET || '';
+
+export function authEnforced(): boolean {
+  return SESSION_SECRET.length > 0;
+}
+
+/** Sign a session token for an account id. Returns '' when auth isn't enforced (no secret set). */
+export function signSession(userId: string): string {
+  if (!SESSION_SECRET) return '';
+  const payload = Buffer.from(JSON.stringify({ uid: userId, iat: Date.now() })).toString('base64url');
+  const mac = createHmac('sha256', SESSION_SECRET).update(payload).digest('base64url');
+  return `${payload}.${mac}`;
+}
+
+/** Verify a session token and return its account id, or null if missing/forged/secret-unset. */
+export function verifySession(token: string | undefined | null): string | null {
+  if (!SESSION_SECRET || !token || !token.includes('.')) return null;
+  const [payload, mac] = token.split('.');
+  const expect = createHmac('sha256', SESSION_SECRET).update(payload).digest('base64url');
+  const a = Buffer.from(mac), b = Buffer.from(expect);
+  if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
+  try {
+    return (JSON.parse(Buffer.from(payload, 'base64url').toString()) as { uid?: string }).uid ?? null;
+  } catch {
+    return null;
+  }
+}
 
 export interface AuthUser {
   id: string;

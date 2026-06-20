@@ -8,10 +8,13 @@ import { LANGUAGES } from '../core/languages.js';
 import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
 import { computeChapterStatuses } from '../core/sequencer.js';
 import { listPapers, paperForClient, answerPaperQuestion, paperResult, paperState } from '../core/papers.js';
-import { registerUser, loginUser, AuthError } from '../core/auth.js';
-import { requireNodeAccess } from '../core/access.js';
+import { registerUser, loginUser, AuthError, signSession } from '../core/auth.js';
+import { requireNodeAccess, requirePaperAccess, rateLimit } from '../core/access.js';
 
 const router = express.Router();
+
+// Brute-force / mass-signup throttle for the auth endpoints (per IP). Generous for real users.
+const authLimiter = rateLimit({ windowMs: 60_000, max: 30 });
 
 // The math courses shown on the home page (the only subject we surface for now). Each is an
 // exam+subject pair; `subject` differs per exam because the corpus is keyed differently.
@@ -32,11 +35,11 @@ const OPEN_LADDER_EXAMS = new Set(['scratch']);
 
 // ---- Auth (simple username/password; the returned user id becomes the client's learnerId) ----
 
-router.post('/auth/register', async (req, res) => {
+router.post('/auth/register', authLimiter, async (req, res) => {
   try {
     const { username, password } = req.body || {};
     const user = await registerUser(String(username ?? ''), String(password ?? ''));
-    res.json({ user });
+    res.json({ user, token: signSession(user.id) });
   } catch (err) {
     if (err instanceof AuthError) return res.status(400).json({ error: err.message });
     console.error('register error:', err);
@@ -44,11 +47,11 @@ router.post('/auth/register', async (req, res) => {
   }
 });
 
-router.post('/auth/login', async (req, res) => {
+router.post('/auth/login', authLimiter, async (req, res) => {
   try {
     const { username, password } = req.body || {};
     const user = await loginUser(String(username ?? ''), String(password ?? ''));
-    res.json({ user });
+    res.json({ user, token: signSession(user.id) });
   } catch (err) {
     if (err instanceof AuthError) return res.status(400).json({ error: err.message });
     console.error('login error:', err);
@@ -435,7 +438,7 @@ router.get('/papers/:exam', (req, res) => {
 });
 
 // The paper to sit: prompts/options/sections only (answers never leave the server), + resume state.
-router.get('/learner/:learnerId/paper/:paperId', async (req, res) => {
+router.get('/learner/:learnerId/paper/:paperId', requirePaperAccess, async (req, res) => {
   try {
     const { learnerId, paperId } = req.params;
     const paper = paperForClient(paperId);
@@ -449,7 +452,7 @@ router.get('/learner/:learnerId/paper/:paperId', async (req, res) => {
 });
 
 // Grade one answer (mcq/numeric deterministic; written → LLM vs marking scheme).
-router.post('/learner/:learnerId/paper/:paperId/answer', async (req, res) => {
+router.post('/learner/:learnerId/paper/:paperId/answer', requirePaperAccess, async (req, res) => {
   try {
     const { learnerId, paperId } = req.params;
     const { q, answer } = req.body || {};
@@ -467,7 +470,7 @@ router.post('/learner/:learnerId/paper/:paperId/answer', async (req, res) => {
 });
 
 // Score, per-section breakdown, and the weak-concept review (clickable back into those nodes).
-router.get('/learner/:learnerId/paper/:paperId/result', async (req, res) => {
+router.get('/learner/:learnerId/paper/:paperId/result', requirePaperAccess, async (req, res) => {
   try {
     const { learnerId, paperId } = req.params;
     const result = await paperResult(learnerId, paperId);
