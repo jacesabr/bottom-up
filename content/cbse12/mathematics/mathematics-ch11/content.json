@@ -30,7 +30,21 @@
         "cbse12:mathematics:mathematics-ch10:magnitude"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Reading l = 1/2, m = 0, n = sqrt(3)/2 off a line at 60, 90, 30 degrees to the axes and checking (1/2)^2 + 0 + (sqrt(3)/2)^2 = 1, which needs cos 60 = 1/2, cos 90 = 0, cos 30 = sqrt(3)/2.",
+          "surfacingQuestion": "quick one before we read off l, m, n: do those three numbers cos 60, cos 90, cos 30 come back to you, or shall we rebuild them?",
+          "ladder": [
+            "picture the unit circle (radius 1): the cosine of an angle is just the x-coordinate of the point you land on as you sweep up from the x-axis. at 0 degrees you're at the far right, so cos 0 = 1; at 90 degrees you've swung straight up to the top, so the x-coordinate is 0 -- that's cos 90 = 0.",
+            "now the two standard angles either side: from the 30-60-90 triangle (sides 1, sqrt(3), 2), cos = adjacent/hypotenuse. for the 60 degree angle the adjacent side is the short one, 1, over 2 -- so cos 60 = 1/2.",
+            "for the 30 degree angle the adjacent side is the long one, sqrt(3), over 2 -- so cos 30 = sqrt(3)/2. notice cos 60 and cos 30 are swaps of each other, which is the giveaway you've got them the right way round.",
+            "so a line at 60 to x, 90 to y, 30 to z gives l = cos 60 = 1/2, m = cos 90 = 0, n = cos 30 = sqrt(3)/2."
+          ],
+          "answer": "the standard cosines are cos 0 = 1, cos 30 = sqrt(3)/2, cos 60 = 1/2, cos 90 = 0 -- read straight off the unit circle (cosine = the x-coordinate) or the 30-60-90 triangle (cosine = adjacent/hypotenuse). a quick sanity check is that cosine shrinks from 1 down to 0 as the angle grows from 0 to 90, so the bigger angle always has the smaller cosine -- that's why 60 degrees gives the smaller value 1/2 and 30 gives the larger sqrt(3)/2. in this node those are exactly the values you plug in: a line at 60, 90, 30 degrees to the axes has direction cosines l = 1/2, m = 0, n = sqrt(3)/2, and the check (1/2)^2 + 0 + (sqrt(3)/2)^2 = 1/4 + 3/4 = 1 confirms l^2 + m^2 + n^2 = 1.",
+          "returnCue": "good -- so l = 1/2, m = 0, n = sqrt(3)/2, and now we can square-and-add them to see the identity l^2 + m^2 + n^2 = 1 fall out."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch11:direction-ratios",

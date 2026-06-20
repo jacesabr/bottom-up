@@ -447,7 +447,22 @@
         "cbse10:maths:jemh102:define-zero-of-polynomial"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "raising a fraction to a power and adding fractions over a common denominator",
+          "surfacingQuestion": "quick one before the fractional candidate: what is (2/3)^2, and how do you add 1/2 + 1/3?",
+          "ladder": [
+            "A fraction a/b means a divided by b, with a on top and b on the bottom.",
+            "Raising a fraction to a power raises the top and the bottom separately: (a/b)^2 = a^2/b^2, and (a/b)^3 = a^3/b^3.",
+            "To add two fractions you first rewrite them over the same (common) denominator, then add the tops and keep that denominator.",
+            "Example: 1/2 + 1/3 = 3/6 + 2/6 = 5/6.",
+            "Whole numbers count too - a number like 4 is just 4/1, so it can be put over a common denominator with the others."
+          ],
+          "answer": "For a fraction, a power hits the top and the bottom on their own: (2/3)^2 = 2^2/3^2 = 4/9, and (a/b)^3 = a^3/b^3. To add fractions you put them over one common denominator, add the numerators, and keep that denominator: 1/2 + 1/3 = 3/6 + 2/6 = 5/6. A plain whole number is just that number over 1, so it joins in over the common denominator too. In this node, when the candidate is a fraction you square it and cube it this way, write every one of the four terms over a common denominator, add the numerators, and check the total comes out to 0/something = 0.",
+          "returnCue": "with powers of a fraction and adding over a common denominator handy, you can carry the fractional candidate all the way through and check the sum hits 0."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh102:state-cubic-zero-coefficient-relations",
@@ -497,7 +512,21 @@
         "cbse10:maths:jemh102:verify-cubic-zero-by-substitution"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "adding fractions over a common denominator and multiplying fractions (including a whole number with a fraction)",
+          "surfacingQuestion": "quick one before we add these zeroes: what is 2 - 1/3, and what is 3 * (-1/3)?",
+          "ladder": [
+            "A fraction like 1/3 is one part out of three equal parts; a whole number can be written as a fraction too, e.g. 2 = 6/3.",
+            "To add or subtract fractions you first make the bottoms (denominators) the same, then add or subtract just the tops: 2 - 1/3 = 6/3 - 1/3 = 5/3.",
+            "To multiply fractions you multiply the tops together and the bottoms together: 3 * (1/3) = (3*1)/(1*3) = 3/3 = 1.",
+            "Watch the signs while you do it: 3 * (-1/3) = -3/3 = -1, and (-1) * (-1/3) = +1/3."
+          ],
+          "answer": "To add or subtract fractions, give them a common denominator and then combine the tops: 2 - 1/3 = 6/3 - 1/3 = 5/3, and -3 + 1/3 - 1 = -12/3 + 1/3 = -11/3. To multiply fractions, multiply tops by tops and bottoms by bottoms, keeping track of signs: 3*(-1/3) = -3/3 = -1 and 3*(-1)*(-1/3) = 1. That is exactly the arithmetic in this node - the three zeroes 3, -1, -1/3 are added to get the sum 5/3, their pairwise products are combined over a common denominator to get -11/3, and all three are multiplied to get 1.",
+          "returnCue": "with fraction adding and multiplying in hand, let's run the three checks: sum, pair-sum, then product."
+        }
+      ]
     }
   ],
   "narrative": "## What I read (review pass)\n\nI re-read the full segmented transcription of NCERT Class 10 Maths chapter jemh102 \"Polynomials\" (`extractions/_text/jemh102.txt`, 6 SEGs: 2.1 Introduction, 2.2 Geometrical Meaning of Zeroes, EXERCISE 2.1, 2.3 Relationship between Zeroes and Coefficients, EXERCISE 2.2, 2.4 Summary) and the shared CBSE Maths SQP + Marking Scheme (`_maths-exams.txt`, Standard paper Q1 and Q8 with answer keys).\n\nScope note: this transcription does NOT contain a Division Algorithm section — the chapter ends at 2.3/Summary even though SEG 0's intro line mentions it. Recorded in absentNotes; no nodes invented for it.\n\n## Corrections applied to the draft\n\n1. GOAL CITATION (D-120 fix). The draft cited the goal node `relate-zeroes-and-coefficients-of-polynomials` at sec=3 with the quote \"In this chapter, we will try to answer these questions. We will also study the division algorithm for polynomials.\" That line lives in SEG 0 (not SEG 3) AND it foregrounds the division algorithm, which the chapter never delivers. Re-quoted to the SEG-0 line that actually states the chapter's goal — \"are the zeroes of a quadratic polynomial also related to its coefficients?\" — and fixed sec to 0. This is a verbatim substring of SEG 0.\n\n2. EDGE FIX — second root removed. `bound-number-of-zeroes-by-degree` appeared only as a parent (of `count-zeroes-from-graph` and `identify-degree-of-polynomial`) and never as a child, so the graph had TWO roots. Added a true prerequisite edge `relate-zeroes-and-coefficients-of-polynomials → bound-number-of-zeroes-by-degree` (knowing how many zeroes a polynomial can have is a genuine prerequisite to relating those zeroes to coefficients). Now a single root with no orphans.\n\n3. GATE srcLabel cleanup. Two CAS/numeric gates carried the placeholder srcLabel \"2.3 (worked example p.x)\" — the page-range marker was an artifact. Renamed to \"2.3 (worked example 2x² − 8x + 6)\" so the locator is meaningful; the verbatim quote is unchanged and remains the authoritative citation.\n\n## Verification performed\n\n- CITATIONS: every node quote re-checked as a verbatim substring of its SEG. All 21 verify (including the multi-line cubic-relations quote at lines 236-238 and the signed-substitution line at 21).\n- GATES: 21 gates, one per node, 100% coverage. Every gate quote re-checked verbatim — chapter gates against jemh102 SEGs, the two exam gates against `_maths-exams.txt` Marking Scheme lines \"1. D) -6,6\" and \"8. B) 8𝑥2- 20\" (copied with the OCR's literal mathematical-bold \"𝑥\"). Each grader/expected/answer is self-consistent for the deterministic tester (numeric values match, mcq `correct` is among `options`, CAS forms are single-variable in x).\n- EDGES: acyclic (all edges flow from higher skill toward bedrock; no back-edges), single root, no orphan node, every endpoint is a defined slug.\n- GRAIN: each node is one failable step. Example 5's substitution check (`verify-cubic-zero-by-substitution`) is kept separate from the relations check (`verify-cubic-zero-coefficient-relations`), per one-failable-thing-one-node. No pure-exposition node (history of the word \"quadratic\", the parabola-shape cases, the no-zero case) was promoted to a skill.\n\n## What was absent / uncertain\n\n- Division Algorithm, dividing-out a known factor, hand-plotting graphs (explicitly excluded by the chapter footnote), and the formal proof of the cubic relations are all genuinely absent — recorded in absentNotes, not failed.\n- Goal gate Q8: the OCR garbles the zeroes (\"− √5 / 2 and √5 / 2\"); the keyed answer 8x²−20 is taken as canonical from the Marking Scheme regardless of the arithmetic ambiguity, since the gate is a deterministic MCQ against the published key.",

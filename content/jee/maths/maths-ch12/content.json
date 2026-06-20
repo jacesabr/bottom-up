@@ -260,7 +260,21 @@
         "jee:maths:maths-ch02:real-function"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student cannot expand (x + h)^2 = x^2 + 2xh + h^2, so cannot turn [(x+h)^2 - x^2]/h into (2xh + h^2)/h.",
+          "surfacingQuestion": "quick one before we go on: if you square the whole thing (x + h), what do you get written out term by term?",
+          "ladder": [
+            "start with two pieces added together: how do you multiply (a + b) by (a + b)? remember each piece on the left hits each piece on the right.",
+            "do that multiply: (a + b)(a + b) = a*a + a*b + b*a + b*b. the two middle terms a*b and b*a are the same, so they add up - what does that give you?",
+            "so (a + b)^2 = a^2 + 2ab + b^2. it is NOT just a^2 + b^2 - that loses the middle 2ab term.",
+            "now put a = x and b = h into that identity. what is (x + h)^2?"
+          ],
+          "answer": "(a + b)^2 means (a + b)(a + b), and multiplying out (each term times each term) gives a^2 + ab + ba + b^2 = a^2 + 2ab + b^2 - the middle term 2ab is the one people drop. Putting a = x and b = h: (x + h)^2 = x^2 + 2xh + h^2. That is exactly what we need here: the numerator of the difference quotient is (x+h)^2 - x^2 = (x^2 + 2xh + h^2) - x^2 = 2xh + h^2, which is why [(x+h)^2 - x^2]/h becomes (2xh + h^2)/h.",
+          "returnCue": "good - so (x+h)^2 - x^2 = 2xh + h^2. now we put that over h and cancel to get 2x + h, then send h to 0."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch12:derivative-as-slope-of-tangent",
@@ -286,7 +300,21 @@
         "jee:maths:maths-ch09:slope-as-tan-inclination"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student reaches f'(a) = tan(psi) but does not recall that the slope of a straight line equals the tangent of the angle it makes with the positive x-axis (slope = tan of inclination).",
+          "surfacingQuestion": "quick one before we read this as an angle: if a line tilts up at some angle from the x-axis, how is that angle linked to its slope?",
+          "ladder": [
+            "Slope is rise over run: for a line going through (x1, y1) and (x2, y2) it is (y2 - y1)/(x2 - x1).",
+            "Now picture a little right triangle under the line: the run is the horizontal side, the rise is the vertical side, and the line itself is the hypotenuse. Which side is opposite the angle psi the line makes with the x-axis, and which is adjacent?",
+            "In that triangle, tan(psi) = opposite/adjacent = rise/run. So tan(psi) is the same rise-over-run we just called the slope.",
+            "So what single equation links the slope of a line to the angle psi it makes with the positive x-axis?"
+          ],
+          "answer": "For a straight line that makes an angle psi with the positive x-axis (its angle of inclination), the slope equals tan(psi). The reason is the right triangle under the line: tan(psi) = opposite/adjacent = rise/run, and rise/run is exactly the slope. So a steeper line means a larger psi and a larger tan(psi); a flat line has psi = 0 and slope tan(0) = 0; a line at 45 degrees has slope tan(45) = 1. That is why, once we found f'(a) is the slope of the tangent at P, we can read it as an angle: f'(a) = tan(psi), where psi is the angle the tangent makes with the positive x-axis.",
+          "returnCue": "so slope and tan(psi) are the same number - that's why f'(a) = tan(psi) lets us read the derivative straight off the graph as the steepness of the tangent."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch12:algebra-of-derivatives",

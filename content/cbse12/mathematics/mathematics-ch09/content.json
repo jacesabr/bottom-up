@@ -30,7 +30,21 @@
       "source": {
         "ref": "NCERT Class 12 Mathematics Part II, Ch. 9 Differential Equations, §9.4.1 Example 9 and Exercise 9.3 Q.19-22",
         "url": "https://ncert.nic.in/textbook/pdf/lemh203.pdf"
-      }
+      },
+      "refreshers": [
+        {
+          "trigger": "Learner cannot turn \"A is proportional to B\" into A = k*B with a fixed constant k, is unsure why a stated percentage rate such as 5% per year fixes k = 5/100, or cannot say why a decreasing quantity takes a negative constant (dX/dt = -kX, k>0).",
+          "surfacingQuestion": "quick one before we build the equation: when we say \"the rate is proportional to X\", what does \"proportional to\" actually let us write down?",
+          "ladder": [
+            "think back to ratio and proportion from earlier grades: if 1 pen costs 10 rupees, what do 2 pens cost, and 3 pens? what stays the same no matter how many pens?",
+            "right - the cost is always 10 times the number of pens. so \"cost is proportional to number of pens\" means cost = 10 * (number). in general \"A is proportional to B\" means A = k*B for one fixed number k. what is k in the pen example?",
+            "now if a quantity grows by 5% each year, the yearly increase is 5/100 of the current amount. written as (rate) = k * (amount), what number must k be?",
+            "and if a quantity is DECREASING - say it loses some fraction each year - the amount goes down as time goes up. should the constant in front be positive or negative, and how would you write \"decreases at a rate proportional to X\"?"
+          ],
+          "answer": "\"A is proportional to B\" means A = k*B for one fixed constant of proportionality k - the two quantities always stay in the same ratio, so k is just that ratio. A stated percentage pins k down directly: 5% per year means the rate equals 5/100 of the current amount, so k = 5/100. The sign of k carries the direction: a growing quantity has k > 0, and \"decreases at a rate proportional to X\" means the quantity falls as time rises, written dX/dt = -kX with k > 0. That is exactly the right-hand side of this node - \"is proportional to X\" becomes k times X, so the rate statement becomes dX/dt = kX.",
+          "returnCue": "with \"proportional to\" meaning \"k times\", back to the model: \"rate of change of X is proportional to X\" becomes dX/dt = kX - choose k's sign from grow/shrink, and read its value off any stated percentage."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch09:differential-equation",
@@ -228,7 +242,21 @@
         "cbse12:mathematics:mathematics-ch09:homogeneous-function"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Learner cannot differentiate the product y = v*x (with v a function of x) to get dy/dx = v + x dv/dx, or does not see that the substitution step is just the product rule d/dx[u*v] = u dv/dx + v du/dx.",
+          "surfacingQuestion": "quick one before we substitute: when you differentiate a product like y = v times x (and v itself depends on x), how does the rule go - what are the two pieces you add up?",
+          "ladder": [
+            "recall the product rule: if you have two things multiplied, u times w, then d/dx[u*w] = u*(dw/dx) + w*(du/dx) - you differentiate one factor at a time and add the two results.",
+            "now in our case the product is v times x. take u = v and w = x. what is du/dx (the derivative of v) and what is dw/dx (the derivative of x)?",
+            "du/dx is just dv/dx (v changes with x, so we keep it as dv/dx), and dw/dx = d/dx[x] = 1. plug both into the product rule.",
+            "so d/dx[v*x] = v*(dx/dx) + x*(dv/dx) = v*1 + x*dv/dx. tidy that up - what is dy/dx equal to?"
+          ],
+          "answer": "By the product rule, d/dx[u*w] = u*(dw/dx) + w*(du/dx). Applying it to y = v*x with v a function of x: dy/dx = v*(d/dx[x]) + x*(dv/dx) = v*1 + x*dv/dx = v + x*dv/dx. The term v appears because d/dx[x] = 1, and the x*dv/dx term appears because v itself varies with x. This is exactly the result this node uses the moment we set y = vx - that's why substituting gives v + x*dv/dx on the left, which we then set equal to g(v) and separate.",
+          "returnCue": "good - with dy/dx = v + x*dv/dx in hand, return to the substitution: replace dy/dx by v + x*dv/dx, set it equal to g(v), and separate the variables in v and x."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch09:linear-differential-equation",
@@ -279,7 +307,21 @@
         "cbse12:mathematics:mathematics-ch07:integration-by-parts"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Learner cannot simplify e^(ln|x|) to x or e^(ln x^(-3)) to 1/x^3, or cannot say why e^(integral of P dx) is the integrating factor - i.e. does not recall that e^x and ln x are inverse operations so e^(ln u) = u.",
+          "surfacingQuestion": "quick one before we simplify this I.F.: if you take ln of a number and then raise e to that result - e^(ln 7), say - what do you get back?",
+          "ladder": [
+            "You know e^x and ln x are a pair: ln asks 'e to WHAT power gives this number?' So ln 7 is exactly the power you must put on e to get 7. What is e^(ln 7) then?",
+            "Right - e^(ln 7) = 7, because ln 7 was defined as the power that gets you back to 7. The two operations undo each other.",
+            "So for ANY positive thing u, what does e^(ln u) simplify to?",
+            "Now use that on e^(ln|x|): what does it become? And on e^(ln x^(-3))?"
+          ],
+          "answer": "e^x and ln x are inverse operations - each undoes the other - so e^(ln u) = u for any positive u. That is why e^(ln|x|) collapses straight to x, and e^(ln x^(-3)) collapses to x^(-3) = 1/x^3. It is also the whole reason the integrating factor takes the form it does: we found ln(I.F.) = integral of P dx, and raising e to both sides (to undo the ln) gives I.F. = e^(integral of P dx). So every time you write integral of P dx as a log and then exponentiate, e and ln are simply cancelling to leave you a clean, usable I.F.",
+          "returnCue": "With e and ln cancelling cleanly, back to the recipe: compute integral of P dx, then I.F. = e^(that integral), simplifying any e^(ln ...) straight away."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch09:solve-linear-de",

@@ -390,7 +390,21 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student multiplies by the conjugate but cannot expand (sqrt(3)-1)(sqrt(3)+1), i.e. does not recall that (a-b)(a+b) = a^2 - b^2, so cannot see why the denominator becomes 3 - 1 = 2.",
+          "surfacingQuestion": "quick one before we finish the denominator: when you multiply (sqrt(3)-1) by (sqrt(3)+1), do you remember the shortcut that makes the middle terms cancel?",
+          "ladder": [
+            "You met this identity in Class 9. If I expand (a-b)(a+b) the long way, I get a^2 + ab - ba - b^2. Two of those middle terms are the same size but opposite signs - what happens when you add +ab and -ba?",
+            "So once the middle pair cancels, what is left? Write (a-b)(a+b) as just two terms.",
+            "Now put a = sqrt(3) and b = 1 into that result. What is a^2 here, remembering sqrt(3) squared just gives back 3?",
+            "So (sqrt(3)-1)(sqrt(3)+1) = 3 - 1. What single number is that?"
+          ],
+          "answer": "There is a Class 9 identity for two brackets that are the same except for the sign in the middle: (a-b)(a+b) = a^2 - b^2, the difference of squares. The +ab and -ba in the middle always cancel, so only the two squares survive. With a = sqrt(3) and b = 1 this gives (sqrt(3))^2 - 1^2 = 3 - 1 = 2 - notice the square root disappears, because squaring sqrt(3) just gives 3. That is exactly why multiplying top and bottom by the conjugate (sqrt(3)+1) turns the messy denominator (sqrt(3)-1) into the plain whole number 2: the surd is squared away, leaving a rational denominator we can divide by.",
+          "returnCue": "great - so the conjugate works because (a-b)(a+b) = a^2 - b^2 squares the surd away. let's use that to finish rationalising the denominator."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh109:approximate-surd-to-decimal",

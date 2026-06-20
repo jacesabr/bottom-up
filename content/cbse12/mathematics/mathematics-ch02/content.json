@@ -108,7 +108,21 @@
         "url": "https://www.cuemath.com/trigonometry/allied-angles/"
       },
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student is shaky on which trig ratios are positive or negative in each of the four quadrants (the ASTC rule), so cannot see why sin(pi - x) keeps its sign while cot(pi - x) flips.",
+          "surfacingQuestion": "quick one before we go on: in each of the four quadrants, which trig ratios come out positive and which come out negative?",
+          "ladder": [
+            "Picture the unit circle split into four quadrants by the x and y axes. A point on it has coordinates (cos, sin) - the x-coordinate is the cosine of the angle, the y-coordinate is the sine.",
+            "In the second quadrant (top-left, angles between pi/2 and pi), is the x-coordinate positive or negative? And the y-coordinate? So which of sine and cosine is positive there?",
+            "Since the y-coordinate is positive in the second quadrant, sine is positive there; the x-coordinate is negative, so cosine is negative. What does that force tangent (sin/cos) and cotangent (cos/sin) to be - positive or negative?",
+            "Now do the same for all four: first quadrant all positive; second only sine (and its reciprocal) positive; third only tangent and cotangent positive; fourth only cosine and its reciprocal positive. That is the ASTC pattern - All, Sine, Tangent, Cosine."
+          ],
+          "answer": "On the unit circle a point at angle x has coordinates (cos x, sin x), so the sign of each ratio just follows the signs of those coordinates in that quadrant. Quadrant by quadrant the positives are: first - all; second - sine (and cosec); third - tangent (and cot); fourth - cosine (and sec); everything else is negative. That is the ASTC rule. In this node it is exactly what fixes the signs of the allied-angle identities: pi - x lands in the second quadrant, where sine stays positive, so sin(pi - x) = +sin x; but cotangent is negative there, so cot(pi - x) = -cot x. Knowing which ratios are positive in each quadrant is the whole reason the signs come out the way they do.",
+          "returnCue": "with the quadrant signs straight, the allied-angle identities are just \"same ratio, sign set by the quadrant\" - so let us read them off for pi - x, 2pi - x and -x."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch02:inverse-needs-bijective",

@@ -320,7 +320,21 @@
         "jee:maths:maths-ch11:coordinates-of-a-point"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student does not recall the 2D centroid formula — that in the plane each coordinate of a triangle's centroid is the average of the three vertices' corresponding coordinates, G = ((x1+x2+x3)/3, (y1+y2+y3)/3) — which the 3D centroid formula directly extends.",
+          "surfacingQuestion": "quick one before we go on: back in coordinate geometry, the centroid of a triangle — how did you get its x-coordinate from the three corners?",
+          "ladder": [
+            "A triangle has three corners (vertices). The centroid is its balance point — where the three medians meet. Have you met that point before, in the plane?",
+            "In coordinate geometry you had three vertices like A(x1, y1), B(x2, y2), C(x3, y3). To find the centroid's x-coordinate, what do you do with the three x-values x1, x2, x3?",
+            "Right — you add the three x's and divide by 3, the plain average. And what do you do with the three y-values to get the centroid's y-coordinate?",
+            "So in the plane the centroid is G = ((x1+x2+x3)/3, (y1+y2+y3)/3): each coordinate is just the average of that coordinate over the three vertices, handled separately."
+          ],
+          "answer": "In the plane, a triangle with vertices A(x1, y1), B(x2, y2), C(x3, y3) has centroid G = ((x1+x2+x3)/3, (y1+y2+y3)/3). The recipe is simple: for each coordinate, add that coordinate over the three vertices and divide by 3 — the x's give Gx, the y's give Gy, and you never mix them. This node extends exactly that recipe to space: a third coordinate z comes along for the ride, so G = ((x1+x2+x3)/3, (y1+y2+y3)/3, (z1+z2+z3)/3), still averaging each coordinate independently.",
+          "returnCue": "with the 2D centroid as 'average each coordinate' fresh in mind, let's carry the same averaging straight into 3D."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch11:locate-and-measure-points-in-3d-space",

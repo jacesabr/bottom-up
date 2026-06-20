@@ -356,7 +356,22 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student cannot simplify a side ratio containing a surd such as 3*sqrt(3)/(6*sqrt(3)) — does not recognise sqrt(3) as a number or that an identical surd factor cancels top and bottom.",
+          "surfacingQuestion": "Quick one before we simplify this ratio: this fraction has sqrt(3) on the top and the bottom — what is sqrt(3), and what happens when the same thing sits on top and bottom?",
+          "ladder": [
+            "What number, when you multiply it by itself, gives 9? That number is called the square root of 9 — so what is sqrt(9)?",
+            "sqrt(3) works the same way: it is just the (one and only) number that times itself gives 3. It is a fixed number a bit bigger than 1.7 — so is sqrt(3) a real number you can treat like any other factor?",
+            "In the fraction (3*4)/(6*4), the 4 appears on top and bottom — what happens to it when you simplify, and what are you left with?",
+            "So in 3*sqrt(3)/(6*sqrt(3)), the sqrt(3) is the same factor on top and bottom — what can you do with it, and what is left?",
+            "After the sqrt(3) cancels you have 3/6 — simplified to lowest terms, what is that?"
+          ],
+          "answer": "A square root of a number is the value that, multiplied by itself, gives that number: sqrt(9) = 3 because 3*3 = 9, and sqrt(3) is just the number (about 1.73) that times itself gives 3. A surd like sqrt(3) is an ordinary number — it does not divide out to a whole number, but it still behaves like any other factor in a fraction. The key rule: when the SAME non-zero factor appears in both the numerator and the denominator, it cancels (divides out to 1), exactly like the 4 in (3*4)/(6*4) leaving 3/6. So in 3*sqrt(3)/(6*sqrt(3)) the identical sqrt(3) on top and bottom cancels, leaving 3/6 = 1/2 — which is exactly how you simplify a corresponding-side ratio in this node when the sides carry surds: cancel the common surd first, then reduce the plain numbers.",
+          "returnCue": "With the sqrt(3) cancelled, the surd ratio is back to ordinary numbers: 3*sqrt(3)/(6*sqrt(3)) = 3/6 = 1/2 — now check it matches the other corresponding-side ratios."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh106:apply-sas-similarity-criterion",
@@ -450,7 +465,21 @@
         "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student cannot state that the three interior angles of a triangle add up to 180 degrees when the node computes the unknown angle as 180 - 80 - 60 = 40.",
+          "surfacingQuestion": "quick one before we compute that third angle: in any triangle, what do the three corner angles always add up to?",
+          "ladder": [
+            "a straight line makes a half-turn — how many degrees is that?",
+            "now picture any triangle and imagine sliding all three corners together so their arms line up along one straight line — what total turning do the three angles make?",
+            "so if you add up the three inside angles of a triangle, what number do you always get, no matter the shape or size?",
+            "if two of those angles are 80 and 60, how would you find the third one?"
+          ],
+          "answer": "In every triangle the three interior angles always add up to 180 degrees — the same as a straight line (a half-turn). This is true for any triangle, big or small, fat or thin: tear off the three corners and lay them side by side and they form a straight line. So if you know two of the angles, the third is just 180 minus the other two. In this node that is exactly the central step: with angle A = 80 and angle B = 60, you get angle C = 180 - 80 - 60 = 40, and then you carry that 40 across to the matching corner of the similar triangle.",
+          "returnCue": "good — so angle C = 180 - 80 - 60 = 40; now let's transfer that to its corresponding angle in the similar triangle."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh106:find-unknown-length-via-proportion",

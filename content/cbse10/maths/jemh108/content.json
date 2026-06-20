@@ -155,7 +155,32 @@
       "sameConcept": [
         "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle"
       ],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "answer": "An equilateral triangle is one whose three sides are all equal in length. Because equal sides force equal opposite angles, all three of its angles are equal too; since the angles of any triangle add up to 180 degrees, each angle is 180/3 = 60 degrees. An altitude (or height) is the straight line drawn from one vertex perpendicular - at 90 degrees - to the opposite side. In an equilateral triangle this altitude is special: it lands exactly on the midpoint of the base, splitting that side into two equal halves (it is also the perpendicular bisector and it bisects the 60-degree top angle into two 30-degree halves). So if the equilateral triangle has side 2a, the altitude cuts the base into two pieces of length a each, and creates a right triangle whose angles are 90 degrees (where the altitude meets the base), 60 degrees (the original base angle), and 30 degrees (half the top angle). That 30-60-90 right triangle is the tool used to read off the exact ratios for 30 and 60 degrees.",
+          "ladder": [
+            "In an equilateral triangle, what is true about all three sides, and so about all three angles?",
+            "If all three angles are equal and add to 180 degrees, how big is each one?",
+            "When you drop a perpendicular from the top vertex to the base, into what two pieces does it cut the base, and why?"
+          ],
+          "trigger": "Builds the 30-60-90 triangle from an equilateral triangle and its altitude, assuming both ideas are known",
+          "returnCue": "With the equilateral triangle halved into a 30-60-90 right triangle, we can compute the ratios.",
+          "surfacingQuestion": "This construction starts from an equilateral triangle and drops an altitude that bisects the base - what do equilateral and that altitude actually give us?"
+        },
+        {
+          "trigger": "Finds the altitude AD by computing AD^2 = AB^2 - BD^2 = 3a^2, assuming the Pythagoras theorem is known",
+          "surfacingQuestion": "Quick one before we read off the ratios: once you know two sides of this right triangle, how do you get the third side AD?",
+          "ladder": [
+            "After dropping the altitude, triangle ABD has a right angle at D - so what special name does the longest side, AB, have here?",
+            "The Pythagoras theorem says: in a right triangle, hypotenuse squared equals the sum of the squares of the other two sides. With hypotenuse AB = 2a and one leg BD = a, what is AB squared, and what is BD squared?",
+            "If AB squared is the leg BD squared plus the leg AD squared, how do you rearrange that to get AD squared on its own?",
+            "Once AD squared = (2a)^2 - a^2 = 4a^2 - a^2, what is AD itself?"
+          ],
+          "answer": "The Pythagoras theorem is the Class 9 rule for right triangles: the square of the hypotenuse (the side across from the 90-degree corner) equals the sum of the squares of the two legs. So in any right triangle, leg^2 + leg^2 = hypotenuse^2, and you can rearrange it to find any one side from the other two: a missing leg^2 = hypotenuse^2 - other leg^2. Here, in right triangle ABD, the hypotenuse is AB = 2a and one leg is BD = a, so AD^2 = AB^2 - BD^2 = (2a)^2 - a^2 = 4a^2 - a^2 = 3a^2, which gives AD = a times the square root of 3 (we take the positive root since a length is positive). That third side, AD = a*sqrt(3), is exactly what lets us read off sin, cos and tan of 30 and 60 degrees from this triangle.",
+          "returnCue": "Now that AD = a*sqrt(3) is in hand, we have all three sides - a, a*sqrt(3), 2a - and can read off the 30 and 60 degree ratios."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh108:recall-0-90-ratios",
@@ -232,7 +257,21 @@
         "cbse10:maths:jemh108:define-trig-ratios"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "States or divides by AB^2 + BC^2 = AC^2 labelled (Pythagoras) as a known fact without re-explaining the Pythagoras theorem",
+          "surfacingQuestion": "Quick one before we go on: this whole derivation starts from AB squared plus BC squared equals AC squared, called Pythagoras - what does that statement actually say?",
+          "ladder": [
+            "In a right triangle, the two short sides meeting at the 90-degree corner are the legs and the long side across from it is the hypotenuse. Which one is biggest?",
+            "The Pythagoras theorem links them: if you build a square on each leg, how do their two areas compare to the square built on the hypotenuse?",
+            "So if the legs are 3 and 4, what is 3 squared plus 4 squared, and what does that make the hypotenuse?",
+            "Here the legs are AB and BC and the hypotenuse is AC - so what equation does Pythagoras give you for them?"
+          ],
+          "answer": "The Pythagoras theorem is a result from Class 9 geometry about right triangles: the square of the hypotenuse equals the sum of the squares of the other two sides (the legs). In symbols, for right triangle ABC right-angled at B, the legs are AB and BC and the hypotenuse is AC, so AB^2 + BC^2 = AC^2. It is always true for a right triangle - that is why we can write it down as a known fact and not re-prove it. A quick check: legs 3 and 4 give 3^2 + 4^2 = 9 + 16 = 25 = 5^2, so the hypotenuse is 5. In this node that equation AB^2 + BC^2 = AC^2 is the starting line of the whole derivation - we divide every term by AC^2 and the two leg-over-hypotenuse pieces turn into cos A and sin A, giving sin^2 A + cos^2 A = 1.",
+          "returnCue": "Good - with AB^2 + BC^2 = AC^2 in hand as our known fact, let us divide through by AC^2 and watch the identity appear."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh108:apply-sec-tan-identity",

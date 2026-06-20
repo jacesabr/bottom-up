@@ -17,6 +17,9 @@ pnpm-lock.yaml
 # NIM study generated reports
 tools/nim-study/
 
+# Audit scratch + backups (scope-leak / refresher audit) — kept LOCAL (recovery artifacts), not shipped
+.audit-tmp/
+
 # "Learn from Scratch" — downloaded concept map + generated corpus + spike tooling.
 # Kept LOCAL on disk (zcode reads from here) but not pushed until we decide to ship the section.
 curriculum/

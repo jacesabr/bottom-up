@@ -102,7 +102,21 @@
         "cbse12:mathematics:mathematics-ch05:algebra-of-continuous-functions"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student reads (f o g)(x) = f(g(x)) but evaluates the outer function f at the input c instead of at g(c), the inner function's output - i.e. cannot say that f acts on g(c), not on c.",
+          "surfacingQuestion": "quick check before we use this: in f(g(x)), what number does the outer function f actually receive - x itself, or something else?",
+          "ladder": [
+            "if g(x) = x^2 and you put in x = 3, what single number comes OUT of g? (call it the output of g)",
+            "now f(g(3)) means: feed that output into f. so which number does f get fed - is it 3, or is it the number g spat out?",
+            "write the order out loud: first g acts on the input, then f acts on g's output. so in general (f o g)(c) = f( ? ) - what goes in the blank, c or g(c)?",
+            "so when we ask 'where is f being evaluated?', is the answer the original input c, or the inner output g(c)?"
+          ],
+          "answer": "A composite f o g is like two machines wired in series: the input goes into the INNER machine g first, g produces an output g(x), and only THAT output is fed into the OUTER machine f. So (f o g)(x) = f(g(x)) means 'apply g to x, then apply f to whatever g gave you' - f never touches x directly; it touches g(x). At a specific point c, the inner machine turns c into the intermediate number g(c), and f is then evaluated at g(c), not at c. For example with g(x) = x^2 and f(u) = sin u, at c = 3 the inner output is g(3) = 9, so we look at f(9) = sin 9 - we ask about f at 9, not at 3. That is exactly why this node checks the outer function for continuity at g(c) rather than at c: f only ever sees the inner function's output, so its continuity must be tested precisely there.",
+          "returnCue": "good - so f is always evaluated at the inner output g(c). now back to continuity: we need g continuous at c and f continuous at that output g(c)."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch05:derivative-definition",
@@ -202,7 +216,21 @@
         "cbse12:mathematics:mathematics-ch01:composition-of-functions"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student is handed an expression like sin(x^2), e^(3x), or (2x+1)^5 and cannot see it as a composition - treats sin(x^2) as one indivisible function rather than 'sin applied to x^2', or cannot point separately to the inner function and the outer function.",
+          "surfacingQuestion": "Quick one before we differentiate: in sin(x^2), what is the 'inside' part and what gets done to it - can you split it into an inner step and an outer step?",
+          "ladder": [
+            "Suppose you had to compute sin(x^2) for x = 3 with a calculator. Which button do you press FIRST - do you square, or take the sine - and then what do you do to that result?",
+            "So there are two steps done in order: an inner one that takes x to some value, then an outer one applied to that value. For sin(x^2), call the inner step t = u(x). What is u(x), and what is the outer operation v done to t?",
+            "Now try (2x+1)^5: which part is the inner function t = u(x), and what is the outer function v doing to t? And for e^(3x)?",
+            "In general, f(x) = v(u(x)) means 'first do u, then feed the answer into v.' Given any expression, how do you spot the inner function - what would you compute first if you plugged in a number?"
+          ],
+          "answer": "A composite function is a 'function of a function': you do an inner step first, then feed its output into an outer step. We write it f = v o u, meaning f(x) = v(u(x)) - first apply the inner function u to x to get an intermediate value t = u(x), then apply the outer function v to that t. The trick for spotting the pieces is to ask what you would compute FIRST if you put in a number: that innermost operation is u(x). For sin(x^2), squaring happens first, so the inner function is t = u(x) = x^2 and the outer is v = sin (giving sin(t)). For (2x+1)^5 the inner is t = 2x+1 and the outer is 'raise to the 5th power'; for e^(3x) the inner is t = 3x and the outer is 'e to the power'. This splitting is the very first step of the chain rule: the rule df/dx = (dv/dt)(dt/dx) only makes sense once you have named the inner function t = u(x) and the outer function v - so being able to look at sin(x^2) and instantly read off t = x^2 and v = sin is what lets you start differentiating it at all.",
+          "returnCue": "Now that you can split an expression into its inner function t = u(x) and outer function v, you have exactly the two pieces the chain rule needs - so let's differentiate each and multiply them."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch05:implicit-differentiation",
@@ -259,7 +287,21 @@
         "cbse12:mathematics:mathematics-ch02:principal-value-defn"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student reaches dy/dx = 1/cos y while deriving d/dx(arcsin x) but cannot rewrite cos y in terms of x, i.e. does not recall that sin^2 y + cos^2 y = 1 so cos y = sqrt(1 - sin^2 y).",
+          "surfacingQuestion": "quick one before we finish this: we've got dy/dx = 1/cos y, but our answer needs to be in terms of x. is there a way to turn cos y into something with sin y in it?",
+          "ladder": [
+            "Picture a right triangle with one angle y: if sin y is the opposite side over the hypotenuse, what does cos y measure on that same triangle?",
+            "By the Pythagorean theorem the two legs and the hypotenuse satisfy (opposite)^2 + (adjacent)^2 = (hypotenuse)^2. If you divide that whole equation by (hypotenuse)^2, what relation between sin y and cos y pops out?",
+            "So sin^2 y + cos^2 y = 1 always holds. If you solve that for cos y, what do you get cos y equal to (in terms of sin y)?",
+            "Here we set sin y = x. So once cos y = sqrt(1 - sin^2 y), what does that become in terms of x?"
+          ],
+          "answer": "For any angle y, the Pythagorean identity sin^2 y + cos^2 y = 1 always holds - it's just the Pythagorean theorem applied to a right triangle with hypotenuse 1. Solving it for cosine gives cos y = sqrt(1 - sin^2 y) (we take the positive root because arcsin x outputs angles in [-pi/2, pi/2], where cosine is non-negative). That single swap is the whole trick in this derivation: since we set sin y = x, we get cos y = sqrt(1 - sin^2 y) = sqrt(1 - x^2), which turns dy/dx = 1/cos y into the standard formula d/dx(arcsin x) = 1/sqrt(1 - x^2).",
+          "returnCue": "great - so cos y = sqrt(1 - x^2), and our 1/cos y becomes 1/sqrt(1 - x^2). let's slot that back in and finish the derivative."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch05:exponential-function",
@@ -361,7 +403,21 @@
         "cbse12:mathematics:mathematics-ch05:derivative-of-exp-and-log"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student takes log of both sides to get log y = log((f(x))^(g(x))) but cannot simplify it to g(x) log f(x), or cannot turn log(x^x) into x log x - i.e. is unaware of the power law log(a^b) = b log a.",
+          "surfacingQuestion": "quick one before we differentiate: when you take log of both sides and the right side is log of something raised to a power, what happens to that power?",
+          "ladder": [
+            "You already know one log law from working with exponents: log(a*a*a) - what does log of a product turn into? (a sum of logs.)",
+            "Now a^3 is just a*a*a, so log(a^3) is log(a*a*a). Using the product law, how many copies of log a do you get added up?",
+            "So log(a^3) = 3 log a. What would log(a^b) be for any power b - where does the exponent go?",
+            "Now apply it to (f(x))^(g(x)): the exponent is g(x). What is log((f(x))^(g(x)))?"
+          ],
+          "answer": "There is a law of logarithms (from Class 11) that says log(a^b) = b * log a - the exponent comes down to the front and multiplies. It follows from the product law: a^3 = a*a*a, so log(a^3) = log a + log a + log a = 3 log a, and the same idea works for any exponent. So a power INSIDE a log becomes a multiplier OUTSIDE it. That is exactly why, in this node, taking log of both sides of y = (f(x))^(g(x)) gives log y = g(x) log f(x): the variable exponent g(x) drops down in front of log f(x). This single move is what makes the whole method work - it converts an awkward variable power into a plain product you can then differentiate.",
+          "returnCue": "good - so the exponent slides down to the front. that is exactly the first step of logarithmic differentiation: log y = g(x) log f(x). now let's differentiate both sides."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch05:parametric-differentiation",

@@ -159,7 +159,21 @@
         "cbse10:maths:jemh101:manipulate-prime-powers"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The abbreviation \"LCM\" — Least/Lowest Common Multiple",
+          "surfacingQuestion": "We keep writing LCM — let us make sure it means something concrete. Of all the numbers that BOTH 6 and 20 divide into evenly, which is the smallest?",
+          "ladder": [
+            "What are the first few multiples of 6 — 6, 12, 18, 24 …?",
+            "Now the multiples of 20 — 20, 40, 60 …?",
+            "Which number is the first one to show up in BOTH lists?",
+            "Is there any smaller number that both 6 and 20 go into evenly?"
+          ],
+          "answer": "LCM stands for Least (or Lowest) Common Multiple — the smallest whole number that every one of your numbers divides into exactly. For 6 and 20, the multiples of 6 are 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, … and the multiples of 20 are 20, 40, 60, … The first number to appear in both lists is 60, so LCM(6, 20) = 60. It is the mirror image of HCF: HCF is the biggest factor the numbers SHARE, while LCM is the smallest multiple they both fit INTO. That 60 is exactly what the prime-power method below builds — and why we take the GREATEST power of every prime, so the answer is big enough for every number to divide it.",
+          "returnCue": "So LCM = the smallest number they all divide into. Back to building it from the greatest power of every prime."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh101:use-hcf-lcm-product-relation",
@@ -402,7 +416,21 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The phrase \"common factor\" / \"their only common factor is 1\" — a factor that divides BOTH numbers, when defining coprime",
+          "surfacingQuestion": "Quick one before we go on: when I say two numbers have a 'common factor', what's the 'common' part doing there?",
+          "ladder": [
+            "What are the factors of 8 — the whole numbers that divide it exactly?",
+            "Now what are the factors of 15?",
+            "Looking at both lists, which numbers turn up in BOTH?",
+            "And for 6 and 9 — is there a number bigger than 1 that sits in both their factor lists?"
+          ],
+          "answer": "A common factor of two numbers is a whole number that divides both of them exactly. The factors of 8 are 1, 2, 4, 8; the factors of 15 are 1, 3, 5, 15 — and the only number sitting in both lists is 1, so 1 is their only common factor. But 6 and 9 share more: 3 divides both, so 3 is a common factor of 6 and 9. Every pair always shares 1; the question is whether they share anything bigger. That's exactly what 'coprime' is testing in this node — 8 and 15 are coprime because their only common factor is 1, while 6 and 9 are not, because they also share 3.",
+          "returnCue": "So 'common factor' = a number that divides both. Now back to spotting which pairs share only 1 — those are the coprime ones."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh101:interpret-divides-relation",

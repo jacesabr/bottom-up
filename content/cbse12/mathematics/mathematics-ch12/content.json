@@ -265,7 +265,21 @@
         "cbse12:mathematics:mathematics-ch12:feasible-region"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student must turn the constraints into boundary lines and pick the two lines meeting at a corner (e.g. from 5x + y <= 100, x + y <= 60, x >= 0, y >= 0) but does not know how to get the line equations or which pair to solve.",
+          "surfacingQuestion": "quick one before we hunt for corners: a corner is where two BOUNDARY lines cross - so what are the actual line equations hiding inside constraints like 5x + y <= 100, x + y <= 60, and the conditions x >= 0, y >= 0?",
+          "ladder": [
+            "Take one inequality, say 5x + y <= 100. The edge of that half-plane is a straight line - what equation do you get if you replace the <= with an = ?",
+            "Do the same for x + y <= 60: its boundary line is x + y = 60. So each constraint hands you one boundary line.",
+            "The conditions x >= 0 and y >= 0 are boundary lines too - which familiar lines are x = 0 and y = 0?",
+            "A corner is where TWO of these boundary lines cross. To find corner B you pair the two that meet there, e.g. 5x + y = 100 with x + y = 60; for a corner on an axis you pair a constraint line with x = 0 or y = 0."
+          ],
+          "answer": "Every constraint inequality has a boundary line: replace the <= (or >=) with = to get it, so 5x + y <= 100 gives the line 5x + y = 100 and x + y <= 60 gives x + y = 60. The non-negativity conditions are boundary lines as well - x = 0 is the y-axis and y = 0 is the x-axis. A corner point sits where two of these lines cross, so to find a particular vertex you choose the two boundary lines that meet there and solve that pair together. In this node that is exactly how you get coordinates like B(10,50) - by pairing 5x + y = 100 with x + y = 60 - and corners like A(20,0) or C(0,60) by pairing a constraint line with y = 0 or x = 0.",
+          "returnCue": "Now that you can read off the boundary lines and pick the right pair, solve each pair to get the corner coordinates and list all the vertices of the feasible region."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch12:optimal-at-corner-theorem",

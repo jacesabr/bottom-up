@@ -518,7 +518,21 @@
       "sameConcept": [
         "cbse10:maths:jemh103:solve-resulting-one-variable-equation"
       ],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student cannot tell which number in an equation like −105 = −3n is the coefficient of the unknown — the number to divide both sides by.",
+          "surfacingQuestion": "quick one before we divide: in −3n, which number is doing the multiplying to n?",
+          "ladder": [
+            "When we write 3n, there is no symbol between the 3 and the n, but it still means 3 times n — multiplication is just hidden.",
+            "The number stuck in front of the letter, doing that multiplying, has a name: it is the coefficient of the unknown.",
+            "So in 3n the coefficient is 3, in 7x it is 7. And the sign travels with it: in −3n the coefficient is −3, not just 3.",
+            "If a term is written as just n on its own, there is a hidden 1 in front, so its coefficient is 1."
+          ],
+          "answer": "The coefficient of an unknown is the number multiplying it, sign included. In −3n the coefficient is −3; in 7x it is 7; and a lonely n has coefficient 1. To undo that multiplication and get the unknown by itself, you divide both sides by exactly that coefficient. That is the whole move here: in −105 = −3n the coefficient is −3, so we divide both sides by −3 to get n.",
+          "returnCue": "so the number we divide both sides by is just the coefficient sitting in front of n. back to −105 = −3n — lets divide by −3."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh105:solve-simultaneous-equations",

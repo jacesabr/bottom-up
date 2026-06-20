@@ -30,7 +30,21 @@
       "source": {
         "ref": "NCERT Class 12 Mathematics Part II, Ch. 10 Vector Algebra, §10.6.3 Vector (cross) product, Fig 10.22-10.23",
         "url": "https://ncert.nic.in/textbook/pdf/lemh204.pdf"
-      }
+      },
+      "refreshers": [
+        {
+          "trigger": "Student must read the rule stated in the standard right-handed frame ('fingers curl from positive x toward positive y, thumb gives positive z; n-hat = +z') but has not recalled the Class XI right-handed orientation of the x, y, z axes and their positive senses.",
+          "surfacingQuestion": "quick check before the right-hand rule: in the 3-D axes from last year, once x and y are fixed, is the positive z direction free to point either way, or is it pinned down?",
+          "ladder": [
+            "picture the x-axis pointing right and the y-axis pointing away from you across the page. the z-axis is perpendicular to both -- but a perpendicular line has two ends. which two opposite directions could z point?",
+            "class XI fixed this with one convention: the right-handed system. point your right-hand fingers along positive x and curl them toward positive y. where does your thumb point -- up or down?",
+            "that 'up' is defined as the positive z-axis. so x, y, z in that order always form a right-handed set. if you'd used your left hand, which way would the thumb point instead?",
+            "so 'right-handed' just means: curling from +x to +y sends the thumb to +z. is that the same recipe the right-hand rule uses for any two vectors a and b?"
+          ],
+          "answer": "In the standard right-handed coordinate system the three axes are mutually perpendicular at the origin, and their positive senses are linked: if you curl your right hand's fingers from the positive x-axis toward the positive y-axis, your thumb points along the positive z-axis. The positive z direction is not free -- once +x and +y are chosen, right-handedness pins +z to one of the two perpendicular directions (the left hand would give the opposite, -z). This is exactly the rule this node uses: laying a along +x and b along +y and curling x-to-y makes the thumb point up the positive z-axis, so n-hat = +z.",
+          "returnCue": "so 'right-handed frame' just means +x to +y curls up to +z -- the same hand, same motion the rule asks for. back to using it on a and b."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch10:vector-definition",

@@ -229,7 +229,20 @@
         "cbse10:maths:jemh103:express-one-variable-in-terms-of-other"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "After substituting the isolated expression you face a bracket with a number outside, like 7(3 − 2y), which must be opened by multiplying the outside factor through every term inside, including carrying the sign onto −14y. This relies on the Class 7 distributive law a(b + c) = ab + ac.",
+          "surfacingQuestion": "Quick one before we expand: when you have a number sitting outside a bracket like 7(3 − 2y), what does it actually do to each thing inside?",
+          "ladder": [
+            "You already know 3 lots of 4 is 12, just 4 added three times. So what is 3 lots of (4 + 5)? Try counting all of it.",
+            "Right, 3 × 9 = 27, and notice that is the same as 3 × 4 plus 3 × 5 = 12 + 15 = 27. The outside number multiplies every piece inside the bracket, not just the first one. So what is 7 × 3 plus 7 × 2?",
+            "21 and 14. Now keep the signs: inside 7(3 − 2y) the second term is minus 2y, so 7 multiplies that whole thing and you get minus 14y. Putting it together, what is 7(3 − 2y) written out with no bracket?"
+          ],
+          "answer": "A number outside a bracket multiplies every single term inside it, not just the first one: this is the distributive law, a(b + c) = ab + ac. So 7(3 − 2y) means 7 × 3 together with 7 × (−2y), which is 21 − 14y, and the minus sign rides along onto the 14y. The slip to avoid is multiplying only the 3 and writing 21 − 2y, or losing the sign. In this node that is exactly the move that opens 7(3 − 2y) − 15y = 2 into 21 − 14y − 15y = 2, so you can then collect the y-terms into one equation in one unknown.",
+          "returnCue": "So 7(3 − 2y) becomes 21 − 14y. Drop that back in for the bracket and combine the y-terms to get a single equation in y."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh103:solve-resulting-one-variable-equation",
@@ -379,7 +392,20 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Choosing the multipliers that make a variable's coefficients equal (for example scaling coefficients 4 and 3 up to 12) assumes the student can find a common multiple, the LCM, of the two coefficients and divide to get each scaling factor, a Class 6 multiples skill.",
+          "surfacingQuestion": "Quick one before we pick the multipliers: if one equation has a 4 in front of y and the other has a 3, what is the smallest number both 4 and 3 divide into evenly?",
+          "ladder": [
+            "The multiples of a number are what you get counting up by it: 4 gives 4, 8, 12, 16, 20, ... and 3 gives 3, 6, 9, 12, 15, .... What is the first number that shows up in BOTH lists?",
+            "12 appears in both, so 12 is the smallest shared multiple, called the least common multiple (LCM) of 4 and 3. To turn each coefficient into 12 you ask: 12 divided by which number? To make the 4 into 12, what do you multiply the 4 by?",
+            "You multiply by 3, because 12 divided by 4 is 3; and to make the 3 into 12 you multiply by 4, since 12 divided by 3 is 4. So the LCM tells you the target, and dividing tells you each scaling factor. If two equations had coefficients 6 and 9, what is their LCM, and what would you multiply each by?"
+          ],
+          "answer": "A common multiple of two numbers is a number that both divide into evenly, and the least common multiple (LCM) is the smallest such number. You can find it by listing multiples of each until one matches: multiples of 4 are 4, 8, 12, ...; multiples of 3 are 3, 6, 9, 12, ...; the first shared one is 12, so the LCM of 4 and 3 is 12. To equalise the coefficients you make both into that LCM, and the multiplier for each is just the LCM divided by that coefficient: 12 / 4 = 3 and 12 / 3 = 4. That is exactly why, to remove y from 9x minus 4y = 2000 and 7x minus 3y = 2000, you multiply the first equation by 3 and the second by 4, turning both y-coefficients into 12 (here minus 12) so the variable is ready to cancel. Picking the LCM keeps the numbers as small as possible, which is why it beats guessing.",
+          "returnCue": "So the LCM of the two coefficients is your target, and dividing it by each coefficient gives that equation's multiplier; use those to scale every term and match the coefficient."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh103:add-or-subtract-to-eliminate-variable",
@@ -527,7 +553,20 @@
         "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Solving the ratio condition leads to a squared parameter such as k^2 = 36, and recovering k means taking a square root, which assumes the student remembers that every positive number has TWO square roots (a positive and a negative one), so k = plus or minus 6, not just 6.",
+          "surfacingQuestion": "Quick one before we finish: we have k squared = 36, so what is k? Is 6 the only answer, or is there another?",
+          "ladder": [
+            "Squaring a number means multiplying it by itself: 6 times 6 = 36. A square root undoes that, asking which number times itself gives 36. So which number squared gives 36?",
+            "6 squared is 36, so 6 is a square root of 36. But here is the catch: what is negative 6 times negative 6? Remember a negative times a negative is positive.",
+            "Negative 6 times negative 6 is also 36, so negative 6 is a square root of 36 as well. That means every positive number actually has TWO square roots, one positive and one negative, which we write together as plus or minus. So when k squared = 36, what are both values of k?"
+          ],
+          "answer": "Taking a square root undoes squaring, and the key fact from Class 8 is that every positive number has two square roots, equal in size but opposite in sign. That is because a positive times a positive is positive AND a negative times a negative is also positive: 6 times 6 = 36 and (negative 6) times (negative 6) = 36 too. So k squared = 36 does not give just k = 6; it gives k = plus or minus 6, that is both +6 and negative 6. In this node, after the ratio condition gives k squared = 36, you must report BOTH k = 6 and k = negative 6 as the values that make the lines parallel; dropping the negative root throws away half the answer.",
+          "returnCue": "So k squared = 36 gives k = plus or minus 6, both roots. Carry both values forward as the parameter values that produce the required solution type."
+        }
+      ]
     }
   ],
   "narrative": "## What was read\n\nI re-read the full segmented chapter `jemh103.txt` (9 segments, SEG 0–8) — all 10 worked Examples, the three exercises, and the summary — and re-read the full `_maths-exams.txt` (CBSE Standard + Basic SQP and both Marking Schemes) to confirm the answer-keyed exam gates that touch this chapter.\n\n## Audit outcome\n\nThe draft was largely sound. I verified every node `quote` as a verbatim substring of its declared SEG and every gate `quote` against its chapter SEG or exam line. Two real defects were corrected:\n\n1. **Gate prompt clarity (interpret-no-variable-false-statement).** The draft prompt mixed a yes/no ask with a parenthetical \"number of solutions = 0\", which a deterministic numeric grader could not parse cleanly. Rewrote it as a single numeric question (\"How many solutions does the pair have?\" → 0) keeping the same verbatim Example 7 quote.\n\n2. **Gate srcLabel (classify-pair-by-coefficient-ratios).** The label said \"Exercise 3.1 Q3(ii) with Summary rule\" but the verbatim quote is the Summary point 4(ii) line; relabelled to \"Summary point 4(ii)\" so srcLabel and quote agree. Quote unchanged and confirmed verbatim at SEG 8.\n\nAll other citations verified: e.g. `solve-resulting-one-variable-equation` SEG 4 (\"i.e.,          − 29y = − 19\" + \"Therefore,          y = 19/29\"), `multiply-equations-to-equalize-coefficient` SEG 6 (\"27x − 12y = 6000          (3)\"), `interpret-no-variable-true-statement` SEG 4 (\"18 = 18\" / \"This statement is true for all values of y.\"). Exam gates verified against the Standard Marking Scheme: Q2 k=−5 (\"2. B) -5 1\"), Q32(A) graphical y=2 (\"Solution x=-1 and y=2\"), Q32(B) cars x−y=20 (\"=> x-y= 20 ……………. (i)\").\n\n## Grain and coverage\n\n22 failable skills, no pure exposition/history nodes (SEG 0 introduction and SEG 3 motivation were intentionally not turned into nodes). Each worked Example maps to its discrete steps: substitution (Examples 4–7) → express / substitute / solve / back-substitute / interpret-true / interpret-false; elimination (Examples 8–10) → multiply / add-subtract / solve / back-substitute; graphical (Examples 1–3) → find-two-solutions / plot / read-intersection. The inverse ratio skill (find-k) is exam-driven (SQP Q2). All numeric gate answers recomputed and self-consistent; mcq options copy verbatim from source.\n\n## Dependency tree\n\nSingle root `solve-pair-linear-equations-two-variables`. Acyclic, no orphans, every edge endpoint is a defined slug. The three methods, the ratio classifier, word-problem forming, verification, and find-k hang off the goal. Method sub-steps decompose downward; substitution/elimination back-substitute depend on solve-one-variable; elimination add/subtract depends on multiply; find-k depends on the classifier. Verified each of the 22 nodes appears in at least one edge and that every non-goal node has a parent.\n\n## What was absent / uncertain\n\nConfirmed the 2024-25 rationalised edition does NOT teach cross-multiplication or a worked \"equations reducible to linear\" procedure (Summary point 5 mentions reduction in one sentence only) — no nodes created, recorded in absentNotes. Ex 3.1 Q7 (triangle vertices / shaded region) is an unworked exercise with no answer key, so no gate. Plotting kept as bedrock (Class IX carry-over). Numeric/mcq graders used throughout per guidance.",

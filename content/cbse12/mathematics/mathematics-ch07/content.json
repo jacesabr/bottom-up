@@ -28,7 +28,21 @@
         "cbse12:mathematics:mathematics-ch05:derivative-definition"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Part 2 justifies the arbitrary constant + C on the fact that a constant differentiates to 0; a student who does not recall the Class 11 rule that d/dx(constant) = 0 cannot see why F + C is also an antiderivative of f.",
+          "surfacingQuestion": "quick one before we add that + C: what is the derivative of a plain constant, like d/dx(7)?",
+          "ladder": [
+            "The derivative measures the rate of change (the slope) of a function as x moves.",
+            "Picture the graph of y = 7: it is a flat horizontal line, the same height for every x.",
+            "A flat line has no rise as you move along it, so its slope is 0 everywhere.",
+            "So the derivative of any constant is 0: d/dx(7) = 0, d/dx(-3) = 0, d/dx(C) = 0 for every constant C."
+          ],
+          "answer": "The derivative of any constant is 0, because a constant function is a flat horizontal line with zero slope everywhere: d/dx(7) = 0, and in general d/dx(C) = 0 for any constant C. That is exactly why adding a constant to an antiderivative changes nothing when you differentiate: if F'(x) = f(x), then (F + C)'(x) = F'(x) + 0 = f(x) too. So x^2, x^2 + 1, and x^2 - 7 are all antiderivatives of 2x — the + C just rides along, contributing 0 to the derivative.",
+          "returnCue": "so since every constant differentiates to 0, F and F + C have the same derivative f — that is why we tack on the arbitrary constant C and call the antiderivative a whole family, not one function."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation",
@@ -158,7 +172,33 @@
         "cbse12:mathematics:mathematics-ch07:integration-inverse-of-differentiation"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "answer": "The degree of 3x^2 - 5x + 7 is 2, because the highest power of x present is x^2. Degree counts the highest exponent of x, not the size of any coefficient. (Examples: x^2/(x-1) has numerator degree 2 and denominator degree 1, so it is improper; (x+1)/(x^2-4) has numerator degree 1 < denominator degree 2, so it is proper.)",
+          "ladder": [
+            "A polynomial is a sum of terms, each a constant times a power of x: e.g. 7 (= 7x^0), -5x (= -5x^1), 3x^2.",
+            "The 'degree' of a polynomial is the highest power of x that appears with a non-zero coefficient.",
+            "So in 3x^2 - 5x + 7, the powers present are 2, 1, and 0. The highest is 2.",
+            "Watch the leading coefficient is irrelevant to the degree: 100x + 1 has degree 1, while x^2 has degree 2, even though 100 > 1."
+          ],
+          "trigger": "Student must compare the degree of the numerator with the degree of the denominator to classify a rational function as proper or improper, but may not recall that 'degree' means the highest power of x.",
+          "returnCue": "Now that 'degree' = highest power of x, compare deg(numerator) with deg(denominator): proper if numerator's is smaller, improper otherwise.",
+          "surfacingQuestion": "In the polynomial 3x^2 - 5x + 7, what is its 'degree'?"
+        },
+        {
+          "trigger": "Reducing an improper rational function requires polynomial long division — dividing P(x) by Q(x) to get a quotient plus a remainder over Q(x) — but the student may not recall how to actually carry out the division of one polynomial by another from Class 10.",
+          "surfacingQuestion": "quick one before we divide: when you split 17 by 5, you get '3 with 2 left over' — can we do that same kind of dividing with polynomials?",
+          "ladder": [
+            "Remember plain number division: 17 / 5 = 3 remainder 2, which we can write as 17 = 5 x 3 + 2, or 17/5 = 3 + 2/5. The remainder (2) is always smaller than the divisor (5).",
+            "Polynomials work the same way. To divide x^2 by (x - 1), ask: what do I multiply (x - 1) by to match the highest term x^2? Answer: x, since x times (x - 1) = x^2 - x.",
+            "Subtract that from x^2: x^2 - (x^2 - x) = x. Now the leftover x still has degree 1, same as the divisor, so we keep going: what times (x - 1) gives x? Answer: 1, since 1 times (x - 1) = x - 1. Subtract: x - (x - 1) = 1.",
+            "Now the leftover is just 1 (degree 0, smaller than the divisor's degree 1), so we stop. Quotient = x + 1, remainder = 1. So x^2/(x - 1) = (x + 1) + 1/(x - 1)."
+          ],
+          "answer": "Dividing one polynomial by another is just like long division of numbers: at each step you match the highest power, multiply the divisor, subtract, and bring down what's left, stopping once the remainder's degree is smaller than the divisor's. The result is P(x)/Q(x) = quotient(x) + remainder(x)/Q(x), where the remainder piece is now a PROPER fraction. That last piece is exactly the reduction this node asks for: before partial fractions, an improper rational function gets turned by this division into a polynomial PLUS a proper rational function.",
+          "returnCue": "With the division done, you've split the improper fraction into 'polynomial + proper fraction' — set the polynomial aside and carry only the leftover proper piece on to partial fractions."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch07:partial-fractions",

@@ -169,7 +169,21 @@
         "jee:maths:maths-ch01:name-subsets-of-the-real-numbers"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "\"Interval notation\" — round bracket ( ) excludes the endpoint, square bracket [ ] includes it, and -inf / inf mean unbounded, used to write a solution set over the reals like (-inf, 2) or [8, inf)",
+          "surfacingQuestion": "quick one before we write the answer: when we write the solution as (-inf, 2), what are those round brackets telling us — and why a round bracket and not a square one?",
+          "ladder": [
+            "if x < 2 means every real number strictly below 2, is the number 2 itself part of that set?",
+            "and if instead x <= 8, is 8 itself part of that set this time?",
+            "so for a number that is NOT included (like 2 above) versus one that IS included (like 8), which bracket would you reach for — round ( ) or square [ ]?",
+            "there's no biggest number below 2 — it just keeps going down forever. what symbol could stand in for 'no lower limit at all'?"
+          ],
+          "answer": "An interval is just a stretch of the number line written compactly. A round bracket ( ) means the endpoint is EXCLUDED — so x < 2 is (-inf, 2), since 2 is not in the set. A square bracket [ ] means the endpoint is INCLUDED — so x >= 8 is [8, inf), since 8 is in the set. The symbol -inf (and inf) just means the set runs without bound in that direction, and infinity is never a reachable point, so it ALWAYS gets a round bracket. That's exactly the notation PART 2 of this node wants: a strict answer like x < 2 becomes (-inf, 2), and a slack one like x >= 8 becomes [8, inf).",
+          "returnCue": "so round = endpoint out, square = endpoint in, and infinity always round. now let's solve our inequality and write its solution set as one of these intervals over the reals."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch05:represent-on-number-line",

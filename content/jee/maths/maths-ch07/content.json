@@ -89,7 +89,21 @@
         "jee:maths:maths-ch07:pascals-triangle-expand"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "n! (factorial notation)",
+          "surfacingQuestion": "quick one before we use this formula: that little \"!\" in n! — do you remember what it's telling you to do?",
+          "ladder": [
+            "if i write 3!, and it just means \"multiply 3 by everything below it down to 1\", what do you get? (3 x 2 x 1)",
+            "now try 4! the same way — 4 times everything below it down to 1. what number is that? (4 x 3 x 2 x 1 = 24)",
+            "notice 4! is just 4 x 3!. so each factorial is the next number times the one before it — does that feel like the counting-down multiplying you did back in class 11?",
+            "one odd rule to remember: 0! is defined to equal 1, not 0. weird, but it keeps the formulas tidy — happy to take that on trust for now?"
+          ],
+          "answer": "n! (read \"n factorial\") just means you multiply n by every whole number below it, all the way down to 1: so 4! = 4 x 3 x 2 x 1 = 24, and 7! = 7 x 6 x 5 x 4 x 3 x 2 x 1. by special agreement 0! = 1. that's the whole idea you met in class 11. it matters here because nCr = n!/(r!(n-r)!) is three factorials stacked up — so to get 7C3 = 7!/(3!4!) you work out 7!, 3! and 4! and divide. and that's exactly why nC0 comes out as 1: it has a 0! in it, which equals 1.",
+          "returnCue": "good — now that \"!\" just means count-down-and-multiply, let's go back and use nCr = n!/(r!(n-r)!) to read off the coefficients in Pascal's triangle."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch07:pascals-triangle-expand",
@@ -147,7 +161,21 @@
         "jee:maths:maths-ch06:factorial-notation"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "sigma notation (the sum(k=0 to n) ... symbol)",
+          "surfacingQuestion": "quick one before we lean on that compact form: when you see sum(k=0 to n) of something, can you say out loud what it's telling you to do?",
+          "ladder": [
+            "if i asked you to add up 1 + 2 + 3 + 4 + 5, you'd just go term by term, right? nothing fancy.",
+            "now suppose each thing you add follows a rule, like 'the term for k', and i write T(0), T(1), T(2). what would T(0) + T(1) + T(2) be in plain words?",
+            "the sigma symbol sum(k=0 to n) is just shorthand for that: the little k=0 underneath is where the counter starts, the n on top is where it stops. so what does sum(k=0 to 3) T(k) unpack into?",
+            "so if the term is nCk a^(n-k) b^k, what do you get when you plug in k=0, then k=1, and keep going up to k=n?"
+          ],
+          "answer": "sum(k=0 to n) of T(k) just means: start the counter k at the bottom number, write down the term T(k), then bump k up by one and write the next, all the way to the top number, adding them all. so sum(k=0 to 3) T(k) = T(0) + T(1) + T(2) + T(3) -- nothing hidden, it's a longhand sum folded into one symbol. for our term nCk a^(n-k) b^k, plugging k = 0, 1, ..., n gives nC0 a^n + nC1 a^(n-1) b + ... + nCn b^n. that's exactly why this node's compact form sum(k=0 to n) nCk a^(n-k) b^k says the very same thing as the term-by-term statement, and why the proof can shuffle the index r around inside the sum.",
+          "returnCue": "good -- now that the sigma sign just reads as 'add the term for each k from bottom to top', the compact binomial theorem should look like an old friend. back to stating it."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch07:expand-binomial",
@@ -177,7 +205,21 @@
         "jee:maths:maths-ch06:factorial-notation"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "(3/x)^r and combining powers like x^(8-2r) * x^(-r)",
+          "surfacingQuestion": "quick one before we expand this: how do we juggle the powers of x when one part is 3/x?",
+          "ladder": [
+            "you know x^2 times x^3 — do you write that as x^5 or x^6? (when you multiply same-base powers, what happens to the exponents?)",
+            "so x^a times x^b is x^(a+b). now what's 1/x as a power of x — can you write it with a negative exponent?",
+            "if 1/x = x^(-1), what is 3/x? and stretching that, what is (3/x)^r — what do the 3 and the x each become?",
+            "last step: you've got x^(8-2r) sitting next to x^(-r). multiply them — add the exponents — what single power of x do you get?"
+          ],
+          "answer": "when you multiply powers of the same base you add the exponents: x^a * x^b = x^(a+b). and dividing by x is the same as a negative power, so 1/x = x^(-1), which makes 3/x = 3 * x^(-1) and therefore (3/x)^r = 3^r * x^(-r). that's exactly why this node turns (x^2)^(4-r) (3/x)^r into 4Cr * 3^r * x^(8-2r) * x^(-r); adding the exponents 8-2r and -r gives x^(8-3r). when 8-3r goes negative you get x^(-1) and x^(-4), which is just how 108/x and 81/x^4 appear.",
+          "returnCue": "good — now those negative powers won't surprise you. back to writing out each term of (x^2 + 3/x)^4."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch07:expand-x-minus-y",

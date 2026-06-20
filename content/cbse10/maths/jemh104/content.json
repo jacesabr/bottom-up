@@ -121,7 +121,21 @@
         "cbse10:maths:jemh102:evaluate-polynomial-at-a-value"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student is unsure what the small raised number means - that a squared is a times a and a cubed is a times a times a (repeated self-multiplication) - and so cannot see why squaring or cubing a binomial produces the terms it does.",
+          "surfacingQuestion": "Quick one before we expand: what does the little 2 in a squared, and the little 3 in a cubed, actually tell you to do?",
+          "ladder": [
+            "The small raised number (the exponent) just counts how many copies of the base you multiply together. So a squared means a times a, and a cubed means a times a times a.",
+            "That little number is NOT something you multiply the base by. a cubed is a times a times a, it is NOT a times 3. For a = 5 that is 5 times 5 times 5 = 125, not 15.",
+            "Now apply it to a bracket: (a + b) squared just means (a + b) times (a + b) - two whole copies of the bracket multiplied. (a + b) cubed means three copies, (a + b)(a + b)(a + b).",
+            "Because squaring a bracket is really multiplying it by itself, every term in the first copy hits every term in the second - that is where the middle term 2ab comes from, and why cubing produces three-factor terms like 3a squared b."
+          ],
+          "answer": "An exponent is just a counter for repeated multiplication of the base by itself: a squared = a times a, a cubed = a times a times a. The small number tells you HOW MANY copies to multiply, not what to multiply by - so a cubed is a times a times a, never a times 3. In this node that is the whole point: (a + b) squared means (a + b) times (a + b), so multiplying every term by every term gives a squared + 2ab + b squared, and (a + b) cubed means three copies multiplied, which is why the cube spreads into a squared b and a b squared terms.",
+          "returnCue": "So a power just says \"multiply this many copies of the base\" - and squaring a bracket means multiplying it by itself. Now back to expanding this one carefully."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
@@ -173,7 +187,45 @@
         "cbse10:maths:jemh102:verify-cubic-zero-by-substitution"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "answer": "A root is a value of the variable that makes the equation true - here, substituting it into ax squared + bx + c gives exactly 0. x = 1 is a root of 2x squared - 5x + 3 = 0 because it evaluates to 0.",
+          "ladder": [
+            "A root (also called a solution) of an equation is a value of the variable that makes the equation a true statement when you plug it in.",
+            "For 2x squared - 5x + 3 = 0, testing x = 1 gives 2(1) - 5(1) + 3 = 2 - 5 + 3 = 0. The left side really does equal the right side (0), so x = 1 is a root.",
+            "If a test value gives anything other than 0, it is NOT a root - the equation would be a false statement for that value.",
+            "\"Root,\" \"solution,\" and \"zero of the expression\" all point to the same idea: the x-values that satisfy the equation. A quadratic can have at most two such values."
+          ],
+          "trigger": "Student is unsure what a \"root\" of an equation really means, or treats it as just a label rather than a special number.",
+          "returnCue": "So a root is just a value that makes the equation come out to 0. Now back to substituting and checking this candidate.",
+          "surfacingQuestion": "What does it actually mean to say that 1 is a root of 2x squared - 5x + 3 = 0?"
+        },
+        {
+          "answer": "(-3) squared = (-3) times (-3) = +9. A negative squared is always positive because negative times negative is positive; only the bracket-free -3 squared means -9.",
+          "ladder": [
+            "Squaring means multiplying a number by itself: (-3) squared = (-3) times (-3).",
+            "A negative times a negative is a positive. So (-3) times (-3) = +9, not -9.",
+            "The minus sign is consumed because there are two of them being multiplied, and they cancel into a plus. Any non-zero number squared is positive.",
+            "Be careful with notation: -3 squared (no brackets) means -(3 squared) = -9, but (-3) squared with brackets means (-3) times (-3) = +9. When you substitute a negative candidate for x, you are squaring the whole negative value, so use brackets and get a positive."
+          ],
+          "trigger": "Student thinks squaring a negative number gives a negative result (e.g. writes (-3) squared = -9).",
+          "returnCue": "Right - squaring the negative gives +9. Now back to substituting this value carefully.",
+          "surfacingQuestion": "What is (-3) squared - is it 9 or -9?"
+        },
+        {
+          "trigger": "Student evaluates a substituted expression in the wrong order - adding before multiplying, or multiplying before squaring (e.g. treats 2(1) - 5(1) + 3 as if you add or multiply first).",
+          "surfacingQuestion": "Quick one before we plug in: in 2 + 3 times 4, do you do the 2 + 3 first, or the 3 times 4 first?",
+          "ladder": [
+            "In 2 + 3 times 4, the answer is not 5 times 4 = 20. There is an agreed order: you do the multiplication first, so 3 times 4 = 12, then 2 + 12 = 14.",
+            "The order is: brackets first, then powers (squares), then multiply and divide, then add and subtract last. People remember it as BODMAS.",
+            "So in 2 times 1 squared - 5 times 1 + 3, you square first (1 squared = 1), then multiply (2 times 1 = 2 and 5 times 1 = 5), and only THEN add and subtract: 2 - 5 + 3.",
+            "If you added or multiplied too early, the same numbers give a different answer - the order is what keeps everyone getting the same value from the same expression."
+          ],
+          "answer": "There is a fixed order for working out an expression: brackets first, then powers, then multiplication and division, then addition and subtraction last (BODMAS). So in a value like 2 times 1 squared - 5 times 1 + 3 you square first, then multiply, then add - giving 2 - 5 + 3 = 0. When you substitute a candidate into ax squared + bx + c, follow exactly this order (square, then multiply, then add); adding or multiplying out of turn gives a wrong value and could make you accept or reject the root incorrectly.",
+          "returnCue": "Good - square first, multiply next, add last. Now back to substituting this candidate and evaluating it in the right order."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh104:split-middle-term",

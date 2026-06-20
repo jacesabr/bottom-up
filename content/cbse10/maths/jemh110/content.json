@@ -271,7 +271,32 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "answer": "A chord of a circle is a straight line segment whose two endpoints both lie on the circle. In other words, you pick two points on the circle and join them, and that join is a chord. A chord stays inside the circle except for its two endpoints, which are on the circle. The longest possible chord is the one that passes through the centre, and that special chord is called the diameter; its length is twice the radius. Every other chord is shorter than the diameter. Be careful not to confuse a chord with an arc: the arc is the curved part of the circle between the two points, while the chord is the straight segment between them. This idea comes from Class 9 circle geometry. It is needed here because a chord of the outer circle, and the rule about how a perpendicular from the centre cuts a chord in half, are central to these tangent problems.",
+          "ladder": [
+            "Mark any two points on the rim of a circle. Now join them with a straight line segment. What have you drawn?",
+            "That segment, with both ends on the circle, is a chord. Does it have to pass through the centre?",
+            "What special name does a chord get when it DOES pass through the centre?"
+          ],
+          "trigger": "Student does not recall what a chord is when a chord of a circle first appears.",
+          "returnCue": "With chord clear, recall that a perpendicular dropped from the centre splits a chord into two equal halves.",
+          "surfacingQuestion": "This step talks about a chord of the circle. What exactly is a chord?"
+        },
+        {
+          "trigger": "Student is shaky on what perpendicular or a right angle (90 degrees) means when this step asks them to confirm the segment from the centre meets the chord at a right angle before concluding it bisects the chord.",
+          "surfacingQuestion": "Quick check before we use this rule: this step says the segment from the centre must be perpendicular to the chord. What does perpendicular mean, and what angle is that?",
+          "ladder": [
+            "Look at the corner of this page or a window frame. How many degrees is that square corner?",
+            "That square corner is a right angle, exactly 90 degrees, and two lines that meet making such a corner are called perpendicular. Can you point to a perpendicular pair around you, like the edges of a door?",
+            "Now look at the segment running from the centre O down to the chord AB. Does it land on the chord making that same square-corner, 90-degree angle?",
+            "If it does meet the chord at 90 degrees, the rule applies; if it slants in at some other angle, it does not. Why does it matter to check this first?"
+          ],
+          "answer": "Two lines or segments are perpendicular when they meet at a right angle, an angle of exactly 90 degrees, the shape of a square corner. We mark it with a small square drawn in the corner. A right angle is one quarter of a full turn, since 360 degrees divided by 4 is 90 degrees. This is basic Class 6 to 9 geometry. It matters here because the chord-bisection rule is fussy: ONLY the segment from the centre that hits the chord at a true 90-degree angle splits the chord into two equal halves. A segment from the centre that slants in at any other angle does NOT bisect the chord. So before you claim AM equals MB, you must first confirm that the segment OM meets the chord at a right angle.",
+          "returnCue": "Good. Now that you can confirm that 90-degree angle, recall the rule: the perpendicular from the centre splits the chord into two equal halves."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh110:relate-angle-tangents-central-angle",
@@ -342,7 +367,32 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student is about to compute base angles via (180 - apex)/2 but does not recall that the three interior angles of any triangle sum to 180 degrees, where the 180 in the formula comes from.",
+          "surfacingQuestion": "Quick one before we divide by two: where do you think that 180 in the formula comes from? What do the three angles of a triangle always add up to?",
+          "ladder": [
+            "Sketch any triangle you like and tear off, or just imagine tearing off, its three corners. If you lay those three corner angles side by side along a straight line, what shape do they make together?",
+            "They fit exactly onto a straight line, and a straight line is a half turn. How many degrees is a straight angle, a half turn?",
+            "So no matter how you stretch or squash a triangle, its three angles always total that same amount. What is the total?",
+            "In our isosceles triangle the apex angle is one of those three, and the two equal base angles are the other two. If you know the apex and the three add to 180, how would you find one base angle?"
+          ],
+          "answer": "The three interior angles of any triangle always add up to 180 degrees, no matter the triangle's shape or size. You can see it by tearing off the three corners and laying them side by side: they line up perfectly along a straight line, and a straight angle is 180 degrees. This is the angle sum property of a triangle from Class 7 to 8 geometry. Here it is exactly where the 180 in our formula comes from: the apex angle plus the two equal base angles must total 180, so the two base angles together take up (180 minus apex), and since they are equal, each one is (180 minus apex) divided by 2.",
+          "returnCue": "Good, that 180 is the angle sum of the triangle. Now subtract the apex and split what remains in half to get each base angle."
+        },
+        {
+          "trigger": "Student does not recall that in an isosceles triangle the two angles opposite the equal sides are equal, which this node relies on to split (180 - apex) evenly between the two base angles.",
+          "surfacingQuestion": "Quick one before we divide by two: in a triangle with two equal sides, what do you know about the two angles down at the base?",
+          "ladder": [
+            "Picture a triangle that has two sides of exactly the same length, like a tent or the letter A standing up. Does it look lopsided, or does it look perfectly balanced left to right?",
+            "Because the two long sides match, the whole shape is a mirror image of itself down the middle. If you folded it along that middle line, would the two bottom corners land right on top of each other?",
+            "Folding one bottom corner onto the other means those two angles are the same size. So in a triangle with two equal sides, what can you say about the two angles sitting opposite those equal sides?"
+          ],
+          "answer": "In an isosceles triangle, the two sides that are equal force the two angles opposite them, the base angles, to be equal as well. You can see it from the symmetry: the triangle is a perfect mirror image about the line down its middle, so the two base angles fold exactly onto each other and must be the same size. This is the Class 9 isosceles triangle property, angles opposite equal sides are equal. It is exactly what lets us divide here: in triangle TPQ the tangent segments TP and TQ are equal, so the two base angles at P and Q are equal, and that is why we can take whatever is left after the apex, (180 - apex), and split it evenly into two equal halves rather than guessing how to share it.",
+          "returnCue": "Good, so the two base angles being equal is what justifies the divide-by-two. Back to it: each base angle is (180 - apex)/2."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh110:use-tangent-segments-circumscribed-quad",
@@ -460,7 +510,21 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student does not recall what a square root is or how to undo a square, e.g. that sqrt(144) = 12, when the Pythagoras step needs sqrt(c^2 - b^2).",
+          "surfacingQuestion": "Quick one before we finish this triangle: the relation gives us the side SQUARED, so what do we do to a number to undo the squaring and get the side itself?",
+          "ladder": [
+            "You already know squaring: 12 squared means 12 times 12. What is 12 times 12?",
+            "So squaring took 12 up to 144. Taking a square root is just the reverse: it asks, what number times itself gives 144? What is that number?",
+            "Try one more: what number times itself gives 25? That number is the square root of 25.",
+            "So if you ever land on side-length-squared = 144, the side itself is the square root of 144. What is it?"
+          ],
+          "answer": "The square root of a number is the value that, multiplied by itself, gives that number. Squaring and taking a square root are opposite moves: since 12 times 12 = 144, the square root of 144 (written sqrt(144)) is 12, because 12 undoes the squaring. We write it with the sqrt sign, and for the side of a triangle we only want the positive root, since a length is never negative. You met squares and square roots in Class 8. It matters right here because Pythagoras gives you the side SQUARED, like a^2 = c^2 - b^2 = 144, and that is not the answer yet: you must take the square root to un-square it, sqrt(144) = 12, to get the actual side length. Skipping that last step leaves you with the squared value, not the side.",
+          "returnCue": "Good, so once you have leg-squared = c^2 - b^2, take the square root to get the leg itself. Back to our triangle."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh110:apply-rhs-cpct-congruence",

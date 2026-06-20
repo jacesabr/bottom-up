@@ -217,7 +217,21 @@
         "cbse12:mathematics:mathematics-ch01:empty-relation"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The modulus bars |a − b| — and that |a − b| is always ≥ 0",
+          "surfacingQuestion": "The example leans on |a − b|. Quick check so we're aligned: what does |3 − 7| come out to — and can a |…| ever be negative?",
+          "ladder": [
+            "What is the value of |5|? And of |−5|?",
+            "So what do the bars actually do to whatever's inside — keep the sign or strip it?",
+            "Now |3 − 7| means |−4| — what does that equal?",
+            "If the bars always strip the minus sign, can the answer ever drop below 0?"
+          ],
+          "answer": "The modulus |x| is just the size of x with any minus sign thrown away, so |5| = 5 and |−5| = 5 — it's the distance from 0, which is never negative. That means |a − b| ≥ 0 for ANY two numbers a and b, no matter which is bigger: if a − b is negative the bars flip it positive, and if a − b = 0 you get 0, which is still ≥ 0. That's exactly why the rule '|a − b| ≥ 0' is satisfied by every single pair (a, b) in A × A — no pair can ever fail it — so the relation keeps all the pairs and equals R = A × A, the universal relation.",
+          "returnCue": "So |a − b| is always ≥ 0, true for every pair without exception. That's what makes this rule sweep up all of A × A — the universal relation."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch01:reflexive-relation",
@@ -370,7 +384,32 @@
         "cbse12:mathematics:mathematics-ch01:relation-definition"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "answer": "A function f: X → Y is a rule assigning to EACH element x of the domain X exactly one element of Y, called the image of x and written f(x). For f(x) = 2x, the image of 3 is f(3) = 6 — a single value. The defining property of a function is 'one input, exactly one output'; an input can never have two images. (Different inputs are allowed to share the same image — that's the case one-one will rule out.)",
+          "ladder": [
+            "If you feed 3 into f(x) = 2x, what single number comes out?",
+            "We call that output the 'image' of 3 — could one input legitimately have two different images?",
+            "So a function is like a machine: one input gives exactly how many outputs?"
+          ],
+          "trigger": "\"Function f: X → Y\" and the \"image\" f(x) — assumed from Class XI, the object every test here acts on",
+          "returnCue": "So 'image of x' just means the output f(x). One-one is about whether two DIFFERENT inputs can ever land on the same image.",
+          "surfacingQuestion": "Everything here is about a function f: X → Y and its 'images'. Quick check: for f(x) = 2x, what is the image of the input 3, and is f allowed to send 3 to two different outputs?"
+        },
+        {
+          "trigger": "Squaring a negative number, e.g. (-1)^2 in the counterexample f(x) = x^2 — needed to see f(-1) = f(1) = 1",
+          "surfacingQuestion": "The counterexample leans on (-1)^2. Quick one before we go on: what do you get when you square -1 — and what about squaring 1?",
+          "ladder": [
+            "What does it mean to square a number — what are you actually multiplying?",
+            "So (-1)^2 means (-1) × (-1): a negative times a negative gives what sign?",
+            "Then what is (-1)^2, and what is (1)^2 = 1 × 1?",
+            "So have two different inputs, -1 and 1, just landed on the same value?"
+          ],
+          "answer": "Squaring a number means multiplying it by itself, so (-1)^2 = (-1) × (-1). A negative times a negative is positive, so (-1)^2 = 1 — and of course 1^2 = 1 × 1 = 1 too. That's the whole trick here: the two distinct inputs -1 and 1 both map to the image 1, so f(x) = x^2 sends different inputs to the same output. That single shared image is exactly why this function fails one-one and is called many-one.",
+          "returnCue": "So squaring kills the minus sign, which is why -1 and 1 collide on 1. That collision is our witness that x^2 is many-one — back to testing one-one."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch01:onto-function",

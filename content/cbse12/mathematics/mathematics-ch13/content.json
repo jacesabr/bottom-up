@@ -27,7 +27,21 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student must turn a die event like F = {even} = {2,4,6} or E = {>3} = {4,5,6} into a probability such as P(F) = 3/6 = 1/2 or P(E∩F) = 2/6 = 1/3, but cannot generate these because they do not know that for equally-likely outcomes a probability is favourable outcomes divided by total outcomes.",
+          "surfacingQuestion": "quick one before we plug into the formula: where does a number like P(F) = 3/6 even come from when we throw a fair die?",
+          "ladder": [
+            "When you throw a fair die, how many faces could possibly come up — and is any one of them more likely than the others?",
+            "If all 6 faces are equally likely, what is the chance of any single face, say a 4?",
+            "Now F = {even} = {2,4,6}. How many of the 6 faces make F happen, and how do you get the chance of F from that count?",
+            "For E∩F = {4,6}, how many faces are favourable, so what is P(E∩F)?"
+          ],
+          "answer": "When every outcome is equally likely, the probability of an event is just the count of favourable outcomes divided by the total number of outcomes: P(event) = favourable / total. A fair die has 6 equally likely faces, so each single face has chance 1/6. The event F = {even} = {2,4,6} has 3 favourable faces, giving P(F) = 3/6 = 1/2, and E∩F = {4,6} has 2 favourable faces, giving P(E∩F) = 2/6 = 1/3. That is exactly how this node gets the P(F) and P(E∩F) it then divides to find P(E|F) — you generate each one yourself by counting favourable faces over all 6.",
+          "returnCue": "so with P(F) = 1/2 and P(E∩F) = 1/3 in hand, back to the formula: P(E|F) = P(E∩F)/P(F)."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch13:conditional-probability-complement",
@@ -194,7 +208,21 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student meets 'a random variable is a real-valued function whose domain is the sample space S' and must read it as a single-valued mapping (each outcome to exactly one real number, with a range), but lacks the Class 11 function idea (domain, range, one output per input) and so cannot tell a random variable apart from a probability or a plain label.",
+          "surfacingQuestion": "quick one before we go on: when we call something a 'function', what does it actually do to each thing you feed into it?",
+          "ladder": [
+            "Think of a vending machine: you press a button (the input) and it gives you back one item. Can pressing the same button give you two different items at once?",
+            "The set of all buttons you're allowed to press is the domain; the set of all items that can come out is the range. So a function is a rule that takes each input from its domain and hands back exactly one output, right?",
+            "Now make the 'buttons' the outcomes of an experiment — the four results HH, HT, TH, TT of two coin tosses. If the rule is 'count the heads', what one number comes out for HT? Could it ever give two numbers for HT?",
+            "Notice the outputs here are real numbers (0, 1, 2). So this rule is a real-valued function whose inputs are the outcomes — is the rule itself a number, or is it the machine that produces a number?"
+          ],
+          "answer": "A function is just a rule with a domain (the allowed inputs) and a range (the outputs it can produce), and its one strict promise is that each input gets sent to exactly one output — never two. A random variable is precisely that kind of rule, where the domain is the sample space S of an experiment: it reads each outcome and assigns it exactly one real number, like X(HT) = 1. That is why a random variable is NOT a probability and not just a name on outcomes — it is the mapping from outcomes to numbers, and the collection of numbers it can output is its range. In this node, that is exactly what 'X = number of heads' is doing: X(HH)=2, X(HT)=1, X(TH)=1, X(TT)=0, with range {0, 1, 2}.",
+          "returnCue": "good — so a random variable is a function on the sample space, one real number per outcome. let's use that to read X = number of heads and find its range."
+        }
+      ]
     },
     {
       "id": "cbse12:mathematics:mathematics-ch13:bayes-theorem",

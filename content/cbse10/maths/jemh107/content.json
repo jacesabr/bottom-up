@@ -260,7 +260,21 @@
         "cbse10:maths:jemh107:apply-distance-formula"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student cannot expand a squared binomial with a variable, e.g. is unsure that (x-2)^2 = x^2 - 4x + 4, or writes (x-2)^2 = x^2 - 4.",
+          "surfacingQuestion": "Quick one before we expand these distances: what does (x - 2)^2 work out to - is it x^2 - 4, or something with a middle term?",
+          "ladder": [
+            "(x - 2)^2 just means (x - 2) times (x - 2). It is NOT x^2 minus 2^2.",
+            "Multiply it out the long way: each part of the first bracket times each part of the second. What four products do you get?",
+            "You should get x*x, then x*(-2), then (-2)*x, then (-2)*(-2). The two middle ones are the same - what do they add up to?",
+            "So there is a pattern: (a - b)^2 = a^2 - 2ab + b^2. Use it on (x - 6)^2 - what is the middle term?"
+          ],
+          "answer": "Squaring a binomial means multiplying the whole bracket by itself, so (x - 2)^2 = (x - 2)(x - 2), and you must multiply every term by every term. That gives x^2, then two equal cross terms -2x and -2x, then (-2)(-2) = +4, so (x - 2)^2 = x^2 - 4x + 4. The common slip is writing (x - 2)^2 = x^2 - 4, which forgets the -4x middle term that comes from the two cross products. The pattern to remember is (a - b)^2 = a^2 - 2ab + b^2 (and (a + b)^2 = a^2 + 2ab + b^2). In this node that middle term is exactly what makes things work: when you expand (x-2)^2+(y-3)^2 = (x-6)^2+(y-7)^2, the -4x, -6y, -12x, -14y terms are what survive after the x^2 and y^2 cancel, and they are what give you the linear equation 8x + 8y = 72.",
+          "returnCue": "Good - now that the middle term is in place, let's expand AP^2 and BP^2 and watch the x^2 and y^2 cancel."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh107:derive-equidistant-relation",
@@ -284,7 +298,21 @@
         "cbse10:maths:jemh107:set-up-equidistant-equation"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student cannot expand a squared binomial like (x-7)^2 into x^2-14x+49, or forgets the middle -2ax term (writes (x-7)^2 = x^2+49 or x^2-49).",
+          "surfacingQuestion": "Quick one before we expand all those squares: what does (x-7)^2 open up into - is it just x^2 + 49?",
+          "ladder": [
+            "(x-7)^2 means (x-7) times (x-7) - it is NOT x^2 - 49. Write it as two brackets multiplied.",
+            "Multiply it out term by term: x times x, x times -7, -7 times x, -7 times -7. What four pieces do you get?",
+            "Two of those pieces are the same (-7x and -7x). Combine them - what is the single middle term?",
+            "So in general (a-b)^2 = a^2 - 2ab + b^2: the square of each part, minus twice their product. Use it on (x-7)^2."
+          ],
+          "answer": "(x-7)^2 means (x-7)(x-7), so you multiply it out: x*x + x*(-7) + (-7)*x + (-7)*(-7) = x^2 - 7x - 7x + 49 = x^2 - 14x + 49. The two middle terms add up, which is why there is always a middle term of -2 times the product of the two parts - it is never just x^2 + 49. The pattern is the identity (a-b)^2 = a^2 - 2ab + b^2: square the first, subtract twice the product, add the square of the second. In this node you expand four of these - (x-7)^2 = x^2-14x+49, (y-1)^2 = y^2-2y+1, (x-3)^2 = x^2-6x+9, (y-5)^2 = y^2-10y+25 - and getting each middle term right is exactly what lets the x^2 and y^2 cancel cleanly to leave the linear relation x - y = 2.",
+          "returnCue": "Now that (a-b)^2 = a^2 - 2ab + b^2 is solid, let's expand AP^2 and BP^2 and cancel the squared terms."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh107:find-point-on-axis-equidistant",

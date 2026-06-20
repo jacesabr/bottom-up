@@ -141,14 +141,14 @@ async function research(topic: string, profile: ExamProfile): Promise<ResearchHi
 }
 
 const SLOTS = [
-  { slot: 'sketch1', answerType: 'sketch', grader: 'vision', note: 'draw/construct a diagram, factor tree, number line, or figure' },
+  { slot: 'sketch1', answerType: 'sketch', grader: 'vision', note: 'draw/construct a diagram, number line, or figure that visualises ONLY this node\'s own key move (do NOT introduce a technique owned by a later node)' },
   { slot: 'sketch2', answerType: 'sketch', grader: 'vision', note: 'a second, different drawing/visual task' },
   { slot: 'explain', answerType: 'written', grader: 'rubric', note: 'long-form written explanation in the student’s own words' },
   { slot: 'mcq', answerType: 'mcq', grader: 'mcq', note: 'single-best-answer multiple choice with 4 options' },
   { slot: 'equation', answerType: 'symbolic', grader: 'cas', note: 'a harder compute/prove problem with an exact answer' },
 ];
 
-function authorPrompt(concept: any, hits: ResearchHit[], profile: ExamProfile, priorTitles: string[], nodePosition: number): ChatMessage[] {
+function authorPrompt(concept: any, hits: ResearchHit[], profile: ExamProfile, priorTitles: string[], laterTitles: string[], nodePosition: number): ChatMessage[] {
   const researchBlock = hits.length
     ? hits.map((h, i) => `[${i + 1}] ${h.title} (${h.url})\n${h.snippet}`).join('\n\n')
     : '(no external research available — rely on the textbook content below)';
@@ -158,6 +158,12 @@ function authorPrompt(concept: any, hits: ResearchHit[], profile: ExamProfile, p
   const assumedKnown = priorTitles.length
     ? priorTitles.map((t) => `  - ${t}`).join('\n')
     : '  (nothing yet — this is the first node; assume only everyday arithmetic / common sense)';
+
+  // What is taught LATER in this chapter — the explicit FORBIDDEN set. A gate solvable only via one of
+  // these requires a not-yet-taught technique and is out of scope (the scope-leak bug this list closes).
+  const taughtLater = laterTitles.length
+    ? laterTitles.map((t) => `  - ${t}`).join('\n')
+    : '  (none — this is the last node in its chapter)';
 
   const system = `You are ${profile.persona}. You write genuine, exam-quality questions for ONE concept, grounded in the official NCERT textbook content. Output STRICT JSON only.
 
@@ -177,6 +183,9 @@ common misconceptions: ${(concept.misconceptions || []).join('; ')}
 
 ALREADY TAUGHT (you MAY rely on these earlier nodes; do NOT rely on anything not here or above):
 ${assumedKnown}
+
+TAUGHT LATER — FORBIDDEN (these nodes come AFTER this one; you MUST NOT require any technique, theorem, definition, or skill they own. A gate that can only be solved using one of these is OUT OF SCOPE — the single most common authoring error, e.g. asking to factor-tree/prime-factorise on a node taught before the factorisation node, or to optimise an LP before the optimal-solution node):
+${taughtLater}
 
 REAL-WORLD RESEARCH (inspiration on what real exams ask — adapt, don't copy, and don't pull in out-of-scope topics):
 ${researchBlock}
@@ -273,12 +282,12 @@ Return ONLY: { "brief": "...", "explanation": "...", "keyMoves": ["...","...",".
   return improved;
 }
 
-async function authorGates(concept: any, priorTitles: string[], nodePosition: number) {
+async function authorGates(concept: any, priorTitles: string[], laterTitles: string[], nodePosition: number) {
   const profile = examProfile(concept.id);
   const hits = await research(concept.title, profile);
   let workingConcept = concept;
   if (IMPROVE_CONTENT) workingConcept = await improveContent(concept, profile, hits, AUTHOR_MODEL);
-  const raw = await claudeAuthor(authorPrompt(workingConcept, hits, profile, priorTitles, nodePosition), 2600, AUTHOR_MODEL);
+  const raw = await claudeAuthor(authorPrompt(workingConcept, hits, profile, priorTitles, laterTitles, nodePosition), 2600, AUTHOR_MODEL);
   const parsed = parseLooseJson<any>(raw);
   if (!parsed) throw new Error('author returned unparseable JSON');
   return { parsed, source: hits.map((h) => h.url).filter(Boolean).join(' | ') };
@@ -383,7 +392,12 @@ async function main() {
         .filter((c) => c.chapterId === concept.chapterId && c.order < concept.order)
         .sort((a, b) => a.order - b.order)
         .map((c) => c.title);
-      const { parsed, source } = await authorGates(concept, priorTitles, concept.order + 1);
+      // Taught-later = higher-order concepts in the same chapter (the scope guard's forbidden-list).
+      const laterTitles = all
+        .filter((c) => c.chapterId === concept.chapterId && c.order > concept.order)
+        .sort((a, b) => a.order - b.order)
+        .map((c) => c.title);
+      const { parsed, source } = await authorGates(concept, priorTitles, laterTitles, concept.order + 1);
       // Clear this concept's existing AUTHORED gates first, so a re-run is deterministic and a now-
       // skipped slot is actually removed (not left stale from a prior run). Book gates are untouched.
       if (!DRY) await db.delete(gates).where(and(eq(gates.conceptId, concept.id), eq(gates.kind, 'authored')));

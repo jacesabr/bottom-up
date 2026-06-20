@@ -56,7 +56,21 @@
         "jee:maths:maths-ch03:degree-radian-conversion"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "tangent-ratio-of-an-angle",
+          "surfacingQuestion": "quick one before we go on: this whole chapter says slope = tan(theta), so are you still comfortable with what tan of an angle actually means as a number?",
+          "ladder": [
+            "picture a right triangle with one of its acute angles called theta. relative to that angle, which side is 'opposite' and which is 'adjacent'?",
+            "from Class 10 trig, tan(theta) is the ratio of just those two sides — which over which?",
+            "so if a line rises 1 unit for every 1 unit it goes across, the opposite and adjacent are both 1: what is tan of that angle, and what angle is it?",
+            "now squash the triangle flat (the line is horizontal, theta = 0) so the opposite side is 0 — what does tan become? and tilt it fully upright (theta = 90) so the adjacent side shrinks to 0 — what happens to the ratio then?"
+          ],
+          "answer": "For an acute angle theta in a right triangle, tan(theta) = opposite / adjacent — it's a single number attached to the angle that tells you how steep that angle is. When opposite equals adjacent the angle is 45 degrees and tan(45) = 1; flatten the triangle and the opposite side goes to 0, so tan(0) = 0; tilt it upright and the adjacent side goes to 0, so you're dividing by zero and tan(90) is undefined (it shoots off with no finite value, not 'infinity'). That is exactly why this node can say slope m = tan(theta): a 45-degree line has slope tan(45) = 1, a horizontal line (theta = 0) has slope tan(0) = 0, and a vertical line (theta = 90) has slope tan(90), which is undefined rather than some number.",
+          "returnCue": "good — so tan turns the inclination angle into the slope number. let's go back and write m = tan(theta) for our line."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch09:slope-from-two-points",

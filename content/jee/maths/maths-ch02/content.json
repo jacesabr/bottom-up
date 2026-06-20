@@ -220,7 +220,22 @@
         "jee:maths:maths-ch01:write-intervals-as-subsets-of-r"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student must find the domain of a real function like (x^2+3x+5)/(x^2-5x+4) but is shaky on factoring a quadratic such as x^2-5x+4 and using the zero-product rule to read off the roots x=1 and x=4 to exclude from R.",
+          "surfacingQuestion": "quick one before we go on: how would you find the two x-values that make x^2 - 5x + 4 equal to zero?",
+          "ladder": [
+            "A real number fact we'll lean on: if two things multiply to give zero, then at least one of them must be zero. If A times B = 0, then A = 0 or B = 0.",
+            "Now suppose the bottom is already split into pieces, like (x - 4)(x - 1) = 0. Using that fact, what does each piece have to be? Set each one to zero on its own: x - 4 = 0 and x - 1 = 0.",
+            "Solve those tiny equations: x - 4 = 0 gives x = 4, and x - 1 = 0 gives x = 1. Those are the two values that make the product zero.",
+            "But here the bottom is handed to us un-split, as x^2 - 5x + 4. To split it, find two numbers that multiply to +4 and add to -5 — that's -4 and -1 — so x^2 - 5x + 4 = (x - 4)(x - 1).",
+            "So the inputs that break the denominator are exactly x = 1 and x = 4; those are the ones we must throw out of R."
+          ],
+          "answer": "To find where a denominator is zero, you factor it and then use the zero-product rule: a product is zero only when one of its factors is zero. For x^2 - 5x + 4, look for two numbers that multiply to +4 and add to -5 — those are -4 and -1 — so it factors as (x - 4)(x - 1). Setting each factor to zero gives x = 4 and x = 1, the values that make the bottom zero. In this node, that's exactly why the domain of (x^2 + 3x + 5)/(x^2 - 5x + 4) is R minus {1, 4}: those two roots are the only inputs where the function is undefined.",
+          "returnCue": "with x = 1 and x = 4 as the bad inputs, throw them out of R and write the domain as R minus {1, 4} — back to it."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch02:identity-function",
@@ -277,7 +292,22 @@
         "jee:maths:maths-ch02:polynomial-function"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student must read the constant-function graph as a flat, horizontal line ('slope zero') and contrast it with a slanted line, but is unsure what 'slope' or a slope of zero means on the coordinate grid.",
+          "surfacingQuestion": "quick one before we sketch this: if a line never goes uphill or downhill at all and just runs perfectly flat across the page, what would you say its steepness is?",
+          "ladder": [
+            "Plot a few points that all sit at the same height, say (0,3), (1,3), (2,3), (-4,3). What shape do they make when you join them?",
+            "Slope measures steepness: how much y rises for each step of 1 you take to the right. Take a step right on this flat line — does y go up at all, or down at all?",
+            "Since y never changes as you move right, the rise is 0 for every step, so the slope is 0. How is that different from the line y = x, where every step right also lifts y by 1?",
+            "So a slope of 0 means a perfectly horizontal line, while a non-zero slope (like 1) means a slanted, tilted line. Which one would f(x) = 3 give you?",
+            "Because the output is always the same number c no matter the input, the graph of f(x) = c is exactly that flat, slope-zero line."
+          ],
+          "answer": "Slope is how much y rises for each step of 1 you take to the right on the grid. For a horizontal line, y never changes as you move across, so the rise is always 0 and the slope is 0 — that's what 'slope zero' means: perfectly flat, parallel to the x-axis. A slanted line like y = x has a non-zero slope (1), tilting uphill. This is exactly why the constant function f(x) = c graphs as a flat horizontal line at height c (slope zero) rather than a slanted one — and why it looks so different from the identity function y = x.",
+          "returnCue": "with slope-zero meaning flat-and-horizontal, sketch f(x) = c as a level line at height c and carry on."
+        }
+      ]
     },
     {
       "id": "jee:maths:maths-ch02:polynomial-function",

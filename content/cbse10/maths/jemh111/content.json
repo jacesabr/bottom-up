@@ -204,7 +204,33 @@
       ],
       "prereqs": [],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student treats \"ΔAMO ≅ ΔBMO by RHS\" as a given step and cannot say what it means for two triangles to be congruent, or why RHS (Right angle–Hypotenuse–Side) is a valid criterion that forces AM = BM and angle AOM = angle BOM to be equal.",
+          "surfacingQuestion": "Quick one before we lean on RHS: when we say two triangles are congruent, what exactly does that buy us about their matching sides and angles?",
+          "ladder": [
+            "Imagine cutting out one triangle and laying it exactly on top of another so they cover each other perfectly -- what must be true of their sides and their angles?",
+            "When triangles match like that we call them congruent: every pair of corresponding sides is equal AND every pair of corresponding angles is equal.",
+            "Do we have to check all six of those? No -- a few matching pieces are enough to lock in the rest. One such shortcut is RHS: a Right angle, equal Hypotenuses, and one equal Side.",
+            "In our two triangles AMO and BMO, the right angle is at M, the hypotenuses OA and OB are both radii (so equal), and side OM is shared -- so RHS applies. What does that then force about AM vs BM, and angle AOM vs angle BOM?"
+          ],
+          "answer": "Two triangles are congruent when one can be placed exactly on top of the other, so ALL their corresponding sides and angles are equal -- they are identical copies. You do not have to verify all six parts: criteria like SSS, SAS, ASA and RHS each give just enough information to guarantee the triangles match completely. RHS (Right angle - Hypotenuse - Side) says that if two right triangles have equal hypotenuses and one other equal side, they are congruent. In this node, triangle AMO and triangle BMO share the right angle at M, have equal hypotenuses OA = OB (both radii), and share side OM, so by RHS they are congruent -- which is precisely what forces AM = BM (M bisects the chord) and angle AOM = angle BOM (OM halves the central angle).",
+          "returnCue": "So once RHS makes the two triangles congruent, their matching parts must be equal -- back to splitting the central angle into two equal halves."
+        },
+        {
+          "trigger": "Student cannot say what a chord is -- a straight segment joining two points on the circle, distinct from a radius (OA, OB) or a diameter -- so cannot picture chord AB and why OM perpendicular to it splits the figure into triangles AMO and BMO.",
+          "surfacingQuestion": "Quick one before we drop that perpendicular: when we keep saying \"chord AB\", what exactly is AB -- and how is it different from the radii OA and OB?",
+          "ladder": [
+            "Mark two points, A and B, on the edge of the circle (anywhere on the boundary).",
+            "Now join them with a single straight segment. That straight segment from A to B is the CHORD.",
+            "How is that different from OA or OB? Those start at the CENTRE O and reach the edge -- they are radii, all equal to r.",
+            "And the diameter? That is just the special, longest chord -- the one that happens to pass through the centre. A general chord like AB does not."
+          ],
+          "answer": "A chord is a straight line segment whose two endpoints both lie on the circle. It is NOT a radius: a radius (like OA or OB here) runs from the centre O out to the edge, while a chord like AB joins two points on the edge to each other and need not go near the centre. The diameter is just the one special chord that does pass through the centre, and it is the longest chord. In this node, AB is the chord, OA and OB are the two radii from the centre, and when we drop the perpendicular OM from O onto AB it lands at M and cuts the figure into the two right triangles AMO and BMO -- which is exactly the setup the RHS argument needs.",
+          "returnCue": "So AB is the chord joining the two edge points, and OA, OB are the radii -- back to dropping OM perpendicular to that chord and splitting it into triangles AMO and BMO."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh111:use-cosine-ratio-find-om",

@@ -244,7 +244,22 @@
         "cbse10:maths:jemh112:csa-hemisphere"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "Student does not recall that a cube of edge a has total surface area 6a^2 (six congruent square faces, each of area a^2) - the Class IX result this node's derivation starts from and never re-derives.",
+          "surfacingQuestion": "quick one before we go on: where does the 6a^2 for the cube come from - why six, and why a^2?",
+          "ladder": [
+            "A cube is a box whose edges are all the same length a (like a dice or a sugar cube).",
+            "How many flat faces does a cube have? Count them: top and bottom, front and back, left and right - that is 6 faces.",
+            "Each face is a square with side a. What is the area of one such square? (Area of a square = side times side.)",
+            "If one face has area a times a = a^2, and there are 6 identical faces, what is the area of all of them added together?",
+            "So the whole outer surface of the cube is 6 lots of a^2, which is 6 times a^2 = 6a^2."
+          ],
+          "answer": "A cube has six faces, and because all its edges are equal each face is an identical square of side a. The area of one square face is side times side = a times a = a^2, and since the six faces are exactly the same, the total surface area is 6 of them added up: 6 times a^2 = 6a^2. This is a standard Class IX result, measured in square units (cm^2, m^2), and it is taken as known here, not re-derived. In this node that 6a^2 is the starting figure: we begin with the cube's full surface 6a^2, then subtract the small circle (pi*r^2) hidden under the hemisphere's flat base and add the dome (2*pi*r^2) on top, giving 6a^2 + pi*r^2.",
+          "returnCue": "with the cube's 6a^2 secure, let us correct it for the hemisphere: take 6a^2 away the covered circle, add the dome."
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh112:tsa-solid-with-hemispherical-depression",
