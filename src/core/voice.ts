@@ -9,7 +9,8 @@ import { lang } from './languages.js';
  * Keys (all optional — a provider is simply skipped if its key is absent):
  *   SARVAM_API_KEY      — translate + TTS + STT (Indic specialist)   [verified working]
  *   DEEPGRAM_API_KEY    — STT (strong multilingual) + Aura TTS (English)
- *   ELEVENLABS_API_KEY  — TTS/STT (multilingual)  [no key yet — slot is dormant until added]
+ *   ELEVENLABS_API_KEY  — TTS (multilingual). NOTE: free tier = 10k chars/mo; kept as a FALLBACK only
+ *                         (not English primary) so its monthly quota cliff can't flip the voice mid-session.
  */
 const SARVAM = process.env.SARVAM_API_KEY;
 const DEEPGRAM = process.env.DEEPGRAM_API_KEY;
@@ -91,9 +92,11 @@ async function deepgramTTS(text: string): Promise<TtsResult | null> {
 export type TtsProvider = 'elevenlabs' | 'sarvam' | 'deepgram';
 
 /**
- * TTS chain, ordered by language for "best of all worlds":
- *   - ENGLISH → ElevenLabs (state-of-the-art, natural pacing) → Deepgram Aura → Sarvam.
- *     (Sarvam's Indic voice reading English runs fast and sometimes drops/garbles a chunk, so it's last.)
+ * TTS chain, ordered by language for a CONSISTENT, reliable voice (no mid-session vendor swaps):
+ *   - ENGLISH → Deepgram Aura (reliable quota, consistent "Asteria") → ElevenLabs → Sarvam.
+ *     (ElevenLabs free tier is only ~10k chars/mo, so as PRIMARY it exhausts mid-session and the voice
+ *      audibly flips to Deepgram — that's the "voice changed between turns" bug. It's a fallback now, not
+ *      primary. Sarvam's Indic voice reading English runs fast/garbles, so it stays last.)
  *   - INDIC   → Sarvam (the Indic specialist) → ElevenLabs (multilingual).
  * `force` pins a single provider (the testing toggle); if it yields nothing we fall back to the
  * language default so the learner still hears the reply. Returns null → client uses browser TTS.
@@ -120,7 +123,7 @@ export async function synthesize(
     // non-strict (e.g. the testing toggle): forced provider failed — fall through to the default chain.
   }
   const chain: Array<() => Promise<TtsResult | null>> = isEnglish
-    ? [byName.elevenlabs, byName.deepgram, byName.sarvam]
+    ? [byName.deepgram, byName.elevenlabs, byName.sarvam]
     : [byName.sarvam, byName.elevenlabs];
   for (const attempt of chain) {
     const r = await attempt();
