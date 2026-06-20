@@ -246,7 +246,7 @@ export function speak(text: string, speechLang: string) {
     const u = new SpeechSynthesisUtterance(chunks[i++]);
     u.lang = speechLang;
     if (v) u.voice = v;
-    u.rate = 0.9; // a touch slower so sentence structure is easier to follow
+    u.rate = 1.0; // natural speed
     u.onend = () => {
       if (myGen === speakGen) next();
     };
@@ -267,7 +267,7 @@ function browserSpeakOne(text: string, speechLang: string, gen: number): Promise
     u.lang = speechLang;
     const v = pickVoice(speechLang);
     if (v) u.voice = v;
-    u.rate = 0.9;
+    u.rate = 1.0;
     u.onend = () => resolve();
     u.onerror = () => resolve();
     window.speechSynthesis.speak(u);

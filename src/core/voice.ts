@@ -52,7 +52,7 @@ async function sarvamTTS(text: string, langCode: string): Promise<TtsResult | nu
     const res = await axios.post(
       'https://api.sarvam.ai/text-to-speech',
       // pace < 1 reads a touch slower so commas/periods land and sentences are easier to follow.
-      { text: text.slice(0, 1500), target_language_code: lang(langCode).speech, speaker: 'anushka', model: 'bulbul:v2', pace: 0.9 },
+      { text: text.slice(0, 1500), target_language_code: lang(langCode).speech, speaker: 'anushka', model: 'bulbul:v2', pace: 1.0 },
       { headers: sarvamHeaders, timeout: 20_000 }
     );
     const a = res.data?.audios?.[0];
