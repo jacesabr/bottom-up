@@ -3,7 +3,7 @@ import { MathText } from '../lib/MathText';
 import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
-import { speakSmart, speakSequence, LANG_INVITES, type SpeakSegment, recordAndTranscribe, stopSpeaking } from '../lib/voice';
+import { speakSmart, speakSequence, speakWithCues, LANG_INVITES, type SpeakSegment, recordAndTranscribe, stopSpeaking } from '../lib/voice';
 import '../styles/NodeView.css';
 
 interface LangOpt {
@@ -18,6 +18,7 @@ interface Msg {
   text?: string;
   image?: string;
   figure?: { url: string; caption: string } | null;
+  streaming?: boolean; // tutor turn still streaming in — don't read it aloud until it finalizes
 }
 interface Check {
   index: number;
@@ -231,31 +232,18 @@ export default function NodeView({
 
   // Split the welcome message into segments so the tool it mentions glows (word + button) exactly as
   // it's spoken: a clearing lead-in, then one segment per tool (first mention only), each holding a beat.
-  const buildWelcomeSegments = (text: string): SpeakSegment[] => {
-    const segs: SpeakSegment[] = [];
-    for (const para of text.split(/\n\n+/)) {
-      const found = WELCOME_TOOLS.map((t) => ({ ...t, idx: para.indexOf('**' + t.token + '**') }))
-        .filter((t) => t.idx >= 0)
-        .sort((a, b) => a.idx - b.idx);
-      if (found.length === 0) {
-        segs.push({ text: para, lang, speechLang: speechCode, onStart: () => setHighlight(null) });
-        continue;
-      }
-      if (found[0].idx > 0)
-        segs.push({ text: para.slice(0, found[0].idx), lang, speechLang: speechCode, onStart: () => setHighlight(null) });
-      found.forEach((f, k) => {
-        const end = k + 1 < found.length ? found[k + 1].idx : para.length;
-        segs.push({
-          text: para.slice(f.idx, end),
-          lang,
-          speechLang: speechCode,
-          onStart: () => setHighlight({ target: f.target, word: f.token }),
-          pauseAfterMs: 250, // a brief beat so the glow registers — short enough not to feel choppy
-        });
-      });
-    }
-    return segs;
-  };
+  // Welcome read-aloud cues: each tool's bold mention → a glow that fires the moment its word is spoken,
+  // OVERLAID on one continuous clip (no per-tool segments/gaps — see speakWithCues). `marker` is the
+  // spoken word (emoji stripped) so it can be located in the synthesized text to time the glow.
+  const buildWelcomeCues = (text: string) =>
+    WELCOME_TOOLS
+      .map((t) => ({ idx: text.indexOf('**' + t.token + '**'), target: t.target, token: t.token }))
+      .filter((c) => c.idx >= 0)
+      .sort((a, b) => a.idx - b.idx)
+      .map((c) => ({
+        marker: c.token.replace(/[^\x20-\x7E]/g, '').trim(), // drop the leading emoji → the spoken word
+        fire: () => setHighlight({ target: c.target, word: c.token }),
+      }));
 
   // Global read-aloud: when on, speak each NEW tutor message via the server voice chain. The welcome
   // message is read as a glow-synced sequence; everything else is read straight through.
@@ -264,16 +252,21 @@ export default function NodeView({
       spokenCount.current = messages.length;
       return;
     }
-    for (let i = spokenCount.current; i < messages.length; i++) {
+    let i = spokenCount.current;
+    for (; i < messages.length; i++) {
       const m = messages[i];
+      // A still-streaming tutor turn isn't final yet — stop here (don't advance the watermark past it),
+      // so it gets read ONCE when it finalizes, not partial-then-again.
+      if (m.role === 'tutor' && m.streaming) break;
       if (m.role !== 'tutor' || !m.text) continue;
       if (isWelcomeMessage(m.text)) {
-        void speakSequence(buildWelcomeSegments(m.text), apiBase, ttsProvider || undefined).then(() => setHighlight(null));
+        setHighlight(null);
+        void speakWithCues(m.text, buildWelcomeCues(m.text), lang, speechCode, apiBase, ttsProvider || undefined).then(() => setHighlight(null));
       } else {
         speakSmart(m.text, lang, speechCode, apiBase, ttsProvider || undefined);
       }
     }
-    spokenCount.current = messages.length;
+    spokenCount.current = i;
   }, [messages, autoRead, speechCode, ttsProvider]);
 
   // Chapter-intro gate: play the language invites (each in its own language, lang-select glows),
@@ -333,22 +326,111 @@ export default function NodeView({
     setShowEq(false);
     setMessages((m) => [...m, { role: 'learner', text }]);
     setBusy(true);
+
+    // Update the in-flight streaming tutor bubble (creating it on the first delta); keep `streaming`
+    // true so read-aloud waits for the final text.
+    const setStreamingText = (t: string) =>
+      setMessages((m) => {
+        const c = [...m];
+        for (let i = c.length - 1; i >= 0; i--) {
+          if (c[i].role === 'tutor' && c[i].streaming) {
+            c[i] = { ...c[i], text: t };
+            return c;
+          }
+        }
+        return [...c, { role: 'tutor', text: t, streaming: true }];
+      });
+    // Replace the streaming bubble with the authoritative final turn (or append one if nothing streamed).
+    const finalizeTutor = (t: string, figure?: { url: string; caption: string } | null) =>
+      setMessages((m) => {
+        const c = [...m];
+        for (let i = c.length - 1; i >= 0; i--) {
+          if (c[i].role === 'tutor' && c[i].streaming) {
+            c[i] = { role: 'tutor', text: t, figure: figure ?? null };
+            return c;
+          }
+        }
+        return [...c, { role: 'tutor', text: t, figure: figure ?? null }];
+      });
+    const applyProgress = (data: any) => {
+      // Don't overwrite progress on a failed/unavailable turn (no real checklist came back).
+      if (data && data.message && !data.systemError) {
+        setChecklist(data.checklist ?? []);
+        setReadyForGate(!!data.readyForGate);
+      }
+    };
+
     try {
-      const res = await fetch(`${base}/reply`, {
+      const res = await fetch(`${base}/reply-stream`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text, lang }),
       });
-      const data = await res.json().catch(() => ({} as any));
-      const text2 = data.message || (res.ok ? null : SERVICE_DOWN_TEXT);
-      setMessages((m) => [...m, { role: 'tutor', text: text2 ?? SERVICE_DOWN_TEXT, figure: data.figure }]);
-      // Don't overwrite progress on a failed/unavailable turn (no real checklist came back).
-      if (res.ok && !data.systemError) {
-        setChecklist(data.checklist ?? []);
-        setReadyForGate(!!data.readyForGate);
+      if (!res.ok || !res.body) throw new Error('stream unavailable');
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = '';
+      let finalData: any = null;
+      let gotDelta = false;
+      let lastStreamText = '';
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        let sep: number;
+        while ((sep = buf.indexOf('\n\n')) >= 0) {
+          const frame = buf.slice(0, sep);
+          buf = buf.slice(sep + 2);
+          let event = 'message';
+          let dataStr = '';
+          for (const line of frame.split('\n')) {
+            if (line.startsWith('event:')) event = line.slice(6).trim();
+            else if (line.startsWith('data:')) dataStr += line.slice(5).trim();
+          }
+          if (!dataStr) continue;
+          let payload: any;
+          try {
+            payload = JSON.parse(dataStr);
+          } catch {
+            continue;
+          }
+          if (event === 'delta') {
+            gotDelta = true;
+            lastStreamText = payload.message ?? '';
+            setStreamingText(lastStreamText);
+          } else if (event === 'done') {
+            finalData = payload;
+          } else if (event === 'error') {
+            throw new Error('server error');
+          }
+        }
+      }
+      if (finalData) {
+        finalizeTutor(finalData.message || SERVICE_DOWN_TEXT, finalData.figure);
+        applyProgress(finalData);
+      } else if (gotDelta) {
+        // Stream cut after content arrived — the turn was already produced server-side, so don't
+        // re-send (that would duplicate it). Keep what streamed in.
+        finalizeTutor(lastStreamText || SERVICE_DOWN_TEXT);
+      } else {
+        throw new Error('no stream output'); // nothing came through → fall back to /reply below
       }
     } catch {
-      setMessages((m) => [...m, { role: 'tutor', text: SERVICE_DOWN_TEXT }]);
+      // Streaming unavailable (older server, proxy buffering, immediate network fail) — fall back to
+      // the plain /reply turn. Only reached when no usable content streamed, so no duplicate turn.
+      try {
+        const res = await fetch(`${base}/reply`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, lang }),
+        });
+        const data = await res.json().catch(() => ({} as any));
+        const text2 = data.message || (res.ok ? null : SERVICE_DOWN_TEXT);
+        finalizeTutor(text2 ?? SERVICE_DOWN_TEXT, data.figure);
+        if (res.ok) applyProgress(data);
+      } catch {
+        finalizeTutor(SERVICE_DOWN_TEXT);
+      }
     } finally {
       setBusy(false);
     }
@@ -494,22 +576,6 @@ export default function NodeView({
       <div className="tutor-grid">
         {/* Chat pane */}
         <section className="chat-pane">
-          {listening && (
-            <div className="recording-overlay" onClick={toggleMic} role="button" tabIndex={0}>
-              <div className="recording-card" onClick={(e) => e.stopPropagation()}>
-                <div className="recording-pulse">
-                  <span className="recording-ring" />
-                  <span className="recording-mic">🎤</span>
-                </div>
-                <div className="recording-title">Listening… speak now</div>
-                <p className="recording-sub">
-                  Your voice is being turned into text. When you're done, tap the button below —
-                  your words will appear in the box so you can read them before you press Send.
-                </p>
-                <button className="recording-stop" onClick={toggleMic}>⏹ Tap to stop &amp; see my text</button>
-              </div>
-            </div>
-          )}
           <div className="chat-scroll" ref={scroller}>
             {messages.map((m, i) => (
               <div key={i} className={`bubble ${m.role}`}>
@@ -530,7 +596,7 @@ export default function NodeView({
                 </div>
               </div>
             ))}
-            {busy && <div className="thinking">thinking…</div>}
+            {busy && !messages[messages.length - 1]?.streaming && <div className="thinking">thinking…</div>}
 
             {done && (
               <div className="node-done">
@@ -601,6 +667,24 @@ export default function NodeView({
           {/* Reply box */}
           {!gate && !done && (
             <div className="reply-box">
+              {listening && (
+                <div className="recording-overlay" onClick={toggleMic} role="button" tabIndex={0}>
+                  <div className="recording-card" onClick={(e) => e.stopPropagation()}>
+                    <div className="recording-pulse">
+                      <span className="recording-ring" />
+                      <span className="recording-mic">🎤</span>
+                    </div>
+                    <div className="recording-copy">
+                      <div className="recording-title">Listening… speak now</div>
+                      <p className="recording-sub">
+                        Your voice is turning into text. Tap below when you're done — your words
+                        will appear in the box so you can read them before you press Send.
+                      </p>
+                      <button className="recording-stop" onClick={toggleMic}>⏹ Tap to stop &amp; see my text</button>
+                    </div>
+                  </div>
+                </div>
+              )}
               {showEq && (
                 <EquationComposer
                   onInsert={(t) => setInput((v) => (v ? `${v} ${t}` : t))}

@@ -446,6 +446,83 @@ export async function speakSequence(segments: SpeakSegment[], apiBase: string, p
 }
 
 /**
+ * Read `text` aloud as ONE continuous clip and fire visual "cues" (e.g. a UI glow) OVERLAID on the
+ * playback at the moment each cue's `marker` is spoken — instead of chopping the audio into a clip per
+ * marker (which broke the prosody and left an audible gap at every feature). Each cue's time is estimated
+ * by its character position in the spoken text × the clip's duration, so the voice never stops while the
+ * glows light up in sync. Long text falls back to a few large chunks (so prefetch/Chrome limits still
+ * hold) and cues are scheduled within whichever chunk contains them. Browser TTS is the fallback.
+ */
+export async function speakWithCues(
+  text: string,
+  cues: { marker: string; fire: () => void }[],
+  langCode: string,
+  speechLang: string,
+  apiBase: string,
+  provider?: string
+) {
+  if (!ttsSupported() && !apiBase) return;
+  stopSpeaking();
+  const myGen = speakGen;
+  const clean = stripForSpeech(text);
+  if (!clean) return;
+  // Keep it to as few chunks as possible so the prosody stays unbroken (the welcome is short → 1 clip).
+  const chunks = chunkForSpeech(clean, 600);
+  const spoken = chunks.join(' ');
+  const placed = cues
+    .map((c) => ({ fire: c.fire, idx: spoken.toLowerCase().indexOf(c.marker.trim().toLowerCase()) }))
+    .filter((c) => c.idx >= 0);
+  let pinned = provider;
+  let charDone = 0;
+  for (const chunk of chunks) {
+    if (myGen !== speakGen) return;
+    const cStart = charDone;
+    const cEnd = charDone + chunk.length;
+    const here = placed.filter((c) => c.idx >= cStart && c.idx < cEnd);
+    let audio: HTMLAudioElement | null = null;
+    try {
+      const res = await fetch(`${apiBase}/tts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: chunk, lang: langCode, provider: pinned, strict: !!pinned }),
+      });
+      const d = await res.json();
+      if (myGen !== speakGen) return;
+      if (!pinned && d?.provider) pinned = d.provider;
+      if (d?.audioBase64) audio = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.audioBase64}`);
+    } catch {
+      /* fall through to browser */
+    }
+    if (audio) {
+      currentAudio = audio;
+      const timers: ReturnType<typeof setTimeout>[] = [];
+      await new Promise<void>((resolve) => {
+        const schedule = () => {
+          const dur = isFinite(audio!.duration) && audio!.duration > 0 ? audio!.duration : chunk.length / 15;
+          for (const c of here) {
+            const local = chunk.length ? (c.idx - cStart) / chunk.length : 0;
+            timers.push(setTimeout(() => { if (myGen === speakGen) c.fire(); }, Math.max(0, local * dur * 1000)));
+          }
+        };
+        if (audio!.readyState >= 1) schedule();
+        else audio!.addEventListener('loadedmetadata', schedule, { once: true });
+        audio!.onended = () => resolve();
+        audio!.onerror = () => resolve();
+        audio!.play().catch(() => resolve());
+      });
+      timers.forEach(clearTimeout);
+      if (myGen !== speakGen) return;
+    } else {
+      // No server clip — fire this chunk's cues up front and read it with the browser voice.
+      for (const c of here) if (myGen === speakGen) c.fire();
+      await browserSpeakOne(chunk, speechLang, myGen);
+      if (myGen !== speakGen) return;
+    }
+    charDone += chunk.length + 1; // +1 for the space chunks were join()'d with
+  }
+}
+
+/**
  * Read aloud via the server TTS chain (good Indic voices). The text is cleaned of markdown/LaTeX
  * FIRST (so it never says "dollar" / "asterisk" / "backslash"), then split into sentence-sized
  * chunks that are synthesised and played in order — so long replies aren't cut off. Falls back to
