@@ -58,6 +58,10 @@
 .topnav-tab.locked:hover { color: var(--dim); }
 .topnav-lock { font-size: 0.72rem; }
 
+/* Community (Discord) — external link for feedback, feature requests & support. */
+.topnav-community { color: #5865f2; font-weight: 700; }
+.topnav-community:hover { color: #fff; background: #5865f2; }
+
 /* Auth control — sits at the end of the bar, next to Admin. */
 .topnav-login {
   margin-left: 6px;

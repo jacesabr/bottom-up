@@ -42,6 +42,15 @@ export default function TopNav({
             {t.locked && <span className="topnav-lock" aria-label="staff only">🔒</span>}
           </a>
         ))}
+        <a
+          className="topnav-tab topnav-community"
+          href="https://discord.gg/kxb9dtzDRC"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Join our Discord — feedback, feature requests & support"
+        >
+          💬 Community
+        </a>
         {onLoginClick && (
           user ? (
             <span className="topnav-auth">
