@@ -53,6 +53,14 @@ function asLlmUnavailable(err: unknown): LlmUnavailableError {
 }
 
 const NIM_BASE = process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1';
+// Thinking/reasoning OFF (opt-in via NIM_NO_THINK): our prompt supplies the structure and does the
+// scaffolding, so chain-of-thought is wasted latency AND its <think> preamble corrupts the streamed
+// JSON turn. Setting this lets us run big hybrid-reasoning models (qwen3.x / nemotron) as fast plain
+// responders, and is a safe defensive default on plain models (they ignore it). NIM accepts
+// chat_template_kwargs for hybrid models; plain-instruct models ignore it.
+const NIM_EXTRA: Record<string, unknown> = process.env.NIM_NO_THINK
+  ? { chat_template_kwargs: { thinking: false } }
+  : {};
 // All model ids live in ./models.ts (MODELS) — the single place to swap a model. Live = NIM.
 
 /** Claude completion for translation (opt-in only; the live translate path uses Sarvam/Google/NIM). */
@@ -164,6 +172,7 @@ async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boo
         messages,
         temperature: 0.6,
         max_tokens: maxTokens,
+        ...NIM_EXTRA,
       },
       {
         headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
@@ -204,7 +213,7 @@ async function nimCompleteStream(
   try {
     const res = await axios.post(
       `${NIM_BASE}/chat/completions`,
-      { model, messages, temperature: 0.6, max_tokens: maxTokens, stream: true },
+      { model, messages, temperature: 0.6, max_tokens: maxTokens, stream: true, ...NIM_EXTRA },
       {
         headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
         responseType: 'stream',
