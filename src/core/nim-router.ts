@@ -136,16 +136,23 @@ export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 
   const failedRows: ProbeResult[] = probes.filter((p) => !p.ok).map((p) => ({ model: p.id, ok: false, latencyMs: effMs(p), quality: p.quality, score: 0 }));
   if (!oks.length) return { kind, ranked: failedRows, winner: fallback, fallback, probedAt };
 
-  // Absolute speed score, NOT min-max over the tiny live set (that crushes the 2nd-fastest to 0 even when
-  // it's only ~300ms slower, making 50/50 behave like speed-only). ≤FAST_FLOOR ms = full marks; ≥SLOW_CEIL
-  // = 0 — so a slightly-slower but higher-quality model can still win, which is the balance we want.
-  // Budget is KIND-AWARE: text turns are sub-second, but vision (image→text) is inherently 7–17s, so a
-  // text budget would zero out every VLM and collapse vision selection to pure quality (always the slowest
-  // best model). Vision gets its own wider band so a fast-and-good VLM can still beat a slow-and-perfect one.
-  const [FAST_FLOOR, SLOW_CEIL] = kind === 'vision' ? [3000, 25000] : [350, 4000];
+  // Score = wSpeed·speedNorm + (1−wSpeed)·quality; QUALITY-DOMINANT, with sub-threshold speed treated as a
+  // tie so a noisy probe delta can't flip the pick between two equally-good models. ≤FAST_FLOOR ms = full
+  // speed marks; ≥SLOW_CEIL = 0 (absolute, not min-max over the tiny live set).
+  // TEXT: FAST_FLOOR=1000ms — a 4-token probe's sub-second delta is NOISE, so anything under ~1s ties on
+  // speed and the higher reasoning score decides; exact ties fall to the curated pool order (deepseek-v4-pro
+  // first) via the tiebreak below — the proven model wins, not a 0.2s probe flip. Only a genuinely slow
+  // model (>1s) is penalised. VISION: speed is NOT a bottleneck (only the occasional handwriting turn, never
+  // the text hot path), so quality dominates (wSpeed 0.15) → we pick the most ACCURATE reader; speed only
+  // breaks ties between equal-quality VLMs. Wider vision band (3–25s) since VLM inference is inherently 7–17s.
+  const [FAST_FLOOR, SLOW_CEIL] = kind === 'vision' ? [3000, 25000] : [1000, 4000];
+  const wSpeed = kind === 'vision' ? 0.15 : 0.5;
   const speedNorm = (ms: number) => Math.max(0, Math.min(1, 1 - (ms - FAST_FLOOR) / (SLOW_CEIL - FAST_FLOOR)));
+  // `oks` is in curated CANDIDATES order; carry that rank so exact score ties resolve to our preference
+  // (best/proven first) rather than to whichever probe happened to be a few ms faster.
   const okRanked: ProbeResult[] = oks
-    .map((p) => { const ms = effMs(p); return { model: p.id, ok: true, latencyMs: ms, quality: p.quality, score: 0.5 * speedNorm(ms) + 0.5 * p.quality }; })
-    .sort((a, b) => b.score - a.score);
+    .map((p, rank) => { const ms = effMs(p); return { model: p.id, ok: true, latencyMs: ms, quality: p.quality, score: wSpeed * speedNorm(ms) + (1 - wSpeed) * p.quality, rank }; })
+    .sort((a, b) => b.score - a.score || a.rank - b.rank)
+    .map(({ rank, ...r }) => r);
   return { kind, ranked: [...okRanked, ...failedRows], winner: okRanked[0].model, fallback, probedAt };
 }
