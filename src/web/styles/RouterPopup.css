@@ -1,17 +1,22 @@
 .rp-overlay {
   position: fixed; inset: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: center; justify-content: center; padding: 16px;
   background: rgba(20, 16, 12, 0.55); backdrop-filter: blur(3px);
   animation: rp-fade 0.2s ease;
 }
 @keyframes rp-fade { from { opacity: 0; } to { opacity: 1; } }
 
+/* Flex column: fixed head/intro + scrollable race area + fixed expect/foot. The modal never exceeds the
+   viewport, and ONLY the race list scrolls (subtly) if the pool is long — no whole-modal scroll, and rows
+   are single-line so nothing scrolls sideways. */
 .rp-modal {
   position: relative;
-  width: min(540px, 92vw);
+  width: min(560px, 94vw);
+  max-height: min(90vh, 760px);
+  display: flex; flex-direction: column;
   background: var(--card, #fff);
   border-radius: 16px;
-  padding: 22px 24px;
+  padding: 20px 22px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   animation: rp-pop 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.3);
 }
@@ -26,34 +31,65 @@
 }
 @keyframes rp-glow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-.rp-head { display: flex; align-items: center; gap: 9px; }
+.rp-head { display: flex; align-items: center; gap: 9px; flex: none; }
 .rp-star { color: var(--accent, #e2622a); font-size: 1.15rem; animation: rp-pulse 1.1s ease-in-out infinite; }
 @keyframes rp-pulse { 0%, 100% { opacity: 0.45; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.12); } }
-.rp-title { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--ink, #1a1410); }
-.rp-failed { margin-top: 10px; font-size: 0.86rem; color: #b4502a; background: #fbeae2; border-radius: 9px; padding: 7px 10px; }
-.rp-sub { margin-top: 8px; font-size: 0.82rem; color: var(--dim, #8a8178); font-style: italic; }
+.rp-title { font-weight: 800; font-size: 1.06rem; letter-spacing: -0.01em; color: var(--ink, #1a1410); }
 
-.rp-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 0.86rem; }
-.rp-table th { text-align: left; font-weight: 600; color: var(--dim, #8a8178); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.03em; padding: 4px 8px; border-bottom: 1px solid var(--rule, #ece7df); }
-.rp-table td { padding: 7px 8px; border-bottom: 1px solid var(--rule, #f2eee7); }
-.rp-table tbody tr { animation: rp-row 0.4s ease both; }
+.rp-failed { margin-top: 10px; font-size: 0.85rem; color: #b4502a; background: #fbeae2; border-radius: 9px; padding: 8px 11px; flex: none; }
+.rp-intro { margin-top: 9px; font-size: 0.82rem; line-height: 1.5; color: var(--dim, #7c736a); flex: none; }
+.rp-intro strong { color: var(--ink, #1a1410); font-weight: 700; }
+
+/* The ONLY scrollable region — the two race lists. min-height:0 lets it shrink so the foot stays visible. */
+.rp-races { flex: 1 1 auto; overflow-y: auto; min-height: 0; margin: 6px -6px 0; padding: 0 6px; }
+.rp-races::-webkit-scrollbar { width: 7px; }
+.rp-races::-webkit-scrollbar-thumb { background: #e2dcd2; border-radius: 4px; }
+
+.rp-race { margin-top: 12px; }
+.rp-race-h { font-size: 0.85rem; font-weight: 700; color: var(--ink, #1a1410); }
+.rp-race-hint { font-weight: 400; color: var(--dim, #9a9189); font-size: 0.74rem; }
+.rp-muted { color: var(--dim, #9a9189); font-size: 0.82rem; margin-top: 6px; font-style: italic; }
+
+/* Single-line rows that fit the width: flexible name (truncates) + two fixed stat columns. No table, so
+   nothing can overflow sideways. */
+.rp-rows { margin-top: 6px; display: flex; flex-direction: column; gap: 2px; }
+.rp-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 9px; border-radius: 8px; font-size: 0.85rem;
+  animation: rp-row 0.4s ease both;
+}
 @keyframes rp-row { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
-.rp-table tr.rp-win td { background: var(--accent-soft, #fbe9df); font-weight: 700; color: var(--ink, #1a1410); }
-.rp-table tr.rp-dead td { color: #b9b3a8; }
-.rp-wintag { margin-left: 8px; font-size: 0.72rem; font-weight: 700; color: var(--accent, #e2622a); }
+.rp-row.rp-rowhead { animation: none; padding: 2px 9px 0; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--dim, #a59c92); font-weight: 600; }
+.rp-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink, #1a1410); }
+.rp-stat { flex: 0 0 64px; text-align: right; color: var(--ink, #3a332c); font-variant-numeric: tabular-nums; }
+.rp-stat.rp-q { flex-basis: 56px; color: var(--dim, #8a8178); }
+.rp-row.rp-win { background: var(--accent-soft, #fbe9df); }
+.rp-row.rp-win .rp-name, .rp-row.rp-win .rp-stat { font-weight: 700; color: var(--ink, #1a1410); }
+.rp-star2 { color: var(--accent, #e2622a); margin-right: 6px; }
+.rp-row.rp-dead { opacity: 0.5; }
+.rp-row.rp-dead .rp-stat { color: #b9b3a8; }
 
-.rp-conclude { margin-top: 14px; font-size: 0.9rem; color: var(--ink, #1a1410); }
-.rp-conclude strong { color: var(--accent, #e2622a); }
+/* Expected-speed summary — fixed (not scrolled), the practical takeaway. */
+.rp-expect { flex: none; margin-top: 12px; padding: 11px 13px; border: 1px solid var(--rule, #ece7df); border-radius: 11px; background: var(--bg, #fbfaf8); }
+.rp-expect-h { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--dim, #a59c92); font-weight: 700; }
+.rp-expect-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 5px; font-size: 0.86rem; color: var(--dim, #7c736a); }
+.rp-expect-row strong { color: var(--accent, #cf5a26); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.rp-expect-note { margin-top: 8px; font-size: 0.76rem; line-height: 1.5; color: var(--dim, #8a8178); }
+.rp-expect-note em { font-style: normal; font-weight: 600; color: var(--ink, #3a332c); }
 
-/* Two-race layout (text + vision) */
-.rp-modal { max-height: 88vh; overflow-y: auto; }
-.rp-race { margin-top: 14px; }
-.rp-race-h { font-size: 0.84rem; font-weight: 700; color: var(--ink, #1a1410); }
-.rp-race-hint { font-weight: 400; color: var(--dim, #8a8178); font-size: 0.75rem; }
-.rp-muted { color: var(--dim, #8a8178); font-size: 0.82rem; margin-top: 6px; font-style: italic; }
-.rp-race .rp-table { margin-top: 6px; }
+.rp-foot { flex: none; margin-top: 14px; }
+.rp-resume-note { font-size: 0.82rem; line-height: 1.5; color: var(--dim, #7c736a); margin-bottom: 10px; }
+.rp-resume-note strong { color: var(--accent, #cf5a26); }
+.rp-btn {
+  width: 100%; padding: 12px 16px; border: none; border-radius: 11px; cursor: pointer;
+  font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em; color: #fff;
+  background: var(--accent, #e2622a); transition: filter 0.15s ease, transform 0.1s ease;
+}
+.rp-btn:hover:not(:disabled) { filter: brightness(1.05); }
+.rp-btn:active:not(:disabled) { transform: translateY(1px); }
+.rp-btn:disabled { background: #d8d2c8; color: #fff; cursor: progress; }
 
-.rp-spinner { display: flex; gap: 6px; justify-content: center; margin-top: 16px; }
+.rp-spinner { display: flex; gap: 6px; justify-content: center; margin: 14px 0 6px; }
 .rp-spinner span { width: 8px; height: 8px; border-radius: 50%; background: var(--accent, #e2622a); animation: rp-bounce 1s ease-in-out infinite; }
 .rp-spinner span:nth-child(2) { animation-delay: 0.15s; }
 .rp-spinner span:nth-child(3) { animation-delay: 0.3s; }

@@ -21,18 +21,29 @@ export interface Candidate { id: string; quality: number; speedMs?: number; }
 
 /** Pool the router may pick from — PLAIN-INSTRUCT, JSON-clean only (reasoning models corrupt the
  *  streamed JSON turn; gated ids 404). Env-overridable via NIM_CANDIDATES_TEXT / _VISION (comma list). */
-// Quality from the FULL-catalog sweep (tools/nim-bench + nim-vision-bench, 2026-06-21): 121 NIM models →
-// 90 chat-text candidates → 37 responded; then quality-gated at QUALITY_FLOOR. The pool below is the
-// speed×quality FRONTIER of the qualified set (top quality + genuinely fast) — not the whole list, since a
-// smaller pool is cheaper to probe and every member is worth winning. Full results: .audit-tmp/nim-bench.json.
+// Quality from the FULL-catalog sweep (tools/nim-bench, 2026-06-21): 121 NIM models → 90 chat-text
+// candidates → 36 responded → 27 passed the floor. This pool is EVERY genuinely-good responder (quality ≥
+// 0.75 = ≥6/8 on the reasoning battery), so the learner sees the full good-models race — NOT just a frontier.
+// Three principled exclusions keep a weak/unstable model from ever reaching a learner: (1) reasoning /
+// experimental families that emit <think> and corrupt the streamed JSON turn (gpt-oss*, *-reasoning,
+// diffusiongemma); (2) models too slow to serve a text turn — avg > ~7s would only time out the probe
+// (qwen3.5-397b ~20s, qwen3.5-122b ~12s, minimax-m3 ~7.3s); (3) the 0.63 tier (5/8 — borderline, not "good"),
+// except the two battle-tested fast fallbacks at the end. Full results: .audit-tmp/nim-bench.json.
 export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
   text: [
-    { id: 'deepseek-ai/deepseek-v4-pro', quality: 1.0 },             // best quality (~1.4s when up)
-    { id: 'mistralai/mistral-nemotron', quality: 0.88 },            // high quality + fast (~0.6s)
-    { id: 'qwen/qwen3-next-80b-a3b-instruct', quality: 0.75 },       // reliable, proven in prod
-    { id: 'nvidia/nemotron-3-nano-30b-a3b', quality: 0.75 },        // fastest good model (~0.4s)
-    { id: 'meta/llama-3.1-8b-instruct', quality: 0.63 },             // fast fallback
-    { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.63 }, // fast fallback
+    { id: 'deepseek-ai/deepseek-v4-pro', quality: 1.0 },                // 8/8 · top reasoning (~3.6s)
+    { id: 'deepseek-ai/deepseek-v4-flash', quality: 1.0 },              // 8/8 · fast deepseek (~2.3s)
+    { id: 'nvidia/nemotron-3-super-120b-a12b', quality: 1.0 },          // 8/8 · large (~5.2s)
+    { id: 'mistralai/mistral-nemotron', quality: 0.88 },                // 7/8 · fast (~0.7s)
+    { id: 'meta/llama-3.3-70b-instruct', quality: 0.88 },               // 7/8 (~2.1s)
+    { id: 'meta/llama-4-maverick-17b-128e-instruct', quality: 0.75 },   // 6/8 · fast (~0.8s)
+    { id: 'nvidia/nemotron-3-nano-30b-a3b', quality: 0.75 },            // 6/8 · fastest good (~0.8s)
+    { id: 'mistralai/mistral-small-4-119b-2603', quality: 0.75 },       // 6/8 (~1.0s)
+    { id: 'abacusai/dracarys-llama-3.1-70b-instruct', quality: 0.75 },  // 6/8 (~1.2s)
+    { id: 'qwen/qwen3-next-80b-a3b-instruct', quality: 0.75 },          // 6/8 · proven in prod (~1.4s)
+    { id: 'meta/llama-3.1-70b-instruct', quality: 0.75 },               // 6/8 (~4s)
+    { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.63 },     // 5/8 · fast fallback (~1.2s)
+    { id: 'meta/llama-3.1-8b-instruct', quality: 0.63 },                // 5/8 · fastest fallback (~0.5s)
   ],
   vision: [
     { id: 'meta/llama-3.2-90b-vision-instruct', quality: 1.0, speedMs: 17500 },        // best (6/6) but slow
@@ -69,6 +80,17 @@ const THINK_OFF = process.env.NIM_NO_THINK ? { chat_template_kwargs: { thinking:
 // only needs to measure latency/availability, so the smallest possible image keeps the probe fast.
 const TINY_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
 
+// Bounded-concurrency map so a large pool doesn't fire all probes at once and self-429 the free key (which
+// would falsely mark good models as ✗ timed out). Cap is env-tunable; default 8. Runs ⌈pool/8⌉ small waves.
+const PROBE_CONCURRENCY = Number(process.env.NIM_PROBE_CONCURRENCY ?? 8);
+async function mapLimit<T, R>(items: T[], limit: number, fn: (x: T) => Promise<R>): Promise<R[]> {
+  const out: R[] = []; let i = 0;
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (i < items.length) { const idx = i++; out[idx] = await fn(items[idx]); }
+  }));
+  return out;
+}
+
 async function probeOne(model: string, key: string, timeoutMs: number, kind: 'text' | 'vision'): Promise<{ ok: boolean; latencyMs: number }> {
   const t0 = Date.now();
   const content: any = kind === 'vision'
@@ -103,7 +125,7 @@ export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 
   const probedAt = Date.now();
   if (!key || !cands.length) return { kind, ranked: [], winner: fallback, fallback, probedAt };
 
-  const probes = await Promise.all(cands.map((c) => probeOne(c.id, key, timeoutMs, kind).then((p) => ({ ...c, ...p }))));
+  const probes = await mapLimit(cands, PROBE_CONCURRENCY, (c) => probeOne(c.id, key, timeoutMs, kind).then((p) => ({ ...c, ...p })));
   const oks = probes.filter((p) => p.ok);
   // Effective speed for scoring + display. The live probe gates AVAILABILITY (ok/fail), but its latency only
   // means something for text — a vision probe sends a 1×1 image so it returns ~300ms for every model, hiding
