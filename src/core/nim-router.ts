@@ -14,15 +14,19 @@ export interface Candidate { id: string; quality: number; } // quality: 0..1, pr
 
 /** Pool the router may pick from — PLAIN-INSTRUCT, JSON-clean only (reasoning models corrupt the
  *  streamed JSON turn; gated ids 404). Env-overridable via NIM_CANDIDATES_TEXT / _VISION (comma list). */
+// Quality from tools/nim-bench (2026-06-21, thinking-off, deterministic battery). deepseek-v4-pro is kept
+// despite no measured quality (it kept timing out) — it's a strong model WHEN up, and the live probe drops
+// it automatically when it's slow that minute, so it costs nothing to keep as an aspirational candidate.
+// llama-3.3-70b dropped (consistently times out, no edge over qwen/llama-8b); the 404 ids removed.
 export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
   text: [
-    { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.86 },
-    { id: 'qwen/qwen3-next-80b-a3b-instruct', quality: 0.95 },
-    { id: 'deepseek-ai/deepseek-v4-pro', quality: 0.97 },
-    { id: 'meta/llama-3.3-70b-instruct', quality: 0.88 },
+    { id: 'qwen/qwen3-next-80b-a3b-instruct', quality: 0.75 },
+    { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.63 },
+    { id: 'meta/llama-3.1-8b-instruct', quality: 0.63 },
+    { id: 'deepseek-ai/deepseek-v4-pro', quality: 0.9 }, // unmeasured (timeouts); probe-gated to fast windows
   ],
   vision: [
-    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.85 },
+    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.85 }, // TODO: vision battery pending labelled images
   ],
 };
 
