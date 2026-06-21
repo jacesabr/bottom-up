@@ -100,9 +100,15 @@ router**.
   The budget is **kind-aware**: text (≤350 ms…≥4 s) vs **vision** (≤3 s…≥25 s) — vision is inherently 7–17 s,
   so a text budget would zero out every VLM and collapse vision to pure-quality (always the *slowest* best
   model); the wider vision band lets a fast-and-good VLM beat a slow-and-perfect one.
-- `src/core/route-store.ts` — stores the winning model per learner; `respond()`/`teachTurn()` thread it
-  into `completeJson({ model, modelFallback })`. The 2nd-best is the in-call fallback; no probe → `MODEL_TEXT`.
-- `POST /api/learner/:id/route` — runs the probe, stores the winner, returns the full ranked race.
+- **The browser is the source of truth.** `RouterPopup` caches the race winners (`{text, textFallback,
+  vision}`) in `localStorage` and the client sends them as `models` on *every* turn. The api validates each
+  id against the gated pool (`isAllowedModel`) and seeds `route-store.ts` (`setRoutePicks`) before the
+  teach/grade path reads it — so picks **survive deploys and work across multiple instances** (any instance
+  serves the turn using the learner's own pick), and a client can only ever pick among our good models, never
+  name one outside the pool. The in-memory store is now a per-request backstop; empty/invalid → `MODEL_TEXT`.
+- `src/core/route-store.ts` — `respond()`/`teachTurn()` read the seeded pick and thread it into
+  `completeJson({ model, modelFallback })`. The 2nd-best is the in-call fallback.
+- `POST /api/learner/:id/route` — runs the probe, returns the full ranked race; the client caches it.
 - `RouterPopup.tsx` — the "finding your fastest tutor" modal at node entry **and after any tutor failure**
   (it stops, names the dead model via `failedModel`, re-probes, retries with the new winner; capped at 3).
 
