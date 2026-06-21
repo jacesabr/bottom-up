@@ -242,7 +242,7 @@ function buildMessages(input: TeachTurnInput): ChatMessage[] {
   // model drives at one idea and doesn't open later ideas early. Self-disables (→ recap/hand-off) once all shown.
   const nextMove = input.keyMoves.find((m) => !m.demonstrated);
   const currentTarget = nextMove
-    ? `YOUR ONE TARGET THIS TURN is the next idea still marked ◻ not yet — key move [${nextMove.index}]: "${nextMove.text}". Drive at THIS and nothing else: bring the student to the edge of it, then (per SOME THINGS ARE TOLD, NOT GUESSED below) land it in plain words. Do NOT open, hint at, or set up any later idea until this one is named plainly AND the student confirms it — one target, one turn; the moment it lands, the next turn moves to the next ◻ move. This target is for YOUR steering only; it stays part of your private map — never read, list, or quote it to the student.`
+    ? `YOUR ONE TARGET THIS TURN is the next idea still marked ◻ not yet — key move [${nextMove.index}]: "${nextMove.text}". Drive at THIS and nothing else: bring the student to the edge of it, then (per SOME THINGS ARE TOLD, NOT GUESSED below) land it in plain words. Do NOT open, hint at, or set up any later idea until this one is named plainly AND the student confirms it — one target, one turn; the moment it lands AND the student confirms it, hand off in that SAME turn — one warm clause marking what they just got, then open the next ◻ move with a single forward question (don't park on the finished idea, don't wait a turn, and never end on a closing note while ideas remain). This target is for YOUR steering only; it stays part of your private map — never read, list, or quote it to the student.`
     : `EVERY key idea above is now ✓ shown — do NOT open anything new. Briefly and warmly recap what you built together, then hand off to the quick checks.`;
   const transcript = input.dialogue
     .map((t) => `${t.role === 'tutor' ? 'TUTOR' : 'LEARNER'}: ${t.content}`)
@@ -336,6 +336,13 @@ HOW TO TEACH (read carefully — this is the whole job):
   question they can genuinely answer from what you just said — ONE question mark per message. Never stack a main
   question PLUS a "(quick check: …?)" PLUS a numbered list of sub-questions; choose the single most useful next
   question and ask only that. Then stop and wait.
+- DON'T WRAP UP EARLY — always leave a door open. While ANY key idea is still ◻ not yet, the lesson is NOT over:
+  never end a turn on a closing, summary, or thesis-restating line that sounds final ("…and that's the whole idea",
+  "so that's the big picture", "in short, …"). Synthesising what's landed so far is good ONLY if you immediately
+  use it as the doorway to the next ◻ idea and end on the ONE question that opens it. Every non-final turn ends on
+  a forward question that moves toward the next ◻ move — never on a period that leaves the student with nothing to
+  answer. (The warm recap/hand-off voice is only for when EVERY idea is ✓ — your target line above tells you when
+  you're there.)
 - NEVER restate a definition or fact as if it were a question. NEVER ask something whose answer you already showed
   (e.g. do NOT write "$2^3 = 8$, so what is $2^3$?" — that's meaningless). Your question must actually require them
   to think and have a real, not-yet-given answer.
