@@ -155,6 +155,36 @@
   padding: 4px 2px 8px;
 }
 
+/* "Close-up of the material" recap between the dialogue and the checks — a deliberate review beat so the
+   hand-off isn't an abrupt jump that buries the conversation. */
+.lesson-recap {
+  background: linear-gradient(180deg, #ffffff, #fbfaf8);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--green);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.recap-badge {
+  align-self: flex-start;
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.01em;
+  color: var(--green); background: var(--green-soft);
+  border: 1px solid #bcd6c4; border-radius: 999px; padding: 4px 11px;
+}
+.recap-title { margin: 2px 0 0; font-size: 1.12rem; font-weight: 800; letter-spacing: -0.01em; color: var(--ink); }
+.recap-brief { margin: 0; font-size: 0.95rem; line-height: 1.55; color: var(--dim); }
+.recap-material { border: 1px solid var(--rule); border-radius: 10px; background: var(--card); padding: 12px 14px; }
+.recap-h { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--dim); font-weight: 700; margin-bottom: 6px; }
+.recap-body { font-size: 0.95rem; line-height: 1.6; color: var(--ink); max-height: 40vh; overflow-y: auto; }
+.recap-lead { margin: 2px 0 4px; font-size: 0.9rem; line-height: 1.5; color: var(--dim); }
+.lesson-recap .btn-primary { align-self: flex-start; }
+
+/* The post-answer "Move on / Finish" button reads as forward progress (green), distinct from grey Submit. */
+.gate-card .btn-primary.move-on { background: var(--green); }
+.gate-card .btn-primary.move-on:hover { filter: brightness(1.05); }
+
 .gate-card {
   background: #faf7f2;
   border: 1px solid var(--rule);
