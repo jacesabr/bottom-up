@@ -14,6 +14,7 @@
   width: min(760px, 94vw);
   max-height: min(90vh, 760px);
   display: flex; flex-direction: column;
+  overflow: hidden; /* the race region (flex:1 1 auto, below) absorbs overflow + scrolls; foot stays pinned */
   background: var(--card, #fff);
   border-radius: 16px;
   padding: 20px 22px;
@@ -41,10 +42,12 @@
 .rp-intro strong { color: var(--ink, #1a1410); font-weight: 700; }
 
 /* Two races SIDE BY SIDE (text tutor | handwriting), split by a hairline divider, so both winners are seen
-   at a glance. Each column scrolls its OWN list (below) if the pool is long, so the modal itself never
-   scrolls — head, What-to-expect and the button always stay put. Collapses to stacked below 560px. */
-.rp-races { flex: none; display: flex; flex-direction: row; align-items: stretch; gap: 0; margin-top: 8px; min-height: 0; }
-.rp-race { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; padding: 0 16px; }
+   at a glance. This region FLEX-GROWS and absorbs ALL overflow (each column's list scrolls within it), so the
+   head, What-to-expect box and the button stay visible even on the taller failure popup (which adds the
+   "stopped responding" banner + resume note). Without this the footer fell below max-height with no way to
+   reach it. Collapses to stacked below 560px. */
+.rp-races { flex: 1 1 auto; display: flex; flex-direction: row; align-items: stretch; gap: 0; margin-top: 8px; min-height: 0; }
+.rp-race { flex: 1 1 0; min-width: 0; min-height: 0; display: flex; flex-direction: column; padding: 0 16px; }
 .rp-race:first-child { padding-left: 0; }
 .rp-race:last-child { padding-right: 0; }
 .rp-race + .rp-race { border-left: 1px solid var(--rule, #ece7df); }
@@ -56,7 +59,7 @@
 /* Single-line rows that fit the column: flexible name (truncates) + two fixed stat columns. The list scrolls
    WITHIN its column past ~9 models (the winner is best-first, so it's always in view); the column header row
    stays pinned while scrolling. No table, so nothing can overflow sideways. */
-.rp-rows { margin-top: 6px; display: flex; flex-direction: column; gap: 2px; overflow-y: auto; max-height: clamp(180px, 34vh, 340px); }
+.rp-rows { margin-top: 6px; display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 .rp-rows::-webkit-scrollbar { width: 7px; }
 .rp-rows::-webkit-scrollbar-thumb { background: #e2dcd2; border-radius: 4px; }
 .rp-row {
