@@ -69,9 +69,11 @@ export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 
   const failedRows: ProbeResult[] = probes.filter((p) => !p.ok).map((p) => ({ model: p.id, ok: false, latencyMs: p.latencyMs, quality: p.quality, score: 0 }));
   if (!oks.length) return { kind, ranked: failedRows, winner: fallback, fallback, probedAt };
 
-  const lats = oks.map((p) => p.latencyMs);
-  const min = Math.min(...lats), max = Math.max(...lats);
-  const speedNorm = (ms: number) => (max === min ? 1 : (max - ms) / (max - min));
+  // Absolute speed score, NOT min-max over the tiny live set (that crushes the 2nd-fastest to 0 even when
+  // it's only ~300ms slower, making 50/50 behave like speed-only). ≤FAST_FLOOR ms = full marks; ≥SLOW_CEIL
+  // = 0 — so a slightly-slower but higher-quality model can still win, which is the balance we want.
+  const FAST_FLOOR = 350, SLOW_CEIL = 4000;
+  const speedNorm = (ms: number) => Math.max(0, Math.min(1, 1 - (ms - FAST_FLOOR) / (SLOW_CEIL - FAST_FLOOR)));
   const okRanked: ProbeResult[] = oks
     .map((p) => ({ model: p.id, ok: true, latencyMs: p.latencyMs, quality: p.quality, score: 0.5 * speedNorm(p.latencyMs) + 0.5 * p.quality }))
     .sort((a, b) => b.score - a.score);
