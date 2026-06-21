@@ -1,16 +1,23 @@
 /**
  * Dynamic NIM model router. Free NIM endpoints swing in speed/availability through the day (a model
  * that's snappy now can time out 30 min later), so we don't hardcode one. Instead: each session we
- * SPEED-PROBE a curated pool of candidates (thinking OFF) and pick the best by a 50/50 blend of live
- * speed and a precomputed QUALITY score. The winner serves that session's calls; `models.ts` stays the
- * fallback default. Quality is seeded from the 2026-06-20 NIM benchmark and refined by tools/nim-bench.
+ * SPEED-PROBE a curated pool of candidates (thinking OFF) and pick the best by a 50/50 blend of speed
+ * and a precomputed QUALITY score. For TEXT, speed is the live probe latency (representative + captures
+ * current congestion). For VISION, the live probe only gates availability and speed comes from the bench
+ * (a 1×1 probe can't measure real per-image time), so it's 50/50 of precomputed speed × precomputed
+ * quality, gated by live up/down. The winner serves that session's calls; `models.ts` stays the fallback
+ * default. Quality + vision speed are measured by tools/nim-bench.ts + tools/nim-vision-bench.ts.
  */
 import axios from 'axios';
 import { MODELS } from './models.js';
 
 const NIM_BASE = process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1';
 
-export interface Candidate { id: string; quality: number; } // quality: 0..1, precomputed
+// quality: 0..1, precomputed. speedMs: realistic per-call inference time from the bench — used for VISION
+// only, because a vision probe sends a 1×1 image and so returns in ~300ms regardless of model, telling us
+// nothing about real per-image speed (which is 7–17s). Text uses the live probe latency instead (it IS
+// representative and captures current congestion), so speedMs is omitted there.
+export interface Candidate { id: string; quality: number; speedMs?: number; }
 
 /** Pool the router may pick from — PLAIN-INSTRUCT, JSON-clean only (reasoning models corrupt the
  *  streamed JSON turn; gated ids 404). Env-overridable via NIM_CANDIDATES_TEXT / _VISION (comma list). */
@@ -28,10 +35,10 @@ export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
     { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.63 }, // fast fallback
   ],
   vision: [
-    { id: 'meta/llama-3.2-90b-vision-instruct', quality: 1.0 },         // best (6/6) but ~17s
-    { id: 'nvidia/llama-3.1-nemotron-nano-vl-8b-v1', quality: 0.83 },   // good + fastest VLM (~7s)
-    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.83 },
-    { id: 'meta/llama-3.2-11b-vision-instruct', quality: 0.67 },
+    { id: 'meta/llama-3.2-90b-vision-instruct', quality: 1.0, speedMs: 17500 },        // best (6/6) but slow
+    { id: 'nvidia/llama-3.1-nemotron-nano-vl-8b-v1', quality: 0.83, speedMs: 7000 },    // good + fastest VLM
+    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.83, speedMs: 11700 },
+    { id: 'meta/llama-3.2-11b-vision-instruct', quality: 0.67, speedMs: 10100 },
   ],
 };
 
@@ -83,8 +90,13 @@ export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 
 
   const probes = await Promise.all(cands.map((c) => probeOne(c.id, key, timeoutMs, kind).then((p) => ({ ...c, ...p }))));
   const oks = probes.filter((p) => p.ok);
+  // Effective speed for scoring + display. The live probe gates AVAILABILITY (ok/fail), but its latency only
+  // means something for text — a vision probe sends a 1×1 image so it returns ~300ms for every model, hiding
+  // the real 7–17s per-image cost. So vision scores on the precomputed bench time (speedMs), which is also
+  // what we show the learner — a realistic "this is how long image grading takes", not a misleading 300ms.
+  const effMs = (p: any) => (kind === 'vision' && typeof p.speedMs === 'number' ? p.speedMs : p.latencyMs);
   // Failed candidates kept for display (the popup shows the full race, incl. ✗ timeouts) — never selected.
-  const failedRows: ProbeResult[] = probes.filter((p) => !p.ok).map((p) => ({ model: p.id, ok: false, latencyMs: p.latencyMs, quality: p.quality, score: 0 }));
+  const failedRows: ProbeResult[] = probes.filter((p) => !p.ok).map((p) => ({ model: p.id, ok: false, latencyMs: effMs(p), quality: p.quality, score: 0 }));
   if (!oks.length) return { kind, ranked: failedRows, winner: fallback, fallback, probedAt };
 
   // Absolute speed score, NOT min-max over the tiny live set (that crushes the 2nd-fastest to 0 even when
@@ -96,7 +108,7 @@ export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 
   const [FAST_FLOOR, SLOW_CEIL] = kind === 'vision' ? [3000, 25000] : [350, 4000];
   const speedNorm = (ms: number) => Math.max(0, Math.min(1, 1 - (ms - FAST_FLOOR) / (SLOW_CEIL - FAST_FLOOR)));
   const okRanked: ProbeResult[] = oks
-    .map((p) => ({ model: p.id, ok: true, latencyMs: p.latencyMs, quality: p.quality, score: 0.5 * speedNorm(p.latencyMs) + 0.5 * p.quality }))
+    .map((p) => { const ms = effMs(p); return { model: p.id, ok: true, latencyMs: ms, quality: p.quality, score: 0.5 * speedNorm(ms) + 0.5 * p.quality }; })
     .sort((a, b) => b.score - a.score);
   return { kind, ranked: [...okRanked, ...failedRows], winner: okRanked[0].model, fallback, probedAt };
 }
