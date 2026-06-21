@@ -26,7 +26,9 @@ export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
     { id: 'deepseek-ai/deepseek-v4-pro', quality: 0.9 }, // unmeasured (timeouts); probe-gated to fast windows
   ],
   vision: [
-    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.85 }, // TODO: vision battery pending labelled images
+    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.83 }, // tools/nim-vision-bench (2026-06-21, fastest)
+    { id: 'meta/llama-3.2-11b-vision-instruct', quality: 0.83 },
+    { id: 'meta/llama-3.2-90b-vision-instruct', quality: 0.83 }, // reliable but ~2x slower
   ],
 };
 

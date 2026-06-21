@@ -110,4 +110,11 @@ excluded (break JSON); `mistral-small-24b` / `qwen2.5-7b` 404 on this account; `
 **Live verification:** `/route` returns HTTP 200 on both prod APIs and adapts run-to-run (e.g. picked qwen
 on bottom-up and deepseek on IE in the same minute) — auto-routing around whatever is slow that moment.
 
+**Vision** (`tools/nim-vision-bench.ts`): same idea for the sketch-grading model. Test set = real handwritten
+math pages from the public HF dataset `HumynLabs/English-Handwritten-Math-Notes-Dataset`, rasterized to PNG
+(`tools/fetch-vision-set.mjs`), with **ground truth annotated by Opus 4.8 vision** (Claude Code). 2026-06-21:
+`nemotron-nano-12b-vl`, `llama-3.2-11b-vision`, `llama-3.2-90b-vision` all read at ~83%; nemotron is fastest
+(~11 s) so it leads the vision pool. `phi-3.5-vision` / `qwen2.5-vl-72b` were unavailable on the free tier.
+Vision turns are slow (~11 s+) — a real constraint. (Watermarked pages kept local, not committed.)
+
 > Cost rule still holds: the bench + probes hit **only free NIM endpoints**; Anthropic is never called.
