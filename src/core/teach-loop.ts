@@ -16,6 +16,7 @@ import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, sum
 import { languageInstruction } from './languages.js';
 import { nimVision } from './llm.js';
 import { examProfile, type Track } from './exam-profile.js';
+import { getTextModel } from './route-store.js';
 
 /**
  * The per-node teaching loop (bottom_up.md §4).
@@ -362,6 +363,7 @@ export async function respond(
       conceptId,
       track,
       advancedContent: (c as any).advancedContent ?? null,
+      ...getTextModel(learnerId), // per-session model from the speed router (empty → MODELS.text default)
     },
     // Stream live tokens only for English: a non-English turn is translated AFTER it completes, so its
     // streamed English prose would just be discarded and replaced by the translation on `done`.

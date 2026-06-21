@@ -4,6 +4,8 @@ import { buNodePerformance, buVisit } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures, serviceDownMessage } from '../core/teach-loop.js';
 import { LlmUnavailableError } from '../core/llm.js';
+import { routeModels } from '../core/nim-router.js';
+import { setRoute, getCurrentText } from '../core/route-store.js';
 import { LANGUAGES } from '../core/languages.js';
 import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
 import { computeChapterStatuses } from '../core/sequencer.js';
@@ -279,6 +281,22 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
 });
 
 // Start a node: enter + opening tutor turn (no intro friction — the AI just begins).
+// Speed-probe the NIM candidate pool and pick this session's model. The "finding your fastest tutor"
+// popup calls this on node entry and again after a tutor failure. Stores the winner for the learner so
+// the teach/grade path uses it; returns the full ranked race for the popup to render.
+router.post('/learner/:learnerId/route', async (req, res) => {
+  try {
+    const { learnerId } = req.params;
+    const kind = req.body?.kind === 'vision' ? 'vision' : 'text';
+    const result = await routeModels(kind);
+    setRoute(learnerId, result);
+    res.json(result);
+  } catch (err) {
+    console.error('route probe failed:', err);
+    res.status(500).json({ error: 'route probe failed' });
+  }
+});
+
 router.post('/learner/:learnerId/node/:conceptId/start', requireNodeAccess, async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
@@ -289,7 +307,7 @@ router.post('/learner/:learnerId/node/:conceptId/start', requireNodeAccess, asyn
   } catch (err) {
     if (err instanceof LlmUnavailableError) {
       console.error('start: model unavailable —', err.detail);
-      return res.json({ message: await serviceDownMessage(req.body?.lang || 'en'), readyForGate: false, systemError: true });
+      return res.json({ message: await serviceDownMessage(req.body?.lang || 'en'), readyForGate: false, systemError: true, failedModel: getCurrentText(req.params.learnerId) });
     }
     console.error('Error starting node:', err);
     res.status(500).json({ error: 'Failed to start node' });
@@ -306,7 +324,7 @@ router.post('/learner/:learnerId/node/:conceptId/reply', requireNodeAccess, asyn
   } catch (err) {
     if (err instanceof LlmUnavailableError) {
       console.error('reply: model unavailable —', err.detail);
-      return res.json({ message: await serviceDownMessage(req.body?.lang || 'en'), readyForGate: false, systemError: true });
+      return res.json({ message: await serviceDownMessage(req.body?.lang || 'en'), readyForGate: false, systemError: true, failedModel: getCurrentText(req.params.learnerId) });
     }
     console.error('Error in reply:', err);
     res.status(500).json({ error: 'Failed to process reply' });
@@ -342,7 +360,7 @@ router.post('/learner/:learnerId/node/:conceptId/reply-stream', requireNodeAcces
   } catch (err) {
     if (err instanceof LlmUnavailableError) {
       console.error('reply-stream: model unavailable —', err.detail);
-      send('done', { message: await serviceDownMessage(req.body?.lang || 'en'), readyForGate: false, systemError: true });
+      send('done', { message: await serviceDownMessage(req.body?.lang || 'en'), readyForGate: false, systemError: true, failedModel: getCurrentText(req.params.learnerId) });
     } else {
       console.error('Error in reply-stream:', err);
       send('error', { error: 'Failed to process reply' });

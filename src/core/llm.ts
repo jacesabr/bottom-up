@@ -111,7 +111,7 @@ function shouldFallbackToNim(err: unknown): boolean {
  */
 export async function completeJson(
   messages: ChatMessage[],
-  opts?: { maxTokens?: number; onStream?: (textSoFar: string) => void }
+  opts?: { maxTokens?: number; onStream?: (textSoFar: string) => void; model?: string; modelFallback?: string }
 ): Promise<string> {
   const provider = resolveProvider();
   const maxTokens = opts?.maxTokens ?? 1024;
@@ -120,13 +120,16 @@ export async function completeJson(
   const callNim = (model: string) =>
     opts?.onStream ? nimCompleteStream(messages, maxTokens, opts.onStream, model) : nimComplete(messages, maxTokens, true, model);
   // PRIMARY NIM model, then the fallback NIM model (a DIFFERENT id) if the primary errors transiently —
-  // a busy/down/missing primary shouldn't strand a student when another free model can answer.
+  // a busy/down/missing primary shouldn't strand a student when another free model can answer. The
+  // dynamic router (nim-router.ts) passes a per-session `model` it speed-probed; otherwise use the default.
+  const primary = opts?.model || MODELS.text;
+  const fallback = opts?.modelFallback || MODELS.textFallback;
   const nim = async () => {
     try {
-      return await callNim(MODELS.text);
+      return await callNim(primary);
     } catch (err) {
-      if (MODELS.textFallback && MODELS.textFallback !== MODELS.text && isModelRetryable(err)) {
-        return await callNim(MODELS.textFallback);
+      if (fallback && fallback !== primary && isModelRetryable(err)) {
+        return await callNim(fallback);
       }
       throw err;
     }

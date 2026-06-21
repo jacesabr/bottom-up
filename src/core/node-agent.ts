@@ -221,6 +221,8 @@ export interface TeachTurnInput {
   conceptId?: string; // exam:subject:chapter:slug — selects the exam-aware persona/level
   track?: Track; // 'foundation' (default) | 'advanced' (e.g. JEE Advanced)
   advancedContent?: string | null; // extra depth/reading, surfaced ONLY on the advanced track
+  model?: string; // per-session NIM model chosen by the speed router (nim-router.ts); falls back to MODELS.text
+  modelFallback?: string; // in-session fallback model (router's 2nd-best)
 }
 
 export interface TeachTurnOutput {
@@ -494,7 +496,7 @@ export async function teachTurn(
   // maxTokens 1000 (was 700): the turn JSON is message + grading evidence; 700 could truncate the tail on
   // a verbose grading reply, leaving JSON that won't parse — which used to surface as "tutor unavailable"
   // even though the message had already streamed fine.
-  const raw = await completeJson(buildMessages(input), { maxTokens: 1000, onStream });
+  const raw = await completeJson(buildMessages(input), { maxTokens: 1000, onStream, model: input.model, modelFallback: input.modelFallback });
   const parsed = parseLooseJson<any>(raw);
   if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
     const cg = parsed.corpusGap;
