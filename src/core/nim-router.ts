@@ -1,0 +1,73 @@
+/**
+ * Dynamic NIM model router. Free NIM endpoints swing in speed/availability through the day (a model
+ * that's snappy now can time out 30 min later), so we don't hardcode one. Instead: each session we
+ * SPEED-PROBE a curated pool of candidates (thinking OFF) and pick the best by a 50/50 blend of live
+ * speed and a precomputed QUALITY score. The winner serves that session's calls; `models.ts` stays the
+ * fallback default. Quality is seeded from the 2026-06-20 NIM benchmark and refined by tools/nim-bench.
+ */
+import axios from 'axios';
+import { MODELS } from './models.js';
+
+const NIM_BASE = process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1';
+
+export interface Candidate { id: string; quality: number; } // quality: 0..1, precomputed
+
+/** Pool the router may pick from — PLAIN-INSTRUCT, JSON-clean only (reasoning models corrupt the
+ *  streamed JSON turn; gated ids 404). Env-overridable via NIM_CANDIDATES_TEXT / _VISION (comma list). */
+export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
+  text: [
+    { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.86 },
+    { id: 'qwen/qwen3-next-80b-a3b-instruct', quality: 0.95 },
+    { id: 'deepseek-ai/deepseek-v4-pro', quality: 0.97 },
+    { id: 'meta/llama-3.3-70b-instruct', quality: 0.88 },
+  ],
+  vision: [
+    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.85 },
+  ],
+};
+
+export interface ProbeResult { model: string; ok: boolean; latencyMs: number; quality: number; score: number; }
+export interface RouteResult { kind: 'text' | 'vision'; ranked: ProbeResult[]; winner: string; fallback: string; probedAt: number; }
+
+// Thinking OFF for probes (and ideally all turns) — hybrid models otherwise emit <think> that both slows
+// the probe and corrupts JSON. Matches the NIM_NO_THINK switch used elsewhere.
+const THINK_OFF = process.env.NIM_NO_THINK ? { chat_template_kwargs: { thinking: false } } : {};
+
+async function probeOne(model: string, key: string, timeoutMs: number): Promise<{ ok: boolean; latencyMs: number }> {
+  const t0 = Date.now();
+  try {
+    await axios.post(
+      `${NIM_BASE}/chat/completions`,
+      { model, messages: [{ role: 'user', content: 'Reply with the single word: ready' }], max_tokens: 4, temperature: 0, ...THINK_OFF },
+      { headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' }, timeout: timeoutMs }
+    );
+    return { ok: true, latencyMs: Date.now() - t0 };
+  } catch {
+    return { ok: false, latencyMs: Date.now() - t0 };
+  }
+}
+
+/**
+ * Speed-probe every candidate in parallel and rank by 0.5·speed + 0.5·quality (speed normalized so the
+ * fastest healthy probe = 1). Returns the ranked list + winning model id. Falls back to the models.ts
+ * default if there's no key or every probe fails — so a probe outage never strands a session.
+ */
+export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 8000): Promise<RouteResult> {
+  const fallback = kind === 'text' ? MODELS.text : MODELS.vision;
+  const key = process.env.NVIDIA_API_KEY;
+  const cands = CANDIDATES[kind];
+  const probedAt = Date.now();
+  if (!key || !cands.length) return { kind, ranked: [], winner: fallback, fallback, probedAt };
+
+  const probes = await Promise.all(cands.map((c) => probeOne(c.id, key, timeoutMs).then((p) => ({ ...c, ...p }))));
+  const oks = probes.filter((p) => p.ok);
+  if (!oks.length) return { kind, ranked: [], winner: fallback, fallback, probedAt };
+
+  const lats = oks.map((p) => p.latencyMs);
+  const min = Math.min(...lats), max = Math.max(...lats);
+  const speedNorm = (ms: number) => (max === min ? 1 : (max - ms) / (max - min));
+  const ranked: ProbeResult[] = oks
+    .map((p) => ({ model: p.id, ok: true, latencyMs: p.latencyMs, quality: p.quality, score: 0.5 * speedNorm(p.latencyMs) + 0.5 * p.quality }))
+    .sort((a, b) => b.score - a.score);
+  return { kind, ranked, winner: ranked[0].model, fallback, probedAt };
+}
