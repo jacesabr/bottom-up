@@ -11,7 +11,7 @@
    are single-line so nothing scrolls sideways. */
 .rp-modal {
   position: relative;
-  width: min(560px, 94vw);
+  width: min(760px, 94vw);
   max-height: min(90vh, 760px);
   display: flex; flex-direction: column;
   background: var(--card, #fff);
@@ -40,26 +40,32 @@
 .rp-intro { margin-top: 9px; font-size: 0.82rem; line-height: 1.5; color: var(--dim, #7c736a); flex: none; }
 .rp-intro strong { color: var(--ink, #1a1410); font-weight: 700; }
 
-/* The ONLY scrollable region — the two race lists. min-height:0 lets it shrink so the foot stays visible. */
-.rp-races { flex: 1 1 auto; overflow-y: auto; min-height: 0; margin: 6px -6px 0; padding: 0 6px; }
-.rp-races::-webkit-scrollbar { width: 7px; }
-.rp-races::-webkit-scrollbar-thumb { background: #e2dcd2; border-radius: 4px; }
-
-.rp-race { margin-top: 12px; }
-.rp-race-h { font-size: 0.85rem; font-weight: 700; color: var(--ink, #1a1410); }
-.rp-race-hint { font-weight: 400; color: var(--dim, #9a9189); font-size: 0.74rem; }
+/* Two races SIDE BY SIDE (text tutor | handwriting), split by a hairline divider, so both winners are seen
+   at a glance. Each column scrolls its OWN list (below) if the pool is long, so the modal itself never
+   scrolls — head, What-to-expect and the button always stay put. Collapses to stacked below 560px. */
+.rp-races { flex: none; display: flex; flex-direction: row; align-items: stretch; gap: 0; margin-top: 8px; min-height: 0; }
+.rp-race { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; padding: 0 16px; }
+.rp-race:first-child { padding-left: 0; }
+.rp-race:last-child { padding-right: 0; }
+.rp-race + .rp-race { border-left: 1px solid var(--rule, #ece7df); }
+.rp-race-h { display: flex; flex-direction: column; gap: 1px; flex: none; }
+.rp-race-title { font-size: 0.85rem; font-weight: 700; color: var(--ink, #1a1410); }
+.rp-race-hint { font-weight: 400; color: var(--dim, #9a9189); font-size: 0.72rem; }
 .rp-muted { color: var(--dim, #9a9189); font-size: 0.82rem; margin-top: 6px; font-style: italic; }
 
-/* Single-line rows that fit the width: flexible name (truncates) + two fixed stat columns. No table, so
-   nothing can overflow sideways. */
-.rp-rows { margin-top: 6px; display: flex; flex-direction: column; gap: 2px; }
+/* Single-line rows that fit the column: flexible name (truncates) + two fixed stat columns. The list scrolls
+   WITHIN its column past ~9 models (the winner is best-first, so it's always in view); the column header row
+   stays pinned while scrolling. No table, so nothing can overflow sideways. */
+.rp-rows { margin-top: 6px; display: flex; flex-direction: column; gap: 2px; overflow-y: auto; max-height: clamp(180px, 34vh, 340px); }
+.rp-rows::-webkit-scrollbar { width: 7px; }
+.rp-rows::-webkit-scrollbar-thumb { background: #e2dcd2; border-radius: 4px; }
 .rp-row {
   display: flex; align-items: center; gap: 10px;
   padding: 6px 9px; border-radius: 8px; font-size: 0.85rem;
   animation: rp-row 0.4s ease both;
 }
 @keyframes rp-row { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
-.rp-row.rp-rowhead { animation: none; padding: 2px 9px 0; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--dim, #a59c92); font-weight: 600; }
+.rp-row.rp-rowhead { animation: none; position: sticky; top: 0; z-index: 1; background: var(--card, #fff); padding: 2px 9px 4px; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--dim, #a59c92); font-weight: 600; }
 .rp-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink, #1a1410); }
 .rp-stat { flex: 0 0 64px; text-align: right; color: var(--ink, #3a332c); font-variant-numeric: tabular-nums; }
 .rp-stat.rp-q { flex-basis: 56px; color: var(--dim, #8a8178); }
@@ -100,3 +106,16 @@
 .rp-spinner span:nth-child(2) { animation-delay: 0.15s; }
 .rp-spinner span:nth-child(3) { animation-delay: 0.3s; }
 @keyframes rp-bounce { 0%, 100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(-6px); opacity: 1; } }
+
+/* Narrow screens: stack the two races vertically (the old single-column view) — divider becomes a top rule,
+   and tighten paddings/stat widths so the rows never overflow on a phone. */
+@media (max-width: 560px) {
+  .rp-overlay { padding: 10px; }
+  .rp-modal { padding: 18px 14px; }
+  .rp-races { flex-direction: column; }
+  .rp-race { padding: 0; }
+  .rp-race + .rp-race { border-left: none; border-top: 1px solid var(--rule, #ece7df); margin-top: 14px; padding-top: 12px; }
+  .rp-row { gap: 8px; padding-left: 8px; padding-right: 8px; }
+  .rp-stat { flex-basis: 54px; }
+  .rp-stat.rp-q { flex-basis: 46px; }
+}

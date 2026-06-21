@@ -20,7 +20,7 @@ const secs = (ms: number) => `${(ms / 1000).toFixed(1)}s`;
 function RaceList({ label, hint, r }: { label: string; hint: string; r: RouteResult | null }) {
   return (
     <div className="rp-race">
-      <div className="rp-race-h">{label} <span className="rp-race-hint">{hint}</span></div>
+      <div className="rp-race-h"><span className="rp-race-title">{label}</span><span className="rp-race-hint">{hint}</span></div>
       {!r && <div className="rp-spinner"><span /><span /><span /></div>}
       {r?.error && <div className="rp-muted">probe unavailable — using the safe default model.</div>}
       {r && !r.error && (
@@ -118,8 +118,8 @@ export default function RouterPopup({ apiBase, learnerId, mode, failedModel, onD
         </div>
 
         <div className="rp-races">
-          <RaceList label="Text tutor" hint="reads & teaches on every reply" r={textR} />
-          <RaceList label="Handwriting reader" hint="reads your scanned or drawn work" r={visR} />
+          <RaceList label="Text tutor" hint="you type or speak" r={textR} />
+          <RaceList label="Handwriting" hint="scan / draw → read into text" r={visR} />
         </div>
 
         <div className="rp-expect">
