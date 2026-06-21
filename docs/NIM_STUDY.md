@@ -96,25 +96,51 @@ router**.
   *availability* from *quality*. Produces a 0–1 quality score per candidate.
 - `src/core/nim-router.ts` — on each node entry, `routeModels()` **speed-probes** the candidate pool in
   parallel (thinking-off), drops dead/slow endpoints, and ranks the rest by **`0.5·speed + 0.5·quality`**.
-  Speed is an *absolute budget* (≤350 ms = 1.0, ≥4 s = 0) so quality genuinely counts, not speed-only.
+  Speed is an *absolute budget* (≤floor = 1.0, ≥ceiling = 0) so quality genuinely counts, not speed-only.
+  The budget is **kind-aware**: text (≤350 ms…≥4 s) vs **vision** (≤3 s…≥25 s) — vision is inherently 7–17 s,
+  so a text budget would zero out every VLM and collapse vision to pure-quality (always the *slowest* best
+  model); the wider vision band lets a fast-and-good VLM beat a slow-and-perfect one.
 - `src/core/route-store.ts` — stores the winning model per learner; `respond()`/`teachTurn()` thread it
   into `completeJson({ model, modelFallback })`. The 2nd-best is the in-call fallback; no probe → `MODEL_TEXT`.
 - `POST /api/learner/:id/route` — runs the probe, stores the winner, returns the full ranked race.
 - `RouterPopup.tsx` — the "finding your fastest tutor" modal at node entry **and after any tutor failure**
   (it stops, names the dead model via `failedModel`, re-probes, retries with the new winner; capped at 3).
 
-**Candidate pool (2026-06-21 bench, thinking-off):** qwen3-next-80b (q 0.75, reliable) · ministral-14b
-(0.63) · llama-3.1-8b (0.63, fastest) · deepseek-v4-pro (~0.9, often slow → probe-gated). Reasoning models
-excluded (break JSON); `mistral-small-24b` / `qwen2.5-7b` 404 on this account; `llama-3.3-70b` always slow.
+**Candidate pool — FULL-catalog sweep (2026-06-21, thinking-off).** `nim-bench.ts` now fetches the entire
+`/v1/models` list and tests every chat-text model, not a hand-picked few: **121 models → 90 text candidates
+→ 37 responded → 27 cleared the 0.6 quality floor**. The router pool is the **speed×quality frontier** of the
+qualified set (not all 27 — a smaller pool is cheaper to probe and every member is worth winning):
+
+| model | quality | speed | role |
+|---|---|---|---|
+| `deepseek-ai/deepseek-v4-pro` | 1.00 | ~1.4 s | best quality |
+| `mistralai/mistral-nemotron` | 0.88 | ~0.6 s | high quality **and** fast |
+| `qwen/qwen3-next-80b-a3b-instruct` | 0.75 | ~1.2 s | reliable, proven in prod |
+| `nvidia/nemotron-3-nano-30b-a3b` | 0.75 | ~0.4 s | fastest good model |
+| `meta/llama-3.1-8b-instruct` | 0.63 | ~0.4 s | fast fallback |
+| `mistralai/ministral-14b-instruct-2512` | 0.63 | ~0.8 s | fast fallback |
+
+Below-floor models are excluded entirely (e.g. `mixtral-8x7b` 0.25, `sarvam-m` 0.13) — never probed, never
+served. Reasoning models still excluded (break JSON). The 0.6 floor is well-tuned to the real distribution:
+the lowest kept model is 0.63, the highest excluded 0.25 — a clean gap.
 
 **Live verification:** `/route` returns HTTP 200 on both prod APIs and adapts run-to-run (e.g. picked qwen
 on bottom-up and deepseek on IE in the same minute) — auto-routing around whatever is slow that moment.
 
-**Vision** (`tools/nim-vision-bench.ts`): same idea for the sketch-grading model. Test set = real handwritten
-math pages from the public HF dataset `HumynLabs/English-Handwritten-Math-Notes-Dataset`, rasterized to PNG
-(`tools/fetch-vision-set.mjs`), with **ground truth annotated by Opus 4.8 vision** (Claude Code). 2026-06-21:
-`nemotron-nano-12b-vl`, `llama-3.2-11b-vision`, `llama-3.2-90b-vision` all read at ~83%; nemotron is fastest
-(~11 s) so it leads the vision pool. `phi-3.5-vision` / `qwen2.5-vl-72b` were unavailable on the free tier.
-Vision turns are slow (~11 s+) — a real constraint. (Watermarked pages kept local, not committed.)
+**Vision** (`tools/nim-vision-bench.ts`): same full-catalog idea for the sketch-grading model. Test set =
+real handwritten math pages from the public HF dataset `HumynLabs/English-Handwritten-Math-Notes-Dataset`,
+rasterized to PNG (`tools/fetch-vision-set.mjs`), **ground truth annotated by Opus 4.8 vision** (Claude Code).
+2026-06-21 sweep of all catalog VLMs:
+
+| model | quality | speed |
+|---|---|---|
+| `meta/llama-3.2-90b-vision-instruct` | 1.00 (6/6) | ~17 s |
+| `nvidia/llama-3.1-nemotron-nano-vl-8b-v1` | 0.83 | ~7 s (fastest VLM) |
+| `nvidia/nemotron-nano-12b-v2-vl` | 0.83 | ~12 s |
+| `meta/llama-3.2-11b-vision-instruct` | 0.67 | ~10 s |
+
+`phi-3-vision`, `cosmos-reason2-8b`, `neva-22b` were unavailable on the free tier. Vision turns are slow
+(~7–17 s) — a real constraint, which is exactly why the speed budget is kind-aware (above): without it the
+router would always pick the 17 s model. (Watermarked pages kept local, not committed.)
 
 > Cost rule still holds: the bench + probes hit **only free NIM endpoints**; Anthropic is never called.

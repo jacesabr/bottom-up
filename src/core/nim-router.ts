@@ -14,21 +14,24 @@ export interface Candidate { id: string; quality: number; } // quality: 0..1, pr
 
 /** Pool the router may pick from — PLAIN-INSTRUCT, JSON-clean only (reasoning models corrupt the
  *  streamed JSON turn; gated ids 404). Env-overridable via NIM_CANDIDATES_TEXT / _VISION (comma list). */
-// Quality from tools/nim-bench (2026-06-21, thinking-off, deterministic battery). deepseek-v4-pro is kept
-// despite no measured quality (it kept timing out) — it's a strong model WHEN up, and the live probe drops
-// it automatically when it's slow that minute, so it costs nothing to keep as an aspirational candidate.
-// llama-3.3-70b dropped (consistently times out, no edge over qwen/llama-8b); the 404 ids removed.
+// Quality from the FULL-catalog sweep (tools/nim-bench + nim-vision-bench, 2026-06-21): 121 NIM models →
+// 90 chat-text candidates → 37 responded; then quality-gated at QUALITY_FLOOR. The pool below is the
+// speed×quality FRONTIER of the qualified set (top quality + genuinely fast) — not the whole list, since a
+// smaller pool is cheaper to probe and every member is worth winning. Full results: .audit-tmp/nim-bench.json.
 export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
   text: [
-    { id: 'qwen/qwen3-next-80b-a3b-instruct', quality: 0.75 },
-    { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.63 },
-    { id: 'meta/llama-3.1-8b-instruct', quality: 0.63 },
-    { id: 'deepseek-ai/deepseek-v4-pro', quality: 0.9 }, // unmeasured (timeouts); probe-gated to fast windows
+    { id: 'deepseek-ai/deepseek-v4-pro', quality: 1.0 },             // best quality (~1.4s when up)
+    { id: 'mistralai/mistral-nemotron', quality: 0.88 },            // high quality + fast (~0.6s)
+    { id: 'qwen/qwen3-next-80b-a3b-instruct', quality: 0.75 },       // reliable, proven in prod
+    { id: 'nvidia/nemotron-3-nano-30b-a3b', quality: 0.75 },        // fastest good model (~0.4s)
+    { id: 'meta/llama-3.1-8b-instruct', quality: 0.63 },             // fast fallback
+    { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.63 }, // fast fallback
   ],
   vision: [
-    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.83 }, // tools/nim-vision-bench (2026-06-21, fastest)
-    { id: 'meta/llama-3.2-11b-vision-instruct', quality: 0.83 },
-    { id: 'meta/llama-3.2-90b-vision-instruct', quality: 0.83 }, // reliable but ~2x slower
+    { id: 'meta/llama-3.2-90b-vision-instruct', quality: 1.0 },         // best (6/6) but ~17s
+    { id: 'nvidia/llama-3.1-nemotron-nano-vl-8b-v1', quality: 0.83 },   // good + fastest VLM (~7s)
+    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.83 },
+    { id: 'meta/llama-3.2-11b-vision-instruct', quality: 0.67 },
   ],
 };
 
@@ -87,7 +90,10 @@ export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 
   // Absolute speed score, NOT min-max over the tiny live set (that crushes the 2nd-fastest to 0 even when
   // it's only ~300ms slower, making 50/50 behave like speed-only). ≤FAST_FLOOR ms = full marks; ≥SLOW_CEIL
   // = 0 — so a slightly-slower but higher-quality model can still win, which is the balance we want.
-  const FAST_FLOOR = 350, SLOW_CEIL = 4000;
+  // Budget is KIND-AWARE: text turns are sub-second, but vision (image→text) is inherently 7–17s, so a
+  // text budget would zero out every VLM and collapse vision selection to pure quality (always the slowest
+  // best model). Vision gets its own wider band so a fast-and-good VLM can still beat a slow-and-perfect one.
+  const [FAST_FLOOR, SLOW_CEIL] = kind === 'vision' ? [3000, 25000] : [350, 4000];
   const speedNorm = (ms: number) => Math.max(0, Math.min(1, 1 - (ms - FAST_FLOOR) / (SLOW_CEIL - FAST_FLOOR)));
   const okRanked: ProbeResult[] = oks
     .map((p) => ({ model: p.id, ok: true, latencyMs: p.latencyMs, quality: p.quality, score: 0.5 * speedNorm(p.latencyMs) + 0.5 * p.quality }))
