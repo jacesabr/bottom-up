@@ -25,6 +25,14 @@ janky/too-fast router popup. Root-caused from `bu_llm_call` + the code.
 - **Popup — `RouterPopup.tsx` + `.css`.** Committed the flex CSS (markup/CSS mismatch caused the overflow
   jank); added a ~1.8s minimum dwell + `ready = concluded && dwell` gate + a live stage-narration line so the
   race is seen, not flashed past.
+- **Lost the thread — `teach-loop.ts`.** Defence-in-depth for the same symptom from the summary side.
+  (1) `buildContext` now always keeps the last 6 turns verbatim alongside the running summary — if the
+  summary watermark ever runs ahead of the live turns (the mid-lesson **language-switch** path still
+  re-enters the node → `summarizeOnEntry`), `recent` could go empty and the tutor would reconstruct from the
+  summary's older frontier, answering as if the question it just asked never happened (e.g. re-deriving a
+  step the learner already finished). (2) `respond()` skips the `learner_turn` insert when it exactly equals
+  the last event — the failure-popup retry re-sends the same message, which used to double-log it and
+  pollute the summary.
 
 ---
 

@@ -10,7 +10,7 @@ import {
   buCorpusGap,
   buFigure,
 } from '../db/schema.js';
-import { eq, and, asc, gt, sql } from 'drizzle-orm';
+import { eq, and, asc, desc, gt, sql } from 'drizzle-orm';
 import { recomputeAvailabilityAfterPass } from './sequencer.js';
 import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, summarizeConversation, type KeyMove } from './node-agent.js';
 import { languageInstruction } from './languages.js';
@@ -98,9 +98,17 @@ async function buildContext(learnerId: string, conceptId: string) {
     .where(and(eq(buChatSummary.learnerId, learnerId), eq(buChatSummary.conceptId, conceptId)));
   const summaryRow = rows[0];
   const recent = await turnsSince(learnerId, conceptId, summaryRow?.watermark ?? null);
+  // Backstop against a lost thread: if the watermark has somehow advanced past the live turns (e.g. a
+  // mid-lesson re-entry on a language switch folded them into the summary), `recent` can be empty/tiny and
+  // the tutor would forget the very question it just asked, then reconstruct from the summary's older
+  // frontier (loops back to an already-answered step). Always keep at least the last TAIL turns verbatim
+  // alongside the summary so the immediate thread can never be summarized away. Cheap insurance.
+  const TAIL = 6;
+  const dialogue =
+    recent.length >= TAIL ? recent : (await turnsSince(learnerId, conceptId, null)).slice(-TAIL);
   return {
     summary: summaryRow?.summary ?? null,
-    recentDialogue: recent.map((t) => ({ role: t.role, content: t.content })),
+    recentDialogue: dialogue.map((t) => ({ role: t.role, content: t.content })),
   };
 }
 
@@ -299,13 +307,27 @@ export async function respond(
   const c = await loadConcept(conceptId);
 
   if (learnerMessage && learnerMessage.trim()) {
-    await db.insert(buEvent).values({
-      learnerId,
-      conceptId,
-      chapterId: c.chapterId,
-      type: 'learner_turn',
-      payload: { message: learnerMessage.trim() },
-    });
+    const msg = learnerMessage.trim();
+    // A turn that died mid-flight already logged this learner message before the model failed; the client
+    // re-sends the SAME message on retry (failure-popup → retryRef). Don't double-log it — a duplicate
+    // pollutes the running summary and the replayed history. This only skips when the identical message is
+    // the very last event (i.e. a retry); a learner legitimately repeating a word has a tutor turn between.
+    const last = await db
+      .select()
+      .from(buEvent)
+      .where(and(eq(buEvent.learnerId, learnerId), eq(buEvent.conceptId, conceptId)))
+      .orderBy(desc(buEvent.ts))
+      .limit(1);
+    const isRetryDuplicate = last[0]?.type === 'learner_turn' && (last[0]?.payload as any)?.message === msg;
+    if (!isRetryDuplicate) {
+      await db.insert(buEvent).values({
+        learnerId,
+        conceptId,
+        chapterId: c.chapterId,
+        type: 'learner_turn',
+        payload: { message: msg },
+      });
+    }
   }
 
   const checklist = await loadChecklist(learnerId, conceptId, c.keyMoves);
