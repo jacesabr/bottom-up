@@ -126,10 +126,19 @@
 
 .thinking {
   align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   color: var(--dim);
   font-size: 0.85rem;
-  font-style: italic;
   padding: 4px 8px;
+}
+.thinking-star { color: var(--accent); font-size: 0.95rem; animation: thinking-pulse 1.1s ease-in-out infinite; }
+.thinking-word { font-weight: 600; }
+.thinking-secs { font-size: 0.78rem; opacity: 0.6; }
+@keyframes thinking-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
 .node-done {

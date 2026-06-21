@@ -3,6 +3,7 @@ import { MathText } from '../lib/MathText';
 import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
+import ThinkingIndicator from './ThinkingIndicator';
 import { speakSmart, speakSequence, speakWithCues, LANG_INVITES, type SpeakSegment, recordAndTranscribe, stopSpeaking } from '../lib/voice';
 import '../styles/NodeView.css';
 
@@ -596,7 +597,7 @@ export default function NodeView({
                 </div>
               </div>
             ))}
-            {busy && !messages[messages.length - 1]?.streaming && <div className="thinking">thinking…</div>}
+            {busy && !messages[messages.length - 1]?.streaming && <ThinkingIndicator />}
 
             {done && (
               <div className="node-done">
