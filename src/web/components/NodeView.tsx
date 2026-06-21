@@ -4,6 +4,7 @@ import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
 import ThinkingIndicator from './ThinkingIndicator';
+import RouterPopup from './RouterPopup';
 import { speakSmart, speakSequence, speakWithCues, LANG_INVITES, type SpeakSegment, recordAndTranscribe, stopSpeaking } from '../lib/voice';
 import '../styles/NodeView.css';
 
@@ -112,6 +113,11 @@ export default function NodeView({
   const scroller = useRef<HTMLDivElement>(null);
   const padRef = useRef<ScratchpadHandle>(null);
   const base = `${apiBase}/learner/${learnerId}/node/${conceptId}`;
+  // NIM speed-router popup: probe + pick the session's tutor model on node entry ('start') and after a
+  // tutor failure ('failure'). Holds the lesson until it resolves. retryRef re-runs the failed action.
+  const [routePopup, setRoutePopup] = useState<{ mode: 'start' | 'failure'; failedModel?: string } | null>({ mode: 'start' });
+  const retryRef = useRef<(() => void) | null>(null);
+  const routeFails = useRef(0);
   const speechCode = langs.find((l) => l.code === lang)?.speech || 'en-IN';
 
   useEffect(() => {
@@ -159,6 +165,7 @@ export default function NodeView({
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      if (routePopup) return; // hold the lesson until the "finding your fastest tutor" popup resolves
       setBusy(true);
       try {
         const res = await fetch(`${base}/start`, {
@@ -168,6 +175,7 @@ export default function NodeView({
         }).catch(() => null);
         if (cancelled) return;
         if (!res || !res.ok) {
+          if (routeFails.current++ < 3) { setRoutePopup({ mode: 'failure' }); return; } // re-probe + retry
           setMessages([{ role: 'tutor', text: SERVICE_DOWN_TEXT }]);
           setAwaitingStart(false);
           return;
@@ -175,10 +183,12 @@ export default function NodeView({
         const data = await res.json().catch(() => ({} as any));
         if (cancelled) return;
         if (data.systemError) {
+          if (routeFails.current++ < 3) { setRoutePopup({ mode: 'failure', failedModel: data.failedModel }); return; }
           setMessages([{ role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
           setAwaitingStart(false);
           return;
         }
+        routeFails.current = 0; // healthy start — reset the failure counter
         // Replay any prior conversation for this node, then the opening/continue message last.
         const history: Msg[] = (data.history ?? []).map((h: { role: 'tutor' | 'learner'; text: string }) => ({
           role: h.role,
@@ -209,7 +219,7 @@ export default function NodeView({
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [conceptId, lang]);
+  }, [conceptId, lang, routePopup]);
 
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
@@ -307,8 +317,8 @@ export default function NodeView({
     setMessages((m) => [...m, { role: 'learner', text: saidText }, { role: 'tutor', text: opening }]);
   };
 
-  const send = async () => {
-    const text = input.trim();
+  const send = async (retryText?: string) => {
+    const text = (retryText ?? input).trim();
     if (!text || busy) return;
     stopSpeaking(); // a reply means they're moving on — cut any read-aloud still playing
     setHighlight(null);
@@ -323,9 +333,7 @@ export default function NodeView({
         ]);
       return;
     }
-    setInput('');
-    setShowEq(false);
-    setMessages((m) => [...m, { role: 'learner', text }]);
+    if (!retryText) { setInput(''); setShowEq(false); setMessages((m) => [...m, { role: 'learner', text }]); }
     setBusy(true);
 
     // Update the in-flight streaming tutor bubble (creating it on the first delta); keep `streaming`
@@ -407,6 +415,15 @@ export default function NodeView({
         }
       }
       if (finalData) {
+        if (finalData.systemError) {
+          // tutor model died mid-session → drop the failed bubble, pop the router to re-probe + retry
+          setMessages((m) => { const c = [...m]; for (let i = c.length - 1; i >= 0; i--) { if (c[i].role === 'tutor' && c[i].streaming) { c.splice(i, 1); break; } } return c; });
+          retryRef.current = () => send(text);
+          if (routeFails.current++ < 3) setRoutePopup({ mode: 'failure', failedModel: finalData.failedModel });
+          else finalizeTutor(SERVICE_DOWN_TEXT);
+          return;
+        }
+        routeFails.current = 0;
         finalizeTutor(finalData.message || SERVICE_DOWN_TEXT, finalData.figure);
         applyProgress(finalData);
       } else if (gotDelta) {
@@ -549,6 +566,15 @@ export default function NodeView({
 
   return (
     <div className="tutor-shell">
+      {routePopup && (
+        <RouterPopup
+          apiBase={apiBase}
+          learnerId={learnerId}
+          mode={routePopup.mode}
+          failedModel={routePopup.failedModel}
+          onDone={() => { const r = retryRef.current; retryRef.current = null; setRoutePopup(null); if (r) r(); }}
+        />
+      )}
       <div className="tutor-topbar">
         <button className="back-btn" onClick={onBack}>← Chapter</button>
         <div className="checklist-strip" title="Key ideas shown">

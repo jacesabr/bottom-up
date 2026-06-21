@@ -65,13 +65,15 @@ export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 
 
   const probes = await Promise.all(cands.map((c) => probeOne(c.id, key, timeoutMs).then((p) => ({ ...c, ...p }))));
   const oks = probes.filter((p) => p.ok);
-  if (!oks.length) return { kind, ranked: [], winner: fallback, fallback, probedAt };
+  // Failed candidates kept for display (the popup shows the full race, incl. ✗ timeouts) — never selected.
+  const failedRows: ProbeResult[] = probes.filter((p) => !p.ok).map((p) => ({ model: p.id, ok: false, latencyMs: p.latencyMs, quality: p.quality, score: 0 }));
+  if (!oks.length) return { kind, ranked: failedRows, winner: fallback, fallback, probedAt };
 
   const lats = oks.map((p) => p.latencyMs);
   const min = Math.min(...lats), max = Math.max(...lats);
   const speedNorm = (ms: number) => (max === min ? 1 : (max - ms) / (max - min));
-  const ranked: ProbeResult[] = oks
+  const okRanked: ProbeResult[] = oks
     .map((p) => ({ model: p.id, ok: true, latencyMs: p.latencyMs, quality: p.quality, score: 0.5 * speedNorm(p.latencyMs) + 0.5 * p.quality }))
     .sort((a, b) => b.score - a.score);
-  return { kind, ranked, winner: ranked[0].model, fallback, probedAt };
+  return { kind, ranked: [...okRanked, ...failedRows], winner: okRanked[0].model, fallback, probedAt };
 }
