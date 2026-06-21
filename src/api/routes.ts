@@ -1,6 +1,6 @@
 import express from 'express';
 import { db } from '../db/index.js';
-import { buNodePerformance, buVisit } from '../db/schema.js';
+import { buNodePerformance, buVisit, buEvent } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures, serviceDownMessage } from '../core/teach-loop.js';
 import { LlmUnavailableError } from '../core/llm.js';
@@ -290,6 +290,9 @@ router.post('/learner/:learnerId/route', async (req, res) => {
     const kind = req.body?.kind === 'vision' ? 'vision' : 'text';
     const result = await routeModels(kind);
     setRoute(learnerId, result);
+    // Persist the probe race (the stats shown to the learner) for later quality auditing — fire-and-forget,
+    // real learner ids only (skip admin/smoke probes).
+    if (/^[0-9a-f-]{36}$/i.test(learnerId)) db.insert(buEvent).values({ learnerId, type: 'route_probe', payload: result as any }).catch(() => {});
     res.json(result);
   } catch (err) {
     console.error('route probe failed:', err);

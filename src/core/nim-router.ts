@@ -32,6 +32,12 @@ export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
   ],
 };
 
+// Quality is a PREREQUISITE GATE, not a co-equal factor: a model must be "good" (precomputed quality ≥
+// QUALITY_FLOOR, from tools/nim-bench) to even ENTER the pool. Below-floor models are never probed and never
+// served — we never want a weak model in front of a learner, and a smaller pool is cheaper to probe. Among
+// the qualified (good) models, the live speed probe decides. Env-tunable via NIM_QUALITY_FLOOR.
+export const QUALITY_FLOOR = Number(process.env.NIM_QUALITY_FLOOR ?? 0.6);
+
 export interface ProbeResult { model: string; ok: boolean; latencyMs: number; quality: number; score: number; }
 export interface RouteResult { kind: 'text' | 'vision'; ranked: ProbeResult[]; winner: string; fallback: string; probedAt: number; }
 
@@ -67,7 +73,8 @@ async function probeOne(model: string, key: string, timeoutMs: number, kind: 'te
 export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 8000): Promise<RouteResult> {
   const fallback = kind === 'text' ? MODELS.text : MODELS.vision;
   const key = process.env.NVIDIA_API_KEY;
-  const cands = CANDIDATES[kind];
+  const cands = CANDIDATES[kind].filter((c) => c.quality >= QUALITY_FLOOR); // quality gate — only "good" models
+
   const probedAt = Date.now();
   if (!key || !cands.length) return { kind, ranked: [], winner: fallback, fallback, probedAt };
 

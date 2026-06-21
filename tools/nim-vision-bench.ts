@@ -19,13 +19,14 @@ const NIM_BASE = process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.co
 const KEY = process.env.NVIDIA_API_KEY!;
 const SET_DIR = '.audit-tmp/vision-set';
 
-const CANDIDATES = [
-  'nvidia/nemotron-nano-12b-v2-vl',
-  'meta/llama-3.2-90b-vision-instruct',
-  'meta/llama-3.2-11b-vision-instruct',
-  'microsoft/phi-3.5-vision-instruct',
-  'qwen/qwen2.5-vl-72b-instruct',
-];
+// Vision chat-VLMs (image+text → text) pulled live from the catalog. Excludes CLIP/embeddings/parse/chart
+// models, which aren't chat graders. So "all available" vision models get tested, current as NIM changes.
+const V_INCLUDE = /-vl\b|vision|neva|cosmos-reason/i;
+const V_EXCLUDE = /embed|nvclip|\bclip\b|parse|deplot|retriev|rerank|ocdr/i;
+async function listVisionModels(): Promise<string[]> {
+  const r = await axios.get(`${NIM_BASE}/models`, { headers: { Authorization: `Bearer ${KEY}` }, timeout: 30000 });
+  return (r.data?.data || []).map((d: any) => d.id).filter((id: string) => V_INCLUDE.test(id) && !V_EXCLUDE.test(id));
+}
 
 // Ground truth (Opus 4.8 vision annotation). `expect`: lowercase tokens that MUST all appear in a correct
 // reading of the page. Chosen to be unambiguous (headings + distinctive values), tolerant of OCR spacing.
@@ -66,6 +67,7 @@ async function ask(model: string, url: string): Promise<{ ok: boolean; ms: numbe
 
 async function main() {
   if (!KEY) { console.error('NVIDIA_API_KEY missing'); process.exit(1); }
+  const CANDIDATES = await listVisionModels();
   const urls: Record<string, string> = {};
   for (const it of ITEMS) { const u = await dataUrl(it.img); if (u) urls[it.img] = u; }
   const present = ITEMS.filter((it) => urls[it.img]);
