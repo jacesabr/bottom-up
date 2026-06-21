@@ -763,7 +763,7 @@ export default function NodeView({
                     {listening ? '⏹ Tap to stop' : '🎤 Speak'}
                   </button>
                   <button className="notation-btn" onClick={() => setShowEq((s) => !s)} title="Insert equation">∑ Math</button>
-                  <button className="btn-primary" onClick={send} disabled={busy || !input.trim()}>Send</button>
+                  <button className="btn-primary" onClick={() => send()} disabled={busy || !input.trim()}>Send</button>
                 </div>
               </div>
             </div>
