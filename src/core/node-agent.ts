@@ -389,13 +389,13 @@ Return ONLY a JSON object, no prose around it (write "message" in natural Englis
 }`;
 
   const summaryBlock = input.priorSummary
-    ? `WHAT'S HAPPENED SO FAR (summary of the earlier part of this conversation — treat as already-said context):\n${input.priorSummary}\n\n`
+    ? `YOUR PRIVATE NOTE FROM EARLIER (your own recap of past sessions — NOT something the student has just said; they have not spoken yet this session):\n${input.priorSummary}\n\n`
     : '';
 
   const user = transcript
     ? `${summaryBlock}Recent conversation:\n${transcript}\n\nProduce the next tutor turn + checklist delta as JSON.`
     : input.priorSummary
-      ? `${summaryBlock}The student is returning to this concept. Warmly pick up where you left off (don't repeat what's already covered) and ask ONE gentle next question. Return JSON.`
+      ? `${summaryBlock}The student is re-entering this concept and has NOT said anything yet this session. Do NOT open by praising, agreeing with, or reacting to a "point" as if they just made one — the note above is your own memory, not their words. Instead, in one warm line re-anchor what you were exploring together (don't re-teach what's covered), then ask ONE gentle next question that moves it forward. Return JSON.`
       : `Open the lesson: name the concept in plain, friendly words so the student knows what we're about to build, then ask ONE gentle opening question that elicits key move [0]. Do NOT greet or say hi (a warm welcome is shown separately) — go straight into the topic, warmly and simply. Keep it short and human. Return JSON.`;
 
   return [
@@ -566,7 +566,9 @@ export async function summarizeConversation(
   const messages: ChatMessage[] = [
     {
       role: 'system',
-      content: `You compress a tutoring conversation into a short resume note (max ~120 words). Capture, as compact bullets: what's been covered/explained, what the student clearly understands, what's still shaky or unclear, and where the conversation left off. No fluff. Output ONLY the note.`,
+      content: `You compress a tutoring conversation into a short resume note (max ~120 words). Capture, as compact bullets: what's been covered/explained, what the student clearly understands, what's still shaky or unclear, and where the conversation left off. No fluff. Output ONLY the note.
+
+STAY GROUNDED: summarise ONLY what was actually said in the transcript. Do NOT introduce topics or claims that were not discussed. If the student has not spoken yet, say so plainly rather than inventing what they understand.`,
     },
     {
       role: 'user',

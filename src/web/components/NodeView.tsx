@@ -98,6 +98,12 @@ export default function NodeView({
   const [gateAnswer, setGateAnswer] = useState('');
   const [gateFeedback, setGateFeedback] = useState<{ ok: boolean; text: string } | null>(null);
   const [done, setDone] = useState(false);
+  // After a CORRECT check we never auto-advance — the student reads the feedback for as long as they like,
+  // then taps "Move on →" (or "Finish →" on the last check). null = this check not yet cleared (show Submit).
+  const [gateCleared, setGateCleared] = useState<{ allPassed: boolean; message?: string } | null>(null);
+  // The "close-up of the material" recap shown between the dialogue and the checks (concept title + plain
+  // words + the material to re-read). Fetched lazily once the lesson is ready for its checks.
+  const [recap, setRecap] = useState<{ title: string; brief: string; explanation: string } | null>(null);
 
   const [langs, setLangs] = useState<LangOpt[]>([]);
   const [lang, setLang] = useState<string>(() => localStorage.getItem('lang') || 'en');
@@ -247,6 +253,21 @@ export default function NodeView({
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
   }, [messages, busy]);
+
+  // Once the lesson is ready for its checks, fetch the concept material for the recap "close-up" card so the
+  // hand-off from dialogue to checks is a deliberate review step, not an abrupt jump. Fetched once.
+  useEffect(() => {
+    if (!readyForGate || gate || done || recap) return;
+    let cancelled = false;
+    fetch(`${base}/detail`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (!cancelled && d?.concept)
+          setRecap({ title: d.concept.title ?? '', brief: d.concept.brief ?? '', explanation: d.concept.explanation ?? '' });
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [readyForGate, gate, done, recap, base]);
 
   // Leaving the node (unmount): cut any read-aloud that's still playing so it doesn't follow us out.
   useEffect(() => () => stopSpeaking(), []);
@@ -531,9 +552,18 @@ export default function NodeView({
     }
   };
 
+  // Last check cleared → the student taps "Finish": append the closing tutor message and mark the node done.
+  const finishNode = () => {
+    if (gateCleared?.message) setMessages((m) => [...m, { role: 'tutor', text: gateCleared.message! }]);
+    setGate(null);
+    setGateCleared(null);
+    setDone(true);
+  };
+
   const poseNextGate = async () => {
     setBusy(true);
     setGateFeedback(null);
+    setGateCleared(null);
     setGateAnswer('');
     try {
       const res = await fetch(`${base}/gate`, { method: 'POST' });
@@ -584,13 +614,10 @@ export default function NodeView({
       }
       routeFails.current = 0;
       setGateFeedback({ ok: !!data.correct, text: data.feedback || data.message || SERVICE_DOWN_TEXT });
-      if (data.allPassed) {
-        setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
-        setDone(true);
-        setGate(null);
-      } else if (data.correct) {
-        // cleared this gate → advance to the next one after a beat
-        setTimeout(poseNextGate, 900);
+      if (data.correct) {
+        // Cleared this check. Do NOT auto-advance — let the student read the feedback for as long as they
+        // like, then tap "Move on →" (next check) or "Finish →" (last check). poseNextGate/finishNode reset.
+        setGateCleared({ allPassed: !!data.allPassed, message: data.message });
       }
       // incorrect → keep the same gate, feedback shown, allow retry
     } catch {
@@ -681,8 +708,21 @@ export default function NodeView({
             )}
 
             {!done && readyForGate && !gate && (
-              <div className="gate-cta">
-                <button className="btn-primary sm" onClick={poseNextGate}>I'm ready →</button>
+              <div className="lesson-recap">
+                <div className="recap-badge">✓ Lesson complete — {shown}/{checklist.length} key ideas shown</div>
+                {recap?.title && <h3 className="recap-title">{recap.title}</h3>}
+                {recap?.brief && <p className="recap-brief">{recap.brief}</p>}
+                {recap?.explanation && (
+                  <div className="recap-material">
+                    <div className="recap-h">A close-up of the material</div>
+                    <div className="recap-body"><MathText>{recap.explanation}</MathText></div>
+                  </div>
+                )}
+                <p className="recap-lead">
+                  Have a read back over this — and scroll up through our chat if you'd like. When you're ready,
+                  take your checks. There's no rush, and you can take them one at a time.
+                </p>
+                <button className="btn-primary" onClick={poseNextGate}>Continue to the checks →</button>
               </div>
             )}
 
@@ -697,7 +737,7 @@ export default function NodeView({
                   <div className="gate-opts">
                     {gate.options.map((o: string, i: number) => (
                       <label key={i} className={gateAnswer === o ? 'gate-opt sel' : 'gate-opt'}>
-                        <input type="radio" name="g" value={o} checked={gateAnswer === o} onChange={(e) => setGateAnswer(e.target.value)} />
+                        <input type="radio" name="g" value={o} checked={gateAnswer === o} disabled={!!gateCleared} onChange={(e) => setGateAnswer(e.target.value)} />
                         <MathText>{o}</MathText>
                       </label>
                     ))}
@@ -709,6 +749,7 @@ export default function NodeView({
                     className="gate-input"
                     placeholder="Type your answer, e.g. 2^3 * 3^2 * 5"
                     value={gateAnswer}
+                    disabled={!!gateCleared}
                     onChange={(e) => setGateAnswer(e.target.value)}
                   />
                 )}
@@ -718,6 +759,7 @@ export default function NodeView({
                     className="gate-textarea"
                     placeholder="Write your explanation in full…"
                     value={gateAnswer}
+                    disabled={!!gateCleared}
                     onChange={(e) => setGateAnswer(e.target.value)}
                   />
                 )}
@@ -732,9 +774,15 @@ export default function NodeView({
                   </div>
                 )}
 
-                <button className="btn-primary sm" onClick={submitGate} disabled={busy}>
-                  {gate.answerType === 'sketch' ? 'Submit drawing' : 'Submit'}
-                </button>
+                {gateCleared ? (
+                  <button className="btn-primary sm move-on" onClick={gateCleared.allPassed ? finishNode : poseNextGate}>
+                    {gateCleared.allPassed ? 'Finish →' : 'Move on →'}
+                  </button>
+                ) : (
+                  <button className="btn-primary sm" onClick={submitGate} disabled={busy}>
+                    {gate.answerType === 'sketch' ? 'Submit drawing' : 'Submit'}
+                  </button>
+                )}
               </div>
             )}
           </div>
