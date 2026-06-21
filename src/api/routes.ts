@@ -4,8 +4,8 @@ import { buNodePerformance, buVisit, buEvent } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures, serviceDownMessage } from '../core/teach-loop.js';
 import { LlmUnavailableError } from '../core/llm.js';
-import { routeModels } from '../core/nim-router.js';
-import { setRoute, getCurrentText, getVisionModel } from '../core/route-store.js';
+import { routeModels, isAllowedModel } from '../core/nim-router.js';
+import { setRoute, setRoutePicks, getCurrentText, getVisionModel } from '../core/route-store.js';
 import { LANGUAGES } from '../core/languages.js';
 import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
 import { computeChapterStatuses } from '../core/sequencer.js';
@@ -280,6 +280,19 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
   }
 });
 
+// The browser caches its probed model picks and sends them on every turn (so any api instance can serve
+// the turn without a shared store). Validate each id against the gated pool, then seed the per-learner store
+// the teach/grade path reads. Invalid/absent ids are ignored → the caller falls back to the models.ts default.
+function seedClientModels(learnerId: string, body: any): void {
+  const m = body?.models;
+  if (!m || typeof m !== 'object') return;
+  setRoutePicks(learnerId, {
+    text: isAllowedModel('text', m.text) ? m.text : undefined,
+    textFallback: isAllowedModel('text', m.textFallback) ? m.textFallback : undefined,
+    vision: isAllowedModel('vision', m.vision) ? m.vision : undefined,
+  });
+}
+
 // Start a node: enter + opening tutor turn (no intro friction — the AI just begins).
 // Speed-probe the NIM candidate pool and pick this session's model. The "finding your fastest tutor"
 // popup calls this on node entry and again after a tutor failure. Stores the winner for the learner so
@@ -307,6 +320,7 @@ router.post('/learner/:learnerId/node/:conceptId/start', requireNodeAccess, asyn
   try {
     const { learnerId, conceptId } = req.params;
     const { lang, track } = req.body || {};
+    seedClientModels(learnerId, req.body);
     await enterNode(learnerId, conceptId);
     const turn = await respond(learnerId, conceptId, undefined, true, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation');
     res.json(turn);
@@ -325,6 +339,7 @@ router.post('/learner/:learnerId/node/:conceptId/reply', requireNodeAccess, asyn
   try {
     const { learnerId, conceptId } = req.params;
     const { message, lang, track } = req.body;
+    seedClientModels(learnerId, req.body);
     const turn = await respond(learnerId, conceptId, message, false, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation');
     res.json(turn);
   } catch (err) {
@@ -343,6 +358,7 @@ router.post('/learner/:learnerId/node/:conceptId/reply', requireNodeAccess, asyn
 router.post('/learner/:learnerId/node/:conceptId/reply-stream', requireNodeAccess, async (req, res) => {
   const { learnerId, conceptId } = req.params;
   const { message, lang, track } = req.body || {};
+  seedClientModels(learnerId, req.body);
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache, no-transform');
   res.setHeader('Connection', 'keep-alive');
@@ -381,6 +397,7 @@ router.post('/learner/:learnerId/node/:conceptId/help', requireNodeAccess, async
   try {
     const { learnerId, conceptId } = req.params;
     const { image, lang } = req.body;
+    seedClientModels(learnerId, req.body);
     if (!image) return res.status(400).json({ error: 'No image' });
     const { message } = await helpWithSketch(learnerId, conceptId, image, lang || 'en');
     res.json({ message });
@@ -412,6 +429,7 @@ router.post('/learner/:learnerId/node/:conceptId/gate-answer', requireNodeAccess
   try {
     const { learnerId, conceptId } = req.params;
     const { gateId, answer, lang, track } = req.body;
+    seedClientModels(learnerId, req.body);
     const result = await answerGate(learnerId, conceptId, gateId, answer, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation');
     res.json({
       correct: result.correct,

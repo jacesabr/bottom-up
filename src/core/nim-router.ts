@@ -48,6 +48,17 @@ export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
 // the qualified (good) models, the live speed probe decides. Env-tunable via NIM_QUALITY_FLOOR.
 export const QUALITY_FLOOR = Number(process.env.NIM_QUALITY_FLOOR ?? 0.6);
 
+// Allow-list of ids the router may serve, per kind (the quality-gated pool). Used to VALIDATE a model id
+// that arrives from the client's browser cache before we honor it: the browser is the source of truth for
+// WHICH of our good models to use this session, but it must never be able to name a model outside the pool.
+const ALLOWED: Record<'text' | 'vision', Set<string>> = {
+  text: new Set(CANDIDATES.text.filter((c) => c.quality >= QUALITY_FLOOR).map((c) => c.id)),
+  vision: new Set(CANDIDATES.vision.filter((c) => c.quality >= QUALITY_FLOOR).map((c) => c.id)),
+};
+export function isAllowedModel(kind: 'text' | 'vision', id?: string): boolean {
+  return !!id && ALLOWED[kind].has(id);
+}
+
 export interface ProbeResult { model: string; ok: boolean; latencyMs: number; quality: number; score: number; }
 export interface RouteResult { kind: 'text' | 'vision'; ranked: ProbeResult[]; winner: string; fallback: string; probedAt: number; }
 

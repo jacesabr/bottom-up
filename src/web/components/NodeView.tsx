@@ -4,7 +4,7 @@ import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
 import ThinkingIndicator from './ThinkingIndicator';
-import RouterPopup from './RouterPopup';
+import RouterPopup, { type RoutePicks } from './RouterPopup';
 import { speakSmart, speakSequence, speakWithCues, LANG_INVITES, type SpeakSegment, recordAndTranscribe, stopSpeaking } from '../lib/voice';
 import '../styles/NodeView.css';
 
@@ -118,6 +118,17 @@ export default function NodeView({
   const [routePopup, setRoutePopup] = useState<{ mode: 'start' | 'failure'; failedModel?: string } | null>({ mode: 'start' });
   const retryRef = useRef<(() => void) | null>(null);
   const routeFails = useRef(0);
+  // This session's probed model picks live in the BROWSER (the source of truth): cached in localStorage and
+  // sent on every turn as `models`, so any api instance can serve the turn without a shared server store.
+  // The router popup refreshes them at node entry and after a failure; the server re-validates before use.
+  const PICKS_KEY = `nimPicks:${learnerId}`;
+  const picksRef = useRef<RoutePicks | null>(null);
+  const picksLoaded = useRef(false);
+  if (!picksLoaded.current) {
+    picksLoaded.current = true;
+    try { picksRef.current = JSON.parse(localStorage.getItem(PICKS_KEY) || 'null'); } catch { picksRef.current = null; }
+  }
+  const withModels = (body: Record<string, unknown>) => (picksRef.current ? { ...body, models: picksRef.current } : body);
   const speechCode = langs.find((l) => l.code === lang)?.speech || 'en-IN';
 
   useEffect(() => {
@@ -171,7 +182,7 @@ export default function NodeView({
         const res = await fetch(`${base}/start`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ lang }),
+          body: JSON.stringify(withModels({ lang })),
         }).catch(() => null);
         if (cancelled) return;
         if (!res || !res.ok) {
@@ -373,7 +384,7 @@ export default function NodeView({
       const res = await fetch(`${base}/reply-stream`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, lang }),
+        body: JSON.stringify(withModels({ message: text, lang })),
       });
       if (!res.ok || !res.body) throw new Error('stream unavailable');
       const reader = res.body.getReader();
@@ -440,7 +451,7 @@ export default function NodeView({
         const res = await fetch(`${base}/reply`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: text, lang }),
+          body: JSON.stringify(withModels({ message: text, lang })),
         });
         const data = await res.json().catch(() => ({} as any));
         const text2 = data.message || (res.ok ? null : SERVICE_DOWN_TEXT);
@@ -464,7 +475,7 @@ export default function NodeView({
       const res = await fetch(`${base}/help`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image: img, lang }),
+        body: JSON.stringify(withModels({ image: img, lang })),
       });
       const data = await res.json().catch(() => ({} as any));
       if (data.systemError) {
@@ -493,7 +504,7 @@ export default function NodeView({
       const res = await fetch(`${base}/reply`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: '[I shared my handwritten working on the scratchpad.]', lang }),
+        body: JSON.stringify(withModels({ message: '[I shared my handwritten working on the scratchpad.]', lang })),
       });
       const data = await res.json().catch(() => ({} as any));
       setMessages((m) => [...m, { role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
@@ -545,7 +556,7 @@ export default function NodeView({
       const res = await fetch(`${base}/gate-answer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ gateId: gate.gateId, answer, lang }),
+        body: JSON.stringify(withModels({ gateId: gate.gateId, answer, lang })),
       });
       const data = await res.json().catch(() => ({} as any));
       if (!res.ok && !data.feedback && !data.message) {
@@ -587,7 +598,13 @@ export default function NodeView({
           learnerId={learnerId}
           mode={routePopup.mode}
           failedModel={routePopup.failedModel}
-          onDone={() => { const r = retryRef.current; retryRef.current = null; setRoutePopup(null); if (r) r(); }}
+          onDone={(picks) => {
+            if (picks) {
+              picksRef.current = { ...picksRef.current, ...picks };
+              try { localStorage.setItem(PICKS_KEY, JSON.stringify(picksRef.current)); } catch { /* private mode */ }
+            }
+            const r = retryRef.current; retryRef.current = null; setRoutePopup(null); if (r) r();
+          }}
         />
       )}
       <div className="tutor-topbar">
