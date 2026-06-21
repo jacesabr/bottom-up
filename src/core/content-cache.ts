@@ -31,7 +31,7 @@ async function ensureLoaded(): Promise<void> {
         byChapter.set(c.chapterId, arr);
         byId.set(c.id, c);
       }
-      for (const arr of byChapter.values()) arr.sort((a, b) => a.order - b.order);
+      for (const arr of byChapter.values()) arr.sort((a, b) => (a.order - b.order) || ((a.sec ?? 0) - (b.sec ?? 0)));
       chaptersCache = chs;
       conceptsByChapter = byChapter;
       conceptsById = byId;

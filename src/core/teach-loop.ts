@@ -126,6 +126,12 @@ export async function summarizeOnEntry(learnerId: string, conceptId: string): Pr
   const newTurns = await turnsSince(learnerId, conceptId, summaryRow?.watermark ?? null);
   if (!newTurns.length) return; // nothing new to fold (fresh node)
 
+  // Don't distill a tutor-only monologue (repeated unanswered openings) into a resume note. With no learner
+  // turn there's no progress to capture, and summarising the tutor's own openings is precisely what lets an
+  // off-hand phrase drift further on each re-entry. Skip until the learner actually replies; once a summary
+  // exists (built post-engagement) we keep folding normally.
+  if (!summaryRow && !newTurns.some((t) => t.role === 'learner')) return;
+
   const updated = await summarizeConversation(
     c.title,
     summaryRow?.summary ?? null,
@@ -521,7 +527,7 @@ async function gateSet(conceptId: string, track: Track = 'foundation') {
   const byOrd = (a: any, b: any) => (a.ord ?? 0) - (b.ord ?? 0);
   const isAdvanced = (g: any) => g.tier === 'advanced';
   const authoredFoundation = rows.filter((g) => g.kind === 'authored' && !isAdvanced(g)).sort(byOrd);
-  const base = authoredFoundation.length ? authoredFoundation : rows.filter((g) => !isAdvanced(g));
+  const base = authoredFoundation.length ? authoredFoundation : rows.filter((g) => !isAdvanced(g)).sort(byOrd);
   if (track !== 'advanced') return base;
   const advanced = rows.filter(isAdvanced).sort(byOrd);
   return [...base, ...advanced];

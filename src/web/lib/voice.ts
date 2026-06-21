@@ -104,6 +104,11 @@ function phoneticiseCapitalLetters(t: string): string {
 export function stripForSpeech(text: string): string {
   let t = text;
 
+  // 0a) Strip emoji & pictographs (incl. variation selectors and ZWJ joiners). They carry nothing a
+  //     voice should say, and a neural TTS voice tends to stumble on them — sometimes dropping the word
+  //     right next to the emoji ("🙂 Quick reminder" → "…uick reminder"). Remove them before anything else.
+  t = t.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{200D}]/gu, ' ');
+
   // 0) Genuine multiplication is written tight (2*3, 2*x, a*b, f(x)*g(x)) — convert it to "times"
   //    BEFORE the emphasis step, so those asterisks can't be mistaken for italic markers (which
   //    would eat the maths between two products). Emphasis "*"s are space-/edge-flanked, so this
