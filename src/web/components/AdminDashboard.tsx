@@ -20,6 +20,8 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
   const [errors, setErrors] = useState<any[]>([]);
   const [openConvo, setOpenConvo] = useState<any>(null);
   const [openError, setOpenError] = useState<any>(null);
+  const [route, setRoute] = useState<any>(null);
+  const [routing, setRouting] = useState(false);
 
   // System Guide tab: the living architecture doc. It is NOT a public static file — we fetch it
   // through the Basic-auth'd /admin/guide endpoint and render the HTML into a sandboxed iframe via
@@ -46,6 +48,20 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
     },
     [apiBase, auth]
   );
+
+  // Live router probe — hits the public /route endpoint (no admin auth needed) to show the current
+  // speed×quality race operators can run on demand.
+  const probeRouter = useCallback(async () => {
+    setRouting(true);
+    try {
+      const res = await fetch(`${apiBase}/learner/admin-probe/route`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ kind: 'text' }) });
+      setRoute(await res.json());
+    } catch {
+      setRoute({ error: true });
+    } finally {
+      setRouting(false);
+    }
+  }, [apiBase]);
 
   const load = useCallback(async () => {
     setErr(null);
@@ -166,6 +182,26 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
       )}
 
       {tab === 'dashboard' && <>
+        <section className="admin-card">
+          <h3>NIM tutor router <span className="hint">— every session speed-probes the free NIM pool (thinking off) and picks the best by 0.5·speed + 0.5·quality; dead/slow endpoints are dropped, and it re-probes on a tutor failure. See docs/NIM_STUDY.md.</span></h3>
+          <button onClick={probeRouter} disabled={routing}>{routing ? 'Probing…' : 'Run a probe now'}</button>
+          {route && !route.error && (
+            <table>
+              <thead><tr><th>endpoint</th><th>speed</th><th>quality</th><th>score</th></tr></thead>
+              <tbody>
+                {(route.ranked || []).map((r: any) => (
+                  <tr key={r.model} style={r.model === route.winner ? { fontWeight: 700 } : undefined}>
+                    <td>{r.model.split('/').pop()}{r.model === route.winner ? ' ◀ winner' : ''}</td>
+                    <td>{r.ok ? `${r.latencyMs}ms` : '✗ timeout'}</td>
+                    <td>{r.ok ? `${Math.round(r.quality * 100)}%` : '—'}</td>
+                    <td>{r.ok ? r.score.toFixed(2) : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+          {route?.error && <div className="muted">probe failed</div>}
+        </section>
       {err && <div className="admin-err">{err}</div>}
 
       {overview && (

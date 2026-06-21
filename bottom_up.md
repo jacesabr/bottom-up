@@ -3,6 +3,10 @@
 > **Status:** built, deployed, scaled, and improved — LIVE. Written 2026-06-15; vertical slice same day; full
 > corpus authored 2026-06-17; **Phase-2 complete 2026-06-19** (per-gate web-verified sources + refreshers + §A
 > prerequisite bridge nodes) and a **live Claude→NIM fallback** for tutoring shipped.
+> **2026-06-21:** NIM is now PRIMARY (no mock / no Haiku in prod; graceful "unavailable" on failure) with a
+> **dynamic per-session NIM speed-router** — each node entry speed-probes the free candidate pool and picks the
+> best by `0.5·speed + 0.5·quality`, re-probing on any tutor failure (the "finding your fastest tutor" popup).
+> See `docs/NIM_STUDY.md` and the System Guide (`docs/architecture.html`) §5.3.
 > **What this is:** a standalone exam-prep product that teaches a subject **chapter by chapter,
 > concept by concept, bottom-up**, gates each concept, and ends in a clean board-paper exam.
 > It is **separate from the Socratic tutor** — it copies the CBSE math corpus + reuses the existing infra

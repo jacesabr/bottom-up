@@ -211,19 +211,32 @@
       </table>
       <p>Grading reasoning runs in English (best quality); only the feedback is translated to the learner's language.</p>
 
-      <h3 id="ai-router">5.3 · The model router &amp; cost policy <span class="tag built">built</span></h3>
-      <div class="rule-box"><b>HARD RULE</b> (in <code class="path">llm.ts</code>): real users (prod) are served by <b>Claude Haiku</b>; <b>all testing</b> uses <b>NVIDIA NIM</b> (free); offline falls back to a <b>mock</b>. Never run a test suite on Haiku — under <code>NODE_ENV=test</code> the router refuses Haiku and forces NIM/mock.</div>
+      <h3 id="ai-router">5.3 · The dynamic NIM model router &amp; cost policy <span class="tag built">built</span></h3>
+      <div class="rule-box"><b>HARD RULE</b> (in <code class="path">llm.ts</code>): all live traffic runs on <b>free NVIDIA NIM</b> — there is <b>no mock and no silent paid fallback</b>. If NIM is unreachable the call fails gracefully (the learner sees "temporarily unavailable", logged to <code>bu_llm_call</code> + surfaced in admin). Claude is a <b>manual override only</b> (<code>LLM_PROVIDER=claude</code>). API keys are for the human-facing product — never call authoring/generation with a paid model from a script or agent.</div>
+      <p>Free NIM endpoints swing in speed and availability through the day — a model that's snappy now can time out 30&nbsp;min later. So we don't hardcode one model: we <b>speed-probe a candidate pool every session</b> and pick the best by a blend of live speed and pre-measured quality. Code: <code class="path">nim-router.ts</code> (probe + rank), <code class="path">route-store.ts</code> (per-learner pick), <code class="path">tools/nim-bench.ts</code> (quality battery).</p>
+      <div class="flow">
+        <span class="box">node entry</span><span class="arr">→</span>
+        <span class="box ai">probe pool in parallel (thinking off)</span><span class="arr">→</span>
+        <span class="box det">rank 0.5·speed + 0.5·quality, drop dead endpoints</span><span class="arr">→</span>
+        <span class="box db">store winner for this learner</span><span class="arr">→</span>
+        <span class="box">session's tutor + grader calls use it</span>
+      </div>
+      <ul>
+        <li><b>Quality</b> = a 0–1 score per model from <code>tools/nim-bench.ts</code> — a deterministic battery (JSON-validity, exact answers, instruction-following, no &lt;think&gt; leakage), run thinking-off, with retries that separate <i>availability</i> from <i>quality</i>.</li>
+        <li><b>Speed</b> is measured live each session; scored on an <b>absolute budget</b> (≤350&nbsp;ms = full marks, ≥4&nbsp;s = 0) — so a slightly-slower but higher-quality model can still win (a true 50/50 balance, not speed-only).</li>
+        <li><b>Self-healing.</b> A failed tutor turn carries <code>failedModel</code>; the UI stops, re-probes, names the dead model, and retries with the new winner (capped to avoid loops).</li>
+        <li><b>Fallbacks.</b> The router's 2nd-best is the in-call fallback; if no probe has run, calls use the <code>models.ts</code> default (<code>MODEL_TEXT</code>).</li>
+      </ul>
       <table>
-        <tr><th>Purpose</th><th>Prod model</th><th>Test / free model</th></tr>
-        <tr><td>Tutoring + rubric/equation grading</td><td>Claude Haiku (<code>claude-haiku-4-5</code>)</td><td>NIM <code>meta/llama-3.3-70b-instruct</code></td></tr>
-        <tr><td>Translation</td><td>Sarvam (Indic) → Google → Haiku/NIM</td><td>see §5.4</td></tr>
-        <tr><td>Vision (sketch help/grading)</td><td>NIM <code>nemotron-nano-12b-v2-vl</code></td><td>same</td></tr>
-        <tr><td>Figure captioning</td><td>Claude Haiku vision</td><td>—</td></tr>
-        <tr><td>Content authoring</td><td>Haiku (bulk) / Opus (curated first nodes)</td><td>—</td></tr>
+        <tr><th>Candidate (text)</th><th>quality</th><th>note</th></tr>
+        <tr><td><code>qwen3-next-80b-a3b</code></td><td>0.75</td><td>strongest reliable</td></tr>
+        <tr><td><code>ministral-14b</code></td><td>0.63</td><td>fast, plain-instruct</td></tr>
+        <tr><td><code>llama-3.1-8b</code></td><td>0.63</td><td>fastest</td></tr>
+        <tr><td><code>deepseek-v4-pro</code></td><td>~0.9</td><td>high quality, often slow — probe-gated to its fast windows</td></tr>
       </table>
-      <p>The provider resolves from env (<code>LLM_PROVIDER</code>); default prefers free NIM when a key exists, else mock. NIM is called <i>without</i> <code>response_format: json_object</code> (it strands content as null for several models) — instead the prompt says "return ONLY JSON" and <code>parseLooseJson()</code> tolerantly extracts it.</p>
-      <div class="note"><b>Why every call is logged.</b> <code>recordLlmCall()</code> writes the full request messages + full response + tokens + latency to <code>bu_llm_call</code>. That's the <b>replay corpus</b> for the NIM study (<code class="path">tools/nim-study.mjs</code>): we can replay the exact prompts real users hit through candidate NVIDIA NIM models and compare quality against the captured Haiku baseline — the path toward a self-hosted-GPU switch — <b>without ever re-calling a paid API.</b> <span class="tag partial">study is tooling/in-progress</span></div>
-      <div class="rule-box"><b>API keys are for the human-facing product only.</b> Do not call authoring/generation with a paid model flag from a script or agent. Content is authored interactively; teaching traffic is what spends on Haiku in prod.</div>
+      <p>Reasoning models are excluded (they corrupt the streamed JSON turn); gated/404 ids removed. Vision uses NIM <code>nemotron-nano-12b-v2-vl</code> on the same probe path (vision quality battery pending labelled images). NIM is called <i>without</i> <code>response_format: json_object</code> — the prompt says "return ONLY JSON" and <code>parseLooseJson()</code> extracts it.</p>
+      <div class="card"><b>"Finding your fastest tutor" popup</b> (<code class="path">RouterPopup.tsx</code>): on node entry and after a tutor failure, a glowing modal shows the live speed×quality race as a table, names the winner with the reasoning, then auto-proceeds — the <code>POST /api/learner/:id/route</code> probe surfaced to the learner.</div>
+      <div class="note"><b>Why every call is logged.</b> <code>recordLlmCall()</code> writes the full request + response + tokens + latency to <code>bu_llm_call</code> — the replay corpus for <code class="path">tools/nim-bench.ts</code> and the live error signal the router + admin panel read.</div>
 
       <h3 id="ai-lang">5.4 · Language &amp; voice <span class="tag built">built</span></h3>
       <p><code>translateText()</code> in <code class="path">node-agent.ts</code>. Content is stored <b>once in English</b> and translated <b>dynamically per turn</b>, so nothing goes stale. Maths (<code>$…$</code>), <code>**bold**</code> and emoji are masked so the translator can't mangle them. Provider ladder: <b>Sarvam</b> (best Indic quality, primary when keyed) → free Google endpoint → NIM fallback → original text. Voice (<code class="path">src/core/voice.ts</code>, <code>src/web/lib/voice.ts</code>) adds read-aloud (TTS, on by default) and speak-to-type (STT); a one-time per-node invite offers Hindi / Punjabi / Tamil / Bengali.</p>

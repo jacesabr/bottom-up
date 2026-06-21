@@ -80,3 +80,34 @@ JSON reliability, latency, and a go/no-go on switching. _(empty until the first 
 - Vision: …
 - Decision: stay on Haiku / pilot <model> for <slice>
 -->
+
+---
+
+## Outcome: the dynamic NIM router (shipped 2026-06-21)
+
+The study's conclusion was that **no single free NIM model is reliably best** — endpoints swing in speed
+and availability through the day (deepseek-v4-pro is high quality but frequently times out; ministral can
+400/timeout one minute and answer the next). So instead of a static pick we shipped a **per-session speed
+router**.
+
+**How it works**
+- `tools/nim-bench.ts` — the study, formalised: a deterministic quality battery (JSON-validity, exact
+  answers, instruction-following, no `<think>` leakage), run **thinking-off**, with retries that separate
+  *availability* from *quality*. Produces a 0–1 quality score per candidate.
+- `src/core/nim-router.ts` — on each node entry, `routeModels()` **speed-probes** the candidate pool in
+  parallel (thinking-off), drops dead/slow endpoints, and ranks the rest by **`0.5·speed + 0.5·quality`**.
+  Speed is an *absolute budget* (≤350 ms = 1.0, ≥4 s = 0) so quality genuinely counts, not speed-only.
+- `src/core/route-store.ts` — stores the winning model per learner; `respond()`/`teachTurn()` thread it
+  into `completeJson({ model, modelFallback })`. The 2nd-best is the in-call fallback; no probe → `MODEL_TEXT`.
+- `POST /api/learner/:id/route` — runs the probe, stores the winner, returns the full ranked race.
+- `RouterPopup.tsx` — the "finding your fastest tutor" modal at node entry **and after any tutor failure**
+  (it stops, names the dead model via `failedModel`, re-probes, retries with the new winner; capped at 3).
+
+**Candidate pool (2026-06-21 bench, thinking-off):** qwen3-next-80b (q 0.75, reliable) · ministral-14b
+(0.63) · llama-3.1-8b (0.63, fastest) · deepseek-v4-pro (~0.9, often slow → probe-gated). Reasoning models
+excluded (break JSON); `mistral-small-24b` / `qwen2.5-7b` 404 on this account; `llama-3.3-70b` always slow.
+
+**Live verification:** `/route` returns HTTP 200 on both prod APIs and adapts run-to-run (e.g. picked qwen
+on bottom-up and deepseek on IE in the same minute) — auto-routing around whatever is slow that moment.
+
+> Cost rule still holds: the bench + probes hit **only free NIM endpoints**; Anthropic is never called.
