@@ -288,7 +288,10 @@ router.post('/learner/:learnerId/route', async (req, res) => {
   try {
     const { learnerId } = req.params;
     const kind = req.body?.kind === 'vision' ? 'vision' : 'text';
-    const result = await routeModels(kind);
+    // After a mid-lesson failure the client sends the model that just failed, so the re-probe excludes it
+    // (a model can pass the trivial probe but fail real turns — don't re-pick the one that just died).
+    const exclude = Array.isArray(req.body?.exclude) ? req.body.exclude : req.body?.failedModel ? [req.body.failedModel] : [];
+    const result = await routeModels(kind, undefined, exclude);
     setRoute(learnerId, result);
     // Persist the probe race (the stats shown to the learner) for later quality auditing — fire-and-forget,
     // real learner ids only (skip admin/smoke probes).

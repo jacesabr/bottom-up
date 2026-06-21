@@ -50,7 +50,7 @@ export default function RouterPopup({ apiBase, learnerId, mode, failedModel, onD
     if (started.current) return;
     started.current = true;
     const probe = (kind: 'text' | 'vision', set: (r: RouteResult) => void) =>
-      fetch(`${apiBase}/learner/${learnerId}/route`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ kind }) })
+      fetch(`${apiBase}/learner/${learnerId}/route`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ kind, failedModel }) })
         .then((r) => r.json()).then((d: RouteResult) => { const v = d && Array.isArray(d.ranked) ? d : { kind, ranked: [], winner: '', error: true }; set(v); return v; })
         .catch(() => { const v = { kind, ranked: [], winner: '', error: true }; set(v); return v; });
     const pt = probe('text', setTextR);

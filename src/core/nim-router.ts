@@ -80,10 +80,14 @@ async function probeOne(model: string, key: string, timeoutMs: number, kind: 'te
  * fastest healthy probe = 1). Returns the ranked list + winning model id. Falls back to the models.ts
  * default if there's no key or every probe fails — so a probe outage never strands a session.
  */
-export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 8000): Promise<RouteResult> {
+export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 8000, exclude: string[] = []): Promise<RouteResult> {
   const fallback = kind === 'text' ? MODELS.text : MODELS.vision;
   const key = process.env.NVIDIA_API_KEY;
-  const cands = CANDIDATES[kind].filter((c) => c.quality >= QUALITY_FLOOR); // quality gate — only "good" models
+  let cands = CANDIDATES[kind].filter((c) => c.quality >= QUALITY_FLOOR); // quality gate — only "good" models
+  // On a re-probe AFTER a mid-lesson failure, drop the model that just failed so we don't re-select it. A
+  // model can pass the trivial 4-token probe yet fail real ~1000-token turns (partial outage); without this
+  // the dead model could win the race again and the retry would hit it. Skip the prune if it empties the pool.
+  if (exclude.length) { const pruned = cands.filter((c) => !exclude.includes(c.id)); if (pruned.length) cands = pruned; }
 
   const probedAt = Date.now();
   if (!key || !cands.length) return { kind, ranked: [], winner: fallback, fallback, probedAt };
