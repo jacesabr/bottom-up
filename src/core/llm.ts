@@ -267,10 +267,10 @@ async function nimCompleteStream(
  * Vision turn for the scratchpad "Help me" and sketch grading: NIM's vision model reads the learner's
  * handwritten working (a JPEG data URL). On failure it throws `LlmUnavailableError` (no offline fallback).
  */
-export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens = 400): Promise<string> {
+export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens = 400, modelOverride?: string): Promise<string> {
   const key = process.env.NVIDIA_API_KEY;
   if (!key) throw new Error('NVIDIA_API_KEY missing');
-  const model = MODELS.vision;
+  const model = modelOverride || MODELS.vision; // per-session vision model from the speed router
   const messages = [
     {
       role: 'user',

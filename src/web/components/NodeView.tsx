@@ -467,6 +467,14 @@ export default function NodeView({
         body: JSON.stringify({ image: img, lang }),
       });
       const data = await res.json().catch(() => ({} as any));
+      if (data.systemError) {
+        // vision model died → re-probe via the router popup and retry the hint.
+        retryRef.current = () => sketchHelp(img);
+        if (routeFails.current++ < 3) setRoutePopup({ mode: 'failure', failedModel: data.failedModel });
+        else setMessages((m) => [...m, { role: 'tutor', text: SERVICE_DOWN_TEXT }]);
+        return;
+      }
+      routeFails.current = 0;
       setMessages((m) => [...m, { role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
     } catch {
       setMessages((m) => [...m, { role: 'tutor', text: SERVICE_DOWN_TEXT }]);
@@ -544,17 +552,24 @@ export default function NodeView({
         setGateFeedback({ ok: false, text: SERVICE_DOWN_TEXT });
         return;
       }
+      if (data.systemError) {
+        // grader (vision→text or text) model died → re-probe via the router popup and retry the same gate.
+        retryRef.current = () => submitGate();
+        if (routeFails.current++ < 3) setRoutePopup({ mode: 'failure', failedModel: data.failedModel });
+        else setGateFeedback({ ok: false, text: SERVICE_DOWN_TEXT });
+        return;
+      }
+      routeFails.current = 0;
       setGateFeedback({ ok: !!data.correct, text: data.feedback || data.message || SERVICE_DOWN_TEXT });
-      // systemError → grader was down; keep the same gate so the student can retry, no false pass.
-      if (!data.systemError && data.allPassed) {
+      if (data.allPassed) {
         setMessages((m) => [...m, { role: 'tutor', text: data.message }]);
         setDone(true);
         setGate(null);
-      } else if (!data.systemError && data.correct) {
+      } else if (data.correct) {
         // cleared this gate → advance to the next one after a beat
         setTimeout(poseNextGate, 900);
       }
-      // incorrect / unavailable → keep the same gate, feedback shown, allow retry
+      // incorrect → keep the same gate, feedback shown, allow retry
     } catch {
       setGateFeedback({ ok: false, text: SERVICE_DOWN_TEXT });
     } finally {

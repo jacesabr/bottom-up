@@ -171,23 +171,29 @@ export async function gradeSketch(
   imageDataUrl: string,
   langCode?: string,
   conceptId?: string,
-  track: Track = 'foundation'
+  track: Track = 'foundation',
+  visionModel?: string,
+  textModel?: string,
+  textFallback?: string
 ): Promise<GradeResult> {
   const prof = examProfile(conceptId ?? 'cbse10', track);
-  const visionPrompt = `You are grading a ${prof.studentLabel}'s hand-drawn answer.
-QUESTION: ${prompt}
-WHAT A CORRECT DRAWING MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled diagram'}
-Look at the image and decide if it satisfies the requirement. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences on what's right / what to fix>"}`;
-  // nimVision throws LlmUnavailableError if the vision model is down — we let that propagate rather than
-  // accept the drawing blind (the old fallback silently passed EVERY sketch).
-  const raw = await nimVision(visionPrompt, imageDataUrl, 350);
+  // IMAGE → TEXT → EVAL. Step 1: the (session-selected) vision model only TRANSCRIBES the handwritten work —
+  // it does not judge. Letting vision do OCR and the strong text model do the grading is more reliable than
+  // asking a small VL model to both read and assess. nimVision throws if the vision model is down (propagates
+  // as unavailable → re-probe), rather than accepting the drawing blind.
+  const transcript = (await nimVision(
+    `Transcribe EVERYTHING handwritten or drawn in this image as plain text and math (simple notation: x^2, sqrt(), fractions a/b). Briefly describe any diagram. Output ONLY the transcription — no commentary or judgement.`,
+    imageDataUrl, 500, visionModel
+  )).trim();
+  // Step 2: the (session-selected) text model grades the transcription against the rubric.
+  const messages: ChatMessage[] = [
+    { role: 'system', content: `You are a fair but rigorous ${prof.level} ${prof.subject} grader assessing a ${prof.studentLabel}'s HAND-DRAWN answer that was transcribed from an image. Judge the maths; allow for minor OCR imperfections. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences: what's right / what to fix>"}` },
+    { role: 'user', content: `QUESTION: ${prompt}\n\nWHAT A CORRECT ANSWER MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled answer'}\n\nMODEL ANSWER: ${ideal || '(use your judgement)'}\n\nSTUDENT'S TRANSCRIBED WORK: ${transcript}\n\nGrade it. Pass if the core idea is correct even if the transcription is slightly garbled.` },
+  ];
+  const raw = await completeJson(messages, { maxTokens: 300, model: textModel, modelFallback: textFallback });
   const p = parseLooseJson<any>(raw);
   if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
-  // Vision returned prose, not JSON — interpret a clearly positive read as a pass (this is a REAL
-  // model response, not a failure, so it's fair to use).
-  const lc = raw.toLowerCase();
-  const correct = /correct|right|good|satisfies|complete/.test(lc) && !/incorrect|not |missing|wrong/.test(lc);
-  return { correct, feedback: raw.slice(0, 200) };
+  throw new LlmUnavailableError('gradeSketch: grader returned no parseable verdict');
 }
 
 /**

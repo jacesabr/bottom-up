@@ -38,13 +38,19 @@ export interface RouteResult { kind: 'text' | 'vision'; ranked: ProbeResult[]; w
 // Thinking OFF for probes (and ideally all turns) — hybrid models otherwise emit <think> that both slows
 // the probe and corrupts JSON. Matches the NIM_NO_THINK switch used elsewhere.
 const THINK_OFF = process.env.NIM_NO_THINK ? { chat_template_kwargs: { thinking: false } } : {};
+// 1×1 transparent PNG — a vision probe must send an image (text-only would 400 on some VL models), but it
+// only needs to measure latency/availability, so the smallest possible image keeps the probe fast.
+const TINY_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
 
-async function probeOne(model: string, key: string, timeoutMs: number): Promise<{ ok: boolean; latencyMs: number }> {
+async function probeOne(model: string, key: string, timeoutMs: number, kind: 'text' | 'vision'): Promise<{ ok: boolean; latencyMs: number }> {
   const t0 = Date.now();
+  const content: any = kind === 'vision'
+    ? [{ type: 'text', text: 'Reply with the single word: ready' }, { type: 'image_url', image_url: { url: TINY_PNG } }]
+    : 'Reply with the single word: ready';
   try {
     await axios.post(
       `${NIM_BASE}/chat/completions`,
-      { model, messages: [{ role: 'user', content: 'Reply with the single word: ready' }], max_tokens: 4, temperature: 0, ...THINK_OFF },
+      { model, messages: [{ role: 'user', content }], max_tokens: 4, temperature: 0, ...(kind === 'vision' ? {} : THINK_OFF) },
       { headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' }, timeout: timeoutMs }
     );
     return { ok: true, latencyMs: Date.now() - t0 };
@@ -65,7 +71,7 @@ export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 
   const probedAt = Date.now();
   if (!key || !cands.length) return { kind, ranked: [], winner: fallback, fallback, probedAt };
 
-  const probes = await Promise.all(cands.map((c) => probeOne(c.id, key, timeoutMs).then((p) => ({ ...c, ...p }))));
+  const probes = await Promise.all(cands.map((c) => probeOne(c.id, key, timeoutMs, kind).then((p) => ({ ...c, ...p }))));
   const oks = probes.filter((p) => p.ok);
   // Failed candidates kept for display (the popup shows the full race, incl. ✗ timeouts) — never selected.
   const failedRows: ProbeResult[] = probes.filter((p) => !p.ok).map((p) => ({ model: p.id, ok: false, latencyMs: p.latencyMs, quality: p.quality, score: 0 }));

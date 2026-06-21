@@ -16,7 +16,7 @@ import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, sum
 import { languageInstruction } from './languages.js';
 import { nimVision } from './llm.js';
 import { examProfile, type Track } from './exam-profile.js';
-import { getTextModel } from './route-store.js';
+import { getTextModel, getVisionModel } from './route-store.js';
 
 /**
  * The per-node teaching loop (bottom_up.md §4).
@@ -475,7 +475,7 @@ Stay strictly on this concept. Use $...$ for maths. Do NOT give the full answer 
 
   // nimVision throws LlmUnavailableError if the vision model is down — let it propagate so the API
   // shows the graceful "unavailable" message, rather than a canned hint pretending we read the work.
-  let message = (await nimVision(prompt, imageDataUrl)).trim();
+  let message = (await nimVision(prompt, imageDataUrl, 400, getVisionModel(learnerId))).trim();
   if (langCode !== 'en') message = await translateText(message, langCode);
 
   await db.insert(buEvent).values({
@@ -601,7 +601,8 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
     feedback = r.feedback;
   } else if (g.grader === 'vision') {
     gradedBy = 'vision';
-    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId, track);
+    const tm = getTextModel(learnerId);
+    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId, track, getVisionModel(learnerId), tm.model, tm.modelFallback);
     correct = r.correct;
     feedback = r.feedback;
   } else {

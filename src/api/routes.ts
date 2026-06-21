@@ -5,7 +5,7 @@ import { eq } from 'drizzle-orm';
 import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures, serviceDownMessage } from '../core/teach-loop.js';
 import { LlmUnavailableError } from '../core/llm.js';
 import { routeModels } from '../core/nim-router.js';
-import { setRoute, getCurrentText } from '../core/route-store.js';
+import { setRoute, getCurrentText, getVisionModel } from '../core/route-store.js';
 import { LANGUAGES } from '../core/languages.js';
 import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
 import { computeChapterStatuses } from '../core/sequencer.js';
@@ -381,7 +381,7 @@ router.post('/learner/:learnerId/node/:conceptId/help', requireNodeAccess, async
   } catch (err) {
     if (err instanceof LlmUnavailableError) {
       console.error('help: vision unavailable —', err.detail);
-      return res.json({ message: await serviceDownMessage(req.body?.lang || 'en'), systemError: true });
+      return res.json({ message: await serviceDownMessage(req.body?.lang || 'en'), systemError: true, failedModel: getVisionModel(req.params.learnerId) });
     }
     console.error('Error in help:', err);
     res.status(500).json({ error: 'Failed to help' });
@@ -423,7 +423,7 @@ router.post('/learner/:learnerId/node/:conceptId/gate-answer', requireNodeAccess
     if (err instanceof LlmUnavailableError) {
       // Grader is down — do NOT record a pass/fail (none was; the grader threw before persisting).
       console.error('gate-answer: grader unavailable —', err.detail);
-      return res.json({ correct: false, allPassed: false, systemError: true, feedback: await serviceDownMessage(req.body?.lang || 'en') });
+      return res.json({ correct: false, allPassed: false, systemError: true, feedback: await serviceDownMessage(req.body?.lang || 'en'), failedModel: getCurrentText(req.params.learnerId) });
     }
     console.error('Error grading gate:', err);
     res.status(500).json({ error: 'Failed to grade answer' });
