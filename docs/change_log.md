@@ -6,6 +6,28 @@ own design log stays at `socratic-planning/CHANGELOG.md`.
 
 ---
 
+## 2026-06-21 — Router-recovery no longer wipes the lesson; real NIM failure causes fixed; popup paced
+
+Mirrored from the IE repo (shared NIM-router infra). Cluster reported on prod: learner messages vanishing,
+tutor replies appending onto the opening, intro tour never showing, "fails every message then re-finds one",
+janky/too-fast router popup. Root-caused from `bu_llm_call` + the code.
+
+- **The wipe — `NodeView.tsx`.** The node-open `useEffect` listed `routePopup` as a dependency, so dismissing
+  the mid-lesson **failure** popup re-ran `/start` + `setMessages(...)` and erased the whole conversation while
+  the retry streamed a new bubble in. Fix: extracted `openNode()`; a **failure** dismissal sets `skipOpenOnce`
+  so the effect skips re-opening (conversation survives; `retryRef` resumes the failed turn once). A `/start`
+  failure now retries via `retryRef = () => openNode()`.
+- **"Fails every message" — `llm.ts`.** (1) Mistral-tokenizer models return **HTTP 400 "chat_template is not
+  supported"** when sent `chat_template_kwargs` (from `NIM_NO_THINK`), and a 400 isn't retryable → hard fail.
+  Fix: self-heal — `templateRejecters` + `nimExtraFor` drop the kwarg for rejecters, with a one-shot
+  retry-without-kwarg. (2) `deepseek-v4-pro` 60s timeouts → `NIM_TIMEOUT_MS` default **30s**. (Claude opt-in
+  path untouched — additions are NIM-only.)
+- **Popup — `RouterPopup.tsx` + `.css`.** Committed the flex CSS (markup/CSS mismatch caused the overflow
+  jank); added a ~1.8s minimum dwell + `ready = concluded && dwell` gate + a live stage-narration line so the
+  race is seen, not flashed past.
+
+---
+
 ## 2026-06-15 — Bottom-Up Exam-Prep (new surface) — DECIDED, spec in `bottom_up.md`
 
 **What:** a new, standalone **exam-prep** product that teaches a subject **chapter by chapter, concept by

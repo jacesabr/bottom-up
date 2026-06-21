@@ -38,7 +38,11 @@ function errorDetail(err: unknown): string {
   if (e?.response?.data != null) {
     let body: string;
     try {
-      body = typeof e.response.data === 'string' ? e.response.data : JSON.stringify(e.response.data);
+      const d: any = e.response.data;
+      // axios stream-mode (responseType:'stream') leaves response.data as a raw Readable, not the parsed
+      // body — JSON.stringify would throw "circular structure" → "[object Object]", losing the real error.
+      // Drain it first (drainErrorBody) and this becomes a string; if not drained, label it rather than throw.
+      body = typeof d === 'string' ? d : (d && typeof d.pipe === 'function') ? '[unbuffered stream body]' : JSON.stringify(d);
     } catch {
       body = String(e.response.data);
     }
@@ -61,6 +65,44 @@ const NIM_BASE = process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.co
 const NIM_EXTRA: Record<string, unknown> = process.env.NIM_NO_THINK
   ? { chat_template_kwargs: { thinking: false } }
   : {};
+// Per-call patience before we give up on a NIM endpoint and surface/fallback. The free tier can be slow
+// under load, but 60s strands a learner for a full minute on a hung model (deepseek-v4-pro has been seen
+// timing out at exactly 60s, then falling back — a 66s turn). 30s is still generous (good models <7s) and
+// makes a congested primary fall back fast. Env-tunable via NIM_TIMEOUT_MS.
+const NIM_TIMEOUT_MS = Number(process.env.NIM_TIMEOUT_MS ?? 30_000);
+
+// Some models reject `chat_template_kwargs` outright with a 400 ("chat_template is not supported for Mistral
+// tokenizers") — e.g. ministral-14b / mistral-small. Sending it (we do, for NIM_NO_THINK) HARD-FAILS them,
+// and a 400 isn't retryable, so the learner hits the failure popup. These models are plain-instruct and
+// never emit <think>, so dropping the kwarg is harmless. We learn rejecters at runtime (first 400 → cache
+// the id) so subsequent calls skip the kwarg, and we also retry the FIRST failing call without it.
+const templateRejecters = new Set<string>();
+// Mistral-tokenizer families reject chat_template_kwargs PROACTIVELY (deterministic — don't even pay the
+// first 400): ministral / mistral-small / mixtral etc. They're plain-instruct and never <think>, so dropping
+// the kwarg is harmless. mistral-NEMOTRON uses a different tokenizer and ACCEPTS it (works in prod) — excluded.
+const MISTRAL_TOKENIZER = /(?:^|\/)(?:ministral|mistral-small|mistral-7b|mistral-large|mistral-medium|mixtral)/i;
+const rejectsTemplateKwargs = (err: unknown): boolean => {
+  const d = err instanceof LlmUnavailableError ? err.detail : errorDetail(err);
+  return /HTTP 400\b/.test(d) && /chat_template|template is not supported|tokenizers/i.test(d);
+};
+/** axios stream-mode (responseType:'stream') puts the raw response Readable on err.response.data instead of
+ *  the parsed body, so errorDetail/classifiers can't see the provider's real message. Drain it to a string
+ *  (in place) so the 400 reason (e.g. the Mistral chat_template error) is recoverable. No-op otherwise. */
+async function drainErrorBody(err: unknown): Promise<void> {
+  const e = err as { response?: { data?: any } };
+  const d = e?.response?.data;
+  if (d && typeof d === 'object' && typeof d.pipe === 'function') {
+    try {
+      const chunks: Buffer[] = [];
+      for await (const c of d as AsyncIterable<Buffer | string>) chunks.push(Buffer.from(c as any));
+      e.response!.data = Buffer.concat(chunks).toString('utf8');
+    } catch { e.response!.data = '[stream body unreadable]'; }
+  }
+}
+/** The thinking-off kwarg for this model — omitted for known Mistral-tokenizer families (proactive) and for
+ *  any model we've LEARNED rejects it at runtime (the self-heal in nimComplete/nimCompleteStream). */
+const nimExtraFor = (model: string): Record<string, unknown> =>
+  (templateRejecters.has(model) || MISTRAL_TOKENIZER.test(model)) ? {} : NIM_EXTRA;
 // All model ids live in ./models.ts (MODELS) — the single place to swap a model. Live = NIM.
 
 /** Claude completion for translation (opt-in only; the live translate path uses Sarvam/Google/NIM). */
@@ -167,22 +209,23 @@ async function nimComplete(messages: ChatMessage[], maxTokens: number, json: boo
   // We instead instruct "Return ONLY JSON" in the prompt and use parseLooseJson on the reply.
   void json;
   const t0 = Date.now();
+  const cfg = {
+    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+    // Free NIM tier can have high first-token latency under load; give it room before falling back.
+    timeout: NIM_TIMEOUT_MS,
+  };
+  const body = (extra: Record<string, unknown>) => ({ model, messages, temperature: 0.6, max_tokens: maxTokens, ...extra });
   try {
-    const res = await axios.post(
-      `${NIM_BASE}/chat/completions`,
-      {
-        model,
-        messages,
-        temperature: 0.6,
-        max_tokens: maxTokens,
-        ...NIM_EXTRA,
-      },
-      {
-        headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-        // Free NIM tier can have high first-token latency under load; give it room before falling back.
-        timeout: 60_000,
-      }
-    );
+    let res;
+    try {
+      res = await axios.post(`${NIM_BASE}/chat/completions`, body(nimExtraFor(model)), cfg);
+    } catch (err) {
+      // This model's tokenizer rejects chat_template_kwargs — remember that and retry once without it.
+      if (NIM_EXTRA.chat_template_kwargs && !templateRejecters.has(model) && rejectsTemplateKwargs(err)) {
+        templateRejecters.add(model);
+        res = await axios.post(`${NIM_BASE}/chat/completions`, body({}), cfg);
+      } else throw err;
+    }
     const content = res.data?.choices?.[0]?.message?.content;
     if (!content || !String(content).trim()) throw new Error('Empty NIM content');
     recordLlmCall({
@@ -213,16 +256,25 @@ async function nimCompleteStream(
   if (!key) throw new Error('NVIDIA_API_KEY missing');
   const t0 = Date.now();
   let full = '';
+  const cfg = {
+    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+    responseType: 'stream' as const,
+    timeout: NIM_TIMEOUT_MS,
+  };
+  const body = (extra: Record<string, unknown>) => ({ model, messages, temperature: 0.6, max_tokens: maxTokens, stream: true, ...extra });
   try {
-    const res = await axios.post(
-      `${NIM_BASE}/chat/completions`,
-      { model, messages, temperature: 0.6, max_tokens: maxTokens, stream: true, ...NIM_EXTRA },
-      {
-        headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-        responseType: 'stream',
-        timeout: 60_000,
-      }
-    );
+    let res;
+    try {
+      res = await axios.post(`${NIM_BASE}/chat/completions`, body(nimExtraFor(model)), cfg);
+    } catch (err) {
+      // Stream-mode errors hide the body in a Readable — drain it so rejectsTemplateKwargs (and the log) can
+      // see the real 400. Then: tokenizer rejects chat_template_kwargs → remember it and retry once without.
+      await drainErrorBody(err);
+      if (NIM_EXTRA.chat_template_kwargs && !templateRejecters.has(model) && rejectsTemplateKwargs(err)) {
+        templateRejecters.add(model);
+        res = await axios.post(`${NIM_BASE}/chat/completions`, body({}), cfg);
+      } else throw err;
+    }
     await new Promise<void>((resolve, reject) => {
       let buf = '';
       const stream = res.data as NodeJS.ReadableStream;

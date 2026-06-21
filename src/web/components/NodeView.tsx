@@ -118,6 +118,10 @@ export default function NodeView({
   const [routePopup, setRoutePopup] = useState<{ mode: 'start' | 'failure'; failedModel?: string } | null>({ mode: 'start' });
   const retryRef = useRef<(() => void) | null>(null);
   const routeFails = useRef(0);
+  // Set true in the popup's onDone when the popup we're closing was a mid-lesson FAILURE recovery — so the
+  // node-open effect, which re-runs when routePopup clears, skips re-opening the node (which would wipe the
+  // live conversation). Recovery is resumed by retryRef instead. Consumed (reset) on the next effect run.
+  const skipOpenOnce = useRef(false);
   // This session's probed model picks live in the BROWSER (the source of truth): cached in localStorage and
   // sent on every turn as `models`, so any api instance can serve the turn without a shared server store.
   // The router popup refreshes them at node entry and after a failure; the server re-validates before use.
@@ -172,63 +176,71 @@ export default function NodeView({
     startRecording();
   };
 
-  // Auto-start: AI opens the conversation (no intro screen).
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      if (routePopup) return; // hold the lesson until the "finding your fastest tutor" popup resolves
-      setBusy(true);
-      try {
-        const res = await fetch(`${base}/start`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(withModels({ lang })),
-        }).catch(() => null);
-        if (cancelled) return;
-        if (!res || !res.ok) {
-          if (routeFails.current++ < 3) { setRoutePopup({ mode: 'failure' }); return; } // re-probe + retry
-          setMessages([{ role: 'tutor', text: SERVICE_DOWN_TEXT }]);
-          setAwaitingStart(false);
-          return;
-        }
-        const data = await res.json().catch(() => ({} as any));
-        if (cancelled) return;
-        if (data.systemError) {
-          if (routeFails.current++ < 3) { setRoutePopup({ mode: 'failure', failedModel: data.failedModel }); return; }
-          setMessages([{ role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
-          setAwaitingStart(false);
-          return;
-        }
-        routeFails.current = 0; // healthy start — reset the failure counter
-        // Replay any prior conversation for this node, then the opening/continue message last.
-        const history: Msg[] = (data.history ?? []).map((h: { role: 'tutor' | 'learner'; text: string }) => ({
-          role: h.role,
-          text: h.text,
-        }));
-        // Chapter-intro gate: the first fresh node opened in a chapter (this session) holds the teaching
-        // message behind a language + "say/type start" gate. The flag is only committed once they start,
-        // so changing language mid-gate (which re-runs this effect) keeps the gate up.
-        const gateKey = 'chapGate:' + conceptId.split(':').slice(0, -1).join(':');
-        if (history.length === 0 && !sessionStorage.getItem(gateKey)) {
-          heldOpening.current = data.message;
-          setMessages([{ role: 'tutor', text: INTRO_PROMPT }]);
-          spokenCount.current = 1; // the gate effect voices this — keep the message effect off it
-          setAwaitingStart(true);
-        } else {
-          setMessages([...history, { role: 'tutor', text: data.message }]);
-          // Don't auto-read the whole replayed transcript — only the new opening line (index = history.length).
-          spokenCount.current = history.length;
-          setAwaitingStart(false);
-        }
-        setChecklist(data.checklist ?? []);
-        setReadyForGate(!!data.readyForGate);
-      } finally {
-        if (!cancelled) setBusy(false);
+  // Open the node: probe-gated `/start` → opening/continue turn (replays prior history; held behind the
+  // chapter-intro "say start" gate on the first fresh node of a chapter). Called when the start popup is
+  // dismissed, on language change, and as the retry after a `/start` failure. A mid-lesson tutor failure
+  // does NOT call this — retryRef re-runs the failed action — so a recovery never wipes the conversation.
+  const openNode = async (signal?: { cancelled: boolean }) => {
+    setBusy(true);
+    try {
+      const res = await fetch(`${base}/start`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(withModels({ lang })),
+      }).catch(() => null);
+      if (signal?.cancelled) return;
+      if (!res || !res.ok) {
+        if (routeFails.current++ < 3) { retryRef.current = () => openNode(); setRoutePopup({ mode: 'failure' }); return; }
+        setMessages([{ role: 'tutor', text: SERVICE_DOWN_TEXT }]);
+        setAwaitingStart(false);
+        return;
       }
-    })();
-    return () => {
-      cancelled = true;
-    };
+      const data = await res.json().catch(() => ({} as any));
+      if (signal?.cancelled) return;
+      if (data.systemError) {
+        if (routeFails.current++ < 3) { retryRef.current = () => openNode(); setRoutePopup({ mode: 'failure', failedModel: data.failedModel }); return; }
+        setMessages([{ role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
+        setAwaitingStart(false);
+        return;
+      }
+      routeFails.current = 0; // healthy start — reset the failure counter
+      // Replay any prior conversation for this node, then the opening/continue message last.
+      const history: Msg[] = (data.history ?? []).map((h: { role: 'tutor' | 'learner'; text: string }) => ({
+        role: h.role,
+        text: h.text,
+      }));
+      // Chapter-intro gate: the first fresh node opened in a chapter (this session) holds the teaching
+      // message behind a language + "say/type start" gate. The flag is only committed once they start,
+      // so changing language mid-gate (which re-opens the node) keeps the gate up.
+      const gateKey = 'chapGate:' + conceptId.split(':').slice(0, -1).join(':');
+      if (history.length === 0 && !sessionStorage.getItem(gateKey)) {
+        heldOpening.current = data.message;
+        setMessages([{ role: 'tutor', text: INTRO_PROMPT }]);
+        spokenCount.current = 1; // the gate effect voices this — keep the message effect off it
+        setAwaitingStart(true);
+      } else {
+        setMessages([...history, { role: 'tutor', text: data.message }]);
+        // Don't auto-read the whole replayed transcript — only the new opening line (index = history.length).
+        spokenCount.current = history.length;
+        setAwaitingStart(false);
+      }
+      setChecklist(data.checklist ?? []);
+      setReadyForGate(!!data.readyForGate);
+    } finally {
+      if (!signal?.cancelled) setBusy(false);
+    }
+  };
+
+  // Node entry: open the node on mount and whenever the node or language changes — but HOLD on mount until
+  // the initial "finding your fastest tutor" popup is dismissed (its onDone clears routePopup, re-running
+  // this effect, which then opens). A FAILURE popup also clears routePopup here, but skipOpenOnce (set in
+  // onDone) makes us skip the re-open so the live conversation survives — retryRef resumes instead.
+  useEffect(() => {
+    if (routePopup) return; // hold while any router popup (start or failure) is on screen
+    if (skipOpenOnce.current) { skipOpenOnce.current = false; return; } // failure recovery — don't re-open
+    const signal = { cancelled: false };
+    void openNode(signal);
+    return () => { signal.cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conceptId, lang, routePopup]);
 
@@ -603,6 +615,10 @@ export default function NodeView({
               picksRef.current = { ...picksRef.current, ...picks };
               try { localStorage.setItem(PICKS_KEY, JSON.stringify(picksRef.current)); } catch { /* private mode */ }
             }
+            // A failure popup's dismissal must NOT re-open the node (that wipes the conversation) — the
+            // retry resumes exactly where we left off. A start popup's dismissal DOES open the node (no
+            // retry set), via the node-entry effect that re-runs when routePopup clears.
+            if (routePopup?.mode === 'failure') skipOpenOnce.current = true;
             const r = retryRef.current; retryRef.current = null; setRoutePopup(null); if (r) r();
           }}
         />

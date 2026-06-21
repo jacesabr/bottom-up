@@ -47,6 +47,7 @@ export default function RouterPopup({ apiBase, learnerId, mode, failedModel, onD
   const [textR, setTextR] = useState<RouteResult | null>(null);
   const [visR, setVisR] = useState<RouteResult | null>(null);
   const [concluded, setConcluded] = useState(false);
+  const [dwell, setDwell] = useState(false); // minimum on-screen time so the process is seen, not flashed past
   const started = useRef(false);
 
   useEffect(() => {
@@ -64,6 +65,10 @@ export default function RouterPopup({ apiBase, learnerId, mode, failedModel, onD
       await Promise.race([pv, new Promise((r) => setTimeout(r, 6000))]);
       setConcluded(true);
     });
+    // Minimum dwell: even if the probe resolves in <1s, hold the panel ~1.8s so the learner actually sees
+    // the race happen (and, on a failure, feels looked-after) rather than it flashing by. No auto-dismiss.
+    const dwellTimer = setTimeout(() => setDwell(true), 1800);
+    return () => clearTimeout(dwellTimer);
   }, [apiBase, learnerId, failedModel]);
 
   const okWinner = (r: RouteResult | null) => (r && !r.error ? r.ranked.find((p) => p.model === r.winner && p.ok) ?? null : null);
@@ -73,6 +78,16 @@ export default function RouterPopup({ apiBase, learnerId, mode, failedModel, onD
   const visMs = vw?.latencyMs ?? 0;
   const handMs = visMs + textMs; // image→text (vision read) THEN the tutor reads that (text) — the two add up
   const isFailure = mode === 'failure';
+  // Gate the button on BOTH the race concluding AND the minimum dwell — so the panel is never flashed past.
+  const ready = concluded && dwell;
+  // Live, one-line narration of where we are, so the wait feels like a process the learner is part of.
+  const stageText = !textR
+    ? 'Probing the free NIM endpoints…'
+    : !concluded
+      ? 'Ranking them by speed × quality…'
+      : tw
+        ? `Locked in — ${short(textR.winner)} is your tutor`
+        : 'Using the safe default tutor';
 
   // The picks the browser will cache + send on every turn: this session's winner + 2nd-best (text) and the
   // vision winner, taken from the live race (ok endpoints only, best-first). The server re-validates each.
@@ -121,14 +136,18 @@ export default function RouterPopup({ apiBase, learnerId, mode, failedModel, onD
         </div>
 
         <div className="rp-foot">
-          {isFailure && concluded && tw && (
+          {isFailure && ready && tw && (
             <div className="rp-resume-note">
               Switched to <strong>{short(textR!.winner)}</strong>. We'll re-send your last message automatically so
-              we pick up exactly where you left off — thanks for the short wait.
+              we pick up exactly where you left off — nothing you typed is lost.
             </div>
           )}
-          <button className="rp-btn" disabled={!concluded} onClick={() => onDone(buildPicks())}>
-            {!concluded ? 'Racing the endpoints…' : isFailure ? 'Resume lesson  →' : 'Start lesson  →'}
+          <div className={`rp-stage${ready ? ' done' : ''}`}>
+            <span className="rp-stage-dot" />
+            {stageText}
+          </div>
+          <button className="rp-btn" disabled={!ready} onClick={() => onDone(buildPicks())}>
+            {!ready ? (isFailure ? 'Reconnecting…' : 'Finding your tutor…') : isFailure ? 'Resume lesson  →' : 'Start lesson  →'}
           </button>
         </div>
       </div>
