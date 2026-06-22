@@ -114,6 +114,11 @@ export function stripForSpeech(text: string): string {
   //     keeps it to real money — "$2x" / "$x$" have no digit-then-boundary, so they fall through to math.
   t = t.replace(/\$\s?(\d[\d,]*(?:\.\d+)?)\b/g, '$1 dollars');
 
+  // 0a3) URLs → spoken "link" so the slash/dot/operator rules below don't read a web address out as
+  //     "h t t p s colon over over ...". Only explicit schemes (http/https/www) are touched, so a bare
+  //     fraction like "x/y" or "1/2" still becomes "over" further down.
+  t = t.replace(/\b(?:https?:\/\/|www\.)[^\s)]+/gi, ' link ');
+
   // 0) Genuine multiplication is written tight (2*3, 2*x, a*b, f(x)*g(x)) — convert it to "times"
   //    BEFORE the emphasis step, so those asterisks can't be mistaken for italic markers (which
   //    would eat the maths between two products). Emphasis "*"s are space-/edge-flanked, so this
@@ -145,8 +150,13 @@ export function stripForSpeech(text: string): string {
   t = t.replace(/\^\s*\{?\s*3\s*\}?(?![0-9a-zA-Z])/g, ' cubed ');
   t = t.replace(/\^\s*\{([^{}]*)\}/g, ' to the power $1 ');
   t = t.replace(/\^\s*([0-9a-zA-Z]+)/g, ' to the power $1 ');
-  t = t.replace(/_\s*\{([^{}]*)\}/g, ' sub $1 ');
-  t = t.replace(/_\s*([0-9a-zA-Z]+)/g, ' sub $1 ');
+  //   Subscripts: a SINGLE-letter base with a short (single-char or braced) index is real maths
+  //   (x_1, h_t, a_{ij}, W_{out}) → "sub". Everything else with an underscore is a snake_case code
+  //   identifier (top_k, max_cache_size, p_true, s_per_layer, num_heads) and must be read as words,
+  //   never "sub" — so we collapse those underscores to a word break instead.
+  t = t.replace(/\b([A-Za-z])_\s*\{([^{}]*)\}/g, '$1 sub $2 ');
+  t = t.replace(/\b([A-Za-z])_([0-9A-Za-z])(?![0-9A-Za-z])/g, '$1 sub $2 ');
+  t = t.replace(/_+/g, ' '); // remaining underscores: snake_case / stray → word break
 
   // 6) Named operators / Greek / symbols → words.
   const sym: [RegExp, string][] = [
@@ -182,9 +192,13 @@ export function stripForSpeech(text: string): string {
   // Operands are kept atomic (a whole number or a single letter) and spaces are required on BOTH
   // sides, so prose like "the x value", "x and y", or "box x ray" is never mistaken for a product.
   t = t.replace(/(^|[^A-Za-z])([A-Za-z]|\d+)\s+[xX]\s+(\d+|[A-Za-z])(?![A-Za-z])/g, '$1$2 times $3');
-  t = t.replace(/([0-9a-zA-Z)\]])\s*\/\s*([0-9a-zA-Z(\[])/g, '$1 over $2'); // a/b → a over b
-  t = t.replace(/([0-9a-zA-Z)\]])\s*\+\s*([0-9a-zA-Z(\[])/g, '$1 plus $2'); // x + 2 → x plus 2
-  t = t.replace(/([0-9a-zA-Z)\]])\s*=\s*([0-9a-zA-Z(\[-])/g, '$1 equals $2'); // x=2 → x equals 2
+  //   Right operand is a LOOKAHEAD (not consumed) so chained operators all match: "a/b/c" →
+  //   "a over b over c", "a+b+c" → "a plus b plus c", "a=b=c" → "a equals b equals c". Consuming it
+  //   (the old `$2` form) left every second operator orphaned — and a leaked "=" was then silently
+  //   dropped by the step-10 [*=] cleanup, losing the relation entirely.
+  t = t.replace(/([0-9a-zA-Z)\]])\s*\/\s*(?=[0-9a-zA-Z(\[])/g, '$1 over '); // a/b → a over b
+  t = t.replace(/([0-9a-zA-Z)\]])\s*\+\s*(?=[0-9a-zA-Z(\[])/g, '$1 plus '); // x + 2 → x plus 2
+  t = t.replace(/([0-9a-zA-Z)\]])\s*=\s*(?=[0-9a-zA-Z(\[-])/g, '$1 equals '); // x=2 → x equals 2
 
   // 8) Drop any remaining LaTeX commands and leftover braces/backslashes/dollars.
   t = t.replace(/\\[a-zA-Z]+/g, ' ');
