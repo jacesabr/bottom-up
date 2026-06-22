@@ -186,6 +186,7 @@
 .gate-card .btn-primary.move-on:hover { filter: brightness(1.05); }
 
 .gate-card {
+  position: relative; /* host for the .recording-overlay (absolute, inset:0) during dictation */
   background: #faf7f2;
   border: 1px solid var(--rule);
   border-radius: 12px;
@@ -194,6 +195,8 @@
   flex-direction: column;
   gap: 10px;
 }
+/* "Speak your answer" mic sits just under the written-check textarea. */
+.gate-dictate { margin-top: -2px; }
 .gate-q { font-size: 1rem; font-weight: 600; line-height: 1.6; }
 .gate-opts { display: flex; flex-direction: column; gap: 8px; }
 .gate-opt {

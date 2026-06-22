@@ -113,6 +113,9 @@ export default function NodeView({
   const [ttsProvider, setTtsProvider] = useState<string>(() => localStorage.getItem('ttsProvider') || '');
   const [showLangPrompt, setShowLangPrompt] = useState(false);
   const stopListenRef = useRef<(() => void) | null>(null);
+  // Where a dictation result should land: the chat reply box, or the active check's answer box. Set
+  // when the mic is started so the transcript callback (which closes over stale state) routes correctly.
+  const micTarget = useRef<'chat' | 'gate'>('chat');
   const spokenCount = useRef(0);
   const heldOpening = useRef<string | null>(null); // chapter-intro gate: teaching message held until "start"
 
@@ -163,17 +166,18 @@ export default function NodeView({
       lc,
       sc,
       apiBase,
-      (text) => setInput(text),
+      (text) => (micTarget.current === 'gate' ? setGateAnswer(text) : setInput(text)),
       () => setListening(false)
     );
   };
 
-  const toggleMic = () => {
+  const toggleMic = (target: 'chat' | 'gate' = 'chat') => {
     if (listening) {
       stopListenRef.current?.();
       setListening(false);
       return;
     }
+    micTarget.current = target;
     // First-ever mic use → ask which language to speak/learn in (saved for all future calls).
     if (!localStorage.getItem('micLangAsked')) {
       setShowLangPrompt(true);
@@ -629,6 +633,28 @@ export default function NodeView({
 
   const shown = checklist.filter((c) => c.demonstrated).length;
 
+  // The "Listening… speak now" overlay, shared by the chat reply box and the check answer box (they're
+  // mutually exclusive, so only one host ever mounts it). It fills its positioned host (.reply-box /
+  // .gate-card, both position:relative) via .recording-overlay { position:absolute; inset:0 }.
+  const recordingOverlay = listening ? (
+    <div className="recording-overlay" onClick={() => toggleMic()} role="button" tabIndex={0}>
+      <div className="recording-card" onClick={(e) => e.stopPropagation()}>
+        <div className="recording-pulse">
+          <span className="recording-ring" />
+          <span className="recording-mic">🎤</span>
+        </div>
+        <div className="recording-copy">
+          <div className="recording-title">Listening… speak now</div>
+          <p className="recording-sub">
+            Your voice is turning into text. Tap below when you're done — your words
+            will appear in the box so you can read them before you submit.
+          </p>
+          <button className="recording-stop" onClick={() => toggleMic()}>⏹ Tap to stop &amp; see my text</button>
+        </div>
+      </div>
+    </div>
+  ) : null;
+
   return (
     <div className="tutor-shell">
       {routePopup && (
@@ -728,6 +754,7 @@ export default function NodeView({
 
             {gate && (
               <div className="gate-card">
+                {recordingOverlay}
                 <div className="gate-progress">
                   Check {gate.index} of {gate.total} · <span className="gate-slot">{slotLabel(gate.slot, gate.answerType)}</span>
                 </div>
@@ -755,13 +782,27 @@ export default function NodeView({
                 )}
 
                 {gate.answerType === 'written' && (
-                  <textarea
-                    className="gate-textarea"
-                    placeholder="Write your explanation in full…"
-                    value={gateAnswer}
-                    disabled={!!gateCleared}
-                    onChange={(e) => setGateAnswer(e.target.value)}
-                  />
+                  <>
+                    <textarea
+                      className="gate-textarea"
+                      placeholder="Write your explanation in full…"
+                      value={gateAnswer}
+                      disabled={!!gateCleared}
+                      onChange={(e) => setGateAnswer(e.target.value)}
+                    />
+                    {!gateCleared && (
+                      <div className="gate-dictate">
+                        <button
+                          className={`notation-btn mic${listening ? ' listening' : ''}`}
+                          onClick={() => toggleMic('gate')}
+                          disabled={busy}
+                          title={listening ? 'Tap to stop and turn your speech into text' : `Speak your answer instead of typing (${langs.find((l) => l.code === lang)?.native || 'English'})`}
+                        >
+                          {listening ? '⏹ Tap to stop' : '🎤 Speak your answer'}
+                        </button>
+                      </div>
+                    )}
+                  </>
                 )}
 
                 {gate.answerType === 'sketch' && (
@@ -790,24 +831,7 @@ export default function NodeView({
           {/* Reply box */}
           {!gate && !done && (
             <div className="reply-box">
-              {listening && (
-                <div className="recording-overlay" onClick={toggleMic} role="button" tabIndex={0}>
-                  <div className="recording-card" onClick={(e) => e.stopPropagation()}>
-                    <div className="recording-pulse">
-                      <span className="recording-ring" />
-                      <span className="recording-mic">🎤</span>
-                    </div>
-                    <div className="recording-copy">
-                      <div className="recording-title">Listening… speak now</div>
-                      <p className="recording-sub">
-                        Your voice is turning into text. Tap below when you're done — your words
-                        will appear in the box so you can read them before you press Send.
-                      </p>
-                      <button className="recording-stop" onClick={toggleMic}>⏹ Tap to stop &amp; see my text</button>
-                    </div>
-                  </div>
-                </div>
-              )}
+              {recordingOverlay}
               {showEq && (
                 <EquationComposer
                   onInsert={(t) => setInput((v) => (v ? `${v} ${t}` : t))}
@@ -853,7 +877,7 @@ export default function NodeView({
                   </select>
                   <button
                     className={`notation-btn mic${listening ? ' listening' : ''}${highlight?.target === 'mic' ? ' glow' : ''}`}
-                    onClick={toggleMic}
+                    onClick={() => toggleMic()}
                     title={listening ? 'Tap to stop and turn your speech into text' : `Speak your answer (${langs.find((l) => l.code === lang)?.native || 'English'})`}
                   >
                     {listening ? '⏹ Tap to stop' : '🎤 Speak'}
