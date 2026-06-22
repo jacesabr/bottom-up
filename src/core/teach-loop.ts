@@ -278,13 +278,11 @@ function socratesOpening(c: any, _nextMoveText?: string, returning = false, hasP
   }
 
   if (returning) {
-    // Gentle reminder for a learner who's been here before — assume they may have forgotten.
-    return (
-      `Welcome back. 🙂 Quick reminder: tap **Details** (top-right) anytime, use the **scratchpad** for rough working ` +
-      `(or **📷 scan** a photo of working you did on paper, straight onto it), then **Attach** it or hit **Help me** — ` +
-      `and you can **🎤 speak** instead of typing or have replies **read aloud**.\n\n` +
-      q
-    );
+    // Returning learner with no prior dialogue on THIS node (first real visit here, or they only saw
+    // openings before): skip the welcome/UI reminder they've already met and open CLEAN with the topic
+    // question — matching the IE app's "clean message on return". (A node we've actually talked through
+    // replays its transcript above as the "previously" context and is handled by the hasPrior branch.)
+    return q;
   }
 
   return (
