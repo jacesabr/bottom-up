@@ -109,6 +109,11 @@ export function stripForSpeech(text: string): string {
   //     right next to the emoji ("🙂 Quick reminder" → "…uick reminder"). Remove them before anything else.
   t = t.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{200D}]/gu, ' ');
 
+  // 0a2) Currency: "$100" / "$0.01" / "$1,000.50" → "100 dollars" so the amount is SPOKEN (not silently
+  //     stripped to a bare number, and not mis-paired as math by the $..$ unwrap below). The \b anchor
+  //     keeps it to real money — "$2x" / "$x$" have no digit-then-boundary, so they fall through to math.
+  t = t.replace(/\$\s?(\d[\d,]*(?:\.\d+)?)\b/g, '$1 dollars');
+
   // 0) Genuine multiplication is written tight (2*3, 2*x, a*b, f(x)*g(x)) — convert it to "times"
   //    BEFORE the emphasis step, so those asterisks can't be mistaken for italic markers (which
   //    would eat the maths between two products). Emphasis "*"s are space-/edge-flanked, so this
