@@ -18,7 +18,7 @@ import 'dotenv/config';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { db } from '../src/db/index.js';
-import { chapters, concepts, gates, type RefresherItem } from '../src/db/schema.js';
+import { chapters, concepts, gates, type RefresherItem, type ForwardRefItem } from '../src/db/schema.js';
 import { sql } from 'drizzle-orm';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
@@ -36,6 +36,7 @@ interface Node {
   keyMoves?: string[];
   misconceptions?: string[];
   refreshers?: RefresherItem[]; // tutor-private foundational refreshers (§A.5) — bedrock with no upstream node
+  forwardRefs?: ForwardRefItem[]; // terms the node previews but does not teach → runtime "aside" card
   prereqs?: string[];
   needsAuthoring?: boolean; // "Learn from Scratch" stubs (Coherence-Map node not yet authored)
 }
@@ -117,6 +118,7 @@ async function loadChapter(dir: string) {
         keyMoves: n.keyMoves ?? [],
         misconceptions: n.misconceptions ?? [],
         refreshers: n.refreshers ?? [],
+        forwardRefs: n.forwardRefs ?? [],
         prereqs: prereqsInChapter,
         needsAuthoring: n.needsAuthoring ?? false,
       })
@@ -136,6 +138,9 @@ async function loadChapter(dir: string) {
           // existing non-empty refreshers set and only take content.json's value when it actually has one
           // (e.g. a freshly-authored bridge node, or a chapter whose refreshers ARE mirrored in content.json).
           refreshers: sql`CASE WHEN jsonb_array_length(excluded.refreshers) > 0 THEN excluded.refreshers ELSE ${concepts.refreshers} END`,
+          // forwardRefs: same preserve-unless-provided rule as refreshers (additive; previews are authored
+          // into content.json for the pilot, but don't clobber a DB-authored set on reload).
+          forwardRefs: sql`CASE WHEN jsonb_array_length(excluded.forward_refs) > 0 THEN excluded.forward_refs ELSE ${concepts.forwardRefs} END`,
           prereqs: prereqsInChapter,
           needsAuthoring: n.needsAuthoring ?? false,
         },

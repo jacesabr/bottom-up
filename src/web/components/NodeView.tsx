@@ -21,6 +21,8 @@ interface Msg {
   text?: string;
   image?: string;
   figure?: { url: string; caption: string } | null;
+  kind?: 'aside'; // forward-reference heads-up — a quiet note, not a chat bubble
+  aside?: { terms: string[]; why: string; later: string } | null; // payload for an 'aside' card (a previewed-but-untaught term)
   streaming?: boolean; // tutor turn still streaming in — don't read it aloud until it finalizes
 }
 interface Check {
@@ -410,6 +412,14 @@ export default function NodeView({
         }
         return [...c, { role: 'tutor', text: t, figure: figure ?? null }];
       });
+    // Forward-reference heads-up: if the turn named a previewed-but-untaught term, drop a quiet aside card
+    // right after the tutor bubble (a separate, non-bubble note — see the 'aside' render branch below).
+    const pushAside = (d: { aside?: { terms: string[]; why: string; later: string } | null } | null | undefined) => {
+      const a = d?.aside;
+      if (a && Array.isArray(a.terms) && a.terms.length) {
+        setMessages((c) => [...c, { role: 'tutor', kind: 'aside', aside: a }]);
+      }
+    };
     const applyProgress = (data: any) => {
       // Don't overwrite progress on a failed/unavailable turn (no real checklist came back).
       if (data && data.message && !data.systemError) {
@@ -474,6 +484,7 @@ export default function NodeView({
         }
         routeFails.current = 0;
         finalizeTutor(finalData.message || SERVICE_DOWN_TEXT, finalData.figure);
+        pushAside(finalData);
         applyProgress(finalData);
       } else if (gotDelta) {
         // Stream cut after content arrived — the turn was already produced server-side, so don't
@@ -494,7 +505,7 @@ export default function NodeView({
         const data = await res.json().catch(() => ({} as any));
         const text2 = data.message || (res.ok ? null : SERVICE_DOWN_TEXT);
         finalizeTutor(text2 ?? SERVICE_DOWN_TEXT, data.figure);
-        if (res.ok) applyProgress(data);
+        if (res.ok) { pushAside(data); applyProgress(data); }
       } catch {
         finalizeTutor(SERVICE_DOWN_TEXT);
       }
@@ -706,25 +717,48 @@ export default function NodeView({
         {/* Chat pane */}
         <section className="chat-pane">
           <div className="chat-scroll" ref={scroller}>
-            {messages.map((m, i) => (
-              <div key={i} className={`bubble ${m.role}`}>
-                <div className="bubble-label">{m.role === 'tutor' ? 'Tutor' : 'You'}</div>
-                <div className="bubble-text">
-                  {m.image && <img className="bubble-img" src={m.image} alt="handwritten working" />}
-                  {m.text && (
-                    <MathText glowWord={isWelcomeMessage(m.text) ? highlight?.word || undefined : undefined}>
-                      {m.text}
-                    </MathText>
-                  )}
-                  {m.figure && (
-                    <figure className="tutor-figure">
-                      <img src={`${apiBase}/${m.figure.url}`} alt={m.figure.caption} loading="lazy" />
-                      <figcaption>📖 {m.figure.caption}</figcaption>
-                    </figure>
-                  )}
+            {messages.map((m, i) =>
+              m.kind === 'aside' ? (
+                <div key={i} className="aside-card">
+                  <div className="aside-emoji">🌱</div>
+                  <div className="aside-body">
+                    <div className="aside-lead">hey champ — quick heads up, no stress:</div>
+                    {m.aside?.terms?.length ? (
+                      <div className="aside-terms">
+                        {m.aside.terms.map((t, k) => (
+                          <span key={k} className="aside-chip"><MathText>{t}</MathText></span>
+                        ))}
+                      </div>
+                    ) : null}
+                    <div className="aside-text">
+                      {m.aside?.why && <MathText>{m.aside.why}</MathText>}{' '}
+                      {m.aside?.later && (
+                        <strong><MathText>{m.aside.later}</MathText></strong>
+                      )}{' '}
+                      you've got this. 💪
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ) : (
+                <div key={i} className={`bubble ${m.role}`}>
+                  <div className="bubble-label">{m.role === 'tutor' ? 'Tutor' : 'You'}</div>
+                  <div className="bubble-text">
+                    {m.image && <img className="bubble-img" src={m.image} alt="handwritten working" />}
+                    {m.text && (
+                      <MathText glowWord={isWelcomeMessage(m.text) ? highlight?.word || undefined : undefined}>
+                        {m.text}
+                      </MathText>
+                    )}
+                    {m.figure && (
+                      <figure className="tutor-figure">
+                        <img src={`${apiBase}/${m.figure.url}`} alt={m.figure.caption} loading="lazy" />
+                        <figcaption>📖 {m.figure.caption}</figcaption>
+                      </figure>
+                    )}
+                  </div>
+                </div>
+              )
+            )}
             {busy && !messages[messages.length - 1]?.streaming && <ThinkingIndicator />}
 
             {done && (

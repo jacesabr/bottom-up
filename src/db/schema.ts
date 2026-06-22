@@ -14,6 +14,21 @@ export interface RefresherItem {
   returnCue: string; // one-clause bridge back to the main line
 }
 
+/**
+ * A forward reference: a term the node deliberately NAMES but does NOT teach (a preview of a later
+ * chapter). The OPPOSITE of a RefresherItem — a refresher is bedrock the tutor teaches inline when it
+ * surfaces; a forward-ref must NOT be taught here (that would break bottom-up order). Instead, when the
+ * tutor first names one of `terms`, the client shows a quiet "aside" card reassuring the learner it's a
+ * deliberate preview, covered properly later (`coveredIn`). Keeps a named-but-untaught term from reading
+ * as an assumption the learner was supposed to already know (dont_assume.md).
+ */
+export interface ForwardRefItem {
+  terms: string[]; // the previewed terms; the aside fires when the tutor first names any of them
+  why: string; // plain, reassuring: why it's named now and that it isn't something to know yet
+  later: string; // when/where it gets taught properly
+  coveredIn: string[]; // downstream concept ids that actually teach these terms (graph-checkable promise)
+}
+
 export const users = pgTable('users', {
   id: uuid('id').primaryKey().defaultRandom(),
   email: text('email').unique(),
@@ -53,6 +68,10 @@ export const concepts = pgTable('concepts', {
   // dont_assume.md §2a) — NEVER shown to the learner unprompted; deployed only when that gap surfaces.
   // See authoring_and_improve.md §A.5 (the FOURTH §A outcome).
   refreshers: jsonb('refreshers').$type<RefresherItem[]>().notNull().default(sql`'[]'::jsonb`),
+  // Forward references: terms the node intentionally PREVIEWS but does not teach (distinct from refreshers,
+  // which are taught inline). Powers the runtime "aside" card (dont_assume.md) that reassures the learner a
+  // named-but-untaught term is a deliberate preview, covered later. Additive/optional; default empty.
+  forwardRefs: jsonb('forward_refs').$type<ForwardRefItem[]>().notNull().default(sql`'[]'::jsonb`),
   prereqs: text('prereqs').array().notNull(), // concept IDs
   // Advanced-track overlay (e.g. JEE Advanced): extra reading/depth shown ONLY on the advanced track.
   // Empty for almost all nodes; hand-filled where a higher bar / board-provided extra resources apply.

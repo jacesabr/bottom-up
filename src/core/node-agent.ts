@@ -2,7 +2,7 @@ import axios from 'axios';
 import { completeJson, parseLooseJson, repairJsonBackslashes, resolveProvider, nimVision, LlmUnavailableError, type ChatMessage } from './llm.js';
 import { lang } from './languages.js';
 import { examProfile, type Track } from './exam-profile.js';
-import type { RefresherItem } from '../db/schema.js';
+import type { RefresherItem, ForwardRefItem } from '../db/schema.js';
 
 export interface GradeResult {
   correct: boolean;
@@ -479,6 +479,31 @@ export function pendingRefresher(
     const seenEarlier = terms.some((t) => termAppears(priorTutorText, t));
     if (alreadySurfaced || seenEarlier) continue; // already refreshed / introduced earlier
     return r;
+  }
+  return null;
+}
+
+/**
+ * Forward-reference ASIDE detection (dont_assume.md). A node may deliberately NAME a term it does not
+ * teach — a preview of a later chapter. When the tutor first surfaces such a term we show a quiet "aside"
+ * card reassuring the learner it's an intentional preview, covered later — NOT something they were meant
+ * to already know. Unlike a refresher, this does NOT override the turn or teach the term; it just
+ * annotates it. Returns the first forwardRefs group this turn newly surfaces (none of whose terms
+ * appeared in the prior tutor text), so the aside fires once per group.
+ */
+export function pendingForwardRef(
+  message: string,
+  forwardRefs: ForwardRefItem[] | undefined,
+  priorTutorText: string
+): ForwardRefItem | null {
+  for (const fr of forwardRefs ?? []) {
+    const terms = (fr?.terms ?? [])
+      .map((t) => String(t).trim().toLowerCase())
+      .filter((t) => t.length > 1);
+    if (!terms.length) continue;
+    if (!terms.some((t) => termAppears(message, t))) continue; // not surfaced this turn
+    if (terms.some((t) => termAppears(priorTutorText, t))) continue; // already surfaced earlier → once only
+    return fr;
   }
   return null;
 }

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>just for 10 — maths</title>
+<style>
+  :root { --ink:#23262b; --muted:#6b7280; --line:#e6e8eb; --accent:#3b6ea5; --bg:#fbfbfa; --code:#f4f5f6; }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font: 16px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 22px 120px; }
+  h1 { font-size: 26px; font-weight: 650; letter-spacing: -0.01em; margin: 0 0 6px; }
+  h2 { font-size: 18px; font-weight: 600; margin: 38px 0 10px; padding-top: 14px; border-top: 1px solid var(--line); color:#2b2f36; }
+  h3 { font-size: 15.5px; font-weight: 600; margin: 26px 0 8px; }
+  p, li { color: var(--ink); }
+  .lede { color: var(--muted); }
+  blockquote { margin: 16px 0; padding: 10px 16px; border-left: 3px solid var(--line); color: var(--muted); background: #fff; }
+  code { background: var(--code); padding: 1.5px 5px; border-radius: 4px; font: 13px/1.5 "SF Mono", ui-monospace, Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px 16px; border-radius: 8px; overflow-x: auto; border: 1px solid var(--line); }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  td code { font-size: 12px; }
+  .mermaid { margin: 18px 0; text-align: center; }
+  ol li { margin: 6px 0; }
+  .tag { color: var(--accent); font-weight: 600; }
+  .status { color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>just for 10</h1>
+<p class="lede">a small holding pen. fixes + schema changes get tried on <strong>10 nodes first</strong>, not the
+whole corpus. iterate fast on these, watch them in the real app, and only roll a change out once it actually feels
+right here.</p>
+<p>this is the registry: which 10 nodes are in the pen, and which changes we're piloting on them.</p>
+<blockquote>twin doc — <code>just for 10.md</code> is the canonical text. this is the <strong>maths</strong> mirror of
+the IE doc. the engine is shared (<code>src/core/node-agent.ts</code>, <code>src/web/components/NodeView.tsx</code>),
+so every change here matches IE's — same schema, same render — just authored onto maths nodes.</blockquote>
+
+<h2>the 10 nodes (maths)</h2>
+<p>first 10 nodes of <code>content/cbse10/maths/jemh101/</code> — chapter 1, Real Numbers. good pilot chapter:
+node 0 openly names theorems it doesn't prove yet, so it's a natural forward-reference case.</p>
+<table>
+  <tr><th>#</th><th>slug</th><th>title</th></tr>
+  <tr><td>0</td><td><code>apply-real-number-theorems</code></td><td>Apply the FTA and irrationality results <span class="tag">← forward-refs</span></td></tr>
+  <tr><td>1</td><td><code>prime-factorise-integer</code></td><td>Factorise a composite number into primes</td></tr>
+  <tr><td>2</td><td><code>state-fundamental-theorem-arithmetic</code></td><td>State the Fundamental Theorem of Arithmetic</td></tr>
+  <tr><td>3</td><td><code>decide-ends-with-digit-via-primes</code></td><td>Decide whether a power can end in a given digit</td></tr>
+  <tr><td>4</td><td><code>compute-hcf-prime-factorisation</code></td><td>Compute HCF from prime factorisation</td></tr>
+  <tr><td>5</td><td><code>compute-lcm-prime-factorisation</code></td><td>Compute LCM from prime factorisation</td></tr>
+  <tr><td>6</td><td><code>use-hcf-lcm-product-relation</code></td><td>Use HCF(a,b) × LCM(a,b) = a × b</td></tr>
+  <tr><td>7</td><td><code>state-prime-divides-square-theorem</code></td><td>State and apply Theorem 1.2 (p | a² ⇒ p | a)</td></tr>
+  <tr><td>8</td><td><code>set-up-contradiction-rational-assumption</code></td><td>Set up an irrationality proof by contradiction</td></tr>
+  <tr><td>9</td><td><code>derive-square-relation-from-fraction</code></td><td>Square and rearrange to get the divisibility relation</td></tr>
+</table>
+<p>full id form: <code>cbse10:maths:jemh101:&lt;slug&gt;</code>.</p>
+<p><strong>why this is safe on 10 only:</strong> every schema change here is <strong>additive + optional</strong>.
+a new field authored into these 10 <code>content.json</code> files just isn't present on the rest of the corpus — the
+loader and engine no-op when it's missing. no pilot flag, no branch. the 10 simply have richer data.</p>
+
+<h2>changes being piloted</h2>
+
+<h3>1. forward-reference asides <span class="status">· status: proposed</span></h3>
+<p><strong>the problem (corrected — sharper than first read).</strong> the fault is <strong>not</strong> just that
+node 0 names the <em>Fundamental Theorem of Arithmetic</em> and <em>irrationality results</em> before they're stated
+(FTA lands in node 2; irrationality in nodes 7–9). it's that <strong>keyMove #2 makes the learner demonstrate
+them</strong>:</p>
+<blockquote>"Invoke the appropriate theorem (FTA, Theorem 1.2) explicitly"</blockquote>
+<p>the engine drives the tutor at the next undemonstrated key move and demands the <em>learner</em> show it in their
+own words — so the tutor will try to get the learner to name/apply theorems they were never taught. <strong>that
+assumes knowledge the learner can't have yet — a DON'T-ASSUME violation.</strong> same shape as IE node 1. (this
+"apply everything" node sitting <em>first</em>, before its pieces, is part of why.)</p>
+<p><strong>so the fix is two layers — (A) is the real one:</strong></p>
+<ul>
+  <li><strong>(A) reshape keyMove #2</strong> so the learner demonstrates the <em>idea</em> (e.g. "pick which tool
+  the problem needs"), NOT naming theorems that haven't been stated.</li>
+  <li><strong>(B) the forward-ref aside</strong> then presents those theorem names honestly: previewed, not required
+  now, stated/proven in the next nodes.</li>
+</ul>
+<p><strong>the key distinction</strong> (this is the actual idea):</p>
+<div class="mermaid">
+flowchart TD
+  A[a node names a term] --> B{do you need it to grasp THIS node?}
+  B -- yes, it's bedrock it leans on --> C["refresher — teach it inline now<br/>surface → confess → fill → return"]
+  B -- no, it's just a preview --> D["forward-ref — do NOT teach it<br/>show a quiet aside, defer it"]
+  C --> E["EXISTS: refreshers field + pendingRefresher backstop"]
+  D --> F["NEW: forwardRefs field + aside card"]
+</div>
+<p>teaching a forward-ref inline (refresher-style) would be <strong>wrong</strong> — it'd drag the FTA proof into a
+node whose job is just to <em>use</em> the result. the right move is to <em>acknowledge and defer</em>.</p>
+<p><strong>the schema</strong> (additive, on the node in <code>content.json</code>):</p>
+<pre><code>"forwardRefs": [
+  {
+    "terms": ["the Fundamental Theorem of Arithmetic", "irrationality results"],
+    "why": "named here only to show what these results let you DO — you'll meet the statements and proofs in the next few nodes",
+    "later": "we state the FTA next, and prove the irrationality results a bit after that",
+    "coveredIn": [
+      "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic",
+      "cbse10:maths:jemh101:state-prime-divides-square-theorem"
+    ]
+  }
+]</code></pre>
+<p><code>coveredIn</code> is the trust mechanism: a list of <strong>real downstream node ids</strong> that actually
+teach the term. validated at load → if a "we'll cover it later" promise points nowhere, the build fails. the promise
+is checkable, not hopeful.</p>
+<p><strong>how it fires.</strong> reuse the refresher machinery (<code>termAppears</code> guarded-term match in
+node-agent.ts). when a tutor turn first surfaces a forward-ref term that hasn't been acknowledged yet, emit a
+<code>forward_ref</code> aside — <strong>once per group</strong>. the aside text is the authored
+<code>why</code>/<code>later</code>, never model-generated, so the model can't invent a promise it can't keep.</p>
+<p><strong>the UI.</strong> a new <code>Msg.kind === 'aside'</code> branch in NodeView, mirroring the existing
+<code>kind: 'recap'</code> card — a quiet bordered note, the terms as chips, the authored copy. shared NodeView →
+lands in both repos from one change.</p>
+<p><strong>the voice</strong> — chosen: the peppy "champ" voice.</p>
+<blockquote>hey champ — no worries: the <em>Fundamental Theorem of Arithmetic</em> and these <em>irrationality results</em>
+are brand new. we're only using them here to see what they're good for; we'll state and prove them in the next few
+lessons. you've got this, champ.</blockquote>
+
+<h2>pieces / choices</h2>
+<table>
+  <tr><th>piece</th><th>choice now</th><th>why</th><th>later / alt</th></tr>
+  <tr><td>detect a forward-ref</td><td>reuse <code>termAppears</code> guarded-term match</td><td>same deterministic path as refreshers; model-independent</td><td>let the model emit a flag (less reliable)</td></tr>
+  <tr><td>aside content</td><td>authored in <code>forwardRefs</code>, never model-written</td><td>a "covered later" promise must be true, not improvised</td><td>—</td></tr>
+  <tr><td><code>coveredIn</code></td><td>downstream node ids, validated at load</td><td>makes the promise checkable; dead link fails build</td><td>advisory-only first, enforce later</td></tr>
+  <tr><td>rollout</td><td>additive optional field, on the 10 only</td><td>absent field = no-op; no pilot flag needed</td><td>promote corpus-wide once happy</td></tr>
+  <tr><td>render</td><td>new <code>Msg.kind: 'aside'</code> card, mirrors recap</td><td>shared NodeView → both repos in one change</td><td>—</td></tr>
+  <tr><td><strong>keyMove #2</strong></td><td>reshape to the <em>idea</em>, pull the theorem names out</td><td>a key move must not demand undefined theorems the gate never tests</td><td>—</td></tr>
+</table>
+
+<h2>decisions to talk about</h2>
+<p><strong>voice</strong> — settled: peppy "champ" voice.</p>
+<ol>
+  <li><strong>trigger timing</strong> — fire the aside the moment a term is surfaced, or once at node-open listing all
+  of the node's forward-refs up front?</li>
+  <li><strong><code>coveredIn</code> strict or advisory</strong> — fail the build on a forward-ref with no downstream
+  teacher, or just warn?</li>
+  <li><strong>prose</strong> — leave the naked term in the node text (+ aside), or also flag it as "coming later" in
+  the wording itself?</li>
+  <li><strong>keyMove #2 rewrite</strong> — exact replacement for "Invoke the appropriate theorem (FTA, Theorem 1.2)
+  explicitly"? draft: <em>"choose which result the problem calls for"</em> — good?</li>
+</ol>
+
+<h2>how we use this doc</h2>
+<ul>
+  <li>each new fix/schema idea → add a <code>### N. &lt;name&gt; · status: proposed</code> block here first.</li>
+  <li>author it into the 10 nodes, watch it in the app, iterate.</li>
+  <li>once it's right: flip status to <code>shipped (pilot)</code>, then plan the corpus-wide rollout separately.</li>
+  <li><strong>keep this in lockstep with IE's <code>just for 10.md</code></strong> — same engine, same changes.</li>
+</ul>
+
+</main>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral', flowchart: { htmlLabels: true, curve: 'basis' } });
+</script>
+</body>
+</html>

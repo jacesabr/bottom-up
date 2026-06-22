@@ -12,7 +12,7 @@ import {
 } from '../db/schema.js';
 import { eq, and, asc, desc, gt, sql } from 'drizzle-orm';
 import { recomputeAvailabilityAfterPass } from './sequencer.js';
-import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, summarizeConversation, type KeyMove } from './node-agent.js';
+import { teachTurn, gradeWritten, gradeSketch, gradeEquation, translateText, summarizeConversation, pendingForwardRef, type KeyMove } from './node-agent.js';
 import { languageInstruction } from './languages.js';
 import { nimVision } from './llm.js';
 import { examProfile, type Track } from './exam-profile.js';
@@ -259,6 +259,8 @@ interface TurnResult {
   figure?: { url: string; caption: string } | null;
   // On a resumed node, the prior conversation so the client can replay it before the opening turn.
   history?: Array<{ role: 'tutor' | 'learner'; text: string }>;
+  // Forward-reference heads-up: set when this turn first names a previewed-but-untaught term (dont_assume.md).
+  aside?: { terms: string[]; why: string; later: string } | null;
 }
 
 /** A warm, in-character Socrates opening — instant (no LLM wait), grounded in THIS concept. */
@@ -483,6 +485,20 @@ export async function respond(
   }
   if (langCode !== 'en') message = await translateText(message, langCode);
 
+  // Forward-reference aside (dont_assume.md): if THIS turn first names a term the node deliberately
+  // previews but does not teach, surface a quiet "aside" card so the learner knows it's an intentional
+  // preview (covered later), not an assumption they were meant to already know. Detect on the raw English
+  // turn (turn.message); translate the authored copy for non-English learners. Fires once per group.
+  const priorTutorText = [
+    summary ?? '',
+    ...recentDialogue.filter((d) => d.role === 'tutor').map((d) => d.content),
+  ].join('\n');
+  const fr = pendingForwardRef(turn.message, (c as any).forwardRefs ?? [], priorTutorText);
+  let aside = fr ? { terms: fr.terms, why: fr.why, later: fr.later } : null;
+  if (aside && langCode !== 'en') {
+    aside = { terms: aside.terms, why: await translateText(aside.why, langCode), later: await translateText(aside.later, langCode) };
+  }
+
   // Record tutor turn
   await db.insert(buEvent).values({
     learnerId,
@@ -502,6 +518,7 @@ export async function respond(
     readyForGate: c.keyMoves.length > 0 ? allShown : turn.readyForGate,
     provider: turn.provider,
     figure: figure ? { url: figure.url, caption: figure.caption } : null,
+    aside,
   };
 }
 

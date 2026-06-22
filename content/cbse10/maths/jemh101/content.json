@@ -14,11 +14,13 @@
       "brief": "Use prime factorisation, the Fundamental Theorem of Arithmetic, and proof-by-contradiction to compute HCF/LCM, settle divisibility/ends-with-digit questions, and prove numbers irrational.",
       "sec": 0,
       "quote": "We begin with very important properties of positive integers in Sections 1.2, namely the Euclid's division algorithm and the Fundamental Theorem of Arithmetic.",
-      "explanation": "PART 1 — Identify the type of real-number question.\nEvery Class 10 real-number problem belongs to one of three families: HCF/LCM computation, an ends-with-digit or divisibility question, or an irrationality proof. Read the question and name the family before choosing a method.\n\nPART 2 — Prime-factorise when divisibility is at stake.\nFor HCF/LCM problems, write each number as a product of prime powers: take the smallest power of each common prime for HCF, the greatest power of every prime appearing in either number for LCM. For ends-with-digit questions (e.g. does 6ⁿ end in 0?), factorise the base and check whether the required primes (2 and 5 for ending in 0) are present.\n\nPART 3 — Invoke the right theorem explicitly.\nFor irrationality proofs, assume the number equals a/b (coprime), square and rearrange to get p | a², cite Theorem 1.2 to get p | a, write a = pk, substitute to get p | b — contradicting gcd(a, b) = 1. Always name the theorem you are using.",
+      "explanation": "PART 1 — First name which of the three families the question belongs to\nEvery Class 10 real-number problem is one of exactly three kinds: a shared-factor / common-multiple question (the highest common factor or lowest common multiple), an ends-in-a-certain-digit or divisibility question, or an irrationality proof. The single most useful first move is to read the question and name its family out loud, because each family has its own fixed method and choosing the wrong method is the most common way to get stuck. Think of it like sorting mail into three labelled trays before you open any envelope.\n\nPART 2 — Shared-factor and common-multiple questions: factorise, then read the exponents\nWrite each number as its product of prime powers, then stack the same prime's exponents in a column: the smallest exponent goes into the highest common factor (it is all of that prime both numbers can guarantee to share), and the greatest exponent goes into the lowest common multiple (it is enough of that prime that either number divides the result). Smallest-for-shared, greatest-for-contains is the whole skill. For example 6 = 2 × 3 and 20 = 2² × 5 give common factor 2 (the smaller power of 2) and common multiple 2² × 3 × 5 = 60.\n\nPART 3 — Ends-in-a-digit questions: hunt for the missing prime\nA number ends in 0 exactly when it is a multiple of 10, and 10 is 2 × 5 — so ending in 0 needs BOTH the prime 2 and the prime 5 inside the factorisation. Because a number's prime factorisation is the only one it can have, you can settle the question by checking whether a required prime can ever be present: 6ⁿ = 2ⁿ × 3ⁿ has 2 but never a 5, so 6ⁿ can never end in 0. The move is always 'look for the prime that has to be there and show it is missing.'\n\nPART 4 — Irrationality questions: set a trap and let the algebra spring it\nAssume the opposite of what you want: suppose the number equals a fraction already reduced so its top and bottom share no factor except 1. Then do the algebra — square both sides and rearrange — until the same prime is forced to divide the top, and then (after substituting back) forced to divide the bottom too. Now that prime divides both, which flatly contradicts the 'no shared factor' you demanded at the start; the only escape is that the number was never a fraction, so it is irrational. The reduced-fraction assumption is not decoration — it is the tripwire the whole proof is built to trip. The 'rational minus irrational' and 'rational times irrational' problems reuse this by isolating the known irrational and citing its irrationality rather than re-proving it.\n\nPART 5 — The one prime fact that makes every irrationality proof run\nAll of the above leans on a single supporting fact: if a prime divides a perfect square, that prime must already divide the number being squared. It works because squaring a number only doubles the primes it already has and never invents a new one, so any prime found inside the square was inside the base. Crucially this rescue works only for primes — a composite divisor like 4 can split itself across the two copies (2 from each), which is exactly why 4 divides 6² = 36 yet 4 does not divide 6.",
       "keyMoves": [
-        "Identify whether the task is HCF/LCM, an ends-with/divisibility question, or an irrationality proof",
-        "Reduce numbers to prime factorisation when divisibility is at stake",
-        "Invoke the appropriate theorem (FTA, Theorem 1.2) explicitly"
+        "Sorts any real-number question into one of three families before touching a method: a question about the biggest factor two numbers share or the smallest number they both divide into, a question about which last digit a power can end in (or what it is divisible by), or a question that asks you to prove a number can never be written as a fraction.",
+        "For a question about shared factors or common multiples, first rewrites each number as its product of primes, then reads the answer straight off the exponents: line up each prime's exponents and take the smallest copy for the highest shared factor, the largest copy for the smallest common multiple.",
+        "For a last-digit-or-divisibility question, rewrites the power as a product of primes and then argues from the fact that the factorisation is the only one possible: a number can end in 0 only if both the primes 2 and 5 are inside it, so if one of those primes can never appear, the number can never end in 0.",
+        "For an irrationality question, runs the same fixed trap every time: assume the number equals a fraction already reduced so its top and bottom share no factor but 1, do algebra (square and rearrange) until that same prime is forced to divide both the top and the bottom, and point out that this directly contradicts the no-shared-factor setup, so the number was never a fraction at all.",
+        "Knows the single hidden fact that powers every irrationality proof: when a prime divides a perfect square it must already divide the number being squared, and that this rescue only works for primes, not for composite divisors like 4."
       ],
       "misconceptions": [
         "Thinking a single method (e.g. long division) covers every real-number question",
@@ -36,7 +38,57 @@
         "cbse10:maths:jemh101:close-irrationality-contradiction"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The word \"power\" / exponent notation like 6ⁿ or 2²ⁿ — used throughout but the variable-exponent form (\"for any n\") is heavier than the fixed prime powers seen upstream",
+          "surfacingQuestion": "Quick check before we use it: when I write 6ⁿ, what is that little n up there telling me to do?",
+          "ladder": [
+            "What does 6² mean — how many 6's do you multiply?",
+            "What about 6³?",
+            "So if I just write 6ⁿ without saying what n is, what is it telling me to do in general?",
+            "Does the value of 6ⁿ change as n gets bigger?"
+          ],
+          "answer": "A power like 6ⁿ means: multiply 6 by itself n times. So 6¹ = 6, 6² = 6 × 6 = 36, 6³ = 6 × 6 × 6 = 216, and so on. The little raised number (the exponent) just counts how many copies of the base you multiply together. Writing 6ⁿ with a letter n means 'for ANY whole number n' — we want a statement true for every n at once, not just one chosen value. That is why we argue from the prime factorisation (6ⁿ = 2ⁿ × 3ⁿ) instead of testing n = 1, 2, 3 one at a time: the factorisation argument settles all of them in a single stroke.",
+          "returnCue": "So 6ⁿ = n copies of 6 multiplied, for every n at once. Back to checking which primes live inside it."
+        },
+        {
+          "trigger": "The phrase \"perfect square\" / squaring — a² as 'a multiplied by itself'",
+          "surfacingQuestion": "Before the key fact: when I say a² or 'a squared', what am I actually doing to a?",
+          "ladder": [
+            "If a = 5, what is a²?",
+            "If a = 7, what is a²?",
+            "So in words, what does squaring a number do to it?",
+            "Does squaring a number ever introduce a brand-new prime that wasn't related to a?"
+          ],
+          "answer": "Squaring a number means multiplying it by itself: a² = a × a. So 5² = 25 and 7² = 49. A 'perfect square' is just a number that is some whole number squared (1, 4, 9, 16, 25, …). The important thing for us is that a² is built only from a's own prime factors, each appearing twice — squaring doubles the primes a already has and never invents a new one. That single fact is why a prime found inside a² must have come from inside a.",
+          "returnCue": "So a² = a × a, made only of a's own primes doubled. Back to why a prime in a² must already divide a."
+        },
+        {
+          "trigger": "\"Proof by contradiction\" / \"assume the contrary\" — the whole logical shape of the irrationality proofs",
+          "surfacingQuestion": "These proofs all start with 'assume the opposite' — have you met that style of argument before? What is the idea behind assuming the very thing you want to disprove?",
+          "ladder": [
+            "Suppose I claim 'there is no biggest whole number.' To attack it, what would I temporarily pretend is true?",
+            "If pretending it is true leads me to something plainly impossible, what does that tell me about the pretence?",
+            "So if assuming 'the number is a fraction' forces an impossibility, what must be true about the number?"
+          ],
+          "answer": "Proof by contradiction means: to prove a statement, you temporarily ASSUME the opposite is true, then show that assumption forces something impossible. Because a true assumption can never lead to an impossibility, the assumption must have been false — so the original statement is true. In these irrationality proofs the opposite of 'irrational' is 'equals a fraction', so we assume the number is a reduced fraction, derive a contradiction (a shared factor where we forbade one), and conclude the number cannot be a fraction at all. The contradiction is the whole point: it is the impossibility that kills the assumption.",
+          "returnCue": "So: assume the opposite, hit an impossibility, conclude the opposite was false. Back to setting up the fraction and springing the trap."
+        },
+        {
+          "trigger": "\"Rational\" vs \"irrational\" — what kind of number we are trying to prove √2, √3 are",
+          "surfacingQuestion": "We keep saying a number is 'rational' or 'irrational' — what is the dividing line between those two?",
+          "ladder": [
+            "Can you write 0.5 as one whole number over another?",
+            "Can you write 7 that way?",
+            "So what do all 'rational' numbers have in common?",
+            "And if a number can NEVER be written as one whole number over another, what would we call it?"
+          ],
+          "answer": "A rational number is any number that can be written as a fraction a/b with a and b whole numbers and b not zero — for example 0.5 = 1/2, and 7 = 7/1. An irrational number is one that can NEVER be written as such a fraction, no matter how you try; √2 and √3 are the famous examples. So proving a number is irrational means proving no fraction can ever equal it — which is exactly why we assume a fraction does equal it and then derive a contradiction.",
+          "returnCue": "So rational = expressible as a whole-number fraction, irrational = never. Back to assuming our number is a fraction and breaking that assumption."
+        }
+      ],
+      "forwardRefs": []
     },
     {
       "id": "cbse10:maths:jemh101:prime-factorise-integer",
@@ -46,11 +98,11 @@
       "brief": "The factor-tree method breaks a composite into its prime building blocks — the fundamental step behind every HCF, LCM, and divisibility argument.",
       "sec": 1,
       "quote": "So we have factorised 32760 as 2 × 2 × 2 × 3 × 3 × 5 × 7 × 13 as a product of primes, i.e., 32760 = 2³ × 3² × 5 × 7 × 13 as a product of powers of primes.",
-      "explanation": "PART 1 — Start: divide out the smallest prime factor.\nBegin with the number (e.g. 32760). Find the smallest prime that divides it: 2 divides 32760, giving 32760 = 2 × 16380. Repeat on 16380: 2 × 8190. Each split produces one prime leaf and a smaller composite to continue from.\n\nPART 2 — Continue until every branch is prime.\nKeep dividing by the smallest prime at each step until every branch ends in a prime: ..., 2 × 4095, then 4095 is not even, try 3: 4095 = 3 × 1365, 1365 = 3 × 455, 455 = 5 × 91, 91 = 7 × 13 — both prime. Stop when no branch can be split further.\n\nPART 3 — Collect into powers, write in ascending order.\nGroup repeated primes by their exponent: 32760 = 2 × 2 × 2 × 3 × 3 × 5 × 7 × 13 = 2³ × 3² × 5 × 7 × 13. Write the prime bases in ascending order. Each prime appears exactly once with its collected exponent.",
+      "explanation": "PART 1 — Start by pulling out the smallest prime that divides exactly\nTake your number, say 32760, and find the smallest prime that divides it with nothing left over. 2 divides 32760, so split it: 32760 = 2 × 16380. Then do the same to 16380 (it's still even, so 2 again: 2 × 8190) — each split hands you one prime and a smaller number to keep chopping. Primes are the building-block numbers that can't be broken any further, so pulling them out is exactly how the breaking-apart happens.\n\nPART 2 — Keep splitting until every piece is a prime\nKeep dividing by the smallest prime that fits; when 2 stops fitting (4095 is odd), move up to the next prime that does: 4095 = 3 × 1365, 1365 = 3 × 455, 455 = 5 × 91, and 91 = 7 × 13. You stop a piece only when it's a prime — a number whose only factors are 1 and itself — because then there's nothing left to break. If a piece still has a factor other than 1 and itself, you are not finished: that piece can still be split.\n\nPART 3 — Tally the repeats and write the primes smallest-to-largest\nNow look at everything that fell out: 32760 = 2 × 2 × 2 × 3 × 3 × 5 × 7 × 13. Count how many copies of each prime there are — three 2s, two 3s, one 5, one 7, one 13 — and write each prime once with that count as a small raised number: 2³ × 3² × 5 × 7 × 13, ordered smallest prime to largest. The count must survive into that little raised number: three 2s is 2³ (meaning 2 × 2 × 2 = 8), never just a single 2 — dropping a repeat changes the number.",
       "keyMoves": [
-        "Find the smallest prime that divides the number and split: number = prime × remainder",
-        "Repeat on every composite remainder until every branch of the factor tree is prime",
-        "Collect repeated primes into powers and list bases in ascending order: 2³ × 3² × 5 × 7 × 13"
+        "Sees that to break a number apart you start by pulling out the smallest prime that divides it exactly, leaving a smaller number to keep working on: number = that prime × what's left",
+        "Keeps splitting every leftover that still has a factor other than 1 and itself, and only stops a branch once it reaches a number whose only factors are 1 and itself — so nothing left to break is a non-prime",
+        "Tallies how many times each prime fell out, writes each prime once with that count as a small raised number, and lists the primes smallest-to-largest"
       ],
       "misconceptions": [
         "Stopping before all factors are prime (leaving a composite factor)",
@@ -60,7 +112,70 @@
         "cbse10:maths:jemh101:know-prime-composite-coprime"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The word \"prime\" used as the place a branch stops — and the matching idea of a composite (a number that can still be broken)",
+          "surfacingQuestion": "Quick check before we chop numbers up: what makes a number a 'prime', and is 6 a prime?",
+          "ladder": [
+            "What are the factors of 6 — the whole numbers that divide it exactly?",
+            "What are the factors of 7?",
+            "So 6 has a factor sitting between 1 and 6 — does 7 have anything like that?",
+            "Which of those two could you still break into a product of smaller numbers?"
+          ],
+          "answer": "A factor of a number is a whole number that divides it exactly, with nothing left over. A prime is a number bigger than 1 whose only factors are 1 and itself — like 2, 3, 5, 7, 11, 13 — so it can't be broken into smaller whole-number pieces. A number that DOES have a factor strictly between 1 and itself (like 6, whose factors include 2 and 3) is composite — it can still be broken apart. That's the whole game here: composites get split, primes are where a branch stops because there's nothing left to break. (1 is neither prime nor composite, so it never appears in the answer.)",
+          "returnCue": "So: primes are the unbreakable stopping points, composites still split. Back to breaking the number down until every piece is a prime."
+        },
+        {
+          "trigger": "The word \"divides\" / dividing \"exactly\" with nothing left over — used to pick which prime to pull out",
+          "surfacingQuestion": "When I say a prime 'divides' our number, I mean it goes in cleanly. Quick one: does 2 divide 15 cleanly, or is something left over?",
+          "ladder": [
+            "If you share 15 into groups of 2, how many whole groups, and how many left in your hand?",
+            "Now share 15 into groups of 3 — anything left over?",
+            "So which of 2 or 3 divides 15 exactly?"
+          ],
+          "answer": "One number divides another exactly when it splits it into equal whole groups with nothing left over — a remainder of 0. 2 does not divide 15 (you get seven 2s and 1 left over), but 3 does (15 = 3 × 5, nothing left). When we factorise we only pull out a prime that divides exactly — that's what lets us write number = prime × what's left with no leftover. If a prime leaves a remainder, it isn't a factor and we try the next prime up.",
+          "returnCue": "So 'divides' means splits cleanly, remainder 0. Back to finding the smallest prime that divides our number exactly."
+        },
+        {
+          "trigger": "The small raised number (exponent / power) in 2³ — what it means and why it isn't 2 × 3",
+          "surfacingQuestion": "We're about to write three 2s as 2³. Quick one: do you think 2³ means 2 × 3, or something else?",
+          "ladder": [
+            "If three 2s fell out, what is 2 × 2 × 2?",
+            "Is that the same as 2 × 3?",
+            "So what is the little raised 3 actually counting?"
+          ],
+          "answer": "The small raised number is a shorthand for 'how many copies of this number are multiplied together'. So 2³ means 2 × 2 × 2 = 8 (three 2s), NOT 2 × 3 = 6. The raised number is just a tally of repeats: two 3s become 3² = 3 × 3 = 9, a single 5 is written 5 (its tally is 1). We use it here only to record how many times each prime fell out, so the answer stays compact and no repeat gets lost.",
+          "returnCue": "So the little raised number counts the copies: 2³ = three 2s = 8. Back to tallying our primes into that form."
+        }
+      ],
+      "forwardRefs": [
+        {
+          "terms": [
+            "Fundamental Theorem of Arithmetic",
+            "unique prime factorisation"
+          ],
+          "why": "This node teaches the mechanical act of breaking a number into primes; the deeper promise — that every number above 1 CAN be broken down this way and that the prime list you get is the ONE-AND-ONLY answer no matter how you chop — is named here only so you trust the procedure always finishes. You don't have to prove or even state that guarantee yet; just do the breaking-down.",
+          "later": "Stated and used in the very next node, then leaned on throughout the chapter's HCF/LCM and divisibility arguments.",
+          "coveredIn": [
+            "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic"
+          ]
+        },
+        {
+          "terms": [
+            "prime power / exponent as a quantity to manipulate",
+            "ascending order as the canonical/normalised form",
+            "HCF and LCM"
+          ],
+          "why": "Here you only WRITE repeats compactly (three 2s → 2³) and line the primes up smallest-first because it's tidy and easy to read. Treating those raised numbers as things you compare and combine, and the reason ordered prime-power form is the standard form that later HCF/LCM and divisibility tricks all rely on, is a separate skill — it is not something you need to do in this node.",
+          "later": "Taught as its own skill (evaluating and comparing prime powers) and then applied when computing HCF and LCM from prime factorisations.",
+          "coveredIn": [
+            "cbse10:maths:jemh101:manipulate-prime-powers",
+            "cbse10:maths:jemh101:compute-hcf-prime-factorisation",
+            "cbse10:maths:jemh101:compute-lcm-prime-factorisation"
+          ]
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic",
@@ -70,11 +185,11 @@
       "brief": "Know that every composite number factorises as a product of primes, and that this factorisation is unique apart from order.",
       "sec": 1,
       "quote": "Theorem 1.1 (Fundamental Theorem of Arithmetic) : Every composite number can be expressed (factorised) as a product of primes, and this factorisation is unique, apart from the order in which the prime factors occur.",
-      "explanation": "PART 1 — Existence: every composite is a product of primes.\nTheorem 1.1 guarantees that every composite integer can be expressed as a product of prime factors. There is no composite number that resists factorisation: 12 = 2² × 3, 360 = 2³ × 3² × 5, 32760 = 2³ × 3² × 5 × 7 × 13. This half grants the permission to factorise.\n\nPART 2 — Uniqueness: only one factorisation, apart from order.\nThe prime factorisation produced is unique: 12 cannot also equal 3 × 4, because 4 is not prime; the PRIME factorisation is 2² × 3 and nothing else. 2² × 3 and 3 × 2² are the same factorisation — different orderings count as identical.\n\nPART 3 — Uniqueness is the operative clause.\nAlmost every argument that follows uses uniqueness, not just existence. To prove 4ⁿ never ends in 0: uniqueness says 4ⁿ = 2²ⁿ has only the prime 2 in its factorisation — so 5 cannot appear — so 4ⁿ cannot end in 0. The deductive force is always 'this prime cannot be there,' which only uniqueness can establish.",
+      "explanation": "PART 1 — Existence: every composite can be built from primes\nTheorem 1.1, the Fundamental Theorem of Arithmetic, says every composite number can be written as a product of primes: 12 = 2 x 2 x 3, 360 = 2 x 2 x 2 x 3 x 3 x 5, 32760 = 2 x 2 x 2 x 3 x 3 x 5 x 7 x 13. No composite resists this — primes are the building blocks, like LEGO bricks, and every larger whole number is built from some bag of those bricks. This half of the theorem simply gives you permission to factorise any number you meet.\n\nPART 2 — Uniqueness: there is only one such factorisation, apart from order\nThe second half says that bag of prime bricks is the ONLY one for a given number: 12 = 2 x 2 x 3 and nothing else in primes. Writing 12 = 3 x 4 does not break this, because 4 is not prime — once you insist on primes, 2 x 2 x 3 is forced. Re-ordering the same primes (2 x 2 x 3 versus 3 x 2 x 2) counts as the SAME factorisation, the way rearranging the same LEGO bricks still gives the same model — that is what 'unique apart from order' means.\n\nPART 3 — Uniqueness is the half that does the work\nAlmost every argument later in the chapter leans on uniqueness, not just existence: because a number has exactly one bag of primes, you can say a particular prime MUST be there or CANNOT be there. For example, 4 to the power n is 2 x 2 x ... x 2, so its only prime is 2; uniqueness then guarantees there is no other factorisation hiding a 5, and a number needs a 5 to end in 0 — so 4 to the power n can never end in 0, for every n at once. The deductive force 'this prime simply isn't in the bag' is something only uniqueness can license.",
       "keyMoves": [
-        "State existence: every composite can be expressed as a product of primes",
-        "State uniqueness: that product of primes is unique apart from the order of factors",
-        "Use uniqueness to argue which primes can or cannot appear in a given factorisation"
+        "Explain that every composite number can always be broken down into a product of primes — there is no composite that cannot be split this way",
+        "Explain that this prime factorisation is the only one a number has, treating the same primes written in a different order as the same factorisation, not a new one",
+        "Use that one-and-only-one fact to argue which primes must be in a number's factorisation and which can never be there — e.g. since 4 to the power n is only 2's multiplied together, a 5 can never appear in it, so it can never end in 0"
       ],
       "misconceptions": [
         "Quoting only existence and dropping uniqueness",
@@ -84,7 +199,69 @@
         "cbse10:maths:jemh101:know-prime-composite-coprime"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The word \"prime\" / \"composite\" used as the building blocks in the theorem — assumed from Class IX, never re-defined in this chapter",
+          "surfacingQuestion": "Before we state the theorem, let us be sure we agree on the words. What makes a number 'prime', and what makes one 'composite' — is 6 prime?",
+          "ladder": [
+            "What whole numbers divide 7 exactly, with nothing left over?",
+            "Now what whole numbers divide 6 exactly?",
+            "So 7 has only two divisors and 6 has more — which one do we call prime?",
+            "Where does that leave the number 1, which has only itself as a divisor?"
+          ],
+          "answer": "A factor of a number is a whole number that divides it exactly, with no remainder. A prime number (bigger than 1) has exactly two factors, 1 and itself — like 2, 3, 5, 7, 11, 13. A composite number has at least one extra factor strictly between 1 and itself — 6 is composite because 1, 2, 3 and 6 all divide it. The number 1 is neither prime nor composite, because it has only one factor. In this theorem the primes are the building blocks and the composites are the numbers we break down into those blocks.",
+          "returnCue": "So: prime = exactly two factors, composite = more than two. Back to the theorem, which builds every composite out of primes."
+        },
+        {
+          "trigger": "The phrase \"product of primes\" / \"factorise\" — what it means to write a number AS a product",
+          "surfacingQuestion": "We are about to say a number equals a 'product of primes'. Quick check: what does it mean to write 12 as a product of primes?",
+          "ladder": [
+            "What does 'product' mean — is it the result of adding or of multiplying?",
+            "Can you write 12 as some numbers multiplied together?",
+            "Are all of those numbers prime, or could you break one down further?",
+            "When every number being multiplied is prime, what have you got?"
+          ],
+          "answer": "A product is the result of multiplying numbers together, so a 'product of primes' is a string of prime numbers multiplied to give your number: 12 = 2 x 2 x 3. To factorise means to rewrite a number as such a product. If any factor is still composite — like the 4 in 12 = 3 x 4 — you keep splitting it (4 = 2 x 2) until every factor is prime. The finished product of primes is exactly what this theorem is talking about.",
+          "returnCue": "So 'product of primes' = primes multiplied together. Now back to what the theorem guarantees about that product."
+        },
+        {
+          "trigger": "\"ends in 0\" needing the prime 5 (and 2) — the divisibility fact used in PART 3",
+          "surfacingQuestion": "In a moment we will say a number ends in 0 only if 5 is one of its prime factors. Quick one: what do all numbers ending in 0 — 10, 20, 30, 100 — have in common when you divide them?",
+          "ladder": [
+            "Is 30 divisible by 5? What about 100?",
+            "What is the smallest number that ends in 0 — and what two numbers multiply to give it?",
+            "So to end in 0, a number has to be a multiple of which number?",
+            "Does that mean a 5 has to sit inside its prime factorisation?"
+          ],
+          "answer": "A whole number ends in the digit 0 exactly when it is divisible by 10, and 10 = 2 x 5. So any number ending in 0 must have BOTH a 2 and a 5 among its prime factors. If a number's prime factorisation contains no 5 at all, it cannot be a multiple of 10, so it cannot end in 0. That is why, once we know 4 to the power n is only 2's, we can be certain it never ends in 0 — there is no 5 available.",
+          "returnCue": "So 'ends in 0' means a 2 AND a 5 are in the prime factors. Back to why 4 to the power n never can."
+        }
+      ],
+      "forwardRefs": [
+        {
+          "terms": [
+            "Theorem 1.2 (if a prime p divides a-squared then p divides a)"
+          ],
+          "why": "The introduction and later proofs name a second numbered theorem that is itself proved FROM the uniqueness you are stating here, but you do not need it to state this theorem — it is mentioned only so you can see what uniqueness will later power. You will not be asked to produce it at this node.",
+          "later": "Taught in the irrationality-proof section (section 1.3) of this chapter, after this node.",
+          "coveredIn": [
+            "cbse10:maths:jemh101:state-prime-divides-square-theorem"
+          ]
+        },
+        {
+          "terms": [
+            "HCF (Highest Common Factor)",
+            "LCM (Lowest Common Multiple)"
+          ],
+          "why": "PART 3 hints that uniqueness is the licence for the HCF/LCM machinery to come, but those abbreviations belong to the next nodes — naming them here just signals why stating this theorem matters, not something you must compute yet.",
+          "later": "Taught in the HCF/LCM nodes that follow this one in section 1.2.",
+          "coveredIn": [
+            "cbse10:maths:jemh101:compute-hcf-prime-factorisation",
+            "cbse10:maths:jemh101:compute-lcm-prime-factorisation"
+          ]
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh101:decide-ends-with-digit-via-primes",
@@ -94,11 +271,12 @@
       "brief": "Argue that a number ends in 0 only if 5 (and 2) divide it, then check the prime factorisation for that prime.",
       "sec": 1,
       "quote": "If the number 4ⁿ, for any n, were to end with the digit zero, then it would be divisible by 5. That is, the prime factorisation of 4ⁿ would contain the prime 5. This is not possible because 4ⁿ = (2)²ⁿ; so the only prime in the factorisation of 4ⁿ is 2.",
-      "explanation": "Example 1 turns 'ends with 0' into 'divisible by 5', then uses uniqueness of prime factorisation: 4ⁿ = 2^{2n} contains only the prime 2, so 5 can never appear, so 4ⁿ never ends in 0. The same template handles 6ⁿ in the exercise.",
+      "explanation": "PART 1 — Turn 'ends in 0' into 'divisible by 10'.\nA whole number's last digit is 0 exactly when it is a multiple of 10 — think of counting 10, 20, 30, 40: every multiple of 10 ends in 0, and nothing else does. So the question 'can 4ⁿ ever end in the digit 0?' is the SAME question as 'can 4ⁿ ever be divisible by 10?'. We have swapped a question about the last digit for a question about divisibility, which is something prime factorisation can answer.\n\nPART 2 — Split 'divisible by 10' into 'has a 2 AND a 5'.\nBecause 10 = 2 × 5, being divisible by 10 is the same as being divisible by both 2 and 5 at once. So for a number to end in 0, its prime factorisation must contain at least one 2 AND at least one 5 — picture each 10 as a 2 paired up with a 5, and you need at least one complete pair. Ending in 0 is therefore not just about being even (having a 2); the real gatekeeper is whether a 5 is present at all.\n\nPART 3 — Prime-factorise the power and read off which primes it can supply.\nWrite the base as primes, then raise it: 4ⁿ = (2²)ⁿ = 2²ⁿ, which is nothing but 2s; 6ⁿ = (2 × 3)ⁿ = 2ⁿ × 3ⁿ, which is only 2s and 3s. Raising to a power just makes more copies of the primes already in the base — it never introduces a brand-new prime. So 4ⁿ has no 5 to supply, and 6ⁿ has no 5 to supply, no matter how large n is.\n\nPART 4 — Use uniqueness to close it for every n at once.\nUniqueness of prime factorisation says each number has exactly one prime factorisation, with no hidden extra primes — so if a 5 is not written there, there is no other way for the number to be divisible by 5. Since 4ⁿ = 2²ⁿ and 6ⁿ = 2ⁿ3ⁿ never carry a 5, neither can ever be divisible by 10, so neither can ever end in 0 — this single structural argument replaces checking n = 1, 2, 3, … forever. The same recipe decides any target last digit: name the prime that digit demands (ending in 5 also needs a 5; ending in 0 needs a 2 and a 5) and check whether the base's factorisation stocks it.",
       "keyMoves": [
-        "Translate 'ends with 0' into 'divisible by 5'",
-        "Compute the prime factorisation of the power",
-        "Use uniqueness to conclude the required prime is absent/present"
+        "Rewrites the question 'can this power ever end in the digit 0?' as the question 'can this power ever be divisible by 10?' — because a whole number's last digit is 0 exactly when it is a multiple of 10",
+        "Breaks 'divisible by 10' into 'divisible by both 2 and 5' (since 10 = 2 × 5), so ending in 0 demands that BOTH the prime 2 and the prime 5 appear in the number's prime factorisation",
+        "Prime-factorises the base and the whole power, reading off exactly which primes are available (e.g. 4ⁿ = 2²ⁿ is all 2s, 6ⁿ = 2ⁿ × 3ⁿ is only 2s and 3s)",
+        "Uses uniqueness of prime factorisation to settle it for EVERY n in one stroke: if the required prime (the 5) is not in the base, raising to any power only copies the primes already there and can never conjure a new one, so the power can never end in 0 — and the same name-the-required-prime check decides any target last digit, present or absent"
       ],
       "misconceptions": [
         "Checking only small n instead of arguing for all n",
@@ -109,7 +287,45 @@
         "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The fact that a whole number ends in 0 exactly when it is a multiple of 10 — reading divisibility by 2, 5, 10 off the LAST digit",
+          "surfacingQuestion": "Quick check before we lean on it: how can you tell, just by glancing at a number, whether it's a multiple of 10? What about a multiple of 5, or of 2?",
+          "ladder": [
+            "Write out 10, 20, 30, 40, 50 — what single digit do they all end in?",
+            "Now 5, 10, 15, 20, 25 — what are the only two digits a multiple of 5 ever ends in?",
+            "And the even numbers 2, 4, 6, 8, 10 — what do their last digits have in common?",
+            "In the number 340, the '300' and the '40' parts are already multiples of 10 — so which single digit is left to decide whether the whole thing is a multiple of 10?"
+          ],
+          "answer": "You can decide divisibility by 2, 5, and 10 just from the last (units) digit. A number ends in 0 exactly when it is a multiple of 10; it is a multiple of 5 exactly when it ends in 0 or 5; it is even (a multiple of 2) exactly when its last digit is even. The reason only the last digit matters is place value: every higher place — tens, hundreds, thousands — is itself a multiple of 10 (340 = 300 + 40 + 0, and 300 and 40 are already multiples of 10), so they contribute nothing to divisibility by 2, 5, or 10. Only the units digit is 'free' to decide it. Like loose change: only the ones-digit coins decide whether you can make exact 10s.",
+          "returnCue": "So 'ends in 0' = 'multiple of 10', and only the last digit matters — back to turning our last-digit question into a divisibility-by-10 question."
+        },
+        {
+          "trigger": "The word 'base' and the notation 4ⁿ / 6ⁿ — a number raised to the power n",
+          "surfacingQuestion": "Before we factorise these, let's be sure about the notation: in 6ⁿ, what is the 6 doing and what is the n doing?",
+          "ladder": [
+            "In 6³, how many 6s are multiplied together?",
+            "So what does 6ⁿ mean when n is just some whole number we haven't fixed?",
+            "If 6 = 2 × 3, what do you get when you multiply n copies of (2 × 3) together?"
+          ],
+          "answer": "In 6ⁿ the 6 is the base (the number being multiplied) and the little n is the exponent (how many copies of the base to multiply). So 6³ = 6 × 6 × 6, and 6ⁿ means n copies of 6 multiplied together, for whatever whole number n is. Here is the key move: if the base splits into primes, say 6 = 2 × 3, then 6ⁿ = (2 × 3)ⁿ = 2ⁿ × 3ⁿ — you just get n copies of each prime that was in the base. Raising to a power copies the base's primes; it never adds a prime the base didn't have.",
+          "returnCue": "So 6ⁿ is just n copies of 6's primes — back to reading off which primes 4ⁿ and 6ⁿ can supply."
+        }
+      ],
+      "forwardRefs": [
+        {
+          "terms": [
+            "proof for all n / universal argument by contradiction"
+          ],
+          "why": "This node already does a 'for every n at once' argument, but it stays informal — 'no power can ever conjure a 5'. The fully formal proof-by-contradiction machinery (assume the opposite, derive an impossibility) is named here only as the shape of the reasoning; you do not need to write it out formally yet, just feel why checking a few cases is not enough.",
+          "later": "taught as its own technique later in this chapter, in the irrationality proofs",
+          "coveredIn": [
+            "cbse10:maths:jemh101:set-up-contradiction-rational-assumption",
+            "cbse10:maths:jemh101:close-irrationality-contradiction"
+          ]
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh101:compute-hcf-prime-factorisation",
@@ -119,11 +335,11 @@
       "brief": "Take each prime common to all numbers and multiply its smallest occurring power to get the HCF.",
       "sec": 1,
       "quote": "Note that HCF(6, 20) = 2¹ = Product of the smallest power of each common prime factor in the numbers.",
-      "explanation": "After prime-factorising each number, the HCF is built from primes that appear in every number, each raised to the smallest exponent it has across them. Demonstrated on 6 & 20 (HCF = 2) and on 6, 72, 120 (HCF = 2·3 = 6).",
+      "explanation": "PART 1 — Only primes shared by ALL the numbers can go in.\nPrime-factorise each number first (e.g. 36 = 2 x 2 x 3 x 3, 120 = 2 x 2 x 2 x 3 x 5). The HCF is the biggest number that divides every one of them, so it can only be built from primes that show up in EVERY number. A prime that is missing from even one number (the 5 sits in 120 but not in 36) can never divide that number, so it can never divide all of them, and it is vetoed from the HCF.\n\nPART 2 — For each shared prime, take the smallest power (whoever has fewer wins).\nOnce you know which primes are shared, line up that prime's power in each number and keep the SMALLEST one. You cannot pull more copies of a prime out of a number than it actually contains: 36 has two 2s and 120 has three 2s, so you can only safely take two 2s (the stingier number sets the limit). Doing this for 2 and 3 across 36 and 120 gives 2 x 2 and one 3.\n\nPART 3 — Multiply the chosen powers; nothing shared means HCF = 1.\nMultiply the prime powers you kept to get the HCF: from 36 and 120 that is (2 x 2) x 3 = 12, the largest number dividing both. The same recipe handles three numbers (6, 72, 120 share only one 2 and one 3, so HCF = 2 x 3 = 6). If the numbers share no prime at all (like 8 = 2 x 2 x 2 and 15 = 3 x 5), there is nothing to multiply and the HCF is just 1 — which is exactly what it means for them to be coprime.",
       "keyMoves": [
-        "Identify primes common to every number",
-        "For each, take the smallest exponent that appears",
-        "Multiply those prime powers together"
+        "Sees that the HCF can only be built from primes that appear in EVERY number — a prime missing from even one number cannot divide that number, so it cannot divide all of them",
+        "For each shared prime, sees you can only pull out as many copies as the stingiest number holds, so you take the SMALLEST power that prime has across the numbers (whoever has fewer wins)",
+        "Multiplies the chosen prime powers together to get the HCF, and sees that if the numbers share no prime at all the HCF is just 1"
       ],
       "misconceptions": [
         "Including a prime not present in all the numbers",
@@ -134,7 +350,67 @@
         "cbse10:maths:jemh101:manipulate-prime-powers"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The abbreviation \"HCF\" used as the thing being computed — Highest Common Factor (the biggest number dividing all of them)",
+          "surfacingQuestion": "Before we build it from primes, let us pin down what HCF actually is. If I ask for the HCF of 12 and 18, what one number am I hunting for?",
+          "ladder": [
+            "What whole numbers divide 12 exactly — its factors?",
+            "Now the factors of 18?",
+            "Which numbers appear in BOTH lists — the common factors?",
+            "Of those shared ones, which is the highest?"
+          ],
+          "answer": "HCF stands for Highest Common Factor (also called the greatest common divisor) — the LARGEST whole number that divides every one of your numbers exactly, with no remainder. The factors of 12 are 1, 2, 3, 4, 6, 12 and the factors of 18 are 1, 2, 3, 6, 9, 18; the numbers in both lists are 1, 2, 3, 6, and the highest of those is 6, so HCF(12, 18) = 6. Every pair always shares at least 1, so the HCF is never smaller than 1. The prime-power method below is just a fast way to find that same biggest shared factor without listing all factors by hand.",
+          "returnCue": "So HCF = the biggest factor they all share. Now back to building it straight from the prime powers."
+        },
+        {
+          "trigger": "The word \"power\" / \"exponent\" of a prime — e.g. the power of 2 in a number, comparing powers across numbers",
+          "surfacingQuestion": "We are about to compare the 'power' of a prime in two numbers. Quick check: in 2 x 2 x 2, what does writing it as a power tell us?",
+          "ladder": [
+            "How many 2s are multiplied together in 2 x 2 x 2?",
+            "So if we wrote that with a small raised number, what would the small number be?",
+            "If another number had only 2 x 2, how many 2s is that?",
+            "Which of those two has FEWER 2s?"
+          ],
+          "answer": "The power (or exponent) of a prime counts how many copies of that prime are multiplied together. 2 x 2 x 2 is three 2s, written 2 with a raised 3; 2 x 2 is two 2s, a raised 2. So 'the power of 2 in 120' just means 'how many 2s are in 120's factorisation' — here three. When we compare powers of the same prime across two numbers, we are comparing how many copies each one holds, and for HCF we keep the smaller count because you cannot take more 2s out of a number than it actually has.",
+          "returnCue": "So the power = how many copies of that prime. Back to comparing those counts and keeping the smaller one."
+        },
+        {
+          "trigger": "The word \"divides\" / \"divides exactly\" used to justify why a missing prime is vetoed",
+          "surfacingQuestion": "We keep leaning on 'this prime divides that number'. Quick one: what does it mean to say 5 divides a number exactly?",
+          "ladder": [
+            "What is 20 shared into groups of 5 — any left over?",
+            "What about 18 shared into groups of 5?",
+            "So which of 20 and 18 does 5 divide exactly?",
+            "If a number has no 5 in its prime factorisation, can 5 ever divide it exactly?"
+          ],
+          "answer": "A prime divides a number exactly when the number splits into groups of that prime with nothing left over — remainder 0. 5 divides 20 (four groups of 5, nothing left) but not 18 (three groups of 5 leaves 3). A number can only be divided exactly by a prime that actually appears in its prime factorisation, so a number with no 5 in it is simply not divisible by 5. That is the precise reason a prime missing from even one number is vetoed from the HCF: it cannot divide that number, so it cannot divide all of them.",
+          "returnCue": "So a missing prime cannot divide the number at all. Back to keeping only the primes shared by every number."
+        }
+      ],
+      "forwardRefs": [
+        {
+          "terms": [
+            "LCM (Lowest Common Multiple)"
+          ],
+          "why": "The same factorisation table also gives the LCM by an opposite rule (take EVERY prime at its GREATEST power), so it is natural to mention the contrast here — but you are not asked to compute or even define the LCM in this node. Just notice HCF takes the smallest power of shared primes; the mirror rule comes next.",
+          "later": "the very next node, where the LCM is computed from prime factorisation",
+          "coveredIn": [
+            "cbse10:maths:jemh101:compute-lcm-prime-factorisation"
+          ]
+        },
+        {
+          "terms": [
+            "greatest common divisor (GCD)"
+          ],
+          "why": "GCD is just another name for the HCF you are already computing — different textbooks use different words for the identical idea, so seeing it should reassure rather than worry you. Nothing new to learn; HCF and GCD mean the same biggest shared factor.",
+          "later": "not separately taught — it is a synonym for HCF used throughout this chapter",
+          "coveredIn": [
+            "cbse10:maths:jemh101:compute-hcf-prime-factorisation"
+          ]
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh101:compute-lcm-prime-factorisation",
@@ -144,11 +420,12 @@
       "brief": "Take every prime appearing in any number and multiply its greatest occurring power to get the LCM.",
       "sec": 1,
       "quote": "LCM(6, 20) = 2² × 3¹ × 5¹ = Product of the greatest power of each prime factor, involved in the numbers.",
-      "explanation": "The LCM collects every prime that appears in any of the numbers, each raised to the highest exponent it reaches. Shown for 6 & 20 (LCM = 60) and 6, 72, 120 (LCM = 2³·3²·5 = 360).",
+      "explanation": "PART 1 — Collect every prime that appears in ANY number, not just the shared ones.\nFirst prime-factorise each number, then make one list of every prime that shows up in any of them. A prime counts even if it lives in only one of the numbers: for 6 = 2 x 3 and 20 = 2 x 2 x 5, the list is 2, 3 and 5 — the 3 comes only from 6 and the 5 comes only from 20, but both must be carried. This is the opposite of HCF, which keeps only the primes shared by every number; LCM gathers all of them.\n\nPART 2 — For each prime, take the GREATEST power it reaches in any one number.\nLine up the same prime across the numbers and keep the biggest power. The reason is coverage: a number divides your answer only if your answer contains at least as many copies of each prime as that number has. One number needs two 2's (2 x 2) and another might need three (2 x 2 x 2), so you must keep three 2's — the smaller stock of two would fail to be divisible by the number that needed three. Taking exactly the greatest power, and no more, is what makes the result the LEAST such common multiple.\n\nPART 3 — Multiply the chosen prime powers to get the LCM.\nEvaluate each chosen prime power and multiply the results into one number. For 6 and 20 you keep 2 x 2 (the greatest power of 2), then 3, then 5, giving 4 x 3 x 5 = 60 — and 60 is exactly the smallest number that both 6 and 20 divide into. Picture each prime as its own bin you stock to the largest single order; the full stockpile you build, bin by bin, is the LCM.\n\nPART 4 — Guard against secretly computing the HCF instead.\nThe classic slip is to keep only the primes common to all the numbers, or to take the smallest power — that quietly builds the HCF, not the LCM. For 6 = 2 x 3 and 20 = 2 x 2 x 5, using only the shared prime 2 at its smallest power gives 2 (that is the HCF); the LCM must also drag in the 3 and the 5 and raise 2 to its greatest power, giving 60. The two rules are mirror images: HCF takes shared primes at their smallest power, LCM takes every prime at its greatest power.",
       "keyMoves": [
-        "List every prime appearing in any number",
-        "For each, take the greatest exponent that appears",
-        "Multiply those prime powers together"
+        "List every prime that shows up in any of the numbers — even a prime that is in just one of them still has to be on the list",
+        "For each prime on that list, pick the GREATEST power it reaches in any single number, because the answer needs at least that many copies of that prime for every number to divide into it evenly",
+        "Multiply all those chosen prime powers together to get the LCM — the smallest number every one of the originals divides into",
+        "Check you did not accidentally compute the HCF: HCF keeps only primes shared by all and takes the SMALLEST power, while LCM takes EVERY prime at its GREATEST power"
       ],
       "misconceptions": [
         "Using only common primes (that gives HCF, not LCM)",
@@ -162,16 +439,40 @@
       "teachingInsights": [],
       "refreshers": [
         {
-          "trigger": "The abbreviation \"LCM\" — Least/Lowest Common Multiple",
-          "surfacingQuestion": "We keep writing LCM — let us make sure it means something concrete. Of all the numbers that BOTH 6 and 20 divide into evenly, which is the smallest?",
+          "trigger": "The word \"divisible\" / \"divides into evenly\" used in stating what an LCM is — and the leap that a number divides M only if M has at least as many copies of each prime",
+          "surfacingQuestion": "Before we use the word a lot: when I say 20 'divides evenly' into some bigger number, what exactly has to be true about that bigger number?",
           "ladder": [
-            "What are the first few multiples of 6 — 6, 12, 18, 24 …?",
-            "Now the multiples of 20 — 20, 40, 60 …?",
-            "Which number is the first one to show up in BOTH lists?",
+            "Does 20 divide evenly into 60? What is 60 divided by 20?",
+            "Does 20 divide evenly into 50? What is left over?",
+            "20 is 2 x 2 x 5 — so 60 must contain at least how many 2's and how many 5's for 20 to fit into it exactly?"
+          ],
+          "answer": "A number n divides another number M evenly when M splits into n-sized groups with nothing left over — the remainder is 0. So 20 divides 60 (60 = 20 x 3, remainder 0) but 20 does not divide 50 (50 = 20 x 2 + 10, remainder 10). In prime terms there is a neat rule behind this: n divides M exactly when, for every prime, M carries at least as many copies of that prime as n does. 20 = 2 x 2 x 5 needs two 2's and one 5, and 60 = 2 x 2 x 3 x 5 has them, so 20 fits. This is the whole reason the LCM takes the GREATEST power of each prime — it must hold at least as many copies as the heaviest single demand.",
+          "returnCue": "So 'divides evenly' = remainder 0 = M has at least as many of each prime as n. That is exactly why we keep the greatest power — back to building the LCM."
+        },
+        {
+          "trigger": "The abbreviation \"LCM\" — Least / Lowest Common Multiple, and 'multiple'",
+          "surfacingQuestion": "We keep writing LCM — let us pin it down. Of all the numbers that BOTH 6 and 20 divide into evenly, which is the smallest?",
+          "ladder": [
+            "What are the first few multiples of 6 — 6, 12, 18, 24, …?",
+            "Now the multiples of 20 — 20, 40, 60, …?",
+            "Which number is the first to show up in BOTH lists?",
             "Is there any smaller number that both 6 and 20 go into evenly?"
           ],
-          "answer": "LCM stands for Least (or Lowest) Common Multiple — the smallest whole number that every one of your numbers divides into exactly. For 6 and 20, the multiples of 6 are 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, … and the multiples of 20 are 20, 40, 60, … The first number to appear in both lists is 60, so LCM(6, 20) = 60. It is the mirror image of HCF: HCF is the biggest factor the numbers SHARE, while LCM is the smallest multiple they both fit INTO. That 60 is exactly what the prime-power method below builds — and why we take the GREATEST power of every prime, so the answer is big enough for every number to divide it.",
+          "answer": "A multiple of a number is what you get by multiplying it by a whole number — the multiples of 6 are 6, 12, 18, 24, 30, …, 60, and of 20 are 20, 40, 60, …. LCM stands for Least (or Lowest) Common Multiple: the smallest whole number that every one of your numbers divides into exactly. The first number appearing in both lists above is 60, so LCM(6, 20) = 60. It is the mirror image of HCF: HCF is the biggest factor the numbers SHARE, while LCM is the smallest multiple they all fit INTO. That 60 is exactly what the prime-power method builds — and why we take the GREATEST power of every prime, so the answer is big enough for every number to divide it.",
           "returnCue": "So LCM = the smallest number they all divide into. Back to building it from the greatest power of every prime."
+        }
+      ],
+      "forwardRefs": [
+        {
+          "terms": [
+            "HCF(a,b) x LCM(a,b) = a x b",
+            "the product relation"
+          ],
+          "why": "We mention as a quick aside that there is a shortcut linking HCF and LCM for two numbers, but you do not need it to compute an LCM here — the prime-power method on its own gives the full answer. It is named only as a sanity check / preview, so do not worry about producing or using it on this node.",
+          "later": "the very next node, where it is taught and used to find a missing HCF or LCM",
+          "coveredIn": [
+            "cbse10:maths:jemh101:use-hcf-lcm-product-relation"
+          ]
         }
       ]
     },
@@ -183,11 +484,12 @@
       "brief": "For two integers, the product of HCF and LCM equals the product of the numbers; rearrange to get LCM from HCF (or vice versa).",
       "sec": 1,
       "quote": "we can verify that for any two positive integers a and b, HCF(a, b) × LCM(a, b) = a × b. We can use this result to find the LCM of two positive integers, if we have already found the HCF of the two positive integers.",
-      "explanation": "Example 3 uses LCM(96,404) = (96 × 404)/HCF = 9696. This relation holds only for two numbers; the chapter's Remark warns it fails for three. A favourite exam shortcut (Given HCF, find LCM).",
+      "explanation": "PART 1 — HCF times LCM equals the two numbers multiplied together\nFor any two positive whole numbers a and b, HCF(a, b) x LCM(a, b) = a x b. The reason is that each shared prime gets split between them: the HCF takes the smallest power of that prime and the LCM takes the greatest power, and the smallest power plus the greatest power together hold every copy of that prime that a and b have, prime by prime. So multiplying HCF by LCM rebuilds a x b exactly, with no prime lost and none counted twice.\n\nPART 2 — Use it to get the missing one by a single division\nYou normally find HCF and LCM by factorising both numbers, but once you have ONE of them plus the two numbers, this rule hands you the other for free: LCM = (a x b) / HCF, and HCF = (a x b) / LCM. For example, for 96 and 404 with HCF = 4, you do not refactorise; you just compute LCM = (96 x 404) / 4 = 9696. The trap is to multiply HCF and LCM when you want the unknown one, instead of dividing the product of the numbers by the known one.\n\nPART 3 — The equality holds for exactly two numbers, not three\nThis clean equality is true only for a pair of numbers, because with just two numbers every shared prime splits neatly into a smallest power and a greatest power. With three or more numbers a prime can be shared by some of them but not all, so that neat split breaks and HCF x LCM no longer has to equal the product of all the numbers. So never apply HCF x LCM = product to three numbers; keep this rule for pairs only.\n\nPART 4 — Coprime is this same rule pushed to its extreme\nWhen two numbers are coprime they share no prime, so their HCF is 1. Put HCF = 1 into the rule and LCM = (a x b) / 1 = a x b: the LCM is the whole product of the two numbers. For instance 21 = 3 x 7 and 22 = 2 x 11 share nothing, so HCF = 1 and LCM = 21 x 22 = 462. So coprime numbers giving LCM = product is not a separate fact, just this same rule read at HCF = 1.",
       "keyMoves": [
-        "Multiply the two numbers",
-        "Divide by the known HCF to get the LCM (or by LCM to get HCF)",
-        "Restrict the rule to exactly two numbers"
+        "Sees that for two numbers, the HCF and the LCM together always multiply back to the product of the two numbers, so HCF and LCM are a balanced pair pinned to a fixed total",
+        "Gets the missing one of HCF/LCM for free from the other: divide the product of the two numbers by the known HCF to get the LCM (or by the LCM to get the HCF) instead of factorising a second time",
+        "Knows this exact equality is fenced to exactly two numbers, and that for three or more the product of HCF and LCM no longer has to equal the product of all the numbers",
+        "Reads the coprime case as the same rule at its extreme: when the two numbers share no prime the HCF is 1, so the LCM has to be the whole product of the two numbers"
       ],
       "misconceptions": [
         "Applying HCF×LCM = product to three numbers",
@@ -198,7 +500,32 @@
         "cbse10:maths:jemh101:compute-lcm-prime-factorisation"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The phrase \"product of the numbers\" / \"a x b\" — multiplying the two original numbers together (the right-hand side of the rule)",
+          "surfacingQuestion": "Quick check before we use the rule: when I say 'the product of the two numbers' for 96 and 404, what number am I asking you to compute?",
+          "ladder": [
+            "What does 'product' mean — what operation gives you a product?",
+            "So what is the product of 96 and 404?",
+            "Is that the same as their HCF or their LCM, or something separate from both?"
+          ],
+          "answer": "The 'product of the numbers' just means the two original numbers multiplied together: for 96 and 404 that is 96 x 404 = 38784. It is not the HCF and not the LCM — it is the plain multiplication of the two starting numbers, and it is the fixed total that HCF x LCM has to equal. So in the rule HCF x LCM = a x b, the right-hand side 'a x b' is exactly this product, 38784 in that example.",
+          "returnCue": "So 'product of the numbers' = the two starting numbers multiplied. Back to setting HCF x LCM equal to that product."
+        },
+        {
+          "trigger": "Dividing to undo a multiplication — getting one factor back when you know the product and the other factor",
+          "surfacingQuestion": "Before we rearrange the rule: if two numbers multiply to 96 and one of them is 4, how do you find the other one?",
+          "ladder": [
+            "If 4 times something equals 96, what operation gets that 'something' back?",
+            "What is 96 divided by 4?",
+            "So once you know a product and one of the two things multiplied, how do you recover the other?"
+          ],
+          "answer": "When two things multiply to give a known total and you know one of them, you divide the total by the one you know to get the other: 4 x ? = 96 means ? = 96 / 4 = 24. That is exactly why HCF x LCM = a x b can be rearranged: the product a x b is the known total, so dividing it by the known HCF gives the LCM, and dividing by the known LCM gives the HCF. Division simply undoes the multiplication.",
+          "returnCue": "So division undoes multiplication to recover the missing factor. Back to LCM = (a x b) / HCF."
+        }
+      ],
+      "forwardRefs": []
     },
     {
       "id": "cbse10:maths:jemh101:state-prime-divides-square-theorem",
@@ -208,11 +535,11 @@
       "brief": "Invoke the lemma that a prime dividing a perfect square must divide the base integer.",
       "sec": 2,
       "quote": "Theorem 1.2 : Let p be a prime number. If p divides a², then p divides a, where a is a positive integer.",
-      "explanation": "This lemma, proved from the uniqueness of prime factorisation, is the engine of every irrationality proof: from 2 | a² conclude 2 | a, from 3 | a² conclude 3 | a. Without it the contradiction proofs cannot get the common factor.",
+      "explanation": "PART 1 — The rule: a prime inside a square is already inside the base.\nTheorem 1.2 says: if a prime number divides a² (that is, a × a), then that same prime must divide a itself, where a is a positive integer. So from '2 divides a²' you may conclude '2 divides a'; from '3 divides a²' you get '3 divides a'. It is a one-way ladder that carries divisibility DOWN from the square to the base number it was squared from.\n\nPART 2 — Why it holds: squaring only doubles the same prime building blocks.\nEvery number is a product of primes, and that set of primes is unique. Squaring a number doesn't introduce any new prime — it just uses each one twice as often (12 = 2²×3 becomes 12² = 2⁴×3², the same primes 2 and 3, only with bigger exponents). So a² is built from the exact same kinds of primes as a; if a prime appears in a², the only place it could have come from is a, which means it already divides a.\n\nPART 3 — Why it needs a PRIME: a composite can fail.\nThe rule is true only because the divisor is a single, unsplittable prime; for a composite divisor it can break. Take 4 (composite): 4 divides 6 × 6 = 36, yet 4 does NOT divide 6 — because 4 = 2×2 can grab one 2 from each copy of 6, splitting itself across the two factors. A prime is one indivisible building block, so it cannot split that way — it must land whole inside a single factor, and since both factors are a, it lands inside a.",
       "keyMoves": [
-        "Recognise that the divisor must be prime for the lemma to apply",
-        "From p | a² deduce p | a",
-        "Cite it by name when used inside a proof"
+        "Sees that this rule is a one-way promise about perfect squares: whenever a prime divides a number that happens to be something-times-itself (a²), that same prime must already divide the something (a) it was built from.",
+        "Can explain WHY it must be true from uniqueness: squaring a only doubles the count of each prime building block, so a² is made of the exact same kinds of primes as a — a prime showing up in a² had nowhere to come from except a itself.",
+        "Knows the rule depends entirely on the divisor being prime, and can show by a counterexample that a composite divisor can fail (e.g. 4 divides 6×6=36 yet 4 does not divide 6), because a composite can split itself across the two copies while a single prime cannot."
       ],
       "misconceptions": [
         "Applying it with a composite 'p' (e.g. assuming 4 | a² ⇒ 4 | a)",
@@ -223,7 +550,59 @@
         "cbse10:maths:jemh101:interpret-divides-relation"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The word \"prime\" — prime number / a prime divides something",
+          "surfacingQuestion": "Quick check before we use the word 'prime' as the whole reason this rule works: what makes a number prime, and is 6 prime?",
+          "ladder": [
+            "What's a 'factor' of a number — what does it divide into exactly?",
+            "Which whole numbers divide 6 exactly?",
+            "Which whole numbers divide 7 exactly?",
+            "So what does 7 have that 6 doesn't — how many factors does each have?"
+          ],
+          "answer": "A prime number (bigger than 1) has exactly two factors: 1 and itself — like 2, 3, 5, 7, 11. A number with more factors is composite: 6 is composite because 1, 2, 3 and 6 all divide it, so it splits as 2 × 3. (1 is neither prime nor composite.) A prime is a single 'unsplittable' building block — that indivisibility is the exact reason this theorem works for primes but can fail for composites like 4.",
+          "returnCue": "So a prime has only 1 and itself as factors — one unsplittable block. That's the property doing all the work here; back to the rule."
+        },
+        {
+          "trigger": "\"Divides\" / 'p divides a' — what divisibility means with no remainder",
+          "surfacingQuestion": "When I say a number 'divides' another — like '5 divides 20' — what exactly has to be true for that?",
+          "ladder": [
+            "If you share 20 sweets equally among 5 children, how many are left over?",
+            "What about sharing 7 sweets among 5 children — anything left over?",
+            "So which of those two is '5 divides it exactly', with nothing left?"
+          ],
+          "answer": "'p divides a' means a splits into equal p-sized groups with nothing left over — the remainder is exactly 0. So 5 divides 20 (20 = 5 × 4, nothing left), but 5 does not divide 7 (7 = 5 × 1 with 2 left over). Saying 'p divides a' is the same as saying 'a is a multiple of p'. In this theorem, 'a prime divides a²' just means a² is an exact multiple of that prime, with no remainder.",
+          "returnCue": "So 'divides' = splits evenly, remainder zero. Now back to: the prime divides a², so what does it divide?"
+        },
+        {
+          "trigger": "\"a²\" / square / perfect square — the number times itself",
+          "surfacingQuestion": "We keep writing a² and calling it a 'square'. What does a² actually stand for, and why the word 'square'?",
+          "ladder": [
+            "What does 5² mean — what do you multiply?",
+            "What is 5² as a single number?",
+            "If a stands for some whole number, what is a² in words?"
+          ],
+          "answer": "a² means a multiplied by itself: a × a. So 5² = 5 × 5 = 25, and 7² = 7 × 7 = 49. A number like 25 or 49 that comes from a whole number times itself is called a 'perfect square' (the name comes from the area of a square with that side length). The whole point of this theorem is to take a fact about the square a² and pull it back to a fact about the base a it was built from.",
+          "returnCue": "So a² is just a × a, the base squared. Back to: a prime sits inside a², so it sits inside a."
+        }
+      ],
+      "forwardRefs": [
+        {
+          "terms": [
+            "Theorem 1.2 (citing it by name inside a proof)",
+            "p | a notation",
+            "coprime"
+          ],
+          "why": "This node is where you learn what the rule SAYS and why it's true — you don't need to quote it by its textbook name or use the bar notation yet. Those are just labels and shorthand for the same idea you already understand; they get attached to it when you start writing full irrationality proofs.",
+          "later": "When you assemble a complete proof-by-contradiction that a number is irrational — the step where you cite this rule by name to extract a shared factor and clash it with a 'no shared factor' (coprime) assumption.",
+          "coveredIn": [
+            "cbse10:maths:jemh101:interpret-divides-relation",
+            "cbse10:maths:jemh101:set-up-contradiction-rational-assumption",
+            "cbse10:maths:jemh101:close-irrationality-contradiction"
+          ]
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh101:set-up-contradiction-rational-assumption",
@@ -233,11 +612,12 @@
       "brief": "Begin a proof by contradiction: assume the number equals a/b with a, b integers, b ≠ 0, and a, b coprime.",
       "sec": 2,
       "quote": "Proof : Let us assume, to the contrary, that √2 is rational.",
-      "explanation": "Every irrationality argument opens the same way: suppose the number is rational, write it as a fraction in lowest terms (coprime numerator and denominator), and aim to derive a contradiction with that coprimeness. Setting up the coprime fraction correctly is itself a failable step.",
+      "explanation": "PART 1 — To prove 'not a fraction', start by supposing it IS one\nWe want to prove a number cannot be written as a fraction. Instead of attacking that head-on, we suppose the exact opposite — that it CAN be written as a fraction — and then follow that supposition wherever it leads; if it leads to something impossible, the supposition was a lie and the number truly cannot be a fraction. It is like a courtroom: to show the suspect could not have done it, you suppose they did and show that forces them to be in two places at once.\n\nPART 2 — Write the supposed fraction concretely as a/b\nSaying a number 'is a fraction' means precisely that it equals a ÷ b where a and b are whole numbers and b is not 0 — so we write that down as a/b and now have something concrete to work on. The b ≠ 0 part is not fine print: if b were 0, a/b would not be a number at all, and requiring whole numbers is what gives the word 'fraction' its teeth. Pinning a and b to specific whole numbers turns a vague claim into an equation we can push on.\n\nPART 3 — Cancel it all the way down to coprime form, for free\nEvery fraction can be reduced by dividing top and bottom by any common factor until nothing common is left but 1 — 6/8 cancels to 3/4 — and you always land on exactly one fully-cancelled version. So we write a/b already in this coprime form (a and b share no common factor but 1, meaning HCF(a, b) = 1); this is not an extra assumption, it is just handing ourselves the fully-cancelled copy, which always exists. We lose nothing by demanding it.\n\nPART 4 — The coprime form is a trap we are deliberately setting\nWriting a and b coprime is the whole point of the setup, not housekeeping: we have now PROMISED that a and b share no common factor. The plan is that later steps will be forced to produce a factor that DOES divide both a and b — and that directly breaks the promise we just made. A fraction that is both fully-cancelled and yet shares a factor is impossible, and that impossibility is what will prove the number was never a fraction.",
       "keyMoves": [
-        "Assume the negation: the number is rational",
-        "Write it as a/b with integers, b ≠ 0",
-        "Reduce so a and b are coprime (no common factor but 1)"
+        "Sees that to prove a number is NOT a fraction, the move is to suppose the opposite — that it IS a fraction — and then chase that supposition until it breaks; if supposing it leads to something impossible, the original number truly cannot be a fraction",
+        "Writes the supposed fraction down concretely as a/b where a and b are whole numbers and b is not 0, because that is exactly what 'can be written as a fraction' means — and without b ≠ 0 it would not be a real division at all",
+        "Cancels the fraction all the way down so a and b share no common factor but 1 (coprime form), and understands this costs nothing because every fraction can always be reduced to this one fully-cancelled version",
+        "Recognises that writing it coprime is deliberately setting a trap: we have PROMISED a and b share no factor, so if the later steps ever force out a shared factor, that broken promise is the impossibility that ends the proof"
       ],
       "misconceptions": [
         "Forgetting to require a and b coprime, so no contradiction is reachable",
@@ -247,7 +627,81 @@
         "cbse10:maths:jemh101:know-prime-composite-coprime"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The word \"rational\" — calling a number rational, or 'assume it is rational'",
+          "surfacingQuestion": "We are about to assume the number is 'rational'. Quick check first: what does it mean for a number to be rational?",
+          "ladder": [
+            "Can you write 3 as a fraction? What about 0.5?",
+            "Both of those are one whole number over another whole number, aren't they?",
+            "So what kind of number can ALWAYS be written that way — a whole number on top, a whole number on the bottom?"
+          ],
+          "answer": "A number is rational when it can be written as one whole number divided by another whole number — a fraction a/b of integers, with the bottom not 0. So 3 (= 3/1), 0.5 (= 1/2), and -7/4 are all rational. Calling a number rational is exactly the claim that such a fraction exists for it. That is why 'assume it is rational' means the very concrete thing 'assume we can write it as a/b'.",
+          "returnCue": "So rational = can be written as a whole-number fraction a/b. That is exactly the assumption we are about to write down."
+        },
+        {
+          "trigger": "The word \"integer\" — 'a and b are integers'",
+          "surfacingQuestion": "We say a and b have to be integers. What counts as an integer?",
+          "ladder": [
+            "Is 5 a whole number? Is -3?",
+            "Is 2.5 a whole number?",
+            "So which of those would we call integers?"
+          ],
+          "answer": "An integer is a whole number with no fraction or decimal part — like 0, 1, 2, 3 and their negatives -1, -2, -3. So 5 and -3 are integers, but 2.5 and 1/2 are not. We require a and b to be integers because that is what makes 'a/b' a genuine fraction; if a and b could be any decimal, then literally every number could be written as a 'ratio' and the word would mean nothing.",
+          "returnCue": "So integers = whole numbers (and their negatives). Back to writing a/b with a and b integers."
+        },
+        {
+          "trigger": "Reducing a fraction to lowest terms / 'fully cancelled' (the mechanism behind coprime form)",
+          "surfacingQuestion": "I keep saying we cancel the fraction 'all the way down'. What does cancelling a fraction actually do — does it change the value?",
+          "ladder": [
+            "Is 6/8 the same value as 3/4?",
+            "What did we divide the top and bottom by to get from 6/8 to 3/4?",
+            "Can 3/4 be cancelled any further — do 3 and 4 share any factor bigger than 1?"
+          ],
+          "answer": "Cancelling means dividing the top and bottom by a factor they share; it changes how the fraction LOOKS but not its value. 6/8 has 2 dividing both, so it cancels to 3/4 — same value, smaller numbers. You keep cancelling until top and bottom share no common factor but 1 (here 3 and 4 share nothing), and that fully-cancelled version is unique: every fraction reaches exactly one of them. That fully-cancelled state is precisely what 'a and b coprime' means.",
+          "returnCue": "So cancelling all the way down lands you on the one coprime version. That is the form we write a/b in."
+        }
+      ],
+      "forwardRefs": [
+        {
+          "terms": [
+            "proof by contradiction",
+            "reductio ad absurdum",
+            "negation"
+          ],
+          "why": "This node IS the opening line of a proof-by-contradiction, and you are doing the technique by hand here — supposing the opposite and aiming for an impossibility. We just do not make you name the technique or its Latin label; you only need to perform the move, not recite its name.",
+          "later": "the full named technique, and the formal contradiction, come together as you complete the actual √2 proof across the next two nodes",
+          "coveredIn": [
+            "cbse10:maths:jemh101:derive-square-relation-from-fraction",
+            "cbse10:maths:jemh101:close-irrationality-contradiction"
+          ]
+        },
+        {
+          "terms": [
+            "irrational number",
+            "√2 is irrational"
+          ],
+          "why": "'Irrational' is simply the name for a number that CANNOT be written as a fraction a/b — exactly the thing we are setting out to prove. It is named now because it is our destination, but you do not have to produce or define it here; the setup only needs you to suppose the opposite (that it can be written as a fraction).",
+          "later": "the irrational conclusion is actually reached when the contradiction lands at the end of the proof",
+          "coveredIn": [
+            "cbse10:maths:jemh101:close-irrationality-contradiction"
+          ]
+        },
+        {
+          "terms": [
+            "squaring to get the divisibility relation (n·b² = a²)",
+            "Theorem 1.2 (p | a² ⇒ p | a)",
+            "deriving the shared factor"
+          ],
+          "why": "The setup deliberately leaves a 'gap' — we promise a and b are coprime but have not yet shown anything breaks that. The steps that force out the shared factor (squaring, then the prime-divides-square theorem) are the very next nodes; you do not need them to set the trap, only to spring it later.",
+          "later": "the immediately following two nodes, which square the equation and then twice extract a common factor of 2",
+          "coveredIn": [
+            "cbse10:maths:jemh101:derive-square-relation-from-fraction",
+            "cbse10:maths:jemh101:close-irrationality-contradiction"
+          ]
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh101:derive-square-relation-from-fraction",
@@ -257,11 +711,13 @@
       "brief": "From b√n = a, square both sides to get n·b² = a², exposing that n divides a².",
       "sec": 2,
       "quote": "Squaring on both sides and rearranging, we get 2b² = a². Therefore, 2 divides a².",
-      "explanation": "After assuming √n = a/b, clear the denominator (b√n = a), square to get n b² = a², and read off that n | a². This is the algebraic move that hands the proof over to Theorem 1.2. Repeated identically for √3 (3b² = a²).",
+      "explanation": "PART 1 — Why we square: kill the square root.\nA square root like √n is awkward because you can't easily reason about its factors, but squaring it gives back a plain whole number: (√n)² = n. So squaring trades a hard question about a strange number for an easy question about ordinary whole numbers and which numbers divide them — territory where 'divides' actually has bite. That trade is the entire reason this step exists.\n\nPART 2 — First clear the fraction: multiply by b.\nYou assumed √n = a/b, a fraction. Multiply both sides by b to clear it, giving b·√n = a — now the root sits alone on one side with no fraction to manage. (You could square a/b directly to get n = a²/b² and then multiply by b², but clearing the fraction first means you never have to juggle a fraction while squaring.)\n\nPART 3 — Square both sides into a clean whole-number equation.\nApply ( )² to b·√n = a. The left side (b·√n)² becomes b²·(√n)² = n·b², because squaring undoes the square root: (√n)² = n. The right side is a². So you land on n·b² = a² — for n = 2 that is 2b² = a², for n = 3 it is 3b² = a². The most common slip is squaring only one side, or writing (a/b)² as a/b² — square BOTH sides fully.\n\nPART 4 — Read the divisibility straight off the shape.\nLook at a² = n·b². In plain words it says 'a² equals n copies of the whole number b²', and anything that is n-times-a-whole-number is by definition an exact multiple of n. So you can SEE, without computing anything, that n divides a² (written n | a²). For n = 2 this is exactly the statement that a² is even.\n\nPART 5 — This is a handoff, not the finish line.\nNotice you have not proved anything irrational yet — you have only manufactured one fact: n divides a². That is the whole point of this step. It hands that fact to the next step, which uses a result about primes to turn 'n divides a²' into 'n divides a' — so make sure you reach the form n·b² = a² (one side a clean multiple of n) before stopping; stopping at n = a²/b² hasn't exposed any whole number as a multiple of n yet.",
       "keyMoves": [
-        "Multiply through by b to get b√n = a",
-        "Square both sides: n b² = a²",
-        "Conclude n divides a²"
+        "Sees why squaring is the key move: the square root is awkward to reason about, but squaring it turns √n into the plain whole number n, trading a question about a strange number for one about ordinary whole numbers and their factors",
+        "Clears the fraction first by multiplying both sides of √n = a/b by b, getting b·√n = a, so there is no fraction to juggle when squaring",
+        "Squares BOTH sides correctly — the left side (b·√n)² becomes n·b² because squaring undoes the square root, and the right side becomes a² — landing on the clean whole-number equation n·b² = a² (for example 2b² = a²)",
+        "Reads divisibility straight off the shape of the equation: a² = n·b² literally says a² is n copies of the whole number b², so a² is an exact multiple of n — i.e. n divides a² — without computing anything",
+        "Recognises this step is a handoff, not the finish: its whole job is to manufacture the fact 'n divides a²' so the next step can act on it"
       ],
       "misconceptions": [
         "Squaring only one side or mishandling the (a/b)² step",
@@ -272,7 +728,69 @@
         "cbse10:maths:jemh101:set-up-contradiction-rational-assumption"
       ],
       "sameConcept": [],
-      "teachingInsights": []
+      "teachingInsights": [],
+      "refreshers": [
+        {
+          "trigger": "The word \"squaring\" / the operation ( )² — applied to both b·√n = a and used as the core move of this node",
+          "surfacingQuestion": "Quick check before we use it: when I say I 'square' a number, like I square 5, what am I actually doing to it?",
+          "ladder": [
+            "What do you get if you multiply 5 by itself — 5 × 5?",
+            "So if 'squaring 5' gives 25, what would squaring 7 give?",
+            "And if a number is called b, what does 'b squared' (written b²) mean?"
+          ],
+          "answer": "Squaring a number means multiplying it by itself once: 5 squared is 5 × 5 = 25, and 7 squared is 7 × 7 = 49. We write it with a small 2 up top: b² means b × b. It is called 'squared' because b × b is the area of a square whose side is b. In this node we square a whole side of an equation, which means multiplying that whole side by itself.",
+          "returnCue": "So squaring = multiply the thing by itself. Now back to squaring each side of b·√n = a."
+        },
+        {
+          "trigger": "The symbol √n / \"square root\" — appears throughout as the number we are testing for irrationality",
+          "surfacingQuestion": "We keep writing √n — the square root of n. Quick one: the square root of 9 is 3. Why 3? What is the rule that connects 3 back to 9?",
+          "ladder": [
+            "What is 3 × 3?",
+            "So 3 squared is 9 — that is why √9 = 3. Working backwards, what number times itself gives 25?",
+            "So what is √25?"
+          ],
+          "answer": "The square root of a number is the value that, multiplied by itself, gives that number back. √9 = 3 because 3 × 3 = 9; √25 = 5 because 5 × 5 = 25. Square root and squaring are opposite moves that undo each other: if you square a square root you get the original number straight back, so (√n)² = n. That single fact — (√n)² = n — is exactly why squaring is so useful here: it erases the root and leaves the plain whole number n.",
+          "returnCue": "So square root and squaring undo each other, meaning (√n)² = n. That is the move that cleans up our equation — back to it."
+        },
+        {
+          "trigger": "The phrase \"clear the denominator\" / \"clear the fraction\" — multiplying both sides by b to remove a/b",
+          "surfacingQuestion": "Before we do it: if I have the equation x = a/b and I want to get rid of that fraction on the right, what could I multiply both sides by to make it disappear?",
+          "ladder": [
+            "In the fraction a/b, what is the b doing — what is it dividing?",
+            "If something is divided by b, what operation undoes that division?",
+            "So if you multiply a/b by b, what are you left with?"
+          ],
+          "answer": "A fraction a/b means a divided by b. Multiplying by b undoes that division: (a/b) × b = a, the b on top and bottom cancel. The rule of equations is that whatever you do to one side you must do to the other, so multiplying BOTH sides of √n = a/b by b keeps it balanced and gives b·√n = a — a fraction-free equation. That is what 'clearing the denominator' means: removing the bottom of the fraction by multiplying it away.",
+          "returnCue": "So multiplying both sides by b clears the fraction. That gives us b·√n = a — back to squaring it."
+        }
+      ],
+      "forwardRefs": [
+        {
+          "terms": [
+            "Theorem 1.2 (if a prime p divides a², then p divides a)",
+            "the prime-divides-square lemma"
+          ],
+          "why": "This step deliberately stops the moment it has produced the fact 'n divides a²'. We name the result that picks it up next so you can see where the baton is going, but you are NOT expected to state or use that result here — it is a separate skill taught on its own. All you must produce now is the equation n·b² = a² and the reading 'n divides a²'.",
+          "later": "In the very next nodes of this chapter, which state the prime-divides-square result and then use it to finish the proof.",
+          "coveredIn": [
+            "cbse10:maths:jemh101:state-prime-divides-square-theorem",
+            "cbse10:maths:jemh101:close-irrationality-contradiction"
+          ]
+        },
+        {
+          "terms": [
+            "irrational",
+            "irrationality proof",
+            "the contradiction / proof by contradiction"
+          ],
+          "why": "We mention that this single algebraic move is one step inside a larger proof that a number is irrational, so you know why it matters. But proving irrationality is the job of the surrounding steps — here you only do the squaring-and-rearranging, so 'irrational' is just context, not something you must demonstrate at this node.",
+          "later": "The setup step and the closing step of this same irrationality cluster carry the full contradiction; the contradiction is actually exhibited in the closing node.",
+          "coveredIn": [
+            "cbse10:maths:jemh101:set-up-contradiction-rational-assumption",
+            "cbse10:maths:jemh101:close-irrationality-contradiction"
+          ]
+        }
+      ]
     },
     {
       "id": "cbse10:maths:jemh101:close-irrationality-contradiction",

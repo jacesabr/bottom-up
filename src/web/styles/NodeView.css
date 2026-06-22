@@ -181,6 +181,17 @@
 .recap-lead { margin: 2px 0 4px; font-size: 0.9rem; line-height: 1.5; color: var(--dim); }
 .lesson-recap .btn-primary { align-self: flex-start; }
 
+/* Forward-reference heads-up: a quiet, friendly aside (NOT a tutor bubble) shown when the tutor first
+   names a term the node previews but does not teach — reassures the learner it's a deliberate preview. */
+.aside-card { align-self: stretch; display: flex; gap: 10px; background: var(--green-soft, #eef7f0);
+  border: 1px solid #bcd6c4; border-left: 3px solid var(--green, #2e7d4f); border-radius: 10px; padding: 10px 14px; margin: 2px 0 6px; }
+.aside-emoji { font-size: 1.1rem; line-height: 1.4; flex: 0 0 auto; }
+.aside-body { font-size: 0.86rem; color: var(--green, #2e7d4f); line-height: 1.5; }
+.aside-lead { font-weight: 700; margin-bottom: 5px; }
+.aside-terms { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
+.aside-chip { background: #fff; border: 1px solid #bcd6c4; border-radius: 999px; padding: 1px 9px; font-size: 0.78rem; font-weight: 600; color: var(--green, #2e7d4f); }
+.aside-text { color: #3b5446; }
+
 /* The post-answer "Move on / Finish" button reads as forward progress (green), distinct from grey Submit. */
 .gate-card .btn-primary.move-on { background: var(--green); }
 .gate-card .btn-primary.move-on:hover { filter: brightness(1.05); }
