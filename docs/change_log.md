@@ -6,6 +6,23 @@ own design log stays at `socratic-planning/CHANGELOG.md`.
 
 ---
 
+## 2026-06-22 (cont.) — Quality benchmarks made HARD + FAIR; pool re-ranked on real reading/reasoning
+
+Mirrored from IE. The router blends PRECOMPUTED quality × LIVE speed (quality can't be graded per-request
+live). Old batteries saturated everyone at a fake "100%"; rebuilt both (deterministic):
+- Text (`tools/nim-bench.ts`): 18 multi-step items, exact-answer graded. Vision (`tools/nim-vision-bench.ts`):
+  13 dense handwritten pages, partial-credit token recall.
+- Fairness fix: the bench was rate-limiting slow free-tier models (deepseek 429s) and scoring no-response as
+  wrong. Now pace + retry, and quality = correctness among items ANSWERED (availability gated live). `--models`
+  flag added to re-score just the pool.
+- Re-ranked `nim-router` quality (measured): deepseek-v4-pro 1.0 (slow ~11s), nemotron-super 0.89,
+  mistral-nemotron 0.83 (fast → usual live winner), qwen3-80b 0.78, llama-3.1-70b 0.75, llama-3.3-70b 0.72,
+  nemotron-nano-30b/dracarys 0.67, maverick 0.65, ministral 0.61. VISION: nemotron-nano-12b **0.90** (best +
+  fast), llama-3.2-90b 0.84, llama-3.2-11b 0.78; the old pick nemotron-nano-vl-8b is worst (0.55). Weak models
+  (text 8b 0.44 / mistral-small 0.40, vision-8b 0.55) drop below QUALITY_FLOOR (0.6).
+
+---
+
 ## 2026-06-22 — Vision speed measured LIVE (real image probe); footer always reachable; quality-first pick
 
 Mirrored from IE (shared NIM-router infra).

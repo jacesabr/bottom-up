@@ -21,35 +21,38 @@ export interface Candidate { id: string; quality: number; }
 
 /** Pool the router may pick from — PLAIN-INSTRUCT, JSON-clean only (reasoning models corrupt the
  *  streamed JSON turn; gated ids 404). Env-overridable via NIM_CANDIDATES_TEXT / _VISION (comma list). */
-// Quality from the FULL-catalog sweep (tools/nim-bench, 2026-06-21): 121 NIM models → 90 chat-text
-// candidates → 36 responded → 27 passed the floor. This pool is EVERY genuinely-good responder (quality ≥
-// 0.75 = ≥6/8 on the reasoning battery), so the learner sees the full good-models race — NOT just a frontier.
-// Three principled exclusions keep a weak/unstable model from ever reaching a learner: (1) reasoning /
-// experimental families that emit <think> and corrupt the streamed JSON turn (gpt-oss*, *-reasoning,
-// diffusiongemma); (2) models too slow to serve a text turn — avg > ~7s would only time out the probe
-// (qwen3.5-397b ~20s, qwen3.5-122b ~12s, minimax-m3 ~7.3s); (3) the 0.63 tier (5/8 — borderline, not "good"),
-// except the two battle-tested fast fallbacks at the end. Full results: .audit-tmp/nim-bench.json.
+// Quality = PRECOMPUTED reasoning/reading capability (the live router can only time a single speed probe per
+// model — it can't grade quality in real time — so quality is benched offline here and blended with live
+// speed). Re-benched 2026-06-22 on a HARDER, FAIR battery (tools/nim-bench.ts = 18 multi-step inference-systems
+// + math items, exact-answer graded; tools/nim-vision-bench.ts = 13 handwritten pages, partial-credit token
+// recall). Score = correctness among items the model actually ANSWERED — a 429/timeout is availability (gated
+// live), NOT a wrong answer; the old battery saturated everyone at a meaningless "100%". Models below
+// QUALITY_FLOOR are kept here for the record but auto-excluded. NOTE: free-tier throttling capped precision
+// on the slow/limited models (deepseek answered fewer items, all correct → genuinely top, just slow). Ordered
+// by quality so an exact score tie resolves to the stronger model (see routeModels' rank tiebreak).
 export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
   text: [
-    { id: 'deepseek-ai/deepseek-v4-pro', quality: 1.0 },                // 8/8 · top reasoning (~3.6s)
-    { id: 'deepseek-ai/deepseek-v4-flash', quality: 1.0 },              // 8/8 · fast deepseek (~2.3s)
-    { id: 'nvidia/nemotron-3-super-120b-a12b', quality: 1.0 },          // 8/8 · large (~5.2s)
-    { id: 'mistralai/mistral-nemotron', quality: 0.88 },                // 7/8 · fast (~0.7s)
-    { id: 'meta/llama-3.3-70b-instruct', quality: 0.88 },               // 7/8 (~2.1s)
-    { id: 'meta/llama-4-maverick-17b-128e-instruct', quality: 0.75 },   // 6/8 · fast (~0.8s)
-    { id: 'nvidia/nemotron-3-nano-30b-a3b', quality: 0.75 },            // 6/8 · fastest good (~0.8s)
-    { id: 'mistralai/mistral-small-4-119b-2603', quality: 0.75 },       // 6/8 (~1.0s)
-    { id: 'abacusai/dracarys-llama-3.1-70b-instruct', quality: 0.75 },  // 6/8 (~1.2s)
-    { id: 'qwen/qwen3-next-80b-a3b-instruct', quality: 0.75 },          // 6/8 · proven in prod (~1.4s)
-    { id: 'meta/llama-3.1-70b-instruct', quality: 0.75 },               // 6/8 (~4s)
-    { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.63 },     // 5/8 · fast fallback (~1.2s)
-    { id: 'meta/llama-3.1-8b-instruct', quality: 0.63 },                // 5/8 · fastest fallback (~0.5s)
+    { id: 'deepseek-ai/deepseek-v4-pro', quality: 1.0 },                // 100% (10/10 + 8/8, incl. hardest quant) — top reasoner, slow ~11s
+    { id: 'deepseek-ai/deepseek-v4-flash', quality: 1.0 },              // 100% (10/10) — fast deepseek
+    { id: 'nvidia/nemotron-3-super-120b-a12b', quality: 0.89 },         // 16/18 (missed kv-cache + matmul) · slow ~8s
+    { id: 'mistralai/mistral-nemotron', quality: 0.83 },                // 15/18 · fast ~0.6s — best speed×quality
+    { id: 'qwen/qwen3-next-80b-a3b-instruct', quality: 0.78 },          // 14/18 · proven in prod
+    { id: 'meta/llama-3.1-70b-instruct', quality: 0.75 },               // 13/17
+    { id: 'meta/llama-3.3-70b-instruct', quality: 0.72 },               // 13/18
+    { id: 'nvidia/nemotron-3-nano-30b-a3b', quality: 0.67 },            // 12/18 · fastest good ~0.4s
+    { id: 'abacusai/dracarys-llama-3.1-70b-instruct', quality: 0.67 },  // 12/18
+    { id: 'meta/llama-4-maverick-17b-128e-instruct', quality: 0.65 },   // 11-12/18 · fast
+    { id: 'mistralai/ministral-14b-instruct-2512', quality: 0.61 },     // 11/18 · just above floor
+    // — below QUALITY_FLOOR (0.6): measured but auto-excluded; the hard battery exposed these as genuinely weak —
+    { id: 'meta/llama-3.1-8b-instruct', quality: 0.44 },                // 8/18 · fast but weak on multi-step
+    { id: 'mistralai/mistral-small-4-119b-2603', quality: 0.40 },       // ~6/18 · weak on multi-step
   ],
   vision: [
-    { id: 'meta/llama-3.2-90b-vision-instruct', quality: 1.0 },        // best reasoning (6/6), typically slowest
-    { id: 'nvidia/llama-3.1-nemotron-nano-vl-8b-v1', quality: 0.83 },  // good + usually the fastest VLM
-    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.83 },
-    { id: 'meta/llama-3.2-11b-vision-instruct', quality: 0.67 },
+    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.90 },           // 90% recall — best AND fast (~11s)
+    { id: 'meta/llama-3.2-90b-vision-instruct', quality: 0.84 },       // 84% recall — most accurate-but-slowest (~38s)
+    { id: 'meta/llama-3.2-11b-vision-instruct', quality: 0.78 },       // 78% recall (~16s)
+    // — below floor: measured but auto-excluded —
+    { id: 'nvidia/llama-3.1-nemotron-nano-vl-8b-v1', quality: 0.55 },  // 55% recall — weakest reader (the old pick!)
   ],
 };
 

@@ -12,7 +12,7 @@ import { execSync } from 'child_process';
 
 const DS = 'HumynLabs/English-Handwritten-Math-Notes-Dataset';
 const DIR = '.audit-tmp/vision-set';
-const N = 8;
+const N = Number(process.argv[2]) || 16; // harder bench wants more pages to discriminate; override: node fetch-vision-set.mjs 20
 
 fs.mkdirSync(DIR, { recursive: true });
 for (const f of fs.readdirSync(DIR)) if (/^img-\d+\.png$/.test(f) || /^_/.test(f)) fs.unlinkSync(`${DIR}/${f}`);
