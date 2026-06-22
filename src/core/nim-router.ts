@@ -10,14 +10,14 @@
  */
 import axios from 'axios';
 import { MODELS } from './models.js';
+import { PROBE_IMAGE } from './probe-image.js';
 
 const NIM_BASE = process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1';
 
-// quality: 0..1, precomputed. speedMs: realistic per-call inference time from the bench — used for VISION
-// only, because a vision probe sends a 1×1 image and so returns in ~300ms regardless of model, telling us
-// nothing about real per-image speed (which is 7–17s). Text uses the live probe latency instead (it IS
-// representative and captures current congestion), so speedMs is omitted there.
-export interface Candidate { id: string; quality: number; speedMs?: number; }
+// quality: 0..1, precomputed reasoning score (the prerequisite gate). Speed is NOT precomputed — BOTH text
+// and vision are measured LIVE on each probe (vision now sends a real image; see probeOne), because free NIM
+// speed swings through the day and a stale benchmark is worthless for picking the best-right-now model.
+export interface Candidate { id: string; quality: number; }
 
 /** Pool the router may pick from — PLAIN-INSTRUCT, JSON-clean only (reasoning models corrupt the
  *  streamed JSON turn; gated ids 404). Env-overridable via NIM_CANDIDATES_TEXT / _VISION (comma list). */
@@ -46,10 +46,10 @@ export const CANDIDATES: { text: Candidate[]; vision: Candidate[] } = {
     { id: 'meta/llama-3.1-8b-instruct', quality: 0.63 },                // 5/8 · fastest fallback (~0.5s)
   ],
   vision: [
-    { id: 'meta/llama-3.2-90b-vision-instruct', quality: 1.0, speedMs: 17500 },        // best (6/6) but slow
-    { id: 'nvidia/llama-3.1-nemotron-nano-vl-8b-v1', quality: 0.83, speedMs: 7000 },    // good + fastest VLM
-    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.83, speedMs: 11700 },
-    { id: 'meta/llama-3.2-11b-vision-instruct', quality: 0.67, speedMs: 10100 },
+    { id: 'meta/llama-3.2-90b-vision-instruct', quality: 1.0 },        // best reasoning (6/6), typically slowest
+    { id: 'nvidia/llama-3.1-nemotron-nano-vl-8b-v1', quality: 0.83 },  // good + usually the fastest VLM
+    { id: 'nvidia/nemotron-nano-12b-v2-vl', quality: 0.83 },
+    { id: 'meta/llama-3.2-11b-vision-instruct', quality: 0.67 },
   ],
 };
 
@@ -76,10 +76,6 @@ export interface RouteResult { kind: 'text' | 'vision'; ranked: ProbeResult[]; w
 // Thinking OFF for probes (and ideally all turns) — hybrid models otherwise emit <think> that both slows
 // the probe and corrupts JSON. Matches the NIM_NO_THINK switch used elsewhere.
 const THINK_OFF = process.env.NIM_NO_THINK ? { chat_template_kwargs: { thinking: false } } : {};
-// 1×1 transparent PNG — a vision probe must send an image (text-only would 400 on some VL models), but it
-// only needs to measure latency/availability, so the smallest possible image keeps the probe fast.
-const TINY_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
-
 // Bounded-concurrency map so a large pool doesn't fire all probes at once and self-429 the free key (which
 // would falsely mark good models as ✗ timed out). Cap is env-tunable; default 8. Runs ⌈pool/8⌉ small waves.
 const PROBE_CONCURRENCY = Number(process.env.NIM_PROBE_CONCURRENCY ?? 8);
@@ -93,13 +89,17 @@ async function mapLimit<T, R>(items: T[], limit: number, fn: (x: T) => Promise<R
 
 async function probeOne(model: string, key: string, timeoutMs: number, kind: 'text' | 'vision'): Promise<{ ok: boolean; latencyMs: number }> {
   const t0 = Date.now();
+  // VISION: send the representative probe image + a real transcription ask with a real output budget, so the
+  // measured latency reflects genuine per-image work RIGHT NOW (a 1×1 ping returned ~300ms for everything and
+  // told us nothing). TEXT: a tiny 4-token round-trip — representative first-token latency + current congestion.
   const content: any = kind === 'vision'
-    ? [{ type: 'text', text: 'Reply with the single word: ready' }, { type: 'image_url', image_url: { url: TINY_PNG } }]
+    ? [{ type: 'text', text: 'Read this image and transcribe any text, numbers or handwriting; if there is none, describe it in one line.' }, { type: 'image_url', image_url: { url: PROBE_IMAGE } }]
     : 'Reply with the single word: ready';
+  const maxTokens = kind === 'vision' ? 128 : 4;
   try {
     await axios.post(
       `${NIM_BASE}/chat/completions`,
-      { model, messages: [{ role: 'user', content }], max_tokens: 4, temperature: 0, ...(kind === 'vision' ? {} : THINK_OFF) },
+      { model, messages: [{ role: 'user', content }], max_tokens: maxTokens, temperature: 0, ...(kind === 'vision' ? {} : THINK_OFF) },
       { headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' }, timeout: timeoutMs }
     );
     return { ok: true, latencyMs: Date.now() - t0 };
@@ -113,9 +113,12 @@ async function probeOne(model: string, key: string, timeoutMs: number, kind: 'te
  * fastest healthy probe = 1). Returns the ranked list + winning model id. Falls back to the models.ts
  * default if there's no key or every probe fails — so a probe outage never strands a session.
  */
-export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 8000, exclude: string[] = []): Promise<RouteResult> {
+export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs?: number, exclude: string[] = []): Promise<RouteResult> {
   const fallback = kind === 'text' ? MODELS.text : MODELS.vision;
   const key = process.env.NVIDIA_API_KEY;
+  // Vision now does a REAL image read (7–20s on a slow VLM), so it needs a far longer probe budget than text
+  // (sub-second) — an 8s cap would falsely time out a healthy-but-slow reader like 90b and never let it win.
+  const probeTimeout = timeoutMs ?? (kind === 'vision' ? 25_000 : 8_000);
   let cands = CANDIDATES[kind].filter((c) => c.quality >= QUALITY_FLOOR); // quality gate — only "good" models
   // On a re-probe AFTER a mid-lesson failure, drop the model that just failed so we don't re-select it. A
   // model can pass the trivial 4-token probe yet fail real ~1000-token turns (partial outage); without this
@@ -125,13 +128,11 @@ export async function routeModels(kind: 'text' | 'vision' = 'text', timeoutMs = 
   const probedAt = Date.now();
   if (!key || !cands.length) return { kind, ranked: [], winner: fallback, fallback, probedAt };
 
-  const probes = await mapLimit(cands, PROBE_CONCURRENCY, (c) => probeOne(c.id, key, timeoutMs, kind).then((p) => ({ ...c, ...p })));
+  const probes = await mapLimit(cands, PROBE_CONCURRENCY, (c) => probeOne(c.id, key, probeTimeout, kind).then((p) => ({ ...c, ...p })));
   const oks = probes.filter((p) => p.ok);
-  // Effective speed for scoring + display. The live probe gates AVAILABILITY (ok/fail), but its latency only
-  // means something for text — a vision probe sends a 1×1 image so it returns ~300ms for every model, hiding
-  // the real 7–17s per-image cost. So vision scores on the precomputed bench time (speedMs), which is also
-  // what we show the learner — a realistic "this is how long image grading takes", not a misleading 300ms.
-  const effMs = (p: any) => (kind === 'vision' && typeof p.speedMs === 'number' ? p.speedMs : p.latencyMs);
+  // Effective speed = the LIVE probe latency, for BOTH kinds. Vision now reads a real image (probeOne), so its
+  // latency is a genuine current-conditions measurement this session — no precomputed bench substitution.
+  const effMs = (p: any) => p.latencyMs;
   // Failed candidates kept for display (the popup shows the full race, incl. ✗ timeouts) — never selected.
   const failedRows: ProbeResult[] = probes.filter((p) => !p.ok).map((p) => ({ model: p.id, ok: false, latencyMs: effMs(p), quality: p.quality, score: 0 }));
   if (!oks.length) return { kind, ranked: failedRows, winner: fallback, fallback, probedAt };

@@ -297,6 +297,13 @@ function seedClientModels(learnerId: string, body: any): void {
 // Speed-probe the NIM candidate pool and pick this session's model. The "finding your fastest tutor"
 // popup calls this on node entry and again after a tutor failure. Stores the winner for the learner so
 // the teach/grade path uses it; returns the full ranked race for the popup to render.
+// Vision speed is a property of the NIM ENDPOINTS (not the learner) and doesn't swing minute-to-minute, but a
+// real vision probe now reads a FULL image (7–20s × 4 models). Probing that on EVERY node entry would hammer
+// the free tier and self-inflict 429s (the exact flakiness we fight), so we cache the live vision race briefly
+// and share it across learners — still re-measured through the day, just not on every entry. A failure
+// re-probe (exclude set) always bypasses the cache for a fresh race that drops the dead model.
+const VISION_ROUTE_TTL_MS = Number(process.env.NIM_VISION_ROUTE_TTL_MS ?? 10 * 60 * 1000);
+let visionRouteCache: { result: Awaited<ReturnType<typeof routeModels>>; ts: number } | null = null;
 router.post('/learner/:learnerId/route', async (req, res) => {
   try {
     const { learnerId } = req.params;
@@ -304,7 +311,12 @@ router.post('/learner/:learnerId/route', async (req, res) => {
     // After a mid-lesson failure the client sends the model that just failed, so the re-probe excludes it
     // (a model can pass the trivial probe but fail real turns — don't re-pick the one that just died).
     const exclude = Array.isArray(req.body?.exclude) ? req.body.exclude : req.body?.failedModel ? [req.body.failedModel] : [];
+    if (kind === 'vision' && !exclude.length && visionRouteCache && Date.now() - visionRouteCache.ts < VISION_ROUTE_TTL_MS) {
+      setRoute(learnerId, visionRouteCache.result); // serve a recent live vision race (heavy probe; shared)
+      return res.json(visionRouteCache.result);
+    }
     const result = await routeModels(kind, undefined, exclude);
+    if (kind === 'vision' && !exclude.length) visionRouteCache = { result, ts: Date.now() };
     setRoute(learnerId, result);
     // Persist the probe race (the stats shown to the learner) for later quality auditing — fire-and-forget,
     // real learner ids only (skip admin/smoke probes).

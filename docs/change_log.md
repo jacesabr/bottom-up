@@ -6,6 +6,22 @@ own design log stays at `socratic-planning/CHANGELOG.md`.
 
 ---
 
+## 2026-06-22 — Vision speed measured LIVE (real image probe); footer always reachable; quality-first pick
+
+Mirrored from IE (shared NIM-router infra).
+- **Vision speed is now a REAL live measurement** (`nim-router.ts` + new `probe-image.ts`). The probe used to
+  send a 1×1 pixel (→ ~300 ms) then *display* a precomputed bench time (7–17 s) — the race lied. Now it sends
+  a real 768×768 image + real output budget and times it, so shown/ranked speed is genuine current data (NIM
+  swings through the day). Vision probe timeout 8 s → 25 s. Race cached + shared (`NIM_VISION_ROUTE_TTL_MS`,
+  default 10 min) so 4 heavy reads don't fire every node entry and self-inflict 429s. Text was already live.
+- **Quality-dominant selection**: text full-marks floor 350 ms → 1000 ms (sub-second probe delta is noise) →
+  higher reasoning wins, ties to curated order (deepseek-v4-pro first). Vision quality-weighted 0.85 → most
+  accurate reader wins.
+- **Footer button always reachable** (`RouterPopup.css`): the taller failure popup pushed the button off
+  screen; the race region now scrolls internally so the button stays pinned.
+
+---
+
 ## 2026-06-21 — Router-recovery no longer wipes the lesson; real NIM failure causes fixed; popup paced
 
 Mirrored from the IE repo (shared NIM-router infra). Cluster reported on prod: learner messages vanishing,
