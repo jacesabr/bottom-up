@@ -41,8 +41,12 @@ Live now: **https://bottom-up-web.onrender.com** (app) · **https://bottom-up-ap
 The full authoring/improvement process + the per-chapter ledger live in `authoring_and_improve.md`.
 
 ## Models & cost policy (HARD RULE) — NIM-primary, no mock (2026-06-20)
-- **ALL traffic (students + tests) → NVIDIA NIM (free)** — the **primary** model. Text:
-  `meta/llama-3.3-70b-instruct`; vision: `nvidia/nemotron-nano-12b-v2-vl`. Set via `LLM_PROVIDER=nvidia`.
+- **ALL traffic (students + tests) → NVIDIA NIM (free)** — set via `LLM_PROVIDER=nvidia`. The live model is
+  picked **per session by a dynamic router** (`src/core/nim-router.ts`): a live speed probe blended with a
+  **precomputed quality** score (quality can't be graded per-request live — it's benched offline). Text usually
+  lands on a fast strong model (`mistralai/mistral-nemotron`); vision on `nvidia/nemotron-nano-12b-v2-vl`. The
+  `MODEL_TEXT` env (`meta/llama-3.3-70b-instruct`) is only the **default/seed** used before a probe runs.
+  Quality battery + measured pool: **`docs/NIM_STUDY.md`** (hard, fair re-bench 2026-06-22).
 - **No mock, no silent fallback.** There is no offline `mock` provider and no fabricated tutor turn or grade.
   If NIM is unavailable, `completeJson()`/`nimVision()` throw `LlmUnavailableError`; the API shows the student a
   plain **"temporarily unavailable — admin notified"** message, and the failure (with the provider's full error
