@@ -295,9 +295,30 @@ function socratesOpening(c: any, _nextMoveText?: string, returning = false, hasP
   );
 }
 
-/** Warm, deterministic closing turn — used when the lesson just completed but the model didn't wrap up. */
+/** The warm, deterministic hand-off line appended once the lesson's final idea has landed. */
+function closingLine(c: any): string {
+  return `That's all the core ideas for **${c.title}** now. 🙂 Whenever you're ready, tap the button below and I'll give you a few quick checks to lock it in.`;
+}
+
+/** Full closing turn — used when the model gave us nothing of its own worth keeping (e.g. its whole reply was a question). */
 function closingHandoff(c: any): string {
-  return `Lovely — that's all the core ideas for **${c.title}** now. 🙂 Whenever you're ready, tap the button below and I'll give you a few quick checks to lock it in.`;
+  const line = closingLine(c);
+  return `Lovely — ${line.charAt(0).toLowerCase()}${line.slice(1)}`;
+}
+
+/**
+ * Peel any trailing question sentence(s) off a wrap-up turn. When the lesson just completed, the model
+ * usually reacts to the learner's final answer and THEN tacks on a fresh question — which leaves the
+ * finished lesson dangling beside the "take your checks" button. We keep the acknowledgment and drop
+ * only the loose question. Returns '' if the whole turn was a single question (nothing worth keeping).
+ */
+function stripTrailingQuestions(message: string): string {
+  const sentences = message.trim().match(/[^.!?]+[.!?]+(?:["')\]]+)?|\S[^.!?]*$/g);
+  if (!sentences) return '';
+  while (sentences.length && /\?["')\]\s]*$/.test(sentences[sentences.length - 1])) {
+    sentences.pop();
+  }
+  return sentences.join('').trim();
 }
 
 /** Produce the next tutor turn. `opening` forces a fresh warm open every time a node is entered. */
@@ -451,12 +472,14 @@ export async function respond(
   // Teaching reasons in English (best quality); translate the final message to the learner's language.
   let message = turn.message;
   void isOpening;
-  // Clean hand-off guarantee: if the student just finished the last key idea but the model still
-  // ended on a fresh question (didn't wrap up), swap in a warm closing so the chat never leaves a
-  // dangling question sitting beside the "I'm ready" checks button. Stronger models obey the prompt
-  // and keep their own wrap-up (no trailing '?'), so this only fires as a safety net.
+  // Clean hand-off guarantee: when the student just finished the last key idea, the model often reacts
+  // to their final answer and then tacks on a fresh question — which leaves the finished lesson dangling
+  // beside the "I'm ready" checks button and reads as abrupt. Don't discard the whole turn (that drops
+  // the model's acknowledgment of what the learner just said); keep its reply, strip only the trailing
+  // question, and append a clean hand-off. Fall back to the full hand-off if nothing substantive remains.
   if (becameReady && /\?\s*$/.test(message.trim())) {
-    message = closingHandoff(c);
+    const kept = stripTrailingQuestions(message);
+    message = kept ? `${kept}\n\n${closingLine(c)}` : closingHandoff(c);
   }
   if (langCode !== 'en') message = await translateText(message, langCode);
 

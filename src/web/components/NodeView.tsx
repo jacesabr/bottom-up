@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { MathText } from '../lib/MathText';
+import { FormattedExplanation } from '../lib/Explanation';
 import Scratchpad, { type ScratchpadHandle } from './Scratchpad';
 import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
@@ -741,7 +742,7 @@ export default function NodeView({
                 {recap?.explanation && (
                   <div className="recap-material">
                     <div className="recap-h">A close-up of the material</div>
-                    <div className="recap-body"><MathText>{recap.explanation}</MathText></div>
+                    <div className="recap-body"><FormattedExplanation text={recap.explanation} /></div>
                   </div>
                 )}
                 <p className="recap-lead">

@@ -55,44 +55,9 @@
 .d-title { font-size: 1.02rem; font-weight: 700; line-height: 1.3; }
 .d-role { font-size: 0.8rem; color: var(--dim); text-transform: capitalize; }
 .d-brief { font-size: 0.95rem; color: var(--ink); margin-top: 4px; line-height: 1.6; }
-.d-explain { font-size: 0.9rem; color: #4a463f; line-height: 1.65; }
 
-/* PART-structured explanation: numbered cards with arrow connectors between them */
-.d-parts { display: flex; flex-direction: column; gap: 0; margin-top: 4px; }
-.d-part-wrap { display: flex; flex-direction: column; align-items: stretch; }
-.d-part {
-  display: flex;
-  gap: 11px;
-  background: #faf7f2;
-  border: 1px solid var(--rule);
-  border-left: 3px solid var(--accent);
-  border-radius: 10px;
-  padding: 12px 13px;
-}
-.d-part-badge {
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.82rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.d-part-content { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.d-part-head { font-size: 0.92rem; font-weight: 700; color: var(--ink); line-height: 1.4; }
-.d-part-body { font-size: 0.88rem; color: #4a463f; line-height: 1.6; }
-.d-part-arrow {
-  align-self: center;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-  padding: 5px 0;
-}
+/* PART-structured / paragraph explanation rendering now lives in src/web/styles/Explanation.css
+   (the shared <FormattedExplanation>, used by both this panel and the lesson-complete recap). */
 
 /* Tutor's notes: numbered badge cards — spaced, bold-labelled, organised */
 .d-notes-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 4px 0 0; padding: 0; }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MathText } from '../lib/MathText';
+import { FormattedExplanation } from '../lib/Explanation';
 import '../styles/NodeDetails.css';
 
 function slotLabel(slot?: string, answerType?: string): string {
@@ -8,42 +9,6 @@ function slotLabel(slot?: string, answerType?: string): string {
   if (slot === 'mcq' || answerType === 'mcq') return '🔘 multiple choice';
   if (slot === 'equation' || answerType === 'symbolic') return '🧮 solve it';
   return 'check';
-}
-
-type ExplainPart = { num: string; head: string; body: string };
-
-/**
- * Split a PART-structured explanation into ordered parts. Authored explanations follow
- * `PART N — Heading.\n<body>` (see authoring_and_improve.md §C). We split on the marker (em-dash or
- * hyphen, any surrounding whitespace) so it works whether parts are separated by blank lines or
- * run together. Returns null when there are no PART markers — caller falls back to plain text.
- */
-function parseParts(text: string): { preamble: string; parts: ExplainPart[] } | null {
-  if (!/PART\s+\d+\s*[—–-]/.test(text)) return null;
-  const segs = text.split(/(?=PART\s+\d+\s*[—–-])/);
-  const preamble = segs[0].trim().startsWith('PART') ? '' : segs.shift()!.trim();
-  const parts: ExplainPart[] = [];
-  for (const seg of segs) {
-    const m = seg.match(/^PART\s+(\d+)\s*[—–-]\s*([\s\S]*)$/);
-    if (!m) continue;
-    const num = m[1];
-    const rest = m[2].trim();
-    let head = rest;
-    let body = '';
-    const nl = rest.indexOf('\n');
-    if (nl >= 0) {
-      head = rest.slice(0, nl).trim();
-      body = rest.slice(nl + 1).trim();
-    } else {
-      const dot = rest.indexOf('. ');
-      if (dot >= 0) {
-        head = rest.slice(0, dot + 1).trim();
-        body = rest.slice(dot + 2).trim();
-      }
-    }
-    parts.push({ num, head, body });
-  }
-  return parts.length ? { preamble, parts } : null;
 }
 
 /**
@@ -132,37 +97,7 @@ export default function NodeDetails({
               <div className="d-title">{d.concept.title}</div>
               <div className="d-role">{d.concept.role}</div>
               <p className="d-brief"><MathText>{d.concept.brief}</MathText></p>
-              {(() => {
-                const parsed = parseParts(d.concept.explanation);
-                if (!parsed) {
-                  return d.concept.explanation.split('\n\n').map((para: string, i: number) => (
-                    <p key={i} className="d-explain"><MathText>{para}</MathText></p>
-                  ));
-                }
-                return (
-                  <div className="d-parts">
-                    {parsed.preamble && (
-                      <p className="d-explain"><MathText>{parsed.preamble}</MathText></p>
-                    )}
-                    {parsed.parts.map((p, i) => (
-                      <div key={i} className="d-part-wrap">
-                        <div className="d-part">
-                          <div className="d-part-badge">{p.num}</div>
-                          <div className="d-part-content">
-                            <div className="d-part-head"><MathText>{p.head}</MathText></div>
-                            {p.body && p.body.split('\n\n').map((b, j) => (
-                              <p key={j} className="d-part-body"><MathText>{b}</MathText></p>
-                            ))}
-                          </div>
-                        </div>
-                        {i < parsed.parts.length - 1 && (
-                          <div className="d-part-arrow" aria-hidden="true">↓</div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                );
-              })()}
+              <FormattedExplanation text={d.concept.explanation} />
             </section>
 
             <section>
