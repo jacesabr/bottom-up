@@ -95,6 +95,7 @@ export default function NodeView({
   const [glowPadKeyword, setGlowPadKeyword] = useState(false); // scratchpad glow from tutor message keywords
   const [showEq, setShowEq] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [showCloseup, setShowCloseup] = useState(false); // the lesson-complete "close-up" material popout bubble
 
   const [gate, setGate] = useState<any>(null);
   const glowPad = gate?.answerType === 'sketch' || glowPadKeyword || highlight?.target === 'scratchpad';
@@ -278,6 +279,14 @@ export default function NodeView({
 
   // Leaving the node (unmount): cut any read-aloud that's still playing so it doesn't follow us out.
   useEffect(() => () => stopSpeaking(), []);
+
+  // Esc closes the "close-up of the material" popout bubble.
+  useEffect(() => {
+    if (!showCloseup) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setShowCloseup(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [showCloseup]);
 
   // Glow the scratchpad for 4 s when the tutor mentions sketch / scratchpad / help me mid-lesson.
   // The welcome message is excluded — its tool mentions are glowed in sync with the read-aloud below.
@@ -774,14 +783,18 @@ export default function NodeView({
                 {recap?.title && <h3 className="recap-title">{recap.title}</h3>}
                 {recap?.brief && <p className="recap-brief">{recap.brief}</p>}
                 {recap?.explanation && (
-                  <div className="recap-material">
-                    <div className="recap-h">A close-up of the material</div>
-                    <div className="recap-body"><FormattedExplanation text={recap.explanation} /></div>
-                  </div>
+                  <button className="recap-closeup-btn" onClick={() => setShowCloseup(true)}>
+                    <span className="recap-closeup-icon" aria-hidden="true">📖</span>
+                    <span className="recap-closeup-text">
+                      <span className="recap-closeup-label">A close-up of the material</span>
+                      <span className="recap-closeup-hint">The whole idea, broken into steps — tap to open it up</span>
+                    </span>
+                    <span className="recap-closeup-arrow" aria-hidden="true">⤢</span>
+                  </button>
                 )}
                 <p className="recap-lead">
-                  Have a read back over this — and scroll up through our chat if you'd like. When you're ready,
-                  take your checks. There's no rush, and you can take them one at a time.
+                  Open the close-up above for the full breakdown — and scroll up through our chat if you'd like.
+                  When you're ready, take your checks. There's no rush, and you can take them one at a time.
                 </p>
                 <button className="btn-primary" onClick={poseNextGate}>Continue to the checks →</button>
               </div>
@@ -975,6 +988,29 @@ export default function NodeView({
 
       {showDetails && (
         <NodeDetails learnerId={learnerId} conceptId={conceptId} apiBase={apiBase} onClose={() => setShowDetails(false)} />
+      )}
+
+      {showCloseup && recap?.explanation && !gate && !done && (
+        <div className="closeup-overlay" onClick={() => setShowCloseup(false)}>
+          <div
+            className="closeup-bubble"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label="A close-up of the material"
+          >
+            <div className="closeup-head">
+              <div className="closeup-head-text">
+                <div className="closeup-eyebrow">A close-up of the material</div>
+                {recap.title && <div className="closeup-title">{recap.title}</div>}
+              </div>
+              <button className="closeup-close" onClick={() => setShowCloseup(false)} aria-label="Close">✕</button>
+            </div>
+            <div className="closeup-body">
+              <FormattedExplanation text={recap.explanation} />
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
