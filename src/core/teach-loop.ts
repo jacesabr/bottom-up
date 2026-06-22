@@ -257,10 +257,32 @@ interface TurnResult {
   readyForGate: boolean;
   provider: string;
   figure?: { url: string; caption: string } | null;
-  // On a resumed node, the prior conversation so the client can replay it before the opening turn.
-  history?: Array<{ role: 'tutor' | 'learner'; text: string }>;
+  // On a return: a concise "previously in this conversation" recap to show above the opening turn.
+  resume?: string | null;
   // Forward-reference heads-up: set when this turn first names a previewed-but-untaught term (dont_assume.md).
   aside?: { terms: string[]; why: string; later: string } | null;
+}
+
+/**
+ * Deterministic "Previously in this conversation" recap for a RETURN, used when the distilled running
+ * summary hasn't been folded yet (it's built fire-and-forget on entry, so the first return after the
+ * learner engages has no summary to read). Built instantly from checklist progress + the learner's last
+ * words, so the recap card always has something to show (no extra /start LLM latency).
+ */
+function quickRecap(
+  checklist: Array<{ text: string; demonstrated: boolean }>,
+  dialogue: Array<{ role: 'tutor' | 'learner'; content: string }>
+): string | null {
+  const shown = checklist.filter((k) => k.demonstrated).length;
+  const total = checklist.length;
+  const lastLearner = [...dialogue].reverse().find((t) => t.role === 'learner')?.content?.trim();
+  const bits: string[] = [];
+  if (shown > 0) bits.push(`You've worked through ${shown} of ${total} key idea${total === 1 ? '' : 's'} here so far`);
+  if (lastLearner) {
+    const quote = lastLearner.length > 140 ? lastLearner.slice(0, 140).trimEnd() + '…' : lastLearner;
+    bits.push(`${bits.length ? 'and you' : 'You'} last said: "${quote}"`);
+  }
+  return bits.length ? bits.join(' ') + '.' : null;
 }
 
 /** A warm, in-character Socrates opening — instant (no LLM wait), grounded in THIS concept. */
@@ -269,11 +291,12 @@ function socratesOpening(c: any, _nextMoveText?: string, returning = false, hasP
   // don't assume they know the terms). The AI builds the actual idea up on the first real turn.
   const q = `Today's topic is **${c.title}**. Before we dive in — how are you feeling about it? Have you come across it before, or is it pretty new? Either way is completely fine, we'll take it nice and slow.`;
 
-  // Resuming a node we've actually talked through before — don't restart, pick up the thread.
+  // Resuming a node we've actually talked through before — don't restart, pick up the thread. The concise
+  // "Previously in this conversation" recap card sits just above this (the resume field), so point at it.
   if (hasPrior) {
     return (
-      `Welcome back! 🙂 Here's our conversation so far on **${c.title}** above — take a moment to read back over it. ` +
-      `When you're ready, let's carry on from where we left off. Want to keep going, or shall I give a quick recap first?`
+      `Welcome back to **${c.title}**! 🙂 A quick reminder of where we'd got to is just above. ` +
+      `Whenever you're ready, let's carry on from there — want to keep going, or shall I recap a bit more first?`
     );
   }
 
@@ -369,11 +392,22 @@ export async function respond(
         .where(and(eq(buEvent.learnerId, learnerId), eq(buEvent.type, 'enter_node')))
     ).length;
     const returning = enterCount > 1; // they've entered some node before → gentle reminder
-    // Prior teaching turns for THIS node (excludes earlier openings) — replayed by the client.
+    // Prior teaching turns for THIS node (excludes earlier openings) — their presence flags a RETURN.
     const prior = await reconstructDialogue(learnerId, conceptId);
     const hasPrior = prior.length > 0;
     let message = socratesOpening(c, nextMove?.text, returning, hasPrior);
     if (langCode !== 'en') message = await translateText(message, langCode);
+    // Concise "Previously in this conversation" recap card (matches the IE app) instead of replaying the
+    // whole transcript: the running summary, or a deterministic fallback when it isn't folded yet.
+    let resume: string | null = null;
+    if (hasPrior) {
+      const { summary, recentDialogue } = await buildContext(learnerId, conceptId);
+      resume = summary?.trim() || null;
+      // Drop a leading bold-only title line ("**Resume Note: …**") — it'd duplicate the card's own header.
+      if (resume) resume = resume.replace(/^\s*\*\*[^\n*][^\n]*\*\*\s*(?:\n+|$)/, '').trim() || resume;
+      if (!resume) resume = quickRecap(checklist, recentDialogue);
+      if (resume && langCode !== 'en') resume = await translateText(resume, langCode);
+    }
     await db.insert(buEvent).values({
       learnerId,
       conceptId,
@@ -381,13 +415,7 @@ export async function respond(
       type: 'tutor_turn',
       payload: { message, opening: true },
     });
-    return {
-      message,
-      checklist,
-      readyForGate: false,
-      provider: 'opening',
-      history: prior.map((d) => ({ role: d.role, text: d.content })),
-    };
+    return { message, checklist, readyForGate: false, provider: 'opening', resume };
   }
 
   // Resume context = running summary (compact) + recent turns since its watermark (bounds growth).

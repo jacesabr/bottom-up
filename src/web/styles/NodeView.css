@@ -236,6 +236,30 @@
    names a term the node previews but does not teach — reassures the learner it's a deliberate preview. */
 .aside-card { align-self: stretch; display: flex; gap: 10px; background: var(--green-soft, #eef7f0);
   border: 1px solid #bcd6c4; border-left: 3px solid var(--green, #2e7d4f); border-radius: 10px; padding: 10px 14px; margin: 2px 0 6px; }
+
+/* Re-entry recap: "previously in this conversation" — a quiet, full-width note above the resumed opening. */
+.recap-card {
+  align-self: stretch;
+  background: #faf8f2;
+  border: 1px dashed #d9d2c2;
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 2px 0 6px;
+}
+.recap-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 5px;
+}
+.recap-body {
+  font-size: 0.86rem;
+  color: var(--dim);
+  line-height: 1.5;
+}
 .aside-emoji { font-size: 1.1rem; line-height: 1.4; flex: 0 0 auto; }
 .aside-body { font-size: 0.86rem; color: var(--green, #2e7d4f); line-height: 1.5; }
 .aside-lead { font-weight: 700; margin-bottom: 5px; }

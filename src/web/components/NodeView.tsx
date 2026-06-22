@@ -21,7 +21,7 @@ interface Msg {
   text?: string;
   image?: string;
   figure?: { url: string; caption: string } | null;
-  kind?: 'aside'; // forward-reference heads-up — a quiet note, not a chat bubble
+  kind?: 'aside' | 'recap'; // aside = forward-reference heads-up; recap = "previously in this conversation" — neither is a chat bubble
   aside?: { terms: string[]; why: string; later: string } | null; // payload for an 'aside' card (a previewed-but-untaught term)
   streaming?: boolean; // tutor turn still streaming in — don't read it aloud until it finalizes
 }
@@ -218,24 +218,29 @@ export default function NodeView({
         return;
       }
       routeFails.current = 0; // healthy start — reset the failure counter
-      // Replay any prior conversation for this node, then the opening/continue message last.
-      const history: Msg[] = (data.history ?? []).map((h: { role: 'tutor' | 'learner'; text: string }) => ({
-        role: h.role,
-        text: h.text,
-      }));
+      // On a return, show a concise "Previously in this conversation" recap card (matches the IE app)
+      // rather than replaying the whole transcript. (Fallback to the old replay only if an as-yet-
+      // un-redeployed server still sends `history` instead of `resume` — harmless during the deploy window.)
+      const recap: Msg | null = data.resume ? { role: 'tutor', kind: 'recap', text: data.resume } : null;
+      const history: Msg[] =
+        !recap && data.history
+          ? (data.history as { role: 'tutor' | 'learner'; text: string }[]).map((h) => ({ role: h.role, text: h.text }))
+          : [];
+      const hasPrior = !!recap || history.length > 0;
       // Chapter-intro gate: the first fresh node opened in a chapter (this session) holds the teaching
       // message behind a language + "say/type start" gate. The flag is only committed once they start,
       // so changing language mid-gate (which re-opens the node) keeps the gate up.
       const gateKey = 'chapGate:' + conceptId.split(':').slice(0, -1).join(':');
-      if (history.length === 0 && !sessionStorage.getItem(gateKey)) {
+      if (!hasPrior && !sessionStorage.getItem(gateKey)) {
         heldOpening.current = data.message;
         setMessages([{ role: 'tutor', text: INTRO_PROMPT }]);
         spokenCount.current = 1; // the gate effect voices this — keep the message effect off it
         setAwaitingStart(true);
       } else {
-        setMessages([...history, { role: 'tutor', text: data.message }]);
-        // Don't auto-read the whole replayed transcript — only the new opening line (index = history.length).
-        spokenCount.current = history.length;
+        // Re-entry recap first (if any), then the opening — so the opening has a visible antecedent.
+        setMessages([...(recap ? [recap] : history), { role: 'tutor', text: data.message }]);
+        // Don't auto-read the recap card or a replayed transcript — only the new opening line.
+        spokenCount.current = recap ? 0 : history.length;
         setAwaitingStart(false);
       }
       setChecklist(data.checklist ?? []);
@@ -329,7 +334,7 @@ export default function NodeView({
       // A still-streaming tutor turn isn't final yet — stop here (don't advance the watermark past it),
       // so it gets read ONCE when it finalizes, not partial-then-again.
       if (m.role === 'tutor' && m.streaming) break;
-      if (m.role !== 'tutor' || !m.text) continue;
+      if (m.role !== 'tutor' || !m.text || m.kind === 'recap') continue; // recap card is read silently
       if (isWelcomeMessage(m.text)) {
         setHighlight(null);
         void speakWithCues(m.text, buildWelcomeCues(m.text), lang, speechCode, apiBase, ttsProvider || undefined).then(() => setHighlight(null));
@@ -727,7 +732,12 @@ export default function NodeView({
         <section className="chat-pane">
           <div className="chat-scroll" ref={scroller}>
             {messages.map((m, i) =>
-              m.kind === 'aside' ? (
+              m.kind === 'recap' ? (
+                <div key={i} className="recap-card">
+                  <div className="recap-label">Previously in this conversation</div>
+                  <div className="recap-body">{m.text && <MathText>{m.text}</MathText>}</div>
+                </div>
+              ) : m.kind === 'aside' ? (
                 <div key={i} className="aside-card">
                   <div className="aside-emoji">🌱</div>
                   <div className="aside-body">
