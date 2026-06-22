@@ -83,70 +83,85 @@ JSON reliability, latency, and a go/no-go on switching. _(empty until the first 
 
 ---
 
-## Outcome: the dynamic NIM router (shipped 2026-06-21)
+## Outcome: the dynamic NIM router (shipped 2026-06-21, re-benched HARD + FAIR 2026-06-22)
 
-The study's conclusion was that **no single free NIM model is reliably best** — endpoints swing in speed
-and availability through the day (deepseek-v4-pro is high quality but frequently times out; ministral can
-400/timeout one minute and answer the next). So instead of a static pick we shipped a **per-session speed
-router**.
+The study's conclusion: **no single free NIM model is reliably best** — endpoints swing in speed and
+availability through the day (deepseek-v4-pro is high quality but rate-limits/times out under burst;
+ministral can 400 one minute and answer the next). So instead of a static pick we ship a **per-session router**
+that blends a **live speed probe** with a **precomputed quality** score.
+
+**Why quality is precomputed.** In real time the router can only do a *single speed probe* per model — it
+**cannot grade quality live** (there is no orchestrator AI in the loop to judge answers). So quality is benched
+**offline** here and combined with live speed. Speed swings hourly (measured live); quality (reasoning/reading
+capability) does not, so precomputing it is correct — re-run when the lineup shifts.
 
 **How it works**
-- `tools/nim-bench.ts` — the study, formalised: a deterministic quality battery (JSON-validity, exact
-  answers, instruction-following, no `<think>` leakage), run **thinking-off**, with retries that separate
-  *availability* from *quality*. Produces a 0–1 quality score per candidate.
-- `src/core/nim-router.ts` — on each node entry, `routeModels()` **speed-probes** the candidate pool in
-  parallel (thinking-off), drops dead/slow endpoints, and ranks the rest by **`0.5·speed + 0.5·quality`**.
-  Speed is an *absolute budget* (≤floor = 1.0, ≥ceiling = 0) so quality genuinely counts, not speed-only.
-  The budget is **kind-aware**: text (≤350 ms…≥4 s) vs **vision** (≤3 s…≥25 s) — vision is inherently 7–17 s,
-  so a text budget would zero out every VLM and collapse vision to pure-quality (always the *slowest* best
-  model); the wider vision band lets a fast-and-good VLM beat a slow-and-perfect one.
-- **The browser is the source of truth.** `RouterPopup` caches the race winners (`{text, textFallback,
-  vision}`) in `localStorage` and the client sends them as `models` on *every* turn. The api validates each
-  id against the gated pool (`isAllowedModel`) and seeds `route-store.ts` (`setRoutePicks`) before the
-  teach/grade path reads it — so picks **survive deploys and work across multiple instances** (any instance
-  serves the turn using the learner's own pick), and a client can only ever pick among our good models, never
-  name one outside the pool. The in-memory store is now a per-request backstop; empty/invalid → `MODEL_TEXT`.
-- `src/core/route-store.ts` — `respond()`/`teachTurn()` read the seeded pick and thread it into
-  `completeJson({ model, modelFallback })`. The 2nd-best is the in-call fallback.
-- `POST /api/learner/:id/route` — runs the probe, returns the full ranked race; the client caches it.
-- `RouterPopup.tsx` — the "finding your fastest tutor" modal at node entry **and after any tutor failure**
-  (it stops, names the dead model via `failedModel`, re-probes, retries with the new winner; capped at 3).
+- `tools/nim-bench.ts` (text) / `tools/nim-vision-bench.ts` (vision) — the quality batteries. `--models a,b`
+  re-scores just the pool; otherwise a full `/v1/models` sweep.
+- `src/core/nim-router.ts` — `routeModels()` speed-probes the pool in parallel (thinking-off), drops dead
+  endpoints, ranks by a **quality-dominant** blend:
+  - **Text:** speed gets full marks under ~1 s (a 4-token probe's sub-second delta is noise), so the higher
+    reasoning score decides among the fast models and an exact tie falls to the **curated order** (the proven
+    model — no 0.2 s flip). Only a genuinely slow model (>1 s) is penalised.
+  - **Vision:** quality-weighted **0.85** (vision is only the occasional handwriting turn, never the text hot
+    path) → the most **accurate** reader wins. Vision speed is now **measured live** with a real probe image
+    (`src/core/probe-image.ts`); the old 1×1 ping returned ~300 ms for everything and measured nothing.
+- **The browser is the source of truth.** `RouterPopup` caches the winners and the client sends them as
+  `models` on every turn; the api validates each id (`isAllowedModel`) and seeds `route-store.ts`
+  (`setRoutePicks`) before the teach/grade path reads it — picks survive deploys + work across instances, and
+  a client can never name a model outside the pool. Empty/invalid → `MODEL_TEXT` default.
+- **Self-healing.** Mistral-tokenizer models 400 on `chat_template_kwargs` (sent for `NIM_NO_THINK`) → drop the
+  kwarg + retry, learned per-model (`drainErrorBody` reads the streamed error body so the 400 is classifiable).
+  Hung model → fast fallback (`NIM_TIMEOUT_MS`, 30 s). A failed *turn* re-probes via the "reconnecting" popup
+  and **resumes without wiping the conversation** (re-sends the failed message; capped at 3).
 
-**Candidate pool — FULL-catalog sweep (2026-06-21, thinking-off).** `nim-bench.ts` now fetches the entire
-`/v1/models` list and tests every chat-text model, not a hand-picked few: **121 models → 90 text candidates
-→ 37 responded → 27 cleared the 0.6 quality floor**. The router pool is the **speed×quality frontier** of the
-qualified set (not all 27 — a smaller pool is cheaper to probe and every member is worth winning):
+### The HARD, FAIR battery (re-bench 2026-06-22)
 
-| model | quality | speed | role |
-|---|---|---|---|
-| `deepseek-ai/deepseek-v4-pro` | 1.00 | ~1.4 s | best quality |
-| `mistralai/mistral-nemotron` | 0.88 | ~0.6 s | high quality **and** fast |
-| `qwen/qwen3-next-80b-a3b-instruct` | 0.75 | ~1.2 s | reliable, proven in prod |
-| `nvidia/nemotron-3-nano-30b-a3b` | 0.75 | ~0.4 s | fastest good model |
-| `meta/llama-3.1-8b-instruct` | 0.63 | ~0.4 s | fast fallback |
-| `mistralai/ministral-14b-instruct-2512` | 0.63 | ~0.8 s | fast fallback |
+The original batteries were too easy and **saturated every model at a meaningless "100%"** (vision "passed" if
+ONE topic word appeared anywhere; text was 8 trivial items). Rebuilt, deterministic, no LLM judge:
+- **Text:** 18 multi-step items where wrong reasoning ⇒ a wrong final **number** (kv-cache bytes, MACs,
+  arithmetic intensity, decode latency, continuous-batch, quantization sizes, modular arithmetic), exact-answer
+  graded, plus the structural JSON-turn checks the live app needs.
+- **Vision:** 13 dense handwritten pages, each requiring **multiple** specific tokens/values; scored by
+  **partial-credit token recall**, not all-or-nothing.
+- **Fairness fix (critical).** The bench was rate-limiting slow free-tier models (deepseek 429s under burst)
+  and scoring "couldn't answer" as "wrong" — which falsely tanked deepseek to 44%. Now: pace + retry, and
+  **quality = correctness among items actually ANSWERED** (a 429/timeout is *availability*, gated live by the
+  speed probe, never a capability failure).
 
-Below-floor models are excluded entirely (e.g. `mixtral-8x7b` 0.25, `sarvam-m` 0.13) — never probed, never
-served. Reasoning models still excluded (break JSON). The 0.6 floor is well-tuned to the real distribution:
-the lowest kept model is 0.63, the highest excluded 0.25 — a clean gap.
+### Measured pool (2026-06-22)
 
-**Live verification:** `/route` returns HTTP 200 on both prod APIs and adapts run-to-run (e.g. picked qwen
-on bottom-up and deepseek on IE in the same minute) — auto-routing around whatever is slow that moment.
+**Text** (capability = correct / answered):
 
-**Vision** (`tools/nim-vision-bench.ts`): same full-catalog idea for the sketch-grading model. Test set =
-real handwritten math pages from the public HF dataset `HumynLabs/English-Handwritten-Math-Notes-Dataset`,
-rasterized to PNG (`tools/fetch-vision-set.mjs`), **ground truth annotated by Opus 4.8 vision** (Claude Code).
-2026-06-21 sweep of all catalog VLMs:
-
-| model | quality | speed |
+| model | quality | note |
 |---|---|---|
-| `meta/llama-3.2-90b-vision-instruct` | 1.00 (6/6) | ~17 s |
-| `nvidia/llama-3.1-nemotron-nano-vl-8b-v1` | 0.83 | ~7 s (fastest VLM) |
-| `nvidia/nemotron-nano-12b-v2-vl` | 0.83 | ~12 s |
-| `meta/llama-3.2-11b-vision-instruct` | 0.67 | ~10 s |
+| `deepseek-ai/deepseek-v4-pro` | 1.00 | perfect on answered incl. hardest quant — slow ~11 s (speed blend rarely picks it) |
+| `deepseek-ai/deepseek-v4-flash` | 1.00 | perfect on answered |
+| `nvidia/nemotron-3-super-120b-a12b` | 0.89 | missed kv-cache + matmul; slow ~8 s |
+| `mistralai/mistral-nemotron` | 0.83 | fast ~0.6 s → **usually the live winner** |
+| `qwen/qwen3-next-80b-a3b-instruct` | 0.78 | proven in prod |
+| `meta/llama-3.1-70b-instruct` | 0.75 | |
+| `meta/llama-3.3-70b-instruct` | 0.72 | |
+| `nvidia/nemotron-3-nano-30b-a3b` | 0.67 | fastest good ~0.4 s |
+| `abacusai/dracarys-llama-3.1-70b-instruct` | 0.67 | |
+| `meta/llama-4-maverick-17b-128e-instruct` | 0.65 | fast |
+| `mistralai/ministral-14b-instruct-2512` | 0.61 | just above floor |
+| `meta/llama-3.1-8b-instruct` | **0.44** | **dropped** — below the 0.6 floor |
+| `mistralai/mistral-small-4-119b-2603` | **0.40** | **dropped** — below the 0.6 floor |
 
-`phi-3-vision`, `cosmos-reason2-8b`, `neva-22b` were unavailable on the free tier. Vision turns are slow
-(~7–17 s) — a real constraint, which is exactly why the speed budget is kind-aware (above): without it the
-router would always pick the 17 s model. (Watermarked pages kept local, not committed.)
+**Vision** (quality = mean token recall, all answered 13/13):
+
+| model | quality | speed (real read) |
+|---|---|---|
+| `nvidia/nemotron-nano-12b-v2-vl` | **0.90** | ~11 s — best AND fastest → **live winner** |
+| `meta/llama-3.2-90b-vision-instruct` | 0.84 | ~38 s — most-accurate-but-slowest (was a fake 1.00) |
+| `meta/llama-3.2-11b-vision-instruct` | 0.78 | ~16 s |
+| `nvidia/llama-3.1-nemotron-nano-vl-8b-v1` | **0.55** | **dropped** — weakest reader (the old live pick!) |
+
+**Honest caveat:** free-tier throttling caps precision on the slow models (deepseek answered fewer items per
+run, all correct → genuinely top, just slow); the live probe gates availability regardless. The handwritten
+pages (HF `HumynLabs/English-Handwritten-Math-Notes-Dataset`) are watermarked → kept local, not committed.
+Re-run: `tsx tools/nim-bench.ts --models <ids>` and `tsx tools/nim-vision-bench.ts --models <ids>` (vision
+needs the set first: `node tools/fetch-vision-set.mjs 16`).
 
 > Cost rule still holds: the bench + probes hit **only free NIM endpoints**; Anthropic is never called.

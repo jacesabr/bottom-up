@@ -213,39 +213,40 @@
 
       <h3 id="ai-router">5.3 · The dynamic NIM model router &amp; cost policy <span class="tag built">built</span></h3>
       <div class="rule-box"><b>HARD RULE</b> (in <code class="path">llm.ts</code>): all live traffic runs on <b>free NVIDIA NIM</b> — there is <b>no mock and no silent paid fallback</b>. If NIM is unreachable the call fails gracefully (the learner sees "temporarily unavailable", logged to <code>bu_llm_call</code> + surfaced in admin). Claude is a <b>manual override only</b> (<code>LLM_PROVIDER=claude</code>). API keys are for the human-facing product — never call authoring/generation with a paid model from a script or agent.</div>
-      <p>Free NIM endpoints swing in speed and availability through the day — a model that's snappy now can time out 30&nbsp;min later. So we don't hardcode one model: we <b>speed-probe a candidate pool every session</b> and pick the best by a blend of live speed and pre-measured quality. Code: <code class="path">nim-router.ts</code> (probe + rank), <code class="path">route-store.ts</code> (per-learner pick), <code class="path">tools/nim-bench.ts</code> (quality battery). <b>The browser is the source of truth:</b> the pick is cached in <code>localStorage</code> and sent as <code>models</code> on every turn; the api validates it against the gated pool (<code>isAllowedModel</code>) and seeds the store before serving — so picks survive deploys, work across instances, and a client can never name a model outside the pool.</p>
+      <p>Free NIM endpoints swing in speed and availability through the day — a model that's snappy now can time out 30&nbsp;min later. So we don't hardcode one: we <b>speed-probe the candidate pool live every session</b> and blend that with a <b>precomputed quality</b> score — <b>quality can't be graded per-request live</b> (no orchestrator in the loop), so it's benched offline and combined with the single live speed probe. Code: <code class="path">nim-router.ts</code> (probe + rank), <code class="path">route-store.ts</code> (per-learner pick), <code class="path">tools/nim-bench.ts</code> + <code class="path">tools/nim-vision-bench.ts</code> (the quality batteries). <b>The browser is the source of truth:</b> the pick is cached in <code>localStorage</code> and sent as <code>models</code> on every turn; the api validates it against the gated pool (<code>isAllowedModel</code>) and seeds the store before serving — so picks survive deploys, work across instances, and a client can never name a model outside the pool.</p>
       <div class="flow">
         <span class="box">node entry</span><span class="arr">→</span>
-        <span class="box ai">probe pool in parallel (thinking off)</span><span class="arr">→</span>
-        <span class="box det">rank 0.5·speed + 0.5·quality, drop dead endpoints</span><span class="arr">→</span>
-        <span class="box db">store winner for this learner</span><span class="arr">→</span>
-        <span class="box">session's tutor + grader calls use it</span>
+        <span class="box ai">probe pool live (thinking off)</span><span class="arr">→</span>
+        <span class="box det">rank: live speed × precomputed quality</span><span class="arr">→</span>
+        <span class="box db">cache winner in the browser</span><span class="arr">→</span>
+        <span class="box">every turn sends it; any api instance serves it</span>
       </div>
       <ul>
-        <li><b>Quality</b> = a 0–1 score per model from <code>tools/nim-bench.ts</code> — a deterministic battery (JSON-validity, exact answers, instruction-following, no &lt;think&gt; leakage), run thinking-off, with retries that separate <i>availability</i> from <i>quality</i>.</li>
-        <li><b>Speed</b> is measured live each session; scored on an <b>absolute, kind-aware budget</b> — text: ≤350&nbsp;ms = full marks, ≥4&nbsp;s = 0; vision: ≤3&nbsp;s … ≥25&nbsp;s (VLMs are inherently 7–17&nbsp;s, so a text budget would zero them all and collapse vision to pure-quality = always the slowest model). A slightly-slower but higher-quality model can still win (a true 50/50 balance, not speed-only).</li>
-        <li><b>Self-healing.</b> A failed tutor turn carries <code>failedModel</code>; the UI stops, re-probes, names the dead model, and retries with the new winner (capped to avoid loops).</li>
+        <li><b>Quality</b> = a 0–1 <b>precomputed</b> capability score, re-benched 2026-06-22 on a <b>hard, fair</b> battery (the old one saturated everyone at a fake "100%"). Text (<code>tools/nim-bench.ts</code>): 18 multi-step items where wrong reasoning ⇒ a wrong final <i>number</i>, exact-answer graded. Vision (<code>tools/nim-vision-bench.ts</code>): 13 dense handwritten pages scored by <b>partial-credit token recall</b>. <b>Fairness fix:</b> a 429/timeout is <i>availability</i> (gated live), never a wrong answer — quality = correctness among items actually <i>answered</i>, with pacing + retry so the bench can't tank a slow free-tier model by throttling it.</li>
+        <li><b>Speed</b> measured <b>live every session for BOTH kinds</b> — text via a tiny probe; <b>vision via a real probe image</b> (<code class="path">src/core/probe-image.ts</code>), since a 1×1 ping returned ~300&nbsp;ms for everything and told us nothing about real per-image cost. <b>Quality-dominant blend:</b> text treats anything under ~1&nbsp;s as a tie (sub-second probe deltas are noise) so the higher-reasoning model wins and exact ties fall to the curated order (the proven model, not a 0.2&nbsp;s flip); vision weights quality 0.85 (it's never on the text hot path) so the most <i>accurate</i> reader wins.</li>
+        <li><b>Self-healing.</b> Mistral-tokenizer models 400 on <code>chat_template_kwargs</code> (sent for <code>NIM_NO_THINK</code>) — the client drops the kwarg and retries (learned per-model). A hung model falls back fast (<code>NIM_TIMEOUT_MS</code>, 30&nbsp;s). A failed turn carries <code>failedModel</code>; the UI re-probes, names the dead model, and <b>resumes without wiping the conversation</b> (re-sends the failed message; capped to avoid loops).</li>
         <li><b>Fallbacks.</b> The router's 2nd-best is the in-call fallback; if no probe has run, calls use the <code>models.ts</code> default (<code>MODEL_TEXT</code>).</li>
       </ul>
-      <p>The pool comes from a <b>full-catalog sweep</b> (<code class="path">tools/nim-bench.ts</code> fetches all of <code>/v1/models</code>): 121 models → 90 text candidates → 37 responded → 27 cleared the 0.6 quality floor. The router pool is the <b>speed×quality frontier</b> of that qualified set (not all 27 — a smaller pool is cheaper to probe).</p>
+      <p>The pool was found via a full-catalog sweep (<code class="path">tools/nim-bench.ts</code> can fetch all of <code>/v1/models</code>); the served pool below is <b>re-scored on the hard battery — quality is measured, not seeded</b>. Anything under <code>QUALITY_FLOOR</code> (0.6) is excluded entirely (never probed, never served), as are reasoning models that corrupt the streamed JSON turn. The ordering is also the tiebreak: an exact score tie resolves to the higher-listed (stronger) model.</p>
       <table>
         <tr><th>Candidate (text)</th><th>quality</th><th>note</th></tr>
-        <tr><td><code>deepseek-v4-pro</code></td><td>1.00</td><td>best quality (~1.4&nbsp;s when up)</td></tr>
-        <tr><td><code>mistral-nemotron</code></td><td>0.88</td><td>high quality <b>and</b> fast (~0.6&nbsp;s)</td></tr>
-        <tr><td><code>qwen3-next-80b-a3b</code></td><td>0.75</td><td>reliable, proven in prod</td></tr>
-        <tr><td><code>nemotron-3-nano-30b-a3b</code></td><td>0.75</td><td>fastest good model (~0.4&nbsp;s)</td></tr>
-        <tr><td><code>llama-3.1-8b</code></td><td>0.63</td><td>fast fallback</td></tr>
-        <tr><td><code>ministral-14b</code></td><td>0.63</td><td>fast fallback</td></tr>
+        <tr><td><code>deepseek-v4-pro</code></td><td>1.00</td><td>top reasoner (perfect on answered, incl. hardest quant) — but slow ~11&nbsp;s, so the speed blend rarely picks it</td></tr>
+        <tr><td><code>deepseek-v4-flash</code></td><td>1.00</td><td>perfect on answered</td></tr>
+        <tr><td><code>nemotron-3-super-120b</code></td><td>0.89</td><td>missed kv-cache + matmul; slow ~8&nbsp;s</td></tr>
+        <tr><td><code>mistral-nemotron</code></td><td>0.83</td><td>fast ~0.6&nbsp;s → <b>usually the live winner</b></td></tr>
+        <tr><td><code>qwen3-80b</code> · <code>llama-3.1-70b</code> · <code>llama-3.3-70b</code></td><td>0.78–0.72</td><td>solid mid-tier</td></tr>
+        <tr><td><code>nemotron-nano-30b</code> · <code>dracarys</code> · <code>maverick</code> · <code>ministral-14b</code></td><td>0.67–0.61</td><td>fast, just above floor</td></tr>
+        <tr><td><code>llama-3.1-8b</code> · <code>mistral-small-4</code></td><td>0.44 / 0.40</td><td><b>dropped</b> &lt; floor — the hard battery exposed them as weak</td></tr>
       </table>
       <table>
-        <tr><th>Candidate (vision)</th><th>quality</th><th>speed</th></tr>
-        <tr><td><code>llama-3.2-90b-vision</code></td><td>1.00 (6/6)</td><td>~17&nbsp;s</td></tr>
-        <tr><td><code>llama-3.1-nemotron-nano-vl-8b</code></td><td>0.83</td><td>~7&nbsp;s (fastest VLM)</td></tr>
-        <tr><td><code>nemotron-nano-12b-v2-vl</code></td><td>0.83</td><td>~12&nbsp;s</td></tr>
-        <tr><td><code>llama-3.2-11b-vision</code></td><td>0.67</td><td>~10&nbsp;s</td></tr>
+        <tr><th>Candidate (vision)</th><th>quality (recall)</th><th>speed</th></tr>
+        <tr><td><code>nemotron-nano-12b-v2-vl</code></td><td><b>0.90</b></td><td>~11&nbsp;s — best <b>and</b> fastest → <b>the live winner</b></td></tr>
+        <tr><td><code>llama-3.2-90b-vision</code></td><td>0.84</td><td>~38&nbsp;s — most-accurate-but-slowest (was a fake 1.00)</td></tr>
+        <tr><td><code>llama-3.2-11b-vision</code></td><td>0.78</td><td>~16&nbsp;s</td></tr>
+        <tr><td><code>llama-3.1-nemotron-nano-vl-8b</code></td><td>0.55 &lt; floor</td><td><b>dropped</b> — weakest reader (the model the router used to crown)</td></tr>
       </table>
-      <p>Below-floor models are excluded entirely (<code>mixtral-8x7b</code> 0.25, <code>sarvam-m</code> 0.13 …) — never probed, never served; reasoning models excluded too (they corrupt the streamed JSON turn). Vision is ranked by <code class="path">tools/nim-vision-bench.ts</code> on real handwritten-math pages annotated by Opus-4.8 vision (<code>tools/fetch-vision-set.mjs</code>). NIM is called <i>without</i> <code>response_format: json_object</code> — the prompt says "return ONLY JSON" and <code>parseLooseJson()</code> extracts it.</p>
-      <div class="card"><b>"Finding your fastest tutor" popup</b> (<code class="path">RouterPopup.tsx</code>): on node entry and after a tutor failure, a glowing modal shows the live speed×quality race as a table, names the winner with the reasoning, then auto-proceeds — the <code>POST /api/learner/:id/route</code> probe surfaced to the learner.</div>
+      <p>Vision is ranked by <code class="path">tools/nim-vision-bench.ts</code> on real handwritten-math pages annotated by Opus-4.8 vision (<code>tools/fetch-vision-set.mjs</code>). <b>Honest caveat:</b> free-tier throttling caps precision on the slow models (deepseek answered fewer items per run, all correct → genuinely top, just slow); availability is gated live regardless. NIM is called <i>without</i> <code>response_format: json_object</code> — the prompt says "return ONLY JSON" and <code>parseLooseJson()</code> extracts it.</p>
+      <div class="card"><b>"Finding your fastest tutor" popup</b> (<code class="path">RouterPopup.tsx</code>): on node entry and after any tutor failure, a glowing modal shows the live speed×quality race (text + vision side by side) with a live "Probing → Ranking → Locked in" narration. It has a <b>minimum dwell</b> so it isn't flashed past and <b>never auto-dismisses</b> — the learner taps to proceed, and the footer button stays reachable even on the taller failure popup. The <code>POST /api/learner/:id/route</code> probe, surfaced to the learner.</div>
       <div class="note"><b>Why every call is logged.</b> <code>recordLlmCall()</code> writes the full request + response + tokens + latency to <code>bu_llm_call</code> — the replay corpus for <code class="path">tools/nim-bench.ts</code> and the live error signal the router + admin panel read.</div>
 
       <h3 id="ai-lang">5.4 · Language &amp; voice <span class="tag built">built</span></h3>
