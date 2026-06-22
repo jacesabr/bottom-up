@@ -109,15 +109,47 @@ export function stripForSpeech(text: string): string {
   //     right next to the emoji ("🙂 Quick reminder" → "…uick reminder"). Remove them before anything else.
   t = t.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{200D}]/gu, ' ');
 
+  // 0a0a) Combining-mark accents on a letter — state-space "Ā"/"B̄" (bar) and ML "x̂"/"ŷ" (hat). TTS can't
+  //     read the mark, so spell it; then strip any orphan Latin combining mark. (Indic combining vowels live
+  //     in U+09xx/0Bxx, NOT U+0300–036F, so Hindi/Tamil text is untouched.)
+  t = t.replace(/([A-Za-zα-ωΑ-Ω])̄/g, '$1 bar ').replace(/([A-Za-zα-ωΑ-Ω])̂/g, '$1 hat ');
+  t = t.replace(/[ĀĒĪŌŪāēīōū]/g, (c) => 'AEIOUaeiou'.charAt('ĀĒĪŌŪāēīōū'.indexOf(c)) + ' bar '); // precomposed macron
+  t = t.replace(/[ÂÊÎÔÛâêîôû]/g, (c) => 'AEIOUaeiou'.charAt('ÂÊÎÔÛâêîôû'.indexOf(c)) + ' hat '); // precomposed circumflex
+  t = t.replace(/ŷ/g, 'y hat ').replace(/ȳ/g, 'y bar ');
+  t = t.replace(/[̀-ͯ]/g, '');
+
+  // 0a0b) Quantity RANGE with a TIGHT en/em dash: "4–8", "30%–40%", "10kg–20kg", "$5–$10", "1k–3k", "2024–2026"
+  //     → "... to ...". Done up front, before magnitude/symbol steps reshape the operands and before the
+  //     dash→pause rule (step 10c) would split it into two sentences. Tight only — a SPACE-flanked dash is
+  //     subtraction or a prose break, handled later.
+  t = t.replace(/([$£€]?\d[\d.,]*(?:%|°|[A-Za-z]{1,3})?)[–—](?=[$£€~]?\d)/g, '$1 to ');
+
+  // 0a1) Currency with a magnitude suffix: "$300k" / "$1.5M" / "$5B" / "$2T" → "300 thousand dollars".
+  //     Must run BEFORE the plain rule below (whose \b can't see past the letter suffix).
+  const MAG: Record<string, string> = { k: 'thousand', m: 'million', b: 'billion', t: 'trillion' };
+  t = t.replace(/\$\s?(\d[\d,]*(?:\.\d+)?)\s*([kmbtKMBT])\b/g, (_m, n, u) => ` ${n} ${MAG[u.toLowerCase()]} dollars `);
+
   // 0a2) Currency: "$100" / "$0.01" / "$1,000.50" → "100 dollars" so the amount is SPOKEN (not silently
   //     stripped to a bare number, and not mis-paired as math by the $..$ unwrap below). The \b anchor
   //     keeps it to real money — "$2x" / "$x$" have no digit-then-boundary, so they fall through to math.
   t = t.replace(/\$\s?(\d[\d,]*(?:\.\d+)?)\b/g, '$1 dollars');
 
+  // 0a2-rate) A slash right after a money amount is a RATE → "per" (not "over"): "$300k/month" →
+  //     "300 thousand dollars per month", "$30/M" → "30 dollars per million". Generic x/y stays "over".
+  t = t.replace(/( dollars)\s*\/\s*([kKMBT])\b/g, (_m, d, u) => `${d} per ${MAG[u.toLowerCase()]} `);
+  t = t.replace(/( dollars)\s*\/\s*(?=[A-Za-z])/g, '$1 per ');
+
+  // 0a2c) Magnitude suffix on a COUNT (not currency): "70B" params / "32K" context / "1.5M" tokens →
+  //     "70 billion" / "32 thousand" / "1.5 million". Only lowercase k + UPPERCASE K/M/B/T (so "8m"
+  //     meters / "5b" stay literal), and 2-letter data units (GB/MB/KB) are safe — \b can't follow the
+  //     single K/M/B/T when another letter trails it.
+  t = t.replace(/(\d[\d.,]*)\s?([kKMBT])\b/g, (_m, n, u) => ` ${n} ${MAG[u.toLowerCase()]} `);
+
   // 0a2b) "$/M tokens" / "$/1M" / "$/token" — a "$ per unit" RATE with no number after the $. Spell it
   //     so the $ isn't silently dropped and the "/" isn't left to read as a literal slash. (A $ that IS
   //     followed by a number, e.g. "$5/M", is already currency above; its slash then reads as "over".)
-  t = t.replace(/\$\s*\/\s*/g, ' dollars per ');
+  t = t.replace(/\$\s*\/\s*([kKMBT])\b/g, (_m, u) => ` dollars per ${MAG[u.toLowerCase()]} `); // "$/M" → "dollars per million"
+  t = t.replace(/\$\s*\/\s*/g, ' dollars per '); // "$/token" → "dollars per token"
 
   // 0a3) URLs → spoken "link" so the slash/dot/operator rules below don't read a web address out as
   //     "h t t p s colon over over ...". Only explicit schemes (http/https/www) are touched, so a bare
@@ -165,6 +197,18 @@ export function stripForSpeech(text: string): string {
   t = t.replace(/\b([A-Za-z])_([0-9A-Za-z])(?![0-9A-Za-z])/g, '$1 sub $2 ');
   t = t.replace(/_+/g, ' '); // remaining underscores: snake_case / stray → word break
 
+  // 5b) Unicode super/subscripts (x², h₁, Mᵀ, x⁻¹) — TTS can't read these glyphs, so spell them out.
+  t = t.replace(/ᵀ/g, ' transpose ');
+  const SUP: Record<string, string> = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', 'ⁿ': 'n', 'ⁱ': 'i', '⁺': ' plus ', '⁻': ' minus ', '⁼': ' equals ' };
+  t = t.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹ⁿⁱ⁺⁻⁼]+/g, (r) =>
+    r === '²' ? ' squared ' : r === '³' ? ' cubed ' : ' to the power ' + [...r].map((c) => SUP[c] ?? c).join('').trim() + ' ');
+  const SUB: Record<string, string> = { '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4', '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9', 'ₙ': 'n', 'ᵢ': 'i', 'ⱼ': 'j', 'ᵤ': 'u', 'ᵥ': 'v', 'ᵣ': 'r', 'ₐ': 'a', 'ₑ': 'e', 'ₒ': 'o', 'ₓ': 'x', 'ₕ': 'h', 'ₖ': 'k', 'ₗ': 'l', 'ₘ': 'm', 'ₚ': 'p', 'ₛ': 's', 'ₜ': 't', '₊': ' plus ', '₋': ' minus ' };
+  // Σ/Π carrying a subscript index → the operator with its bound variable ("Σᵢ" → "sum over i of",
+  // not "sum of sub i"). Runs before the generic subscript rule so it claims the index first.
+  t = t.replace(/([ΣΠ])\s*([₀₁₂₃₄₅₆₇₈₉ₙᵢⱼᵤᵥᵣₐₑₒₓₕₖₗₘₚₛₜ]+)/g, (_m, op, idx) =>
+    (op === 'Σ' ? ' sum over ' : ' product over ') + [...idx].map((c) => SUB[c] ?? c).join('') + ' of ');
+  t = t.replace(/[₀₁₂₃₄₅₆₇₈₉ₙᵢⱼᵤᵥᵣₐₑₒₓₕₖₗₘₚₛₜ₊₋]+/g, (r) => ' sub ' + [...r].map((c) => SUB[c] ?? c).join('').trim() + ' ');
+
   // 6) Named operators / Greek / symbols → words.
   const sym: [RegExp, string][] = [
     [/\\times/g, ' times '],
@@ -193,6 +237,38 @@ export function stripForSpeech(text: string): string {
     [/§\s*/g, ' section '], // "§2.1.2" → "section 2.1.2"; done before step 7 so an adjacent +/-/ then reads as a word
     [/≈/g, ' approximately '], // unicode almost-equal (U+2248)
     [/~\s*(?=[\d.])/g, ' approximately '], // "~64×" / "~1 Hz" → approximately (only when a number follows)
+    [/%/g, ' percent '], // percent sign — say it deterministically, don't rely on the TTS engine
+    [/°/g, ' degrees '],
+    [/±/g, ' plus or minus '], // unicode plus-minus (U+00B1)
+    // Arrows: unicode + ASCII "->"/"<-" ("<->"/"<=>" = iff). BEFORE the </> comparisons below.
+    [/<->|<=>|[↔⇔]/g, ' if and only if '],
+    [/->|[→⟶⇒]/g, ' goes to '], [/<-|←/g, ' from '],
+    // Comparisons: unicode + ASCII. ">="/"<=" first, then a SPACE- or number-flanked </> ("TTFT < 300",
+    // "<300 ms", "NVLink > RDMA"). Otherwise ">" is DELETED by the step-9 [`#>|] cleanup (meaning reversed);
+    // a tight letter-wrapped "<EOS>" is left for the step-10 silence.
+    [/>\s*=|≥/g, ' is greater than or equal to '], [/<\s*=|≤/g, ' is less than or equal to '], [/≠/g, ' is not equal to '],
+    [/\s>\s|>\s*(?=~?\d)/g, ' is greater than '], [/\s<\s|<\s*(?=~?\d)/g, ' is less than '],
+    [/√\s*(?=of\b)/gi, ' square root '], [/√\s*/g, ' square root of '], // radical (avoid "square root of of")
+    [/∞/g, ' infinity '],
+    // Set theory / relations / blackboard-bold — low frequency but otherwise raw glyphs to the voice.
+    [/≡/g, ' is identical to '], [/∝/g, ' is proportional to '], [/≅/g, ' is approximately equal to '],
+    [/≪/g, ' is much less than '], [/≫/g, ' is much greater than '],
+    [/∈/g, ' in '], [/∉/g, ' not in '], [/⊆|⊂/g, ' subset of '], [/⊇|⊃/g, ' superset of '],
+    [/∪/g, ' union '], [/∩/g, ' intersection '], [/∅/g, ' empty set '], [/∀/g, ' for all '], [/∃/g, ' there exists '],
+    [/ℝ/g, ' the reals '], [/ℕ/g, ' the naturals '], [/ℤ/g, ' the integers '], [/ℚ/g, ' the rationals '], [/ℂ/g, ' the complexes '],
+    // µ/μ (BOTH codepoints) are the MICRO prefix on a unit ("μs"/"µs" = microseconds, "50μW" = microwatts)
+    // far more than the letter mu — map the units first, then fall back to mu/micro for a bare symbol.
+    [/[µμ]s\b/g, ' microseconds '], [/[µμ]m\b/g, ' micrometers '], [/[µμ]g\b/g, ' micrograms '],
+    [/(\d)\s*[µμ](?=[A-Za-z])/g, '$1 micro '], // "50μW"/"3μF" → micro (digit-glued μ before any unit letter)
+    // Unicode Greek letters → spoken names (the LaTeX \alpha etc. above cover the backslash forms; models emit both).
+    [/α/g, ' alpha '], [/β/g, ' beta '], [/γ/g, ' gamma '], [/δ/g, ' delta '], [/ε|ϵ/g, ' epsilon '],
+    [/ζ/g, ' zeta '], [/η/g, ' eta '], [/θ|ϑ/g, ' theta '], [/ι/g, ' iota '], [/κ/g, ' kappa '],
+    [/λ/g, ' lambda '], [/μ/g, ' mu '], [/µ/g, ' micro '], [/ν/g, ' nu '], [/ξ/g, ' xi '],
+    [/π/g, ' pi '], [/ρ/g, ' rho '], [/σ|ς/g, ' sigma '], [/τ/g, ' tau '], [/υ/g, ' upsilon '],
+    [/φ|ϕ/g, ' phi '], [/χ/g, ' chi '], [/ψ/g, ' psi '], [/ω/g, ' omega '],
+    // Σ/Π are summation/product OPERATORS in maths/ML ("Σᵢ xᵢ"), not letters — say the operation.
+    [/Γ/g, ' gamma '], [/Δ/g, ' delta '], [/Θ/g, ' theta '], [/Λ/g, ' lambda '], [/Ξ/g, ' xi '],
+    [/Π/g, ' product of '], [/Σ/g, ' sum of '], [/Φ/g, ' phi '], [/Ψ/g, ' psi '], [/Ω/g, ' omega '],
   ];
   for (const [re, rep] of sym) t = t.replace(re, rep);
 
@@ -238,9 +314,9 @@ export function stripForSpeech(text: string): string {
   // word so TTS never voices a raw "slash"/"plus"/"equals". (Bullets are already gone by step 9, so a
   // " + " here is never a list marker.)
   t = t.replace(/ \/ /g, ' over ').replace(/ \+ /g, ' plus ').replace(/ = /g, ' equals ');
-  // Any tight remnant left (failed *bold*, decorative "===", a slash glued to unicode/a path) → silence,
-  // so no raw operator symbol ever reaches the voice — NEVER let it become "times".
-  t = t.replace(/[*=\/+]/g, ' ');
+  // Any tight remnant left (failed *bold*, decorative "===", a slash glued to unicode/a path, a leftover
+  // "<EOS>"-style bracket) → silence, so no raw operator symbol ever reaches the voice — NEVER "times".
+  t = t.replace(/[*=\/+<>]/g, ' ');
 
   // 10b) Spell isolated CAPITAL letters phonetically. Sarvam's voice renders a bare "A"/"B" so
   //      ambiguously that even a recogniser can't hear it; "Ay"/"Bee"/"See" come through clearly.
@@ -253,7 +329,9 @@ export function stripForSpeech(text: string): string {
   //     a comma is barely honoured by the neural voices; a period makes the chunker split there so the
   //     voice takes a real breath. (Tight hyphens like "top-right" have no surrounding space → untouched.)
   t = t.replace(/\n[ \t]*\n+/g, '. ');
-  t = t.replace(/\s*(—|–)\s*/g, '. '); // em/en dash — never part of a word, always a pause
+  t = t.replace(/(\d) +[–—] +(?=\d)/g, '$1 minus '); // "8 – 3" SPACE-flanked between numbers = subtraction
+  t = t.replace(/(\d)\s*[–—]\s*(?=\d)/g, '$1 to '); // any tight numeric range left (most handled up front in 0a0b)
+  t = t.replace(/\s*(—|–)\s*/g, '. '); // remaining em/en dash = a sentence/clause pause
   t = t.replace(/\s+--+\s+/g, '. '); // spaced hyphen-runs ("----") — but not tight hyphens like "top-right"
 
   // 11) Tidy whitespace and collapse any doubled/space-before punctuation so pauses land right.
