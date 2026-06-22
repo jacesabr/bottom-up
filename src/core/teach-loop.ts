@@ -622,7 +622,7 @@ export async function poseGate(learnerId: string, conceptId: string, track: Trac
     slot: g.slot,
     prompt: g.prompt,
     answerType: g.answerType,
-    options: g.answerType === 'mcq' ? expected.options : null,
+    options: g.answerType === 'mcq' ? shuffleOptions(expected.options, g.id) : null,
     index: set.length - remaining.length + 1,
     total: set.length,
     allPassed: false,
@@ -808,7 +808,7 @@ export async function getNodeDetail(learnerId: string, conceptId: string) {
     slot: g.slot,
     answerType: g.answerType,
     prompt: g.prompt,
-    options: g.answerType === 'mcq' ? (g.expected as any).options : null,
+    options: g.answerType === 'mcq' ? shuffleOptions((g.expected as any).options, g.id) : null,
   }));
   const gate = gatesList[0] ?? null; // back-compat
   const perf = await db
@@ -895,6 +895,35 @@ export async function getNodeDetail(learnerId: string, conceptId: string) {
 
 function norm(s: string): string {
   return (s ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * MCQ options are authored with the correct answer first (options[0] === expected.correct). Rendering
+ * them in that order puts the answer at the top of every question. Shuffle deterministically, seeded by
+ * the gate id, so the correct option lands in a different position per gate yet the order is STABLE across
+ * re-poses / re-fetches of the same gate (no flicker). Grading is unaffected: answerGate matches the
+ * submitted option by TEXT against expected.correct, never by index. Reproducible by design — no
+ * Math.random — via an xfnv-1a hash seeding a mulberry32 PRNG into a Fisher–Yates shuffle.
+ */
+function shuffleOptions(options: string[], seed: string): string[] {
+  if (!Array.isArray(options) || options.length < 2) return options;
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < seed.length; i++) {
+    h ^= seed.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  const rand = () => {
+    h = (h + 0x6d2b79f5) | 0;
+    let t = Math.imul(h ^ (h >>> 15), 1 | h);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  const a = [...options];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
 /** Tiny CAS check for "product of prime powers" answers (e.g. 2^3 * 3^2 * 5 * 7 * 13). */
