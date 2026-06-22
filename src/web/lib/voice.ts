@@ -114,6 +114,11 @@ export function stripForSpeech(text: string): string {
   //     keeps it to real money — "$2x" / "$x$" have no digit-then-boundary, so they fall through to math.
   t = t.replace(/\$\s?(\d[\d,]*(?:\.\d+)?)\b/g, '$1 dollars');
 
+  // 0a2b) "$/M tokens" / "$/1M" / "$/token" — a "$ per unit" RATE with no number after the $. Spell it
+  //     so the $ isn't silently dropped and the "/" isn't left to read as a literal slash. (A $ that IS
+  //     followed by a number, e.g. "$5/M", is already currency above; its slash then reads as "over".)
+  t = t.replace(/\$\s*\/\s*/g, ' dollars per ');
+
   // 0a3) URLs → spoken "link" so the slash/dot/operator rules below don't read a web address out as
   //     "h t t p s colon over over ...". Only explicit schemes (http/https/www) are touched, so a bare
   //     fraction like "x/y" or "1/2" still becomes "over" further down.
@@ -122,8 +127,10 @@ export function stripForSpeech(text: string): string {
   // 0) Genuine multiplication is written tight (2*3, 2*x, a*b, f(x)*g(x)) — convert it to "times"
   //    BEFORE the emphasis step, so those asterisks can't be mistaken for italic markers (which
   //    would eat the maths between two products). Emphasis "*"s are space-/edge-flanked, so this
-  //    operand-adjacent rule never touches them.
-  t = t.replace(/([0-9a-zA-Z)\]])\*([0-9a-zA-Z(\[])/g, '$1 times $2');
+  //    operand-adjacent rule never touches them. Right operand is a LOOKAHEAD so chains convert
+  //    fully ("2*3*4" → "2 times 3 times 4"); the old `$2` form consumed it, leaving every 2nd "*"
+  //    orphaned and then dropped by the step-10 [*=] cleanup.
+  t = t.replace(/([0-9a-zA-Z)\]])\*(?=[0-9a-zA-Z(\[])/g, '$1 times ');
 
   // 1) Markdown emphasis (only true emphasis asterisks remain now).
   t = t.replace(/\*\*(.+?)\*\*/g, '$1');
@@ -183,6 +190,9 @@ export function stripForSpeech(text: string): string {
     [/\\int/g, ' integral of '],
     [/\\rightarrow|\\to\b/g, ' goes to '],
     [/\\degree|\\circ/g, ' degrees '],
+    [/§\s*/g, ' section '], // "§2.1.2" → "section 2.1.2"; done before step 7 so an adjacent +/-/ then reads as a word
+    [/≈/g, ' approximately '], // unicode almost-equal (U+2248)
+    [/~\s*(?=[\d.])/g, ' approximately '], // "~64×" / "~1 Hz" → approximately (only when a number follows)
   ];
   for (const [re, rep] of sym) t = t.replace(re, rep);
 
@@ -191,7 +201,14 @@ export function stripForSpeech(text: string): string {
   // "a x b" / "3 x n" / "n x 2": a SPACE-flanked literal x with at least one LETTER operand → times.
   // Operands are kept atomic (a whole number or a single letter) and spaces are required on BOTH
   // sides, so prose like "the x value", "x and y", or "box x ray" is never mistaken for a product.
-  t = t.replace(/(^|[^A-Za-z])([A-Za-z]|\d+)\s+[xX]\s+(\d+|[A-Za-z])(?![A-Za-z])/g, '$1$2 times $3');
+  // Looped to a FIXPOINT so chains convert fully ("a x b x c" → "a times b times c"): each pass
+  // re-emits the right operand ($3), which the next pass picks up as the next left operand. A single
+  // /g pass can't, because it resumes AFTER the consumed operand; lookbehind would fix it without a
+  // loop but isn't safe on older Safari. Terminates: every changing pass removes at least one "x".
+  for (let prev = ''; prev !== t; ) {
+    prev = t;
+    t = t.replace(/(^|[^A-Za-z])([A-Za-z]|\d+)\s+[xX]\s+(\d+|[A-Za-z])(?![A-Za-z])/g, '$1$2 times $3');
+  }
   //   Right operand is a LOOKAHEAD (not consumed) so chained operators all match: "a/b/c" →
   //   "a over b over c", "a+b+c" → "a plus b plus c", "a=b=c" → "a equals b equals c". Consuming it
   //   (the old `$2` form) left every second operator orphaned — and a leaked "=" was then silently
@@ -216,8 +233,14 @@ export function stripForSpeech(text: string): string {
   t = t.replace(/[([]\s*([^()\[\]]{1,48}?)\s*[)\]]/g, ', $1, ');
   //   any leftover/nested brackets → a comma pause
   t = t.replace(/\s*[()\[\]]\s*/g, ', ');
-  // Leftover emphasis/operator chars (failed *bold*, stray =) → silence — NEVER "times".
-  t = t.replace(/[*=]/g, ' ');
+  // Operators that survived steps 6–7 sit next to a NON-alphanumeric operand (a quote, a unit symbol,
+  // leftover unicode like ᵀ/√). If clearly space-flanked it's unambiguously an operator → read it as the
+  // word so TTS never voices a raw "slash"/"plus"/"equals". (Bullets are already gone by step 9, so a
+  // " + " here is never a list marker.)
+  t = t.replace(/ \/ /g, ' over ').replace(/ \+ /g, ' plus ').replace(/ = /g, ' equals ');
+  // Any tight remnant left (failed *bold*, decorative "===", a slash glued to unicode/a path) → silence,
+  // so no raw operator symbol ever reaches the voice — NEVER let it become "times".
+  t = t.replace(/[*=\/+]/g, ' ');
 
   // 10b) Spell isolated CAPITAL letters phonetically. Sarvam's voice renders a bare "A"/"B" so
   //      ambiguously that even a recogniser can't hear it; "Ay"/"Bee"/"See" come through clearly.
