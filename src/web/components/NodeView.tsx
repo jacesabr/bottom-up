@@ -559,22 +559,33 @@ export default function NodeView({
 
   const sketchSend = async (img: string) => {
     if (busy) return;
+    // On a sketch CHECK, "Send" submits the drawing as the answer (same as the check's Submit button) —
+    // otherwise the Send button does nothing useful while a check is open.
+    if (gate && gate.answerType === 'sketch') {
+      await submitGate(img);
+      return;
+    }
+    // Teaching: route the drawing through the VISION path so the tutor actually SEES it. The chat /reply
+    // turn is text-only, so posting just a text note made the tutor reply "I can't see your scratchpad".
     stopSpeaking();
     setHighlight(null);
-    setMessages((m) => [...m, { role: 'learner', image: img }]);
+    setMessages((m) => [...m, { role: 'learner', image: img, text: 'Here is my working.' }]);
     setBusy(true);
     try {
-      const res = await fetch(`${base}/reply`, {
+      const res = await fetch(`${base}/help`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(withModels({ message: '[I shared my handwritten working on the scratchpad.]', lang })),
+        body: JSON.stringify(withModels({ image: img, lang })),
       });
       const data = await res.json().catch(() => ({} as any));
-      setMessages((m) => [...m, { role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
-      if (res.ok && !data.systemError) {
-        setChecklist(data.checklist ?? []);
-        setReadyForGate(!!data.readyForGate);
+      if (data.systemError) {
+        retryRef.current = () => sketchSend(img);
+        if (routeFails.current++ < 3) setRoutePopup({ mode: 'failure', failedModel: data.failedModel });
+        else setMessages((m) => [...m, { role: 'tutor', text: SERVICE_DOWN_TEXT }]);
+        return;
       }
+      routeFails.current = 0;
+      setMessages((m) => [...m, { role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
     } catch {
       setMessages((m) => [...m, { role: 'tutor', text: SERVICE_DOWN_TEXT }]);
     } finally {
@@ -613,11 +624,11 @@ export default function NodeView({
     }
   };
 
-  const submitGate = async () => {
+  const submitGate = async (overrideImg?: string) => {
     if (busy || !gate) return;
     let answer = gateAnswer.trim();
     if (gate.answerType === 'sketch') {
-      const img = padRef.current?.exportJpeg();
+      const img = overrideImg ?? padRef.current?.exportJpeg();
       if (!img) return;
       answer = img;
     } else if (!answer) {
@@ -878,7 +889,7 @@ export default function NodeView({
                     {gateCleared.allPassed ? 'Finish →' : 'Move on →'}
                   </button>
                 ) : (
-                  <button className="btn-primary sm" onClick={submitGate} disabled={busy}>
+                  <button className="btn-primary sm" onClick={() => submitGate()} disabled={busy}>
                     {gate.answerType === 'sketch' ? 'Submit drawing' : 'Submit'}
                   </button>
                 )}
