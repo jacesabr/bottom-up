@@ -319,7 +319,7 @@ async function nimCompleteStream(
  * Vision turn for the scratchpad "Help me" and sketch grading: NIM's vision model reads the learner's
  * handwritten working (a JPEG data URL). On failure it throws `LlmUnavailableError` (no offline fallback).
  */
-export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens = 400, modelOverride?: string): Promise<string> {
+export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens = 400, modelOverride?: string, temperature = 0.4): Promise<string> {
   const key = process.env.NVIDIA_API_KEY;
   if (!key) throw new Error('NVIDIA_API_KEY missing');
   const model = modelOverride || MODELS.vision; // per-session vision model from the speed router
@@ -336,7 +336,9 @@ export async function nimVision(prompt: string, jpegDataUrl: string, maxTokens =
   try {
     const res = await axios.post(
       `${NIM_BASE}/chat/completions`,
-      { model, messages, max_tokens: maxTokens, temperature: 0.4 },
+      // temperature 0 for OCR/transcription (deterministic reads of messy handwriting); callers that want a
+      // warmer, advice-style turn (the "Help me" hint) keep the 0.4 default.
+      { model, messages, max_tokens: maxTokens, temperature },
       { headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' }, timeout: 60_000 }
     );
     const content = res.data?.choices?.[0]?.message?.content;

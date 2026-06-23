@@ -182,13 +182,16 @@ export async function gradeSketch(
   // asking a small VL model to both read and assess. nimVision throws if the vision model is down (propagates
   // as unavailable → re-probe), rather than accepting the drawing blind.
   const transcript = (await nimVision(
-    `Transcribe EVERYTHING handwritten or drawn in this image as plain text and math (simple notation: x^2, sqrt(), fractions a/b). Briefly describe any diagram. Output ONLY the transcription — no commentary or judgement.`,
-    imageDataUrl, 500, visionModel
+    // Give the reader the QUESTION (which the student also sees) as context so it can resolve ambiguous
+    // handwriting — but forbid solving or filling in expected values, so it reports only what is actually on
+    // the page and grading stays honest. Temperature 0 → deterministic OCR (no random misreads of messy digits).
+    `A student answered this question by hand:\n"${prompt}"\n\nTranscribe EXACTLY what they wrote and drew — every number, label, axis, tick and arrow — using simple notation (x^2, sqrt(), a/b) plus a brief description of any diagram. Use the question only to read ambiguous marks in context; do NOT solve the question, compute, fill in expected values, or correct mistakes. Report ONLY the marks genuinely on the page. Output ONLY the transcription — no commentary or judgement.`,
+    imageDataUrl, 500, visionModel, 0
   )).trim();
   // Step 2: the (session-selected) text model grades the transcription against the rubric.
   const messages: ChatMessage[] = [
-    { role: 'system', content: `You are a fair but rigorous ${prof.level} ${prof.subject} grader assessing a ${prof.studentLabel}'s HAND-DRAWN answer that was transcribed from an image. Judge the maths; allow for minor OCR imperfections. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences: what's right / what to fix>"}` },
-    { role: 'user', content: `QUESTION: ${prompt}\n\nWHAT A CORRECT ANSWER MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled answer'}\n\nMODEL ANSWER: ${ideal || '(use your judgement)'}\n\nSTUDENT'S TRANSCRIBED WORK: ${transcript}\n\nGrade it. Pass if the core idea is correct even if the transcription is slightly garbled.` },
+    { role: 'system', content: `You are a fair ${prof.level} ${prof.subject} grader assessing a ${prof.studentLabel}'s HAND-DRAWN answer. You receive a text reading of what they drew, which may contain OCR noise from messy handwriting. Grade the maths generously: if the required working/answer is present, mark it correct even with noisy reads, odd spacing, or slightly-off characters. Mark it incorrect only if the maths is genuinely wrong or a required element is missing. Speak to the student about THEIR DRAWING — never mention transcription, OCR, "the image", or that the work was "garbled". If the work is truly unreadable, set correct=false and the feedback should simply ask them to write a little more clearly and resubmit. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences: what's right / what to fix>"}` },
+    { role: 'user', content: `QUESTION: ${prompt}\n\nWHAT A CORRECT ANSWER MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled answer'}\n\nMODEL ANSWER: ${ideal || '(use your judgement)'}\n\nSTUDENT'S DRAWN WORK (text reading): ${transcript}\n\nGrade it. Pass if the core idea is correct even if the reading is slightly noisy.` },
   ];
   const raw = await completeJson(messages, { maxTokens: 300, model: textModel, modelFallback: textFallback });
   const p = parseLooseJson<any>(raw);

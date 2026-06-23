@@ -363,10 +363,13 @@ export async function respond(
   // which propagates to the route's graceful "unavailable" handler.
   if (image) {
     const transcript = (await nimVision(
-      'Transcribe EVERYTHING handwritten or drawn in this image as plain text and math (simple notation: x^2, sqrt(), fractions a/b). Briefly describe any diagram. Output ONLY the transcription — no commentary or judgement.',
+      // Reading the student's work for the "${c.title}" concept; concept context helps resolve ambiguous
+      // marks. Temperature 0 → deterministic OCR rather than random misreads of messy handwriting.
+      `A student shared handwritten rough working while learning "${c.title}" (${c.brief}). Transcribe EXACTLY what they wrote and drew — every number, label, axis, tick and arrow — using simple notation (x^2, sqrt(), a/b) plus a brief description of any diagram. Report only the marks genuinely on the page; do not solve or fill anything in. Output ONLY the transcription — no commentary or judgement.`,
       image,
       500,
-      getVisionModel(learnerId)
+      getVisionModel(learnerId),
+      0
     )).trim();
     const note = `[The student shared handwritten working on the scratchpad. Transcription: ${transcript}]`;
     learnerMessage = learnerMessage && learnerMessage.trim() ? `${learnerMessage.trim()}\n\n${note}` : note;
