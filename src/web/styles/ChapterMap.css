@@ -221,6 +221,26 @@
   box-shadow: 0 8px 20px rgba(63, 125, 79, 0.15);
 }
 
+/* Locked game — the node hasn't been completed yet, so the game isn't playable. */
+.game-unlock.locked {
+  cursor: default;
+  border-color: var(--rule);
+  background: #f4f3f1;
+  color: var(--lock);
+  box-shadow: none;
+  opacity: 0.75;
+}
+
+.game-unlock.locked:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.game-unlock.locked .game-unlock-badge,
+.game-unlock.locked .game-unlock-title {
+  color: var(--lock);
+}
+
 .game-unlock-badge,
 .game-unlock-title {
   display: block;

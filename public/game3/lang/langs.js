@@ -1,0 +1,3 @@
+var langs = {
+	'en':'english'
+};

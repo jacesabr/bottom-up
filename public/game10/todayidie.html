@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Today I Die</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital@0;1&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #cfe6e8;
+    --dim: #5d7d84;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    background: #02060a;
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+  }
+
+  #stage {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  #scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* ── floating words layer ─────────────────────────────────────── */
+  #words {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .word {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    color: rgba(180, 205, 210, 0.85);
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    pointer-events: none;
+    transition: color .9s ease, text-shadow .9s ease, opacity 1.1s ease;
+  }
+
+  /* the words that make up the poem line — anchored, not draggable */
+  .word.poem {
+    font-size: clamp(20px, 4.4vw, 40px);
+    font-style: italic;
+    color: rgba(160, 188, 196, 0.55);
+    text-shadow: 0 0 14px rgba(0,0,0,0.55);
+  }
+
+  /* the swappable SLOT in the poem (the word that can be replaced) */
+  .word.slot {
+    color: rgba(120, 150, 158, 0.65);
+    border-bottom: 1px dashed rgba(140,170,178,0.28);
+    padding-bottom: 2px;
+    transition: color .9s ease, text-shadow .9s ease, border-color .6s ease, opacity 1.1s;
+  }
+  .word.slot.live {
+    cursor: default;
+    border-color: rgba(150, 230, 240, 0.55);
+    animation: slotpulse 2.6s ease-in-out infinite;
+  }
+  @keyframes slotpulse {
+    0%,100% { text-shadow: 0 0 14px rgba(120,210,225,0.10); }
+    50%     { text-shadow: 0 0 22px rgba(150,235,250,0.45); }
+  }
+
+  /* a scattered word that can be dragged into the slot */
+  .word.drag {
+    font-size: clamp(17px, 3.4vw, 30px);
+    font-style: italic;
+    color: rgba(150, 235, 250, 0.92);
+    text-shadow: 0 0 16px rgba(110, 215, 235, 0.55);
+    pointer-events: auto;
+    cursor: grab;
+    animation: bob 5s ease-in-out infinite;
+  }
+  .word.drag.grabbing { cursor: grabbing; animation: none; z-index: 50; }
+  @keyframes bob {
+    0%,100% { margin-top: 0; }
+    50%     { margin-top: -7px; }
+  }
+  /* a small hand-tag under a fresh draggable word, hinting it can move */
+  .word.drag .tag {
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(150,235,250,0.55);
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+
+  .word.gone { opacity: 0; }
+
+  /* ── verse caption (the poem, also rendered as one soft line up top) ── */
+  #verse {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(15px, 2.6vw, 22px);
+    font-style: italic;
+    letter-spacing: 0.08em;
+    color: rgba(150, 178, 186, 0.40);
+    pointer-events: none;
+    text-shadow: 0 0 18px rgba(0,0,0,0.6);
+    transition: color 1.2s ease;
+    padding: 0 12px;
+  }
+
+  /* ── prompt / instruction whisper ─────────────────────────────── */
+  #whisper {
+    position: absolute;
+    bottom: 13%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(13px, 2.2vw, 18px);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    color: rgba(150, 200, 210, 0.0);
+    pointer-events: none;
+    transition: color 1.4s ease, opacity 1.4s ease;
+    padding: 0 18px;
+    text-shadow: 0 0 14px rgba(0,0,0,0.6);
+  }
+  #whisper.show { color: rgba(160, 210, 220, 0.62); }
+
+  /* ── top bar: title + mute ────────────────────────────────────── */
+  #topbar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    pointer-events: none;
+    z-index: 60;
+  }
+  #title {
+    font-size: 14px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: rgba(150, 185, 192, 0.40);
+    font-style: normal;
+  }
+  #mute-btn {
+    pointer-events: auto;
+    background: rgba(10, 24, 30, 0.4);
+    border: 1px solid rgba(120, 170, 180, 0.30);
+    color: rgba(170, 210, 218, 0.7);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    width: 34px; height: 30px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: border-color .2s, color .2s;
+  }
+  #mute-btn:hover { border-color: rgba(150,210,220,0.6); color: #cfeef2; }
+
+  /* ── on-screen controls (touch) ───────────────────────────────── */
+  #pad {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 55;
+    opacity: 0.55;
+    transition: opacity .4s;
+  }
+  #pad:hover { opacity: 0.9; }
+  .pad-btn {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: rgba(12, 30, 38, 0.45);
+    border: 1px solid rgba(120, 175, 185, 0.30);
+    color: rgba(175, 215, 222, 0.85);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    -webkit-user-select: none; user-select: none;
+    transition: background .15s, transform .08s;
+  }
+  .pad-btn:active { background: rgba(40, 90, 105, 0.6); transform: scale(0.92); }
+
+  /* ── opening veil ─────────────────────────────────────────────── */
+  #veil {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, #061119 0%, #02060a 75%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    z-index: 100;
+    transition: opacity 1.6s ease;
+    cursor: pointer;
+    padding: 24px;
+    text-align: center;
+  }
+  #veil h1 {
+    font-size: clamp(34px, 8vw, 64px);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    color: rgba(190, 220, 226, 0.82);
+    text-shadow: 0 0 28px rgba(60, 130, 150, 0.35);
+  }
+  #veil p {
+    font-size: clamp(14px, 3vw, 18px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(150, 195, 205, 0.55);
+    animation: breathe 3.4s ease-in-out infinite;
+  }
+  @keyframes breathe { 0%,100% { opacity: 0.45; } 50% { opacity: 0.9; } }
+  #veil.hidden { opacity: 0; pointer-events: none; }
+
+  /* ── final card ───────────────────────────────────────────────── */
+  #fin {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    z-index: 90;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 2.4s ease;
+    padding: 24px;
+    text-align: center;
+  }
+  #fin.show { opacity: 1; pointer-events: auto; }
+  #fin .line {
+    font-size: clamp(26px, 6vw, 50px);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    color: rgba(220, 244, 248, 0.92);
+    text-shadow: 0 0 30px rgba(150, 230, 250, 0.45);
+  }
+  #fin .sub {
+    font-size: clamp(13px, 2.6vw, 18px);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(170, 210, 220, 0.55);
+  }
+  #again {
+    margin-top: 8px;
+    pointer-events: auto;
+    background: transparent;
+    border: 1px solid rgba(150, 215, 225, 0.4);
+    color: rgba(190, 230, 238, 0.85);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 9px 22px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  #again:hover { border-color: rgba(180,235,245,0.8); color: #eafcff; background: rgba(40,90,105,0.25); }
+
+  #credit {
+    position: absolute;
+    bottom: 4px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: rgba(110, 140, 148, 0.42);
+    pointer-events: none;
+    z-index: 120;
+    font-style: normal;
+    padding: 0 8px;
+  }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <canvas id="scene"></canvas>
+
+  <div id="verse"></div>
+  <div id="words"></div>
+  <div id="whisper"></div>
+
+  <div id="topbar">
+    <div id="title">Today I Die</div>
+    <button id="mute-btn" title="toggle sound" aria-label="toggle sound">&#9834;</button>
+  </div>
+
+  <div id="pad" aria-hidden="false">
+    <div class="pad-btn" data-dir="left">&#8592;</div>
+    <div class="pad-btn" data-dir="up">&#8593;</div>
+    <div class="pad-btn" data-dir="down">&#8595;</div>
+    <div class="pad-btn" data-dir="right">&#8594;</div>
+  </div>
+
+  <div id="fin">
+    <div class="line" id="fin-line">today i live</div>
+    <div class="sub" id="fin-sub">she rises into the light</div>
+    <button id="again">begin again</button>
+  </div>
+
+  <div id="veil">
+    <h1>today i die</h1>
+    <p>touch the water to begin</p>
+  </div>
+
+  <div id="credit">Tribute to Today I Die by Daniel Benmergui (2009). Not affiliated.</div>
+</div>
+
+<script>
+"use strict";
+/* ============================================================================
+   TODAY I DIE — an interactive poem in still water.
+   Drag a glowing word into the underlined slot to rewrite the line and
+   transform the world. Guide the drifting girl to a falling mote of light to
+   reveal the next word. No timer, no failure — only descent turning to rising.
+   ========================================================================== */
+
+// ── DOM ──────────────────────────────────────────────────────────────────
+const canvas   = document.getElementById('scene');
+const ctx      = canvas.getContext('2d');
+const wordsEl  = document.getElementById('words');
+const verseEl  = document.getElementById('verse');
+const whisperEl= document.getElementById('whisper');
+const veil     = document.getElementById('veil');
+const fin       = document.getElementById('fin');
+const finLine  = document.getElementById('fin-line');
+const finSub   = document.getElementById('fin-sub');
+const muteBtn  = document.getElementById('mute-btn');
+
+// safe localStorage wrapper (iframe storage can be blocked)
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+};
+
+// ── canvas sizing (handles devicePixelRatio + resize) ────────────────────
+let W = 0, H = 0, DPR = 1;
+function resize() {
+  DPR = Math.min(window.devicePixelRatio || 1, 2);
+  W = window.innerWidth;
+  H = window.innerHeight;
+  canvas.width  = Math.floor(W * DPR);
+  canvas.height = Math.floor(H * DPR);
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  layoutWords();
+}
+window.addEventListener('resize', resize);
+
+// ── world / progression state ────────────────────────────────────────────
+// "brightness" drives the whole palette; girl.depth drives sink vs rise.
+const world = {
+  bright: 0,        // 0 (gloom) → 1 (radiant), eased toward target
+  brightT: 0,       // target brightness
+  bloom: 0,         // life/colour amount, eased
+  bloomT: 0,
+  rise: 0,          // -1 sinking ... +1 rising, eased toward girl pull
+  t: 0              // global time
+};
+
+// the girl — a drifting figure the player can nudge toward motes
+const girl = {
+  x: 0.5, y: 0.62,          // normalised position
+  vx: 0, vy: 0,
+  sink: 0.000035,           // passive downward drift (toward death)
+  facing: 1
+};
+
+// falling mote of light the girl can collect to reveal the next word
+let mote = null;
+function spawnMote() {
+  mote = {
+    x: 0.2 + Math.random() * 0.6,
+    y: -0.05,
+    vy: 0.00010 + Math.random() * 0.00006,
+    sway: Math.random() * Math.PI * 2,
+    got: false
+  };
+}
+
+// input
+const keys = { up:false, down:false, left:false, right:false };
+
+// ── the poem progression ─────────────────────────────────────────────────
+// Each stage: the slot word currently in the line, the draggable answer that
+// replaces it, what it does to the world, and the whisper that guides it.
+// Stage order rewrites:  today i DIE → today i RISE → today i BREATHE →
+//                        today i BLOOM → today i LIVE.
+const STAGES = [
+  {
+    slot: 'die', answer: 'rise',
+    pool: ['rise', 'sink', 'fall'],          // the right one glows; lures are inert
+    whisper: 'the word “die” is heavy. drag a lighter word over it.',
+    apply() { world.brightT = 0.34; world.rise = 0.0; girl.sink = -0.00002; }
+  },
+  {
+    slot: 'dark', answer: 'light',
+    pool: ['light', 'cold', 'gloom'],
+    whisper: 'find a falling light, then trade the gloom away.',
+    apply() { world.brightT = 0.62; girl.sink = -0.00006; }
+  },
+  {
+    slot: 'still', answer: 'drift',
+    pool: ['drift', 'numb', 'lost'],
+    whisper: 'she is moving now. let the water carry a word.',
+    apply() { world.brightT = 0.80; world.bloomT = 0.45; girl.sink = -0.00010; }
+  },
+  {
+    slot: 'lifeless', answer: 'blooming',
+    pool: ['blooming', 'hollow', 'fading'],
+    whisper: 'one word remains between the dark and the bloom.',
+    apply() { world.brightT = 1.0; world.bloomT = 1.0; girl.sink = -0.00018; }
+  }
+];
+
+// the rendered poem template. {slot} is the swappable position.
+// We rebuild the visible line after each successful swap.
+const lineTemplate = ['today', 'i', '{verb}'];   // top short line
+// the descriptive couplet beneath, holding dark/still/lifeless slots
+const coupletWords = ['the water is', '{dark}', 'and', '{still}', ',', 'i am', '{lifeless}'];
+
+// progression bookkeeping
+let stageIndex = 0;
+let activeSlotKey = 'verb';   // which placeholder the current stage targets
+let finished = false;
+const slotState = { verb: 'die', dark: 'dark', still: 'still', lifeless: 'lifeless' };
+// map stage index → which placeholder it edits
+const SLOT_FOR_STAGE = ['verb', 'dark', 'still', 'lifeless'];
+let revealedThisStage = false;   // mote collected → draggable words shown
+
+// ── word DOM management ───────────────────────────────────────────────────
+// Poem words are positioned along two centred rows near mid-screen.
+// Draggable answer words float around the lower scene once revealed.
+let poemNodes = {};      // key -> element (for slot placeholders + static)
+let dragNodes = [];      // current draggable word elements
+
+function clearWords() {
+  wordsEl.innerHTML = '';
+  poemNodes = {};
+  dragNodes = [];
+}
+
+function buildVerseText() {
+  // a single soft caption mirroring the current state, shown up top
+  const verb = slotState.verb, dk = slotState.dark, st = slotState.still, lf = slotState.lifeless;
+  return `today i ${verb} — the water is ${dk} and ${st}, i am ${lf}`;
+}
+
+function refreshVerse() {
+  verseEl.textContent = buildVerseText();
+  // brighten the caption as the world brightens
+  const a = 0.30 + world.bright * 0.45;
+  verseEl.style.color = `rgba(${160 + world.bright*60|0}, ${188 + world.bright*55|0}, ${196 + world.bright*55|0}, ${a})`;
+}
+
+// Build the two poem rows as positioned word nodes.
+function buildPoem() {
+  clearWords();
+
+  // ROW 1 (short): today  i  <verb-slot>
+  const row1 = [
+    { key: '_t', text: 'today', kind: 'poem' },
+    { key: '_i', text: 'i', kind: 'poem' },
+    { key: 'verb', text: slotState.verb, kind: 'slot' }
+  ];
+  // ROW 2 (couplet): the water is <dark> and <still>,  i am <lifeless>
+  const row2 = [
+    { key: '_w', text: 'the water is', kind: 'poem' },
+    { key: 'dark', text: slotState.dark, kind: 'slot' },
+    { key: '_and', text: 'and', kind: 'poem' },
+    { key: 'still', text: slotState.still, kind: 'slot' },
+    { key: '_iam', text: ', i am', kind: 'poem' },
+    { key: 'lifeless', text: slotState.lifeless, kind: 'slot' }
+  ];
+
+  makeRow(row1, 0.42);
+  makeRow(row2, 0.52);
+  layoutWords();
+  markActiveSlot();
+}
+
+function makeRow(items, yFrac) {
+  for (const it of items) {
+    const el = document.createElement('div');
+    el.className = 'word ' + (it.kind === 'slot' ? 'poem slot' : 'poem');
+    el.textContent = it.text;
+    el.dataset.key = it.key;
+    el.dataset.yfrac = yFrac;
+    el.dataset.row = (yFrac < 0.5 ? '1' : '2');
+    wordsEl.appendChild(el);
+    poemNodes[it.key] = el;
+  }
+}
+
+// position both rows so the words are centred and spaced
+function layoutWords() {
+  // group nodes by row
+  const rows = { '1': [], '2': [] };
+  for (const key in poemNodes) {
+    const el = poemNodes[key];
+    rows[el.dataset.row || '1'].push(el);
+  }
+  for (const r of ['1','2']) {
+    const list = rows[r];
+    if (!list.length) continue;
+    // measure total width
+    let total = 0;
+    const gap = Math.max(14, W * 0.018);
+    const widths = list.map(el => { el.style.left='-9999px'; return el.offsetWidth; });
+    total = widths.reduce((a,b)=>a+b,0) + gap*(list.length-1);
+    let x = W/2 - total/2;
+    const y = H * parseFloat(list[0].dataset.yfrac);
+    list.forEach((el, i) => {
+      el.style.left = (x + widths[i]/2) + 'px';
+      el.style.top  = y + 'px';
+      x += widths[i] + gap;
+      // remember slot centre for drop-testing
+      el._cx = x - widths[i]/2 - gap;
+      el._cy = y;
+    });
+    // recompute exact centres (left already set as centre via translate -50%)
+    list.forEach((el)=>{ el._cx = parseFloat(el.style.left); el._cy = parseFloat(el.style.top); });
+  }
+  // reposition any active draggable words too
+  for (const d of dragNodes) {
+    if (d._fx != null) {
+      d.style.left = (d._fx * W) + 'px';
+      d.style.top  = (d._fy * H) + 'px';
+    }
+  }
+}
+
+function markActiveSlot() {
+  for (const key in poemNodes) {
+    poemNodes[key].classList.remove('live');
+  }
+  const slotEl = poemNodes[activeSlotKey];
+  if (slotEl && revealedThisStage) slotEl.classList.add('live');
+}
+
+// spawn the draggable answer words for the current stage (after mote collected)
+function revealDragWords() {
+  if (revealedThisStage) return;
+  revealedThisStage = true;
+  const st = STAGES[stageIndex];
+  // shuffle pool positions across the lower scene
+  const slots = [0.22, 0.5, 0.78];
+  const shuffled = st.pool.slice().sort(()=>Math.random()-0.5);
+  shuffled.forEach((word, i) => {
+    const el = document.createElement('div');
+    el.className = 'word drag';
+    el.textContent = word;
+    el.dataset.word = word;
+    el.dataset.answer = (word === st.answer) ? '1' : '0';
+    // lure words are dimmer + don't glow
+    if (word !== st.answer) {
+      el.style.color = 'rgba(150, 200, 210, 0.55)';
+      el.style.textShadow = '0 0 8px rgba(0,0,0,0.6)';
+    }
+    el._fx = slots[i % slots.length] + (Math.random()*0.06 - 0.03);
+    el._fy = 0.74 + (Math.random()*0.08 - 0.04);
+    el._fx0 = el._fx; el._fy0 = el._fy;   // remembered home for float-back
+    el.style.left = (el._fx * W) + 'px';
+    el.style.top  = (el._fy * H) + 'px';
+    el.style.animationDelay = (i * 0.6) + 's';
+    wordsEl.appendChild(el);
+    dragNodes.push(el);
+    attachDrag(el);
+  });
+  markActiveSlot();
+  showWhisper(st.whisper);
+}
+
+// ── dragging (pointer events: mouse + touch unified) ──────────────────────
+let dragging = null, dragDX = 0, dragDY = 0;
+
+function attachDrag(el) {
+  el.addEventListener('pointerdown', (e) => {
+    if (finished) return;
+    e.preventDefault();
+    ensureAudio();
+    dragging = el;
+    el.classList.add('grabbing');
+    el.setPointerCapture && el.setPointerCapture(e.pointerId);
+    const r = el.getBoundingClientRect();
+    dragDX = e.clientX - (r.left + r.width/2);
+    dragDY = e.clientY - (r.top + r.height/2);
+    blip(520, 0.05, 'sine', 0.04);
+  });
+}
+
+window.addEventListener('pointermove', (e) => {
+  if (!dragging) return;
+  const x = e.clientX - dragDX;
+  const y = e.clientY - dragDY;
+  dragging.style.left = x + 'px';
+  dragging.style.top  = y + 'px';
+  dragging._fx = x / W; dragging._fy = y / H;
+  // gently highlight the slot when hovering over it
+  const slotEl = poemNodes[activeSlotKey];
+  if (slotEl) {
+    const near = dist(x, y, slotEl._cx, slotEl._cy) < 70;
+    slotEl.style.transform = near
+      ? 'translate(-50%,-50%) scale(1.12)'
+      : 'translate(-50%,-50%) scale(1)';
+  }
+});
+
+window.addEventListener('pointerup', (e) => {
+  if (!dragging) return;
+  const el = dragging;
+  el.classList.remove('grabbing');
+  const slotEl = poemNodes[activeSlotKey];
+  if (slotEl) slotEl.style.transform = 'translate(-50%,-50%) scale(1)';
+  const x = parseFloat(el.style.left), y = parseFloat(el.style.top);
+
+  const onSlot = slotEl && dist(x, y, slotEl._cx, slotEl._cy) < 78;
+  const isAnswer = el.dataset.answer === '1';
+
+  if (onSlot && isAnswer) {
+    commitSwap(el);
+  } else if (onSlot && !isAnswer) {
+    // wrong word — it dissolves back, gentle low tone, no penalty
+    blip(180, 0.18, 'triangle', 0.04);
+    floatBack(el);
+  } else {
+    floatBack(el);
+  }
+  dragging = null;
+});
+
+function floatBack(el) {
+  // ease the word back to its remembered home (not wherever it was dropped)
+  el._fx = (el._fx0 != null) ? el._fx0 : el._fx;
+  el._fy = (el._fy0 != null) ? el._fy0 : el._fy;
+  el.style.transition = 'left .6s ease, top .6s ease';
+  el.style.left = (el._fx * W) + 'px';
+  el.style.top  = (el._fy * H) + 'px';
+  setTimeout(()=>{ el.style.transition=''; el.classList.add('drag'); }, 620);
+}
+
+function dist(ax, ay, bx, by){ const dx=ax-bx, dy=ay-by; return Math.sqrt(dx*dx+dy*dy); }
+
+// ── the transformation when a correct word lands in the slot ──────────────
+function commitSwap(el) {
+  const st = STAGES[stageIndex];
+  // update the poem state
+  slotState[activeSlotKey] = st.answer;
+
+  // remove every draggable word for this stage
+  for (const d of dragNodes) { d.classList.add('gone'); setTimeout(()=>d.remove(), 1100); }
+  dragNodes = [];
+
+  // update the slot node text + glow it on
+  const slotEl = poemNodes[activeSlotKey];
+  if (slotEl) {
+    slotEl.textContent = st.answer;
+    slotEl.classList.remove('live');
+    slotEl.style.color = 'rgba(190, 235, 245, 0.95)';
+    slotEl.style.borderColor = 'transparent';
+    slotEl.style.textShadow = '0 0 20px rgba(150, 230, 250, 0.6)';
+  }
+  // re-centre the rows now that the slot word's width changed
+  layoutWords();
+
+  // apply the world change
+  st.apply();
+  refreshVerse();
+
+  // burst of light + chime
+  burst(girl.x * W, girl.y * H);
+  chime(stageIndex);
+  hideWhisper();
+
+  stageIndex++;
+
+  if (stageIndex >= STAGES.length) {
+    setTimeout(endPoem, 1700);
+  } else {
+    // set up next stage
+    activeSlotKey = SLOT_FOR_STAGE[stageIndex];
+    revealedThisStage = false;
+    spawnMote();
+    setTimeout(()=>{
+      showWhisper('a light is falling. guide her to it.');
+    }, 1400);
+  }
+}
+
+// ── whisper helpers ───────────────────────────────────────────────────────
+let whisperTimer = null;
+function showWhisper(t) {
+  whisperEl.textContent = t;
+  whisperEl.classList.add('show');
+}
+function hideWhisper() { whisperEl.classList.remove('show'); }
+
+// ── ending ────────────────────────────────────────────────────────────────
+function endPoem() {
+  finished = true;
+  girl.sink = -0.00040;           // she rises into the light
+  world.brightT = 1.0; world.bloomT = 1.0;
+  finLine.textContent = 'today i live';
+  finSub.textContent = 'she rises into the light';
+  // let her float up a beat, then show the card
+  setTimeout(()=>{ fin.classList.add('show'); swell(); }, 2600);
+}
+
+// ── reset / replay ─────────────────────────────────────────────────────────
+function resetGame() {
+  fin.classList.remove('show');
+  finished = false;
+  stageIndex = 0;
+  activeSlotKey = 'verb';
+  revealedThisStage = false;
+  slotState.verb='die'; slotState.dark='dark'; slotState.still='still'; slotState.lifeless='lifeless';
+  world.bright=0; world.brightT=0; world.bloom=0; world.bloomT=0; world.rise=0;
+  girl.x=0.5; girl.y=0.62; girl.vx=0; girl.vy=0; girl.sink=0.000035; girl.facing=1;
+  particles.length = 0;
+  buildPoem();
+  refreshVerse();
+  spawnMote();
+  showWhisper('a light is falling. guide her to it.');
+}
+
+// ============================================================================
+//  AUDIO — synthesized Web Audio only, starts after first interaction.
+// ============================================================================
+let actx=null, master=null, padGain=null, muted=false, started=false;
+
+function ensureAudio() {
+  if (actx) { if (actx.state==='suspended') actx.resume(); return; }
+  try {
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    master = actx.createGain();
+    master.gain.value = muted ? 0 : 0.9;
+    master.connect(actx.destination);
+    startPad();
+  } catch(e){ actx=null; }
+}
+
+// a slow underwater drone pad that brightens as the world brightens
+let padFilter=null, padOscs=[];
+function startPad() {
+  if (!actx) return;
+  padGain = actx.createGain();
+  padGain.gain.value = 0.0;
+  padGain.gain.linearRampToValueAtTime(0.10, actx.currentTime + 4);
+  padFilter = actx.createBiquadFilter();
+  padFilter.type='lowpass';
+  padFilter.frequency.value = 320;
+  padGain.connect(padFilter);
+  padFilter.connect(master);
+  // soft minor-ish stack
+  [98, 110, 146.8, 220].forEach((f,i)=>{
+    const o = actx.createOscillator();
+    o.type = i<2 ? 'sine':'triangle';
+    o.frequency.value = f;
+    const g = actx.createGain();
+    g.gain.value = i<2 ? 0.5 : 0.22;
+    o.connect(g); g.connect(padGain);
+    o.start();
+    padOscs.push(o);
+    // tiny detune drift for life
+    const lfo = actx.createOscillator(), lg = actx.createGain();
+    lfo.frequency.value = 0.05 + i*0.013;
+    lg.gain.value = 1.4;
+    lfo.connect(lg); lg.connect(o.frequency); lfo.start();
+  });
+  // slow filter sweep
+  const flfo = actx.createOscillator(), flg = actx.createGain();
+  flfo.frequency.value = 0.04; flg.gain.value = 120;
+  flfo.connect(flg); flg.connect(padFilter.frequency); flfo.start();
+}
+
+function blip(freq=660, dur=0.06, type='sine', gain=0.05) {
+  if (!actx || muted) return;
+  const o=actx.createOscillator(), g=actx.createGain();
+  o.type=type; o.frequency.value=freq;
+  g.gain.value=gain;
+  g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime+dur);
+  o.connect(g); g.connect(master);
+  o.start(); o.stop(actx.currentTime+dur);
+}
+
+// a gentle rising chord when a word transforms the world; higher each stage
+function chime(stage) {
+  if (!actx || muted) return;
+  const roots = [
+    [261.6, 329.6, 392.0],          // C major
+    [293.7, 370.0, 440.0],          // D
+    [329.6, 415.3, 493.9],          // E
+    [392.0, 493.9, 587.3]           // G — final, highest
+  ];
+  const set = roots[Math.min(stage, roots.length-1)];
+  set.forEach((f,i)=>{
+    setTimeout(()=>{
+      const o=actx.createOscillator(), g=actx.createGain();
+      o.type='sine'; o.frequency.value=f;
+      g.gain.value=0; g.gain.linearRampToValueAtTime(0.07, actx.currentTime+0.04);
+      g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime+1.4);
+      o.connect(g); g.connect(master);
+      o.start(); o.stop(actx.currentTime+1.5);
+    }, i*90);
+  });
+}
+
+// soft sparkle when a mote is collected
+function sparkle() {
+  if (!actx || muted) return;
+  [880, 1320, 1760].forEach((f,i)=>setTimeout(()=>blip(f,0.18,'sine',0.05), i*55));
+}
+
+// a final warm swell at the ending
+function swell() {
+  if (!actx || muted) return;
+  [392.0, 493.9, 587.3, 783.99].forEach((f,i)=>{
+    setTimeout(()=>{
+      const o=actx.createOscillator(), g=actx.createGain();
+      o.type='sine'; o.frequency.value=f;
+      g.gain.value=0; g.gain.linearRampToValueAtTime(0.06, actx.currentTime+0.6);
+      g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime+3.2);
+      o.connect(g); g.connect(master);
+      o.start(); o.stop(actx.currentTime+3.3);
+    }, i*120);
+  });
+}
+
+// drive the pad brightness from the world each frame
+function updateAudioBrightness() {
+  if (!actx || !padFilter || !padGain) return;
+  const targetF = 320 + world.bright * 1500;
+  padFilter.frequency.value += (targetF - padFilter.frequency.value) * 0.02;
+  const tg = muted ? 0 : 0.10 + world.bloom * 0.05;
+  padGain.gain.value += (tg - padGain.gain.value) * 0.02;
+}
+
+muteBtn.addEventListener('click', () => {
+  muted = !muted;
+  if (master) master.gain.value = muted ? 0 : 0.9;
+  muteBtn.innerHTML = muted ? '&#9888;' : '&#9834;';
+});
+
+// ============================================================================
+//  PARTICLES — bubbles, drifting motes of light, bloom petals.
+// ============================================================================
+const particles = [];   // floaty ambient particles (bubbles / lights)
+function seedAmbient() {
+  for (let i=0;i<46;i++){
+    particles.push({
+      x: Math.random(), y: Math.random(),
+      r: 0.6 + Math.random()*1.8,
+      sp: 0.00004 + Math.random()*0.00009,
+      sway: Math.random()*Math.PI*2,
+      kind: 'bubble'
+    });
+  }
+}
+// burst of light particles at a point (px in screen px)
+function burst(px, py) {
+  for (let i=0;i<26;i++){
+    const a = Math.random()*Math.PI*2;
+    const sp = 0.6 + Math.random()*2.4;
+    particles.push({
+      x: px/W, y: py/H,
+      vx: Math.cos(a)*sp/W, vy: Math.sin(a)*sp/H,
+      r: 1 + Math.random()*2.4,
+      life: 1, decay: 0.006 + Math.random()*0.008,
+      kind: 'spark'
+    });
+  }
+}
+
+// ============================================================================
+//  RENDER — the underwater scene, painted each frame on canvas.
+// ============================================================================
+function lerp(a,b,t){ return a + (b-a)*t; }
+
+function drawScene() {
+  const b = world.bright, bl = world.bloom, t = world.t;
+
+  // ── water column gradient: gloom at bottom, light leaking from top ──
+  const topR = lerp(6,  90, b),  topG = lerp(20, 175, b), topB = lerp(34, 205, b);
+  const botR = lerp(2,  8,  b),  botG = lerp(8,  40,  b), botB = lerp(14, 60,  b);
+  const g = ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0, `rgb(${topR|0},${topG|0},${topB|0})`);
+  g.addColorStop(0.55, `rgb(${lerp(botR,topR,0.35)|0},${lerp(botG,topG,0.35)|0},${lerp(botB,topB,0.35)|0})`);
+  g.addColorStop(1, `rgb(${botR|0},${botG|0},${botB|0})`);
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,W,H);
+
+  // ── god-ray shafts from the surface (strength scales with brightness) ──
+  if (b > 0.05) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    const rays = 4;
+    for (let i=0;i<rays;i++){
+      const baseX = (i+0.5)/rays * W + Math.sin(t*0.3 + i)*40;
+      const sway  = Math.sin(t*0.22 + i*1.7) * 60;
+      const wTop = 30 + 40*b;
+      const grad = ctx.createLinearGradient(baseX, 0, baseX+sway, H*0.92);
+      grad.addColorStop(0, `rgba(170, 230, 245, ${0.10*b})`);
+      grad.addColorStop(1, 'rgba(170, 230, 245, 0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(baseX - wTop, 0);
+      ctx.lineTo(baseX + wTop, 0);
+      ctx.lineTo(baseX + sway + wTop*2.4, H*0.95);
+      ctx.lineTo(baseX + sway - wTop*1.2, H*0.95);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  // ── seabed: dead weeds / fronds along the bottom ──
+  drawWeeds(b, bl, t);
+
+  // ── ambient particles (bubbles + sparks) ──
+  drawParticles(b);
+
+  // ── the falling mote of light ──
+  if (mote) drawMote(t);
+
+  // ── the girl ──
+  drawGirl(b, bl, t);
+
+  // ── vignette ──
+  const vg = ctx.createRadialGradient(W/2, H*0.55, H*0.2, W/2, H*0.55, H*0.85);
+  vg.addColorStop(0, 'rgba(0,0,0,0)');
+  vg.addColorStop(1, `rgba(0,0,0,${0.55 - b*0.25})`);
+  ctx.fillStyle = vg;
+  ctx.fillRect(0,0,W,H);
+}
+
+function drawWeeds(b, bl, t) {
+  const baseY = H * 0.98;
+  const n = 13;
+  for (let i=0;i<n;i++){
+    const x = (i + 0.5)/n * W + Math.sin(i*2.1)*18;
+    const h = H * (0.18 + (i%3)*0.05 + (i%2)*0.04);
+    const segs = 9;
+    // dead weeds are murky brown-green; as bloom rises a few turn living green
+    const alive = bl > 0.3 && (i % 3 === 0);
+    let r = lerp(26, 40, b), gg = lerp(40, 80, b), bb = lerp(30, 55, b);
+    if (alive) { r = lerp(26, 40*(1-bl)+30*bl, b); gg = lerp(55, 150, bl); bb = lerp(40, 70, bl); }
+    ctx.strokeStyle = `rgba(${r|0},${gg|0},${bb|0},${0.55 + b*0.25})`;
+    ctx.lineWidth = lerp(4, 2, i/n);
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    let px = x, py = baseY;
+    ctx.moveTo(px, py);
+    for (let s=1;s<=segs;s++){
+      const f = s/segs;
+      const sway = Math.sin(t*0.6 + i + f*3) * (10 + f*22) * (0.4 + b*0.6);
+      px = x + sway;
+      py = baseY - h*f;
+      ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+
+    // a bloom flower on a couple of fronds once life returns
+    if (alive && bl > 0.5) {
+      drawFlower(px, py, 5 + bl*5, bl, t + i);
+    }
+  }
+}
+
+function drawFlower(x, y, r, bl, t) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.globalCompositeOperation = 'lighter';
+  const petals = 6;
+  for (let p=0;p<petals;p++){
+    const a = (p/petals)*Math.PI*2 + Math.sin(t*0.5)*0.1;
+    ctx.fillStyle = `rgba(${200},${120 + bl*80|0},${200},${0.5*bl})`;
+    ctx.beginPath();
+    ctx.ellipse(Math.cos(a)*r, Math.sin(a)*r, r*0.55, r*0.28, a, 0, Math.PI*2);
+    ctx.fill();
+  }
+  ctx.fillStyle = `rgba(255, 240, 180, ${0.8*bl})`;
+  ctx.beginPath(); ctx.arc(0,0,r*0.4,0,Math.PI*2); ctx.fill();
+  ctx.restore();
+}
+
+function drawParticles(b) {
+  ctx.save();
+  for (const p of particles) {
+    if (p.kind === 'spark') {
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.fillStyle = `rgba(190, 240, 255, ${Math.max(0,p.life)*0.9})`;
+      ctx.beginPath();
+      ctx.arc(p.x*W, p.y*H, p.r*Math.max(0.2,p.life), 0, Math.PI*2);
+      ctx.fill();
+    } else {
+      ctx.globalCompositeOperation = 'lighter';
+      const alpha = (0.05 + b*0.18);
+      ctx.fillStyle = `rgba(200, 235, 245, ${alpha})`;
+      ctx.beginPath();
+      ctx.arc(p.x*W, p.y*H, p.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+  ctx.restore();
+}
+
+function drawMote(t) {
+  const mx = (mote.x + Math.sin(mote.sway + t)*0.012) * W;
+  const my = mote.y * H;
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  const glow = ctx.createRadialGradient(mx, my, 0, mx, my, 26);
+  glow.addColorStop(0, 'rgba(220, 250, 255, 0.95)');
+  glow.addColorStop(0.4, 'rgba(150, 225, 245, 0.5)');
+  glow.addColorStop(1, 'rgba(150, 225, 245, 0)');
+  ctx.fillStyle = glow;
+  ctx.beginPath(); ctx.arc(mx, my, 26, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = 'rgba(245,255,255,0.95)';
+  ctx.beginPath(); ctx.arc(mx, my, 3.4, 0, Math.PI*2); ctx.fill();
+  ctx.restore();
+}
+
+// the girl — a simple drifting figure: head, gown, trailing hair, arms loose.
+function drawGirl(b, bl, t) {
+  const gx = girl.x * W;
+  const gy = girl.y * H;
+  const s  = Math.min(W, H) * 0.085;     // scale
+  const breathe = Math.sin(t*0.9)*0.04;
+  const tilt = girl.vy < -0.0002 ? -0.18 : 0.10;  // tips head-up when rising
+
+  ctx.save();
+  ctx.translate(gx, gy);
+  ctx.rotate(tilt + Math.sin(t*0.4)*0.04);
+
+  // soft aura around her grows with brightness
+  if (b > 0.1) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    const aura = ctx.createRadialGradient(0,0,0, 0,0, s*2.4);
+    aura.addColorStop(0, `rgba(190, 235, 250, ${0.18*b + 0.1*bl})`);
+    aura.addColorStop(1, 'rgba(190,235,250,0)');
+    ctx.fillStyle = aura;
+    ctx.beginPath(); ctx.arc(0,0,s*2.4,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+
+  const skin = `rgb(${lerp(120,225,b)|0},${lerp(140,205,b)|0},${lerp(150,200,b)|0})`;
+  const gown = `rgba(${lerp(40,150,b)|0},${lerp(70,200,b)|0},${lerp(95,225,b)|0}, ${0.85})`;
+
+  // trailing hair (flows opposite to motion)
+  ctx.strokeStyle = `rgba(${lerp(30,90,b)|0},${lerp(45,120,b)|0},${lerp(60,140,b)|0},0.8)`;
+  ctx.lineWidth = s*0.12; ctx.lineCap='round';
+  for (let k=-2;k<=2;k++){
+    ctx.beginPath();
+    ctx.moveTo(k*s*0.12, -s*0.78);
+    for (let j=1;j<=5;j++){
+      const f=j/5;
+      const hx = k*s*0.12 + Math.sin(t*1.2 + k + f*3)*s*0.3*f;
+      const hy = -s*0.78 - f*s*0.9 + Math.cos(t*0.5+k)*s*0.1*f;  // hair drifts up
+      ctx.lineTo(hx, hy);
+    }
+    ctx.stroke();
+  }
+
+  // gown / body (tapering teardrop)
+  ctx.fillStyle = gown;
+  ctx.beginPath();
+  ctx.moveTo(0, -s*0.45);
+  ctx.quadraticCurveTo(s*0.55, s*0.2, s*0.30 + breathe*s, s*1.5);
+  ctx.quadraticCurveTo(0, s*1.75, -s*0.30 - breathe*s, s*1.5);
+  ctx.quadraticCurveTo(-s*0.55, s*0.2, 0, -s*0.45);
+  ctx.closePath();
+  ctx.fill();
+
+  // arms drifting out
+  ctx.strokeStyle = skin; ctx.lineWidth = s*0.16; ctx.lineCap='round';
+  const armSwing = Math.sin(t*0.8)*0.2;
+  ctx.beginPath();
+  ctx.moveTo(-s*0.18, -s*0.1);
+  ctx.quadraticCurveTo(-s*0.7, s*0.2+armSwing*s, -s*0.85, s*0.55);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(s*0.18, -s*0.1);
+  ctx.quadraticCurveTo(s*0.7, s*0.2-armSwing*s, s*0.85, s*0.55);
+  ctx.stroke();
+
+  // head
+  ctx.fillStyle = skin;
+  ctx.beginPath();
+  ctx.arc(0, -s*0.62, s*0.34, 0, Math.PI*2);
+  ctx.fill();
+
+  ctx.restore();
+}
+
+// ============================================================================
+//  UPDATE — physics, easing, mote collection, input.
+// ============================================================================
+let last = performance.now();
+function update(now) {
+  const dt = Math.min(48, now - last); last = now;
+  world.t += dt * 0.001;
+
+  // ease world params
+  world.bright += (world.brightT - world.bright) * 0.018;
+  world.bloom  += (world.bloomT  - world.bloom)  * 0.016;
+
+  // ── girl movement: input + passive drift ──
+  const acc = 0.0000045 * dt;
+  if (!finished) {
+    if (keys.left)  { girl.vx -= acc; girl.facing=-1; }
+    if (keys.right) { girl.vx += acc; girl.facing= 1; }
+    if (keys.up)    girl.vy -= acc;
+    if (keys.down)  girl.vy += acc;
+  }
+  // passive sink/rise (sink positive = downward; negative once redeemed)
+  girl.vy += girl.sink * dt * 0.03;
+  // drag
+  girl.vx *= 0.92; girl.vy *= 0.93;
+  girl.x += girl.vx * dt;
+  girl.y += girl.vy * dt;
+  // clamp to scene
+  girl.x = Math.max(0.08, Math.min(0.92, girl.x));
+  girl.y = Math.max(finished ? -0.15 : 0.18, Math.min(0.86, girl.y));
+
+  // ── mote falls; collect when girl reaches it ──
+  if (mote && !mote.got) {
+    mote.y += mote.vy * dt;
+    const mx = mote.x + Math.sin(mote.sway + world.t)*0.012;
+    if (dist(girl.x, girl.y, mx, mote.y) < 0.085) {
+      mote.got = true;
+      collectMote(mx*W, mote.y*H);
+      mote = null;
+    } else if (mote.y > 1.1) {
+      // fell off-screen → respawn (forgiving, never lost)
+      spawnMote();
+    }
+  }
+
+  // ── ambient particles rise; sparks fly & fade ──
+  for (let i=particles.length-1;i>=0;i--){
+    const p = particles[i];
+    if (p.kind === 'spark') {
+      p.x += p.vx*dt; p.y += p.vy*dt; p.life -= p.decay*dt*0.06;
+      if (p.life <= 0) particles.splice(i,1);
+    } else {
+      p.y -= p.sp*dt; p.x += Math.sin(world.t + p.sway)*0.0004;
+      if (p.y < -0.02) { p.y = 1.02; p.x = Math.random(); }
+    }
+  }
+
+  updateAudioBrightness();
+  refreshVerse();
+  drawScene();
+  requestAnimationFrame(update);
+}
+
+function collectMote(px, py) {
+  sparkle();
+  burst(px, py);
+  // ripple the verse a touch brighter
+  world.brightT = Math.max(world.brightT, world.bright + 0.06);
+  // reveal this stage's draggable words
+  revealDragWords();
+}
+
+// ============================================================================
+//  INPUT — keyboard + on-screen pad (touch) + veil/start.
+// ============================================================================
+function setKey(dir, val){
+  if (dir==='up') keys.up=val;
+  else if (dir==='down') keys.down=val;
+  else if (dir==='left') keys.left=val;
+  else if (dir==='right') keys.right=val;
+}
+const KEYMAP = {
+  ArrowUp:'up', ArrowDown:'down', ArrowLeft:'left', ArrowRight:'right',
+  w:'up', s:'down', a:'left', d:'right', W:'up', S:'down', A:'left', D:'right'
+};
+window.addEventListener('keydown', (e)=>{
+  const dir = KEYMAP[e.key];
+  if (dir){ e.preventDefault(); ensureAudio(); setKey(dir,true); }
+});
+window.addEventListener('keyup', (e)=>{
+  const dir = KEYMAP[e.key];
+  if (dir){ e.preventDefault(); setKey(dir,false); }
+});
+
+// on-screen pad — press & hold (pointer events cover mouse + touch)
+document.querySelectorAll('.pad-btn').forEach(btn=>{
+  const dir = btn.dataset.dir;
+  const down = (e)=>{ e.preventDefault(); ensureAudio(); setKey(dir,true); };
+  const up   = (e)=>{ e.preventDefault(); setKey(dir,false); };
+  btn.addEventListener('pointerdown', down);
+  btn.addEventListener('pointerup', up);
+  btn.addEventListener('pointerleave', up);
+  btn.addEventListener('pointercancel', up);
+});
+
+// ── start: tap the veil to begin (also unlocks audio) ──
+function start() {
+  if (started) return;
+  started = true;
+  ensureAudio();
+  veil.classList.add('hidden');
+  buildPoem();
+  refreshVerse();
+  spawnMote();
+  setTimeout(()=> showWhisper('a light is falling. guide her to it.'), 600);
+}
+veil.addEventListener('pointerdown', (e)=>{ e.preventDefault(); start(); });
+
+document.getElementById('again').addEventListener('click', (e)=>{
+  e.preventDefault();
+  ensureAudio();
+  resetGame();
+});
+
+// ── boot ──
+seedAmbient();
+resize();
+// draw an idle frame behind the veil
+drawScene();
+requestAnimationFrame(update);
+</script>
+</body>
+</html>

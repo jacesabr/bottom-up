@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Loneliness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --field: #e7e3da;      /* pale field */
+    --field2: #ddd8cd;     /* faint gradient toward bottom */
+    --ink: #16140f;        /* the squares */
+    --dim: #9a958a;        /* dim ui */
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    background: var(--field);
+    overflow: hidden;
+    font-family: 'EB Garamond', Georgia, serif;
+    color: var(--dim);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  #stage {
+    position: fixed;
+    inset: 0;
+    display: block;
+  }
+
+  canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* mute button, top-right */
+  #mute-btn {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 40;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(22,20,15,0.28);
+    background: rgba(231,227,218,0.5);
+    color: rgba(22,20,15,0.65);
+    border-radius: 50%;
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, background 0.2s ease;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+  #mute-btn:hover { background: rgba(231,227,218,0.85); }
+  #mute-btn:active { transform: scale(0.94); }
+
+  /* faint start veil */
+  #start {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: var(--field);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 1.6s ease;
+    text-align: center;
+    padding: 24px;
+  }
+  #start .title {
+    font-size: clamp(30px, 7vw, 54px);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: rgba(22,20,15,0.82);
+    margin-bottom: 22px;
+  }
+  #start .hint {
+    font-size: clamp(13px, 3.4vw, 16px);
+    font-style: italic;
+    color: rgba(22,20,15,0.42);
+    max-width: 420px;
+    line-height: 1.6;
+  }
+  #start .glyph {
+    display: inline-block;
+    width: 13px; height: 13px;
+    background: var(--ink);
+    margin: 0 2px -1px 2px;
+    vertical-align: middle;
+  }
+  #start.gone { opacity: 0; pointer-events: none; }
+
+  /* d-pad for touch */
+  #pad {
+    position: fixed;
+    z-index: 35;
+    left: 50%;
+    bottom: 26px;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(3, 52px);
+    grid-template-rows: repeat(3, 52px);
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+  }
+  #pad.show { opacity: 0.5; pointer-events: auto; }
+  #pad.show:hover { opacity: 0.72; }
+  .pk {
+    border: 1px solid rgba(22,20,15,0.25);
+    background: rgba(231,227,218,0.45);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(22,20,15,0.6);
+    font-size: 20px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+  }
+  .pk:active { background: rgba(22,20,15,0.12); }
+  .pk.up    { grid-column: 2; grid-row: 1; }
+  .pk.left  { grid-column: 1; grid-row: 2; }
+  .pk.down  { grid-column: 2; grid-row: 2; }
+  .pk.right { grid-column: 3; grid-row: 2; }
+  .pk.spacer{ visibility: hidden; }
+
+  /* the single closing word, drawn over the field at the very end */
+  #endword {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 4s ease;
+  }
+  #endword span {
+    font-size: clamp(22px, 5vw, 34px);
+    font-style: italic;
+    letter-spacing: 0.06em;
+    color: rgba(22,20,15,0.5);
+  }
+  #endword.show { opacity: 1; }
+
+  #credit {
+    position: fixed;
+    left: 0; right: 0;
+    bottom: 5px;
+    z-index: 70;
+    text-align: center;
+    font-size: 10.5px;
+    letter-spacing: 0.02em;
+    color: rgba(22,20,15,0.30);
+    pointer-events: none;
+    font-style: italic;
+  }
+
+  @media (max-width: 520px) {
+    #credit { font-size: 9.5px; bottom: 3px; }
+  }
+</style>
+</head>
+<body>
+  <div id="stage">
+    <canvas id="c"></canvas>
+  </div>
+
+  <button id="mute-btn" aria-label="mute">&#9834;</button>
+
+  <div id="pad" aria-hidden="true">
+    <div class="pk up" data-dir="up">&#8593;</div>
+    <div class="pk left" data-dir="left">&#8592;</div>
+    <div class="pk down" data-dir="down">&#8595;</div>
+    <div class="pk right" data-dir="right">&#8594;</div>
+  </div>
+
+  <div id="endword"><span>alone</span></div>
+
+  <div id="start">
+    <div class="title">Loneliness</div>
+    <div class="hint">
+      You are the <span class="glyph"></span>.<br>
+      Move down. Toward the others.
+      <br><br>
+      Arrow keys, WASD, or the pad below. Tap to begin.
+    </div>
+  </div>
+
+  <div id="credit">Tribute to Loneliness by Jordan Magnuson (2010). Not affiliated.</div>
+
+<script>
+"use strict";
+(function(){
+
+  /* ---------- canvas + DPR ---------- */
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0, DPR = 1;
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  /* ---------- safe localStorage ---------- */
+  function lsGet(k){ try { return window.localStorage.getItem(k); } catch(e){ return null; } }
+  function lsSet(k,v){ try { window.localStorage.setItem(k,v); } catch(e){} }
+
+  /* ----------------------------------------------------------------
+     The world is a tall vertical scroll. The player travels DOWN
+     through it. The camera follows. Clusters of squares sit in the
+     world; when the player nears any square, it eases away, fleeing.
+  -----------------------------------------------------------------*/
+
+  const SQ = 16;              // base square size in css px (scaled below)
+  let unit = SQ;              // actual draw size, set on layout
+
+  // world height in "screens"
+  const WORLD_SCREENS = 7.2;
+  let worldH = 0;
+
+  const player = { x: 0, y: 0, vx: 0, vy: 0 };
+  let camY = 0;
+
+  // others: {x,y,hx,hy} home position + current
+  let others = [];
+
+  function layout(){
+    unit = Math.max(11, Math.min(20, Math.round(Math.min(W, H) * 0.026)));
+    worldH = H * WORLD_SCREENS;
+    player.x = W * 0.5;
+    player.y = H * 0.16;
+    camY = 0;
+    buildClusters();
+  }
+
+  // Build several clusters spaced down the world.
+  function buildClusters(){
+    others = [];
+    // cluster band centers as fraction of world height (after the player's start)
+    const bands = [0.20, 0.34, 0.47, 0.60, 0.72, 0.85];
+    const rng = mulberry32(20100817); // fixed seed -> stable, composed layout
+    for (let b = 0; b < bands.length; b++){
+      const cy = bands[b] * worldH;
+      // horizontal center wanders across the field
+      const cx = W * (0.30 + 0.40 * rng());
+      const count = 3 + Math.floor(rng() * 4); // 3..6 squares
+      const spread = unit * (2.4 + rng() * 3.0);
+      for (let i = 0; i < count; i++){
+        // huddle: gaussian-ish offsets
+        const ax = (rng() + rng() + rng() - 1.5) * spread;
+        const ay = (rng() + rng() + rng() - 1.5) * spread * 0.7;
+        let hx = cx + ax;
+        let hy = cy + ay;
+        hx = Math.max(unit*1.4, Math.min(W - unit*1.4, hx));
+        others.push({
+          hx, hy,            // home (where they huddle)
+          x: hx, y: hy,      // current
+          vx: 0, vy: 0,
+          ox: hx, oy: hy,    // gentle idle origin
+          phase: rng() * Math.PI * 2,
+          drift: 0.5 + rng() * 0.8,
+          fled: 0            // 0..1 how far gone (for fade)
+        });
+      }
+    }
+  }
+
+  function mulberry32(a){
+    return function(){
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  /* ---------- input ---------- */
+  const keys = { up:false, down:false, left:false, right:false };
+  const KEYMAP = {
+    'ArrowUp':'up','KeyW':'up',
+    'ArrowDown':'down','KeyS':'down',
+    'ArrowLeft':'left','KeyA':'left',
+    'ArrowRight':'right','KeyD':'right'
+  };
+  window.addEventListener('keydown', function(e){
+    const d = KEYMAP[e.code];
+    if (d){ keys[d] = true; e.preventDefault(); if(!started) begin(); }
+  }, {passive:false});
+  window.addEventListener('keyup', function(e){
+    const d = KEYMAP[e.code];
+    if (d){ keys[d] = false; e.preventDefault(); }
+  }, {passive:false});
+
+  // d-pad: pointer-based so it works for touch + mouse
+  const pad = document.getElementById('pad');
+  function bindPad(el){
+    const dir = el.getAttribute('data-dir');
+    const on = function(e){ e.preventDefault(); keys[dir] = true; if(!started) begin(); };
+    const off = function(e){ e.preventDefault(); keys[dir] = false; };
+    el.addEventListener('pointerdown', on);
+    el.addEventListener('pointerup', off);
+    el.addEventListener('pointerleave', off);
+    el.addEventListener('pointercancel', off);
+  }
+  pad.querySelectorAll('.pk').forEach(bindPad);
+
+  /* ---------- audio (synth only, after first gesture) ---------- */
+  let actx = null, master = null, droneA = null, droneB = null, muted = false;
+  muted = (lsGet('lonely_muted') === '1');
+
+  function initAudio(){
+    if (actx) return;
+    try {
+      actx = new (window.AudioContext || window.webkitAudioContext)();
+    } catch(e){ actx = null; return; }
+    master = actx.createGain();
+    master.gain.value = 0;
+    master.connect(actx.destination);
+
+    // two slightly detuned low sine drones -> a soft, hollow swell
+    droneA = makeDrone(74.0, 0.0);
+    droneB = makeDrone(74.0 * 1.5, -2.0); // a hollow fifth above
+    // slow target fade-in
+    const t = actx.currentTime;
+    master.gain.linearRampToValueAtTime(muted ? 0 : 0.16, t + 4.0);
+  }
+
+  function makeDrone(freq, detune){
+    const o = actx.createOscillator();
+    o.type = 'sine';
+    o.frequency.value = freq;
+    o.detune.value = detune;
+    const g = actx.createGain();
+    g.gain.value = 0.5;
+    // gentle amplitude LFO so the drone breathes
+    const lfo = actx.createOscillator();
+    lfo.type = 'sine';
+    lfo.frequency.value = 0.06 + Math.random()*0.04;
+    const lg = actx.createGain();
+    lg.gain.value = 0.28;
+    lfo.connect(lg);
+    lg.connect(g.gain);
+    o.connect(g);
+    g.connect(master);
+    o.start();
+    lfo.start();
+    return { o, g, lfo };
+  }
+
+  // a soft, brief "they leave" tone when a cluster scatters
+  let lastFlee = 0;
+  function fleeTone(){
+    if (!actx || muted) return;
+    const now = actx.currentTime;
+    if (now - lastFlee < 0.35) return;
+    lastFlee = now;
+    const o = actx.createOscillator();
+    o.type = 'sine';
+    const g = actx.createGain();
+    const base = 320 + Math.random()*60;
+    o.frequency.setValueAtTime(base, now);
+    o.frequency.exponentialRampToValueAtTime(base * 0.55, now + 1.1); // a sigh, falling
+    g.gain.setValueAtTime(0.0001, now);
+    g.gain.exponentialRampToValueAtTime(0.07, now + 0.08);
+    g.gain.exponentialRampToValueAtTime(0.0001, now + 1.3);
+    o.connect(g); g.connect(master);
+    o.start(now);
+    o.stop(now + 1.4);
+  }
+
+  const muteBtn = document.getElementById('mute-btn');
+  function renderMute(){ muteBtn.innerHTML = muted ? '&#128263;' : '&#9834;'; }
+  renderMute();
+  function setMaster(){
+    if (!actx || !master) return;
+    const t = actx.currentTime;
+    master.gain.cancelScheduledValues(t);
+    master.gain.setValueAtTime(master.gain.value, t);
+    master.gain.linearRampToValueAtTime(muted ? 0 : 0.16, t + 0.5);
+  }
+  muteBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    muted = !muted;
+    lsSet('lonely_muted', muted ? '1' : '0');
+    renderMute();
+    setMaster();
+  });
+
+  /* ---------- start ---------- */
+  const startEl = document.getElementById('start');
+  let started = false;
+  function begin(){
+    if (started) return;
+    started = true;
+    initAudio();
+    if (actx && actx.state === 'suspended') actx.resume();
+    startEl.classList.add('gone');
+    // show the pad on touch-capable devices
+    if (('ontouchstart' in window) || navigator.maxTouchPoints > 0){
+      pad.classList.add('show');
+    }
+    setTimeout(function(){ if (startEl.parentNode) startEl.style.display = 'none'; }, 1700);
+  }
+  startEl.addEventListener('pointerdown', function(){ begin(); });
+
+  /* ---------- the ending ---------- */
+  const endword = document.getElementById('endword');
+  let ending = false, endT = 0;
+  function triggerEnd(){
+    if (ending) return;
+    ending = true;
+    endT = 0;
+    // let the drones fall away into silence
+    if (actx && master){
+      const t = actx.currentTime;
+      master.gain.cancelScheduledValues(t);
+      master.gain.setValueAtTime(master.gain.value, t);
+      master.gain.linearRampToValueAtTime(0.0001, t + 6.5);
+    }
+    setTimeout(function(){ endword.classList.add('show'); }, 2600);
+  }
+
+  /* ---------- main loop ---------- */
+  layout();
+  window.addEventListener('resize', layout);
+
+  let last = performance.now();
+  const FLEE_RADIUS_BASE = 130;   // how close before they bolt
+  let everFled = false;
+
+  function frame(now){
+    let dt = (now - last) / 1000;
+    if (dt > 0.05) dt = 0.05;     // clamp big gaps
+    last = now;
+    update(dt);
+    render();
+    requestAnimationFrame(frame);
+  }
+
+  function update(dt){
+    if (!started) return;
+
+    // --- player movement (world coords) ---
+    const accel = unit * 46;
+    const maxv = unit * 12.5;
+    let ax = 0, ay = 0;
+    if (keys.left)  ax -= 1;
+    if (keys.right) ax += 1;
+    if (keys.up)    ay -= 1;
+    if (keys.down)  ay += 1;
+    // normalize diagonal
+    if (ax && ay){ const inv = 0.7071; ax *= inv; ay *= inv; }
+    player.vx += ax * accel * dt;
+    player.vy += ay * accel * dt;
+    // friction
+    const fr = Math.pow(0.0009, dt);
+    player.vx *= fr;
+    player.vy *= fr;
+    // clamp speed
+    const sp = Math.hypot(player.vx, player.vy);
+    if (sp > maxv){ player.vx = player.vx/sp*maxv; player.vy = player.vy/sp*maxv; }
+
+    player.x += player.vx * dt;
+    player.y += player.vy * dt;
+
+    // horizontal bounds
+    player.x = Math.max(unit, Math.min(W - unit, player.x));
+    // vertical bounds within world
+    player.y = Math.max(unit, Math.min(worldH - unit, player.y));
+
+    // --- camera follows, keeping player around 1/3 up the screen ---
+    const targetCam = player.y - H * 0.36;
+    const camMax = worldH - H;
+    const camClamped = Math.max(0, Math.min(camMax, targetCam));
+    camY += (camClamped - camY) * Math.min(1, dt * 4.5);
+
+    const FLEE_RADIUS = Math.max(FLEE_RADIUS_BASE, unit * 8.5);
+    const R2 = FLEE_RADIUS * FLEE_RADIUS;
+
+    // --- others: flee from player, never return ---
+    const FRflee = Math.pow(0.02, dt);   // strong damping while fleeing
+    const FRidle = Math.pow(0.4, dt);
+
+    let anyClose = false;
+
+    for (let i = 0; i < others.length; i++){
+      const o = others[i];
+
+      const dx = o.x - player.x;
+      const dy = o.y - player.y;
+      const d2 = dx*dx + dy*dy;
+
+      if (d2 < R2){
+        // within fear radius -> push away, strength grows as player nears
+        const d = Math.sqrt(d2) || 0.0001;
+        const nx = dx / d, ny = dy / d;
+        const closeness = 1 - d / FLEE_RADIUS;       // 0..1
+        const push = (closeness * closeness) * unit * 240;
+        o.vx += nx * push * dt;
+        o.vy += ny * push * dt;
+        o.fled = Math.min(1, o.fled + closeness * dt * 1.6);
+        anyClose = true;
+        if (!everFled && closeness > 0.15){ everFled = true; }
+        if (closeness > 0.25) fleeTone();
+      } else {
+        // idle: very small drift around current resting spot (they don't come back)
+        o.phase += dt * o.drift;
+        const wobx = Math.cos(o.phase) * unit * 0.05;
+        const woby = Math.sin(o.phase*1.3) * unit * 0.05;
+        o.vx += wobx * dt;
+        o.vy += woby * dt;
+        // settle: ease velocity toward zero so they come to rest after fleeing
+        o.vx *= FRidle;
+        o.vy *= FRidle;
+      }
+
+      // integrate
+      o.x += o.vx * dt;
+      o.y += o.vy * dt;
+      if (d2 < R2){ o.vx *= FRflee; o.vy *= FRflee; }
+
+      // keep them on the field horizontally (they slide along edges, still fleeing)
+      if (o.x < unit){ o.x = unit; o.vx = Math.abs(o.vx)*0.3; }
+      if (o.x > W - unit){ o.x = W - unit; o.vx = -Math.abs(o.vx)*0.3; }
+      // let them flee upward/off past world edges but clamp softly
+      if (o.y < unit){ o.y = unit; o.vy = Math.abs(o.vy)*0.2; }
+      if (o.y > worldH - unit){ o.y = worldH - unit; o.vy = -Math.abs(o.vy)*0.2; }
+    }
+
+    // --- ending: player reaches the bottom and everyone is gone/far ---
+    const atBottom = player.y > worldH - H * 0.42;
+    if (atBottom && !ending){
+      // alone if nobody is within ~1.5 screens
+      let nearest = Infinity;
+      for (let i = 0; i < others.length; i++){
+        const dy = others[i].y - player.y;
+        const dx = others[i].x - player.x;
+        const dd = Math.hypot(dx, dy);
+        if (dd < nearest) nearest = dd;
+      }
+      if (nearest > H * 0.55 || player.y > worldH - H * 0.16){
+        triggerEnd();
+      }
+    }
+  }
+
+  function drawSquare(cx, cy, size, alpha){
+    ctx.globalAlpha = alpha;
+    const s = size;
+    ctx.fillStyle = '#16140f';
+    // tiny soft shadow grounds the square on the field
+    ctx.save();
+    ctx.shadowColor = 'rgba(22,20,15,0.14)';
+    ctx.shadowBlur = size * 0.5;
+    ctx.shadowOffsetY = size * 0.18;
+    ctx.fillRect(cx - s/2, cy - s/2, s, s);
+    ctx.restore();
+    ctx.globalAlpha = 1;
+  }
+
+  function render(){
+    // field with a faint vertical gradient (gets a touch darker, lonelier, lower down)
+    const depth = worldH > H ? camY / (worldH - H) : 0;
+    const grad = ctx.createLinearGradient(0, 0, 0, H);
+    const topMix = mix('#e9e5dc', '#dcd6ca', depth * 0.7);
+    const botMix = mix('#e2ded4', '#cfc8bb', depth);
+    grad.addColorStop(0, topMix);
+    grad.addColorStop(1, botMix);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+
+    // soft vignette
+    const vg = ctx.createRadialGradient(W*0.5, H*0.5, Math.min(W,H)*0.25, W*0.5, H*0.5, Math.max(W,H)*0.75);
+    vg.addColorStop(0, 'rgba(0,0,0,0)');
+    vg.addColorStop(1, 'rgba(22,20,15,' + (0.05 + depth*0.10).toFixed(3) + ')');
+    ctx.fillStyle = vg;
+    ctx.fillRect(0, 0, W, H);
+
+    // others (in screen space)
+    for (let i = 0; i < others.length; i++){
+      const o = others[i];
+      const sy = o.y - camY;
+      if (sy < -unit*2 || sy > H + unit*2) continue;
+      // fled squares fade a touch as they grow distant/spent — but stay visible
+      const a = 0.92 - o.fled * 0.18;
+      drawSquare(o.x, sy, unit, a);
+    }
+
+    // player
+    const psy = player.y - camY;
+    // faint pulse so the lone square reads as "alive"
+    const pulse = 1 + Math.sin(last * 0.0026) * 0.015;
+    drawSquare(player.x, psy, unit * pulse, 1);
+
+    // at the very end, deepen everything toward a quiet dark
+    if (ending){
+      endT += 1;
+      const fade = Math.min(1, endT / 480); // ~8s at 60fps
+      ctx.fillStyle = 'rgba(22,20,15,' + (fade * 0.55).toFixed(3) + ')';
+      ctx.fillRect(0, 0, W, H);
+    }
+  }
+
+  // hex color mix helper
+  function mix(a, b, t){
+    t = Math.max(0, Math.min(1, t));
+    const ca = hex(a), cb = hex(b);
+    const r = Math.round(ca[0] + (cb[0]-ca[0])*t);
+    const g = Math.round(ca[1] + (cb[1]-ca[1])*t);
+    const bl = Math.round(ca[2] + (cb[2]-ca[2])*t);
+    return 'rgb(' + r + ',' + g + ',' + bl + ')';
+  }
+  function hex(h){
+    h = h.replace('#','');
+    return [parseInt(h.substr(0,2),16), parseInt(h.substr(2,2),16), parseInt(h.substr(4,2),16)];
+  }
+
+  requestAnimationFrame(frame);
+
+})();
+</script>
+</body>
+</html>

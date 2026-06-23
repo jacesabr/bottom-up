@@ -1,0 +1,3 @@
+One Chance — original self-contained recreation (tribute) of the Newgrounds game by AwkwardSilenceGames
+(Dean Moynihan, 2010). All code/art/prose is our own; only the premise (six days, one irreversible
+playthrough) is borrowed. ~6-9 min; the run is saved permanently (localStorage). Not affiliated.

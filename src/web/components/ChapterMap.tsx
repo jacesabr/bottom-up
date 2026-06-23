@@ -1,6 +1,30 @@
 import { useEffect, useState } from 'react';
-import ExitGameOverlay from './ExitGameOverlay';
+import GameOverlay from './GameOverlay';
 import '../styles/ChapterMap.css';
+
+// Short cult games that unlock one-per-node on the first few concepts. Each is a
+// self-contained static page under /public/gameN/ (loaded in an iframe overlay).
+// Every one is playable in well under 10 minutes. Order = node order.
+const GAMES = [
+  { title: 'eXit', src: '/game1/exit.html' }, // bespoke terminal escape (ours)
+  { title: 'Execution', src: '/_ruffle/play.html?swf=/swf/execution.swf' }, // Venbrux — original Flash via Ruffle
+  { title: 'A Dark Room', src: '/game3/index.html' }, // Doublespeak Games — open source
+  { title: 'One Chance', src: '/_ruffle/play.html?swf=/swf/onechance.swf' }, // AwkwardSilence — original Flash via Ruffle
+  { title: 'Passage', src: '/game5/index.html' }, // Rohrer — public-domain web build (MoMA)
+  { title: 'WarGames', src: '/games/gtw/index.html' }, // GTW — open-source WOPR (ghelleks)
+  { title: 'The House Abandon', src: '/game7/house.html' }, // homage — original is proprietary
+  { title: 'Every Day the Same Dream', src: '/_ruffle/play.html?swf=/swf/sameday.swf' }, // Molleindustria — original Flash via Ruffle
+  { title: 'Today I Die', src: '/_ruffle/play.html?swf=/swf/todayidie.swf' }, // Benmergui — original Flash via Ruffle
+  { title: 'I Wish I Were the Moon', src: '/game8/moon.html' }, // homage — Flash is Flex, won't embed
+  { title: 'Loneliness', src: '/games/loneliness/index.html' }, // Magnuson — official HTML5 port
+  { title: 'Loved', src: '/_ruffle/play.html?swf=/swf/loved.swf' }, // Ocias — original Flash via Ruffle
+  { title: 'We Become What We Behold', src: '/games/wbwwb/index.html' }, // Nicky Case — CC0
+  { title: 'It is as if you were doing work', src: '/games/itisasif/index.html' }, // Pippin Barr (open source)
+  { title: 'Snakisms', src: '/games/snakisms/index.html' }, // Pippin Barr — 21 philosophical snakes
+  { title: 'A Series of Gunshots', src: '/games/gunshots/index.html' }, // Pippin Barr (open source)
+  { title: 'You Are Jeff Bezos', src: '/games/jeffbezos/index.html' }, // Kris Ligman — Twine
+  { title: 'A Studio Above a Bookstore', src: '/games/studio/index.html' }, // Anna Anthropy — Bitsy
+];
 
 interface Node {
   id: string;
@@ -30,7 +54,7 @@ export default function ChapterMap({
   const [nodes, setNodes] = useState<Node[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [gameOpen, setGameOpen] = useState(false);
+  const [openGame, setOpenGame] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchChapter = async () => {
@@ -106,16 +130,27 @@ export default function ChapterMap({
                       <div className="dot">{node.status === 'passed' ? '' : node.status === 'coming_soon' ? '...' : node.order}</div>
                       <div className="nm">{node.title.split('·')[0].trim()}</div>
                     </div>
-                    {showGameUnlock && index === 0 && (
+                    {showGameUnlock && index < GAMES.length && (
+                      node.status === 'passed' ? (
                         <button
                           type="button"
                           className="game-unlock"
-                          onClick={() => setGameOpen(true)}
-                          title="Open eXit"
+                          onClick={() => setOpenGame(index)}
+                          title={`Open ${GAMES[index].title}`}
                         >
-                        <span className="game-unlock-badge">game unlocked</span>
-                        <span className="game-unlock-title">eXit</span>
-                      </button>
+                          <span className="game-unlock-badge">game unlocked</span>
+                          <span className="game-unlock-title">{GAMES[index].title}</span>
+                        </button>
+                      ) : (
+                        <div
+                          className="game-unlock locked"
+                          title={`Finish this concept to unlock ${GAMES[index].title}`}
+                          aria-disabled="true"
+                        >
+                          <span className="game-unlock-badge">🔒 locked</span>
+                          <span className="game-unlock-title">{GAMES[index].title}</span>
+                        </div>
+                      )
                     )}
                   </div>
                 );
@@ -132,7 +167,13 @@ export default function ChapterMap({
         </div>
       </div>
 
-      {gameOpen && <ExitGameOverlay onClose={() => setGameOpen(false)} />}
+      {openGame !== null && (
+        <GameOverlay
+          src={GAMES[openGame].src}
+          title={GAMES[openGame].title}
+          onClose={() => setOpenGame(null)}
+        />
+      )}
     </div>
   );
 }

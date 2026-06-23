@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOMECOMING.tape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #38e66a;
+    --dim-green: #1f9a44;
+    --dark-green: #0c3a1c;
+    --amber: #ffb43a;
+    --dim-amber: #b87a1a;
+    --red: #ff3340;
+    --dim-red: #a11722;
+    --bg: #04080a;
+
+    --fg: var(--green);
+    --fg-dim: var(--dim-green);
+    --fg-dark: var(--dark-green);
+    --tint: rgba(56, 230, 106, 0.04);
+  }
+
+  /* palette phases — set on <body> */
+  body.phase-amber {
+    --fg: var(--amber);
+    --fg-dim: var(--dim-amber);
+    --fg-dark: #5a3a08;
+    --tint: rgba(255, 180, 58, 0.05);
+  }
+  body.phase-red {
+    --fg: var(--red);
+    --fg-dim: var(--dim-red);
+    --fg-dark: #4a0a10;
+    --tint: rgba(255, 51, 64, 0.06);
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Share Tech Mono', monospace;
+    overflow: hidden;
+    transition: color 0.6s, background 0.6s;
+  }
+
+  /* scanlines */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(0,0,0,0.22) 2px,
+      rgba(0,0,0,0.22) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+    mix-blend-mode: multiply;
+  }
+
+  /* CRT vignette + soft phosphor tint */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at center, transparent 54%, rgba(0,0,0,0.82) 100%),
+      var(--tint);
+    pointer-events: none;
+    z-index: 999;
+    transition: background 0.6s;
+  }
+
+  /* the whole tube can flicker / jolt */
+  body.flicker #screen { animation: flick 0.14s steps(2) 3; }
+  @keyframes flick {
+    0% { opacity: 1; }
+    50% { opacity: 0.35; }
+    100% { opacity: 1; }
+  }
+  body.jolt #screen { animation: jolt 0.32s ease; }
+  @keyframes jolt {
+    0% { transform: translate(0,0); }
+    20% { transform: translate(-3px, 2px); }
+    40% { transform: translate(3px, -2px); }
+    60% { transform: translate(-2px, -1px); }
+    80% { transform: translate(2px, 1px); }
+    100% { transform: translate(0,0); }
+  }
+  body.phase-red #screen { animation: redpulse 1.6s ease-in-out infinite; }
+  @keyframes redpulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.28) saturate(1.3); }
+  }
+
+  #screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 14px 6px;
+    border-bottom: 1px solid var(--fg-dark);
+    flex-shrink: 0;
+    transition: border-color 0.6s;
+  }
+
+  #title-bar .logo {
+    font-family: 'VT323', monospace;
+    font-size: 26px;
+    letter-spacing: 4px;
+    color: var(--fg);
+    text-shadow: 0 0 12px var(--fg);
+    transition: color 0.6s, text-shadow 0.6s;
+  }
+  #title-bar .logo .blip { opacity: 0.55; font-size: 18px; letter-spacing: 2px; }
+
+  #title-bar .right { display: flex; align-items: center; gap: 12px; }
+
+  #tape-status {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--fg-dim);
+    white-space: nowrap;
+    transition: color 0.6s;
+  }
+  #tape-status .reel { display: inline-block; animation: spin 1.4s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #mute-btn {
+    background: transparent;
+    border: 1px solid var(--fg-dark);
+    color: var(--fg-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    padding: 3px 9px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  #mute-btn:hover { border-color: var(--fg); color: var(--fg); }
+
+  /* the printed transcript */
+  #output {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 16px 22px 8px;
+    scroll-behavior: smooth;
+    font-size: 15px;
+    line-height: 1.62;
+  }
+  #output::-webkit-scrollbar { width: 7px; }
+  #output::-webkit-scrollbar-track { background: var(--bg); }
+  #output::-webkit-scrollbar-thumb { background: var(--fg-dark); }
+
+  .line { margin-bottom: 3px; max-width: 70ch; }
+
+  .line.room   { color: var(--fg); text-shadow: 0 0 5px var(--fg); }
+  .line.story  { color: var(--fg); }
+  .line.system { color: var(--fg-dim); font-size: 12px; letter-spacing: 0.5px; }
+  .line.input  { color: #f4fff7; }
+  body.phase-amber .line.input { color: #fff3df; }
+  body.phase-red   .line.input { color: #ffe0e2; }
+  .line.parser { color: var(--fg-dim); font-style: italic; }
+  .line.you    { color: var(--fg); text-shadow: 0 0 9px var(--fg); }
+  .line.glitch { color: var(--fg); text-shadow: 0 0 6px var(--fg); }
+  .line.alarm  { color: var(--red); text-shadow: 0 0 8px var(--red); }
+  .line.dread  { color: var(--fg); text-shadow: 0 0 11px var(--fg); font-size: 16px; letter-spacing: 0.5px; }
+  .line.blank  { height: 9px; }
+
+  .line.art {
+    white-space: pre;
+    font-size: 12px;
+    line-height: 1.1;
+    color: var(--fg-dim);
+    text-shadow: 0 0 5px var(--fg-dark);
+    margin: 4px 0 8px;
+    opacity: 0.9;
+  }
+
+  /* glitch text effect */
+  .corrupt { color: var(--red); text-shadow: 0 0 7px var(--red); }
+
+  /* command bar */
+  #command-bar {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px 12px;
+    border-top: 1px solid var(--fg-dark);
+    gap: 9px;
+    flex-shrink: 0;
+    min-height: 52px;
+    transition: border-color 0.6s;
+  }
+  .cb-prompt {
+    color: var(--fg);
+    font-size: 17px;
+    white-space: nowrap;
+    text-shadow: 0 0 6px var(--fg);
+    animation: caret 1.05s step-end infinite;
+    transition: color 0.6s;
+  }
+  @keyframes caret { 50% { opacity: 0; } }
+
+  #cmd-input {
+    flex: 1;
+    min-width: 70px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--fg-dark);
+    outline: none;
+    color: #f4fff7;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 15px;
+    padding: 6px 2px;
+    caret-color: var(--fg);
+    transition: border-color 0.2s;
+  }
+  #cmd-input:focus { border-bottom-color: var(--fg); }
+  #cmd-input:disabled { opacity: 0.45; }
+  body.phase-amber #cmd-input { color: #fff3df; }
+  body.phase-red   #cmd-input { color: #ffe0e2; }
+
+  #send-btn {
+    background: transparent;
+    border: 1px solid var(--fg-dark);
+    color: var(--fg);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    padding: 8px 16px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  #send-btn:hover:not(:disabled) { border-color: var(--fg); background: var(--tint); }
+  #send-btn:disabled { opacity: 0.3; cursor: default; }
+
+  /* quick-verb chips so a phone can play fully */
+  #verbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 16px 8px;
+    flex-shrink: 0;
+  }
+  .verb {
+    background: transparent;
+    border: 1px solid var(--fg-dark);
+    color: var(--fg-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    padding: 5px 11px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .verb:hover { border-color: var(--fg); color: var(--fg); background: var(--tint); }
+  .verb:disabled { opacity: 0.25; cursor: default; }
+
+  #credit {
+    text-align: center;
+    color: var(--fg-dark);
+    font-size: 10px;
+    letter-spacing: 0.4px;
+    padding: 3px 8px 7px;
+    opacity: 0.8;
+    flex-shrink: 0;
+    transition: color 0.6s;
+  }
+
+  @media (max-width: 540px) {
+    #title-bar .logo { font-size: 21px; letter-spacing: 2px; }
+    #output { font-size: 14px; padding: 12px 16px 6px; }
+    .line { max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="screen">
+  <div id="title-bar">
+    <div class="logo">HOMECOMING<span class="blip">.tape</span></div>
+    <div class="right">
+      <div id="tape-status"><span class="reel">&#9673;</span> TAPE&nbsp;A &nbsp;PLAY</div>
+      <button id="mute-btn" title="toggle sound">[ &#9834; ]</button>
+    </div>
+  </div>
+
+  <div id="output"></div>
+
+  <div id="verbs"></div>
+
+  <div id="command-bar">
+    <span class="cb-prompt">&gt;</span>
+    <input id="cmd-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type a command, e.g. LOOK">
+    <button id="send-btn">ENTER</button>
+  </div>
+
+  <div id="credit">Tribute to The House Abandon / Stories Untold by No Code (2016). Not affiliated.</div>
+</div>
+
+<script>
+"use strict";
+
+// ── DOM refs ─────────────────────────────────────────────────────────────────
+const output    = document.getElementById('output');
+const cmdInput   = document.getElementById('cmd-input');
+const sendBtn    = document.getElementById('send-btn');
+const verbsEl    = document.getElementById('verbs');
+const tapeEl     = document.getElementById('tape-status');
+const muteBtn    = document.getElementById('mute-btn');
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// ── safe storage (iframe storage can be blocked) ─────────────────────────────
+const store = (() => {
+  let mem = {};
+  function get(k) { try { return localStorage.getItem(k); } catch (e) { return mem[k] ?? null; } }
+  function set(k, v) { try { localStorage.setItem(k, v); } catch (e) { mem[k] = v; } }
+  return { get, set };
+})();
+
+// ── Audio engine (synthesized Web Audio only; starts after first gesture) ─────
+let actx = null, masterGain = null, hum = null, humFilter = null, muted = false;
+let _noiseBuf = null;
+
+function initAudio() {
+  if (actx) return;
+  try {
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+    masterGain = actx.createGain();
+    masterGain.gain.value = muted ? 0 : 0.9;
+    masterGain.connect(actx.destination);
+    startHum();
+  } catch (e) { actx = null; }
+}
+
+// low room hum — a warm fridge/mains drone that we can sour later
+function startHum() {
+  if (!actx) return;
+  hum = actx.createGain();
+  hum.gain.value = 0.03;
+  humFilter = actx.createBiquadFilter();
+  humFilter.type = 'lowpass';
+  humFilter.frequency.value = 320;
+  hum.connect(humFilter);
+  humFilter.connect(masterGain);
+  [50, 50.3, 100].forEach((f, i) => {
+    const o = actx.createOscillator();
+    o.type = i === 2 ? 'sine' : 'triangle';
+    o.frequency.value = f;
+    o.connect(hum);
+    o.start();
+  });
+  const lfo = actx.createOscillator();
+  const lfoGain = actx.createGain();
+  lfo.frequency.value = 0.08;
+  lfoGain.gain.value = 90;
+  lfo.connect(lfoGain);
+  lfoGain.connect(humFilter.frequency);
+  lfo.start();
+}
+
+// when the fiction turns: raise the hum, open the filter, sour it
+function sourHum(level) {
+  if (!actx || !hum) return;
+  const t = actx.currentTime;
+  if (level === 1) {       // power cut — hum dips then surges
+    hum.gain.linearRampToValueAtTime(0.005, t + 0.25);
+    hum.gain.linearRampToValueAtTime(0.07, t + 1.2);
+    humFilter.frequency.linearRampToValueAtTime(540, t + 1.2);
+  } else if (level === 2) { // dread — louder, brighter, unsettled
+    hum.gain.linearRampToValueAtTime(0.105, t + 1.0);
+    humFilter.frequency.linearRampToValueAtTime(820, t + 1.0);
+  }
+}
+
+function blip(freq = 1000, dur = 0.04, type = 'square', gain = 0.05) {
+  if (!actx || muted) return;
+  const o = actx.createOscillator();
+  const g = actx.createGain();
+  o.type = type; o.frequency.value = freq;
+  g.gain.value = gain;
+  g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + dur);
+  o.connect(g); g.connect(masterGain);
+  o.start(); o.stop(actx.currentTime + dur);
+}
+
+function noiseBuffer() {
+  if (_noiseBuf) return _noiseBuf;
+  const len = Math.floor(actx.sampleRate * 0.05);
+  _noiseBuf = actx.createBuffer(1, len, actx.sampleRate);
+  const d = _noiseBuf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+  return _noiseBuf;
+}
+
+// per-character typewriter clack
+function tick(vol = 1) {
+  if (!actx || muted) return;
+  const t = actx.currentTime;
+  const src = actx.createBufferSource();
+  src.buffer = noiseBuffer();
+  const bp = actx.createBiquadFilter();
+  bp.type = 'bandpass';
+  bp.frequency.value = 1700 + Math.random() * 700;
+  bp.Q.value = 0.8;
+  const g = actx.createGain();
+  g.gain.setValueAtTime(0.045 * vol, t);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + 0.02);
+  src.connect(bp); bp.connect(g); g.connect(masterGain);
+  src.start(t); src.stop(t + 0.04);
+  const o = actx.createOscillator();
+  const og = actx.createGain();
+  o.type = 'square'; o.frequency.value = 120 + Math.random() * 36;
+  og.gain.setValueAtTime(0.026 * vol, t);
+  og.gain.exponentialRampToValueAtTime(0.0001, t + 0.018);
+  o.connect(og); og.connect(masterGain);
+  o.start(t); o.stop(t + 0.022);
+}
+
+function confirmTone() { blip(540, 0.05, 'sine', 0.05); setTimeout(() => blip(810, 0.06, 'sine', 0.05), 55); }
+function thunk() { blip(90, 0.18, 'sine', 0.09); }
+function glitchBurst() {
+  if (!actx || muted) return;
+  const t = actx.currentTime;
+  const src = actx.createBufferSource();
+  src.buffer = noiseBuffer();
+  const g = actx.createGain();
+  g.gain.setValueAtTime(0.08, t);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + 0.11);
+  const bp = actx.createBiquadFilter();
+  bp.type = 'highpass'; bp.frequency.value = 900;
+  src.connect(bp); bp.connect(g); g.connect(masterGain);
+  src.start(t); src.stop(t + 0.12);
+}
+// the power cut: a descending whine that snaps to a clunk
+function powerDown() {
+  if (!actx || muted) return;
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.type = 'sawtooth';
+  o.frequency.setValueAtTime(560, actx.currentTime);
+  o.frequency.exponentialRampToValueAtTime(48, actx.currentTime + 0.9);
+  g.gain.setValueAtTime(0.07, actx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 1.0);
+  o.connect(g); g.connect(masterGain);
+  o.start(); o.stop(actx.currentTime + 1.05);
+  setTimeout(thunk, 920);
+}
+// a slow, ugly heartbeat for the red phase
+let heartTimer = null;
+function startHeart() {
+  if (heartTimer) return;
+  const beat = () => {
+    blip(60, 0.16, 'sine', 0.10);
+    setTimeout(() => blip(54, 0.20, 'sine', 0.085), 200);
+    heartTimer = setTimeout(beat, 1500);
+  };
+  beat();
+}
+function stopHeart() { clearTimeout(heartTimer); heartTimer = null; }
+
+muteBtn.addEventListener('click', () => {
+  muted = !muted;
+  if (masterGain) masterGain.gain.value = muted ? 0 : 0.9;
+  muteBtn.innerHTML = muted ? '[ &#9788; ]' : '[ &#9834; ]';
+});
+
+// ── typewriter output ────────────────────────────────────────────────────────
+let skipType = false;
+function addLine(text, cls = 'story', delay = 0) {
+  return new Promise(res => {
+    setTimeout(async () => {
+      const el = document.createElement('div');
+      el.className = 'line ' + cls;
+      output.appendChild(el);
+      const base = cls.split(' ')[0];
+      if (base === 'blank' || base === 'art') {
+        el.textContent = text;
+        output.scrollTop = output.scrollHeight;
+        return res();
+      }
+      const isInput = base === 'input';
+      const isRoom  = base === 'room' || base === 'dread' || base === 'you';
+      let speed = isInput ? 26 : isRoom ? 18 : (text.length > 64 ? 9 : 14);
+      for (let i = 0; i < text.length; i++) {
+        el.textContent += text[i];
+        if (text[i] !== ' ') tick(isInput ? 1.05 : 0.62);
+        output.scrollTop = output.scrollHeight;
+        if (!skipType) await sleep(speed);
+      }
+      res();
+    }, delay);
+  });
+}
+function blank(delay = 0) { return addLine('', 'blank', delay); }
+function art(s, delay = 0) { return addLine(s, 'art', delay); }
+
+async function typeLines(lines) {
+  for (const item of lines) {
+    const txt = item[0], cls = item[1] || 'story', gap = item.length > 2 ? item[2] : 220;
+    await addLine(txt, cls, 0);
+    await sleep(gap);
+  }
+}
+
+// corrupt a string by glitching some characters (for the bleed-through)
+const GLITCH_CHARS = "#@%&!?*▓▒░/\\|^~";
+function corruptText(s, amount) {
+  let out = '';
+  for (const ch of s) {
+    if (ch !== ' ' && Math.random() < amount) {
+      out += GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+    } else out += ch;
+  }
+  return out;
+}
+// print a line that flickers between corrupted and clean before settling
+async function glitchLine(clean, cls = 'glitch', passes = 4) {
+  const el = document.createElement('div');
+  el.className = 'line ' + cls;
+  output.appendChild(el);
+  for (let p = 0; p < passes; p++) {
+    el.innerHTML = '<span class="corrupt">' + corruptText(clean, 0.5 - p * 0.1) + '</span>';
+    glitchBurst();
+    output.scrollTop = output.scrollHeight;
+    await sleep(70);
+  }
+  el.textContent = clean;
+  output.scrollTop = output.scrollHeight;
+}
+
+// ── visual phase control ─────────────────────────────────────────────────────
+function setPhase(name) {
+  document.body.classList.remove('phase-amber', 'phase-red');
+  if (name === 'amber') document.body.classList.add('phase-amber');
+  if (name === 'red')   document.body.classList.add('phase-red');
+}
+async function flicker() {
+  document.body.classList.add('flicker');
+  blip(2400, 0.02, 'square', 0.03);
+  await sleep(420);
+  document.body.classList.remove('flicker');
+}
+async function jolt() {
+  document.body.classList.add('jolt');
+  await sleep(340);
+  document.body.classList.remove('jolt');
+}
+function setTape(label, spinning) {
+  tapeEl.innerHTML = (spinning ? '<span class="reel">&#9673;</span> ' : '&#9711; ') + label;
+}
+
+// ── small ASCII headers for rooms ────────────────────────────────────────────
+const ART = {
+  house:
+"        _____________________\n" +
+"       /\\                    \\\n" +
+"      /  \\   ____   ____      \\\n" +
+"     /    \\ |    | |    |      \\\n" +
+"    /______\\|____|_|____|_______\\\n" +
+"    |  []   |   .----.   |  []  |\n" +
+"    |       |   | [] |   |      |\n" +
+"    |_______|___|____|___|______|",
+  tv:
+"     .------------------------.\n" +
+"     |  ::::::::::::::::::::   |\n" +
+"     |  :  no signal       :  |\n" +
+"     |  ::::::::::::::::::::   |\n" +
+"     '__[o]_______________[o]_'"
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  THE ADVENTURE
+//  Phases of the FICTION (separate from visual phase):
+//    'load'  - cassette boot
+//    'warm'  - cosy nostalgic crawl through the house
+//    'turn'  - the power cuts; descriptions start to rot
+//    'rot'   - the bedroom; corruption deepens; second presence
+//    'reveal'- the meta beat; "it was all my fault"
+//    'loop'  - forced restart
+//  Rooms drive WHAT the parser accepts. Each room has exits + objects.
+// ═══════════════════════════════════════════════════════════════════════════
+
+let fiction = 'load';
+let room = null;            // current room id
+let running = false;
+let warmth = 0;            // how many warm rooms visited (gates the turn)
+const flags = {};          // examined things, doors opened, etc.
+
+// ── parser normalizer: forgiving synonyms → canonical verb ───────────────────
+const VERB_SYN = {
+  look: 'look', l: 'look', 'look around': 'look',
+  examine: 'examine', x: 'examine', inspect: 'examine', check: 'examine', read: 'examine', look_at: 'examine',
+  go: 'go', walk: 'go', move: 'go', enter: 'go', head: 'go',
+  north: 'north', n: 'north', forward: 'north', up: 'north', upstairs: 'north', in: 'north', inside: 'north',
+  south: 'south', s: 'south', back: 'south', down: 'south', downstairs: 'south', out: 'south', outside: 'south',
+  open: 'open',
+  turn: 'turn', switch: 'turn', flip: 'turn',
+  use: 'use', press: 'use', push: 'use', play: 'use', insert: 'insert',
+  take: 'take', get: 'take', grab: 'take', pick: 'take',
+  wait: 'wait', z: 'wait',
+  type: 'type', write: 'type',
+  yes: 'yes', y: 'yes', no: 'no'
+};
+const DIRWORDS = { north:'north', n:'north', south:'south', s:'south', east:'north', west:'south' };
+
+function normalize(raw) {
+  let s = raw.trim().toLowerCase().replace(/\s+/g, ' ');
+  // strip polite filler
+  s = s.replace(/^(please |i want to |i'd like to |can i |let me |try to |to )/g, '');
+  s = s.replace(/\b(the|a|an|my|your|some|at|on|to)\b/g, ' ').replace(/\s+/g, ' ').trim();
+  const words = s.split(' ').filter(Boolean);
+  if (words.length === 0) return { verb: '', noun: '' };
+  // bare direction word -> go DIR
+  if (DIRWORDS[words[0]] && words.length === 1) return { verb: 'go', noun: DIRWORDS[words[0]] };
+  let verb = VERB_SYN[words[0]] || words[0];
+  let rest = words.slice(1);
+  // "look at X" -> examine X
+  if (verb === 'look' && rest[0] === 'at') { verb = 'examine'; rest = rest.slice(1); }
+  // collapse remaining direction synonyms in the noun slot
+  let noun = rest.join(' ');
+  if (DIRWORDS[noun]) noun = DIRWORDS[noun];
+  return { verb, noun };
+}
+
+// ── WARM ROOMS (the cosy fiction) ────────────────────────────────────────────
+// Each room: enter() prints description; handle(verb,noun) returns true if it
+// consumed the command. Unknown commands fall through to a forgiving re-prompt.
+
+const ROOMS = {
+  driveway: {
+    art: 'house',
+    async enter() {
+      setTape('TAPE A  PLAY', true);
+      await typeLines([
+        ["THE DRIVEWAY", 'room', 260],
+        ["", 'blank', 0],
+        ["Gravel under your tyres, then quiet. The old house leans into the dark exactly as it always did, porch light off, curtains drawn.", 'story', 200],
+        ["You haven't been back in years. You told yourself you never would.", 'story', 200],
+        ["The FRONT DOOR is ahead of you. A worn KEY is already in your hand.", 'story', 200],
+        ["", 'blank', 0],
+        ["> exits: NORTH (front door)", 'system', 0],
+      ]);
+    },
+    handle: async (v, n) => {
+      if (v === 'examine' && /key/.test(n)) { await say("Brass, warm from your palm. It fits a lock you have not touched since you were small."); return true; }
+      if (v === 'examine' && /(door|house|porch|light)/.test(n)) { await say("Paint peeling at the jamb. The same brass numbers. The same little scratch where you dragged your bike, once."); return true; }
+      if ((v === 'open' && /door/.test(n)) || (v === 'go' && /(north|door|house|in)/.test(n)) || (v === 'use' && /key/.test(n))) {
+        confirmTone();
+        await say("The key turns. The door gives with the old familiar groan, and warm darkness breathes out to meet you.");
+        return goRoom('hall');
+      }
+      return false;
+    }
+  },
+
+  hall: {
+    async enter() {
+      await typeLines([
+        ["THE HALLWAY", 'room', 260],
+        ["", 'blank', 0],
+        ["Inside, it smells of dust and someone else's cooking from a decade ago. A coat still hangs on the hook. Yours, when you were twelve.", 'story', 200],
+        ["A telephone TABLE sits under the stairs. To the SOUTH is the LIVING ROOM, its lamp left glowing. The STAIRS climb NORTH into the dark.", 'story', 200],
+        ["", 'blank', 0],
+        ["> exits: SOUTH (living room), NORTH (upstairs)", 'system', 0],
+      ]);
+    },
+    handle: async (v, n) => {
+      if (v === 'examine' && /(coat|hook)/.test(n)) { await say("Small. A child's. You could not get one arm into it now. You leave it where it is."); return true; }
+      if (v === 'examine' && /(table|phone|telephone)/.test(n)) { await say("The phone is dead, of course. A pad beside it. Someone began writing your name and stopped halfway."); return true; }
+      if (v === 'examine' && /stair/.test(n)) { await say("They go up into the part of the house you are not ready for yet. Not yet."); return true; }
+      if (v === 'go' && /(south|living)/.test(n)) { confirmTone(); return goRoom('living'); }
+      if (v === 'go' && /(north|stair|up)/.test(n)) {
+        if (!flags.typed) { await say("Not yet. There's something you came to do first. The living room. The lamp is on for a reason."); return true; }
+        confirmTone(); return goRoom('bedroom');
+      }
+      return false;
+    }
+  },
+
+  living: {
+    async enter() {
+      warmth++;
+      await typeLines([
+        ["THE LIVING ROOM", 'room', 260],
+        ["", 'blank', 0],
+        ["The lamp throws a soft amber circle. Two armchairs face a cold fireplace. On the mantel, photographs you don't look at directly.", 'story', 200],
+        ["By the window stands a TYPEWRITER, a clean sheet already rolled in. You used to sit here for hours, making up stories where everyone was safe.", 'story', 200],
+        ["", 'blank', 0],
+        ["> exits: NORTH (hallway)", 'system', 0],
+      ]);
+      if (!flags.typed) await say("(There is a sheet in the TYPEWRITER. You could TYPE something.)", 'system');
+    },
+    handle: async (v, n) => {
+      if (v === 'examine' && /(photo|photograph|mantel|picture)/.test(n)) { await say("A family at a beach. A birthday. A face that is yours but lighter, before. You put it back face-down."); return true; }
+      if (v === 'examine' && /(chair|armchair|fireplace|fire)/.test(n)) { await say("Cold grate, cold ash. One chair still holds the shape of someone who sat in it a long time."); return true; }
+      if (v === 'examine' && /(typewriter|sheet|paper|machine)/.test(n)) { await say("An old manual machine, keys worn shiny. The sheet is blank and waiting. TYPE to write on it."); return true; }
+      if ((v === 'type' || v === 'use') && /(typewriter|machine|sheet)?/.test(n)) { return typeOnMachine(); }
+      if (v === 'go' && /(north|hall)/.test(n)) { confirmTone(); return goRoom('hall'); }
+      return false;
+    }
+  }
+};
+
+// typing on the machine is the hinge: the warm fiction starts to bleed.
+async function typeOnMachine() {
+  if (flags.typed) { await say("The sheet already carries your words. You don't want to read them again."); return true; }
+  flags.typed = true;
+  warmth++;
+  await blank(100);
+  await typeLines([
+    ["You set your fingers on the keys. They remember before you do.", 'story', 260],
+    ["", 'blank', 0],
+  ]);
+  // the machine types back — the bleed begins, gentle at first
+  await addLine("clack. clack. clack-clack.", 'system', 0);
+  await sleep(500);
+  await addLine('"WELCOME HOME."', 'you', 0);
+  await sleep(900);
+  await addLine("You didn't type that.", 'story', 0);
+  await sleep(900);
+  // the lights stutter once
+  await flicker();
+  blip(1400, 0.03, 'square', 0.04);
+  await say("The lamp dips, steadies. The amber circle shrinks a little. Go UP, it seems to say. Up the STAIRS. Your old room is waiting.");
+  return true;
+}
+
+// ── room transition ──────────────────────────────────────────────────────────
+async function goRoom(id) {
+  room = id;
+  const r = ROOMS[id];
+  await blank(120);
+  if (r && r.art && ART[r.art]) await art(ART[r.art]);
+  if (r && r.enter) await r.enter();
+  return true;
+}
+
+// ── helper: print a story line ────────────────────────────────────────────────
+async function say(text, cls = 'story') { await addLine(text, cls, 0); }
+
+// ── THE TURN: power cut, then the rotten bedroom ──────────────────────────────
+async function powerCut() {
+  fiction = 'turn';
+  setPhase('amber');
+  setTape('TAPE A  ??:??', false);
+  await blank(150);
+  powerDown();
+  await jolt();
+  await typeLines([
+    ["The lamp downstairs goes out. The whole house exhales into black.", 'story', 300],
+    ["", 'blank', 0],
+  ]);
+  sourHum(1);
+  await glitchLine("Something on the stairs moves with you. Step for step.");
+  await sleep(600);
+  await typeLines([
+    ["You climb anyway. The wallpaper is wet under your hand. It was not wet before.", 'story', 280],
+    ["", 'blank', 0],
+  ]);
+  await goRoom('bedroom');
+}
+
+ROOMS.bedroom = {
+  async enter() {
+    fiction = 'rot';
+    await typeLines([
+      ["YOUR OLD ROOM", 'room', 300],
+      ["", 'blank', 0],
+      ["Smaller than the room you kept in memory. The single BED. A child's DESK. A WINDOW black with no streetlight behind it.", 'story', 240],
+      ["", 'blank', 0],
+    ]);
+    await glitchLine("The walls are warm. Not summer-warm. Furnace-warm.");
+    await sleep(400);
+    await typeLines([
+      ["There is a smell of smoke that the house refuses to admit to.", 'story', 240],
+      ["Someone is sitting on the BED with their back to you. Small. Waiting. They have been waiting a very long time.", 'dread', 260],
+      ["", 'blank', 0],
+      ["> EXAMINE the figure. Or the BED, the DESK, the WINDOW.", 'system', 0],
+    ]);
+  },
+  handle: async (v, n) => {
+    if (v === 'examine' && /(window)/.test(n)) {
+      await glitchLine("Outside the glass: the driveway, the car, all of it burning very quietly, very politely, as if not to wake you.");
+      return true;
+    }
+    if (v === 'examine' && /(desk)/.test(n)) {
+      await glitchLine("Scorch marks under a layer of childhood stickers. A school report with your name. The grade is a single repeated word: STAY. STAY. STAY.");
+      return true;
+    }
+    if (v === 'examine' && /(bed)/.test(n) && !flags.sawFigure) {
+      await say("You can't look at the bed without looking at who is on it. EXAMINE the FIGURE.");
+      return true;
+    }
+    if (v === 'examine' && /(figure|child|kid|person|someone|them|him|her|it)/.test(n)) {
+      flags.sawFigure = true;
+      return revealFigure();
+    }
+    if ((v === 'go') && /(south|down|hall|out|stair)/.test(n)) {
+      await glitchLine("There is no door behind you now. There was never going to be a door behind you.");
+      return true;
+    }
+    return false;
+  }
+};
+
+// ── THE REVEAL ────────────────────────────────────────────────────────────────
+async function revealFigure() {
+  fiction = 'reveal';
+  setPhase('red');
+  sourHum(2);
+  startHeart();
+  setTape('TAPE A  &#9888; ERR', false);
+  await jolt();
+  await blank(150);
+  await typeLines([
+    ["You reach out and turn the small shoulder toward you.", 'story', 360],
+    ["", 'blank', 0],
+  ]);
+  await sleep(500);
+  await glitchLine("It is a child. The child you were. The same scratch on the bike, the same coat downstairs.");
+  await sleep(700);
+  await glitchLine("And it is wearing your face now. The one from tonight. The one in the driveway.");
+  await sleep(800);
+  await flicker();
+  await typeLines([
+    ["", 'blank', 0],
+    ["The second set of footsteps on the stairs. The hand under yours on the wet wall.", 'dread', 320],
+    ["The someone who has been one step behind you since the front door.", 'dread', 320],
+    ["", 'blank', 0],
+  ]);
+  await sleep(600);
+  await glitchLine("It was you. It was always going to be you.", 'dread', 5);
+  await sleep(900);
+  await typeLines([
+    ["", 'blank', 0],
+    ["You remember the lamp left burning. The sheet in the typewriter. The night you did not leave when you could have.", 'story', 320],
+    ["You remember what you did to this house. Why no one ever came back.", 'story', 320],
+    ["", 'blank', 0],
+  ]);
+  await sleep(700);
+  await glitchLine("IT WAS ALL MY FAULT.", 'dread', 7);
+  await sleep(1100);
+  await blank(200);
+  await addLine("> (there is nothing to do here. nothing you can SAY undoes it.)", 'system', 0);
+  await sleep(600);
+  await say("> type ANYTHING, and the tape will begin again.", 'system');
+  fiction = 'loop';
+  refreshUI();
+}
+
+// the loop: the tape rewinds and starts over, slightly wrong
+async function loopBack() {
+  running = true;
+  cmdInput.disabled = true; sendBtn.disabled = true;
+  await blank(150);
+  await typeLines([
+    ["The screen folds to a white line and the reels spin backward.", 'system', 280],
+    ["TAPE A . . . REWIND . . .", 'system', 220],
+    ["", 'blank', 0],
+  ]);
+  // rewind sound
+  if (actx && !muted) {
+    const o = actx.createOscillator(), g = actx.createGain();
+    o.type = 'sawtooth';
+    o.frequency.setValueAtTime(120, actx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(900, actx.currentTime + 1.1);
+    g.gain.setValueAtTime(0.05, actx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 1.2);
+    o.connect(g); g.connect(masterGain); o.start(); o.stop(actx.currentTime + 1.2);
+  }
+  await sleep(1100);
+  stopHeart();
+  const n = parseInt(store.get('ha_loops') || '0', 10) + 1;
+  store.set('ha_loops', String(n));
+  await glitchLine("Gravel under your tyres, then quiet. You haven't been back in years.", 'glitch', 3);
+  await sleep(700);
+  await say("You told yourself you never would.", 'story');
+  await sleep(700);
+  if (n >= 2) {
+    await glitchLine("(loop " + n + ". you keep coming back. you always do.)", 'system', 3);
+    await sleep(600);
+  }
+  // hard reset to a fresh play — fully replayable, no dead end
+  await blank(200);
+  await say("> press ENTER to play the tape again.", 'system');
+  fiction = 'rewound';
+  running = false;
+  refreshUI();
+}
+
+// ── dispatcher ───────────────────────────────────────────────────────────────
+async function handle(raw) {
+  // boot / rewound: any ENTER starts the tape
+  if (fiction === 'load' || fiction === 'rewound') { await startTape(); return; }
+
+  if (fiction === 'loop') { await loopBack(); return; }
+
+  const { verb, noun } = normalize(raw);
+  await addLine('> ' + raw.trim(), 'input', 0);
+  await blank(40);
+
+  if (!verb) { await reprompt(); return; }
+
+  // global verbs available everywhere
+  if (verb === 'look') {
+    const r = ROOMS[room];
+    if (r && r.enter) { await blank(20); await r.enter(); }
+    return;
+  }
+  if (verb === 'wait') {
+    if (fiction === 'rot') { await glitchLine("Waiting only lets it get closer. It is very close now."); }
+    else { await say("Time passes. The house settles around you. Nothing changes. Nothing here ever really changed."); }
+    return;
+  }
+
+  // hand off to the current room
+  const r = ROOMS[room];
+  if (r && r.handle) {
+    const consumed = await r.handle(verb, noun);
+    if (consumed) return;
+  }
+  await reprompt(verb, noun);
+}
+
+// forgiving re-prompt — never a dead end
+const REPROMPTS = [
+  "The house doesn't answer to that. Try LOOK, EXAMINE something, or GO a direction.",
+  "Nothing happens. (verbs it knows: LOOK, EXAMINE, GO, OPEN, TURN, TYPE)",
+  "You hesitate. That isn't a thing you can do here.",
+];
+async function reprompt(verb, noun) {
+  blip(170, 0.1, 'sawtooth', 0.04);
+  if (fiction === 'rot' || fiction === 'reveal') {
+    await glitchLine("The word comes out wrong. The house eats it.");
+  } else {
+    await say(REPROMPTS[Math.floor(Math.random() * REPROMPTS.length)], 'parser');
+  }
+}
+
+// ── tape boot ─────────────────────────────────────────────────────────────────
+async function startTape() {
+  running = true;
+  cmdInput.disabled = true; sendBtn.disabled = true;
+  output.innerHTML = '';
+  setPhase('green');
+  setTape('TAPE A  LOAD', true);
+  await typeLines([
+    ["HOMECOMING  -  a text adventure", 'system', 180],
+    ["(c) you, age 11. recorded onto a C-60 cassette, one rainy week.", 'system', 180],
+    ["", 'blank', 0],
+    ["LOADING", 'system', 120],
+  ]);
+  for (let i = 0; i < 12; i++) { await addLine('.', 'system', 0); blip(900 + i * 40, 0.015, 'square', 0.03); await sleep(90); }
+  await blank(150);
+  await typeLines([
+    ["BLOCK 1 . . . OK", 'system', 120],
+    ["BLOCK 2 . . . OK", 'system', 120],
+    ["READY.", 'system', 200],
+    ["", 'blank', 0],
+    ["Type a command and press ENTER. Try LOOK to begin.", 'system', 0],
+    ["", 'blank', 0],
+  ]);
+  fiction = 'warm';
+  room = 'driveway';
+  flags.typed = false; flags.sawFigure = false; warmth = 0;
+  await goRoom('driveway');
+  running = false;
+  refreshUI();
+}
+
+// Override the hall->bedroom path: going UP after typing should run the power cut,
+// not drop straight into the rotten room. Patch the hall handler.
+const _hallHandle = ROOMS.hall.handle;
+ROOMS.hall.handle = async (v, n) => {
+  if (v === 'go' && /(north|stair|up)/.test(n) && flags.typed && fiction === 'warm') {
+    confirmTone();
+    await powerCut();   // sets fiction='turn'->'rot', enters bedroom itself
+    return true;
+  }
+  return _hallHandle(v, n);
+};
+
+// ── input wiring ──────────────────────────────────────────────────────────────
+const VERB_CHIPS = {
+  warm:    ['LOOK', 'EXAMINE', 'GO NORTH', 'GO SOUTH', 'OPEN DOOR', 'TYPE'],
+  rot:     ['LOOK', 'EXAMINE FIGURE', 'EXAMINE WINDOW', 'EXAMINE DESK'],
+  reveal:  [],
+  loop:    ['CONTINUE'],
+  rewound: ['PLAY TAPE'],
+  load:    ['PLAY TAPE'],
+  turn:    ['LOOK'],
+};
+function renderVerbs() {
+  verbsEl.innerHTML = '';
+  let chips = VERB_CHIPS[fiction] || [];
+  if (fiction === 'warm' && room === 'driveway') chips = ['LOOK', 'EXAMINE KEY', 'OPEN DOOR'];
+  if (fiction === 'warm' && room === 'living')   chips = ['LOOK', 'EXAMINE TYPEWRITER', 'TYPE', 'GO NORTH'];
+  if (fiction === 'warm' && room === 'hall')     chips = ['LOOK', 'EXAMINE TABLE', 'GO SOUTH', 'GO NORTH'];
+  if (fiction === 'rot')                         chips = ['EXAMINE FIGURE', 'EXAMINE WINDOW', 'EXAMINE DESK'];
+  chips.forEach(label => {
+    const b = document.createElement('button');
+    b.className = 'verb';
+    b.textContent = label;
+    b.disabled = running;
+    b.addEventListener('click', () => {
+      if (running) return;
+      const cmd = (label === 'CONTINUE' || label === 'PLAY TAPE') ? '' : label.toLowerCase();
+      submit(cmd);
+    });
+    verbsEl.appendChild(b);
+  });
+}
+
+function refreshUI() {
+  const idle = !running;
+  cmdInput.disabled = !idle;
+  sendBtn.disabled = !idle;
+  if (fiction === 'reveal') { cmdInput.placeholder = 'type anything to begin again...'; }
+  else if (fiction === 'loop' || fiction === 'rewound' || fiction === 'load') { cmdInput.placeholder = 'press ENTER...'; }
+  else { cmdInput.placeholder = 'type a command, e.g. LOOK'; }
+  renderVerbs();
+  if (idle) cmdInput.focus();
+}
+
+async function submit(forced) {
+  if (running) return;
+  const raw = (forced !== undefined) ? forced : cmdInput.value;
+  cmdInput.value = '';
+  // allow empty ENTER only where it's meaningful (boot / loop / reveal)
+  const allowEmpty = (fiction === 'load' || fiction === 'rewound' || fiction === 'loop' || fiction === 'reveal');
+  if (raw.trim() === '' && !allowEmpty) { cmdInput.focus(); return; }
+  running = true;
+  if (!actx) initAudio();
+  cmdInput.disabled = true; sendBtn.disabled = true;
+  renderVerbs();
+  try {
+    // reveal: any input loops
+    if (fiction === 'reveal') { await loopBack(); }
+    else { await handle(raw); }
+  } catch (e) {
+    await addLine('// THE TAPE SNAPS. STAND BY.', 'alarm', 0);
+    fiction = 'rewound';
+  }
+  running = false;
+  refreshUI();
+}
+
+sendBtn.addEventListener('click', () => submit());
+cmdInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); submit(); }
+  else if (e.key.length === 1) { if (!actx) initAudio(); tick(0.8); }
+});
+
+// ── first-boot screen (waits for the gesture before any audio) ────────────────
+async function firstBoot() {
+  fiction = 'load';
+  await typeLines([
+    ["", 'blank', 0],
+    ["A cassette sits in the deck, hand-labelled in faded biro:", 'system', 220],
+    ["", 'blank', 0],
+    ["          H O M E C O M I N G", 'room', 260],
+    ["", 'blank', 0],
+    ["You found it in a box you should have thrown away. You don't have to play it.", 'story', 220],
+    ["But you will.", 'story', 360],
+    ["", 'blank', 0],
+    ["> press ENTER (or PLAY TAPE) to load the cassette.", 'system', 0],
+  ]);
+  refreshUI();
+}
+firstBoot();
+</script>
+</body>
+</html>

@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Wish I Were the Moon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:    #e8ecf6;
+    --faint:  #8d96b8;
+    --gold:   #f5e6a8;
+    --night:  #070b1a;
+    --deep:   #02030a;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--deep);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  #wrap {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 50% 38%, #0d1430 0%, #060a18 55%, #02030a 100%);
+  }
+
+  /* the canvas keeps a 3:2 dreamy frame, letterboxed */
+  #stage {
+    position: relative;
+    width: min(100vw, calc(100vh * 1.5));
+    height: min(100vh, calc(100vw / 1.5));
+    box-shadow: 0 0 80px rgba(0,0,0,0.7), inset 0 0 120px rgba(0,0,0,0.55);
+  }
+
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: crosshair;
+  }
+
+  /* soft vignette + grain overlay above the canvas */
+  #stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 52%, rgba(2,3,10,0.85) 100%);
+    z-index: 5;
+  }
+
+  /* top bar: title + mute */
+  #topbar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 14px 18px;
+    z-index: 20;
+    pointer-events: none;
+  }
+  #title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(15px, 2.4vw, 24px);
+    letter-spacing: 1px;
+    color: var(--ink);
+    text-shadow: 0 0 18px rgba(180,200,255,0.35);
+    opacity: 0.85;
+  }
+  #mute-btn {
+    pointer-events: auto;
+    background: rgba(10,14,30,0.45);
+    border: 1px solid rgba(160,175,220,0.3);
+    color: var(--faint);
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    width: 38px; height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color .2s, color .2s, background .2s;
+    line-height: 1;
+  }
+  #mute-btn:hover { border-color: var(--ink); color: var(--ink); background: rgba(20,28,55,0.6); }
+
+  /* bottom hint / instruction line */
+  #hint {
+    position: absolute;
+    bottom: 30px; left: 0; right: 0;
+    text-align: center;
+    z-index: 20;
+    pointer-events: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(14px, 2vw, 20px);
+    color: var(--ink);
+    text-shadow: 0 1px 14px rgba(0,0,0,0.9);
+    opacity: 0.9;
+    transition: opacity .6s;
+    padding: 0 16px;
+  }
+
+  /* the Polaroid currently in hand — shown above the hint */
+  #hand {
+    position: absolute;
+    bottom: 64px; left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    z-index: 20;
+    pointer-events: auto;
+    width: 78px; height: 92px;
+    background: #f3efe2;
+    padding: 6px 6px 16px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.75);
+    display: none;
+    cursor: pointer;
+    transition: transform .25s;
+  }
+  #hand:hover { transform: translateX(-50%) rotate(0deg) scale(1.04); }
+  #hand canvas { position: static; width: 66px; height: 60px; cursor: pointer; box-shadow: none; }
+  #hand .lbl {
+    font-family: 'EB Garamond', serif;
+    font-size: 10px; text-align: center; color: #3a3528;
+    margin-top: 3px; letter-spacing: .5px;
+  }
+
+  /* the ending card */
+  #card {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(4,6,16,0.55) 0%, rgba(2,3,10,0.92) 100%);
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 1.2s;
+  }
+  #card.show { display: flex; opacity: 1; }
+  #card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(22px, 4.4vw, 40px);
+    color: var(--gold);
+    text-shadow: 0 0 30px rgba(245,230,168,0.4);
+    margin-bottom: 14px;
+    line-height: 1.15;
+    max-width: 620px;
+  }
+  #card p {
+    font-size: clamp(15px, 2.3vw, 20px);
+    color: var(--ink);
+    max-width: 520px;
+    line-height: 1.5;
+    opacity: 0.86;
+    margin-bottom: 8px;
+  }
+  #card .found {
+    margin-top: 22px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--faint);
+    font-size: clamp(13px, 1.9vw, 17px);
+  }
+  #again {
+    margin-top: 30px;
+    pointer-events: auto;
+    background: transparent;
+    border: 1px solid rgba(160,175,220,0.45);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(15px, 2.2vw, 19px);
+    letter-spacing: 1px;
+    padding: 10px 26px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: border-color .25s, background .25s, color .25s;
+  }
+  #again:hover { border-color: var(--gold); color: var(--gold); background: rgba(245,230,168,0.06); }
+
+  /* the opening veil */
+  #veil {
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 40%, #0a1232 0%, #03050f 70%, #02030a 100%);
+    padding: 24px;
+    transition: opacity 1.4s;
+    cursor: pointer;
+  }
+  #veil h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(26px, 5.5vw, 52px);
+    color: var(--ink);
+    text-shadow: 0 0 36px rgba(180,200,255,0.4);
+    margin-bottom: 18px;
+    line-height: 1.1;
+  }
+  #veil p {
+    font-size: clamp(14px, 2.3vw, 19px);
+    color: var(--faint);
+    max-width: 460px;
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  #veil .begin {
+    margin-top: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(16px, 2.4vw, 21px);
+    color: var(--gold);
+    text-shadow: 0 0 22px rgba(245,230,168,0.4);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+  #veil.hide { opacity: 0; pointer-events: none; }
+
+  /* credit pinned to the very bottom */
+  #credit {
+    position: absolute;
+    bottom: 4px; left: 0; right: 0;
+    text-align: center;
+    z-index: 50;
+    font-family: 'EB Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.4px;
+    color: rgba(120,130,165,0.5);
+    pointer-events: none;
+    padding: 0 8px;
+  }
+
+  /* progress dots — how many endings found */
+  #dots {
+    position: absolute;
+    top: 16px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    gap: 7px;
+    pointer-events: none;
+  }
+  .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    border: 1px solid rgba(160,175,220,0.4);
+    background: transparent;
+    transition: background .4s, box-shadow .4s;
+  }
+  .dot.on { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 8px rgba(245,230,168,0.7); }
+</style>
+</head>
+<body>
+
+<div id="wrap">
+  <div id="stage">
+    <canvas id="scene"></canvas>
+
+    <div id="dots"></div>
+
+    <div id="topbar">
+      <div id="title">I Wish I Were the Moon</div>
+      <button id="mute-btn" title="toggle sound" aria-label="toggle sound">&#9834;</button>
+    </div>
+
+    <div id="hand" title="tap an empty spot to place this, or tap here to drop it">
+      <canvas id="hand-canvas" width="66" height="60"></canvas>
+      <div class="lbl">photograph</div>
+    </div>
+
+    <div id="hint">a quiet night. a girl, a boy, the moon.</div>
+
+    <div id="card">
+      <h2 id="card-title"></h2>
+      <p id="card-body"></p>
+      <div class="found" id="card-found"></div>
+      <button id="again">again</button>
+    </div>
+
+    <div id="veil">
+      <h1>I Wish I Were the Moon</h1>
+      <p>A girl on a boat. A boy by the moon. A sea that remembers everything.</p>
+      <p>You hold a small camera. Photograph a figure, then place the photo somewhere else &mdash; and watch what becomes of them.</p>
+      <div class="begin">tap anywhere to begin</div>
+    </div>
+
+    <div id="credit">Tribute to I Wish I Were the Moon by Daniel Benmergui (2008). Not affiliated.</div>
+  </div>
+</div>
+
+<script>
+"use strict";
+// ────────────────────────────────────────────────────────────────────────────
+//  I WISH I WERE THE MOON  —  a photograph-and-place dream
+//  Single screen. Click/tap a figure to photograph it; click/tap an anchor to
+//  place the copy. Rearranging the boy / girl / moon / reflection yields poems.
+// ────────────────────────────────────────────────────────────────────────────
+
+const canvas = document.getElementById('scene');
+const ctx = canvas.getContext('2d');
+const handEl = document.getElementById('hand');
+const handCanvas = document.getElementById('hand-canvas');
+const handCtx = handCanvas.getContext('2d');
+const hintEl = document.getElementById('hint');
+const cardEl = document.getElementById('card');
+const cardTitle = document.getElementById('card-title');
+const cardBody = document.getElementById('card-body');
+const cardFound = document.getElementById('card-found');
+const againBtn = document.getElementById('again');
+const veil = document.getElementById('veil');
+const muteBtn = document.getElementById('mute-btn');
+const dotsEl = document.getElementById('dots');
+
+// logical resolution — everything drawn in this space, CSS scales to fit
+const W = 600, H = 400;
+canvas.width = W; canvas.height = H;
+
+// ── safe localStorage (iframe may block it) ─────────────────────────────────
+const store = (() => {
+  let mem = {};
+  let ok = true;
+  try { const k='__moon_test__'; localStorage.setItem(k,'1'); localStorage.removeItem(k); }
+  catch(e){ ok = false; }
+  return {
+    get(k){ try { return ok ? localStorage.getItem(k) : (mem[k] ?? null); } catch(e){ return mem[k] ?? null; } },
+    set(k,v){ try { ok ? localStorage.setItem(k,v) : (mem[k]=v); } catch(e){ mem[k]=v; } }
+  };
+})();
+
+// ── AUDIO: synthesized ambient, starts only after first gesture ─────────────
+let actx = null, master = null, pad = null, muted = false, started = false;
+let padFilter = null;
+
+function initAudio() {
+  if (actx) return;
+  try {
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+    master = actx.createGain();
+    master.gain.value = muted ? 0 : 0.85;
+    master.connect(actx.destination);
+    startPad();
+  } catch(e) { actx = null; }
+}
+
+// a slow, breathing minor-ish pad + a faint "sea" noise wash
+function startPad() {
+  if (!actx) return;
+  pad = actx.createGain();
+  pad.gain.value = 0.06;
+  padFilter = actx.createBiquadFilter();
+  padFilter.type = 'lowpass';
+  padFilter.frequency.value = 600;
+  pad.connect(padFilter);
+  padFilter.connect(master);
+
+  // gentle chord drone (A2, E3, A3, C#4 — warm-melancholy)
+  [110, 164.81, 220, 277.18].forEach((f, i) => {
+    const o = actx.createOscillator();
+    o.type = i % 2 ? 'sine' : 'triangle';
+    o.frequency.value = f;
+    const g = actx.createGain();
+    g.gain.value = i === 0 ? 0.5 : 0.28 - i * 0.05;
+    // very slow detune drift per voice
+    const lfo = actx.createOscillator();
+    const lg = actx.createGain();
+    lfo.frequency.value = 0.04 + i * 0.013;
+    lg.gain.value = 0.8 + i;
+    lfo.connect(lg); lg.connect(o.detune);
+    lfo.start();
+    o.connect(g); g.connect(pad);
+    o.start();
+  });
+
+  // filter sweep so the pad "breathes"
+  const flfo = actx.createOscillator();
+  const flg = actx.createGain();
+  flfo.frequency.value = 0.05;
+  flg.gain.value = 240;
+  flfo.connect(flg); flg.connect(padFilter.frequency);
+  flfo.start();
+
+  // soft sea wash: looping filtered noise, slow amplitude swell
+  const len = Math.floor(actx.sampleRate * 2);
+  const buf = actx.createBuffer(1, len, actx.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+  const noise = actx.createBufferSource();
+  noise.buffer = buf; noise.loop = true;
+  const nf = actx.createBiquadFilter();
+  nf.type = 'lowpass'; nf.frequency.value = 380;
+  const ng = actx.createGain(); ng.gain.value = 0.0;
+  noise.connect(nf); nf.connect(ng); ng.connect(master);
+  const slfo = actx.createOscillator();
+  const slg = actx.createGain();
+  slfo.frequency.value = 0.08;
+  slg.gain.value = 0.018;
+  slfo.connect(slg); slg.connect(ng.gain);
+  // bias the swell positive
+  const bias = actx.createConstantSource(); bias.offset.value = 0.022;
+  bias.connect(ng.gain); bias.start();
+  slfo.start();
+  noise.start();
+}
+
+// little pluck for taking a photo / placing
+function pluck(freq = 660, dur = 0.5, type = 'sine', gain = 0.12) {
+  if (!actx || muted) return;
+  const o = actx.createOscillator();
+  const g = actx.createGain();
+  o.type = type; o.frequency.value = freq;
+  g.gain.setValueAtTime(0.0001, actx.currentTime);
+  g.gain.exponentialRampToValueAtTime(gain, actx.currentTime + 0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + dur);
+  o.connect(g); g.connect(master);
+  o.start(); o.stop(actx.currentTime + dur + 0.05);
+}
+// camera-shutter: a tiny noise tick
+function shutter() {
+  if (!actx || muted) return;
+  const t = actx.currentTime;
+  const len = Math.floor(actx.sampleRate * 0.04);
+  const b = actx.createBuffer(1, len, actx.sampleRate);
+  const d = b.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+  const s = actx.createBufferSource(); s.buffer = b;
+  const f = actx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 2600; f.Q.value = 1.2;
+  const g = actx.createGain(); g.gain.value = 0.14;
+  s.connect(f); f.connect(g); g.connect(master);
+  s.start(t); s.stop(t + 0.05);
+}
+// a soft chime for an ending
+function chime(notes) {
+  if (!actx || muted) return;
+  notes.forEach((f, i) => setTimeout(() => pluck(f, 1.6, 'sine', 0.1), i * 220));
+}
+
+muteBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  muted = !muted;
+  if (master) master.gain.value = muted ? 0 : 0.85;
+  muteBtn.innerHTML = muted ? '&#9788;' : '&#9834;';
+});
+
+// ── SCENE STATE ─────────────────────────────────────────────────────────────
+// Anchor points and figures live in logical (W×H) space. The sky's upper half
+// is night; the lower half is sea, mirroring the sky. Waterline at y=WATER.
+const WATER = 232;
+
+// canonical positions
+const POS = {
+  moon:        { x: 452, y: 86 },   // the big moon, upper-right
+  moonReflect: { x: 452, y: WATER + (WATER - 86) }, // its reflection in the water
+  boySky:      { x: 408, y: 130 },  // boy up near the moon
+  girlBoat:    { x: 168, y: 214 },  // girl standing on the boat (just above water)
+  boat:        { x: 168, y: 226 },
+  girlReflect: { x: 168, y: WATER + (WATER - 214) }, // girl's reflection
+  sky:         { x: 300, y: 96 },   // generic "up in the sky" anchor
+  deepWater:   { x: 300, y: 320 },  // generic "into the deep" anchor
+};
+
+// figures: which subjects can be photographed, and where they currently are.
+// We track the *base* scene (boy in sky, girl on boat) plus any placed copy.
+let state;
+function freshState() {
+  return {
+    held: null,            // 'boy' | 'girl' | 'moon' | 'reflection' | null
+    placed: [],            // array of {kind, x, y}  (copies dropped into the scene)
+    ended: false,
+    t0: performance.now(),
+  };
+}
+state = freshState();
+
+// twinkling stars (generated once)
+const stars = [];
+(function makeStars(){
+  let s = 12345;
+  const rnd = () => (s = (s*1664525 + 1013904223) >>> 0) / 4294967296;
+  for (let i = 0; i < 90; i++) {
+    const x = rnd() * W;
+    const y = rnd() * (WATER - 8);
+    stars.push({ x, y, r: 0.4 + rnd()*1.1, ph: rnd()*Math.PI*2, sp: 0.6 + rnd()*1.4 });
+  }
+})();
+
+// gentle sea-ripple offsets
+let frame = 0;
+
+// ── HIT TARGETS ─────────────────────────────────────────────────────────────
+// Returns the topmost interactive thing under (x,y), or null.
+// Subjects you can photograph: boy, girl, moon, reflection(moon's reflection).
+// Anchors you can place onto: moon, boat/girl, sky, deepWater, reflection spot.
+function pick(x, y) {
+  const near = (p, r) => (x - p.x) ** 2 + (y - p.y) ** 2 < r * r;
+
+  // when holding a photo, we look for ANCHOR targets to place at
+  if (state.held) {
+    if (near(POS.moon, 42))         return { type: 'anchor', name: 'moon',    x: POS.moon.x, y: POS.moon.y };
+    if (near(POS.girlBoat, 40))     return { type: 'anchor', name: 'boat',    x: POS.girlBoat.x, y: POS.girlBoat.y };
+    if (near(POS.moonReflect, 40))  return { type: 'anchor', name: 'reflection', x: POS.moonReflect.x, y: POS.moonReflect.y };
+    if (y < WATER - 24)             return { type: 'anchor', name: 'sky',     x, y };
+    if (y > WATER + 30)             return { type: 'anchor', name: 'water',   x, y };
+    return { type: 'anchor', name: 'air', x, y };
+  }
+
+  // not holding — look for a SUBJECT to photograph
+  if (near(POS.moon, 40))        return { type: 'subject', kind: 'moon' };
+  if (near(POS.boySky, 30))      return { type: 'subject', kind: 'boy' };
+  if (near(POS.girlBoat, 30))    return { type: 'subject', kind: 'girl' };
+  if (near(POS.moonReflect, 34)) return { type: 'subject', kind: 'reflection' };
+  return null;
+}
+
+// ── ENDINGS ─────────────────────────────────────────────────────────────────
+// Each ending = a recipe matched against (held, anchor). Returns an id or null.
+// Endings (>=5 required, we have 6):
+//  reach   — girl placed onto the moon's reflection in the water → she drowns
+//  together— boy brought down to the boat → the two are together
+//  becomes — boy placed on the moon → he becomes the moon, she is alone
+//  lifted  — girl lifted to the sky / to the moon → she leaves the water
+//  mirror  — both placed as reflections in the water → bittersweet
+//  eclipse — moon placed down onto the boat/sea → the night goes dark (hidden)
+function resolveEnding(held, anchor) {
+  if (held === 'girl' && anchor === 'reflection') return 'reach';
+  if (held === 'boy'  && anchor === 'boat')       return 'together';
+  if (held === 'boy'  && anchor === 'moon')       return 'becomes';
+  if (held === 'girl' && (anchor === 'moon' || anchor === 'sky')) return 'lifted';
+  if (held === 'reflection' && (anchor === 'water' || anchor === 'reflection')) return 'mirror';
+  if (held === 'moon' && (anchor === 'boat' || anchor === 'water')) return 'eclipse';
+  return null;
+}
+
+const ENDINGS = {
+  reach: {
+    title: 'The Distance of the Moon',
+    body: 'She leaned for the moon caught in the water, and the water kept her. Some reflections are only the long way down.',
+    notes: [220, 174.6, 130.8],
+    paint: 'drown',
+  },
+  together: {
+    title: 'Down to the Boat',
+    body: 'He climbed down out of the sky and stood beside her at last. The sea rocked them both, and for one night no one was alone.',
+    notes: [261.6, 329.6, 392, 523.3],
+    paint: 'together',
+  },
+  becomes: {
+    title: 'He Became the Moon',
+    body: 'He took the moon\'s place and could not come back. Now she looks up and he looks down, and neither can cross. He is the light she rows beneath, forever.',
+    notes: [392, 329.6, 261.6, 196],
+    paint: 'becomes',
+  },
+  lifted: {
+    title: 'Lifted',
+    body: 'You raised her off the water and into the dark. She rises past the boat, past the gulls, toward a light that does not warm her — but oh, how she is flying.',
+    notes: [261.6, 392, 523.3, 659.3],
+    paint: 'lifted',
+  },
+  mirror: {
+    title: 'Both as Reflections',
+    body: 'You set them both in the water, where the world hangs upside-down and gentle. They will never touch the sky again — but here, at least, they are together, and still.',
+    notes: [196, 246.9, 293.7, 246.9],
+    paint: 'mirror',
+  },
+  eclipse: {
+    title: 'The Night Goes Dark',
+    body: 'You pulled the moon down to the sea, and it sank like a coin. Without it the boy fades, the water forgets its silver, and the girl is left with only the stars to wish on.',
+    notes: [130.8, 110, 98, 87.3],
+    paint: 'eclipse',
+  },
+};
+
+// track which endings have been found
+function foundSet() {
+  const raw = store.get('moon_found');
+  return new Set(raw ? raw.split(',').filter(Boolean) : []);
+}
+function markFound(id) {
+  const s = foundSet();
+  s.add(id);
+  store.set('moon_found', Array.from(s).join(','));
+  renderDots();
+}
+function renderDots() {
+  const s = foundSet();
+  const ids = Object.keys(ENDINGS);
+  dotsEl.innerHTML = '';
+  ids.forEach(id => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (s.has(id) ? ' on' : '');
+    dotsEl.appendChild(d);
+  });
+}
+
+// ── RENDERING ───────────────────────────────────────────────────────────────
+let endingPaint = null;     // active ending paint mode (string) or null
+let paintT = 0;             // 0..1 ending animation progress
+let drownY = 0;             // girl sinking progress for 'reach'
+
+function moonGlow(cx, cy, R, alpha) {
+  const g = ctx.createRadialGradient(cx, cy, R * 0.3, cx, cy, R * 3.2);
+  g.addColorStop(0, `rgba(245,236,200,${0.55 * alpha})`);
+  g.addColorStop(0.25, `rgba(220,225,255,${0.16 * alpha})`);
+  g.addColorStop(1, 'rgba(220,225,255,0)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(cx, cy, R * 3.2, 0, Math.PI * 2); ctx.fill();
+}
+
+function drawMoon(cx, cy, R, alpha = 1, faceGlow = false) {
+  moonGlow(cx, cy, R, alpha);
+  // body
+  const g = ctx.createRadialGradient(cx - R*0.3, cy - R*0.3, R*0.2, cx, cy, R);
+  g.addColorStop(0, `rgba(252,248,224,${alpha})`);
+  g.addColorStop(0.7, `rgba(232,230,210,${alpha})`);
+  g.addColorStop(1, `rgba(196,200,200,${alpha})`);
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2); ctx.fill();
+  // craters
+  ctx.fillStyle = `rgba(190,192,180,${0.35*alpha})`;
+  [[-0.3,-0.2,0.22],[0.25,0.15,0.3],[0.05,0.4,0.16],[0.4,-0.35,0.13],[-0.45,0.3,0.14]].forEach(c=>{
+    ctx.beginPath(); ctx.arc(cx + c[0]*R, cy + c[1]*R, c[2]*R, 0, Math.PI*2); ctx.fill();
+  });
+  // optional faint face (when the boy has become the moon)
+  if (faceGlow) {
+    ctx.fillStyle = `rgba(120,120,110,${0.30*alpha})`;
+    ctx.beginPath(); ctx.arc(cx - R*0.28, cy - R*0.12, R*0.07, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx + R*0.28, cy - R*0.12, R*0.07, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = `rgba(120,120,110,${0.30*alpha})`;
+    ctx.lineWidth = R*0.05;
+    ctx.beginPath(); ctx.arc(cx, cy + R*0.18, R*0.34, 0.18*Math.PI, 0.82*Math.PI); ctx.stroke();
+  }
+}
+
+// a small figure (boy/girl) — silhouette with a faint warm edge.
+// pose: 'stand' | 'reach' | 'fall' | 'float' | 'sit'
+function drawFigure(cx, cy, scale, color, glow, pose = 'stand') {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+  // glow halo
+  if (glow > 0) {
+    const g = ctx.createRadialGradient(0, -6, 1, 0, -6, 26);
+    g.addColorStop(0, `rgba(245,236,200,${0.5*glow})`);
+    g.addColorStop(1, 'rgba(245,236,200,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(0, -6, 26, 0, Math.PI*2); ctx.fill();
+  }
+  ctx.fillStyle = color;
+  // head
+  ctx.beginPath(); ctx.arc(0, -16, 4.2, 0, Math.PI*2); ctx.fill();
+  // body
+  ctx.beginPath();
+  if (pose === 'reach') {
+    // leaning forward, one arm down toward water
+    ctx.moveTo(-3, -11); ctx.quadraticCurveTo(2, 0, 5, 9);
+    ctx.lineTo(1, 9); ctx.quadraticCurveTo(-1, 0, -5, -10);
+    ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = color; ctx.lineWidth = 2.4; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(2, -8); ctx.lineTo(9, 6); ctx.stroke();        // reaching arm
+    ctx.beginPath(); ctx.moveTo(-2, -8); ctx.lineTo(-6, 0); ctx.stroke();
+  } else if (pose === 'fall' || pose === 'float') {
+    // arms spread
+    ctx.ellipse(0, -3, 3.4, 10, 0, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = color; ctx.lineWidth = 2.4; ctx.lineCap='round';
+    const arm = pose === 'float' ? -9 : 9;
+    ctx.beginPath(); ctx.moveTo(0,-8); ctx.lineTo(8, arm*0.6); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,-8); ctx.lineTo(-8, arm*0.6); ctx.stroke();
+    // legs
+    ctx.beginPath(); ctx.moveTo(0,6); ctx.lineTo(5, 14); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,6); ctx.lineTo(-5, 14); ctx.stroke();
+  } else if (pose === 'sit') {
+    ctx.ellipse(0, -3, 3.6, 8, 0, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = color; ctx.lineWidth = 2.4; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(0,2); ctx.lineTo(7, 6); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,2); ctx.lineTo(-7, 6); ctx.stroke();
+  } else {
+    // standing
+    ctx.ellipse(0, -3, 3.4, 11, 0, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = color; ctx.lineWidth = 2.2; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(0,-7); ctx.lineTo(6, 2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,-7); ctx.lineTo(-6, 2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,8); ctx.lineTo(4, 16); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,8); ctx.lineTo(-4, 16); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawBoat(cx, cy, alpha = 1) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = '#15182c';
+  ctx.beginPath();
+  ctx.moveTo(cx - 34, cy);
+  ctx.quadraticCurveTo(cx, cy + 16, cx + 34, cy);
+  ctx.lineTo(cx + 24, cy + 4);
+  ctx.quadraticCurveTo(cx, cy + 12, cx - 24, cy + 4);
+  ctx.closePath(); ctx.fill();
+  // a thin warm rim of moonlight along the hull
+  ctx.strokeStyle = 'rgba(245,236,200,0.25)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx - 33, cy - 0.5);
+  ctx.quadraticCurveTo(cx, cy + 14, cx + 33, cy - 0.5);
+  ctx.stroke();
+  ctx.restore();
+}
+
+// is a kind currently "missing" from its home because it's held or placed?
+function homeHidden(kind) {
+  if (state.held === kind) return true;
+  return false;
+}
+
+function render() {
+  frame++;
+  const tNow = performance.now();
+
+  // dim factor for eclipse ending
+  let dark = 0;
+  if (endingPaint === 'eclipse') dark = paintT;
+
+  // ── sky ──
+  const skyTop = `rgb(${7 + dark*-4}, ${11 + dark*-7}, ${26 + dark*-16})`;
+  const skyMid = `rgb(${15 - dark*8}, ${22 - dark*12}, ${52 - dark*30})`;
+  const sg = ctx.createLinearGradient(0, 0, 0, WATER);
+  sg.addColorStop(0, skyTop);
+  sg.addColorStop(1, skyMid);
+  ctx.fillStyle = sg;
+  ctx.fillRect(0, 0, W, WATER);
+
+  // faint sun, low on the far horizon (a pale echo)
+  const sunAlpha = (1 - dark) * 0.10;
+  if (sunAlpha > 0.01) {
+    const sx = 70, sy = WATER - 26;
+    const sgr = ctx.createRadialGradient(sx, sy, 2, sx, sy, 60);
+    sgr.addColorStop(0, `rgba(255,224,180,${sunAlpha})`);
+    sgr.addColorStop(1, 'rgba(255,224,180,0)');
+    ctx.fillStyle = sgr;
+    ctx.beginPath(); ctx.arc(sx, sy, 60, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = `rgba(255,228,190,${sunAlpha*1.6})`;
+    ctx.beginPath(); ctx.arc(sx, sy, 14, 0, Math.PI*2); ctx.fill();
+  }
+
+  // stars
+  for (const st of stars) {
+    const tw = 0.45 + 0.55 * Math.abs(Math.sin(tNow*0.001*st.sp + st.ph));
+    ctx.fillStyle = `rgba(220,228,255,${tw * (0.7 - dark*0.5)})`;
+    ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, Math.PI*2); ctx.fill();
+  }
+
+  // ── the moon ──
+  let moonAlpha = 1, moonFace = false;
+  if (endingPaint === 'eclipse') {
+    // moon sinks toward the water and fades
+    const my = POS.moon.y + paintT * 200;
+    drawMoon(POS.moon.x, my, 34 * (1 - paintT*0.4), 1 - paintT*0.85);
+  } else {
+    if (endingPaint === 'becomes') moonFace = true;
+    if (!homeHidden('moon')) drawMoon(POS.moon.x, POS.moon.y, 34, moonAlpha, moonFace);
+  }
+
+  // ── the boy near the moon (unless held / relocated) ──
+  if (!homeHidden('boy') && endingPaint !== 'becomes' && endingPaint !== 'together') {
+    const bob = Math.sin(tNow*0.0009) * 2;
+    drawFigure(POS.boySky.x, POS.boySky.y + bob, 0.95, '#1a1d33', 0.5, 'float');
+  }
+
+  // ── water ──
+  const wg = ctx.createLinearGradient(0, WATER, 0, H);
+  wg.addColorStop(0, `rgb(${10 - dark*6}, ${16 - dark*9}, ${40 - dark*22})`);
+  wg.addColorStop(1, `rgb(${4 - dark*2}, ${7 - dark*4}, ${20 - dark*10})`);
+  ctx.fillStyle = wg;
+  ctx.fillRect(0, WATER, W, H - WATER);
+
+  // moon's reflection — a wavering column of light
+  if (endingPaint !== 'eclipse' || paintT < 0.6) {
+    const refAlpha = endingPaint === 'eclipse' ? (1 - paintT) : 1;
+    for (let y = WATER + 2; y < H; y += 2) {
+      const dy = y - WATER;
+      const wob = Math.sin(y*0.25 + tNow*0.002) * (2 + dy*0.06);
+      const width = 7 + dy*0.10;
+      const a = (0.20 - dy*0.0006) * refAlpha;
+      if (a <= 0) continue;
+      ctx.fillStyle = `rgba(245,236,200,${a})`;
+      ctx.fillRect(POS.moon.x - width/2 + wob, y, width, 1.6);
+    }
+  }
+
+  // girl's faint reflection (when she stands on the boat)
+  if (!homeHidden('girl') && !state.placed.some(p=>p.kind==='girl') &&
+      endingPaint !== 'lifted' && endingPaint !== 'reach' && endingPaint !== 'mirror') {
+    ctx.save();
+    ctx.globalAlpha = 0.18;
+    ctx.scale(1, -1);
+    drawFigure(POS.girlReflect.x, -(POS.girlReflect.y), 0.9, '#2a2f4a', 0, 'stand');
+    ctx.restore();
+  }
+
+  // ── the boat ──
+  const boatBob = Math.sin(tNow*0.0011) * 1.6;
+  if (endingPaint !== 'eclipse') {
+    drawBoat(POS.boat.x, POS.boat.y + boatBob, 1);
+  } else {
+    drawBoat(POS.boat.x, POS.boat.y + boatBob, 1 - dark*0.6);
+  }
+
+  // ── the girl on the boat (unless held / relocated by ending) ──
+  if (!homeHidden('girl') && endingPaint !== 'lifted' && endingPaint !== 'reach' && endingPaint !== 'mirror') {
+    drawFigure(POS.girlBoat.x, POS.girlBoat.y + boatBob, 0.92, '#101326', 0.25, 'stand');
+  }
+
+  // ── placed copies (the ghostly photographs you dropped) ──
+  for (const p of state.placed) {
+    ctx.save();
+    ctx.globalAlpha = 0.92;
+    if (p.kind === 'boy' || p.kind === 'girl') {
+      drawFigure(p.x, p.y, 0.9, p.kind === 'girl' ? '#101326' : '#1a1d33', 0.45, p.pose || 'stand');
+    } else if (p.kind === 'moon' || p.kind === 'reflection') {
+      drawMoon(p.x, p.y, 18, 0.85);
+    }
+    ctx.restore();
+  }
+
+  // ── ENDING PAINT OVERLAYS (the animated outcome) ──
+  if (endingPaint) paintEnding(tNow);
+
+  // ── hover highlight (a soft ring around the pickable thing) ──
+  if (hover && !state.ended) {
+    ctx.strokeStyle = 'rgba(245,236,200,0.55)';
+    ctx.lineWidth = 1.4;
+    ctx.setLineDash([3, 4]);
+    let hx, hy, hr;
+    if (hover.type === 'subject') {
+      const p = hover.kind === 'boy' ? POS.boySky : hover.kind === 'girl' ? POS.girlBoat :
+                hover.kind === 'moon' ? POS.moon : POS.moonReflect;
+      hx = p.x; hy = p.y; hr = hover.kind === 'moon' || hover.kind === 'reflection' ? 40 : 22;
+    } else {
+      hx = hover.x; hy = hover.y; hr = 22;
+    }
+    ctx.beginPath(); ctx.arc(hx, hy, hr, 0, Math.PI*2); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  requestAnimationFrame(render);
+}
+
+// ending-specific animated flourishes drawn on top each frame
+function paintEnding(tNow) {
+  const bob = Math.sin(tNow*0.0011) * 1.6;
+  switch (endingPaint) {
+    case 'reach': {
+      // girl leans from the boat toward the reflection, then sinks
+      const startY = POS.girlBoat.y;
+      const sinkTo = WATER + 70;
+      const gy = startY + drownY * (sinkTo - startY);
+      const pose = drownY < 0.35 ? 'reach' : 'fall';
+      const a = 1 - drownY * 0.8;
+      ctx.save(); ctx.globalAlpha = a;
+      drawFigure(POS.girlBoat.x + drownY*10, gy + bob, 0.92, '#101326', 0.2, pose);
+      ctx.restore();
+      // ripples where she went under
+      if (drownY > 0.4) {
+        const rr = (drownY - 0.4) * 60;
+        ctx.strokeStyle = `rgba(245,236,200,${(1-drownY)*0.4})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.ellipse(POS.girlBoat.x, WATER + 40, rr, rr*0.3, 0, 0, Math.PI*2); ctx.stroke();
+      }
+      break;
+    }
+    case 'together': {
+      // boy descends to the boat to stand beside the girl
+      const bx = POS.boySky.x + (POS.girlBoat.x + 22 - POS.boySky.x) * paintT;
+      const by = POS.boySky.y + (POS.girlBoat.y - POS.boySky.y) * paintT;
+      drawFigure(bx, by + bob, 0.92, '#1a1d33', 0.4, 'stand');
+      drawFigure(POS.girlBoat.x - 4, POS.girlBoat.y + bob, 0.92, '#101326', 0.3, 'stand');
+      // their joined glow grows
+      const g = ctx.createRadialGradient(POS.girlBoat.x+9, POS.girlBoat.y, 2, POS.girlBoat.x+9, POS.girlBoat.y, 60*paintT+10);
+      g.addColorStop(0, `rgba(245,236,200,${0.18*paintT})`);
+      g.addColorStop(1, 'rgba(245,236,200,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(POS.girlBoat.x+9, POS.girlBoat.y, 60*paintT+10, 0, Math.PI*2); ctx.fill();
+      break;
+    }
+    case 'becomes': {
+      // boy rises into the moon and merges; the girl, alone, looks up
+      const bx = POS.boySky.x + (POS.moon.x - POS.boySky.x) * paintT;
+      const by = POS.boySky.y + (POS.moon.y - POS.boySky.y) * paintT;
+      if (paintT < 0.92) {
+        ctx.save(); ctx.globalAlpha = 1 - paintT*0.6;
+        drawFigure(bx, by, 0.9 - paintT*0.4, '#1a1d33', 0.3 + paintT*0.5, 'float');
+        ctx.restore();
+      }
+      drawFigure(POS.girlBoat.x, POS.girlBoat.y + bob, 0.92, '#101326', 0.25, 'stand');
+      break;
+    }
+    case 'lifted': {
+      // girl rises off the water into the sky
+      const gy = POS.girlBoat.y + (60 - POS.girlBoat.y) * paintT;
+      drawFigure(POS.girlBoat.x, gy, 0.92, '#101326', 0.3 + paintT*0.4, 'float');
+      // a faint trail of light beneath her
+      ctx.strokeStyle = `rgba(245,236,200,${0.18*(1-paintT)})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(POS.girlBoat.x, gy+10); ctx.lineTo(POS.girlBoat.x, POS.girlBoat.y); ctx.stroke();
+      break;
+    }
+    case 'mirror': {
+      // both appear inverted in the water, fading the originals
+      ctx.save();
+      ctx.globalAlpha = 0.6 + 0.3*paintT;
+      ctx.scale(1, -1);
+      drawFigure(POS.girlReflect.x - 16, -(POS.girlReflect.y), 0.9, '#101326', 0.2, 'stand');
+      drawFigure(POS.girlReflect.x + 16, -(POS.girlReflect.y), 0.9, '#1a1d33', 0.2, 'stand');
+      ctx.restore();
+      break;
+    }
+    case 'eclipse': {
+      // a creeping darkness — handled mostly via the `dark` factor in render()
+      break;
+    }
+  }
+}
+
+// ── HOVER tracking ──────────────────────────────────────────────────────────
+let hover = null;
+function updateHover(mx, my) {
+  if (state.ended) { hover = null; return; }
+  hover = pick(mx, my);
+  canvas.style.cursor = hover ? 'pointer' : (state.held ? 'cell' : 'crosshair');
+}
+
+// ── render the small held photo into the hand widget ────────────────────────
+function paintHandPhoto(kind) {
+  handCtx.clearRect(0, 0, 66, 60);
+  // sepia-ish photo background
+  handCtx.fillStyle = '#1a2138';
+  handCtx.fillRect(0, 0, 66, 60);
+  handCtx.save();
+  handCtx.translate(33, 30);
+  if (kind === 'moon' || kind === 'reflection') {
+    const g = handCtx.createRadialGradient(-3,-3,2,0,0,16);
+    g.addColorStop(0,'#fcf8e0'); g.addColorStop(1,'#c8ccc8');
+    handCtx.fillStyle = g;
+    handCtx.beginPath(); handCtx.arc(0,0,15,0,Math.PI*2); handCtx.fill();
+    handCtx.fillStyle='rgba(180,182,170,0.4)';
+    handCtx.beginPath(); handCtx.arc(-4,-2,3,0,Math.PI*2); handCtx.fill();
+    handCtx.beginPath(); handCtx.arc(4,4,4,0,Math.PI*2); handCtx.fill();
+  } else {
+    // a little figure
+    handCtx.fillStyle = kind === 'girl' ? '#e8ecf6' : '#cfd6ee';
+    handCtx.beginPath(); handCtx.arc(0,-12,4,0,Math.PI*2); handCtx.fill();
+    handCtx.beginPath(); handCtx.ellipse(0,0,3.4,11,0,0,Math.PI*2); handCtx.fill();
+    handCtx.strokeStyle = handCtx.fillStyle; handCtx.lineWidth=2; handCtx.lineCap='round';
+    handCtx.beginPath(); handCtx.moveTo(0,-4); handCtx.lineTo(7,4); handCtx.stroke();
+    handCtx.beginPath(); handCtx.moveTo(0,-4); handCtx.lineTo(-7,4); handCtx.stroke();
+    handCtx.beginPath(); handCtx.moveTo(0,11); handCtx.lineTo(5,20); handCtx.stroke();
+    handCtx.beginPath(); handCtx.moveTo(0,11); handCtx.lineTo(-5,20); handCtx.stroke();
+  }
+  handCtx.restore();
+  const label = kind === 'reflection' ? 'a reflection' :
+                kind === 'moon' ? 'the moon' :
+                kind === 'girl' ? 'the girl' : 'the boy';
+  handEl.querySelector('.lbl').textContent = label;
+}
+
+// ── INTERACTION ─────────────────────────────────────────────────────────────
+const HINTS_IDLE = [
+  'a quiet night. a girl, a boy, the moon.',
+  'tap the boy, the girl, or the moon to photograph them.',
+  'hold a photo, then tap a new place to set them.',
+];
+let idleHintI = 0;
+
+function setHint(t) { hintEl.textContent = t; }
+
+function takePhoto(kind) {
+  state.held = kind;
+  paintHandPhoto(kind);
+  handEl.style.display = 'block';
+  shutter();
+  setTimeout(() => pluck(523.3, 0.4, 'sine', 0.08), 90);
+  const where = {
+    boy: 'You have the boy. Where does he belong — beside her, or in the moon’s place?',
+    girl: 'You have the girl. The water? The sky? Choose where she goes.',
+    moon: 'You hold the moon itself. Be careful where you set it down.',
+    reflection: 'You caught a reflection. Place it in the water to keep them there.',
+  };
+  setHint(where[kind] || 'Now choose a place to set the photograph.');
+}
+
+function dropHeld() {
+  state.held = null;
+  handEl.style.display = 'none';
+  setHint('Photograph put away. Tap a figure to try again.');
+}
+
+function placeAt(anchorName, x, y) {
+  const held = state.held;
+  const ending = resolveEnding(held, anchorName);
+
+  if (ending) {
+    // commit the ending
+    state.held = null;
+    handEl.style.display = 'none';
+    triggerEnding(ending);
+    return;
+  }
+
+  // not an ending — just set a ghost copy down, with a gentle line
+  let pose = 'stand';
+  if (anchorName === 'sky' || anchorName === 'air') pose = 'float';
+  if (anchorName === 'water') pose = 'stand';
+  state.placed.push({ kind: held, x, y, pose });
+  state.held = null;
+  handEl.style.display = 'none';
+  pluck(392, 0.6, 'sine', 0.08);
+  const lines = {
+    sky: 'It hangs there in the dark, neither here nor home.',
+    air: 'It drifts, waiting to mean something.',
+    water: 'It settles on the water, and the water barely notices.',
+    moon: 'It rests near the moon, but nothing changes — not yet.',
+    boat: 'It hovers by the boat. Something almost happened.',
+    reflection: 'It floats where the moon falls. Almost — but not quite.',
+  };
+  setHint(lines[anchorName] || 'You set it down, gently. Try a different place.');
+}
+
+function triggerEnding(id) {
+  const e = ENDINGS[id];
+  state.ended = true;
+  hover = null;
+  endingPaint = e.paint;
+  paintT = 0; drownY = 0;
+  markFound(id);
+  setHint('');
+
+  chime(e.notes);
+
+  // animate the paint over ~2.6s, then reveal the card
+  const dur = e.paint === 'reach' ? 2800 : 2400;
+  const t0 = performance.now();
+  function step() {
+    const p = Math.min(1, (performance.now() - t0) / dur);
+    paintT = p;
+    if (e.paint === 'reach') drownY = p;
+    if (p < 1) requestAnimationFrame(step);
+    else revealCard(id);
+  }
+  requestAnimationFrame(step);
+}
+
+function revealCard(id) {
+  const e = ENDINGS[id];
+  cardTitle.textContent = e.title;
+  cardBody.textContent = e.body;
+  const found = foundSet().size;
+  const total = Object.keys(ENDINGS).length;
+  cardFound.textContent = found < total
+    ? `${found} of ${total} fates discovered — other arrangements wait in the dark.`
+    : `All ${total} fates discovered. The sea has shown you everything it holds.`;
+  cardEl.classList.add('show');
+}
+
+function resetScene() {
+  cardEl.classList.remove('show');
+  endingPaint = null; paintT = 0; drownY = 0;
+  state = freshState();
+  handEl.style.display = 'none';
+  idleHintI = 0;
+  setHint(HINTS_IDLE[0]);
+}
+
+// click / tap on the canvas → photograph or place
+function onCanvasTap(mx, my) {
+  if (!started || state.ended) return;
+  if (!actx) initAudio();
+  const hit = pick(mx, my);
+
+  if (state.held) {
+    // place (anchor)
+    if (hit && hit.type === 'anchor') placeAt(hit.name, hit.x, hit.y);
+    else placeAt('air', mx, my);
+  } else {
+    if (hit && hit.type === 'subject') takePhoto(hit.kind);
+    else {
+      // tapping empty space when idle — cycle a gentle nudge
+      idleHintI = (idleHintI + 1) % HINTS_IDLE.length;
+      setHint(HINTS_IDLE[idleHintI]);
+      pluck(330, 0.3, 'sine', 0.04);
+    }
+  }
+  updateHover(mx, my);
+}
+
+// map a DOM event to logical canvas coords
+function toLogical(clientX, clientY) {
+  const r = canvas.getBoundingClientRect();
+  const x = (clientX - r.left) / r.width * W;
+  const y = (clientY - r.top) / r.height * H;
+  return { x, y };
+}
+
+// pointer events cover mouse + touch + pen
+canvas.addEventListener('pointermove', (e) => {
+  const { x, y } = toLogical(e.clientX, e.clientY);
+  updateHover(x, y);
+});
+canvas.addEventListener('pointerdown', (e) => {
+  e.preventDefault();
+  const { x, y } = toLogical(e.clientX, e.clientY);
+  onCanvasTap(x, y);
+});
+canvas.addEventListener('pointerleave', () => { hover = null; });
+
+// the hand widget: tap it to drop/put away the held photo
+handEl.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (state.held) dropHeld();
+});
+
+// ── KEYBOARD CONTROLS (full play without a mouse) ───────────────────────────
+// 1 = photograph the boy, 2 = the girl, 3 = the moon, 4 = the reflection
+// when holding: q/w/e/r/t/y = place at moon / boat / sky / water / reflection / drop
+// Space / Enter at an ending = play again. Esc = put photo away.
+const SUBJECT_KEYS = { '1': 'boy', '2': 'girl', '3': 'moon', '4': 'reflection' };
+const ANCHOR_KEYS  = {
+  q: { name: 'moon',       p: POS.moon },
+  w: { name: 'boat',       p: POS.girlBoat },
+  e: { name: 'sky',        p: POS.sky },
+  r: { name: 'water',      p: POS.deepWater },
+  t: { name: 'reflection', p: POS.moonReflect },
+};
+
+window.addEventListener('keydown', (e) => {
+  if (!started) { begin(); return; }
+  const k = e.key.toLowerCase();
+
+  if (state.ended) {
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); resetScene(); }
+    return;
+  }
+  if (!actx) initAudio();
+
+  if (e.key === 'Escape') { if (state.held) dropHeld(); return; }
+
+  if (!state.held) {
+    if (SUBJECT_KEYS[e.key]) {
+      const kind = SUBJECT_KEYS[e.key];
+      // only photograph if that subject is actually present
+      if (kind === 'reflection' || kind === 'moon' || kind === 'boy' || kind === 'girl') takePhoto(kind);
+    }
+  } else {
+    if (k === 'y') { dropHeld(); return; }
+    if (ANCHOR_KEYS[k]) {
+      const a = ANCHOR_KEYS[k];
+      placeAt(a.name, a.p.x, a.p.y);
+    }
+  }
+});
+
+// ── BUTTONS ─────────────────────────────────────────────────────────────────
+againBtn.addEventListener('click', (e) => { e.stopPropagation(); resetScene(); });
+
+// ── BEGIN ───────────────────────────────────────────────────────────────────
+function begin() {
+  if (started) return;
+  started = true;
+  initAudio();
+  veil.classList.add('hide');
+  setTimeout(() => { veil.style.display = 'none'; }, 1500);
+  setHint(HINTS_IDLE[0]);
+  // gentle opening swell
+  setTimeout(() => chime([220, 277.18, 329.63]), 300);
+}
+
+veil.addEventListener('click', begin);
+veil.addEventListener('pointerdown', (e) => { e.preventDefault(); begin(); });
+
+// ── BOOT ────────────────────────────────────────────────────────────────────
+renderDots();
+setHint(HINTS_IDLE[0]);
+requestAnimationFrame(render);
+
+// periodic idle-hint rotation (only while idle, not holding, not ended)
+setInterval(() => {
+  if (started && !state.held && !state.ended) {
+    idleHintI = (idleHintI + 1) % HINTS_IDLE.length;
+    setHint(HINTS_IDLE[idleHintI]);
+  }
+}, 9000);
+</script>
+</body>
+</html>

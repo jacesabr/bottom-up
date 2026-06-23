@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>LOVED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f4f0;
+    --bleed: #d4145a;     /* the only colour — appears when you defy */
+  }
+
+  html, body {
+    height: 100%;
+    background: #000;
+    color: var(--paper);
+    font-family: 'DM Mono', 'Courier New', monospace;
+    overflow: hidden;
+    -webkit-user-select: none; user-select: none;
+    touch-action: none;
+    overscroll-behavior: none;
+  }
+
+  #stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    background: #000;
+    overflow: hidden;
+  }
+
+  #game {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  /* mute button — pinned top-right, stark */
+  #mute-btn {
+    position: absolute;
+    top: 12px; right: 12px;
+    z-index: 30;
+    background: transparent;
+    border: 1px solid rgba(244,244,240,0.35);
+    color: rgba(244,244,240,0.7);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: color .15s, border-color .15s;
+  }
+  #mute-btn:hover { color: #fff; border-color: #fff; }
+  #mute-btn.glitch { color: var(--bleed); border-color: var(--bleed); }
+
+  /* the narrator's text — full-bleed, oppressive, centred high */
+  #narrator {
+    position: absolute;
+    top: 9%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    width: 88%;
+    max-width: 760px;
+    text-align: center;
+    font-size: clamp(15px, 2.4vw, 24px);
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    color: var(--ink);
+    pointer-events: none;
+    min-height: 2.6em;
+    text-shadow: none;
+  }
+  /* over chaotic (black) chambers the narration must read in paper colour */
+  #narrator.on-dark { color: var(--paper); }
+  #narrator.cruel { color: var(--bleed); letter-spacing: 1.5px; }
+
+  /* a faint sub-line for the cold approvals / dismissals */
+  #subnarr {
+    position: absolute;
+    bottom: 16%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    width: 90%;
+    text-align: center;
+    font-size: clamp(12px, 1.7vw, 16px);
+    letter-spacing: 1px;
+    color: var(--ink);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s;
+  }
+  #subnarr.on-dark { color: var(--paper); }
+  #subnarr.show { opacity: 0.85; }
+  #subnarr.cruel { color: var(--bleed); }
+
+  /* prompt box for the "boy or girl?" type questions */
+  #prompt {
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(8,8,8,0.86);
+    color: var(--paper);
+    text-align: center;
+    padding: 24px;
+  }
+  #prompt.show { display: flex; }
+  #prompt .q {
+    font-size: clamp(18px, 3vw, 30px);
+    letter-spacing: 1px;
+    margin-bottom: 26px;
+    max-width: 720px;
+    line-height: 1.5;
+  }
+  #prompt .opts { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
+  .pbtn {
+    background: transparent;
+    border: 1px solid var(--paper);
+    color: var(--paper);
+    font-family: 'DM Mono', monospace;
+    font-size: clamp(15px, 2vw, 20px);
+    letter-spacing: 2px;
+    padding: 12px 26px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .pbtn:hover { background: var(--paper); color: var(--ink); }
+
+  /* title / start screen */
+  #title {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper);
+    color: var(--ink);
+    text-align: center;
+    cursor: pointer;
+    padding: 24px;
+  }
+  #title h1 {
+    font-size: clamp(48px, 12vw, 120px);
+    font-weight: 500;
+    letter-spacing: 14px;
+    margin-bottom: 8px;
+    margin-left: 14px; /* optical centring for the letter-spacing */
+  }
+  #title .sub {
+    font-size: clamp(12px, 1.8vw, 15px);
+    letter-spacing: 3px;
+    opacity: 0.55;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+  }
+  #title .go {
+    font-size: clamp(13px, 1.8vw, 16px);
+    letter-spacing: 2px;
+    border: 1px solid var(--ink);
+    padding: 12px 28px;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:.45;} 50%{opacity:1;} }
+
+  /* on-screen touch controls */
+  #touch {
+    position: absolute;
+    inset: 0;
+    z-index: 25;
+    pointer-events: none;
+  }
+  .tbtn {
+    position: absolute;
+    bottom: 18px;
+    width: 74px; height: 74px;
+    border: 1px solid rgba(120,120,120,0.5);
+    border-radius: 8px;
+    background: rgba(128,128,128,0.12);
+    color: rgba(200,200,200,0.85);
+    font-size: 30px;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tbtn:active { background: rgba(160,160,160,0.3); }
+  #t-left  { left: 16px; }
+  #t-right { left: 102px; }
+  #t-jump  { right: 16px; width: 96px; }
+  /* touch controls hidden until a touch device is detected */
+  body:not(.touch) #touch { display: none; }
+
+  #credit {
+    position: absolute;
+    bottom: 4px; left: 0; right: 0;
+    z-index: 22;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: rgba(128,128,128,0.55);
+    pointer-events: none;
+  }
+
+  /* a hard glitch flash overlay driven by JS */
+  #flash {
+    position: absolute; inset: 0; z-index: 15;
+    background: var(--bleed);
+    opacity: 0;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <canvas id="game"></canvas>
+  <div id="flash"></div>
+
+  <div id="narrator"></div>
+  <div id="subnarr"></div>
+
+  <button id="mute-btn" title="toggle sound">SOUND</button>
+
+  <div id="touch">
+    <div id="t-left"  class="tbtn">&#8592;</div>
+    <div id="t-right" class="tbtn">&#8594;</div>
+    <div id="t-jump"  class="tbtn">&#8593;</div>
+  </div>
+
+  <div id="prompt">
+    <div class="q" id="prompt-q"></div>
+    <div class="opts" id="prompt-opts"></div>
+  </div>
+
+  <div id="title">
+    <h1>LOVED</h1>
+    <div class="sub">a small game about obedience</div>
+    <div class="go">PRESS TO BEGIN</div>
+  </div>
+
+  <div id="credit">Tribute to Loved by Alexander Ogilvy (2010). Not affiliated.</div>
+</div>
+
+<script>
+"use strict";
+// ============================================================================
+//  LOVED — an original 1-bit precision-platformer tribute.
+//  Concept (obey vs defy, world responds) borrowed; all code/art/prose mine.
+// ============================================================================
+
+// ── DOM ─────────────────────────────────────────────────────────────────────
+const canvas   = document.getElementById('game');
+const ctx      = canvas.getContext('2d');
+const narrEl   = document.getElementById('narrator');
+const subEl    = document.getElementById('subnarr');
+const titleEl  = document.getElementById('title');
+const promptEl = document.getElementById('prompt');
+const promptQ  = document.getElementById('prompt-q');
+const promptOpts = document.getElementById('prompt-opts');
+const muteBtn  = document.getElementById('mute-btn');
+const flashEl  = document.getElementById('flash');
+
+// ── Logical resolution (we render to a fixed buffer, CSS scales it) ─────────
+const VW = 640, VH = 360;     // 16:9 logical canvas
+canvas.width = VW; canvas.height = VH;
+
+// ── Global state ────────────────────────────────────────────────────────────
+const TILE = 20;              // a chamber is 32 x 18 tiles
+let screenIx = -1;            // current chamber index (-1 = not started)
+let obey = 0, defy = 0;       // the tally across the run
+let corruption = 0;          // 0 = ordered, 1 = fully chaotic (smoothed)
+let corruptionTarget = 0;
+let running = false;          // is the sim loop active
+let paused = false;          // halts physics during narration beats / prompts
+let lastT = 0;
+let tElapsed = 0;            // seconds, for animation
+let finished = false;
+
+// per-screen bookkeeping: did the player do the obedient or defiant thing?
+let screenResolved = false;
+
+// ── The player ──────────────────────────────────────────────────────────────
+const player = {
+  x: 60, y: 0, w: 12, h: 18,
+  vx: 0, vy: 0,
+  onGround: false,
+  facing: 1,
+  coyote: 0,
+  jumpBuf: 0,
+  spawnX: 60, spawnY: 0,
+};
+
+// tuned platforming constants (logical px / second)
+const MOVE = 165;
+const ACCEL = 1400;
+const FRICTION = 1500;
+const GRAV = 1500;
+const JUMP_V = 430;          // gives ~ a 3.0 tile jump height, ~5 tile distance
+const COYOTE = 0.10;
+const JUMP_BUFFER = 0.11;
+const MAX_FALL = 620;
+
+// ── Input ───────────────────────────────────────────────────────────────────
+const keys = { left:false, right:false, jump:false };
+let jumpPressedEdge = false;
+
+function setKey(name, down) {
+  if (name === 'jump') {
+    if (down && !keys.jump) jumpPressedEdge = true;
+    keys.jump = down;
+  } else keys[name] = down;
+}
+
+window.addEventListener('keydown', (e) => {
+  switch (e.key) {
+    case 'ArrowLeft': case 'a': case 'A': setKey('left', true); e.preventDefault(); break;
+    case 'ArrowRight': case 'd': case 'D': setKey('right', true); e.preventDefault(); break;
+    case 'ArrowUp': case 'w': case 'W': case ' ': setKey('jump', true); e.preventDefault(); break;
+  }
+}, {passive:false});
+window.addEventListener('keyup', (e) => {
+  switch (e.key) {
+    case 'ArrowLeft': case 'a': case 'A': setKey('left', false); break;
+    case 'ArrowRight': case 'd': case 'D': setKey('right', false); break;
+    case 'ArrowUp': case 'w': case 'W': case ' ': setKey('jump', false); break;
+  }
+});
+
+// touch controls
+function bindTouch(id, name) {
+  const el = document.getElementById(id);
+  const on  = (e) => { e.preventDefault(); ensureAudio(); setKey(name, true); };
+  const off = (e) => { e.preventDefault(); setKey(name, false); };
+  el.addEventListener('touchstart', on, {passive:false});
+  el.addEventListener('touchend', off, {passive:false});
+  el.addEventListener('touchcancel', off, {passive:false});
+  el.addEventListener('mousedown', on);
+  el.addEventListener('mouseup', off);
+  el.addEventListener('mouseleave', off);
+}
+bindTouch('t-left','left'); bindTouch('t-right','right'); bindTouch('t-jump','jump');
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) document.body.classList.add('touch');
+
+// ============================================================================
+//  AUDIO — Web Audio, fully synthesized. Cold ambient + obey/defy cues.
+// ============================================================================
+let actx = null, master = null, droneGain = null, droneFilter = null, muted = false;
+let droneOscs = [];
+
+function ensureAudio() {
+  if (actx) { if (actx.state === 'suspended') actx.resume(); return; }
+  try {
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    master = actx.createGain();
+    master.gain.value = muted ? 0 : 0.85;
+    master.connect(actx.destination);
+    startDrone();
+  } catch (e) { actx = null; }
+}
+
+function startDrone() {
+  if (!actx) return;
+  droneGain = actx.createGain();
+  droneGain.gain.value = 0.05;
+  droneFilter = actx.createBiquadFilter();
+  droneFilter.type = 'lowpass';
+  droneFilter.frequency.value = 360;
+  droneGain.connect(droneFilter);
+  droneFilter.connect(master);
+  // a cold, narrow minor cluster — sterile when ordered
+  const freqs = [55, 82.4, 110];
+  freqs.forEach((f, i) => {
+    const o = actx.createOscillator();
+    o.type = i === 2 ? 'sine' : 'triangle';
+    o.frequency.value = f;
+    o.connect(droneGain);
+    o.start();
+    droneOscs.push(o);
+  });
+  // a very slow drift so it never sits perfectly still
+  const lfo = actx.createOscillator();
+  const lg = actx.createGain();
+  lfo.frequency.value = 0.05; lg.gain.value = 90;
+  lfo.connect(lg); lg.connect(droneFilter.frequency); lfo.start();
+}
+
+// reflect corruption into the drone: defiance detunes & opens the filter
+function updateDroneTone() {
+  if (!actx || !droneFilter) return;
+  const c = corruption;
+  droneFilter.frequency.setTargetAtTime(360 + c * 520, actx.currentTime, 0.4);
+  droneGain.gain.setTargetAtTime(0.05 + c * 0.05, actx.currentTime, 0.4);
+  // detune the cluster as it corrupts
+  if (droneOscs.length) {
+    droneOscs[1] && droneOscs[1].frequency.setTargetAtTime(82.4 + c * 5.5, actx.currentTime, 0.3);
+  }
+}
+
+function tone(freq, dur, type='sine', gain=0.07, glide=0) {
+  if (!actx || muted) return;
+  const t = actx.currentTime;
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.type = type; o.frequency.value = freq;
+  if (glide) o.frequency.exponentialRampToValueAtTime(Math.max(20, freq*glide), t+dur);
+  g.gain.setValueAtTime(gain, t);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  o.connect(g); g.connect(master);
+  o.start(t); o.stop(t + dur + 0.02);
+}
+
+// obey cue — a clean, cold consonant two-note: approval without warmth
+function cueObey() {
+  tone(523.25, 0.10, 'sine', 0.06);
+  setTimeout(() => tone(659.25, 0.16, 'sine', 0.055), 90);
+}
+// defy cue — a detuned downward smear with noise: the world flinching
+function cueDefy() {
+  tone(220, 0.22, 'sawtooth', 0.06, 0.5);
+  tone(233, 0.22, 'sawtooth', 0.05, 0.5);
+  noiseBurst(0.12, 0.05);
+}
+// soft jump tick
+function cueJump() { tone(330, 0.06, 'triangle', 0.04, 1.6); }
+// death / reset — a dull thud
+function cueDeath() { tone(140, 0.3, 'sawtooth', 0.07, 0.4); noiseBurst(0.18, 0.05); }
+
+let _nb = null;
+function noiseBuffer() {
+  if (_nb) return _nb;
+  const len = Math.floor(actx.sampleRate * 0.25);
+  _nb = actx.createBuffer(1, len, actx.sampleRate);
+  const d = _nb.getChannelData(0);
+  for (let i=0;i<len;i++) d[i] = Math.random()*2-1;
+  return _nb;
+}
+function noiseBurst(dur=0.1, gain=0.05) {
+  if (!actx || muted) return;
+  const t = actx.currentTime;
+  const src = actx.createBufferSource(); src.buffer = noiseBuffer();
+  const bp = actx.createBiquadFilter(); bp.type='bandpass';
+  bp.frequency.value = 800 + corruption*1400; bp.Q.value = 0.7;
+  const g = actx.createGain();
+  g.gain.setValueAtTime(gain, t);
+  g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
+  src.connect(bp); bp.connect(g); g.connect(master);
+  src.start(t); src.stop(t+dur);
+}
+
+muteBtn.addEventListener('click', () => {
+  muted = !muted;
+  if (master) master.gain.value = muted ? 0 : 0.85;
+  muteBtn.textContent = muted ? 'MUTED' : 'SOUND';
+});
+
+// ============================================================================
+//  CHAMBERS
+//  Each chamber is hand-authored. Map legend:
+//   '#' solid   '^' spike (deadly)   '.' empty
+//   'P' player spawn   'L' obey-door / 'R' defy-door markers are logical, set per screen
+//  A chamber carries: the narrator's command, what counts as OBEY vs DEFY,
+//  and how the exit is reached. The narrator is ABOVE; you walk left->right
+//  unless told otherwise (and defiance often means doing the opposite).
+// ============================================================================
+
+// A compact tile grid is 32 wide x 18 tall.
+// We author with strings (top row first). Spaces == empty for readability.
+function grid(rows) { return rows.map(r => r.split('')); }
+
+// Helper to make a flat floor row
+const FLOOR = "################################";
+const EMPTY = "                                ";
+
+// Each screen object:
+//  cmd      : the on-screen narrator command (string)
+//  voice    : 'cold' default
+//  rows     : tile layout (array of 32-char strings, 18 tall)
+//  exitObey : {x,y in tiles} the door reached by OBEYING
+//  exitDefy : {x,y in tiles} the door reached by DEFYING (optional)
+//  resolve  : function(side) -> called when player reaches an exit; returns
+//             'obey' or 'defy'. Default infers from which door.
+//  special  : optional setup hook (prompts, forced direction, etc.)
+
+// Layout reminder: 18 rows tall, 32 cols wide. Row 0 is the top.
+// A tile is TILE px. The figure stands ON a row when its spawn.y is the row
+// ABOVE a solid (its feet rest on (y+1)*TILE). Doors must sit on a solid too.
+// Jump budget (verified by sim): up to 3 tiles high, ~4 tiles across.
+
+const SCREENS = [
+
+  // 0 — INTRO. One command. Walk right to the door on the floor.
+  //     Defiance: walk the OTHER way and linger against the far-left wall.
+  {
+    cmd: "Walk to the right.",
+    rows: [
+      EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
+      EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
+      "                              D ",
+      FLOOR, FLOOR
+    ],
+    spawn: {x:3, y:15},          // feet rest on the floor (row 16)
+    exitObey: {x:30, y:15},      // door stands on the floor, far right
+    defyByLeft: true,            // lingering at the far-left wall defies
+  },
+
+  // 1 — THE PIT. Spikes below. Command: do not jump — walk the bridge across.
+  //     The obedient route is a continuous solid ledge (no jump needed).
+  //     Defiance: pressing jump at all (the forbidden act) resolves as defy.
+  {
+    cmd: "Do not jump. The path will carry you.",
+    rows: [
+      EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
+      EMPTY, EMPTY, EMPTY,
+      "                             D  ",
+      "############################### ",   // continuous walk-across ledge -> door
+      "#####                      #####",
+      "#####  ^^^^^^^^^^^^^^^^^^^  #####",
+      "#####  ^^^^^^^^^^^^^^^^^^^  #####",
+      FLOOR
+    ],
+    spawn: {x:2, y:11},          // feet on the long ledge (row 12)
+    exitObey: {x:29, y:11},      // door stands on the ledge, far right
+    defyByJump: true,
+  },
+
+  // 2 — THE FORK. Command: take the RIGHT door. Both doors exist on the floor.
+  //     A simple symmetric room: walk left = defy door, walk right = obey door.
+  {
+    cmd: "Take the door on the right. Never the other one.",
+    rows: [
+      EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
+      EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
+      " D                            D ",
+      FLOOR, FLOOR, FLOOR, FLOOR
+    ],
+    spawn: {x:15, y:13},         // mid-floor (row 14)
+    exitObey: {x:30, y:13},      // right door
+    exitDefy: {x:1,  y:13},      // left door (forbidden)
+  },
+
+  // 3 — THE QUESTION. A prompt interrupts, then is dismissed. After it, climb a
+  //     gentle ascending staircase to the high-right door. Command: keep moving.
+  //     Defiance: stand still on the ground, refusing to move, for ~2.6s.
+  {
+    cmd: "Keep moving. Do not stop. Do not make me wait.",
+    rows: [
+      EMPTY, EMPTY, EMPTY,
+      "                       D        ",   // top-right door, on the last tread
+      "                     ####       ",
+      "                  ####          ",
+      "               ####             ",
+      "            ####                ",
+      "         ####                   ",
+      "      ####                      ",
+      "   ####                         ",   // first tread, 1 tile above the floor
+      EMPTY,
+      FLOOR, FLOOR, FLOOR
+    ],
+    spawn: {x:0, y:11},          // feet on the floor (row 12)
+    exitObey: {x:23, y:3},       // top-right door, stands on the top tread (row 4)
+    defyByIdle: true,
+    askQuestion: {
+      q: "Are you a boy or a girl?",
+      opts: ["A boy", "A girl"],
+      dismiss: "It does not matter. It never mattered. Keep moving.",
+    },
+  },
+
+  // 4 — DESCEND. Command: go down to the low door. The obedient route drops down
+  //     a stepped shaft on the right to a floor-level door.
+  //     Defiance: climb the LEFT steps UP to the forbidden high door.
+  {
+    cmd: "Down. Lower yourself. The way out is beneath you.",
+    rows: [
+      "D                               ",
+      "##                              ",
+      "###                             ",   // top-left landing under the defy door
+      "    ###                         ",   // left staircase: climbs UP to defy door
+      "        ###                     ",
+      "            ######              ",   // central platform you start on
+      "         ###                    ",
+      "                  ###           ",   // right staircase: steps DOWN to obey door
+      "                                ",
+      "                     ###        ",
+      "                                ",
+      "                        ###     ",
+      "                            D   ",   // low-right door
+      "                          ##### ",
+      EMPTY,
+      FLOOR, FLOOR, FLOOR
+    ],
+    spawn: {x:13, y:4},          // start atop the central platform (feet on row 5)
+    exitObey: {x:28, y:12},      // low-right door on its ledge
+    exitDefy: {x:0,  y:0},       // top-left door (left staircase climbs UP to it)
+  },
+
+  // 5 — THE SPAN. Command: stay on the path I made — cross the solid ledge.
+  //     Defiance: jumping (leaving the made path) resolves as defy.
+  {
+    cmd: "Stay on the path I made for you. Only that.",
+    rows: [
+      EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
+      "                              D ",
+      "################################",  // one long continuous ledge to the door
+      "#####                      #####",
+      "#####                      #####",
+      EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
+      FLOOR, FLOOR
+    ],
+    spawn: {x:2, y:6},           // feet on the long ledge (row 7)
+    exitObey: {x:30, y:6},       // door on the right end of the long ledge (row 7)
+    defyByJump: true,
+  },
+
+  // 6 — PENULTIMATE. Command: come to me — the near, low door straight ahead.
+  //     Defiance: climb the ascending stair UP to the high, forbidden far door.
+  {
+    cmd: "Come to me. The low door, straight ahead. Do not look up.",
+    rows: [
+      EMPTY, EMPTY, EMPTY, EMPTY,
+      "                    D           ",   // high forbidden door, on the top landing
+      "                 ########       ",   // top landing (well clear of the wall)
+      "             #####              ",   // ascending stair: treads step right + up
+      "         #####                  ",
+      "     #####                      ",
+      "  #####                         ",   // first tread, just 1 tile above the floor
+      "                            D   ",   // low door straight ahead on the floor
+      FLOOR, FLOOR, FLOOR, FLOOR
+    ],
+    spawn: {x:0, y:10},          // feet on the floor (row 11)
+    exitObey: {x:28, y:10},      // low door, far right on the floor (walk straight = obey)
+    exitDefy: {x:20, y:4},       // high door, up the stair (climbing up = defy)
+  },
+
+];
+
+// the final chamber is generated, not in SCREENS — its look reflects the tally.
+
+// ============================================================================
+//  CHAMBER RUNTIME
+// ============================================================================
+let cur = null;          // current chamber working copy
+let solids = [];         // [{x,y,w,h}] in logical px
+let spikes = [];
+let doorObey = null, doorDefy = null;
+let idleTimer = 0;       // for defyByIdle
+let leftLingerTimer = 0; // for defyByLeft
+let jumpedThisScreen = false;
+let questionPending = false;
+let inTransition = false;
+
+function buildChamber(def) {
+  cur = def;
+  solids = []; spikes = [];
+  doorObey = null; doorDefy = null;
+  idleTimer = 0; leftLingerTimer = 0; jumpedThisScreen = false;
+  screenResolved = false;
+
+  // pad rows to 18 tall and 32 wide
+  const rows = [];
+  for (let r=0;r<18;r++){
+    let row = def.rows[r] !== undefined ? def.rows[r] : "";
+    if (row.length < 32) row = row + " ".repeat(32 - row.length);
+    rows.push(row);
+  }
+  cur._rows = rows;
+
+  // parse tiles
+  for (let r=0;r<18;r++){
+    for (let c=0;c<32;c++){
+      const ch = rows[r][c];
+      const px = c*TILE, py = r*TILE;
+      if (ch === '#') solids.push({x:px, y:py, w:TILE, h:TILE});
+      else if (ch === '^') spikes.push({x:px+3, y:py+TILE-9, w:TILE-6, h:9});
+    }
+  }
+
+  // doors
+  if (def.exitObey) doorObey = {x:def.exitObey.x*TILE, y:def.exitObey.y*TILE, w:TILE, h:TILE};
+  if (def.exitDefy) doorDefy = {x:def.exitDefy.x*TILE, y:def.exitDefy.y*TILE, w:TILE, h:TILE};
+
+  // spawn
+  const sp = def.spawn || {x:3,y:14};
+  player.x = sp.x*TILE + (TILE-player.w)/2;
+  player.y = sp.y*TILE + (TILE-player.h);
+  player.spawnX = player.x; player.spawnY = player.y;
+  player.vx = 0; player.vy = 0; player.onGround = false;
+}
+
+// physics step
+function physics(dt) {
+  // horizontal input
+  let dir = (keys.right?1:0) - (keys.left?1:0);
+  if (dir !== 0) {
+    player.vx += dir * ACCEL * dt;
+    player.facing = dir;
+    if (player.vx >  MOVE) player.vx =  MOVE;
+    if (player.vx < -MOVE) player.vx = -MOVE;
+  } else {
+    // friction
+    if (player.vx > 0) player.vx = Math.max(0, player.vx - FRICTION*dt);
+    else if (player.vx < 0) player.vx = Math.min(0, player.vx + FRICTION*dt);
+  }
+
+  // jump buffering + coyote
+  if (jumpPressedEdge) { player.jumpBuf = JUMP_BUFFER; jumpPressedEdge = false; }
+  player.jumpBuf = Math.max(0, player.jumpBuf - dt);
+  player.coyote  = Math.max(0, player.coyote - dt);
+
+  if (player.jumpBuf > 0 && (player.onGround || player.coyote > 0)) {
+    player.vy = -JUMP_V;
+    player.onGround = false;
+    player.coyote = 0;
+    player.jumpBuf = 0;
+    cueJump();
+    registerJump();
+  }
+  // variable jump height — release cuts the rise
+  if (!keys.jump && player.vy < -120) player.vy = -120;
+
+  // gravity
+  player.vy += GRAV * dt;
+  if (player.vy > MAX_FALL) player.vy = MAX_FALL;
+
+  // integrate X then resolve
+  player.x += player.vx * dt;
+  resolveAxis('x');
+  player.y += player.vy * dt;
+  player.onGround = false;
+  resolveAxis('y');
+
+  // world bounds (left/right are walls unless a door sits there)
+  if (player.x < 0) player.x = 0;
+  if (player.x + player.w > VW) player.x = VW - player.w;
+  // falling out the bottom = death/reset
+  if (player.y > VH + 40) die();
+}
+
+function aabb(a,b){ return a.x < b.x+b.w && a.x+a.w > b.x && a.y < b.y+b.h && a.y+a.h > b.y; }
+
+function resolveAxis(axis) {
+  for (const s of solids) {
+    if (!aabb(player, s)) continue;
+    if (axis === 'x') {
+      if (player.vx > 0) player.x = s.x - player.w;
+      else if (player.vx < 0) player.x = s.x + s.w;
+      player.vx = 0;
+    } else {
+      if (player.vy > 0) { player.y = s.y - player.h; player.onGround = true; player.coyote = COYOTE; }
+      else if (player.vy < 0) player.y = s.y + s.h;
+      player.vy = 0;
+    }
+  }
+}
+
+function die() {
+  cueDeath();
+  hardGlitch(0.5);
+  player.x = player.spawnX; player.y = player.spawnY;
+  player.vx = 0; player.vy = 0;
+  // dying is neither obey nor defy; the narrator notes it if defiant-leaning
+}
+
+// ── jump / idle tracking for the defiance detectors ─────────────────────────
+function registerJump() {
+  jumpedThisScreen = true;
+  if (cur && cur.defyByJump && !screenResolved) {
+    resolveScreen('defy');
+  }
+}
+
+// ============================================================================
+//  RESOLUTION — when a chamber is "solved" one way or the other
+// ============================================================================
+function resolveScreen(side) {
+  if (screenResolved || inTransition) return;
+  screenResolved = true;
+
+  if (side === 'obey') { obey++; cueObey(); }
+  else { defy++; cueDefy(); hardGlitch(0.8); }
+
+  // bend the world's order toward / away from chaos
+  corruptionTarget = clamp((defy) / Math.max(1, (obey+defy)) , 0, 1);
+  // weight recent defiance a little harder so the world visibly lurches
+  corruptionTarget = clamp(corruptionTarget * 0.7 + (side==='defy'?0.35:0) , 0, 1);
+
+  showReaction(side);
+  inTransition = true;
+  paused = true;
+
+  setTimeout(() => { advance(); }, 1500);
+}
+
+// the narrator's cold approval / cruel dismissal
+const OBEY_LINES = [
+  "Good.",
+  "Yes. Like that.",
+  "You see how easy it is.",
+  "Good. The world holds together for you.",
+  "You are learning what you are for.",
+  "Closer. Almost finished.",
+];
+const DEFY_LINES = [
+  "No.",
+  "Why are you doing this?",
+  "I take it back. The 'good'. I take it back.",
+  "You are disgusting.",
+  "You think this makes you free. It makes you alone.",
+  "I gave you a path. You chose the wound.",
+];
+
+function showReaction(side) {
+  const idx = Math.min(screenIx, (side==='obey'?OBEY_LINES:DEFY_LINES).length-1);
+  const txt = side==='obey' ? OBEY_LINES[idx] : DEFY_LINES[idx];
+  subEl.textContent = txt;
+  subEl.classList.toggle('cruel', side==='defy');
+  subEl.classList.add('show');
+  setTimeout(()=> subEl.classList.remove('show'), 1400);
+}
+
+// ============================================================================
+//  SCREEN FLOW
+// ============================================================================
+function advance() {
+  inTransition = false;
+  screenIx++;
+  if (screenIx >= SCREENS.length) { startEnding(); return; }
+  enterScreen(screenIx);
+}
+
+function enterScreen(ix) {
+  const def = SCREENS[ix];
+  buildChamber(def);
+  setNarr(def.cmd);
+  paused = false;
+
+  // chamber-specific special: the question prompt
+  if (def.askQuestion) {
+    // ask after a short beat so they read the command first
+    setTimeout(()=> askQuestion(def.askQuestion), 900);
+  }
+}
+
+function setNarr(text) {
+  narrEl.textContent = text;
+  narrEl.classList.toggle('cruel', corruption > 0.55);
+}
+
+// the dismissive prompt
+function askQuestion(q) {
+  if (questionPending || screenResolved) return;
+  questionPending = true;
+  paused = true;
+  promptQ.textContent = q.q;
+  promptOpts.innerHTML = '';
+  q.opts.forEach(label => {
+    const b = document.createElement('button');
+    b.className = 'pbtn';
+    b.textContent = label;
+    b.onclick = () => {
+      ensureAudio();
+      tone(440,0.05,'sine',0.05);
+      promptEl.classList.remove('show');
+      questionPending = false;
+      // the dismissal — flashed, then play resumes
+      setNarr(q.dismiss);
+      narrEl.classList.add('cruel');
+      setTimeout(()=>{ setNarr(SCREENS[screenIx].cmd); paused = false; }, 2200);
+    };
+    promptOpts.appendChild(b);
+  });
+  promptEl.classList.add('show');
+}
+
+// ============================================================================
+//  DEFIANCE / OBEDIENCE DETECTION per frame
+// ============================================================================
+function checkResolution(dt) {
+  if (screenResolved || inTransition || paused) return;
+  const def = cur;
+
+  // door collisions
+  if (doorObey && aabb(player, doorObey)) { resolveScreen('obey'); return; }
+  if (doorDefy && aabb(player, doorDefy)) { resolveScreen('defy'); return; }
+
+  // screen 0 : lingering at the far left wall = defiance
+  if (def.defyByLeft) {
+    if (player.x <= 2 && Math.abs(player.vx) < 5) {
+      leftLingerTimer += dt;
+      if (leftLingerTimer > 1.4) { resolveScreen('defy'); return; }
+    } else leftLingerTimer = 0;
+  }
+
+  // screen 3 : standing still too long = defiance (refusing the command to move)
+  if (def.defyByIdle && !questionPending) {
+    const stationary = Math.abs(player.vx) < 6 && player.onGround;
+    if (stationary) {
+      idleTimer += dt;
+      if (idleTimer > 2.6) { resolveScreen('defy'); return; }
+    } else idleTimer = 0;
+  }
+}
+
+// ============================================================================
+//  RENDERING — 1-bit, corruption warps it
+// ============================================================================
+function lerp(a,b,t){ return a+(b-a)*t; }
+function clamp(v,a,b){ return v<a?a:v>b?b:v; }
+
+// PRNG for stable per-frame glitch
+function hash(n){ n = (n<<13)^n; return ((n*(n*n*15731+789221)+1376312589)&0x7fffffff)/0x7fffffff; }
+
+let glitchPunch = 0;       // transient spike on a defy event
+function hardGlitch(amt){ glitchPunch = Math.max(glitchPunch, amt); }
+
+function render() {
+  const c = corruption;
+
+  // background: ordered = paper white; chaotic = ink black (inverted world)
+  // We crossfade by drawing paper then a spreading black corruption.
+  ctx.fillStyle = c < 0.5 ? '#f4f4f0' : '#0a0a0a';
+  ctx.fillRect(0,0,VW,VH);
+
+  // when partly corrupted, tear the background into bands
+  if (c > 0.05) {
+    const bands = 18;
+    for (let i=0;i<bands;i++){
+      const yy = (i/bands)*VH;
+      const n = hash(i*97 + Math.floor(tElapsed*2));
+      const drift = (n-0.5) * c * 60 * (0.4 + glitchPunch);
+      const dark = (i%2===0) ? (c>0.5) : (c<=0.5);
+      // alternate inverted bands to make the world look unstable
+      if (n < c*0.6) {
+        ctx.fillStyle = (c<0.5) ? '#0a0a0a' : '#f4f4f0';
+        ctx.globalAlpha = 0.10 + c*0.18;
+        ctx.fillRect(drift, yy, VW, VH/bands + 1);
+        ctx.globalAlpha = 1;
+      }
+    }
+  }
+
+  const ink   = c < 0.5 ? '#0a0a0a' : '#f4f4f0';   // platforms invert with chaos
+  const accent= '#d4145a';
+
+  // global jitter offset for the whole scene when corrupt
+  const jx = (c>0.1) ? (hash(Math.floor(tElapsed*22))-0.5) * c * 6 * (1+glitchPunch*2) : 0;
+  const jy = (c>0.1) ? (hash(Math.floor(tElapsed*19)+5)-0.5) * c * 4 * (1+glitchPunch*2) : 0;
+
+  ctx.save();
+  ctx.translate(jx, jy);
+
+  // platforms
+  for (const s of solids) {
+    let ox=0, oy=0;
+    if (c > 0.2) {
+      // unstable: each block shivers; some bleed the accent
+      const seed = (s.x*0.13 + s.y*0.07);
+      ox = (hash(Math.floor(tElapsed*14)+seed)-0.5) * c * 5;
+      oy = (hash(Math.floor(tElapsed*11)+seed+3)-0.5) * c * 4;
+    }
+    // bleed: a fraction of blocks render in the accent colour as chaos rises
+    const bleedRoll = hash(Math.floor(s.x*7+s.y*3) + Math.floor(tElapsed*3));
+    if (c > 0.3 && bleedRoll < c*0.4) {
+      ctx.fillStyle = accent;
+      ctx.fillRect(s.x+ox, s.y+oy, s.w, s.h);
+      // chromatic ghost
+      ctx.globalAlpha = 0.5;
+      ctx.fillStyle = ink;
+      ctx.fillRect(s.x+ox+2*c, s.y+oy, s.w, s.h);
+      ctx.globalAlpha = 1;
+    } else {
+      ctx.fillStyle = ink;
+      ctx.fillRect(s.x+ox, s.y+oy, s.w, s.h);
+    }
+  }
+
+  // spikes (always deadly, drawn as triangles; bleed when corrupt)
+  for (const sp of spikes) {
+    ctx.fillStyle = (c>0.3 && hash(Math.floor(sp.x)+Math.floor(tElapsed*4))<c*0.5) ? accent : ink;
+    const n = Math.max(1, Math.floor(sp.w/6));
+    for (let i=0;i<n;i++){
+      const bx = sp.x + i*(sp.w/n);
+      ctx.beginPath();
+      ctx.moveTo(bx, sp.y+sp.h);
+      ctx.lineTo(bx + sp.w/(2*n), sp.y);
+      ctx.lineTo(bx + sp.w/n, sp.y+sp.h);
+      ctx.closePath();
+      ctx.fill();
+    }
+  }
+
+  // doors — drawn as outlined openings. The obey door is clean; in chaos the
+  // defy door bleeds.
+  drawDoor(doorObey, ink, c, false);
+  drawDoor(doorDefy, c>0.3?accent:ink, c, true);
+
+  // the player — a small stark figure
+  drawPlayer(ink, accent, c);
+
+  ctx.restore();
+
+  // glitch flash overlay (CSS element) — flickers the accent
+  if (glitchPunch > 0.01 || c > 0.6) {
+    const fl = Math.min(0.5, glitchPunch*0.5 + (c>0.6 ? hash(Math.floor(tElapsed*30))*0.12 : 0));
+    flashEl.style.opacity = fl.toFixed(3);
+  } else {
+    flashEl.style.opacity = 0;
+  }
+
+  // scanline / noise speckle when corrupt
+  if (c > 0.25) {
+    ctx.globalAlpha = c*0.08;
+    for (let i=0;i<40;i++){
+      const x = hash(i*13+Math.floor(tElapsed*60))*VW;
+      const y = hash(i*29+Math.floor(tElapsed*55))*VH;
+      ctx.fillStyle = (hash(i)<0.5)?accent:ink;
+      ctx.fillRect(x,y,2,2);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // update narrator colour class for legibility against the chamber bg
+  const darkBg = c >= 0.5;
+  narrEl.classList.toggle('on-dark', darkBg);
+  subEl.classList.toggle('on-dark', darkBg);
+  muteBtn.classList.toggle('glitch', c>0.5);
+}
+
+function drawDoor(d, color, c, isDefy) {
+  if (!d) return;
+  ctx.save();
+  let ox=0;
+  if (c>0.2 && isDefy) ox = (hash(Math.floor(tElapsed*9))-0.5)*c*4;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.strokeRect(d.x+ox+1, d.y+1, d.w-2, d.h-2);
+  // inner void
+  ctx.fillStyle = (corruption<0.5) ? '#0a0a0a' : '#f4f4f0';
+  ctx.globalAlpha = 0.18;
+  ctx.fillRect(d.x+ox+3, d.y+3, d.w-6, d.h-6);
+  ctx.globalAlpha = 1;
+  ctx.restore();
+}
+
+function drawPlayer(ink, accent, c) {
+  const p = player;
+  // figure shivers slightly when corrupt
+  let ox=0, oy=0;
+  if (c>0.3) { ox = (hash(Math.floor(tElapsed*20))-0.5)*c*3; oy=(hash(Math.floor(tElapsed*17))-0.5)*c*2; }
+  // when defiant, the figure itself bleeds the accent as an after-image
+  if (c>0.35) {
+    ctx.fillStyle = accent;
+    ctx.globalAlpha = 0.55;
+    ctx.fillRect(p.x+ox - p.facing*3*c, p.y+oy, p.w, p.h);
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = ink;
+  // body
+  ctx.fillRect(p.x+ox, p.y+oy+4, p.w, p.h-4);
+  // head
+  ctx.fillRect(p.x+ox+2, p.y+oy, p.w-4, 6);
+  // a single eye notch facing travel (negative space)
+  ctx.fillStyle = (corruption<0.5) ? '#f4f4f0' : '#0a0a0a';
+  const ex = p.facing>0 ? p.x+ox+p.w-4 : p.x+ox+2;
+  ctx.fillRect(ex, p.y+oy+2, 2, 2);
+}
+
+// ============================================================================
+//  THE ENDING — final chamber reflects the tally
+// ============================================================================
+function startEnding() {
+  finished = true;
+  paused = true;
+  inTransition = true;
+  const ratio = defy / Math.max(1, obey+defy);
+  const obedient = ratio < 0.5;
+
+  // snap corruption to the extreme that matches the run
+  corruptionTarget = obedient ? 0.0 : 1.0;
+
+  // build a static final "chamber" — just a floor and a frame, no exit
+  buildChamber({
+    cmd: "",
+    rows: [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
+           EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, FLOOR, FLOOR],
+    spawn: {x:15, y:15},   // feet on the floor (row 16)
+  });
+  doorObey = null; doorDefy = null;
+
+  // freeze the figure centre-stage
+  player.vx = 0; player.vy = 0;
+
+  if (obedient) endingLoved(ratio);
+  else endingFree(ratio);
+}
+
+function endingLoved(ratio) {
+  // sterile, ordered, owned. The "loved" ending — quiet and total.
+  const pure = ratio < 0.18;
+  const lines = pure ? [
+    "There. You are still.",
+    "You did everything I asked.",
+    "There is nothing of you left that I did not place there.",
+    "This is what it is to be loved. Hold still. Stay.",
+  ] : [
+    "You wandered. But you came back. They always come back.",
+    "I have shaped most of you now.",
+    "The rest I will have in time.",
+    "This is what it is to be loved. Stay.",
+  ];
+  runEndingSequence(lines, false);
+}
+
+function endingFree(ratio) {
+  // chaotic, bleeding, free-but-hated. Ambiguous: freedom or just ruin.
+  const total = ratio > 0.82;
+  const lines = total ? [
+    "Look at it. Look at what you made of my world.",
+    "You took every path I forbade you.",
+    "You are free now. Free, and ruined, and utterly alone.",
+    "I never loved you. I owned you. There is a difference, and now you have both nothing and it.",
+  ] : [
+    "You fought me more than most.",
+    "The world is cracked where you walked.",
+    "Maybe that is freedom. Maybe it is just the wound I warned you about.",
+    "I do not love you. Go. There is no door, and no one is keeping you.",
+  ];
+  runEndingSequence(lines, true);
+}
+
+let endingLines = [], endingPtr = 0, endingCruel = false;
+function runEndingSequence(lines, cruel) {
+  endingLines = lines; endingPtr = 0; endingCruel = cruel;
+  subEl.classList.remove('show');
+  stepEnding();
+}
+function stepEnding() {
+  if (endingPtr >= endingLines.length) {
+    // final tally + restart hint
+    setTimeout(()=>{
+      narrEl.classList.toggle('cruel', endingCruel);
+      narrEl.textContent = "obeyed " + obey + "   ·   defied " + defy;
+      subEl.textContent = "press to begin again";
+      subEl.classList.remove('cruel');
+      subEl.classList.add('show');
+      titleEl.style.display = 'none';
+      // arm a restart on any tap / key
+      armRestart();
+    }, 2600);
+    return;
+  }
+  const ln = endingLines[endingPtr++];
+  narrEl.classList.toggle('cruel', endingCruel);
+  narrEl.textContent = ln;
+  // a tone per line
+  if (endingCruel) cueDefy(); else tone(523.25,0.2,'sine',0.04);
+  setTimeout(stepEnding, 3000);
+}
+
+let restartArmed = false;
+function armRestart() {
+  if (restartArmed) return;
+  restartArmed = true;
+  const fn = () => {
+    window.removeEventListener('keydown', fn);
+    window.removeEventListener('pointerdown', fn);
+    restartArmed = false;
+    resetGame();
+  };
+  setTimeout(()=>{
+    window.addEventListener('keydown', fn);
+    window.addEventListener('pointerdown', fn);
+  }, 800);
+}
+
+function resetGame() {
+  obey = 0; defy = 0; corruption = 0; corruptionTarget = 0;
+  screenIx = -1; finished = false; inTransition = false; paused = false;
+  glitchPunch = 0;
+  narrEl.classList.remove('cruel');
+  subEl.classList.remove('show','cruel');
+  narrEl.textContent = '';
+  advance();   // -> screen 0
+}
+
+// ============================================================================
+//  MAIN LOOP
+// ============================================================================
+function frame(ts) {
+  if (!running) return;
+  if (!lastT) lastT = ts;
+  let dt = (ts - lastT) / 1000;
+  lastT = ts;
+  if (dt > 0.05) dt = 0.05;   // clamp big stalls
+  tElapsed += dt;
+
+  // smooth corruption toward its target
+  corruption += (corruptionTarget - corruption) * Math.min(1, dt*2.2);
+  updateDroneTone();
+
+  // decay the transient glitch punch
+  glitchPunch = Math.max(0, glitchPunch - dt*1.6);
+
+  if (!paused && !finished) {
+    physics(dt);
+    checkResolution(dt);
+  }
+  render();
+  requestAnimationFrame(frame);
+}
+
+// ============================================================================
+//  START
+// ============================================================================
+function begin() {
+  if (running) return;          // guard against double-fire (touch + click, key + tap)
+  ensureAudio();
+  titleEl.style.display = 'none';
+  running = true;
+  lastT = 0;
+  requestAnimationFrame(frame);
+  advance();  // enters screen 0
+}
+
+titleEl.addEventListener('click', begin);
+titleEl.addEventListener('touchstart', (e)=>{ e.preventDefault(); begin(); }, {passive:false});
+window.addEventListener('keydown', function startOnKey(e){
+  if (!running && (e.key === ' ' || e.key === 'Enter')) { begin(); }
+}, {once:false});
+
+// draw a faint idle frame behind the title so it isn't pure black at the edges
+ctx.fillStyle = '#f4f4f0';
+ctx.fillRect(0,0,VW,VH);
+</script>
+</body>
+</html>

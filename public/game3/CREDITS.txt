@@ -1,0 +1,3 @@
+A Dark Room — Doublespeak Games (github.com/doublespeakgames/adarkroom). MPL-2.0 (see LICENSE.md).
+Vendored static; lang/ trimmed to English (the built-in default), demo assets removed.
+~8k GitHub stars; a cult minimalist text/incremental game.

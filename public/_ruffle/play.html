@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><title>game</title>
+<style>html,body{margin:0;height:100%;background:#000;overflow:hidden}#c,#c>*{width:100vw;height:100vh;display:block}</style></head>
+<body><div id="c"></div><script src="ruffle.js"></script>
+<script>
+var swf=new URLSearchParams(location.search).get('swf');
+window.RufflePlayer=window.RufflePlayer||{};
+window.addEventListener("DOMContentLoaded",function(){
+  var r=window.RufflePlayer.newest();var p=r.createPlayer();
+  document.getElementById('c').appendChild(p);
+  p.load({url:swf,autoplay:"on",unmuteOverlay:"hidden",scale:"showAll",letterbox:"on",contextMenu:false,preferredRenderer:"canvas"});
+});
+</script></body></html>
