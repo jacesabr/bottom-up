@@ -98,6 +98,14 @@ export default function ChapterMap({
   const current =
     nodes.find((n) => inProgress.includes(n.status)) ??
     nodes.find((n) => isOpen(n));
+  // Games unlock in strict sequence: game i opens only when the contiguous run of passed nodes from the
+  // start reaches it (nodes 0..i all passed). Same as "node i passed" in normal play, but robust to a
+  // stale / out-of-order pass (e.g. after a chapter re-order) unlocking a game ahead of the real frontier.
+  let passedPrefix = 0;
+  for (const n of nodes) {
+    if (n.status === 'passed') passedPrefix++;
+    else break;
+  }
   const showGameUnlock = GAME_CHAPTERS.has(chapterId);
 
   return (
@@ -135,11 +143,11 @@ export default function ChapterMap({
                       onClick={() => clickable && onNodeClick(node.id)}
                       title={node.status === 'coming_soon' ? `${node.title} - coming soon` : node.title}
                     >
-                      <div className="dot">{node.status === 'passed' ? '' : node.status === 'coming_soon' ? '...' : node.order}</div>
+                      <div className="dot">{node.status === 'passed' ? '' : node.status === 'coming_soon' ? '...' : node.order + 1}</div>
                       <div className="nm">{node.title.split('·')[0].trim()}</div>
                     </div>
                     {showGameUnlock && index < GAMES.length && (
-                      node.status === 'passed' ? (
+                      index < passedPrefix ? (
                         <button
                           type="button"
                           className="game-unlock"
