@@ -26,6 +26,14 @@ const GAMES = [
   { title: 'A Studio Above a Bookstore', src: '/games/studio/index.html' }, // Anna Anthropy — Bitsy
 ];
 
+// Each math course is its own sequential path with its own "node 1"; the games unlock along the
+// first chapter of ALL THREE courses (not just CBSE 10), independently per course's progress.
+const GAME_CHAPTERS = new Set([
+  'cbse10:maths:jemh101', // CBSE 10 — Real Numbers (ch 1)
+  'cbse12:mathematics:mathematics-ch01', // CBSE 12 — Relations and Functions (ch 1)
+  'jee:maths:maths-ch01', // JEE — Sets (Class 11, ch 1)
+]);
+
 interface Node {
   id: string;
   slug: string;
@@ -90,7 +98,7 @@ export default function ChapterMap({
   const current =
     nodes.find((n) => inProgress.includes(n.status)) ??
     nodes.find((n) => isOpen(n));
-  const showGameUnlock = chapterId === 'cbse10:maths:jemh101';
+  const showGameUnlock = GAME_CHAPTERS.has(chapterId);
 
   return (
     <div className="chapter-map">
