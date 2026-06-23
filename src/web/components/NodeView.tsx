@@ -565,14 +565,14 @@ export default function NodeView({
       await submitGate(img);
       return;
     }
-    // Teaching: route the drawing through the VISION path so the tutor actually SEES it. The chat /reply
-    // turn is text-only, so posting just a text note made the tutor reply "I can't see your scratchpad".
+    // Teaching: send the drawing to a real teach turn. The backend transcribes it (vision) and folds it
+    // into the turn, so the tutor sees the work AND can advance the lesson (the chat turn itself is text-only).
     stopSpeaking();
     setHighlight(null);
     setMessages((m) => [...m, { role: 'learner', image: img, text: 'Here is my working.' }]);
     setBusy(true);
     try {
-      const res = await fetch(`${base}/help`, {
+      const res = await fetch(`${base}/reply`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(withModels({ image: img, lang })),
@@ -586,6 +586,10 @@ export default function NodeView({
       }
       routeFails.current = 0;
       setMessages((m) => [...m, { role: 'tutor', text: data.message || SERVICE_DOWN_TEXT }]);
+      if (res.ok) {
+        setChecklist(data.checklist ?? []);
+        setReadyForGate(!!data.readyForGate);
+      }
     } catch {
       setMessages((m) => [...m, { role: 'tutor', text: SERVICE_DOWN_TEXT }]);
     } finally {

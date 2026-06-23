@@ -350,9 +350,9 @@ router.post('/learner/:learnerId/node/:conceptId/start', requireNodeAccess, asyn
 router.post('/learner/:learnerId/node/:conceptId/reply', requireNodeAccess, async (req, res) => {
   try {
     const { learnerId, conceptId } = req.params;
-    const { message, lang, track } = req.body;
+    const { message, lang, track, image } = req.body;
     seedClientModels(learnerId, req.body);
-    const turn = await respond(learnerId, conceptId, message, false, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation');
+    const turn = await respond(learnerId, conceptId, message, false, lang || 'en', track === 'advanced' ? 'advanced' : 'foundation', undefined, image);
     res.json(turn);
   } catch (err) {
     if (err instanceof LlmUnavailableError) {

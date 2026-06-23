@@ -352,9 +352,25 @@ export async function respond(
   opening = false,
   langCode = 'en',
   track: Track = 'foundation',
-  onDelta?: (messageSoFar: string) => void
+  onDelta?: (messageSoFar: string) => void,
+  image?: string
 ): Promise<TurnResult> {
   const c = await loadConcept(conceptId);
+
+  // A learner can SEND their scratchpad drawing into the chat (not just to a gate). The teach turn is
+  // text-only, so transcribe the drawing with the vision model and fold it into the learner message — now
+  // the tutor "sees" the work and can advance the lesson from it. Vision-down throws LlmUnavailableError,
+  // which propagates to the route's graceful "unavailable" handler.
+  if (image) {
+    const transcript = (await nimVision(
+      'Transcribe EVERYTHING handwritten or drawn in this image as plain text and math (simple notation: x^2, sqrt(), fractions a/b). Briefly describe any diagram. Output ONLY the transcription — no commentary or judgement.',
+      image,
+      500,
+      getVisionModel(learnerId)
+    )).trim();
+    const note = `[The student shared handwritten working on the scratchpad. Transcription: ${transcript}]`;
+    learnerMessage = learnerMessage && learnerMessage.trim() ? `${learnerMessage.trim()}\n\n${note}` : note;
+  }
 
   if (learnerMessage && learnerMessage.trim()) {
     const msg = learnerMessage.trim();
