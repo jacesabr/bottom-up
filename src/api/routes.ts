@@ -273,7 +273,14 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
       return { id: concept.id, slug: concept.slug, title: concept.title, role: concept.role, order: concept.order, status };
     });
 
-    res.json({ chapter: { id: chapter.id, title: chapter.title }, nodes });
+    // Course-wide node offset: how many nodes precede this chapter in the subject. Chapters are just
+    // sequential dividers, so games map to the course-wide node index and flow across chapter boundaries.
+    const chaptersOrdered = await getChaptersForSubject(chapter.subjectId);
+    const chIdx = chaptersOrdered.findIndex((c) => c.id === chapter.id);
+    let nodeOffset = 0;
+    for (let i = 0; i < chIdx; i++) nodeOffset += (await getConceptsForChapter(chaptersOrdered[i].id)).length;
+
+    res.json({ chapter: { id: chapter.id, title: chapter.title }, nodes, nodeOffset });
   } catch (err) {
     console.error('Error fetching chapter:', err);
     res.status(500).json({ error: 'Failed to fetch chapter' });

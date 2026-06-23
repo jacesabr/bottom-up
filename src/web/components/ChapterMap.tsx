@@ -26,13 +26,11 @@ const GAMES = [
   { title: 'A Studio Above a Bookstore', src: '/games/studio/index.html' }, // Anna Anthropy — Bitsy
 ];
 
-// Each math course is its own sequential path with its own "node 1"; the games unlock along the
-// first chapter of ALL THREE courses (not just CBSE 10), independently per course's progress.
-const GAME_CHAPTERS = new Set([
-  'cbse10:maths:jemh101', // CBSE 10 — Real Numbers (ch 1)
-  'cbse12:mathematics:mathematics-ch01', // CBSE 12 — Relations and Functions (ch 1)
-  'jee:maths:maths-ch01', // JEE — Sets (Class 11, ch 1)
-]);
+// Each math course is its own sequential path; games map to the COURSE-WIDE node index (chapters are
+// just sequential dividers) and flow across chapter boundaries via the server's nodeOffset. Gate on the
+// three course subjects so games only ever appear inside a real course.
+const GAME_SUBJECTS = ['cbse10:maths', 'cbse12:mathematics', 'jee:maths'];
+const inGameCourse = (id: string) => GAME_SUBJECTS.some((s) => id.startsWith(s + ':'));
 
 interface Node {
   id: string;
@@ -63,6 +61,7 @@ export default function ChapterMap({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [openGame, setOpenGame] = useState<number | null>(null);
+  const [nodeOffset, setNodeOffset] = useState(0); // course-wide index of this chapter's first node
 
   useEffect(() => {
     const fetchChapter = async () => {
@@ -72,6 +71,7 @@ export default function ChapterMap({
         const data = await res.json();
         if (!data.nodes?.length) throw new Error('No concepts returned for this chapter');
         setChapter(data.chapter);
+        setNodeOffset(data.nodeOffset ?? 0);
         setNodes(data.nodes.sort((a: Node, b: Node) => a.order - b.order));
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error');
@@ -106,7 +106,7 @@ export default function ChapterMap({
     if (n.status === 'passed') passedPrefix++;
     else break;
   }
-  const showGameUnlock = GAME_CHAPTERS.has(chapterId);
+  const showGameUnlock = inGameCourse(chapterId);
 
   return (
     <div className="chapter-map">
@@ -125,6 +125,7 @@ export default function ChapterMap({
             <div className="map">
               {nodes.map((node, index) => {
                 const isCurrent = current && node.id === current.id;
+                const g = nodeOffset + index; // course-wide game index (chapters flow into one sequence)
                 const visual =
                   node.status === 'passed'
                     ? 'done'
@@ -146,25 +147,25 @@ export default function ChapterMap({
                       <div className="dot">{node.status === 'passed' ? '' : node.status === 'coming_soon' ? '...' : node.order + 1}</div>
                       <div className="nm">{node.title.split('·')[0].trim()}</div>
                     </div>
-                    {showGameUnlock && index < GAMES.length && (
+                    {showGameUnlock && g < GAMES.length && (
                       index < passedPrefix ? (
                         <button
                           type="button"
                           className="game-unlock"
-                          onClick={() => setOpenGame(index)}
-                          title={`Open ${GAMES[index].title}`}
+                          onClick={() => setOpenGame(g)}
+                          title={`Open ${GAMES[g].title}`}
                         >
                           <span className="game-unlock-badge">game unlocked</span>
-                          <span className="game-unlock-title">{GAMES[index].title}</span>
+                          <span className="game-unlock-title">{GAMES[g].title}</span>
                         </button>
                       ) : (
                         <div
                           className="game-unlock locked"
-                          title={`Finish this concept to unlock ${GAMES[index].title}`}
+                          title={`Finish this concept to unlock ${GAMES[g].title}`}
                           aria-disabled="true"
                         >
                           <span className="game-unlock-badge">🔒 locked</span>
-                          <span className="game-unlock-title">{GAMES[index].title}</span>
+                          <span className="game-unlock-title">{GAMES[g].title}</span>
                         </div>
                       )
                     )}
