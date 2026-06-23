@@ -142,6 +142,44 @@ lessons. you've got this, champ.</blockquote>
   explicitly"? draft: <em>"choose which result the problem calls for"</em> — good?</li>
 </ol>
 
+<h3>2. no-assumption audit of the 10 (gates + prereqs) <span class="status">· status: audited, fixed</span></h3>
+<p>mirror of the IE finding #2. same Phase-1 sweep (dont_assume.md §4, Sonnet subagents, one per node) auditing
+<strong>three surfaces</strong> — explanation + key moves + every gate's prompt/ideal/rubric — on the maths 10.</p>
+<p><strong>headline: the maths 10 are in much better shape than IE's were.</strong> ~24 gaps vs IE's ~52, and
+<strong>no missing prereq node</strong> — maths <em>may</em> assume prior-grade material (dont_assume.md §1), so the
+decode-loop-style "whole bedrock concept missing" case doesn't arise. two differences from IE:</p>
+<ul>
+  <li><strong>gate grounding was basically clean.</strong> maths gates use <code>cas</code>/<code>numeric</code>
+  graders (answer in <code>expected.value</code>/<code>equivalentTo</code>) and did not leak forward-referenced
+  terms. (an early pass flagged "empty ideal/rubric" — a <strong>false positive</strong> from a reduced dump; the
+  gates grade fine. noted so we don't chase it again.)</li>
+  <li>node 0 (<code>apply-real-number-theorems</code>) is the <strong>capstone</strong> — it depends on nodes 4/5/6
+  and the irrationality nodes, so it loads <em>last</em>; its "uses FTA / Theorem 1.2 / HCF×LCM" flags are
+  <strong>not</strong> overreach (satisfied prereqs by then). left as-is.</li>
+</ul>
+<p><strong>what we fixed — class B (prior-grade bedrock refreshers, additive/safe-on-10):</strong> the recurring
+real gap was <strong>exponent-law bedrock</strong> leaned on across the chapter but never refreshed:</p>
+<table>
+  <tr><th>refresher</th><th>added to</th><th>the law</th></tr>
+  <tr><td>power-of-a-power</td><td><code>decide-ends-with-digit</code></td><td>(aᵐ)ⁿ = a^(m·n), so 4ⁿ = 2^(2n)</td></tr>
+  <tr><td>two-primes ⇒ product</td><td><code>decide-ends-with-digit</code></td><td>÷10 ⇔ ÷2 <strong>and</strong> ÷5</td></tr>
+  <tr><td>coprime = HCF 1</td><td><code>compute-hcf</code></td><td>shares no prime ⇒ HCF = 1</td></tr>
+  <tr><td>compare exponents → min</td><td><code>compute-hcf</code></td><td>HCF takes the smallest power</td></tr>
+  <tr><td>compare exponents → max</td><td><code>compute-lcm</code></td><td>LCM takes the greatest power</td></tr>
+  <tr><td>multiply powers → add exps</td><td><code>use-hcf-lcm-product-relation</code></td><td>aᵐ × aⁿ = a^(m+n) (why HCF×LCM = a×b)</td></tr>
+  <tr><td>squaring doubles exponents</td><td><code>state-prime-divides-square</code></td><td>(pᵉ)² = p^(2e), no new primes</td></tr>
+  <tr><td>squaring a product</td><td><code>derive-square-relation</code></td><td>(b√n)² = b²·n, both factors</td></tr>
+  <tr><td>HCF=1 bridge</td><td><code>set-up-contradiction</code></td><td>lowest terms = the same HCF</td></tr>
+</table>
+<p><strong>class C (gates) — out of scope.</strong> the live maths gates are mostly <strong>AI-generated and stored
+only in the DB</strong> (<code>kind:authored</code>, ids like <code>…:explain</code>/<code>…:mcq</code>/<code>…:sketch</code>);
+<code>exam.json</code> only carries a shadowed <code>:g1</code> per node and the engine serves the authored ones. per the
+operator, <strong>we don't care about the maths gates</strong> — they were <strong>not audited and not changed</strong>.
+the maths deliverable here is the refreshers above (live + verified).</p>
+<p><strong>root cause (refresher side, same family as IE):</strong> the original sweep audited only the explanation
+surface, so prior-grade exponent laws were assumed 'obvious'. carried-over rule: <strong>audit the explanation +
+key-move surfaces; a gate may only test what the node taught.</strong></p>
+
 <h2>how we use this doc</h2>
 <ul>
   <li>each new fix/schema idea → add a <code>### N. &lt;name&gt; · status: proposed</code> block here first.</li>

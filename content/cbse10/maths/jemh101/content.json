@@ -311,6 +311,26 @@
           ],
           "answer": "In 6ⁿ the 6 is the base (the number being multiplied) and the little n is the exponent (how many copies of the base to multiply). So 6³ = 6 × 6 × 6, and 6ⁿ means n copies of 6 multiplied together, for whatever whole number n is. Here is the key move: if the base splits into primes, say 6 = 2 × 3, then 6ⁿ = (2 × 3)ⁿ = 2ⁿ × 3ⁿ — you just get n copies of each prime that was in the base. Raising to a power copies the base's primes; it never adds a prime the base didn't have.",
           "returnCue": "So 6ⁿ is just n copies of 6's primes — back to reading off which primes 4ⁿ and 6ⁿ can supply."
+        },
+        {
+          "trigger": "The power-of-a-power step — turning 4ⁿ into (2²)ⁿ = 2^(2n). The learner may not have the rule that a power raised to a power multiplies the exponents.",
+          "surfacingQuestion": "We rewrite 4ⁿ as (2²)ⁿ and then as 2 to the power 2n. When you raise a power to another power — like (2²)ⁿ — do the exponents add, multiply, or stay put?",
+          "ladder": [
+            "(2²)³ means 2² × 2² × 2² — three copies. How many 2’s is that in total?",
+            "So (2²)³ = 2 to the power…? And in general (2²)ⁿ = 2 to the power…?"
+          ],
+          "answer": "Raising a power to a power multiplies the exponents: (aᵐ)ⁿ = a^(m·n). So (2²)ⁿ = 2^(2n) — because (2²)ⁿ is n copies of 2², i.e. 2n twos multiplied together. That’s why 4ⁿ is just a pile of 2’s and can never contain a 5.",
+          "returnCue": "Good — (aᵐ)ⁿ = a^(m·n), so 4ⁿ = 2^(2n), all 2’s. Back to why it can’t end in 0."
+        },
+        {
+          "trigger": "The step ‘ends in 0 ⇔ divisible by 10 ⇔ divisible by BOTH 2 and 5’ — the learner may not see why needing two different primes means needing their product.",
+          "surfacingQuestion": "A number ends in 0 exactly when 10 divides it, and 10 = 2 × 5. Why is ‘divisible by 10’ the same as ‘divisible by 2 AND by 5’ — why isn’t being a multiple of 2 alone, or 5 alone, enough?",
+          "ladder": [
+            "For 10 to divide a number, the number’s prime factors must include the primes that make up 10. Which primes make up 10?",
+            "2 and 5 are different primes with nothing in common. To be divisible by 10, must a number contain a 2, a 5, or both?"
+          ],
+          "answer": "10 = 2 × 5, and 2 and 5 are different primes (they share nothing). So a number is divisible by 10 exactly when it contains BOTH a factor of 2 and a factor of 5 — having only one of them isn’t enough. That’s why ‘ends in 0’ means ‘has both a 2 and a 5 in its prime factorisation.’",
+          "returnCue": "Good — ending in 0 needs BOTH a 2 and a 5. Back to whether 4ⁿ can have a 5."
         }
       ],
       "forwardRefs": [
@@ -387,6 +407,26 @@
           ],
           "answer": "A prime divides a number exactly when the number splits into groups of that prime with nothing left over — remainder 0. 5 divides 20 (four groups of 5, nothing left) but not 18 (three groups of 5 leaves 3). A number can only be divided exactly by a prime that actually appears in its prime factorisation, so a number with no 5 in it is simply not divisible by 5. That is the precise reason a prime missing from even one number is vetoed from the HCF: it cannot divide that number, so it cannot divide all of them.",
           "returnCue": "So a missing prime cannot divide the number at all. Back to keeping only the primes shared by every number."
+        },
+        {
+          "trigger": "The word ‘coprime’ — used here (HCF = 1, no shared prime) but this node doesn’t define it.",
+          "surfacingQuestion": "We call two numbers like 8 and 15 ‘coprime.’ Looking at their prime factorisations, what do you think ‘coprime’ means?",
+          "ladder": [
+            "8 = 2×2×2 and 15 = 3×5. Do they share any prime factor?",
+            "If they share no prime, what’s the largest number that divides both of them?"
+          ],
+          "answer": "Two numbers are coprime when they share no prime factor — so the only thing dividing both is 1, i.e. their HCF is 1. Example: 8 = 2³ and 15 = 3 × 5 have no prime in common, so HCF(8,15) = 1 and they’re coprime. ‘Coprime’ and ‘HCF = 1’ say the same thing.",
+          "returnCue": "Good — coprime = no shared prime = HCF is 1. Back to computing the HCF."
+        },
+        {
+          "trigger": "Comparing the power of a shared prime across two numbers and keeping the SMALLER one — the learner may not be fluent reading/comparing exponents like 2³ vs 2¹.",
+          "surfacingQuestion": "One number has 2³ (three 2’s), another has 2¹ (one 2). For a factor that divides BOTH, how many 2’s can you safely use — three, or just one?",
+          "ladder": [
+            "2³ = three 2’s; 2¹ = one 2. A common factor can only use 2’s that BOTH numbers have. How many do they both have?",
+            "So for the HCF, do you take the bigger exponent or the smaller?"
+          ],
+          "answer": "Line up the same prime in each number and compare its exponents as plain numbers. For the HCF you take the SMALLEST exponent, because a common divisor can only use copies of a prime that BOTH numbers have — e.g. 2³ and 2¹ share only 2¹, so the HCF gets 2¹.",
+          "returnCue": "Good — for HCF, take the smallest power of each shared prime. Back to it."
         }
       ],
       "forwardRefs": [
@@ -460,6 +500,16 @@
           ],
           "answer": "A multiple of a number is what you get by multiplying it by a whole number — the multiples of 6 are 6, 12, 18, 24, 30, …, 60, and of 20 are 20, 40, 60, …. LCM stands for Least (or Lowest) Common Multiple: the smallest whole number that every one of your numbers divides into exactly. The first number appearing in both lists above is 60, so LCM(6, 20) = 60. It is the mirror image of HCF: HCF is the biggest factor the numbers SHARE, while LCM is the smallest multiple they all fit INTO. That 60 is exactly what the prime-power method builds — and why we take the GREATEST power of every prime, so the answer is big enough for every number to divide it.",
           "returnCue": "So LCM = the smallest number they all divide into. Back to building it from the greatest power of every prime."
+        },
+        {
+          "trigger": "Comparing the power of a prime across numbers and keeping the GREATEST one for the LCM — the learner may not be fluent comparing exponents.",
+          "surfacingQuestion": "One number has 2¹, another has 2². The LCM must be divisible by BOTH. How many 2’s does it need — one, or two?",
+          "ladder": [
+            "To be a multiple of a number you need at least as many of each prime as that number has. 2² needs two 2’s; 2¹ needs one. To cover both, how many 2’s?",
+            "So for the LCM, do you take the bigger exponent or the smaller?"
+          ],
+          "answer": "Line up the same prime across the numbers and compare exponents. For the LCM you take the GREATEST exponent, because the LCM must be a multiple of each number — so it needs at least as many copies of each prime as the number that uses it most. E.g. 2¹ and 2² → the LCM gets 2².",
+          "returnCue": "Good — for LCM, take the greatest power of each prime. Back to it."
         }
       ],
       "forwardRefs": [
@@ -523,6 +573,16 @@
           ],
           "answer": "When two things multiply to give a known total and you know one of them, you divide the total by the one you know to get the other: 4 x ? = 96 means ? = 96 / 4 = 24. That is exactly why HCF x LCM = a x b can be rearranged: the product a x b is the known total, so dividing it by the known HCF gives the LCM, and dividing by the known LCM gives the HCF. Division simply undoes the multiplication.",
           "returnCue": "So division undoes multiplication to recover the missing factor. Back to LCM = (a x b) / HCF."
+        },
+        {
+          "trigger": "Why HCF × LCM = a × b — it leans on multiplying powers of the same prime by ADDING exponents, which isn’t stated.",
+          "surfacingQuestion": "The reason HCF × LCM rebuilds a × b is that, for each prime, the smallest power times the greatest power gives back the total. When you MULTIPLY two powers of the same prime — like 2² × 2³ — what happens to the exponents?",
+          "ladder": [
+            "2² × 2³ = (2×2) × (2×2×2). How many 2’s altogether?",
+            "So 2² × 2³ = 2 to the power…? In general aᵐ × aⁿ = ?"
+          ],
+          "answer": "Multiplying powers of the same base adds the exponents: aᵐ × aⁿ = a^(m+n). So for each prime, HCF takes the smaller power m and LCM takes the larger power n, and m + n is exactly the total the two numbers had between them — which is why HCF × LCM rebuilds a × b.",
+          "returnCue": "Good — aᵐ × aⁿ = a^(m+n), so smallest + greatest power = the whole. Back to the identity."
         }
       ],
       "forwardRefs": []
@@ -585,6 +645,16 @@
           ],
           "answer": "a² means a multiplied by itself: a × a. So 5² = 5 × 5 = 25, and 7² = 7 × 7 = 49. A number like 25 or 49 that comes from a whole number times itself is called a 'perfect square' (the name comes from the area of a square with that side length). The whole point of this theorem is to take a fact about the square a² and pull it back to a fact about the base a it was built from.",
           "returnCue": "So a² is just a × a, the base squared. Back to: a prime sits inside a², so it sits inside a."
+        },
+        {
+          "trigger": "The claim ‘squaring a only doubles the count of each prime’ — leans on (pᵉ)² = p^(2e), not stated here.",
+          "surfacingQuestion": "If a = 2³ × 5, what is a²? When you square a number written in prime powers, what happens to each exponent?",
+          "ladder": [
+            "a² = a × a. If a has three 2’s, how many 2’s does a × a have?",
+            "So squaring takes each exponent to…? (2³)² = 2 to the power…?"
+          ],
+          "answer": "Squaring doubles every prime’s exponent: (pᵉ)² = p^(2e), so if a = p₁^e₁ × p₂^e₂ × … then a² = p₁^(2e₁) × p₂^(2e₂) × …. Squaring introduces no NEW primes — it just uses each existing one twice as often. That’s why a² is built from exactly the same primes as a.",
+          "returnCue": "Good — squaring doubles each exponent and adds no new primes. Back to why a prime dividing a² must divide a."
         }
       ],
       "forwardRefs": [
@@ -661,6 +731,13 @@
           ],
           "answer": "Cancelling means dividing the top and bottom by a factor they share; it changes how the fraction LOOKS but not its value. 6/8 has 2 dividing both, so it cancels to 3/4 — same value, smaller numbers. You keep cancelling until top and bottom share no common factor but 1 (here 3 and 4 share nothing), and that fully-cancelled version is unique: every fraction reaches exactly one of them. That fully-cancelled state is precisely what 'a and b coprime' means.",
           "returnCue": "So cancelling all the way down lands you on the one coprime version. That is the form we write a/b in."
+        },
+        {
+          "trigger": "‘HCF(a,b) = 1’ stated in the coprime-form step — the learner may not connect it to the HCF they computed earlier.",
+          "surfacingQuestion": "We say a fraction in lowest terms has HCF(a, b) = 1. Is that a new idea, or the same HCF you already learned to compute?",
+          "ladder": [],
+          "answer": "It’s the same HCF. ‘Lowest terms’ / ‘fully cancelled’ just means top and bottom share no common factor, i.e. HCF(a, b) = 1 — the very HCF you computed by prime factorisation earlier. Writing the fraction so that HCF(a,b) = 1 is what ‘coprime form’ means.",
+          "returnCue": "Good — HCF(a,b) = 1 is the same HCF, signalling the fraction is fully cancelled. Back to the setup."
         }
       ],
       "forwardRefs": [
@@ -762,6 +839,16 @@
           ],
           "answer": "A fraction a/b means a divided by b. Multiplying by b undoes that division: (a/b) × b = a, the b on top and bottom cancel. The rule of equations is that whatever you do to one side you must do to the other, so multiplying BOTH sides of √n = a/b by b keeps it balanced and gives b·√n = a — a fraction-free equation. That is what 'clearing the denominator' means: removing the bottom of the fraction by multiplying it away.",
           "returnCue": "So multiplying both sides by b clears the fraction. That gives us b·√n = a — back to squaring it."
+        },
+        {
+          "trigger": "Squaring a product like (b√n)² — the learner may square only one factor; the rule (xy)² = x²y² isn’t stated.",
+          "surfacingQuestion": "We square both sides of b√n = a and write (b√n)² = b² × n. When you square a product of two things, like (b√n)², do you square just one of them or both?",
+          "ladder": [
+            "(b√n)² = (b√n) × (b√n). Group the b’s together and the √n’s together — what do you get?",
+            "√n × √n = ? and b × b = ? So (b√n)² = ?"
+          ],
+          "answer": "Squaring a product squares each factor: (xy)² = x² × y². So (b√n)² = b² × (√n)² = b² × n (since (√n)² = n). Squaring the WHOLE side means every factor gets squared — a common slip is to square b but forget the √n.",
+          "returnCue": "Good — (b√n)² = b²·n, both factors squared. Back to deriving the relation."
         }
       ],
       "forwardRefs": [
