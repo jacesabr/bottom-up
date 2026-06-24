@@ -7,15 +7,20 @@
  */
 import type { RouteResult } from './nim-router.js';
 
-interface Pick { text?: string; textFallback?: string; vision?: string; ts: number; lastText?: RouteResult; lastVision?: RouteResult; }
+interface Pick { text?: string; textFallback?: string; textChain?: string[]; vision?: string; ts: number; lastText?: RouteResult; lastVision?: RouteResult; }
 const store = new Map<string, Pick>();
 
 export function setRoute(learnerId: string, result: RouteResult): void {
   if (!learnerId) return;
   const cur = store.get(learnerId) ?? { ts: 0 };
   if (result.kind === 'text') {
+    // The full HEALTHY pool, best-first — the cascade in completeJson walks this so one dead model never
+    // blocks the rest. (ranked = [healthy best-first, then failed rows]; keep only ok ones.)
+    const healthy = result.ranked.filter((r) => r.ok).map((r) => r.model);
     cur.text = result.winner;
-    cur.textFallback = result.ranked[1]?.model ?? result.fallback; // 2nd-best as in-session fallback
+    // 2nd-best HEALTHY model (not ranked[1], which is a ✗-timed-out row when only one model passed the probe).
+    cur.textFallback = healthy.find((m) => m !== result.winner) ?? result.fallback;
+    cur.textChain = healthy.length ? healthy : [result.winner, result.fallback].filter(Boolean) as string[];
     cur.lastText = result;
   } else {
     cur.vision = result.winner;
@@ -28,21 +33,25 @@ export function setRoute(learnerId: string, result: RouteResult): void {
 /** Seed the store directly from the client's cached picks (the browser ran the probe and remembers the
  *  winners). Called on each turn so ANY api instance can serve it without a shared store. Pass only ids
  *  already validated against the gated pool (see isAllowedModel); undefined fields are left untouched. */
-export function setRoutePicks(learnerId: string, picks: { text?: string; textFallback?: string; vision?: string }): void {
+export function setRoutePicks(learnerId: string, picks: { text?: string; textFallback?: string; textChain?: string[]; vision?: string }): void {
   if (!learnerId) return;
   const cur = store.get(learnerId) ?? { ts: 0 };
   if (picks.text) cur.text = picks.text;
   if (picks.textFallback) cur.textFallback = picks.textFallback;
+  if (picks.textChain?.length) cur.textChain = picks.textChain; // full healthy pool the browser probed (survives deploys)
   if (picks.vision) cur.vision = picks.vision;
   cur.ts = Date.now();
   store.set(learnerId, cur);
 }
 
-/** Text model override for completeJson opts — {} when nothing probed yet (caller falls back to default). */
-export function getTextModel(learnerId?: string): { model?: string; modelFallback?: string } {
+/** Text model override for completeJson opts — {} when nothing probed yet (caller falls back to default).
+ *  `models` is the full healthy cascade (best-first); completeJson walks it so a dead model never blocks. */
+export function getTextModel(learnerId?: string): { model?: string; modelFallback?: string; models?: string[] } {
   if (!learnerId) return {};
   const p = store.get(learnerId);
-  return p ? { model: p.text, modelFallback: p.textFallback } : {};
+  if (!p) return {};
+  const models = p.textChain?.length ? p.textChain : [p.text, p.textFallback].filter((m): m is string => !!m);
+  return { model: p.text, modelFallback: p.textFallback, models: models.length ? models : undefined };
 }
 
 export function getVisionModel(learnerId?: string): string | undefined {

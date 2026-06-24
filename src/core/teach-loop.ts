@@ -715,7 +715,7 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
   } else if (g.grader === 'vision') {
     gradedBy = 'vision';
     const tm = getTextModel(learnerId);
-    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId, track, getVisionModel(learnerId), tm.model, tm.modelFallback);
+    const r = await gradeSketch(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId, track, getVisionModel(learnerId), tm.model, tm.modelFallback, tm.models);
     correct = r.correct;
     feedback = r.feedback;
   } else {

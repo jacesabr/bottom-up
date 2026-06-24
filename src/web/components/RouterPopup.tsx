@@ -39,7 +39,7 @@ function RaceList({ label, hint, r }: { label: string; hint: string; r: RouteRes
   );
 }
 
-export interface RoutePicks { text?: string; textFallback?: string; vision?: string }
+export interface RoutePicks { text?: string; textFallback?: string; textChain?: string[]; vision?: string }
 
 export default function RouterPopup({ apiBase, learnerId, mode, failedModel, onDone }: {
   apiBase: string; learnerId: string; mode: 'start' | 'failure'; failedModel?: string; onDone: (picks?: RoutePicks) => void;
@@ -97,6 +97,7 @@ export default function RouterPopup({ apiBase, learnerId, mode, failedModel, onD
     const picks: RoutePicks = {};
     if (t[0]) picks.text = t[0];
     if (t[1]) picks.textFallback = t[1];
+    if (t.length) picks.textChain = t; // full healthy pool, best-first
     if (v[0]) picks.vision = v[0];
     return Object.keys(picks).length ? picks : undefined;
   };

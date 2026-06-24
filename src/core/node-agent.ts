@@ -174,7 +174,8 @@ export async function gradeSketch(
   track: Track = 'foundation',
   visionModel?: string,
   textModel?: string,
-  textFallback?: string
+  textFallback?: string,
+  textModels?: string[]
 ): Promise<GradeResult> {
   const prof = examProfile(conceptId ?? 'cbse10', track);
   // IMAGE → TEXT → EVAL. Step 1: the (session-selected) vision model only TRANSCRIBES the handwritten work —
@@ -193,7 +194,7 @@ export async function gradeSketch(
     { role: 'system', content: `You are a fair ${prof.level} ${prof.subject} grader assessing a ${prof.studentLabel}'s HAND-DRAWN answer. You receive a text reading of what they drew, which may contain OCR noise from messy handwriting. Grade the maths generously: if the required working/answer is present, mark it correct even with noisy reads, odd spacing, or slightly-off characters. Mark it incorrect only if the maths is genuinely wrong or a required element is missing. Speak to the student about THEIR DRAWING — never mention transcription, OCR, "the image", or that the work was "garbled". If the work is truly unreadable, set correct=false and the feedback should simply ask them to write a little more clearly and resubmit. Return ONLY JSON {"correct": boolean, "feedback": "<1-2 warm sentences: what's right / what to fix>"}` },
     { role: 'user', content: `QUESTION: ${prompt}\n\nWHAT A CORRECT ANSWER MUST SHOW (rubric): ${rubric || ideal || 'a correct, clearly-labelled answer'}\n\nMODEL ANSWER: ${ideal || '(use your judgement)'}\n\nSTUDENT'S DRAWN WORK (text reading): ${transcript}\n\nGrade it. Pass if the core idea is correct even if the reading is slightly noisy.` },
   ];
-  const raw = await completeJson(messages, { maxTokens: 300, model: textModel, modelFallback: textFallback });
+  const raw = await completeJson(messages, { maxTokens: 300, model: textModel, modelFallback: textFallback, models: textModels });
   const p = parseLooseJson<any>(raw);
   if (p && typeof p.correct === 'boolean') return { correct: p.correct, feedback: String(p.feedback || '') };
   throw new LlmUnavailableError('gradeSketch: grader returned no parseable verdict');
@@ -232,6 +233,7 @@ export interface TeachTurnInput {
   advancedContent?: string | null; // extra depth/reading, surfaced ONLY on the advanced track
   model?: string; // per-session NIM model chosen by the speed router (nim-router.ts); falls back to MODELS.text
   modelFallback?: string; // in-session fallback model (router's 2nd-best)
+  models?: string[]; // full healthy cascade (best-first) — completeJson walks it so a dead model never blocks
 }
 
 export interface TeachTurnOutput {
@@ -530,7 +532,7 @@ export async function teachTurn(
   // maxTokens 1000 (was 700): the turn JSON is message + grading evidence; 700 could truncate the tail on
   // a verbose grading reply, leaving JSON that won't parse — which used to surface as "tutor unavailable"
   // even though the message had already streamed fine.
-  const raw = await completeJson(buildMessages(input), { maxTokens: 1000, onStream, model: input.model, modelFallback: input.modelFallback });
+  const raw = await completeJson(buildMessages(input), { maxTokens: 1000, onStream, model: input.model, modelFallback: input.modelFallback, models: input.models });
   const parsed = parseLooseJson<any>(raw);
   if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
     const cg = parsed.corpusGap;

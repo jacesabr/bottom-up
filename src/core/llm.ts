@@ -71,6 +71,12 @@ const NIM_EXTRA: Record<string, unknown> = process.env.NIM_NO_THINK
 // makes a congested primary fall back fast. Env-tunable via NIM_TIMEOUT_MS.
 const NIM_TIMEOUT_MS = Number(process.env.NIM_TIMEOUT_MS ?? 30_000);
 
+// How many models a single turn may walk before giving up. The session router (nim-router.ts) hands us the
+// whole speed-probed HEALTHY pool best-first; with many free models, one (or several) dying mid-turn must
+// never block the rest — we just try the next. Cap only bounds worst-case wall-clock (cap × NIM_TIMEOUT_MS);
+// in practice the first healthy model answers in ~1–2s. Env-tunable via NIM_MAX_CASCADE.
+const MAX_CASCADE = Math.max(1, Number(process.env.NIM_MAX_CASCADE ?? 4));
+
 // Some models reject `chat_template_kwargs` outright with a 400 ("chat_template is not supported for Mistral
 // tokenizers") — e.g. ministral-14b / mistral-small. Sending it (we do, for NIM_NO_THINK) HARD-FAILS them,
 // and a 400 isn't retryable, so the learner hits the failure popup. These models are plain-instruct and
@@ -153,7 +159,7 @@ function shouldFallbackToNim(err: unknown): boolean {
  */
 export async function completeJson(
   messages: ChatMessage[],
-  opts?: { maxTokens?: number; onStream?: (textSoFar: string) => void; model?: string; modelFallback?: string }
+  opts?: { maxTokens?: number; onStream?: (textSoFar: string) => void; model?: string; modelFallback?: string; models?: string[] }
 ): Promise<string> {
   const provider = resolveProvider();
   const maxTokens = opts?.maxTokens ?? 1024;
@@ -166,15 +172,25 @@ export async function completeJson(
   // dynamic router (nim-router.ts) passes a per-session `model` it speed-probed; otherwise use the default.
   const primary = opts?.model || MODELS.text;
   const fallback = opts?.modelFallback || MODELS.textFallback;
+  // The model cascade, best-first. The session router (nim-router.ts) speed-probes the free pool each session
+  // and hands us the whole HEALTHY list via opts.models; otherwise fall back to the explicit primary/fallback
+  // pair. The FIRST model that answers wins. A TRANSIENT failure (429/5xx/timeout/empty/404) on any model NEVER
+  // blocks the others — we just move to the next, each capped at NIM_TIMEOUT_MS (~30s). We stop early only on a
+  // request-level reject (400/401/403/422), which every model rejects identically. Nothing is permanently
+  // excluded — next session re-probes from scratch (a model dead now may be the fastest pick an hour later).
   const nim = async () => {
-    try {
-      return await callNim(primary);
-    } catch (err) {
-      if (fallback && fallback !== primary && isModelRetryable(err)) {
-        return await callNim(fallback);
+    const chain = (opts?.models?.length ? opts.models : [primary, fallback]).filter((m): m is string => !!m);
+    const attempts = [...new Set(chain)].slice(0, MAX_CASCADE);
+    let lastErr: unknown = new Error('No model available to call');
+    for (const model of attempts) {
+      try {
+        return await callNim(model);
+      } catch (err) {
+        lastErr = err;
+        if (!isModelRetryable(err)) break; // hard request/auth error — the rest of the chain can't help
       }
-      throw err;
     }
+    throw lastErr;
   };
   try {
     if (provider === 'claude') {

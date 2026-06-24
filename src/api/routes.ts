@@ -293,9 +293,15 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
 function seedClientModels(learnerId: string, body: any): void {
   const m = body?.models;
   if (!m || typeof m !== 'object') return;
+  // The browser may also send the full healthy cascade (textChain). Validate EACH id against the gated pool
+  // (the browser picks WHICH good models, but can never name one outside the pool), drop invalids, dedupe.
+  const rawChain: unknown[] = Array.isArray(m.textChain) ? m.textChain : [];
+  const validChain: string[] = rawChain.filter((id): id is string => typeof id === 'string' && isAllowedModel('text', id));
+  const textChain = [...new Set(validChain)];
   setRoutePicks(learnerId, {
     text: isAllowedModel('text', m.text) ? m.text : undefined,
     textFallback: isAllowedModel('text', m.textFallback) ? m.textFallback : undefined,
+    textChain: textChain.length ? textChain : undefined,
     vision: isAllowedModel('vision', m.vision) ? m.vision : undefined,
   });
 }
