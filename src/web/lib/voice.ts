@@ -711,6 +711,127 @@ export async function speakSmart(text: string, langCode: string, speechLang: str
   }
 }
 
+/**
+ * Synthesize + play ONE already-cleaned chunk via the server TTS chain, falling back to the browser
+ * voice. Returns the provider it used so the caller can pin the voice across chunks. Honors the
+ * speakGen guard via `gen` (bails if a newer utterance/stop superseded it). Shared by the streaming
+ * speaker below; speakSmart predates it and keeps its own inline copy.
+ */
+async function speakChunk(
+  chunk: string,
+  langCode: string,
+  speechLang: string,
+  apiBase: string,
+  pinned: string | undefined,
+  gen: number
+): Promise<string | undefined> {
+  let ok = false;
+  try {
+    const res = await fetch(`${apiBase}/tts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: chunk, lang: langCode, provider: pinned, strict: !!pinned }),
+    });
+    const d = await res.json();
+    if (gen !== speakGen) return pinned;
+    if (!pinned && d?.provider) pinned = d.provider; // lock the voice for the rest of the turn
+    if (d?.audioBase64) {
+      const audio = new Audio(`data:${d.mime || 'audio/wav'};base64,${d.audioBase64}`);
+      currentAudio = audio;
+      const played = await playToEnd(audio);
+      if (gen !== speakGen) return pinned;
+      ok = played;
+      if (!played) { await browserSpeakOne(chunk, speechLang, gen); ok = true; }
+    }
+  } catch {
+    /* fall through to browser */
+  }
+  if (!ok && gen === speakGen) await browserSpeakOne(chunk, speechLang, gen);
+  return pinned;
+}
+
+/**
+ * Pipelined read-aloud for a STREAMING tutor turn. Waiting for the whole reply to finish before
+ * speaking left a multi-second gap between the text appearing and the voice starting (the trailing
+ * grading JSON streams AFTER the spoken message, yet the old path waited for all of it). This speaks
+ * each COMPLETE sentence the moment it has streamed in.
+ *
+ * Drive it from the SSE loop: `push(messageSoFar)` on every delta, `finish(finalMessage)` once the
+ * authoritative turn arrives. A sentence is only flushed when its markdown/maths delimiters ($, **)
+ * are balanced, so a half-open formula is never synthesized. If the final turn diverges from what was
+ * already spoken (e.g. the deterministic refresher backstop replaced the message after the fact), the
+ * wrong speech is cut and the real turn re-read. Superseded by the usual stopSpeaking()/speakGen guard.
+ */
+export function createStreamingSpeaker(langCode: string, speechLang: string, apiBase: string, provider?: string) {
+  stopSpeaking(); // cut any prior utterance; bumps speakGen
+  const myGen = speakGen; // our generation — bail everywhere if superseded
+  let pinned = provider || undefined;
+  let spoken = ''; // the EXACT raw text already handed to TTS (left-trimmed) — the divergence baseline
+  let queue: Promise<void> = Promise.resolve(); // serializes synth+play in arrival order
+
+  // Append a raw segment to the spoken baseline and enqueue its speech (a no-op segment still advances
+  // the baseline so the cursor keeps matching the incoming message even if it strips to nothing).
+  const enqueue = (segment: string) => {
+    spoken += segment;
+    const clean = stripForSpeech(segment);
+    if (!clean.trim()) return;
+    queue = queue.then(async () => {
+      if (myGen !== speakGen) return;
+      const chunks = chunkForSpeech(clean, 240);
+      for (let i = 0; i < chunks.length; i++) {
+        if (myGen !== speakGen) return;
+        pinned = await speakChunk(chunks[i], langCode, speechLang, apiBase, pinned, myGen);
+        if (myGen !== speakGen) return;
+        await new Promise((r) => setTimeout(r, 140));
+      }
+    });
+  };
+
+  // Length of the leading run of `rest` that is COMPLETE sentences with balanced $/** delimiters
+  // (so we never synthesize a half-open formula). `rest` always starts at a sentence boundary.
+  const completeLen = (rest: string): number => {
+    let cut = 0;
+    for (let i = 0; i < rest.length; i++) {
+      const c = rest[i];
+      if (c === '.' || c === '!' || c === '?' || c === '\n' || c === '।') {
+        const next = rest[i + 1];
+        if (next === undefined || /\s/.test(next)) {
+          const seg = rest.slice(0, i + 1);
+          const dollars = (seg.match(/\$/g) || []).length;
+          const stars = (seg.match(/\*\*/g) || []).length;
+          if (dollars % 2 === 0 && stars % 2 === 0) cut = i + 1;
+        }
+      }
+    }
+    return cut;
+  };
+
+  return {
+    push(messageSoFar: string) {
+      if (myGen !== speakGen || !messageSoFar) return;
+      const m = messageSoFar.replace(/^\s+/, '');
+      // Deltas grow monotonically; if one does NOT extend what we've spoken, the turn was replaced
+      // (e.g. the enforced-refresher backstop) — don't voice the divergent partial; finish() re-reads.
+      if (!m.startsWith(spoken)) return;
+      const rest = m.slice(spoken.length);
+      const cut = completeLen(rest);
+      if (cut > 0) enqueue(rest.slice(0, cut));
+    },
+    finish(finalMessage?: string) {
+      if (myGen !== speakGen) return;
+      const finalRaw = (finalMessage ?? '').replace(/^\s+/, '');
+      if (!finalRaw) return;
+      if (finalRaw.startsWith(spoken)) {
+        const tail = finalRaw.slice(spoken.length); // common case: speak whatever is still unspoken
+        if (tail.trim()) enqueue(tail);
+      } else {
+        // The final turn isn't what we spoke (enforced refresher replaced it) — cut it and re-read.
+        void speakSmart(finalRaw, langCode, speechLang, apiBase, provider);
+      }
+    },
+  };
+}
+
 // Short spoken invitations, each IN its own language, telling the learner how to switch to it.
 // Played ONCE per chapter, right before the "say start" gate (see NodeView).
 export const LANG_INVITES: Record<string, { lang: string; text: string }> = {

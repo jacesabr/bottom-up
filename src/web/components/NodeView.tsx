@@ -6,7 +6,7 @@ import EquationComposer from './EquationComposer';
 import NodeDetails from './NodeDetails';
 import ThinkingIndicator from './ThinkingIndicator';
 import RouterPopup, { type RoutePicks } from './RouterPopup';
-import { speakSmart, speakSequence, speakWithCues, LANG_INVITES, type SpeakSegment, recordAndTranscribe, stopSpeaking } from '../lib/voice';
+import { speakSmart, speakSequence, speakWithCues, createStreamingSpeaker, LANG_INVITES, type SpeakSegment, recordAndTranscribe, stopSpeaking } from '../lib/voice';
 import '../styles/NodeView.css';
 
 interface LangOpt {
@@ -24,6 +24,7 @@ interface Msg {
   kind?: 'aside' | 'recap'; // aside = forward-reference heads-up; recap = "previously in this conversation" — neither is a chat bubble
   aside?: { terms: string[]; why: string; later: string } | null; // payload for an 'aside' card (a previewed-but-untaught term)
   streaming?: boolean; // tutor turn still streaming in — don't read it aloud until it finalizes
+  streamSpoken?: boolean; // already read aloud live (sentence-by-sentence) during streaming — don't re-read on finalize
 }
 interface Check {
   index: number;
@@ -335,6 +336,7 @@ export default function NodeView({
       // so it gets read ONCE when it finalizes, not partial-then-again.
       if (m.role === 'tutor' && m.streaming) break;
       if (m.role !== 'tutor' || !m.text || m.kind === 'recap') continue; // recap card is read silently
+      if (m.streamSpoken) continue; // already read aloud sentence-by-sentence as it streamed
       if (isWelcomeMessage(m.text)) {
         setHighlight(null);
         void speakWithCues(m.text, buildWelcomeCues(m.text), lang, speechCode, apiBase, ttsProvider || undefined).then(() => setHighlight(null));
@@ -415,16 +417,17 @@ export default function NodeView({
         return [...c, { role: 'tutor', text: t, streaming: true }];
       });
     // Replace the streaming bubble with the authoritative final turn (or append one if nothing streamed).
-    const finalizeTutor = (t: string, figure?: { url: string; caption: string } | null) =>
+    // `streamSpoken` marks a turn the streaming speaker already voiced live, so the read-aloud effect skips it.
+    const finalizeTutor = (t: string, figure?: { url: string; caption: string } | null, streamSpoken?: boolean) =>
       setMessages((m) => {
         const c = [...m];
         for (let i = c.length - 1; i >= 0; i--) {
           if (c[i].role === 'tutor' && c[i].streaming) {
-            c[i] = { role: 'tutor', text: t, figure: figure ?? null };
+            c[i] = { role: 'tutor', text: t, figure: figure ?? null, streamSpoken };
             return c;
           }
         }
-        return [...c, { role: 'tutor', text: t, figure: figure ?? null }];
+        return [...c, { role: 'tutor', text: t, figure: figure ?? null, streamSpoken }];
       });
     // Forward-reference heads-up: if the turn named a previewed-but-untaught term, drop a quiet aside card
     // right after the tutor bubble (a separate, non-bubble note — see the 'aside' render branch below).
@@ -442,6 +445,9 @@ export default function NodeView({
       }
     };
 
+    // When read-aloud is on, pipeline TTS: speak each complete sentence the moment it streams in
+    // (instead of waiting for the whole turn + its trailing grading JSON), so the voice starts sooner.
+    const speaker = autoRead ? createStreamingSpeaker(lang, speechCode, apiBase, ttsProvider || undefined) : null;
     try {
       const res = await fetch(`${base}/reply-stream`, {
         method: 'POST',
@@ -480,6 +486,7 @@ export default function NodeView({
             gotDelta = true;
             lastStreamText = payload.message ?? '';
             setStreamingText(lastStreamText);
+            speaker?.push(lastStreamText);
           } else if (event === 'done') {
             finalData = payload;
           } else if (event === 'error') {
@@ -490,6 +497,7 @@ export default function NodeView({
       if (finalData) {
         if (finalData.systemError) {
           // tutor model died mid-session → drop the failed bubble, pop the router to re-probe + retry
+          stopSpeaking(); // cut any partial sentences the streaming speaker already voiced
           setMessages((m) => { const c = [...m]; for (let i = c.length - 1; i >= 0; i--) { if (c[i].role === 'tutor' && c[i].streaming) { c.splice(i, 1); break; } } return c; });
           retryRef.current = () => send(text);
           if (routeFails.current++ < 3) setRoutePopup({ mode: 'failure', failedModel: finalData.failedModel });
@@ -497,19 +505,23 @@ export default function NodeView({
           return;
         }
         routeFails.current = 0;
-        finalizeTutor(finalData.message || SERVICE_DOWN_TEXT, finalData.figure);
+        const msg = finalData.message || '';
+        finalizeTutor(msg || SERVICE_DOWN_TEXT, finalData.figure, !!speaker && !!msg);
+        if (speaker) { if (msg) speaker.finish(msg); else stopSpeaking(); }
         pushAside(finalData);
         applyProgress(finalData);
       } else if (gotDelta) {
         // Stream cut after content arrived — the turn was already produced server-side, so don't
         // re-send (that would duplicate it). Keep what streamed in.
-        finalizeTutor(lastStreamText || SERVICE_DOWN_TEXT);
+        finalizeTutor(lastStreamText || SERVICE_DOWN_TEXT, undefined, !!speaker && !!lastStreamText);
+        if (speaker) { if (lastStreamText) speaker.finish(lastStreamText); else stopSpeaking(); }
       } else {
         throw new Error('no stream output'); // nothing came through → fall back to /reply below
       }
     } catch {
       // Streaming unavailable (older server, proxy buffering, immediate network fail) — fall back to
       // the plain /reply turn. Only reached when no usable content streamed, so no duplicate turn.
+      stopSpeaking(); // drop any partial speech from the streaming speaker; /reply's turn is read by the effect
       try {
         const res = await fetch(`${base}/reply`, {
           method: 'POST',
