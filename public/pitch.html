@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sarthi — Seed</title>
 <style>
-  /* Same theme tokens as the rest of the site (see how-it-works.html / the app). */
-  /* Voice + framing borrowed from the auto-apply living doc: lowercase human-notes, designed/built/verified discipline. */
+  /* Same theme tokens as the rest of the site. */
   :root{ color-scheme:light;
     --bg:#fbfaf8; --ink:#1c1b19; --dim:#6b6a66; --faint:#94908a; --accent:#d9591f; --accent-soft:#fbe9dd;
     --green:#3f7d4f; --amber:#9a6a18; --rule:#e7e4df; --card:#ffffff; --lock:#c2bcb2; }
@@ -129,14 +128,12 @@
       unrelated product live — <b style="color:var(--ink)">IE</b>, a course on LLM internals (797 nodes; part three).</p>
   </div>
 
-  <div class="callout">framing rule for this whole page: <b>designed</b> = an idea ·
-    <b>built</b> = the code exists and i've seen the data · <b>verified</b> = i watched it actually work.
-    nothing &ldquo;built&rdquo; gets called &ldquo;working&rdquo; without a run behind it — that discipline applies to the pitch too,
-    so the numbers below are counted from the repo, not rounded up.</div>
+  <div class="callout">every claim below is tagged — <b>verified</b> (we watched it work) · <b>built</b> (code exists, live) ·
+    <b>designed</b> (planned, not yet built). the numbers are counted from the codebase, not rounded up.</div>
 
-  <p style="color:var(--dim);font-size:0.93rem">short and honest. what's real is marked, what isn't is too. four parts:
-    <b style="color:var(--ink)">the pitch</b>, <b style="color:var(--ink)">the questions you'll ask</b>,
-    <b style="color:var(--ink)">where it goes next</b>, <b style="color:var(--ink)">the long view</b>.</p>
+  <p style="color:var(--dim);font-size:0.93rem">four parts: <b style="color:var(--ink)">the pitch</b> ·
+    <b style="color:var(--ink)">the questions you'll ask</b> · <b style="color:var(--ink)">where it goes next</b> ·
+    <b style="color:var(--ink)">the long view</b>.</p>
 
   <!-- ============ PART 1 — THE PITCH ============ -->
 
@@ -249,7 +246,7 @@
       <div class="row"><span><b>~9 months</b> · ~3,000 students, organic</span><span class="out">a retention curve = early PMF signal</span></div>
       <div class="row"><span><b>~18 months</b> · ~10,000 students + a small paid pilot</span><span class="out">a Series A story</span></div>
     </div>
-    <p class="note" style="color:var(--faint);font-size:0.85rem">milestones are organic-growth targets (no paid acquisition), not promises. exact raise amount: covered live — no number here i can't stand behind. (team is its own section above.)</p>
+    <p class="note" style="color:var(--faint);font-size:0.85rem">milestones are organic-growth targets, no paid acquisition. exact raise amount: covered live.</p>
   </section>
 
   <!-- ============ PART 2 — QUESTIONS ============ -->
@@ -305,8 +302,8 @@
       <div>
         <div class="q">who's building it, and what exactly does the raise buy?</div>
         <div class="a">who's building it: see the <b>team section</b> above — <b>Suhas &amp; Jace</b>, ~1,620 nodes shipped
-          across two live products. exact ask amount + runway are covered live (no numbers here i can't stand behind). what
-          the money does is fixed: a lean team to get sarthi from <b>built</b> to <b>verified with real students</b>.</div>
+          across two live products. exact ask amount + runway are covered live. what the money does is fixed: a lean team
+          to get sarthi from <b>built</b> to <b>verified with real students</b>.</div>
       </div>
     </div>
   </section>
@@ -398,7 +395,7 @@
       <li>and when they can, <b>humans get trained to guide and control those robots</b> — through this same learning system.
         the loop closes on itself.</li>
     </ul>
-    <div class="callout warn">hard framing: all of part four is <b>vision — designed, not built</b>. the room, the voice
+    <div class="callout warn">to be clear: everything in part four is <b>vision — designed, not built</b>. the room, the voice
       tutor, the visuals, the kits, the robots — <b>none of it is shipped</b>. what's real today is the engine under it
       (parts one–three): <b>two courses in two unrelated fields, prereq-wired, gated, at ~₹0</b>. the vision is why it's
       worth funding; the engine is what's proven.</div>
@@ -413,12 +410,17 @@
   var gate=document.getElementById('gate');
   try{ if(sessionStorage.getItem('sarthiPitch')==='1'){ gate.remove(); return; } }catch(e){}
   document.documentElement.style.overflow='hidden';
-  // Access code is checked by SHA-256 hash so the code itself isn't sitting in plain sight in View Source.
-  // Rotate the code: set HASH to sha256(newcode). NOTE: client-side gating only deters casual snooping — it is
-  // NOT real security. For anything sensitive use an unguessable share link or a server-side check.
+  // Access code checked by hash (not stored in plaintext). SHA-256 on https; a synchronous fallback
+  // hash is used where crypto.subtle is unavailable (e.g. opening the file directly via file://).
+  // Rotate the code: set HASH=sha256(newcode) AND FHASH=dhash(newcode).
   var HASH='a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
+  var FHASH=193432059;
   function hex(buf){return Array.prototype.map.call(new Uint8Array(buf),function(x){return ('0'+x.toString(16)).slice(-2);}).join('');}
-  async function check(v){ try{ var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)); return hex(b)===HASH; }catch(e){ return false; } }
+  function dhash(s){var h=5381;for(var i=0;i<s.length;i++){h=(Math.imul(h,33)+s.charCodeAt(i))>>>0;}return h;}
+  async function check(v){
+    try{ if(window.crypto&&crypto.subtle){ var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)); return hex(b)===HASH; } }catch(e){}
+    return dhash(v)===FHASH;
+  }
   async function go(){
     if(await check(document.getElementById('pw').value)){
       try{ sessionStorage.setItem('sarthiPitch','1'); }catch(e){}
