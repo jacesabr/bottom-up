@@ -193,24 +193,24 @@
 
   <section>
     <div class="kick">unit economics</div>
-    <h2>~₹4 of compute per student. they pay ₹1,000.</h2>
+    <h2>~₹90 of compute per student. they pay ₹1,000.</h2>
     <ul class="notes">
-      <li>an average student: ~<b>6 sessions a month</b>, ~<b>9 back-and-forth turns each</b> ≈ <b>55 AI messages/month</b>, plus a handful of handwriting checks.</li>
-      <li>that's ~<b>0.3M tokens/month</b>. on the <b>DeepSeek API</b> for teaching + <b>NVIDIA's API</b> for the handwriting reads, that costs <b>~₹4/student/month</b>.</li>
+      <li>a heavy, near-daily student: ~<b>4 sessions a week</b> × ~<b>100 turns</b> ≈ <b>1,700 AI messages/month</b>, about <b>20% handwriting reads</b>.</li>
+      <li>that's ~<b>6M tokens/month</b>. on the <b>DeepSeek API</b> for teaching + <b>NVIDIA's API</b> for the handwriting reads, that's <b>~₹90/student/month</b>.</li>
     </ul>
     <div class="calc">
       <div class="row"><span>price / student / month</span><span class="out">₹1,000</span></div>
-      <div class="row"><span>inference cost / student / month</span><span class="out">~₹4</span></div>
-      <div class="row"><span><b>gross margin on compute</b></span><span class="out"><b>~99.6%</b></span></div>
+      <div class="row"><span>inference cost / student / month</span><span class="out">~₹90</span></div>
+      <div class="row"><span><b>gross margin on compute</b></span><span class="out"><b>~91%</b></span></div>
     </div>
-    <p class="note" style="color:var(--faint);font-size:0.78rem">flat at any scale — a per-message API, no GPUs to keep running. the free NVIDIA tier covers the first ~100 students at ₹0.</p>
+    <p class="note" style="color:var(--faint);font-size:0.78rem">and that's the <b>heavy</b> case — flat at any scale (a per-message API, no GPUs). the free NVIDIA tier covers the first ~100 students at ₹0.</p>
   </section>
 
   <section>
     <div class="kick">the ask</div>
     <h2>a small pre-seed — an 18-month runway to first real usage.</h2>
     <ul class="notes">
-      <li><b>people, not GPUs</b> — inference is a ~₹4/student API bill, not a GPU bill. the money buys a lean 2–3 person team for ~18 months.</li>
+      <li><b>people, not GPUs</b> — inference is a ~₹90/student API bill, not a GPU bill. the money buys a lean 2–3 person team for ~18 months.</li>
       <li><b>no ad budget</b> — growth is the free product + word of mouth in JEE/CBSE exam-prep communities. low burn, organic, cheap.</li>
     </ul>
     <div class="calc">
@@ -239,9 +239,9 @@
       </div>
       <div>
         <div class="q">what does a student actually cost you? (unit economics)</div>
-        <div class="a">see <b>unit economics</b> above — ~<b>₹4 of compute per student/month</b> (DeepSeek API for teaching,
-          NVIDIA's API for the handwriting reads) against ₹1,000 revenue, <b>flat at any scale</b>. free NVIDIA tier covers
-          the first ~100 students at ₹0. no CLV:CAC yet — that needs a real CAC, which is post-launch.</div>
+        <div class="a">see <b>unit economics</b> above — ~<b>₹90 of compute per student/month</b> even for a heavy daily user
+          (DeepSeek API for teaching, NVIDIA's API for the handwriting reads) against ₹1,000 revenue = <b>~91% margin</b>,
+          flat at any scale. free NVIDIA tier covers the first ~100 students at ₹0. no CLV:CAC yet — that needs a real CAC, post-launch.</div>
       </div>
       <div>
         <div class="q">how do you acquire students — what's CAC?</div>
@@ -269,7 +269,7 @@
       <div>
         <div class="q">what could kill this?</div>
         <div class="a">three real ones: <b>1)</b> the gating feels like a cage and students bounce — unproven till real use.
-          <b>2)</b> inference prices spike — but it's ~₹4/student today across several cheap APIs, so there's huge headroom.
+          <b>2)</b> inference prices spike — but it's ~₹90/student even for a heavy user, on a competitive API market, so there's headroom.
           <b>3) distribution</b> — building it was easy; getting it to students isn't solved. the raise targets #1 and #3.</div>
       </div>
       <div>
@@ -290,19 +290,13 @@
   </div>
 
   <section>
-    <div class="kick">the pivot isn't hypothetical &nbsp;<span class="badge b-verified">verified · live</span></div>
+    <div class="kick">the pivot isn't hypothetical</div>
     <h2>we already shipped a second one — a totally different field.</h2>
     <ul class="notes">
-      <li>the same engine runs <b>IE — Inference Engineering</b>: a graduate-level course on how LLMs actually run
-        (attention, quantization, serving). live at <a href="https://ie-web.onrender.com">ie-web.onrender.com</a>.</li>
-      <li>a complete course in a field about as far from school maths as you can get — <b>same engine, zero changes,
-        just different material</b>.</li>
-      <li>the thesis in one fact: maths for a 15-year-old and LLM internals for an engineer are <b>the same product, different data</b>.</li>
+      <li>the same engine already runs <b>IE</b>, a live graduate-level course on how LLMs work
+        (<a href="https://ie-web.onrender.com">ie-web.onrender.com</a>) — maths for a 15-year-old and LLM internals for an engineer are <b>the same product, different data</b>.</li>
+      <li>so the market isn't &ldquo;maths exams&rdquo; — it's <b>anything you can put into a human brain</b>: any subject with prerequisites, from <b>nothing to physicist, chemist, brain surgeon</b>.</li>
     </ul>
-    <div class="callout">so the real market isn't &ldquo;maths exams.&rdquo; it's <b>anything you can put into a human
-      brain</b> — any field with prerequisites, however hard it looks for an AI: from <b>nothing</b> to <b>advanced
-      physicist, chemist, brain surgeon</b>. every subject, every exam, every trade. IE proves it doesn't care
-      which — it already teaches one as hard as LLM internals.</div>
   </section>
 
   <section>
