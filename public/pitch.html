@@ -6,9 +6,10 @@
 <title>Sarthi — Seed</title>
 <style>
   /* Same theme tokens as the rest of the site (see how-it-works.html / the app). */
+  /* Voice + framing borrowed from the auto-apply living doc: lowercase human-notes, designed/built/verified discipline. */
   :root{ color-scheme:light;
     --bg:#fbfaf8; --ink:#1c1b19; --dim:#6b6a66; --faint:#94908a; --accent:#d9591f; --accent-soft:#fbe9dd;
-    --green:#3f7d4f; --rule:#e7e4df; --card:#ffffff; --lock:#c2bcb2; }
+    --green:#3f7d4f; --amber:#9a6a18; --rule:#e7e4df; --card:#ffffff; --lock:#c2bcb2; }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,system-ui,sans-serif;
@@ -24,14 +25,32 @@
   .mark{font-weight:800;font-size:0.9rem} .mark b{color:var(--accent)}
   .tag{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--faint)}
 
-  .hero{padding:40px 0 26px}
+  .hero{padding:36px 0 22px}
   .hero .lead{font-size:1.12rem;color:var(--dim);margin-top:12px;max-width:30em}
   .pill{display:inline-flex;gap:8px;align-items:center;margin-top:20px;font-size:0.75rem;font-weight:600;
     color:var(--dim);background:var(--card);border:1px solid var(--rule);border-radius:30px;padding:7px 14px}
   .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
 
-  section{padding:28px 0;border-top:1px solid var(--rule)}
+  section{padding:24px 0;border-top:1px solid var(--rule)}
   .kick{font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+
+  /* big part dividers — intro / the pitch / questions */
+  .part{padding:46px 0 6px;border-top:2px solid var(--ink);margin-top:18px}
+  .part-label{font-size:0.7rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)}
+  .part-title{font-size:1.55rem;font-weight:800;letter-spacing:-0.015em;margin:5px 0 2px}
+  .part-sub{color:var(--dim);font-size:0.95rem}
+
+  /* framing-rule + callouts, ported from the auto-apply doc, recoloured to the Sarthi palette */
+  .callout{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);
+    border-radius:10px;padding:12px 16px;margin:16px 0;font-size:0.9rem;color:var(--dim)}
+  .callout b{color:var(--ink)}
+  .callout.warn{border-left-color:var(--amber);background:#fffdf7}
+
+  /* honest-voice bullets */
+  .notes{list-style:none;margin:10px 0;display:grid;gap:7px}
+  .notes li{position:relative;padding-left:18px;font-size:0.94rem;color:var(--dim)}
+  .notes li::before{content:"–";position:absolute;left:0;color:var(--faint)}
+  .notes li b{color:var(--ink);font-weight:700}
 
   .steps{list-style:none;counter-reset:s;margin:14px 0;display:grid;gap:0}
   .steps li{position:relative;padding:11px 0 11px 40px;border-top:1px solid var(--rule);font-size:0.95rem;color:var(--dim)}
@@ -41,16 +60,36 @@
     border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:0.78rem;font-weight:800;
     display:flex;align-items:center;justify-content:center}
 
+  /* designed / built / verified status table + badges */
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.88rem}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{color:var(--faint);font-weight:700;font-size:0.7rem;letter-spacing:0.05em;text-transform:uppercase}
+  td{color:var(--dim)} td b{color:var(--ink);font-weight:700}
+  .badge{font-size:11px;font-weight:700;padding:2px 7px;border-radius:5px;white-space:nowrap}
+  .b-verified{background:#e7f3ea;color:var(--green)}
+  .b-built{background:#fdf0e3;color:var(--amber)}
+  .b-designed{background:#f0eeea;color:var(--faint)}
+
   .courses{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:18px 0}
   @media(max-width:540px){.courses{grid-template-columns:1fr}}
   .course{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px}
   .course .name{font-weight:700;font-size:0.95rem} .course .meta{font-size:0.78rem;color:var(--faint);margin-top:3px}
   .course .num{font-size:1.5rem;font-weight:800;color:var(--accent);margin-top:8px}
 
-  .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:12px 0;font-size:0.94rem}
-  .kv .k{color:var(--faint);font-weight:700} .kv .v{color:var(--ink)}
+  /* bottom-up market maths */
+  .calc{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;margin:14px 0;font-size:0.9rem}
+  .calc .row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-top:1px solid var(--rule);color:var(--dim)}
+  .calc .row:first-child{border-top:none} .calc .row b{color:var(--ink)}
+  .calc .out{color:var(--accent);font-weight:800}
 
-  footer{padding-top:26px;border-top:1px solid var(--rule);margin-top:12px;color:var(--faint);font-size:0.85rem}
+  /* investor Q&A */
+  .qa{margin:16px 0;display:grid;gap:20px}
+  .qa .q{font-weight:700;color:var(--ink);font-size:0.99rem;margin-bottom:5px}
+  .qa .q::before{content:"Q · ";color:var(--accent);font-weight:800}
+  .qa .a{color:var(--dim);font-size:0.93rem}
+  .qa .a b{color:var(--ink);font-weight:700}
+
+  footer{padding-top:26px;border-top:1px solid var(--rule);margin-top:24px;color:var(--faint);font-size:0.85rem}
 
   #gate{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;
     align-items:center;justify-content:center;gap:13px;padding:24px;text-align:center}
@@ -79,74 +118,274 @@
     <div class="tag">Pre-launch</div>
   </header>
 
+  <!-- ============ INTRO ============ -->
+
   <div class="hero">
-    <h1>A maths tutor that builds you up from the foundations.</h1>
-    <p class="lead">Personal coaching for the price of a tiffin. Sarthi teaches CBSE &amp; JEE maths
+    <h1>a maths tutor that builds you up from the foundations.</h1>
+    <p class="lead">personal 1:1 coaching for the price of a tiffin. sarthi teaches CBSE &amp; JEE maths
       <em>bottom-up</em> — one concept at a time, gated, in order — then one clean exam at the end.</p>
-    <div class="pill"><span class="dot"></span> Live API · 3 courses · 806 concept nodes</div>
+    <div class="pill"><span class="dot"></span> live api · 3 courses · 823 prerequisite-wired nodes</div>
+  </div>
+
+  <div class="callout">framing rule for this whole page: <b>designed</b> = an idea ·
+    <b>built</b> = the code exists and i've seen the data · <b>verified</b> = i watched it actually work.
+    nothing &ldquo;built&rdquo; gets called &ldquo;working&rdquo; without a run behind it — that discipline applies to the pitch too,
+    so the numbers below are counted from the repo, not rounded up.</div>
+
+  <p style="color:var(--dim);font-size:0.93rem">short and honest. what's real is marked, what isn't is too. four parts:
+    <b style="color:var(--ink)">the pitch</b>, <b style="color:var(--ink)">the questions you'll ask</b>,
+    <b style="color:var(--ink)">where it goes next</b>, <b style="color:var(--ink)">the long view</b>.</p>
+
+  <!-- ============ PART 1 — THE PITCH ============ -->
+
+  <div class="part">
+    <div class="part-label">part one</div>
+    <div class="part-title">the pitch</div>
+    <div class="part-sub">problem → why now → the method → what's actually built → the market → the ask.</div>
   </div>
 
   <section>
-    <div class="kick">The problem</div>
-    <h2>Students fail on something simpler, a few chapters back.</h2>
-    <p>Tutoring works — a good tutor lifts a student about a grade — but it's unaffordable: coaching runs
-      ₹1.5–5 lakh a year, and apps just throw more videos at you. The real gap is a missing prerequisite
-      nobody found. You didn't fail the hard thing; you failed the easy thing underneath it.</p>
+    <div class="kick">the problem</div>
+    <h2>students fail on something simpler, a few chapters back.</h2>
+    <ul class="notes">
+      <li>they don't fail the hard thing. they fail the <b>easy thing underneath it</b> — a prerequisite three chapters back nobody found.</li>
+      <li>tutoring fixes this — a good tutor lifts a kid about a grade — but it's <b>unaffordable</b>: coaching runs ₹1.5–5 lakh a year.</li>
+      <li>apps just throw more videos at you. more content isn't the gap; <b>the missing prerequisite is</b>.</li>
+    </ul>
   </section>
 
   <section>
-    <div class="kick">The method</div>
-    <h2>Don't skip ahead. Build it up, gate every step.</h2>
+    <div class="kick">why now</div>
+    <h2>1:1 socratic tutoring stopped needing a human by the hour.</h2>
+    <ul class="notes">
+      <li>frontier models on the free <b>NVIDIA NIM tier</b> teach a concept and check you got it — at about <b>₹0 per student</b>.</li>
+      <li>that's the unlock. it makes ₹1,000/month <b>1:1</b> coaching possible at all.</li>
+      <li>two years ago the cost floor made this impossible.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="kick">the method</div>
+    <h2>don't skip ahead. build it up, gate every step.</h2>
     <ol class="steps">
-      <li><b>Start at the foundation</b> — the first concept in the chapter, nothing assumed.</li>
-      <li><b>The AI teaches it</b> — short Socratic turns, ticking off each idea as you show it.</li>
-      <li><b>A gate checks it</b> — pass and the next concept opens; miss and it re-teaches. No failing out.</li>
-      <li><b>Climb the chapter, then the course</b> — strictly in order, so you never meet an idea before its prerequisites.</li>
-      <li><b>Earn one clean exam</b> — a real past paper, unlocked only after every concept is passed.</li>
+      <li><b>start at the foundation</b> — the first concept in the chapter, nothing assumed.</li>
+      <li><b>the ai teaches it</b> — short socratic turns, ticking off each idea as you show it.</li>
+      <li><b>a gate checks it</b> — pass and the next concept opens; miss and it re-teaches. no failing out.</li>
+      <li><b>climb the chapter, then the course</b> — strictly in order, so you never meet an idea before its prerequisites.</li>
+      <li><b>earn one clean exam</b> — a real past paper, unlocked only after every concept is passed.</li>
     </ol>
-    <p>Because the order is strict and every node has its prerequisites wired, nothing is ever assumed.</p>
+    <p>strict order, prerequisites wired, <strong>nothing assumed</strong>. the graph — not the chat — is the product.</p>
   </section>
 
   <section>
-    <div class="kick">What's live</div>
-    <h2>Three maths courses, already built.</h2>
+    <div class="kick">the reward loop</div>
+    <h2>pass a concept, earn a 10-minute game.</h2>
+    <ul class="notes">
+      <li>pass a concept, <b>a short game unlocks</b> — a hand-picked art game, under 10 minutes. a built-in <b>break</b>.</li>
+      <li>not candy: <b>breaks are how you keep what you just learned</b>. the game gives you a reason to stop before you hit a wall.</li>
+      <li>games unlock <b>one per node, in order</b> (eXit, Passage, A Dark Room, We Become What We Behold, …).</li>
+      <li>caveat: <b>18 games</b> today — one per node for a course's opening stretch. more is content work, not a rebuild.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="kick">what's actually built</div>
+    <h2>real vs. next — by the framing rule above.</h2>
+    <table>
+      <tr><th>thing</th><th>state</th><th>the real story</th></tr>
+      <tr><td><b>live api + web</b></td><td><span class="badge b-verified">verified</span></td><td>both deploys live on Render off the latest commit (checked 2026-06-24)</td></tr>
+      <tr><td><b>3 courses · 54 chapters · 823 concept nodes</b></td><td><span class="badge b-verified">verified</span></td><td>counted from the repo — CBSE 10: 271 · CBSE 12: 169 · JEE: 383</td></tr>
+      <tr><td><b>every node has explicit prerequisites</b></td><td><span class="badge b-verified">verified</span></td><td>prereqs wired per node; unlock is strictly in order</td></tr>
+      <tr><td><b>teach-then-gate loop</b></td><td><span class="badge b-built">built</span></td><td>socratic turns → deterministic gate → unlock; code exists, not yet watched with real students at scale</td></tr>
+      <tr><td><b>~₹0 inference</b></td><td><span class="badge b-built">built</span></td><td>NIM-primary, paid model only as fallback</td></tr>
+      <tr><td><b>game-on-unlock break reward</b></td><td><span class="badge b-built">built</span></td><td>pass a node → a short game unlocks, one-per-node in order; 18-game catalog covers a course's opening stretch</td></tr>
+      <tr><td><b>real students, paying users, retention data</b></td><td><span class="badge b-designed">designed</span></td><td>none yet — pre-launch</td></tr>
+      <tr><td><b>revenue</b></td><td><span class="badge b-designed">designed</span></td><td>₹0 today</td></tr>
+    </table>
     <div class="courses">
       <div class="course"><div class="name">CBSE Class 10</div><div class="meta">14 chapters</div><div class="num">271</div><div class="meta">concept nodes</div></div>
-      <div class="course"><div class="name">CBSE Class 12</div><div class="meta">13 chapters</div><div class="num">161</div><div class="meta">concept nodes</div></div>
-      <div class="course"><div class="name">JEE</div><div class="meta">27 chapters</div><div class="num">374</div><div class="meta">concept nodes</div></div>
+      <div class="course"><div class="name">CBSE Class 12</div><div class="meta">13 chapters</div><div class="num">169</div><div class="meta">concept nodes</div></div>
+      <div class="course"><div class="name">JEE</div><div class="meta">27 chapters</div><div class="num">383</div><div class="meta">concept nodes</div></div>
     </div>
-    <p><strong>806 concept nodes across 54 chapters</strong>, each with explicit prerequisites and a teach-then-gate
-      loop. Inference runs on the free NVIDIA NIM tier today — near-zero cost per student.</p>
+    <p>the <b>product is built and live</b>. what's <b>unproven</b>: real students going through it and staying. that's what the raise is for.</p>
   </section>
 
   <section>
-    <div class="kick">The market</div>
-    <h2>~53 lakh maths-exam aspirants a year, in India alone.</h2>
-    <p>Coaching is ₹1.5–5 lakh/year; Sarthi is built to be ~₹1,000/month — a 90%+ cut. CBSE 10 &amp; 12 and
-      JEE are the wedge; the same build-up engine extends to Science, more boards, and other entrance exams
-      with no change to the core.</p>
+    <div class="kick">the market</div>
+    <h2>bottom-up, not a TAM slide.</h2>
+    <ul class="notes">
+      <li>~<b>53 lakh</b> maths-exam aspirants a year in India (CBSE 10 &amp; 12 maths + JEE) — rough figure.</li>
+      <li>sarthi: <b>~₹1,000/month</b> (₹12,000/yr). the coaching it replaces is ₹1.5–5 lakh/yr — a <b>90%+ cut</b>.</li>
+    </ul>
+    <div class="calc">
+      <div class="row"><span>~53 lakh aspirants × ₹12,000/yr × <b>1% paid adoption</b></span><span class="out">≈ ₹64 cr/yr</span></div>
+      <div class="row"><span>same, at <b>3% adoption</b></span><span class="out">≈ ₹190 cr/yr</span></div>
+      <div class="row"><span>even 1–3% of one funnel is a nine-figure-₹ business.</span><span></span></div>
+    </div>
+    <p>and it widens on its own — the same engine extends to more subjects and exams, <strong>no core change</strong> (part three).</p>
   </section>
 
   <section>
-    <div class="kick">Honest status</div>
-    <h2>What's real vs. what's next.</h2>
-    <div class="kv">
-      <div class="k">Live</div><div class="v">API, 3 courses, 806 prerequisite-wired nodes, deterministic gating</div>
-      <div class="k">Not yet</div><div class="v">Real users at scale, paying customers, retention data</div>
-      <div class="k">Revenue</div><div class="v">Pre-launch — ₹0 today</div>
-      <div class="k">Cost</div><div class="v">~₹0 inference (free NIM tier); paid models only as fallback</div>
+    <div class="kick">the ask</div>
+    <h2>a small pre-seed to get from <em>built</em> to <em>verified-with-students</em>.</h2>
+    <ul class="notes">
+      <li><b>people, not GPUs</b> — compute is on free credits. the money buys a lean 2–3 person team.</li>
+      <li>tied to milestones: <b>1)</b> real students in the product · <b>2)</b> first retention data · <b>3)</b> a paid pilot.</li>
+      <li>the plan: <b>raise → free product in real hands → real usage → revenue at scale.</b></li>
+    </ul>
+    <p class="note" style="color:var(--faint);font-size:0.85rem">amount, runway and team: covered live. i won't put numbers here i can't stand behind.</p>
+  </section>
+
+  <!-- ============ PART 2 — QUESTIONS ============ -->
+
+  <div class="part">
+    <div class="part-label">part two</div>
+    <div class="part-title">questions you're going to ask</div>
+    <div class="part-sub">answered straight. i'd rather name the gaps than have you find them.</div>
+  </div>
+
+  <section>
+    <div class="qa">
+      <div>
+        <div class="q">isn't this just a ChatGPT wrapper / another tutoring app?</div>
+        <div class="a">no. the product <b>isn't the chat</b> — it's 823 prereq-wired nodes and <b>gating</b> that won't let
+          you reach a concept before its basics. ChatGPT will teach the hard thing and let you fail the easy thing under it.
+          the graph is the work; a wrapper can't fake it.</div>
+      </div>
+      <div>
+        <div class="q">what does a student actually cost you? (unit economics)</div>
+        <div class="a"><b>~₹0 today</b> — free NIM tier, paid models only as fallback. so margins are high. caveat: that's
+          at <b>low volume</b>; at scale the number to watch is the <b>paid-fallback rate</b>. no CLV:CAC yet — i haven't earned one.</div>
+      </div>
+      <div>
+        <div class="q">how do you acquire students — what's CAC?</div>
+        <div class="a"><b>none yet — pre-launch.</b> plan: free product → word of mouth in exam-prep communities → measure.
+          i won't quote a CAC i haven't paid.</div>
+      </div>
+      <div>
+        <div class="q">why would they stay — retention?</div>
+        <div class="a"><b>none yet</b> either. the bet's built into the loop: <b>1)</b> you always have exactly <b>one next
+          concept open</b> — never a blank wall; <b>2)</b> each pass earns a <b>10-minute game</b> — a reward and a break
+          when focus fades. to prove with real users. milestone #1 of the raise.</div>
+      </div>
+      <div>
+        <div class="q">why won't Byju's / Khan / Google just do this?</div>
+        <div class="a">they could. the wedge is <b>focus</b> — one method, done strictly, for the Indian maths-exam funnel,
+          at a price they aren't built to hit. a head start plus real content, not a forever moat. i won't pretend it's one.</div>
+      </div>
+      <div>
+        <div class="q">if it works, what does the world look like in 3–5 years?</div>
+        <div class="a">an Indian kid preps for a maths exam with a <b>₹1,000/month tutor that finds the gap</b> — not a
+          ₹2-lakh coaching seat. then physics, chemistry, SAT. one method, many subjects.</div>
+      </div>
+      <div>
+        <div class="q">what could kill this?</div>
+        <div class="a">three real ones: <b>1)</b> the gating feels like a cage and students bounce — unproven till real use.
+          <b>2)</b> the free NIM tier changes terms or quality and the economics shift. <b>3) distribution</b> — building it
+          was easy; getting it to students isn't solved. the raise targets #1 and #3.</div>
+      </div>
+      <div>
+        <div class="q">who's building it, and what exactly does the raise buy?</div>
+        <div class="a">team and the exact ask + runway — i won't fabricate those; we cover them live. what the money does is
+          fixed: a lean team to get sarthi from <b>built</b> to <b>verified with real students</b>.</div>
+      </div>
     </div>
   </section>
 
+  <!-- ============ PART 3 — WHERE IT GOES NEXT ============ -->
+
+  <div class="part">
+    <div class="part-label">part three</div>
+    <div class="part-title">where it goes next</div>
+    <div class="part-sub">the engine doesn't care what subject it teaches. content is data poured into the same graph.</div>
+  </div>
+
   <section>
-    <div class="kick">The ask</div>
-    <h2>A small pre-seed to take it to launch.</h2>
-    <p>Funding a lean 2–3 person team to get Sarthi in front of real students and turn usage into a learning
-      flywheel. Compute is on free credits, so the raise is people, not GPUs. The plan: raise → free product →
-      real usage → revenue at scale.</p>
+    <div class="kick">the pivot isn't hypothetical &nbsp;<span class="badge b-verified">verified · live</span></div>
+    <h2>we already shipped a second one — a totally different field.</h2>
+    <ul class="notes">
+      <li>the same engine runs <b>IE — Inference Engineering</b>: a graduate-level course on how LLMs actually run —
+        transformers, KV cache, FlashAttention, quantization, vLLM, parallelism. live at
+        <a href="https://ie-web.onrender.com">ie-web.onrender.com</a>.</li>
+      <li><b>797 concept nodes across 55 chapters</b>, same prerequisite-wired graph, same teach-then-gate loop,
+        same ~₹0 NIM inference, same game-on-unlock — <b>zero engine changes</b>, just different content.</li>
+      <li>the thesis in one fact: maths for a 15-year-old and LLM internals for an engineer are <b>the same product, different data</b>.</li>
+    </ul>
+    <div class="callout">so the real market isn't &ldquo;maths exams.&rdquo; it's <b>anything you can put into a human
+      brain</b> — any field with prerequisites, however hard it looks for an AI: from <b>nothing</b> to <b>advanced
+      physicist, chemist, brain surgeon</b>. every subject, every exam, every trade. IE proves the engine doesn't care
+      which — it already teaches one as hard as LLM internals.</div>
   </section>
 
-  <footer>Build from the ground up. Gate every step. Earn the exam. — Sarthi</footer>
+  <section>
+    <div class="kick">near term — more subjects</div>
+    <h2>physics, chemistry, then the rest.</h2>
+    <ul class="notes">
+      <li>the graph + gating <b>is</b> the product. a subject is just a prereq-wired graph on top.</li>
+      <li>next: <b>physics</b> and <b>chemistry</b> (the JEE/NEET trio with maths), then the wider science &amp; board set.</li>
+      <li>each is <b>content + a graph, not a rewrite</b> — the loop, gating and inference all stay.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="kick">then — beyond India</div>
+    <h2>American exams: SAT and the standardized-test family.</h2>
+    <ul class="notes">
+      <li>the same build-up engine runs <b>SAT</b> (maths first, the natural bridge), then the AP / ACT / standardized-test family.</li>
+      <li>different syllabus, different past papers — <b>same core</b>: concepts, prerequisites, strict order, earn-the-exam.</li>
+      <li>so the market in part one is the wedge, not the ceiling: India maths-exam → all exam subjects → other countries' exams.</li>
+    </ul>
+    <div class="callout warn">physics/chem and SAT are <b>designed, not built</b> — roadmap the engine supports, not shipped.
+      proven on maths; extending it is content work. i'll call it <b>built</b> when the graphs exist.</div>
+  </section>
+
+  <!-- ============ PART 4 — THE LONG VIEW (future vision) ============ -->
+
+  <div class="part">
+    <div class="part-label">part four</div>
+    <div class="part-title">the long view</div>
+    <div class="part-sub">the bet behind all of it — clearly marked: this is vision, not roadmap.</div>
+  </div>
+
+  <section>
+    <div class="kick">the belief</div>
+    <h2>passive absorption is over. brick-and-mortar schooling ends.</h2>
+    <ul class="notes">
+      <li>one-way absorption in rows is a soon-to-be relic — looked back on like <b>cavemen drawing on rocks</b> to pass knowledge down.</li>
+      <li>textbooks and lecture halls end up behind glass — <b>museum pieces of &ldquo;how learning used to work.&rdquo;</b></li>
+      <li>what replaces it: <b>active, high-stimulation learning</b> — talking it out, drawing your answer, teaching it back,
+        caught and corrected where you're weak. not watching and re-watching.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="kick">the room</div>
+    <h2>a seat, a 180° screen, and a tutor that knows where you left off.</h2>
+    <ul class="notes">
+      <li>a student walks into a small room — a seat and a monitor that fills their <b>entire front field of vision</b>.</li>
+      <li>the AI says hello and asks <b>what they want to study today</b>, then picks up <b>exactly where they left off</b>.</li>
+      <li>it <b>talks through concepts</b>, <b>draws visuals on the fly</b> in different ways, and asks the student to <b>teach it back</b>.</li>
+      <li>it finds where they're weak, corrects them, and <b>routes the journey</b> — the build-up + gating engine, with voice and visuals on top.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="kick">hands-on, and beyond</div>
+    <h2>even physical experiments. even the trades. eventually the robots.</h2>
+    <ul class="notes">
+      <li><b>physical experiments:</b> the AI guides the student through a <b>delivered kit of materials</b> — the same
+        teach → check → correct loop, run in the real world.</li>
+      <li><b>trade schools</b> stay the last truly hands-on, person-to-person learning — until robots can do the hands-on part.</li>
+      <li>and when they can, <b>humans get trained to guide and control those robots</b> — through this same learning system.
+        the loop closes on itself.</li>
+    </ul>
+    <div class="callout warn">hard framing: all of part four is <b>vision — designed, not built</b>. the room, the voice
+      tutor, the visuals, the kits, the robots — <b>none of it is shipped</b>. what's real today is the engine under it
+      (parts one–three): <b>two courses in two unrelated fields, prereq-wired, gated, at ~₹0</b>. the vision is why it's
+      worth funding; the engine is what's proven.</div>
+  </section>
+
+  <footer>build from the ground up. gate every step. earn the exam. — sarthi</footer>
 
 </div>
 
