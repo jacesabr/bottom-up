@@ -822,3 +822,8 @@ var textStrings_TR = {
 	// (quote0004.png)
 	"misatrributed": "(yanlış bir şekilde ona atfedilir)",
 };
+
+// Embed fix: the upstream language picker that assigns the `textStrings` global
+// (read by every scene) was not vendored, leaving it undefined -> ReferenceError
+// and a blank game. Default to English.
+var textStrings = textStrings_EN;
