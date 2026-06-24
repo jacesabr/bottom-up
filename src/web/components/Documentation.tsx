@@ -9,7 +9,7 @@ import '../styles/Documentation.css';
 const TABS = [
   { id: 'how', label: 'How it works', hint: 'the build-up method — concept by concept, gated', src: '/how-it-works.html' },
   { id: 'why', label: 'Why Sarthi', hint: 'the Socratic–Feynman idea behind it', src: '/why-sarthi.html' },
-  { id: 'invest', label: 'For investors', hint: 'the seed pitch', src: '/pitch.html' },
+  // 'For investors' (the seed pitch) is intentionally UNLISTED — still served, reachable only by direct URL: /pitch.html
 ];
 
 export default function Documentation({ onBack }: { onBack: () => void }) {
