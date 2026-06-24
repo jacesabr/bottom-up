@@ -6,6 +6,21 @@ own design log stays at `socratic-planning/CHANGELOG.md`.
 
 ---
 
+## 2026-06-24 — Zero-downtime deploys: readiness-gated `/health` + graceful SIGTERM drain
+
+Mirrored from IE (diagnosed there: a learner saw the "can't reach the tutor" popup during a push; the failed
+turn logged **no `bu_llm_call` row** — every NIM failure logs one before throwing — and landed inside a deploy
+that had just gone live, so it was the **API restart window**, not NIM). `bottom-up-api` is a Render `starter`
+web service, so zero-downtime is included — but two gaps in `src/api/index.ts` defeated it:
+- **`/health` lied about readiness** — static `{status:'ok'}` returned the instant Express bound, before
+  `initializeDatabase()` ran, letting Render cut over to a still-warming instance. Fix: a `ready` flag flipped
+  only after a successful DB round-trip; `/health` returns 503 until then (retries a transient Neon hiccup).
+- **No graceful shutdown** — SIGTERM killed in-flight streaming tutor turns (2–12 s) mid-flight (cut before
+  `recordLlmCall`, hence no log). Fix: SIGTERM/SIGINT → 503 + `server.close()` drain (25 s force-exit safety).
+- **Render config drift fixed:** the live service's `healthCheckPath` was **blank** despite render.yaml
+  declaring `/health` — reset to `/health` via the Render API so the health gate is actually consulted.
+- `tsc` clean in the touched file. **Built; not yet runtime-verified through a live redeploy.**
+
 ## 2026-06-22 (cont.) — Quality benchmarks made HARD + FAIR; pool re-ranked on real reading/reasoning
 
 Mirrored from IE. The router blends PRECOMPUTED quality × LIVE speed (quality can't be graded per-request
