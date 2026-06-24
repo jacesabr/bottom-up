@@ -26,7 +26,12 @@ export default function GameOverlay({
       <button className="game-overlay-close" type="button" onClick={onClose} aria-label="Close game">
         Close
       </button>
-      <iframe className="game-overlay-frame" src={src} title={title} />
+      <iframe
+        className="game-overlay-frame"
+        src={src}
+        title={title}
+        allow="autoplay; fullscreen; gamepad; pointer-lock"
+      />
     </div>
   );
 }

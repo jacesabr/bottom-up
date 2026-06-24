@@ -2,21 +2,32 @@ import { useEffect, useState } from 'react';
 import GameOverlay from './GameOverlay';
 import '../styles/ChapterMap.css';
 
-// Short cult games that unlock one-per-node on the first few concepts. Each is a
-// self-contained static page under /public/gameN/ (loaded in an iframe overlay).
-// Every one is playable in well under 10 minutes. Order = node order.
+// Games unlock one-per-node as concepts are completed. Our curated short art games
+// (served locally from /public/gameN/) are interleaved with 10 fun arcade/racing/
+// adventure games embedded straight from their original hosts (external URLs — no code
+// vendored). All playable in well under 20 minutes. Order = node order.
 const GAMES = [
   { title: 'eXit', src: '/game1/exit.html' }, // bespoke terminal escape (ours)
+  { title: 'HexGL', src: 'https://hexgl.bkcore.com/play/' }, // futuristic 3D racer — embed (BKcore)
   { title: 'Execution', src: '/_ruffle/play.html?swf=/swf/execution.swf' }, // Venbrux — original Flash via Ruffle
+  { title: 'Clumsy Bird', src: 'https://ellisonleao.github.io/clumsy-bird/' }, // flappy arcade — embed
   { title: 'A Dark Room', src: '/game3/index.html' }, // Doublespeak Games — open source
+  { title: 'Astray', src: 'https://wwwtyro.github.io/Astray/' }, // 3D marble maze — embed
   { title: 'One Chance', src: '/_ruffle/play.html?swf=/swf/onechance.swf' }, // AwkwardSilence — original Flash via Ruffle
+  { title: 'BlockRain', src: 'https://aerolab.github.io/blockrain.js/' }, // colourful Tetris — embed
   { title: 'Passage', src: '/game5/index.html' }, // Rohrer — public-domain web build (MoMA)
+  { title: 'Arena5', src: 'https://www.kevs3d.co.uk/dev/arena5/' }, // neon twin-stick shooter — embed (Kevin Roast)
   { title: 'WarGames', src: '/games/gtw/index.html' }, // GTW — open-source WOPR (ghelleks)
+  { title: 'Hextris', src: 'https://hextris.github.io/' }, // colourful hexagon puzzle — embed
   { title: 'The House Abandon', src: '/game7/house.html' }, // homage — original is proprietary
+  { title: 'T-Rex Runner', src: 'https://wayou.github.io/t-rex-runner/' }, // endless runner — embed
   { title: 'Every Day the Same Dream', src: '/_ruffle/play.html?swf=/swf/sameday.swf' }, // Molleindustria — original Flash via Ruffle
+  { title: 'TANX', src: 'https://tanx.io/' }, // multiplayer tank battle — embed (PlayCanvas)
   { title: 'Today I Die', src: '/_ruffle/play.html?swf=/swf/todayidie.swf' }, // Benmergui — original Flash via Ruffle
+  { title: 'Asteroids', src: 'https://www.kevs3d.co.uk/dev/asteroids/' }, // retro vector shooter — embed (Kevin Roast)
   { title: 'I Wish I Were the Moon', src: '/game8/moon.html' }, // homage — Flash is Flex, won't embed
-  { title: 'Loneliness', src: '/games/loneliness/index.html' }, // Magnuson — official HTML5 port
+  { title: 'Floppy Bird', src: 'https://nebez.github.io/floppybird/' }, // flappy arcade — embed
+  { title: 'Loneliness', src: 'https://www.necessarygames.com/play/loneliness/' }, // Magnuson — embed (local GameMaker export was incomplete)
   { title: 'Loved', src: '/_ruffle/play.html?swf=/swf/loved.swf' }, // Ocias — original Flash via Ruffle
   { title: 'We Become What We Behold', src: '/games/wbwwb/index.html' }, // Nicky Case — CC0
   { title: 'It is as if you were doing work', src: '/games/itisasif/index.html' }, // Pippin Barr (open source)
