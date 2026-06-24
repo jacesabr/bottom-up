@@ -220,10 +220,10 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
             <table>
               <thead><tr><th>Provider</th><th>Model</th><th>Purpose</th><th>Calls</th><th>Avg ms</th><th>Prompt tok</th><th>Compl tok</th><th>Errors</th></tr></thead>
               <tbody>
-                {overview.byModel.length === 0 && <tr><td colSpan={8} className="muted">No model calls captured yet.</td></tr>}
-                {overview.byModel.map((m: any, i: number) => (
-                  <tr key={i}><td>{m.provider}</td><td>{m.model}</td><td>{m.purpose ?? '—'}</td><td>{m.calls}</td><td>{m.avgMs ?? '—'}</td><td>{m.promptTokens}</td><td>{m.completionTokens}</td><td>{m.errors}</td></tr>
-                ))}
+                <Rows rows={overview.byModel} cols={8} empty="No model calls captured yet."
+                  render={(m: any, i: number) => (
+                    <tr key={i}><td>{m.provider}</td><td>{m.model}</td><td>{m.purpose ?? '—'}</td><td>{m.calls}</td><td>{m.avgMs ?? '—'}</td><td>{m.promptTokens}</td><td>{m.completionTokens}</td><td>{m.errors}</td></tr>
+                  )} />
               </tbody>
             </table>
           </section>
@@ -268,11 +268,11 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
               <table>
                 <thead><tr><th>Day</th><th>Visits</th><th>Uniques</th><th>Signups</th></tr></thead>
                 <tbody>
-                  {(traffic.byDay ?? []).length === 0 && <tr><td colSpan={4} className="muted">No visits yet.</td></tr>}
-                  {(traffic.byDay ?? []).map((d: any) => {
-                    const su = (traffic.signupsByDay ?? []).find((s: any) => s.day === d.day);
-                    return <tr key={d.day}><td>{d.day}</td><td>{d.visits}</td><td>{d.uniques}</td><td>{su?.n ?? 0}</td></tr>;
-                  })}
+                  <Rows rows={traffic.byDay ?? []} cols={4} empty="No visits yet."
+                    render={(d: any) => {
+                      const su = (traffic.signupsByDay ?? []).find((s: any) => s.day === d.day);
+                      return <tr key={d.day}><td>{d.day}</td><td>{d.visits}</td><td>{d.uniques}</td><td>{su?.n ?? 0}</td></tr>;
+                    }} />
                 </tbody>
               </table>
             </section>
@@ -281,8 +281,8 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
               <table>
                 <thead><tr><th>Source</th><th>Visits</th></tr></thead>
                 <tbody>
-                  {(traffic.referrers ?? []).length === 0 && <tr><td colSpan={2} className="muted">No referrers yet.</td></tr>}
-                  {(traffic.referrers ?? []).map((r: any, i: number) => <tr key={i}><td className="mono">{r.ref}</td><td>{r.n}</td></tr>)}
+                  <Rows rows={traffic.referrers ?? []} cols={2} empty="No referrers yet."
+                    render={(r: any, i: number) => <tr key={i}><td className="mono">{r.ref}</td><td>{r.n}</td></tr>} />
                 </tbody>
               </table>
             </section>
@@ -301,15 +301,15 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
         <table>
           <thead><tr><th>Time</th><th>Provider</th><th>Model</th><th>Purpose</th><th>ms</th><th>Error</th><th></th></tr></thead>
           <tbody>
-            {errors.length === 0 && <tr><td colSpan={7} className="muted">No errors logged — the model has been healthy. 🎉</td></tr>}
-            {errors.map((e) => (
+            <Rows rows={errors} cols={7} empty="No errors logged — the model has been healthy. 🎉"
+              render={(e: any) => (
               <tr key={e.id}>
                 <td>{e.ts ? new Date(e.ts).toLocaleString() : '—'}</td>
                 <td>{e.provider}</td><td>{e.model}</td><td>{e.purpose ?? '—'}</td><td>{e.ms ?? '—'}</td>
                 <td className="mono" style={{ maxWidth: 420, whiteSpace: 'normal', wordBreak: 'break-word', color: '#b00020' }}>{e.error ?? '—'}</td>
                 <td><button className="link" onClick={() => openErrorDetail(e.id)}>view</button></td>
               </tr>
-            ))}
+            )} />
           </tbody>
         </table>
       </section>
@@ -319,8 +319,8 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
         <table>
           <thead><tr><th>Concept</th><th>Learner</th><th>Turns</th><th>Last</th><th></th></tr></thead>
           <tbody>
-            {conversations.length === 0 && <tr><td colSpan={5} className="muted">No conversations yet.</td></tr>}
-            {conversations.map((c, i) => (
+            <Rows rows={conversations} cols={5} empty="No conversations yet."
+              render={(c: any, i: number) => (
               <tr key={i}>
                 <td>{c.title}</td>
                 <td className="mono">{String(c.learnerId).slice(0, 8)}</td>
@@ -328,7 +328,7 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
                 <td>{c.last ? new Date(c.last).toLocaleString() : '—'}</td>
                 <td><button className="link" onClick={() => openTranscript(c.learnerId, c.conceptId)}>view</button></td>
               </tr>
-            ))}
+            )} />
           </tbody>
         </table>
       </section>
@@ -338,15 +338,15 @@ export default function AdminDashboard({ apiBase }: { apiBase: string }) {
         <table>
           <thead><tr><th>Time</th><th>Provider</th><th>Model</th><th>Purpose</th><th>ms</th><th>Tokens (p/c)</th><th>ok</th></tr></thead>
           <tbody>
-            {calls.length === 0 && <tr><td colSpan={7} className="muted">No raw calls captured yet (they accrue as students use the tutor).</td></tr>}
-            {calls.map((c) => (
+            <Rows rows={calls} cols={7} empty="No raw calls captured yet (they accrue as students use the tutor)."
+              render={(c: any) => (
               <tr key={c.id}>
                 <td>{c.ts ? new Date(c.ts).toLocaleString() : '—'}</td>
                 <td>{c.provider}</td><td>{c.model}</td><td>{c.purpose ?? '—'}</td><td>{c.ms ?? '—'}</td>
                 <td>{c.promptTokens ?? '—'}/{c.completionTokens ?? '—'}</td>
                 <td title={c.ok ? '' : c.error ?? ''}>{c.ok ? '✓' : '✗'}</td>
               </tr>
-            ))}
+            )} />
           </tbody>
         </table>
       </section>
@@ -419,12 +419,47 @@ function MiniTable({ title, rows, keyName }: { title: string; rows?: any[]; keyN
       <h3>{title}</h3>
       <table>
         <tbody>
-          {(!rows || rows.length === 0) && <tr><td className="muted">No data yet.</td></tr>}
-          {(rows ?? []).map((r, i) => (
-            <tr key={i}><td>{r[keyName]}</td><td style={{ textAlign: 'right' }}>{r.n}</td></tr>
-          ))}
+          <Rows rows={rows} cols={2} empty="No data yet."
+            render={(r: any, i: number) => (
+              <tr key={i}><td>{r[keyName]}</td><td style={{ textAlign: 'right' }}>{r.n}</td></tr>
+            )} />
         </tbody>
       </table>
     </section>
+  );
+}
+
+// A <tbody> helper that keeps long operator tables compact: it shows only the first `step` rows, then a
+// full-width "dropdown bar" that extends the table by `step` more rows per click (and collapses back to
+// the first `step` once fully shown). Renders a fragment of <tr>s — valid as a direct child of <tbody>.
+// No bar appears when the table has `step` rows or fewer, so it's safe to wrap every table.
+function Rows({ rows, cols, render, empty, step = 5 }: {
+  rows: any[] | undefined;
+  cols: number;
+  render: (row: any, i: number) => React.ReactNode;
+  empty: React.ReactNode;
+  step?: number;
+}) {
+  const [shown, setShown] = useState(step);
+  if (!rows || rows.length === 0) return <tr><td colSpan={cols} className="muted">{empty}</td></tr>;
+  const visible = Math.min(shown, rows.length);
+  const hidden = rows.length - visible;
+  return (
+    <>
+      {rows.slice(0, visible).map((r, i) => render(r, i))}
+      {rows.length > step && (
+        <tr className="more-row">
+          <td colSpan={cols}>
+            {hidden > 0 ? (
+              <button className="more-bar" onClick={() => setShown(visible + step)}>
+                ▾ Show {Math.min(step, hidden)} more <span className="more-rem">· {hidden} hidden</span>
+              </button>
+            ) : (
+              <button className="more-bar" onClick={() => setShown(step)}>▴ Show less</button>
+            )}
+          </td>
+        </tr>
+      )}
+    </>
   );
 }

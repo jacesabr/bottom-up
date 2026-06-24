@@ -33,6 +33,17 @@
 .admin-card .muted { color: var(--lock); }
 .mono { font-family: ui-monospace, monospace; font-size: 0.78rem; }
 
+/* "Dropdown bar" that extends a long table by a few rows per click (see <Rows> in AdminDashboard.tsx). */
+.admin-card .more-row td { padding: 4px 0 0; border-bottom: none; }
+.more-bar {
+  width: 100%; display: block; text-align: center;
+  background: var(--bg); border: 1px dashed var(--rule); border-radius: 8px;
+  padding: 7px 10px; font: inherit; font-size: 0.78rem; font-weight: 600;
+  color: var(--dim); cursor: pointer;
+}
+.more-bar:hover { background: #fff; color: var(--ink); border-color: var(--lock); }
+.more-rem { font-weight: 400; opacity: 0.7; }
+
 .admin-row { display: flex; gap: 16px; flex-wrap: wrap; }
 .admin-half { flex: 1 1 320px; }
 .admin-third { flex: 1 1 220px; }
