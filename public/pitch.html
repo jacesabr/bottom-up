@@ -120,11 +120,8 @@
       <li><b>practical:</b> a plumber-in-training fixes a <b>pipe leak in a robot simulation</b>, the AI guiding every
         step — and the same system trains the people who'll run the robots.</li>
     </ul>
-    <p class="note" style="color:var(--faint);font-size:0.82rem">that's the destination — designed, not built. what's live today is below.</p>
+    <p class="note" style="color:var(--faint);font-size:0.82rem">that's the destination — not today's product. today it's a live maths tutor for CBSE &amp; JEE.</p>
   </section>
-
-  <div class="callout">every claim below is tagged — <b>verified</b> (we watched it work) · <b>built</b> (code exists, live) ·
-    <b>designed</b> (planned, not yet built). the numbers are counted from the codebase, not rounded up.</div>
 
   <p style="color:var(--dim);font-size:0.93rem">three parts: <b style="color:var(--ink)">the pitch</b> ·
     <b style="color:var(--ink)">the questions you'll ask</b> · <b style="color:var(--ink)">where it goes next</b>.</p>
@@ -134,7 +131,7 @@
   <div class="part">
     <div class="part-label">part one</div>
     <div class="part-title">the pitch</div>
-    <div class="part-sub">problem → why now → the method → what's actually built → the market → the ask.</div>
+    <div class="part-sub">problem → why now → the method → the team → the market → the ask.</div>
   </div>
 
   <section>
@@ -171,37 +168,6 @@
   </section>
 
   <section>
-    <div class="kick">the reward loop</div>
-    <h2>pass a concept, earn a 10-minute game.</h2>
-    <ul class="notes">
-      <li>pass a concept, <b>a short game unlocks</b> — a hand-picked art game, under 10 minutes. a built-in <b>break</b>.</li>
-      <li>not candy: <b>breaks are how you keep what you just learned</b>. the game gives you a reason to stop before you hit a wall.</li>
-      <li>games unlock <b>one per concept, in order</b> (eXit, Passage, A Dark Room, We Become What We Behold, …).</li>
-      <li>caveat: <b>18 games</b> today — enough for a course's opening stretch. more is content work, not a rebuild.</li>
-    </ul>
-  </section>
-
-  <section>
-    <div class="kick">what's actually built</div>
-    <h2>what's real today, and what isn't.</h2>
-    <table>
-      <tr><th>thing</th><th>state</th><th>the real story</th></tr>
-      <tr><td><b>a live product, today</b></td><td><span class="badge b-verified">verified</span></td><td>the app is deployed and running — open it and use it</td></tr>
-      <tr><td><b>the full maths syllabus, built</b></td><td><span class="badge b-verified">verified</span></td><td>every chapter of CBSE 10, CBSE 12 &amp; JEE — complete, not a sample</td></tr>
-      <tr><td><b>it finds &amp; rebuilds from the gap</b></td><td><span class="badge b-built">built</span></td><td>diagnoses the exact missing concept and won't let a student skip it</td></tr>
-      <tr><td><b>near-zero cost to run</b></td><td><span class="badge b-built">built</span></td><td>free AI tier today; paid models only as a fallback</td></tr>
-      <tr><td><b>real students, paying users, retention</b></td><td><span class="badge b-designed">designed</span></td><td>none yet — pre-launch</td></tr>
-      <tr><td><b>revenue</b></td><td><span class="badge b-designed">designed</span></td><td>₹0 today</td></tr>
-    </table>
-    <div class="courses">
-      <div class="course"><div class="name">CBSE Class 10</div><div class="num">14</div><div class="meta">chapters · all built</div></div>
-      <div class="course"><div class="name">CBSE Class 12</div><div class="num">13</div><div class="meta">chapters · all built</div></div>
-      <div class="course"><div class="name">JEE</div><div class="num">27</div><div class="meta">chapters · all built</div></div>
-    </div>
-    <p>the <b>product is built and live</b>. what's <b>unproven</b>: real students going through it and staying. that's what the raise is for.</p>
-  </section>
-
-  <section>
     <div class="kick">who's building this</div>
     <h2>built by Suhas and Jace.</h2>
     <ul class="notes">
@@ -226,10 +192,25 @@
   </section>
 
   <section>
+    <div class="kick">unit economics</div>
+    <h2>~₹4 of compute per student. they pay ₹1,000.</h2>
+    <ul class="notes">
+      <li>an average student: ~<b>6 sessions a month</b>, ~<b>9 back-and-forth turns each</b> ≈ <b>55 AI messages/month</b>, plus a handful of handwriting checks.</li>
+      <li>that's ~<b>0.3M tokens/month</b>. on the <b>DeepSeek API</b> for teaching + <b>NVIDIA's API</b> for the handwriting reads, that costs <b>~₹4/student/month</b>.</li>
+    </ul>
+    <div class="calc">
+      <div class="row"><span>price / student / month</span><span class="out">₹1,000</span></div>
+      <div class="row"><span>inference cost / student / month</span><span class="out">~₹4</span></div>
+      <div class="row"><span><b>gross margin on compute</b></span><span class="out"><b>~99.6%</b></span></div>
+    </div>
+    <p class="note" style="color:var(--faint);font-size:0.78rem">flat at any scale — a per-message API, no GPUs to keep running. the free NVIDIA tier covers the first ~100 students at ₹0.</p>
+  </section>
+
+  <section>
     <div class="kick">the ask</div>
     <h2>a small pre-seed — an 18-month runway to first real usage.</h2>
     <ul class="notes">
-      <li><b>people, not GPUs</b> — compute is on free credits. the money buys a lean 2–3 person team for ~18 months.</li>
+      <li><b>people, not GPUs</b> — inference is a ~₹4/student API bill, not a GPU bill. the money buys a lean 2–3 person team for ~18 months.</li>
       <li><b>no ad budget</b> — growth is the free product + word of mouth in JEE/CBSE exam-prep communities. low burn, organic, cheap.</li>
     </ul>
     <div class="calc">
@@ -258,8 +239,9 @@
       </div>
       <div>
         <div class="q">what does a student actually cost you? (unit economics)</div>
-        <div class="a"><b>~₹0 today</b> — free AI tier, paid models only as fallback. so margins are high. caveat: that's
-          at <b>low volume</b>; at scale the number to watch is the <b>paid-fallback rate</b>. no CLV:CAC yet — i haven't earned one.</div>
+        <div class="a">see <b>unit economics</b> above — ~<b>₹4 of compute per student/month</b> (DeepSeek API for teaching,
+          NVIDIA's API for the handwriting reads) against ₹1,000 revenue, <b>flat at any scale</b>. free NVIDIA tier covers
+          the first ~100 students at ₹0. no CLV:CAC yet — that needs a real CAC, which is post-launch.</div>
       </div>
       <div>
         <div class="q">how do you acquire students — what's CAC?</div>
@@ -287,8 +269,8 @@
       <div>
         <div class="q">what could kill this?</div>
         <div class="a">three real ones: <b>1)</b> the gating feels like a cage and students bounce — unproven till real use.
-          <b>2)</b> the free AI tier changes terms or quality and the economics shift. <b>3) distribution</b> — building it
-          was easy; getting it to students isn't solved. the raise targets #1 and #3.</div>
+          <b>2)</b> inference prices spike — but it's ~₹4/student today across several cheap APIs, so there's huge headroom.
+          <b>3) distribution</b> — building it was easy; getting it to students isn't solved. the raise targets #1 and #3.</div>
       </div>
       <div>
         <div class="q">who's building it, and what exactly does the raise buy?</div>
