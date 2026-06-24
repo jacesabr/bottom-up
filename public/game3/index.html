@@ -2,7 +2,17 @@
 <html itemscope itemtype="https://schema.org/CreativeWork">
 <head>
 	<meta charset="UTF-8"/>
-	<!--  
+	<script>
+		// Embed fix (Sarthi): A Dark Room autosaves to localStorage, and a stale/partial
+		// save can permanently soft-lock the opening — the fire restores past "dead" with
+		// 0 wood, so "light fire" is hidden (room.js updateButton) and "stoke fire" fails,
+		// or "light fire" shows but its wood<5 guard blocks relighting. There is no obvious
+		// escape but the easy-to-miss "restart." link. This is a single-session iframe
+		// curio with no value in cross-session saves, so we start fresh on every open.
+		// loadGame() already falls back to a clean new game when the key is absent.
+		try { localStorage.removeItem('gameState'); } catch (e) {}
+	</script>
+	<!--
 		A Dark Room (v1.4)
 		==================
 		

@@ -14,6 +14,15 @@ html {
 body {
 	height: 100%;
 	margin: 0;
+	/* Embed fix (Sarthi): A Dark Room is a white-page/black-text game and relies on
+	   the browser's default white canvas. Inside our GameOverlay iframe the page is
+	   transparent over a dark overlay (#050c05), rendering black-on-black. Paint the
+	   page white so the text and buttons are legible. */
+	background-color: #fff;
+}
+
+body.noMask { /* "lights off" dark mode flips text to white, so keep the page dark */
+	background-color: #000;
 }
 
 ::selection {
