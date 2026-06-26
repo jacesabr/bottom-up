@@ -16,142 +16,1039 @@
     "totalQuestions": 38,
     "maxMarks": 80,
     "sections": {
-      "A": { "q": [1, 20], "marksEach": 1, "desc": "Q1-18 MCQ, Q19-20 Assertion-Reason" },
-      "B": { "q": [21, 25], "marksEach": 2, "desc": "Very Short Answer (VSA)" },
-      "C": { "q": [26, 31], "marksEach": 3, "desc": "Short Answer (SA)" },
-      "D": { "q": [32, 35], "marksEach": 5, "desc": "Long Answer (LA)" },
-      "E": { "q": [36, 38], "marksEach": 4, "desc": "Case-study, sub-parts 1+1+2" }
+      "A": {
+        "q": [
+          1,
+          20
+        ],
+        "marksEach": 1,
+        "desc": "Q1-18 MCQ, Q19-20 Assertion-Reason"
+      },
+      "B": {
+        "q": [
+          21,
+          25
+        ],
+        "marksEach": 2,
+        "desc": "Very Short Answer (VSA)"
+      },
+      "C": {
+        "q": [
+          26,
+          31
+        ],
+        "marksEach": 3,
+        "desc": "Short Answer (SA)"
+      },
+      "D": {
+        "q": [
+          32,
+          35
+        ],
+        "marksEach": 5,
+        "desc": "Long Answer (LA)"
+      },
+      "E": {
+        "q": [
+          36,
+          38
+        ],
+        "marksEach": 4,
+        "desc": "Case-study, sub-parts 1+1+2"
+      }
     },
-    "internalChoiceQuestions": [21, 23, 27, 30, 32, 35, "36(iii)", "37(iii)", "38(iii)"]
+    "internalChoiceQuestions": [
+      21,
+      23,
+      27,
+      30,
+      32,
+      35,
+      "36(iii)",
+      "37(iii)",
+      "38(iii)"
+    ]
   },
   "questions": [
-    { "q": 1, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh101:apply-real-number-theorems", "grader": "mcq", "handling": "grade",
-      "prompt": "HCF of (3³ × 5² × 2), (3² × 5³ × 2²) and (3⁴ × 5 × 2³) is", "options": ["450", "90", "180", "630"], "correct": "90", "msAnswer": "B) 90" },
-    { "q": 2, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables", "grader": "mcq", "handling": "grade",
-      "prompt": "The system of linear equations represented by the lines l and m is", "options": ["consistent with unique solution", "inconsistent", "consistent with three solutions", "consistent with many solutions"], "correct": "consistent with unique solution", "msAnswer": "A) consistent with unique solution" },
-    { "q": 3, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh104:solve-quadratic-equation", "grader": "mcq", "handling": "grade",
-      "prompt": "The value of k for which the quadratic equation kx² − 5x + 1 = 0 does not have a real solution, is", "options": ["0", "25/4", "4/25", "7"], "correct": "7", "msAnswer": "D) 7" },
-    { "q": 4, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems", "grader": "mcq", "handling": "grade",
-      "prompt": "The distance between the points (a, b) and (−a, −b) is", "options": ["√(a²+b²)", "a²+b²", "2√(a²+b²)", "4√(a²+b²)"], "correct": "2√(a²+b²)", "msAnswer": "C) 2√(a²+b²)" },
-    { "q": 5, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh110:solve-circle-tangent-problems", "grader": "mcq", "handling": "grade",
-      "prompt": "In the given figure, PQ and PR are tangents to a circle centred at O. If ∠QPR=35° then ∠QOR is equal to", "options": ["70°", "90°", "135°", "145°"], "correct": "145°", "msAnswer": "D) 145°" },
-    { "q": 6, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity", "grader": "mcq", "handling": "grade",
-      "prompt": "If △ABC ∼ △PQR such that 3AB = 2PQ and BC=10 cm, then length QR is equal to", "options": ["10 cm", "15 cm", "20/3 cm", "30 cm"], "correct": "15 cm", "msAnswer": "B) 15 cm" },
-    { "q": 7, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh108:prove-trig-identities", "grader": "mcq", "handling": "grade",
-      "prompt": "If 3 cotA = 4, where 0° < A < 90°, then secA is equal to", "options": ["5/4", "4/3", "5/3", "3/4"], "correct": "5/4", "msAnswer": "A) 5/4" },
-    { "q": 8, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity", "grader": "mcq", "handling": "grade",
-      "prompt": "In the given figure, ΔBAC is similar to", "options": ["ΔAED", "ΔEAD", "ΔACB", "ΔBCA"], "correct": "ΔEAD", "msAnswer": "B) ΔEAD" },
-    { "q": 9, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh101:apply-real-number-theorems", "grader": "mcq", "handling": "grade",
-      "prompt": "If H.C.F(420,189) = 21 then L.C.M(420,189) is", "options": ["420", "1890", "3780", "3680"], "correct": "3780", "msAnswer": "C) 3780" },
-    { "q": 10, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh105:solve-ap-problems", "grader": "mcq", "handling": "grade",
-      "prompt": "The 4th term from the end of the A.P −8, −5, −2, …, 49 is", "options": ["37", "40", "1", "43"], "correct": "40", "msAnswer": "B) 40" },
-    { "q": 11, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity", "grader": "mcq", "handling": "grade",
-      "prompt": "In the given figure, if △OCA ∼ △OBD then ∠OAC is equal to", "options": ["58°", "55°", "128°", "52°"], "correct": "52°", "msAnswer": "D) 52°" },
-    { "q": 12, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh110:solve-circle-tangent-problems", "grader": "mcq", "handling": "grade",
-      "prompt": "If perimeter of given triangle is 38 cm, then length AP is equal to", "options": ["19 cm", "5 cm", "10 cm", "8 cm"], "correct": "5 cm", "msAnswer": "B) 5 cm" },
-    { "q": 13, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh108:prove-trig-identities", "grader": "mcq", "handling": "grade",
-      "prompt": "(1−tan²30°)/(1+tan²30°) is equal to", "options": ["cos60°", "sin60°", "1", "tan²60°"], "correct": "cos60°", "msAnswer": "A) cos 60°" },
-    { "q": 14, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations", "grader": "mcq", "handling": "grade",
-      "prompt": "The total surface area of solid hemisphere of radius r is", "options": ["πr²", "2πr²", "3πr²", "4πr²"], "correct": "3πr²", "msAnswer": "C) 3πr²" },
-    { "q": 15, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh114:compute-theoretical-probability", "grader": "mcq", "handling": "grade",
-      "prompt": "Which of the following cannot be the probability of an event?", "options": ["0.4", "4%", "0.04%", "4"], "correct": "4", "msAnswer": "D) 4" },
-    { "q": 16, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh104:solve-quadratic-equation", "grader": "mcq", "handling": "grade",
-      "prompt": "The roots of quadratic equation 3x² − 4√3x + 4 = 0 are", "options": ["not real", "real and equal", "rational and distinct", "irrational and distinct"], "correct": "real and equal", "msAnswer": "B) real and equal" },
-    { "q": 17, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data", "grader": "mcq", "handling": "grade",
-      "prompt": "The following distribution shows the marks distribution of 80 students. Marks: Below 10, Below 20, Below 30, Below 40, Below 50, Below 60; No. of students: 2, 12, 28, 56, 76, 80. The median class is", "options": ["20-30", "40-50", "30-40", "10-20"], "correct": "30-40", "msAnswer": "C) 30 - 40" },
-    { "q": 18, "section": "A", "marks": 1, "type": "mcq", "node": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials", "grader": "mcq", "handling": "grade",
-      "prompt": "A quadratic polynomial whose zeroes are 2/5 and −1/5 is", "options": ["25x² + 5x − 2", "5x² − 2x + 1", "5x² + 2x − 1", "25x² − 5x − 2"], "correct": "25x² − 5x − 2", "msAnswer": "D) 25x² − 5x − 2" },
-    { "q": 19, "section": "A", "marks": 1, "type": "assertion-reason", "node": "cbse10:maths:jemh105:solve-ap-problems", "grader": "mcq", "handling": "grade",
+    {
+      "q": 1,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "HCF of (3³ × 5² × 2), (3² × 5³ × 2²) and (3⁴ × 5 × 2³) is",
+      "options": [
+        "450",
+        "90",
+        "180",
+        "630"
+      ],
+      "correct": "90",
+      "msAnswer": "B) 90",
+      "coveringNodes": [
+        "cbse10:maths:jemh101:prime-factorise-integer",
+        "cbse10:maths:jemh101:compute-hcf-prime-factorisation"
+      ]
+    },
+    {
+      "q": 2,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "The system of linear equations represented by the lines l and m is",
+      "options": [
+        "consistent with unique solution",
+        "inconsistent",
+        "consistent with three solutions",
+        "consistent with many solutions"
+      ],
+      "correct": "consistent with unique solution",
+      "msAnswer": "A) consistent with unique solution",
+      "coveringNodes": [
+        "cbse10:maths:jemh103:classify-pair-by-coefficient-ratios",
+        "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"
+      ]
+    },
+    {
+      "q": 3,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "The value of k for which the quadratic equation kx² − 5x + 1 = 0 does not have a real solution, is",
+      "options": [
+        "0",
+        "25/4",
+        "4/25",
+        "7"
+      ],
+      "correct": "7",
+      "msAnswer": "D) 7",
+      "coveringNodes": [
+        "cbse10:maths:jemh104:identify-coefficients-abc",
+        "cbse10:maths:jemh104:compute-discriminant",
+        "cbse10:maths:jemh104:classify-nature-of-roots",
+        "cbse10:maths:jemh104:find-k-for-equal-roots"
+      ]
+    },
+    {
+      "q": 4,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "The distance between the points (a, b) and (−a, −b) is",
+      "options": [
+        "√(a²+b²)",
+        "a²+b²",
+        "2√(a²+b²)",
+        "4√(a²+b²)"
+      ],
+      "correct": "2√(a²+b²)",
+      "msAnswer": "C) 2√(a²+b²)",
+      "coveringNodes": [
+        "cbse10:maths:jemh107:read-point-coordinates",
+        "cbse10:maths:jemh107:compute-coordinate-differences",
+        "cbse10:maths:jemh107:apply-distance-formula"
+      ]
+    },
+    {
+      "q": 5,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "In the given figure, PQ and PR are tangents to a circle centred at O. If ∠QPR=35° then ∠QOR is equal to",
+      "options": [
+        "70°",
+        "90°",
+        "135°",
+        "145°"
+      ],
+      "correct": "145°",
+      "msAnswer": "D) 145°",
+      "coveringNodes": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:relate-angle-tangents-central-angle"
+      ]
+    },
+    {
+      "q": 6,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "If △ABC ∼ △PQR such that 3AB = 2PQ and BC=10 cm, then length QR is equal to",
+      "options": [
+        "10 cm",
+        "15 cm",
+        "20/3 cm",
+        "30 cm"
+      ],
+      "correct": "15 cm",
+      "msAnswer": "B) 15 cm",
+      "coveringNodes": [
+        "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
+        "cbse10:maths:jemh106:compute-side-ratios",
+        "cbse10:maths:jemh106:find-unknown-length-via-proportion"
+      ]
+    },
+    {
+      "q": 7,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh108:prove-trig-identities",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "If 3 cotA = 4, where 0° < A < 90°, then secA is equal to",
+      "options": [
+        "5/4",
+        "4/3",
+        "5/3",
+        "3/4"
+      ],
+      "correct": "5/4",
+      "msAnswer": "A) 5/4",
+      "coveringNodes": [
+        "cbse10:maths:jemh108:define-trig-ratios",
+        "cbse10:maths:jemh108:compute-reciprocal-ratios",
+        "cbse10:maths:jemh108:find-ratios-from-one-ratio"
+      ]
+    },
+    {
+      "q": 8,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "In the given figure, ΔBAC is similar to",
+      "options": [
+        "ΔAED",
+        "ΔEAD",
+        "ΔACB",
+        "ΔBCA"
+      ],
+      "correct": "ΔEAD",
+      "msAnswer": "B) ΔEAD",
+      "coveringNodes": [
+        "cbse10:maths:jemh106:identify-corresponding-parts",
+        "cbse10:maths:jemh106:source-equal-angles",
+        "cbse10:maths:jemh106:write-similarity-symbolically",
+        "cbse10:maths:jemh106:prove-and-apply-triangle-similarity"
+      ]
+    },
+    {
+      "q": 9,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "If H.C.F(420,189) = 21 then L.C.M(420,189) is",
+      "options": [
+        "420",
+        "1890",
+        "3780",
+        "3680"
+      ],
+      "correct": "3780",
+      "msAnswer": "C) 3780",
+      "coveringNodes": [
+        "cbse10:maths:jemh101:use-hcf-lcm-product-relation"
+      ]
+    },
+    {
+      "q": 10,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh105:solve-ap-problems",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "The 4th term from the end of the A.P −8, −5, −2, …, 49 is",
+      "options": [
+        "37",
+        "40",
+        "1",
+        "43"
+      ],
+      "correct": "40",
+      "msAnswer": "B) 40",
+      "coveringNodes": [
+        "cbse10:maths:jemh105:count-terms-ap",
+        "cbse10:maths:jemh105:apply-nth-term-formula",
+        "cbse10:maths:jemh105:term-from-last"
+      ]
+    },
+    {
+      "q": 11,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "In the given figure, if △OCA ∼ △OBD then ∠OAC is equal to",
+      "options": [
+        "58°",
+        "55°",
+        "128°",
+        "52°"
+      ],
+      "correct": "52°",
+      "msAnswer": "D) 52°",
+      "coveringNodes": [
+        "cbse10:maths:jemh106:identify-corresponding-parts",
+        "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity",
+        "cbse10:maths:jemh106:find-unknown-angle-via-similarity"
+      ]
+    },
+    {
+      "q": 12,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "If perimeter of given triangle is 38 cm, then length AP is equal to",
+      "options": [
+        "19 cm",
+        "5 cm",
+        "10 cm",
+        "8 cm"
+      ],
+      "correct": "5 cm",
+      "msAnswer": "B) 5 cm",
+      "coveringNodes": [
+        "cbse10:maths:jemh110:apply-equal-tangent-lengths",
+        "cbse10:maths:jemh110:find-triangle-sides-inscribed-circle",
+        "cbse10:maths:jemh110:solve-circle-tangent-problems"
+      ]
+    },
+    {
+      "q": 13,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh108:prove-trig-identities",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "(1−tan²30°)/(1+tan²30°) is equal to",
+      "options": [
+        "cos60°",
+        "sin60°",
+        "1",
+        "tan²60°"
+      ],
+      "correct": "cos60°",
+      "msAnswer": "A) cos 60°",
+      "coveringNodes": [
+        "cbse10:maths:jemh108:recall-30-60-ratios",
+        "cbse10:maths:jemh108:evaluate-specific-angle-expressions"
+      ]
+    },
+    {
+      "q": 14,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "The total surface area of solid hemisphere of radius r is",
+      "options": [
+        "πr²",
+        "2πr²",
+        "3πr²",
+        "4πr²"
+      ],
+      "correct": "3πr²",
+      "msAnswer": "C) 3πr²",
+      "coveringNodes": [
+        "cbse10:maths:jemh112:csa-hemisphere",
+        "cbse10:maths:jemh112:compute-tsa-solid-hemisphere"
+      ]
+    },
+    {
+      "q": 15,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "Which of the following cannot be the probability of an event?",
+      "options": [
+        "0.4",
+        "4%",
+        "0.04%",
+        "4"
+      ],
+      "correct": "4",
+      "msAnswer": "D) 4",
+      "coveringNodes": [
+        "cbse10:maths:jemh114:probability-range-bounds"
+      ]
+    },
+    {
+      "q": 16,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "The roots of quadratic equation 3x² − 4√3x + 4 = 0 are",
+      "options": [
+        "not real",
+        "real and equal",
+        "rational and distinct",
+        "irrational and distinct"
+      ],
+      "correct": "real and equal",
+      "msAnswer": "B) real and equal",
+      "coveringNodes": [
+        "cbse10:maths:jemh104:identify-coefficients-abc",
+        "cbse10:maths:jemh104:compute-discriminant",
+        "cbse10:maths:jemh104:classify-nature-of-roots"
+      ]
+    },
+    {
+      "q": 17,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "The following distribution shows the marks distribution of 80 students. Marks: Below 10, Below 20, Below 30, Below 40, Below 50, Below 60; No. of students: 2, 12, 28, 56, 76, 80. The median class is",
+      "options": [
+        "20-30",
+        "40-50",
+        "30-40",
+        "10-20"
+      ],
+      "correct": "30-40",
+      "msAnswer": "C) 30 - 40",
+      "coveringNodes": [
+        "cbse10:maths:jemh113:convert-cf-table-to-frequencies",
+        "cbse10:maths:jemh113:compute-cumulative-frequency-less-than",
+        "cbse10:maths:jemh113:identify-median-class"
+      ]
+    },
+    {
+      "q": 18,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "node": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "grader": "mcq",
+      "handling": "grade",
+      "prompt": "A quadratic polynomial whose zeroes are 2/5 and −1/5 is",
+      "options": [
+        "25x² + 5x − 2",
+        "5x² − 2x + 1",
+        "5x² + 2x − 1",
+        "25x² − 5x − 2"
+      ],
+      "correct": "25x² − 5x − 2",
+      "msAnswer": "D) 25x² − 5x − 2",
+      "coveringNodes": [
+        "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+        "cbse10:maths:jemh102:build-quadratic-from-sum-and-product"
+      ]
+    },
+    {
+      "q": 19,
+      "section": "A",
+      "marks": 1,
+      "type": "assertion-reason",
+      "node": "cbse10:maths:jemh105:solve-ap-problems",
+      "grader": "mcq",
+      "handling": "grade",
       "prompt": "Assertion (A): The sequence −1, −1, −1, …, −1 is an AP. Reason (R): In an AP, aₙ − aₙ₋₁ is constant where n ≥ 2 and n ∈ N.",
-      "options": ["Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)", "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)", "Assertion (A) is true but reason (R) is false.", "Assertion (A) is false but reason (R) is true."],
-      "correct": "Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)", "msAnswer": "A)" },
-    { "q": 20, "section": "A", "marks": 1, "type": "assertion-reason", "node": "cbse10:maths:jemh101:counter-examples-irrational-rules", "grader": "mcq", "handling": "grade",
+      "options": [
+        "Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)",
+        "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)",
+        "Assertion (A) is true but reason (R) is false.",
+        "Assertion (A) is false but reason (R) is true."
+      ],
+      "correct": "Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)",
+      "msAnswer": "A)",
+      "coveringNodes": [
+        "cbse10:maths:jemh105:define-ap-common-difference",
+        "cbse10:maths:jemh105:test-is-ap"
+      ]
+    },
+    {
+      "q": 20,
+      "section": "A",
+      "marks": 1,
+      "type": "assertion-reason",
+      "node": "cbse10:maths:jemh101:counter-examples-irrational-rules",
+      "grader": "mcq",
+      "handling": "grade",
       "prompt": "Assertion (A): (2 + √3)√3 is an irrational number. Reason (R): Product of two irrational numbers is always irrational.",
-      "options": ["Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)", "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)", "Assertion (A) is true but reason (R) is false.", "Assertion (A) is false but reason (R) is true."],
-      "correct": "Assertion (A) is true but reason (R) is false.", "msAnswer": "C) Assertion (A) is true but reason (R) is false." },
-
-    { "q": 21, "variant": "A", "section": "B", "marks": 2, "type": "vsa", "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "P(x, y) is a point equidistant from the points A(4,3) and B(3,4). Prove that x − y = 0.", "msAnswer": "PA² = PB² ⟹ (x−4)²+(y−3)² = (x−3)²+(y−4)² ⟹ x = y, i.e. x − y = 0." },
-    { "q": 21, "variant": "B", "section": "B", "marks": 2, "type": "vsa", "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "In the given figure, ΔABC is an equilateral triangle. Coordinates of vertices A and B are (0,3) and (0,−3) respectively. Find the coordinates of point C.", "msAnswer": "AB = 6 cm = AC. OC = √(36−9) = 3√3 cm. Point C is (3√3, 0)." },
-
-    { "q": 22, "section": "B", "marks": 2, "type": "vsa", "node": "cbse10:maths:jemh110:solve-circle-tangent-problems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "In two concentric circles, a chord of length 8 cm of the larger circle touches the smaller circle. If the radius of the larger circle is 5 cm, then find the radius of the smaller circle.", "msAnswer": "AM = 4 cm. OM = √(OA² − AM²) = √(5² − 4²) = 3 cm." },
-
-    { "q": 23, "variant": "A", "section": "B", "marks": 2, "type": "vsa", "node": "cbse10:maths:jemh105:solve-ap-problems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "The sum of the first 12 terms of an A.P. is 900. If its first term is 20 then find the common difference and 12th term.", "msAnswer": "(12/2)[2×20 + 11d] = 900 ⟹ d = 10. a₁₂ = 20 + 11×10 = 130." },
-    { "q": 23, "variant": "B", "section": "B", "marks": 2, "type": "vsa", "node": "cbse10:maths:jemh105:solve-ap-problems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "The sum of first n terms of an A.P. is represented by Sₙ = 6n − n². Find the common difference.", "msAnswer": "S₁ = a = 6−1 = 5 …(i). S₂ = 2a+d = 12−4 = 8 …(ii). Solving: d = −2." },
-
-    { "q": 24, "section": "B", "marks": 2, "type": "vsa", "node": "cbse10:maths:jemh108:prove-trig-identities", "grader": "llm-descent", "handling": "grade",
-      "prompt": "If sin(A − B) = 1/2 and cos(A + B) = 1/2, 0° < A + B < 90° and A > B, then find the values of A and B.", "msAnswer": "A − B = 30° …(i). A + B = 60° …(ii). Solving: A = 45°, B = 15°." },
-
-    { "q": 25, "section": "B", "marks": 2, "type": "vsa", "node": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data", "grader": "llm-descent", "handling": "grade",
-      "prompt": "Calculate mode of the following distribution: Class: 5-10, 10-15, 15-20, 20-25, 25-30, 30-35; Frequency: 5, 6, 15, 10, 5, 4.", "msAnswer": "Modal class is 15-20. Mode = 15 + 5 × (15−6)/(2×15−6−10) = 18.21 (approx.)." },
-
-    { "q": 26, "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh101:apply-real-number-theorems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "Prove that √5 is an irrational number.", "msAnswer": "Assume √5 = p/q, q≠0, p,q coprime. 5q² = p² ⟹ p² divisible by 5 ⟹ p divisible by 5 ⟹ p=5a. 25a² = 5q² ⟹ q² = 5a² ⟹ q divisible by 5. Both divisible by 5 contradicts coprime. ∴ √5 is irrational." },
-
-    { "q": 27, "variant": "A", "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "Find the ratio in which the y-axis divides the line segment joining the points (4, −5) and (−1, 2). Also find the point of intersection.", "msAnswer": "Let P(0,y) divide AP:PB = k:1. (−k+4)/(k+1) = 0 ⟹ k = 4 ⟹ ratio 4:1. y = (8−5)/5 = 3/5. Point of intersection (0, 3/5)." },
-    { "q": 27, "variant": "B", "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "Line 4x + y = 4 divides the line segment joining the points (−2, −1) and (3, 5) in a certain ratio. Find the ratio.", "msAnswer": "Let ratio k:1. x₁=(3k−2)/(k+1), y₁=(5k−1)/(k+1). On 4x+y=4: 4(3k−2)/(k+1) + (5k−1)/(k+1) = 4 ⟹ k = 1. Ratio 1:1." },
-
-    { "q": 28, "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh108:prove-trig-identities", "grader": "llm-descent", "handling": "grade",
-      "prompt": "Prove that: (cosecA − sinA)(secA − cosA) = 1/(tanA + cotA).", "msAnswer": "LHS = ((1/sinA)−sinA)((1/cosA)−cosA) = (cos²A/sinA)(sin²A/cosA) = cosA sinA. RHS = cosA sinA/(sin²A+cos²A) = cosA sinA = LHS." },
-
-    { "q": 29, "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data", "grader": "llm-descent", "handling": "grade",
-      "prompt": "Find the mean using the step deviation method. Class: 0-10, 10-20, 20-30, 30-40, 40-50; Frequency: 6, 10, 15, 9, 10.", "msAnswer": "With a=25, h=10: Σf=50, Σfu=7. Mean = 25 + 10×(7/50) = 26.4." },
-
-    { "q": 30, "variant": "A", "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh110:solve-circle-tangent-problems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "In the given figure, PA and PB are tangents to a circle centred at O. Prove that (i) OP bisects ∠APB (ii) OP is the right bisector of AB.", "msAnswer": "(i) ΔOAP ≅ ΔOBP ⟹ ∠APO = ∠BPO, i.e. OP bisects ∠P. (ii) ΔAQP ≅ ΔBQP ⟹ AQ=QB and ∠AQP=∠BQP=90° ⟹ OP is the right bisector of AB." },
-    { "q": 30, "variant": "B", "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh110:solve-circle-tangent-problems", "grader": "llm-descent", "handling": "grade",
-      "prompt": "Prove that the lengths of tangents drawn from an external point to a circle are equal.", "msAnswer": "Correct given, to prove, figure, construction + correct proof." },
-
-    { "q": 31, "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables", "grader": "llm-descent", "handling": "grade",
-      "prompt": "The sum of a two-digit number and the number obtained by reversing the order of its digits is 99. If ten's digit is 3 more than the unit's digit, then find the number.", "msAnswer": "Number = 10x+y. (10x+y)+(10y+x)=99 ⟹ x+y=9 …(i). x = 3+y …(ii). Solving: y=3, x=6. Number is 63." },
-
-    { "q": 32, "variant": "A", "section": "D", "marks": 5, "type": "la", "node": "cbse10:maths:jemh104:solve-quadratic-equation", "grader": "llm-descent", "handling": "grade",
-      "prompt": "Amita buys some books for ₹1920. If she had bought 4 more books for the same amount each book would cost her ₹24 less. How many books did she buy? What was the initial price of one book?", "msAnswer": "Let x books. 1920/x − 1920/(x+4) = 24 ⟹ x²+4x−320=0 ⟹ (x+20)(x−16)=0 ⟹ x=16. Books = 16; price each = 1920/16 = ₹120." },
-    { "q": 32, "variant": "B", "section": "D", "marks": 5, "type": "la", "node": "cbse10:maths:jemh104:solve-quadratic-equation", "grader": "llm-descent", "handling": "grade",
-      "prompt": "A train travels at a certain average speed for a distance of 132 km and then travels a distance of 140 km at an average speed of 4 km/h more than the initial speed. If it takes 4 hours to complete the whole journey, what was the initial average speed? Determine the time taken by the train to cover the distances separately.", "msAnswer": "132/x + 140/(x+4) = 4 ⟹ x²−64x−132=0 ⟹ (x−66)(x+2)=0 ⟹ x=66 km/hr. Times: 132/66 = 2 h and 140/70 = 2 h each." },
-
-    { "q": 33, "section": "D", "marks": 5, "type": "la", "node": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity", "grader": "llm-descent", "handling": "grade",
-      "prompt": "If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, then prove that the other two sides are divided in the same ratio. (Basic Proportionality Theorem)", "msAnswer": "Correct given, to prove, construction and figure + correct proof (BPT)." },
-
-    { "q": 34, "section": "D", "marks": 5, "type": "la", "node": "cbse10:maths:jemh111:find-area-of-segment-of-circle", "grader": "llm-descent", "handling": "grade",
-      "prompt": "The perimeter of sector OACB of the circle centred at O and of radius 24 is 73.12 cm. (i) Find the central angle ∠AOB. (ii) Find the area of the minor segment ACB. (Use π = 3.14 and √3 = 1.73)", "msAnswer": "(i) 2r + 2πrθ/360 = 73.12 ⟹ 48 + (2×3.14×24×θ)/360 = 73.12 ⟹ θ = 60°. (ii) Area of minor segment = (3.14×24×24×60/360 − 1.73/4×24×24) = 301.44 − 249.12 = 52.32 cm²." },
-
-    { "q": 35, "variant": "A", "section": "D", "marks": 5, "type": "la", "node": "cbse10:maths:jemh109:solve-heights-and-distances-problem", "grader": "llm-descent", "handling": "grade",
-      "prompt": "From the top of a 9 m high building, the angle of elevation of the top of a cable tower is 60° and the angle of depression of its foot is 45°. Determine the height of the tower and the distance between the building and the tower. (Use √3 = 1.732)", "msAnswer": "tan60° = √3 = h/x ⟹ h = x√3 …(i). tan45° = 9/x = 1 ⟹ x = 9 m (distance) …(ii). h = 9×1.732 = 15.588 m. Height of tower = h + 9 = 24.588 m." },
-    { "q": 35, "variant": "B", "section": "D", "marks": 5, "type": "la", "node": "cbse10:maths:jemh109:solve-heights-and-distances-problem", "grader": "llm-descent", "handling": "grade",
-      "prompt": "As observed from the top of a 75 m high lighthouse from the sea level, the angles of depression of two ships are 30° and 45°. If one ship is exactly behind the other on the same side of the lighthouse, find the distance between the two ships. (Use √3 = 1.732)", "msAnswer": "tan30° = 1/√3 = 75/(x+y) ⟹ x+y = 75√3 …(i). tan45° = 1 = 75/y ⟹ y = 75 …(ii). x = 75(√3−1) = 75×0.732 = 54.9 m. Distance between ships = 54.9 m." },
-
-    { "q": 36, "section": "E", "marks": 4, "type": "case-study", "node": "cbse10:maths:jemh114:compute-theoretical-probability", "grader": "llm-descent", "handling": "grade",
+      "options": [
+        "Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)",
+        "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)",
+        "Assertion (A) is true but reason (R) is false.",
+        "Assertion (A) is false but reason (R) is true."
+      ],
+      "correct": "Assertion (A) is true but reason (R) is false.",
+      "msAnswer": "C) Assertion (A) is true but reason (R) is false.",
+      "coveringNodes": [
+        "cbse10:maths:jemh101:prove-irrational-rational-times-irrational",
+        "cbse10:maths:jemh101:counter-examples-irrational-rules"
+      ]
+    },
+    {
+      "q": 21,
+      "variant": "A",
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "P(x, y) is a point equidistant from the points A(4,3) and B(3,4). Prove that x − y = 0.",
+      "msAnswer": "PA² = PB² ⟹ (x−4)²+(y−3)² = (x−3)²+(y−4)² ⟹ x = y, i.e. x − y = 0.",
+      "coveringNodes": [
+        "cbse10:maths:jemh107:apply-distance-formula",
+        "cbse10:maths:jemh107:set-up-equidistant-equation",
+        "cbse10:maths:jemh107:derive-equidistant-relation"
+      ]
+    },
+    {
+      "q": 21,
+      "variant": "B",
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "In the given figure, ΔABC is an equilateral triangle. Coordinates of vertices A and B are (0,3) and (0,−3) respectively. Find the coordinates of point C.",
+      "msAnswer": "AB = 6 cm = AC. OC = √(36−9) = 3√3 cm. Point C is (3√3, 0).",
+      "coveringNodes": [
+        "cbse10:maths:jemh107:read-point-coordinates",
+        "cbse10:maths:jemh107:apply-distance-formula",
+        "cbse10:maths:jemh107:classify-triangle-by-sides",
+        "cbse10:maths:jemh107:solve-coordinate-geometry-problems"
+      ]
+    },
+    {
+      "q": 22,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "node": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "In two concentric circles, a chord of length 8 cm of the larger circle touches the smaller circle. If the radius of the larger circle is 5 cm, then find the radius of the smaller circle.",
+      "msAnswer": "AM = 4 cm. OM = √(OA² − AM²) = √(5² − 4²) = 3 cm.",
+      "coveringNodes": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:solve-right-triangle-pythagoras",
+        "cbse10:maths:jemh110:compute-chord-touching-smaller-circle"
+      ]
+    },
+    {
+      "q": 23,
+      "variant": "A",
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "node": "cbse10:maths:jemh105:solve-ap-problems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "The sum of the first 12 terms of an A.P. is 900. If its first term is 20 then find the common difference and 12th term.",
+      "msAnswer": "(12/2)[2×20 + 11d] = 900 ⟹ d = 10. a₁₂ = 20 + 11×10 = 130.",
+      "coveringNodes": [
+        "cbse10:maths:jemh105:apply-sum-formula-a-d",
+        "cbse10:maths:jemh105:solve-linear-equation",
+        "cbse10:maths:jemh105:apply-nth-term-formula",
+        "cbse10:maths:jemh105:solve-ap-problems"
+      ]
+    },
+    {
+      "q": 23,
+      "variant": "B",
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "node": "cbse10:maths:jemh105:solve-ap-problems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "The sum of first n terms of an A.P. is represented by Sₙ = 6n − n². Find the common difference.",
+      "msAnswer": "S₁ = a = 6−1 = 5 …(i). S₂ = 2a+d = 12−4 = 8 …(ii). Solving: d = −2.",
+      "coveringNodes": [
+        "cbse10:maths:jemh105:define-ap-common-difference",
+        "cbse10:maths:jemh105:apply-nth-term-formula",
+        "cbse10:maths:jemh105:compute-common-difference",
+        "cbse10:maths:jemh105:solve-ap-problems"
+      ]
+    },
+    {
+      "q": 24,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "node": "cbse10:maths:jemh108:prove-trig-identities",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "If sin(A − B) = 1/2 and cos(A + B) = 1/2, 0° < A + B < 90° and A > B, then find the values of A and B.",
+      "msAnswer": "A − B = 30° …(i). A + B = 60° …(ii). Solving: A = 45°, B = 15°.",
+      "coveringNodes": [
+        "cbse10:maths:jemh108:recall-30-60-ratios",
+        "cbse10:maths:jemh108:recall-45-ratios",
+        "cbse10:maths:jemh108:evaluate-specific-angle-expressions"
+      ]
+    },
+    {
+      "q": 25,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "node": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "Calculate mode of the following distribution: Class: 5-10, 10-15, 15-20, 20-25, 25-30, 30-35; Frequency: 5, 6, 15, 10, 5, 4.",
+      "msAnswer": "Modal class is 15-20. Mode = 15 + 5 × (15−6)/(2×15−6−10) = 18.21 (approx.).",
+      "coveringNodes": [
+        "cbse10:maths:jemh113:identify-modal-class",
+        "cbse10:maths:jemh113:read-modal-formula-parameters",
+        "cbse10:maths:jemh113:apply-mode-formula"
+      ]
+    },
+    {
+      "q": 26,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "node": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "Prove that √5 is an irrational number.",
+      "msAnswer": "Assume √5 = p/q, q≠0, p,q coprime. 5q² = p² ⟹ p² divisible by 5 ⟹ p divisible by 5 ⟹ p=5a. 25a² = 5q² ⟹ q² = 5a² ⟹ q divisible by 5. Both divisible by 5 contradicts coprime. ∴ √5 is irrational.",
+      "coveringNodes": [
+        "cbse10:maths:jemh101:set-up-contradiction-rational-assumption",
+        "cbse10:maths:jemh101:derive-square-relation-from-fraction",
+        "cbse10:maths:jemh101:state-prime-divides-square-theorem",
+        "cbse10:maths:jemh101:close-irrationality-contradiction"
+      ]
+    },
+    {
+      "q": 27,
+      "variant": "A",
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "Find the ratio in which the y-axis divides the line segment joining the points (4, −5) and (−1, 2). Also find the point of intersection.",
+      "msAnswer": "Let P(0,y) divide AP:PB = k:1. (−k+4)/(k+1) = 0 ⟹ k = 4 ⟹ ratio 4:1. y = (8−5)/5 = 3/5. Point of intersection (0, 3/5).",
+      "coveringNodes": [
+        "cbse10:maths:jemh107:read-point-coordinates",
+        "cbse10:maths:jemh107:apply-section-formula",
+        "cbse10:maths:jemh107:find-ratio-axis-divides"
+      ]
+    },
+    {
+      "q": 27,
+      "variant": "B",
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "node": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "Line 4x + y = 4 divides the line segment joining the points (−2, −1) and (3, 5) in a certain ratio. Find the ratio.",
+      "msAnswer": "Let ratio k:1. x₁=(3k−2)/(k+1), y₁=(5k−1)/(k+1). On 4x+y=4: 4(3k−2)/(k+1) + (5k−1)/(k+1) = 4 ⟹ k = 1. Ratio 1:1.",
+      "coveringNodes": [
+        "cbse10:maths:jemh107:apply-section-formula",
+        "cbse10:maths:jemh107:find-ratio-from-point"
+      ]
+    },
+    {
+      "q": 28,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "node": "cbse10:maths:jemh108:prove-trig-identities",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "Prove that: (cosecA − sinA)(secA − cosA) = 1/(tanA + cotA).",
+      "msAnswer": "LHS = ((1/sinA)−sinA)((1/cosA)−cosA) = (cos²A/sinA)(sin²A/cosA) = cosA sinA. RHS = cosA sinA/(sin²A+cos²A) = cosA sinA = LHS.",
+      "coveringNodes": [
+        "cbse10:maths:jemh108:define-trig-ratios",
+        "cbse10:maths:jemh108:compute-reciprocal-ratios",
+        "cbse10:maths:jemh108:relate-tan-to-sin-cos",
+        "cbse10:maths:jemh108:apply-pythagorean-identity",
+        "cbse10:maths:jemh108:prove-trig-identities"
+      ]
+    },
+    {
+      "q": 29,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "node": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "Find the mean using the step deviation method. Class: 0-10, 10-20, 20-30, 30-40, 40-50; Frequency: 6, 10, 15, 9, 10.",
+      "msAnswer": "With a=25, h=10: Σf=50, Σfu=7. Mean = 25 + 10×(7/50) = 26.4.",
+      "coveringNodes": [
+        "cbse10:maths:jemh113:compute-class-mark",
+        "cbse10:maths:jemh113:choose-assumed-mean",
+        "cbse10:maths:jemh113:compute-step-deviation-ui",
+        "cbse10:maths:jemh113:compute-mean-step-deviation-method"
+      ]
+    },
+    {
+      "q": 30,
+      "variant": "A",
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "node": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "In the given figure, PA and PB are tangents to a circle centred at O. Prove that (i) OP bisects ∠APB (ii) OP is the right bisector of AB.",
+      "msAnswer": "(i) ΔOAP ≅ ΔOBP ⟹ ∠APO = ∠BPO, i.e. OP bisects ∠P. (ii) ΔAQP ≅ ΔBQP ⟹ AQ=QB and ∠AQP=∠BQP=90° ⟹ OP is the right bisector of AB.",
+      "coveringNodes": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:apply-rhs-cpct-congruence",
+        "cbse10:maths:jemh110:solve-circle-tangent-problems"
+      ]
+    },
+    {
+      "q": 30,
+      "variant": "B",
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "node": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "Prove that the lengths of tangents drawn from an external point to a circle are equal.",
+      "msAnswer": "Correct given, to prove, figure, construction + correct proof.",
+      "coveringNodes": [
+        "cbse10:maths:jemh110:apply-tangent-perpendicular-radius",
+        "cbse10:maths:jemh110:apply-rhs-cpct-congruence",
+        "cbse10:maths:jemh110:prove-equal-tangents-rhs"
+      ]
+    },
+    {
+      "q": 31,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "node": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "The sum of a two-digit number and the number obtained by reversing the order of its digits is 99. If ten's digit is 3 more than the unit's digit, then find the number.",
+      "msAnswer": "Number = 10x+y. (10x+y)+(10y+x)=99 ⟹ x+y=9 …(i). x = 3+y …(ii). Solving: y=3, x=6. Number is 63.",
+      "coveringNodes": [
+        "cbse10:maths:jemh103:model-two-digit-number-by-place-value",
+        "cbse10:maths:jemh103:form-equations-from-word-problem",
+        "cbse10:maths:jemh103:solve-by-elimination",
+        "cbse10:maths:jemh103:back-substitute-to-find-other-variable",
+        "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables"
+      ]
+    },
+    {
+      "q": 32,
+      "variant": "A",
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "node": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "Amita buys some books for ₹1920. If she had bought 4 more books for the same amount each book would cost her ₹24 less. How many books did she buy? What was the initial price of one book?",
+      "msAnswer": "Let x books. 1920/x − 1920/(x+4) = 24 ⟹ x²+4x−320=0 ⟹ (x+20)(x−16)=0 ⟹ x=16. Books = 16; price each = 1920/16 = ₹120.",
+      "coveringNodes": [
+        "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
+        "cbse10:maths:jemh104:rearrange-to-standard-form",
+        "cbse10:maths:jemh104:split-middle-term",
+        "cbse10:maths:jemh104:apply-zero-product-property",
+        "cbse10:maths:jemh104:solve-linear-factor-for-root",
+        "cbse10:maths:jemh104:reject-inadmissible-root",
+        "cbse10:maths:jemh104:solve-quadratic-equation"
+      ]
+    },
+    {
+      "q": 32,
+      "variant": "B",
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "node": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "A train travels at a certain average speed for a distance of 132 km and then travels a distance of 140 km at an average speed of 4 km/h more than the initial speed. If it takes 4 hours to complete the whole journey, what was the initial average speed? Determine the time taken by the train to cover the distances separately.",
+      "msAnswer": "132/x + 140/(x+4) = 4 ⟹ x²−64x−132=0 ⟹ (x−66)(x+2)=0 ⟹ x=66 km/hr. Times: 132/66 = 2 h and 140/70 = 2 h each.",
+      "coveringNodes": [
+        "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
+        "cbse10:maths:jemh104:rearrange-to-standard-form",
+        "cbse10:maths:jemh104:expand-and-simplify-expression",
+        "cbse10:maths:jemh104:split-middle-term",
+        "cbse10:maths:jemh104:factor-by-grouping",
+        "cbse10:maths:jemh104:apply-zero-product-property",
+        "cbse10:maths:jemh104:solve-linear-factor-for-root",
+        "cbse10:maths:jemh104:reject-inadmissible-root",
+        "cbse10:maths:jemh104:solve-quadratic-equation"
+      ]
+    },
+    {
+      "q": 33,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "node": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, then prove that the other two sides are divided in the same ratio. (Basic Proportionality Theorem)",
+      "msAnswer": "Correct given, to prove, construction and figure + correct proof (BPT).",
+      "coveringNodes": [
+        "cbse10:maths:jemh106:source-equal-angles",
+        "cbse10:maths:jemh106:prove-bpt-with-areas",
+        "cbse10:maths:jemh106:manipulate-ratio-add-one",
+        "cbse10:maths:jemh106:apply-basic-proportionality-theorem"
+      ]
+    },
+    {
+      "q": 34,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "node": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "The perimeter of sector OACB of the circle centred at O and of radius 24 is 73.12 cm. (i) Find the central angle ∠AOB. (ii) Find the area of the minor segment ACB. (Use π = 3.14 and √3 = 1.73)",
+      "msAnswer": "(i) 2r + 2πrθ/360 = 73.12 ⟹ 48 + (2×3.14×24×θ)/360 = 73.12 ⟹ θ = 60°. (ii) Area of minor segment = (3.14×24×24×60/360 − 1.73/4×24×24) = 301.44 − 249.12 = 52.32 cm².",
+      "coveringNodes": [
+        "cbse10:maths:jemh111:compute-arc-length",
+        "cbse10:maths:jemh111:substitute-pi-value",
+        "cbse10:maths:jemh111:apply-sector-area-formula",
+        "cbse10:maths:jemh111:drop-perpendicular-to-chord",
+        "cbse10:maths:jemh111:use-cosine-ratio-find-om",
+        "cbse10:maths:jemh111:use-sine-ratio-find-am",
+        "cbse10:maths:jemh111:find-chord-length-from-half",
+        "cbse10:maths:jemh111:compute-triangle-area-base-height",
+        "cbse10:maths:jemh111:subtract-sector-minus-triangle",
+        "cbse10:maths:jemh111:find-area-of-segment-of-circle"
+      ]
+    },
+    {
+      "q": 35,
+      "variant": "A",
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "node": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "From the top of a 9 m high building, the angle of elevation of the top of a cable tower is 60° and the angle of depression of its foot is 45°. Determine the height of the tower and the distance between the building and the tower. (Use √3 = 1.732)",
+      "msAnswer": "tan60° = √3 = h/x ⟹ h = x√3 …(i). tan45° = 9/x = 1 ⟹ x = 9 m (distance) …(ii). h = 9×1.732 = 15.588 m. Height of tower = h + 9 = 24.588 m.",
+      "coveringNodes": [
+        "cbse10:maths:jemh109:draw-and-label-right-triangle",
+        "cbse10:maths:jemh109:identify-angle-of-elevation",
+        "cbse10:maths:jemh109:identify-angle-of-depression",
+        "cbse10:maths:jemh109:use-alternate-angles-for-depression",
+        "cbse10:maths:jemh109:set-up-two-triangles-shared-side",
+        "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle",
+        "cbse10:maths:jemh109:equate-equal-sides-from-45-degree",
+        "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent",
+        "cbse10:maths:jemh109:set-up-trig-equation",
+        "cbse10:maths:jemh109:solve-simultaneous-trig-equations",
+        "cbse10:maths:jemh109:combine-segment-lengths-for-total",
+        "cbse10:maths:jemh109:approximate-surd-to-decimal",
+        "cbse10:maths:jemh109:solve-heights-and-distances-problem"
+      ]
+    },
+    {
+      "q": 35,
+      "variant": "B",
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "node": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "grader": "llm-descent",
+      "handling": "grade",
+      "prompt": "As observed from the top of a 75 m high lighthouse from the sea level, the angles of depression of two ships are 30° and 45°. If one ship is exactly behind the other on the same side of the lighthouse, find the distance between the two ships. (Use √3 = 1.732)",
+      "msAnswer": "tan30° = 1/√3 = 75/(x+y) ⟹ x+y = 75√3 …(i). tan45° = 1 = 75/y ⟹ y = 75 …(ii). x = 75(√3−1) = 75×0.732 = 54.9 m. Distance between ships = 54.9 m.",
+      "coveringNodes": [
+        "cbse10:maths:jemh109:draw-and-label-right-triangle",
+        "cbse10:maths:jemh109:use-alternate-angles-for-depression",
+        "cbse10:maths:jemh109:set-up-two-triangles-shared-side",
+        "cbse10:maths:jemh109:recall-trig-ratio-of-standard-angle",
+        "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent",
+        "cbse10:maths:jemh109:equate-equal-sides-from-45-degree",
+        "cbse10:maths:jemh109:set-up-trig-equation",
+        "cbse10:maths:jemh109:rationalise-surd-denominator",
+        "cbse10:maths:jemh109:approximate-surd-to-decimal",
+        "cbse10:maths:jemh109:solve-heights-and-distances-problem"
+      ]
+    },
+    {
+      "q": 36,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "node": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "grader": "llm-descent",
+      "handling": "grade",
       "prompt": "A group of students surveyed 200 classmates about preferred mode of transport to school: 120 preferred to walk, 25% preferred bicycles, 10% preferred the bus, and the remaining preferred to be dropped off by car.",
       "parts": [
-        { "part": "(i)", "marks": 1, "prompt": "What is the probability that a randomly selected student does not prefer to walk to school?", "msAnswer": "Not-walk = 200−120 = 80. P = 80/200 = 2/5." },
-        { "part": "(ii)", "marks": 1, "prompt": "Find the probability of a randomly selected student who prefers to walk or use a bicycle.", "msAnswer": "Walk or bicycle = 120 + 50 = 170. P = 170/200 = 17/20." },
-        { "part": "(iii)", "variant": "A", "marks": 2, "prompt": "One day 50% of walking students decided to come by bicycle. What is the probability that a randomly selected student comes to school using a bicycle on that day?", "msAnswer": "50% of walkers = 60; already bicycle = 50; total bicycle = 110. P = 110/200 = 11/20." },
-        { "part": "(iii)", "variant": "B", "marks": 2, "prompt": "What is the probability that a randomly selected student prefers to be dropped off by car?", "msAnswer": "Car = 200 − (120+50+20) = 10. P = 10/200 = 1/20." }
-      ] },
-
-    { "q": 37, "section": "E", "marks": 4, "type": "case-study", "node": "cbse10:maths:jemh104:vertex-of-parabola", "grader": "llm-descent", "handling": "grade",
+        {
+          "part": "(i)",
+          "marks": 1,
+          "prompt": "What is the probability that a randomly selected student does not prefer to walk to school?",
+          "msAnswer": "Not-walk = 200−120 = 80. P = 80/200 = 2/5."
+        },
+        {
+          "part": "(ii)",
+          "marks": 1,
+          "prompt": "Find the probability of a randomly selected student who prefers to walk or use a bicycle.",
+          "msAnswer": "Walk or bicycle = 120 + 50 = 170. P = 170/200 = 17/20."
+        },
+        {
+          "part": "(iii)",
+          "variant": "A",
+          "marks": 2,
+          "prompt": "One day 50% of walking students decided to come by bicycle. What is the probability that a randomly selected student comes to school using a bicycle on that day?",
+          "msAnswer": "50% of walkers = 60; already bicycle = 50; total bicycle = 110. P = 110/200 = 11/20."
+        },
+        {
+          "part": "(iii)",
+          "variant": "B",
+          "marks": 2,
+          "prompt": "What is the probability that a randomly selected student prefers to be dropped off by car?",
+          "msAnswer": "Car = 200 − (120+50+20) = 10. P = 10/200 = 1/20."
+        }
+      ],
+      "coveringNodes": [
+        "cbse10:maths:jemh114:count-total-equally-likely-outcomes",
+        "cbse10:maths:jemh114:count-favourable-outcomes",
+        "cbse10:maths:jemh114:compute-theoretical-probability",
+        "cbse10:maths:jemh114:sum-of-elementary-events-is-one"
+      ]
+    },
+    {
+      "q": 37,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "node": "cbse10:maths:jemh104:vertex-of-parabola",
+      "grader": "llm-descent",
+      "handling": "grade",
       "prompt": "Radha, a landscape designer, creates a pool design with fountains whose water forms a parabola. The height of each fountain rod above water level is 10 cm. The equation of the downward-facing parabola representing the water fountain is p(x) = −x² + 5x − 4.",
       "parts": [
-        { "part": "(i)", "marks": 1, "prompt": "Find the zeroes of the polynomial p(x) from the graph.", "msAnswer": "1 and 4." },
-        { "part": "(ii)", "marks": 1, "prompt": "Find the value of x at which water attains maximum height.", "msAnswer": "x = 5/2." },
-        { "part": "(iii)", "variant": "A", "marks": 2, "prompt": "If h is the maximum height attained by the water stream from the water level of the pool, then find the value of h.", "msAnswer": "At x = 5/2, p(x) = 2.25. h = 0.10 + 2.25 = 2.35 m." },
-        { "part": "(iii)", "variant": "B", "marks": 2, "prompt": "At what point(s) on the x-axis is the height of water above the x-axis equal to 2 m?", "msAnswer": "−x²+5x−4 = 2 ⟹ x²−5x+6 = 0 ⟹ (x−2)(x−3)=0 ⟹ x = 2, 3. Points (2,0) and (3,0)." }
-      ] },
-
-    { "q": 38, "section": "E", "marks": 4, "type": "case-study", "node": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations", "grader": "llm-descent", "handling": "grade",
+        {
+          "part": "(i)",
+          "marks": 1,
+          "prompt": "Find the zeroes of the polynomial p(x) from the graph.",
+          "msAnswer": "1 and 4."
+        },
+        {
+          "part": "(ii)",
+          "marks": 1,
+          "prompt": "Find the value of x at which water attains maximum height.",
+          "msAnswer": "x = 5/2."
+        },
+        {
+          "part": "(iii)",
+          "variant": "A",
+          "marks": 2,
+          "prompt": "If h is the maximum height attained by the water stream from the water level of the pool, then find the value of h.",
+          "msAnswer": "At x = 5/2, p(x) = 2.25. h = 0.10 + 2.25 = 2.35 m."
+        },
+        {
+          "part": "(iii)",
+          "variant": "B",
+          "marks": 2,
+          "prompt": "At what point(s) on the x-axis is the height of water above the x-axis equal to 2 m?",
+          "msAnswer": "−x²+5x−4 = 2 ⟹ x²−5x+6 = 0 ⟹ (x−2)(x−3)=0 ⟹ x = 2, 3. Points (2,0) and (3,0)."
+        }
+      ],
+      "coveringNodes": [
+        "cbse10:maths:jemh104:recognise-quadratic-equation",
+        "cbse10:maths:jemh104:identify-coefficients-abc",
+        "cbse10:maths:jemh104:split-middle-term",
+        "cbse10:maths:jemh104:apply-zero-product-property",
+        "cbse10:maths:jemh104:solve-linear-factor-for-root",
+        "cbse10:maths:jemh104:vertex-of-parabola"
+      ]
+    },
+    {
+      "q": 38,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "node": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations",
+      "grader": "llm-descent",
+      "handling": "grade",
       "prompt": "Rinku's sharpened jumbo pencil is a combination of a cylinder and a cone. Length of cylindrical portion is 21 cm, diameter of the base is 1 cm, and height of the conical portion is 1.2 cm.",
       "parts": [
-        { "part": "(i)", "marks": 1, "prompt": "Find the slant height of the sharpened part.", "msAnswer": "l² = (1.2)² + (0.5)² = 1.44 + 0.25 ⟹ l = √1.69 = 1.3 cm." },
-        { "part": "(ii)", "marks": 1, "prompt": "Find the curved surface area of the sharpened part (in terms of π).", "msAnswer": "CSA = π × 0.5 × 1.3 = 0.65π cm²." },
-        { "part": "(iii)", "variant": "A", "marks": 2, "prompt": "Find the total surface area of the pencil (in terms of π).", "msAnswer": "TSA = CSA cylinder + CSA cone + base circle = 2π×0.5×21 + 0.65π + π×(0.5)² = (21 + 0.65 + 0.25)π = 21.9π cm². [corrected: cylinder CSA is 2πrh = 21π; the source MS mistakenly used πr²h = 5.25π, giving 6.15π]" },
-        { "part": "(iii)", "variant": "B", "marks": 2, "prompt": "The pencil's total height decreases by 8.2 cm after sharpening it many times; what is the volume of the cylindrical part of the shortened pencil (in terms of π)?", "msAnswer": "Length of shortened cylindrical part = 21 − 8.2 = 12.8 cm. Volume = π × 0.5 × 0.5 × 12.8 = 3.2π cm³." }
-      ] }
+        {
+          "part": "(i)",
+          "marks": 1,
+          "prompt": "Find the slant height of the sharpened part.",
+          "msAnswer": "l² = (1.2)² + (0.5)² = 1.44 + 0.25 ⟹ l = √1.69 = 1.3 cm."
+        },
+        {
+          "part": "(ii)",
+          "marks": 1,
+          "prompt": "Find the curved surface area of the sharpened part (in terms of π).",
+          "msAnswer": "CSA = π × 0.5 × 1.3 = 0.65π cm²."
+        },
+        {
+          "part": "(iii)",
+          "variant": "A",
+          "marks": 2,
+          "prompt": "Find the total surface area of the pencil (in terms of π).",
+          "msAnswer": "TSA = CSA cylinder + CSA cone + base circle = 2π×0.5×21 + 0.65π + π×(0.5)² = (21 + 0.65 + 0.25)π = 21.9π cm². [corrected: cylinder CSA is 2πrh = 21π; the source MS mistakenly used πr²h = 5.25π, giving 6.15π]"
+        },
+        {
+          "part": "(iii)",
+          "variant": "B",
+          "marks": 2,
+          "prompt": "The pencil's total height decreases by 8.2 cm after sharpening it many times; what is the volume of the cylindrical part of the shortened pencil (in terms of π)?",
+          "msAnswer": "Length of shortened cylindrical part = 21 − 8.2 = 12.8 cm. Volume = π × 0.5 × 0.5 × 12.8 = 3.2π cm³."
+        }
+      ],
+      "coveringNodes": [
+        "cbse10:maths:jemh112:radius-from-diameter",
+        "cbse10:maths:jemh112:compute-slant-height",
+        "cbse10:maths:jemh112:csa-cylinder",
+        "cbse10:maths:jemh112:csa-cone",
+        "cbse10:maths:jemh112:volume-cylinder",
+        "cbse10:maths:jemh112:volume-cone",
+        "cbse10:maths:jemh112:tsa-combination-sum-of-csa",
+        "cbse10:maths:jemh112:volume-combination-sum-of-volumes",
+        "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations"
+      ]
+    }
   ]
 }

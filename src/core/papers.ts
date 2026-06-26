@@ -26,6 +26,7 @@ export interface PaperQuestion {
   correct?: string; // SERVER-ONLY (never serialised to the client)
   msAnswer?: string; // SERVER-ONLY marking-scheme answer
   tolerance?: number | null;
+  coveringNodes?: string[]; // the SET of concept-nodes that together cover this question (regen'd map)
 }
 
 export interface Paper {
@@ -144,6 +145,42 @@ export function paperForClient(paperId: string) {
       node: q.node, // the concept this question tests — lets the client link to it for a refresh
     })),
   };
+}
+
+/**
+ * The "get unstuck" loop. A question's COVERING SET = the nodes whose concepts together let a learner
+ * answer it (regenerated against the live node graph; written into paper.json as `coveringNodes`). When
+ * a learner is stuck, we walk this set, posing each node's gate as a "quick check". Falls back to the
+ * single tagged `node` if the covering set is missing/empty, so the loop always has at least one block.
+ */
+export function coveringNodeIds(paperId: string, qNum: number): string[] {
+  const p = getPaper(paperId);
+  const q = p?.questions.find((x) => x.q === qNum);
+  if (!q) return [];
+  const set = (q.coveringNodes ?? []).filter(Boolean);
+  return set.length ? set : (q.node ? [q.node] : []);
+}
+
+/** Is conceptId one of the question's covering nodes? (guards the help endpoints against gate enumeration.) */
+export function isCoveringNode(paperId: string, qNum: number, conceptId: string): boolean {
+  return coveringNodeIds(paperId, qNum).includes(conceptId);
+}
+
+/** Client-safe covering set for a question: [{id, title}] in teaching order (skips unauthored stubs). */
+export async function coveringForClient(paperId: string, qNum: number) {
+  const out: Array<{ id: string; title: string }> = [];
+  for (const id of coveringNodeIds(paperId, qNum)) {
+    const c = await getConceptById(id);
+    if (c && !(c as { needsAuthoring?: boolean }).needsAuthoring) out.push({ id, title: c.title });
+  }
+  return out;
+}
+
+/** Teaching payload for one covering node (shown when a learner misses its quick-check). */
+export async function teachContentFor(conceptId: string) {
+  const c = await getConceptById(conceptId);
+  if (!c) return null;
+  return { id: c.id, title: c.title, brief: c.brief, explanation: c.explanation, keyMoves: c.keyMoves ?? [] };
 }
 
 function norm(s: string): string {

@@ -9,7 +9,7 @@ import { setRoute, setRoutePicks, getCurrentText, getVisionModel } from '../core
 import { LANGUAGES } from '../core/languages.js';
 import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../core/content-cache.js';
 import { computeChapterStatuses } from '../core/sequencer.js';
-import { listPapers, paperForClient, answerPaperQuestion, paperResult, paperState } from '../core/papers.js';
+import { listPapers, paperForClient, answerPaperQuestion, paperResult, paperState, coveringForClient, isCoveringNode, teachContentFor } from '../core/papers.js';
 import { registerUser, loginUser, AuthError, signSession } from '../core/auth.js';
 import { requireNodeAccess, requirePaperAccess, rateLimit, isAdminLearner, ADMIN_PREVIEW_NODES } from '../core/access.js';
 
@@ -558,6 +558,65 @@ router.get('/learner/:learnerId/paper/:paperId/result', requirePaperAccess, asyn
   } catch (err) {
     console.error('Error computing paper result:', err);
     res.status(500).json({ error: 'Failed to compute result' });
+  }
+});
+
+// ---- "Get unstuck" loop: when stuck on a paper question, teach the concepts that make it up, in place. ----
+// All paper-access gated (owner-bound + ≥1 passed node); every conceptId is checked to be one of THIS
+// question's covering nodes, so these can't enumerate gates/teaching for arbitrary nodes.
+
+// The covering set for a question — the nodes whose concepts together answer it (client-safe: id + title).
+router.get('/learner/:learnerId/paper/:paperId/q/:q/covering', requirePaperAccess, async (req, res) => {
+  try {
+    const covering = await coveringForClient(req.params.paperId, Number(req.params.q));
+    res.json({ covering });
+  } catch (err) {
+    console.error('Error loading covering set:', err);
+    res.status(500).json({ error: 'Failed to load covering set' });
+  }
+});
+
+// Pose a "quick check" for one covering node (a gate from that node; the answer never leaves the server).
+router.post('/learner/:learnerId/paper/:paperId/q/:q/help/:conceptId/gate', requirePaperAccess, async (req, res) => {
+  try {
+    const { learnerId, paperId, conceptId } = req.params;
+    if (!isCoveringNode(paperId, Number(req.params.q), conceptId)) return res.status(403).json({ error: 'not_a_covering_node' });
+    res.json(await poseGate(learnerId, conceptId));
+  } catch (err) {
+    console.error('Error posing quick-check:', err);
+    res.status(500).json({ error: 'Failed to pose quick check' });
+  }
+});
+
+// Grade a quick-check answer (reuses the node gate grader + records the attempt).
+router.post('/learner/:learnerId/paper/:paperId/q/:q/help/:conceptId/gate-answer', requirePaperAccess, async (req, res) => {
+  try {
+    const { learnerId, paperId, conceptId } = req.params;
+    if (!isCoveringNode(paperId, Number(req.params.q), conceptId)) return res.status(403).json({ error: 'not_a_covering_node' });
+    const { gateId, answer, lang } = req.body || {};
+    seedClientModels(learnerId, req.body);
+    const r = await answerGate(learnerId, conceptId, gateId, answer, lang || 'en');
+    res.json({ correct: r.correct, feedback: r.feedback, allPassed: r.allPassed });
+  } catch (err) {
+    if (err instanceof LlmUnavailableError) {
+      return res.json({ correct: false, systemError: true, feedback: await serviceDownMessage(req.body?.lang || 'en') });
+    }
+    console.error('Error grading quick-check:', err);
+    res.status(500).json({ error: 'Failed to grade quick check' });
+  }
+});
+
+// Teaching content for one covering node (shown when a learner misses its quick-check).
+router.get('/learner/:learnerId/paper/:paperId/q/:q/help/:conceptId/teach', requirePaperAccess, async (req, res) => {
+  try {
+    const { paperId, conceptId } = req.params;
+    if (!isCoveringNode(paperId, Number(req.params.q), conceptId)) return res.status(403).json({ error: 'not_a_covering_node' });
+    const content = await teachContentFor(conceptId);
+    if (!content) return res.status(404).json({ error: 'Node not found' });
+    res.json(content);
+  } catch (err) {
+    console.error('Error loading teach content:', err);
+    res.status(500).json({ error: 'Failed to load teaching content' });
   }
 });
 

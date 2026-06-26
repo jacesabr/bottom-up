@@ -60,7 +60,13 @@
         "(−9/(11x)) + (31/11)x^10",
         "(13/(11x)) + (9/11)x^10"
       ],
-      "correct": "(9/(11x)) + (13/11)x^10"
+      "correct": "(9/(11x)) + (13/11)x^10",
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch09:linear-differential-equation",
+        "jee:maths:maths-c12-ch09:integrating-factor",
+        "jee:maths:maths-c12-ch09:solve-linear-de",
+        "jee:maths:maths-c12-ch09:particular-solution"
+      ]
     },
     {
       "q": 2,
@@ -78,7 +84,12 @@
         "5/7",
         "5/12"
       ],
-      "correct": "5/7"
+      "correct": "5/7",
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch13:partition-sample-space",
+        "jee:maths:maths-c12-ch13:total-probability-theorem",
+        "jee:maths:maths-c12-ch13:bayes-theorem"
+      ]
     },
     {
       "q": 3,
@@ -96,7 +107,16 @@
         "(√11 + 1)/(3√2)",
         "(√11 − 1)/(3√2)"
       ],
-      "correct": "(√11 + 1)/(2√3)"
+      "correct": "(√11 + 1)/(2√3)",
+      "coveringNodes": [
+        "jee:maths:maths-ch03:pythagorean-derived-identities",
+        "jee:maths:maths-ch03:sign-of-trig-functions",
+        "jee:maths:maths-ch03:find-remaining-trig-values",
+        "jee:maths:maths-ch03:sine-sum-difference",
+        "jee:maths:maths-ch03:cosine-sum-difference",
+        "jee:maths:maths-ch03:double-angle-identities",
+        "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities"
+      ]
     },
     {
       "q": 4,
@@ -114,7 +134,11 @@
         "q = 1, p = 5√3",
         "q = 1, p = 6√3"
       ],
-      "correct": "q = 2, p = 3√3"
+      "correct": "q = 2, p = 3√3",
+      "coveringNodes": [
+        "jee:maths:maths-ch10:ellipse-standard-equation",
+        "jee:maths:maths-ch10:tangent-to-ellipse-slope-form"
+      ]
     },
     {
       "q": 5,
@@ -134,7 +158,13 @@
       ],
       "correct": "ℤ ∪ T₁ ∪ T₂ ⊂ S | T₂ ∩ (2024, ∞) ≠ φ | For any given a, b ∈ ℤ, cos(π(a + b√2)) + i sin(π(a + b√2)) ∈ ℤ if and only if b = 0, where i = √(−1).",
       "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq.",
-      "_answerNote": "Multiple-correct. Official answer: A, C, D. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+      "_answerNote": "Multiple-correct. Official answer: A, C, D. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts).",
+      "coveringNodes": [
+        "jee:maths:maths-ch01:determine-subset-relations",
+        "jee:maths:maths-ch01:write-intervals-as-subsets-of-r",
+        "jee:maths:maths-ch01:compute-the-intersection-of-sets",
+        "jee:maths:maths-ch01:use-set-membership"
+      ]
     },
     {
       "q": 6,
@@ -154,7 +184,12 @@
       ],
       "correct": "If (3, b, 1/12) ∈ S, then |2b| < 1. | For any given (a,b,c) ∈ S, the system of linear equations ax + by = 1, bx + cy = −1 has a unique solution. | For any given (a,b,c) ∈ S, the system of linear equations (a+1)x + by = 0, bx + (c+1)y = 0 has a unique solution.",
       "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq.",
-      "_answerNote": "Multiple-correct. Official answer: B, C, D. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+      "_answerNote": "Multiple-correct. Official answer: B, C, D. `correct` lists the three correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts).",
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch04:determinant-order-two",
+        "jee:maths:maths-c12-ch04:non-singular-matrix",
+        "jee:maths:maths-c12-ch04:consistent-system"
+      ]
     },
     {
       "q": 7,
@@ -174,7 +209,11 @@
       ],
       "correct": "There is a triangle whose area is 1 and all of whose vertices are from S. | There are two distinct points L and M in T such that each point on the line segment LM is also in T. | There are infinitely many rectangles of perimeter 48, two of whose vertices are from S and the other two vertices are from T. | There is a square of perimeter 48, two of whose vertices are from S and the other two vertices are from T.",
       "_ocrNote": "Section 2: ONE OR MORE THAN ONE option is correct (multiple-correct). Graded as mcq.",
-      "_answerNote": "Multiple-correct. Official answer: A, B, C, D (all four). `correct` lists all four correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts)."
+      "_answerNote": "Multiple-correct. Official answer: A, B, C, D (all four). `correct` lists all four correct option texts joined by ' | '. The mcq grader handles multi-select: it splits the key on \" | \" and passes only when the learner's selected SET equals the correct set exactly (graders/mcq.ts).",
+      "coveringNodes": [
+        "jee:maths:maths-ch11:distance-between-two-points",
+        "jee:maths:maths-ch11:equation-of-set-of-points"
+      ]
     },
     {
       "q": 8,
@@ -186,7 +225,11 @@
       "handling": "grade",
       "node": "jee:maths:maths-c12-ch05:logarithm-laws-and-change-of-base",
       "prompt": "Let a = 3√2 and b = 1/(5^(1/6)√6). If x, y ∈ ℝ are such that 3x + 2y = log_a (18)^(5/4) and 2x − y = log_b (√1080), then 4x + 5y is equal to _____.",
-      "correct": "8"
+      "correct": "8",
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch05:logarithm-function",
+        "jee:maths:maths-c12-ch05:logarithm-laws-and-change-of-base"
+      ]
     },
     {
       "q": 9,
@@ -198,7 +241,12 @@
       "handling": "grade",
       "node": "jee:maths:maths-ch04:vieta-formulas-and-conjugate-root-theorem",
       "prompt": "Let f(x) = x⁴ + ax³ + bx² + c be a polynomial with real coefficients such that f(1) = −9. Suppose that i√3 is a root of the equation 4x³ + 3ax² + 2bx = 0, where i = √(−1). If α₁, α₂, α₃, and α₄ are all the roots of the equation f(x) = 0, then |α₁|² + |α₂|² + |α₃|² + |α₄|² is equal to _____.",
-      "correct": "20"
+      "correct": "20",
+      "coveringNodes": [
+        "jee:maths:maths-ch04:conjugate",
+        "jee:maths:maths-ch04:modulus",
+        "jee:maths:maths-ch04:vieta-formulas-and-conjugate-root-theorem"
+      ]
     },
     {
       "q": 10,
@@ -210,7 +258,11 @@
       "handling": "grade",
       "node": "jee:maths:maths-c12-ch04:determinant-order-three",
       "prompt": "Let S = { A = [[0, 1, c], [1, a, d], [1, b, e]] : a, b, c, d, e ∈ {0, 1} and |A| ∈ {−1, 1} }, where |A| denotes the determinant of A. Then the number of elements in S is _____.",
-      "correct": "16"
+      "correct": "16",
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch04:determinant-order-three",
+        "jee:maths:maths-c12-ch04:non-singular-matrix"
+      ]
     },
     {
       "q": 11,
@@ -222,7 +274,13 @@
       "handling": "grade",
       "node": "jee:maths:maths-ch06:combinations-ncr",
       "prompt": "A group of 9 students, s₁, s₂, ..., s₉, is to be divided to form three teams X, Y, and Z of sizes 2, 3, and 4, respectively. Suppose that s₁ cannot be selected for the team X, and s₂ cannot be selected for the team Y. Then the number of ways to form such teams, is _____.",
-      "correct": "665"
+      "correct": "665",
+      "coveringNodes": [
+        "jee:maths:maths-ch06:multiplication-principle",
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:inclusion-exclusion-principle",
+        "jee:maths:maths-ch06:solve-counting-problems"
+      ]
     },
     {
       "q": 12,
@@ -235,7 +293,12 @@
       "node": "jee:maths:maths-c12-ch10:scalar-triple-product",
       "prompt": "Let OP⃗ = (α−1)/α î + ĵ + k̂, OQ⃗ = î + (β−1)/β ĵ + k̂ and OR⃗ = î + ĵ + (1/2)k̂ be three vectors, where α, β ∈ ℝ∖{0} and O denotes the origin. If (OP⃗ × OQ⃗) · OR⃗ = 0 and the point (α, β, 2) lies on the plane 3x + 3y − z + l = 0, then the value of l is _____.",
       "correct": "5",
-      "_ocrNote": "OCR rendered the vector components as 'α1/α' and 'β1/β'; transcribed as (α−1)/α and (β−1)/β, the chemically/mathematically intended forms."
+      "_ocrNote": "OCR rendered the vector components as 'α1/α' and 'β1/β'; transcribed as (α−1)/α and (β−1)/β, the chemically/mathematically intended forms.",
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch10:component-form",
+        "jee:maths:maths-c12-ch10:vector-product",
+        "jee:maths:maths-c12-ch10:scalar-triple-product"
+      ]
     },
     {
       "q": 13,
@@ -247,7 +310,11 @@
       "handling": "grade",
       "node": "jee:maths:maths-c12-ch13:mean-and-variance-of-discrete-distribution",
       "prompt": "Let X be a random variable, and let P(X = x) denote the probability that X takes the value x. Suppose that the points (x, P(X = x)), x = 0, 1, 2, 3, 4, lie on a fixed straight line in the xy-plane, and P(X = x) = 0 for all x ∈ ℝ − {0, 1, 2, 3, 4}. If the mean of X is 5/2, and the variance of X is α, then the value of 24α is _____.",
-      "correct": "42"
+      "correct": "42",
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch13:random-variable",
+        "jee:maths:maths-c12-ch13:mean-and-variance-of-discrete-distribution"
+      ]
     },
     {
       "q": 14,
@@ -266,7 +333,12 @@
         "(P)→(1) (Q)→(5) (R)→(3) (S)→(4)"
       ],
       "correct": "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)",
-      "_answerNote": "Options + correct answer recovered VERBATIM from the official JEE Advanced 2024 Paper 1 question paper (jeeadv.ac.in/past_qps/2024_1_English.pdf, Section 4 Q14, page 7), eyes-on. Official correct option is (C)."
+      "_answerNote": "Options + correct answer recovered VERBATIM from the official JEE Advanced 2024 Paper 1 question paper (jeeadv.ac.in/past_qps/2024_1_English.pdf, Section 4 Q14, page 7), eyes-on. Official correct option is (C).",
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch04:determinant-order-three",
+        "jee:maths:maths-c12-ch04:singular-matrix",
+        "jee:maths:maths-c12-ch04:consistent-system"
+      ]
     },
     {
       "q": 15,
@@ -284,7 +356,11 @@
         "(P)→(4) (Q)→(2) (R)→(5) (S)→(3)",
         "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)"
       ],
-      "correct": "(P)→(4) (Q)→(2) (R)→(5) (S)→(3)"
+      "correct": "(P)→(4) (Q)→(2) (R)→(5) (S)→(3)",
+      "coveringNodes": [
+        "jee:maths:maths-ch10:circle-standard-equation",
+        "jee:maths:maths-ch10:tangent-to-circle-from-external-point"
+      ]
     },
     {
       "q": 16,
@@ -303,7 +379,12 @@
         "(P)→(4) (Q)→(2) (R)→(1) (S)→(3)"
       ],
       "correct": "(P)→(5) (Q)→(3) (R)→(2) (S)→(4)",
-      "_ocrNote": "Original Mathematics Q.17. (Mathematics Q.16 was skipped — its stem was missing in the OCR.)"
+      "_ocrNote": "Original Mathematics Q.17. (Mathematics Q.16 was skipped — its stem was missing in the OCR.)",
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch05:continuity-at-a-point",
+        "jee:maths:maths-c12-ch05:algebra-of-continuous-functions",
+        "jee:maths:maths-c12-ch05:differentiable-at-a-point"
+      ]
     }
   ],
   "contract": {

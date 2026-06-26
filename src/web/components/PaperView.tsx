@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MathText } from '../lib/MathText';
+import GetUnstuck from './GetUnstuck';
 import '../styles/PaperView.css';
 
 /**
@@ -95,6 +96,7 @@ export default function PaperView({
   const [feedback, setFeedback] = useState<Record<number, string>>({});
   const [result, setResult] = useState<Result | null>(null);
   const [loading, setLoading] = useState(true);
+  const [helpFor, setHelpFor] = useState<number | null>(null); // which question's get-unstuck loop is open
 
   useEffect(() => {
     fetch(`${apiBase}/papers/${exam}?subject=${encodeURIComponent(subject)}`)
@@ -251,18 +253,21 @@ export default function PaperView({
                           {a.marksAwarded}/{a.marksPossible} mark{a.marksPossible > 1 ? 's' : ''}
                         </span>
                       )}
-                      {a && q.node && (
+                      {a && q.handling !== 'lab-acknowledge' && a.marksAwarded < a.marksPossible && (
                         <button
-                          className="q-refresh"
-                          onClick={() => onRevise(q.node!, q.node!.split(':').slice(0, 3).join(':'))}
-                          title="Open the concept this question tests to refresh it"
+                          className="q-stuck"
+                          onClick={() => setHelpFor(helpFor === q.q ? null : q.q)}
+                          title="Walk up to this question, concept by concept"
                         >
-                          ↻ Refresh this concept →
+                          {helpFor === q.q ? 'Close' : 'Not quite — walk me up to it →'}
                         </button>
                       )}
                     </div>
                   )}
                   {feedback[q.q] && <div className="q-feedback"><MathText>{feedback[q.q]}</MathText></div>}
+                  {helpFor === q.q && (
+                    <GetUnstuck learnerId={learnerId} paperId={paper.paperId} q={q.q} apiBase={apiBase} onClose={() => setHelpFor(null)} />
+                  )}
                 </div>
               </div>
             );

@@ -54,7 +54,11 @@
       ],
       "correct": "2",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 2",
-      "_origQ": 1
+      "_origQ": 1,
+      "coveringNodes": [
+        "jee:maths:maths-ch08:form-a-series-with-sigma-notation",
+        "jee:maths:maths-ch08:sum-of-n-terms-of-ap"
+      ]
     },
     {
       "q": 2,
@@ -73,7 +77,14 @@
       ],
       "correct": "75",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 75",
-      "_origQ": 2
+      "_origQ": 2,
+      "coveringNodes": [
+        "jee:maths:maths-ch04:complex-number-form",
+        "jee:maths:maths-ch04:equality-of-complex-numbers",
+        "jee:maths:maths-ch04:multiply-complex",
+        "jee:maths:maths-ch04:divide-complex",
+        "jee:maths:maths-ch04:reduce-expressions-to-a-plus-ib"
+      ]
     },
     {
       "q": 3,
@@ -92,7 +103,11 @@
       ],
       "correct": "$4$",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $4$",
-      "_origQ": 3
+      "_origQ": 3,
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch04:determinant-order-three",
+        "jee:maths:maths-c12-ch04:consistent-system"
+      ]
     },
     {
       "q": 4,
@@ -111,7 +126,13 @@
       ],
       "correct": "only (S2) is correct",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): only (S2) is correct",
-      "_origQ": 4
+      "_origQ": 4,
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch04:determinant-order-two",
+        "jee:maths:maths-c12-ch04:cayley-hamilton-theorem",
+        "jee:maths:maths-c12-ch04:adjoint",
+        "jee:maths:maths-c12-ch04:adjoint-identity"
+      ]
     },
     {
       "q": 5,
@@ -130,7 +151,11 @@
       ],
       "correct": "5",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 5",
-      "_origQ": 5
+      "_origQ": 5,
+      "coveringNodes": [
+        "jee:maths:maths-ch08:define-arithmetic-progression",
+        "jee:maths:maths-ch08:find-nth-term-of-ap"
+      ]
     },
     {
       "q": 6,
@@ -149,7 +174,12 @@
       ],
       "correct": "16800",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 16800",
-      "_origQ": 6
+      "_origQ": 6,
+      "coveringNodes": [
+        "jee:maths:maths-ch06:permutations-not-all-distinct",
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:inclusion-exclusion-principle"
+      ]
     },
     {
       "q": 7,
@@ -168,7 +198,11 @@
       ],
       "correct": "4",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 4",
-      "_origQ": 7
+      "_origQ": 7,
+      "coveringNodes": [
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:combination-symmetry"
+      ]
     },
     {
       "q": 8,
@@ -187,7 +221,11 @@
       ],
       "correct": "$2x^2-19x-10=0$",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $2x^2-19x-10=0$",
-      "_origQ": 8
+      "_origQ": 8,
+      "coveringNodes": [
+        "jee:maths:maths-ch13:grouped-data-vocabulary",
+        "jee:maths:maths-ch13:compute-mean-of-grouped-data"
+      ]
     },
     {
       "q": 9,
@@ -206,7 +244,12 @@
       ],
       "correct": "13",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 13",
-      "_origQ": 9
+      "_origQ": 9,
+      "coveringNodes": [
+        "jee:maths:maths-ch09:recover-vertices-from-midpoints",
+        "jee:maths:maths-ch09:distance-of-point-from-line",
+        "jee:maths:maths-ch09:compute-incentre-of-triangle"
+      ]
     },
     {
       "q": 10,
@@ -225,7 +268,13 @@
       ],
       "correct": "$\\dfrac{8\\sqrt{5}}{3}$",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $\\dfrac{8\\sqrt{5}}{3}$",
-      "_origQ": 10
+      "_origQ": 10,
+      "coveringNodes": [
+        "jee:maths:maths-ch10:ellipse-standard-equation",
+        "jee:maths:maths-ch10:ellipse-abc-relation",
+        "jee:maths:maths-ch10:ellipse-eccentricity",
+        "jee:maths:maths-ch10:ellipse-latus-rectum"
+      ]
     },
     {
       "q": 11,
@@ -244,7 +293,11 @@
       ],
       "correct": "$\\dfrac{\\sqrt{3}+1}{2\\sqrt{2}}$",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $\\dfrac{\\sqrt{3}+1}{2\\sqrt{2}}$",
-      "_origQ": 11
+      "_origQ": 11,
+      "coveringNodes": [
+        "jee:maths:maths-ch03:triple-angle-identities",
+        "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities"
+      ]
     },
     {
       "q": 12,
@@ -263,7 +316,14 @@
       ],
       "correct": "9",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 9",
-      "_origQ": 12
+      "_origQ": 12,
+      "coveringNodes": [
+        "jee:maths:maths-ch03:pythagorean-identity",
+        "jee:maths:maths-ch03:double-angle-identities",
+        "jee:maths:maths-ch03:domain-and-range",
+        "jee:maths:maths-ch03:periodicity-and-graphs",
+        "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities"
+      ]
     },
     {
       "q": 13,
@@ -282,7 +342,10 @@
       ],
       "correct": "7",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 7",
-      "_origQ": 13
+      "_origQ": 13,
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch11:cartesian-equation-line"
+      ]
     },
     {
       "q": 14,
@@ -301,7 +364,11 @@
       ],
       "correct": "60",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 60",
-      "_origQ": 14
+      "_origQ": 14,
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch10:magnitude",
+        "jee:maths:maths-c12-ch10:scalar-product"
+      ]
     },
     {
       "q": 15,
@@ -320,7 +387,12 @@
       ],
       "correct": "100",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 100",
-      "_origQ": 15
+      "_origQ": 15,
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch11:direction-ratios",
+        "jee:maths:maths-c12-ch11:vector-equation-line",
+        "jee:maths:maths-c12-ch11:foot-of-perpendicular-to-a-line-3d"
+      ]
     },
     {
       "q": 16,
@@ -339,7 +411,12 @@
       ],
       "correct": "6",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 6",
-      "_origQ": 16
+      "_origQ": 16,
+      "coveringNodes": [
+        "jee:maths:maths-ch12:algebra-of-limits",
+        "jee:maths:maths-ch12:limits-of-rational-functions",
+        "jee:maths:maths-ch12:trigonometric-limits"
+      ]
     },
     {
       "q": 18,
@@ -358,7 +435,10 @@
       ],
       "correct": "5",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 5",
-      "_origQ": 18
+      "_origQ": 18,
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch06:critical-point"
+      ]
     },
     {
       "q": 19,
@@ -377,7 +457,11 @@
       ],
       "correct": "$\\dfrac{1}{2}\\left(e^2+e^3-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}\\right)$",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $\\dfrac{1}{2}\\left(e^2+e^3-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}\\right)$",
-      "_origQ": 19
+      "_origQ": 19,
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch07:definite-integral",
+        "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation"
+      ]
     },
     {
       "q": 20,
@@ -396,7 +480,13 @@
       ],
       "correct": "$\\dfrac{\\pi}{2}$",
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): $\\dfrac{\\pi}{2}$",
-      "_origQ": 20
+      "_origQ": 20,
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch09:linear-differential-equation",
+        "jee:maths:maths-c12-ch09:integrating-factor",
+        "jee:maths:maths-c12-ch09:solve-linear-de",
+        "jee:maths:maths-c12-ch09:particular-solution"
+      ]
     },
     {
       "q": 21,
@@ -410,7 +500,11 @@
       "correct": "4",
       "tolerance": null,
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 4",
-      "_origQ": 21
+      "_origQ": 21,
+      "coveringNodes": [
+        "jee:maths:maths-ch02:real-function",
+        "jee:maths:maths-ch02:rational-function"
+      ]
     },
     {
       "q": 22,
@@ -424,7 +518,12 @@
       "correct": "91",
       "tolerance": null,
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 91",
-      "_origQ": 22
+      "_origQ": 22,
+      "coveringNodes": [
+        "jee:maths:maths-ch08:derive-term-from-partial-sum",
+        "jee:maths:maths-ch08:find-nth-term-of-ap",
+        "jee:maths:maths-ch08:form-a-series-with-sigma-notation"
+      ]
     },
     {
       "q": 23,
@@ -438,7 +537,11 @@
       "correct": "81",
       "tolerance": null,
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 81",
-      "_origQ": 23
+      "_origQ": 23,
+      "coveringNodes": [
+        "jee:maths:maths-ch14:equally-likely-outcomes",
+        "jee:maths:maths-ch14:solve-probability-problems"
+      ]
     },
     {
       "q": 24,
@@ -452,7 +555,11 @@
       "correct": "8",
       "tolerance": null,
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 8",
-      "_origQ": 24
+      "_origQ": 24,
+      "coveringNodes": [
+        "jee:maths:maths-ch10:circle-standard-equation",
+        "jee:maths:maths-ch10:circle-find-centre-radius"
+      ]
     },
     {
       "q": 25,
@@ -466,7 +573,13 @@
       "correct": "192",
       "tolerance": null,
       "msAnswer": "Official NTA final answer key (Exam Date 02.04.2026, Shift First): 192",
-      "_origQ": 25
+      "_origQ": 25,
+      "coveringNodes": [
+        "jee:maths:maths-c12-ch07:definite-integral",
+        "jee:maths:maths-c12-ch07:integration-by-parts",
+        "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
+        "jee:maths:maths-c12-ch07:inverse-function-integral-identity"
+      ]
     }
   ]
 }
