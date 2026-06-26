@@ -19,6 +19,19 @@ import { verifySession, authEnforced } from './auth.js';
 const OPEN_LADDER_EXAMS = new Set(['scratch']); // keep in sync with routes.ts
 const IN_PROGRESS = new Set(['teaching', 'awaiting_gate', 'needs_reteach']);
 
+// The single operator/admin learner (by username). For QA it gets the first ADMIN_PREVIEW_NODES authored
+// nodes of the FIRST chapter of each subject opened up — nothing else. Even if these creds leak, a scraper
+// gets at most 5 nodes per exam, not the corpus; everywhere else the admin is a normal strict-linear learner.
+const ADMIN_USERNAME = 'admin123';
+export const ADMIN_PREVIEW_NODES = 5;
+
+/** True iff this learnerId is the admin account (username `admin123`, matched case-insensitively). */
+export async function isAdminLearner(learnerId: string): Promise<boolean> {
+  if (!learnerId) return false;
+  const r = await db.select({ u: users.username }).from(users).where(eq(users.id, learnerId)).limit(1);
+  return r.length > 0 && (r[0].u || '').toLowerCase() === ADMIN_USERNAME;
+}
+
 export async function isNodeAccessible(learnerId: string, conceptId: string): Promise<boolean> {
   if (!learnerId || !conceptId) return false;
   const concept = await getConceptById(conceptId);
@@ -26,6 +39,19 @@ export async function isNodeAccessible(learnerId: string, conceptId: string): Pr
   if ((concept as { needsAuthoring?: boolean }).needsAuthoring) return false; // "coming soon" stub — no content
   const chapter = await getChapter(concept.chapterId);
   if (!chapter) return false;
+
+  // Admin QA preview: the admin learner can open the first ADMIN_PREVIEW_NODES authored nodes of the FIRST
+  // chapter of each subject, regardless of progress. Any other node falls through to the strict-linear gate
+  // below (so the admin still progresses normally elsewhere, and the corpus stays un-enumerable).
+  if (await isAdminLearner(learnerId)) {
+    const chaptersOrdered = await getChaptersForSubject(chapter.subjectId);
+    if (chaptersOrdered[0]?.id === chapter.id) {
+      const authored = (await getConceptsForChapter(chapter.id)).filter(
+        (c) => !(c as { needsAuthoring?: boolean }).needsAuthoring
+      );
+      if (authored.slice(0, ADMIN_PREVIEW_NODES).some((c) => c.id === conceptId)) return true;
+    }
+  }
 
   // One DB read: this learner's per-node statuses. Everything else is the in-memory content cache (0 DB).
   const perfRows = await db.select().from(buNodePerformance).where(eq(buNodePerformance.learnerId, learnerId));

@@ -11,7 +11,7 @@ import { getChaptersForSubject, getChapter, getConceptsForChapter } from '../cor
 import { computeChapterStatuses } from '../core/sequencer.js';
 import { listPapers, paperForClient, answerPaperQuestion, paperResult, paperState } from '../core/papers.js';
 import { registerUser, loginUser, AuthError, signSession } from '../core/auth.js';
-import { requireNodeAccess, requirePaperAccess, rateLimit } from '../core/access.js';
+import { requireNodeAccess, requirePaperAccess, rateLimit, isAdminLearner, ADMIN_PREVIEW_NODES } from '../core/access.js';
 
 const router = express.Router();
 
@@ -243,16 +243,29 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
   try {
     const { learnerId, chapterId } = req.params;
 
-    // Structure from the in-memory cache (0 DB); only the learner's status hits the DB (1 query).
+    // Structure from the in-memory cache (0 DB); the learner's status + admin check hit the DB.
     const [chapter, concepts] = await Promise.all([getChapter(chapterId), getConceptsForChapter(chapterId)]);
     if (!chapter) return res.status(404).json({ error: 'Chapter not found' });
-    const perfRows = await db.select().from(buNodePerformance).where(eq(buNodePerformance.learnerId, learnerId));
+    const chaptersOrdered = await getChaptersForSubject(chapter.subjectId);
+    const chIdx = chaptersOrdered.findIndex((c) => c.id === chapter.id);
+    const [perfRows, admin] = await Promise.all([
+      db.select().from(buNodePerformance).where(eq(buNodePerformance.learnerId, learnerId)),
+      isAdminLearner(learnerId),
+    ]);
 
     const statusOf = new Map(perfRows.map((p) => [p.conceptId, p.status]));
 
+    // Admin QA preview: in the FIRST chapter of each subject, the admin account gets the first
+    // ADMIN_PREVIEW_NODES authored nodes opened (clickable) regardless of progress. Mirrors access.ts.
+    const adminPreview =
+      admin && chIdx === 0
+        ? new Set(concepts.filter((c) => !c.needsAuthoring).slice(0, ADMIN_PREVIEW_NODES).map((c) => c.id))
+        : new Set<string>();
+
     // Strict-linear within a chapter: exactly ONE node is open — the lowest-order not-yet-passed node
     // (keeping its in-progress state if the learner already started it). Passing it opens the next; all
-    // later nodes stay locked. (concepts arrive sorted by order from the content cache.)
+    // later nodes stay locked. (concepts arrive sorted by order from the content cache.) The admin-preview
+    // nodes above are additionally opened without consuming the single frontier slot.
     const inProgress = new Set(['teaching', 'awaiting_gate', 'needs_reteach']);
     let activeAssigned = false;
     const nodes = concepts.map((concept) => {
@@ -267,6 +280,8 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
       } else if (!activeAssigned) {
         status = existing && inProgress.has(existing) ? existing : 'available';
         activeAssigned = true;
+      } else if (adminPreview.has(concept.id)) {
+        status = existing && inProgress.has(existing) ? existing : 'available';
       } else {
         status = 'locked';
       }
@@ -275,8 +290,6 @@ router.get('/learner/:learnerId/chapter/:chapterId', async (req, res) => {
 
     // Course-wide node offset: how many nodes precede this chapter in the subject. Chapters are just
     // sequential dividers, so games map to the course-wide node index and flow across chapter boundaries.
-    const chaptersOrdered = await getChaptersForSubject(chapter.subjectId);
-    const chIdx = chaptersOrdered.findIndex((c) => c.id === chapter.id);
     let nodeOffset = 0;
     for (let i = 0; i < chIdx; i++) nodeOffset += (await getConceptsForChapter(chaptersOrdered[i].id)).length;
 
