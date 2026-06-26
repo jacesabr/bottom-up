@@ -480,10 +480,19 @@ export function extractStreamingMessage(raw: string): string | null {
  * so the bedrock check always happens, regardless of model compliance. Guarded terms are the quoted
  * phrases in each refresher's `trigger` (e.g. 'The word "prime" — …' → "prime").
  */
+// A trigger sentence often quotes a word for plain emphasis (… could be answered 'no' …), not as the
+// concept the refresher guards. A bare ultra-common word makes a TERRIBLE guard term: it force-fires the
+// refresher on almost any turn (e.g. 'no' matches nearly every tutor message). So drop single common words;
+// keep any multi-word phrase and any distinctive single token (e.g. 'prime', 'median').
+const TRIVIAL_GUARD_TERMS = new Set([
+  'no', 'yes', 'not', 'the', 'a', 'an', 'and', 'or', 'but', 'it', 'is', 'are', 'was', 'be', 'to', 'of',
+  'in', 'on', 'at', 'as', 'by', 'if', 'so', 'this', 'that', 'these', 'those', 'one', 'free', 'new', 'use',
+]);
 function refresherGuardTerms(r: RefresherItem): string[] {
   return [...String(r.trigger ?? '').matchAll(/[“"']([^“”"']{1,40})[”"']/g)]
     .map((m) => m[1].trim().toLowerCase())
-    .filter((t) => t.length > 1);
+    .filter((t) => t.length > 1)
+    .filter((t) => t.includes(' ') || !TRIVIAL_GUARD_TERMS.has(t));
 }
 function termAppears(text: string, term: string): boolean {
   const esc = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
