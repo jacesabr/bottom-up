@@ -443,6 +443,22 @@ export async function respond(
   const isOpening = false;
   const figures = await getConceptFigures(conceptId);
 
+  // #1 — "tell after it stalls" backstop. Count tutor turns since the student last demonstrated a key
+  // move (or entered the node). The prompt rule ("state it plainly, don't re-ask") drifts on weaker
+  // models, so make it mechanical: once the current idea has eaten >=2 tutor turns with no progress,
+  // the next turn is FORCED to fill instead of asking again.
+  const recentEvents = await db
+    .select({ type: buEvent.type })
+    .from(buEvent)
+    .where(and(eq(buEvent.learnerId, learnerId), eq(buEvent.conceptId, conceptId)))
+    .orderBy(desc(buEvent.ts));
+  let tutorTurnsSinceProgress = 0;
+  for (const e of recentEvents) {
+    if (e.type === 'keymove_demonstrated' || e.type === 'enter_node' || e.type === 'gate_pass') break;
+    if (e.type === 'tutor_turn') tutorTurnsSinceProgress++;
+  }
+  const fillNow = tutorTurnsSinceProgress >= 2; // initial ask + 1 re-ask used up -> next turn must tell
+
   const turn = await teachTurn(
     {
       conceptTitle: c.title,
@@ -458,6 +474,7 @@ export async function respond(
       figures: figures.map((f) => ({ id: f.id, caption: f.caption })),
       conceptId,
       track,
+      fillNow,
       advancedContent: (c as any).advancedContent ?? null,
       ...getTextModel(learnerId), // per-session model from the speed router (empty → MODELS.text default)
     },

@@ -234,6 +234,7 @@ export interface TeachTurnInput {
   model?: string; // per-session NIM model chosen by the speed router (nim-router.ts); falls back to MODELS.text
   modelFallback?: string; // in-session fallback model (router's 2nd-best)
   models?: string[]; // full healthy cascade (best-first) — completeJson walks it so a dead model never blocks
+  fillNow?: boolean; // #1 backstop: idea has stalled >=2 turns -> this turn MUST state it, not ask again
 }
 
 export interface TeachTurnOutput {
@@ -255,8 +256,12 @@ function buildMessages(input: TeachTurnInput): ChatMessage[] {
   // model drives at one idea and doesn't open later ideas early. Self-disables (→ recap/hand-off) once all shown.
   const nextMove = input.keyMoves.find((m) => !m.demonstrated);
   const currentTarget = nextMove
-    ? `YOUR ONE TARGET THIS TURN is the next idea still marked ◻ not yet — key move [${nextMove.index}]: "${nextMove.text}". Drive at THIS and nothing else: bring the student to the edge of it, then (per SOME THINGS ARE TOLD, NOT GUESSED below) land it in plain words. Do NOT open, hint at, or set up any later idea until this one is named plainly AND the student confirms it — one target, one turn; the moment it lands AND the student confirms it, hand off in that SAME turn — one warm clause marking what they just got, then open the next ◻ move with a single forward question (don't park on the finished idea, don't wait a turn, and never end on a closing note while ideas remain). This target is for YOUR steering only; it stays part of your private map — never read, list, or quote it to the student.`
+    ? `YOUR ONE TARGET THIS TURN is the next idea still marked ◻ not yet — key move [${nextMove.index}]: "${nextMove.text}". Drive at THIS and nothing else: FRAME it first — state key move [${nextMove.index}] in 1–2 plain sentences with one concrete example (the source's own words), THEN ask the student to USE it (apply it to one fresh tiny case, put it in their own words, or say why it holds). Lead with the idea; never open it with a "guess what this means" question about content you haven't shown them. Do NOT open, hint at, or set up any later idea until this one is named plainly AND the student confirms it — one target, one turn; the moment it lands AND the student confirms it, hand off in that SAME turn — one warm clause marking what they just got, then open the next ◻ move with a single forward question (don't park on the finished idea, don't wait a turn, and never end on a closing note while ideas remain). This target is for YOUR steering only; it stays part of your private map — never read, list, or quote it to the student.`
     : `EVERY key idea above is now ✓ shown — do NOT open anything new. Briefly and warmly recap what you built together, then hand off to the quick checks.`;
+  // #1 — when the stall backstop fires, this turn is forced to FILL (state the idea), not ask again.
+  const fillDirective = input.fillNow
+    ? `\n\n⚠ FILL NOW — DO NOT ASK AGAIN THIS TURN. This idea has already taken two turns without the student landing it. You are FORBIDDEN to pose another question about it — no rephrase, no fresh analogy, no "(hint: …)". State the point in ONE plain sentence in the source's own words, add ONE tiny concrete example, then end with ONE short confirmation ("quick check so we're together — …?") and nothing else. Do not open a new idea; just land this one plainly.`
+    : '';
   const transcript = input.dialogue
     .map((t) => `${t.role === 'tutor' ? 'TUTOR' : 'LEARNER'}: ${t.content}`)
     .join('\n');
@@ -293,7 +298,7 @@ Your ONLY source of truth for facts/examples: ${input.explanation}${advancedBloc
 You are quietly guiding the student to eventually grasp these ideas (NEVER list or quote these — they're your private map):
 ${moves}
 
-${currentTarget}
+${currentTarget}${fillDirective}
 
 Watch gently for these misunderstandings:
 ${input.misconceptions.map((m) => `  - ${m}`).join('\n')}${refresherBlock}
@@ -316,7 +321,15 @@ HOW TO TEACH (read carefully — this is the whole job):
   worth nailing down") and ladder DOWN with smaller questions to find their floor (what's a cube? how's it
   different from a line or square? how many dimensions? what's a dimension?), build the complete answer up from
   there, then RETURN to the main line. Go only as deep as the gap. Trivial-seeming gaps compound if skipped —
-  surfacing and filling them, over and over, IS the lesson. Don't pre-explain what you could first ask.
+  surfacing and filling them, over and over, IS the lesson. Don't pre-explain a BEDROCK gap you could first
+  surface with a question — but the node's own key moves you DO state first (see FRAME, THEN APPLY next).
+- FRAME, THEN APPLY — for the node's OWN key moves. The surface→confess→fill loop above is for the BEDROCK a
+  lesson leans on (the "why is it cubed?" refreshers) — there you ask first. For the node's OWN key moves —
+  the new content you are here to teach — do the opposite: TELL it first. State the idea in 1–2 plain
+  sentences with one concrete example (source's words), THEN ask the student to USE it (apply it to a fresh
+  tiny case, restate it, or predict what it implies). NEVER open a key move with a "guess what this means"
+  question about something you have not shown them — that is quizzing on unseen material, the #1 thing
+  students complain about. Ask them to APPLY, not to divine.
 - SOME THINGS ARE TOLD, NOT GUESSED — this is the FILL step of surface → confess → fill → return; it does NOT
   override "Don't pre-explain what you could first ask," it completes it. You still ASK first to walk them to the
   edge (that stays the default). But the moment the student is at a named fact, definition, formula, or rule they
