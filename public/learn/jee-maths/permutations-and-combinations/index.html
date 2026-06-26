@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Permutations and Combinations — JEE Maths | Sarthi</title>
+<meta name="description" content="Permutations and Combinations — JEE Maths. 12 concepts taught bottom-up: Apply the fundamental principle of counting (multiplication principle), Recognise a…" />
+<link rel="canonical" href="https://bottom-up-web.onrender.com/learn/jee-maths/permutations-and-combinations/" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="theme-color" content="#b5562a" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Sarthi" />
+<meta property="og:title" content="Permutations and Combinations — JEE Maths | Sarthi" />
+<meta property="og:description" content="Permutations and Combinations — JEE Maths. 12 concepts taught bottom-up: Apply the fundamental principle of counting (multiplication principle), Recognise a…" />
+<meta property="og:url" content="https://bottom-up-web.onrender.com/learn/jee-maths/permutations-and-combinations/" />
+<meta property="og:locale" content="en_IN" />
+<link rel="stylesheet" href="/learn/learn.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Permutations and Combinations — JEE Maths",
+  "url": "https://bottom-up-web.onrender.com/learn/jee-maths/permutations-and-combinations/",
+  "description": "Permutations and Combinations — JEE Maths. 12 concepts taught bottom-up: Apply the fundamental principle of counting (multiplication principle), Recognise a…",
+  "inLanguage": "en",
+  "learningResourceType": "Course chapter",
+  "educationalLevel": "JEE",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "JEE Maths",
+    "url": "https://bottom-up-web.onrender.com/learn/jee-maths/"
+  },
+  "teaches": [
+    "Apply the fundamental principle of counting (multiplication principle)",
+    "Recognise a permutation as an ordered arrangement",
+    "Evaluate and simplify factorial expressions",
+    "Count permutations of distinct objects with nPr = n!/(n-r)!",
+    "Count permutations when repetition is allowed (n^r)",
+    "Count permutations when some objects are identical (n!/(p1!p2!...pk!))",
+    "Recognise a combination as an unordered selection",
+    "Relate permutations and combinations by nPr = nCr x r!",
+    "Count combinations with nCr = n!/(r!(n-r)!)",
+    "Use the symmetry nCr = nC(n-r)",
+    "Apply Pascal's rule nCr + nC(r-1) = (n+1)Cr",
+    "Solve counting problems by choosing arrangement vs selection and combining the rules"
+  ],
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bottom-up-web.onrender.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Learn",
+        "item": "https://bottom-up-web.onrender.com/learn/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "JEE Maths",
+        "item": "https://bottom-up-web.onrender.com/learn/jee-maths/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Permutations and Combinations",
+        "item": "https://bottom-up-web.onrender.com/learn/jee-maths/permutations-and-combinations/"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+<main>
+<nav class="crumbs"><a href="/">Home</a> › <a href="/learn/">Learn</a> › <a href="/learn/jee-maths/">JEE Maths</a> › <span>Permutations and Combinations</span></nav>
+<p class="kicker">JEE Maths</p>
+<h1>Permutations and Combinations</h1>
+<p class="lede">This chapter of JEE Maths covers 12
+concepts, taught bottom-up. The AI tutor builds each from the ground up
+and checks you understand it before the next. Here's what you'll work through:</p>
+<ol class="concepts">
+<li><strong>Apply the fundamental principle of counting (multiplication principle)</strong> — Count the ways a sequence of independent choices can be made by multiplying the number of ways for each choice.</li>
+<li><strong>Recognise a permutation as an ordered arrangement</strong> — Identify when a counting problem is a permutation: the objects are arranged in a definite order, so the order of writing them matters.</li>
+<li><strong>Evaluate and simplify factorial expressions</strong> — Use n! as the product of the first n natural numbers, the convention 0! = 1, and the recursion n! = n(n-1)! to evaluate and cancel factorials.</li>
+<li><strong>Count permutations of distinct objects with nPr = n!/(n-r)!</strong> — Use the formula nPr = n!/(n-r)! for the number of ordered arrangements of n distinct objects taken r at a time (no repetition).</li>
+<li><strong>Count permutations when repetition is allowed (n^r)</strong> — Use n^r for the number of ordered arrangements of n distinct objects taken r at a time when each object may be reused.</li>
+<li><strong>Count permutations when some objects are identical (n!/(p1!p2!...pk!))</strong> — Divide n! by the factorials of the repeat counts to count arrangements of n objects in which some objects are indistinguishable.</li>
+<li><strong>Recognise a combination as an unordered selection</strong> — Identify when a counting problem is a combination: objects are selected without regard to order, so AB and BA are the same.</li>
+<li><strong>Relate permutations and combinations by nPr = nCr x r!</strong> — Use the fact that each combination of r objects yields r! permutations to connect nPr and nCr.</li>
+<li><strong>Count combinations with nCr = n!/(r!(n-r)!)</strong> — Use nCr = n!/(r!(n-r)!) to count the number of unordered selections of r objects from n, including nC0 = nCn = 1.</li>
+<li><strong>Use the symmetry nCr = nC(n-r)</strong> — Apply nC(n-r) = nCr and the consequence that nCa = nCb implies a = b or a + b = n.</li>
+<li><strong>Apply Pascal&#39;s rule nCr + nC(r-1) = (n+1)Cr</strong> — Use the identity nCr + nC(r-1) = (n+1)Cr that combines two adjacent combinations into one of the next row.</li>
+<li><strong>Solve counting problems by choosing arrangement vs selection and combining the rules</strong> — Model any counting problem by deciding whether order matters (permutation) or not (combination), then combine nPr, n^r, n!/(p1!...), nCr with the multiplication and addition principles.</li>
+</ol>
+<p class="cta"><a href="/">▶ Start learning with the AI tutor — free to begin</a></p>
+<nav class="pager">
+<a href="/learn/jee-maths/linear-inequalities/">← Linear Inequalities</a>
+<a href="/learn/jee-maths/binomial-theorem/">Binomial Theorem →</a>
+</nav>
+<footer>
+<p>Sarthi — CBSE &amp; JEE maths, learned bottom-up. <a href="/">Start learning →</a></p>
+</footer>
+</main>
+</body>
+</html>

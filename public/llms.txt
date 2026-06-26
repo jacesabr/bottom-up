@@ -10,6 +10,9 @@ with a quick check, re-teaches on a miss, and only then opens the next. After th
 real past board paper and sees which concepts to revise.
 
 ## Key pages
+- [Full syllabus](https://bottom-up-web.onrender.com/learn/): chapter-wise maths syllabus across three tracks
+  — CBSE Class 10 maths, CBSE Class 12 mathematics, JEE maths. Each track at /learn/<track>/ and each chapter
+  at /learn/<track>/<chapter>/.
 - [Why Sarthi](https://bottom-up-web.onrender.com/why-sarthi.html): the bottom-up idea — start at the foundation, build upward.
 - [How it works](https://bottom-up-web.onrender.com/how-it-works.html): the teach → gate → exam loop.
 - [Home](https://bottom-up-web.onrender.com/): start learning.
@@ -17,5 +20,5 @@ real past board paper and sees which concepts to revise.
 ## About
 - Audience: Indian students preparing CBSE Class 10 & 12 maths and JEE maths.
 - Language: English.
-- Note: the interactive tutor is a JavaScript app behind a sign-in; a public, crawlable concept library
-  (/learn) is being added.
+- Note: the interactive AI tutor is a JavaScript app behind a sign-in. The public /learn pages are the
+  crawlable syllabus (chapter + concept titles and briefs); the full lessons are in the app.
