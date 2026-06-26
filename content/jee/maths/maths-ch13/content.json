@@ -54,6 +54,30 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-ch13:compute-mean-of-grouped-data",
+      "slug": "compute-mean-of-grouped-data",
+      "title": "Compute the mean of grouped data using mid-point and assumed-mean methods",
+      "role": "intermediate",
+      "sec": 2,
+      "brief": "Find the mean of a grouped frequency distribution as Σf_i x_i / Σf_i, or equivalently as assumed mean A + Σf_i d_i / Σf_i where d_i = x_i − A.",
+      "explanation": "PART 1 — Direct formula: mean = Σf_i x_i / N.\nFor a grouped distribution with class mid-points x_i and frequencies f_i, take each class's mid-point x_i as representative of the class, multiply by its frequency f_i, sum all products, and divide by N = Σf_i. Mean = Σf_i x_i / N. Example: classes 10–20, 20–30, 30–40 with frequencies 5, 8, 7; mid-points 15, 25, 35. Σf_i x_i = 5×15 + 8×25 + 7×35 = 75 + 200 + 245 = 520; N = 20; mean = 520/20 = 26.\n\nPART 2 — Assumed-mean method.\nChoose a convenient assumed mean A (usually the mid-point of a central class). Define d_i = x_i − A for each class. Then mean = A + Σf_i d_i / N. The deviations d_i are smaller numbers, making arithmetic easier. Example: with mid-points 15, 25, 35 and A = 25: d_i = −10, 0, 10; Σf_i d_i = 5×(−10)+8×0+7×10 = −50+0+70 = 20; mean = 25 + 20/20 = 25 + 1 = 26. ✓\n\nPART 3 — Using the mean equation to find an unknown frequency.\nIf the mean is given and one frequency k is unknown, write out Σf_i x_i = mean × N (where N includes k). Solve for k. Example: classes with mid-points x_i and frequencies containing k, mean = 21 — set up: Σf_i x_i / Σf_i = 21, substitute, collect, and solve the resulting linear or quadratic equation in k.",
+      "keyMoves": [
+        "Identify the class mid-point x_i = (lower limit + upper limit)/2 for each class",
+        "Apply mean = Σf_i x_i / N (direct method) or mean = A + Σf_i d_i / N (assumed-mean method)",
+        "To find unknown frequency k: write Σf_i x_i = mean × N and solve"
+      ],
+      "misconceptions": [
+        "Using the class boundaries (limits) instead of the class mid-points as the representative x_i values",
+        "Forgetting that N = Σf_i includes all classes including any unknown-frequency class"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch13:grouped-data-vocabulary",
+        "jee:maths:maths-ch08:form-a-series-with-sigma-notation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch13:grouped-median-formula",
       "slug": "grouped-median-formula",
       "title": "Find the median of grouped data by the class-interval formula",
@@ -351,7 +375,8 @@
         "jee:maths:maths-ch13:standard-deviation",
         "jee:maths:maths-ch13:sd-frequency-distribution",
         "jee:maths:maths-ch13:sd-shortcut-method",
-        "jee:maths:maths-ch13:variance-under-transformation"
+        "jee:maths:maths-ch13:variance-under-transformation",
+        "jee:maths:maths-ch13:compute-mean-of-grouped-data"
       ],
       "sameConcept": [],
       "teachingInsights": []

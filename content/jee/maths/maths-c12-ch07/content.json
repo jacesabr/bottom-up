@@ -264,6 +264,31 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-c12-ch07:inverse-function-integral-identity",
+      "slug": "inverse-function-integral-identity",
+      "title": "Apply the inverse-function integral identity",
+      "role": "intermediate",
+      "brief": "For a strictly monotone differentiable f, the sum ∫_a^b f(x)dx + ∫_{f(a)}^{f(b)} f⁻¹(y)dy equals b·f(b) − a·f(a) — a geometric rectangle minus a corner, avoiding the need to compute f⁻¹ directly.",
+      "sec": 7,
+      "explanation": "PART 1 — Statement and geometric intuition.\nIf f is strictly increasing and differentiable on [a, b] with f⁻¹ its inverse, then ∫_a^b f(x)dx + ∫_{f(a)}^{f(b)} f⁻¹(y)dy = b·f(b) − a·f(a). Geometrically: the first integral is the area under the curve y=f(x), the second is the area to the left of the curve x=f⁻¹(y), and together they tile the rectangle with corners (a,f(a)) and (b,f(b)) minus the corner rectangle at (a,f(a)).\n\nPART 2 — Worked verification.\nFor f(x)=2x, f⁻¹(y)=y/2, on [a,b]=[0,3]: f(0)=0, f(3)=6. ∫_0^3 2x dx = [x²]_0^3 = 9. ∫_0^6 (y/2) dy = [y²/4]_0^6 = 9. Sum = 18 = 3·6 − 0·0 = 18. ✓ For the natural log pair: f(x)=e^x on [0,1], f⁻¹(y)=ln y: ∫_0^1 e^x dx = e−1, ∫_1^e ln y dy = 1, sum = e = 1·e − 0·1. ✓\n\nPART 3 — JEE pattern and how to use it.\nWhen an exam gives ∫_a^b f + ∫_{f(a)}^{f(b)} f⁻¹, identify the pair as f and its inverse (verify the limits match: lower limit of the second integral = f(a), upper = f(b)), then apply the identity immediately: answer = b·f(b) − a·f(a). This avoids computing the harder integral explicitly.",
+      "keyMoves": [
+        "Identify f and f⁻¹, check the limits: second integral runs from f(a) to f(b)",
+        "Apply ∫_a^b f + ∫_{f(a)}^{f(b)} f⁻¹ = b·f(b) − a·f(a) directly",
+        "Verify by computing both integrals separately when in doubt"
+      ],
+      "misconceptions": [
+        "Applying the identity when the limits of the second integral do not match f(a) and f(b)",
+        "Writing the right-hand side as f(b)·b + f(a)·a instead of b·f(b) − a·f(a)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
+        "jee:maths:maths-c12-ch01:invertible-function",
+        "jee:maths:maths-c12-ch07:definite-integral"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
       "slug": "fundamental-theorem-evaluation",
       "title": "Evaluate a definite integral via the Fundamental Theorem (F(b) - F(a))",

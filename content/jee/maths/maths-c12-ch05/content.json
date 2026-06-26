@@ -341,6 +341,30 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-c12-ch05:logarithm-laws-and-change-of-base",
+      "slug": "logarithm-laws-and-change-of-base",
+      "title": "Apply logarithm laws and the change-of-base formula",
+      "role": "intermediate",
+      "brief": "The three log laws (product, power, base-power) and the change-of-base formula log_b(x) = log_a(x)/log_a(b) are the algebraic engine behind logarithmic differentiation and JEE-level log computations.",
+      "sec": 4,
+      "explanation": "PART 1 — The three core log laws.\nFor any valid base a>0, a≠1 and positive x, y: (1) Product law: log_a(xy) = log_a(x) + log_a(y). (2) Power law: log_a(x^p) = p·log_a(x) for any real p. (3) Base-power law: log_{a^n}(x) = (1/n)·log_a(x). These follow from the definition b^x = a ↔ x = log_a(b): for example, a^(log_a x + log_a y) = xy so log_a(xy) = log_a(x) + log_a(y). The quotient law log_a(x/y) = log_a(x) − log_a(y) follows from the product law.\n\nPART 2 — The change-of-base formula.\nTo convert from base b to base a: log_b(x) = log_a(x) / log_a(b). In particular log_b(x) = ln(x)/ln(b). Example: log_4(64) = log_2(64)/log_2(4) = 6/2 = 3. This lets you evaluate any log on a calculator (base 10 or e) and simplify expressions mixing different bases.\n\nPART 3 — Using the laws in logarithmic differentiation.\nIn logarithmic differentiation, the power law brings variable exponents down: log(f(x)^{g(x)}) = g(x)·log(f(x)), converting a hard differentiation into a product that can be handled with the product rule. Recognising which law applies (product, power, or change-of-base) before differentiating is the key algebraic step.",
+      "keyMoves": [
+        "Apply log_a(xy) = log_a(x) + log_a(y), log_a(x^p) = p·log_a(x), log_{a^n}(x) = (1/n)·log_a(x)",
+        "Use the change-of-base formula log_b(x) = log_a(x)/log_a(b) to move between bases",
+        "In logarithmic differentiation, use the power law to bring the variable exponent in front"
+      ],
+      "misconceptions": [
+        "Writing log_a(x+y) = log_a(x) + log_a(y) (there is no log law for sums)",
+        "Applying the power law as log_a(x^p) = log_a(x)^p instead of p·log_a(x)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch05:logarithm-function",
+        "jee:maths:maths-c12-ch05:exponential-function"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-c12-ch05:logarithmic-differentiation",
       "slug": "logarithmic-differentiation",
       "title": "Differentiate using logarithmic differentiation",
@@ -360,6 +384,7 @@
       ],
       "prereqs": [
         "jee:maths:maths-c12-ch05:derivative-of-exp-and-log",
+        "jee:maths:maths-c12-ch05:logarithm-laws-and-change-of-base",
         "jee:maths:maths-ch03:prove-and-apply-trigonometric-identities"
       ],
       "sameConcept": [],

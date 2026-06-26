@@ -236,6 +236,20 @@
    "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.3 component dot product (4+10+18)"
   },
   {
+   "nodeId": "jee:maths:maths-c12-ch10:scalar-triple-product",
+   "kind": "book",
+   "prompt": "Let a = i + j, b = i + k, c = j + k (in component form: a=(1,1,0), b=(1,0,1), c=(0,1,1)). Compute the scalar triple product [a b c] = det[[1,1,0],[1,0,1],[0,1,1]] and give its value. Then state whether a, b, c are coplanar.",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "-2",
+   "expected": {
+    "kind": "numeric",
+    "value": -2,
+    "tol": 0
+   },
+   "srcLabel": "Authored (Sonnet) - scalar triple product: det=-2, not coplanar (non-zero), volume=2"
+  },
+  {
    "nodeId": "jee:maths:maths-c12-ch10:vector-product",
    "kind": "practice",
    "prompt": "The vector (cross) product a x b is:",

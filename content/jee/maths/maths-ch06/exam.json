@@ -146,6 +146,18 @@
       "srcLabel": "Authored practice (Opus) - kemh106 Sec 6.4 Theorem 6 (5C2 + 5C1 = 6C2 = 15)"
     },
     {
+      "nodeId": "jee:maths:maths-ch06:inclusion-exclusion-principle",
+      "kind": "book",
+      "prompt": "How many 7-digit numbers can be formed using the digits 1, 2, 3, 5 and 7 such that each digit is used at least once?",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "expected": {
+        "kind": "numeric",
+        "value": 16800,
+        "tol": 0
+      }
+    },
+    {
       "nodeId": "jee:maths:maths-ch06:solve-counting-problems",
       "kind": "practice",
       "prompt": "You are asked: 'In how many ways can a committee of 3 be chosen from 6 people?' and 'How many 3-letter words can be made from 6 distinct letters with no repetition?'. State which is a permutation and which is a combination, and explain the deciding test.",

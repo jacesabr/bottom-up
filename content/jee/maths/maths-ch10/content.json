@@ -482,6 +482,56 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-ch10:tangent-to-circle-from-external-point",
+      "slug": "tangent-to-circle-from-external-point",
+      "title": "Find the length and equation of a tangent from an external point to a circle",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use the tangency condition (distance from centre = radius) to find the length of a tangent from an external point and to write the equation of tangent lines.",
+      "explanation": "PART 1 — Tangency condition and length of tangent.\nA line is tangent to the circle x²+y²=r² when its distance from the centre equals r. For an external point P(x₁,y₁), the length of the tangent is L=√(x₁²+y₁²-r²), derived by noting that the tangent, the radius to the point of contact, and the line from the centre to P form a right triangle with hypotenuse |CP|=√(x₁²+y₁²).\n\nPART 2 — Equation of tangent at a point on the circle.\nAt a specific point (x₁,y₁) on the circle x²+y²=r², the tangent is xx₁+yy₁=r². This is obtained by replacing x² with xx₁ and y² with yy₁ in the circle equation, a standard substitution that also works for the general circle (x-h)²+(y-k)²=r².\n\nPART 3 — Tangent from an external point (slope form).\nFor a tangent y=mx+c to be tangent to x²+y²=r², the distance from (0,0) must equal r, giving c²=r²(1+m²). Substituting a given external point P(x₁,y₁) gives a quadratic in m; each real root yields one tangent line. If the discriminant is zero the point lies on the circle; negative discriminant means the point is inside.",
+      "keyMoves": [
+        "Compute length of tangent from P(x₁,y₁) as √(x₁²+y₁²-r²)",
+        "Write tangent at a point on the circle using the T=0 substitution xx₁+yy₁=r²",
+        "Find tangent lines from an external point via the slope-form condition c²=r²(1+m²)"
+      ],
+      "misconceptions": [
+        "Forgetting to subtract r²: using √(x₁²+y₁²) instead of √(x₁²+y₁²-r²) for the tangent length",
+        "Applying T=0 (tangent at a point) when the point is not on the circle"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch10:circle-standard-equation",
+        "jee:maths:maths-ch09:distance-of-point-from-line",
+        "jee:maths:maths-ch09:point-slope-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch10:tangent-to-ellipse-slope-form",
+      "slug": "tangent-to-ellipse-slope-form",
+      "title": "Write tangent lines to an ellipse in slope form and from an external point",
+      "role": "intermediate",
+      "sec": 5,
+      "brief": "Derive the tangent condition c²=a²m²+b² by setting the discriminant of the ellipse-line system to zero, then use slope-form tangents y=mx±√(a²m²+b²) to find tangents from an external point.",
+      "explanation": "PART 1 — Derive the tangent condition by discriminant.\nSubstitute y=mx+c into the ellipse x²/a²+y²/b²=1 to get a quadratic in x. The line is tangent when this quadratic has exactly one solution, i.e., discriminant=0. Working out Δ=0 yields c²=a²m²+b², so for a given slope m the tangent intercepts are c=±√(a²m²+b²).\n\nPART 2 — Slope-form tangents.\nThe two tangent lines with slope m to the ellipse x²/a²+y²/b²=1 are y=mx+√(a²m²+b²) and y=mx-√(a²m²+b²). These are valid for any slope m; the tangent at a given point (x₁,y₁) on the ellipse follows from the T=0 rule xx₁/a²+yy₁/b²=1.\n\nPART 3 — Tangents from an external point.\nFor an external point P(h,k), a tangent y-k=m(x-h) satisfies c²=a²m²+b² after rewriting in slope-intercept form. This gives a quadratic in m; the two roots give the slopes of the two tangents from P. The pair of tangents from an external point can also be obtained via the chord of contact and the combined-equation formula T²=SS₁.",
+      "keyMoves": [
+        "Set discriminant of the ellipse-line system to zero to get c²=a²m²+b²",
+        "Write slope-form tangents y=mx±√(a²m²+b²) for any given slope m",
+        "Substitute the external point into y-k=m(x-h), convert to slope-intercept form, apply c²=a²m²+b², solve the quadratic for m"
+      ],
+      "misconceptions": [
+        "Using c²=a²m²+b² for a circle (where the correct condition is c²=r²(1+m²))",
+        "Confusing the T=0 formula for a point on the ellipse with the external-point tangent formula"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch10:ellipse-standard-equation",
+        "jee:maths:maths-ch09:slope-intercept-form",
+        "jee:maths:maths-ch09:point-slope-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch10:standard-equations-of-conics",
       "slug": "standard-equations-of-conics",
       "title": "Derive standard conic equations from their geometric definitions",
@@ -509,6 +559,8 @@
         "jee:maths:maths-ch10:ellipse-latus-rectum",
         "jee:maths:maths-ch10:hyperbola-standard-equation",
         "jee:maths:maths-ch10:hyperbola-latus-rectum",
+        "jee:maths:maths-ch10:tangent-to-circle-from-external-point",
+        "jee:maths:maths-ch10:tangent-to-ellipse-slope-form",
         "jee:maths:maths-ch09:distance-of-point-from-line",
         "jee:maths:maths-ch09:slope-from-two-points"
       ],

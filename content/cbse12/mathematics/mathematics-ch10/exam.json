@@ -37,6 +37,22 @@
       "srcLabel": "Authored practice (Opus) - mathematics-ch10 Sec 10.2 magnitude (sqrt(4+9+36)=7)"
     },
     {
+      "nodeId": "cbse12:mathematics:mathematics-ch10:distance-from-coordinate-axis",
+      "kind": "book",
+      "prompt": "Find the distance of the point (3, 4, 5) from the y-axis.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "√34",
+      "expected": {
+        "kind": "numeric",
+        "value": 5.831,
+        "tol": 0.001
+      },
+      "srcKind": "paper",
+      "srcLabel": "CBSE Class 12 Maths SQP 2025-26 Q14",
+      "quote": "Distance from y-axis = √(x² + z²) = √(9 + 25) = √34"
+    },
+    {
       "nodeId": "cbse12:mathematics:mathematics-ch10:position-vector",
       "kind": "practice",
       "prompt": "The position vector of a point P with respect to the origin O is the vector:",

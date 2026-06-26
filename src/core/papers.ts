@@ -90,9 +90,9 @@ function sourceLinks(p: Paper): Array<{ label: string; url: string }> {
 }
 
 /**
- * Does a paper belong to the requested app subject? The app is maths-first: a 'maths'/'mathematics'
- * request shows every maths/general paper but hides clearly-other-subject papers (Science, Physics…);
- * a 'science' request shows only science-family papers. Unknown subjects → no filter.
+ * Does a paper belong to the requested app subject? The app is maths-only: a 'maths'/'mathematics'
+ * request shows every maths/general paper but hides any clearly-other-subject paper (Science, Physics…).
+ * Unknown subjects → no filter.
  */
 function matchesSubject(paperSubject: string, appSubject?: string): boolean {
   if (!appSubject) return true;
@@ -100,7 +100,6 @@ function matchesSubject(paperSubject: string, appSubject?: string): boolean {
   const a = appSubject.toLowerCase();
   const OTHER = /(science|physics|chemistry|biology|english|accountancy|economics|history|geography|political|psychology|sociology|business)/;
   if (a.startsWith('math')) return !OTHER.test(s); // maths: include Mathematics + generic (e.g. 'jee'), exclude other subjects
-  if (a === 'science') return /science|physics|chemistry|biology/.test(s);
   return true;
 }
 
@@ -142,6 +141,7 @@ export function paperForClient(paperId: string) {
       handling: q.handling,
       prompt: q.prompt,
       options: q.type === 'mcq' || q.type === 'assertion-reason' ? q.options ?? null : null,
+      node: q.node, // the concept this question tests — lets the client link to it for a refresh
     })),
   };
 }

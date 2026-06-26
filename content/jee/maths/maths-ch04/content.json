@@ -485,6 +485,32 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-ch04:vieta-formulas-and-conjugate-root-theorem",
+      "slug": "vieta-formulas-and-conjugate-root-theorem",
+      "title": "Use Vieta's formulas and the conjugate root theorem for polynomials",
+      "role": "intermediate",
+      "sec": 6,
+      "brief": "For a polynomial with real coefficients, complex roots come in conjugate pairs; Vieta's formulas connect the sum and product of roots to the coefficients.",
+      "explanation": "PART 1 — Vieta's formulas for a quadratic ax^2 + bx + c = 0.\nIf α and β are the roots of ax^2 + bx + c = 0 (a ≠ 0), then: sum of roots α+β = -b/a and product of roots αβ = c/a. These follow directly from the factorisation ax^2 + bx + c = a(x-α)(x-β) = a[x^2 − (α+β)x + αβ], so −b/a = α+β and c/a = αβ. Example: for x^2 − 5x + 6 = 0, sum = 5 and product = 6 (roots are 2 and 3, verifying 2+3=5 and 2×3=6).\n\nPART 2 — Conjugate root theorem.\nIf a polynomial has REAL coefficients and z = p + qi (with q ≠ 0) is a root, then its conjugate z-bar = p − qi is also a root. This is because for real coefficients a_k, if P(z) = 0 then taking conjugates of both sides: P(z-bar) = a_n(z-bar)^n + ... = conjugate(P(z)) = 0. Example: if 2+3i is a root of a real-coefficient polynomial, then 2−3i is also a root.\n\nPART 3 — Applying both to find a polynomial or its roots.\nIf the roots of a real-coefficient degree-4 polynomial include i√3, then by the conjugate root theorem −i√3 is also a root. If f(1) = −9 is also given, we can find the remaining two real roots. Strategy: write f(x) = (x^2 + 3)(x^2 + px + q), expand, match coefficients from f(1) = −9 and any other condition to find p and q.",
+      "keyMoves": [
+        "For ax^2+bx+c=0 with roots α,β: sum α+β = -b/a, product αβ = c/a",
+        "State the conjugate root theorem: complex roots of real-coefficient polynomials come in conjugate pairs",
+        "Use the pair of conjugate roots to form a real quadratic factor (x-z)(x-z-bar) = x^2 - 2Re(z)x + |z|^2"
+      ],
+      "misconceptions": [
+        "Applying conjugate root theorem to polynomials with complex (non-real) coefficients, where it does not hold",
+        "Confusing sum of roots (-b/a) with the ratio b/a (sign error)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch04:conjugate",
+        "jee:maths:maths-ch04:modulus",
+        "jee:maths:maths-ch04:multiply-complex",
+        "jee:maths:maths-ch04:real-imaginary-parts"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch04:reduce-expressions-to-a-plus-ib",
       "slug": "reduce-expressions-to-a-plus-ib",
       "title": "Reduce any complex expression to the standard form a + ib",
@@ -518,7 +544,8 @@
         "jee:maths:maths-ch04:imaginary-unit-i",
         "jee:maths:maths-ch04:complex-number-form",
         "jee:maths:maths-ch04:real-imaginary-parts",
-        "jee:maths:maths-ch04:conjugate"
+        "jee:maths:maths-ch04:conjugate",
+        "jee:maths:maths-ch04:vieta-formulas-and-conjugate-root-theorem"
       ],
       "sameConcept": [],
       "teachingInsights": []

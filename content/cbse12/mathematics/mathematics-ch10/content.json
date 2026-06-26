@@ -93,6 +93,31 @@
       "teachingInsights": []
     },
     {
+      "id": "cbse12:mathematics:mathematics-ch10:distance-from-coordinate-axis",
+      "slug": "distance-from-coordinate-axis",
+      "title": "Find the distance of a point from a coordinate axis",
+      "role": "intermediate",
+      "brief": "The distance of a point from a coordinate axis is the square root of the sum of squares of its OTHER two coordinates.",
+      "sec": 2,
+      "quote": "The distance between initial and terminal points of a vector is called the magnitude (or length) of the vector",
+      "explanation": "PART 1 — Distance from the y-axis drops the y-component.\nThe y-axis is the set of all points with x = 0 and z = 0. The shortest (perpendicular) distance from a point P(x, y, z) to the y-axis is the length of the segment drawn perpendicularly to the y-axis, which passes through (0, y, 0). That distance is √(x² + z²) — the two coordinates NOT on the axis, squared and summed. For P(3, 4, 5): distance from y-axis = √(3² + 5²) = √34.\n\nPART 2 — The pattern holds for every axis.\nFor the x-axis (points with y = 0, z = 0): distance = √(y² + z²). For the y-axis: distance = √(x² + z²). For the z-axis: distance = √(x² + y²). In each case, drop the component along the axis you are measuring to, square the remaining two, and take the square root.\n\nPART 3 — Connection to magnitude.\nThe distance from the y-axis equals |xi + zk|, the magnitude of the vector formed by the x and z components alone. This is a direct application of the 3-D distance/magnitude formula with one component set to zero.",
+      "keyMoves": [
+        "Identify which axis is given",
+        "Drop the component along that axis; take the square root of the sum of squares of the other two",
+        "For the y-axis: √(x² + z²); for the x-axis: √(y² + z²); for the z-axis: √(x² + y²)"
+      ],
+      "misconceptions": [
+        "Including all three components instead of just the two perpendicular to the axis",
+        "Using the distance from the ORIGIN (√(x²+y²+z²)) instead of the distance from the axis",
+        "Confusing distance from the y-axis with the y-coordinate itself"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch10:magnitude"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "cbse12:mathematics:mathematics-ch10:position-vector",
       "slug": "position-vector",
       "title": "Define the position vector of a point",
@@ -365,7 +390,8 @@
         "cbse12:mathematics:mathematics-ch10:unit-vector",
         "cbse12:mathematics:mathematics-ch10:scalar-product",
         "cbse12:mathematics:mathematics-ch10:collinear-vectors",
-        "cbse12:mathematics:mathematics-ch10:right-hand-rule"
+        "cbse12:mathematics:mathematics-ch10:right-hand-rule",
+        "cbse12:mathematics:mathematics-ch10:distance-from-coordinate-axis"
       ],
       "sameConcept": [],
       "teachingInsights": []

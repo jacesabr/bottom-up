@@ -298,6 +298,31 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-ch06:inclusion-exclusion-principle",
+      "slug": "inclusion-exclusion-principle",
+      "title": "Apply inclusion-exclusion to count elements in unions",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Use |A∪B| = |A|+|B|−|A∩B| and its three-set extension to count unions without double-counting, including surjection counts via \"at least one\" constraints.",
+      "explanation": "PART 1 — Two-set formula |A∪B| = |A| + |B| − |A∩B|.\nCounting |A| + |B| adds every element in A∩B twice, so we subtract |A∩B| once to correct: |A∪B| = |A| + |B| − |A∩B|. Example: of 100 students, 60 study Maths and 45 study Physics and 30 study both. Then |M∪P| = 60 + 45 − 30 = 75.\n\nPART 2 — Three-set extension.\n|A∪B∪C| = |A|+|B|+|C| − |A∩B| − |B∩C| − |A∩C| + |A∩B∩C|. The pattern: add single sets, subtract pairwise intersections, add the triple intersection. Example: 7-digit numbers from digits {1,2,3,5,7} (5 distinct digits) using each AT LEAST ONCE — total digits used is 7 and we have 5 distinct types. We need surjections from 7 positions onto 5 distinct digits. The number of such arrangements = (5^7) − C(5,1)×4^7 + C(5,2)×3^7 − C(5,3)×2^7 + C(5,4)×1^7 = 78125 − 5×16384 + 10×2187 − 10×128 + 5×1 = 78125 − 81920 + 21870 − 1280 + 5 = 16800.\n\nPART 3 — Complement method for \"at least one from each\" problems.\nFor surjection-type counting (\"each digit used at least once\"), the complement approach: |total arrangements without restriction| − |at least one digit missing| is equivalent to the inclusion-exclusion formula above. The key move is to subtract arrangements that exclude each digit, then add back when two digits are excluded, and so on, alternating signs.",
+      "keyMoves": [
+        "Apply |A∪B| = |A| + |B| − |A∩B| for two-set union counts",
+        "Extend to three sets: add singles, subtract pairs, add triple",
+        "Count surjections ('each used at least once') by inclusion-exclusion: Σ (-1)^k C(n,k) (n-k)^r"
+      ],
+      "misconceptions": [
+        "Forgetting to subtract the intersection when using |A|+|B|",
+        "Getting the sign wrong in the three-set formula (the triple intersection is ADDED back, not subtracted)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch06:combinations-ncr",
+        "jee:maths:maths-ch06:permutations-with-repetition",
+        "jee:maths:maths-ch01:compute-the-union-of-sets"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch06:solve-counting-problems",
       "slug": "solve-counting-problems",
       "title": "Solve counting problems by choosing arrangement vs selection and combining the rules",
@@ -326,7 +351,8 @@
         "jee:maths:maths-ch06:factorial-notation",
         "jee:maths:maths-ch06:permutation-definition",
         "jee:maths:maths-ch06:combination-definition",
-        "jee:maths:maths-ch06:relate-permutations-combinations"
+        "jee:maths:maths-ch06:relate-permutations-combinations",
+        "jee:maths:maths-ch06:inclusion-exclusion-principle"
       ],
       "sameConcept": [],
       "teachingInsights": []

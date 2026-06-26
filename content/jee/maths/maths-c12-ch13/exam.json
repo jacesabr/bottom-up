@@ -212,6 +212,20 @@
    "srcLabel": "Authored practice (Opus) - mathematics-ch13 (random variable example X(HT)=1)"
   },
   {
+   "nodeId": "jee:maths:maths-c12-ch13:mean-and-variance-of-discrete-distribution",
+   "kind": "book",
+   "prompt": "A discrete random variable X takes values 1, 2, 3, 4, 5 each with probability 1/5. Using E(X) = Σ xᵢ pᵢ and the shortcut Var(X) = E(X²) − [E(X)]², compute Var(X). (E(X²) = (1+4+9+16+25)/5 = 11, E(X) = 3.)",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "2",
+   "expected": {
+    "kind": "numeric",
+    "value": 2,
+    "tol": 0
+   },
+   "srcLabel": "Authored (Sonnet) - uniform {1..5}: E(X)=3, E(X²)=11, Var=11-9=2"
+  },
+  {
    "nodeId": "jee:maths:maths-c12-ch13:bayes-theorem",
    "kind": "practice",
    "prompt": "By Bayes' theorem, P(Ei|A) equals:",

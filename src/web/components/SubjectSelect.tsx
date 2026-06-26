@@ -1,6 +1,6 @@
 import '../styles/SubjectSelect.css';
 
-/** Step 2 — pick the subject within the chosen exam. Maths is live; Science comes later. */
+/** Step 2 — pick the subject within the chosen exam. Maths only (science is out of scope). */
 export default function SubjectSelect({
   exam,
   onSelect,
@@ -31,12 +31,6 @@ export default function SubjectSelect({
                 <div className="exam-label">Subject</div>
                 <div className="exam-subject">Mathematics</div>
               </button>
-
-              <div className="exam-card disabled">
-                <div className="exam-label">Subject</div>
-                <div className="exam-subject muted">Science</div>
-                <div className="exam-note">Coming soon</div>
-              </div>
             </div>
           </div>
         </div>

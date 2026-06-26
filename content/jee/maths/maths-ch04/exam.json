@@ -159,5 +159,23 @@
       },
       "srcLabel": "Authored practice (Opus) - maths-ch04 Sec 4.5 Conjugate as mirror image (Fig 4.3)"
     }
+    ,
+    {
+      "nodeId": "jee:maths:maths-ch04:vieta-formulas-and-conjugate-root-theorem",
+      "kind": "book",
+      "prompt": "A quadratic equation with real coefficients has one root 3 + 2i. Using the conjugate root theorem, the product of the two roots is:",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "expected": {
+        "kind": "mcq",
+        "correct": "13",
+        "options": [
+          "13",
+          "6 + 4i",
+          "9",
+          "4i"
+        ]
+      }
+    }
   ]
 }

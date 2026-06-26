@@ -35,7 +35,8 @@
         "cbse10:maths:jemh101:prove-irrational-rational-times-irrational",
         "cbse10:maths:jemh101:solve-lcm-meeting-time-word-problem",
         "cbse10:maths:jemh101:explain-sum-is-composite",
-        "cbse10:maths:jemh101:close-irrationality-contradiction"
+        "cbse10:maths:jemh101:close-irrationality-contradiction",
+        "cbse10:maths:jemh101:counter-examples-irrational-rules"
       ],
       "sameConcept": [],
       "teachingInsights": [],
@@ -949,6 +950,31 @@
       ],
       "prereqs": [
         "cbse10:maths:jemh101:close-irrationality-contradiction"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh101:counter-examples-irrational-rules",
+      "slug": "counter-examples-irrational-rules",
+      "title": "Counter-examples: product/sum of two irrationals need not be irrational",
+      "role": "intermediate",
+      "brief": "The rules 'irrational × irrational = irrational' and 'irrational + irrational = irrational' are both FALSE — one counter-example each kills them.",
+      "sec": 2,
+      "explanation": "PART 1 — Counter-example for the product rule.\nThe product of two irrationals is SOMETIMES rational. Counter-example: √2 × √2 = 2, which is rational. So the rule 'irrational × irrational is always irrational' is FALSE. One counter-example is enough to disprove a universal claim.\n\nPART 2 — Counter-example for the sum rule.\nThe sum of two irrationals is SOMETIMES rational. Counter-example: √2 + (−√2) = 0, which is rational. Likewise √3 + (4 − √3) = 4 is rational, though neither summand is. The rule 'irrational + irrational is always irrational' is FALSE.\n\nPART 3 — What IS always true (the safe direction).\nA rational + an irrational is always irrational, and a non-zero rational × an irrational is always irrational (these are the NCERT Examples 6 and 7 and are proved by contradiction upstream). The unsafe rules are the purely irrational ones — those can cancel or combine to give a rational result.",
+      "keyMoves": [
+        "Produce the counter-example √2 × √2 = 2 (rational) to kill the product rule",
+        "Produce the counter-example √2 + (−√2) = 0 (rational) to kill the sum rule",
+        "Recall the safe direction: rational ± irrational and nonzero rational × irrational stay irrational"
+      ],
+      "misconceptions": [
+        "Believing 'irrational × irrational is always irrational' — disproved by √2 × √2 = 2",
+        "Believing 'irrational + irrational is always irrational' — disproved by √2 + (−√2) = 0",
+        "Confusing the disproved rule with the TRUE rule (rational ± irrational = irrational)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh101:prove-irrational-rational-minus-irrational",
+        "cbse10:maths:jemh101:prove-irrational-rational-times-irrational"
       ],
       "sameConcept": [],
       "teachingInsights": []

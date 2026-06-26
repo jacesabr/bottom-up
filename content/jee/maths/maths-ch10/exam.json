@@ -163,6 +163,40 @@
         "tol": 0.02
       },
       "srcLabel": "Authored practice (Opus) - maths-ch10 Sec 10.6.3, cf. Example 14(i)"
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:tangent-to-circle-from-external-point",
+      "kind": "book",
+      "prompt": "Find the length of the tangent drawn from the point P(5, 4) to the circle x² + y² = 9.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "expected": {
+        "kind": "mcq",
+        "correct": "4√2",
+        "options": [
+          "4√2",
+          "√41",
+          "√7",
+          "2√7"
+        ]
+      }
+    },
+    {
+      "nodeId": "jee:maths:maths-ch10:tangent-to-ellipse-slope-form",
+      "kind": "book",
+      "prompt": "A tangent to the ellipse x²/16 + y²/9 = 1 has slope 2. Using y = mx ± √(a²m²+b²), find the value of c (take the positive root).",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "expected": {
+        "kind": "mcq",
+        "correct": "√73",
+        "options": [
+          "√73",
+          "√55",
+          "√79",
+          "√65"
+        ]
+      }
     }
   ]
 }

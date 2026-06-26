@@ -1,0 +1,1007 @@
+{
+  "paperId": "cbse10-maths-basic-2024-25",
+  "exam": "cbse10",
+  "subject": "maths",
+  "title": "CBSE Class 10 Mathematics (Basic) — Sample Question Paper 2024-25",
+  "maxMarks": 80,
+  "questions": [
+    {
+      "q": 1,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q1",
+          "prompt": "HCF of (3³ × 5² × 2), (3² × 5³ × 2²) and (3⁴ × 5 × 2³) is",
+          "options": ["450", "90", "180", "630"],
+          "answer": "90"
+        }
+      ],
+      "microskills": ["Compute HCF of numbers given as prime factorisation by taking minimum powers of common primes"],
+      "nodeTagged": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "nodesTeaching": ["cbse10:maths:jemh101:compute-hcf-prime-factorisation", "cbse10:maths:jemh101:prime-factorise-integer"],
+      "coverage": "full",
+      "coverageNote": "compute-hcf-prime-factorisation directly teaches reading min exponents from prime factorisations to find HCF.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on compute-hcf-prime-factorisation match this style exactly.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 2,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q2",
+          "prompt": "The system of linear equations represented by the lines l and m is",
+          "options": ["consistent with unique solution", "inconsistent", "consistent with three solutions", "consistent with many solutions"],
+          "answer": "consistent with unique solution"
+        }
+      ],
+      "microskills": ["Classify a pair of linear equations as consistent/inconsistent/dependent by reading a graph"],
+      "nodeTagged": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "nodesTeaching": ["cbse10:maths:jemh103:classify-pair-by-coefficient-ratios", "cbse10:maths:jemh103:identify-consistent-inconsistent-dependent"],
+      "coverage": "full",
+      "coverageNote": "identify-consistent-inconsistent-dependent teaches reading graph intersection type and classifying the system.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates cover all three classification cases; intersecting lines → unique solution is directly addressed.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 3,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q3",
+          "prompt": "The value of k for which the quadratic equation kx² − 5x + 1 = 0 does not have a real solution, is",
+          "options": ["0", "25/4", "4/25", "7"],
+          "answer": "7"
+        }
+      ],
+      "microskills": ["Find k such that discriminant < 0 (no real roots)"],
+      "nodeTagged": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "nodesTeaching": ["cbse10:maths:jemh104:compute-discriminant", "cbse10:maths:jemh104:classify-nature-of-roots", "cbse10:maths:jemh104:identify-coefficients-abc"],
+      "coverage": "full",
+      "coverageNote": "compute-discriminant and classify-nature-of-roots together cover finding k for no real roots via D < 0.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates address discriminant conditions for nature of roots including no real roots case.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 4,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q4",
+          "prompt": "The distance between the points (a, b) and (−a, −b) is",
+          "options": ["√(a²+b²)", "a²+b²", "2√(a²+b²)", "4√(a²+b²)"],
+          "answer": "2√(a²+b²)"
+        }
+      ],
+      "microskills": ["Apply distance formula with symbolic coordinates"],
+      "nodeTagged": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "nodesTeaching": ["cbse10:maths:jemh107:apply-distance-formula"],
+      "coverage": "full",
+      "coverageNote": "apply-distance-formula directly covers using sqrt((x2-x1)²+(y2-y1)²) with symbolic inputs.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on apply-distance-formula include symbolic-variable examples comparable to this.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 5,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q5",
+          "prompt": "In the given figure, PQ and PR are tangents to a circle centred at O. If ∠QPR=35° then ∠QOR is equal to",
+          "options": ["70°", "90°", "135°", "145°"],
+          "answer": "145°"
+        }
+      ],
+      "microskills": ["Apply supplementary angle relation between tangent-pair angle and central angle"],
+      "nodeTagged": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "nodesTeaching": ["cbse10:maths:jemh110:relate-angle-tangents-central-angle"],
+      "coverage": "full",
+      "coverageNote": "relate-angle-tangents-central-angle teaches exactly ∠PTQ + ∠POQ = 180°, giving ∠QOR = 145°.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates include this exact supplementary-angle application with numerical values.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 6,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q6",
+          "prompt": "If △ABC ∼ △PQR such that 3AB = 2PQ and BC=10 cm, then length QR is equal to",
+          "options": ["10 cm", "15 cm", "20/3 cm", "30 cm"],
+          "answer": "15 cm"
+        }
+      ],
+      "microskills": ["Use proportionality of corresponding sides in similar triangles to find unknown length"],
+      "nodeTagged": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "nodesTeaching": ["cbse10:maths:jemh106:find-unknown-length-via-proportion", "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"],
+      "coverage": "full",
+      "coverageNote": "find-unknown-length-via-proportion teaches setting up the side ratio equation AB/PQ = BC/QR and solving.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on find-unknown-length-via-proportion cover this pattern directly.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 7,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q7",
+          "prompt": "If 3 cotA = 4, where 0° < A < 90°, then secA is equal to",
+          "options": ["5/4", "4/3", "5/3", "3/4"],
+          "answer": "5/4"
+        }
+      ],
+      "microskills": ["Find secA given cotA by constructing the right triangle"],
+      "nodeTagged": "cbse10:maths:jemh108:prove-trig-identities",
+      "nodesTeaching": ["cbse10:maths:jemh108:find-ratios-from-one-ratio", "cbse10:maths:jemh108:compute-reciprocal-ratios"],
+      "coverage": "full",
+      "coverageNote": "find-ratios-from-one-ratio teaches deriving all trig ratios from a single given ratio via the right triangle; compute-reciprocal-ratios covers secA = 1/cosA.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on find-ratios-from-one-ratio use cotA or tanA as the given ratio and ask for other ratios.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 8,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q8",
+          "prompt": "In the given figure, ΔBAC is similar to",
+          "options": ["ΔAED", "ΔEAD", "ΔACB", "ΔBCA"],
+          "answer": "ΔEAD"
+        }
+      ],
+      "microskills": ["Identify the correctly ordered similarity correspondence from a figure"],
+      "nodeTagged": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "nodesTeaching": ["cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity", "cbse10:maths:jemh106:apply-aaa-aa-criterion"],
+      "coverage": "full",
+      "coverageNote": "read-off-corresponding-parts-from-similarity teaches maintaining vertex order so angles correspond correctly.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on correspondence ordering match the difficulty of this question.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 9,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q9",
+          "prompt": "If H.C.F(420,189) = 21 then L.C.M(420,189) is",
+          "options": ["420", "1890", "3780", "3680"],
+          "answer": "3780"
+        }
+      ],
+      "microskills": ["Use HCF × LCM = product of two numbers to find LCM"],
+      "nodeTagged": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "nodesTeaching": ["cbse10:maths:jemh101:use-hcf-lcm-product-relation"],
+      "coverage": "full",
+      "coverageNote": "use-hcf-lcm-product-relation teaches LCM = (a×b)/HCF directly.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on use-hcf-lcm-product-relation require this exact computation.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 10,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q10",
+          "prompt": "The 4th term from the end of the A.P −8, −5, −2, …, 49 is",
+          "options": ["37", "40", "1", "43"],
+          "answer": "40"
+        }
+      ],
+      "microskills": ["Find the kth term from the end of an AP"],
+      "nodeTagged": "cbse10:maths:jemh105:solve-ap-problems",
+      "nodesTeaching": ["cbse10:maths:jemh105:term-from-last", "cbse10:maths:jemh105:apply-nth-term-formula", "cbse10:maths:jemh105:count-terms-ap"],
+      "coverage": "full",
+      "coverageNote": "term-from-last teaches that 4th from end = (n-3)th from start; count-terms-ap finds n; apply-nth-term-formula computes the value.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on term-from-last and count-terms-ap cover this multi-step pattern.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 11,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q11",
+          "prompt": "In the given figure, if △OCA ∼ △OBD then ∠OAC is equal to",
+          "options": ["58°", "55°", "128°", "52°"],
+          "answer": "52°"
+        }
+      ],
+      "microskills": ["Find an angle using corresponding angles in similar triangles from given angle data"],
+      "nodeTagged": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "nodesTeaching": ["cbse10:maths:jemh106:find-unknown-angle-via-similarity", "cbse10:maths:jemh106:read-off-corresponding-parts-from-similarity"],
+      "coverage": "full",
+      "coverageNote": "find-unknown-angle-via-similarity teaches matching vertex-to-vertex and reading off corresponding angles.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates cover angle-finding in similar triangles at this difficulty level.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 12,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q12",
+          "prompt": "If perimeter of given triangle is 38 cm, then length AP is equal to",
+          "options": ["19 cm", "5 cm", "10 cm", "8 cm"],
+          "answer": "5 cm"
+        }
+      ],
+      "microskills": ["Use equal tangent segments from vertices of triangle inscribed about circle to find a side length from perimeter"],
+      "nodeTagged": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "nodesTeaching": ["cbse10:maths:jemh110:apply-equal-tangent-lengths", "cbse10:maths:jemh110:find-triangle-sides-inscribed-circle"],
+      "coverage": "full",
+      "coverageNote": "find-triangle-sides-inscribed-circle teaches using equal tangent segments at each vertex plus perimeter to solve for an unknown segment.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on this node address exactly this setup of triangle perimeter + equal tangents.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 13,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q13",
+          "prompt": "(1−tan²30°)/(1+tan²30°) is equal to",
+          "options": ["cos60°", "sin60°", "1", "tan²60°"],
+          "answer": "cos60°"
+        }
+      ],
+      "microskills": ["Evaluate a trig expression at a standard angle and recognise the result as another standard ratio"],
+      "nodeTagged": "cbse10:maths:jemh108:prove-trig-identities",
+      "nodesTeaching": ["cbse10:maths:jemh108:recall-30-60-ratios", "cbse10:maths:jemh108:evaluate-specific-angle-expressions", "cbse10:maths:jemh108:apply-pythagorean-identity"],
+      "coverage": "full",
+      "coverageNote": "evaluate-specific-angle-expressions and recall-30-60-ratios together address substituting tan30° = 1/√3 and simplifying to get 1/2 = cos60°.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on evaluate-specific-angle-expressions include similar two-step substitution problems.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 14,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q14",
+          "prompt": "The total surface area of solid hemisphere of radius r is",
+          "options": ["πr²", "2πr²", "3πr²", "4πr²"],
+          "answer": "3πr²"
+        }
+      ],
+      "microskills": ["Recall TSA of solid hemisphere = 3πr²"],
+      "nodeTagged": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations",
+      "nodesTeaching": ["cbse10:maths:jemh112:compute-tsa-solid-hemisphere", "cbse10:maths:jemh112:csa-hemisphere"],
+      "coverage": "full",
+      "coverageNote": "compute-tsa-solid-hemisphere explicitly teaches TSA = 2πr² + πr² = 3πr² and notes CBSE Basic SQP tests this.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on this node directly probe 3πr² formula recall.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 15,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q15",
+          "prompt": "Which of the following cannot be the probability of an event?",
+          "options": ["0.4", "4%", "0.04%", "4"],
+          "answer": "4"
+        }
+      ],
+      "microskills": ["Identify a value outside [0,1] as invalid probability"],
+      "nodeTagged": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "nodesTeaching": ["cbse10:maths:jemh114:probability-range-bounds"],
+      "coverage": "full",
+      "coverageNote": "probability-range-bounds teaches 0 ≤ P(E) ≤ 1 and explicitly says any value outside this is invalid.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on probability-range-bounds include identifying invalid probability values.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 16,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q16",
+          "prompt": "The roots of quadratic equation 3x² − 4√3x + 4 = 0 are",
+          "options": ["not real", "real and equal", "rational and distinct", "irrational and distinct"],
+          "answer": "real and equal"
+        }
+      ],
+      "microskills": ["Compute discriminant D = b²-4ac and classify nature of roots"],
+      "nodeTagged": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "nodesTeaching": ["cbse10:maths:jemh104:compute-discriminant", "cbse10:maths:jemh104:classify-nature-of-roots", "cbse10:maths:jemh104:identify-coefficients-abc"],
+      "coverage": "full",
+      "coverageNote": "compute-discriminant + classify-nature-of-roots cover D = 48-48 = 0 → real and equal.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on classify-nature-of-roots include the D = 0 (equal roots) case.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 17,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q17",
+          "prompt": "The following distribution shows the marks distribution of 80 students. Marks: Below 10, Below 20, Below 30, Below 40, Below 50, Below 60; No. of students: 2, 12, 28, 56, 76, 80. The median class is",
+          "options": ["20-30", "40-50", "30-40", "10-20"],
+          "answer": "30-40"
+        }
+      ],
+      "microskills": ["Find median class from cumulative frequency table by computing n/2 and locating class"],
+      "nodeTagged": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "nodesTeaching": ["cbse10:maths:jemh113:identify-median-class", "cbse10:maths:jemh113:compute-cumulative-frequency-less-than", "cbse10:maths:jemh113:convert-cf-table-to-frequencies"],
+      "coverage": "full",
+      "coverageNote": "identify-median-class teaches finding n/2=40 and scanning cumulative frequencies: 28 < 40 ≤ 56, so class 30-40 is the median class.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on identify-median-class match this exactly.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 18,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "id": "Q18",
+          "prompt": "A quadratic polynomial whose zeroes are 2/5 and −1/5 is",
+          "options": ["25x² + 5x − 2", "5x² − 2x + 1", "5x² + 2x − 1", "25x² − 5x − 2"],
+          "answer": "25x² − 5x − 2"
+        }
+      ],
+      "microskills": ["Build a quadratic polynomial from given zeroes using sum and product"],
+      "nodeTagged": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "nodesTeaching": ["cbse10:maths:jemh102:build-quadratic-from-sum-and-product", "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations"],
+      "coverage": "full",
+      "coverageNote": "build-quadratic-from-sum-and-product teaches k(x² - Sx + P) = 0 using sum=1/5 and product=-2/25 to get 25x²-5x-2.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on build-quadratic-from-sum-and-product address fractional zeroes cases.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 19,
+      "section": "A",
+      "marks": 1,
+      "type": "assertion-reason",
+      "variants": [
+        {
+          "id": "Q19",
+          "prompt": "Assertion (A): The sequence −1, −1, −1, …, −1 is an AP. Reason (R): In an AP, aₙ − aₙ₋₁ is constant where n ≥ 2 and n ∈ N.",
+          "options": [
+            "Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)",
+            "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)",
+            "Assertion (A) is true but reason (R) is false.",
+            "Assertion (A) is false but reason (R) is true."
+          ],
+          "answer": "Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)"
+        }
+      ],
+      "microskills": ["Verify an AP by checking constant difference; evaluate if the reason correctly explains the assertion"],
+      "nodeTagged": "cbse10:maths:jemh105:solve-ap-problems",
+      "nodesTeaching": ["cbse10:maths:jemh105:apply-nth-term-formula", "cbse10:maths:jemh105:derive-d-from-nth-term-rule"],
+      "coverage": "full",
+      "coverageNote": "The constant-difference definition is taught as part of AP foundations; all prerequisite nodes cover AP definition and nth-term.",
+      "gateDifficulty": "borderline",
+      "difficultyNote": "Assertion-reason format requires evaluating logical dependency between two statements, not just applying a formula; gates may not test this meta-level reasoning.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 20,
+      "section": "A",
+      "marks": 1,
+      "type": "assertion-reason",
+      "variants": [
+        {
+          "id": "Q20",
+          "prompt": "Assertion (A): (2 + √3)√3 is an irrational number. Reason (R): Product of two irrational numbers is always irrational.",
+          "options": [
+            "Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)",
+            "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)",
+            "Assertion (A) is true but reason (R) is false.",
+            "Assertion (A) is false but reason (R) is true."
+          ],
+          "answer": "Assertion (A) is true but reason (R) is false."
+        }
+      ],
+      "microskills": ["Identify that (2+√3)√3 = 2√3+3 is irrational; recognise that the Reason is false (product of two irrationals is not always irrational)"],
+      "nodeTagged": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "nodesTeaching": ["cbse10:maths:jemh101:close-irrationality-contradiction", "cbse10:maths:jemh101:prove-irrational-rational-minus-irrational"],
+      "coverage": "partial",
+      "coverageNote": "The irrationality of 2√3+3 is taught, but the specific counter-example skill (√2 × √2 = 2, showing product of irrationals can be rational) is not an explicit node.",
+      "gateDifficulty": "borderline",
+      "difficultyNote": "Assertion-reason format testing counter-examples to false general statements is harder than direct application; gates likely do not cover this nuance.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "No explicit node teaches that the product of two irrationals is NOT always irrational (counter-example: √2×√2=2).",
+          "fix": "Add a node or gate in jemh101 addressing counter-examples to common false rules about irrational number operations."
+        }
+      ]
+    },
+    {
+      "q": 21,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "id": "Q21A",
+          "prompt": "P(x, y) is a point equidistant from the points A(4,3) and B(3,4). Prove that x − y = 0.",
+          "answer": "PA² = PB² ⟹ (x−4)²+(y−3)² = (x−3)²+(y−4)² ⟹ −8x+16−6y+9 = −6x+9−8y+16 ⟹ −2x+2y=0 ⟹ x=y ⟹ x−y=0."
+        },
+        {
+          "id": "Q21B",
+          "prompt": "In the given figure, ΔABC is an equilateral triangle. Coordinates of vertices A and B are (0,3) and (0,−3) respectively. Find the coordinates of point C.",
+          "answer": "AB = 6 so side = 6. C lies on x-axis. OC = √(6²−3²) = √27 = 3√3. C = (3√3, 0)."
+        }
+      ],
+      "microskills": ["Set up and solve equidistance condition using distance formula; find third vertex of equilateral triangle using distance formula"],
+      "nodeTagged": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "nodesTeaching": ["cbse10:maths:jemh107:apply-distance-formula", "cbse10:maths:jemh107:derive-equidistant-relation"],
+      "coverage": "full",
+      "coverageNote": "derive-equidistant-relation and apply-distance-formula together cover both variants (equidistance proof and finding a vertex).",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on derive-equidistant-relation address the equidistance proof; apply-distance-formula gates handle vertex finding.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 22,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "id": "Q22",
+          "prompt": "In two concentric circles, a chord of length 8 cm of the larger circle touches the smaller circle. If the radius of the larger circle is 5 cm, then find the radius of the smaller circle.",
+          "answer": "Chord is tangent to smaller circle so inner radius ⊥ chord. Half chord = 4 cm. r = √(5²−4²) = √9 = 3 cm."
+        }
+      ],
+      "microskills": ["Use tangent perpendicularity + chord bisection + Pythagoras for concentric circles"],
+      "nodeTagged": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "nodesTeaching": ["cbse10:maths:jemh110:compute-chord-touching-smaller-circle", "cbse10:maths:jemh110:apply-tangent-perpendicular-radius", "cbse10:maths:jemh110:use-perpendicular-bisects-chord"],
+      "coverage": "full",
+      "coverageNote": "compute-chord-touching-smaller-circle is specifically designed for this concentric-circles problem type.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on compute-chord-touching-smaller-circle use this exact problem setup.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 23,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "id": "Q23A",
+          "prompt": "The sum of the first 12 terms of an A.P. is 900. If its first term is 20 then find the common difference and 12th term.",
+          "answer": "(12/2)[2×20 + 11d] = 900 ⟹ 240+66d = 900 ⟹ d = 10. a₁₂ = 20 + 110 = 130."
+        },
+        {
+          "id": "Q23B",
+          "prompt": "The sum of first n terms of an A.P. is represented by Sₙ = 6n − n². Find the common difference.",
+          "answer": "a₁ = S₁ = 5. a₂ = S₂ − S₁ = 8 − 5 = 3. d = a₂ − a₁ = −2."
+        }
+      ],
+      "microskills": ["Use sum formula to find d and nth term; derive d from Sn formula"],
+      "nodeTagged": "cbse10:maths:jemh105:solve-ap-problems",
+      "nodesTeaching": ["cbse10:maths:jemh105:apply-sum-formula-a-d", "cbse10:maths:jemh105:apply-nth-term-formula", "cbse10:maths:jemh105:find-unknown-from-sum-system", "cbse10:maths:jemh105:derive-d-from-nth-term-rule"],
+      "coverage": "full",
+      "coverageNote": "apply-sum-formula-a-d and find-unknown-from-sum-system cover Q23A; derive-d-from-nth-term-rule covers the Sn approach in Q23B.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on these nodes include both sum-to-find-d problems and Sn-formula questions.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 24,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "id": "Q24",
+          "prompt": "If sin(A − B) = 1/2 and cos(A + B) = 1/2, 0° < A + B < 90° and A > B, then find the values of A and B.",
+          "answer": "A−B = 30°, A+B = 60°. Solving: A = 45°, B = 15°."
+        }
+      ],
+      "microskills": ["Use standard angle inverses to set up simultaneous equations and solve for A and B"],
+      "nodeTagged": "cbse10:maths:jemh108:prove-trig-identities",
+      "nodesTeaching": ["cbse10:maths:jemh108:recall-30-60-ratios", "cbse10:maths:jemh108:recall-45-ratios", "cbse10:maths:jemh108:evaluate-specific-angle-expressions"],
+      "coverage": "full",
+      "coverageNote": "recall-30-60-ratios and recall-45-ratios provide sin30°=1/2 and cos60°=1/2; the simultaneous-equation step is basic algebra.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on standard angle recall cover recognition of sin and cos values; this question adds a simple algebra layer.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 25,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "id": "Q25",
+          "prompt": "Calculate mode of the following distribution: Class: 5-10, 10-15, 15-20, 20-25, 25-30, 30-35; Frequency: 5, 6, 15, 10, 5, 4.",
+          "answer": "Modal class 15-20 (max freq=15). Mode = 15 + 5×(15−6)/(2×15−6−10) = 15 + 5×9/14 = 15 + 3.21 ≈ 18.21."
+        }
+      ],
+      "microskills": ["Identify modal class; apply grouped-data mode formula"],
+      "nodeTagged": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "nodesTeaching": ["cbse10:maths:jemh113:apply-mode-formula", "cbse10:maths:jemh113:identify-modal-class", "cbse10:maths:jemh113:read-modal-formula-parameters"],
+      "coverage": "full",
+      "coverageNote": "apply-mode-formula is the exact skill; the chapter narrative explicitly notes this is the Basic SQP Q25 gate.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "apply-mode-formula gate uses this exact data set.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 26,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "id": "Q26",
+          "prompt": "Prove that √5 is an irrational number.",
+          "answer": "Assume √5 = p/q coprime. 5q² = p² ⟹ 5|p ⟹ p=5a ⟹ 5q²=25a² ⟹ 5|q. Contradicts gcd(p,q)=1. Hence √5 irrational."
+        }
+      ],
+      "microskills": ["Conduct proof by contradiction using prime divisibility to show √5 is irrational"],
+      "nodeTagged": "cbse10:maths:jemh101:apply-real-number-theorems",
+      "nodesTeaching": ["cbse10:maths:jemh101:close-irrationality-contradiction", "cbse10:maths:jemh101:prove-irrational-rational-minus-irrational", "cbse10:maths:jemh101:state-fundamental-theorem-arithmetic"],
+      "coverage": "full",
+      "coverageNote": "close-irrationality-contradiction teaches exactly the contradiction-based proof template for √p irrationality.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on irrationality proof nodes use this exact proof structure.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 27,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "id": "Q27A",
+          "prompt": "Find the ratio in which the y-axis divides the line segment joining the points (4, −5) and (−1, 2). Also find the point of intersection.",
+          "answer": "P(0,y). Section formula x: (−k+4)/(k+1)=0 ⟹ k=4. Ratio=4:1. y=(4×2+1×(−5))/5 = 3/5. Point (0, 3/5)."
+        },
+        {
+          "id": "Q27B",
+          "prompt": "Line 4x + y = 4 divides the line segment joining the points (−2, −1) and (3, 5) in a certain ratio. Find the ratio.",
+          "answer": "Let ratio k:1. x=(3k−2)/(k+1), y=(5k−1)/(k+1). Sub in 4x+y=4: 12k−8+5k−1=4k+4 ⟹ 13k=13 ⟹ k=1. Ratio 1:1."
+        }
+      ],
+      "microskills": ["Find ratio using section formula with one coordinate constraint (y-axis or on a line)"],
+      "nodeTagged": "cbse10:maths:jemh107:solve-coordinate-geometry-problems",
+      "nodesTeaching": ["cbse10:maths:jemh107:apply-section-formula", "cbse10:maths:jemh107:find-ratio-axis-divides"],
+      "coverage": "full",
+      "coverageNote": "find-ratio-axis-divides covers Q27A (y-axis case); apply-section-formula covers Q27B (line-constraint case).",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on these nodes address both the axis-division and line-constraint problem types.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 28,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "id": "Q28",
+          "prompt": "Prove that: (cosecA − sinA)(secA − cosA) = 1/(tanA + cotA).",
+          "answer": "LHS = (cos²A/sinA)(sin²A/cosA) = sinA cosA. RHS = 1/((sin²A+cos²A)/sinA cosA) = sinA cosA. LHS = RHS."
+        }
+      ],
+      "microskills": ["Simplify trig identity by converting to sinA and cosA and using Pythagorean identity"],
+      "nodeTagged": "cbse10:maths:jemh108:prove-trig-identities",
+      "nodesTeaching": ["cbse10:maths:jemh108:apply-pythagorean-identity", "cbse10:maths:jemh108:relate-tan-to-sin-cos", "cbse10:maths:jemh108:define-trig-ratios"],
+      "coverage": "full",
+      "coverageNote": "prove-trig-identities is the goal node; apply-pythagorean-identity and relate-tan-to-sin-cos provide all steps needed.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on the proof nodes cover multi-step identity proofs at this level.",
+      "examDifficulty": "Hard",
+      "flags": []
+    },
+    {
+      "q": 29,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "id": "Q29",
+          "prompt": "Find the mean using the step deviation method. Class: 0-10, 10-20, 20-30, 30-40, 40-50; Frequency: 6, 10, 15, 9, 10.",
+          "answer": "a=25, h=10. Class marks: 5,15,25,35,45. u: −2,−1,0,1,2. Σf=50, Σfu=6(−2)+10(−1)+0+9+20=−12−10+0+9+20=7. Mean=25+10×7/50=26.4."
+        }
+      ],
+      "microskills": ["Apply step-deviation method: compute ui, form Σfui/Σf, scale and shift"],
+      "nodeTagged": "cbse10:maths:jemh113:find-measures-of-central-tendency-grouped-data",
+      "nodesTeaching": ["cbse10:maths:jemh113:compute-mean-step-deviation-method", "cbse10:maths:jemh113:compute-step-deviation-ui", "cbse10:maths:jemh113:choose-assumed-mean", "cbse10:maths:jemh113:compute-deviation-di"],
+      "coverage": "full",
+      "coverageNote": "compute-mean-step-deviation-method is the exact skill; supporting nodes cover each sub-step.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on compute-mean-step-deviation-method require this full procedure.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 30,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "id": "Q30A",
+          "prompt": "In the given figure, PA and PB are tangents to a circle centred at O. Prove that (i) OP bisects ∠APB (ii) OP is the right bisector of AB.",
+          "answer": "ΔOAP ≅ ΔOBP by RHS (OA=OB, OP common, ∠OAP=∠OBP=90°) ⟹ ∠APO=∠BPO (OP bisects ∠P). Let Q = OP∩AB: ΔAQP ≅ ΔBQP (SAS) ⟹ AQ=QB and ∠AQP=90° ⟹ OP is right bisector of AB."
+        },
+        {
+          "id": "Q30B",
+          "prompt": "Prove that the lengths of tangents drawn from an external point to a circle are equal.",
+          "answer": "Join OA, OB, OP. ΔOAP and ΔOBP: ∠OAP=∠OBP=90° (radius⊥tangent), OA=OB (radii), OP=OP (common). By RHS: ΔOAP≅ΔOBP. By CPCT: PA=PB."
+        }
+      ],
+      "microskills": ["Prove tangent bisection properties using RHS congruence; prove equal tangents theorem using RHS+CPCT"],
+      "nodeTagged": "cbse10:maths:jemh110:solve-circle-tangent-problems",
+      "nodesTeaching": ["cbse10:maths:jemh110:prove-equal-tangents-rhs", "cbse10:maths:jemh110:apply-rhs-cpct-congruence", "cbse10:maths:jemh110:apply-tangent-perpendicular-radius"],
+      "coverage": "full",
+      "coverageNote": "prove-equal-tangents-rhs directly teaches the proof in Q30B; the same RHS machinery covers Q30A. Q30B is explicitly a CBSE Basic SQP question per chapter narrative.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on prove-equal-tangents-rhs are keyed to this exact proof.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 31,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "id": "Q31",
+          "prompt": "The sum of a two-digit number and the number obtained by reversing the order of its digits is 99. If ten's digit is 3 more than the unit's digit, then find the number.",
+          "answer": "Let number = 10x+y. (10x+y)+(10y+x)=99 ⟹ x+y=9. x=y+3. y=3, x=6. Number=63."
+        }
+      ],
+      "microskills": ["Form two equations from a two-digit number word problem; solve by substitution"],
+      "nodeTagged": "cbse10:maths:jemh103:solve-pair-linear-equations-two-variables",
+      "nodesTeaching": ["cbse10:maths:jemh103:form-equations-from-word-problem", "cbse10:maths:jemh103:model-two-digit-number-by-place-value", "cbse10:maths:jemh103:solve-by-substitution"],
+      "coverage": "full",
+      "coverageNote": "model-two-digit-number-by-place-value and form-equations-from-word-problem are explicitly designed for this problem type.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on model-two-digit-number-by-place-value use this exact class of problem.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 32,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "variants": [
+        {
+          "id": "Q32A",
+          "prompt": "Amita buys some books for ₹1920. If she had bought 4 more books for the same amount each book would cost her ₹24 less. How many books did she buy? What was the initial price of one book?",
+          "answer": "1920/x − 1920/(x+4) = 24 ⟹ 1920×4 = 24x(x+4) ⟹ x²+4x−320=0 ⟹ (x−16)(x+20)=0 ⟹ x=16. Price = 1920/16 = ₹120."
+        },
+        {
+          "id": "Q32B",
+          "prompt": "A train travels at a certain average speed for a distance of 132 km and then travels a distance of 140 km at an average speed of 4 km/h more than the initial speed. If it takes 4 hours to complete the whole journey, what was the initial average speed? Determine the time taken by the train to cover the distances separately.",
+          "answer": "132/x + 140/(x+4) = 4 ⟹ 132(x+4)+140x = 4x(x+4) ⟹ 272x+528=4x²+16x ⟹ 4x²−256x−528=0 ⟹ x²−64x−132=0 ⟹ (x−66)(x+2)=0 ⟹ x=66 km/h. Times: 132/66=2h, 140/70=2h."
+        }
+      ],
+      "microskills": ["Translate word problem to quadratic; solve by factoring; reject negative root"],
+      "nodeTagged": "cbse10:maths:jemh104:solve-quadratic-equation",
+      "nodesTeaching": ["cbse10:maths:jemh104:translate-word-problem-to-quadratic", "cbse10:maths:jemh104:split-middle-term", "cbse10:maths:jemh104:reject-inadmissible-root", "cbse10:maths:jemh104:factor-by-grouping"],
+      "coverage": "full",
+      "coverageNote": "translate-word-problem-to-quadratic and the factoring chain teach exactly these rate/price problems.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on translate-word-problem-to-quadratic include rate and price word problems at this difficulty.",
+      "examDifficulty": "Hard",
+      "flags": []
+    },
+    {
+      "q": 33,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "variants": [
+        {
+          "id": "Q33",
+          "prompt": "If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, then prove that the other two sides are divided in the same ratio. (Basic Proportionality Theorem)",
+          "answer": "Draw altitudes from D and E to AB/AC. Area argument: (Ar△ADE)/(Ar△BDE) = AD/BD; (Ar△ADE)/(Ar△CDE) = AE/CE. △BDE and △CDE share same base DE ⟹ equal areas ⟹ AD/BD = AE/CE."
+        }
+      ],
+      "microskills": ["Construct altitude; use ratio of areas argument to prove BPT"],
+      "nodeTagged": "cbse10:maths:jemh106:prove-and-apply-triangle-similarity",
+      "nodesTeaching": ["cbse10:maths:jemh106:prove-bpt-with-areas", "cbse10:maths:jemh106:apply-basic-proportionality-theorem"],
+      "coverage": "full",
+      "coverageNote": "prove-bpt-with-areas is the exact node for this theorem proof.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on prove-bpt-with-areas address this formal proof.",
+      "examDifficulty": "Hard",
+      "flags": []
+    },
+    {
+      "q": 34,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "variants": [
+        {
+          "id": "Q34",
+          "prompt": "The perimeter of sector OACB of the circle centred at O and of radius 24 is 73.12 cm. (i) Find the central angle ∠AOB. (ii) Find the area of the minor segment ACB. (Use π = 3.14 and √3 = 1.73)",
+          "answer": "(i) 2r + 2πrθ/360 = 73.12 ⟹ 48 + 2×3.14×24×θ/360 = 73.12 ⟹ 0.4187θ = 25.12 ⟹ θ = 60°. (ii) Sector area = 3.14×576×60/360 = 301.44 cm². Triangle area (equilateral, side=24): √3/4×576 = 1.73/4×576 = 249.12 cm². Segment = 301.44 − 249.12 = 52.32 cm²."
+        }
+      ],
+      "microskills": ["Find central angle from sector perimeter; compute segment area as sector minus triangle"],
+      "nodeTagged": "cbse10:maths:jemh111:find-area-of-segment-of-circle",
+      "nodesTeaching": ["cbse10:maths:jemh111:compute-arc-length", "cbse10:maths:jemh111:apply-sector-area-formula", "cbse10:maths:jemh111:subtract-sector-minus-triangle", "cbse10:maths:jemh111:compute-triangle-area-base-height"],
+      "coverage": "full",
+      "coverageNote": "compute-arc-length + sector-perimeter context covers part (i); find-area-of-segment-of-circle (goal node) covers part (ii) as a direct application.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "The chapter narrative notes this Basic SQP question is the primary gate for find-area-of-segment-of-circle.",
+      "examDifficulty": "Hard",
+      "flags": []
+    },
+    {
+      "q": 35,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "variants": [
+        {
+          "id": "Q35A",
+          "prompt": "From the top of a 9 m high building, the angle of elevation of the top of a cable tower is 60° and the angle of depression of its foot is 45°. Determine the height of the tower and the distance between the building and the tower. (Use √3 = 1.732)",
+          "answer": "tan45°=9/x ⟹ x=9 m. tan60°=h/x ⟹ h=9√3=15.588 m. Tower height=15.588+9=24.588 m."
+        },
+        {
+          "id": "Q35B",
+          "prompt": "As observed from the top of a 75 m high lighthouse from the sea level, the angles of depression of two ships are 30° and 45°. If one ship is exactly behind the other on the same side of the lighthouse, find the distance between the two ships. (Use √3 = 1.732)",
+          "answer": "tan45°=75/y ⟹ y=75 m. tan30°=75/(x+y) ⟹ x+y=75√3 ⟹ x=75√3−75=75(√3−1)=75×0.732=54.9 m."
+        }
+      ],
+      "microskills": ["Two-triangle heights and distances: use elevation and depression angles to find height and distance; two-triangle depression setup for distance between ships"],
+      "nodeTagged": "cbse10:maths:jemh109:solve-heights-and-distances-problem",
+      "nodesTeaching": ["cbse10:maths:jemh109:solve-heights-and-distances-problem", "cbse10:maths:jemh109:set-up-two-triangles-shared-side", "cbse10:maths:jemh109:use-alternate-angles-for-depression", "cbse10:maths:jemh109:combine-segment-lengths-for-total", "cbse10:maths:jemh109:choose-tan-for-opposite-over-adjacent"],
+      "coverage": "full",
+      "coverageNote": "set-up-two-triangles-shared-side and use-alternate-angles-for-depression cover both variants; combine-segment-lengths-for-total handles the Q35B distance calculation.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on the two-triangle nodes address both the building-and-tower and the two-ships setups.",
+      "examDifficulty": "Hard",
+      "flags": []
+    },
+    {
+      "q": 36,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "variants": [
+        {
+          "id": "Q36(i)",
+          "prompt": "What is the probability that a randomly selected student does not prefer to walk to school?",
+          "answer": "Not-walk = 200−120 = 80. P = 80/200 = 2/5."
+        },
+        {
+          "id": "Q36(ii)",
+          "prompt": "Find the probability of a randomly selected student who prefers to walk or use a bicycle.",
+          "answer": "Bicycle = 25% of 200 = 50. Walk+Bicycle = 120+50 = 170. P = 170/200 = 17/20."
+        },
+        {
+          "id": "Q36(iii)A",
+          "prompt": "One day 50% of walking students decided to come by bicycle. What is the probability that a randomly selected student comes to school using a bicycle on that day?",
+          "answer": "50% of 120 walkers = 60 switch. Bicycle = 50+60 = 110. P = 110/200 = 11/20."
+        },
+        {
+          "id": "Q36(iii)B",
+          "prompt": "What is the probability that a randomly selected student prefers to be dropped off by car?",
+          "answer": "Bus = 10% of 200 = 20. Car = 200−120−50−20 = 10. P = 10/200 = 1/20."
+        }
+      ],
+      "microskills": ["Count favourable outcomes from word description; compute complement probability; apply P = favourable/total"],
+      "nodeTagged": "cbse10:maths:jemh114:compute-theoretical-probability",
+      "nodesTeaching": ["cbse10:maths:jemh114:count-favourable-outcomes", "cbse10:maths:jemh114:count-total-equally-likely-outcomes", "cbse10:maths:jemh114:apply-complement-rule", "cbse10:maths:jemh114:form-probability-ratio"],
+      "coverage": "full",
+      "coverageNote": "All four sub-parts reduce to counting favourable outcomes and forming the ratio, which is exactly what these nodes teach.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on count-favourable-outcomes and form-probability-ratio cover this type of grouped-count setup.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 37,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "variants": [
+        {
+          "id": "Q37(i)",
+          "prompt": "Find the zeroes of the polynomial p(x) from the graph.",
+          "answer": "Zeroes are x = 1 and x = 4 (x-intercepts of the parabola)."
+        },
+        {
+          "id": "Q37(ii)",
+          "prompt": "Find the value of x at which water attains maximum height.",
+          "answer": "Maximum at vertex: x = −b/(2a) = −5/(2×(−1)) = 5/2."
+        },
+        {
+          "id": "Q37(iii)A",
+          "prompt": "If h is the maximum height attained by the water stream from the water level of the pool, then find the value of h.",
+          "answer": "p(5/2) = −(25/4)+25/2−4 = −6.25+12.5−4 = 2.25. Rod above water = 0.10 m. h = 0.10 + 2.25 = 2.35 m."
+        },
+        {
+          "id": "Q37(iii)B",
+          "prompt": "At what point(s) on the x-axis is the height of water above the x-axis equal to 2 m?",
+          "answer": "−x²+5x−4 = 2 ⟹ x²−5x+6 = 0 ⟹ (x−2)(x−3) = 0 ⟹ x = 2, 3. Points (2,0) and (3,0)."
+        }
+      ],
+      "microskills": ["Read zeroes from graph; find vertex x-coordinate; evaluate polynomial at vertex; solve quadratic equation for given value"],
+      "nodeTagged": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
+      "nodesTeaching": ["cbse10:maths:jemh102:interpret-zero-as-x-intercept", "cbse10:maths:jemh102:count-zeroes-from-graph", "cbse10:maths:jemh102:verify-quadratic-sum-of-zeroes", "cbse10:maths:jemh104:split-middle-term"],
+      "coverage": "partial",
+      "coverageNote": "Zeroes from graph and sum/product of zeroes are taught in jemh102; vertex x-coordinate (completing-the-square or vertex formula) is noted as absent in jemh104 absentNotes.",
+      "gateDifficulty": "borderline",
+      "difficultyNote": "The vertex finding step uses x = −b/2a which is completing the square — explicitly absent from jemh104; gates may not cover this.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Finding vertex x-coordinate of a parabola via x = −b/(2a) is not a taught node in jemh102 or jemh104 (absentNotes in jemh104 explicitly says completing the square is not worked as an example).",
+          "fix": "Add a node in jemh102 or jemh104 for 'find vertex of quadratic via x = −b/(2a)'."
+        }
+      ]
+    },
+    {
+      "q": 38,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "variants": [
+        {
+          "id": "Q38(i)",
+          "prompt": "Find the slant height of the sharpened part.",
+          "answer": "l = √((0.5)² + (1.2)²) = √(0.25 + 1.44) = √1.69 = 1.3 cm."
+        },
+        {
+          "id": "Q38(ii)",
+          "prompt": "Find the curved surface area of the sharpened part (in terms of π).",
+          "answer": "CSA = πrl = π × 0.5 × 1.3 = 0.65π cm²."
+        },
+        {
+          "id": "Q38(iii)A",
+          "prompt": "Find the total surface area of the pencil (in terms of π).",
+          "answer": "TSA = CSA cylinder + CSA cone + base circle = 2π×0.5×21 + 0.65π + π×(0.5)² = 21π + 0.65π + 0.25π = 21.9π cm²."
+        },
+        {
+          "id": "Q38(iii)B",
+          "prompt": "The pencil's total height decreases by 8.2 cm after sharpening it many times; what is the volume of the cylindrical part of the shortened pencil (in terms of π)?",
+          "answer": "New cylinder length = 21 − 8.2 = 12.8 cm. Volume = π × (0.5)² × 12.8 = 3.2π cm³."
+        }
+      ],
+      "microskills": ["Compute cone slant height; CSA of cone; TSA of cylinder+cone combination; volume of cylinder"],
+      "nodeTagged": "cbse10:maths:jemh112:surface-areas-and-volumes-of-combinations",
+      "nodesTeaching": ["cbse10:maths:jemh112:compute-slant-height", "cbse10:maths:jemh112:csa-cone", "cbse10:maths:jemh112:tsa-toy-cone-plus-hemisphere", "cbse10:maths:jemh112:csa-cylinder", "cbse10:maths:jemh112:volume-cylinder"],
+      "coverage": "full",
+      "coverageNote": "All component skills (slant height, CSA cone, CSA cylinder, base circle, volume cylinder) are taught nodes in jemh112.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on csa-cone, csa-cylinder, and volume-cylinder cover each part's computation.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "marking-scheme",
+          "detail": "Q38(iii)A official msAnswer gives 6.15π using 'π×0.5×0.5×21' for the cylinder CSA, but this is the volume formula πr²h not the CSA formula 2πrh. Correct cylinder CSA = 2π×0.5×21 = 21π. Correct TSA = 21π + 0.65π + 0.25π = 21.9π cm².",
+          "fix": "Replace msAnswer for Q38(iii)A with: TSA = 2π×0.5×21 + 0.65π + π×0.5² = 21π + 0.65π + 0.25π = 21.9π cm²."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalQuestions": 38,
+    "variantsTotal": 48,
+    "coverageBreakdown": {
+      "full": 34,
+      "partial": 2,
+      "gap": 0
+    },
+    "gateDifficultyBreakdown": {
+      "sufficient": 34,
+      "borderline": 4,
+      "insufficient": 0
+    },
+    "examDifficultyBreakdown": {
+      "Easy": 17,
+      "Medium": 16,
+      "Hard": 5
+    },
+    "flagsConsolidated": [
+      {
+        "q": 20,
+        "type": "content-gap",
+        "detail": "No node teaches that the product of two irrationals is NOT always irrational (counter-example: √2×√2=2). The Reason in Q20 is false and no node explicitly covers this counter-example.",
+        "fix": "Add node or gate in jemh101 covering counter-examples to common false rules about irrational operations."
+      },
+      {
+        "q": "37(ii) and 37(iii)A",
+        "type": "content-gap",
+        "detail": "Vertex x-coordinate formula x = −b/(2a) for a quadratic is not taught in jemh102 or jemh104 (absentNotes in jemh104 explicitly states completing the square is not worked as an example).",
+        "fix": "Add a node in jemh102 (or jemh104) for 'find vertex of quadratic parabola via x = −b/(2a)'."
+      },
+      {
+        "q": "38(iii)A",
+        "type": "marking-scheme",
+        "detail": "Official CBSE msAnswer uses πr²h (volume formula) instead of 2πrh (CSA formula) for the cylinder, giving 5.25π instead of the correct 21π, and a final answer of 6.15π instead of the correct 21.9π cm².",
+        "fix": "Replace msAnswer: TSA = 2π×0.5×21 + 0.65π + π×0.5² = 21π + 0.65π + 0.25π = 21.9π cm²."
+      }
+    ]
+  }
+}

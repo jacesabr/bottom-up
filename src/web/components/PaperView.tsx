@@ -29,6 +29,7 @@ interface Question {
   handling: string;
   prompt: string;
   options: string[] | null;
+  node?: string; // the concept this question tests — used to link back to the teaching node
 }
 interface Paper {
   paperId: string;
@@ -249,6 +250,15 @@ export default function PaperView({
                         <span className={a.marksAwarded >= a.marksPossible ? 'q-verdict ok' : a.marksAwarded > 0 ? 'q-verdict partial' : 'q-verdict no'}>
                           {a.marksAwarded}/{a.marksPossible} mark{a.marksPossible > 1 ? 's' : ''}
                         </span>
+                      )}
+                      {a && q.node && (
+                        <button
+                          className="q-refresh"
+                          onClick={() => onRevise(q.node!, q.node!.split(':').slice(0, 3).join(':'))}
+                          title="Open the concept this question tests to refresh it"
+                        >
+                          ↻ Refresh this concept →
+                        </button>
                       )}
                     </div>
                   )}

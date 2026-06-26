@@ -402,6 +402,55 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-ch09:compute-incentre-of-triangle",
+      "slug": "compute-incentre-of-triangle",
+      "title": "Compute the incentre of a triangle using side-length weights",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Find the incentre I = (aA + bB + cC)/(a+b+c) where a, b, c are the side lengths opposite to vertices A, B, C.",
+      "explanation": "PART 1 — The incentre formula.\nThe incentre I of a triangle with vertices A(x_1,y_1), B(x_2,y_2), C(x_3,y_3) and opposite side lengths a = BC, b = CA, c = AB is the weighted average I = ((ax_1+bx_2+cx_3)/(a+b+c), (ay_1+by_2+cy_3)/(a+b+c)). The weight of each vertex is the length of the OPPOSITE side. This formula follows from the angle-bisector property: the incentre divides the triangle in proportion to the three sides.\n\nPART 2 — Computing the side lengths.\nBefore applying the formula, find a = |BC| = sqrt((x_3-x_2)^2+(y_3-y_2)^2), b = |CA| = sqrt((x_1-x_3)^2+(y_1-y_3)^2), c = |AB| = sqrt((x_2-x_1)^2+(y_2-y_1)^2) using the distance formula. Example: triangle with vertices A(1,0), B(0,0), C(0,1) has a = sqrt(0+1) = 1, b = sqrt(1+0) = 1, c = sqrt(1+0) = 1. Then I = ((1+0+0)/3, (0+0+1)/3) = (1/3, 1/3).\n\nPART 3 — Recovering the incentre from given midpoint data.\nIf only midpoints of sides are given, first recover the vertices by solving the midpoint relations (see recover-vertices-from-midpoints), then apply the incentre formula. The key computation is: find the side lengths from the recovered vertices, then compute the weighted average.",
+      "keyMoves": [
+        "Compute the three side lengths a = |BC|, b = |CA|, c = |AB| using the distance formula",
+        "Apply I = (aA+bB+cC)/(a+b+c) as separate x- and y-coordinate formulas",
+        "When vertices must be recovered from midpoints, do that first, then find side lengths"
+      ],
+      "misconceptions": [
+        "Weighting each vertex by the adjacent sides rather than the OPPOSITE side",
+        "Confusing the incentre (weighted average by side lengths) with the centroid (equal weights 1/3 each)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:distance-of-point-from-line",
+        "jee:maths:maths-ch09:slope-from-two-points",
+        "jee:maths:maths-ch11:distance-formula-2d"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch09:recover-vertices-from-midpoints",
+      "slug": "recover-vertices-from-midpoints",
+      "title": "Recover the vertices of a triangle from the midpoints of its sides",
+      "role": "intermediate",
+      "sec": 4,
+      "brief": "Given the midpoints of the three sides, set up and solve the three midpoint equations to find all three vertices.",
+      "explanation": "PART 1 — Setting up the midpoint equations.\nIf A(x_1,y_1), B(x_2,y_2), C(x_3,y_3) are the vertices and the midpoints are P = midpoint of BC, Q = midpoint of CA, R = midpoint of AB, then: P = ((x_2+x_3)/2, (y_2+y_3)/2), Q = ((x_3+x_1)/2, (y_3+y_1)/2), R = ((x_1+x_2)/2, (y_1+y_2)/2). Each midpoint gives two equations (one for x, one for y), yielding 6 equations in 6 unknowns.\n\nPART 2 — Solving by addition and subtraction.\nAdd all three x-equations: (x_1+x_2+x_3) = P_x+Q_x+R_x. Then x_1 = (Q_x+R_x-P_x), x_2 = (P_x+R_x-Q_x), x_3 = (P_x+Q_x-R_x) and the same pattern for y-coordinates. Example: midpoints P(5/2,7), Q(5/2,3), R(4,5). Then x_1+x_2+x_3 = 5/2+5/2+4 = 9. So x_1 = Q_x+R_x-P_x = 5/2+4-5/2 = 4; x_2 = P_x+R_x-Q_x = 5/2+4-5/2 = 4; x_3 = P_x+Q_x-R_x = 5/2+5/2-4 = 1. Similarly y_1 = 3+5-7 = 1; y_2 = 7+5-3 = 9; y_3 = 7+3-5 = 5. So vertices are A(4,1), B(4,9), C(1,5).\n\nPART 3 — Verification.\nAlways verify by recomputing the three midpoints from the recovered vertices. Midpoint of BC = ((4+1)/2,(9+5)/2) = (5/2,7) = P. ✓ Midpoint of CA = ((1+4)/2,(5+1)/2) = (5/2,3) = Q. ✓ Midpoint of AB = ((4+4)/2,(1+9)/2) = (4,5) = R. ✓",
+      "keyMoves": [
+        "Write the three midpoint equations for x-coordinates (and separately for y-coordinates)",
+        "Add all three x-equations to get x_1+x_2+x_3 = sum of midpoint x-coords, then subtract individual equations to isolate each vertex",
+        "Verify by recomputing all three midpoints from the recovered vertices"
+      ],
+      "misconceptions": [
+        "Assigning a midpoint to the wrong side (P should be the midpoint of the side OPPOSITE A)",
+        "Forgetting to verify — computation errors are common and verification catches them immediately"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch09:slope-from-two-points",
+        "jee:maths:maths-ch09:two-point-form"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch09:represent-a-line-algebraically",
       "slug": "represent-a-line-algebraically",
       "title": "Represent a straight line algebraically and solve line problems",
@@ -430,7 +479,9 @@
         "jee:maths:maths-ch09:intercept-form",
         "jee:maths:maths-ch09:general-equation-of-a-line",
         "jee:maths:maths-ch09:distance-of-point-from-line",
-        "jee:maths:maths-ch09:distance-between-parallel-lines"
+        "jee:maths:maths-ch09:distance-between-parallel-lines",
+        "jee:maths:maths-ch09:compute-incentre-of-triangle",
+        "jee:maths:maths-ch09:recover-vertices-from-midpoints"
       ],
       "sameConcept": [],
       "teachingInsights": []

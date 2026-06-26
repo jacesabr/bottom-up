@@ -227,5 +227,27 @@
       },
       "srcLabel": "Authored practice (Opus) - mathematics-ch07 Theorem 2"
     }
+  ,
+    {
+      "nodeId": "cbse12:mathematics:mathematics-ch07:definite-integral-symmetry",
+      "kind": "book",
+      "prompt": "If f(a + b − x) = f(x), then ∫_a^b x f(x) dx equals: (A) (a+b)/2 ∫_a^b f(a−x) dx  (B) (a+b)/2 ∫_a^b f(b−x) dx  (C) (b−a)/2 ∫_a^b f(x) dx  (D) (a+b)/2 ∫_a^b f(x) dx",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "(a+b)/2 ∫_a^b f(x) dx",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(a+b)/2 ∫_a^b f(x) dx",
+        "options": [
+          "(a+b)/2 ∫_a^b f(a−x) dx",
+          "(a+b)/2 ∫_a^b f(b−x) dx",
+          "(b−a)/2 ∫_a^b f(x) dx",
+          "(a+b)/2 ∫_a^b f(x) dx"
+        ]
+      },
+      "srcKind": "paper",
+      "srcLabel": "CBSE Class 12 Maths SQP 2025-26 Q11",
+      "quote": "D) (a+b)/2 ∫_a^b f(x) dx. Using I = ∫_a^b x f(x) dx = ∫_a^b (a+b−x) f(a+b−x) dx = ∫_a^b (a+b−x) f(x) dx ⇒ 2I = (a+b)∫_a^b f(x) dx."
+    }
   ]
 }

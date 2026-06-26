@@ -1,0 +1,1025 @@
+{
+  "paperId": "jeemain-2026-apr02-s1",
+  "exam": "jee",
+  "subject": "maths",
+  "title": "JEE Main 2026 (Session 2, 02 Apr, Shift 1) — Mathematics",
+  "maxMarks": 96,
+  "questions": [
+    {
+      "q": 1,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let $\\alpha,\\ \\alpha+2$, $\\alpha\\in\\mathbb{Z}$, be the roots of the quadratic equation $x(x+2)+(x+1)(x+3)+(x+2)(x+4)+\\dots+(x+n-1)(x+n+1)=4n$ for some $n\\in\\mathbb{N}$. Then $n+\\alpha$ is equal to :",
+          "options": ["0","1","2","3"],
+          "answer": "2"
+        }
+      ],
+      "concepts": [
+        "Sum a telescoping-style product series using sigma notation",
+        "Apply Vieta's formulas to read off sum/product of roots",
+        "Solve a Diophantine constraint to find n (reduces to m^2+2m-48=0, n=7, alpha=-5)"
+      ],
+      "nodeTagged": "maths-ch08:form-a-series-with-sigma-notation",
+      "nodesTeaching": ["form-a-series-with-sigma-notation","find-the-general-term","define-a-sequence"],
+      "coverage": "partial",
+      "coverageNote": "Sigma notation is taught but no AP (arithmetic-progression) nodes exist; the series is a sum of products requiring telescoping or systematic collection of x^2/x/constant terms — this algebraic technique is absent from ch08.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest ch08 gate asks to write 5+10+15+… in sigma notation; the exam requires deriving quadratic coefficients from a product series and solving a Diophantine equation — far harder.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "tagging",
+          "detail": "Q1 is an AP-product series problem requiring arithmetic series tools; tagged to ch08:form-a-series-with-sigma-notation (a GP/series node) with no AP instruction at all.",
+          "fix": "Create AP nodes in ch08 (or a dedicated AP chapter) covering sum of products a_n*b_n and Vieta application; re-tag to the relevant AP goal node."
+        },
+        {
+          "type": "content-gap",
+          "detail": "No Arithmetic Progression nodes exist anywhere in the corpus; all ch08 nodes cover GP only.",
+          "fix": "Add AP nodes: define-ap, nth-term-ap, sum-n-terms-ap, arithmetic-mean, solve-ap-problems."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "Even if tagging were fixed, no gate in the corpus reaches the complexity of deriving Vieta coefficients from a multi-product series.",
+          "fix": "Add hard gates that require setting up and simplifying sigma products, then applying Vieta."
+        }
+      ]
+    },
+    {
+      "q": 2,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let $x$ and $y$ be real numbers such that $50\\left(\\dfrac{2x}{1+3i}-\\dfrac{y}{1-2i}\\right)=31+17i$, $i=\\sqrt{-1}$. Then the value of $10(x-3y)$ is :",
+          "options": ["20","31","35","75"],
+          "answer": "75"
+        }
+      ],
+      "concepts": [
+        "Rationalize complex denominators by multiplying numerator and denominator by conjugate",
+        "Separate real and imaginary parts to form a 2x2 linear system",
+        "Solve simultaneous equations for x and y"
+      ],
+      "nodeTagged": "maths-ch04:reduce-expressions-to-a-plus-ib",
+      "nodesTeaching": ["reduce-expressions-to-a-plus-ib","divide-complex","conjugate","real-imaginary-parts","multiply-complex"],
+      "coverage": "full",
+      "coverageNote": "All required skills (rationalize, separate parts, solve linear system) are covered across ch04 nodes.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest ch04 gate asks to reduce (1+i)^2; the exam sets up two independent complex fractions and requires solving a real-coefficient 2x2 system — significantly harder.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "Ch04 gates are purely mechanical a+ib reductions; no gate involves rationalizing multiple complex fractions simultaneously and solving a 2x2 linear system.",
+          "fix": "Add a gate: given a linear combination of complex fractions equaling a+ib with real unknowns, rationalize and solve the system."
+        }
+      ]
+    },
+    {
+      "q": 3,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let $\\alpha,\\beta\\in\\mathbb{R}$ be such that the system of linear equations $x+2y+z=5$, $2x+y+\\alpha z=5$, $8x+4y+\\beta z=18$ has no solution. Then $\\dfrac{\\beta}{\\alpha}$ is equal to :",
+          "options": ["$-4$","$4$","$8$","$-8$"],
+          "answer": "$4$"
+        }
+      ],
+      "concepts": [
+        "Condition for no solution: det(A)=0 AND augmented system is inconsistent (not infinitely many solutions)",
+        "Compute 3x3 determinant and set to zero",
+        "Row-reduce to verify inconsistency and find the parameter ratio"
+      ],
+      "nodeTagged": "maths-c12-ch04:consistent-system",
+      "nodesTeaching": ["consistent-system","determinant-order-three","cofactor","minor"],
+      "coverage": "full",
+      "coverageNote": "Consistent/inconsistent system analysis and 3x3 determinants are both covered in ch04 nodes.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for maths-c12-ch04 (gates-jee.json contains Class 11 nodes only); cannot assess gate quality.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "gates-jee.json has no entries for any maths-c12-ch04 node; the entire Determinants chapter is unrepresented in the gate bank.",
+          "fix": "Create gates for maths-c12-ch04 nodes, including hard gates that set parametric systems and require finding the no-solution condition."
+        }
+      ]
+    },
+    {
+      "q": 4,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let $A=\\begin{bmatrix}1&2\\\\1&\\alpha\\end{bmatrix}$ and $B=\\begin{bmatrix}3&3\\\\\\beta&2\\end{bmatrix}$. If $A^2-4A+I=O$ and $B^2-5B-6I=O$, then among the two statements (S1): $[(B-A)(B+A)]^{T}=\\begin{bmatrix}13&15\\\\7&10\\end{bmatrix}$ and (S2): $\\det(\\operatorname{adj}(A+B))=-5$ :",
+          "options": ["only (S1) is correct","only (S2) is correct","both (S1) and (S2) are correct","both (S1) and (S2) are wrong"],
+          "answer": "only (S2) is correct"
+        }
+      ],
+      "concepts": [
+        "Use Cayley-Hamilton to identify matrix entries from characteristic polynomial",
+        "Distinguish (B-A)(B+A) from B^2-A^2 (non-commutativity) — S1 tests this trap",
+        "Apply det(adj(M)) = det(M)^(n-1) for n=2"
+      ],
+      "nodeTagged": "maths-c12-ch04:adjoint",
+      "nodesTeaching": ["adjoint","adjoint-identity","determinant-order-two","determinant-order-three"],
+      "coverage": "partial",
+      "coverageNote": "Adjoint and det(adj) formula are taught but Cayley-Hamilton theorem is not a node in the corpus.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates for maths-c12-ch04; Cayley-Hamilton and the non-commutativity trap in S1 are advanced concepts not covered by any gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Cayley-Hamilton theorem is not a node in the corpus; it is required to determine alpha and beta from the given polynomial equations.",
+          "fix": "Add a cayley-hamilton node to maths-c12-ch04 with explanation and gates."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "No gates for maths-c12-ch04 at all; this question requires three distinct advanced skills in one.",
+          "fix": "Add gates for adjoint including det(adj(M))=det(M)^(n-1) and non-commutativity traps."
+        }
+      ]
+    },
+    {
+      "q": 5,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let $A$ be the set of first 101 terms of an A.P., whose first term is 1 and the common difference is 5 and let $B$ be the set of first 71 terms of an A.P., whose first term is 9 and the common difference is 7. Then the number of elements in $A\\cap B$, which are divisible by 3, is :",
+          "options": ["4","5","6","7"],
+          "answer": "5"
+        }
+      ],
+      "concepts": [
+        "Identify the general terms of two APs",
+        "Find the intersection by solving the congruence a + 5s = 9 + 7t over integers (LCM method)",
+        "Filter intersection elements divisible by 3"
+      ],
+      "nodeTagged": "maths-ch08:solve-geometric-progression-problems",
+      "nodesTeaching": [],
+      "coverage": "gap",
+      "coverageNote": "The question is entirely about arithmetic progressions and their intersection via LCM; no AP nodes exist in the corpus — maths-ch08 covers GP only.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "The tagged node is the GP goal node; it has no connection to AP intersection problems whatsoever.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "tagging",
+          "detail": "Q5 is an AP-intersection problem tagged to maths-ch08:solve-geometric-progression-problems (a GP node) — completely wrong chapter/concept.",
+          "fix": "Create AP nodes and re-tag to a solve-ap-problems goal node."
+        },
+        {
+          "type": "content-gap",
+          "detail": "AP (Arithmetic Progression) is entirely absent from the corpus; this is the second AP question in a 24-question paper.",
+          "fix": "Add AP chapter nodes covering nth term, sum, intersection of two APs via LCM/CRT."
+        }
+      ]
+    },
+    {
+      "q": 6,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "The number of seven-digit numbers, that can be formed by using the digits 1, 2, 3, 5 and 7 such that each digit is used at least once, is :",
+          "options": ["15400","17800","16800","29400"],
+          "answer": "16800"
+        }
+      ],
+      "concepts": [
+        "Use inclusion-exclusion (surjective functions formula) to count arrangements of 5 digits into 7 positions with all 5 used",
+        "Compute sum_{k=0}^{4} (-1)^k C(5,k)(5-k)^7 = 16800"
+      ],
+      "nodeTagged": "maths-ch06:solve-counting-problems",
+      "nodesTeaching": ["solve-counting-problems","multiplication-principle","permutations-distinct-npr","combinations-ncr"],
+      "coverage": "partial",
+      "coverageNote": "The corpus teaches P&C fundamentals but inclusion-exclusion (surjection onto all k categories) is not an explicit node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest gate asks to arrange 5 boys/3 girls with a positional constraint; the exam needs the full inclusion-exclusion formula for surjective maps — harder and a different technique.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Inclusion-exclusion principle for counting problems is not a node in ch06; needed for 'each digit used at least once' type questions.",
+          "fix": "Add an inclusion-exclusion node to maths-ch06 with surjection counting as the key application."
+        }
+      ]
+    },
+    {
+      "q": 7,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "The number of elements in the set $S=\\left\\{(r,k):k\\in\\mathbb{Z}\\text{ and }{}^{36}C_{r+1}=\\dfrac{6\\cdot{}^{35}C_r}{(k^2-3)}\\right\\}$, is :",
+          "options": ["2","4","8","16"],
+          "answer": "4"
+        }
+      ],
+      "concepts": [
+        "Apply the identity C(n,r+1) = (n/(r+1)) C(n-1,r) to simplify C(36,r+1) / C(35,r)",
+        "Solve for integer k from k^2 = 3 + (r+1)/6 requiring (r+1) divisible by 6",
+        "Count valid (r,k) pairs over integer k"
+      ],
+      "nodeTagged": "maths-ch06:combinations-ncr",
+      "nodesTeaching": ["combinations-ncr","relate-permutations-combinations","pascal-identity"],
+      "coverage": "partial",
+      "coverageNote": "nCr formula and Pascal identities are taught but the identity C(n,r+1) = (n/(r+1))C(n-1,r) linking C(36,r+1) to C(35,r) is not an explicit node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest gate asks to evaluate 5C3; the exam requires manipulating a ratio of combinatorial symbols to derive an integer-valued constraint on k — a wholly different level.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "All ch06 combination gates are direct evaluations; none require deriving parameter constraints by reducing ratios of binomial coefficients.",
+          "fix": "Add gates requiring identity manipulation (e.g., C(n,r+1)/C(n-1,r) = n/(r+1)) and integer-solution counting."
+        }
+      ]
+    },
+    {
+      "q": 8,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "If the mean of the data with classes 5-10, 10-15, 15-20, 20-25, 25-30, 30-35 and corresponding frequencies 2, $k$, 28, 54, $k+1$, 5 is 21, then $k$ is one of the roots of the equation :",
+          "options": ["$2x^2-23x-10=0$","$4x^2-35x+24=0$","$2x^2-19x-10=0$","$2x^2-35x+98=0$"],
+          "answer": "$2x^2-19x-10=0$"
+        }
+      ],
+      "concepts": [
+        "Compute grouped-data mean using midpoints and the formula mean = (sum fi*xi)/(sum fi)",
+        "Set up and solve a linear equation in k (gives k=10)",
+        "Identify which quadratic has k=10 as a root"
+      ],
+      "nodeTagged": "maths-ch13:variance",
+      "nodesTeaching": ["variance","grouped-data-vocabulary","sd-frequency-distribution"],
+      "coverage": "partial",
+      "coverageNote": "Grouped-data mean is foundational to variance/SD but is not a standalone node; variance node assumes mean is already computed.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest ch13 gate asks to compute variance of {1,3,5,7,9}; the exam reverses the process (given mean, find parameter k, then identify a quadratic) — harder and a different direction.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "tagging",
+          "detail": "Q8 is a grouped-data mean problem, not a variance problem; tagged to maths-ch13:variance which is a downstream skill.",
+          "fix": "Create a grouped-data-mean node in ch13 and re-tag Q8 to it."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "No gate asks to find a parameter from a given mean, then identify a quadratic root — the reverse-mean direction is untested.",
+          "fix": "Add a gate: given frequencies with a parameter k and a stated mean, find k, then verify it satisfies a given quadratic."
+        }
+      ]
+    },
+    {
+      "q": 9,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let the mid points of the sides of a triangle $ABC$ be $\\left(\\tfrac{5}{2},7\\right)$, $\\left(\\tfrac{5}{2},3\\right)$ and $(4,5)$. If its incentre is $(h,k)$, then $3h+k$ is equal to :",
+          "options": ["11","12","13","14"],
+          "answer": "13"
+        }
+      ],
+      "concepts": [
+        "Recover triangle vertices from midpoints of sides (midpoint reversal)",
+        "Compute side lengths to find incentre coordinates using weighted average of vertices",
+        "Evaluate 3h+k"
+      ],
+      "nodeTagged": "maths-ch09:represent-a-line-algebraically",
+      "nodesTeaching": ["represent-a-line-algebraically","slope-from-two-points","two-point-form","distance-of-point-from-line"],
+      "coverage": "partial",
+      "coverageNote": "Ch09 covers line geometry but incentre formula (weighted vertex average by opposite side lengths) is not a node; midpoint reversal technique is also not explicitly taught.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest ch09 gate asks distance of a point from a line; the exam requires recovering a triangle from its medial triangle and computing an incentre — a multi-step problem well beyond any gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "tagging",
+          "detail": "Q9 primarily tests incentre formula and vertex recovery from midpoints, not line equations; tagged to represent-a-line-algebraically (the ch09 goal).",
+          "fix": "Add an incentre/excentre node to ch09 and re-tag Q9."
+        },
+        {
+          "type": "content-gap",
+          "detail": "No node covers the incentre formula or the technique of recovering vertices from midpoints of sides.",
+          "fix": "Add nodes: recover-vertices-from-midpoints and compute-incentre-excentre."
+        }
+      ]
+    },
+    {
+      "q": 10,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let an ellipse $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$, $a<b$, pass through the point $(4,3)$ and have eccentricity $\\dfrac{\\sqrt{5}}{3}$. Then the length of its latus rectum is :",
+          "options": ["$\\dfrac{4\\sqrt{5}}{3}$","$2\\sqrt{5}$","$\\dfrac{7\\sqrt{5}}{3}$","$\\dfrac{8\\sqrt{5}}{3}$"],
+          "answer": "$\\dfrac{8\\sqrt{5}}{3}$"
+        }
+      ],
+      "concepts": [
+        "Use eccentricity relation e^2 = 1 - a^2/b^2 (a<b case, major axis along y)",
+        "Substitute the given point to solve for b^2 (gives b^2=45, a^2=20)",
+        "Compute latus rectum = 2a^2/b for the case a<b"
+      ],
+      "nodeTagged": "maths-ch10:ellipse-latus-rectum",
+      "nodesTeaching": ["ellipse-latus-rectum","ellipse-eccentricity","ellipse-abc-relation","ellipse-standard-equation"],
+      "coverage": "full",
+      "coverageNote": "All sub-skills (eccentricity formula, parameter recovery from a point, latus rectum formula) are covered in ch10.",
+      "gateDifficulty": "borderline",
+      "difficultyNote": "Hardest ch10 gate asks to find the latus rectum of a given ellipse x^2/16+y^2/7=1; the exam additionally requires solving a^2/b^2 from eccentricity and substituting a point — one step harder.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 11,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "If $\\sin\\left(\\dfrac{\\pi}{18}\\right)\\sin\\left(\\dfrac{5\\pi}{18}\\right)\\sin\\left(\\dfrac{7\\pi}{18}\\right)=K$, then the value of $\\sin\\left(\\dfrac{10K\\pi}{3}\\right)$ is :",
+          "options": ["$\\dfrac{\\sqrt{3}+1}{2\\sqrt{2}}$","$\\dfrac{\\sqrt{3}-1}{\\sqrt{2}}$","$\\dfrac{\\sqrt{3}}{2}$","$\\dfrac{1}{2}$"],
+          "answer": "$\\dfrac{\\sqrt{3}+1}{2\\sqrt{2}}$"
+        }
+      ],
+      "concepts": [
+        "Apply product identity sin(theta)sin(60-theta)sin(60+theta) = sin(3theta)/4 to get K=1/8",
+        "Evaluate sin(10K*pi/3) = sin(5pi/12) = sin(75 degrees) using sum-of-angles formula"
+      ],
+      "nodeTagged": "maths-ch03:prove-and-apply-trigonometric-identities",
+      "nodesTeaching": ["prove-and-apply-trigonometric-identities","triple-angle-identities","product-to-sum-identities","sine-sum-difference","cosine-sum-difference"],
+      "coverage": "partial",
+      "coverageNote": "Triple-angle and product identities are taught but the specific identity sin(theta)sin(60-theta)sin(60+theta)=sin(3theta)/4 is not an explicit node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest ch03 gate asks to simplify (sin75+sin15)/(cos75+cos15) using sum-to-product; the exam needs a non-standard triple product identity then a 75-degree angle evaluation — harder.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "No gate requires recognizing and applying sin(theta)sin(60-theta)sin(60+theta)=sin(3theta)/4, which is a JEE-standard identity.",
+          "fix": "Add a gate using this triple product formula, or strengthen triple-angle-identities node to include it."
+        }
+      ]
+    },
+    {
+      "q": 12,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let $S=\\{x\\in[-\\pi,\\pi]:\\sin x\\,(\\sin x+\\cos x)=a,\\ a\\in\\mathbb{Z}\\}$. Then $n(S)$ is equal to :",
+          "options": ["3","6","7","9"],
+          "answer": "9"
+        }
+      ],
+      "concepts": [
+        "Convert sinx(sinx+cosx) = (1/2) + (sqrt(2)/2)sin(2x-pi/4) via double-angle formulas",
+        "Determine integer values of a in the range [1/2 - sqrt2/2, 1/2 + sqrt2/2]: a=0 and a=1",
+        "Count solutions: a=0 gives 5 (including x=+/-pi, 0, +/-3pi/4), a=1 gives 4; total 9"
+      ],
+      "nodeTagged": "maths-ch03:prove-and-apply-trigonometric-identities",
+      "nodesTeaching": ["prove-and-apply-trigonometric-identities","double-angle-identities","sine-sum-difference","domain-and-range"],
+      "coverage": "partial",
+      "coverageNote": "Double-angle conversion is covered but counting solutions of a transformed trig equation over an interval with integer parameter is not explicitly modeled.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Ch03 gates focus on simplification and evaluation; no gate asks to find the total count of solutions of a trig equation with an integer parameter constraint.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "No gate requires converting a trig expression to R*sin(2x+phi) form, finding the integer-a constraint, then carefully counting boundary solutions.",
+          "fix": "Add a counting-solutions-trig gate that practices the Rsin(theta+phi) reduction and solution-counting technique."
+        }
+      ]
+    },
+    {
+      "q": 13,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "If the point of intersection of the lines $\\dfrac{x+1}{3}=\\dfrac{y+a}{5}=\\dfrac{z+b+1}{7}$ and $\\dfrac{x-2}{1}=\\dfrac{y-b}{4}=\\dfrac{z-2a}{7}$ lies on the $xy$-plane, then the value of $a+b$ is :",
+          "options": ["2","5","7","9"],
+          "answer": "7"
+        }
+      ],
+      "concepts": [
+        "Parametrize both 3D lines and set coordinates equal to find the intersection point",
+        "Apply z=0 constraint (xy-plane) to determine parameters",
+        "Solve the resulting 3x2 linear system for a, b (gives a=3, b=4)"
+      ],
+      "nodeTagged": "maths-c12-ch11:cartesian-equation-line",
+      "nodesTeaching": ["cartesian-equation-line","vector-equation-line","angle-between-lines"],
+      "coverage": "full",
+      "coverageNote": "Cartesian-form lines and intersection via parametrization are covered in ch11.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for maths-c12-ch11; the exam requires simultaneous parametrization of two lines plus a plane constraint — a multi-step 3D problem.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "gates-jee.json contains no entries for any maths-c12-ch11 node; 3D geometry chapter is completely absent from the gate bank.",
+          "fix": "Create gates for ch11 nodes including cartesian-equation-line, covering intersection of two lines and plane-constraint problems."
+        }
+      ]
+    },
+    {
+      "q": 14,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "If $\\vec{a}$ and $\\vec{b}$ are two vectors such that $|\\vec{a}|=2$ and $|\\vec{b}|=3$, then the maximum value of $3\\left|3\\vec{a}+2\\vec{b}\\right|+4\\left|3\\vec{a}-2\\vec{b}\\right|$ is :",
+          "options": ["30","36","60","72"],
+          "answer": "60"
+        }
+      ],
+      "concepts": [
+        "Expand |3a+2b|^2 and |3a-2b|^2 in terms of |a|, |b|, a.b",
+        "Optimize f(t) = 3*sqrt(72+12t) + 4*sqrt(72-12t) over t = a.b in [-6,6]",
+        "Find interior critical point (t ~ -1.68) giving maximum 60"
+      ],
+      "nodeTagged": "maths-c12-ch10:scalar-product",
+      "nodesTeaching": ["scalar-product","magnitude","vector-product"],
+      "coverage": "partial",
+      "coverageNote": "Scalar product expansion is covered but optimization of a sum of two vector-magnitude expressions is not a taught technique.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for maths-c12-ch10; the exam requires calculus-level optimization of a combined vector-norm expression — advanced technique.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "No node covers optimization problems involving sums of vector magnitudes with free angle parameter.",
+          "fix": "Add a gate requiring maximization/minimization of linear combinations of |pa+qb| using dot-product expansion and differentiation."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "gates-jee.json has no entries for maths-c12-ch10; the entire Vectors chapter is absent from the gate bank.",
+          "fix": "Create gates for all maths-c12-ch10 nodes."
+        }
+      ]
+    },
+    {
+      "q": 15,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let a line $L$ passing through the point $(1,1,1)$ be perpendicular to both the vectors $2\\hat{i}+2\\hat{j}+\\hat{k}$ and $\\hat{i}+2\\hat{j}+2\\hat{k}$. If $P(a,b,c)$ is the foot of perpendicular from the origin on the line $L$, then the value of $34(a+b+c)$ is :",
+          "options": ["50","80","100","120"],
+          "answer": "100"
+        }
+      ],
+      "concepts": [
+        "Find direction of L as the cross product of two given vectors (d = (2,-3,2))",
+        "Parametrize L: (1,1,1)+t*(2,-3,2)",
+        "Minimize distance from origin: solve d.L(t)=0 for t, giving foot P"
+      ],
+      "nodeTagged": "maths-c12-ch11:cartesian-equation-line",
+      "nodesTeaching": ["cartesian-equation-line","vector-equation-line","perpendicular-parallel-lines"],
+      "coverage": "partial",
+      "coverageNote": "Line direction via cross product and parametrization are covered in ch11, but foot-of-perpendicular from a point to a 3D line is not an explicit node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates for maths-c12-ch11; foot-of-perpendicular from origin to a parametric 3D line requires minimizing a quadratic in t — not in any gate.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Foot of perpendicular from a point to a 3D line is not a node in ch11.",
+          "fix": "Add a foot-of-perpendicular-to-line node to maths-c12-ch11."
+        }
+      ]
+    },
+    {
+      "q": 16,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "If $\\displaystyle\\lim_{x\\to 2}\\dfrac{\\sin(x^3-5x^2+ax+b)}{(\\sqrt{x-1}-1)\\log_e(x-1)}=m$, then $a+b+m$ is equal to :",
+          "options": ["5","6","8","10"],
+          "answer": "6"
+        }
+      ],
+      "concepts": [
+        "Require sin-argument to vanish at x=2 (zero-over-zero): 8-20+2a+b=0",
+        "Require derivative of sin-argument to vanish at x=2 for limit to be finite (so argument is O((x-2)^2))",
+        "Expand denominator: (x-2)/2 * (x-2) = (x-2)^2/2, giving m = 2"
+      ],
+      "nodeTagged": "maths-ch12:trigonometric-limits",
+      "nodesTeaching": ["trigonometric-limits","algebra-of-limits","limits-of-rational-functions","one-sided-limits-and-existence"],
+      "coverage": "partial",
+      "coverageNote": "Basic limit algebra and trig limits are covered but L'Hopital / order analysis for non-standard limits with two parameters is not an explicit node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest ch12 gate asks lim(sin5x/sin3x) as x->0; the exam needs order analysis of a composed limit with unknown parameters a, b — a much harder technique.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "Ch12 gates cover standard trig limit formulas only; no gate involves finding parameters from finiteness of a limit with a composite argument.",
+          "fix": "Add a gate: find a,b such that lim_{x->x0} [trig composed expression / rational denom] is finite and nonzero, then compute the limit."
+        }
+      ]
+    },
+    {
+      "q": 18,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "The number of critical points of the function $f(x)=\\begin{cases}\\left|\\dfrac{\\sin x}{x}\\right|,&x\\neq0\\\\1,&x=0\\end{cases}$ in the interval $(-2\\pi,2\\pi)$ is equal to :",
+          "options": ["1","3","5","7"],
+          "answer": "5"
+        }
+      ],
+      "concepts": [
+        "Identify that |sinx/x| has zeros at x=+/-pi (local minima, critical points)",
+        "Identify local maxima of sinx/x at x~+/-4.49 between pi and 2pi, where derivative vanishes",
+        "Recognize x=0 as a critical point (smooth maximum after removing singularity)"
+      ],
+      "nodeTagged": "maths-c12-ch06:critical-point",
+      "nodesTeaching": ["critical-point","fermat-stationary","first-derivative-test","local-maxima-minima"],
+      "coverage": "partial",
+      "coverageNote": "Critical point theory is fully covered but absolute value of a ratio function with removable singularity is a non-standard function form requiring careful case analysis.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates for maths-c12-ch06; the exam involves a piecewise absolute-value function with a removable singularity — more complex than typical critical-point exercises.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "gates-jee.json has no entries for maths-c12-ch06; all Applications of Derivatives gates are missing.",
+          "fix": "Create gates for ch06 nodes; include a hard gate with a piecewise/absolute-value function requiring critical-point counting over an interval."
+        }
+      ]
+    },
+    {
+      "q": 19,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let $[\\cdot]$ denote the greatest integer function. Then the value of $\\displaystyle\\int_{0}^{3}\\dfrac{e^{x}+e^{-x}}{[x]!}\\,dx$ is :",
+          "options": [
+            "$e^2+e^3-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}$",
+            "$\\dfrac{1}{2}\\left(e^2+e^3-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}\\right)$",
+            "$e^2+e^3-\\dfrac{1}{2e^2}-\\dfrac{1}{2e^3}$",
+            "$\\dfrac{1}{2}(e^2+e^3)-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}$"
+          ],
+          "answer": "$\\dfrac{1}{2}\\left(e^2+e^3-\\dfrac{1}{e^2}-\\dfrac{1}{e^3}\\right)$"
+        }
+      ],
+      "concepts": [
+        "Split integral at x=1, x=2 using greatest-integer function: [x]! = 0!=1, 1!=1, 2!=2",
+        "Integrate (e^x+e^-x)/k! on each subinterval using antiderivative e^x - e^-x",
+        "Combine to get (1/2)(e^2+e^3-1/e^2-1/e^3)"
+      ],
+      "nodeTagged": "maths-c12-ch07:fundamental-theorem-evaluation",
+      "nodesTeaching": ["fundamental-theorem-evaluation","definite-integral","ftc-area-function"],
+      "coverage": "full",
+      "coverageNote": "Definite integration by splitting at discontinuities of the integrand and applying FTC is covered in ch07.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates for maths-c12-ch07; the exam integrand requires recognizing the floor function's role and splitting correctly — more sophisticated than a standard definite integral.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "gates-jee.json has no entries for maths-c12-ch07; the entire Integration chapter is absent from the gate bank.",
+          "fix": "Create gates for ch07 nodes, including definite integrals with greatest-integer / piecewise integrands."
+        }
+      ]
+    },
+    {
+      "q": 20,
+      "section": "A",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let $y=y(x)$ be the solution curve of the differential equation $(1+\\sin x)\\dfrac{dy}{dx}+(y+1)\\cos x=0$, $y(0)=0$. If the curve $y=y(x)$ passes through the point $\\left(\\alpha,-\\dfrac{1}{2}\\right)$, then a value of $\\alpha$ is :",
+          "options": ["$\\dfrac{\\pi}{6}$","$\\dfrac{\\pi}{4}$","$\\dfrac{\\pi}{3}$","$\\dfrac{\\pi}{2}$"],
+          "answer": "$\\dfrac{\\pi}{2}$"
+        }
+      ],
+      "concepts": [
+        "Recognize the DE as separable: dy/(y+1) = -cosx/(1+sinx) dx",
+        "Integrate both sides: ln|y+1| = -ln(1+sinx) + C",
+        "Apply initial condition y(0)=0 to find C=0, then solve y=-sinx/(1+sinx) and find alpha"
+      ],
+      "nodeTagged": "maths-c12-ch09:particular-solution",
+      "nodesTeaching": ["particular-solution","variables-separable","general-solution"],
+      "coverage": "full",
+      "coverageNote": "Separable DE, integration, and particular solution with initial conditions are all covered in ch09.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates for maths-c12-ch09; separable DE integration requires two trig integrals (cos/(1+sin) and 1/(y+1)) plus a back-substitution — more involved than beginner exercises.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "gates-jee.json has no entries for maths-c12-ch09; the entire Differential Equations chapter is absent from the gate bank.",
+          "fix": "Create gates for ch09 nodes including separable-DE particular-solution problems with trig integrands."
+        }
+      ]
+    },
+    {
+      "q": 21,
+      "section": "B",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "If the domain of the function $f(x)=\\sqrt{\\log_{(0.6)}\\left(\\left|\\dfrac{2x-5}{x^2-4}\\right|\\right)}$ is $(-\\infty,a]\\cup\\{b\\}\\cup[c,d]\\cup(e,\\infty)$, then the value of $a+b+c+d+e$ is _____.",
+          "options": null,
+          "answer": "4"
+        }
+      ],
+      "concepts": [
+        "Require log_{0.6}(|...|) >= 0: since base < 1, this means |expression| in (0,1]",
+        "Case-split on sign of x^2-4 (denominator) and of 2x-5 (numerator)",
+        "Assemble the domain intervals and identify the five boundary values"
+      ],
+      "nodeTagged": "maths-ch02:real-function",
+      "nodesTeaching": ["real-function","rational-function","domain-range-codomain"],
+      "coverage": "partial",
+      "coverageNote": "Domain-finding for real functions is taught but logarithm with base < 1 inequality reversal combined with absolute value and rational expression is not an explicit node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest ch02 gate asks domain of (x^2-7x+10)/(x^2-...); this exam question layers a base-<1 log, absolute value, and rational function — significantly harder.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "Ch02 real-function gates only cover polynomial/rational domains; no gate involves log_{base<1} domain analysis with absolute value.",
+          "fix": "Add hard domain gates combining log base<1 inequalities with absolute values and rational expressions."
+        }
+      ]
+    },
+    {
+      "q": 22,
+      "section": "B",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "If $\\displaystyle\\sum_{k=1}^{n}a_k=6n^3$, then $\\displaystyle\\sum_{k=1}^{6}\\left(\\dfrac{a_{k+1}-a_k}{36}\\right)^2$ is equal to _____.",
+          "options": null,
+          "answer": "91"
+        }
+      ],
+      "concepts": [
+        "Derive a_n from S_n: a_n = S_n - S_{n-1} = 6(3n^2-3n+1) for n>=2",
+        "Compute a_{k+1} - a_k = 36k (each difference is 36k)",
+        "Sum k^2 from k=1 to 6: 1+4+9+16+25+36 = 91"
+      ],
+      "nodeTagged": "maths-ch08:form-a-series-with-sigma-notation",
+      "nodesTeaching": ["form-a-series-with-sigma-notation","find-the-general-term","define-a-sequence"],
+      "coverage": "partial",
+      "coverageNote": "Series notation is taught but deriving a_n from S_n (telescoping S_n-S_{n-1}) is not an explicit node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest ch08 gate writes a simple series in sigma notation; the exam requires deriving a_n from a cubic S_n, computing second differences, and summing squares — multi-step.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "The technique of obtaining a_n = S_n - S_{n-1} from a given sum formula S_n is not an explicit node in ch08.",
+          "fix": "Add a derive-term-from-partial-sum node covering a_n = S_n - S_{n-1} with examples."
+        }
+      ]
+    },
+    {
+      "q": 23,
+      "section": "B",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let $a,b,c\\in\\{1,2,3,4\\}$. If the probability, that $ax^2+2\\sqrt{2}\\,bx+c>0$ for all $x\\in\\mathbb{R}$, is $\\dfrac{m}{n}$, $\\gcd(m,n)=1$, then $m+n$ is equal to _____.",
+          "options": null,
+          "answer": "81"
+        }
+      ],
+      "concepts": [
+        "Condition for ax^2+2sqrt(2)bx+c > 0 for all x: a > 0 (auto since a >= 1) and discriminant < 0",
+        "Discriminant = 8b^2 - 4ac < 0, i.e., 2b^2 < ac",
+        "Count favorable (a,b,c) triples from {1,2,3,4}^3: 17 out of 64; P = 17/64; m+n=81"
+      ],
+      "nodeTagged": "maths-ch14:solve-probability-problems",
+      "nodesTeaching": ["solve-probability-problems","equally-likely-outcomes","probability-of-an-event"],
+      "coverage": "partial",
+      "coverageNote": "Equally-likely counting probability is covered but the event itself requires a quadratic inequality condition not tied to probability theory.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest ch14 gate involves a combinatorial arrangement probability; the exam requires recognizing the quadratic positivity condition and systematic counting — harder.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "No gate combines quadratic inequality analysis with counting probability over a finite sample space.",
+          "fix": "Add a gate: probability that ax^2+bx+c satisfies a condition (positive definite, real roots, etc.) when coefficients are chosen randomly from a finite set."
+        }
+      ]
+    },
+    {
+      "q": 24,
+      "section": "B",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let a circle $C$ have its centre in the first quadrant, intersect the coordinate axes at exactly three points and cut off equal intercepts from the coordinate axes. If the length of the chord of $C$ on the line $x+y=1$ is $\\sqrt{14}$, then the square of the radius of $C$ is _____.",
+          "options": null,
+          "answer": "8"
+        }
+      ],
+      "concepts": [
+        "Interpret 'exactly three intercept points + equal intercepts' as circle passing through origin with centre (a,a)",
+        "Radius = a*sqrt(2); x-axis intercepts (0,0),(2a,0); y-axis intercepts (0,0),(0,2a)",
+        "Use chord-length formula: 4(2a^2 - (2a-1)^2/2) = 14, solve a=2, r^2=8"
+      ],
+      "nodeTagged": "maths-ch10:circle-find-centre-radius",
+      "nodesTeaching": ["circle-find-centre-radius","circle-standard-equation","circle-definition"],
+      "coverage": "partial",
+      "coverageNote": "Circle equations are covered but the multi-condition setup (three intersection points, equal intercepts, chord length) is not an explicit problem type.",
+      "gateDifficulty": "borderline",
+      "difficultyNote": "Hardest ch10 gate asks to find radius from standard form; the exam additionally requires a non-obvious geometric interpretation of the three-intercept constraint — harder.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "No gate models the geometric constraint that a circle passes through the origin (reducing to a specific parametric family) then applies a chord-length condition.",
+          "fix": "Add a gate combining tangent/intercept conditions with chord-length formula to find circle parameters."
+        }
+      ]
+    },
+    {
+      "q": 25,
+      "section": "B",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "If $\\alpha=\\displaystyle\\int_{0}^{2\\sqrt{3}}\\log_2(x^2+4)\\,dx+\\int_{2}^{4}\\sqrt{2^x-4}\\,dx$, then $\\alpha^2$ is equal to _____.",
+          "options": null,
+          "answer": "192"
+        }
+      ],
+      "concepts": [
+        "Recognize the second integrand as the inverse function of the first: if y=log2(x^2+4) then x=sqrt(2^y-4)",
+        "Apply area-complement theorem: int_a^b f dx + int_{f(a)}^{f(b)} f^{-1} dy = b*f(b) - a*f(a)",
+        "Compute 2sqrt(3)*log2(16) - 0 = 8sqrt(3); alpha^2 = 192"
+      ],
+      "nodeTagged": "maths-c12-ch07:fundamental-theorem-evaluation",
+      "nodesTeaching": ["fundamental-theorem-evaluation","integration-by-parts","definite-integral"],
+      "coverage": "partial",
+      "coverageNote": "Definite integration is taught but the area-complement theorem for inverse functions is not a node in ch07.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates for maths-c12-ch07; the area-complement (inverse-function integral) technique is a JEE-signature trick not covered anywhere in the corpus.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "The inverse-function integral identity (area complement theorem) is not a node in ch07; this is a recurring JEE technique.",
+          "fix": "Add an inverse-function-integral node: if f and f^{-1} are defined, int_a^b f + int_{f(a)}^{f(b)} f^{-1} = b*f(b) - a*f(a)."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalQuestions": 24,
+    "coveredFull": 5,
+    "partial": 16,
+    "gaps": 3,
+    "gateSufficient": 0,
+    "gateInsufficient": 22,
+    "gateBorderline": 2,
+    "gateNotApplicable": 0,
+    "flags": [
+      {
+        "q": 1,
+        "type": "tagging",
+        "detail": "AP-product series tagged to maths-ch08:form-a-series-with-sigma-notation (GP/series node); AP instruction is absent from the entire corpus.",
+        "fix": "Create AP nodes; re-tag to a solve-ap-problems goal."
+      },
+      {
+        "q": 1,
+        "type": "content-gap",
+        "detail": "No Arithmetic Progression nodes exist anywhere in the corpus (both Q1 and Q5 are AP questions).",
+        "fix": "Add AP chapter: define-ap, nth-term-ap, sum-n-terms-ap, arithmetic-mean, intersection-of-aps, solve-ap-problems."
+      },
+      {
+        "q": 1,
+        "type": "difficulty-gap",
+        "detail": "No gate in ch08 reaches the difficulty of deriving Vieta coefficients from a multi-product series.",
+        "fix": "Add hard gates combining sigma expansion with Vieta application."
+      },
+      {
+        "q": 2,
+        "type": "difficulty-gap",
+        "detail": "Ch04 gates are single-expression reductions; no gate solves a 2x2 system from simultaneous rationalized complex fractions.",
+        "fix": "Add a gate: equate complex expression with real unknowns to a+ib and solve the resulting linear system."
+      },
+      {
+        "q": 3,
+        "type": "difficulty-gap",
+        "detail": "gates-jee.json has no entries for maths-c12-ch04; entire Determinants chapter absent from gate bank.",
+        "fix": "Create gates for all maths-c12-ch04 nodes."
+      },
+      {
+        "q": 4,
+        "type": "content-gap",
+        "detail": "Cayley-Hamilton theorem is not a node in the corpus.",
+        "fix": "Add a cayley-hamilton node to maths-c12-ch04."
+      },
+      {
+        "q": 4,
+        "type": "difficulty-gap",
+        "detail": "No gates for maths-c12-ch04; non-commutativity trap and det(adj) formula untested.",
+        "fix": "Add gates for adjoint including det(adj(M))=det(M)^(n-1) and matrix multiplication ordering traps."
+      },
+      {
+        "q": 5,
+        "type": "tagging",
+        "detail": "AP intersection problem tagged to maths-ch08:solve-geometric-progression-problems (GP goal node).",
+        "fix": "Create AP nodes; re-tag Q5."
+      },
+      {
+        "q": 5,
+        "type": "content-gap",
+        "detail": "AP intersection via LCM/CRT is entirely absent from the corpus.",
+        "fix": "Add intersection-of-aps node covering the LCM period technique."
+      },
+      {
+        "q": 6,
+        "type": "content-gap",
+        "detail": "Inclusion-exclusion principle for counting problems is not a node in ch06.",
+        "fix": "Add an inclusion-exclusion node to maths-ch06 with surjection counting as the key application."
+      },
+      {
+        "q": 7,
+        "type": "difficulty-gap",
+        "detail": "All ch06 combination gates are direct nCr evaluations; none require parameter constraints from binomial coefficient ratios.",
+        "fix": "Add gates requiring C(n,r+1)/C(n-1,r) identity manipulation and integer-solution counting."
+      },
+      {
+        "q": 8,
+        "type": "tagging",
+        "detail": "Grouped-data mean problem tagged to maths-ch13:variance (a downstream node).",
+        "fix": "Add a grouped-data-mean node to ch13; re-tag Q8."
+      },
+      {
+        "q": 8,
+        "type": "difficulty-gap",
+        "detail": "No gate reverses the mean computation (find parameter from given mean, then identify quadratic root).",
+        "fix": "Add a reverse-mean gate for grouped data."
+      },
+      {
+        "q": 9,
+        "type": "tagging",
+        "detail": "Incentre-from-medial-triangle problem tagged to maths-ch09:represent-a-line-algebraically.",
+        "fix": "Add incentre/excentre node to ch09; re-tag Q9."
+      },
+      {
+        "q": 9,
+        "type": "content-gap",
+        "detail": "No node covers incentre formula or recovery of vertices from midpoints of sides.",
+        "fix": "Add nodes: recover-vertices-from-midpoints and compute-incentre-excentre."
+      },
+      {
+        "q": 11,
+        "type": "difficulty-gap",
+        "detail": "No gate covers sin(theta)sin(60-theta)sin(60+theta)=sin(3theta)/4, a JEE-standard triple product identity.",
+        "fix": "Strengthen triple-angle-identities node or add a dedicated gate."
+      },
+      {
+        "q": 12,
+        "type": "difficulty-gap",
+        "detail": "No ch03 gate asks to count solutions of a trig equation with integer parameter over a closed interval.",
+        "fix": "Add a counting-solutions-trig gate using the Rsin(theta+phi) technique."
+      },
+      {
+        "q": 13,
+        "type": "difficulty-gap",
+        "detail": "gates-jee.json has no entries for maths-c12-ch11; entire 3D Geometry chapter absent from gate bank.",
+        "fix": "Create gates for all maths-c12-ch11 nodes."
+      },
+      {
+        "q": 14,
+        "type": "content-gap",
+        "detail": "No node covers optimization of sums of vector magnitudes with a free angle parameter.",
+        "fix": "Add a gate: maximize/minimize linear combinations of |pa+qb| over all angles."
+      },
+      {
+        "q": 14,
+        "type": "difficulty-gap",
+        "detail": "gates-jee.json has no entries for maths-c12-ch10; entire Vectors chapter absent from gate bank.",
+        "fix": "Create gates for all maths-c12-ch10 nodes."
+      },
+      {
+        "q": 15,
+        "type": "content-gap",
+        "detail": "Foot of perpendicular from a point to a 3D line is not a node in maths-c12-ch11.",
+        "fix": "Add a foot-of-perpendicular-to-line node."
+      },
+      {
+        "q": 16,
+        "type": "difficulty-gap",
+        "detail": "Ch12 gates cover standard trig limit formulas; no gate involves parameter determination from finiteness of a composite limit.",
+        "fix": "Add a gate: find a,b from the condition that a given limit exists and is finite."
+      },
+      {
+        "q": 18,
+        "type": "difficulty-gap",
+        "detail": "gates-jee.json has no entries for maths-c12-ch06; Applications of Derivatives entirely absent from gate bank.",
+        "fix": "Create gates for all maths-c12-ch06 nodes including piecewise/absolute-value critical-point counting."
+      },
+      {
+        "q": 19,
+        "type": "difficulty-gap",
+        "detail": "gates-jee.json has no entries for maths-c12-ch07; Integration chapter entirely absent from gate bank.",
+        "fix": "Create gates for ch07 nodes including greatest-integer / piecewise integrand problems."
+      },
+      {
+        "q": 20,
+        "type": "difficulty-gap",
+        "detail": "gates-jee.json has no entries for maths-c12-ch09; Differential Equations entirely absent from gate bank.",
+        "fix": "Create gates for ch09 nodes: separable-DE particular-solution problems with trig integrands."
+      },
+      {
+        "q": 21,
+        "type": "difficulty-gap",
+        "detail": "Ch02 real-function gates cover polynomial/rational domains only; no gate involves log_{base<1} + absolute value domain analysis.",
+        "fix": "Add hard domain gates combining log-base<1 inequalities with absolute values."
+      },
+      {
+        "q": 22,
+        "type": "content-gap",
+        "detail": "Deriving a_n from S_n via a_n = S_n - S_{n-1} is not an explicit node in ch08.",
+        "fix": "Add a derive-term-from-partial-sum node to maths-ch08."
+      },
+      {
+        "q": 23,
+        "type": "difficulty-gap",
+        "detail": "No ch14 gate combines quadratic inequality analysis with counting probability.",
+        "fix": "Add a gate: probability that randomly chosen coefficients satisfy a quadratic condition."
+      },
+      {
+        "q": 24,
+        "type": "difficulty-gap",
+        "detail": "No ch10 gate models the three-intercept geometric constraint leading to a parametric circle family.",
+        "fix": "Add a gate combining tangent/intercept conditions with chord-length formula."
+      },
+      {
+        "q": 25,
+        "type": "content-gap",
+        "detail": "Inverse-function integral identity (area complement theorem) is not a node in ch07.",
+        "fix": "Add an inverse-function-integral node to maths-c12-ch07."
+      }
+    ]
+  }
+}

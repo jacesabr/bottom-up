@@ -1,0 +1,862 @@
+{
+  "paperId": "jeeadv-2024-p1",
+  "exam": "jee",
+  "subject": "maths",
+  "title": "JEE Advanced 2024 Paper 1 — Mathematics",
+  "maxMarks": 57,
+  "questions": [
+    {
+      "q": 1,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let f(x) be a continuously differentiable function on the interval (0,∞) such that f(1) = 2 and lim_(t→x) [ t^10 f(x) − x^10 f(t) ] / ( t^9 − x^9 ) = 1 for each x > 0. Then, for all x > 0, f(x) is equal to",
+          "options": [
+            "(31/(11x)) − (9/11)x^10",
+            "(9/(11x)) + (13/11)x^10",
+            "(−9/(11x)) + (31/11)x^10",
+            "(13/(11x)) + (9/11)x^10"
+          ],
+          "answer": "(9/(11x)) + (13/11)x^10"
+        }
+      ],
+      "concepts": [
+        "Evaluate limit of indeterminate quotient via L'Hôpital to extract a first-order linear ODE",
+        "Solve the resulting linear ODE using integrating factor",
+        "Apply initial condition f(1)=2 to fix the constant"
+      ],
+      "nodeTagged": "maths-c12-ch09:solve-linear-de",
+      "nodesTeaching": [
+        "maths-c12-ch09:solve-linear-de",
+        "maths-c12-ch09:integrating-factor",
+        "maths-c12-ch09:linear-differential-equation",
+        "maths-c12-ch09:particular-solution"
+      ],
+      "coverage": "full",
+      "coverageNote": "Teaching covers linear ODEs fully; however the twist of recovering the ODE from a limit (requiring L'Hôpital) is a multi-step derivation that exceeds a direct 'solve this ODE' task.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for any maths-c12 node in gates-jee.json; the tagged node has zero practice gates, let alone ones matching JEE-Advanced depth.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "Node solve-linear-de has NO gates in gates-jee.json. The JEE question requires first deriving the ODE from a limit via L'Hôpital — a skill not captured by any current gate.",
+          "fix": "Add gates for maths-c12-ch09 nodes: at least one gate that gives a limit form and requires the student to derive the DE before solving."
+        }
+      ]
+    },
+    {
+      "q": 2,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "A student appears for a quiz consisting of only true-false type questions and answers all the questions. The student knows the answers of some questions and guesses the answers for the remaining questions. Whenever the student knows the answer of a question, he gives the correct answer. Assume that the probability of the student giving the correct answer for a question, given that he has guessed it, is 1/2. Also assume that the probability of the answer for a question being guessed, given that the student's answer is correct, is 1/6. Then the probability that the student knows the answer of a randomly chosen question is",
+          "options": ["1/12", "1/7", "5/7", "5/12"],
+          "answer": "5/7"
+        }
+      ],
+      "concepts": [
+        "Set up Bayes' theorem with 'knows' and 'guesses' as partition hypotheses",
+        "Translate given conditional probabilities correctly (P(guesses|correct)=1/6)",
+        "Solve for prior P(knows) using total probability"
+      ],
+      "nodeTagged": "maths-c12-ch13:bayes-theorem",
+      "nodesTeaching": [
+        "maths-c12-ch13:bayes-theorem",
+        "maths-c12-ch13:total-probability-theorem",
+        "maths-c12-ch13:conditional-probability"
+      ],
+      "coverage": "full",
+      "coverageNote": "Bayes node covers reverse-probability problems; this question requires identifying the posterior correctly from the problem statement, which is a typical JEE application.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for maths-c12-ch13 nodes. The problem requires careful identification of which conditional is the prior and which is the posterior — a common JEE trap not tested by any gate.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "Node bayes-theorem has NO gates. A JEE-level gate should test the case where P(hypothesis|observation) is given and requires back-solving for the prior probability.",
+          "fix": "Add gates for maths-c12-ch13 nodes with multi-step Bayes problems where the given conditional is a posterior, not a likelihood."
+        }
+      ]
+    },
+    {
+      "q": 3,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let π/2 < x < π be such that cot x = −5/√11. Then ( sin(11x/2) )( sin 6x − cos 6x ) + ( cos(11x/2) )( sin 6x + cos 6x ) is equal to",
+          "options": [
+            "(√11 − 1)/(2√3)",
+            "(√11 + 1)/(2√3)",
+            "(√11 + 1)/(3√2)",
+            "(√11 − 1)/(3√2)"
+          ],
+          "answer": "(√11 + 1)/(2√3)"
+        }
+      ],
+      "concepts": [
+        "Simplify composite expression using sine/cosine sum-difference and product formulas",
+        "Recognise the expression equals sin(6x + 11x/2) = sin(23x/2) by the sine addition formula",
+        "Compute sin(23x/2) from cot x = -5/√11 with x in (π/2, π) using half-angle or allied identities",
+        "Sign tracking via quadrant analysis from cot x value"
+      ],
+      "nodeTagged": "maths-ch03:double-angle-identities",
+      "nodesTeaching": [
+        "maths-ch03:double-angle-identities",
+        "maths-ch03:sine-sum-difference",
+        "maths-ch03:cosine-sum-difference",
+        "maths-ch03:find-remaining-trig-values",
+        "maths-ch03:sign-of-trig-functions",
+        "maths-ch03:sum-to-product-identities",
+        "maths-ch03:prove-and-apply-trigonometric-identities"
+      ],
+      "coverage": "full",
+      "coverageNote": "The tagging to double-angle-identities is slightly narrow; the main move is recognizing the full expression as sin(6x+11x/2) via sine addition, then evaluating at a fractional angle — closer to the goal node prove-and-apply-trigonometric-identities.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "The hardest gate for double-angle-identities only asks for cos 2x given cos x = 1/4 (single substitution); this question chains multiple identities and requires half-angle computation for an awkward angle.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "tagging",
+          "detail": "Question is tagged double-angle-identities but the critical move is the sine-addition formula collapsing to sin(23x/2) — the goal node prove-and-apply-trigonometric-identities is more accurate.",
+          "fix": "Re-tag to maths-ch03:prove-and-apply-trigonometric-identities."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "The gate for double-angle-identities (tier: foundation) only evaluates cos 2x from cos x — far simpler than chaining sum-difference formulas, half-angle reductions and quadrant sign analysis.",
+          "fix": "Add intermediate/advanced gates for maths-ch03 combining multiple identity chains with fractional/half-angle arguments."
+        }
+      ]
+    },
+    {
+      "q": 4,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Consider the ellipse x²/9 + y²/4 = 1. Let S(p,q) be a point in the first quadrant such that p²/9 + q²/4 > 1. Two tangents are drawn from S to the ellipse, of which one meets the ellipse at one end point of the minor axis and the other meets the ellipse at a point T in the fourth quadrant. Let R be the vertex of the ellipse with positive x-coordinate and O be the center of the ellipse. If the area of the triangle ΔORT is 3/2, then which of the following options is correct?",
+          "options": [
+            "q = 2, p = 3√3",
+            "q = 2, p = 4√3",
+            "q = 1, p = 5√3",
+            "q = 1, p = 6√3"
+          ],
+          "answer": "q = 2, p = 3√3"
+        }
+      ],
+      "concepts": [
+        "Use tangent from external point to an ellipse, specifically tangent to minor axis endpoint",
+        "Set up and solve for point T on the ellipse in the fourth quadrant given the area of triangle ΔORT",
+        "Compute the slope of tangent ST and use it to find p",
+        "Geometric reasoning on ellipse vertices, tangent lines and area calculation"
+      ],
+      "nodeTagged": "maths-ch10:ellipse-standard-equation",
+      "nodesTeaching": [
+        "maths-ch10:ellipse-standard-equation",
+        "maths-ch10:ellipse-definition",
+        "maths-ch10:ellipse-abc-relation"
+      ],
+      "coverage": "partial",
+      "coverageNote": "The corpus teaches the standard ellipse equation and its properties, but tangent lines from an external point to an ellipse are a JEE-Advanced topic not covered by any NCERT Class 11 node in the corpus.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "The hardest gate for ellipse-standard-equation only asks for c (semi-focal distance) from a given equation; this question requires deriving and intersecting tangent lines from an external point, far beyond any existing gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Tangent to an ellipse from an external point (equation of tangent, slope form) is not covered by any node in the maths-ch10 corpus. This is a standard JEE Advanced topic.",
+          "fix": "Add a node for 'tangent to an ellipse from an external point' in maths-ch10 covering the slope form and pair-of-tangents equation."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "All ellipse gates are foundation-tier asking to read off a, b, c from the standard equation; this question requires multi-step geometry with tangent lines and area calculations.",
+          "fix": "Add intermediate/advanced gates involving tangent lines and geometric constructions on ellipses."
+        }
+      ]
+    },
+    {
+      "q": 5,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A (multiple-correct)",
+          "prompt": "Let S = { a + b√2 : a, b ∈ ℤ }, T₁ = { (−1 + √2)^n : n ∈ ℕ }, and T₂ = { (1 + √2)^n : n ∈ ℕ }. Then which of the following statements is (are) TRUE?",
+          "options": [
+            "ℤ ∪ T₁ ∪ T₂ ⊂ S",
+            "T₁ ∩ (0, 1/2024) = φ, where φ denotes the empty set.",
+            "T₂ ∩ (2024, ∞) ≠ φ",
+            "For any given a, b ∈ ℤ, cos(π(a + b√2)) + i sin(π(a + b√2)) ∈ ℤ if and only if b = 0, where i = √(−1)."
+          ],
+          "answer": "ℤ ∪ T₁ ∪ T₂ ⊂ S | T₂ ∩ (2024, ∞) ≠ φ | For any given a, b ∈ ℤ, cos(π(a + b√2)) + i sin(π(a + b√2)) ∈ ℤ if and only if b = 0, where i = √(−1)."
+        }
+      ],
+      "concepts": [
+        "Binomial expansion of (−1+√2)^n and (1+√2)^n to show membership in S = {a+b√2 : a,b ∈ ℤ}",
+        "Prove T₁ is bounded below by analyzing convergence of (√2−1)^n → 0+",
+        "Show T₂ is unbounded and intersects (2024,∞) since (1+√2)^n → ∞",
+        "Evaluate cos(π(a+b√2)) + i sin(π(a+b√2)) ∈ ℤ iff e^{iπ(a+b√2)} ∈ ℤ iff b=0 (irrationality of π√2)"
+      ],
+      "nodeTagged": "maths-ch01:compute-the-intersection-of-sets",
+      "nodesTeaching": [
+        "maths-ch01:compute-the-intersection-of-sets",
+        "maths-ch01:write-intervals-as-subsets-of-r",
+        "maths-ch01:determine-subset-relations",
+        "maths-ch01:name-subsets-of-the-real-numbers"
+      ],
+      "coverage": "partial",
+      "coverageNote": "Set intersection and subset concepts are taught, but the question requires number theory (irrational √2, properties of (1±√2)^n), binomial expansion over ℤ[√2], and complex exponentials — none of which are in the maths-ch01 corpus.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "The hardest gate for compute-the-intersection-of-sets asks to find n(A∩B) for simple integer sets; this question requires irrationality arguments and algebraic number theory far beyond any existing gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "tagging",
+          "detail": "Tagging to maths-ch01:compute-the-intersection-of-sets is misleading; the core skill is algebraic number theory (closure of ℤ[√2], irrationality of √2, exponential growth), not set operations.",
+          "fix": "Re-tag to a complex-numbers or sequences node; add supporting nodes on ℤ[√2] closure and irrational number arguments."
+        },
+        {
+          "type": "content-gap",
+          "detail": "The corpus lacks coverage of (i) closure of ℤ[√2] under multiplication, (ii) bounding (√2−1)^n and (iii) evaluating e^{iπ√2} type expressions using irrationality of π√2.",
+          "fix": "Add content nodes on algebraic integers and irrational-number arguments in the complex-numbers chapter."
+        }
+      ]
+    },
+    {
+      "q": 6,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A (multiple-correct)",
+          "prompt": "Let ℝ² denote ℝ × ℝ. Let S = { (a,b,c) : a,b,c ∈ ℝ and ax² + 2bxy + cy² > 0 for all (x,y) ∈ ℝ² − {(0,0)} }. Then which of the following statements is (are) TRUE? (C) For any given (a,b,c) ∈ S, the system of linear equations ax + by = 1, bx + cy = −1 has a unique solution. (D) For any given (a,b,c) ∈ S, the system of linear equations (a+1)x + by = 0, bx + (c+1)y = 0 has a unique solution.",
+          "options": [
+            "(2, 7/2, 6) ∈ S",
+            "If (3, b, 1/12) ∈ S, then |2b| < 1.",
+            "For any given (a,b,c) ∈ S, the system of linear equations ax + by = 1, bx + cy = −1 has a unique solution.",
+            "For any given (a,b,c) ∈ S, the system of linear equations (a+1)x + by = 0, bx + (c+1)y = 0 has a unique solution."
+          ],
+          "answer": "If (3, b, 1/12) ∈ S, then |2b| < 1. | For any given (a,b,c) ∈ S, the system of linear equations ax + by = 1, bx + cy = −1 has a unique solution. | For any given (a,b,c) ∈ S, the system of linear equations (a+1)x + by = 0, bx + (c+1)y = 0 has a unique solution."
+        }
+      ],
+      "concepts": [
+        "Recognise ax²+2bxy+cy²>0 for all (x,y)≠0 as positive definiteness of the 2×2 matrix [[a,b],[b,c]]",
+        "Translate positive definiteness to conditions a>0 and ac-b²>0",
+        "Determine when the system [a,b;b,c] has a unique solution using det≠0 (which follows from ac>b²)",
+        "Show (a+1,b;b,c+1) is also positive definite and hence has nonzero determinant"
+      ],
+      "nodeTagged": "maths-c12-ch04:consistent-system",
+      "nodesTeaching": [
+        "maths-c12-ch04:consistent-system",
+        "maths-c12-ch04:determinant-order-two",
+        "maths-c12-ch04:invertible-iff-nonsingular"
+      ],
+      "coverage": "partial",
+      "coverageNote": "The corpus teaches consistency via determinants, but positive-definiteness of quadratic forms is not a topic in any node; recognising ax²+2bxy+cy²>0 as a positive definite matrix condition is the key insight missing.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for any maths-c12-ch04 node; the question requires connecting quadratic form theory to determinantal conditions, a level of abstraction far above any current gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Positive definite quadratic forms and their connection to 2×2 matrix determinant conditions (ac-b²>0, a>0) are not covered by any node in the maths-c12-ch04 corpus.",
+          "fix": "Add a node on positive definite quadratic forms linking to the consistent-system and determinant nodes."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "No gates exist for maths-c12-ch04. This question requires abstract reasoning about matrix positive definiteness not reachable from any existing content.",
+          "fix": "Add gates for determinant and consistent-system nodes at intermediate/advanced tier."
+        }
+      ]
+    },
+    {
+      "q": 7,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A (multiple-correct)",
+          "prompt": "Let ℝ³ denote the three-dimensional space. Take two points P = (1, 2, 3) and Q = (4, 2, 7). Let dist(X, Y) denote the distance between two points X and Y in ℝ³. Let S = { X ∈ ℝ³ : (dist(X, P))² − (dist(X, Q))² = 50 } and T = { Y ∈ ℝ³ : (dist(Y, Q))² − (dist(Y, P))² = 50 }. Then which of the following statements is (are) TRUE?",
+          "options": [
+            "There is a triangle whose area is 1 and all of whose vertices are from S.",
+            "There are two distinct points L and M in T such that each point on the line segment LM is also in T.",
+            "There are infinitely many rectangles of perimeter 48, two of whose vertices are from S and the other two vertices are from T.",
+            "There is a square of perimeter 48, two of whose vertices are from S and the other two vertices are from T."
+          ],
+          "answer": "There is a triangle whose area is 1 and all of whose vertices are from S. | There are two distinct points L and M in T such that each point on the line segment LM is also in T. | There are infinitely many rectangles of perimeter 48, two of whose vertices are from S and the other two vertices are from T. | There is a square of perimeter 48, two of whose vertices are from S and the other two vertices are from T."
+        }
+      ],
+      "concepts": [
+        "Derive equations of S and T as parallel planes using the locus/distance-difference condition",
+        "Identify S and T as planes: S is 6x+8z=75, T is 6x+8z=25 (perpendicular bisector family)",
+        "Compute the distance between the parallel planes and use it to check geometric properties",
+        "Reason about rectangles and squares with two vertices in each plane"
+      ],
+      "nodeTagged": "maths-ch11:equation-of-set-of-points",
+      "nodesTeaching": [
+        "maths-ch11:equation-of-set-of-points",
+        "maths-ch11:distance-between-two-points",
+        "maths-ch11:locate-and-measure-points-in-3d-space"
+      ],
+      "coverage": "partial",
+      "coverageNote": "The equation-of-set-of-points node covers deriving plane equations from distance conditions; however the subsequent geometric reasoning about rectangles/squares with vertices in two parallel planes goes well beyond the NCERT scope.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "The hardest gate for equation-of-set-of-points plugs a specific point into a derived plane equation; this question requires identifying two parallel planes and reasoning about all possible rectangles/squares spanning them — multiple levels above the gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "After deriving the plane equations, options C and D require 3D geometric reasoning about rectangles and squares spanning parallel planes — far beyond the existing foundation gate.",
+          "fix": "Add advanced gates on geometric configurations (triangles, rectangles) in and between planes in 3D."
+        }
+      ]
+    },
+    {
+      "q": 8,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let a = 3√2 and b = 1/(5^(1/6)√6). If x, y ∈ ℝ are such that 3x + 2y = log_a (18)^(5/4) and 2x − y = log_b (√1080), then 4x + 5y is equal to _____.",
+          "options": null,
+          "answer": "8"
+        }
+      ],
+      "concepts": [
+        "Change of base and simplification of logarithms with surd bases",
+        "Express log_a(18)^(5/4) and log_b(√1080) in terms of common logarithms",
+        "Solve 2×2 linear system for x and y, then evaluate 4x+5y"
+      ],
+      "nodeTagged": "maths-c12-ch05:logarithm-function",
+      "nodesTeaching": [
+        "maths-c12-ch05:logarithm-function",
+        "maths-c12-ch05:exponential-function",
+        "maths-c12-ch05:derivative-of-exp-and-log"
+      ],
+      "coverage": "partial",
+      "coverageNote": "The logarithm-function node defines log as inverse exponential and covers basic properties; however, simplification of logarithms with complex surd bases (3√2, 5^(1/6)√6) and change of base manipulation is a Class 9/10 topic not explicitly in the C12 node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for maths-c12-ch05 nodes. The question requires expert log manipulation with non-standard bases; the maths-c12-ch05 logarithm-function node focuses on the definition and derivative rather than computation.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Log manipulation with surd bases (simplifying log_{3√2}(18) etc. to rational numbers using change of base and log laws) is not covered by the maths-c12-ch05 logarithm-function node, which focuses on the definition and d/dx(log x).",
+          "fix": "Add a node (or attach to existing) covering log laws: log_{a^n}(x) = (1/n)log_a(x), log_a(x^p) = p·log_a(x), and change of base, to bridge between the definition and computational use."
+        }
+      ]
+    },
+    {
+      "q": 9,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let f(x) = x⁴ + ax³ + bx² + c be a polynomial with real coefficients such that f(1) = −9. Suppose that i√3 is a root of the equation 4x³ + 3ax² + 2bx = 0, where i = √(−1). If α₁, α₂, α₃, and α₄ are all the roots of the equation f(x) = 0, then |α₁|² + |α₂|² + |α₃|² + |α₄|² is equal to _____.",
+          "options": null,
+          "answer": "20"
+        }
+      ],
+      "concepts": [
+        "Note 4x³+3ax²+2bx = 0 is essentially f'(x)/x (since f has no constant-free linear term), giving roots of f'(x)",
+        "Complex roots come in conjugate pairs for real-coefficient polynomials: if i√3 is a root so is -i√3",
+        "Express sum |αi|² in terms of Vieta's formulas (equals sum of squares of roots)",
+        "Use f(1)=-9 to determine remaining coefficients"
+      ],
+      "nodeTagged": "maths-ch04:modulus",
+      "nodesTeaching": [
+        "maths-ch04:modulus",
+        "maths-ch04:conjugate",
+        "maths-ch04:modulus-conjugate-properties",
+        "maths-ch04:complex-number-form"
+      ],
+      "coverage": "partial",
+      "coverageNote": "Modulus of complex numbers is taught; however Vieta's formulas for polynomial roots and the conjugate root theorem for real polynomials are not nodes in maths-ch04 — the question tests a deep interplay of these.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "The hardest gate for modulus asks |8+6i| = 10; this question requires identifying that 4x³+3ax²+2bx = f'(x)/x, applying conjugate root theorem, and computing sum of squared moduli via Vieta — multiple conceptual levels above the gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Vieta's formulas for roots of polynomials and the conjugate root theorem for real-coefficient polynomials are not covered by any node in the maths-ch04 corpus.",
+          "fix": "Add a node on Vieta's formulas and the conjugate root theorem as prerequisites to modulus-based root problems."
+        },
+        {
+          "type": "tagging",
+          "detail": "This question is primarily about polynomial roots and Vieta's formulas; maths-ch04:modulus is a supporting sub-skill only (computing |αi|²). Better tagged to a complex polynomial roots node.",
+          "fix": "Create a 'polynomial-roots-complex' node and re-tag, or tag to maths-ch04:reduce-expressions-to-a-plus-ib (the goal node)."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "Foundation modulus gate asks |8+6i|; this question requires polynomial differentiation insight, conjugate pairs, and Vieta's sum to compute the answer.",
+          "fix": "Add advanced gates combining modulus computation with polynomial root theory."
+        }
+      ]
+    },
+    {
+      "q": 10,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let S = { A = [[0, 1, c], [1, a, d], [1, b, e]] : a, b, c, d, e ∈ {0, 1} and |A| ∈ {−1, 1} }, where |A| denotes the determinant of A. Then the number of elements in S is _____.",
+          "options": null,
+          "answer": "16"
+        }
+      ],
+      "concepts": [
+        "Expand the 3×3 determinant with binary entries",
+        "Count 5-tuples (a,b,c,d,e) ∈ {0,1}^5 such that the determinant equals ±1",
+        "Systematic case analysis or combinatorial enumeration"
+      ],
+      "nodeTagged": "maths-c12-ch04:determinant-order-three",
+      "nodesTeaching": [
+        "maths-c12-ch04:determinant-order-three",
+        "maths-c12-ch04:determinant-order-two",
+        "maths-c12-ch04:cofactor"
+      ],
+      "coverage": "full",
+      "coverageNote": "The determinant-order-three node covers cofactor expansion; the counting aspect requires enumeration over binary entries (32 cases), which is combinatorial reasoning additional to pure determinant calculation.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for maths-c12-ch04 nodes. This question combines determinant expansion with a systematic binary enumeration — the kind of multi-case analysis not present in any foundation gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "No gates exist for maths-c12-ch04. The question requires combining 3×3 determinant expansion with systematic enumeration over 32 binary matrices — a JEE-specific mixed skill not tested anywhere.",
+          "fix": "Add gates for maths-c12-ch04 nodes at intermediate level, including problems where determinants are evaluated for parameterised or restricted-entry matrices."
+        }
+      ]
+    },
+    {
+      "q": 11,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "A group of 9 students, s₁, s₂, ..., s₉, is to be divided to form three teams X, Y, and Z of sizes 2, 3, and 4, respectively. Suppose that s₁ cannot be selected for the team X, and s₂ cannot be selected for the team Y. Then the number of ways to form such teams, is _____.",
+          "options": null,
+          "answer": "665"
+        }
+      ],
+      "concepts": [
+        "Count unrestricted divisions: C(9,2)·C(7,3)·C(4,4) = 1260",
+        "Apply inclusion-exclusion: subtract cases where s₁ in X or s₂ in Y",
+        "Compute |A| (s₁ in X), |B| (s₂ in Y), |A∩B| and apply inclusion-exclusion formula"
+      ],
+      "nodeTagged": "maths-ch06:combinations-ncr",
+      "nodesTeaching": [
+        "maths-ch06:combinations-ncr",
+        "maths-ch06:solve-counting-problems",
+        "maths-ch06:multiplication-principle"
+      ],
+      "coverage": "full",
+      "coverageNote": "The corpus covers nCr and counting with constraints; inclusion-exclusion with two simultaneous constraints is a JEE-level technique that the solve-counting-problems goal node mentions but the existing gates do not practice at this depth.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "The hardest gate for combinations-ncr asks to evaluate 5C3 = 10; this question requires multi-step inclusion-exclusion across three teams with size constraints — significantly harder.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "The foundation gate for combinations-ncr evaluates a single nCr; this question chains three nCr calculations with inclusion-exclusion for two restriction conditions — far beyond any existing gate.",
+          "fix": "Add intermediate gates for maths-ch06:solve-counting-problems that include inclusion-exclusion across multiple restricted-placement constraints."
+        }
+      ]
+    },
+    {
+      "q": 12,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let OP⃗ = (α−1)/α î + ĵ + k̂, OQ⃗ = î + (β−1)/β ĵ + k̂ and OR⃗ = î + ĵ + (1/2)k̂ be three vectors, where α, β ∈ ℝ∖{0} and O denotes the origin. If (OP⃗ × OQ⃗) · OR⃗ = 0 and the point (α, β, 2) lies on the plane 3x + 3y − z + l = 0, then the value of l is _____.",
+          "options": null,
+          "answer": "5"
+        }
+      ],
+      "concepts": [
+        "Compute the cross product OP×OQ in component form",
+        "Take the scalar triple product (OP×OQ)·OR = 0 to derive a relation between α and β",
+        "Obtain α+β = -1 from the triple product condition",
+        "Substitute (α,β,2) into the plane equation with α+β = -1 to find l"
+      ],
+      "nodeTagged": "maths-c12-ch10:vector-product",
+      "nodesTeaching": [
+        "maths-c12-ch10:vector-product",
+        "maths-c12-ch10:scalar-product",
+        "maths-c12-ch10:component-form"
+      ],
+      "coverage": "full",
+      "coverageNote": "Vector cross and dot products are taught in the corpus; the scalar triple product is the capstone application needing both, but the corpus does not have an explicit 'scalar triple product' node — it is implicit in the vector-product goal node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for maths-c12-ch10 nodes. This question requires computing a full 3×3 cross product, taking a dot product with a third vector, and algebraically extracting α+β — no gate tests this at any level.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "No gates exist for maths-c12-ch10. The question requires computing a parametric cross product and using the zero scalar-triple-product condition to find a linear constraint on the parameters.",
+          "fix": "Add gates for maths-c12-ch10:vector-product at intermediate and advanced tiers, including parametric vector problems."
+        },
+        {
+          "type": "content-gap",
+          "detail": "The scalar triple product (a×b)·c is a key concept used here but has no dedicated node in maths-c12-ch10; it is only implicitly part of vector-product.",
+          "fix": "Add a scalar triple product node covering (a×b)·c = det(a,b,c), coplanarity condition, and volume of parallelepiped."
+        }
+      ]
+    },
+    {
+      "q": 13,
+      "section": "Mathematics",
+      "marks": 4,
+      "type": "numeric",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Let X be a random variable, and let P(X = x) denote the probability that X takes the value x. Suppose that the points (x, P(X = x)), x = 0, 1, 2, 3, 4, lie on a fixed straight line in the xy-plane, and P(X = x) = 0 for all x ∈ ℝ − {0, 1, 2, 3, 4}. If the mean of X is 5/2, and the variance of X is α, then the value of 24α is _____.",
+          "options": null,
+          "answer": "42"
+        }
+      ],
+      "concepts": [
+        "Use linearity of probability distribution P(X=x) = a+bx to form system from Σ P=1 and E(X)=5/2",
+        "Solve for a and b (a=1/10, b=1/20), giving P(X=x)=(2+x)/20",
+        "Compute variance: E(X²) - (E(X))² and multiply by 24"
+      ],
+      "nodeTagged": "maths-c12-ch13:random-variable",
+      "nodesTeaching": [
+        "maths-c12-ch13:random-variable",
+        "maths-c12-ch13:bayes-theorem"
+      ],
+      "coverage": "partial",
+      "coverageNote": "The random-variable node defines a random variable but does not cover variance of a distribution, probability mass functions on a linear (arithmetic progression) family, or E(X²) calculation.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for maths-c12-ch13 random-variable. The question requires setting up and solving a 2-variable system from axioms (Σp=1, E(X)=5/2), computing E(X²), and evaluating the variance — well beyond a definition-level node.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Variance of a discrete distribution, E(X²), and the technique of fitting a linear probability mass function from given moments are not covered by the random-variable node.",
+          "fix": "Add a 'mean-variance-discrete' node in maths-c12-ch13 covering E(X), E(X²) and Var(X) = E(X²) - (E(X))²."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "No gates for maths-c12-ch13. This question requires constructing the PMF from constraints and computing variance — two skills not in any gate.",
+          "fix": "Add intermediate gates for maths-c12-ch13 covering computation of variance and mean from probability distributions."
+        }
+      ]
+    },
+    {
+      "q": 14,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A (Match-the-List)",
+          "prompt": "Let α and β be the distinct roots of the equation x² + x − 1 = 0. Consider the set T = {1, α, β}. For a 3×3 matrix M = (a_ij)_{3×3}, define R_i = a_{i1} + a_{i2} + a_{i3} and C_j = a_{1j} + a_{2j} + a_{3j} for i = 1, 2, 3 and j = 1, 2, 3. Match each entry in List-I to the correct entry in List-II. List-I: (P) The number of matrices M = (a_ij)_{3×3} with all entries in T such that R_i = C_j = 0 for all i, j, is; (Q) The number of symmetric matrices M = (a_ij)_{3×3} with all entries in T such that C_j = 0 for all j, is; (R) Let M = (a_ij)_{3×3} be a skew symmetric matrix such that a_ij ∈ T for i > j. Then the number of elements in the set { (x, y, z)ᵀ : x, y, z ∈ ℝ, M(x, y, z)ᵀ = (a_12, 0, −a_23)ᵀ } is; (S) Let M = (a_ij)_{3×3} be a matrix with all entries in T such that R_i = 0 for all i. Then the absolute value of the determinant of M is.",
+          "options": [
+            "(P)→(4) (Q)→(2) (R)→(5) (S)→(1)",
+            "(P)→(2) (Q)→(4) (R)→(1) (S)→(5)",
+            "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)",
+            "(P)→(1) (Q)→(5) (R)→(3) (S)→(4)"
+          ],
+          "answer": "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)"
+        }
+      ],
+      "concepts": [
+        "Count 3×3 matrices over T = {1,α,β} with zero row and column sums (magic-square type constraint)",
+        "Enumerate symmetric 3×3 matrices over T with zero column sums",
+        "Analyse a skew-symmetric matrix whose below-diagonal entries are in T: determine the solution set of M·v = b",
+        "Show |det M| = 0 for a matrix over T with all row sums zero (since row sums = M·(1,1,1)^T = 0)"
+      ],
+      "nodeTagged": "maths-c12-ch04:determinant-order-three",
+      "nodesTeaching": [
+        "maths-c12-ch04:determinant-order-three",
+        "maths-c12-ch04:consistent-system",
+        "maths-c12-ch04:singular-matrix"
+      ],
+      "coverage": "partial",
+      "coverageNote": "Determinant expansion and system analysis are covered; the combinatorial enumeration of matrices over an algebraic set T using root properties of x²+x-1=0 (so 1+α+β = -(α+β) and related identities) is a deep algebraic reasoning step not in any node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates for maths-c12-ch04. Part R requires recognizing a skew-symmetric matrix has |A|=0, so the system either has no solution or infinitely many; Part S requires the key insight that row-sum-zero means M(1,1,1)^T=0 implies |M|=0 — none of this is in any gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "No gates for maths-c12-ch04. This match-the-list question requires four distinct deep properties of matrices (counting with algebraic constraints, symmetric matrix enumeration, skew-symmetric singularity, and row-zero determinant).",
+          "fix": "Add advanced gates combining matrix structure (symmetric, skew-symmetric) with determinant and system analysis."
+        },
+        {
+          "type": "content-gap",
+          "detail": "Skew-symmetric matrices always have zero determinant (for odd order); row-zero matrices have |M|=0; these structural results are not explicit in any node.",
+          "fix": "Add nodes on skew-symmetric matrix properties and structural zero-determinant theorems."
+        }
+      ]
+    },
+    {
+      "q": 15,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A (Match-the-List)",
+          "prompt": "Let the straight line y = 2x touch a circle with center (0, α), α > 0, and radius r at a point A₁. Let B₁ be the point on the circle such that the line segment A₁B₁ is a diameter of the circle. Let α + r = 5 + √5. Match each entry in List-I to the correct entry in List-II. List-I: (P) α equals; (Q) r equals; (R) A₁ equals; (S) B₁ equals. List-II: (1) (−2,4); (2) √5; (3) (−2,6); (4) 5; (5) (2,4). The correct option is",
+          "options": [
+            "(P)→(4) (Q)→(2) (R)→(1) (S)→(3)",
+            "(P)→(2) (Q)→(4) (R)→(1) (S)→(3)",
+            "(P)→(4) (Q)→(2) (R)→(5) (S)→(3)",
+            "(P)→(2) (Q)→(4) (R)→(3) (S)→(5)"
+          ],
+          "answer": "(P)→(4) (Q)→(2) (R)→(5) (S)→(3)"
+        }
+      ],
+      "concepts": [
+        "Tangent to a circle is perpendicular to the radius at the point of tangency",
+        "Distance from centre (0,α) to line y=2x (or 2x-y=0) equals r",
+        "Use α+r = 5+√5 and r = |2·0-α|/√5 = α/√5 to solve for α and r",
+        "Find the tangent point A₁ (foot of perpendicular from centre to line) and B₁ (diametrically opposite)"
+      ],
+      "nodeTagged": "maths-ch10:circle-find-centre-radius",
+      "nodesTeaching": [
+        "maths-ch10:circle-find-centre-radius",
+        "maths-ch10:circle-standard-equation",
+        "maths-ch10:circle-definition"
+      ],
+      "coverage": "partial",
+      "coverageNote": "Circle standard form and centre/radius are taught; however tangent-line distance formula and finding the foot of a perpendicular (to locate A₁) require techniques from the straight-lines chapter (maths-ch09) not currently linked here.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "The hardest gate for circle-find-centre-radius asks to complete the square to find the radius; this question requires the tangent-perpendicularity condition, perpendicular-distance formula, and locating the foot of perpendicular — three additional steps above the gate.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Tangent to a circle from an external point (tangency condition: distance from centre = radius) and finding the foot of perpendicular from centre to a tangent line are not covered by any node in maths-ch10.",
+          "fix": "Add a node on tangent to a circle (external point and foot of perpendicular) linking maths-ch09:distance-of-point-from-line to circle geometry."
+        },
+        {
+          "type": "difficulty-gap",
+          "detail": "Foundation gate finds radius by completing the square; this question requires setting up and solving a system using the tangent-perpendicularity property and locating specific geometric points.",
+          "fix": "Add intermediate gates on circle tangent problems with known external conditions."
+        }
+      ]
+    },
+    {
+      "q": 16,
+      "section": "Mathematics",
+      "marks": 3,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "A (Match-the-List)",
+          "prompt": "Let f : ℝ → ℝ and g : ℝ → ℝ be functions defined by f(x) = { x|x| sin(1/x), x ≠ 0; 0, x = 0 } and g(x) = { 1 − 2x, 0 ≤ x ≤ 1/2; 0, otherwise }. Let a, b, c, d ∈ ℝ. Define the function h : ℝ → ℝ by h(x) = a f(x) + b( g(x) + g(1/2 − x) ) + c( x − g(x) ) + d g(x), x ∈ ℝ. Match each entry in List-I to the correct entry in List-II. List-I: (P) If a = 0, b = 1, c = 0, and d = 0, then; (Q) If a = 1, b = 0, c = 0, and d = 0, then; (R) If a = 0, b = 0, c = 1, and d = 0, then; (S) If a = 0, b = 0, c = 0, and d = 1, then. List-II: (1) h is one-one; (2) h is onto; (3) h is differentiable on ℝ; (4) the range of h is [0,1]; (5) the range of h is {0,1}. The correct option is",
+          "options": [
+            "(P)→(4) (Q)→(3) (R)→(1) (S)→(2)",
+            "(P)→(5) (Q)→(2) (R)→(4) (S)→(3)",
+            "(P)→(5) (Q)→(3) (R)→(2) (S)→(4)",
+            "(P)→(4) (Q)→(2) (R)→(1) (S)→(3)"
+          ],
+          "answer": "(P)→(5) (Q)→(3) (R)→(2) (S)→(4)"
+        }
+      ],
+      "concepts": [
+        "Analyse piecewise functions for continuity and differentiability at boundary points",
+        "Determine injectivity (one-one) and surjectivity (onto) from the range of piecewise combinations",
+        "Case P: g(x)+g(1/2-x) is a constant-1 function on [0,1/2] and 0 elsewhere — range is {0,1}",
+        "Case Q: f(x)=x|x|sin(1/x) is differentiable everywhere including x=0 — verify via squeeze",
+        "Case R: x-g(x) is a function whose range is all of ℝ — onto but not one-one",
+        "Case S: g(x) is not differentiable and has range [0,1]"
+      ],
+      "nodeTagged": "maths-c12-ch05:differentiable-at-a-point",
+      "nodesTeaching": [
+        "maths-c12-ch05:differentiable-at-a-point",
+        "maths-c12-ch05:differentiable-implies-continuous",
+        "maths-c12-ch05:derivative-definition",
+        "maths-c12-ch05:continuity-at-a-point"
+      ],
+      "coverage": "partial",
+      "coverageNote": "Differentiability at a point is covered; injectivity/surjectivity analysis of piecewise-defined functions combining multiple cases is a JEE-level reasoning task extending beyond the scope of the differentiability nodes.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "No gates exist for maths-c12-ch05 nodes. This question requires detailed piecewise function analysis including verifying differentiability of x|x|sin(1/x) at 0 via squeeze theorem and matching range/injectivity/surjectivity — far beyond any gate.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "difficulty-gap",
+          "detail": "No gates for maths-c12-ch05. The question requires squeeze-theorem verification of differentiability for an oscillatory function at 0, plus full injectivity/surjectivity analysis of four piecewise function compositions — all beyond any existing content.",
+          "fix": "Add advanced gates for maths-c12-ch05:differentiable-at-a-point covering oscillatory functions (x²sin(1/x) type) and piecewise differentiability checks via one-sided derivative comparison."
+        },
+        {
+          "type": "content-gap",
+          "detail": "Injectivity and surjectivity of piecewise functions is not covered by any node in maths-c12-ch05 (or adjacent chapters); it spans maths-ch02:function but at a much higher level.",
+          "fix": "Add a node or gate covering injective/surjective analysis of functions defined piecewise, bridging maths-ch02 and maths-c12-ch05 at JEE depth."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalQuestions": 16,
+    "coveredFull": 4,
+    "partial": 12,
+    "gaps": 0,
+    "gateSufficient": 0,
+    "gateInsufficient": 16,
+    "flags": [
+      {
+        "q": 1,
+        "type": "difficulty-gap",
+        "detail": "maths-c12-ch09:solve-linear-de has NO gates. JEE question requires deriving ODE from a limit before solving.",
+        "fix": "Add gates for maths-c12 DE nodes requiring limit-to-ODE derivation."
+      },
+      {
+        "q": 2,
+        "type": "difficulty-gap",
+        "detail": "maths-c12-ch13:bayes-theorem has NO gates. Question requires back-solving from a posterior probability.",
+        "fix": "Add maths-c12-ch13 gates with multi-step Bayes problems."
+      },
+      {
+        "q": 3,
+        "type": "tagging",
+        "detail": "Tagged to double-angle-identities; primary skill is prove-and-apply-trigonometric-identities (chain of identities to collapse to sin(23x/2)).",
+        "fix": "Re-tag to maths-ch03:prove-and-apply-trigonometric-identities."
+      },
+      {
+        "q": 3,
+        "type": "difficulty-gap",
+        "detail": "Foundation gate for double-angle-identities is a single substitution; question chains multiple identity layers.",
+        "fix": "Add intermediate/advanced gates chaining multiple trig identities."
+      },
+      {
+        "q": 4,
+        "type": "content-gap",
+        "detail": "Tangent to an ellipse from an external point is absent from maths-ch10.",
+        "fix": "Add a node for ellipse tangent lines (slope form, external-point tangent pair)."
+      },
+      {
+        "q": 5,
+        "type": "tagging",
+        "detail": "Tagged to maths-ch01:compute-the-intersection-of-sets; core skills are algebraic number theory (ℤ[√2] closure, irrationality).",
+        "fix": "Re-tag to complex-numbers/sequences and add supporting algebraic-integer content."
+      },
+      {
+        "q": 5,
+        "type": "content-gap",
+        "detail": "Closure of ℤ[√2] under multiplication, convergence of (√2−1)^n, and e^{iπ√2} ∉ ℤ arguments are absent from corpus.",
+        "fix": "Add algebraic number theory nodes to complex-numbers chapter."
+      },
+      {
+        "q": 6,
+        "type": "content-gap",
+        "detail": "Positive definite quadratic forms (ac−b²>0, a>0) connecting to determinant conditions are absent from maths-c12-ch04.",
+        "fix": "Add a node on positive definite 2×2 matrices."
+      },
+      {
+        "q": 7,
+        "type": "difficulty-gap",
+        "detail": "Equation-of-set-of-points gate tests a simple point substitution; question requires 3D geometric reasoning about rectangles spanning two parallel planes.",
+        "fix": "Add advanced gates on 3D geometric configurations in/between planes."
+      },
+      {
+        "q": 8,
+        "type": "content-gap",
+        "detail": "Log laws with surd bases (change of base, log_{a^n} simplification) not covered by maths-c12-ch05:logarithm-function.",
+        "fix": "Add computational log-manipulation nodes (laws of logarithms, change of base)."
+      },
+      {
+        "q": 9,
+        "type": "content-gap",
+        "detail": "Vieta's formulas and conjugate root theorem for real polynomials absent from maths-ch04.",
+        "fix": "Add nodes on Vieta's formulas and conjugate root theorem."
+      },
+      {
+        "q": 9,
+        "type": "tagging",
+        "detail": "Tagged to maths-ch04:modulus; primary skill is polynomial root theory (Vieta's, conjugate pairs).",
+        "fix": "Create a polynomial-roots-complex node and re-tag."
+      },
+      {
+        "q": 10,
+        "type": "difficulty-gap",
+        "detail": "No gates for maths-c12-ch04:determinant-order-three. Question requires 3×3 determinant expansion combined with binary enumeration.",
+        "fix": "Add intermediate/advanced gates for maths-c12-ch04 nodes."
+      },
+      {
+        "q": 11,
+        "type": "difficulty-gap",
+        "detail": "Foundation gate for combinations-ncr evaluates one nCr; question needs multi-step inclusion-exclusion with three team sizes.",
+        "fix": "Add intermediate gates on inclusion-exclusion with multiple constraints."
+      },
+      {
+        "q": 12,
+        "type": "difficulty-gap",
+        "detail": "No gates for maths-c12-ch10. Question needs parametric cross product, scalar triple product, and plane-point substitution.",
+        "fix": "Add intermediate/advanced vector gates including scalar triple product."
+      },
+      {
+        "q": 12,
+        "type": "content-gap",
+        "detail": "Scalar triple product (a×b)·c has no dedicated node in maths-c12-ch10.",
+        "fix": "Add a scalar-triple-product node."
+      },
+      {
+        "q": 13,
+        "type": "content-gap",
+        "detail": "Variance of discrete distribution (E(X²), Var(X)) and linear PMF fitting not covered by maths-c12-ch13:random-variable.",
+        "fix": "Add a mean-variance-discrete node to maths-c12-ch13."
+      },
+      {
+        "q": 14,
+        "type": "difficulty-gap",
+        "detail": "No gates for maths-c12-ch04. Match-the-list requires four deep matrix structural properties not in any gate.",
+        "fix": "Add advanced matrix gates covering skew-symmetric, row-sum, and structural determinant results."
+      },
+      {
+        "q": 14,
+        "type": "content-gap",
+        "detail": "Skew-symmetric matrix singularity (odd order) and row-zero determinant are not explicit in any node.",
+        "fix": "Add nodes on skew-symmetric matrix properties and zero-determinant structural results."
+      },
+      {
+        "q": 15,
+        "type": "content-gap",
+        "detail": "Tangent to a circle (perpendicularity condition and foot of perpendicular to locate tangent point) absent from maths-ch10.",
+        "fix": "Add a circle-tangent node linking perpendicular-distance from centre to tangent-line theory."
+      },
+      {
+        "q": 16,
+        "type": "difficulty-gap",
+        "detail": "No gates for maths-c12-ch05. Question needs squeeze-theorem differentiability check and injectivity/surjectivity analysis of piecewise composites.",
+        "fix": "Add advanced gates for differentiability including oscillatory and piecewise functions."
+      },
+      {
+        "q": 16,
+        "type": "content-gap",
+        "detail": "Injectivity/surjectivity of piecewise functions not covered at JEE depth in any existing node.",
+        "fix": "Add a node or advanced gate on injective/surjective piecewise function analysis."
+      }
+    ]
+  }
+}

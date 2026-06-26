@@ -356,6 +356,21 @@
       "quote": "α + β + γ = 3 + (−1) + (−1/3) = 2 − 1/3 = 5/3 = −(−5)/3 = −b/a,"
     },
     {
+      "nodeId": "cbse10:maths:jemh102:build-quadratic-from-transformed-zeroes",
+      "kind": "book",
+      "prompt": "If α and β are the zeroes of the polynomial 6x² − 5x + 1, find a quadratic polynomial whose zeroes are α² and β².",
+      "answerType": "symbolic",
+      "grader": "cas",
+      "answer": "36*x^2 - 13*x + 1",
+      "expected": {
+        "kind": "symbolic",
+        "equivalentTo": "36*x^2 - 13*x + 1"
+      },
+      "srcKind": "paper",
+      "srcLabel": "CBSE Class 10 Maths Standard SQP 2024-25 Q28",
+      "quote": "α²+β² = (α+β)² − 2αβ = 25/36 − 2/6 = 13/36; α²β² = (αβ)² = 1/36; polynomial 36x² − 13x + 1"
+    },
+    {
       "nodeId": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials",
       "kind": "book",
       "prompt": "Using the relation α + β = −b/a, αβ = c/a, construct the monic quadratic polynomial (leading coefficient 1) whose two zeroes are √3 and −√3.",

@@ -101,6 +101,31 @@
       "teachingInsights": []
     },
     {
+      "id": "cbse12:mathematics:mathematics-ch12:infer-constraints-from-feasible-region",
+      "slug": "infer-constraints-from-feasible-region",
+      "title": "Back-infer a missing constraint from a graphed feasible region",
+      "role": "intermediate",
+      "brief": "Read the boundary line from the graph, write its equation, then decide ≤ or ≥ by checking whether a test point (usually the origin) is inside or outside the feasible region.",
+      "sec": 2,
+      "explanation": "PART 1 — Read the boundary line from the graph.\nA missing constraint defines a boundary line that cuts off part of the plane. From the graph, read two points that the boundary line passes through (these are typically on the axes or at labelled corners). Write the line equation. Example: the boundary passes through (1, 0) and (0, 2). Slope = (2−0)/(0−1) = −2, so the line is y = −2x + 2, i.e. 2x + y = 2.\n\nPART 2 — Decide ≤ or ≥ by testing the origin.\nThe boundary line divides the plane into two half-planes. Test the origin (0, 0): substitute x = 0, y = 0 into 2x + y. We get 0. Is the origin INSIDE the feasible region? If yes, the constraint is 2x + y ≤ 2 (origin satisfies ≤). If the origin is OUTSIDE (excluded from the feasible region, as happens when the shaded region is above the line), the constraint is 2x + y ≥ 2. In the board question, the feasible region excludes the origin, so the answer is 2x + y ≥ 2.\n\nPART 3 — Verify by checking a corner point of the feasible region.\nOnce you have a candidate constraint, substitute a known corner point of the feasible region and confirm it satisfies the inequality. If the corner (1, 0) is on the boundary and (2, 0) is inside the region, then 2(2) + 0 = 4 ≥ 2 ✓. This confirms the direction of the inequality.",
+      "keyMoves": [
+        "Identify the two axis-intercept points of the boundary line and write the line equation",
+        "Test the origin: if the origin is inside the feasible region use ≤, if outside use ≥",
+        "Verify by substituting a known corner point of the feasible region into the candidate constraint"
+      ],
+      "misconceptions": [
+        "Assuming the constraint is ≤ just because constraints 'usually' restrict upward — always test a point",
+        "Reading the line equation wrong when the intercepts are not at integer coordinates",
+        "Forgetting that the boundary line itself belongs to the feasible region (use ≤ or ≥, not strict < or >)"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch12:constraints",
+        "cbse12:mathematics:mathematics-ch12:feasible-region"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "cbse12:mathematics:mathematics-ch12:non-negative-restrictions",
       "slug": "non-negative-restrictions",
       "title": "Apply the non-negative restrictions",
@@ -373,7 +398,8 @@
       ],
       "prereqs": [
         "cbse12:mathematics:mathematics-ch12:bounded-max-min-theorem",
-        "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions"
+        "cbse12:mathematics:mathematics-ch12:multiple-optimal-solutions",
+        "cbse12:mathematics:mathematics-ch12:infer-constraints-from-feasible-region"
       ],
       "sameConcept": [],
       "teachingInsights": []

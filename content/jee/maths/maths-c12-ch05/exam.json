@@ -261,6 +261,20 @@
    "srcLabel": "Authored practice (Opus) - mathematics-ch05 Theorem 6 (2)"
   },
   {
+   "nodeId": "jee:maths:maths-c12-ch05:logarithm-laws-and-change-of-base",
+   "kind": "book",
+   "prompt": "Using the change-of-base formula log_b(x) = log_a(x)/log_a(b), evaluate log_4(64) by converting to base 2. (log_2(64) = 6, log_2(4) = 2.) Give the numerical value.",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "3",
+   "expected": {
+    "kind": "numeric",
+    "value": 3,
+    "tol": 0
+   },
+   "srcLabel": "Authored (Sonnet) - log_4(64) = log_2(64)/log_2(4) = 6/2 = 3"
+  },
+  {
    "nodeId": "jee:maths:maths-c12-ch05:logarithmic-differentiation",
    "kind": "practice",
    "prompt": "Logarithmic differentiation is most useful for differentiating functions of the form:",

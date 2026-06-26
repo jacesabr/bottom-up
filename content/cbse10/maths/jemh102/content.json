@@ -29,7 +29,8 @@
         "cbse10:maths:jemh102:build-quadratic-from-sum-and-product",
         "cbse10:maths:jemh102:verify-cubic-zero-coefficient-relations",
         "cbse10:maths:jemh102:interpret-zero-as-x-intercept",
-        "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree"
+        "cbse10:maths:jemh102:bound-number-of-zeroes-by-degree",
+        "cbse10:maths:jemh102:build-quadratic-from-transformed-zeroes"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -484,6 +485,31 @@
       "prereqs": [
         "cbse10:maths:jemh102:classify-polynomial-by-degree",
         "cbse10:maths:jemh102:define-zero-of-polynomial"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh102:build-quadratic-from-transformed-zeroes",
+      "slug": "build-quadratic-from-transformed-zeroes",
+      "title": "Build a quadratic from transformed zeroes (α², β² etc.)",
+      "role": "intermediate",
+      "brief": "When zeroes transform (e.g. to α², β²), compute the new sum and product via α²+β²=(α+β)²−2αβ and α²β²=(αβ)², then write the polynomial.",
+      "sec": 3,
+      "explanation": "PART 1 — Compute the new sum using the algebraic identity.\nIf α and β are zeroes of the original polynomial, find α+β = −b/a and αβ = c/a first. Then use the identity α²+β² = (α+β)² − 2αβ to get the sum of the new zeroes. This avoids finding α and β individually.\n\nPART 2 — Compute the new product using (αβ)².\nThe product of the new zeroes α² and β² equals (αβ)². So α²β² = (c/a)². Both the new sum and new product are now expressed entirely in terms of the original coefficients.\n\nPART 3 — Write the new quadratic as x²−(new sum)x+(new product).\nWith new sum S = α²+β² and new product P = α²β², the monic quadratic is x²−Sx+P. Clear fractions by multiplying through by a suitable integer if needed. Example: 6x²−5x+1 gives α+β=5/6, αβ=1/6; S=(5/6)²−2(1/6)=25/36−12/36=13/36; P=(1/6)²=1/36; polynomial x²−(13/36)x+1/36, i.e. 36x²−13x+1.",
+      "keyMoves": [
+        "Extract α+β = −b/a and αβ = c/a from the original polynomial",
+        "Compute new sum α²+β² = (α+β)²−2αβ and new product α²β² = (αβ)²",
+        "Build the new quadratic x²−(new sum)x+(new product), clearing fractions if needed"
+      ],
+      "misconceptions": [
+        "Trying to find α and β individually instead of using symmetric formulas",
+        "Using α²+β² = (α+β)² (forgetting the −2αβ correction term)",
+        "Confusing the new product α²β² with (α+β)·(αβ) — it is (αβ)², not (αβ)(α+β)"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh102:state-quadratic-zero-coefficient-relations",
+        "cbse10:maths:jemh102:build-quadratic-from-sum-and-product"
       ],
       "sameConcept": [],
       "teachingInsights": []

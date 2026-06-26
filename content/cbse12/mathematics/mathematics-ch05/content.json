@@ -143,6 +143,31 @@
       "teachingInsights": []
     },
     {
+      "id": "cbse12:mathematics:mathematics-ch05:derivative-first-principles-functional-equation",
+      "slug": "derivative-first-principles-functional-equation",
+      "title": "Find a derivative from first principles using a functional equation",
+      "role": "intermediate",
+      "brief": "When f satisfies a functional equation like f(x+y)=f(x)f(y), substitute into the first-principles limit and reduce f'(c) to a multiple of f'(0).",
+      "sec": 3,
+      "explanation": "PART 1 — Use the functional equation to rewrite f(c+h).\nIf f(x+y) = f(x)f(y) for all x, y, set x = c and y = h to get f(c+h) = f(c)f(h). Now substitute into the first-principles limit: f'(c) = lim(h→0) [f(c+h) − f(c)] / h = lim(h→0) [f(c)f(h) − f(c)] / h = f(c) · lim(h→0) [f(h) − 1] / h.\n\nPART 2 — Identify f(0) and rewrite the remaining limit as f'(0).\nSet x = 0 and y = 0 in the functional equation: f(0) = f(0)·f(0) = [f(0)]². So f(0) = 0 or f(0) = 1. For a non-trivial (not identically zero) function, f(0) = 1. Therefore lim(h→0) [f(h) − 1]/h = lim(h→0) [f(h) − f(0)]/h = f'(0). Thus f'(c) = f(c) · f'(0).\n\nPART 3 — Apply the formula to the given values.\nFor the board question: f(5) = 2, f'(0) = 3. Then f'(5) = f(5) · f'(0) = 2 × 3 = 6. The key move is always: (1) use the functional equation to factor f(c+h), (2) pull out f(c), (3) recognise the remaining limit as f'(0).",
+      "keyMoves": [
+        "Substitute x=c, y=h into the functional equation to write f(c+h) = f(c)·f(h)",
+        "Factor out f(c) from the first-principles limit to get f(c)·lim[f(h)−1]/h",
+        "Show f(0)=1 (from the functional equation with x=y=0) so lim[f(h)−1]/h = f'(0)",
+        "Conclude f'(c) = f(c)·f'(0) and substitute given values"
+      ],
+      "misconceptions": [
+        "Not establishing f(0) = 1 before identifying the remaining limit as f'(0)",
+        "Confusing f(c+h) = f(c)+f(h) (wrong — the equation is multiplicative, not additive)",
+        "Not factoring f(c) out of the numerator before taking the limit"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch05:derivative-definition"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
       "slug": "differentiable-at-a-point",
       "title": "Test differentiability at a point",
@@ -469,7 +494,8 @@
         "cbse12:mathematics:mathematics-ch05:parametric-differentiation",
         "cbse12:mathematics:mathematics-ch05:differentiable-implies-continuous",
         "cbse12:mathematics:mathematics-ch05:algebra-of-continuous-functions",
-        "cbse12:mathematics:mathematics-ch05:composite-continuity"
+        "cbse12:mathematics:mathematics-ch05:composite-continuity",
+        "cbse12:mathematics:mathematics-ch05:derivative-first-principles-functional-equation"
       ],
       "sameConcept": [],
       "teachingInsights": []

@@ -65,7 +65,7 @@
       "prompt": "Assertion (A): The sequence −1, −1, −1, …, −1 is an AP. Reason (R): In an AP, aₙ − aₙ₋₁ is constant where n ≥ 2 and n ∈ N.",
       "options": ["Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)", "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)", "Assertion (A) is true but reason (R) is false.", "Assertion (A) is false but reason (R) is true."],
       "correct": "Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)", "msAnswer": "A)" },
-    { "q": 20, "section": "A", "marks": 1, "type": "assertion-reason", "node": "cbse10:maths:jemh101:apply-real-number-theorems", "grader": "mcq", "handling": "grade",
+    { "q": 20, "section": "A", "marks": 1, "type": "assertion-reason", "node": "cbse10:maths:jemh101:counter-examples-irrational-rules", "grader": "mcq", "handling": "grade",
       "prompt": "Assertion (A): (2 + √3)√3 is an irrational number. Reason (R): Product of two irrational numbers is always irrational.",
       "options": ["Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)", "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)", "Assertion (A) is true but reason (R) is false.", "Assertion (A) is false but reason (R) is true."],
       "correct": "Assertion (A) is true but reason (R) is false.", "msAnswer": "C) Assertion (A) is true but reason (R) is false." },
@@ -136,7 +136,7 @@
         { "part": "(iii)", "variant": "B", "marks": 2, "prompt": "What is the probability that a randomly selected student prefers to be dropped off by car?", "msAnswer": "Car = 200 − (120+50+20) = 10. P = 10/200 = 1/20." }
       ] },
 
-    { "q": 37, "section": "E", "marks": 4, "type": "case-study", "node": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials", "grader": "llm-descent", "handling": "grade",
+    { "q": 37, "section": "E", "marks": 4, "type": "case-study", "node": "cbse10:maths:jemh104:vertex-of-parabola", "grader": "llm-descent", "handling": "grade",
       "prompt": "Radha, a landscape designer, creates a pool design with fountains whose water forms a parabola. The height of each fountain rod above water level is 10 cm. The equation of the downward-facing parabola representing the water fountain is p(x) = −x² + 5x − 4.",
       "parts": [
         { "part": "(i)", "marks": 1, "prompt": "Find the zeroes of the polynomial p(x) from the graph.", "msAnswer": "1 and 4." },
@@ -150,7 +150,7 @@
       "parts": [
         { "part": "(i)", "marks": 1, "prompt": "Find the slant height of the sharpened part.", "msAnswer": "l² = (1.2)² + (0.5)² = 1.44 + 0.25 ⟹ l = √1.69 = 1.3 cm." },
         { "part": "(ii)", "marks": 1, "prompt": "Find the curved surface area of the sharpened part (in terms of π).", "msAnswer": "CSA = π × 0.5 × 1.3 = 0.65π cm²." },
-        { "part": "(iii)", "variant": "A", "marks": 2, "prompt": "Find the total surface area of the pencil (in terms of π).", "msAnswer": "TSA = CSA cylinder + CSA cone + base circle = π×0.5×0.5×21 + 0.65π + π×(0.5)² = (5.25 + 0.65 + 0.25)π = 6.15π cm²." },
+        { "part": "(iii)", "variant": "A", "marks": 2, "prompt": "Find the total surface area of the pencil (in terms of π).", "msAnswer": "TSA = CSA cylinder + CSA cone + base circle = 2π×0.5×21 + 0.65π + π×(0.5)² = (21 + 0.65 + 0.25)π = 21.9π cm². [corrected: cylinder CSA is 2πrh = 21π; the source MS mistakenly used πr²h = 5.25π, giving 6.15π]" },
         { "part": "(iii)", "variant": "B", "marks": 2, "prompt": "The pencil's total height decreases by 8.2 cm after sharpening it many times; what is the volume of the cylindrical part of the shortened pencil (in terms of π)?", "msAnswer": "Length of shortened cylindrical part = 21 − 8.2 = 12.8 cm. Volume = π × 0.5 × 0.5 × 12.8 = 3.2π cm³." }
       ] }
   ]

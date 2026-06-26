@@ -184,5 +184,18 @@
       },
       "srcLabel": "Authored practice (Opus) - maths-ch13 Sec 13.5.4 Short-cut (step-deviation) method"
     }
+    ,
+    {
+      "nodeId": "jee:maths:maths-ch13:compute-mean-of-grouped-data",
+      "kind": "book",
+      "prompt": "A grouped data has classes 10–20, 20–30, 30–40, 40–50 with frequencies 4, 6, 5, 5 respectively. Find the mean.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "expected": {
+        "kind": "numeric",
+        "value": 30.5,
+        "tol": 0.01
+      }
+    }
   ]
 }

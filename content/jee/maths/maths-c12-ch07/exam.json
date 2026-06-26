@@ -194,6 +194,20 @@
    "srcLabel": "Authored practice (Opus) - mathematics-ch07 Theorem 1"
   },
   {
+   "nodeId": "jee:maths:maths-c12-ch07:inverse-function-integral-identity",
+   "kind": "book",
+   "prompt": "Let f(x) = 2x and f⁻¹(y) = y/2. Using the inverse-function integral identity ∫_a^b f(x)dx + ∫_{f(a)}^{f(b)} f⁻¹(y)dy = b·f(b) − a·f(a) with a=0, b=3 (so f(0)=0, f(3)=6), compute the value of ∫_0^3 2x dx + ∫_0^6 (y/2) dy.",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "18",
+   "expected": {
+    "kind": "numeric",
+    "value": 18,
+    "tol": 0
+   },
+   "srcLabel": "Authored (Sonnet) - f=2x: ∫_0^3 2x dx=9, ∫_0^6 y/2 dy=9, sum=18=3·6−0·0=18"
+  },
+  {
    "nodeId": "jee:maths:maths-c12-ch07:fundamental-theorem-evaluation",
    "kind": "practice",
    "prompt": "By the Fundamental Theorem of Calculus, the definite integral of 2x dx from 0 to 3 (an antiderivative is x^2) equals:",

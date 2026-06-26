@@ -18,8 +18,9 @@ interface NodeState {
 
 /**
  * Compute node availability for a learner in a chapter.
- * A node is available if all in-chapter prerequisites are passed.
- * Respects the bottom-up ordering (bedrock first, then dependents).
+ * UNLOCK-ALL: every node is open (grey) from the start so a learner can jump straight to any
+ * concept to refresh it; a node only turns 'passed' (green) once they finish it. Prereqs are kept
+ * on the concept for ordering/provenance but no longer gate access.
  */
 export async function computeAvailability(learnerId: string, chapterId: string): Promise<NodeState[]> {
   // Get all concepts in the chapter
@@ -47,19 +48,15 @@ export async function computeAvailability(learnerId: string, chapterId: string):
       return { conceptId: concept.id, status: 'passed' as NodeStatus };
     }
 
-    // Check if all prerequisites are passed
-    const allPrereqsPassed = concept.prereqs.every(prereqId => {
-      const prereqPerf = performanceMap.get(prereqId);
-      return prereqPerf && prereqPerf.status === 'passed';
-    });
-
     if (perf) {
-      // Learner has entered this node
-      return { conceptId: concept.id, status: perf.status as NodeStatus };
+      // Learner has entered this node. Everything is unlocked now, so a stale 'locked' row
+      // (left from the old strict-linear DAG) surfaces as plain 'available' (grey).
+      const status = perf.status === 'locked' ? 'available' : (perf.status as NodeStatus);
+      return { conceptId: concept.id, status };
     }
 
-    // Node not started: available if all prereqs passed
-    return { conceptId: concept.id, status: (allPrereqsPassed ? 'available' : 'locked') as NodeStatus };
+    // Not started → always available (grey until passed). No prereq gating: every node is open.
+    return { conceptId: concept.id, status: 'available' as NodeStatus };
   });
 
   return states;
@@ -68,11 +65,10 @@ export async function computeAvailability(learnerId: string, chapterId: string):
 export type ChapterStatus = 'complete' | 'active' | 'locked';
 
 /**
- * Strict-linear chapter progression for a learner across a subject.
- * A chapter is COMPLETE when the learner has passed every concept in it; chapters are unlocked
- * one at a time — the first not-yet-complete chapter is ACTIVE, everything after it is LOCKED.
- * Every concept is teachable (each has at least a book/practice gate), so high-quality 5-gate
- * authoring is NOT required for a chapter to be cleared — passing its single gate per node suffices.
+ * Chapter progression for a learner across a subject — UNLOCK-ALL.
+ * A chapter is COMPLETE when the learner has passed every concept in it; otherwise it is ACTIVE
+ * (open, grey). No chapter is ever LOCKED — every chapter is reachable so a learner can dip into
+ * any concept to revise it.
  */
 export async function computeChapterStatuses(
   learnerId: string,
@@ -94,17 +90,13 @@ export async function computeChapterStatuses(
     complete.push(concepts.length > 0 && concepts.every((c) => passed.has(c.id)));
   }
 
-  // Walk in order: complete chapters stay open; the first incomplete one is active; rest locked.
-  let activeAssigned = false;
-  return ordered.map((ch, i) => {
-    let status: ChapterStatus;
-    if (complete[i]) status = 'complete';
-    else if (!activeAssigned) {
-      status = 'active';
-      activeAssigned = true;
-    } else status = 'locked';
-    return { id: ch.id, title: ch.title, index: i + 1, status };
-  });
+  // Unlock-all: a chapter is 'complete' once every concept in it is passed, else 'active' (open).
+  return ordered.map((ch, i) => ({
+    id: ch.id,
+    title: ch.title,
+    index: i + 1,
+    status: (complete[i] ? 'complete' : 'active') as ChapterStatus,
+  }));
 }
 
 /**
@@ -130,7 +122,7 @@ export async function initializeChapter(learnerId: string, chapterId: string) {
       await db.insert(buNodePerformance).values({
         learnerId,
         conceptId: concept.id,
-        status: concept.prereqs.length === 0 ? 'available' : 'locked',
+        status: 'available', // unlock-all: every node starts open (grey)
         attempts: 0,
         passes: 0,
         fails: 0,

@@ -245,6 +245,20 @@
    "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.5 Definition"
   },
   {
+   "nodeId": "jee:maths:maths-c12-ch11:foot-of-perpendicular-to-a-line-3d",
+   "kind": "book",
+   "prompt": "Find the foot of the perpendicular from P = (4, 5, 6) to the line r = (1, 2, 3) + λ(1, −1, 1). Using (P − a)·b / |b|² to find λ, then F = a + λb, compute the sum of coordinates of the foot F (i.e. x + y + z of F).",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "7",
+   "expected": {
+    "kind": "numeric",
+    "value": 7,
+    "tol": 0
+   },
+   "srcLabel": "Authored (Sonnet) - foot F=(2,1,4): λ=(3-3+3)/3=1, F=(2,1,4), sum=7"
+  },
+  {
    "nodeId": "jee:maths:maths-c12-ch11:shortest-distance-skew-lines",
    "kind": "practice",
    "prompt": "For skew lines r = a1 + lambda b1 and r = a2 + mu b2, the shortest distance is given by:",

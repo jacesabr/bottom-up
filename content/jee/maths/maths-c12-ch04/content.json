@@ -311,6 +311,32 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-c12-ch04:cayley-hamilton-theorem",
+      "slug": "cayley-hamilton-theorem",
+      "title": "Apply the Cayley-Hamilton theorem",
+      "role": "intermediate",
+      "brief": "Every square matrix satisfies its own characteristic equation — use this to find A-inverse and compute powers of A without repeated multiplication.",
+      "sec": 5,
+      "explanation": "PART 1 — The characteristic equation and the theorem.\nFor a 2×2 matrix A, the characteristic equation is obtained by expanding det(A − λI) = 0: this gives λ² − (tr A)λ + |A| = 0, where tr A = a₁₁ + a₂₂ is the trace. The Cayley-Hamilton theorem states that every square matrix satisfies its own characteristic equation: substituting the matrix A for λ gives A² − (tr A)A + |A|I = O (the zero matrix), an identity verified by direct multiplication.\n\nPART 2 — Finding A-inverse from the theorem.\nRearranging A² − (tr A)A + |A|I = O gives |A|I = (tr A)A − A², so |A|A⁻¹ = (tr A)I − A, i.e. A⁻¹ = (1/|A|)[(tr A)I − A]. For A = [[2,1],[1,1]]: tr A = 3, |A| = 1. So A⁻¹ = 3I − A = [[1,−1],[−1,2]]. Verify: A · A⁻¹ = I. ✓\n\nPART 3 — Computing powers of A.\nCH also reduces higher powers: since A² = (tr A)A − |A|I, any power can be reduced to a linear expression in A and I. For A = [[2,1],[1,1]], A² = 3A − I = [[5,3],[3,2]]. This avoids repeated matrix multiplication for large powers.",
+      "keyMoves": [
+        "Write the characteristic equation λ² − (tr A)λ + |A| = 0 for a 2×2 matrix",
+        "Substitute A for λ to get the CH identity A² − (tr A)A + |A|I = O",
+        "Rearrange to find A⁻¹ = (1/|A|)[(tr A)I − A], and reduce powers via A² = (tr A)A − |A|I"
+      ],
+      "misconceptions": [
+        "Substituting numbers for λ instead of the matrix A itself",
+        "Forgetting the zero matrix on the right (writing A² − (tr A)A + |A| = 0 as if a scalar equation)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch04:adjoint-identity",
+        "jee:maths:maths-c12-ch04:determinant-order-two",
+        "jee:maths:maths-c12-ch03:matrix-multiplication",
+        "jee:maths:maths-c12-ch03:identity-matrix"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-c12-ch04:invertible-iff-nonsingular",
       "slug": "invertible-iff-nonsingular",
       "title": "Invert a matrix via A-inverse = (1/|A|) adj A using non-singularity",
@@ -335,6 +361,7 @@
         "jee:maths:maths-c12-ch04:determinant-of-product",
         "jee:maths:maths-c12-ch04:area-of-triangle",
         "jee:maths:maths-c12-ch04:consistent-system",
+        "jee:maths:maths-c12-ch04:cayley-hamilton-theorem",
         "jee:maths:maths-c12-ch03:invertible-matrix"
       ],
       "sameConcept": [],

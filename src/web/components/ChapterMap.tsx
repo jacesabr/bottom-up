@@ -183,11 +183,10 @@ export default function ChapterMap({
             </div>
             <div className="legend">
               <span className="l-done">done</span>
-              <span className="l-open">open</span>
+              <span className="l-open">to do</span>
               <span className="l-cur">you're here</span>
-              <span className="l-lock">locked</span>
             </div>
-            <div className="hint">Green = unlocked (the glowing one is where you are now), locked faded = still locked. Open and done concepts are clickable.</div>
+            <div className="hint">Grey = not done yet, green = done (the glowing one is where you are now). Every concept is open — tap any to learn or refresh it.</div>
           </div>
         </div>
       </div>

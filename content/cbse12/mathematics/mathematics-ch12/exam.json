@@ -270,6 +270,27 @@
       "srcLabel": "Authored practice (Opus) - mathematics-ch12 Example 3 Remark (multiple optimal solutions)"
     },
     {
+      "nodeId": "cbse12:mathematics:mathematics-ch12:infer-constraints-from-feasible-region",
+      "kind": "book",
+      "prompt": "Maximise Z = 3x + 2y + 1 subject to x ≥ 0, y ≥ 0, 3x + 4y ≤ 12, and one missing constraint. From the graph of the feasible region, a student sees a boundary line through (1, 0) and (0, 2) with the origin excluded from the feasible region. What is the missing constraint? (A) x + 2y ≤ 2  (B) 2x + y ≥ 2  (C) 2x + y ≤ 2  (D) x + 2y ≥ 2",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "2x + y ≥ 2",
+      "expected": {
+        "kind": "mcq",
+        "correct": "2x + y ≥ 2",
+        "options": [
+          "x + 2y ≤ 2",
+          "2x + y ≥ 2",
+          "2x + y ≤ 2",
+          "x + 2y ≥ 2"
+        ]
+      },
+      "srcKind": "paper",
+      "srcLabel": "CBSE Class 12 Maths SQP 2025-26 Q16",
+      "quote": "B) 2x + y ≥ 2. The points (1,0) and (0,2) satisfy 2x + y = 2; origin excluded ⇒ 2x + y ≥ 2."
+    },
+    {
       "nodeId": "cbse12:mathematics:mathematics-ch12:corner-point-method",
       "kind": "practice",
       "prompt": "In Example 1, Z = 4x + y is evaluated at the corner points (0,0), (30,0), (20,30), (0,50). The maximum value of Z is 120; at which corner point does it occur (give the x-coordinate)?",

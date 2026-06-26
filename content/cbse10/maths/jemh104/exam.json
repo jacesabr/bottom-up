@@ -316,6 +316,27 @@
       "quote": "x = (–b ± √(b² – 4ac))/2a"
     },
     {
+      "nodeId": "cbse10:maths:jemh104:vertex-of-parabola",
+      "kind": "book",
+      "prompt": "For the parabola p(x) = −x² + 5x − 4, find (a) the x-coordinate of the vertex and (b) the maximum value of p(x).",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "x = 5/2 ; max = 9/4",
+      "expected": {
+        "kind": "mcq",
+        "correct": "x = 5/2 ; max = 9/4",
+        "options": [
+          "x = 5/2 ; max = 9/4",
+          "x = −5/2 ; max = −9/4",
+          "x = 5/2 ; max = 5/2",
+          "x = −5 ; max = 25/4"
+        ]
+      },
+      "srcKind": "paper",
+      "srcLabel": "CBSE Class 10 Maths Basic SQP 2024-25 Q37(ii)–(iii)",
+      "quote": "At x = 5/2, p(x) = 2.25. h = 0.10 + 2.25 = 2.35 m (vertex part)"
+    },
+    {
       "nodeId": "cbse10:maths:jemh104:apply-quadratic-formula",
       "kind": "book",
       "prompt": "Solve x² + 7x – 60 = 0 using the quadratic formula (discriminant 289). Give the two roots.",

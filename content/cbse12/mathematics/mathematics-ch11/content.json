@@ -248,6 +248,31 @@
       "teachingInsights": []
     },
     {
+      "id": "cbse12:mathematics:mathematics-ch11:distance-parallel-to-axis",
+      "slug": "distance-parallel-to-axis",
+      "title": "Find the distance from a point to a line measured parallel to a coordinate axis",
+      "role": "intermediate",
+      "brief": "Draw the auxiliary line through the given point parallel to the stated coordinate axis, find where it meets the given line, then compute the distance between the two points.",
+      "sec": 3,
+      "explanation": "PART 1 — Set up the auxiliary line through the given point parallel to the axis.\nTo measure distance parallel to the z-axis, draw the line through the given point with direction vector k̂ = (0, 0, 1). If the given point is (x₀, y₀, z₀), any point on the auxiliary line is (x₀, y₀, z₀ + λ) for parameter λ. Example (Q29A): given point (2, −1, 3), auxiliary line r = (2, −1, 3) + λ(0, 0, 1), so general point P = (2, −1, 3 + λ).\n\nPART 2 — Find the intersection of the auxiliary line and the given line.\nParametrise the given line as (x₀ + a₁μ, y₀ + b₁μ, z₀ + c₁μ) and set its x and y coordinates equal to those of the auxiliary line point. Solve for μ first (x and y give two equations; the system should be consistent). Example: given line r = (2, −1, 2) + μ(3, 6, 2); the auxiliary line fixes x = 2 and y = −1, so 2 + 3μ = 2 ⇒ μ = 0, giving intersection Q = (2, −1, 2).\n\nPART 3 — Compute the distance between the given point and the intersection.\nWith P = (x₀, y₀, z₀) and the intersection Q found in Part 2, the distance is |PQ| = √((xP−xQ)² + (yP−yQ)² + (zP−zQ)²). Since the auxiliary line is parallel to the z-axis, only the z-coordinates differ: distance = |z₀ − z_Q|. Example: |3 − 2| = 1 unit.",
+      "keyMoves": [
+        "Write the auxiliary line through the given point with direction = the stated axis unit vector",
+        "Equate x and y (or whichever two coordinates are fixed) to find the parameter μ on the given line",
+        "Compute |PQ|; because the auxiliary line is axis-parallel, only one coordinate differs"
+      ],
+      "misconceptions": [
+        "Confusing 'distance parallel to an axis' with shortest (perpendicular) distance — these are different",
+        "Trying to match all three coordinates simultaneously (x and y equations are enough to find μ; the z-coordinate of Q follows)",
+        "Forgetting that the auxiliary line has the same x and y as the given point, only z varies"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+        "cbse12:mathematics:mathematics-ch11:angle-between-lines"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "cbse12:mathematics:mathematics-ch11:shortest-distance-skew-lines",
       "slug": "shortest-distance-skew-lines",
       "title": "Compute the shortest distance between two skew lines",
@@ -268,7 +293,8 @@
       "prereqs": [
         "cbse12:mathematics:mathematics-ch10:vector-product",
         "cbse12:mathematics:mathematics-ch11:shortest-distance-definition",
-        "cbse12:mathematics:mathematics-ch11:cartesian-equation-line"
+        "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+        "cbse12:mathematics:mathematics-ch11:distance-parallel-to-axis"
       ],
       "sameConcept": [
         "cbse12:mathematics:mathematics-ch10:vector-product"

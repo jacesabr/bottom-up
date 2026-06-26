@@ -305,6 +305,33 @@
       "teachingInsights": []
     },
     {
+      "id": "cbse12:mathematics:mathematics-ch07:definite-integral-symmetry",
+      "slug": "definite-integral-symmetry",
+      "title": "Apply the King's-rule symmetry properties of the definite integral",
+      "role": "intermediate",
+      "brief": "Two substitution-based properties (P3 and P4 in NCERT) let you replace x with a+b−x or a−x under the integral — essential for board-exam integrals that resist direct antidifferentiation.",
+      "sec": 7,
+      "quote": "P3: ∫_a^b f(x) dx = ∫_a^b f(a+b−x) dx",
+      "explanation": "PART 1 — P3: replace x by a+b−x on [a, b].\nLet t = a+b−x. Then dt = −dx; when x = a, t = b and when x = b, t = a. The reversed limits and the −dx flip cancel, giving ∫_a^b f(x) dx = ∫_a^b f(a+b−x) dx (NCERT Property P3). This lets you swap x with a+b−x inside the integrand without changing the value.\n\nPART 2 — P4 (the special case a = 0): replace x by a−x on [0, a].\nSetting b = 0 in P3 gives ∫_0^a f(x) dx = ∫_0^a f(a−x) dx (NCERT Property P4). The substitution t = a−x again reverses the limits and the sign, and the two negatives cancel. This is used most often to split trigonometric integrals over [0, π/2] or [0, π].\n\nPART 3 — The standard trick: add I to itself after applying P3/P4.\nLet I = ∫_a^b x f(x) dx. By P3 (assuming f(a+b−x) = f(x)): I = ∫_a^b (a+b−x) f(x) dx. Adding the two expressions gives 2I = (a+b) ∫_a^b f(x) dx, so I = (a+b)/2 · ∫_a^b f(x) dx. The same 'add I to itself' move underlies almost every board-exam use of this property.",
+      "keyMoves": [
+        "State P3: ∫_a^b f(x) dx = ∫_a^b f(a+b−x) dx",
+        "State P4: ∫_0^a f(x) dx = ∫_0^a f(a−x) dx (special case)",
+        "Apply the 'add I to itself' trick to simplify ∫ x f(x) dx or trig integrals using the condition f(a+b−x)=f(x)"
+      ],
+      "misconceptions": [
+        "Thinking P3 changes the value — it gives an EQUAL integral, just with a rewritten integrand",
+        "Applying P4 to limits [a, b] with a ≠ 0 (P4 requires the lower limit to be 0)",
+        "Forgetting to add I to itself and equate; stopping after one application of P3/P4 gives 0 = 0"
+      ],
+      "prereqs": [
+        "cbse12:mathematics:mathematics-ch07:definite-integral",
+        "cbse12:mathematics:mathematics-ch07:ftc-area-function",
+        "cbse12:mathematics:mathematics-ch07:integration-by-substitution"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "cbse12:mathematics:mathematics-ch07:fundamental-theorem-evaluation",
       "slug": "fundamental-theorem-evaluation",
       "title": "Evaluate a definite integral via the Fundamental Theorem (F(b) - F(a))",
@@ -327,7 +354,8 @@
         "cbse12:mathematics:mathematics-ch07:integration-by-substitution",
         "cbse12:mathematics:mathematics-ch07:integration-by-parts",
         "cbse12:mathematics:mathematics-ch07:partial-fractions",
-        "cbse12:mathematics:mathematics-ch07:same-derivative-same-family"
+        "cbse12:mathematics:mathematics-ch07:same-derivative-same-family",
+        "cbse12:mathematics:mathematics-ch07:definite-integral-symmetry"
       ],
       "sameConcept": [],
       "teachingInsights": []

@@ -104,7 +104,7 @@
       "options": ["Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)", "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)", "Assertion (A) is true but reason (R) is false.", "Assertion (A) is false but reason (R) is true."],
       "correct": "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)", "msAnswer": "B)" },
 
-    { "q": 20, "section": "A", "marks": 1, "type": "assertion-reason", "node": "cbse10:maths:jemh111:find-area-of-segment-of-circle", "grader": "mcq", "handling": "grade",
+    { "q": 20, "section": "A", "marks": 1, "type": "assertion-reason", "node": "cbse10:maths:jemh111:compute-arc-length", "grader": "mcq", "handling": "grade",
       "prompt": "Assertion (A): If the radius of sector of a circle is reduced to its half and angle is doubled then the perimeter of the sector remains the same. Reason (R): The length of the arc subtending angle θ at the centre of a circle of radius r = Πrθ/180.",
       "options": ["Both assertion (A) and reason (R) are true and reason (R) is the correct explanation of assertion (A)", "Both assertion (A) and reason (R) are true and reason (R) is not the correct explanation of assertion (A)", "Assertion (A) is true but reason (R) is false.", "Assertion (A) is false but reason (R) is true."],
       "correct": "Assertion (A) is false but reason (R) is true.", "msAnswer": "D)" },
@@ -146,7 +146,7 @@
       "prompt": "The sum of two numbers is 18 and the sum of their reciprocals is 9/40. Find the numbers.",
       "msAnswer": "Let numbers be x and 18−x. 1/x + 1/(18−x) = 9/40 ⟹ 18×40 = 9x(18−x) ⟹ x²−18x+80=0 ⟹ (x−10)(x−8)=0 ⟹ x=10,8. Numbers are 8 and 10." },
 
-    { "q": 28, "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh102:relate-zeroes-and-coefficients-of-polynomials", "grader": "llm-descent", "handling": "grade",
+    { "q": 28, "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh102:build-quadratic-from-transformed-zeroes", "grader": "llm-descent", "handling": "grade",
       "prompt": "If α and β are zeroes of a polynomial 6x²-5x+1 then form a quadratic polynomial whose zeroes are α² and β².",
       "msAnswer": "α+β = 5/6, αβ = 1/6. α²+β² = (5/6)² − 2(1/6) = 13/36. α²β² = (1/6)² = 1/36. Polynomial: x² − (13/36)x + 1/36 ⟹ 36x² − 13x + 1." },
 
@@ -159,7 +159,7 @@
       "msAnswer": "Angle in 5 min = 30°. r = 18 cm. Area in 35 min = (22/7 × 18 × 18 × 30/360) × 7 = 594 cm²." },
     { "q": 30, "variant": "B", "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh111:find-area-of-segment-of-circle", "grader": "llm-descent", "handling": "grade",
       "prompt": "AB is a chord of a circle centred at O such that ∠AOB=60°. If OA = 14 cm then find the area of the minor segment. (take √3 =1.73)",
-      "msAnswer": "Area of minor segment = Ar.Sector OAB − Ar.ΔOAB = (90/360 × 22/7 × 14×14) − (√3/4 × 14×14) = 69.23 cm². [Note: MS uses 60° sector.]" },
+      "msAnswer": "Area of minor segment = Ar.Sector OAB − Ar.ΔOAB = (60/360 × 22/7 × 14×14) − (√3/4 × 14×14) = 102.67 − 84.77 = 17.90 cm². [corrected: ∠AOB = 60° so the sector is 60/360; the source MS mistakenly used 90/360, giving 69.23]" },
 
     { "q": 31, "section": "C", "marks": 3, "type": "sa", "node": "cbse10:maths:jemh101:apply-real-number-theorems", "grader": "llm-descent", "handling": "grade",
       "prompt": "Prove that √3 is an irrational number.",

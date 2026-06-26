@@ -314,6 +314,30 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-c12-ch10:scalar-triple-product",
+      "slug": "scalar-triple-product",
+      "title": "Compute the scalar triple product and use it for coplanarity and volume",
+      "role": "intermediate",
+      "brief": "The scalar triple product [a b c] = (a×b)·c equals the 3×3 determinant of rows a, b, c; it is zero iff the three vectors are coplanar, and its absolute value is the volume of the parallelepiped they form.",
+      "sec": 4,
+      "explanation": "PART 1 — Definition and the determinant formula.\nThe scalar triple product of three vectors a = (a₁,a₂,a₃), b = (b₁,b₂,b₃), c = (c₁,c₂,c₃) is defined as (a×b)·c, written [a b c]. Computing it via the determinant of the 3×3 matrix whose rows are a, b, c gives [a b c] = a₁(b₂c₃−b₃c₂) − a₂(b₁c₃−b₃c₁) + a₃(b₁c₂−b₂c₁). This is a scalar.\n\nPART 2 — Coplanarity test.\nThree vectors are coplanar if and only if their scalar triple product is zero: [a b c] = 0. Equivalently, three points A, B, C with position vectors a, b, c are coplanar with the origin iff [a b c] = 0. A non-zero scalar triple product guarantees the three vectors span three-dimensional space.\n\nPART 3 — Volume of a parallelepiped.\nIf a, b, c are the three edges of a parallelepiped from a common vertex, its volume equals |[a b c]|, the absolute value of the scalar triple product. For example, a=(1,1,0), b=(1,0,1), c=(0,1,1): [a b c] = det[[1,1,0],[1,0,1],[0,1,1]] = 1(0−1)−1(1−0)+0 = −2, so volume = 2.",
+      "keyMoves": [
+        "Compute [a b c] = (a×b)·c as the 3×3 determinant with rows a, b, c",
+        "Test [a b c] = 0 for coplanarity of three vectors",
+        "Use volume = |[a b c]| for the parallelepiped with edges a, b, c"
+      ],
+      "misconceptions": [
+        "Treating the scalar triple product as a vector instead of a scalar",
+        "Confusing [a b c] = 0 (coplanar) with the cross product being zero (parallel)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch10:scalar-product",
+        "jee:maths:maths-c12-ch04:determinant-order-three"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-c12-ch10:vector-product",
       "slug": "vector-product",
       "title": "Compute the vector (cross) product",
@@ -338,6 +362,7 @@
         "jee:maths:maths-c12-ch10:zero-vector",
         "jee:maths:maths-c12-ch10:collinear-vectors",
         "jee:maths:maths-c12-ch10:equal-vectors",
+        "jee:maths:maths-c12-ch10:scalar-triple-product",
         "jee:maths:maths-ch03:sine-sum-difference",
         "jee:maths:maths-c12-ch04:determinant-order-three"
       ],

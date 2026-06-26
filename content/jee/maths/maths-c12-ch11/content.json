@@ -244,6 +244,31 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-c12-ch11:foot-of-perpendicular-to-a-line-3d",
+      "slug": "foot-of-perpendicular-to-a-line-3d",
+      "title": "Find the foot of the perpendicular from a point to a line in 3D",
+      "role": "intermediate",
+      "brief": "Parametrise the line as r = a + λb, write the foot as a + λb, then impose (foot − P)·b = 0 to solve for λ and recover the foot coordinates.",
+      "sec": 3,
+      "explanation": "PART 1 — Setting up the parametric foot.\nGiven a line r = a + λb and an external point P, any point on the line has the form F = a + λb. The foot of the perpendicular from P to the line is the unique point F on the line such that PF is perpendicular to b. So set the vector PF = F − P = (a + λb) − P perpendicular to b: (a + λb − P)·b = 0.\n\nPART 2 — Solving for λ and computing the foot.\nExpanding: (a − P)·b + λ(b·b) = 0, which gives λ = −(a − P)·b / |b|² = (P − a)·b / |b|². Substitute back: foot F = a + λb. For example, line r = (1,2,3) + λ(1,−1,1) and P = (4,5,6): (P−a) = (3,3,3), (P−a)·b = 3−3+3 = 3, |b|² = 3, so λ = 1. Foot F = (1+1, 2−1, 3+1) = (2,1,4). Check: (F−P)·b = (−2,−4,−2)·(1,−1,1) = −2+4−2 = 0. ✓\n\nPART 3 — Distance from P to the line.\nOnce the foot F is found, the perpendicular distance from P to the line is |PF| = |P − F|. Alternatively use the cross-product formula |PQ × b| / |b| where Q is any point on the line.",
+      "keyMoves": [
+        "Write F = a + λb on the line and impose (F − P)·b = 0",
+        "Solve: λ = (P − a)·b / (b·b), then substitute to get F",
+        "Compute |P − F| for the perpendicular distance"
+      ],
+      "misconceptions": [
+        "Using (F − P)·P = 0 instead of (F − P)·b = 0 (perpendicularity is to the direction, not to P)",
+        "Forgetting to divide by |b|² when solving for λ"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch11:vector-equation-line",
+        "jee:maths:maths-c12-ch11:cartesian-equation-line",
+        "jee:maths:maths-c12-ch10:scalar-product"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-c12-ch11:shortest-distance-skew-lines",
       "slug": "shortest-distance-skew-lines",
       "title": "Compute the shortest distance between two skew lines",
@@ -264,6 +289,7 @@
       "prereqs": [
         "jee:maths:maths-c12-ch11:shortest-distance-definition",
         "jee:maths:maths-c12-ch11:cartesian-equation-line",
+        "jee:maths:maths-c12-ch11:foot-of-perpendicular-to-a-line-3d",
         "jee:maths:maths-c12-ch10:vector-product",
         "jee:maths:maths-c12-ch10:scalar-product"
       ],

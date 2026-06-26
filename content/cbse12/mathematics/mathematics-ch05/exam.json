@@ -99,6 +99,22 @@
       "srcLabel": "Authored practice (Opus) - mathematics-ch05 Sec 5.3 derivative definition"
     },
     {
+      "nodeId": "cbse12:mathematics:mathematics-ch05:derivative-first-principles-functional-equation",
+      "kind": "book",
+      "prompt": "If f(x + y) = f(x)f(y) for all x, y ∈ ℝ, and f(5) = 2, f′(0) = 3, find f′(5) using the definition of the derivative.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "6",
+      "expected": {
+        "kind": "numeric",
+        "value": 6,
+        "tol": 0
+      },
+      "srcKind": "paper",
+      "srcLabel": "CBSE Class 12 Maths SQP 2025-26 Q24",
+      "quote": "f(0)=1; f'(5) = f(5)·f'(0) = 2·3 = 6"
+    },
+    {
       "nodeId": "cbse12:mathematics:mathematics-ch05:differentiable-at-a-point",
       "kind": "practice",
       "prompt": "At how many points is f(x) = |x| not differentiable?",

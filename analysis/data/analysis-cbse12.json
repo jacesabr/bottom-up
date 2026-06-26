@@ -1,0 +1,1079 @@
+{
+  "paperId": "cbse12-mathematics-2025-26",
+  "exam": "cbse12",
+  "subject": "mathematics",
+  "title": "CBSE Class 12 Mathematics — Sample Question Paper 2025-26",
+  "maxMarks": 80,
+  "questions": [
+    {
+      "q": 1,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "Identify the function shown in the graph (an inverse trigonometric function whose graph is plotted with range from −π/2 to π/2 and the indicated domain). (A) sin⁻¹ x  (B) sin⁻¹(2x)  (C) sin⁻¹(x/2)  (D) 2 sin⁻¹ x.",
+          "options": ["sin⁻¹ x", "sin⁻¹(2x)", "sin⁻¹(x/2)", "2 sin⁻¹ x"],
+          "answer": "sin⁻¹(2x)"
+        },
+        {
+          "label": "VI",
+          "prompt": "[VI] The inverse trigonometric function whose domain is [−1/3, 1/3] is — (A) cos⁻¹ x (B) cos⁻¹(x/3) (C) cos⁻¹(3x) (D) 3 cos⁻¹ x.",
+          "options": ["cos⁻¹ x", "cos⁻¹(x/3)", "cos⁻¹(3x)", "3 cos⁻¹ x"],
+          "answer": "cos⁻¹(3x)"
+        }
+      ],
+      "concepts": ["Read domain of an ITF from its graph; infer the horizontal compression factor"],
+      "nodeTagged": "mathematics-ch02:sin-inverse-principal",
+      "nodesTeaching": ["sin-inverse-principal", "branch", "principal-value-defn"],
+      "coverage": "full",
+      "coverageNote": "Domain-based identification of ITF covered directly in sin-inverse-principal node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest gate for sin-inverse-principal asks for a single principal-value evaluation; the exam question requires reading a graph and back-inferring the compression factor — a harder, graph-interpretation skill not tested in any gate.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 2,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If for three matrices A = [a_ij]_{m×4}, B = [b_ij]_{n×3} and C = [c_ij]_{p×q}, the products AB and AC are both defined and are square matrices of the same order, then the values of m, n, p and q are: (A) m = q = 3 and n = p = 4  (B) m = 2, q = 3 and n = p = 4  (C) m = q = 4 and n = p = 3  (D) m = 4, p = 2 and n = q = 3.",
+          "options": ["m = q = 3 and n = p = 4", "m = 2, q = 3 and n = p = 4", "m = q = 4 and n = p = 3", "m = 4, p = 2 and n = q = 3"],
+          "answer": "m = q = 3 and n = p = 4"
+        }
+      ],
+      "concepts": ["Conditions for matrix product to be defined; square matrix order from dimensions"],
+      "nodeTagged": "mathematics-ch03:matrix-multiplication",
+      "nodesTeaching": ["matrix-multiplication", "order"],
+      "coverage": "full",
+      "coverageNote": "Matrix multiplication definition and order constraints taught in matrix-multiplication node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Gates test basic computation/definition; this exam question requires simultaneous reasoning across three matrices and two products — a harder multi-constraint inference not present in any gate.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 3,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If the matrix A = [[0, r, −2], [3, p, t], [q, −4, 0]] is skew-symmetric, then the value of (q+t)/(p+r) is …. (A) −2  (B) 0  (C) 1  (D) 2.",
+          "options": ["−2", "0", "1", "2"],
+          "answer": "−2"
+        }
+      ],
+      "concepts": ["Properties of skew-symmetric matrices (A^T = -A, diagonal = 0); extraction of entries; arithmetic"],
+      "nodeTagged": "mathematics-ch03:skew-symmetric-matrix",
+      "nodesTeaching": ["skew-symmetric-matrix", "transpose"],
+      "coverage": "full",
+      "coverageNote": "Skew-symmetric property and entry extraction taught; the final arithmetic ratio is routine once entries are found.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest gate computes the (1,2) entry of the skew-symmetric part of a given matrix — simpler than finding multiple entries and evaluating a ratio.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 4,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If A is a square matrix of order 4 and |adj A| = 27, then A (adj A) is equal to: (A) 3  (B) 9  (C) 3 I  (D) 9 I.",
+          "options": ["3", "9", "3 I", "9 I"],
+          "answer": "3 I"
+        }
+      ],
+      "concepts": ["Formula |adj A| = |A|^(n-1); identity A(adj A) = |A|I"],
+      "nodeTagged": "mathematics-ch04:adjoint-identity",
+      "nodesTeaching": ["adjoint-identity", "adjoint"],
+      "coverage": "full",
+      "coverageNote": "Both formulas taught in adjoint-identity node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Hardest gate asks for scalar diagonal entry of A(adj A) given |A|=7 for a 2×2 matrix — easier than applying |adj A|=|A|^(n-1) to infer |A| then computing the result for order 4.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 5,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "The inverse of the matrix [[3, 0, 0], [0, 2, 0], [0, 0, 5]] is … (A) [[0,0,3],[0,2,0],[5,0,0]]  (B) [[1/3,0,0],[0,1/2,0],[0,0,1/5]]  (C) [[−1/3,0,0],[0,−1/2,0],[0,0,−1/5]]  (D) [[−3,0,0],[0,−2,0],[0,0,−5]].",
+          "options": ["[[0,0,3],[0,2,0],[5,0,0]]", "[[1/3,0,0],[0,1/2,0],[0,0,1/5]]", "[[−1/3,0,0],[0,−1/2,0],[0,0,−1/5]]", "[[−3,0,0],[0,−2,0],[0,0,−5]]"],
+          "answer": "[[1/3,0,0],[0,1/2,0],[0,0,1/5]]"
+        }
+      ],
+      "concepts": ["Inverse of a diagonal matrix is diagonal of reciprocals"],
+      "nodeTagged": "mathematics-ch03:invertible-matrix",
+      "nodesTeaching": ["invertible-matrix", "diagonal-matrix"],
+      "coverage": "full",
+      "coverageNote": "Invertible matrix and diagonal matrix nodes cover this; diagonal inverse rule is a direct application.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates on invertible-matrix cover finding inverses of 2×2/3×3 matrices; this diagonal case is simpler than the general gate problems.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 6,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "Value of the determinant |[cos 67°, sin 67°], [sin 23°, cos 23°]| is (A) 0  (B) 1/2  (C) √3/2  (D) 1.",
+          "options": ["0", "1/2", "√3/2", "1"],
+          "answer": "0"
+        }
+      ],
+      "concepts": ["2×2 determinant; cos(A+B) identity; complementary angles (23°+67°=90°)"],
+      "nodeTagged": "mathematics-ch04:determinant-order-two",
+      "nodesTeaching": ["determinant-order-two"],
+      "coverage": "partial",
+      "coverageNote": "determinant-order-two teaches the 2×2 formula; the cosine addition step requires ch11 trig knowledge not explicitly taught in a determinant node.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Gates for determinant-order-two test routine 2×2 evaluation; this question requires recognising a trig identity shortcut, which is not covered.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 7,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If a function defined by f(x) = { kx + 1, x ≤ π ; cos x, x > π } is continuous at x = π, then the value of k is (A) π  (B) −1/π  (C) 0  (D) −2/π.",
+          "options": ["π", "−1/π", "0", "−2/π"],
+          "answer": "−2/π"
+        }
+      ],
+      "concepts": ["Continuity at a point via one-sided limits; piecewise function; cos π = -1"],
+      "nodeTagged": "mathematics-ch05:continuity-at-a-point",
+      "nodesTeaching": ["continuity-at-a-point"],
+      "coverage": "full",
+      "coverageNote": "Piecewise continuity at a point is the core skill in continuity-at-a-point node.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Gates cover piecewise continuity problems; this question is within that difficulty band.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 8,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If f(x) = x tan⁻¹ x, then f′(1) is equal to (A) π/4 − 1/2  (B) π/4 + 1/2  (C) −π/4 − 1/2  (D) −π/4 + 1/2.",
+          "options": ["π/4 − 1/2", "π/4 + 1/2", "−π/4 − 1/2", "−π/4 + 1/2"],
+          "answer": "π/4 + 1/2"
+        }
+      ],
+      "concepts": ["Product rule; derivative of tan⁻¹x = 1/(1+x²); evaluation at x=1"],
+      "nodeTagged": "mathematics-ch05:inverse-trig-derivatives",
+      "nodesTeaching": ["inverse-trig-derivatives", "chain-rule"],
+      "coverage": "full",
+      "coverageNote": "Derivative of tan⁻¹x and product rule covered in inverse-trig-derivatives node.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gates cover standard ITF derivatives with evaluation; this is within that scope.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 9,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "A function f(x) = 10 − x − 2x² is increasing on the interval (A) (−∞, −1/4)  (B) (−∞, 1/4)  (C) [−1/4, ∞)  (D) [−1/4, 1/4].",
+          "options": ["(−∞, −1/4)", "(−∞, 1/4)", "[−1/4, ∞)", "[−1/4, 1/4]"],
+          "answer": "(−∞, −1/4)"
+        }
+      ],
+      "concepts": ["First derivative test for increasing interval; f′(x) ≥ 0"],
+      "nodeTagged": "mathematics-ch06:monotonicity-derivative-test",
+      "nodesTeaching": ["monotonicity-derivative-test", "increasing-decreasing-definition"],
+      "coverage": "full",
+      "coverageNote": "Monotonicity via derivative sign taught in monotonicity-derivative-test node.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gates test finding increasing/decreasing intervals; this is a standard application.",
+      "examDifficulty": "Easy",
+      "flags": [
+        {
+          "type": "marking-scheme",
+          "detail": "Listed option A is the open interval (−∞, −1/4); the MS answer says (−∞, −1/4] (closed). The correct mathematical answer under CBSE convention (f′ ≥ 0) is the closed interval [−∞, −1/4] i.e. up to and including −1/4. The printed option A uses an open interval but the MS awards it — minor but self-inconsistent.",
+          "fix": "Print option A as (−∞, −1/4] or accept both; MS is correct in substance."
+        }
+      ]
+    },
+    {
+      "q": 10,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "The solution of the differential equation x dx + y dy = 0 represents a family of (A) straight lines  (B) parabolas  (C) circles  (D) ellipses.",
+          "options": ["straight lines", "parabolas", "Circles", "Ellipses"],
+          "answer": "Circles"
+        }
+      ],
+      "concepts": ["Variables-separable ODE; integrate to get x²+y²=const (circles)"],
+      "nodeTagged": "mathematics-ch09:variables-separable",
+      "nodesTeaching": ["variables-separable", "general-solution"],
+      "coverage": "full",
+      "coverageNote": "Variables-separable technique taught; recognising circle as result is a natural extension.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gates cover variables-separable integration; this question is a simpler application.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 11,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If f(a + b − x) = f(x), then ∫_a^b x f(x) dx is equal to (A) (a+b)/2 ∫_a^b f(b−x) dx  (B) (a+b)/2 ∫_a^b f(a−x) dx  (C) (b−a)/2 ∫_a^b f(x) dx  (D) (a+b)/2 ∫_a^b f(x) dx.",
+          "options": ["(a+b)/2 ∫_a^b f(b−x) dx", "(a+b)/2 ∫_a^b f(a−x) dx", "(b−a)/2 ∫_a^b f(x) dx", "(a+b)/2 ∫_a^b f(x) dx"],
+          "answer": "(a+b)/2 ∫_a^b f(x) dx"
+        }
+      ],
+      "concepts": ["Definite integral symmetry property; King's rule; substitution x → a+b−x"],
+      "nodeTagged": "mathematics-ch07:definite-integral",
+      "nodesTeaching": ["definite-integral", "ftc-area-function"],
+      "coverage": "partial",
+      "coverageNote": "The definite-integral node teaches evaluation but the King's rule / symmetry property is a named theorem not explicitly surfaced as a separate node or gate.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates for definite-integral test basic evaluation; King's rule substitution trick is at a higher level not covered by any gate.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "King's rule (∫_a^b f(x)dx = ∫_a^b f(a+b−x)dx) is not taught as an explicit node or gate; this theorem appears repeatedly in CBSE exams.",
+          "fix": "Add a node 'definite-integral-symmetry' (King's rule) under ch07 with gates at medium/hard tier."
+        }
+      ]
+    },
+    {
+      "q": 12,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If ∫ x³ sin⁴(x⁴) cos(x⁴) dx = a sin⁵(x⁴) + C, then a is equal to (A) −1/10  (B) 1/20  (C) 1/4  (D) 1/5.",
+          "options": ["−1/10", "1/20", "1/4", "1/5"],
+          "answer": "1/20"
+        }
+      ],
+      "concepts": ["Substitution u = sin(x⁴); chain rule for x⁴; power rule integration"],
+      "nodeTagged": "mathematics-ch07:integration-by-substitution",
+      "nodesTeaching": ["integration-by-substitution", "chain-rule"],
+      "coverage": "full",
+      "coverageNote": "Substitution integration with composite functions taught in integration-by-substitution node.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gates cover substitution problems; this two-step substitution (x⁴ then sin(x⁴)) is within the taught scope.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 13,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "A bird flies through a distance in a straight line given by the vector î + 2ĵ + k̂. A man standing beside a straight metro rail track given by r⃗ = (3 + λ)î + (2λ − 1)ĵ + 3λk̂ is observing the bird. The projected length of its flight on the metro track is (A) 6/√14 units  (B) 14/√6 units  (C) 8/√14 units  (D) 5/√6 units.",
+          "options": ["6/√14 units", "14/√6 units", "8/√14 units", "5/√6 units"],
+          "answer": "8/√14 units"
+        }
+      ],
+      "concepts": ["Extract direction vector from line equation; scalar projection formula a⃗·b̂"],
+      "nodeTagged": "mathematics-ch10:scalar-product",
+      "nodesTeaching": ["scalar-product", "vector-equation-line"],
+      "coverage": "full",
+      "coverageNote": "Scalar projection via dot product taught in scalar-product node; direction vector extraction from parametric form in vector-equation-line.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates for scalar-product test angle between vectors; extracting a line's direction vector from its parametric equation and projecting a displacement onto it is a harder composite skill not present in any gate.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 14,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "The distance of the point with position vector 3î + 4ĵ + 5k̂ from the y-axis is (A) 4 units  (B) √34 units  (C) 5 units  (D) 5√2 units.",
+          "options": ["4 units", "√34 units", "5 units", "5√2 units"],
+          "answer": "√34 units"
+        }
+      ],
+      "concepts": ["Distance from y-axis = √(x²+z²); ignoring y-coordinate"],
+      "nodeTagged": "mathematics-ch10:magnitude",
+      "nodesTeaching": ["magnitude", "position-vector"],
+      "coverage": "partial",
+      "coverageNote": "Magnitude node covers vector magnitude; distance from a coordinate axis (not the full position vector) is a specific sub-skill not explicitly surfaced.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates for magnitude test |v| of 3D vectors; the axis-distance formula (drop the y-component) is a conceptual sub-skill not in any gate.",
+      "examDifficulty": "Easy",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Distance from coordinate axes (√(x²+z²) for y-axis, etc.) is not explicitly taught or gated.",
+          "fix": "Add a gate to the magnitude node covering distance-from-axis problems."
+        }
+      ]
+    },
+    {
+      "q": 15,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If a⃗ = 3î + 2ĵ + 4k̂, b⃗ = î + ĵ − 3k̂ and c⃗ = 6î − ĵ + 2k̂ are three given vectors, then (2a⃗·î)î − (b⃗·ĵ)ĵ + (c⃗·k̂)k̂ is the same as the vector (A) a⃗  (B) b⃗ + c⃗  (C) a⃗ − b⃗  (D) c⃗.",
+          "options": ["a⃗", "b⃗ + c⃗", "a⃗ − b⃗", "c⃗"],
+          "answer": "c⃗"
+        }
+      ],
+      "concepts": ["Dot product of vector with unit basis vectors; scalar multiplication; recognition"],
+      "nodeTagged": "mathematics-ch10:scalar-product",
+      "nodesTeaching": ["scalar-product", "component-form"],
+      "coverage": "full",
+      "coverageNote": "Dot product with unit vectors covered in scalar-product; component-form node teaches extracting components.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gates test dot product computation; this is a direct application once the dot-product-with-basis-vector rule is applied.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 16,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "A student of class XII … Maximise Z = 3x + 2y + 1 subject to x ≥ 0, y ≥ 0, 3x + 4y ≤ 12. He/She notices the shown graph … The missing constraint is (A) x + 2y ≤ 2  (B) 2x + y ≥ 2  (C) 2x + y ≤ 2  (D) x + 2y ≥ 2.",
+          "options": ["x + 2y ≤ 2", "2x + y ≥ 2", "2x + y ≤ 2", "x + 2y ≥ 2"],
+          "answer": "2x + y ≥ 2"
+        },
+        {
+          "label": "VI",
+          "prompt": "[VI] If Z = ax + by + c, where a, b, c > 0, attains its maximum value at two corner points (4,0) and (0,3), then (A) 4a = 3b (B) 3a = 4b (C) 4a + c = 3b (D) 3a + c = 4b.",
+          "options": ["4a = 3b", "3a = 4b", "4a + c = 3b", "3a + c = 4b"],
+          "answer": "4a = 3b"
+        }
+      ],
+      "concepts": ["Read a constraint from a feasible-region graph; determine inequality direction from excluded origin"],
+      "nodeTagged": "mathematics-ch12:constraints",
+      "nodesTeaching": ["constraints", "feasible-region", "feasible-solution"],
+      "coverage": "partial",
+      "coverageNote": "Constraints and feasible-region nodes are taught but graph-reading to identify a missing constraint is a higher-order visual reasoning skill not gated.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "constraints has only 4 gates (no equation gate) and all are foundation; reading a graph to infer a missing constraint is not tested.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Identifying a missing constraint from a feasible-region graph is not taught or gated in the corpus.",
+          "fix": "Add a gate to constraints or feasible-region node for back-inferring constraints from graphical feasible regions."
+        }
+      ]
+    },
+    {
+      "q": 17,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "The feasible region of a linear programming problem is bounded but the objective function attains its minimum value at more than one point. One of the points is (5,0). Then one of the other possible points at which the objective function attains its minimum value is (A) (2,9)  (B) (6,6)  (C) (4,7)  (D) (0,0).",
+          "options": ["(2,9)", "(6,6)", "(4,7)", "(0,0)"],
+          "answer": "(2,9)"
+        },
+        {
+          "label": "VI",
+          "prompt": "[VI] The graph of the inequality 3x + 5y < 10 is the (A) Entire XY-plane (B) Open half plane that doesn't contain origin (C) Open half plane that contains origin, but not the points of the line 3x + 5y = 10 (D) Half plane that contains origin and the points of the line 3x + 5y = 10.",
+          "options": ["Entire XY-plane", "Open half plane that doesn't contain origin", "Open half plane that contains origin, but not the points of the line 3x + 5y = 10", "Half plane that contains origin and the points of the line 3x + 5y = 10"],
+          "answer": "Open half plane that contains origin, but not the points of the line 3x + 5y = 10"
+        }
+      ],
+      "concepts": ["Multiple optimal solutions occur on an entire edge; any point on the line joining two optimal corner points is also optimal"],
+      "nodeTagged": "mathematics-ch12:multiple-optimal-solutions",
+      "nodesTeaching": ["multiple-optimal-solutions", "optimal-at-corner-theorem"],
+      "coverage": "full",
+      "coverageNote": "multiple-optimal-solutions node directly addresses this scenario.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gate for multiple-optimal-solutions tests finding another optimal point on the edge; this exam question is within that scope.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 18,
+      "section": "A",
+      "marks": 1,
+      "type": "mcq",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "A person observed the first 4 digits of your 6-digit PIN. What is the probability that the person can guess your PIN? (A) 1/81  (B) 1/100  (C) 1/90  (D) 1.",
+          "options": ["1/81", "1/100", "1/90", "1"],
+          "answer": "1/100"
+        }
+      ],
+      "concepts": ["Independent uniform digit probabilities; P = (1/10)^2 = 1/100 for two unknown digits"],
+      "nodeTagged": "mathematics-ch13:independent-events",
+      "nodesTeaching": ["independent-events", "mutually-independent-events"],
+      "coverage": "full",
+      "coverageNote": "Independent events and multiplication rule taught; this is a direct application.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gates test P(A∩B) for independent events; this application is within that scope.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 19,
+      "section": "A",
+      "marks": 1,
+      "type": "assertion-reason",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "Assertion (A): Value of the expression sin⁻¹(√3/2) + tan⁻¹ 1 − sec⁻¹(√2) is π/4. Reason (R): Principal value branch of sin⁻¹ x is [−π/2, π/2] and that of sec⁻¹ x is [0, π] − {π/2}.",
+          "options": ["Both A and R true, R explains A", "Both true, R not explanation", "A true R false", "A false R true"],
+          "answer": "Assertion is false but Reason is true."
+        }
+      ],
+      "concepts": ["Principal value evaluation of multiple ITFs; verify arithmetic; know principal branches"],
+      "nodeTagged": "mathematics-ch02:principal-value-defn",
+      "nodesTeaching": ["principal-value-defn", "sin-inverse-principal", "sec-inverse-principal", "tan-inverse-principal"],
+      "coverage": "full",
+      "coverageNote": "Principal value definitions and evaluation taught across multiple ch02 nodes.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gates cover principal value evaluations; assertion-reason format is harder but the underlying skill is within scope.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 20,
+      "section": "A",
+      "marks": 1,
+      "type": "assertion-reason",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "Assertion (A): Given two non-zero vectors a⃗ and b⃗. If r⃗ is another non-zero vector such that r⃗ × (a⃗ + b⃗) = 0⃗, then r⃗ is perpendicular to a⃗ × b⃗. Reason (R): The vector (a⃗ + b⃗) is perpendicular to the plane of a⃗ and b⃗.",
+          "options": ["Both A and R true, R explains A", "Both true, R not explanation", "A true R false", "A false R true"],
+          "answer": "Assertion is true but Reason is false."
+        }
+      ],
+      "concepts": ["Cross product = 0 implies parallel vectors; parallel vector in plane of a,b implies perpendicular to a×b; (a+b) lies in the plane, not perpendicular to it"],
+      "nodeTagged": "mathematics-ch10:vector-product",
+      "nodesTeaching": ["vector-product", "scalar-product"],
+      "coverage": "partial",
+      "coverageNote": "Cross product properties taught; the assertion-reason logic about normal vectors and planes requires geometric vector reasoning beyond the foundation gates.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates compute cross products and check perpendicularity; reasoning about plane normals and what (a+b) being in the plane implies is a more abstract conceptual task not gated.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 21,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Evaluate tan(tan⁻¹(−1) + π/3).",
+          "options": null,
+          "answer": "2 − √3"
+        },
+        {
+          "label": "B",
+          "prompt": "Find the domain of cos⁻¹(3x − 2).",
+          "options": null,
+          "answer": "[1/3, 1]"
+        }
+      ],
+      "concepts": ["A: tan⁻¹(-1)=-π/4; tan addition formula. B: domain inequality for cos⁻¹"],
+      "nodeTagged": "mathematics-ch02:principal-value-evaluation",
+      "nodesTeaching": ["principal-value-evaluation", "cos-inverse-principal", "composition-identities"],
+      "coverage": "full",
+      "coverageNote": "Principal value evaluation and domain-finding for ITFs are the goal node skills in ch02.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Goal node gates cover principal value computation; these 2-mark VSAs are within scope.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 22,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If y = log tan(π/4 + x/2), then prove that dy/dx − sec x = 0.",
+          "options": null,
+          "answer": "dy/dx = sec x (via chain rule + double-angle identity sin(π/2 + x) = cos x)"
+        }
+      ],
+      "concepts": ["Chain rule on log(tan(u)); derivative of tan; double-angle simplification; sec x"],
+      "nodeTagged": "mathematics-ch05:chain-rule",
+      "nodesTeaching": ["chain-rule", "logarithm-function", "derivative-of-exp-and-log"],
+      "coverage": "full",
+      "coverageNote": "Chain rule on log(tan(u)) is a direct application; trig identity needed for final simplification is standard Class 11 content.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates test basic chain rule; the multi-step chain + log derivative + trig identity simplification in this prove question is harder than any foundation gate.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 23,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Find: ∫ (x−3)/(x−1)³ eˣ dx.",
+          "options": null,
+          "answer": "eˣ/(x−1)² + C"
+        },
+        {
+          "label": "B",
+          "prompt": "Find out the area of the shaded region in the enclosed figure (region bounded by x² = y, line y = 4, and the y-axis, between A and B).",
+          "options": null,
+          "answer": "16/3 sq. units (VI: 2√3 sq. units)"
+        }
+      ],
+      "concepts": ["A: ∫eˣ[f(x)+f′(x)]dx=eˣf(x)+C with f=1/(x−1)². B: area w.r.t. y-axis, integrate √y from 0 to 4"],
+      "nodeTagged": "mathematics-ch07:integration-by-parts",
+      "nodesTeaching": ["integration-by-parts", "area-with-respect-to-y-axis"],
+      "coverage": "full",
+      "coverageNote": "Integration-by-parts ex-formula node and area w.r.t. y-axis node in ch08 both covered.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates for integration-by-parts ask a basic ILATE selection; the ex[f+f′] pattern recognition in variant A and the y-axis area integral in B are harder.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 24,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "If f(x + y) = f(x)f(y) for all x, y ∈ R and f(5) = 2, f′(0) = 3, then using the definition of derivatives, find f′(5).",
+          "options": null,
+          "answer": "6"
+        }
+      ],
+      "concepts": ["Functional equation for exponential-type f; f(0)=1; f′(5) via limit definition = f(5)·f′(0)"],
+      "nodeTagged": "mathematics-ch05:derivative-definition",
+      "nodesTeaching": ["derivative-definition"],
+      "coverage": "partial",
+      "coverageNote": "Derivative-definition node teaches the limit definition; using a functional equation to relate f′(5) to f′(0) requires an additional reasoning step not explicitly taught.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates for derivative-definition test basic first-principles derivatives; the functional equation trick (f(0)=1, then f′(5)=f(5)f′(0)) is not covered by any gate.",
+      "examDifficulty": "Medium",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Derivative from first principles using a functional equation f(x+y)=f(x)f(y) is a recurring CBSE problem type not covered in any gate or node explanation.",
+          "fix": "Add a gate to derivative-definition node covering the functional-equation first-principles pattern."
+        }
+      ]
+    },
+    {
+      "q": 25,
+      "section": "B",
+      "marks": 2,
+      "type": "vsa",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "The two vectors î + ĵ + k̂ and 3î − ĵ + 3k̂ represent the two sides OA and OB respectively of a ΔOAB, where O is the origin. The point P lies on AB such that OP is a median. Find the area of the parallelogram formed by the two adjacent sides as OA and OP.",
+          "options": null,
+          "answer": "2√2 square units"
+        }
+      ],
+      "concepts": ["Midpoint to get OP; cross product OA × OP; |cross product| = area"],
+      "nodeTagged": "mathematics-ch10:vector-product",
+      "nodesTeaching": ["vector-product", "section-formula"],
+      "coverage": "full",
+      "coverageNote": "Cross product for area and section formula for midpoint both covered.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gates compute cross products and areas; this multi-step problem is at the top end of that range.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 26,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "If x^y = e^{x−y}, prove that dy/dx = log x / (log(xe))² and hence find its value at x = e.",
+          "options": null,
+          "answer": "1/4 at x = e"
+        },
+        {
+          "label": "B",
+          "prompt": "If x = a(θ − sin θ), y = a(1 − cos θ), find d²y/dx².",
+          "options": null,
+          "answer": "−(1/4a) cosec⁴(θ/2)"
+        }
+      ],
+      "concepts": ["A: Logarithmic differentiation of implicit x^y=e^(x-y); simplify. B: Parametric dy/dx then d²y/dx² via chain"],
+      "nodeTagged": "mathematics-ch05:logarithmic-differentiation",
+      "nodesTeaching": ["logarithmic-differentiation", "parametric-differentiation", "second-order-derivative"],
+      "coverage": "full",
+      "coverageNote": "Both logarithmic differentiation and parametric differentiation (including second derivative) are taught as dedicated nodes.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates test which function requires log-diff or basic parametric dy/dx; these 3-mark prove/compute questions require multi-step manipulation beyond any foundation gate.",
+      "examDifficulty": "Hard",
+      "flags": []
+    },
+    {
+      "q": 27,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "A spherical ball of ice melts in such a way that the rate at which its volume decreases at any instant is directly proportional to its surface area. Prove that the radius of the ice ball decreases at a constant rate.",
+          "options": null,
+          "answer": "dr/dt = −k (constant)"
+        }
+      ],
+      "concepts": ["Rate-of-change: dV/dt = -kS; V = (4/3)πr³; S = 4πr²; differentiate V w.r.t. t to get dr/dt = -k"],
+      "nodeTagged": "mathematics-ch06:rate-of-change",
+      "nodesTeaching": ["rate-of-change", "model-rate-of-change"],
+      "coverage": "full",
+      "coverageNote": "Rate-of-change node covers dV/dt problems; the spherical geometry formulas are standard.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gate asks dA/dr at r=3 — a single-step derivative; this 3-mark proof requires setting up and solving a chain of rate equations.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 28,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Sketch the graph y = |x + 1|. Evaluate ∫_{−4}^{2} |x + 1| dx. What does the value of this integral represent on the graph?",
+          "options": null,
+          "answer": "9; represents area bounded by y=|x+1|, x-axis, x=−4, x=2"
+        },
+        {
+          "label": "B",
+          "prompt": "Using integration find the area of the region {(x, y) : x² − 4y ≤ 0, y − x ≤ 0}.",
+          "options": null,
+          "answer": "8/3 sq. units (VI: 20π sq. units for ellipse)"
+        }
+      ],
+      "concepts": ["A: Sketch absolute value, split integral at breakpoint, area interpretation. B: intersection of parabola and line; integrate difference"],
+      "nodeTagged": "mathematics-ch08:area-bounded-by-curves",
+      "nodesTeaching": ["area-bounded-by-curves", "area-above-and-below-axis"],
+      "coverage": "full",
+      "coverageNote": "area-bounded-by-curves is the goal node; sketch+integrate+interpret is the full application.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates for area-bounded-by-curves test basic area between y=x and y=x²; these 3-mark problems (absolute-value split, parabola-line region) are harder.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 29,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Find the distance of the point (2, −1, 3) from the line r⃗ = (2î − ĵ + 2k̂) + μ(3î + 6ĵ + 2k̂) measured parallel to the z-axis.",
+          "options": null,
+          "answer": "1 unit"
+        },
+        {
+          "label": "B",
+          "prompt": "Find the point of intersection of the line r⃗ = (3î + k̂) + μ(î + ĵ + k̂) and the line through (2, −1, 1) parallel to the z-axis. How far is this point from the z-axis?",
+          "options": null,
+          "answer": "(2, −1, 0); distance = √5 units"
+        }
+      ],
+      "concepts": ["Parametric intersection of two lines; constrain to parallel-to-axis direction; distance from axis"],
+      "nodeTagged": "mathematics-ch11:cartesian-equation-line",
+      "nodesTeaching": ["cartesian-equation-line", "vector-equation-line"],
+      "coverage": "partial",
+      "coverageNote": "Line equations taught but 'distance measured parallel to a coordinate axis' and 'distance from z-axis' are specific sub-types not explicitly taught or gated.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates write Cartesian equations of lines; the intersection + axis-parallel constraint technique in these 3-mark questions is harder and not gated.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Distance measured parallel to a coordinate axis via line intersection is not taught or gated under ch11.",
+          "fix": "Add intermediate node or gate covering 'distance from a point to a line via axis-parallel projection' under cartesian-equation-line."
+        }
+      ]
+    },
+    {
+      "q": 30,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "Solve graphically: Maximise Z = 2x + y subject to x + y ≤ 1200, x + y ≥ 600, y ≤ x/2, x ≥ 0, y ≥ 0.",
+          "options": null,
+          "answer": "Max Z = 2400 at (1200, 0)"
+        }
+      ],
+      "concepts": ["Graph feasible region; identify corner points; evaluate Z; select maximum"],
+      "nodeTagged": "mathematics-ch12:corner-point-method",
+      "nodesTeaching": ["corner-point-method", "feasible-region", "corner-point"],
+      "coverage": "full",
+      "coverageNote": "corner-point-method is the goal node and covers this exactly.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gates for corner-point-method test 'Minimise and Maximise Z' with multiple constraints; this is within that scope.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 31,
+      "section": "C",
+      "marks": 3,
+      "type": "sa",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "Two students Mehul and Rashi are seeking admission in a college. The probability that Mehul is selected is 0.4 and the probability of selection of exactly one of them is 0.5. Chances of selection of them are independent of each other. Find the chances of selection of Rashi. Also find the probability of selection of at least one of them.",
+          "options": null,
+          "answer": "P(Rashi) = 0.5; P(at least one) = 0.7"
+        }
+      ],
+      "concepts": ["P(exactly one) = P(A)P(B̄) + P(B)P(Ā); solve for P(B); P(at least one) = 1 - P(Ā)P(B̄)"],
+      "nodeTagged": "mathematics-ch13:independent-events",
+      "nodesTeaching": ["independent-events", "mutually-independent-events"],
+      "coverage": "full",
+      "coverageNote": "Independent events and complementary events covered; setting up P(exactly one) = 0.5 is standard exam application.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gate tests P(A∩B) for independent events; this 3-mark question extends to solving for an unknown probability — slightly harder but within scope.",
+      "examDifficulty": "Medium",
+      "flags": []
+    },
+    {
+      "q": 32,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "For two matrices A = [[3, −6, −1], [2, −5, −1], [−2, 4, 1]] and B = [[1, −2, −1], [0, −1, −1], [2, 0, 3]], find the product AB and hence solve the system of equations: 3x − 6y − z = 3, 2x − 5y − z + 2 = 0, −2x + 4y + z = 5.",
+          "options": null,
+          "answer": "x = 2, y = −3, z = 21"
+        }
+      ],
+      "concepts": ["3×3 matrix multiplication; AB=I → A⁻¹=B; matrix form of linear system; X = A⁻¹C"],
+      "nodeTagged": "mathematics-ch04:invertible-iff-nonsingular",
+      "nodesTeaching": ["invertible-iff-nonsingular", "matrix-multiplication", "consistent-system"],
+      "coverage": "full",
+      "coverageNote": "System solution via matrix inverse is the goal node skill in ch04.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates for invertible-iff-nonsingular test 2×2 cases; this 5-mark 3×3 full computation + system solution is substantially harder.",
+      "examDifficulty": "Hard",
+      "flags": []
+    },
+    {
+      "q": 33,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Evaluate: ∫_0^1 log(1 + x)/(1 + x²) dx.",
+          "options": null,
+          "answer": "(π/8) log 2"
+        },
+        {
+          "label": "B",
+          "prompt": "Find ∫ (3 sin θ − 2) cos θ / (5 − cos²θ − 4 sin θ) dθ.",
+          "options": null,
+          "answer": "3 log|sin θ − 2| − 4/(sin θ − 2) + C"
+        }
+      ],
+      "concepts": ["A: tan substitution + King's rule symmetry. B: sin θ substitution; partial fractions with (t−2)²"],
+      "nodeTagged": "mathematics-ch07:definite-integral",
+      "nodesTeaching": ["definite-integral", "integration-by-substitution", "partial-fractions"],
+      "coverage": "partial",
+      "coverageNote": "Individual techniques taught; variant A combines tan substitution with King's rule (not explicitly gated); variant B combines substitution + partial fractions correctly covered but at high difficulty.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gates are one-step; these 5-mark questions require chaining 2-3 techniques. King's rule gap (see Q11 flag) applies here too.",
+      "examDifficulty": "Hard",
+      "flags": [
+        {
+          "type": "content-gap",
+          "detail": "Variant A requires King's rule (∫_a^b f(a+b-x)dx) which has no dedicated node/gate.",
+          "fix": "Same fix as Q11: add definite-integral-symmetry node with medium/hard gates."
+        }
+      ]
+    },
+    {
+      "q": 34,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "variants": [
+        {
+          "label": "A",
+          "prompt": "Solve the differential equation: y + d/dx(xy) = x(sin x + x).",
+          "options": null,
+          "answer": "yx² = −x² cos x + 2(x sin x + cos x) + x⁴/4 + C"
+        },
+        {
+          "label": "B",
+          "prompt": "Find the particular solution of the differential equation: 2y e^{x/y} dx + (y − 2x e^{x/y}) dy = 0, given that y(0) = 1.",
+          "options": null,
+          "answer": "2e^{x/y} + log|y| = 2"
+        }
+      ],
+      "concepts": ["A: Rewrite as linear ODE dy/dx + (2/x)y = sin x + x; integrating factor x²; integrate by parts. B: Homogeneous substitution x=vy; separate and integrate; apply IC"],
+      "nodeTagged": "mathematics-ch09:solve-linear-de",
+      "nodesTeaching": ["solve-linear-de", "homogeneous-differential-equation", "integrating-factor"],
+      "coverage": "full",
+      "coverageNote": "Both linear-ODE and homogeneous-ODE techniques taught as separate nodes.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gate for solve-linear-de gives a simple dy/dx-y=e^(2x); these 5-mark questions require non-obvious rewriting + multi-step integration by parts / homogeneous substitution.",
+      "examDifficulty": "Hard",
+      "flags": []
+    },
+    {
+      "q": 35,
+      "section": "D",
+      "marks": 5,
+      "type": "la",
+      "variants": [
+        {
+          "label": "main",
+          "prompt": "The two lines (x − 1)/3 = −y, z + 1 = 0 and −x/2 = (y + 1)/2 = z + 2 intersect at a point whose y-coordinate is 1. Find the co-ordinates of their point of intersection. Find the vector equation of a line perpendicular to both the given lines and passing through this point of intersection.",
+          "options": null,
+          "answer": "Point (−2, 1, −1); line r⃗ = (−2î + ĵ − k̂) + μ(−î − 3ĵ + 4k̂)"
+        }
+      ],
+      "concepts": ["Parse non-standard Cartesian line form; parametrize; find intersection using y=1 constraint; cross product for perpendicular direction"],
+      "nodeTagged": "mathematics-ch11:angle-between-lines",
+      "nodesTeaching": ["angle-between-lines", "cartesian-equation-line", "vector-product"],
+      "coverage": "partial",
+      "coverageNote": "Line equations and angle-between-lines taught; parsing non-standard forms (−y, z+1=0) and combining with cross product for perpendicular line is harder than any node or gate.",
+      "gateDifficulty": "insufficient",
+      "difficultyNote": "Foundation gate for angle-between-lines gives a standard cos θ calculation; this 5-mark question requires parsing non-standard line forms + parametric intersection + cross product — well beyond any gate.",
+      "examDifficulty": "Hard",
+      "flags": []
+    },
+    {
+      "q": 36,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "variants": [
+        {
+          "label": "(I)",
+          "prompt": "Is the traffic flow reflexive? Justify.",
+          "options": null,
+          "answer": "Not reflexive: (A,A) ∉ R (no spot connects to itself)."
+        },
+        {
+          "label": "(II)",
+          "prompt": "Is the traffic flow transitive? Justify.",
+          "options": null,
+          "answer": "Not transitive: (A,B),(B,E)∈R but (A,E)∉R."
+        },
+        {
+          "label": "(III A)",
+          "prompt": "Represent the relation as a set of ordered pairs. State domain and range.",
+          "options": null,
+          "answer": "R={(A,B),(A,C),(A,D),(B,C),(B,E),(C,E),(D,E),(D,C)}; Domain={A,B,C,D}; Range={B,C,D,E}."
+        },
+        {
+          "label": "(III B)",
+          "prompt": "Does the traffic flow represent a function? Justify.",
+          "options": null,
+          "answer": "No — A has three images (B, C, D)."
+        }
+      ],
+      "concepts": ["Reflexivity check; transitivity check with counterexample; list ordered pairs; domain/range; function definition (one image per input)"],
+      "nodeTagged": "mathematics-ch01:transitive-relation",
+      "nodesTeaching": ["transitive-relation", "reflexive-relation", "relation-definition", "one-one-function"],
+      "coverage": "full",
+      "coverageNote": "All four sub-skills (reflexive, transitive, relation as set of pairs, function definition) are taught in dedicated ch01 nodes.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gate for transitive-relation checks a given relation for transitivity — exactly the skill tested in part (II); overall case-study is within gate scope.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 37,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "variants": [
+        {
+          "label": "(I)",
+          "prompt": "Derive the profit function P(x).",
+          "options": null,
+          "answer": "P(x) = −0.8x² + 30x − 150"
+        },
+        {
+          "label": "(II)",
+          "prompt": "Find the critical points of P(x).",
+          "options": null,
+          "answer": "x = 18.75"
+        },
+        {
+          "label": "(III A)",
+          "prompt": "Determine whether the critical points correspond to a maximum or a minimum profit by using the second derivative test.",
+          "options": null,
+          "answer": "P″(x) = −1.6 < 0 ⇒ maximum at x = 18.75"
+        },
+        {
+          "label": "(III B)",
+          "prompt": "Identify the practical value of x on [10,18] that maximises profit, and calculate the maximum profit.",
+          "options": null,
+          "answer": "x = 18; max profit = ₹130.80"
+        }
+      ],
+      "concepts": ["Profit = Revenue − Cost; P′(x) = 0 for critical points; P″ < 0 for maximum; evaluate on closed interval for practical constraint"],
+      "nodeTagged": "mathematics-ch06:second-derivative-test",
+      "nodesTeaching": ["second-derivative-test", "critical-point", "absolute-extrema-closed-interval"],
+      "coverage": "full",
+      "coverageNote": "Second-derivative-test node and absolute-extrema-closed-interval goal node both cover this exactly.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gate for second-derivative-test classifies a critical point; this 4-mark case-study is at the same difficulty level.",
+      "examDifficulty": "Easy",
+      "flags": []
+    },
+    {
+      "q": 38,
+      "section": "E",
+      "marks": 4,
+      "type": "case-study",
+      "variants": [
+        {
+          "label": "(I)",
+          "prompt": "What is the total percentage of students who suffer from anxiety and low retention issues in the class?",
+          "options": null,
+          "answer": "72%"
+        },
+        {
+          "label": "(II)",
+          "prompt": "A student is selected at random and found to suffer from anxiety and low retention issues. What is the probability that he/she spends screen time more than 4 hours per day?",
+          "options": null,
+          "answer": "2/3"
+        }
+      ],
+      "concepts": ["Total probability theorem (part I); Bayes' theorem (part II)"],
+      "nodeTagged": "mathematics-ch13:bayes-theorem",
+      "nodesTeaching": ["bayes-theorem", "total-probability-theorem", "partition-sample-space"],
+      "coverage": "full",
+      "coverageNote": "Bayes' theorem is the goal node; total-probability-theorem is an explicit intermediate node in ch13.",
+      "gateDifficulty": "sufficient",
+      "difficultyNote": "Foundation gate for bayes-theorem gives a 3-bag Bayes problem — the same structure as this exam question.",
+      "examDifficulty": "Medium",
+      "flags": []
+    }
+  ],
+  "summary": {
+    "totalQuestions": 38,
+    "coveredFull": 27,
+    "partial": 7,
+    "gaps": 4,
+    "gateSufficient": 14,
+    "gateInsufficient": 24,
+    "flags": [
+      {
+        "q": 9,
+        "type": "marking-scheme",
+        "detail": "Printed option A is the open interval (−∞, −1/4) but the MS awards it and writes the closed interval (−∞, −1/4]. Correct answer under CBSE convention is the closed interval.",
+        "fix": "Print option A as (−∞, −1/4] to be consistent with the MS."
+      },
+      {
+        "q": 11,
+        "type": "content-gap",
+        "detail": "King's rule (∫_a^b f(x)dx = ∫_a^b f(a+b-x)dx) — used in Q11 and Q33A — has no dedicated node or gate in ch07.",
+        "fix": "Add node 'definite-integral-symmetry' under mathematics-ch07 with medium/hard-tier gates."
+      },
+      {
+        "q": 14,
+        "type": "content-gap",
+        "detail": "Distance from coordinate axes (√(x²+z²) for y-axis) is not explicitly taught or gated in ch10.",
+        "fix": "Add a gate to the magnitude node covering distance-from-axis problems."
+      },
+      {
+        "q": 16,
+        "type": "content-gap",
+        "detail": "Identifying a missing constraint from a feasible-region graph is not taught or gated in ch12.",
+        "fix": "Add a gate to constraints or feasible-region node for back-inferring constraints from graphical feasible regions."
+      },
+      {
+        "q": 24,
+        "type": "content-gap",
+        "detail": "Derivative from first principles using a functional equation f(x+y)=f(x)f(y) is not covered in any node or gate under ch05.",
+        "fix": "Add a gate to derivative-definition covering the functional-equation first-principles pattern."
+      },
+      {
+        "q": 29,
+        "type": "content-gap",
+        "detail": "Distance measured parallel to a coordinate axis via parametric line intersection is not taught or gated in ch11.",
+        "fix": "Add a gate to cartesian-equation-line covering axis-parallel projection distance problems."
+      },
+      {
+        "q": 33,
+        "type": "content-gap",
+        "detail": "Variant A requires King's rule (same gap as Q11). Variant B is covered but exercises partial fractions at high difficulty not reflected in foundation gates.",
+        "fix": "Same fix as Q11. Also add a higher-tier gate to partial-fractions with repeated-linear-factor substitution."
+      }
+    ]
+  }
+}

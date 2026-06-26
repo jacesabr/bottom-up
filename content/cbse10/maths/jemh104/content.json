@@ -39,7 +39,8 @@
         "cbse10:maths:jemh104:translate-word-problem-to-quadratic",
         "cbse10:maths:jemh104:classify-nature-of-roots",
         "cbse10:maths:jemh104:find-k-for-equal-roots",
-        "cbse10:maths:jemh104:verify-root-by-substitution"
+        "cbse10:maths:jemh104:verify-root-by-substitution",
+        "cbse10:maths:jemh104:vertex-of-parabola"
       ],
       "sameConcept": [],
       "teachingInsights": []
@@ -532,6 +533,31 @@
         "Dropping the ± and getting only one root"
       ],
       "prereqs": [],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "cbse10:maths:jemh104:vertex-of-parabola",
+      "slug": "vertex-of-parabola",
+      "title": "Find the vertex of a parabola y = ax² + bx + c",
+      "role": "intermediate",
+      "brief": "The vertex sits at x = −b/(2a); substitute back to get the y-coordinate, which is the maximum or minimum value of the quadratic.",
+      "sec": 3,
+      "explanation": "PART 1 — Locate the vertex x-coordinate: x = −b/(2a).\nThe parabola y = ax² + bx + c has its turning point (vertex) at x = −b/(2a). This is the axis of symmetry: the curve is a perfect mirror image about this vertical line. For y = −x² + 5x − 4 (a = −1, b = 5): x = −5/(2×−1) = 5/2.\n\nPART 2 — Find the vertex y-coordinate by substitution.\nSubstitute the vertex x-value back into the quadratic to get y. That y-value is the maximum (when a < 0, parabola opens down) or minimum (when a > 0, parabola opens up). For y = −x² + 5x − 4 at x = 5/2: y = −(25/4) + 5(5/2) − 4 = −25/4 + 50/4 − 16/4 = 9/4.\n\nPART 3 — Read off the axis of symmetry.\nThe axis of symmetry is the vertical line x = −b/(2a). It passes through the vertex and divides the parabola into two mirror halves. The zeroes (x-intercepts) of the parabola, if they exist, are equidistant from this axis.",
+      "keyMoves": [
+        "Identify a and b from the standard form ax² + bx + c",
+        "Compute the vertex x-coordinate as −b/(2a)",
+        "Substitute into the quadratic to find the vertex y-coordinate"
+      ],
+      "misconceptions": [
+        "Writing the vertex x as b/(2a) instead of −b/(2a) (missing the negative)",
+        "Confusing the axis of symmetry with a zero/root of the quadratic",
+        "Not substituting back in to find the y-coordinate, only reporting the x"
+      ],
+      "prereqs": [
+        "cbse10:maths:jemh104:identify-coefficients-abc",
+        "cbse10:maths:jemh104:expand-and-simplify-expression"
+      ],
       "sameConcept": [],
       "teachingInsights": []
     },

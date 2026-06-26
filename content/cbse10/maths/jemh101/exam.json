@@ -315,6 +315,27 @@
       "quote": "So, we can write a = 2c for some integer c."
     },
     {
+      "nodeId": "cbse10:maths:jemh101:counter-examples-irrational-rules",
+      "kind": "book",
+      "prompt": "Assertion (A): (2 + √3)√3 is an irrational number. Reason (R): Product of two irrational numbers is always irrational. Which option is correct?",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "answer": "Assertion (A) is true but Reason (R) is false.",
+      "expected": {
+        "kind": "mcq",
+        "correct": "Assertion (A) is true but Reason (R) is false.",
+        "options": [
+          "Both Assertion and Reason are true and Reason is the correct explanation of Assertion.",
+          "Both Assertion and Reason are true but Reason is not the correct explanation of Assertion.",
+          "Assertion (A) is true but Reason (R) is false.",
+          "Assertion (A) is false but Reason (R) is true."
+        ]
+      },
+      "srcKind": "paper",
+      "srcLabel": "CBSE Class 10 Maths Basic SQP 2024-25 Q20",
+      "quote": "C) Assertion (A) is true but reason (R) is false."
+    },
+    {
       "nodeId": "cbse10:maths:jemh101:apply-real-number-theorems",
       "kind": "book",
       "prompt": "For 6 and 20, HCF(6, 20) = 2. Using HCF(a, b) × LCM(a, b) = a × b, find LCM(6, 20). A) 26  B) 60  C) 120  D) 10",

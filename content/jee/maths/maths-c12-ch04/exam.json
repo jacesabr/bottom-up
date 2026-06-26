@@ -264,6 +264,20 @@
    "srcLabel": "Authored practice (Opus) - mathematics-ch04 Sec 4.6 Consistent system"
   },
   {
+   "nodeId": "jee:maths:maths-c12-ch04:cayley-hamilton-theorem",
+   "kind": "book",
+   "prompt": "Let A = [[2, 1], [1, 1]]. The characteristic equation of A is λ² − 3λ + 1 = 0. By the Cayley-Hamilton theorem A satisfies this equation, giving A² − 3A + I = O. Use this to express A⁻¹ as a linear combination of A and I, then state the (1, 2) entry (row 1, column 2) of A⁻¹.",
+   "answerType": "numeric",
+   "grader": "numeric",
+   "answer": "-1",
+   "expected": {
+    "kind": "numeric",
+    "value": -1,
+    "tol": 0
+   },
+   "srcLabel": "Authored (Sonnet) - Cayley-Hamilton: A⁻¹ = 3I − A = [[1,−1],[−1,2]]; (1,2) entry = −1"
+  },
+  {
    "nodeId": "jee:maths:maths-c12-ch04:invertible-iff-nonsingular",
    "kind": "practice",
    "prompt": "A square matrix A is invertible if and only if:",

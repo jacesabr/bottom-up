@@ -231,7 +231,7 @@
       "type": "mcq",
       "grader": "mcq",
       "handling": "grade",
-      "node": "cbse12:mathematics:mathematics-ch07:definite-integral",
+      "node": "cbse12:mathematics:mathematics-ch07:definite-integral-symmetry",
       "prompt": "If f(a + b − x) = f(x), then ∫_a^b x f(x) dx is equal to (A) (a+b)/2 ∫_a^b f(b−x) dx  (B) (a+b)/2 ∫_a^b f(a−x) dx  (C) (b−a)/2 ∫_a^b f(x) dx  (D) (a+b)/2 ∫_a^b f(x) dx.",
       "options": [
         "(a+b)/2 ∫_a^b f(b−x) dx",
@@ -285,7 +285,7 @@
       "type": "mcq",
       "grader": "mcq",
       "handling": "grade",
-      "node": "cbse12:mathematics:mathematics-ch10:magnitude",
+      "node": "cbse12:mathematics:mathematics-ch10:distance-from-coordinate-axis",
       "prompt": "The distance of the point with position vector 3î + 4ĵ + 5k̂ from the y-axis is (A) 4 units  (B) √34 units  (C) 5 units  (D) 5√2 units.",
       "options": [
         "4 units",
@@ -321,7 +321,7 @@
       "type": "mcq",
       "grader": "mcq",
       "handling": "grade",
-      "node": "cbse12:mathematics:mathematics-ch12:constraints",
+      "node": "cbse12:mathematics:mathematics-ch12:infer-constraints-from-feasible-region",
       "prompt": "A student of class XII studying Mathematics comes across an incomplete question in a book. Maximise Z = 3x + 2y + 1 subject to the constraints x ≥ 0, y ≥ 0, 3x + 4y ≤ 12. He/She notices the shown graph for the said LPP problem and finds that a constraint is missing in it. Help him/her choose the required constraint from the graph. The missing constraint is (A) x + 2y ≤ 2  (B) 2x + y ≥ 2  (C) 2x + y ≤ 2  (D) x + 2y ≥ 2. [For Visually Impaired: If Z = ax + by + c, where a, b, c > 0, attains its maximum value at two of its corner points (4,0) and (0,3) of the feasible region determined by the system of linear inequalities, then (A) 4a = 3b (B) 3a = 4b (C) 4a + c = 3b (D) 3a + c = 4b.]",
       "options": [
         "x + 2y ≤ 2",
@@ -470,7 +470,7 @@
       "type": "vsa",
       "grader": "llm-rubric",
       "handling": "grade",
-      "node": "cbse12:mathematics:mathematics-ch05:derivative-definition",
+      "node": "cbse12:mathematics:mathematics-ch05:derivative-first-principles-functional-equation",
       "prompt": "If f(x + y) = f(x)f(y) for all x, y ∈ R and f(5) = 2, f′(0) = 3, then using the definition of derivatives, find f′(5).",
       "msAnswer": "f(0+5) = f(0)f(5) ⇒ f(0) = 1. f′(5) = lim_{h→0} [f(5+h) − f(5)]/h = lim_{h→0} [f(5)f(h) − f(5)]/h = lim_{h→0} [2f(h) − 2]/h = 2 lim_{h→0} [f(h) − 1]/h = 2 lim_{h→0} [f(h) − f(0)]/h = 2 f′(0) = 2(3) = 6."
     },
@@ -551,7 +551,7 @@
       "type": "sa",
       "grader": "llm-rubric",
       "handling": "grade",
-      "node": "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+      "node": "cbse12:mathematics:mathematics-ch11:distance-parallel-to-axis",
       "prompt": "Find the distance of the point (2, −1, 3) from the line r⃗ = (2î − ĵ + 2k̂) + μ(3î + 6ĵ + 2k̂) measured parallel to the z-axis. [OR — see 29B]",
       "msAnswer": "The line through (2, −1, 3) parallel to the z-axis is r⃗ = (2î − ĵ + 3k̂) + λ(k̂); any point on it is P(2, −1, 3 + λ). Any point on the given line is Q(2 + 3μ, −1 + 6μ, 2 + 2μ). For the intersection Q = P: 2 = 2 + 3μ ⇒ μ = 0, so the point of intersection is (2, −1, 2). The distance from (2, −1, 3) to (2, −1, 2) is 1 unit.",
       "variant": "A"
@@ -563,7 +563,7 @@
       "type": "sa",
       "grader": "llm-rubric",
       "handling": "grade",
-      "node": "cbse12:mathematics:mathematics-ch11:cartesian-equation-line",
+      "node": "cbse12:mathematics:mathematics-ch11:distance-parallel-to-axis",
       "prompt": "Find the point of intersection of the line r⃗ = (3î + k̂) + μ(î + ĵ + k̂) and the line through (2, −1, 1) parallel to the z-axis. How far is this point from the z-axis? [OR of 29A — internal choice.]",
       "msAnswer": "The line through (2, −1, 1) parallel to the z-axis is r⃗ = (2î − ĵ + k̂) + λ(k̂); any point on it is P(2, −1, 1 + λ). Any point on the given line is A(3 + μ, μ, 1 + μ). Setting A = P: μ = −1, so the point of intersection is (2, −1, 0). The distance of (2, −1, 0) from the z-axis is √(2² + (−1)²) = √5 units.",
       "variant": "B"
@@ -608,7 +608,7 @@
       "type": "la",
       "grader": "llm-rubric",
       "handling": "grade",
-      "node": "cbse12:mathematics:mathematics-ch07:definite-integral",
+      "node": "cbse12:mathematics:mathematics-ch07:definite-integral-symmetry",
       "prompt": "Evaluate: ∫_0^1 log(1 + x)/(1 + x²) dx. [OR — see 33B]",
       "msAnswer": "Let x = tan θ ⇒ dx = sec²θ dθ; I = ∫_0^{π/4} log(1 + tan θ)/(1 + tan²θ)·sec²θ dθ = ∫_0^{π/4} log(1 + tan θ) dθ = ∫_0^{π/4} log[1 + tan(π/4 − θ)] dθ = ∫_0^{π/4} log[1 + (1 − tan θ)/(1 + tan θ)] dθ = ∫_0^{π/4} log[2/(1 + tan θ)] dθ = ∫_0^{π/4} log 2 dθ − ∫_0^{π/4} log(1 + tan θ) dθ = (log 2)(π/4) − I ⇒ 2I = (π/4) log 2 ⇒ I = (π/8) log 2.",
       "variant": "A"

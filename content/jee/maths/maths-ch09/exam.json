@@ -202,5 +202,40 @@
       },
       "srcLabel": "Authored practice (Opus) - maths-ch09 Sec 9.3.1, Example 4"
     }
+    ,
+    {
+      "nodeId": "jee:maths:maths-ch09:recover-vertices-from-midpoints",
+      "kind": "book",
+      "prompt": "The midpoints of the sides of a triangle are P(5/2, 7), Q(5/2, 3) and R(4, 5). Find the vertex A (opposite to side with midpoint P, i.e., A = (Q_x+R_x-P_x, Q_y+R_y-P_y)).",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(4, 1)",
+        "options": [
+          "(4, 1)",
+          "(4, 9)",
+          "(1, 5)",
+          "(5/2, 5)"
+        ]
+      }
+    },
+    {
+      "nodeId": "jee:maths:maths-ch09:compute-incentre-of-triangle",
+      "kind": "book",
+      "prompt": "A triangle has vertices A(0, 0), B(6, 0) and C(0, 8). The side lengths are a = BC = 10, b = CA = 8, c = AB = 6. Using I = (aA+bB+cC)/(a+b+c), find the incentre.",
+      "answerType": "mcq",
+      "grader": "mcq",
+      "expected": {
+        "kind": "mcq",
+        "correct": "(2, 2)",
+        "options": [
+          "(2, 2)",
+          "(2, 8/3)",
+          "(1, 4/3)",
+          "(3, 4)"
+        ]
+      }
+    }
   ]
 }

@@ -133,6 +133,100 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-ch08:define-arithmetic-progression",
+      "slug": "define-arithmetic-progression",
+      "title": "Define an arithmetic progression (A.P.) and its common difference",
+      "role": "bedrock",
+      "sec": 3,
+      "brief": "An A.P. is a sequence in which every term after the first is obtained by adding a fixed number called the common difference to the term before it.",
+      "explanation": "PART 1 — What an A.P. is.\nA sequence a_1, a_2, a_3, ... is an arithmetic progression (A.P.) if each term after the first is obtained from the preceding one by adding a fixed constant d, called the common difference: a_{k+1} - a_k = d for every k ≥ 1. The sequence is then written as a, a+d, a+2d, a+3d, .... Example: 2, 5, 8, 11 has common difference d = 3.\n\nPART 2 — Identifying d and checking the A.P. condition.\nTo check whether a sequence is an A.P., subtract each term from the next and verify all differences are equal. For 4, 7, 10, 13: 7-4 = 3, 10-7 = 3, 13-10 = 3 — all equal, so it is an A.P. with d = 3. For 1, 3, 9, 27: 3-1 = 2, 9-3 = 6 — different, so NOT an A.P. (it is a G.P.). The common difference d may be positive, negative or zero.",
+      "keyMoves": [
+        "Subtract each term from the next and verify the differences are all equal",
+        "Name the constant difference d and write the sequence as a, a+d, a+2d, a+3d, ...",
+        "Recognise that d may be positive, negative or zero"
+      ],
+      "misconceptions": [
+        "Checking constant ratios (a G.P. test) instead of constant differences for an A.P.",
+        "Assuming d must be positive — d can be negative (decreasing A.P.) or zero (constant sequence)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch08:define-a-sequence"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch08:find-nth-term-of-ap",
+      "slug": "find-nth-term-of-ap",
+      "title": "Find the nth term of an A.P. using a_n = a + (n-1)d",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Apply the formula a_n = a + (n-1)d — first term plus (n minus one) common differences — to find any term or to locate a given value in an A.P.",
+      "explanation": "PART 1 — Deriving the nth-term formula.\nIn the A.P. a, a+d, a+2d, ..., the first term is a = a+0·d, the second is a+1·d, the third is a+2·d, and so on: the exponent of d is always one less than the position. So a_n = a + (n-1)d. Example: for the A.P. 2, 5, 8, 11, ... (a = 2, d = 3), the 10th term is a_10 = 2 + 9×3 = 2 + 27 = 29.\n\nPART 2 — Finding which term equals a given value.\nSet a + (n-1)d equal to the target and solve for n. Example: which term of 3, 7, 11, ... equals 99? Here a = 3, d = 4: 3 + (n-1)×4 = 99 → (n-1) = 96/4 = 24 → n = 25. Always check that n is a positive integer.\n\nPART 3 — Finding a or d from given terms.\nIf the 3rd term of an A.P. is 12 and the 7th term is 24: a_3 = a + 2d = 12 and a_7 = a + 6d = 24. Subtracting: 4d = 12, so d = 3, and a = 12 - 6 = 6. Subtracting the earlier-term equation from the later one always eliminates a.",
+      "keyMoves": [
+        "Apply a_n = a + (n-1)d to evaluate a specific term",
+        "Set a_n equal to a target value and solve for n (verifying n is a positive integer)",
+        "From two given terms a_m and a_n, subtract to eliminate a and find d, then back-substitute"
+      ],
+      "misconceptions": [
+        "Using n instead of (n-1) as the multiplier of d",
+        "Confusing the A.P. formula a+(n-1)d with the G.P. formula ar^(n-1)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch08:define-arithmetic-progression"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch08:sum-of-n-terms-of-ap",
+      "slug": "sum-of-n-terms-of-ap",
+      "title": "Sum the first n terms of an A.P. using S_n = n/2 [2a + (n-1)d]",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Use S_n = n/2 [2a + (n-1)d] = n/2 (a + l) to add the first n terms of an A.P., where l = a_n is the last term.",
+      "explanation": "PART 1 — Deriving the sum formula by the reverse-and-add trick.\nWrite S_n = a + (a+d) + ... + (a+(n-1)d). Write it again in reverse: S_n = (a+(n-1)d) + (a+(n-2)d) + ... + a. Adding the two rows term by term: each of the n pairs sums to 2a + (n-1)d. So 2S_n = n[2a + (n-1)d], giving S_n = n/2 [2a + (n-1)d].\n\nPART 2 — The l-form S_n = n/2 (a + l).\nIf l denotes the last term (l = a + (n-1)d), the formula becomes S_n = n/2 (a + l) — the number of terms times the average of the first and last terms. Example: sum of first 10 terms of 2, 5, 8, ... (a = 2, d = 3): S_10 = 10/2 [2×2 + 9×3] = 5 × [4 + 27] = 5 × 31 = 155.\n\nPART 3 — Solving for n from a given sum.\nIf S_n = 155 for the A.P. 2, 5, 8, ...: 155 = n/2 [4 + (n-1)×3] = n/2 [3n + 1]. So 3n^2 + n - 310 = 0. Using the quadratic formula or factoring: (3n + 31)(n - 10) = 0, giving n = 10 (taking the positive root). Verify: S_10 = 155. ✓",
+      "keyMoves": [
+        "Apply S_n = n/2 [2a + (n-1)d] when a, d and n are known",
+        "Use the equivalent form S_n = n/2 (a + l) when the last term l is given",
+        "Form and solve a quadratic in n when the sum S_n is given but n is unknown"
+      ],
+      "misconceptions": [
+        "Writing S_n = n(2a + (n-1)d) without the factor of 1/2",
+        "Using the G.P. sum formula instead of the A.P. sum formula"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch08:find-nth-term-of-ap",
+        "jee:maths:maths-ch08:form-a-series-with-sigma-notation"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
+      "id": "jee:maths:maths-ch08:derive-term-from-partial-sum",
+      "slug": "derive-term-from-partial-sum",
+      "title": "Recover the nth term from the partial sum using a_n = S_n - S_{n-1}",
+      "role": "intermediate",
+      "sec": 3,
+      "brief": "Extract any term of a sequence from its partial sums using a_n = S_n − S_{n−1} (with a_1 = S_1 as the special case).",
+      "explanation": "PART 1 — The relation a_n = S_n - S_{n-1} for n ≥ 2.\nThe partial sum S_n is the total of the first n terms, and S_{n-1} is the total of the first (n-1) terms. The difference S_n - S_{n-1} leaves only the nth term: a_n = S_n - S_{n-1} for n ≥ 2. The first term is the special case a_1 = S_1 (there is no S_0 to subtract).\n\nPART 2 — Worked example.\nSuppose the sum of n terms of a sequence is S_n = 3n^2 + 5n. Then for n ≥ 2: a_n = S_n - S_{n-1} = [3n^2 + 5n] - [3(n-1)^2 + 5(n-1)] = 3(n^2 - (n-1)^2) + 5(n - (n-1)) = 3(2n-1) + 5 = 6n - 3 + 5 = 6n + 2. Check: a_1 = S_1 = 3 + 5 = 8. And 6(1) + 2 = 8 — the formula also holds at n = 1, so a_n = 6n + 2 for all n ≥ 1.",
+      "keyMoves": [
+        "Write a_n = S_n - S_{n-1} for n ≥ 2",
+        "Treat a_1 = S_1 as the special case (check if the formula from part 2 also holds at n = 1)",
+        "Simplify the difference algebraically by cancelling terms common to S_n and S_{n-1}"
+      ],
+      "misconceptions": [
+        "Applying a_n = S_n - S_{n-1} with n = 1 by writing S_0, which is undefined",
+        "Forgetting to check whether the derived formula also gives the correct a_1 (it may or may not)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-ch08:sum-of-n-terms-of-ap",
+        "jee:maths:maths-ch08:find-nth-term-of-ap"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-ch08:recognise-a-geometric-progression",
       "slug": "recognise-a-geometric-progression",
       "title": "Recognise a geometric progression by a constant ratio",
@@ -329,7 +423,8 @@
         "jee:maths:maths-ch08:classify-finite-and-infinite-sequences",
         "jee:maths:maths-ch08:sum-n-terms-of-a-gp",
         "jee:maths:maths-ch08:insert-geometric-means",
-        "jee:maths:maths-ch08:relate-am-and-gm"
+        "jee:maths:maths-ch08:relate-am-and-gm",
+        "jee:maths:maths-ch08:derive-term-from-partial-sum"
       ],
       "sameConcept": [],
       "teachingInsights": []

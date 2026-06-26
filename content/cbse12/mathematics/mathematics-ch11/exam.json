@@ -245,6 +245,22 @@
       "srcLabel": "Authored practice (Opus) - mathematics-ch11 Sec 11.5 Definition"
     },
     {
+      "nodeId": "cbse12:mathematics:mathematics-ch11:distance-parallel-to-axis",
+      "kind": "book",
+      "prompt": "Find the distance of the point (2, −1, 3) from the line r⃗ = (2î − ĵ + 2k̂) + μ(3î + 6ĵ + 2k̂), measured parallel to the z-axis.",
+      "answerType": "numeric",
+      "grader": "numeric",
+      "answer": "1",
+      "expected": {
+        "kind": "numeric",
+        "value": 1,
+        "tol": 0
+      },
+      "srcKind": "paper",
+      "srcLabel": "CBSE Class 12 Maths SQP 2025-26 Q29 (variant A)",
+      "quote": "Auxiliary line through (2,−1,3) parallel to z-axis meets given line at (2,−1,2) when μ=0; distance = |3−2| = 1 unit."
+    },
+    {
       "nodeId": "cbse12:mathematics:mathematics-ch11:shortest-distance-skew-lines",
       "kind": "practice",
       "prompt": "For skew lines r = a1 + lambda b1 and r = a2 + mu b2, the shortest distance is given by:",

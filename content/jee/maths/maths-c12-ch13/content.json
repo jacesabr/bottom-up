@@ -215,6 +215,30 @@
       "teachingInsights": []
     },
     {
+      "id": "jee:maths:maths-c12-ch13:mean-and-variance-of-discrete-distribution",
+      "slug": "mean-and-variance-of-discrete-distribution",
+      "title": "Find the mean and variance of a discrete probability distribution",
+      "role": "intermediate",
+      "brief": "Compute E(X) = Σ xᵢ pᵢ as the expected value, then Var(X) = E(X²) − [E(X)]² using the shortcut formula E(X²) = Σ xᵢ² pᵢ.",
+      "sec": 5,
+      "explanation": "PART 1 — The mean (expected value) E(X).\nFor a discrete random variable X taking values x₁, x₂, …, xₙ with probabilities p₁, p₂, …, pₙ (where Σpᵢ=1), the mean or expected value is E(X) = Σ xᵢ pᵢ. It is the probability-weighted average of all possible values. For X ∈ {1,2,3,4,5} each with probability 1/5: E(X) = (1+2+3+4+5)/5 = 3.\n\nPART 2 — The second moment E(X²) and variance Var(X).\nThe variance measures spread: Var(X) = E(X²) − [E(X)]², where E(X²) = Σ xᵢ² pᵢ. For the same uniform distribution: E(X²) = (1+4+9+16+25)/5 = 11. So Var(X) = 11 − 9 = 2. The standard deviation is σ = √Var(X). This shortcut formula avoids computing Σ(xᵢ−μ)²pᵢ directly.\n\nPART 3 — Using a distribution on a straight line (JEE pattern).\nA common JEE setup: the points (x, P(X=x)) lie on a line, so P(X=x) = a + bx. Constraints Σpᵢ = 1 and Σxᵢpᵢ = given mean form a 2×2 linear system to solve for a and b; then use E(X²) = Σx²(a+bx) and Var = E(X²) − (mean)².",
+      "keyMoves": [
+        "Compute E(X) = Σ xᵢ pᵢ (weighted average of values by probabilities)",
+        "Compute E(X²) = Σ xᵢ² pᵢ, then Var(X) = E(X²) − [E(X)]²",
+        "When probabilities lie on a line, set up and solve the system Σp=1, Σxp=mean to find the distribution"
+      ],
+      "misconceptions": [
+        "Computing Var(X) as E(X²) instead of E(X²) − [E(X)]²",
+        "Forgetting to square the mean in the shortcut: writing Var = E(X²) − E(X) (not squared)"
+      ],
+      "prereqs": [
+        "jee:maths:maths-c12-ch13:random-variable",
+        "jee:maths:maths-ch14:probability-of-an-event"
+      ],
+      "sameConcept": [],
+      "teachingInsights": []
+    },
+    {
       "id": "jee:maths:maths-c12-ch13:bayes-theorem",
       "slug": "bayes-theorem",
       "title": "Apply Bayes' theorem to find a reverse probability",
@@ -237,6 +261,7 @@
         "jee:maths:maths-c12-ch13:conditional-probability-complement",
         "jee:maths:maths-c12-ch13:mutually-independent-events",
         "jee:maths:maths-c12-ch13:random-variable",
+        "jee:maths:maths-c12-ch13:mean-and-variance-of-discrete-distribution",
         "jee:maths:maths-ch14:probability-a-or-b",
         "jee:maths:maths-c12-ch13:multiplication-rule"
       ],

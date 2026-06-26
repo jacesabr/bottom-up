@@ -110,22 +110,14 @@ export default function Home({
               <div className="legend">
                 <span className="l-done">done</span>
                 <span className="l-now">you're here</span>
-                <span className="l-lock">locked</span>
+                <span className="l-lock">to do</span>
               </div>
 
-              {(() => {
-                // The past board paper unlocks only once EVERY node in the course is passed.
-                const allDone = c.total > 0 && c.passed >= c.total;
-                return allDone ? (
-                  <button className="take-paper-btn" onClick={() => onTakePaper(c.exam, c.subject)}>
-                    📝 Sit a past board paper — then revise what you miss →
-                  </button>
-                ) : (
-                  <button className="take-paper-btn locked" disabled title="Finish every chapter to unlock the past board paper">
-                    🔒 Finish all {c.total} nodes to unlock the past board paper ({c.passed}/{c.total})
-                  </button>
-                );
-              })()}
+              {/* Papers are always open: a student can browse the exam questions and jump from any
+                  one straight to the concept's nodes to refresh — no need to finish the course first. */}
+              <button className="take-paper-btn" onClick={() => onTakePaper(c.exam, c.subject)}>
+                📝 Sit a past exam paper — jump from any question to its concept to revise →
+              </button>
             </>
           )}
         </section>
