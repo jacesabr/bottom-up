@@ -1,0 +1,21 @@
+# Sarthi
+
+> An AI maths tutor for CBSE and JEE. Sarthi teaches maths bottom-up — chapter by chapter, concept by
+> concept — checking understanding at each step, then sets a full past board paper. Built so the gaps that
+> usually pile up never form. Free to start; unlimited with membership.
+
+Sarthi covers maths for CBSE Class 10, CBSE Class 12 (mathematics), and JEE. Chapters unlock in order; within
+a chapter, concepts unlock one at a time (locked → open → passed). An AI tutor teaches each concept, gates it
+with a quick check, re-teaches on a miss, and only then opens the next. After the chapters, the learner sits a
+real past board paper and sees which concepts to revise.
+
+## Key pages
+- [Why Sarthi](https://bottom-up-web.onrender.com/why-sarthi.html): the bottom-up idea — start at the foundation, build upward.
+- [How it works](https://bottom-up-web.onrender.com/how-it-works.html): the teach → gate → exam loop.
+- [Home](https://bottom-up-web.onrender.com/): start learning.
+
+## About
+- Audience: Indian students preparing CBSE Class 10 & 12 maths and JEE maths.
+- Language: English.
+- Note: the interactive tutor is a JavaScript app behind a sign-in; a public, crawlable concept library
+  (/learn) is being added.

@@ -1,0 +1,9 @@
+# Sarthi — robots.txt
+# Policy: allow all crawlers, including AI retrieval and training bots (decided 2026-06-26).
+# Nothing here is sensitive; the teaching product is login-gated. The admin panel is HTTP Basic-auth
+# gated server-side (not secured via robots).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://bottom-up-web.onrender.com/sitemap.xml

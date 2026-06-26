@@ -4,7 +4,62 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sarthi</title>
+
+    <!-- Primary SEO -->
+    <title>Sarthi — CBSE &amp; JEE maths, learned concept by concept</title>
+    <meta name="description" content="Sarthi helps you master CBSE Class 10 and Class 12 maths and JEE maths the bottom-up way: an AI tutor teaches each concept, checks you understand it, then sets a full past board paper. Start at the foundation, build upward, and the gap never forms." />
+    <link rel="canonical" href="https://bottom-up-web.onrender.com/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#b5562a" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Sarthi" />
+    <meta property="og:title" content="Sarthi — CBSE &amp; JEE maths, learned concept by concept" />
+    <meta property="og:description" content="Master CBSE Class 10 &amp; 12 maths and JEE maths bottom-up: an AI tutor teaches each concept, checks you understand, then a full past board paper." />
+    <meta property="og:url" content="https://bottom-up-web.onrender.com/" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Sarthi — CBSE &amp; JEE maths, learned concept by concept" />
+    <meta name="twitter:description" content="Master CBSE &amp; JEE maths bottom-up with an AI tutor, then a full past board paper." />
+
+    <!-- Structured data: EducationalOrganization + WebSite + Course -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://bottom-up-web.onrender.com/#org",
+          "name": "Sarthi",
+          "url": "https://bottom-up-web.onrender.com/",
+          "description": "An AI maths tutor that teaches CBSE and JEE maths bottom-up — concept by concept, with a full past board paper at the end."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://bottom-up-web.onrender.com/#website",
+          "name": "Sarthi",
+          "url": "https://bottom-up-web.onrender.com/",
+          "publisher": { "@id": "https://bottom-up-web.onrender.com/#org" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "Course",
+          "name": "CBSE & JEE Maths — learned bottom-up",
+          "description": "Master CBSE Class 10 maths, CBSE Class 12 mathematics, and JEE maths the bottom-up way. Chapters unlock in order; inside each chapter concepts unlock one at a time. An AI tutor teaches each concept and checks understanding with a gate before the next opens, then you sit a full past board paper.",
+          "provider": { "@id": "https://bottom-up-web.onrender.com/#org" },
+          "url": "https://bottom-up-web.onrender.com/",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "educationalLevel": "CBSE Class 10, CBSE Class 12, JEE",
+          "about": ["CBSE Class 10 maths", "CBSE Class 12 mathematics", "JEE maths", "Board exam preparation", "Previous year questions"]
+        }
+      ]
+    }
+    </script>
+
     <!-- Cloudflare Web Analytics (free, cookieless). Add this site in Cloudflare → Analytics → Web
          Analytics, then paste the token below (replace REPLACE_WITH_CF_TOKEN). Until then it's a no-op. -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
@@ -12,6 +67,21 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Crawler / no-JS fallback: this app renders its interactive tutor with JavaScript, so JS-less
+         crawlers (many AI engines) would otherwise see an empty page. Real, indexable text + links here. -->
+    <noscript>
+      <h1>Sarthi — CBSE &amp; JEE maths, learned bottom-up</h1>
+      <p>Sarthi helps you master maths for CBSE Class 10, CBSE Class 12 and JEE the bottom-up way. Chapters
+        unlock in order; inside each chapter, concepts unlock one at a time. An AI tutor teaches each concept,
+        checks you genuinely understand it with a quick gate, and only then opens the next — so the gaps that
+        usually pile up never form. After the chapters, you sit a full past board paper and see exactly which
+        concepts to revise.</p>
+      <p>The interactive tutor needs JavaScript. In the meantime:</p>
+      <ul>
+        <li><a href="/why-sarthi.html">Why Sarthi</a></li>
+        <li><a href="/how-it-works.html">How it works</a></li>
+      </ul>
+    </noscript>
     <script type="module" src="/src/web/main.tsx"></script>
   </body>
 </html>

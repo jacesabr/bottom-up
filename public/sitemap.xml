@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Real, server-served pages only. The app itself is a client-rendered SPA (one URL); per-concept
+     public URLs arrive in Phase 1 (the /learn knowledge layer) and will be added here then.
+     (pitch.html is an investor pitch deck — intentionally NOT listed.) -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://bottom-up-web.onrender.com/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://bottom-up-web.onrender.com/why-sarthi.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bottom-up-web.onrender.com/how-it-works.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
