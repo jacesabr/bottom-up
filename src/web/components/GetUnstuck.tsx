@@ -29,6 +29,7 @@ export default function GetUnstuck({
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
   const started = useRef(false);
+  const shown = useRef<string[]>([]); // gate ids already posed for the current node (so a re-check picks a new one)
 
   useEffect(() => {
     if (started.current) return;
@@ -45,18 +46,21 @@ export default function GetUnstuck({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Pose the quick-check for covering node i; skip nodes whose gates are all already cleared.
-  async function poseFor(i: number, cov = covering, solidSet = solid) {
+  // Pose the quick-check for covering node i; skip nodes with no text-gradable gate left. `sameNode` =
+  // re-checking the current node after teaching, so we exclude the gates already shown and pick a new one.
+  async function poseFor(i: number, cov = covering, solidSet = solid, sameNode = false) {
     if (i >= cov.length) { setPhase('done'); return; }
+    if (!sameNode) shown.current = [];
     setIdx(i); setDraft(''); setFeedback(''); setTeach(null);
     try {
       const g: Gate = await fetch(`${base}/help/${encodeURIComponent(cov[i].id)}/gate`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}',
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ exclude: shown.current }),
       }).then((r) => r.json());
       if (g.allPassed || !g.gateId) {
         const ns = new Set(solidSet); ns.add(cov[i].id); setSolid(ns);
         await poseFor(i + 1, cov, ns); return;
       }
+      shown.current = [...shown.current, g.gateId];
       setGate(g); setPhase('check');
     } catch { setErr('Could not load the quick check.'); setPhase('error'); }
   }
@@ -141,7 +145,7 @@ export default function GetUnstuck({
               {teach.keyMoves.map((m, i) => <li key={i}><MathText>{m}</MathText></li>)}
             </ul>
           )}
-          <button className="unstuck-btn" onClick={() => poseFor(idx)}>Got it — check again</button>
+          <button className="unstuck-btn" onClick={() => poseFor(idx, covering, solid, true)}>Got it — check again</button>
         </div>
       )}
 

@@ -793,6 +793,76 @@ export async function answerGate(learnerId: string, conceptId: string, gateId: s
   return { correct, feedback, allPassed, passedCount: passed.size, total: set.length };
 }
 
+/**
+ * Exam "get unstuck" quick-check: pose ONE text-gradable gate for a covering node (no drawing pad in the
+ * exam flow, so we skip sketch/vision gates and prefer mcq > cas > written). `exclude` lets the client ask
+ * for a DIFFERENT gate on a re-check after teaching. Pure read — does NOT touch node progression.
+ */
+export async function poseGateForExam(conceptId: string, exclude: string[] = []) {
+  const set = await gateSet(conceptId, 'foundation');
+  const usable = set.filter((g) => g.answerType !== 'sketch' && !exclude.includes(g.id));
+  const rank = (g: { grader: string }) => (g.grader === 'mcq' ? 0 : g.grader === 'cas' ? 1 : 2);
+  usable.sort((a, b) => rank(a) - rank(b));
+  const g = usable[0];
+  if (!g) return { gateId: null, done: true, allPassed: true }; // no text gate left — treat block as covered
+  const expected = g.expected as any;
+  return {
+    gateId: g.id,
+    slot: g.slot,
+    prompt: g.prompt,
+    answerType: g.answerType,
+    options: g.answerType === 'mcq' ? shuffleOptions(expected.options, g.id) : null,
+  };
+}
+
+/**
+ * Grade an exam quick-check answer (mcq/cas/written — same logic as answerGate, minus sketch). Records the
+ * attempt for analytics but deliberately does NOT pass the node (exam practice doesn't advance progression).
+ */
+export async function gradeGateForExam(learnerId: string, conceptId: string, gateId: string, answer: string, langCode = 'en') {
+  const grows = await db.select().from(gates).where(eq(gates.id, gateId));
+  if (!grows.length) throw new Error(`Gate not found: ${gateId}`);
+  const g = grows[0];
+  const expected = g.expected as any;
+  let correct = false;
+  let feedback = '';
+  if (g.grader === 'mcq') {
+    const strip = (s: string) => norm(s).replace(/[^a-z0-9]/g, '');
+    correct = norm(answer) === norm(expected.correct) || strip(answer) === strip(expected.correct);
+    feedback = correct ? 'Correct.' : 'Not the right option — look again.';
+  } else if (g.grader === 'cas') {
+    const target = expected.equivalentTo ?? '';
+    if (/^\d+$/.test(String(target).trim())) {
+      correct = casEquivalent(answer, target);
+      feedback = correct ? 'Correct.' : "That doesn't evaluate to the right value — recheck your working.";
+    } else {
+      const r = await gradeEquation(g.prompt, g.idealAnswer ?? target, answer, langCode, conceptId, 'foundation');
+      correct = r.correct;
+      feedback = r.feedback;
+    }
+  } else if (g.grader === 'rubric') {
+    const r = await gradeWritten(g.prompt, g.rubric, g.idealAnswer, answer, langCode, conceptId, 'foundation');
+    correct = r.correct;
+    feedback = r.feedback;
+  } else {
+    correct = norm(answer) === norm(expected.correct ?? expected.answer ?? '');
+    feedback = correct ? 'Correct.' : 'Not quite.';
+  }
+  if (langCode !== 'en') feedback = await translateText(feedback, langCode);
+  await db.insert(buGateAttempt).values({
+    learnerId,
+    conceptId,
+    gateId,
+    attemptNo: 1,
+    prompt: g.prompt,
+    learnerAnswer: answer.slice(0, 2000),
+    correct,
+    gradedBy: g.grader === 'mcq' ? 'deterministic' : g.grader === 'cas' ? 'equivalence' : 'rubric',
+    ms: 0,
+  });
+  return { correct, feedback };
+}
+
 async function passNode(learnerId: string, conceptId: string, chapterId: string) {
   const perf = await db
     .select()

@@ -2,7 +2,7 @@ import express from 'express';
 import { db } from '../db/index.js';
 import { buNodePerformance, buVisit, buEvent } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
-import { enterNode, respond, poseGate, answerGate, getNodeDetail, helpWithSketch, getConceptFigures, serviceDownMessage } from '../core/teach-loop.js';
+import { enterNode, respond, poseGate, answerGate, poseGateForExam, gradeGateForExam, getNodeDetail, helpWithSketch, getConceptFigures, serviceDownMessage } from '../core/teach-loop.js';
 import { LlmUnavailableError } from '../core/llm.js';
 import { routeModels, isAllowedModel } from '../core/nim-router.js';
 import { setRoute, setRoutePicks, getCurrentText, getVisionModel } from '../core/route-store.js';
@@ -579,9 +579,10 @@ router.get('/learner/:learnerId/paper/:paperId/q/:q/covering', requirePaperAcces
 // Pose a "quick check" for one covering node (a gate from that node; the answer never leaves the server).
 router.post('/learner/:learnerId/paper/:paperId/q/:q/help/:conceptId/gate', requirePaperAccess, async (req, res) => {
   try {
-    const { learnerId, paperId, conceptId } = req.params;
+    const { paperId, conceptId } = req.params;
     if (!isCoveringNode(paperId, Number(req.params.q), conceptId)) return res.status(403).json({ error: 'not_a_covering_node' });
-    res.json(await poseGate(learnerId, conceptId));
+    const exclude = Array.isArray(req.body?.exclude) ? req.body.exclude : [];
+    res.json(await poseGateForExam(conceptId, exclude));
   } catch (err) {
     console.error('Error posing quick-check:', err);
     res.status(500).json({ error: 'Failed to pose quick check' });
@@ -595,8 +596,8 @@ router.post('/learner/:learnerId/paper/:paperId/q/:q/help/:conceptId/gate-answer
     if (!isCoveringNode(paperId, Number(req.params.q), conceptId)) return res.status(403).json({ error: 'not_a_covering_node' });
     const { gateId, answer, lang } = req.body || {};
     seedClientModels(learnerId, req.body);
-    const r = await answerGate(learnerId, conceptId, gateId, answer, lang || 'en');
-    res.json({ correct: r.correct, feedback: r.feedback, allPassed: r.allPassed });
+    const r = await gradeGateForExam(learnerId, conceptId, gateId, answer, lang || 'en');
+    res.json({ correct: r.correct, feedback: r.feedback });
   } catch (err) {
     if (err instanceof LlmUnavailableError) {
       return res.json({ correct: false, systemError: true, feedback: await serviceDownMessage(req.body?.lang || 'en') });
