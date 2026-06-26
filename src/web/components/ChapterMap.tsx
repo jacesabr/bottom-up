@@ -2,36 +2,27 @@ import { useEffect, useState } from 'react';
 import GameOverlay from './GameOverlay';
 import '../styles/ChapterMap.css';
 
-// Games unlock one-per-node as concepts are completed. Our curated short art games
-// (served locally from /public/gameN/) are interleaved with clean, colourful arcade/
-// puzzle games embedded from their original open-source hosts (external URLs — no code
-// vendored; each verified to render in the overlay). Order = node order.
+// Games unlock one-per-node as concepts are completed. All external embeds — nothing
+// vendored or coded by us. Each URL is (1) header-checked (no X-Frame-Options / CSP
+// frame-ancestors) AND (2) eyes-on render-verified inside the dark-overlay iframe via
+// headless+GPU Chrome screenshots (2026-06-26). Action-focused: racing, shooters, runner,
+// maze adventure, multiplayer tank. Dropped for blank/black frames: SWOOOP, Ink Wars
+// (PlayCanvas blank), Jungle Runner/kandi-runner (frozen loader), Asteroids (black canvas).
+// Order = node order, ramping from quick arcade to 3D/multiplayer.
 const GAMES = [
-  { title: 'eXit', src: '/game1/exit.html' }, // bespoke terminal escape (ours)
-  { title: 'HexGL', src: 'https://hexgl.bkcore.com/play/' }, // neon 3D racer — embed (BKcore)
-  { title: 'Execution', src: '/_ruffle/play.html?swf=/swf/execution.swf' }, // Venbrux — original Flash via Ruffle
-  { title: 'Clumsy Bird', src: 'https://ellisonleao.github.io/clumsy-bird/' }, // bright flappy arcade — embed
-  { title: 'A Dark Room', src: '/game3/index.html' }, // Doublespeak Games — open source
-  { title: 'BlockRain', src: 'https://aerolab.github.io/blockrain.js/' }, // colourful Tetris — embed
-  { title: 'One Chance', src: '/_ruffle/play.html?swf=/swf/onechance.swf' }, // AwkwardSilence — original Flash via Ruffle
-  { title: 'Arena5', src: 'https://www.kevs3d.co.uk/dev/arena5/' }, // neon twin-stick shooter — embed (Kevin Roast)
-  { title: 'Passage', src: '/game5/index.html' }, // Rohrer — public-domain web build (MoMA)
-  { title: 'Hextris', src: 'https://hextris.github.io/' }, // colourful spinning-hexagon puzzle — embed
-  { title: 'WarGames', src: '/games/gtw/index.html' }, // GTW — open-source WOPR (ghelleks)
-  { title: '2048', src: 'https://hczhcz.github.io/2048/' }, // addictive number-merge puzzle — embed
-  { title: 'The House Abandon', src: '/game7/house.html' }, // homage — original is proprietary
-  { title: 'Snake', src: 'https://ramazancetinkaya.github.io/snake-game/' }, // modern snake — embed
-  { title: 'Every Day the Same Dream', src: '/_ruffle/play.html?swf=/swf/sameday.swf' }, // Molleindustria — original Flash via Ruffle
-  { title: 'Today I Die', src: '/_ruffle/play.html?swf=/swf/todayidie.swf' }, // Benmergui — original Flash via Ruffle
-  { title: 'I Wish I Were the Moon', src: '/game8/moon.html' }, // homage — Flash is Flex, won't embed
-  { title: 'Loneliness', src: 'https://www.necessarygames.com/play/loneliness/' }, // Magnuson — embed (local GameMaker export was incomplete)
-  { title: 'Loved', src: '/_ruffle/play.html?swf=/swf/loved.swf' }, // Ocias — original Flash via Ruffle
-  { title: 'We Become What We Behold', src: '/games/wbwwb/index.html' }, // Nicky Case — CC0
-  { title: 'It is as if you were doing work', src: '/games/itisasif/index.html' }, // Pippin Barr (open source)
-  { title: 'Snakisms', src: '/games/snakisms/index.html' }, // Pippin Barr — 21 philosophical snakes
-  { title: 'A Series of Gunshots', src: '/games/gunshots/index.html' }, // Pippin Barr (open source)
-  { title: 'You Are Jeff Bezos', src: '/games/jeffbezos/index.html' }, // Kris Ligman — Twine
-  { title: 'A Studio Above a Bookstore', src: '/games/studio/index.html' }, // Anna Anthropy — Bitsy
+  { title: 'HexGL', src: 'https://hexgl.bkcore.com/play/' }, // neon 3D racer (BKcore)
+  { title: 'T-Rex Runner', src: 'https://wayou.github.io/t-rex-runner/' }, // endless runner (Chrome dino)
+  { title: '2048', src: 'https://hczhcz.github.io/2048/' }, // number-merge puzzle
+  { title: 'BlockRain', src: 'https://aerolab.github.io/blockrain.js/' }, // colourful Tetris (Aerolab)
+  { title: 'Hextris', src: 'https://hextris.github.io/' }, // spinning-hexagon puzzle
+  { title: 'Snake', src: 'https://ramazancetinkaya.github.io/snake-game/' }, // modern snake
+  { title: 'Clumsy Bird', src: 'https://ellisonleao.github.io/clumsy-bird/' }, // bright flappy arcade
+  { title: 'Astray', src: 'https://wwwtyro.github.io/Astray/' }, // 3D marble-maze adventure (wwwtyro)
+  { title: 'Arena5', src: 'https://www.kevs3d.co.uk/dev/arena5/' }, // neon twin-stick shooter (Kevin Roast)
+  { title: 'Master Archer', src: 'https://playcanv.as/p/JERg21J8/' }, // 3D archery action (PlayCanvas)
+  { title: 'Orbital Survival', src: 'https://playcanv.as/p/3G3RnfUz/' }, // arcade wave shooter (PlayCanvas)
+  { title: 'Galaxies: Combat', src: 'https://playcanv.as/p/Ikq6Uk6A/' }, // 3D space shooter (PlayCanvas)
+  { title: 'TANX', src: 'https://tanx.io/' }, // online multiplayer tank battle (PlayCanvas)
 ];
 
 // Each math course is its own sequential path; games map to the COURSE-WIDE node index (chapters are

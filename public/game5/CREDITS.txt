@@ -1,3 +1,0 @@
-Passage — Jason Rohrer (2007). The original game + assets were released into the PUBLIC DOMAIN.
-Web build: github.com/toolness/passage-emscripten (Emscripten/asm.js port, also public domain).
-A 5-minute memento-mori art game; in the permanent collection of MoMA. Vendored unmodified.
